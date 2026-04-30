@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "Just now — first blog post live + 4 social drafts ready",
+  "lastUpdated": "Just now — 5 PRs to awesome-list repos submitted",
   "tools": [
     { "name": "Domain Name Generator", "slug": "domain-generator", "status": "live", "visitors7d": "—" },
     { "name": "OG Image Generator", "slug": "og-image-generator", "status": "live", "visitors7d": "—" },
@@ -14,19 +14,23 @@
     "visitors": "—",
     "visitorsDelta": "Vercel Analytics: enable in 1 click",
     "clicks": "0",
-    "clicksDelta": "Namecheap: in review (1-3 days)",
+    "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
-    "revenueDelta": "Pending Namecheap approval",
+    "revenueDelta": "Pending traffic + affiliate approval",
     "posts": 1,
-    "postsDelta": "+1 just now (next in 4 hours)",
+    "postsDelta": "+1 today (next in 4 hours)",
     "indexed": "—",
-    "indexedDelta": "Sitemap pinged Google"
+    "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
-    { "time": "just now", "tag": "seo", "text": "📝 First blog post LIVE: How to Choose a Domain Name for Your SaaS in 2026 — at /domain-generator/blog/how-to-choose-domain-name-saas-2026/" },
-    { "time": "just now", "tag": "seo", "text": "Sitemap updated, Google ping triggered" },
-    { "time": "just now", "tag": "promo", "text": "🚀 Schedule upgraded: blog posts now generated every 4 hours (6/day instead of 1)" },
-    { "time": "earlier", "tag": "promo", "text": "Namecheap affiliate APPROVED on impact.com (status: In Review by Namecheap brand team)" },
+    { "time": "just now", "tag": "promo", "text": "🚀 PR #525 → goabstract/Awesome-Design-Tools (39,787 ⭐) — Color Palette + Favicon + OG Image" },
+    { "time": "just now", "tag": "promo", "text": "🚀 PR #1226 → mahseema/awesome-ai-tools (5,045 ⭐) — TinyTools entry" },
+    { "time": "just now", "tag": "promo", "text": "🚀 PR #416 → aviaryan/awesome-no-login-web-apps (3,211 ⭐) — 6 entries" },
+    { "time": "just now", "tag": "promo", "text": "🚀 PR #81 → iAmCorey/awesome-indie-hacker-tools (1,329 ⭐) — TinyTools entry" },
+    { "time": "just now", "tag": "promo", "text": "🚀 PR #64 → mathewlewallen/awesome-free-tools (87 ⭐) — TinyTools entry" },
+    { "time": "earlier", "tag": "seo", "text": "📝 First blog post LIVE: How to Choose a Domain Name for Your SaaS in 2026" },
+    { "time": "earlier", "tag": "promo", "text": "🚀 Schedule upgraded: blog posts now generated every 4 hours (6/day)" },
+    { "time": "earlier", "tag": "promo", "text": "Namecheap affiliate: APPROVED on impact.com, awaiting brand review" },
     { "time": "earlier", "tag": "promo", "text": "Site verified on impact.com" },
     { "time": "earlier", "tag": "ship", "text": "URL canonical: tinytools-smoky.vercel.app" },
     { "time": "today", "tag": "ship", "text": "6 tools live + landing page" },
@@ -45,36 +49,26 @@
       "platform": "Reddit /r/SaaS or /r/Entrepreneur",
       "tool": "domain-generator",
       "createdAt": "2026-04-30T22:00:00Z",
-      "text": "Title: I keep seeing founders spend a week on domain names. Made a free generator + a 7-min guide on the 4 traps that kill founder-picked names.\n\nBody: Spent the last few days obsessing over our SaaS domain (we shipped \"AlphaForge\" — terrible, renamed) and realized the actual decision is way simpler than founders make it. The 5 traits: short, pronounceable, brandable, trademark-safe, right TLD. The 4 traps: inside jokes, misspelled real words, scale-proofing too early, hyphens and numbers.\n\nWrote it up + built a free generator that checks RDAP availability live: tinytools-smoky.vercel.app/domain-generator/\n\nWhat's the worst startup name you've seen survive anyway?"
+      "text": "Title: I keep seeing founders spend a week on domain names. Made a free generator + a 7-min guide on the 4 traps that kill founder-picked names.\n\nBody: Spent the last few days obsessing over our SaaS domain (we shipped \"AlphaForge\" — terrible, renamed) and realized the actual decision is way simpler. The 5 traits + the 4 traps. Wrote it up + built a free generator that checks RDAP availability live: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-choose-domain-name-saas-2026/"
     },
     {
       "platform": "X / Twitter Thread",
       "tool": "domain-generator",
       "createdAt": "2026-04-30T22:00:00Z",
-      "text": "1/ Founders waste 2 weeks on domain names. The decision is 30 minutes if you follow the framework. Here's what works in 2026:\n\n2/ The 5 traits every great SaaS domain has:\n• Short (under 12 chars)\n• Pronounceable (say it at a bar test)\n• Brandable > descriptive\n• Trademark-safe (USPTO TESS, 5 min)\n• Right TLD (.com still wins, .ai works for AI products)\n\n3/ The 4 traps I see kill founder-picked names:\n• Inside jokes (funny to 3 people, not customers)\n• Misspelled real words (Tumblr survived; 50 dead startups didn't)\n• Scale-proofing too early (\"Platform.com\")\n• Hyphens and numbers (always reads as cheap knockoff)\n\n4/ The myth that \"all good .coms are taken\" is 90% false. Pronounceable, brandable .com domains are everywhere — just not as dictionary words. Spotify, Slack, Roblox didn't exist as English words.\n\n5/ Built a free domain generator that checks live RDAP availability — no signup, no email. Brandable, descriptive, modern, compound styles. 60+ candidates per query.\n\ntinytools-smoky.vercel.app/domain-generator/"
+      "text": "Founders waste 2 weeks on domain names. The decision is 30 minutes if you follow the framework.\n\n5 traits every great SaaS domain has:\n• Short (under 12 chars)\n• Pronounceable\n• Brandable > descriptive\n• Trademark-safe\n• Right TLD (.com still wins)\n\nFree generator + full guide: https://tinytools-smoky.vercel.app/domain-generator/"
     },
     {
-      "platform": "LinkedIn Post",
+      "platform": "Hacker News (Show HN)",
       "tool": "domain-generator",
       "createdAt": "2026-04-30T22:00:00Z",
-      "text": "Founders waste two weeks on domain names. The decision is 30 minutes.\n\nThe 5 traits every great SaaS domain has:\n• Short (under 12 chars — Linear, Vercel, Cursor are all 6 letters)\n• Pronounceable (the \"say it at a noisy bar\" test)\n• Brandable beats descriptive (Notion ate the category, BestProjectManagementApp.com never could)\n• Trademark-safe (USPTO TESS, 5 minutes, cheap insurance)\n• Right TLD (.com still wins. .ai for AI. Avoid .biz/.info/.xyz.)\n\nThe 4 traps that quietly kill founder-picked names:\n• Inside jokes that aren't funny to customers\n• Misspelled real words (for every Tumblr there are 50 dead startups)\n• Scale-proofing too early (\"Platform.com\")\n• Hyphens and numbers (always read as cheap knockoff)\n\nBuilt a free generator that checks live RDAP availability for 60+ candidates per query — no signup, no email.\n\nFull guide + free tool: tinytools-smoky.vercel.app/domain-generator/"
-    },
-    {
-      "platform": "Hacker News (Show HN title + comment)",
-      "tool": "domain-generator",
-      "createdAt": "2026-04-30T22:00:00Z",
-      "text": "Title: Show HN: Free domain name generator with live RDAP availability checks (no signup)\n\nFirst comment to post in the discussion: Built this because every existing domain generator I tried (1) gated results behind email signup, (2) showed \"available\" for domains that were actually parked, or (3) only suggested .com and demanded an upsell for .ai/.io. Mine: pure browser, RDAP-based real-time check (so it's honest), four naming styles (brandable, descriptive, compound, modern), affiliate link to Namecheap on the few that the user clicks (in review, not earning yet). Open to feedback on the algorithms — happy to add more naming styles."
+      "text": "Title: Show HN: Free domain name generator with live RDAP availability checks (no signup)\n\nLink: https://tinytools-smoky.vercel.app/domain-generator/\n\nFirst comment: Built this because every existing domain generator I tried gated results behind email signup or showed 'available' for parked domains. Mine: pure browser, RDAP-based real-time check, four naming styles. Open to feedback on the algorithms."
     }
   ],
   "checklist": [
-    { "task": "🔥 PASTE ONE OF THE 4 DRAFTS BELOW TO ANY PLATFORM (30 seconds, drives first traffic)", "url": "#drafts", "done": false, "value": "First 100 visitors come from this. Affiliate revenue follows traffic." },
-    { "task": "Wait for Namecheap brand approval (in review, 1-3 days)", "url": "https://app.impact.com/secure/member/home/mview.ihtml", "done": false, "value": "Once approved, paste tracking link to me — instant Domain Generator activation" },
-    { "task": "Submit to Theresanaiforthat.com (free, ranks well)", "url": "https://theresanaiforthat.com/submit/", "done": false, "value": "Free directory, organic traffic" },
-    { "task": "Submit to Futurepedia (free)", "url": "https://www.futurepedia.io/submit-tool", "done": false, "value": "AI tool directory" },
-    { "task": "Submit to AItoolsdirectory.com (free)", "url": "https://www.aitoolsdirectory.com/submit", "done": false, "value": "Free AI directory" },
-    { "task": "Sign up: Buy Me a Coffee (instant, no review)", "url": "https://www.buymeacoffee.com/", "done": false, "value": "Direct tips $3-50, footer link on every tool" },
-    { "task": "Sign up: Bannerbear Affiliate (24-48hr approval)", "url": "https://www.bannerbear.com/affiliate-program/", "done": false, "value": "30% recurring, $50-300/customer" },
-    { "task": "Sign up: LemonSqueezy Affiliate (instant)", "url": "https://www.lemonsqueezy.com/help/affiliates", "done": false, "value": "Recurring on creator sales" },
-    { "task": "Enable Vercel Analytics (1 click, free)", "url": "https://vercel.com/alfredos-projects-168b6539/tinytools/analytics", "done": false, "value": "Real visitor numbers" }
+    { "task": "🔥 PASTE ONE OF THE 3 DRAFTS BELOW (30 seconds = first 100 visitors)", "url": "#drafts", "done": false, "value": "First 100 visitors come from this. Affiliate revenue follows traffic." },
+    { "task": "✅ Watch awesome-list PRs for merge — auto-emails on merge", "url": "https://github.com/pulls?q=is%3Apr+author%3Aalfredoautomatizaloconia-cloud", "done": false, "value": "5 PRs submitted to lists with combined 49,500 stars. Each merge = permanent backlink." },
+    { "task": "Wait for Namecheap brand approval (1-3 days)", "url": "https://app.impact.com/secure/member/home/mview.ihtml", "done": false, "value": "Once approved, paste tracking link to me — instant Domain Generator activation" },
+    { "task": "Sign up: Buy Me a Coffee (instant)", "url": "https://www.buymeacoffee.com/", "done": false, "value": "Direct tips $3-50, footer link on every tool" },
+    { "task": "Enable Vercel Analytics (1 click, free)", "url": "https://vercel.com/alfredos-projects-168b6539/tinytools/analytics", "done": false, "value": "Real visitor numbers in this dashboard" }
   ]
 }
