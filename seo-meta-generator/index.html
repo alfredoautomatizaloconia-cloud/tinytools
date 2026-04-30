@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free SEO Meta Tag Generator (2026) — With Live Google + Social Preview</title>
+<meta name="description" content="Generate perfect SEO meta tags with live preview of how your page will look in Google search results, on Twitter, Facebook, LinkedIn, and Slack. Copy-paste ready. Free, no signup.">
+<meta name="keywords" content="meta tag generator, seo meta tag generator, og tag generator, twitter card generator, free seo tools, html meta generator">
+<meta property="og:title" content="Free SEO Meta Tag Generator">
+<meta property="og:description" content="Generate perfect SEO meta tags with live preview of every platform.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #3b82f6; --accent-glow: #3b82f640;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 620px; margin: 0 auto; }
+
+  .layout { display: grid; grid-template-columns: 380px 1fr; gap: 24px; margin-top: 32px; }
+  @media (max-width: 1000px) { .layout { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+  }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .field { margin-bottom: 14px; }
+  label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500;
+  }
+  label .counter { font-size: 11px; font-variant-numeric: tabular-nums; color: var(--text-dim); }
+  label .counter.warn { color: #f59e0b; }
+  label .counter.bad { color: #ef4444; }
+  input[type="text"], input[type="url"], textarea, select {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit;
+  }
+  textarea { resize: vertical; min-height: 70px; }
+  input:focus, textarea:focus, select:focus {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  .preview-section { margin-bottom: 28px; }
+  .preview-section .label {
+    font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 10px; font-weight: 600;
+  }
+
+  /* Google SERP preview */
+  .serp {
+    background: white; padding: 16px 20px; border-radius: 8px; max-width: 600px;
+    font-family: arial, sans-serif;
+  }
+  .serp .url-row { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+  .serp .favicon-circle { width: 26px; height: 26px; background: #e0e0ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #555; }
+  .serp .url { color: #202124; font-size: 12px; }
+  .serp .breadcrumb { color: #5f6368; font-size: 12px; }
+  .serp .title { color: #1a0dab; font-size: 20px; line-height: 1.3; margin: 4px 0 4px; cursor: pointer; }
+  .serp .title:hover { text-decoration: underline; }
+  .serp .desc { color: #4d5156; font-size: 14px; line-height: 1.4; }
+
+  /* Social card previews */
+  .social-card {
+    max-width: 540px; border: 1px solid #cfd9de; border-radius: 16px; overflow: hidden; background: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  .social-card .img-wrap { aspect-ratio: 1.91/1; background: linear-gradient(135deg, #3b82f6, #8b5cf6); display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; }
+  .social-card .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .social-card .meta {
+    padding: 12px 16px; background: white;
+  }
+  .social-card.twitter .meta .domain { font-size: 13px; color: #536471; }
+  .social-card.twitter .meta .title { font-size: 15px; font-weight: 600; color: #0f1419; margin: 2px 0; }
+  .social-card.twitter .meta .desc { font-size: 13px; color: #536471; }
+  .social-card.facebook .meta { background: #f0f2f5; }
+  .social-card.facebook .meta .domain { font-size: 12px; color: #606770; text-transform: uppercase; }
+  .social-card.facebook .meta .title { font-size: 17px; font-weight: 600; color: #1c1e21; margin: 2px 0; }
+  .social-card.facebook .meta .desc { font-size: 14px; color: #606770; }
+
+  .platform-tabs { display: flex; gap: 4px; margin-bottom: 12px; }
+  .platform-tab {
+    padding: 8px 14px; background: var(--bg-elevated); border-radius: 8px; font-size: 13px;
+    cursor: pointer; color: var(--text-dim); transition: all 0.15s;
+  }
+  .platform-tab.active { background: var(--accent); color: white; }
+
+  .output {
+    background: #000; padding: 18px; border-radius: 12px; margin-top: 20px;
+    border: 1px solid var(--border); position: relative;
+  }
+  .output pre { margin: 0; font-family: 'SF Mono', Monaco, monospace; font-size: 12.5px;
+    color: #e0e0ff; white-space: pre-wrap; word-wrap: break-word; }
+  .copy-btn {
+    position: absolute; top: 10px; right: 10px; padding: 6px 12px;
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text); font-size: 12px; cursor: pointer;
+  }
+  .copy-btn:hover { border-color: var(--accent); }
+
+  .upsell {
+    margin-top: 16px; padding: 16px; background: var(--bg-elevated);
+    border-radius: 10px; border-left: 3px solid var(--accent); font-size: 13px;
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">⚡ Live Preview &nbsp;·&nbsp; Every Platform &nbsp;·&nbsp; Free</div>
+    <h1>SEO Meta Tag Generator</h1>
+    <p class="subtitle">Build perfect meta tags + see exactly how your page will appear in Google, Twitter, Facebook, LinkedIn, Slack. No guessing. No signup.</p>
+  </header>
+
+  <div class="layout">
+    <div class="panel">
+      <h2>Inputs</h2>
+      <div class="field">
+        <label>Page title <span id="titleCounter" class="counter">0</span></label>
+        <input id="title" type="text" placeholder="Your page title" value="Free Color Palette Generator — Beautiful Schemes">
+      </div>
+      <div class="field">
+        <label>Description <span id="descCounter" class="counter">0</span></label>
+        <textarea id="desc" placeholder="Concise summary of the page">Generate beautiful color palettes from any base color. Analogous, complementary, triadic, monochromatic. Export as CSS or Tailwind.</textarea>
+      </div>
+      <div class="field">
+        <label>Page URL</label>
+        <input id="url" type="url" placeholder="https://yoursite.com/page" value="https://yoursite.com/colors">
+      </div>
+      <div class="field">
+        <label>Site name</label>
+        <input id="site" type="text" placeholder="Your Site" value="TinyTools">
+      </div>
+      <div class="field">
+        <label>OG Image URL (1200×630 recommended)</label>
+        <input id="ogImage" type="url" placeholder="https://yoursite.com/og.png">
+      </div>
+      <div class="field">
+        <label>Keywords (comma separated)</label>
+        <input id="keywords" type="text" placeholder="color palette, free tool, css">
+      </div>
+      <div class="field">
+        <label>Author</label>
+        <input id="author" type="text" placeholder="Your name or brand">
+      </div>
+      <div class="field">
+        <label>Twitter @handle (optional)</label>
+        <input id="twitter" type="text" placeholder="@yourhandle">
+      </div>
+
+      <div class="upsell">
+        <strong>Want to know which keywords to target?</strong>
+        Use <a href="#" id="upsell-ahrefs" target="_blank" rel="noopener">Ahrefs</a> or
+        <a href="#" id="upsell-semrush" target="_blank" rel="noopener">Semrush</a> — the two best SEO research tools, used by every serious blog and SaaS.
+        <em>(Affiliate links — no extra cost to you.)</em>
+      </div>
+    </div>
+
+    <div>
+      <div class="panel">
+        <h2>Live preview</h2>
+        <div class="platform-tabs">
+          <div class="platform-tab active" data-platform="google">Google</div>
+          <div class="platform-tab" data-platform="twitter">Twitter / X</div>
+          <div class="platform-tab" data-platform="facebook">Facebook</div>
+        </div>
+
+        <div class="preview-section" id="preview-google">
+          <div class="serp">
+            <div class="url-row">
+              <div class="favicon-circle" id="serpFavicon">T</div>
+              <div>
+                <div class="url" id="serpDomain">yoursite.com</div>
+                <div class="breadcrumb" id="serpBreadcrumb">› colors</div>
+              </div>
+            </div>
+            <div class="title" id="serpTitle">Title</div>
+            <div class="desc" id="serpDesc">Description</div>
+          </div>
+        </div>
+
+        <div class="preview-section" id="preview-twitter" style="display:none;">
+          <div class="social-card twitter">
+            <div class="img-wrap" id="twImg">og:image preview</div>
+            <div class="meta">
+              <div class="domain" id="twDomain">yoursite.com</div>
+              <div class="title" id="twTitle">Title</div>
+              <div class="desc" id="twDesc">Description</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-section" id="preview-facebook" style="display:none;">
+          <div class="social-card facebook">
+            <div class="img-wrap" id="fbImg">og:image preview</div>
+            <div class="meta">
+              <div class="domain" id="fbDomain">yoursite.com</div>
+              <div class="title" id="fbTitle">Title</div>
+              <div class="desc" id="fbDesc">Description</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:20px;">
+        <h2>Copy-paste meta tags</h2>
+        <div class="output">
+          <button class="copy-btn" id="copyOutput">Copy All</button>
+          <pre id="outputCode"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>How meta tags affect search rankings + click-through rates</h2>
+    <p>Meta tags don't directly raise your Google ranking, but they massively affect your click-through rate (CTR) once you DO rank. A good <code>&lt;title&gt;</code> can double your CTR vs. a generic one — and CTR is one of Google's strongest behavioral ranking signals. So while meta tags don't get you to page 1, they keep you there once you arrive.</p>
+
+    <h3>The 5 meta tags every page needs</h3>
+    <ul>
+      <li><strong>title</strong> — 50–60 characters. Front-load the keyword. End with the brand name.</li>
+      <li><strong>meta description</strong> — 150–160 characters. Should make someone click. Use active voice.</li>
+      <li><strong>og:title + og:description + og:image</strong> — controls Facebook, LinkedIn, Slack, iMessage, Discord previews.</li>
+      <li><strong>twitter:card</strong> = summary_large_image — gives the big visual card on Twitter/X.</li>
+      <li><strong>canonical</strong> — tells Google which URL is "official" if multiple versions exist.</li>
+    </ul>
+
+    <h3>Pro tips</h3>
+    <ul>
+      <li><strong>Test on real platforms:</strong> Use Google's <a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener" style="color:var(--accent)">Rich Results Test</a>, Twitter's <a href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener" style="color:var(--accent)">Card Validator</a>, and Facebook's <a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener" style="color:var(--accent)">Sharing Debugger</a> after you publish.</li>
+      <li><strong>One title per page, not one for the whole site:</strong> templating with <code>%post_title% — %site_name%</code> patterns is fine, but each page must have a unique meta title.</li>
+      <li><strong>Image size matters:</strong> 1200×630 is the safe size that works on every platform. Smaller images get cropped or upscaled badly.</li>
+      <li><strong>Avoid clickbait:</strong> Google Quality Raters explicitly downrank pages with misleading titles. Be specific about what you offer.</li>
+    </ul>
+
+    <h3>FAQ</h3>
+    <p><strong>Do meta keywords still matter?</strong> No, Google has officially ignored them since 2009. We include the field for legacy systems that still parse them. Skip if you're tight on time.</p>
+    <p><strong>What about JSON-LD schema?</strong> Out of scope here — schema markup is its own beast. For most pages, the meta tags + canonical above are 90% of what you need.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · No signup · Built by tinytools.dev. <a href="#" id="footer-tip">Buy us a coffee</a></p>
+  </footer>
+</div>
+
+<script>
+const AFFILIATE = {
+  ahrefsUrl: 'https://ahrefs.com/?aff=YOUR_AHREFS_REF',
+  semrushUrl: 'https://www.semrush.com/?ref=YOUR_SEMRUSH_REF',
+  bmacUrl: 'https://www.buymeacoffee.com/YOURNAME'
+};
+document.getElementById('upsell-ahrefs').href = AFFILIATE.ahrefsUrl;
+document.getElementById('upsell-semrush').href = AFFILIATE.semrushUrl;
+document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
+
+const fields = ['title', 'desc', 'url', 'site', 'ogImage', 'keywords', 'author', 'twitter'];
+fields.forEach(id => document.getElementById(id).addEventListener('input', render));
+
+function escapeHtml(s) { return (s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+function escapeAttr(s) { return escapeHtml(s); }
+
+function getDomain(url) {
+  try { return new URL(url).hostname; } catch { return 'yoursite.com'; }
+}
+function getPath(url) {
+  try { const p = new URL(url).pathname; return p === '/' ? '' : '› ' + p.replace(/^\//, '').replace(/\//g, ' › '); } catch { return ''; }
+}
+
+function counter(el, len, max) {
+  el.textContent = `${len}/${max}`;
+  el.className = 'counter';
+  if (len > max) el.classList.add('bad');
+  else if (len > max * 0.9) el.classList.add('warn');
+}
+
+function render() {
+  const title = document.getElementById('title').value;
+  const desc = document.getElementById('desc').value;
+  const url = document.getElementById('url').value;
+  const site = document.getElementById('site').value;
+  const ogImage = document.getElementById('ogImage').value;
+  const keywords = document.getElementById('keywords').value;
+  const author = document.getElementById('author').value;
+  const twitter = document.getElementById('twitter').value;
+
+  counter(document.getElementById('titleCounter'), title.length, 60);
+  counter(document.getElementById('descCounter'), desc.length, 160);
+
+  const domain = getDomain(url);
+  const path = getPath(url);
+
+  document.getElementById('serpDomain').textContent = domain;
+  document.getElementById('serpBreadcrumb').textContent = path;
+  document.getElementById('serpTitle').textContent = title || 'Page title';
+  document.getElementById('serpDesc').textContent = desc || 'Page description';
+  document.getElementById('serpFavicon').textContent = (site || domain).charAt(0).toUpperCase();
+
+  ['tw', 'fb'].forEach(prefix => {
+    document.getElementById(prefix + 'Domain').textContent = domain.toUpperCase();
+    document.getElementById(prefix + 'Title').textContent = title || 'Page title';
+    document.getElementById(prefix + 'Desc').textContent = desc || 'Page description';
+    const imgWrap = document.getElementById(prefix + 'Img');
+    if (ogImage) {
+      imgWrap.innerHTML = `<img src="${escapeAttr(ogImage)}" alt="" onerror="this.parentElement.innerHTML='Image failed to load — check URL'">`;
+    } else {
+      imgWrap.innerHTML = 'No image set — add one for best results';
+    }
+  });
+
+  const out = `<!-- Primary Meta Tags -->
+<title>${escapeHtml(title)}</title>
+<meta name="title" content="${escapeAttr(title)}" />
+<meta name="description" content="${escapeAttr(desc)}" />
+${keywords ? `<meta name="keywords" content="${escapeAttr(keywords)}" />\n` : ''}${author ? `<meta name="author" content="${escapeAttr(author)}" />\n` : ''}<link rel="canonical" href="${escapeAttr(url)}" />
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="${escapeAttr(url)}" />
+<meta property="og:title" content="${escapeAttr(title)}" />
+<meta property="og:description" content="${escapeAttr(desc)}" />
+${ogImage ? `<meta property="og:image" content="${escapeAttr(ogImage)}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />\n` : ''}<meta property="og:site_name" content="${escapeAttr(site)}" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="${escapeAttr(url)}" />
+<meta name="twitter:title" content="${escapeAttr(title)}" />
+<meta name="twitter:description" content="${escapeAttr(desc)}" />
+${ogImage ? `<meta name="twitter:image" content="${escapeAttr(ogImage)}" />\n` : ''}${twitter ? `<meta name="twitter:site" content="${escapeAttr(twitter)}" />
+<meta name="twitter:creator" content="${escapeAttr(twitter)}" />\n` : ''}`;
+
+  document.getElementById('outputCode').textContent = out;
+}
+
+document.querySelectorAll('.platform-tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.platform-tab').forEach(x => x.classList.toggle('active', x === t));
+    ['google', 'twitter', 'facebook'].forEach(p => {
+      document.getElementById('preview-' + p).style.display = p === t.dataset.platform ? 'block' : 'none';
+    });
+  });
+});
+
+document.getElementById('copyOutput').addEventListener('click', () => {
+  navigator.clipboard.writeText(document.getElementById('outputCode').textContent);
+  const btn = document.getElementById('copyOutput');
+  btn.textContent = 'Copied!';
+  setTimeout(() => btn.textContent = 'Copy All', 1500);
+});
+
+render();
+</script>
+</body>
+</html>
