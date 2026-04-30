@@ -1,0 +1,58 @@
+{
+  "lastUpdated": "Today, just launched",
+  "tools": [
+    { "name": "Domain Name Generator", "slug": "domain-generator", "status": "live", "visitors7d": "—" },
+    { "name": "OG Image Generator", "slug": "og-image-generator", "status": "live", "visitors7d": "—" },
+    { "name": "AI Background Remover", "slug": "background-remover", "status": "live", "visitors7d": "—" },
+    { "name": "Favicon Generator", "slug": "favicon-generator", "status": "live", "visitors7d": "—" },
+    { "name": "Color Palette Generator", "slug": "color-palette", "status": "live", "visitors7d": "—" },
+    { "name": "SEO Meta Tag Generator", "slug": "seo-meta-generator", "status": "live", "visitors7d": "—" }
+  ],
+  "stats": {
+    "tools": 6,
+    "toolsDelta": "+6 since launch (today)",
+    "visitors": "—",
+    "visitorsDelta": "Vercel Analytics not yet enabled",
+    "clicks": "0",
+    "clicksDelta": "no affiliate IDs installed yet",
+    "revenue": "$0",
+    "revenueDelta": "set up affiliates to start earning",
+    "posts": 0,
+    "postsDelta": "+0 today (first run pending)",
+    "indexed": "0",
+    "indexedDelta": "Search Console not yet connected"
+  },
+  "activity": [
+    { "time": "today", "tag": "ship", "text": "Site launched: domain-generator, og-image-generator, background-remover, favicon-generator, color-palette, seo-meta-generator (6 tools)" },
+    { "time": "today", "tag": "seo", "text": "Published llms.txt for AI crawler citation, sitemap.xml for Google/Bing, robots.txt allowing all AI bots (GPTBot, ClaudeBot, PerplexityBot, etc.)" },
+    { "time": "today", "tag": "promo", "text": "Daily ship task scheduled (9am, builds 2 tools/day from 20-tool roadmap)" },
+    { "time": "today", "tag": "promo", "text": "Daily promo task scheduled (8am, generates SEO content + social drafts + dashboard updates)" }
+  ],
+  "roadmap": [
+    { "name": "AI Resume Tailorer", "shipped": false, "eta": "tomorrow 9am" },
+    { "name": "YouTube to Blog Post", "shipped": false, "eta": "tomorrow 9am" },
+    { "name": "PDF to Markdown", "shipped": false, "eta": "in 2 days" },
+    { "name": "AI Cover Letter Generator", "shipped": false, "eta": "in 2 days" },
+    { "name": "AI Image Upscaler", "shipped": false, "eta": "in 3 days" },
+    { "name": "AI Text Humanizer", "shipped": false, "eta": "in 3 days" },
+    { "name": "Chat with PDF", "shipped": false, "eta": "in 4 days" },
+    { "name": "AI Prompt Enhancer", "shipped": false, "eta": "in 4 days" },
+    { "name": "Video to GIF", "shipped": false, "eta": "in 5 days" },
+    { "name": "Audio Transcriber", "shipped": false, "eta": "in 5 days" }
+  ],
+  "drafts": [],
+  "checklist": [
+    { "task": "Sign up: Namecheap Affiliate", "url": "https://www.namecheap.com/affiliates/", "done": false, "value": "Powers Domain Generator. $3-15 per signup." },
+    { "task": "Sign up: Bannerbear Affiliate", "url": "https://www.bannerbear.com/affiliate-program/", "done": false, "value": "Powers OG Generator + Background Remover. 30% recurring." },
+    { "task": "Sign up: Buy Me a Coffee", "url": "https://www.buymeacoffee.com/", "done": false, "value": "Direct tips $3-50. Footer link on every tool." },
+    { "task": "Sign up: Ahrefs Affiliate", "url": "https://ahrefs.com/affiliate-program", "done": false, "value": "Powers SEO Meta Generator. $150 per sale." },
+    { "task": "Sign up: Semrush Affiliate", "url": "https://www.semrush.com/affiliateprogram/", "done": false, "value": "Powers SEO Meta Generator. $200 per sale." },
+    { "task": "Sign up: Webflow Affiliate", "url": "https://webflow.com/affiliates", "done": false, "value": "Powers Favicon + Color Palette. $60 per signup." },
+    { "task": "Sign up: Replicate Affiliate", "url": "https://replicate.com/affiliate", "done": false, "value": "Powers Background Remover. $30 per signup." },
+    { "task": "Enable Vercel Analytics (free tier)", "url": "https://vercel.com/alfredos-projects-168b6539/tinytools/analytics", "done": false, "value": "Real visitor numbers in this dashboard" },
+    { "task": "Verify site in Google Search Console", "url": "https://search.google.com/search-console", "done": false, "value": "See what queries we rank for" },
+    { "task": "Submit to There's An AI For That", "url": "https://theresanaiforthat.com/submit", "done": false, "value": "Free directory, ranks well, AI tool focused" },
+    { "task": "Submit to Futurepedia", "url": "https://www.futurepedia.io/submit-tool", "done": false, "value": "Free AI tool directory" },
+    { "task": "Launch on Product Hunt", "url": "https://www.producthunt.com/posts/new", "done": false, "value": "Can drive 1k-10k visits in launch week" }
+  ]
+}
