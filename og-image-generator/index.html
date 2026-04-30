@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Open Graph Image Generator (2026) — Twitter, LinkedIn, Facebook Cards</title>
+<meta name="description" content="Generate stunning Open Graph (OG) images for Twitter, LinkedIn, Facebook in seconds. Pure browser-based, no signup, free download as PNG. 8 templates included.">
+<meta name="keywords" content="og image generator, open graph image generator, twitter card generator, social media card generator, free og image, link preview generator">
+<meta property="og:title" content="Free Open Graph Image Generator">
+<meta property="og:description" content="Generate stunning OG images in seconds. Free. No signup.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://YOUR-DOMAIN-HERE">
+
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-card: #15151f;
+    --bg-elevated: #1d1d2a;
+    --border: #2a2a3a;
+    --text: #f5f5fa;
+    --text-dim: #a0a0b8;
+    --accent: #06b6d4;
+    --accent-glow: #06b6d440;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 80% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 20% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1;
+    margin-bottom: 14px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #67e8f9 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 600px; margin: 0 auto; }
+
+  .layout { display: grid; grid-template-columns: 380px 1fr; gap: 24px; margin-top: 32px; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 24px;
+  }
+  .panel h2 { font-size: 14px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; font-weight: 600; }
+
+  .field { margin-bottom: 14px; }
+  label { display: block; font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500; }
+  input[type="text"], textarea, select {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit; transition: all 0.15s;
+  }
+  input:focus, textarea:focus, select:focus {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+  textarea { resize: vertical; min-height: 70px; }
+
+  .templates { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .tpl-btn {
+    aspect-ratio: 1.91/1; border-radius: 8px; border: 2px solid var(--border);
+    cursor: pointer; transition: all 0.15s; font-size: 10px; font-weight: 700;
+    color: white; padding: 4px; overflow: hidden; position: relative;
+  }
+  .tpl-btn:hover { transform: scale(1.05); }
+  .tpl-btn.active { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+
+  .colors { display: flex; gap: 6px; flex-wrap: wrap; }
+  .color-btn {
+    width: 28px; height: 28px; border-radius: 8px; cursor: pointer; border: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  .color-btn:hover { transform: scale(1.1); }
+  .color-btn.active { border-color: var(--text); box-shadow: 0 0 0 2px var(--bg); }
+
+  .preview-wrap {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 16px;
+  }
+  .preview-frame {
+    width: 100%; aspect-ratio: 1.91/1; background: #000; border-radius: 12px;
+    overflow: hidden; position: relative;
+  }
+  canvas#preview { width: 100%; height: 100%; display: block; }
+
+  .preview-actions { display: flex; gap: 10px; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+  .size-info { font-size: 13px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+  .download {
+    padding: 12px 24px; background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+    border: none; border-radius: 10px; color: white; font-weight: 600; font-size: 14px;
+    cursor: pointer; transition: all 0.15s;
+    box-shadow: 0 4px 16px rgba(6, 182, 212, 0.3);
+  }
+  .download:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(6, 182, 212, 0.4); }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); }
+
+  footer {
+    margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  .upsell {
+    margin-top: 14px; padding: 14px; background: var(--bg-elevated);
+    border-radius: 10px; border-left: 3px solid var(--accent); font-size: 13px;
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">⚡ Pure Browser &nbsp;·&nbsp; No Signup &nbsp;·&nbsp; PNG Download</div>
+    <h1>Open Graph Image Generator</h1>
+    <p class="subtitle">Make beautiful 1200×630 social cards for Twitter, LinkedIn, and Facebook in 60 seconds. Free forever.</p>
+  </header>
+
+  <div class="layout">
+    <div class="panel">
+      <h2>Template</h2>
+      <div class="templates" id="templates"></div>
+
+      <div style="margin-top: 22px;">
+        <h2>Content</h2>
+        <div class="field">
+          <label for="title">Headline</label>
+          <input id="title" type="text" value="Your headline goes here" maxlength="80">
+        </div>
+        <div class="field">
+          <label for="subtitle">Subtitle</label>
+          <textarea id="subtitle" maxlength="160">A short, punchy description that makes people click.</textarea>
+        </div>
+        <div class="field">
+          <label for="brand">Brand / Site name</label>
+          <input id="brand" type="text" value="yoursite.com" maxlength="40">
+        </div>
+      </div>
+
+      <div style="margin-top: 22px;">
+        <h2>Color Theme</h2>
+        <div class="colors" id="colors"></div>
+      </div>
+
+      <div class="upsell">
+        <strong>Need bulk/automated OG images?</strong> Generate 1000s programmatically with the
+        <a href="#" id="upsell-link" target="_blank" rel="noopener">Bannerbear API</a>. (We earn a small commission, no extra cost to you.)
+      </div>
+    </div>
+
+    <div class="preview-wrap">
+      <div class="preview-frame">
+        <canvas id="preview" width="1200" height="630"></canvas>
+      </div>
+      <div class="preview-actions">
+        <span class="size-info">1200 × 630 px · PNG · Optimized for Twitter, LinkedIn, Facebook, Slack</span>
+        <button class="download" id="download">Download PNG</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>What is an Open Graph image?</h2>
+    <p>Open Graph (OG) images are the preview thumbnails that appear when someone shares your link on Twitter, LinkedIn, Facebook, Slack, Discord, iMessage — pretty much anywhere. They make the difference between a wall of text and a click. According to multiple studies, links with custom OG images get 2–3× more clicks than links without.</p>
+
+    <h3>The right size: 1200 × 630 pixels</h3>
+    <p>1200×630 is the safe size that works across every major platform. Twitter prefers a 1.91:1 ratio (which 1200×630 is), Facebook recommends exactly this size, LinkedIn renders at this aspect ratio, and Slack/Discord use the same OG tag. One image, every platform.</p>
+
+    <h3>How to use the image you generate</h3>
+    <p>Once you download the PNG, upload it to your site or image host, then add this to the <code>&lt;head&gt;</code> of your HTML:</p>
+    <pre style="background:var(--bg-elevated); padding:14px; border-radius:8px; font-size:12px; color:var(--text-dim); overflow-x:auto; margin: 8px 0;">&lt;meta property="og:image" content="https://yoursite.com/og.png" /&gt;
+&lt;meta name="twitter:card" content="summary_large_image" /&gt;
+&lt;meta name="twitter:image" content="https://yoursite.com/og.png" /&gt;</pre>
+
+    <h3>Tips for OG images that get shared</h3>
+    <ul>
+      <li><strong>Big, readable text:</strong> Many people see this thumbnail at 200px wide on mobile. Headline must be readable at that size.</li>
+      <li><strong>High contrast:</strong> The image competes with timeline noise. Solid backgrounds beat photos.</li>
+      <li><strong>Brand mark in the corner:</strong> Even a small logo or domain text builds recognition over time.</li>
+      <li><strong>Test how it looks before sharing:</strong> Use Twitter's Card Validator or Facebook's Sharing Debugger.</li>
+    </ul>
+
+    <h3>For bulk / programmatic generation</h3>
+    <p>If you're building a site that needs unique OG images for hundreds of pages (blog posts, products, profiles), you don't want to do this manually. Use a programmatic generator like <a href="#" id="upsell-link2" target="_blank" rel="noopener" style="color:var(--accent)">Bannerbear</a> or <a href="https://og-playground.vercel.app/" target="_blank" rel="noopener" style="color:var(--accent)">Vercel's OG image library</a>. We use this tool ourselves for one-off cards and Bannerbear's API for blog automation.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · No tracking · Made by indie hackers, for indie hackers.</p>
+    <p style="margin-top: 8px;">Saved you time? <a href="#" id="footer-tip">Buy us a coffee</a>.</p>
+  </footer>
+</div>
+
+<script>
+/* ============================================================
+   AFFILIATE CONFIG
+   ============================================================ */
+const AFFILIATE = {
+  bannerbearUrl: 'https://www.bannerbear.com?fpr=YOUR_BANNERBEAR_ID',  // signup: bannerbear.com/affiliate
+  bmacUrl: 'https://www.buymeacoffee.com/YOURNAME'
+};
+document.getElementById('upsell-link').href = AFFILIATE.bannerbearUrl;
+document.getElementById('upsell-link2').href = AFFILIATE.bannerbearUrl;
+document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
+
+/* ============================================================
+   TEMPLATES
+   ============================================================ */
+const TEMPLATES = [
+  { id: 'gradient', name: 'Gradient', preview: 'linear-gradient(135deg, #6366f1, #ec4899)' },
+  { id: 'minimal', name: 'Minimal', preview: '#0f0f17' },
+  { id: 'mesh', name: 'Mesh', preview: 'radial-gradient(circle at 30% 20%, #06b6d4, transparent 50%), radial-gradient(circle at 70% 70%, #8b5cf6, transparent 50%), #0f0f17' },
+  { id: 'bold', name: 'Bold', preview: '#fbbf24' },
+  { id: 'dark', name: 'Dark', preview: '#000' },
+  { id: 'paper', name: 'Paper', preview: '#fefefe' },
+  { id: 'grid', name: 'Grid', preview: 'linear-gradient(45deg, #1e293b 25%, transparent 25%, transparent 75%, #1e293b 75%), linear-gradient(45deg, #1e293b 25%, transparent 25%, transparent 75%, #1e293b 75%), #0f172a' },
+  { id: 'sunset', name: 'Sunset', preview: 'linear-gradient(180deg, #fb923c, #ec4899, #8b5cf6)' }
+];
+
+const COLOR_THEMES = [
+  { id: 'cyan',   bg1: '#0891b2', bg2: '#1e1b4b', text: '#fff', accent: '#67e8f9' },
+  { id: 'purple', bg1: '#7c3aed', bg2: '#1e1b4b', text: '#fff', accent: '#c4b5fd' },
+  { id: 'pink',   bg1: '#ec4899', bg2: '#831843', text: '#fff', accent: '#fbcfe8' },
+  { id: 'orange', bg1: '#fb923c', bg2: '#7c2d12', text: '#fff', accent: '#fed7aa' },
+  { id: 'green',  bg1: '#10b981', bg2: '#064e3b', text: '#fff', accent: '#6ee7b7' },
+  { id: 'mono',   bg1: '#27272a', bg2: '#000',    text: '#fff', accent: '#a1a1aa' },
+  { id: 'paper',  bg1: '#fafaf9', bg2: '#e7e5e4', text: '#1c1917', accent: '#78716c' },
+  { id: 'red',    bg1: '#ef4444', bg2: '#7f1d1d', text: '#fff', accent: '#fca5a5' }
+];
+
+let activeTemplate = 'gradient';
+let activeTheme = COLOR_THEMES[0];
+
+const templatesEl = document.getElementById('templates');
+TEMPLATES.forEach(t => {
+  const btn = document.createElement('div');
+  btn.className = 'tpl-btn';
+  btn.dataset.id = t.id;
+  btn.style.background = t.preview;
+  if (t.id === 'paper') btn.style.color = '#000';
+  btn.textContent = t.name;
+  btn.style.display = 'flex';
+  btn.style.alignItems = 'flex-end';
+  btn.style.padding = '6px';
+  if (t.id === activeTemplate) btn.classList.add('active');
+  btn.addEventListener('click', () => {
+    activeTemplate = t.id;
+    document.querySelectorAll('.tpl-btn').forEach(b => b.classList.toggle('active', b.dataset.id === t.id));
+    draw();
+  });
+  templatesEl.appendChild(btn);
+});
+
+const colorsEl = document.getElementById('colors');
+COLOR_THEMES.forEach((c, i) => {
+  const btn = document.createElement('div');
+  btn.className = 'color-btn';
+  btn.dataset.id = c.id;
+  btn.style.background = `linear-gradient(135deg, ${c.bg1}, ${c.bg2})`;
+  if (i === 0) btn.classList.add('active');
+  btn.addEventListener('click', () => {
+    activeTheme = c;
+    document.querySelectorAll('.color-btn').forEach(b => b.classList.toggle('active', b.dataset.id === c.id));
+    draw();
+  });
+  colorsEl.appendChild(btn);
+});
+
+/* ============================================================
+   CANVAS RENDER
+   ============================================================ */
+const canvas = document.getElementById('preview');
+const ctx = canvas.getContext('2d');
+
+function drawBackground(ctx, w, h, theme, template) {
+  if (template === 'gradient') {
+    const g = ctx.createLinearGradient(0, 0, w, h);
+    g.addColorStop(0, theme.bg1); g.addColorStop(1, theme.bg2);
+    ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+  } else if (template === 'minimal') {
+    ctx.fillStyle = theme.bg2; ctx.fillRect(0, 0, w, h);
+  } else if (template === 'mesh') {
+    ctx.fillStyle = theme.bg2; ctx.fillRect(0, 0, w, h);
+    const r1 = ctx.createRadialGradient(w*0.2, h*0.3, 0, w*0.2, h*0.3, w*0.6);
+    r1.addColorStop(0, theme.bg1 + 'cc'); r1.addColorStop(1, 'transparent');
+    ctx.fillStyle = r1; ctx.fillRect(0, 0, w, h);
+    const r2 = ctx.createRadialGradient(w*0.85, h*0.75, 0, w*0.85, h*0.75, w*0.5);
+    r2.addColorStop(0, theme.accent + '99'); r2.addColorStop(1, 'transparent');
+    ctx.fillStyle = r2; ctx.fillRect(0, 0, w, h);
+  } else if (template === 'bold') {
+    ctx.fillStyle = theme.bg1; ctx.fillRect(0, 0, w, h);
+  } else if (template === 'dark') {
+    ctx.fillStyle = '#000'; ctx.fillRect(0, 0, w, h);
+    ctx.strokeStyle = theme.accent + '40';
+    ctx.lineWidth = 1;
+    for (let x = 0; x < w; x += 50) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
+    for (let y = 0; y < h; y += 50) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
+  } else if (template === 'paper') {
+    ctx.fillStyle = '#fafaf9'; ctx.fillRect(0, 0, w, h);
+  } else if (template === 'grid') {
+    ctx.fillStyle = theme.bg2; ctx.fillRect(0, 0, w, h);
+    ctx.strokeStyle = theme.bg1 + '40'; ctx.lineWidth = 1;
+    for (let x = 0; x < w; x += 40) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
+    for (let y = 0; y < h; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
+  } else if (template === 'sunset') {
+    const g = ctx.createLinearGradient(0, 0, 0, h);
+    g.addColorStop(0, '#fb923c'); g.addColorStop(0.5, '#ec4899'); g.addColorStop(1, '#8b5cf6');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+  }
+}
+
+function getTextColor(template, theme) {
+  if (template === 'paper') return '#1c1917';
+  if (template === 'bold') return theme.bg2 || '#000';
+  return '#fff';
+}
+
+function getAccentColor(template, theme) {
+  if (template === 'paper') return '#78716c';
+  if (template === 'bold') return theme.bg2 || '#000';
+  return theme.accent;
+}
+
+function wrapText(ctx, text, maxWidth) {
+  const words = text.split(' ');
+  const lines = [];
+  let line = '';
+  for (const w of words) {
+    const test = line ? line + ' ' + w : w;
+    if (ctx.measureText(test).width > maxWidth && line) {
+      lines.push(line); line = w;
+    } else {
+      line = test;
+    }
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+function draw() {
+  const W = 1200, H = 630;
+  const title = document.getElementById('title').value || ' ';
+  const sub = document.getElementById('subtitle').value || '';
+  const brand = document.getElementById('brand').value || '';
+  const textColor = getTextColor(activeTemplate, activeTheme);
+  const accentColor = getAccentColor(activeTemplate, activeTheme);
+
+  drawBackground(ctx, W, H, activeTheme, activeTemplate);
+
+  // Title
+  ctx.fillStyle = textColor;
+  ctx.textBaseline = 'top';
+  let titleSize = title.length > 50 ? 64 : title.length > 30 ? 76 : 88;
+  ctx.font = `800 ${titleSize}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif`;
+  const titleLines = wrapText(ctx, title, W - 160);
+  let y = 120;
+  titleLines.forEach(line => {
+    ctx.fillText(line, 80, y);
+    y += titleSize * 1.15;
+  });
+
+  // Subtitle
+  if (sub) {
+    ctx.font = `400 28px -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif`;
+    ctx.fillStyle = textColor + 'cc';
+    const subLines = wrapText(ctx, sub, W - 160);
+    y += 16;
+    subLines.slice(0, 3).forEach(line => {
+      ctx.fillText(line, 80, y);
+      y += 36;
+    });
+  }
+
+  // Brand line at bottom
+  if (brand) {
+    ctx.font = `600 22px -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif`;
+    ctx.fillStyle = accentColor;
+    ctx.fillText(brand, 80, H - 70);
+
+    // Decorative dot
+    ctx.beginPath();
+    ctx.arc(80 + ctx.measureText(brand).width + 20, H - 60, 4, 0, Math.PI * 2);
+    ctx.fillStyle = accentColor;
+    ctx.fill();
+  }
+}
+
+['title', 'subtitle', 'brand'].forEach(id =>
+  document.getElementById(id).addEventListener('input', draw)
+);
+
+document.getElementById('download').addEventListener('click', () => {
+  const link = document.createElement('a');
+  link.download = `og-image-${Date.now()}.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+});
+
+draw();
+</script>
+</body>
+</html>
