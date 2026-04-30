@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Background Remover (2026) — In-Browser, No Upload</title>
+<meta name="description" content="Remove backgrounds from any image instantly using AI — completely in your browser, nothing uploaded to any server. 100% free, no signup, transparent PNG download.">
+<meta name="keywords" content="background remover, free background remover, AI background remover, transparent background, remove background online, png background removal">
+<meta property="og:title" content="Free AI Background Remover">
+<meta property="og:description" content="Remove image backgrounds in your browser. Free, fast, private.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://YOUR-DOMAIN-HERE">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-card: #15151f;
+    --bg-elevated: #1d1d2a;
+    --border: #2a2a3a;
+    --text: #f5f5fa;
+    --text-dim: #a0a0b8;
+    --accent: #ec4899;
+    --accent-glow: #ec489940;
+    --green: #10b981;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1;
+    margin-bottom: 16px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fbcfe8 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 620px; margin: 0 auto; }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 32px; margin-top: 32px;
+  }
+
+  .drop-zone {
+    border: 2px dashed var(--border); border-radius: 16px; padding: 48px 24px;
+    text-align: center; cursor: pointer; transition: all 0.2s; background: var(--bg-elevated);
+  }
+  .drop-zone:hover, .drop-zone.dragover { border-color: var(--accent); background: var(--accent-glow); }
+  .drop-zone .emoji { font-size: 48px; margin-bottom: 12px; }
+  .drop-zone .title { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+  .drop-zone .hint { font-size: 14px; color: var(--text-dim); }
+  .drop-zone input { display: none; }
+
+  .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+  @media (max-width: 700px) { .preview-grid { grid-template-columns: 1fr; } }
+  .preview-card {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+  .preview-card .label {
+    padding: 10px 14px; font-size: 12px; font-weight: 600; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .preview-img-wrap {
+    aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
+    /* checkerboard for transparency */
+    background-image:
+      linear-gradient(45deg, #2a2a3a 25%, transparent 25%),
+      linear-gradient(-45deg, #2a2a3a 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #2a2a3a 75%),
+      linear-gradient(-45deg, transparent 75%, #2a2a3a 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    background-color: #1d1d2a;
+  }
+  .preview-img-wrap img { max-width: 100%; max-height: 100%; }
+  .preview-img-wrap .placeholder { color: var(--text-dim); font-size: 13px; }
+
+  .status {
+    margin-top: 20px; padding: 14px 18px; border-radius: 10px; font-size: 14px;
+    display: none; align-items: center; gap: 10px;
+  }
+  .status.show { display: flex; }
+  .status.info { background: var(--bg-elevated); color: var(--text-dim); border: 1px solid var(--border); }
+  .status.success { background: rgba(16, 185, 129, 0.1); color: var(--green); border: 1px solid var(--green); }
+  .status.error { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; }
+  .spinner {
+    width: 16px; height: 16px; border: 2px solid var(--border); border-top-color: var(--accent);
+    border-radius: 50%; animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .actions { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .btn {
+    padding: 12px 22px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated);
+    color: var(--text); text-decoration: none; transition: all 0.15s;
+  }
+  .btn:hover { transform: translateY(-1px); border-color: var(--accent); }
+  .btn.primary {
+    background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+    border: none; color: white; box-shadow: 0 4px 16px rgba(236, 72, 153, 0.3);
+  }
+  .btn.primary:hover { box-shadow: 0 6px 24px rgba(236, 72, 153, 0.45); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .upsell {
+    margin-top: 32px; padding: 20px; background: var(--bg-elevated); border-radius: 12px;
+    border-left: 3px solid var(--accent); font-size: 14px; color: var(--text-dim);
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); }
+
+  footer {
+    margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">⚡ 100% In-Browser &nbsp;·&nbsp; Nothing Uploaded &nbsp;·&nbsp; Free</div>
+    <h1>AI Background Remover</h1>
+    <p class="subtitle">Drop an image → AI removes the background → download as transparent PNG. Runs entirely in your browser. No upload, no signup, no limits.</p>
+  </header>
+
+  <div class="panel">
+    <label class="drop-zone" id="dropZone">
+      <input type="file" id="fileInput" accept="image/*">
+      <div class="emoji">🖼️</div>
+      <div class="title">Drop an image here, or click to browse</div>
+      <div class="hint">JPG, PNG, WebP — up to 10 MB</div>
+    </label>
+
+    <div class="preview-grid" id="previewGrid" style="display:none;">
+      <div class="preview-card">
+        <div class="label">Original</div>
+        <div class="preview-img-wrap" id="originalWrap">
+          <span class="placeholder">No image yet</span>
+        </div>
+      </div>
+      <div class="preview-card">
+        <div class="label">
+          <span>Background Removed</span>
+        </div>
+        <div class="preview-img-wrap" id="resultWrap">
+          <span class="placeholder">Result will appear here</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="status" id="status"></div>
+
+    <div class="actions" id="actions" style="display:none;">
+      <button class="btn primary" id="downloadBtn" disabled>Download PNG</button>
+      <button class="btn" id="newBtn">Try another image</button>
+    </div>
+
+    <div class="upsell">
+      <strong>Need to process 100s of images, or want better edge quality?</strong>
+      Use <a href="#" id="upsell-replicate" target="_blank" rel="noopener">Replicate's API</a> — same model, batch-ready, $0.001 per image.
+      Or for instant in-app removal in your product, try <a href="#" id="upsell-bannerbear" target="_blank" rel="noopener">Bannerbear's API</a>. <em>(We earn a small commission, no extra cost to you.)</em>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>How it works</h2>
+    <p>This tool runs the BRIA RMBG-1.4 background-removal model — the same one used by professional design tools — entirely inside your browser using WebAssembly + ONNX runtime. Your image never leaves your device. The first run takes 30–60 seconds to download the AI model (~50 MB). After that, every image processes in 2–5 seconds.</p>
+
+    <h3>Why "in-browser" matters</h3>
+    <ul>
+      <li><strong>Privacy:</strong> sensitive images (product mockups, ID photos, family pictures) never touch a server.</li>
+      <li><strong>No usage limits:</strong> we can't rate-limit you because we don't see what you do.</li>
+      <li><strong>Offline after first load:</strong> once the model is cached, this tool works without internet.</li>
+      <li><strong>Free forever:</strong> no API costs to us means no paywall to you.</li>
+    </ul>
+
+    <h3>Tips for best results</h3>
+    <ul>
+      <li>Subject should be clearly distinguishable from the background (good contrast, not blurred into the scene).</li>
+      <li>Photos of people, products, animals, plants work best. Complex scenes with overlapping subjects can confuse the model.</li>
+      <li>Hair and fur edges typically look great. Glass and translucent objects are the hardest cases for any AI model.</li>
+      <li>For perfectly clean edges on professional product shots, consider a paid tool like <a href="#" id="content-replicate" target="_blank" rel="noopener" style="color:var(--accent)">Replicate</a> (better models) or human touch-up.</li>
+    </ul>
+
+    <h3>Frequently asked</h3>
+    <h3 style="font-size:15px">Why does the first image take so long?</h3>
+    <p>The AI model has to download to your browser the first time (~50 MB). Subsequent images process in seconds because the model is cached.</p>
+    <h3 style="font-size:15px">Is my image really not uploaded?</h3>
+    <p>Correct — open your browser's Network tab while you process an image and you'll see no outbound traffic during processing. Only the model download and the page itself touch the network.</p>
+    <h3 style="font-size:15px">Can I use the result commercially?</h3>
+    <p>Yes. The output PNG is yours. The underlying RMBG-1.4 model is licensed for non-commercial AND commercial use under separate license tiers — see the <a href="https://huggingface.co/briaai/RMBG-1.4" target="_blank" rel="noopener" style="color:var(--accent)">model card</a>. For purely commercial work at scale, the paid Bria license or Replicate's hosted version handles the licensing for you.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · Nothing uploaded · We earn a small affiliate fee if you upgrade to Replicate or Bannerbear.</p>
+    <p style="margin-top: 8px;">Saved you a Photoshop session? <a href="#" id="footer-tip">Buy us a coffee</a>.</p>
+  </footer>
+</div>
+
+<script type="module">
+/* ============================================================
+   AFFILIATE CONFIG — replace these once you sign up
+   ============================================================ */
+const AFFILIATE = {
+  replicateUrl: 'https://replicate.com/?ref=YOUR_REPLICATE_REF',
+  bannerbearUrl: 'https://www.bannerbear.com?fpr=YOUR_BANNERBEAR_ID',
+  bmacUrl: 'https://www.buymeacoffee.com/YOURNAME'
+};
+['upsell-replicate', 'content-replicate'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.href = AFFILIATE.replicateUrl;
+});
+document.getElementById('upsell-bannerbear').href = AFFILIATE.bannerbearUrl;
+document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
+
+/* ============================================================
+   BACKGROUND REMOVAL — uses @imgly/background-removal via CDN
+   ============================================================ */
+import { removeBackground } from 'https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/+esm';
+
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const previewGrid = document.getElementById('previewGrid');
+const originalWrap = document.getElementById('originalWrap');
+const resultWrap = document.getElementById('resultWrap');
+const statusEl = document.getElementById('status');
+const actionsEl = document.getElementById('actions');
+const downloadBtn = document.getElementById('downloadBtn');
+const newBtn = document.getElementById('newBtn');
+
+let resultBlobUrl = null;
+
+function showStatus(text, kind = 'info', spinner = false) {
+  statusEl.className = `status show ${kind}`;
+  statusEl.innerHTML = (spinner ? '<div class="spinner"></div>' : '') + `<span>${text}</span>`;
+}
+function hideStatus() { statusEl.className = 'status'; }
+
+function showImage(wrap, src) {
+  wrap.innerHTML = '';
+  const img = document.createElement('img');
+  img.src = src;
+  wrap.appendChild(img);
+}
+
+async function process(file) {
+  if (!file || !file.type.startsWith('image/')) {
+    showStatus('That file is not an image. Try a JPG, PNG, or WebP.', 'error');
+    return;
+  }
+  if (file.size > 10 * 1024 * 1024) {
+    showStatus('Image too large (max 10 MB). Resize and try again.', 'error');
+    return;
+  }
+
+  previewGrid.style.display = 'grid';
+  actionsEl.style.display = 'flex';
+  downloadBtn.disabled = true;
+
+  // Show original
+  const reader = new FileReader();
+  reader.onload = () => showImage(originalWrap, reader.result);
+  reader.readAsDataURL(file);
+
+  resultWrap.innerHTML = '<span class="placeholder">Processing...</span>';
+  showStatus('First time: downloading the AI model (~50 MB) — only happens once. After that, every image is instant.', 'info', true);
+
+  try {
+    const blob = await removeBackground(file, {
+      progress: (key, current, total) => {
+        if (key.includes('fetch')) {
+          const pct = total ? Math.round((current / total) * 100) : 0;
+          showStatus(`Downloading AI model... ${pct}%`, 'info', true);
+        } else if (key.includes('compute')) {
+          showStatus('AI is removing the background...', 'info', true);
+        }
+      }
+    });
+    if (resultBlobUrl) URL.revokeObjectURL(resultBlobUrl);
+    resultBlobUrl = URL.createObjectURL(blob);
+    showImage(resultWrap, resultBlobUrl);
+    downloadBtn.disabled = false;
+    showStatus('Done. Click Download PNG to save.', 'success');
+  } catch (err) {
+    console.error(err);
+    showStatus('Something went wrong: ' + err.message + '. Try a smaller or simpler image.', 'error');
+    resultWrap.innerHTML = '<span class="placeholder">Failed to process</span>';
+  }
+}
+
+dropZone.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', e => {
+  if (e.target.files[0]) process(e.target.files[0]);
+});
+['dragenter', 'dragover'].forEach(evt => {
+  dropZone.addEventListener(evt, e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+});
+['dragleave', 'drop'].forEach(evt => {
+  dropZone.addEventListener(evt, e => { e.preventDefault(); dropZone.classList.remove('dragover'); });
+});
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  if (e.dataTransfer.files[0]) process(e.dataTransfer.files[0]);
+});
+
+downloadBtn.addEventListener('click', () => {
+  if (!resultBlobUrl) return;
+  const a = document.createElement('a');
+  a.href = resultBlobUrl;
+  a.download = `no-bg-${Date.now()}.png`;
+  a.click();
+});
+
+newBtn.addEventListener('click', () => {
+  fileInput.value = '';
+  fileInput.click();
+});
+</script>
+</body>
+</html>
