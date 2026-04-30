@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Favicon Generator (2026) — From Text, Emoji, or Image</title>
+<meta name="description" content="Generate a complete favicon set in one click. Choose text, emoji, or upload an image. All sizes (16, 32, 48, 96, 192, 512), apple-touch-icon, and manifest.json bundled in a ZIP. Free, no signup.">
+<meta name="keywords" content="favicon generator, free favicon generator, favicon ico generator, emoji favicon, favicon from image, manifest.json generator">
+<meta property="og:title" content="Free Favicon Generator">
+<meta property="og:description" content="Generate a full favicon set from text, emoji, or image. Free.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f59e0b; --accent-glow: #f59e0b40;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fbbf24 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 620px; margin: 0 auto; }
+
+  .layout { display: grid; grid-template-columns: 380px 1fr; gap: 24px; margin-top: 32px; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+  }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .tabs { display: flex; gap: 4px; background: var(--bg-elevated); padding: 4px; border-radius: 10px; margin-bottom: 16px; }
+  .tab {
+    flex: 1; padding: 8px; text-align: center; border-radius: 7px; font-size: 13px; font-weight: 500;
+    cursor: pointer; color: var(--text-dim); transition: all 0.15s;
+  }
+  .tab.active { background: var(--accent); color: #1c1917; }
+
+  .field { margin-bottom: 14px; }
+  label { display: block; font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500; }
+  input[type="text"], input[type="color"], select {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit;
+  }
+  input[type="color"] { padding: 4px; height: 42px; cursor: pointer; }
+  input[type="file"] {
+    width: 100%; padding: 10px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text-dim); font-size: 13px;
+  }
+  input:focus, select:focus {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .shape-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .shape-btn {
+    aspect-ratio: 1/1; border: 2px solid var(--border); cursor: pointer; transition: all 0.15s;
+    background: var(--bg-elevated); display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: var(--text-dim); font-weight: 600;
+  }
+  .shape-btn:hover { transform: scale(1.05); }
+  .shape-btn.active { border-color: var(--accent); color: var(--accent); }
+  .shape-btn .preview {
+    width: 28px; height: 28px; background: var(--accent); margin-bottom: 4px;
+  }
+
+  .preview-wrap {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+  }
+  .preview-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 16px;
+    background: var(--bg-elevated); padding: 24px; border-radius: 12px;
+  }
+  .preview-item { text-align: center; }
+  .preview-item canvas { display: block; margin: 0 auto 6px; image-rendering: pixelated; }
+  .preview-item .size-label { font-size: 11px; color: var(--text-dim); }
+
+  .simulator {
+    margin-top: 16px; padding: 14px; background: #1c1917; border-radius: 8px;
+    display: flex; align-items: center; gap: 10px; border: 1px solid var(--border);
+  }
+  .simulator canvas { border-radius: 4px; }
+  .simulator .tab-text { color: #fff; font-size: 13px; }
+
+  .actions { margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    padding: 12px 22px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated);
+    color: var(--text); text-decoration: none; transition: all 0.15s;
+  }
+  .btn:hover { transform: translateY(-1px); border-color: var(--accent); }
+  .btn.primary {
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    border: none; color: white; box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+  }
+  .btn.primary:hover { box-shadow: 0 6px 24px rgba(245, 158, 11, 0.45); }
+
+  .upsell {
+    margin-top: 14px; padding: 14px; background: var(--bg-elevated);
+    border-radius: 10px; border-left: 3px solid var(--accent); font-size: 13px;
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content code, pre {
+    background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px;
+    font-family: 'SF Mono', Monaco, Consolas, monospace; font-size: 13px; color: var(--accent);
+  }
+  pre { padding: 14px; overflow-x: auto; display: block; color: var(--text-dim); }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">⚡ Pure Browser &nbsp;·&nbsp; All Sizes &nbsp;·&nbsp; ZIP Download</div>
+    <h1>Favicon Generator</h1>
+    <p class="subtitle">From text, emoji, or your own image. Generate every size browsers + iOS need, packaged with a manifest.json. One click.</p>
+  </header>
+
+  <div class="layout">
+    <div class="panel">
+      <h2>Source</h2>
+      <div class="tabs" id="tabs">
+        <div class="tab active" data-tab="text">Text</div>
+        <div class="tab" data-tab="emoji">Emoji</div>
+        <div class="tab" data-tab="image">Image</div>
+      </div>
+
+      <div class="tab-content" id="tab-text">
+        <div class="field">
+          <label for="text">Text (1-3 chars)</label>
+          <input id="text" type="text" maxlength="3" value="T">
+        </div>
+        <div class="row">
+          <div class="field">
+            <label>Background</label>
+            <input id="bgColor" type="color" value="#f59e0b">
+          </div>
+          <div class="field">
+            <label>Text color</label>
+            <input id="textColor" type="color" value="#1c1917">
+          </div>
+        </div>
+        <div class="field">
+          <label>Font weight</label>
+          <select id="fontWeight">
+            <option value="400">Regular</option>
+            <option value="600">Semibold</option>
+            <option value="700" selected>Bold</option>
+            <option value="900">Black</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-emoji" style="display:none">
+        <div class="field">
+          <label for="emoji">Emoji (one)</label>
+          <input id="emoji" type="text" value="🚀">
+        </div>
+        <div class="field">
+          <label>Background</label>
+          <input id="emojiBg" type="color" value="#0a0a0f">
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-image" style="display:none">
+        <div class="field">
+          <label>Upload an image (square works best)</label>
+          <input id="imageFile" type="file" accept="image/*">
+        </div>
+      </div>
+
+      <div class="field" style="margin-top: 22px;">
+        <label>Shape</label>
+        <div class="shape-grid" id="shapes">
+          <div class="shape-btn active" data-shape="square"><div class="preview" style="border-radius:0"></div></div>
+          <div class="shape-btn" data-shape="rounded"><div class="preview" style="border-radius:6px"></div></div>
+          <div class="shape-btn" data-shape="circle"><div class="preview" style="border-radius:50%"></div></div>
+        </div>
+      </div>
+
+      <div class="upsell">
+        <strong>Building a real product?</strong> Once you have a domain, drop your favicon into a great hosting setup like
+        <a href="#" id="upsell-link" target="_blank" rel="noopener">Webflow</a> or
+        <a href="#" id="upsell-link2" target="_blank" rel="noopener">Squarespace</a>. <em>(Affiliate links — no extra cost to you.)</em>
+      </div>
+    </div>
+
+    <div class="preview-wrap">
+      <h2 style="font-size:13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600;">Live preview — every size</h2>
+      <div class="preview-grid" id="previewGrid"></div>
+
+      <h2 style="font-size:13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin: 24px 0 10px; font-weight: 600;">In a browser tab (real size)</h2>
+      <div class="simulator">
+        <canvas id="simCanvas" width="16" height="16"></canvas>
+        <div class="tab-text">Your Site Name &nbsp; <span style="color:#666">— how it'll look</span></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" id="downloadBtn">Download Favicon ZIP</button>
+        <button class="btn" id="copyHtmlBtn">Copy &lt;link&gt; tags</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>What you get in the ZIP</h2>
+    <p>One click downloads a complete favicon kit covering every modern browser, iOS, Android, and PWA install screen:</p>
+    <ul style="margin-left:24px; color: var(--text-dim);">
+      <li><code>favicon-16x16.png</code>, <code>favicon-32x32.png</code>, <code>favicon-48x48.png</code> — classic browser tab favicons</li>
+      <li><code>favicon-96x96.png</code>, <code>favicon-192x192.png</code>, <code>favicon-512x512.png</code> — high-DPI displays + Android home screen</li>
+      <li><code>apple-touch-icon.png</code> (180×180) — iOS Safari home screen</li>
+      <li><code>manifest.json</code> — required for Progressive Web App install prompt</li>
+      <li><code>install.html</code> — copy-paste &lt;link&gt; tags ready for your &lt;head&gt;</li>
+    </ul>
+
+    <h3>How to install</h3>
+    <p>Unzip into your site's <code>/public</code> or <code>/static</code> folder, then paste this into your <code>&lt;head&gt;</code>:</p>
+    <pre>&lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"&gt;
+&lt;link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"&gt;
+&lt;link rel="manifest" href="/manifest.json"&gt;</pre>
+
+    <h3>Pro tips for a great favicon</h3>
+    <ul style="margin-left:24px; color: var(--text-dim);">
+      <li><strong>16×16 is everything.</strong> Most users see your favicon at this tiny size in a tab. Test it. If it's unreadable, simplify.</li>
+      <li><strong>Avoid thin lines.</strong> They disappear at small sizes. Bold shapes win.</li>
+      <li><strong>One letter or one symbol</strong> usually beats a logo squashed into 16 pixels.</li>
+      <li><strong>High contrast</strong> with both light and dark browser themes — test both.</li>
+    </ul>
+
+    <h3>FAQ</h3>
+    <h3 style="font-size:15px">Why no .ico file?</h3>
+    <p>Modern browsers (since 2015) accept <code>.png</code> as favicon. Skipping <code>.ico</code> keeps the kit smaller and avoids legacy-format compatibility issues. If you specifically need <code>.ico</code> for old IE compatibility, rename <code>favicon-32x32.png</code> to <code>favicon.ico</code> — most servers serve it correctly.</p>
+    <h3 style="font-size:15px">Is the manifest.json the right one for my framework?</h3>
+    <p>The bundled manifest follows the W3C spec and works as-is for static sites, Vercel, Netlify, GitHub Pages. Frameworks like Next.js or Vite auto-detect it from <code>/public</code>.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · No signup · Generated locally in your browser. <a href="#" id="footer-tip">Tip jar</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script>
+const AFFILIATE = {
+  webflowUrl: 'https://webflow.com/?ref=YOUR_WEBFLOW_REF',
+  squarespaceUrl: 'https://www.squarespace.com/?channel=affiliate&ref=YOUR_SQUARESPACE_ID',
+  bmacUrl: 'https://www.buymeacoffee.com/YOURNAME'
+};
+document.getElementById('upsell-link').href = AFFILIATE.webflowUrl;
+document.getElementById('upsell-link2').href = AFFILIATE.squarespaceUrl;
+document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
+
+let activeTab = 'text';
+let activeShape = 'square';
+let uploadedImage = null;
+const SIZES = [16, 32, 48, 96, 180, 192, 512];
+
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    activeTab = t.dataset.tab;
+    document.querySelectorAll('.tab').forEach(x => x.classList.toggle('active', x === t));
+    document.querySelectorAll('.tab-content').forEach(x => x.style.display = x.id === 'tab-' + activeTab ? 'block' : 'none');
+    render();
+  });
+});
+document.querySelectorAll('.shape-btn').forEach(s => {
+  s.addEventListener('click', () => {
+    activeShape = s.dataset.shape;
+    document.querySelectorAll('.shape-btn').forEach(x => x.classList.toggle('active', x === s));
+    render();
+  });
+});
+
+['text', 'emoji', 'bgColor', 'textColor', 'emojiBg', 'fontWeight'].forEach(id => {
+  document.getElementById(id).addEventListener('input', render);
+});
+
+document.getElementById('imageFile').addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const r = new FileReader();
+  r.onload = () => {
+    const img = new Image();
+    img.onload = () => { uploadedImage = img; render(); };
+    img.src = r.result;
+  };
+  r.readAsDataURL(file);
+});
+
+function clipShape(ctx, size) {
+  ctx.beginPath();
+  if (activeShape === 'circle') {
+    ctx.arc(size/2, size/2, size/2, 0, Math.PI * 2);
+  } else if (activeShape === 'rounded') {
+    const r = size * 0.2;
+    ctx.moveTo(r, 0); ctx.lineTo(size-r, 0);
+    ctx.quadraticCurveTo(size, 0, size, r);
+    ctx.lineTo(size, size-r);
+    ctx.quadraticCurveTo(size, size, size-r, size);
+    ctx.lineTo(r, size);
+    ctx.quadraticCurveTo(0, size, 0, size-r);
+    ctx.lineTo(0, r);
+    ctx.quadraticCurveTo(0, 0, r, 0);
+  } else {
+    ctx.rect(0, 0, size, size);
+  }
+  ctx.closePath();
+  ctx.clip();
+}
+
+function drawFavicon(canvas, size) {
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, size, size);
+  ctx.save();
+  clipShape(ctx, size);
+
+  if (activeTab === 'text') {
+    const bg = document.getElementById('bgColor').value;
+    const fg = document.getElementById('textColor').value;
+    const text = document.getElementById('text').value || ' ';
+    const weight = document.getElementById('fontWeight').value;
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, size, size);
+    const fontSize = size * (text.length === 1 ? 0.65 : text.length === 2 ? 0.5 : 0.4);
+    ctx.fillStyle = fg;
+    ctx.font = `${weight} ${fontSize}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(text.toUpperCase(), size/2, size/2 + size*0.04);
+  } else if (activeTab === 'emoji') {
+    const bg = document.getElementById('emojiBg').value;
+    const emoji = document.getElementById('emoji').value || '✨';
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, size, size);
+    ctx.font = `${size * 0.75}px -apple-system, BlinkMacSystemFont, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(emoji, size/2, size/2 + size*0.04);
+  } else if (activeTab === 'image' && uploadedImage) {
+    ctx.drawImage(uploadedImage, 0, 0, size, size);
+  } else {
+    ctx.fillStyle = '#1d1d2a';
+    ctx.fillRect(0, 0, size, size);
+    ctx.fillStyle = '#a0a0b8';
+    ctx.font = `${size * 0.3}px sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('?', size/2, size/2);
+  }
+  ctx.restore();
+}
+
+function render() {
+  const grid = document.getElementById('previewGrid');
+  grid.innerHTML = '';
+  SIZES.forEach(size => {
+    const item = document.createElement('div');
+    item.className = 'preview-item';
+    const canvas = document.createElement('canvas');
+    canvas.width = size; canvas.height = size;
+    const previewSize = Math.min(96, size);
+    canvas.style.width = previewSize + 'px';
+    canvas.style.height = previewSize + 'px';
+    drawFavicon(canvas, size);
+    item.appendChild(canvas);
+    const label = document.createElement('div');
+    label.className = 'size-label';
+    label.textContent = `${size}×${size}`;
+    item.appendChild(label);
+    grid.appendChild(item);
+  });
+  // Update simulator (real 16x16)
+  drawFavicon(document.getElementById('simCanvas'), 16);
+}
+
+document.getElementById('downloadBtn').addEventListener('click', async () => {
+  const zip = new JSZip();
+  for (const size of SIZES) {
+    const canvas = document.createElement('canvas');
+    canvas.width = size; canvas.height = size;
+    drawFavicon(canvas, size);
+    const blob = await new Promise(r => canvas.toBlob(r, 'image/png'));
+    if (size === 180) zip.file('apple-touch-icon.png', blob);
+    else zip.file(`favicon-${size}x${size}.png`, blob);
+  }
+  // Manifest
+  const manifest = {
+    name: 'My App',
+    short_name: 'App',
+    icons: [
+      { src: '/favicon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { src: '/favicon-512x512.png', sizes: '512x512', type: 'image/png' }
+    ],
+    theme_color: document.getElementById('bgColor').value,
+    background_color: '#ffffff',
+    display: 'standalone'
+  };
+  zip.file('manifest.json', JSON.stringify(manifest, null, 2));
+  // Install instructions
+  zip.file('install.html', `<!-- paste this into the <head> of every page -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">`);
+  const content = await zip.generateAsync({ type: 'blob' });
+  const url = URL.createObjectURL(content);
+  const a = document.createElement('a');
+  a.href = url; a.download = `favicon-kit-${Date.now()}.zip`; a.click();
+  URL.revokeObjectURL(url);
+});
+
+document.getElementById('copyHtmlBtn').addEventListener('click', () => {
+  const html = `<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">`;
+  navigator.clipboard.writeText(html);
+  const btn = document.getElementById('copyHtmlBtn');
+  const oldText = btn.textContent; btn.textContent = 'Copied!';
+  setTimeout(() => btn.textContent = oldText, 1500);
+});
+
+render();
+</script>
+</body>
+</html>
