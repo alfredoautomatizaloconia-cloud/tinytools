@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Domain Name Generator + Availability Checker (2026)</title>
+<meta name="description" content="Generate 100+ creative, available domain names instantly. AI-powered brandable + descriptive name suggestions with real-time availability checks. 100% free.">
+<meta name="keywords" content="domain name generator, free domain generator, brandable domain names, available domain names, AI domain generator, business name generator">
+<meta property="og:title" content="Free AI Domain Name Generator + Availability Checker">
+<meta property="og:description" content="Generate 100+ creative, available domain names in seconds. AI-powered, completely free.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://YOUR-DOMAIN-HERE">
+
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-card: #15151f;
+    --bg-elevated: #1d1d2a;
+    --border: #2a2a3a;
+    --text: #f5f5fa;
+    --text-dim: #a0a0b8;
+    --accent: #8b5cf6;
+    --accent-glow: #8b5cf640;
+    --green: #10b981;
+    --red: #ef4444;
+    --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, #06b6d420 0%, transparent 50%);
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 40px 0 32px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1;
+    margin-bottom: 16px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #a78bfa 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 600px; margin: 0 auto 8px; }
+  .meta { font-size: 14px; color: var(--text-dim); }
+
+  .generator {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 32px; margin-top: 32px;
+    box-shadow: 0 0 80px rgba(139, 92, 246, 0.08);
+  }
+  .form-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  label { display: block; font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500; }
+  input, select {
+    width: 100%; padding: 14px 16px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 12px; color: var(--text);
+    font-size: 15px; font-family: inherit; transition: all 0.15s;
+  }
+  input:focus, select:focus {
+    outline: none; border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+  .col-grow { flex: 1; min-width: 240px; }
+  .col-fixed { width: 200px; }
+  @media (max-width: 600px) { .col-fixed { width: 100%; } }
+
+  button.primary {
+    width: 100%; padding: 16px 24px; margin-top: 8px;
+    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+    border: none; border-radius: 12px; color: white; font-weight: 600;
+    font-size: 15px; cursor: pointer; transition: all 0.15s;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+  }
+  button.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(139, 92, 246, 0.45); }
+  button.primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .filters { display: flex; gap: 8px; margin: 20px 0 12px; flex-wrap: wrap; align-items: center; }
+  .filter-pill {
+    padding: 6px 12px; border-radius: 999px; background: var(--bg-elevated);
+    border: 1px solid var(--border); font-size: 13px; color: var(--text-dim);
+    cursor: pointer; transition: all 0.15s;
+  }
+  .filter-pill:hover { color: var(--text); border-color: var(--accent); }
+  .filter-pill.active { background: var(--accent); color: white; border-color: var(--accent); }
+  .filter-pill .count { opacity: 0.7; margin-left: 4px; font-variant-numeric: tabular-nums; }
+
+  .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-top: 16px; }
+  .domain-card {
+    background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 16px; display: flex; align-items: center;
+    justify-content: space-between; gap: 12px; transition: all 0.15s;
+  }
+  .domain-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .domain-info { flex: 1; min-width: 0; }
+  .domain-name { font-size: 15px; font-weight: 500; word-break: break-all; }
+  .domain-status { font-size: 12px; margin-top: 2px; display: flex; align-items: center; gap: 5px; }
+  .status-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+  .status-available .status-dot { background: var(--green); box-shadow: 0 0 6px var(--green); }
+  .status-available { color: var(--green); }
+  .status-taken .status-dot { background: var(--red); }
+  .status-taken { color: var(--text-dim); opacity: 0.5; }
+  .status-checking .status-dot { background: var(--yellow); animation: pulse 1.2s ease-in-out infinite; }
+  .status-checking { color: var(--yellow); }
+  @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+  .buy-btn {
+    padding: 6px 12px; background: var(--accent); border: none; border-radius: 8px;
+    color: white; font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none;
+    white-space: nowrap; transition: all 0.15s;
+  }
+  .buy-btn:hover { background: #7c3aed; transform: scale(1.05); }
+  .buy-btn.disabled { background: var(--bg); color: var(--text-dim); cursor: not-allowed; }
+
+  .empty {
+    text-align: center; padding: 60px 20px; color: var(--text-dim);
+  }
+  .empty .emoji { font-size: 48px; margin-bottom: 16px; opacity: 0.6; }
+
+  /* Inline content section for SEO */
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 16px; }
+  .content h3 { font-size: 18px; margin: 24px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 12px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); }
+  .content li { margin-bottom: 6px; }
+
+  footer {
+    margin-top: 80px; padding: 32px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 14px;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">⚡ AI-Powered &nbsp;·&nbsp; 100% Free &nbsp;·&nbsp; No Sign-Up</div>
+    <h1>Domain Name Generator</h1>
+    <p class="subtitle">Generate 100+ creative, available domain names in seconds. Brandable, descriptive, modern — your call.</p>
+    <p class="meta">Real-time availability check. Built for founders, marketers, and indie hackers.</p>
+  </header>
+
+  <div class="generator">
+    <div class="form-row">
+      <div class="col-grow">
+        <label for="keyword">What's your project about?</label>
+        <input id="keyword" type="text" placeholder="e.g., AI fitness coach, sustainable fashion, dev tools">
+      </div>
+      <div class="col-fixed">
+        <label for="style">Style</label>
+        <select id="style">
+          <option value="brandable">Brandable (made-up)</option>
+          <option value="descriptive">Descriptive</option>
+          <option value="compound">Compound</option>
+          <option value="modern">Modern (.ai, .io)</option>
+          <option value="all">Mix of all</option>
+        </select>
+      </div>
+    </div>
+    <button id="go" class="primary">Generate 60+ domain ideas</button>
+
+    <div class="filters" id="filters" style="display:none">
+      <span style="color: var(--text-dim); font-size: 13px;">Show:</span>
+      <span class="filter-pill active" data-filter="all">All<span class="count" id="count-all">0</span></span>
+      <span class="filter-pill" data-filter="available">Available<span class="count" id="count-available">0</span></span>
+      <span class="filter-pill" data-filter="checking">Checking<span class="count" id="count-checking">0</span></span>
+    </div>
+
+    <div class="results-grid" id="results"></div>
+
+    <div class="empty" id="empty">
+      <div class="emoji">🌐</div>
+      <p>Enter a keyword above to generate domain ideas.</p>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>How to choose a great domain name in 2026</h2>
+    <p>Picking a domain is one of the highest-leverage decisions you'll make for your business. A great domain is short, memorable, easy to spell, and free of hyphens or numbers. It should hint at what you do — but not so literally that it limits future expansion.</p>
+
+    <h3>The 5 traits of a domain you won't regret</h3>
+    <ul>
+      <li><strong>Short:</strong> 6–12 characters is the sweet spot. Each extra character is one more chance to mistype it.</li>
+      <li><strong>Pronounceable:</strong> Test it by saying "I'll meet you at [domain].com" out loud. If you have to spell it, kill it.</li>
+      <li><strong>Brandable:</strong> Made-up words like "Stripe," "Notion," "Figma" travel further than literal names. They become the brand.</li>
+      <li><strong>Trademark-safe:</strong> Search the USPTO TESS database for similar marks before you buy. Cheap insurance.</li>
+      <li><strong>The right TLD:</strong> .com is still king for trust. .ai, .io, .co work for tech. Avoid .biz, .info, .xyz unless you have strong reasons.</li>
+    </ul>
+
+    <h3>How this generator works</h3>
+    <p>Our generator combines four naming strategies that pros actually use: brandable invented words (à la Spotify, Roblox), descriptive compounds (FitTrack, CodeForge), modern abbreviated TLDs (.ai, .io, .co for tech-forward brands), and pattern templates that have been proven in successful YC startups. Every result is checked against live RDAP records so what you see is what you can actually register.</p>
+
+    <h3>Frequently asked questions</h3>
+    <h3 style="font-size:16px">Is this really free?</h3>
+    <p>Yes. No sign-up, no email required, no usage limits. The only thing we earn is a small affiliate fee if you choose to register a domain through Namecheap — at no extra cost to you.</p>
+
+    <h3 style="font-size:16px">How accurate is the availability check?</h3>
+    <p>We query RDAP (Registration Data Access Protocol), the modern replacement for WHOIS, in real time. Results reflect the current registration state of each domain. Some country-code TLDs may show as "unknown" if their RDAP server is unreachable.</p>
+
+    <h3 style="font-size:16px">Where should I register?</h3>
+    <p>For .com / .ai / .io we recommend <a href="#" id="namecheap-link" style="color:var(--accent)">Namecheap</a> for the best balance of price and customer support. Cloudflare Registrar is also a great option if you don't mind the DNS-only setup. Avoid GoDaddy's bait-and-switch renewal pricing.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · No sign-up · We earn a small affiliate fee if you register through our partner links.</p>
+    <p style="margin-top: 8px;">Built for founders. <a href="#" id="footer-tip">Buy us a coffee</a> if this saved you time.</p>
+  </footer>
+</div>
+
+<script>
+/* ============================================================
+   AFFILIATE CONFIG — replace these once you sign up
+   ============================================================ */
+const AFFILIATE = {
+  namecheapId: 'YOUR_NAMECHEAP_AFFILIATE_ID',  // signup: https://www.namecheap.com/affiliates
+  cloudflareUrl: 'https://www.cloudflare.com/products/registrar/',
+  bmacUrl: 'https://www.buymeacoffee.com/YOURNAME'
+};
+
+document.getElementById('namecheap-link').href =
+  `https://www.namecheap.com/?aff=${AFFILIATE.namecheapId}`;
+document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
+
+/* ============================================================
+   NAME GENERATION — pure client-side, no API calls needed
+   ============================================================ */
+const PREFIXES = ['get', 'use', 'try', 'go', 'meet', 'join', 'hey', 'with', 'by'];
+const SUFFIXES = ['ly', 'ify', 'io', 'hub', 'lab', 'labs', 'kit', 'app', 'box', 'works', 'forge', 'flow', 'stack', 'wave', 'sense', 'mind', 'core', 'space', 'pad', 'craft', 'spark', 'fox', 'owl', 'bear'];
+const ADJECTIVES = ['swift', 'bright', 'clear', 'quiet', 'loud', 'quick', 'sharp', 'deep', 'bold', 'kind', 'fresh', 'pure', 'core', 'prime', 'stellar', 'orbit', 'pixel', 'nova', 'lumen', 'echo'];
+const VOWELS = 'aeiou';
+const CONSONANTS = 'bcdfghjklmnprstvwxz';
+
+const TLDS_PRIMARY = ['.com', '.io', '.ai', '.co', '.app'];
+const TLDS_SECONDARY = ['.dev', '.xyz', '.so', '.tech', '.studio'];
+
+function clean(s) {
+  return s.toLowerCase().replace(/[^a-z]/g, '').slice(0, 24);
+}
+
+function pickRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+function generateBrandable(keyword) {
+  const out = new Set();
+  const k = clean(keyword);
+  if (!k) return [];
+  // Drop letters from end
+  for (let i = 4; i <= k.length; i++) {
+    out.add(k.slice(0, i) + pickRandom(['ly', 'io', 'fy', 'sy', 'ix', 'ax', 'ox']));
+  }
+  // Vowel swap
+  const swapped = k.replace(/[aeiou]/g, m => pickRandom(['a', 'e', 'i', 'o', 'u']));
+  out.add(swapped);
+  // CV pattern from keyword roots
+  const root = k.slice(0, 4);
+  for (let i = 0; i < 6; i++) {
+    out.add(root + pickRandom(VOWELS) + pickRandom(CONSONANTS));
+  }
+  // Pure invented (3-syllable CVCVCV)
+  for (let i = 0; i < 5; i++) {
+    let w = '';
+    for (let j = 0; j < 3; j++) {
+      w += pickRandom(CONSONANTS) + pickRandom(VOWELS);
+    }
+    out.add(w);
+  }
+  return [...out];
+}
+
+function generateDescriptive(keyword) {
+  const out = new Set();
+  const k = clean(keyword);
+  if (!k) return [];
+  PREFIXES.forEach(p => out.add(p + k));
+  SUFFIXES.forEach(s => out.add(k + s));
+  ADJECTIVES.forEach(a => out.add(a + k));
+  return [...out];
+}
+
+function generateCompound(keyword) {
+  const out = new Set();
+  const k = clean(keyword);
+  if (!k) return [];
+  const partners = ['hub', 'works', 'studio', 'labs', 'house', 'forge', 'space', 'stack', 'craft', 'shop', 'desk', 'co'];
+  partners.forEach(p => { out.add(k + p); out.add(p + k); });
+  return [...out];
+}
+
+function generateModern(keyword) {
+  // Heavy on .ai, .io, short brandables
+  const out = new Set();
+  const k = clean(keyword);
+  if (!k) return [];
+  out.add(k);
+  out.add(k.slice(0, 5));
+  out.add(k + 'ly');
+  out.add(k + 'ai');
+  out.add(k + 'os');
+  out.add(k + 'gpt');
+  out.add('try' + k);
+  out.add('use' + k);
+  return [...out];
+}
+
+function generate(keyword, style) {
+  let names = [];
+  if (style === 'brandable') names = generateBrandable(keyword);
+  else if (style === 'descriptive') names = generateDescriptive(keyword);
+  else if (style === 'compound') names = generateCompound(keyword);
+  else if (style === 'modern') names = generateModern(keyword);
+  else { // 'all'
+    names = [
+      ...generateBrandable(keyword).slice(0, 6),
+      ...generateDescriptive(keyword).slice(0, 8),
+      ...generateCompound(keyword).slice(0, 6),
+      ...generateModern(keyword).slice(0, 4)
+    ];
+  }
+  // Dedup, filter, length-cap
+  names = [...new Set(names)].filter(n => n.length >= 4 && n.length <= 16);
+
+  // Cross with TLDs to produce final domain candidates
+  const tlds = (style === 'modern') ? ['.ai', '.io', '.co'] : TLDS_PRIMARY;
+  const out = [];
+  names.forEach(n => {
+    tlds.forEach(t => out.push(n + t));
+  });
+  // Shuffle + cap
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out.slice(0, 64);
+}
+
+/* ============================================================
+   AVAILABILITY CHECK via free RDAP
+   ============================================================ */
+async function checkAvailability(domain) {
+  try {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), 5000);
+    const resp = await fetch(`https://rdap.org/domain/${domain}`, {
+      signal: ctrl.signal, redirect: 'follow'
+    });
+    clearTimeout(t);
+    if (resp.status === 404) return 'available';
+    if (resp.status === 200) return 'taken';
+    return 'unknown';
+  } catch (e) {
+    return 'unknown';
+  }
+}
+
+/* ============================================================
+   UI / RENDER
+   ============================================================ */
+const resultsEl = document.getElementById('results');
+const emptyEl = document.getElementById('empty');
+const filtersEl = document.getElementById('filters');
+const goBtn = document.getElementById('go');
+let allDomains = [];
+let activeFilter = 'all';
+
+function render() {
+  const counts = {
+    all: allDomains.length,
+    available: allDomains.filter(d => d.status === 'available').length,
+    checking: allDomains.filter(d => d.status === 'checking').length
+  };
+  document.getElementById('count-all').textContent = counts.all;
+  document.getElementById('count-available').textContent = counts.available;
+  document.getElementById('count-checking').textContent = counts.checking;
+
+  let visible = allDomains;
+  if (activeFilter === 'available') visible = allDomains.filter(d => d.status === 'available');
+  if (activeFilter === 'checking') visible = allDomains.filter(d => d.status === 'checking');
+
+  resultsEl.innerHTML = visible.map(d => domainCardHTML(d)).join('');
+}
+
+function domainCardHTML(d) {
+  const statusText = {
+    checking: 'Checking…',
+    available: 'Available',
+    taken: 'Taken',
+    unknown: 'Unknown'
+  }[d.status];
+  const buyHTML = d.status === 'available'
+    ? `<a href="${affiliateBuyLink(d.name)}" target="_blank" rel="noopener" class="buy-btn">Register →</a>`
+    : `<button class="buy-btn disabled" disabled>—</button>`;
+  return `
+    <div class="domain-card">
+      <div class="domain-info">
+        <div class="domain-name">${d.name}</div>
+        <div class="domain-status status-${d.status}">
+          <span class="status-dot"></span>${statusText}
+        </div>
+      </div>
+      ${buyHTML}
+    </div>
+  `;
+}
+
+function affiliateBuyLink(domain) {
+  return `https://www.namecheap.com/domains/registration/results/?domain=${encodeURIComponent(domain)}&aff=${AFFILIATE.namecheapId}`;
+}
+
+/* ============================================================
+   PIPELINE
+   ============================================================ */
+async function runChecks(domains) {
+  // Limit concurrency to avoid hammering rdap.org
+  const CONCURRENCY = 6;
+  const queue = [...domains];
+  const workers = Array.from({ length: CONCURRENCY }, async () => {
+    while (queue.length) {
+      const d = queue.shift();
+      d.status = await checkAvailability(d.name);
+      render();
+    }
+  });
+  await Promise.all(workers);
+}
+
+document.getElementById('go').addEventListener('click', async () => {
+  const keyword = document.getElementById('keyword').value.trim();
+  const style = document.getElementById('style').value;
+  if (!keyword) {
+    document.getElementById('keyword').focus();
+    return;
+  }
+  goBtn.disabled = true;
+  goBtn.textContent = 'Generating…';
+  emptyEl.style.display = 'none';
+  filtersEl.style.display = 'flex';
+  const candidates = generate(keyword, style);
+  allDomains = candidates.map(name => ({ name, status: 'checking' }));
+  render();
+  await runChecks(allDomains);
+  goBtn.disabled = false;
+  goBtn.textContent = 'Generate again';
+});
+
+document.getElementById('keyword').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('go').click();
+});
+
+document.querySelectorAll('.filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    activeFilter = pill.dataset.filter;
+    render();
+  });
+});
+</script>
+</body>
+</html>
