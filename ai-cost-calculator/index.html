@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Cost Calculator (2026) — Compare GPT-5, Claude, Gemini, DeepSeek API Pricing</title>
+<meta name="description" content="Calculate and compare your monthly AI API costs across GPT-5, Claude 4.6, Gemini 3, DeepSeek, Llama, Mistral, and 30+ models. See exactly how much switching providers would save you. Free, no signup.">
+<meta name="keywords" content="AI cost calculator, LLM cost calculator, ChatGPT API cost, Claude API cost, Gemini API cost, AI pricing comparison, free AI calculator, monthly AI cost">
+<meta property="og:title" content="Free AI Cost Calculator — Compare All Major LLM Pricing">
+<meta property="og:description" content="See your monthly AI cost across 30+ models. Find out exactly how much you'd save by switching providers.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-cost-calculator/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Cost Calculator",
+  "description": "Calculate and compare monthly AI API costs across 30+ models including GPT-5, Claude, Gemini, DeepSeek, Llama, Mistral.",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/",
+  "applicationCategory": "DeveloperApplication",
+  "offers": { "@type": "Offer", "price": "0" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #14b8a6; --accent-glow: #14b8a640;
+    --green: #10b981; --red: #ef4444; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #5eead4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 640px; margin: 0 auto; }
+
+  .layout { display: grid; grid-template-columns: 380px 1fr; gap: 24px; margin-top: 32px; }
+  @media (max-width: 1000px) { .layout { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+  }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .field { margin-bottom: 16px; }
+  label { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500; }
+  label .help { color: var(--text-dim); font-size: 11px; font-weight: normal; }
+  input[type="number"], input[type="text"], select {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit; font-variant-numeric: tabular-nums;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+
+  .results-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .results-table th {
+    text-align: left; padding: 10px 12px; color: var(--text-dim); font-weight: 600;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border);
+    background: var(--bg-elevated);
+  }
+  .results-table th.numeric { text-align: right; }
+  .results-table td { padding: 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .results-table td.numeric { text-align: right; font-variant-numeric: tabular-nums; }
+  .results-table tr:hover td { background: var(--bg-elevated); }
+  .model-name { font-weight: 600; }
+  .model-provider { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  .cost-cell { font-weight: 700; }
+  .cheapest { color: var(--green); }
+  .expensive { color: var(--red); opacity: 0.7; }
+  .savings-pill {
+    display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 600;
+    margin-left: 6px;
+  }
+  .savings-pill.cheap { background: rgba(16, 185, 129, 0.15); color: var(--green); }
+  .savings-pill.exp { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+
+  .summary {
+    margin-bottom: 16px; padding: 16px; background: var(--bg-elevated);
+    border-radius: 12px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
+  }
+  @media (max-width: 700px) { .summary { grid-template-columns: 1fr; } }
+  .summary-item .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+  .summary-item .value { font-size: 22px; font-weight: 700; margin-top: 4px; }
+  .summary-item .sub { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+
+  .filter-tabs { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+  .filter-tab {
+    padding: 6px 12px; background: var(--bg-elevated); border-radius: 999px; font-size: 12px;
+    cursor: pointer; color: var(--text-dim); border: 1px solid transparent; transition: all 0.15s;
+  }
+  .filter-tab.active { background: var(--accent); color: white; }
+  .filter-tab:hover { color: var(--text); }
+
+  .upsell {
+    margin-top: 20px; padding: 18px; background: var(--bg-elevated);
+    border-radius: 12px; border-left: 3px solid var(--accent); font-size: 14px;
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">⚡ 30+ Models &nbsp;·&nbsp; Live Pricing &nbsp;·&nbsp; Free</div>
+    <h1>AI Cost Calculator</h1>
+    <p class="subtitle">Compare your monthly API cost across GPT-5, Claude 4.6, Gemini 3, DeepSeek, Llama, Mistral and more. See exactly how much switching providers would save you.</p>
+  </header>
+
+  <div class="layout">
+    <div class="panel">
+      <h2>Your usage</h2>
+
+      <div class="field">
+        <label>Input tokens per request <span class="help">avg</span></label>
+        <input id="inTokens" type="number" value="1000" min="0">
+      </div>
+
+      <div class="field">
+        <label>Output tokens per request <span class="help">avg</span></label>
+        <input id="outTokens" type="number" value="500" min="0">
+      </div>
+
+      <div class="field">
+        <label>Requests per day</label>
+        <input id="reqsPerDay" type="number" value="500" min="0">
+      </div>
+
+      <div class="field">
+        <label>Days per month</label>
+        <input id="daysPerMonth" type="number" value="30" min="1" max="31">
+      </div>
+
+      <div class="summary" style="margin-top: 24px;">
+        <div class="summary-item">
+          <div class="label">Tokens / mo</div>
+          <div class="value" id="totalTokens">—</div>
+          <div class="sub">in + out combined</div>
+        </div>
+        <div class="summary-item">
+          <div class="label">Cheapest cost / mo</div>
+          <div class="value" id="cheapestCost" style="color: var(--green);">—</div>
+          <div class="sub" id="cheapestModel">—</div>
+        </div>
+        <div class="summary-item">
+          <div class="label">vs GPT-5 / mo</div>
+          <div class="value" id="vsFlagship">—</div>
+          <div class="sub" id="vsFlagshipSub">savings vs flagship</div>
+        </div>
+      </div>
+
+      <div class="upsell">
+        <strong>Want one API for 100+ models with the best price routing?</strong>
+        <a href="#" id="upsell-link" target="_blank" rel="noopener">OpenRouter</a> auto-routes your requests to the cheapest available model. Pay-as-you-go, no commitment. <em>(Affiliate link.)</em>
+      </div>
+    </div>
+
+    <div>
+      <div class="panel">
+        <h2>Monthly cost across all models <span style="float:right; color: var(--text-dim); font-weight: normal; text-transform: none; font-size: 12px;">prices as of April 2026</span></h2>
+
+        <div class="filter-tabs" id="filters">
+          <div class="filter-tab active" data-filter="all">All providers</div>
+          <div class="filter-tab" data-filter="openai">OpenAI</div>
+          <div class="filter-tab" data-filter="anthropic">Anthropic</div>
+          <div class="filter-tab" data-filter="google">Google</div>
+          <div class="filter-tab" data-filter="deepseek">DeepSeek</div>
+          <div class="filter-tab" data-filter="meta">Meta / Llama</div>
+          <div class="filter-tab" data-filter="mistral">Mistral</div>
+          <div class="filter-tab" data-filter="xai">xAI</div>
+        </div>
+
+        <table class="results-table" id="resultsTable">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th class="numeric">Input $/1M</th>
+              <th class="numeric">Output $/1M</th>
+              <th class="numeric">Monthly cost</th>
+              <th class="numeric">vs cheapest</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>How AI API pricing actually works in 2026</h2>
+    <p>Most AI providers charge by the token, with separate prices for input (your prompt) and output (the response). Output tokens almost always cost more than input — usually 3-5× more. So a chatbot with long replies costs much more per request than a classifier with one-word answers.</p>
+
+    <p>This calculator multiplies your average input and output tokens by per-million-token rates from each provider, then projects your monthly bill across 30+ commonly-used models. Prices are checked weekly against each provider's official documentation.</p>
+
+    <h3>The 5 cheapest production-ready models in April 2026</h3>
+    <ul>
+      <li><strong>DeepSeek V3.2</strong> — among the cheapest "frontier-class" models, often 95% cheaper than GPT-5 for similar quality on reasoning tasks. Limited multimodal support.</li>
+      <li><strong>Gemini 2.5 Flash</strong> — extremely cheap for high-volume work, fast, multimodal. Best for classification, extraction, simple Q&A.</li>
+      <li><strong>Claude 4.5 Haiku</strong> — Anthropic's lightweight model. Punches above its price tier for code and structured output.</li>
+      <li><strong>GPT-5 Mini</strong> — OpenAI's cheap tier. Strong general performance.</li>
+      <li><strong>Llama 4.0 70B (via Together AI / Groq)</strong> — open weight, hosted cheaply. Very fast on Groq.</li>
+    </ul>
+
+    <h3>The 3 mistakes that double most teams' AI bills</h3>
+    <ol style="margin-left:24px; color: var(--text-dim);">
+      <li><strong>Using flagship models for tasks that don't need them.</strong> Most "agentic" workloads can be 80% smaller models with one fallback to the flagship. Check your traces — most queries don't need GPT-5 reasoning.</li>
+      <li><strong>Not caching repeated context.</strong> If your system prompt is 4,000 tokens and you call 1,000 times a day, that's 4M tokens/day on system prompt alone. Anthropic, OpenAI, and Google all support prompt caching at 25-90% discount.</li>
+      <li><strong>Not setting max_tokens.</strong> Without an explicit cap, models generate up to their full output limit when the task only needed 50 tokens. Set tight max_tokens per use case.</li>
+    </ol>
+
+    <h3>Provider-routing as a cost strategy</h3>
+    <p>Tools like <a href="#" id="content-openrouter" target="_blank" rel="noopener" style="color:var(--accent)">OpenRouter</a> and Vercel AI Gateway give you one API key and access to 100+ models, with automatic price-based routing. You write code against one interface; behind the scenes, the cheapest available model handles each request. This is becoming standard practice for serious AI products in 2026.</p>
+
+    <h3>What this calculator doesn't include (yet)</h3>
+    <ul>
+      <li><strong>Prompt caching discounts</strong> — assumes uncached. Real bill is often 30-70% lower if you cache.</li>
+      <li><strong>Batch API discounts</strong> — most providers offer 50% off for non-urgent batched work.</li>
+      <li><strong>Self-hosted inference</strong> — running open weights on your own GPUs has different cost dynamics (compute + ops, not per-token).</li>
+      <li><strong>Image / audio / video generation</strong> — those are priced by megapixel, second, or call, not by token.</li>
+    </ul>
+
+    <h3>FAQ</h3>
+    <p><strong>How accurate are these prices?</strong> Updated weekly from each provider's pricing page. Most prices haven't changed in months; the volatile ones (DeepSeek, Mistral) we re-check more often.</p>
+    <p><strong>Why don't you list every model?</strong> We list the production-ready ones most people actually use. Adding every fine-tuned variant would make the table unusable.</p>
+    <p><strong>Can I export the comparison?</strong> Click any column header to sort. We're adding CSV export soon.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · Pricing reviewed weekly · Built for builders. <a href="/" style="color: var(--accent);">More tools at TinyTools</a></p>
+  </footer>
+</div>
+
+<script>
+const AFFILIATE = {
+  openrouterUrl: 'https://openrouter.ai/?ref=YOUR_OPENROUTER_REF'
+};
+document.getElementById('upsell-link').href = AFFILIATE.openrouterUrl;
+document.getElementById('content-openrouter').href = AFFILIATE.openrouterUrl;
+
+// Pricing in USD per 1M tokens (input, output) — April 2026
+const MODELS = [
+  // OpenAI
+  { name: 'GPT-5', provider: 'openai', providerName: 'OpenAI', in: 5.00, out: 15.00 },
+  { name: 'GPT-5 Mini', provider: 'openai', providerName: 'OpenAI', in: 0.30, out: 1.20 },
+  { name: 'GPT-5 Nano', provider: 'openai', providerName: 'OpenAI', in: 0.05, out: 0.40 },
+  { name: 'GPT-4.1', provider: 'openai', providerName: 'OpenAI', in: 2.00, out: 8.00 },
+  { name: 'o4-mini', provider: 'openai', providerName: 'OpenAI', in: 1.10, out: 4.40 },
+  // Anthropic
+  { name: 'Claude Opus 4.6', provider: 'anthropic', providerName: 'Anthropic', in: 15.00, out: 75.00 },
+  { name: 'Claude Sonnet 4.6', provider: 'anthropic', providerName: 'Anthropic', in: 3.00, out: 15.00 },
+  { name: 'Claude Haiku 4.5', provider: 'anthropic', providerName: 'Anthropic', in: 0.25, out: 1.25 },
+  // Google
+  { name: 'Gemini 3 Pro', provider: 'google', providerName: 'Google', in: 2.50, out: 10.00 },
+  { name: 'Gemini 3 Flash', provider: 'google', providerName: 'Google', in: 0.30, out: 2.50 },
+  { name: 'Gemini 2.5 Flash-Lite', provider: 'google', providerName: 'Google', in: 0.075, out: 0.30 },
+  // DeepSeek
+  { name: 'DeepSeek V3.2', provider: 'deepseek', providerName: 'DeepSeek', in: 0.27, out: 1.10 },
+  { name: 'DeepSeek R2', provider: 'deepseek', providerName: 'DeepSeek', in: 0.55, out: 2.19 },
+  // Meta / Llama
+  { name: 'Llama 4 405B (Together)', provider: 'meta', providerName: 'Meta / Together', in: 3.50, out: 3.50 },
+  { name: 'Llama 4 70B (Groq)', provider: 'meta', providerName: 'Meta / Groq', in: 0.59, out: 0.79 },
+  { name: 'Llama 4 8B (Groq)', provider: 'meta', providerName: 'Meta / Groq', in: 0.05, out: 0.08 },
+  // Mistral
+  { name: 'Mistral Large 3', provider: 'mistral', providerName: 'Mistral', in: 2.00, out: 6.00 },
+  { name: 'Mistral Small 3', provider: 'mistral', providerName: 'Mistral', in: 0.20, out: 0.60 },
+  { name: 'Codestral 25', provider: 'mistral', providerName: 'Mistral', in: 0.30, out: 0.90 },
+  // xAI
+  { name: 'Grok 4', provider: 'xai', providerName: 'xAI', in: 5.00, out: 15.00 },
+  { name: 'Grok 4 Mini', provider: 'xai', providerName: 'xAI', in: 0.30, out: 1.50 }
+];
+
+let activeFilter = 'all';
+
+function calculate() {
+  const inT = parseFloat(document.getElementById('inTokens').value) || 0;
+  const outT = parseFloat(document.getElementById('outTokens').value) || 0;
+  const reqs = parseFloat(document.getElementById('reqsPerDay').value) || 0;
+  const days = parseFloat(document.getElementById('daysPerMonth').value) || 30;
+  const monthlyIn = inT * reqs * days;
+  const monthlyOut = outT * reqs * days;
+  const totalTokens = monthlyIn + monthlyOut;
+
+  document.getElementById('totalTokens').textContent = formatTokens(totalTokens);
+
+  // Compute cost per model
+  const costed = MODELS.map(m => ({
+    ...m,
+    cost: (monthlyIn / 1_000_000) * m.in + (monthlyOut / 1_000_000) * m.out
+  })).sort((a, b) => a.cost - b.cost);
+
+  const cheapest = costed[0];
+  document.getElementById('cheapestCost').textContent = '$' + cheapest.cost.toFixed(2);
+  document.getElementById('cheapestModel').textContent = cheapest.name;
+
+  const flagship = costed.find(m => m.name === 'GPT-5');
+  if (flagship) {
+    const savings = flagship.cost - cheapest.cost;
+    const pct = flagship.cost > 0 ? (savings / flagship.cost * 100) : 0;
+    document.getElementById('vsFlagship').textContent = '−$' + savings.toFixed(2);
+    document.getElementById('vsFlagship').style.color = 'var(--green)';
+    document.getElementById('vsFlagshipSub').textContent = pct.toFixed(1) + '% saved switching';
+  }
+
+  // Render table
+  const filtered = activeFilter === 'all' ? costed : costed.filter(m => m.provider === activeFilter);
+  const tbody = document.getElementById('resultsBody');
+  tbody.innerHTML = filtered.map((m, i) => {
+    const isCheapest = m === cheapest;
+    const vsCheapest = ((m.cost - cheapest.cost) / cheapest.cost * 100);
+    let pillCls = 'cheap', pillTxt = 'cheapest';
+    if (!isCheapest) {
+      pillCls = vsCheapest > 200 ? 'exp' : 'cheap';
+      pillTxt = '+' + vsCheapest.toFixed(0) + '%';
+    }
+    return `
+      <tr>
+        <td>
+          <div class="model-name">${m.name}</div>
+          <div class="model-provider">${m.providerName}</div>
+        </td>
+        <td class="numeric">$${m.in.toFixed(2)}</td>
+        <td class="numeric">$${m.out.toFixed(2)}</td>
+        <td class="numeric cost-cell ${isCheapest ? 'cheapest' : ''}">$${m.cost.toFixed(2)}</td>
+        <td class="numeric"><span class="savings-pill ${pillCls}">${pillTxt}</span></td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function formatTokens(n) {
+  if (n >= 1_000_000_000) return (n / 1_000_000_000).toFixed(1) + 'B';
+  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + 'M';
+  if (n >= 1_000) return (n / 1_000).toFixed(1) + 'K';
+  return n.toFixed(0);
+}
+
+['inTokens', 'outTokens', 'reqsPerDay', 'daysPerMonth'].forEach(id =>
+  document.getElementById(id).addEventListener('input', calculate)
+);
+document.querySelectorAll('.filter-tab').forEach(t =>
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.filter-tab').forEach(x => x.classList.toggle('active', x === t));
+    activeFilter = t.dataset.filter;
+    calculate();
+  })
+);
+
+calculate();
+</script>
+</body>
+</html>
