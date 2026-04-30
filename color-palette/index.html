@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Color Palette Generator (2026) — Analogous, Complementary, Triadic</title>
+<meta name="description" content="Generate beautiful color palettes from any base color. Analogous, complementary, triadic, monochromatic. Export as CSS variables, Tailwind config, or JSON. 100% free, no signup.">
+<meta name="keywords" content="color palette generator, free color palette, complementary colors, analogous palette, color scheme generator, tailwind palette, css color variables">
+<meta property="og:title" content="Free Color Palette Generator">
+<meta property="og:description" content="Generate beautiful color palettes from any base color.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #a855f7; --accent-glow: #a855f740;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #ec489940 0%, transparent 50%);
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #d8b4fe 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 620px; margin: 0 auto; }
+
+  .controls {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 24px; margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+  }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+  input[type="color"] { width: 80px; height: 50px; border: 1px solid var(--border); border-radius: 10px; padding: 4px; background: var(--bg-elevated); cursor: pointer; }
+  input[type="text"] {
+    padding: 12px 14px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text); font-size: 14px; font-family: 'SF Mono', Monaco, monospace; width: 120px;
+  }
+  input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+  button.shuffle {
+    padding: 12px 22px; background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    border: none; border-radius: 10px; color: white; font-weight: 600; font-size: 14px; cursor: pointer;
+    box-shadow: 0 4px 16px rgba(168, 85, 247, 0.3); transition: all 0.15s;
+  }
+  button.shuffle:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(168, 85, 247, 0.45); }
+
+  .palettes { margin-top: 32px; display: flex; flex-direction: column; gap: 28px; }
+  .palette-section h2 {
+    font-size: 16px; color: var(--text); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+  }
+  .palette-section .desc { font-size: 13px; color: var(--text-dim); margin-bottom: 12px; }
+  .palette-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
+  .swatch {
+    aspect-ratio: 1/1.4; border-radius: 12px; cursor: pointer; position: relative;
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 12px;
+    transition: all 0.15s; overflow: hidden;
+  }
+  .swatch:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.4); }
+  .swatch .hex {
+    font-family: 'SF Mono', Monaco, monospace; font-size: 13px; font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+  .swatch .copied {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.75); color: white; padding: 6px 12px; border-radius: 6px;
+    font-size: 12px; opacity: 0; transition: opacity 0.2s;
+  }
+  .swatch.copied-state .copied { opacity: 1; }
+
+  .exports {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 20px; margin-top: 32px;
+  }
+  .exports h2 { font-size: 14px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+  .export-tabs { display: flex; gap: 4px; margin-bottom: 12px; }
+  .export-tab {
+    padding: 8px 14px; background: var(--bg-elevated); border-radius: 8px; font-size: 13px;
+    cursor: pointer; color: var(--text-dim); transition: all 0.15s;
+  }
+  .export-tab.active { background: var(--accent); color: white; }
+  pre {
+    background: #000; padding: 16px; border-radius: 10px; overflow-x: auto;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: #e0e0ff;
+    border: 1px solid var(--border); position: relative;
+  }
+  .copy-export {
+    position: absolute; top: 8px; right: 8px; padding: 6px 12px;
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text); font-size: 12px; cursor: pointer;
+  }
+  .copy-export:hover { border-color: var(--accent); }
+
+  .upsell {
+    margin-top: 24px; padding: 16px; background: var(--bg-elevated);
+    border-radius: 10px; border-left: 3px solid var(--accent); font-size: 14px; color: var(--text-dim);
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); }
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">⚡ Color Theory &nbsp;·&nbsp; CSS / Tailwind Export &nbsp;·&nbsp; Free</div>
+    <h1>Color Palette Generator</h1>
+    <p class="subtitle">Pick a base color. Get analogous, complementary, triadic, and monochromatic palettes instantly. Click any swatch to copy. Export to CSS or Tailwind.</p>
+  </header>
+
+  <div class="controls">
+    <div class="field">
+      <label>Base color</label>
+      <input id="basePicker" type="color" value="#a855f7">
+    </div>
+    <div class="field">
+      <label>Hex</label>
+      <input id="baseHex" type="text" value="#a855f7">
+    </div>
+    <div class="field" style="margin-left:auto;">
+      <label>&nbsp;</label>
+      <button class="shuffle" id="shuffle">🎲 Random base color</button>
+    </div>
+  </div>
+
+  <div class="palettes" id="palettes"></div>
+
+  <div class="exports">
+    <h2>Export the Analogous palette</h2>
+    <div class="export-tabs">
+      <div class="export-tab active" data-format="css">CSS Variables</div>
+      <div class="export-tab" data-format="tailwind">Tailwind Config</div>
+      <div class="export-tab" data-format="json">JSON</div>
+      <div class="export-tab" data-format="scss">SCSS</div>
+    </div>
+    <pre id="exportCode"><button class="copy-export" id="copyExport">Copy</button><span id="exportText"></span></pre>
+  </div>
+
+  <div class="upsell">
+    <strong>Designing in Figma or building in Webflow?</strong>
+    Plug these palettes straight into your design system.
+    Try <a href="#" id="upsell-figma" target="_blank" rel="noopener">Figma</a> or
+    <a href="#" id="upsell-webflow" target="_blank" rel="noopener">Webflow</a> with built-in color variable support.
+    <em>(Affiliate links — no extra cost to you.)</em>
+  </div>
+
+  <section class="content">
+    <h2>How color palette generation works</h2>
+    <p>Color theory uses geometric relationships on the HSL color wheel to create palettes that feel intentional. Pick a base color, and any other color at a specific angle on the wheel will harmonize with it. This generator uses four classic relationships:</p>
+
+    <h3>Analogous (30° apart)</h3>
+    <p>Three colors next to each other on the wheel. Calm, cohesive, low-contrast. Used by brands like Spotify (greens) and Slack (blue/cyan/teal). Perfect for backgrounds, gradients, and brand systems where you want the colors to feel like one family.</p>
+
+    <h3>Complementary (180° apart)</h3>
+    <p>Two colors directly opposite. Maximum contrast and energy. Used in sports team brands, action movie posters, and CTAs. Use sparingly — too much complementary color competition can be visually exhausting.</p>
+
+    <h3>Triadic (120° apart)</h3>
+    <p>Three colors evenly spaced around the wheel. Vibrant but balanced. Used by Mickey Mouse (red/yellow/blue), Burger King, and many superhero brands. Pick one as dominant and use the other two as accents to avoid chaos.</p>
+
+    <h3>Monochromatic (same hue, varying lightness)</h3>
+    <p>Five tones from a single hue, ranging dark to light. The cleanest, most "professional" palette. Used by enterprise SaaS like Linear, Stripe, and most banking brands. Perfect for UI work where you need clear hierarchy without color noise.</p>
+
+    <h3>How to use these in your project</h3>
+    <p>Click any swatch to copy its hex code. Use the export panel below to grab the entire palette as CSS variables (works in any framework), Tailwind config (paste into your <code>tailwind.config.js</code>), JSON (for design tokens), or SCSS variables. Every palette also includes WCAG-friendly text colors paired automatically — dark text on light swatches, light text on dark swatches.</p>
+
+    <h3>FAQ</h3>
+    <p><strong>How do I pick the right base color?</strong> Start with your brand's primary color, or use the random shuffle for inspiration. Save the ones you like in a notes app for later refinement.</p>
+    <p><strong>Are these accessible?</strong> The hex codes are color-only — accessibility depends on text-to-background contrast in your specific use. Run pairs through a contrast checker like WebAIM before shipping.</p>
+    <p><strong>Can I use these commercially?</strong> Yes. Color values can't be copyrighted. Use any palette in any project, no attribution needed.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · No signup · Color math runs in your browser. <a href="#" id="footer-tip">Tip jar</a></p>
+  </footer>
+</div>
+
+<script>
+const AFFILIATE = {
+  figmaUrl: 'https://www.figma.com/?ref=YOUR_FIGMA_REF',
+  webflowUrl: 'https://webflow.com/?ref=YOUR_WEBFLOW_REF',
+  bmacUrl: 'https://www.buymeacoffee.com/YOURNAME'
+};
+document.getElementById('upsell-figma').href = AFFILIATE.figmaUrl;
+document.getElementById('upsell-webflow').href = AFFILIATE.webflowUrl;
+document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
+
+// HSL <-> Hex
+function hexToHsl(hex) {
+  hex = hex.replace('#', '');
+  const r = parseInt(hex.slice(0, 2), 16) / 255;
+  const g = parseInt(hex.slice(2, 4), 16) / 255;
+  const b = parseInt(hex.slice(4, 6), 16) / 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h, s, l = (max + min) / 2;
+  if (max === min) { h = s = 0; }
+  else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = ((g - b) / d + (g < b ? 6 : 0)); break;
+      case g: h = ((b - r) / d + 2); break;
+      case b: h = ((r - g) / d + 4); break;
+    }
+    h *= 60;
+  }
+  return [h, s * 100, l * 100];
+}
+function hslToHex(h, s, l) {
+  s /= 100; l /= 100;
+  const k = n => (n + h / 30) % 12;
+  const a = s * Math.min(l, 1 - l);
+  const f = n => Math.round(255 * (l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)))));
+  return '#' + [f(0), f(8), f(4)].map(x => x.toString(16).padStart(2, '0')).join('');
+}
+function shiftHue(hex, deg) {
+  let [h, s, l] = hexToHsl(hex);
+  h = (h + deg + 360) % 360;
+  return hslToHex(h, s, l);
+}
+function setLightness(hex, l) {
+  const [h, s] = hexToHsl(hex);
+  return hslToHex(h, s, l);
+}
+function isLight(hex) {
+  const [, , l] = hexToHsl(hex);
+  return l > 60;
+}
+
+const PALETTES = {
+  analogous: { name: 'Analogous', desc: '3 colors evenly spaced 30° apart on the color wheel. Cohesive, calm.', generate: base => [shiftHue(base, -30), base, shiftHue(base, 30)] },
+  complementary: { name: 'Complementary', desc: 'Base color + its opposite (180° apart). High contrast, maximum energy.', generate: base => [base, shiftHue(base, 180)] },
+  triadic: { name: 'Triadic', desc: '3 colors evenly spaced 120° apart. Vibrant but balanced.', generate: base => [base, shiftHue(base, 120), shiftHue(base, 240)] },
+  monochromatic: { name: 'Monochromatic', desc: '5 tones of the same hue, dark to light. Professional, clean.', generate: base => [setLightness(base, 15), setLightness(base, 35), setLightness(base, 55), setLightness(base, 75), setLightness(base, 90)] }
+};
+
+let currentBase = '#a855f7';
+let currentPalette = [];
+
+function render() {
+  const el = document.getElementById('palettes');
+  el.innerHTML = '';
+  Object.entries(PALETTES).forEach(([key, p]) => {
+    const colors = p.generate(currentBase);
+    if (key === 'analogous') currentPalette = colors;
+    const sect = document.createElement('div');
+    sect.className = 'palette-section';
+    sect.innerHTML = `
+      <h2>${p.name}</h2>
+      <p class="desc">${p.desc}</p>
+      <div class="palette-row">
+        ${colors.map(c => `
+          <div class="swatch" style="background:${c}; color:${isLight(c) ? '#000' : '#fff'}" data-hex="${c}">
+            <div class="hex">${c.toUpperCase()}</div>
+            <div class="copied">Copied!</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    el.appendChild(sect);
+  });
+  document.querySelectorAll('.swatch').forEach(s => {
+    s.addEventListener('click', () => {
+      navigator.clipboard.writeText(s.dataset.hex);
+      s.classList.add('copied-state');
+      setTimeout(() => s.classList.remove('copied-state'), 800);
+    });
+  });
+  updateExport();
+}
+
+function updateExport() {
+  const fmt = document.querySelector('.export-tab.active').dataset.format;
+  const palette = currentPalette;
+  let code = '';
+  if (fmt === 'css') {
+    code = ':root {\n' + palette.map((c, i) => `  --color-${i + 1}: ${c};`).join('\n') + '\n}';
+  } else if (fmt === 'tailwind') {
+    code = '// tailwind.config.js\nmodule.exports = {\n  theme: {\n    extend: {\n      colors: {\n        brand: {\n' +
+      palette.map((c, i) => `          ${(i + 1) * 100}: \'${c}\',`).join('\n') +
+      '\n        }\n      }\n    }\n  }\n};';
+  } else if (fmt === 'json') {
+    code = JSON.stringify({ palette: palette.map((c, i) => ({ name: `color-${i + 1}`, hex: c })) }, null, 2);
+  } else if (fmt === 'scss') {
+    code = palette.map((c, i) => `$color-${i + 1}: ${c};`).join('\n');
+  }
+  document.getElementById('exportText').textContent = code;
+}
+
+document.querySelectorAll('.export-tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.export-tab').forEach(x => x.classList.toggle('active', x === t));
+    updateExport();
+  });
+});
+
+document.getElementById('copyExport').addEventListener('click', () => {
+  navigator.clipboard.writeText(document.getElementById('exportText').textContent);
+  const btn = document.getElementById('copyExport');
+  btn.textContent = 'Copied!';
+  setTimeout(() => btn.textContent = 'Copy', 1500);
+});
+
+document.getElementById('basePicker').addEventListener('input', e => {
+  currentBase = e.target.value;
+  document.getElementById('baseHex').value = currentBase;
+  render();
+});
+document.getElementById('baseHex').addEventListener('change', e => {
+  let v = e.target.value.trim();
+  if (!v.startsWith('#')) v = '#' + v;
+  if (/^#[0-9a-f]{6}$/i.test(v)) {
+    currentBase = v;
+    document.getElementById('basePicker').value = currentBase;
+    render();
+  }
+});
+document.getElementById('shuffle').addEventListener('click', () => {
+  currentBase = '#' + Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0');
+  document.getElementById('basePicker').value = currentBase;
+  document.getElementById('baseHex').value = currentBase;
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
