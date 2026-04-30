@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "Today, just launched",
+  "lastUpdated": "Just now — site verified on impact.com, Namecheap active",
   "tools": [
     { "name": "Domain Name Generator", "slug": "domain-generator", "status": "live", "visitors7d": "—" },
     { "name": "OG Image Generator", "slug": "og-image-generator", "status": "live", "visitors7d": "—" },
@@ -10,23 +10,27 @@
   ],
   "stats": {
     "tools": 6,
-    "toolsDelta": "+6 since launch (today)",
+    "toolsDelta": "+6 since launch",
     "visitors": "—",
     "visitorsDelta": "Vercel Analytics not yet enabled",
     "clicks": "0",
-    "clicksDelta": "no affiliate IDs installed yet",
+    "clicksDelta": "Namecheap link still placeholder — paste impact.com partner ID",
     "revenue": "$0",
-    "revenueDelta": "set up affiliates to start earning",
+    "revenueDelta": "1 affiliate active (Namecheap), 0 IDs in code yet",
     "posts": 0,
-    "postsDelta": "+0 today (first run pending)",
-    "indexed": "0",
-    "indexedDelta": "Search Console not yet connected"
+    "postsDelta": "+0 today (first promo run pending)",
+    "indexed": "—",
+    "indexedDelta": "Search Console pending"
   },
   "activity": [
-    { "time": "today", "tag": "ship", "text": "Site launched: domain-generator, og-image-generator, background-remover, favicon-generator, color-palette, seo-meta-generator (6 tools)" },
-    { "time": "today", "tag": "seo", "text": "Published llms.txt for AI crawler citation, sitemap.xml for Google/Bing, robots.txt allowing all AI bots (GPTBot, ClaudeBot, PerplexityBot, etc.)" },
-    { "time": "today", "tag": "promo", "text": "Daily ship task scheduled (9am, builds 2 tools/day from 20-tool roadmap)" },
-    { "time": "today", "tag": "promo", "text": "Daily promo task scheduled (8am, generates SEO content + social drafts + dashboard updates)" }
+    { "time": "just now", "tag": "promo", "text": "✅ Site verified on impact.com via meta tag (auto-installed)" },
+    { "time": "just now", "tag": "promo", "text": "✅ All URLs migrated from long team URL to tinytools-smoky.vercel.app" },
+    { "time": "just now", "tag": "promo", "text": "✅ Namecheap affiliate program ACTIVE (first partner via impact.com)" },
+    { "time": "just now", "tag": "ship", "text": "Updated llms.txt, sitemap.xml, robots.txt with new canonical URL" },
+    { "time": "today", "tag": "ship", "text": "Site launched: 6 tools live (domain-generator, og-image-generator, background-remover, favicon-generator, color-palette, seo-meta-generator)" },
+    { "time": "today", "tag": "seo", "text": "Published llms.txt for AI crawler citation, sitemap.xml, robots.txt allowing all AI bots" },
+    { "time": "today", "tag": "promo", "text": "Daily ship task scheduled (9am, 2 tools/day)" },
+    { "time": "today", "tag": "promo", "text": "Daily promo task scheduled (8am, blog post + 4 social drafts/day)" }
   ],
   "roadmap": [
     { "name": "AI Resume Tailorer", "shipped": false, "eta": "tomorrow 9am" },
@@ -42,17 +46,21 @@
   ],
   "drafts": [],
   "checklist": [
-    { "task": "Sign up: Namecheap Affiliate", "url": "https://www.namecheap.com/affiliates/", "done": false, "value": "Powers Domain Generator. $3-15 per signup." },
-    { "task": "Sign up: Bannerbear Affiliate", "url": "https://www.bannerbear.com/affiliate-program/", "done": false, "value": "Powers OG Generator + Background Remover. 30% recurring." },
-    { "task": "Sign up: Buy Me a Coffee", "url": "https://www.buymeacoffee.com/", "done": false, "value": "Direct tips $3-50. Footer link on every tool." },
-    { "task": "Sign up: Ahrefs Affiliate", "url": "https://ahrefs.com/affiliate-program", "done": false, "value": "Powers SEO Meta Generator. $150 per sale." },
-    { "task": "Sign up: Semrush Affiliate", "url": "https://www.semrush.com/affiliateprogram/", "done": false, "value": "Powers SEO Meta Generator. $200 per sale." },
-    { "task": "Sign up: Webflow Affiliate", "url": "https://webflow.com/affiliates", "done": false, "value": "Powers Favicon + Color Palette. $60 per signup." },
-    { "task": "Sign up: Replicate Affiliate", "url": "https://replicate.com/affiliate", "done": false, "value": "Powers Background Remover. $30 per signup." },
+    { "task": "✅ Namecheap (Impact.com) — APPROVED", "url": "https://app.impact.com/", "done": true, "value": "Powers Domain Generator — paste your partner ID to me to activate" },
+    { "task": "Get your Namecheap Impact.com Partner ID + tracking link", "url": "https://app.impact.com/secure/mediapartner/MediaPartnerHomeBeta.ihtml", "done": false, "value": "Login → Brand Contracts → Namecheap → Tracking Links. Paste the link to me." },
+    { "task": "Apply: Squarespace via Impact.com Marketplace", "url": "https://app.impact.com/secure/marketplace/listings/SquarespaceListing.ihtml", "done": false, "value": "$100-200 per signup. Powers SEO + favicon tools." },
+    { "task": "Apply: Adobe Creative Cloud via Impact.com", "url": "https://app.impact.com/", "done": false, "value": "85% of first month. Powers OG image + design tools." },
+    { "task": "Apply: Canva via Impact.com (if available) or direct", "url": "https://www.canva.com/affiliates/", "done": false, "value": "$36 per Pro signup." },
+    { "task": "Apply: AppSumo affiliate (great for SaaS audience)", "url": "https://appsumo.com/partners/", "done": false, "value": "100% first sale, then 5% recurring." },
+    { "task": "Apply: GoDaddy Affiliate (alt. domain registrar)", "url": "https://www.godaddy.com/godaddy-affiliate-program", "done": false, "value": "Up to $100 per new customer." },
+    { "task": "Apply: Microsoft 365 / Office (via Impact.com)", "url": "https://app.impact.com/", "done": false, "value": "5% recurring." },
+    { "task": "Sign up: Bannerbear Affiliate (direct, not impact)", "url": "https://www.bannerbear.com/affiliate-program/", "done": false, "value": "30% recurring. Powers OG + Background Remover." },
+    { "task": "Sign up: Buy Me a Coffee", "url": "https://www.buymeacoffee.com/", "done": false, "value": "Direct tips $3-50 from happy users." },
+    { "task": "Sign up: Ahrefs (direct)", "url": "https://ahrefs.com/affiliate-program", "done": false, "value": "$150/sale. Powers SEO Meta Generator." },
+    { "task": "Sign up: Semrush (direct)", "url": "https://www.semrush.com/affiliateprogram/", "done": false, "value": "$200/sale. Powers SEO Meta Generator." },
     { "task": "Enable Vercel Analytics (free tier)", "url": "https://vercel.com/alfredos-projects-168b6539/tinytools/analytics", "done": false, "value": "Real visitor numbers in this dashboard" },
-    { "task": "Verify site in Google Search Console", "url": "https://search.google.com/search-console", "done": false, "value": "See what queries we rank for" },
-    { "task": "Submit to There's An AI For That", "url": "https://theresanaiforthat.com/submit", "done": false, "value": "Free directory, ranks well, AI tool focused" },
-    { "task": "Submit to Futurepedia", "url": "https://www.futurepedia.io/submit-tool", "done": false, "value": "Free AI tool directory" },
-    { "task": "Launch on Product Hunt", "url": "https://www.producthunt.com/posts/new", "done": false, "value": "Can drive 1k-10k visits in launch week" }
+    { "task": "Verify site in Google Search Console", "url": "https://search.google.com/search-console", "done": false, "value": "See SEO rankings; let promo task ping it" },
+    { "task": "Submit to There's An AI For That", "url": "https://theresanaiforthat.com/submit", "done": false, "value": "Free directory, ranks well in Google" },
+    { "task": "Submit to Futurepedia", "url": "https://www.futurepedia.io/submit-tool", "done": false, "value": "Free AI tool directory" }
   ]
 }
