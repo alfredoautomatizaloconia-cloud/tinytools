@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TinyTools — Free, Fast, No-Signup AI Tools for Builders</title>
+<meta name="description" content="A growing collection of free, single-purpose AI tools. No signup, no tracking, no nonsense. Built for founders, indie hackers, and marketers.">
+<meta property="og:title" content="TinyTools — Free AI tools for builders">
+<meta property="og:description" content="No signup. No tracking. Just useful tools.">
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #8b5cf6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, #8b5cf640 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 980px; margin: 0 auto; padding: 60px 20px; }
+  header { text-align: center; padding: 40px 0; }
+  h1 {
+    font-size: clamp(36px, 6vw, 64px); font-weight: 800; line-height: 1.05;
+    margin-bottom: 18px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #a78bfa 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .tagline { font-size: 19px; color: var(--text-dim); max-width: 580px; margin: 0 auto; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 50px; }
+  .card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; text-decoration: none; color: var(--text); transition: all 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15); }
+  .card-icon { font-size: 36px; margin-bottom: 16px; }
+  .card-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+  .card-desc { color: var(--text-dim); font-size: 15px; flex: 1; margin-bottom: 16px; }
+  .card-cta { color: var(--accent); font-weight: 600; font-size: 14px; }
+  .coming-soon { opacity: 0.5; cursor: default; pointer-events: none; }
+  .coming-soon .card-cta { color: var(--text-dim); }
+  footer { margin-top: 80px; text-align: center; color: var(--text-dim); font-size: 13px; padding-top: 32px; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>TinyTools</h1>
+    <p class="tagline">Free, single-purpose web tools. No signup, no tracking, no AI bloat. Built for people who ship.</p>
+  </header>
+
+  <div class="grid">
+    <a href="/domain-generator/" class="card">
+      <div class="card-icon">🌐</div>
+      <div class="card-title">Domain Name Generator</div>
+      <div class="card-desc">Generate 60+ creative, available domain names instantly. Brandable, descriptive, modern — your call. Live availability check.</div>
+      <div class="card-cta">Open tool →</div>
+    </a>
+
+    <a href="/og-image-generator/" class="card">
+      <div class="card-icon">🖼️</div>
+      <div class="card-title">OG Image Generator</div>
+      <div class="card-desc">Make beautiful 1200×630 social cards for Twitter, LinkedIn, and Facebook in 60 seconds. 8 templates, PNG download.</div>
+      <div class="card-cta">Open tool →</div>
+    </a>
+
+    <div class="card coming-soon">
+      <div class="card-icon">🎨</div>
+      <div class="card-title">Background Remover</div>
+      <div class="card-desc">Remove backgrounds from any image, instantly, in your browser.</div>
+      <div class="card-cta">Coming soon</div>
+    </div>
+
+    <div class="card coming-soon">
+      <div class="card-icon">📄</div>
+      <div class="card-title">AI Resume Tailor</div>
+      <div class="card-desc">Paste your resume + a job description, get a perfectly tailored version.</div>
+      <div class="card-cta">Coming soon</div>
+    </div>
+
+    <div class="card coming-soon">
+      <div class="card-icon">⭐</div>
+      <div class="card-title">Favicon Generator</div>
+      <div class="card-desc">Generate a complete favicon set from text or emoji in one click.</div>
+      <div class="card-cta">Coming soon</div>
+    </div>
+
+    <div class="card coming-soon">
+      <div class="card-icon">🔍</div>
+      <div class="card-title">SEO Meta Tag Generator</div>
+      <div class="card-desc">Build perfect meta tags + see exactly how your page will look in Google.</div>
+      <div class="card-cta">Coming soon</div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Built with curiosity, deployed on Vercel, hosted free forever. <a href="#" style="color: var(--accent); text-decoration: none;">Tip jar</a></p>
+  </footer>
+</div>
+</body>
+</html>
