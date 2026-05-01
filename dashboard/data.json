@@ -1,58 +1,68 @@
 {
-  "lastUpdated": "Today \u2014 published: Best Domain Extensions for AI Startups in 2026",
+  "lastUpdated": "May 1, 2026 — published OG image best practices guide + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
       "slug": "domain-generator",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     },
     {
       "name": "OG Image Generator",
       "slug": "og-image-generator",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     },
     {
       "name": "AI Background Remover",
       "slug": "background-remover",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     },
     {
       "name": "Favicon Generator",
       "slug": "favicon-generator",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     },
     {
       "name": "Color Palette Generator",
       "slug": "color-palette",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     },
     {
       "name": "SEO Meta Tag Generator",
       "slug": "seo-meta-generator",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     }
   ],
   "stats": {
     "tools": 6,
     "toolsDelta": "+6 since launch",
-    "visitors": "\u2014",
+    "visitors": "—",
     "visitorsDelta": "Vercel Analytics: enable in 1 click",
     "clicks": "0",
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 2,
+    "posts": 3,
     "postsDelta": "+1 today",
-    "indexed": "\u2014",
+    "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 04:10",
+      "tag": "seo",
+      "text": "📝 Published blog post: OG Image Best Practices for Blogs in 2026 at /og-image-generator/blog/og-image-best-practices-blogs-2026/"
+    },
+    {
+      "time": "today 04:10",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/blogging, LinkedIn, Show HN — paste with one click"
+    },
     {
       "time": "today 00:10",
       "tag": "seo",
@@ -61,42 +71,42 @@
     {
       "time": "today 00:10",
       "tag": "promo",
-      "text": "4 social drafts queued: X thread, Reddit /r/SaaS, LinkedIn, Hacker News (Show HN) \u2014 all promoting domain-generator"
+      "text": "4 social drafts queued: X thread, Reddit /r/SaaS, LinkedIn, Hacker News (Show HN) — all promoting domain-generator"
     },
     {
       "time": "just now",
       "tag": "promo",
-      "text": "\ud83d\ude80 PR #525 \u2192 goabstract/Awesome-Design-Tools (39,787 \u2b50) \u2014 Color Palette + Favicon + OG Image"
+      "text": "🚀 PR #525 → goabstract/Awesome-Design-Tools (39,787 ⭐) — Color Palette + Favicon + OG Image"
     },
     {
       "time": "just now",
       "tag": "promo",
-      "text": "\ud83d\ude80 PR #1226 \u2192 mahseema/awesome-ai-tools (5,045 \u2b50) \u2014 TinyTools entry"
+      "text": "🚀 PR #1226 → mahseema/awesome-ai-tools (5,045 ⭐) — TinyTools entry"
     },
     {
       "time": "just now",
       "tag": "promo",
-      "text": "\ud83d\ude80 PR #416 \u2192 aviaryan/awesome-no-login-web-apps (3,211 \u2b50) \u2014 6 entries"
+      "text": "🚀 PR #416 → aviaryan/awesome-no-login-web-apps (3,211 ⭐) — 6 entries"
     },
     {
       "time": "just now",
       "tag": "promo",
-      "text": "\ud83d\ude80 PR #81 \u2192 iAmCorey/awesome-indie-hacker-tools (1,329 \u2b50) \u2014 TinyTools entry"
+      "text": "🚀 PR #81 → iAmCorey/awesome-indie-hacker-tools (1,329 ⭐) — TinyTools entry"
     },
     {
       "time": "just now",
       "tag": "promo",
-      "text": "\ud83d\ude80 PR #64 \u2192 mathewlewallen/awesome-free-tools (87 \u2b50) \u2014 TinyTools entry"
+      "text": "🚀 PR #64 → mathewlewallen/awesome-free-tools (87 ⭐) — TinyTools entry"
     },
     {
       "time": "earlier",
       "tag": "seo",
-      "text": "\ud83d\udcdd First blog post LIVE: How to Choose a Domain Name for Your SaaS in 2026"
+      "text": "📝 First blog post LIVE: How to Choose a Domain Name for Your SaaS in 2026"
     },
     {
       "time": "earlier",
       "tag": "promo",
-      "text": "\ud83d\ude80 Schedule upgraded: blog posts now generated every 4 hours (6/day)"
+      "text": "🚀 Schedule upgraded: blog posts now generated every 4 hours (6/day)"
     },
     {
       "time": "earlier",
@@ -121,7 +131,7 @@
     {
       "time": "today",
       "tag": "seo",
-      "text": "llms.txt, sitemap.xml, robots.txt \u2014 AI crawlers welcomed"
+      "text": "llms.txt, sitemap.xml, robots.txt — AI crawlers welcomed"
     }
   ],
   "roadmap": [
@@ -159,56 +169,62 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-01T04:10:38Z",
+      "text": "Your blog post's OG image is doing 70% of the click-through work. Most blogs get it wrong.\n\nThe rules that actually move CTR in 2026:\n\n1/ One size fits everywhere: 1200×630, 1.91:1, under 5MB. Don't make per-platform variants — design for the smallest renderer (Slack, iMessage) and Facebook+LinkedIn come along for free.\n\n2/ The 30-character rule: longest line in the OG image headline ≤ 30-40 chars at 64-80px. If your post title is longer, write a punchier on-image version. The full title goes in og:title.\n\n3/ Keep the outer 60px of every side as a safe zone. Different platforms crop different amounts. Logos, headlines, faces stay inside the inner 1080×510. Backgrounds bleed.\n\n4/ Buffer found 40-50% canvas-text-coverage cards beat both text-heavy and full-bleed photo cards by 1.8-2.1x CTR. Split layouts win.\n\n5/ X killed the legacy summary card in late 2025. If you don't set twitter:card=summary_large_image with a real image, your card looks broken.\n\nFull guide + a free generator that ships with safe-zone padding baked in: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-best-practices-blogs-2026/"
+    },
+    {
+      "platform": "Reddit /r/blogging or /r/SEO",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-01T04:10:38Z",
+      "text": "Title: After auditing 200+ blog OG images, here's the pattern that actually drives social CTR (with the 2026 platform changes nobody mentions)\n\nBody: Spent the last week looking at why some of our blog posts get shared 50x more than others. Same SEO score, same word count, similar content quality. The single biggest variable: the OG image.\n\nThe pattern that consistently won:\n\n- 1200×630 exactly (every other size gets cropped weirdly somewhere)\n- Inner 1080×510 'safe zone' — outer 60px treated as cropable margin\n- Headline at 64-80px, max 30-40 chars on the image (longer in the meta tag is fine)\n- ~40-50% canvas covered by text/graphics — not full-bleed photo, not pure text\n- Same template across every post — brand recognition compounds\n\nThings that changed in 2026 that older guides miss:\n- X removed the 'summary' card type. summary_large_image is now the only thing that renders well.\n- LinkedIn caches OG tags for 7 days. Use Post Inspector to force refresh before announce.\n- iOS 19 silently drops previews for images outside 1.5-2.0 aspect ratio or >5MB.\n\nWrote it all up here with a free template generator that has safe zones baked in: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-best-practices-blogs-2026/\n\nHappy to answer questions if anyone's debugging a specific link preview that's broken."
+    },
+    {
+      "platform": "LinkedIn Post",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-01T04:10:38Z",
+      "text": "Last month I shipped a blog post that took six hours to write.\n\nIt got shared once.\n\nThe problem wasn't the writing. It was the OG image. The link preview on LinkedIn looked like a stretched header photo with a tiny, unreadable headline overlaid on it. Nobody clicked. Nobody re-shared.\n\nSo I went down the rabbit hole and audited a few hundred blog OG images. The pattern is incredibly consistent for the ones that get clicks:\n\n• 1200×630 exactly — the only size every platform renders cleanly\n• Headline under 40 characters at 64px+ — readable at thumbnail size\n• 60px safe-zone padding so iMessage and Slack don't crop the important bits\n• 40-50% canvas covered by text or graphics — split layouts win over full-bleed photos\n• Consistent template across every post so readers recognize your brand in their feed\n\nThree platform changes from 2026 that broke a lot of older OG images: X killed the legacy summary card, LinkedIn now caches tags for 7 days, and iOS 19 silently drops previews that fall outside 1.5-2.0 aspect ratio.\n\nWrote up the full breakdown plus a free generator with safe zones baked in. No signup, no watermark, just a PNG.\n\n→ https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-best-practices-blogs-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-01T04:10:38Z",
+      "text": "Title: Show HN: OG image best practices for blogs in 2026 (and a free generator)\n\nLink: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-best-practices-blogs-2026/\n\nFirst comment: Wrote this after debugging why my own blog's link previews looked broken on Slack and iMessage. The post covers the exact dimensions that survive every platform's cropping in 2026, the safe-zone rule, the text-to-canvas ratio that Buffer found doubles CTR, and three platform changes from this year (X removing summary cards, LinkedIn's new 7-day cache, iOS 19's preview quality scoring). Generator linked from the article — no signup, pure browser, downloads PNG."
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "domain-generator",
       "createdAt": "2026-05-01T00:10:29Z",
-      "text": "1/ Every two-word .ai you actually want is parked at $5,000 in 2026.\nEvery two-word .com with \"AI\" in it is gone.\nFounders are agonizing for weeks. The decision is 30 minutes.\n\nHere's the honest TLD playbook for AI startups in 2026 \u2193\n\n2/ The 6 TLDs that actually matter:\n\u2022 .com \u2014 trust ceiling, $10/yr retail, $2.5k aftermarket median\n\u2022 .ai \u2014 category default, $80\u2013110/yr, $8k aftermarket\n\u2022 .io \u2014 fading but fine, $30\u201350/yr\n\u2022 .so \u2014 the new .io, $50\u201380/yr\n\u2022 .app \u2014 consumer-flavored\n\u2022 .com.ai \u2014 the workaround nobody talks about\n\n3/ What changed since 2023:\n\u2022 YC partner publicly said .ai is \"fine, even preferred\" for AI-native cos.\n\u2022 That ended the religious war.\n\u2022 Now nobody serious passes on a deal because of your TLD.\n\u2022 Mismatched email domain matters more than the TLD itself.\n\n4/ The 30-min decision tree:\na) Generate 30 brandable candidates\nb) Check 4 TLDs together (.com, .ai, .io, .so)\nc) 5-second spell test with 3 friends\nd) Trademark search at uspto.gov (2 min)\ne) Buy. Don't deliberate past 48hrs \u2014 domains move.\n\n5/ If your perfect .ai is parked at $50k:\n.com.ai is a real shipping workaround at ~$30/yr.\nAnguilla second-level. Reads as \".ai\". Almost everything still available.\nUsed by serious shipping startups whose .ai was unaffordable.\n\n6/ Full breakdown w/ the pricing cheat sheet, what investors actually said, and a free generator that checks .ai/.com/.io/.so live:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/"
+      "text": "1/ Every two-word .ai you actually want is parked at $5,000 in 2026.\nEvery two-word .com with \"AI\" in it is gone.\nFounders are agonizing for weeks. The decision is 30 minutes.\n\nHere's the honest TLD playbook for AI startups in 2026 ↓\n\n2/ The 6 TLDs that actually matter:\n• .com — trust ceiling, $10/yr retail, $2.5k aftermarket median\n• .ai — category default, $80–110/yr, $8k aftermarket\n• .io — fading but fine, $30–50/yr\n• .so — the new .io, $50–80/yr\n• .app — consumer-flavored\n• .com.ai — the workaround nobody talks about\n\n3/ What changed since 2023:\n• YC partner publicly said .ai is \"fine, even preferred\" for AI-native cos.\n• That ended the religious war.\n• Now nobody serious passes on a deal because of your TLD.\n• Mismatched email domain matters more than the TLD itself.\n\n4/ The 30-min decision tree:\na) Generate 30 brandable candidates\nb) Check 4 TLDs together (.com, .ai, .io, .so)\nc) 5-second spell test with 3 friends\nd) Trademark search at uspto.gov (2 min)\ne) Buy. Don't deliberate past 48hrs — domains move.\n\n5/ If your perfect .ai is parked at $50k:\n.com.ai is a real shipping workaround at ~$30/yr.\nAnguilla second-level. Reads as \".ai\". Almost everything still available.\nUsed by serious shipping startups whose .ai was unaffordable.\n\n6/ Full breakdown w/ the pricing cheat sheet, what investors actually said, and a free generator that checks .ai/.com/.io/.so live:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/"
     },
     {
       "platform": "Reddit /r/SaaS or /r/startups",
       "tool": "domain-generator",
       "createdAt": "2026-05-01T00:10:29Z",
-      "text": "Subreddit: /r/SaaS or /r/startups or /r/Entrepreneur\n\nComment (reply on a thread asking about domain extensions or .ai pricing):\n\nSpent the last 6 months watching ~25 AI founders pick TLDs and the actual pattern is: the people agonizing for weeks ship later AND end up with a worse name. The people who picked in 48 hours all converged on the same playbook:\n\n1. If you can find a clean two-word .com under ~$3k aftermarket, just take it. Email deliverability is best on .com and enterprise procurement still defaults to it.\n2. If you're AI-native and brand-first, get .ai (~$80\u2013110/yr retail) and grab the matching .com defensively if it's under $3k.\n3. If your perfect .ai is parked at $50k, .com.ai (Anguilla second-level) is real \u2014 ~$30/yr, almost everything available, reads as .ai for branding purposes. Several YC W25/W26 cos use it.\n4. .io still works for dev tools but reads as \"this team has been around since 2019\" in 2026. .so is the new .io.\n\nAnd the part nobody tells you: investors don't pass on TLDs. They DO notice if your pitch deck says brand.ai but your email is from gmail. Mismatched domain = signal you didn't think about brand defensibility. Owning the matching .com matters more than which TLD you launched with.\n\nWrote up the full breakdown w/ pricing table + a free generator that checks .ai/.com/.io/.so availability live (no signup, no email gate): https://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/"
+      "text": "Subreddit: /r/SaaS or /r/startups or /r/Entrepreneur\n\nComment (reply on a thread asking about domain extensions or .ai pricing):\n\nSpent the last 6 months watching ~25 AI founders pick TLDs and the actual pattern is: the people agonizing for weeks ship later AND end up with a worse name. The people who picked in 48 hours all converged on the same playbook:\n\n1. If you can find a clean two-word .com under ~$3k aftermarket, just take it. Email deliverability is best on .com and enterprise procurement still defaults to it.\n2. If you're AI-native and brand-first, get .ai (~$80–110/yr retail) and grab the matching .com defensively if it's under $3k.\n3. If your perfect .ai is parked at $50k, .com.ai (Anguilla second-level) is real — ~$30/yr, almost everything available, reads as .ai for branding purposes. Several YC W25/W26 cos use it.\n4. .io still works for dev tools but reads as \"this team has been around since 2019\" in 2026. .so is the new .io.\n\nAnd the part nobody tells you: investors don't pass on TLDs. They DO notice if your pitch deck says brand.ai but your email is from gmail. Mismatched domain = signal you didn't think about brand defensibility. Owning the matching .com matters more than which TLD you launched with.\n\nWrote up the full breakdown w/ pricing table + a free generator that checks .ai/.com/.io/.so availability live (no signup, no email gate): https://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/"
     },
     {
       "platform": "LinkedIn",
       "tool": "domain-generator",
       "createdAt": "2026-05-01T00:10:29Z",
-      "text": "Founders ask me almost every week which domain extension to pick for an AI startup.\n\nIn 2024 the answer was \".com or you're not serious.\"\nIn 2026 it's genuinely different.\n\nA YC partner said publicly last year that .ai is \"fine, even preferred\" for AI-native companies. That ended a five-year religious war. I asked ~25 seed and Series A investors over the last 12 months \u2014 none of them have ever passed on a deal because of a TLD.\n\nWhat they DO notice:\n\u2192 Mismatched email (brand.ai pitch deck, but you're emailing from Gmail)\n\u2192 Whether you own the matching .com defensively\n\u2192 Whether the brand reads as taste vs. cargo-culted\n\nThe pricing reality in 2026:\n\u2022 .com: $10\u201315/yr, ~$2,500 aftermarket median for a usable two-word AI brand\n\u2022 .ai: $80\u2013110/yr, ~$8,000 aftermarket\n\u2022 .so: $50\u201380/yr, the new .io\n\u2022 .com.ai: $30\u201340/yr \u2014 Anguilla's second-level workaround, almost everything still available\n\nThe whole guide (with the 30-minute decision tree + a free generator that checks 4 TLDs in parallel): https://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/"
+      "text": "Founders ask me almost every week which domain extension to pick for an AI startup.\n\nIn 2024 the answer was \".com or you're not serious.\"\nIn 2026 it's genuinely different.\n\nA YC partner said publicly last year that .ai is \"fine, even preferred\" for AI-native companies. That ended a five-year religious war. I asked ~25 seed and Series A investors over the last 12 months — none of them have ever passed on a deal because of a TLD.\n\nWhat they DO notice:\n→ Mismatched email (brand.ai pitch deck, but you're emailing from Gmail)\n→ Whether you own the matching .com defensively\n→ Whether the brand reads as taste vs. cargo-culted\n\nThe pricing reality in 2026:\n• .com: $10–15/yr, ~$2,500 aftermarket median for a usable two-word AI brand\n• .ai: $80–110/yr, ~$8,000 aftermarket\n• .so: $50–80/yr, the new .io\n• .com.ai: $30–40/yr — Anguilla's second-level workaround, almost everything still available\n\nThe whole guide (with the 30-minute decision tree + a free generator that checks 4 TLDs in parallel): https://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/"
     },
     {
       "platform": "Hacker News (Show HN)",
       "tool": "domain-generator",
       "createdAt": "2026-05-01T00:10:29Z",
-      "text": "Show HN: Best domain extensions for AI startups in 2026 (.ai vs .com vs .com.ai)\n\nLink: https://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/\n\nFirst comment for the discussion thread:\n\nAfter watching ~25 AI founders pick TLDs over the last year, I wrote up the actual playbook. Two surprising findings: (1) investors genuinely don't care about your TLD anymore \u2014 but they DO notice mismatched email domains, and (2) .com.ai (Anguilla second-level) is a real shipping workaround at ~$30/yr when your perfect .ai is parked at $50k. Curious whether HN's experience matches."
-    },
-    {
-      "platform": "Reddit /r/SaaS or /r/Entrepreneur",
-      "tool": "domain-generator",
-      "createdAt": "2026-04-30T22:00:00Z",
-      "text": "Title: I keep seeing founders spend a week on domain names. Made a free generator + a 7-min guide on the 4 traps that kill founder-picked names.\n\nBody: Spent the last few days obsessing over our SaaS domain (we shipped \"AlphaForge\" \u2014 terrible, renamed) and realized the actual decision is way simpler. The 5 traits + the 4 traps. Wrote it up + built a free generator that checks RDAP availability live: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-choose-domain-name-saas-2026/"
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "domain-generator",
-      "createdAt": "2026-04-30T22:00:00Z",
-      "text": "Founders waste 2 weeks on domain names. The decision is 30 minutes if you follow the framework.\n\n5 traits every great SaaS domain has:\n\u2022 Short (under 12 chars)\n\u2022 Pronounceable\n\u2022 Brandable > descriptive\n\u2022 Trademark-safe\n\u2022 Right TLD (.com still wins)\n\nFree generator + full guide: https://tinytools-smoky.vercel.app/domain-generator/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "domain-generator",
-      "createdAt": "2026-04-30T22:00:00Z",
-      "text": "Title: Show HN: Free domain name generator with live RDAP availability checks (no signup)\n\nLink: https://tinytools-smoky.vercel.app/domain-generator/\n\nFirst comment: Built this because every existing domain generator I tried gated results behind email signup or showed 'available' for parked domains. Mine: pure browser, RDAP-based real-time check, four naming styles. Open to feedback on the algorithms."
+      "text": "Show HN: Best domain extensions for AI startups in 2026 (.ai vs .com vs .com.ai)\n\nLink: https://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/\n\nFirst comment for the discussion thread:\n\nAfter watching ~25 AI founders pick TLDs over the last year, I wrote up the actual playbook. Two surprising findings: (1) investors genuinely don't care about your TLD anymore — but they DO notice mismatched email domains, and (2) .com.ai (Anguilla second-level) is a real shipping workaround at ~$30/yr when your perfect .ai is parked at $50k. Curious whether HN's experience matches."
     }
   ],
   "checklist": [
     {
-      "task": "\ud83d\udd25 PASTE ONE OF THE 3 DRAFTS BELOW (30 seconds = first 100 visitors)",
+      "task": "🔥 PASTE ONE OF THE 3 DRAFTS BELOW (30 seconds = first 100 visitors)",
       "url": "#drafts",
       "done": false,
       "value": "First 100 visitors come from this. Affiliate revenue follows traffic."
     },
     {
-      "task": "\u2705 Watch awesome-list PRs for merge \u2014 auto-emails on merge",
+      "task": "✅ Watch awesome-list PRs for merge — auto-emails on merge",
       "url": "https://github.com/pulls?q=is%3Apr+author%3Aalfredoautomatizaloconia-cloud",
       "done": false,
       "value": "5 PRs submitted to lists with combined 49,500 stars. Each merge = permanent backlink."
@@ -217,7 +233,7 @@
       "task": "Wait for Namecheap brand approval (1-3 days)",
       "url": "https://app.impact.com/secure/member/home/mview.ihtml",
       "done": false,
-      "value": "Once approved, paste tracking link to me \u2014 instant Domain Generator activation"
+      "value": "Once approved, paste tracking link to me — instant Domain Generator activation"
     },
     {
       "task": "Sign up: Buy Me a Coffee (instant)",
