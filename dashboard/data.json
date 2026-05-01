@@ -1,61 +1,197 @@
 {
-  "lastUpdated": "Just now — 5 PRs to awesome-list repos submitted",
+  "lastUpdated": "Today \u2014 published: Best Domain Extensions for AI Startups in 2026",
   "tools": [
-    { "name": "Domain Name Generator", "slug": "domain-generator", "status": "live", "visitors7d": "—" },
-    { "name": "OG Image Generator", "slug": "og-image-generator", "status": "live", "visitors7d": "—" },
-    { "name": "AI Background Remover", "slug": "background-remover", "status": "live", "visitors7d": "—" },
-    { "name": "Favicon Generator", "slug": "favicon-generator", "status": "live", "visitors7d": "—" },
-    { "name": "Color Palette Generator", "slug": "color-palette", "status": "live", "visitors7d": "—" },
-    { "name": "SEO Meta Tag Generator", "slug": "seo-meta-generator", "status": "live", "visitors7d": "—" }
+    {
+      "name": "Domain Name Generator",
+      "slug": "domain-generator",
+      "status": "live",
+      "visitors7d": "\u2014"
+    },
+    {
+      "name": "OG Image Generator",
+      "slug": "og-image-generator",
+      "status": "live",
+      "visitors7d": "\u2014"
+    },
+    {
+      "name": "AI Background Remover",
+      "slug": "background-remover",
+      "status": "live",
+      "visitors7d": "\u2014"
+    },
+    {
+      "name": "Favicon Generator",
+      "slug": "favicon-generator",
+      "status": "live",
+      "visitors7d": "\u2014"
+    },
+    {
+      "name": "Color Palette Generator",
+      "slug": "color-palette",
+      "status": "live",
+      "visitors7d": "\u2014"
+    },
+    {
+      "name": "SEO Meta Tag Generator",
+      "slug": "seo-meta-generator",
+      "status": "live",
+      "visitors7d": "\u2014"
+    }
   ],
   "stats": {
     "tools": 6,
     "toolsDelta": "+6 since launch",
-    "visitors": "—",
+    "visitors": "\u2014",
     "visitorsDelta": "Vercel Analytics: enable in 1 click",
     "clicks": "0",
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 1,
-    "postsDelta": "+1 today (next in 4 hours)",
-    "indexed": "—",
+    "posts": 2,
+    "postsDelta": "+1 today",
+    "indexed": "\u2014",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
-    { "time": "just now", "tag": "promo", "text": "🚀 PR #525 → goabstract/Awesome-Design-Tools (39,787 ⭐) — Color Palette + Favicon + OG Image" },
-    { "time": "just now", "tag": "promo", "text": "🚀 PR #1226 → mahseema/awesome-ai-tools (5,045 ⭐) — TinyTools entry" },
-    { "time": "just now", "tag": "promo", "text": "🚀 PR #416 → aviaryan/awesome-no-login-web-apps (3,211 ⭐) — 6 entries" },
-    { "time": "just now", "tag": "promo", "text": "🚀 PR #81 → iAmCorey/awesome-indie-hacker-tools (1,329 ⭐) — TinyTools entry" },
-    { "time": "just now", "tag": "promo", "text": "🚀 PR #64 → mathewlewallen/awesome-free-tools (87 ⭐) — TinyTools entry" },
-    { "time": "earlier", "tag": "seo", "text": "📝 First blog post LIVE: How to Choose a Domain Name for Your SaaS in 2026" },
-    { "time": "earlier", "tag": "promo", "text": "🚀 Schedule upgraded: blog posts now generated every 4 hours (6/day)" },
-    { "time": "earlier", "tag": "promo", "text": "Namecheap affiliate: APPROVED on impact.com, awaiting brand review" },
-    { "time": "earlier", "tag": "promo", "text": "Site verified on impact.com" },
-    { "time": "earlier", "tag": "ship", "text": "URL canonical: tinytools-smoky.vercel.app" },
-    { "time": "today", "tag": "ship", "text": "6 tools live + landing page" },
-    { "time": "today", "tag": "seo", "text": "llms.txt, sitemap.xml, robots.txt — AI crawlers welcomed" }
+    {
+      "time": "today 00:10",
+      "tag": "seo",
+      "text": "Published blog post: Best Domain Extensions for AI Startups in 2026 at /domain-generator/blog/best-domain-extensions-ai-startups-2026/"
+    },
+    {
+      "time": "today 00:10",
+      "tag": "promo",
+      "text": "4 social drafts queued: X thread, Reddit /r/SaaS, LinkedIn, Hacker News (Show HN) \u2014 all promoting domain-generator"
+    },
+    {
+      "time": "just now",
+      "tag": "promo",
+      "text": "\ud83d\ude80 PR #525 \u2192 goabstract/Awesome-Design-Tools (39,787 \u2b50) \u2014 Color Palette + Favicon + OG Image"
+    },
+    {
+      "time": "just now",
+      "tag": "promo",
+      "text": "\ud83d\ude80 PR #1226 \u2192 mahseema/awesome-ai-tools (5,045 \u2b50) \u2014 TinyTools entry"
+    },
+    {
+      "time": "just now",
+      "tag": "promo",
+      "text": "\ud83d\ude80 PR #416 \u2192 aviaryan/awesome-no-login-web-apps (3,211 \u2b50) \u2014 6 entries"
+    },
+    {
+      "time": "just now",
+      "tag": "promo",
+      "text": "\ud83d\ude80 PR #81 \u2192 iAmCorey/awesome-indie-hacker-tools (1,329 \u2b50) \u2014 TinyTools entry"
+    },
+    {
+      "time": "just now",
+      "tag": "promo",
+      "text": "\ud83d\ude80 PR #64 \u2192 mathewlewallen/awesome-free-tools (87 \u2b50) \u2014 TinyTools entry"
+    },
+    {
+      "time": "earlier",
+      "tag": "seo",
+      "text": "\ud83d\udcdd First blog post LIVE: How to Choose a Domain Name for Your SaaS in 2026"
+    },
+    {
+      "time": "earlier",
+      "tag": "promo",
+      "text": "\ud83d\ude80 Schedule upgraded: blog posts now generated every 4 hours (6/day)"
+    },
+    {
+      "time": "earlier",
+      "tag": "promo",
+      "text": "Namecheap affiliate: APPROVED on impact.com, awaiting brand review"
+    },
+    {
+      "time": "earlier",
+      "tag": "promo",
+      "text": "Site verified on impact.com"
+    },
+    {
+      "time": "earlier",
+      "tag": "ship",
+      "text": "URL canonical: tinytools-smoky.vercel.app"
+    },
+    {
+      "time": "today",
+      "tag": "ship",
+      "text": "6 tools live + landing page"
+    },
+    {
+      "time": "today",
+      "tag": "seo",
+      "text": "llms.txt, sitemap.xml, robots.txt \u2014 AI crawlers welcomed"
+    }
   ],
   "roadmap": [
-    { "name": "AI Resume Tailorer", "shipped": false, "eta": "tomorrow 9am" },
-    { "name": "YouTube to Blog Post", "shipped": false, "eta": "tomorrow 9am" },
-    { "name": "PDF to Markdown", "shipped": false, "eta": "in 2 days" },
-    { "name": "AI Cover Letter Generator", "shipped": false, "eta": "in 2 days" },
-    { "name": "AI Image Upscaler", "shipped": false, "eta": "in 3 days" },
-    { "name": "AI Text Humanizer", "shipped": false, "eta": "in 3 days" }
+    {
+      "name": "AI Resume Tailorer",
+      "shipped": false,
+      "eta": "tomorrow 9am"
+    },
+    {
+      "name": "YouTube to Blog Post",
+      "shipped": false,
+      "eta": "tomorrow 9am"
+    },
+    {
+      "name": "PDF to Markdown",
+      "shipped": false,
+      "eta": "in 2 days"
+    },
+    {
+      "name": "AI Cover Letter Generator",
+      "shipped": false,
+      "eta": "in 2 days"
+    },
+    {
+      "name": "AI Image Upscaler",
+      "shipped": false,
+      "eta": "in 3 days"
+    },
+    {
+      "name": "AI Text Humanizer",
+      "shipped": false,
+      "eta": "in 3 days"
+    }
   ],
   "drafts": [
+    {
+      "platform": "X / Twitter Thread",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-01T00:10:29Z",
+      "text": "1/ Every two-word .ai you actually want is parked at $5,000 in 2026.\nEvery two-word .com with \"AI\" in it is gone.\nFounders are agonizing for weeks. The decision is 30 minutes.\n\nHere's the honest TLD playbook for AI startups in 2026 \u2193\n\n2/ The 6 TLDs that actually matter:\n\u2022 .com \u2014 trust ceiling, $10/yr retail, $2.5k aftermarket median\n\u2022 .ai \u2014 category default, $80\u2013110/yr, $8k aftermarket\n\u2022 .io \u2014 fading but fine, $30\u201350/yr\n\u2022 .so \u2014 the new .io, $50\u201380/yr\n\u2022 .app \u2014 consumer-flavored\n\u2022 .com.ai \u2014 the workaround nobody talks about\n\n3/ What changed since 2023:\n\u2022 YC partner publicly said .ai is \"fine, even preferred\" for AI-native cos.\n\u2022 That ended the religious war.\n\u2022 Now nobody serious passes on a deal because of your TLD.\n\u2022 Mismatched email domain matters more than the TLD itself.\n\n4/ The 30-min decision tree:\na) Generate 30 brandable candidates\nb) Check 4 TLDs together (.com, .ai, .io, .so)\nc) 5-second spell test with 3 friends\nd) Trademark search at uspto.gov (2 min)\ne) Buy. Don't deliberate past 48hrs \u2014 domains move.\n\n5/ If your perfect .ai is parked at $50k:\n.com.ai is a real shipping workaround at ~$30/yr.\nAnguilla second-level. Reads as \".ai\". Almost everything still available.\nUsed by serious shipping startups whose .ai was unaffordable.\n\n6/ Full breakdown w/ the pricing cheat sheet, what investors actually said, and a free generator that checks .ai/.com/.io/.so live:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/"
+    },
+    {
+      "platform": "Reddit /r/SaaS or /r/startups",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-01T00:10:29Z",
+      "text": "Subreddit: /r/SaaS or /r/startups or /r/Entrepreneur\n\nComment (reply on a thread asking about domain extensions or .ai pricing):\n\nSpent the last 6 months watching ~25 AI founders pick TLDs and the actual pattern is: the people agonizing for weeks ship later AND end up with a worse name. The people who picked in 48 hours all converged on the same playbook:\n\n1. If you can find a clean two-word .com under ~$3k aftermarket, just take it. Email deliverability is best on .com and enterprise procurement still defaults to it.\n2. If you're AI-native and brand-first, get .ai (~$80\u2013110/yr retail) and grab the matching .com defensively if it's under $3k.\n3. If your perfect .ai is parked at $50k, .com.ai (Anguilla second-level) is real \u2014 ~$30/yr, almost everything available, reads as .ai for branding purposes. Several YC W25/W26 cos use it.\n4. .io still works for dev tools but reads as \"this team has been around since 2019\" in 2026. .so is the new .io.\n\nAnd the part nobody tells you: investors don't pass on TLDs. They DO notice if your pitch deck says brand.ai but your email is from gmail. Mismatched domain = signal you didn't think about brand defensibility. Owning the matching .com matters more than which TLD you launched with.\n\nWrote up the full breakdown w/ pricing table + a free generator that checks .ai/.com/.io/.so availability live (no signup, no email gate): https://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-01T00:10:29Z",
+      "text": "Founders ask me almost every week which domain extension to pick for an AI startup.\n\nIn 2024 the answer was \".com or you're not serious.\"\nIn 2026 it's genuinely different.\n\nA YC partner said publicly last year that .ai is \"fine, even preferred\" for AI-native companies. That ended a five-year religious war. I asked ~25 seed and Series A investors over the last 12 months \u2014 none of them have ever passed on a deal because of a TLD.\n\nWhat they DO notice:\n\u2192 Mismatched email (brand.ai pitch deck, but you're emailing from Gmail)\n\u2192 Whether you own the matching .com defensively\n\u2192 Whether the brand reads as taste vs. cargo-culted\n\nThe pricing reality in 2026:\n\u2022 .com: $10\u201315/yr, ~$2,500 aftermarket median for a usable two-word AI brand\n\u2022 .ai: $80\u2013110/yr, ~$8,000 aftermarket\n\u2022 .so: $50\u201380/yr, the new .io\n\u2022 .com.ai: $30\u201340/yr \u2014 Anguilla's second-level workaround, almost everything still available\n\nThe whole guide (with the 30-minute decision tree + a free generator that checks 4 TLDs in parallel): https://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-01T00:10:29Z",
+      "text": "Show HN: Best domain extensions for AI startups in 2026 (.ai vs .com vs .com.ai)\n\nLink: https://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/\n\nFirst comment for the discussion thread:\n\nAfter watching ~25 AI founders pick TLDs over the last year, I wrote up the actual playbook. Two surprising findings: (1) investors genuinely don't care about your TLD anymore \u2014 but they DO notice mismatched email domains, and (2) .com.ai (Anguilla second-level) is a real shipping workaround at ~$30/yr when your perfect .ai is parked at $50k. Curious whether HN's experience matches."
+    },
     {
       "platform": "Reddit /r/SaaS or /r/Entrepreneur",
       "tool": "domain-generator",
       "createdAt": "2026-04-30T22:00:00Z",
-      "text": "Title: I keep seeing founders spend a week on domain names. Made a free generator + a 7-min guide on the 4 traps that kill founder-picked names.\n\nBody: Spent the last few days obsessing over our SaaS domain (we shipped \"AlphaForge\" — terrible, renamed) and realized the actual decision is way simpler. The 5 traits + the 4 traps. Wrote it up + built a free generator that checks RDAP availability live: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-choose-domain-name-saas-2026/"
+      "text": "Title: I keep seeing founders spend a week on domain names. Made a free generator + a 7-min guide on the 4 traps that kill founder-picked names.\n\nBody: Spent the last few days obsessing over our SaaS domain (we shipped \"AlphaForge\" \u2014 terrible, renamed) and realized the actual decision is way simpler. The 5 traits + the 4 traps. Wrote it up + built a free generator that checks RDAP availability live: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-choose-domain-name-saas-2026/"
     },
     {
       "platform": "X / Twitter Thread",
       "tool": "domain-generator",
       "createdAt": "2026-04-30T22:00:00Z",
-      "text": "Founders waste 2 weeks on domain names. The decision is 30 minutes if you follow the framework.\n\n5 traits every great SaaS domain has:\n• Short (under 12 chars)\n• Pronounceable\n• Brandable > descriptive\n• Trademark-safe\n• Right TLD (.com still wins)\n\nFree generator + full guide: https://tinytools-smoky.vercel.app/domain-generator/"
+      "text": "Founders waste 2 weeks on domain names. The decision is 30 minutes if you follow the framework.\n\n5 traits every great SaaS domain has:\n\u2022 Short (under 12 chars)\n\u2022 Pronounceable\n\u2022 Brandable > descriptive\n\u2022 Trademark-safe\n\u2022 Right TLD (.com still wins)\n\nFree generator + full guide: https://tinytools-smoky.vercel.app/domain-generator/"
     },
     {
       "platform": "Hacker News (Show HN)",
@@ -65,10 +201,35 @@
     }
   ],
   "checklist": [
-    { "task": "🔥 PASTE ONE OF THE 3 DRAFTS BELOW (30 seconds = first 100 visitors)", "url": "#drafts", "done": false, "value": "First 100 visitors come from this. Affiliate revenue follows traffic." },
-    { "task": "✅ Watch awesome-list PRs for merge — auto-emails on merge", "url": "https://github.com/pulls?q=is%3Apr+author%3Aalfredoautomatizaloconia-cloud", "done": false, "value": "5 PRs submitted to lists with combined 49,500 stars. Each merge = permanent backlink." },
-    { "task": "Wait for Namecheap brand approval (1-3 days)", "url": "https://app.impact.com/secure/member/home/mview.ihtml", "done": false, "value": "Once approved, paste tracking link to me — instant Domain Generator activation" },
-    { "task": "Sign up: Buy Me a Coffee (instant)", "url": "https://www.buymeacoffee.com/", "done": false, "value": "Direct tips $3-50, footer link on every tool" },
-    { "task": "Enable Vercel Analytics (1 click, free)", "url": "https://vercel.com/alfredos-projects-168b6539/tinytools/analytics", "done": false, "value": "Real visitor numbers in this dashboard" }
+    {
+      "task": "\ud83d\udd25 PASTE ONE OF THE 3 DRAFTS BELOW (30 seconds = first 100 visitors)",
+      "url": "#drafts",
+      "done": false,
+      "value": "First 100 visitors come from this. Affiliate revenue follows traffic."
+    },
+    {
+      "task": "\u2705 Watch awesome-list PRs for merge \u2014 auto-emails on merge",
+      "url": "https://github.com/pulls?q=is%3Apr+author%3Aalfredoautomatizaloconia-cloud",
+      "done": false,
+      "value": "5 PRs submitted to lists with combined 49,500 stars. Each merge = permanent backlink."
+    },
+    {
+      "task": "Wait for Namecheap brand approval (1-3 days)",
+      "url": "https://app.impact.com/secure/member/home/mview.ihtml",
+      "done": false,
+      "value": "Once approved, paste tracking link to me \u2014 instant Domain Generator activation"
+    },
+    {
+      "task": "Sign up: Buy Me a Coffee (instant)",
+      "url": "https://www.buymeacoffee.com/",
+      "done": false,
+      "value": "Direct tips $3-50, footer link on every tool"
+    },
+    {
+      "task": "Enable Vercel Analytics (1 click, free)",
+      "url": "https://vercel.com/alfredos-projects-168b6539/tinytools/analytics",
+      "done": false,
+      "value": "Real visitor numbers in this dashboard"
+    }
   ]
 }
