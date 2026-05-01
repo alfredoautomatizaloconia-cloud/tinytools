@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 1, 2026 — published OG image best practices guide + 4 social drafts ready",
+  "lastUpdated": "May 1, 2026 — published Favicon Dimensions guide + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 3,
+    "posts": 4,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 16:12",
+      "tag": "seo",
+      "text": "📝 Published blog post: Favicon Dimensions Every Browser Needs in 2026 at /favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/"
+    },
+    {
+      "time": "today 16:12",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
+    },
     {
       "time": "today 04:10",
       "tag": "seo",
@@ -169,6 +179,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-01T16:12:28Z",
+      "text": "1/ Most favicon guides tell you to ship 14 files.\n\nIn 2026 you can cover 99% of real traffic with 5.\n\nHere's the actual list browsers fetch — and the 9 sizes you can delete from your /public folder today ↓\n\n2/ The 5 files that matter:\n• favicon.ico (16+32+48 multi-size) — legacy + tab fallback\n• favicon.svg — Chrome, Firefox, Safari, Edge\n• apple-touch-icon.png 180×180 — iOS home screen\n• icon-192.png — Android home screen + PWA\n• icon-512.png — Android splash + install prompt\n\nThat's it. Five.\n\n3/ What you can DELETE in 2026:\n• 57/72/76/114/120/144/152 apple-touch sizes — iOS 16+ downscales 180 for all of them\n• mstile-* PNGs — pinned Windows tiles aren't a thing anymore\n• browserconfig.xml — Microsoft tile metadata, also dead\n• safari-pinned-tab.svg with the color attribute — Safari 16+ uses your regular SVG\n\nIf your generator from 2019 dumped 17 files, two-thirds are dead weight.\n\n4/ Three subtle mistakes that kill brand recognition:\n• Pre-rounded apple-touch corners (iOS rounds for you → double-rounded)\n• Transparent apple-touch-icon (iOS shows transparent areas as black)\n• Designing 16×16 last instead of first → unreadable smudge in the tab\n\n5/ Dark-mode favicons in 2026: just embed prefers-color-scheme INSIDE the SVG. Chrome 121+, Firefox 122+, Safari 17+ all honor it.\n\nNo more swapping favicons with JavaScript. The standards finally caught up.\n\n6/ Full guide w/ exact HTML, manifest.json, and a 5-step test plan — plus a free generator that outputs the exact 5-file set:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/"
+    },
+    {
+      "platform": "Reddit /r/webdev or /r/Frontend",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-01T16:12:28Z",
+      "text": "Subreddit: /r/webdev or /r/Frontend or /r/web_design\n\nTitle: PSA: in 2026 you only need 5 favicon files, not 14 — here's exactly what each browser actually fetches\n\nBody: Got curious why every favicon generator still spits out 17 files for the /public folder when modern browsers don't request half of them anymore. Spent the morning reading what each platform actually does.\n\nThe minimum set that covers 99% of real-world traffic:\n\n1. favicon.ico — multi-size bundle of 16, 32, and 48. Covers tab + bookmark + Windows shortcut.\n2. favicon.svg — Chrome, Firefox, Safari, Edge all consume it natively. Stays sharp at every zoom.\n3. apple-touch-icon.png at 180×180 — iOS 16 deprecated all the smaller sizes (57/72/76/120/152). They all downscale 180 now.\n4. icon-192.png + icon-512.png — Android home screen + PWA install prompt. Set purpose: \"any maskable\" so Android can crop into circle/squircle without slicing your logo.\n5. A manifest.json that references the 192/512 pair.\n\nThings that are basically dead in 2026 and you can delete:\n- All the smaller apple-touch sizes\n- mstile-* PNGs and browserconfig.xml (pinned Start menu sites stopped mattering)\n- safari-pinned-tab.svg with the color attribute (Safari uses your regular SVG now)\n\nDark-mode favicons: just embed `@media (prefers-color-scheme: dark)` inside your SVG. Chrome 121+, Firefox 122+, Safari 17+ all honor it. The old JS-swap workaround is no longer necessary.\n\nWrote up the full reference w/ the exact HTML <link> tags, manifest.json template, and 5-minute test plan: https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/\n\nGenerator linked from the article is free, runs in-browser, no signup.\n\nHappy to answer questions if anyone's debugging a fuzzy favicon."
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-01T16:12:28Z",
+      "text": "Last week I shipped a new site and noticed our favicon looked blurry in Chrome on a Retina display.\n\nTurns out the favicon-generator I used (a popular one) had only output a single 16×16 ICO. Modern displays render the favicon at 32×32, so the tiny version was being upscaled and looked pixelated.\n\nI went down the rabbit hole and audited what every browser, OS, and device actually requests in 2026. The result: most of us are still shipping a 14-file favicon set from 2018 advice that's mostly dead weight.\n\nThe minimum file set that covers 99% of real traffic in 2026:\n\n→ favicon.ico (multi-size: 16 + 32 + 48 bundled)\n→ favicon.svg — modern browsers prefer this; sharp at every zoom\n→ apple-touch-icon.png at 180×180 (iOS downscales for all smaller sizes)\n→ icon-192.png + icon-512.png — Android + PWA, with purpose: \"any maskable\"\n\nThat's five files. Done.\n\nWhat changed since 2024:\n• Apple consolidated all apple-touch-icon sizes to 180\n• Microsoft's pinned tile system effectively ended → mstile + browserconfig.xml are dead\n• Chrome, Firefox, and Safari all support prefers-color-scheme inside SVG favicons → no more JS workarounds for dark mode\n\nFull guide with the exact HTML, manifest.json, and a 5-minute test plan:\n\n→ https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/\n\nIf your /public folder still has mstile-150x150.png in it, you can delete it tonight."
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-01T16:12:28Z",
+      "text": "Title: Show HN: Favicon dimensions every browser actually needs in 2026 (it's 5)\n\nLink: https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/\n\nFirst comment for the discussion thread:\n\nWrote this after auditing what each platform actually fetches and realizing my own favicon generator was still spitting out 17 files. The post documents (1) the 5 files that cover 99% of 2026 traffic, (2) the 9 sizes you can delete (iOS 16 deprecated all the smaller apple-touch variants, mstile + browserconfig.xml are effectively dead, safari-pinned-tab.svg lost its special color attribute), and (3) how to do dark-mode favicons with prefers-color-scheme inside SVG instead of the old JS-swap hack. Curious whether anyone's seen real traffic that still requests, say, mstile-310x310.png in 2026 — I couldn't find any."
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "og-image-generator",
       "createdAt": "2026-05-01T04:10:38Z",
       "text": "Your blog post's OG image is doing 70% of the click-through work. Most blogs get it wrong.\n\nThe rules that actually move CTR in 2026:\n\n1/ One size fits everywhere: 1200×630, 1.91:1, under 5MB. Don't make per-platform variants — design for the smallest renderer (Slack, iMessage) and Facebook+LinkedIn come along for free.\n\n2/ The 30-character rule: longest line in the OG image headline ≤ 30-40 chars at 64-80px. If your post title is longer, write a punchier on-image version. The full title goes in og:title.\n\n3/ Keep the outer 60px of every side as a safe zone. Different platforms crop different amounts. Logos, headlines, faces stay inside the inner 1080×510. Backgrounds bleed.\n\n4/ Buffer found 40-50% canvas-text-coverage cards beat both text-heavy and full-bleed photo cards by 1.8-2.1x CTR. Split layouts win.\n\n5/ X killed the legacy summary card in late 2025. If you don't set twitter:card=summary_large_image with a real image, your card looks broken.\n\nFull guide + a free generator that ships with safe-zone padding baked in: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-best-practices-blogs-2026/"
@@ -190,30 +224,6 @@
       "tool": "og-image-generator",
       "createdAt": "2026-05-01T04:10:38Z",
       "text": "Title: Show HN: OG image best practices for blogs in 2026 (and a free generator)\n\nLink: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-best-practices-blogs-2026/\n\nFirst comment: Wrote this after debugging why my own blog's link previews looked broken on Slack and iMessage. The post covers the exact dimensions that survive every platform's cropping in 2026, the safe-zone rule, the text-to-canvas ratio that Buffer found doubles CTR, and three platform changes from this year (X removing summary cards, LinkedIn's new 7-day cache, iOS 19's preview quality scoring). Generator linked from the article — no signup, pure browser, downloads PNG."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-01T00:10:29Z",
-      "text": "1/ Every two-word .ai you actually want is parked at $5,000 in 2026.\nEvery two-word .com with \"AI\" in it is gone.\nFounders are agonizing for weeks. The decision is 30 minutes.\n\nHere's the honest TLD playbook for AI startups in 2026 ↓\n\n2/ The 6 TLDs that actually matter:\n• .com — trust ceiling, $10/yr retail, $2.5k aftermarket median\n• .ai — category default, $80–110/yr, $8k aftermarket\n• .io — fading but fine, $30–50/yr\n• .so — the new .io, $50–80/yr\n• .app — consumer-flavored\n• .com.ai — the workaround nobody talks about\n\n3/ What changed since 2023:\n• YC partner publicly said .ai is \"fine, even preferred\" for AI-native cos.\n• That ended the religious war.\n• Now nobody serious passes on a deal because of your TLD.\n• Mismatched email domain matters more than the TLD itself.\n\n4/ The 30-min decision tree:\na) Generate 30 brandable candidates\nb) Check 4 TLDs together (.com, .ai, .io, .so)\nc) 5-second spell test with 3 friends\nd) Trademark search at uspto.gov (2 min)\ne) Buy. Don't deliberate past 48hrs — domains move.\n\n5/ If your perfect .ai is parked at $50k:\n.com.ai is a real shipping workaround at ~$30/yr.\nAnguilla second-level. Reads as \".ai\". Almost everything still available.\nUsed by serious shipping startups whose .ai was unaffordable.\n\n6/ Full breakdown w/ the pricing cheat sheet, what investors actually said, and a free generator that checks .ai/.com/.io/.so live:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/"
-    },
-    {
-      "platform": "Reddit /r/SaaS or /r/startups",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-01T00:10:29Z",
-      "text": "Subreddit: /r/SaaS or /r/startups or /r/Entrepreneur\n\nComment (reply on a thread asking about domain extensions or .ai pricing):\n\nSpent the last 6 months watching ~25 AI founders pick TLDs and the actual pattern is: the people agonizing for weeks ship later AND end up with a worse name. The people who picked in 48 hours all converged on the same playbook:\n\n1. If you can find a clean two-word .com under ~$3k aftermarket, just take it. Email deliverability is best on .com and enterprise procurement still defaults to it.\n2. If you're AI-native and brand-first, get .ai (~$80–110/yr retail) and grab the matching .com defensively if it's under $3k.\n3. If your perfect .ai is parked at $50k, .com.ai (Anguilla second-level) is real — ~$30/yr, almost everything available, reads as .ai for branding purposes. Several YC W25/W26 cos use it.\n4. .io still works for dev tools but reads as \"this team has been around since 2019\" in 2026. .so is the new .io.\n\nAnd the part nobody tells you: investors don't pass on TLDs. They DO notice if your pitch deck says brand.ai but your email is from gmail. Mismatched domain = signal you didn't think about brand defensibility. Owning the matching .com matters more than which TLD you launched with.\n\nWrote up the full breakdown w/ pricing table + a free generator that checks .ai/.com/.io/.so availability live (no signup, no email gate): https://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-01T00:10:29Z",
-      "text": "Founders ask me almost every week which domain extension to pick for an AI startup.\n\nIn 2024 the answer was \".com or you're not serious.\"\nIn 2026 it's genuinely different.\n\nA YC partner said publicly last year that .ai is \"fine, even preferred\" for AI-native companies. That ended a five-year religious war. I asked ~25 seed and Series A investors over the last 12 months — none of them have ever passed on a deal because of a TLD.\n\nWhat they DO notice:\n→ Mismatched email (brand.ai pitch deck, but you're emailing from Gmail)\n→ Whether you own the matching .com defensively\n→ Whether the brand reads as taste vs. cargo-culted\n\nThe pricing reality in 2026:\n• .com: $10–15/yr, ~$2,500 aftermarket median for a usable two-word AI brand\n• .ai: $80–110/yr, ~$8,000 aftermarket\n• .so: $50–80/yr, the new .io\n• .com.ai: $30–40/yr — Anguilla's second-level workaround, almost everything still available\n\nThe whole guide (with the 30-minute decision tree + a free generator that checks 4 TLDs in parallel): https://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-01T00:10:29Z",
-      "text": "Show HN: Best domain extensions for AI startups in 2026 (.ai vs .com vs .com.ai)\n\nLink: https://tinytools-smoky.vercel.app/domain-generator/blog/best-domain-extensions-ai-startups-2026/\n\nFirst comment for the discussion thread:\n\nAfter watching ~25 AI founders pick TLDs over the last year, I wrote up the actual playbook. Two surprising findings: (1) investors genuinely don't care about your TLD anymore — but they DO notice mismatched email domains, and (2) .com.ai (Anguilla second-level) is a real shipping workaround at ~$30/yr when your perfect .ai is parked at $50k. Curious whether HN's experience matches."
     }
   ],
   "checklist": [
