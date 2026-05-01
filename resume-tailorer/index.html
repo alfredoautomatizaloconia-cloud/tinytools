@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Resume Tailorer (2026) — Match Any Job Description in 30 Seconds</title>
+<meta name="description" content="Paste your resume + the job description. AI rewrites your resume so it perfectly matches the role's keywords, tone, and seniority. Free, BYOK (OpenAI or Anthropic), nothing leaves your browser.">
+<meta name="keywords" content="ai resume tailorer, resume tailor, tailor resume to job description, ats resume optimizer, free resume rewriter, resume keyword matcher, byok resume tool">
+<meta property="og:title" content="Free AI Resume Tailorer — Match any job in 30 seconds">
+<meta property="og:description" content="Paste your resume + a job description. AI rewrites it to match. Free, BYOK, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/resume-tailorer/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free AI Resume Tailorer">
+<meta name="twitter:description" content="Paste your resume + the job description. AI rewrites it to match.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/resume-tailorer/">
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #6366f1; --accent-glow: #6366f140;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 640px; margin: 0 auto; }
+
+  .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+  }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .field { margin-bottom: 14px; }
+  label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500;
+  }
+  input[type="text"], input[type="password"], textarea, select {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit;
+  }
+  textarea { resize: vertical; min-height: 220px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; }
+  input:focus, textarea:focus, select:focus {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .row { grid-template-columns: 1fr; } }
+
+  .btn {
+    width: 100%; padding: 13px 18px; background: var(--accent); color: white;
+    border: none; border-radius: 10px; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: all 0.15s; font-family: inherit;
+  }
+  .btn:hover:not(:disabled) { filter: brightness(1.1); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-ghost { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+
+  .output {
+    background: #000; padding: 18px; border-radius: 12px; margin-top: 14px;
+    border: 1px solid var(--border); position: relative; min-height: 240px;
+  }
+  .output pre { margin: 0; font-family: 'SF Mono', Monaco, monospace; font-size: 13px;
+    color: #e0e0ff; white-space: pre-wrap; word-wrap: break-word; }
+  .copy-btn {
+    position: absolute; top: 10px; right: 10px; padding: 6px 12px;
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text); font-size: 12px; cursor: pointer;
+  }
+  .copy-btn:hover { border-color: var(--accent); }
+
+  .status {
+    margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 13px;
+    background: var(--bg-elevated); color: var(--text-dim); display: none;
+  }
+  .status.show { display: block; }
+  .status.error { color: #fca5a5; border: 1px solid #ef444450; }
+  .status.success { color: #86efac; border: 1px solid #10b98150; }
+
+  .upsell {
+    margin-top: 16px; padding: 16px; background: var(--bg-elevated);
+    border-radius: 10px; border-left: 3px solid var(--accent); font-size: 13px;
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .privacy {
+    margin-top: 12px; padding: 12px; background: var(--bg-elevated);
+    border-radius: 8px; font-size: 12px; color: var(--text-dim);
+    border: 1px dashed var(--border);
+  }
+  .privacy strong { color: var(--text); }
+
+  .keywords {
+    margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .kw {
+    padding: 4px 10px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 12px; color: var(--text-dim);
+  }
+  .kw.matched { border-color: var(--accent); color: var(--accent); }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); margin-bottom: 10px; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+  .content a { color: var(--accent); text-decoration: none; }
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">📄 Tailored in 30 seconds &nbsp;·&nbsp; Bring your own key &nbsp;·&nbsp; Free</div>
+    <h1>AI Resume Tailorer</h1>
+    <p class="subtitle">Paste your resume + the job description. AI rewrites your resume to match the role — keywords, tone, seniority, achievements. Beat the ATS, beat the recruiter.</p>
+  </header>
+
+  <div class="panel" style="margin-bottom: 24px;">
+    <h2>Settings</h2>
+    <div class="row">
+      <div class="field">
+        <label>Provider</label>
+        <select id="provider">
+          <option value="openai">OpenAI (GPT-4o-mini)</option>
+          <option value="anthropic">Anthropic (Claude Haiku)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>API key (stays in your browser)</label>
+        <input id="apiKey" type="password" placeholder="sk-... or sk-ant-...">
+      </div>
+    </div>
+    <div class="privacy">
+      <strong>Privacy:</strong> Your resume, the job description, and your API key never touch our servers. Everything runs locally and the API call goes directly from your browser to OpenAI / Anthropic. We don't even have a backend.
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="panel">
+      <h2>Your resume</h2>
+      <div class="field">
+        <label>Paste plain text — bullet points, dashes, anything</label>
+        <textarea id="resume" placeholder="John Smith&#10;Senior Software Engineer · johnsmith@email.com · linkedin.com/in/johnsmith&#10;&#10;EXPERIENCE&#10;Acme Corp — Software Engineer (2022–Present)&#10;- Built React dashboard used by 40k users&#10;- Reduced API latency by 60% via caching&#10;..."></textarea>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Target job description</h2>
+      <div class="field">
+        <label>Paste the full posting</label>
+        <textarea id="job" placeholder="Senior Frontend Engineer at Stripe&#10;&#10;We're looking for an engineer to lead React + TypeScript work on our checkout team. You'll partner with product and design to ship features that handle billions in payment volume...&#10;&#10;Requirements:&#10;- 5+ years React&#10;- Strong TypeScript&#10;- Experience with payments or fintech is a plus..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top: 24px;">
+    <h2>Output</h2>
+    <div class="row">
+      <button class="btn" id="goBtn">✨ Tailor my resume</button>
+      <button class="btn btn-ghost" id="extractBtn">🔍 Just extract keywords</button>
+    </div>
+    <div id="status" class="status"></div>
+
+    <div id="keywordsBox" style="display:none;">
+      <div style="margin-top:18px; font-size:13px; color:var(--text-dim); font-weight:600;">KEYWORDS FROM JOB POSTING</div>
+      <div id="keywords" class="keywords"></div>
+    </div>
+
+    <div class="output" style="margin-top: 18px;">
+      <button class="copy-btn" id="copyBtn">Copy</button>
+      <pre id="outputCode">Tailored resume will appear here.
+
+Tip: paste a real, finished resume — not just a list of skills. The AI will preserve your facts and rewrite the framing.</pre>
+    </div>
+
+    <div class="upsell">
+      <strong>Need a polished resume template too?</strong>
+      <a href="#" id="upsell-teal" target="_blank" rel="noopener">Teal HQ</a> has the cleanest free resume builder in 2026, and
+      <a href="#" id="upsell-resumeio" target="_blank" rel="noopener">Resume.io</a> is the fastest if you want professionally-designed templates with a one-click tailoring assistant.
+      <em>(Affiliate links — no extra cost to you.)</em>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>How an AI resume tailorer actually helps you land more interviews</h2>
+    <p>Recruiters spend an average of 7 seconds on a first-pass resume scan, and most companies route that resume through an Applicant Tracking System (ATS) before a human ever reads it. The ATS doesn't read prose — it scores documents on keyword overlap with the job description. That's where an AI resume tailorer earns its keep: it rewrites your existing experience using the exact phrasing the ATS is searching for, without inventing facts. Every applicant has the same generic resume in 2026; the ones who tailor for each role consistently get 2–3× more callbacks.</p>
+
+    <h3>What a good AI resume tailorer does (and doesn't do)</h3>
+    <p>Used well, an AI resume tailorer is a translation tool — it takes the things you have actually done and says them in the words the hiring manager is using. Used poorly, it invents accomplishments that you'll have to defend in an interview. Our prompt is intentionally conservative: we instruct the model to never add facts, only re-word real experience and re-order it for relevance. If a job demands skills you don't have, the tool will surface that gap rather than paper over it.</p>
+    <ul>
+      <li><strong>Mirror the job posting's language.</strong> If the posting says "shipped" instead of "deployed," your resume should too.</li>
+      <li><strong>Front-load matched keywords</strong> in your bullet points so they're visible in a 7-second skim.</li>
+      <li><strong>Quantify achievements</strong> the same way the posting describes its goals (revenue, latency, users, conversion).</li>
+      <li><strong>Match seniority signals.</strong> Senior roles want "led," "owned," "set strategy"; IC roles want "shipped," "built," "implemented."</li>
+      <li><strong>Cut what doesn't matter</strong> for this specific role — even if it is impressive in general.</li>
+    </ul>
+
+    <h3>How this AI resume tailorer works under the hood</h3>
+    <p>You bring your own API key (BYOK), and the request goes directly from your browser to OpenAI or Anthropic. We don't have a backend to log or store your data. The model receives a system prompt instructing it to act as a senior recruiter, identify the top 12 keywords from the job description, then rewrite each bullet of your resume to mirror that vocabulary while strictly preserving facts. The output is plain text, ready to paste into Google Docs, Notion, Teal, or directly into the application form.</p>
+
+    <h3>FAQ — AI resume tailorer questions we get a lot</h3>
+    <p><strong>Will an ATS detect that AI wrote my resume?</strong> No reliable detector exists for this in 2026, and ATSs aren't trying to detect it — they parse keywords and structure. The bigger risk is generic-sounding bullets, which is why our prompt forces the model to keep your concrete numbers and proper nouns.</p>
+    <p><strong>How much does it cost?</strong> A typical run is under $0.005 with GPT-4o-mini or Claude Haiku. You will burn through about $0.50 of credits before you find a job.</p>
+    <p><strong>Is BYOK safer than uploading to a SaaS?</strong> Yes — your resume never sits in someone else's database. The API key stays in your browser's memory only for the session. Close the tab and it is gone.</p>
+    <p><strong>Can I use this for cover letters too?</strong> A cover letter generator is shipping next on TinyTools — bookmark the homepage.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · No signup · Made by tinytools.dev. <a href="#" id="footer-tip">Tip jar</a> · <a href="/">Back to all tools</a></p>
+  </footer>
+</div>
+
+<script>
+const AFFILIATE = {
+  tealUrl: 'https://www.tealhq.com/?aff=YOUR_TEAL_ID',
+  resumeioUrl: 'https://resume.io/?aff=YOUR_RESUMEIO_ID',
+  bmacUrl: 'https://www.buymeacoffee.com/YOURNAME'
+};
+document.getElementById('upsell-teal').href = AFFILIATE.tealUrl;
+document.getElementById('upsell-resumeio').href = AFFILIATE.resumeioUrl;
+document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
+
+const $ = (id) => document.getElementById(id);
+
+try {
+  const saved = sessionStorage.getItem('rt_apiKey'); if (saved) $('apiKey').value = saved;
+  const savedProv = sessionStorage.getItem('rt_provider'); if (savedProv) $('provider').value = savedProv;
+  $('apiKey').addEventListener('input', e => sessionStorage.setItem('rt_apiKey', e.target.value));
+  $('provider').addEventListener('change', e => sessionStorage.setItem('rt_provider', e.target.value));
+} catch(e) {}
+
+function setStatus(msg, kind) {
+  const el = $('status');
+  el.textContent = msg;
+  el.className = 'status show' + (kind === 'error' ? ' error' : kind === 'success' ? ' success' : '');
+}
+function clearStatus() { $('status').className = 'status'; }
+
+const SYSTEM_PROMPT = `You are a senior technical recruiter and resume editor. Your job: rewrite the user's resume to match a specific job description.
+
+Hard rules:
+- NEVER invent or exaggerate facts. Only re-word real experience.
+- Preserve all numbers, company names, dates, and proper nouns from the original resume.
+- Mirror the job description's vocabulary (e.g., if posting says "shipped" use "shipped," not "deployed").
+- Front-load keywords in each bullet so they're visible in a 7-second skim.
+- Match the seniority signals (Senior = "led/owned/set strategy"; IC = "shipped/built/implemented").
+- Cut bullets that aren't relevant to THIS role, even if impressive elsewhere.
+- Output plain text only. No markdown asterisks. No commentary. No "here is your resume:" preamble.
+
+Format:
+1. The full tailored resume in plain text, ready to paste.
+2. Then a horizontal line: ---
+3. Then "GAPS:" followed by 1–3 bullet points naming skills the posting requires that the resume doesn't show. Be honest. If there are no real gaps, write "No major gaps detected."
+4. Then "TOP KEYWORDS MATCHED:" followed by a comma-separated list of 8–12 keywords from the job description that now appear in the resume.`;
+
+function buildUserPrompt(resume, job) {
+  return `=== USER RESUME ===\n${resume}\n\n=== TARGET JOB DESCRIPTION ===\n${job}\n\nTailor the resume now.`;
+}
+
+async function callOpenAI(key, system, user) {
+  const r = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key },
+    body: JSON.stringify({
+      model: 'gpt-4o-mini',
+      messages: [{ role: 'system', content: system }, { role: 'user', content: user }],
+      temperature: 0.4
+    })
+  });
+  if (!r.ok) {
+    const t = await r.text();
+    throw new Error('OpenAI ' + r.status + ': ' + t.slice(0, 300));
+  }
+  const j = await r.json();
+  return j.choices[0].message.content;
+}
+
+async function callAnthropic(key, system, user) {
+  const r = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': key,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 2500,
+      system: system,
+      messages: [{ role: 'user', content: user }]
+    })
+  });
+  if (!r.ok) {
+    const t = await r.text();
+    throw new Error('Anthropic ' + r.status + ': ' + t.slice(0, 300));
+  }
+  const j = await r.json();
+  return j.content[0].text;
+}
+
+function extractKeywordsLocal(jobText) {
+  const STOP = new Set(('a an and are as at be by for from has have in is it its of on or that the to was were will with you your we our this they their not but if so do does done can may might should would role roles team teams company experience work working strong plus must required requirements responsibilities about overview position').split(/\s+/));
+  const tokens = jobText.toLowerCase().replace(/[^a-z0-9+#.\s-]/g, ' ').split(/\s+/).filter(Boolean);
+  const counts = {};
+  for (let i = 0; i < tokens.length; i++) {
+    const w = tokens[i];
+    if (w.length < 3 || STOP.has(w) || /^\d+$/.test(w)) continue;
+    counts[w] = (counts[w] || 0) + 1;
+    if (i < tokens.length - 1) {
+      const bg = w + ' ' + tokens[i+1];
+      if (!STOP.has(tokens[i+1]) && tokens[i+1].length >= 3) counts[bg] = (counts[bg] || 0) + 1;
+    }
+  }
+  return Object.entries(counts)
+    .filter(function(e) { return e[1] >= 2 || e[0].includes(' '); })
+    .sort(function(a,b) { return b[1] - a[1]; })
+    .slice(0, 18)
+    .map(function(e) { return e[0]; });
+}
+
+function showKeywords(list, resumeText) {
+  const box = $('keywordsBox');
+  const wrap = $('keywords');
+  wrap.innerHTML = '';
+  const lower = (resumeText || '').toLowerCase();
+  list.forEach(function(k) {
+    const span = document.createElement('span');
+    span.className = 'kw' + (lower.includes(k.toLowerCase()) ? ' matched' : '');
+    span.textContent = k;
+    wrap.appendChild(span);
+  });
+  box.style.display = 'block';
+}
+
+$('extractBtn').addEventListener('click', function() {
+  const job = $('job').value.trim();
+  const resume = $('resume').value.trim();
+  if (!job) { setStatus('Paste a job description first.', 'error'); return; }
+  clearStatus();
+  const kws = extractKeywordsLocal(job);
+  showKeywords(kws, resume);
+  $('outputCode').textContent = 'Top keywords pulled from the job description above. Words highlighted in indigo are already in your resume — the rest are gaps to address.';
+});
+
+$('goBtn').addEventListener('click', async function() {
+  const provider = $('provider').value;
+  const key = $('apiKey').value.trim();
+  const resume = $('resume').value.trim();
+  const job = $('job').value.trim();
+
+  if (!key) { setStatus('Add your API key (it stays in your browser).', 'error'); return; }
+  if (!resume) { setStatus('Paste your resume.', 'error'); return; }
+  if (!job) { setStatus('Paste the target job description.', 'error'); return; }
+
+  $('goBtn').disabled = true;
+  $('goBtn').textContent = 'Tailoring…';
+  setStatus('Calling ' + (provider === 'openai' ? 'OpenAI' : 'Anthropic') + ' directly from your browser…');
+
+  try {
+    const userPrompt = buildUserPrompt(resume, job);
+    const out = provider === 'openai'
+      ? await callOpenAI(key, SYSTEM_PROMPT, userPrompt)
+      : await callAnthropic(key, SYSTEM_PROMPT, userPrompt);
+    $('outputCode').textContent = out;
+    setStatus('Done. Skim the GAPS section before you apply.', 'success');
+
+    const m = out.match(/TOP KEYWORDS MATCHED:\s*(.+)/i);
+    if (m) showKeywords(m[1].split(',').map(function(s){return s.trim();}).filter(Boolean), resume + ' ' + out);
+  } catch (e) {
+    setStatus('Error: ' + e.message, 'error');
+  } finally {
+    $('goBtn').disabled = false;
+    $('goBtn').textContent = '✨ Tailor my resume';
+  }
+});
+
+$('copyBtn').addEventListener('click', function() {
+  navigator.clipboard.writeText($('outputCode').textContent);
+  const b = $('copyBtn');
+  b.textContent = 'Copied!';
+  setTimeout(function(){ b.textContent = 'Copy'; }, 1500);
+});
+</script>
+</body>
+</html>
