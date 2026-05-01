@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Robots.txt Generator (2026) — Block GPTBot, ClaudeBot, Perplexity</title>
+<meta name="description" content="Generate a robots.txt that blocks or allows specific AI training crawlers: GPTBot, ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended, Bytespider, and 20+ more. Free, no signup.">
+<meta name="keywords" content="ai robots.txt generator, block GPTBot, block ClaudeBot, block AI crawlers, llms.txt, AI training opt out, no AI crawler, content protection AI">
+<meta property="og:title" content="Free AI Robots.txt Generator — Block AI Training Crawlers">
+<meta property="og:description" content="Block GPTBot, ClaudeBot, Perplexity and 20+ AI crawlers from training on your content.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/">
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f97316; --accent-glow: #f9731640;
+    --green: #10b981; --red: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #ec489940 0%, transparent 50%);
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fed7aa 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 620px; margin: 0 auto; }
+
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px; margin-top: 24px; }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .preset-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; }
+  @media (max-width: 700px) { .preset-row { grid-template-columns: 1fr; } }
+  .preset-btn {
+    padding: 14px; background: var(--bg-elevated); border: 2px solid var(--border);
+    border-radius: 10px; cursor: pointer; transition: all 0.15s; text-align: left;
+  }
+  .preset-btn:hover { border-color: var(--accent); }
+  .preset-btn .name { font-weight: 600; font-size: 14px; }
+  .preset-btn .desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+
+  .bot-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px; }
+  .bot-row {
+    display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px;
+    background: var(--bg-elevated); border-radius: 8px; border: 1px solid var(--border);
+    cursor: pointer; transition: all 0.15s;
+  }
+  .bot-row:hover { border-color: var(--accent); }
+  .bot-row input { margin-top: 3px; cursor: pointer; }
+  .bot-row .info { flex: 1; }
+  .bot-row .name { font-weight: 600; font-size: 13px; }
+  .bot-row .desc { font-size: 11px; color: var(--text-dim); margin-top: 2px; line-height: 1.3; }
+  .bot-row .company { font-size: 11px; color: var(--accent); margin-top: 2px; font-weight: 500; }
+
+  .output { background: #000; padding: 18px; border-radius: 12px; border: 1px solid var(--border); position: relative; margin-top: 16px; }
+  .output pre { margin: 0; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: #e0e0ff; white-space: pre-wrap; }
+  .copy-btn { position: absolute; top: 10px; right: 10px; padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 12px; cursor: pointer; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', monospace; font-size: 13px; color: var(--accent); }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">⚡ 25+ AI Crawlers · Toggle Each · Free</div>
+    <h1>AI Robots.txt Generator</h1>
+    <p class="subtitle">Control which AI training crawlers can scrape your site. Block GPTBot, ClaudeBot, Perplexity, Apple, Google, Bytespider — or pick exactly which ones to allow.</p>
+  </header>
+
+  <div class="panel">
+    <h2>Quick presets</h2>
+    <div class="preset-row">
+      <div class="preset-btn" data-preset="block-all">
+        <div class="name">🚫 Block all AI crawlers</div>
+        <div class="desc">Recommended for paywalled / premium content sites</div>
+      </div>
+      <div class="preset-btn" data-preset="allow-search">
+        <div class="name">🔍 Block training, allow search</div>
+        <div class="desc">Block model training but allow ChatGPT/Perplexity to cite you live</div>
+      </div>
+      <div class="preset-btn" data-preset="allow-all">
+        <div class="name">✅ Allow all AI crawlers</div>
+        <div class="desc">Maximum AI visibility — recommended for new content sites</div>
+      </div>
+    </div>
+
+    <h2 style="margin-top: 24px;">Or pick exactly which bots to block</h2>
+    <div class="bot-list" id="botList"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Your robots.txt — copy & paste into the root of your site</h2>
+    <div class="output">
+      <button class="copy-btn" id="copyBtn">Copy</button>
+      <pre id="output"></pre>
+    </div>
+    <p style="margin-top: 14px; font-size: 13px; color: var(--text-dim);">
+      Place this at <code style="background:var(--bg-elevated); padding: 2px 6px; border-radius: 4px;">https://yoursite.com/robots.txt</code> — most static hosts (Vercel, Netlify, Cloudflare Pages) serve it automatically from the project root.
+    </p>
+  </div>
+
+  <section class="content">
+    <h2>What changed in 2024–2026 with AI crawlers</h2>
+    <p>Until 2023, robots.txt was mostly about telling Google and Bing what not to crawl for search. Today, a new generation of crawlers exists: bots that scrape the web specifically to train large language models. <strong>GPTBot</strong> (OpenAI), <strong>ClaudeBot</strong> (Anthropic), <strong>PerplexityBot</strong> (Perplexity), <strong>Google-Extended</strong> (Gemini), <strong>Applebot-Extended</strong> (Apple Intelligence), <strong>Bytespider</strong> (ByteDance), <strong>CCBot</strong> (Common Crawl, used by many AI labs).</p>
+
+    <p>Most respect robots.txt. A few don't (or are rumored not to). Major publishers — NYT, Reuters, BBC, Axel Springer — have explicitly blocked them. Smaller sites are split: some want the AI exposure, others want to protect their content from being trained on without compensation.</p>
+
+    <h3>The 3 main strategies</h3>
+    <ul>
+      <li><strong>Block all AI crawlers:</strong> highest content protection, but you also lose visibility in ChatGPT search, Perplexity citations, Claude Web. Best for paywalled sites and original journalism.</li>
+      <li><strong>Block training, allow live retrieval:</strong> nuanced. <code>GPTBot</code> trains, <code>ChatGPT-User</code> is live retrieval. You can allow one and block the other. Hardest to maintain but gets you AI exposure without training contribution.</li>
+      <li><strong>Allow all:</strong> if your goal is visibility (most marketing sites, blogs), let AI bots in. They'll cite you, drive traffic, and you'll be findable in AI answers.</li>
+    </ul>
+
+    <h3>The 25+ AI crawlers we cover</h3>
+    <p>Beyond the famous ones (GPTBot, ClaudeBot, PerplexityBot), there are crawlers from Cohere (cohere-ai), Diffbot (Diffbot), Amazon (Amazonbot), Meta (FacebookBot, Meta-ExternalAgent), TikTok (Bytespider), Yandex (YandexAI), and several research crawlers (CCBot, Omgili, omgilibot). New ones appear monthly. Our list is updated weekly from public documentation.</p>
+
+    <h3>Three things people get wrong</h3>
+    <ul>
+      <li><strong>Casing matters:</strong> <code>User-agent: GPTBot</code> works. <code>User-agent: gptbot</code> works in most parsers but is technically wrong.</li>
+      <li><strong>Path matters:</strong> <code>Disallow: /</code> blocks everything. <code>Disallow:</code> (blank) allows everything. <code>Disallow: /private/</code> only blocks that folder.</li>
+      <li><strong>It's not law-enforced.</strong> Robots.txt is a polite request. Bad-faith crawlers ignore it. For real protection, you need WAF rules, rate limiting, or Cloudflare's bot management.</li>
+    </ul>
+
+    <h3>Should you also use llms.txt?</h3>
+    <p>Yes, complement robots.txt with <a href="/llms.txt">llms.txt</a> — a newer, AI-specific format that tells LLMs what your site is about and how it should be cited. Robots.txt says <em>don't crawl</em>, llms.txt says <em>here's what I am if you do crawl</em>. They're complementary, not competing.</p>
+
+    <h3>FAQ</h3>
+    <p><strong>Will blocking AI crawlers hurt my Google rankings?</strong> No. <code>Googlebot</code> is for search, <code>Google-Extended</code> is for Gemini training. Blocking <code>Google-Extended</code> doesn't affect your search ranking.</p>
+    <p><strong>What if I want to allow some content but not other?</strong> You can scope: <code>User-agent: GPTBot / Disallow: /paid/ / Allow: /</code>. Block paywalled pages, allow public pages.</p>
+    <p><strong>How do I verify it's working?</strong> Use Google Search Console's robots.txt tester for Googlebot. For others, check your access logs after deployment — you should see the user-agent strings of bots respecting (or violating) your rules.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · Bot list updated weekly · <a href="/" style="color: var(--accent);">More tools at TinyTools</a></p>
+  </footer>
+</div>
+
+<script>
+const BOTS = [
+  // OpenAI
+  { ua: 'GPTBot', name: 'GPTBot', company: 'OpenAI', purpose: 'training', desc: 'Trains GPT models. Most-blocked AI crawler.', defaultBlock: true },
+  { ua: 'ChatGPT-User', name: 'ChatGPT-User', company: 'OpenAI', purpose: 'retrieval', desc: 'Live retrieval when users ask ChatGPT to browse.', defaultBlock: false },
+  { ua: 'OAI-SearchBot', name: 'OAI-SearchBot', company: 'OpenAI', purpose: 'search index', desc: 'Indexes for ChatGPT search.', defaultBlock: false },
+  // Anthropic
+  { ua: 'ClaudeBot', name: 'ClaudeBot', company: 'Anthropic', purpose: 'training', desc: 'Trains Claude models.', defaultBlock: true },
+  { ua: 'Claude-Web', name: 'Claude-Web', company: 'Anthropic', purpose: 'retrieval', desc: 'Live retrieval inside Claude conversations.', defaultBlock: false },
+  { ua: 'anthropic-ai', name: 'anthropic-ai', company: 'Anthropic', purpose: 'training', desc: 'Older training UA, still active on some crawlers.', defaultBlock: true },
+  // Google
+  { ua: 'Google-Extended', name: 'Google-Extended', company: 'Google', purpose: 'training', desc: 'Trains Gemini. Does NOT affect Google Search.', defaultBlock: true },
+  // Apple
+  { ua: 'Applebot-Extended', name: 'Applebot-Extended', company: 'Apple', purpose: 'training', desc: 'Trains Apple Intelligence. Separate from Applebot search.', defaultBlock: true },
+  // Perplexity
+  { ua: 'PerplexityBot', name: 'PerplexityBot', company: 'Perplexity', purpose: 'retrieval', desc: 'Indexes for Perplexity answer engine.', defaultBlock: false },
+  { ua: 'Perplexity-User', name: 'Perplexity-User', company: 'Perplexity', purpose: 'retrieval', desc: 'On-demand fetch when user asks Perplexity to read a page.', defaultBlock: false },
+  // Common Crawl
+  { ua: 'CCBot', name: 'CCBot', company: 'Common Crawl', purpose: 'training (indirect)', desc: 'Public crawl used to train most major LLMs.', defaultBlock: true },
+  // Meta
+  { ua: 'FacebookBot', name: 'FacebookBot', company: 'Meta', purpose: 'training', desc: 'Facebook AI training crawler.', defaultBlock: true },
+  { ua: 'Meta-ExternalAgent', name: 'Meta-ExternalAgent', company: 'Meta', purpose: 'training/retrieval', desc: 'Meta AI live retrieval.', defaultBlock: true },
+  // ByteDance
+  { ua: 'Bytespider', name: 'Bytespider', company: 'ByteDance', purpose: 'training', desc: 'TikTok AI training. Often ignores robots.txt — blocking is symbolic.', defaultBlock: true },
+  // Amazon
+  { ua: 'Amazonbot', name: 'Amazonbot', company: 'Amazon', purpose: 'training', desc: 'Trains Alexa AI / Amazon AI services.', defaultBlock: true },
+  // Cohere
+  { ua: 'cohere-ai', name: 'cohere-ai', company: 'Cohere', purpose: 'training', desc: 'Cohere model training.', defaultBlock: true },
+  { ua: 'cohere-training-data-crawler', name: 'cohere-training-data-crawler', company: 'Cohere', purpose: 'training', desc: 'Cohere explicit training crawler.', defaultBlock: true },
+  // Yandex
+  { ua: 'YandexAdditional', name: 'YandexAdditional', company: 'Yandex', purpose: 'training', desc: 'Yandex AI training.', defaultBlock: true },
+  // Diffbot
+  { ua: 'Diffbot', name: 'Diffbot', company: 'Diffbot', purpose: 'data extraction', desc: 'Extracts structured data, often used by AI labs.', defaultBlock: true },
+  // Omgili (research)
+  { ua: 'Omgili', name: 'Omgili', company: 'Webz.io', purpose: 'training', desc: 'Webz.io news/forum crawl, sold to AI labs.', defaultBlock: true },
+  { ua: 'omgilibot', name: 'omgilibot', company: 'Webz.io', purpose: 'training', desc: 'Older Omgili UA.', defaultBlock: true },
+  // Mistral
+  { ua: 'MistralAI-User', name: 'MistralAI-User', company: 'Mistral', purpose: 'retrieval', desc: 'Live retrieval for Le Chat.', defaultBlock: false },
+  // Timpi
+  { ua: 'Timpibot', name: 'Timpibot', company: 'Timpi', purpose: 'search index', desc: 'Decentralized search/AI index.', defaultBlock: true },
+  // Velen
+  { ua: 'Velen Crawler', name: 'Velen Crawler', company: 'Velen', purpose: 'data extraction', desc: 'Web data for AI training.', defaultBlock: true },
+  // ImagesiftBot
+  { ua: 'ImagesiftBot', name: 'ImagesiftBot', company: 'ImageSift', purpose: 'image training', desc: 'Crawls images for AI training.', defaultBlock: true }
+];
+
+const PURPOSE_COLORS = { training: '#ef4444', retrieval: '#10b981', 'search index': '#3b82f6', 'training (indirect)': '#f59e0b', 'data extraction': '#a855f7', 'training/retrieval': '#f97316', 'image training': '#ec4899' };
+
+function renderBots() {
+  const el = document.getElementById('botList');
+  el.innerHTML = BOTS.map((b, i) => `
+    <label class="bot-row">
+      <input type="checkbox" data-idx="${i}" ${b.defaultBlock ? 'checked' : ''}>
+      <div class="info">
+        <div class="name">${b.name}</div>
+        <div class="desc">${b.desc}</div>
+        <div class="company" style="color: ${PURPOSE_COLORS[b.purpose] || 'var(--accent)'}">${b.company} · ${b.purpose}</div>
+      </div>
+    </label>
+  `).join('');
+  el.querySelectorAll('input').forEach(input => input.addEventListener('change', generate));
+}
+
+function generate() {
+  const blocked = [];
+  document.querySelectorAll('#botList input').forEach(input => {
+    if (input.checked) blocked.push(BOTS[parseInt(input.dataset.idx)]);
+  });
+
+  let output = `# robots.txt — generated at https://tinytools-smoky.vercel.app/ai-robots-txt-generator/\n# Last updated: ${new Date().toISOString().slice(0, 10)}\n\n`;
+
+  if (blocked.length === 0) {
+    output += '# All AI crawlers ALLOWED\nUser-agent: *\nAllow: /\n';
+  } else {
+    blocked.forEach(b => {
+      output += `# ${b.company} · ${b.purpose} — ${b.desc}\nUser-agent: ${b.ua}\nDisallow: /\n\n`;
+    });
+    output += '# Allow everything else (search engines, etc.)\nUser-agent: *\nAllow: /\n';
+  }
+
+  output += '\n# Sitemap\nSitemap: https://yoursite.com/sitemap.xml\n';
+
+  document.getElementById('output').textContent = output;
+}
+
+document.querySelectorAll('.preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const preset = btn.dataset.preset;
+    document.querySelectorAll('#botList input').forEach((input, i) => {
+      const bot = BOTS[i];
+      if (preset === 'block-all') input.checked = true;
+      else if (preset === 'allow-all') input.checked = false;
+      else if (preset === 'allow-search') input.checked = bot.purpose === 'training' || bot.purpose === 'training (indirect)' || bot.purpose === 'data extraction' || bot.purpose === 'image training';
+    });
+    generate();
+  });
+});
+
+document.getElementById('copyBtn').addEventListener('click', () => {
+  navigator.clipboard.writeText(document.getElementById('output').textContent);
+  const btn = document.getElementById('copyBtn');
+  btn.textContent = 'Copied!';
+  setTimeout(() => btn.textContent = 'Copy', 1500);
+});
+
+renderBots();
+generate();
+</script>
+</body>
+</html>
