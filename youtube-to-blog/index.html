@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free YouTube to Blog Post Converter (2026) — SEO-Ready Article in Seconds</title>
+<meta name="description" content="Paste any YouTube URL. We pull the transcript and your AI rewrites it into a clean, SEO-optimized blog post with H2/H3 headings, intro, conclusion, and meta description. Free, BYOK.">
+<meta name="keywords" content="youtube to blog, youtube to blog post, youtube transcript to article, video to blog converter, repurpose youtube video, free youtube to blog tool, ai blog writer">
+<meta property="og:title" content="Free YouTube to Blog Post Converter">
+<meta property="og:description" content="Turn any YouTube video into an SEO-optimized blog post in seconds. Free, BYOK, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/youtube-to-blog/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free YouTube to Blog Post Converter">
+<meta name="twitter:description" content="Paste a YouTube URL → get an SEO-ready blog post in seconds.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/youtube-to-blog/">
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #ef4444; --accent-glow: #ef444440;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #f9731640 0%, transparent 50%);
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fca5a5 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 640px; margin: 0 auto; }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+    margin-top: 24px;
+  }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .field { margin-bottom: 14px; }
+  label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500;
+  }
+  input[type="text"], input[type="url"], input[type="password"], textarea, select {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit;
+  }
+  textarea { resize: vertical; min-height: 200px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; }
+  input:focus, textarea:focus, select:focus {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .row3 { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 700px) { .row, .row3 { grid-template-columns: 1fr; } }
+
+  .btn {
+    width: 100%; padding: 13px 18px; background: var(--accent); color: white;
+    border: none; border-radius: 10px; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: all 0.15s; font-family: inherit;
+  }
+  .btn:hover:not(:disabled) { filter: brightness(1.1); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-ghost { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+
+  .status {
+    margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 13px;
+    background: var(--bg-elevated); color: var(--text-dim); display: none;
+  }
+  .status.show { display: block; }
+  .status.error { color: #fca5a5; border: 1px solid #ef444450; }
+  .status.success { color: #86efac; border: 1px solid #10b98150; }
+
+  .stages { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; font-size: 12px; }
+  .stage { padding: 6px 10px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; color: var(--text-dim); }
+  .stage.done { border-color: #10b981; color: #86efac; }
+  .stage.active { border-color: var(--accent); color: var(--accent); }
+
+  .output {
+    background: #000; padding: 18px; border-radius: 12px; margin-top: 14px;
+    border: 1px solid var(--border); position: relative; min-height: 220px;
+  }
+  .output pre { margin: 0; font-family: 'SF Mono', Monaco, monospace; font-size: 13px;
+    color: #e0e0ff; white-space: pre-wrap; word-wrap: break-word; }
+  .copy-btn {
+    position: absolute; top: 10px; right: 10px; padding: 6px 12px;
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text); font-size: 12px; cursor: pointer;
+  }
+  .copy-btn:hover { border-color: var(--accent); }
+
+  .tabs { display: flex; gap: 4px; margin-bottom: 12px; }
+  .tab {
+    padding: 8px 14px; background: var(--bg-elevated); border-radius: 8px; font-size: 13px;
+    cursor: pointer; color: var(--text-dim); transition: all 0.15s;
+  }
+  .tab.active { background: var(--accent); color: white; }
+
+  .upsell {
+    margin-top: 16px; padding: 16px; background: var(--bg-elevated);
+    border-radius: 10px; border-left: 3px solid var(--accent); font-size: 13px;
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .privacy {
+    margin-top: 12px; padding: 12px; background: var(--bg-elevated);
+    border-radius: 8px; font-size: 12px; color: var(--text-dim);
+    border: 1px dashed var(--border);
+  }
+  .privacy strong { color: var(--text); }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); margin-bottom: 10px; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+  .content a { color: var(--accent); text-decoration: none; }
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">📺 Paste URL &nbsp;·&nbsp; Get blog post &nbsp;·&nbsp; SEO-ready</div>
+    <h1>YouTube to Blog Post Converter</h1>
+    <p class="subtitle">Paste a YouTube link, we'll pull the transcript, and your AI key turns it into a clean, SEO-optimized blog post — proper headings, intro, conclusion, meta description.</p>
+  </header>
+
+  <div class="panel">
+    <h2>1 — Paste video</h2>
+    <div class="field">
+      <label>YouTube URL</label>
+      <input id="ytUrl" type="url" placeholder="https://www.youtube.com/watch?v=...">
+    </div>
+
+    <h2 style="margin-top:8px;">2 — Settings</h2>
+    <div class="row3">
+      <div class="field">
+        <label>Provider</label>
+        <select id="provider">
+          <option value="openai">OpenAI (GPT-4o-mini)</option>
+          <option value="anthropic">Anthropic (Claude Haiku)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Tone</label>
+        <select id="tone">
+          <option>Conversational</option>
+          <option>Authoritative</option>
+          <option>Punchy / Hooky</option>
+          <option>Technical</option>
+          <option>Casual / Newsletter</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Length</label>
+        <select id="length">
+          <option value="short">Short (~600 words)</option>
+          <option value="medium" selected>Medium (~1100 words)</option>
+          <option value="long">Long (~1800 words)</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>API key (stays in your browser)</label>
+      <input id="apiKey" type="password" placeholder="sk-... or sk-ant-...">
+    </div>
+    <div class="privacy">
+      <strong>Privacy:</strong> The transcript is fetched from a public, free transcript proxy. Your API key and the rewritten post never touch our servers — calls go straight from your browser to OpenAI / Anthropic.
+    </div>
+
+    <div style="margin-top: 14px;" class="row">
+      <button class="btn" id="goBtn">✍️ Generate blog post</button>
+      <button class="btn btn-ghost" id="transcriptBtn">📄 Just fetch transcript</button>
+    </div>
+
+    <div class="stages" id="stages">
+      <div class="stage" data-stage="parse">1. Parse URL</div>
+      <div class="stage" data-stage="fetch">2. Fetch transcript</div>
+      <div class="stage" data-stage="rewrite">3. Rewrite with AI</div>
+    </div>
+    <div id="status" class="status"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Output</h2>
+    <div class="tabs">
+      <div class="tab active" data-view="markdown">Markdown</div>
+      <div class="tab" data-view="html">HTML</div>
+      <div class="tab" data-view="transcript">Raw transcript</div>
+    </div>
+    <div class="output">
+      <button class="copy-btn" id="copyBtn">Copy</button>
+      <pre id="outputCode">Your blog post will appear here. Tip: pick a video that's 5–25 minutes long. Anything shorter doesn't have enough material; anything longer hits token limits on cheap models.</pre>
+    </div>
+
+    <div class="upsell">
+      <strong>Repurposing video → text → newsletter?</strong>
+      <a href="#" id="upsell-otter" target="_blank" rel="noopener">Otter</a> auto-records meetings + generates summaries,
+      <a href="#" id="upsell-descript" target="_blank" rel="noopener">Descript</a> lets you edit video by editing the transcript, and
+      <a href="#" id="upsell-beehiiv" target="_blank" rel="noopener">Beehiiv</a> is the cleanest place to actually publish the newsletter.
+      <em>(Affiliate links — no extra cost to you.)</em>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>Why YouTube to blog post conversion is one of the highest-ROI moves a creator can make</h2>
+    <p>YouTube videos and blog posts live in two completely different distribution systems. A video lives in YouTube's recommendation graph; a blog post lives in Google Search. The same idea published in both places gets compounded reach — and once you have the transcript, the marginal cost of publishing a YouTube to blog post version is nearly zero. The bottleneck used to be the rewriting work. With an AI YouTube to blog converter, that bottleneck is gone.</p>
+
+    <h3>What separates a good YouTube to blog post from a transcript dump</h3>
+    <p>Pasting a raw transcript onto a webpage doesn't rank — Google considers it duplicate, low-effort, and badly structured. A real YouTube to blog post conversion does five things the transcript doesn't:</p>
+    <ul>
+      <li><strong>Adds an SEO-targeted hook.</strong> The first 100 words have to answer a search-intent question, not the speaker's "what's up everybody."</li>
+      <li><strong>Introduces H2 and H3 headings.</strong> Google reads heading structure as a signal of comprehensiveness; a wall of text reads as low quality.</li>
+      <li><strong>Removes filler.</strong> "Um," "right?", "as I was saying," and tangents that work in spoken form sound clueless on a page.</li>
+      <li><strong>Restructures by topic, not by chronology.</strong> A speaker rambles; a blog post reads top-to-bottom in priority order.</li>
+      <li><strong>Generates a meta description.</strong> A 155-character meta description is the difference between 2% and 8% CTR from Google.</li>
+    </ul>
+
+    <h3>How this YouTube to blog tool works</h3>
+    <p>Paste a YouTube URL. We extract the video ID, hit a free public transcript endpoint to grab the timed captions, then send those captions to your AI provider with a system prompt instructing it to write like a thoughtful editor — not a summarizer. You pick tone (conversational, authoritative, punchy, technical, newsletter) and length (short / medium / long), and the tool outputs both Markdown (paste into Ghost / Substack / Beehiiv) and HTML (paste into WordPress).</p>
+
+    <h3>FAQ — questions creators ask before using a YouTube to blog converter</h3>
+    <p><strong>Will Google penalize me for republishing a YouTube transcript as a blog post?</strong> No, but Google will penalize a low-effort dump. The whole point of using a YouTube to blog tool is that the output is a meaningfully restructured, value-added piece of writing. Add your own commentary, screenshots from the video, and links to source material to push it further.</p>
+    <p><strong>What about videos without captions?</strong> Most YouTube videos in 2026 have auto-generated captions. If a video has captions disabled entirely, this tool can't help — try Whisper.cpp locally or YouTube's own transcript download for that specific case.</p>
+    <p><strong>Is this better than a generic AI summarizer?</strong> Yes — summarizers compress, this tool restructures. The output is full-length article content suitable for ranking, not a TL;DR.</p>
+    <p><strong>How long does this take?</strong> About 10 seconds to fetch the transcript and 20–40 seconds for the AI rewrite, depending on video length and model.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · No signup · Made by tinytools.dev. <a href="#" id="footer-tip">Tip jar</a> · <a href="/">Back to all tools</a></p>
+  </footer>
+</div>
+
+<script>
+const AFFILIATE = {
+  otterUrl: 'https://otter.ai/?aff=YOUR_OTTER_ID',
+  descriptUrl: 'https://www.descript.com/?aff=YOUR_DESCRIPT_ID',
+  beehiivUrl: 'https://www.beehiiv.com/?aff=YOUR_BEEHIIV_ID',
+  bmacUrl: 'https://www.buymeacoffee.com/YOURNAME'
+};
+document.getElementById('upsell-otter').href = AFFILIATE.otterUrl;
+document.getElementById('upsell-descript').href = AFFILIATE.descriptUrl;
+document.getElementById('upsell-beehiiv').href = AFFILIATE.beehiivUrl;
+document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
+
+const $ = function(id){ return document.getElementById(id); };
+
+try {
+  const saved = sessionStorage.getItem('y2b_apiKey'); if (saved) $('apiKey').value = saved;
+  const savedProv = sessionStorage.getItem('y2b_provider'); if (savedProv) $('provider').value = savedProv;
+  $('apiKey').addEventListener('input', function(e){ sessionStorage.setItem('y2b_apiKey', e.target.value); });
+  $('provider').addEventListener('change', function(e){ sessionStorage.setItem('y2b_provider', e.target.value); });
+} catch(e) {}
+
+let lastTranscript = '';
+let lastMarkdown = '';
+let lastHtml = '';
+let currentView = 'markdown';
+
+function setStatus(msg, kind) {
+  const el = $('status');
+  el.textContent = msg;
+  el.className = 'status show' + (kind === 'error' ? ' error' : kind === 'success' ? ' success' : '');
+}
+function clearStatus(){ $('status').className = 'status'; }
+function setStage(name, state) {
+  document.querySelectorAll('.stage').forEach(function(s){
+    if (s.dataset.stage === name) {
+      s.classList.remove('done','active');
+      if (state) s.classList.add(state);
+    }
+  });
+}
+function resetStages(){ document.querySelectorAll('.stage').forEach(function(s){ s.classList.remove('done','active'); }); }
+
+function extractVideoId(url) {
+  if (!url) return null;
+  const trimmed = url.trim();
+  if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) return trimmed;
+  const patterns = [
+    /[?&]v=([a-zA-Z0-9_-]{11})/,
+    /youtu\.be\/([a-zA-Z0-9_-]{11})/,
+    /youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/,
+    /youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/,
+    /youtube\.com\/live\/([a-zA-Z0-9_-]{11})/
+  ];
+  for (let i = 0; i < patterns.length; i++) {
+    const m = trimmed.match(patterns[i]);
+    if (m) return m[1];
+  }
+  return null;
+}
+
+async function fetchTranscript(videoId) {
+  // Try a few public transcript proxies in order. They're all free + open.
+  const endpoints = [
+    'https://yt.lemnoslife.com/videos?part=transcript&id=' + videoId,
+    'https://youtubetotranscript.com/transcript?v=' + videoId + '&format=json'
+  ];
+  let lastErr = null;
+  for (let i = 0; i < endpoints.length; i++) {
+    try {
+      const r = await fetch(endpoints[i]);
+      if (!r.ok) { lastErr = new Error('HTTP ' + r.status); continue; }
+      const ct = r.headers.get('content-type') || '';
+      if (ct.includes('json')) {
+        const j = await r.json();
+        // lemnoslife shape: { items: [{ transcript: { default: { transcriptRenderer: { ... } } } }] }
+        if (j.items && j.items[0] && j.items[0].transcript) {
+          const t = j.items[0].transcript;
+          const segs = (t.default && t.default.transcriptRenderer && t.default.transcriptRenderer.segments) || t.segments || [];
+          if (segs.length) {
+            return segs.map(function(s){ return s.text || (s.snippet && s.snippet.runs && s.snippet.runs.map(function(r){return r.text;}).join('')) || ''; }).filter(Boolean).join(' ');
+          }
+        }
+        // generic shape: array of {text} or {snippet}
+        if (Array.isArray(j)) return j.map(function(s){ return s.text || s.snippet || ''; }).filter(Boolean).join(' ');
+        if (j.transcript) return typeof j.transcript === 'string' ? j.transcript : j.transcript.map(function(s){return s.text;}).join(' ');
+      } else {
+        const text = await r.text();
+        if (text && text.length > 200) return text;
+      }
+    } catch (e) { lastErr = e; }
+  }
+  throw new Error('Could not fetch transcript automatically. ' + (lastErr ? lastErr.message : '') + ' — paste it manually below.');
+}
+
+async function callOpenAI(key, system, user, maxTokens) {
+  const r = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key },
+    body: JSON.stringify({
+      model: 'gpt-4o-mini',
+      messages: [{ role: 'system', content: system }, { role: 'user', content: user }],
+      temperature: 0.6,
+      max_tokens: maxTokens
+    })
+  });
+  if (!r.ok) {
+    const t = await r.text();
+    throw new Error('OpenAI ' + r.status + ': ' + t.slice(0, 300));
+  }
+  const j = await r.json();
+  return j.choices[0].message.content;
+}
+
+async function callAnthropic(key, system, user, maxTokens) {
+  const r = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': key,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: maxTokens,
+      system: system,
+      messages: [{ role: 'user', content: user }]
+    })
+  });
+  if (!r.ok) {
+    const t = await r.text();
+    throw new Error('Anthropic ' + r.status + ': ' + t.slice(0, 300));
+  }
+  const j = await r.json();
+  return j.content[0].text;
+}
+
+function buildSystemPrompt(tone, length) {
+  const wordBudget = length === 'short' ? '500–700' : length === 'long' ? '1500–2000' : '1000–1300';
+  return 'You are a senior content editor. Convert a raw YouTube video transcript into an SEO-optimized blog post.\n\n' +
+    'Hard rules:\n' +
+    '- Tone: ' + tone + '.\n' +
+    '- Target length: ' + wordBudget + ' words.\n' +
+    '- Structure: H1 title → 1-paragraph hook (no "in this post we will...") → H2 sections, each with 1–4 paragraphs, ' +
+    'occasional H3 sub-sections, bullet lists where useful, → conclusion paragraph.\n' +
+    '- Remove all filler ("um," "you know," "right?") and stage cues ("welcome back to my channel").\n' +
+    '- Restructure by topic, not by chronology of the video.\n' +
+    '- Preserve every concrete fact, name, number, and quote from the transcript.\n' +
+    '- Add a meta description (150–160 chars) and a SEO slug at the end.\n' +
+    '- Output Markdown only. No preamble. No "here is your blog post:".\n\n' +
+    'Final output format (literal):\n' +
+    '# <Title>\n\n<intro paragraph>\n\n## <H2>\n...rest of post...\n\n---\n\n**Meta description:** <one-line>\n**Suggested slug:** <kebab-case-slug>\n**Suggested tags:** tag1, tag2, tag3';
+}
+
+function markdownToHtml(md) {
+  // Tiny converter — good enough for paste into a CMS.
+  let h = md
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/^### (.*)$/gm,'<h3>$1</h3>')
+    .replace(/^## (.*)$/gm,'<h2>$1</h2>')
+    .replace(/^# (.*)$/gm,'<h1>$1</h1>')
+    .replace(/^---$/gm,'<hr>')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g,'<em>$1</em>')
+    .replace(/`(.+?)`/g,'<code>$1</code>')
+    .replace(/^\- (.*)$/gm,'<li>$1</li>')
+    .replace(/(<li>[\s\S]+?<\/li>)/g, function(m){ return '<ul>' + m + '</ul>'; });
+  // wrap loose paragraphs
+  h = h.split(/\n{2,}/).map(function(b){
+    if (/^<(h\d|ul|hr)/.test(b.trim())) return b;
+    return '<p>' + b.trim().replace(/\n/g,'<br>') + '</p>';
+  }).join('\n');
+  return h;
+}
+
+function refreshOutput() {
+  if (currentView === 'markdown') $('outputCode').textContent = lastMarkdown || 'Your blog post will appear here.';
+  else if (currentView === 'html') $('outputCode').textContent = lastHtml || '<p>Run a generation first.</p>';
+  else $('outputCode').textContent = lastTranscript || 'Transcript not fetched yet.';
+}
+
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click', function(){
+    document.querySelectorAll('.tab').forEach(function(x){ x.classList.toggle('active', x === t); });
+    currentView = t.dataset.view;
+    refreshOutput();
+  });
+});
+
+$('transcriptBtn').addEventListener('click', async function(){
+  resetStages();
+  const url = $('ytUrl').value.trim();
+  setStage('parse', 'active');
+  const id = extractVideoId(url);
+  if (!id) { setStatus('Could not parse YouTube URL or video ID.', 'error'); setStage('parse','done'); return; }
+  setStage('parse','done');
+  setStage('fetch','active');
+  setStatus('Fetching transcript for ' + id + '…');
+  try {
+    lastTranscript = await fetchTranscript(id);
+    setStage('fetch','done');
+    setStatus('Transcript fetched: ' + lastTranscript.length + ' characters.', 'success');
+    document.querySelector('.tab[data-view="transcript"]').click();
+  } catch(e) {
+    setStatus(e.message, 'error');
+  }
+});
+
+$('goBtn').addEventListener('click', async function(){
+  resetStages();
+  const url = $('ytUrl').value.trim();
+  const provider = $('provider').value;
+  const key = $('apiKey').value.trim();
+  const tone = $('tone').value;
+  const length = $('length').value;
+
+  if (!key) { setStatus('Add your API key (it stays in your browser).', 'error'); return; }
+  if (!url) { setStatus('Paste a YouTube URL first.', 'error'); return; }
+
+  $('goBtn').disabled = true;
+  $('goBtn').textContent = 'Working…';
+
+  try {
+    setStage('parse','active');
+    const id = extractVideoId(url);
+    if (!id) throw new Error('Could not parse YouTube URL or video ID.');
+    setStage('parse','done');
+
+    setStage('fetch','active');
+    setStatus('Fetching transcript…');
+    if (!lastTranscript) lastTranscript = await fetchTranscript(id);
+    setStage('fetch','done');
+
+    setStage('rewrite','active');
+    setStatus('Rewriting with ' + (provider === 'openai' ? 'OpenAI' : 'Anthropic') + '…');
+    const sys = buildSystemPrompt(tone, length);
+    const transcriptToSend = lastTranscript.length > 28000 ? lastTranscript.slice(0, 28000) + '\n[...truncated for token limits]' : lastTranscript;
+    const userPrompt = 'TRANSCRIPT:\n' + transcriptToSend + '\n\nTurn this into a blog post following the rules.';
+    const maxTokens = length === 'short' ? 1400 : length === 'long' ? 3500 : 2500;
+
+    lastMarkdown = provider === 'openai'
+      ? await callOpenAI(key, sys, userPrompt, maxTokens)
+      : await callAnthropic(key, sys, userPrompt, maxTokens);
+    lastHtml = markdownToHtml(lastMarkdown);
+
+    setStage('rewrite','done');
+    setStatus('Done. Switch tabs to see Markdown / HTML / raw transcript.', 'success');
+    refreshOutput();
+  } catch(e) {
+    setStatus(e.message, 'error');
+  } finally {
+    $('goBtn').disabled = false;
+    $('goBtn').textContent = '✍️ Generate blog post';
+  }
+});
+
+$('copyBtn').addEventListener('click', function(){
+  navigator.clipboard.writeText($('outputCode').textContent);
+  const b = $('copyBtn');
+  b.textContent = 'Copied!';
+  setTimeout(function(){ b.textContent = 'Copy'; }, 1500);
+});
+</script>
+</body>
+</html>
