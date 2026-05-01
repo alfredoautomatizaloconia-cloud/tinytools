@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Favicon Dimensions Every Browser Needs in 2026 — The Complete Size Guide</title>
+<meta name="description" content="The exact favicon sizes every browser, OS, and device actually requests in 2026. PNG vs ICO vs SVG, apple-touch-icon, manifest.json, dark-mode favicons, and the bare-minimum file set that covers 99% of traffic.">
+<meta name="keywords" content="favicon dimensions 2026, favicon sizes, favicon best practices, apple-touch-icon size, favicon ico vs png, manifest.json favicon, dark mode favicon, favicon generator">
+<meta property="og:title" content="Favicon Dimensions Every Browser Needs in 2026">
+<meta property="og:description" content="The complete favicon size guide for 2026: every dimension iOS, Android, Windows, and modern browsers actually fetch — plus the minimal file set that covers 99% of traffic.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Favicon Dimensions Every Browser Needs in 2026">
+<meta name="twitter:description" content="Every favicon dimension iOS, Android, Windows, and browsers fetch in 2026 — plus the minimal set that covers 99% of traffic.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Favicon Dimensions Every Browser Needs in 2026",
+  "description": "A practical 2026 reference for favicon dimensions: every size that browsers, iOS, Android, and Windows actually request, the minimal file set that covers 99% of traffic, and how to wire it up with HTML and manifest.json.",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
+  "datePublished": "2026-05-01",
+  "dateModified": "2026-05-01",
+  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/",
+  "image": "https://tinytools-smoky.vercel.app/favicon-generator/og-default.png",
+  "keywords": "favicon, favicon dimensions, favicon sizes, apple-touch-icon, manifest.json, dark mode favicon, ico vs png"
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a;
+    --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #f59e0b; --accent-glow: #f59e0b40;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 {
+    font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15;
+    margin: 16px 0 12px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fbbf24 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 24px; font-weight: 700; margin: 36px 0 12px; color: var(--text); }
+  h3 { font-size: 19px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+  p, ul, ol { color: #d0d0e0; margin-bottom: 16px; font-size: 17px; }
+  ul, ol { margin-left: 24px; }
+  li { margin-bottom: 6px; }
+  strong { color: var(--text); font-weight: 600; }
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-size: 14px; color: #fbbf24; }
+  pre { background: var(--bg-elevated); padding: 14px 16px; border-radius: 10px; overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); }
+  pre code { background: transparent; padding: 0; color: #fbbf24; font-size: 13px; line-height: 1.55; }
+  a { color: var(--accent); }
+  blockquote {
+    border-left: 3px solid var(--accent); padding: 8px 16px; margin: 20px 0;
+    background: var(--bg-elevated); border-radius: 6px; font-style: italic; color: var(--text-dim);
+  }
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 15px;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); color: #d0d0e0; }
+  th { background: var(--bg-elevated); color: var(--text); font-weight: 600; font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  .cta-box {
+    margin: 36px 0; padding: 24px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; border-left: 4px solid var(--accent);
+  }
+  .cta-box h3 { margin: 0 0 6px; font-size: 18px; color: var(--text); }
+  .cta-box p { margin-bottom: 12px; font-size: 15px; }
+  .cta-btn {
+    display: inline-block; padding: 12px 24px;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+  }
+  .related { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .related h3 { color: var(--text-dim); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card {
+    padding: 14px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--text); transition: all 0.15s;
+  }
+  .related-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .related-card .name { font-weight: 600; font-size: 14px; }
+  .related-card .desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;/&nbsp; <a href="/favicon-generator/">Favicon Generator</a> &nbsp;/&nbsp; Blog
+  </div>
+
+  <h1>Favicon Dimensions Every Browser Needs in 2026</h1>
+  <div class="meta">May 1, 2026 · ~7 min read · By TinyTools</div>
+
+  <p>Most favicon guides published before 2024 tell you to ship 14 different files. In 2026, you can cover <strong>99% of real-world traffic with five</strong>. The list got shorter because Apple finally standardized <code>apple-touch-icon</code>, modern browsers consume SVG natively, and Windows tile icons quietly stopped mattering when nobody pinned sites to their Start menu anymore.</p>
+
+  <p>This is the practical reference: every dimension that real devices actually fetch in 2026, what to drop, and the exact <code>&lt;link&gt;</code> tags and <code>manifest.json</code> entries that wire it all together.</p>
+
+  <h2>The minimum file set that covers 99% of 2026 traffic</h2>
+
+  <p>If you only ship five files, ship these:</p>
+
+  <table>
+    <thead>
+      <tr><th>File</th><th>Size</th><th>Format</th><th>What it covers</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>favicon.ico</code></td><td>16 + 32 + 48 (multi-size)</td><td>ICO</td><td>Legacy IE, Edge tab, address bar fallback</td></tr>
+      <tr><td><code>favicon.svg</code></td><td>any (vector)</td><td>SVG</td><td>Chrome, Firefox, Safari, Edge — sharpest at every zoom</td></tr>
+      <tr><td><code>apple-touch-icon.png</code></td><td>180×180</td><td>PNG</td><td>iOS home screen, iPadOS, Safari pinned tab</td></tr>
+      <tr><td><code>icon-192.png</code></td><td>192×192</td><td>PNG</td><td>Android home screen, PWA install</td></tr>
+      <tr><td><code>icon-512.png</code></td><td>512×512</td><td>PNG</td><td>Android splash, PWA store, social cards fallback</td></tr>
+    </tbody>
+  </table>
+
+  <p>That's it. Five files. The PNG-at-every-size shotgun approach from 2018 was solving for browser bugs that no longer exist.</p>
+
+  <h2>What every dimension is actually for</h2>
+
+  <h3>16×16 — the address bar and browser tab</h3>
+  <p>The original favicon size, still the one users see most often. At 16 pixels you have <strong>roughly 200 pixels of canvas to work with</strong>, so anything thinner than a 2px stroke will dissolve into anti-aliasing mush. Test your design at this size first; if it doesn't read at 16×16, simplify until it does.</p>
+
+  <h3>32×32 — high-DPI tabs and bookmarks</h3>
+  <p>What Retina, 4K, and modern Windows displays actually render in the tab. Always ship this one. If you ship only a 16×16, your favicon looks blurry on every laptop sold after 2019.</p>
+
+  <h3>48×48 — Windows site tiles and shortcuts</h3>
+  <p>Used by Windows when you save a site to the desktop or pin it to taskbar. Bundle it inside the same multi-size <code>favicon.ico</code> and you're done — no separate file needed.</p>
+
+  <h3>180×180 — apple-touch-icon</h3>
+  <p>The single iOS size that matters in 2026. Apple deprecated the older 57/72/76/120/152 sizes in iOS 16; they all fall back to a downscaled 180. iOS will round the corners and add gloss for you, so <strong>ship a flat square with no pre-rounded corners and no padding</strong>. Use a solid background color (not transparency) — iOS shows transparent areas as black on the home screen.</p>
+
+  <h3>192×192 and 512×512 — the PWA pair</h3>
+  <p>Android Chrome and every PWA installer expects exactly these two sizes in <code>manifest.json</code>. The 192 is used for home-screen and notifications; the 512 is used for splash screens and the install prompt artwork. Ship both with the <code>"purpose": "any maskable"</code> property so Android can crop into the new circle/squircle/teardrop shapes without slicing off your logo.</p>
+
+  <h2>What you can stop shipping in 2026</h2>
+
+  <p>The following sizes were standard advice five years ago and are almost certainly dead weight today:</p>
+
+  <ul>
+    <li><strong>57×57, 72×72, 76×76, 114×114, 120×120, 144×144, 152×152</strong> — all old apple-touch-icon variants. iOS now downscales 180 for every one of these slots.</li>
+    <li><strong>96×96 Windows tile</strong> — pinned IE/Edge tiles are effectively zero usage now.</li>
+    <li><strong>browserconfig.xml</strong> — the Microsoft tile metadata file. You can delete it.</li>
+    <li><strong>safari-pinned-tab.svg</strong> with the <code>color</code> attribute — Safari 16+ uses your regular SVG favicon and respects the document's color scheme.</li>
+    <li><strong>mstile-* PNG variants</strong> — same story; pinned Start menu sites stopped being a thing.</li>
+  </ul>
+
+  <p>If your generator from 2019 dumped 17 files into your <code>/public</code> folder, you can safely delete two-thirds of them and your traffic won't notice.</p>
+
+  <h2>The exact HTML and manifest you need</h2>
+
+  <p>Drop this in <code>&lt;head&gt;</code> and you're done:</p>
+
+<pre><code>&lt;link rel="icon" href="/favicon.ico" sizes="any"&gt;
+&lt;link rel="icon" href="/favicon.svg" type="image/svg+xml"&gt;
+&lt;link rel="apple-touch-icon" href="/apple-touch-icon.png"&gt;
+&lt;link rel="manifest" href="/manifest.json"&gt;</code></pre>
+
+  <p>And the matching <code>manifest.json</code>:</p>
+
+<pre><code>{
+  "name": "Your Site Name",
+  "short_name": "Site",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "theme_color": "#0a0a0f",
+  "background_color": "#0a0a0f",
+  "display": "standalone"
+}</code></pre>
+
+  <p>The <code>sizes="any"</code> attribute on the ICO link is the trick that tells modern browsers to prefer the SVG when available, but fall back to ICO without ever requesting the wrong size.</p>
+
+  <h2>Dark-mode favicons (the 2026 way)</h2>
+
+  <p>Browsers respect <code>prefers-color-scheme</code> inside SVG favicons. If your favicon has solid black or solid white elements that disappear against a dark or light tab background, embed a media query directly in the SVG:</p>
+
+<pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"&gt;
+  &lt;style&gt;
+    path { fill: #111; }
+    @media (prefers-color-scheme: dark) {
+      path { fill: #fff; }
+    }
+  &lt;/style&gt;
+  &lt;path d="..."/&gt;
+&lt;/svg&gt;</code></pre>
+
+  <p>Chrome 121+, Firefox 122+, and Safari 17+ all honor this. Edge follows Chromium. <strong>This replaces the old workaround</strong> of swapping favicons with JavaScript on a media-query change — you no longer need it.</p>
+
+  <h2>Common mistakes that quietly cost you brand recognition</h2>
+
+  <ul>
+    <li><strong>Pre-rounding the apple-touch-icon corners.</strong> iOS rounds for you. Pre-rounded squares come out with double-rounded corners that look amateur.</li>
+    <li><strong>Transparent background on apple-touch-icon.</strong> iOS treats it as black on the home screen. Use your brand background color.</li>
+    <li><strong>Designing the 16×16 last.</strong> If you design at 512 and downscale, you usually end up with an unreadable smudge in the tab. Design 16×16 first; scale up.</li>
+    <li><strong>Forgetting the multi-size ICO.</strong> A single 16×16 ICO is the #1 reason favicons look pixelated on 4K displays.</li>
+    <li><strong>Not setting <code>purpose: "any maskable"</code>.</strong> Without it, Android crops into your icon's edges, often slicing off the logo.</li>
+    <li><strong>Same favicon as a competitor.</strong> Generic geometric defaults from logo makers tend to repeat across sites. A two-second uniqueness check on a search-result page beats six iterations after launch.</li>
+  </ul>
+
+  <div class="cta-box">
+    <h3>Skip the math — generate a complete favicon set in one click</h3>
+    <p>Type any letter, drop in an emoji, or upload a logo. Our free generator outputs the exact 5-file set described above (ICO with all three sizes bundled, SVG, apple-touch-icon, and the 192/512 PNG pair) plus a ready-to-paste <code>manifest.json</code>. No signup, no watermark, runs entirely in your browser.</p>
+    <a href="/favicon-generator/" class="cta-btn">Try the Favicon Generator free →</a>
+  </div>
+
+  <h2>Testing your favicon set in under 5 minutes</h2>
+
+  <ol>
+    <li>Open your site in <strong>Chrome on a Retina display</strong> — check the tab.</li>
+    <li><strong>Bookmark it</strong> — check the bookmark bar at full size.</li>
+    <li>Open in <strong>Safari iOS</strong> → Share → Add to Home Screen — check the icon on the home screen.</li>
+    <li>Open in <strong>Chrome Android</strong> → menu → Install app — check the install prompt artwork and the home-screen icon.</li>
+    <li><strong>Toggle dark mode</strong> in Chrome (DevTools → Rendering → Emulate CSS prefers-color-scheme) and confirm your SVG flips correctly.</li>
+  </ol>
+
+  <p>If any of those five steps shows a blurry, cropped, or invisible icon, fix the corresponding file before launch. After that, you're set for at least the next major browser cycle.</p>
+
+  <h2>Tooling and references worth bookmarking</h2>
+
+  <ul>
+    <li><a href="https://realfavicongenerator.net/favicon_checker" rel="nofollow" target="_blank">RealFaviconGenerator's checker</a> — paste your URL, get a per-platform audit. Useful even when you generate elsewhere.</li>
+    <li><a href="https://web.dev/articles/add-manifest" rel="nofollow" target="_blank">web.dev's manifest reference</a> — the canonical spec for PWA icon entries.</li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link" rel="nofollow" target="_blank">MDN <code>&lt;link&gt;</code> reference</a> — the latest <code>rel="icon"</code> behavior across browsers.</li>
+  </ul>
+
+  <p>Ship a favicon you're proud of, then forget about it for three years. The standards have stabilized — what you build today should render correctly until at least 2029.</p>
+
+  <div class="related">
+    <h3>Related TinyTools</h3>
+    <div class="related-grid">
+      <a href="/og-image-generator/" class="related-card">
+        <div class="name">OG Image Generator</div>
+        <div class="desc">Social card images at the right size</div>
+      </a>
+      <a href="/color-palette/" class="related-card">
+        <div class="name">Color Palette Generator</div>
+        <div class="desc">Pick the brand colors first</div>
+      </a>
+      <a href="/seo-meta-generator/" class="related-card">
+        <div class="name">SEO Meta Generator</div>
+        <div class="desc">Title + description tags in one go</div>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 TinyTools · <a href="/">All tools</a> · <a href="/favicon-generator/">Favicon Generator</a></p>
+  </footer>
+</div>
+</body>
+</html>
