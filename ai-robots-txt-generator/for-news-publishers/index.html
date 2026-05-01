@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Robots.txt Generator for News Publishers — Protect Your Reporting From AI Training (2026)</title>
+<meta name="description" content="A robots.txt built for newsrooms. Block GPTBot, ClaudeBot, Google-Extended and Bytespider from training on your articles — while keeping Googlebot, Bingbot and live-citation AI crawlers allowed. Free, no signup.">
+<meta name="keywords" content="ai robots.txt for news publishers, block GPTBot news site, news publisher robots.txt, block AI training newsroom, opt out AI training journalism, Google-Extended news, llms.txt for publishers">
+<meta property="og:title" content="AI Robots.txt for News Publishers — Block AI Training, Keep Search">
+<meta property="og:description" content="Stop AI labs from training on your investigative reporting without losing search traffic. Free generator built for newsrooms.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-news-publishers/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-news-publishers/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Robots.txt Generator for News Publishers",
+  "url": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-news-publishers/",
+  "applicationCategory": "DeveloperApplication",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "News Publishers, Newsrooms, Editorial Teams"
+  },
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Generate a robots.txt that blocks AI training crawlers (GPTBot, ClaudeBot, Google-Extended, Bytespider, Applebot-Extended) on news and editorial sites while preserving search engine access."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I block AI training crawlers but still appear in Google search?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Googlebot (search) and Google-Extended (Gemini training) are separate user agents. You can disallow Google-Extended in your robots.txt while leaving Googlebot fully allowed — your news articles will continue to appear in Google Search and Top Stories without being used to train Gemini."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will blocking GPTBot remove my articles from ChatGPT answers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Disallowing GPTBot prevents OpenAI from training future models on your content. To also remove your site from ChatGPT's live web browsing and citations, you must additionally disallow OAI-SearchBot and ChatGPT-User. Many publishers block GPTBot but allow OAI-SearchBot so ChatGPT can still cite their reporting with attribution."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between robots.txt and llms.txt for newsrooms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "robots.txt is enforceable — major AI labs honor it as the legal opt-out signal. llms.txt is an emerging proposal that lets you publish a curated, machine-readable summary of your site for LLMs that do retrieve content (with permission). Newsrooms typically need a strict robots.txt first and can add llms.txt later for sections they actively want surfaced."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Bytespider really respect robots.txt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ByteDance's Bytespider has a poor compliance reputation historically, but as of 2024 it does honor robots.txt disallow directives. Many major publishers (Reuters, BBC, NYT) explicitly block it. For belt-and-suspenders enforcement, pair the robots.txt block with a server-side User-Agent firewall rule at the CDN."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should we block AI crawlers if we have a licensing deal with OpenAI or Google?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you already license content to a specific lab, leave their crawler allowed and block the others. The generator lets you toggle each user agent individually so a publisher with an OpenAI deal can allow GPTBot while still blocking ClaudeBot, PerplexityBot and Google-Extended."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f97316; --accent-glow: #f9731640;
+    --green: #10b981; --red: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #ec489940 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  header { text-align: center; padding: 24px 0 8px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(28px, 4.2vw, 42px); font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fed7aa 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 640px; margin: 0 auto 24px; }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 8px 0 24px; }
+  .cta {
+    display: inline-block; padding: 14px 28px; border-radius: 10px;
+    font-weight: 600; text-decoration: none; transition: all 0.15s; font-size: 15px;
+  }
+  .cta-primary { background: var(--accent); color: #0a0a0f; }
+  .cta-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px var(--accent-glow); }
+  .cta-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+  .cta-secondary:hover { border-color: var(--accent); }
+
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-top: 24px; }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .preview { background: #000; padding: 18px; border-radius: 12px; border: 1px solid var(--border); }
+  .preview pre { margin: 0; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: #e0e0ff; white-space: pre-wrap; }
+  .preview .comment { color: #6b7280; }
+  .preview .ua { color: #f97316; }
+  .preview .allow { color: #10b981; }
+  .preview .disallow { color: #ef4444; }
+
+  .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 14px; }
+  .use-case { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .use-case .icon { font-size: 22px; margin-bottom: 8px; }
+  .use-case h3 { font-size: 15px; margin-bottom: 6px; color: var(--text); }
+  .use-case p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+  .content { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; color: var(--text); letter-spacing: -0.01em; }
+  .content h3 { font-size: 18px; margin: 24px 0 8px; color: var(--text); }
+  .content p { color: var(--text-dim); margin-bottom: 12px; font-size: 15px; }
+  .content ul { margin: 8px 0 16px 24px; color: var(--text-dim); }
+  .content ul li { margin-bottom: 6px; font-size: 15px; }
+  .content a { color: var(--accent); text-decoration: none; }
+  .content a:hover { text-decoration: underline; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', monospace; font-size: 13px; color: var(--accent); }
+  .content blockquote { border-left: 3px solid var(--accent); padding: 4px 16px; margin: 16px 0; color: var(--text-dim); font-style: italic; }
+
+  .faq-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: 0; }
+  .faq-item h3 { font-size: 16px; margin-bottom: 6px; color: var(--text); }
+  .faq-item p { color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+
+  .final-cta { text-align: center; padding: 36px 24px; margin-top: 40px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
+  .final-cta h2 { font-size: 22px; margin-bottom: 10px; color: var(--text); }
+  .final-cta p { color: var(--text-dim); margin-bottom: 18px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">Home</a> &nbsp;›&nbsp;
+    <a href="/ai-robots-txt-generator/">AI Robots.txt Generator</a> &nbsp;›&nbsp;
+    For News Publishers
+  </div>
+
+  <header>
+    <div class="badge">📰 Built for newsrooms · 25+ AI crawlers · Free</div>
+    <h1>AI Robots.txt Generator for News Publishers</h1>
+    <p class="subtitle">Stop AI labs from training models on your investigative reporting — without sacrificing a single click of search traffic. Block GPTBot, ClaudeBot, Google-Extended and Bytespider in 30 seconds.</p>
+    <div class="cta-row">
+      <a href="/ai-robots-txt-generator/" class="cta cta-primary">Open the Generator →</a>
+      <a href="#example" class="cta cta-secondary">See example for newsrooms</a>
+    </div>
+  </header>
+
+  <div class="panel" id="example">
+    <h2>What a publisher robots.txt looks like</h2>
+    <div class="preview">
+<pre><span class="comment"># robots.txt for a news publisher
+# Goal: block AI model training, keep all search engines</span>
+
+<span class="comment"># --- Search engines: fully allowed ---</span>
+<span class="ua">User-agent: Googlebot</span>
+<span class="allow">Allow: /</span>
+
+<span class="ua">User-agent: Bingbot</span>
+<span class="allow">Allow: /</span>
+
+<span class="comment"># --- AI training crawlers: blocked ---</span>
+<span class="ua">User-agent: GPTBot</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: ClaudeBot</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: Google-Extended</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: Applebot-Extended</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: Bytespider</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: PerplexityBot</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: CCBot</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="comment"># --- Live citation crawlers: keep allowed for traffic ---</span>
+<span class="ua">User-agent: OAI-SearchBot</span>
+<span class="allow">Allow: /</span>
+
+<span class="ua">User-agent: PerplexityBot-User</span>
+<span class="allow">Allow: /</span>
+
+<span class="ua">Sitemap: https://yournews.com/sitemap.xml</span></pre>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Why news publishers need this</h2>
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="icon">📜</div>
+        <h3>Protect investigative work</h3>
+        <p>Months of original reporting can be ingested into a foundation model in seconds. A targeted robots.txt is the first legal signal that your archive is not training data.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">🔍</div>
+        <h3>Keep Google search traffic</h3>
+        <p>Block <code>Google-Extended</code> (Gemini training) without touching <code>Googlebot</code>. Your stories still rank in Top Stories and the news carousel.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">💼</div>
+        <h3>Negotiate from a stronger position</h3>
+        <p>Publishers with a clean opt-out have legal leverage when negotiating licensing deals with OpenAI, Google, Anthropic, and Microsoft.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">📰</div>
+        <h3>Stay cited, not consumed</h3>
+        <p>Block training crawlers but keep <code>OAI-SearchBot</code> and <code>PerplexityBot-User</code> allowed — readers still discover your scoop through AI answers, with attribution.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">🛡️</div>
+        <h3>Comply with industry guidance</h3>
+        <p>Aligns with the News Media Alliance's recommended opt-out posture and the IPTC's machine-readable rights signals (<code>NoAI</code>, <code>NoImageAI</code>).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>The AI training problem for newsrooms</h2>
+    <p>In 2023 The New York Times sued OpenAI and Microsoft alleging that millions of Times articles had been used, without consent or compensation, to train ChatGPT. By 2025 nearly every major U.S. publisher had either filed a similar lawsuit or signed a licensing deal — and a clear pattern emerged: <strong>publishers with the cleanest, oldest robots.txt opt-outs negotiated the strongest terms</strong>.</p>
+    <p>If your newsroom has not yet codified an AI position in <code>robots.txt</code>, every article you publish is presumed scrapeable. The fix is a 60-second config change. This generator is preset for editorial sites: it allows every search engine, blocks every known training crawler, and keeps live-citation crawlers allowed so your reporting still surfaces in AI answers with a clickable citation.</p>
+
+    <h2>Which AI crawlers should a news site block?</h2>
+    <p>The 2026 landscape sorts AI crawlers into three buckets. Your robots.txt should treat them differently:</p>
+
+    <h3>1. Training-only crawlers (block these)</h3>
+    <p>These bots exist to vacuum the web for foundation-model training data. They send no traffic back. Blocking is pure upside:</p>
+    <ul>
+      <li><code>GPTBot</code> — OpenAI's training crawler</li>
+      <li><code>ClaudeBot</code> and <code>anthropic-ai</code> — Anthropic training</li>
+      <li><code>Google-Extended</code> — Gemini training (separate from Googlebot search)</li>
+      <li><code>Applebot-Extended</code> — Apple Intelligence training (separate from Applebot)</li>
+      <li><code>Bytespider</code> — ByteDance/TikTok training</li>
+      <li><code>CCBot</code> — Common Crawl, used by most open-source models</li>
+      <li><code>Meta-ExternalAgent</code> — Meta AI training</li>
+      <li><code>cohere-ai</code>, <code>Diffbot</code>, <code>Omgilibot</code> — smaller training crawlers</li>
+    </ul>
+
+    <h3>2. Live-citation crawlers (consider keeping allowed)</h3>
+    <p>These bots fetch your article in real time when a user asks a question, then cite you with a link. They drive measurable referral traffic. Many publishers leave these allowed even when blocking training:</p>
+    <ul>
+      <li><code>OAI-SearchBot</code> — ChatGPT live web answers</li>
+      <li><code>PerplexityBot-User</code> — Perplexity user-triggered fetch</li>
+      <li><code>ChatGPT-User</code> — ChatGPT browsing tool</li>
+      <li><code>Bingbot</code> — Microsoft search and Copilot grounding</li>
+    </ul>
+
+    <h3>3. Search engines (always allowed)</h3>
+    <p><code>Googlebot</code>, <code>Bingbot</code>, <code>DuckDuckBot</code>, <code>Slurp</code> (Yahoo) — never block these. They are your traffic.</p>
+
+    <h2>The Google-Extended trap</h2>
+    <p>This is the single most common publisher mistake. <code>Googlebot</code> indexes your site for Search. <code>Google-Extended</code> is a separate user agent introduced in late 2023 specifically so publishers could opt out of Gemini training without losing Search visibility. They are completely independent — disallowing one has no effect on the other. If you only have a generic <code>User-agent: *  Disallow: /</code> rule, you have blocked everything including Search. If you have nothing at all, Google is using your articles to train Gemini. The sweet spot is <code>Google-Extended: Disallow</code> with <code>Googlebot: Allow</code>.</p>
+
+    <h2>What about llms.txt?</h2>
+    <p>The <a href="https://llmstxt.org/" rel="noopener" target="_blank">llms.txt proposal</a> is gaining traction in 2026 as a complement to robots.txt. Where robots.txt is a "stay out" signal, llms.txt is a "here is the curated version of our site that we are happy for you to surface." For newsrooms this is mostly relevant for evergreen reference content (explainers, glossaries, stylebooks) — not for daily reporting. Ship robots.txt first; revisit llms.txt for your reference vertical later.</p>
+
+    <h2>Belt and suspenders: enforce at the edge</h2>
+    <p>robots.txt is a polite request. Reputable AI labs (OpenAI, Anthropic, Google) honor it. Less reputable scrapers do not. For high-value investigative content, pair the robots.txt block with a CDN-level User-Agent firewall rule. Cloudflare's free tier ships a one-click "Block AI Bots" rule that enforces the same list at the network edge — even bots that ignore robots.txt cannot get past it.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <h3>Can I block AI training crawlers but still appear in Google search?</h3>
+      <p>Yes. <code>Googlebot</code> (search) and <code>Google-Extended</code> (Gemini training) are separate user agents. Disallow Google-Extended and leave Googlebot allowed — your articles continue to appear in Google Search and Top Stories without being used to train Gemini.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Will blocking GPTBot remove my articles from ChatGPT answers?</h3>
+      <p>Disallowing <code>GPTBot</code> prevents OpenAI from training future models on your content. To also remove your site from ChatGPT's live web browsing and citations, additionally disallow <code>OAI-SearchBot</code> and <code>ChatGPT-User</code>. Many publishers block GPTBot but allow OAI-SearchBot so ChatGPT can still cite their reporting.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is the difference between robots.txt and llms.txt for newsrooms?</h3>
+      <p>robots.txt is the enforceable opt-out signal — major AI labs honor it. llms.txt is an emerging proposal for a curated, machine-readable summary of your site for LLMs that do retrieve content. Newsrooms need a strict robots.txt first.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does Bytespider really respect robots.txt?</h3>
+      <p>ByteDance's Bytespider had a poor compliance reputation historically, but as of 2024 it does honor robots.txt disallow directives. For belt-and-suspenders enforcement, pair the robots.txt block with a server-side User-Agent firewall rule at the CDN.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should we block AI crawlers if we have a licensing deal with OpenAI or Google?</h3>
+      <p>If you license content to a specific lab, leave their crawler allowed and block the others. The generator lets you toggle each user agent individually so a publisher with an OpenAI deal can allow GPTBot while still blocking ClaudeBot, PerplexityBot and Google-Extended.</p>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    <h2>Generate your newsroom's robots.txt now</h2>
+    <p>Free, no signup. Pick your blocks, copy the file, drop it at the root of your domain. Done in under a minute.</p>
+    <a href="/ai-robots-txt-generator/" class="cta cta-primary">Open the AI Robots.txt Generator →</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> · Free indie tools for the AI era ·
+    See also: <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> ·
+    <a href="/seo-meta-generator/">SEO Meta Generator</a>
+  </footer>
+</div>
+</body>
+</html>
