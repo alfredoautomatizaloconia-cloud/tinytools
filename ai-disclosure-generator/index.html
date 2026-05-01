@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Content Disclosure Generator (EU AI Act 2026 Compliant)</title>
+<meta name="description" content="Generate EU AI Act-compliant disclosure labels for AI-generated content. Get HTML banners, image overlays, JSON-LD schema for AI text, images, audio, video, and deepfakes. Free, no signup. Avoid €15M fines.">
+<meta name="keywords" content="AI disclosure generator, EU AI Act labeling, AI content label, AI-generated disclosure, deepfake label, AI watermark, AI compliance tool, AI Act August 2026">
+<meta property="og:title" content="Free AI Content Disclosure Generator — EU AI Act Compliant">
+<meta property="og:description" content="Generate compliant disclosure labels for AI-generated content. Avoid €15M fines.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Content Disclosure Generator",
+  "description": "Generates EU AI Act-compliant disclosure labels for AI-generated text, images, audio, video, and deepfakes. Outputs HTML, CSS, JSON-LD schema, and image overlays.",
+  "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/",
+  "applicationCategory": "DeveloperApplication",
+  "offers": { "@type": "Offer", "price": "0" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #fbbf24; --accent-glow: #fbbf2440;
+    --green: #10b981; --red: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #ef444440 0%, transparent 50%);
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 999px; font-size: 13px;
+    color: #fca5a5; margin-bottom: 20px; font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fde68a 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 680px; margin: 0 auto; }
+
+  .layout { display: grid; grid-template-columns: 380px 1fr; gap: 24px; margin-top: 32px; }
+  @media (max-width: 1000px) { .layout { grid-template-columns: 1fr; } }
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px; }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .field { margin-bottom: 16px; }
+  label { display: block; font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500; }
+  input[type="text"], select, textarea {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit;
+  }
+  textarea { resize: vertical; min-height: 60px; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+
+  .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .type-btn {
+    padding: 10px; background: var(--bg-elevated); border: 2px solid var(--border);
+    border-radius: 10px; cursor: pointer; transition: all 0.15s; text-align: center;
+    font-size: 12px; color: var(--text-dim);
+  }
+  .type-btn .emoji { font-size: 22px; display: block; margin-bottom: 4px; }
+  .type-btn.active { border-color: var(--accent); color: var(--text); background: var(--accent-glow); }
+  .type-btn:hover { border-color: var(--accent); }
+
+  .preview-section { margin-bottom: 24px; }
+  .preview-section .label-row {
+    font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 10px; font-weight: 600;
+  }
+
+  /* AI Disclosure Banner Styles (the actual generated banners) */
+  .ai-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: 600;
+    font-family: -apple-system, sans-serif;
+  }
+  .ai-label.style-warning { background: #fef3c7; color: #78350f; border: 1px solid #fbbf24; }
+  .ai-label.style-info { background: #dbeafe; color: #1e3a8a; border: 1px solid #3b82f6; }
+  .ai-label.style-dark { background: #1f2937; color: #f9fafb; border: 1px solid #374151; }
+  .ai-label.style-minimal { background: transparent; color: #6b7280; border: 1px solid #d1d5db; }
+  .ai-label.style-overlay { background: rgba(0,0,0,0.8); color: white; }
+
+  .ai-overlay-demo {
+    position: relative; width: 100%; max-width: 480px; aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #6366f1, #ec4899); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; color: white;
+    font-size: 14px;
+  }
+  .ai-overlay-demo .ai-label-overlay {
+    position: absolute; bottom: 12px; left: 12px;
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 10px; background: rgba(0,0,0,0.85); color: white; border-radius: 8px;
+    font-size: 12px; font-weight: 600;
+  }
+
+  .output {
+    background: #000; padding: 16px; border-radius: 10px; border: 1px solid var(--border);
+    position: relative; margin-top: 8px;
+  }
+  .output pre { margin: 0; font-family: 'SF Mono', Monaco, monospace; font-size: 12px;
+    color: #e0e0ff; white-space: pre-wrap; word-wrap: break-word; }
+  .copy-btn {
+    position: absolute; top: 8px; right: 8px; padding: 5px 10px;
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text); font-size: 11px; cursor: pointer;
+  }
+  .copy-btn:hover { border-color: var(--accent); }
+
+  .alert {
+    padding: 14px 16px; background: rgba(239, 68, 68, 0.1);
+    border-left: 3px solid var(--red); border-radius: 8px; font-size: 13px; color: #fca5a5;
+    margin-top: 16px;
+  }
+  .alert strong { color: white; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul, .content ol { margin-left: 24px; color: var(--text-dim); }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">⚠️ EU AI Act enforcement starts August 2, 2026 · Up to €15M fine</div>
+    <h1>AI Content Disclosure Generator</h1>
+    <p class="subtitle">Generate compliant disclosure labels for AI-generated content. EU AI Act Article 50 ready. HTML, CSS, image overlays, and JSON-LD schema. Free, no signup.</p>
+  </header>
+
+  <div class="layout">
+    <div class="panel">
+      <h2>What kind of AI content?</h2>
+
+      <div class="field">
+        <div class="type-grid" id="contentTypes">
+          <div class="type-btn active" data-type="text"><span class="emoji">📝</span>AI Text</div>
+          <div class="type-btn" data-type="image"><span class="emoji">🖼️</span>AI Image</div>
+          <div class="type-btn" data-type="image-edited"><span class="emoji">✂️</span>AI-Edited Image</div>
+          <div class="type-btn" data-type="audio"><span class="emoji">🎙️</span>AI Voice</div>
+          <div class="type-btn" data-type="video"><span class="emoji">🎬</span>AI Video</div>
+          <div class="type-btn" data-type="deepfake"><span class="emoji">⚠️</span>Deepfake</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Style</label>
+        <select id="style">
+          <option value="warning">Warning (yellow) — recommended</option>
+          <option value="info">Info (blue)</option>
+          <option value="dark">Dark (subtle)</option>
+          <option value="minimal">Minimal (outline only)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Language</label>
+        <select id="lang">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="it">Italiano</option>
+          <option value="pt">Português</option>
+          <option value="nl">Nederlands</option>
+          <option value="pl">Polski</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>AI tool used (optional)</label>
+        <input id="aiTool" type="text" placeholder="e.g., GPT-5, Midjourney, ElevenLabs">
+      </div>
+
+      <div class="field">
+        <label>Date created (optional)</label>
+        <input id="dateCreated" type="text" placeholder="2026-04-30">
+      </div>
+
+      <div class="alert">
+        <strong>Why this matters:</strong> Starting August 2, 2026, the EU AI Act requires clear labeling of AI-generated content. Penalties: up to <strong>€15M or 3% of global turnover</strong>. This applies even to non-EU sites if they have EU users.
+      </div>
+    </div>
+
+    <div>
+      <div class="panel">
+        <h2>Live preview</h2>
+
+        <div class="preview-section">
+          <div class="label-row">Inline badge (use next to AI content)</div>
+          <div id="badgePreview"></div>
+        </div>
+
+        <div class="preview-section" id="overlayPreviewSection">
+          <div class="label-row">Image / video overlay (bottom-left corner)</div>
+          <div class="ai-overlay-demo">
+            Your image content
+            <div class="ai-label-overlay" id="overlayPreview">⚠️ Generated with AI</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top: 16px;">
+        <h2>HTML — copy & paste into your page</h2>
+        <div class="output">
+          <button class="copy-btn" data-target="htmlOutput">Copy</button>
+          <pre id="htmlOutput"></pre>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top: 16px;">
+        <h2>JSON-LD schema — for machine-readable disclosure (recommended by EU AI Act)</h2>
+        <div class="output">
+          <button class="copy-btn" data-target="schemaOutput">Copy</button>
+          <pre id="schemaOutput"></pre>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top: 16px;">
+        <h2>Plain text disclosure (for emails, social posts, descriptions)</h2>
+        <div class="output">
+          <button class="copy-btn" data-target="textOutput">Copy</button>
+          <pre id="textOutput"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>What the EU AI Act requires (Article 50)</h2>
+    <p>Effective August 2, 2026, Article 50 of the EU AI Act mandates clear labeling of AI-generated or AI-manipulated content. The rule applies to any provider or deployer whose content reaches EU users — including non-EU companies, individual creators, bloggers, and businesses.</p>
+
+    <h3>What must be labeled</h3>
+    <ul>
+      <li><strong>Text generated by AI</strong> if it could be mistaken for human-written (news articles, op-eds, descriptions)</li>
+      <li><strong>Photorealistic AI images</strong> that could be mistaken for real photos</li>
+      <li><strong>AI-edited images</strong> where the edit changes meaning (object removal, background replacement, person addition)</li>
+      <li><strong>Synthetic voices</strong> generated by AI (TTS, voice cloning)</li>
+      <li><strong>AI-generated video</strong> including talking-head, animation, or photorealistic footage</li>
+      <li><strong>Deepfakes</strong> of real people — strictest labeling requirements</li>
+    </ul>
+
+    <h3>What's exempt</h3>
+    <ul>
+      <li>Obviously stylized art (cartoons, abstract images) — no realism risk</li>
+      <li>AI-edited photos where the edit is minimal (color correction, sharpening)</li>
+      <li>Spam filters, classifiers, recommendation engines (not "content")</li>
+      <li>Content used in confidential professional settings (medicine, security)</li>
+    </ul>
+
+    <h3>What a compliant label needs</h3>
+    <ol>
+      <li><strong>Human-readable text</strong> — "Generated with AI", "AI-generated", "Created by AI", or equivalent</li>
+      <li><strong>Visual icon or marker</strong> — a clear AI/robot/sparkle symbol or the word "AI"</li>
+      <li><strong>Machine-readable metadata</strong> — schema.org, C2PA, or XMP metadata for crawlers</li>
+      <li><strong>Visibility</strong> — must be visible without action by the user (no hover-only tooltips)</li>
+      <li><strong>Accessibility</strong> — readable contrast (4.5:1 minimum), screen-reader compatible</li>
+    </ol>
+
+    <p>This generator produces all four: an HTML inline badge, an image overlay snippet, plain-text wording, and a JSON-LD schema block. Drop them into your site and you're compliant.</p>
+
+    <h3>Where to put the label</h3>
+    <ul>
+      <li><strong>For text articles:</strong> at the top, before the headline, OR right under the byline</li>
+      <li><strong>For images:</strong> bottom-left corner overlay (use the image overlay snippet) AND alt text mention</li>
+      <li><strong>For video:</strong> first 3 seconds + lower-third throughout + description</li>
+      <li><strong>For audio:</strong> first 3 seconds verbal disclosure + description text</li>
+      <li><strong>For social posts:</strong> first line of caption, before any other text</li>
+    </ul>
+
+    <h3>Penalties for non-compliance</h3>
+    <p>Up to <strong>€15,000,000</strong> or <strong>3% of total worldwide annual turnover</strong> (whichever is higher) for the most serious violations. Smaller violations: €7.5M or 1% of turnover. The fines apply to non-EU companies with any EU customer reach.</p>
+
+    <h3>FAQ</h3>
+    <p><strong>Do I need this for AI tools that just edit metadata or compress images?</strong> No. The rule applies to <em>generated</em> or <em>materially manipulated</em> content that could mislead viewers about authenticity.</p>
+    <p><strong>I'm in the US — does this apply to me?</strong> Yes if you have any EU customer or visitor. The EU AI Act has extraterritorial reach, similar to GDPR. Many US states (NY, California, Texas) have similar laws coming online in 2026-2027.</p>
+    <p><strong>Are there equivalent US laws yet?</strong> California's AB-1836 (effective 2025) and AB-2655 require labeling for political deepfakes. New York's AI disclosure law for media advertising effective June 2026. Federal law (No FAKES Act) pending.</p>
+    <p><strong>What about AI-assisted writing where I edited heavily?</strong> The rule kicks in when AI did the substantive generation. Light editing of AI output still requires disclosure. Heavy human rewriting where the AI was a brainstorm/draft tool is generally exempt.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · Pre-EU-AI-Act-launch · This is informational, not legal advice. <a href="/" style="color: var(--accent);">More tools at TinyTools</a></p>
+  </footer>
+</div>
+
+<script>
+const TEXT_PER_TYPE = {
+  text:         { en: 'Generated with AI', es: 'Generado con IA', fr: 'Généré avec l’IA', de: 'Mit KI erstellt', it: 'Generato con IA', pt: 'Gerado com IA', nl: 'Gegenereerd met AI', pl: 'Wygenerowane przez AI' },
+  image:        { en: 'AI-generated image', es: 'Imagen generada por IA', fr: 'Image générée par IA', de: 'KI-generiertes Bild', it: 'Immagine generata da IA', pt: 'Imagem gerada por IA', nl: 'AI-gegenereerde afbeelding', pl: 'Obraz wygenerowany przez AI' },
+  'image-edited': { en: 'Edited with AI', es: 'Editado con IA', fr: 'Modifié avec IA', de: 'Mit KI bearbeitet', it: 'Modificato con IA', pt: 'Editado com IA', nl: 'Bewerkt met AI', pl: 'Edytowane przez AI' },
+  audio:        { en: 'AI-generated voice', es: 'Voz generada por IA', fr: 'Voix générée par IA', de: 'KI-generierte Stimme', it: 'Voce generata da IA', pt: 'Voz gerada por IA', nl: 'AI-gegenereerde stem', pl: 'Głos wygenerowany przez AI' },
+  video:        { en: 'AI-generated video', es: 'Video generado por IA', fr: 'Vidéo générée par IA', de: 'KI-generiertes Video', it: 'Video generato da IA', pt: 'Vídeo gerado por IA', nl: 'AI-gegenereerde video', pl: 'Wideo wygenerowane przez AI' },
+  deepfake:     { en: 'Deepfake — AI-manipulated', es: 'Deepfake — manipulado por IA', fr: 'Deepfake — manipulé par IA', de: 'Deepfake — KI-manipuliert', it: 'Deepfake — manipolato da IA', pt: 'Deepfake — manipulado por IA', nl: 'Deepfake — AI-gemanipuleerd', pl: 'Deepfake — manipulowane przez AI' }
+};
+const ICON_PER_TYPE = { text: '✨', image: '🖼️', 'image-edited': '✂️', audio: '🎙️', video: '🎬', deepfake: '⚠️' };
+
+let activeType = 'text';
+
+document.querySelectorAll('.type-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeType = btn.dataset.type;
+    document.querySelectorAll('.type-btn').forEach(b => b.classList.toggle('active', b === btn));
+    render();
+  });
+});
+
+['style', 'lang', 'aiTool', 'dateCreated'].forEach(id =>
+  document.getElementById(id).addEventListener('input', render)
+);
+
+function escapeHtml(s) { return (s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+
+function render() {
+  const style = document.getElementById('style').value;
+  const lang = document.getElementById('lang').value;
+  const aiTool = document.getElementById('aiTool').value.trim();
+  const dateCreated = document.getElementById('dateCreated').value.trim();
+  const text = TEXT_PER_TYPE[activeType][lang];
+  const icon = ICON_PER_TYPE[activeType];
+
+  // Inline badge preview
+  const badgeHTML = `<span class="ai-label style-${style}">${icon} ${escapeHtml(text)}${aiTool ? ' · ' + escapeHtml(aiTool) : ''}</span>`;
+  document.getElementById('badgePreview').innerHTML = badgeHTML;
+
+  // Overlay preview (only for image/video/deepfake)
+  if (['image', 'image-edited', 'video', 'deepfake'].includes(activeType)) {
+    document.getElementById('overlayPreviewSection').style.display = 'block';
+    document.getElementById('overlayPreview').textContent = `${icon} ${text}`;
+  } else {
+    document.getElementById('overlayPreviewSection').style.display = 'none';
+  }
+
+  // HTML output (with inline styles for max portability)
+  const styleColors = {
+    warning: { bg: '#fef3c7', color: '#78350f', border: '#fbbf24' },
+    info: { bg: '#dbeafe', color: '#1e3a8a', border: '#3b82f6' },
+    dark: { bg: '#1f2937', color: '#f9fafb', border: '#374151' },
+    minimal: { bg: 'transparent', color: '#6b7280', border: '#d1d5db' }
+  };
+  const c = styleColors[style];
+  const htmlSnippet = `<!-- AI Content Disclosure (EU AI Act Article 50 compliant) -->
+<span role="note" aria-label="AI-generated content disclosure"
+  style="display:inline-flex;align-items:center;gap:8px;padding:8px 14px;
+  background:${c.bg};color:${c.color};border:1px solid ${c.border};
+  border-radius:8px;font-family:-apple-system,sans-serif;font-size:14px;font-weight:600;">
+  <span aria-hidden="true">${icon}</span>
+  ${escapeHtml(text)}${aiTool ? ' · ' + escapeHtml(aiTool) : ''}
+</span>`;
+  document.getElementById('htmlOutput').textContent = htmlSnippet;
+
+  // JSON-LD schema (machine-readable, EU AI Act recommended)
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": activeType === 'text' ? "Article" : activeType.includes('image') ? "ImageObject" : activeType === 'audio' ? "AudioObject" : "VideoObject",
+    "creditText": text + (aiTool ? ' (' + aiTool + ')' : ''),
+    "creator": {
+      "@type": "SoftwareApplication",
+      "name": aiTool || "AI System",
+      "applicationCategory": "AIApplication"
+    },
+    "isBasedOn": {
+      "@type": "CreativeWork",
+      "creativeWorkStatus": activeType.includes('edited') ? "AI-modified" : "AI-generated"
+    }
+  };
+  if (dateCreated) schema.dateCreated = dateCreated;
+  document.getElementById('schemaOutput').textContent =
+    '<script type="application/ld+json">\n' + JSON.stringify(schema, null, 2) + '\n<' + '/script>';
+
+  // Plain text
+  const plainText = `${icon} ${text}${aiTool ? ' (' + aiTool + ')' : ''}${dateCreated ? ' · ' + dateCreated : ''}`;
+  document.getElementById('textOutput').textContent = plainText;
+}
+
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.target;
+    navigator.clipboard.writeText(document.getElementById(target).textContent);
+    const original = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = original, 1500);
+  });
+});
+
+render();
+</script>
+</body>
+</html>
