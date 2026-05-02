@@ -70,34 +70,6 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://tinytools-smoky.vercel.app/resume-tailorer/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tinytools-smoky.vercel.app/youtube-to-blog/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-make-twitter-cards-convert-2026/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://tinytools-smoky.vercel.app/vs/canva/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-news-publishers/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://tinytools-smoky.vercel.app/og-image-generator/blog/why-og-image-not-showing-fixes-2026/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
 </urlset>
+
+
