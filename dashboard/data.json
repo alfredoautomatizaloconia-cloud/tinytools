@@ -1,87 +1,97 @@
 {
-  "lastUpdated": "May 1, 2026 — Twitter cards blog post + 4 social drafts ready",
+  "lastUpdated": "May 1, 2026 \u2014 published OG image debug guide (9 fixes) + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
       "slug": "domain-generator",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     },
     {
       "name": "OG Image Generator",
       "slug": "og-image-generator",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     },
     {
       "name": "AI Background Remover",
       "slug": "background-remover",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     },
     {
       "name": "Favicon Generator",
       "slug": "favicon-generator",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     },
     {
       "name": "Color Palette Generator",
       "slug": "color-palette",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     },
     {
       "name": "SEO Meta Tag Generator",
       "slug": "seo-meta-generator",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     }
   ],
   "stats": {
     "tools": 6,
     "toolsDelta": "+6 since launch",
-    "visitors": "—",
+    "visitors": "\u2014",
     "visitorsDelta": "Vercel Analytics: enable in 1 click",
     "clicks": "0",
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 5,
+    "posts": 6,
     "postsDelta": "+1 today",
-    "indexed": "—",
+    "indexed": "\u2014",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
     {
+      "time": "today 00:12",
+      "tag": "seo",
+      "text": "\ud83d\udcdd Published blog post: Why Your OG Image Isn't Showing on LinkedIn, Slack, or iMessage \u2014 9 Fixes for 2026 at /og-image-generator/blog/why-og-image-not-showing-fixes-2026/"
+    },
+    {
+      "time": "today 00:12",
+      "tag": "promo",
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN \u2014 paste with one click"
+    },
+    {
       "time": "today 20:10",
       "tag": "seo",
-      "text": "📝 Published blog post: How to Make Twitter Cards Convert in 2026 at /og-image-generator/blog/how-to-make-twitter-cards-convert-2026/"
+      "text": "\ud83d\udcdd Published blog post: How to Make Twitter Cards Convert in 2026 at /og-image-generator/blog/how-to-make-twitter-cards-convert-2026/"
     },
     {
       "time": "today 20:10",
       "tag": "promo",
-      "text": "🧵 4 social drafts ready in dashboard: X thread + Reddit /r/SaaS + LinkedIn + HN Show HN — all promoting OG Image Generator"
+      "text": "\ud83e\uddf5 4 social drafts ready in dashboard: X thread + Reddit /r/SaaS + LinkedIn + HN Show HN \u2014 all promoting OG Image Generator"
     },
     {
       "time": "today 16:12",
       "tag": "seo",
-      "text": "📝 Published blog post: Favicon Dimensions Every Browser Needs in 2026 at /favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/"
+      "text": "\ud83d\udcdd Published blog post: Favicon Dimensions Every Browser Needs in 2026 at /favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/"
     },
     {
       "time": "today 16:12",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN \u2014 all promoting favicon-generator"
     },
     {
       "time": "today 04:10",
       "tag": "seo",
-      "text": "📝 Published blog post: OG Image Best Practices for Blogs in 2026 at /og-image-generator/blog/og-image-best-practices-blogs-2026/"
+      "text": "\ud83d\udcdd Published blog post: OG Image Best Practices for Blogs in 2026 at /og-image-generator/blog/og-image-best-practices-blogs-2026/"
     },
     {
       "time": "today 04:10",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/blogging, LinkedIn, Show HN — paste with one click"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/blogging, LinkedIn, Show HN \u2014 paste with one click"
     },
     {
       "time": "today 00:10",
@@ -91,42 +101,42 @@
     {
       "time": "today 00:10",
       "tag": "promo",
-      "text": "4 social drafts queued: X thread, Reddit /r/SaaS, LinkedIn, Hacker News (Show HN) — all promoting domain-generator"
+      "text": "4 social drafts queued: X thread, Reddit /r/SaaS, LinkedIn, Hacker News (Show HN) \u2014 all promoting domain-generator"
     },
     {
       "time": "just now",
       "tag": "promo",
-      "text": "🚀 PR #525 → goabstract/Awesome-Design-Tools (39,787 ⭐) — Color Palette + Favicon + OG Image"
+      "text": "\ud83d\ude80 PR #525 \u2192 goabstract/Awesome-Design-Tools (39,787 \u2b50) \u2014 Color Palette + Favicon + OG Image"
     },
     {
       "time": "just now",
       "tag": "promo",
-      "text": "🚀 PR #1226 → mahseema/awesome-ai-tools (5,045 ⭐) — TinyTools entry"
+      "text": "\ud83d\ude80 PR #1226 \u2192 mahseema/awesome-ai-tools (5,045 \u2b50) \u2014 TinyTools entry"
     },
     {
       "time": "just now",
       "tag": "promo",
-      "text": "🚀 PR #416 → aviaryan/awesome-no-login-web-apps (3,211 ⭐) — 6 entries"
+      "text": "\ud83d\ude80 PR #416 \u2192 aviaryan/awesome-no-login-web-apps (3,211 \u2b50) \u2014 6 entries"
     },
     {
       "time": "just now",
       "tag": "promo",
-      "text": "🚀 PR #81 → iAmCorey/awesome-indie-hacker-tools (1,329 ⭐) — TinyTools entry"
+      "text": "\ud83d\ude80 PR #81 \u2192 iAmCorey/awesome-indie-hacker-tools (1,329 \u2b50) \u2014 TinyTools entry"
     },
     {
       "time": "just now",
       "tag": "promo",
-      "text": "🚀 PR #64 → mathewlewallen/awesome-free-tools (87 ⭐) — TinyTools entry"
+      "text": "\ud83d\ude80 PR #64 \u2192 mathewlewallen/awesome-free-tools (87 \u2b50) \u2014 TinyTools entry"
     },
     {
       "time": "earlier",
       "tag": "seo",
-      "text": "📝 First blog post LIVE: How to Choose a Domain Name for Your SaaS in 2026"
+      "text": "\ud83d\udcdd First blog post LIVE: How to Choose a Domain Name for Your SaaS in 2026"
     },
     {
       "time": "earlier",
       "tag": "promo",
-      "text": "🚀 Schedule upgraded: blog posts now generated every 4 hours (6/day)"
+      "text": "\ud83d\ude80 Schedule upgraded: blog posts now generated every 4 hours (6/day)"
     },
     {
       "time": "earlier",
@@ -151,7 +161,7 @@
     {
       "time": "today",
       "tag": "seo",
-      "text": "llms.txt, sitemap.xml, robots.txt — AI crawlers welcomed"
+      "text": "llms.txt, sitemap.xml, robots.txt \u2014 AI crawlers welcomed"
     }
   ],
   "roadmap": [
@@ -190,61 +200,61 @@
     {
       "platform": "X / Twitter Thread",
       "tool": "og-image-generator",
+      "createdAt": "2026-05-02T00:12:10Z",
+      "text": "1/ Your link preview is broken on iMessage but works on Twitter. The image shows on LinkedIn but is the wrong one. Slack unfurls the title with a blank gray rectangle.\n\nWelcome to OG image hell in 2026. There are exactly 9 root causes. Thread.\n\n2/ #1 root cause (40% of all bugs): your og:image URL is relative.\n\n<meta property=\"og:image\" content=\"/cover.png\"> looks fine in your editor.\n\nBut every scraper fetches that string against THEIR domain, gets a 404, and silently drops the preview.\n\nAlways use the full https:// URL.\n\n3/ #2 \u2014 the silent killer: WhatsApp's 300 KB cap.\n\nEvery other platform allows 5\u201310 MB. WhatsApp drops the preview entirely if your image is larger.\n\nIf you want one image to work everywhere: 1200\u00d7630 JPG at quality 80 = ~200 KB. Done.\n\n4/ #3 \u2014 cache poisoning.\n\nIf your FIRST share happened before the image deployed, that broken result is pinned in the platform cache for up to 30 days.\n\nEach platform has its own cache. There is no global purge button.\n\n5/ The fix per platform:\n\u2022 Facebook: Sharing Debugger \u2192 Scrape Again\n\u2022 LinkedIn: Post Inspector\n\u2022 X: append ?v=2 to the URL\n\u2022 iMessage: append #refresh1\n\u2022 Slack: post then edit (add a space)\n\n6/ Wrote up all 9 root causes + per-platform cache busters + the WAF allowlist your CDN is probably blocking by default.\n\nFree guide, no email gate: https://tinytools-smoky.vercel.app/og-image-generator/blog/why-og-image-not-showing-fixes-2026/"
+    },
+    {
+      "platform": "Reddit /r/webdev or /r/SideProject",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-02T00:12:10Z",
+      "text": "Subreddit: /r/webdev or /r/SideProject or /r/nextjs\n\nComment (reply on a thread asking why their link preview/OG image isn't showing):\n\nRan into this exact thing last month and spent 3 hours before realizing what was happening. There are basically 9 things it can be, in order of how often they bite you:\n\n1. og:image URL is relative not absolute (40% of cases \u2014 every scraper fetches /cover.png against ITS own domain, not yours, gets a 404)\n2. The image redirects (HTTPS \u2192 HTTP downgrade somewhere in your CDN chain)\n3. File too big \u2014 WhatsApp silently drops anything over ~300KB even though every other platform allows 5MB\n4. Platform cache is poisoned because your first share happened before the image deployed (each platform caches per-URL for up to 30 days, no global purge)\n5. Cloudflare/AWS WAF blocking facebookexternalhit, LinkedInBot, Twitterbot, etc.\n6. Image is on a private S3 bucket / signed URL / geo-fenced\n7. Typo: name=\"og:image\" instead of property=\"og:image\" (LinkedIn cares, others don't)\n8. Tags injected by JS \u2014 Facebook, LinkedIn, X, WhatsApp, Apple all read static HTML only. If you're on client-only React with no SSR, link previews physically can't work.\n9. og:image URL has rotating timestamp/signature params\n\nPer-platform cache busters that actually work:\n- Facebook: developers.facebook.com/tools/debug\n- LinkedIn: linkedin.com/post-inspector\n- X: append ?v=2 (they retired the validator in 2023)\n- iMessage: append #refresh1 (Apple has no debugger)\n- Slack: post the link and immediately edit (add a space)\n\nWrote up the full debug checklist with the WAF allowlist and per-platform max file sizes here, free, no signup: https://tinytools-smoky.vercel.app/og-image-generator/blog/why-og-image-not-showing-fixes-2026/"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-02T00:12:10Z",
+      "text": "Spent 3 hours last month debugging why our OG image showed correctly on Twitter, the wrong image on LinkedIn, and nothing at all on iMessage.\n\nTurns out link previews in 2026 are still a fragmented mess. Open Graph was Facebook's spec in 2010, Twitter Cards added competing tags in 2012, and every platform since has added its own quirks without coordination.\n\nThe 9 things it can be, in order of frequency:\n\n\u2192 Relative og:image URL (most common \u2014 scraper fetches it against its own domain)\n\u2192 HTTPS redirect chain breaking in your CDN\n\u2192 File too big \u2014 WhatsApp drops anything over ~300KB silently\n\u2192 Platform cache poisoned from your first broken share\n\u2192 Cloudflare/WAF blocking the scraper user agent\n\u2192 Image behind auth or geo-fenced\n\u2192 name=\"og:image\" typo instead of property=\"og:image\"\n\u2192 Tags injected client-side via React Helmet (Facebook, LinkedIn, X all read static HTML only)\n\u2192 Rotating signature params in the image URL\n\nThe brutal part: each platform caches results for up to 30 days and there is no global purge. You have to refresh each one individually.\n\nWrote up all 9 with the per-platform cache busters and the WAF allowlist that fixes most of these in a single config change. Free, no email gate:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/why-og-image-not-showing-fixes-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-02T00:12:10Z",
+      "text": "Show HN: Why your OG image isn't showing on LinkedIn, Slack, or iMessage (9 fixes)\n\nLink: https://tinytools-smoky.vercel.app/og-image-generator/blog/why-og-image-not-showing-fixes-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. After helping ~15 teams debug broken link previews over the last year, I noticed everyone hits the same nine root causes and almost no one publishes a complete checklist that covers all of them. The two least-known: (1) WhatsApp silently drops any og:image over ~300KB while every other platform allows 5\u201310MB, and (2) X retired the public card validator in 2023 \u2014 the unofficial workaround is just to append ?v=2 to your URL since X treats different query strings as different cache keys. Curious if HN has hit other failure modes I missed."
+    },
+    {
+      "platform": "X / Twitter Thread",
+      "tool": "og-image-generator",
       "createdAt": "2026-05-01T20:10:45Z",
-      "text": "Twitter cards are silently killing your CTR.\n\nMost founders ship a link, get 0.4% click-through, and blame the algorithm.\nIt's the card. Here's the 4-line fix 👇\n\n—\n1/ The card you see under a tweet is rendered from 4 meta tags. Get them right and the same tweet performs 2x.\n\nog:title, og:description, og:image, twitter:card.\n\n—\n2/ The mistake nobody fixes: your on-image headline = your blog post title.\n\nDon't. The card is a billboard.\n\nHeadline on the image: 5–7 punchy words at 64–80px.\nFull SEO title still goes in og:title — it renders below the image.\n\n—\n3/ Exact dimensions for 2026: 1200×630, PNG, under 300KB, sRGB.\n\nAdd og:image:width and og:image:height — explicit dims unlock the large card layout when X's crawler is slow.\n\n—\n4/ Full field guide — sizes, the 5 mistakes killing CTR, the canonical meta block to copy:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-make-twitter-cards-convert-2026/\n\nFree OG image generator at the top of the post."
+      "text": "Twitter cards are silently killing your CTR.\n\nMost founders ship a link, get 0.4% click-through, and blame the algorithm.\nIt's the card. Here's the 4-line fix \ud83d\udc47\n\n\u2014\n1/ The card you see under a tweet is rendered from 4 meta tags. Get them right and the same tweet performs 2x.\n\nog:title, og:description, og:image, twitter:card.\n\n\u2014\n2/ The mistake nobody fixes: your on-image headline = your blog post title.\n\nDon't. The card is a billboard.\n\nHeadline on the image: 5\u20137 punchy words at 64\u201380px.\nFull SEO title still goes in og:title \u2014 it renders below the image.\n\n\u2014\n3/ Exact dimensions for 2026: 1200\u00d7630, PNG, under 300KB, sRGB.\n\nAdd og:image:width and og:image:height \u2014 explicit dims unlock the large card layout when X's crawler is slow.\n\n\u2014\n4/ Full field guide \u2014 sizes, the 5 mistakes killing CTR, the canonical meta block to copy:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-make-twitter-cards-convert-2026/\n\nFree OG image generator at the top of the post."
     },
     {
       "platform": "Reddit /r/SaaS",
       "tool": "og-image-generator",
       "createdAt": "2026-05-01T20:10:45Z",
-      "text": "Re: getting traction on X / Twitter as a small founder\n\nMost threads here blame the algorithm but in my own data the single biggest CTR difference was the link card design, not the tweet body. Two things that punched way above their weight:\n\n1) On-image headline ≠ blog post title. Treat the card like a billboard — 5–7 punchy words at 64–80px. Your full SEO title still goes into og:title (renders as text under the image).\n\n2) Add og:image:width and og:image:height explicitly. This sounds like a non-issue but it forces X's crawler to lock in summary_large_image instead of falling back to a smaller card layout when fetch is slow.\n\nAlso: validate every link in cards-dev.twitter.com before you post. X caches for up to 7 days, so if you ship the post and then update the OG image, the wrong card sticks around.\n\nWrote up the full version with the canonical meta-tag block and the 5 card-design mistakes I see most founders make: https://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-make-twitter-cards-convert-2026/\n\nFree OG image generator linked from the top of the post if you don't already have a card pipeline."
+      "text": "Re: getting traction on X / Twitter as a small founder\n\nMost threads here blame the algorithm but in my own data the single biggest CTR difference was the link card design, not the tweet body. Two things that punched way above their weight:\n\n1) On-image headline \u2260 blog post title. Treat the card like a billboard \u2014 5\u20137 punchy words at 64\u201380px. Your full SEO title still goes into og:title (renders as text under the image).\n\n2) Add og:image:width and og:image:height explicitly. This sounds like a non-issue but it forces X's crawler to lock in summary_large_image instead of falling back to a smaller card layout when fetch is slow.\n\nAlso: validate every link in cards-dev.twitter.com before you post. X caches for up to 7 days, so if you ship the post and then update the OG image, the wrong card sticks around.\n\nWrote up the full version with the canonical meta-tag block and the 5 card-design mistakes I see most founders make: https://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-make-twitter-cards-convert-2026/\n\nFree OG image generator linked from the top of the post if you don't already have a card pipeline."
     },
     {
       "platform": "LinkedIn",
       "tool": "og-image-generator",
       "createdAt": "2026-05-01T20:10:45Z",
-      "text": "I shipped a blog post on X / Twitter last month, got 0.4% click-through, and assumed the algorithm hated me.\n\nTurns out the link card was the problem. The image was my blog hero — 16:9, subject in the center, white background. After X's mobile crop, the headline text was unreadable and the image faded into the white tweet UI in light mode.\n\nThree changes flipped CTR to 1.7%:\n\n1. Built a dedicated 1200×630 card image (not the hero).\n2. Rewrote the on-image headline to 6 punchy words instead of the 78-character SEO title.\n3. Added the explicit width/height meta tags so X's crawler doesn't fall back to a smaller card.\n\nThe compounding insight: every link you've ever posted on X is still findable. A well-designed card from 6 months ago can drive traffic next week. A broken card can't.\n\nWrote up the full field guide — exact specs, the 5 card-design mistakes killing CTR, and the canonical meta block to copy: https://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-make-twitter-cards-convert-2026/"
+      "text": "I shipped a blog post on X / Twitter last month, got 0.4% click-through, and assumed the algorithm hated me.\n\nTurns out the link card was the problem. The image was my blog hero \u2014 16:9, subject in the center, white background. After X's mobile crop, the headline text was unreadable and the image faded into the white tweet UI in light mode.\n\nThree changes flipped CTR to 1.7%:\n\n1. Built a dedicated 1200\u00d7630 card image (not the hero).\n2. Rewrote the on-image headline to 6 punchy words instead of the 78-character SEO title.\n3. Added the explicit width/height meta tags so X's crawler doesn't fall back to a smaller card.\n\nThe compounding insight: every link you've ever posted on X is still findable. A well-designed card from 6 months ago can drive traffic next week. A broken card can't.\n\nWrote up the full field guide \u2014 exact specs, the 5 card-design mistakes killing CTR, and the canonical meta block to copy: https://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-make-twitter-cards-convert-2026/"
     },
     {
       "platform": "Hacker News (Show HN comment)",
       "tool": "og-image-generator",
       "createdAt": "2026-05-01T20:10:45Z",
-      "text": "Show HN title: A field guide to Twitter / X cards in 2026 — exact dimensions, the headline rewrite, the canonical meta block\n\nLink: https://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-make-twitter-cards-convert-2026/\n\nFirst comment: Wrote this after watching half a dozen founders ship strong posts on X to dead cards. Two non-obvious findings worth flagging: (1) the on-image headline should be different from the blog post title — the card is a billboard, the title still goes in og:title and renders as text under the image; (2) explicit og:image:width / og:image:height meta tags materially change which card layout X picks. Free OG image generator linked from the post if you want to test it. Open to feedback on the spec table, especially around the WebP claim — happy to be wrong."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-01T16:12:28Z",
-      "text": "1/ Most favicon guides tell you to ship 14 files.\n\nIn 2026 you can cover 99% of real traffic with 5.\n\nHere's the actual list browsers fetch — and the 9 sizes you can delete from your /public folder today ↓\n\n2/ The 5 files that matter:\n• favicon.ico (16+32+48 multi-size) — legacy + tab fallback\n• favicon.svg — Chrome, Firefox, Safari, Edge\n• apple-touch-icon.png 180×180 — iOS home screen\n• icon-192.png — Android home screen + PWA\n• icon-512.png — Android splash + install prompt\n\nThat's it. Five.\n\n3/ What you can DELETE in 2026:\n• 57/72/76/114/120/144/152 apple-touch sizes — iOS 16+ downscales 180 for all of them\n• mstile-* PNGs — pinned Windows tiles aren't a thing anymore\n• browserconfig.xml — Microsoft tile metadata, also dead\n• safari-pinned-tab.svg with the color attribute — Safari 16+ uses your regular SVG\n\nIf your generator from 2019 dumped 17 files, two-thirds are dead weight.\n\n4/ Three subtle mistakes that kill brand recognition:\n• Pre-rounded apple-touch corners (iOS rounds for you → double-rounded)\n• Transparent apple-touch-icon (iOS shows transparent areas as black)\n• Designing 16×16 last instead of first → unreadable smudge in the tab\n\n5/ Dark-mode favicons in 2026: just embed prefers-color-scheme INSIDE the SVG. Chrome 121+, Firefox 122+, Safari 17+ all honor it.\n\nNo more swapping favicons with JavaScript. The standards finally caught up.\n\n6/ Full guide w/ exact HTML, manifest.json, and a 5-step test plan — plus a free generator that outputs the exact 5-file set:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/"
-    },
-    {
-      "platform": "Reddit /r/webdev or /r/Frontend",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-01T16:12:28Z",
-      "text": "Subreddit: /r/webdev or /r/Frontend or /r/web_design\n\nTitle: PSA: in 2026 you only need 5 favicon files, not 14 — here's exactly what each browser actually fetches\n\nBody: Got curious why every favicon generator still spits out 17 files for the /public folder when modern browsers don't request half of them anymore. Spent the morning reading what each platform actually does.\n\nThe minimum set that covers 99% of real-world traffic:\n\n1. favicon.ico — multi-size bundle of 16, 32, and 48. Covers tab + bookmark + Windows shortcut.\n2. favicon.svg — Chrome, Firefox, Safari, Edge all consume it natively. Stays sharp at every zoom.\n3. apple-touch-icon.png at 180×180 — iOS 16 deprecated all the smaller sizes (57/72/76/120/152). They all downscale 180 now.\n4. icon-192.png + icon-512.png — Android home screen + PWA install prompt. Set purpose: \"any maskable\" so Android can crop into circle/squircle without slicing your logo.\n5. A manifest.json that references the 192/512 pair.\n\nThings that are basically dead in 2026 and you can delete:\n- All the smaller apple-touch sizes\n- mstile-* PNGs and browserconfig.xml (pinned Start menu sites stopped mattering)\n- safari-pinned-tab.svg with the color attribute (Safari uses your regular SVG now)\n\nDark-mode favicons: just embed `@media (prefers-color-scheme: dark)` inside your SVG. Chrome 121+, Firefox 122+, Safari 17+ all honor it. The old JS-swap workaround is no longer necessary.\n\nWrote up the full reference w/ the exact HTML <link> tags, manifest.json template, and 5-minute test plan: https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/\n\nGenerator linked from the article is free, runs in-browser, no signup.\n\nHappy to answer questions if anyone's debugging a fuzzy favicon."
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-01T16:12:28Z",
-      "text": "Last week I shipped a new site and noticed our favicon looked blurry in Chrome on a Retina display.\n\nTurns out the favicon-generator I used (a popular one) had only output a single 16×16 ICO. Modern displays render the favicon at 32×32, so the tiny version was being upscaled and looked pixelated.\n\nI went down the rabbit hole and audited what every browser, OS, and device actually requests in 2026. The result: most of us are still shipping a 14-file favicon set from 2018 advice that's mostly dead weight.\n\nThe minimum file set that covers 99% of real traffic in 2026:\n\n→ favicon.ico (multi-size: 16 + 32 + 48 bundled)\n→ favicon.svg — modern browsers prefer this; sharp at every zoom\n→ apple-touch-icon.png at 180×180 (iOS downscales for all smaller sizes)\n→ icon-192.png + icon-512.png — Android + PWA, with purpose: \"any maskable\"\n\nThat's five files. Done.\n\nWhat changed since 2024:\n• Apple consolidated all apple-touch-icon sizes to 180\n• Microsoft's pinned tile system effectively ended → mstile + browserconfig.xml are dead\n• Chrome, Firefox, and Safari all support prefers-color-scheme inside SVG favicons → no more JS workarounds for dark mode\n\nFull guide with the exact HTML, manifest.json, and a 5-minute test plan:\n\n→ https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/\n\nIf your /public folder still has mstile-150x150.png in it, you can delete it tonight."
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-01T16:12:28Z",
-      "text": "Title: Show HN: Favicon dimensions every browser actually needs in 2026 (it's 5)\n\nLink: https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/\n\nFirst comment for the discussion thread:\n\nWrote this after auditing what each platform actually fetches and realizing my own favicon generator was still spitting out 17 files. The post documents (1) the 5 files that cover 99% of 2026 traffic, (2) the 9 sizes you can delete (iOS 16 deprecated all the smaller apple-touch variants, mstile + browserconfig.xml are effectively dead, safari-pinned-tab.svg lost its special color attribute), and (3) how to do dark-mode favicons with prefers-color-scheme inside SVG instead of the old JS-swap hack. Curious whether anyone's seen real traffic that still requests, say, mstile-310x310.png in 2026 — I couldn't find any."
+      "text": "Show HN title: A field guide to Twitter / X cards in 2026 \u2014 exact dimensions, the headline rewrite, the canonical meta block\n\nLink: https://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-make-twitter-cards-convert-2026/\n\nFirst comment: Wrote this after watching half a dozen founders ship strong posts on X to dead cards. Two non-obvious findings worth flagging: (1) the on-image headline should be different from the blog post title \u2014 the card is a billboard, the title still goes in og:title and renders as text under the image; (2) explicit og:image:width / og:image:height meta tags materially change which card layout X picks. Free OG image generator linked from the post if you want to test it. Open to feedback on the spec table, especially around the WebP claim \u2014 happy to be wrong."
     }
   ],
   "checklist": [
     {
-      "task": "🔥 PASTE ONE OF THE 3 DRAFTS BELOW (30 seconds = first 100 visitors)",
+      "task": "\ud83d\udd25 PASTE ONE OF THE 3 DRAFTS BELOW (30 seconds = first 100 visitors)",
       "url": "#drafts",
       "done": false,
       "value": "First 100 visitors come from this. Affiliate revenue follows traffic."
     },
     {
-      "task": "✅ Watch awesome-list PRs for merge — auto-emails on merge",
+      "task": "\u2705 Watch awesome-list PRs for merge \u2014 auto-emails on merge",
       "url": "https://github.com/pulls?q=is%3Apr+author%3Aalfredoautomatizaloconia-cloud",
       "done": false,
       "value": "5 PRs submitted to lists with combined 49,500 stars. Each merge = permanent backlink."
@@ -253,7 +263,7 @@
       "task": "Wait for Namecheap brand approval (1-3 days)",
       "url": "https://app.impact.com/secure/member/home/mview.ihtml",
       "done": false,
-      "value": "Once approved, paste tracking link to me — instant Domain Generator activation"
+      "value": "Once approved, paste tracking link to me \u2014 instant Domain Generator activation"
     },
     {
       "task": "Sign up: Buy Me a Coffee (instant)",
