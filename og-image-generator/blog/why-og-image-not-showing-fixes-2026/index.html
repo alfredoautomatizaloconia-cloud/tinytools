@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Your OG Image Isn't Showing on LinkedIn, Slack, or iMessage — 9 Fixes for 2026</title>
+<meta name="description" content="The complete 2026 debug checklist for OG images that won't render. Cache poisoning, HTTPS-only fetchers, the 8MB LinkedIn rule, the Slack unfurl bot, and how to force every platform to refetch.">
+<meta name="keywords" content="og image not showing, og image not working, twitter card not showing, linkedin link preview not working, slack unfurl not working, imessage link preview broken, og image debug, refresh og image cache">
+<meta property="og:title" content="Why Your OG Image Isn't Showing on LinkedIn, Slack, or iMessage — 9 Fixes for 2026">
+<meta property="og:description" content="The 9 reasons your link preview is broken in 2026 — and exactly how to fix each one. Includes per-platform cache busters and a copy-paste validator URL list.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/og-image-generator/blog/why-og-image-not-showing-fixes-2026/">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/og-image-generator/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Your OG Image Isn't Showing — 9 Fixes for 2026">
+<meta name="twitter:description" content="LinkedIn, Slack, iMessage, X: the exact reason each platform is silently dropping your link preview, and how to force a refetch.">
+<meta name="twitter:image" content="https://tinytools-smoky.vercel.app/og-image-generator/og-default.png">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/og-image-generator/blog/why-og-image-not-showing-fixes-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why Your OG Image Isn't Showing on LinkedIn, Slack, or iMessage — 9 Fixes for 2026",
+  "description": "A platform-by-platform debug guide for broken Open Graph link previews in 2026. Covers cache poisoning, HTTPS requirements, file-size limits, the WhatsApp 300KB rule, and exact cache-buster URLs for every major scraper.",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
+  "datePublished": "2026-05-01",
+  "dateModified": "2026-05-01",
+  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/og-image-generator/blog/why-og-image-not-showing-fixes-2026/",
+  "image": "https://tinytools-smoky.vercel.app/og-image-generator/og-default.png",
+  "keywords": "og image not showing, link preview broken, twitter card debug, linkedin post inspector, slack link unfurl, imessage rich preview"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is my OG image not showing on LinkedIn?",
+      "acceptedAnswer": { "@type": "Answer", "text": "LinkedIn caches link previews for ~7 days and refuses any image over 5MB or hosted behind authentication. Run your URL through the LinkedIn Post Inspector at https://www.linkedin.com/post-inspector/ to force a refetch, then verify the image is under 5MB, served over HTTPS, and reachable without cookies." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does Slack unfurl text but no image?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Slackbot fetches og:image with a strict 5MB cap and a ~5 second timeout. If your image is on a slow CDN, behind a redirect, or returns a non-200 on the first request, Slack falls back to title and description only. Pre-warm your CDN and post the link in #zzz-test to see Slackbot retry within 60 seconds." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I clear the OG image cache after I update my post?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Each platform has its own cache and its own refresh tool. Use Facebook's Sharing Debugger, LinkedIn's Post Inspector, X's card validator, and the iMessage workaround of changing the URL fragment. There is no global purge button. The article includes the full URL list." }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a;
+    --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #06b6d4; --accent-glow: #06b6d440;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 80% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 20% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 {
+    font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15;
+    margin: 16px 0 12px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #67e8f9 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 24px; font-weight: 700; margin: 36px 0 12px; color: var(--text); }
+  h3 { font-size: 19px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+  p, ul, ol { color: #d0d0e0; margin-bottom: 16px; font-size: 17px; }
+  ul, ol { margin-left: 24px; }
+  li { margin-bottom: 6px; }
+  strong { color: var(--text); font-weight: 600; }
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-size: 14px; color: #67e8f9; }
+  a { color: var(--accent); }
+  blockquote {
+    border-left: 3px solid var(--accent); padding: 8px 16px; margin: 20px 0;
+    background: var(--bg-elevated); border-radius: 6px; font-style: italic; color: var(--text-dim);
+  }
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 15px;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); color: #d0d0e0; }
+  th { background: var(--bg-elevated); color: var(--text); font-weight: 600; font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  .cta-box {
+    margin: 36px 0; padding: 24px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; border-left: 4px solid var(--accent);
+  }
+  .cta-box h3 { margin: 0 0 6px; font-size: 18px; color: var(--text); }
+  .cta-box p { margin-bottom: 12px; font-size: 15px; }
+  .cta-btn {
+    display: inline-block; padding: 12px 24px;
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
+    color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
+    box-shadow: 0 4px 16px rgba(6, 182, 212, 0.3);
+  }
+  .related { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .related h3 { color: var(--text-dim); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card {
+    padding: 14px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--text); transition: all 0.15s;
+  }
+  .related-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .related-card .name { font-weight: 600; font-size: 14px; }
+  .related-card .desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb"><a href="/">TinyTools</a> · <a href="/og-image-generator/">OG Image Generator</a> · Blog</div>
+
+  <h1>Why Your OG Image Isn't Showing on LinkedIn, Slack, or iMessage — 9 Fixes for 2026</h1>
+  <div class="meta">May 1, 2026 · 9 min read · By TinyTools</div>
+
+  <p>You shipped the post. You set <code>og:image</code>. You opened your phone, pasted the link in iMessage, and got a sad little blue underline with no preview. Or worse: it works on Twitter, but LinkedIn shows the wrong image, and Slack unfurls the title with a blank gray rectangle where the picture should be.</p>
+
+  <p>This is the most frustrating bug in publishing because every platform fails for a different reason and there is no global "purge" button. The good news: there are exactly nine root causes, and each one has a fix you can ship in under five minutes. This is the checklist I run every time a link preview breaks in 2026 — in order, fastest first.</p>
+
+  <h2>The 30-second triage</h2>
+
+  <p>Before you debug anything, answer one question: <strong>does the image render when you paste the URL into a brand-new test channel?</strong> Spin up an empty Slack DM with yourself, an empty LinkedIn draft post, an empty WhatsApp chat with yourself. If the preview works there but is broken on a real post, the issue is cache, not configuration. Skip to fix #4. If it's broken even in a fresh channel, you have a real problem — start at fix #1.</p>
+
+  <h2>Fix #1 — The image URL is relative, not absolute</h2>
+
+  <p>This is the single most common bug and it bites everyone at least once. Your meta tag says <code>&lt;meta property="og:image" content="/images/cover.png"&gt;</code>. That looks fine in your editor. But every social scraper on Earth fetches your HTML, reads that string, and tries to GET <code>/images/cover.png</code> against its own domain — not yours. The result: 404, no preview.</p>
+
+  <p>The fix is one line: always use an absolute URL with the full <code>https://</code> prefix. <code>&lt;meta property="og:image" content="https://yourdomain.com/images/cover.png"&gt;</code>. If you're using a static-site generator, look for a "site URL" or "base URL" config and make sure your OG image template prepends it.</p>
+
+  <h2>Fix #2 — You're serving the image over HTTP, or it redirects</h2>
+
+  <p>As of late 2024, every major link-preview fetcher refuses HTTP-only images. LinkedIn, X, Slack, and Apple's iMessage scraper all require <code>https://</code> end-to-end with a valid cert. Even worse: if your image URL <em>starts</em> as HTTPS but redirects to HTTP — for example, going through an old image CDN that downgrades — most scrapers stop at the redirect and bail.</p>
+
+  <p>Test your image URL in isolation:</p>
+
+  <blockquote><code>curl -ILs https://yourdomain.com/path/to/og.png | grep -i "^HTTP\|^location"</code></blockquote>
+
+  <p>If you see anything other than a single <code>HTTP/2 200</code>, fix the redirect chain. Apple's iMessage scraper in particular only follows one redirect; LinkedIn follows up to three but adds latency for each one.</p>
+
+  <h2>Fix #3 — The image is too big (or too small)</h2>
+
+  <p>Every platform has both a maximum and a minimum, and almost no one publishes them clearly. Here are the 2026 limits I have personally hit:</p>
+
+  <table>
+    <thead><tr><th>Platform</th><th>Max file size</th><th>Min dimensions</th><th>Hard fail behavior</th></tr></thead>
+    <tbody>
+      <tr><td>X / Twitter</td><td>5 MB</td><td>300 × 157</td><td>Falls back to summary card (small square)</td></tr>
+      <tr><td>LinkedIn</td><td>5 MB</td><td>1200 × 627 (will downscale)</td><td>Shows generic gray placeholder</td></tr>
+      <tr><td>Facebook</td><td>8 MB</td><td>200 × 200</td><td>Crops to square or omits entirely</td></tr>
+      <tr><td>Slack</td><td>5 MB</td><td>none documented</td><td>Title-only unfurl, no image</td></tr>
+      <tr><td>WhatsApp</td><td>~300 KB</td><td>300 × 200</td><td>No preview at all</td></tr>
+      <tr><td>iMessage</td><td>10 MB</td><td>600 × 314</td><td>Plain blue link, no rich preview</td></tr>
+      <tr><td>Discord</td><td>8 MB</td><td>none</td><td>Embeds shrunk thumbnail</td></tr>
+    </tbody>
+  </table>
+
+  <p>WhatsApp is the silent killer here. If you serve a 4 MB hero image, it works everywhere except WhatsApp — and you'll never know unless you test. The simplest fix: export your OG image as a 1200×630 JPG at quality 80, which lands at roughly 150–250 KB and works on every platform on the table.</p>
+
+  <h2>Fix #4 — The platform's cache is poisoned</h2>
+
+  <p>Every preview-rendering platform caches the result of its first scrape. If your <em>first</em> share happened before the image was deployed (or while it was 404), that broken result gets pinned to the cache for anywhere from 24 hours to 30 days. New shares of the same URL keep returning the old broken preview.</p>
+
+  <p>There is no universal cache buster. You have to refresh each platform individually:</p>
+
+  <ul>
+    <li><strong>Facebook (and Instagram DM previews):</strong> <a href="https://developers.facebook.com/tools/debug/" rel="nofollow">Sharing Debugger</a>. Paste URL → "Scrape Again". Effective immediately.</li>
+    <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/post-inspector/" rel="nofollow">Post Inspector</a>. Same flow. The cache is per-URL and lasts ~7 days otherwise.</li>
+    <li><strong>X / Twitter:</strong> X retired the public card validator in 2023. The current workaround is to append <code>?v=2</code> (or any new query string) to your URL. X treats different query strings as different URLs and re-scrapes.</li>
+    <li><strong>Slack:</strong> Post the link in any channel, then immediately edit the message and add a space. Slack re-fetches on edit.</li>
+    <li><strong>iMessage:</strong> Apple has no debugger. Append <code>#refresh1</code>, <code>#refresh2</code>, etc. to force a new scrape. The fragment is invisible to your server but distinct to Apple's cache.</li>
+    <li><strong>Discord:</strong> Send to a channel, then react with any emoji. Or also use the query-string trick.</li>
+    <li><strong>WhatsApp:</strong> Same query-string approach. WhatsApp's cache is per-device and per-URL string.</li>
+  </ul>
+
+  <h2>Fix #5 — Your CDN is blocking the scraper user-agent</h2>
+
+  <p>If you front your site with Cloudflare's Bot Fight Mode, AWS WAF, or any "bot protection" layer, there is a meaningful chance you are blocking the very scrapers you want to allow. The known good list to allowlist in 2026:</p>
+
+  <ul>
+    <li><code>facebookexternalhit/1.1</code> — Facebook + Instagram</li>
+    <li><code>LinkedInBot/1.0</code></li>
+    <li><code>Twitterbot/1.0</code></li>
+    <li><code>Slackbot-LinkExpanding 1.0</code></li>
+    <li><code>WhatsApp/2.x</code></li>
+    <li><code>Discordbot/2.0</code></li>
+    <li><code>Applebot</code> (handles iMessage and Spotlight previews)</li>
+  </ul>
+
+  <p>Test by curling your page with a LinkedIn user agent: <code>curl -A "LinkedInBot/1.0" -I https://yourdomain.com/post</code>. If you get a 403, 503, or a Cloudflare interstitial, your bot protection is the bug.</p>
+
+  <h2>Fix #6 — The image is behind authentication or geo-fencing</h2>
+
+  <p>Scrapers fetch from data centers in the US (mostly Virginia and Oregon) and they don't have your cookies. If your image lives on a private S3 bucket with signed URLs that expire in an hour, or on a CDN that geo-restricts traffic, scrapers get a 403 and your preview silently fails. Move OG images to a public path with no auth, no signed URLs, and no geo rules.</p>
+
+  <h2>Fix #7 — Your meta tag has a typo (or is duplicated)</h2>
+
+  <p>Three common authoring mistakes that all look correct at a glance:</p>
+
+  <ol>
+    <li><strong>Wrong attribute:</strong> <code>name="og:image"</code> instead of <code>property="og:image"</code>. The Open Graph spec uses <code>property</code>; most scrapers tolerate <code>name</code>, but LinkedIn historically does not.</li>
+    <li><strong>Duplicate tags:</strong> two <code>og:image</code> tags on the same page. Some scrapers pick the first, some the last, some silently fail. Use the View Source on your live page and search for <code>og:image</code> — you should see exactly one match per platform-specific tag.</li>
+    <li><strong>Missing <code>og:url</code>:</strong> not strictly required, but LinkedIn's scraper has been observed to drop the image when <code>og:url</code> is absent and the canonical URL doesn't match the page URL.</li>
+  </ol>
+
+  <h2>Fix #8 — JavaScript injection (the React/Next.js trap)</h2>
+
+  <p>If you set OG tags client-side via React Helmet, Vue Meta, or any framework that injects them after page load, scrapers that don't execute JavaScript will not see them. As of 2026, only Slackbot and Discordbot reliably execute JS. Facebook, LinkedIn, X, WhatsApp, and Apple all read static HTML only.</p>
+
+  <p>If you're on Next.js, render OG tags server-side via the App Router's <code>generateMetadata()</code> or the Pages Router's <code>&lt;Head&gt;</code> component. If you're on Gatsby, use <code>react-helmet-async</code> with SSR. If you're on plain client-side React with no SSR, you cannot make link previews work without a static pre-render — that's the unavoidable cost.</p>
+
+  <h2>Fix #9 — Your image URL contains query strings that change per request</h2>
+
+  <p>Some image CDNs (Imgix, Cloudinary) generate URLs with timestamp or signature parameters that rotate. If your <code>og:image</code> URL is fresh on every page render, scrapers cache one version and the next render serves a different URL — not technically broken, but the cache stays warm for the wrong asset forever. Pin your OG image to a stable URL with no timestamp.</p>
+
+  <div class="cta-box">
+    <h3>Generate a clean OG image in 30 seconds</h3>
+    <p>The TinyTools OG Image Generator outputs a properly sized 1200×630 JPG, under 250 KB, served over HTTPS from a stable URL — every preview platform's happy path by default. No signup, no watermark.</p>
+    <a class="cta-btn" href="/og-image-generator/">Try it free →</a>
+  </div>
+
+  <h2>The 60-second post-fix verification</h2>
+
+  <p>After you ship the change, run this loop:</p>
+
+  <ol>
+    <li>Open <a href="https://developers.facebook.com/tools/debug/" rel="nofollow">Facebook Sharing Debugger</a>, paste your URL, hit "Scrape Again", confirm you see the image.</li>
+    <li>Open <a href="https://www.linkedin.com/post-inspector/" rel="nofollow">LinkedIn Post Inspector</a>, paste, confirm.</li>
+    <li>Send the URL to yourself in iMessage with <code>#test1</code> appended.</li>
+    <li>Send the URL in a personal Slack DM.</li>
+    <li>Send the URL in WhatsApp to yourself or a saved-messages contact.</li>
+  </ol>
+
+  <p>Five platforms, sixty seconds. If all five render, your link preview is healthy. If one fails, the platform-specific behavior in fix #4 will tell you which cache is still poisoned and how to bust it.</p>
+
+  <h2>Why this keeps happening</h2>
+
+  <p>Link previews are an unowned protocol. Open Graph was Facebook's spec in 2010, Twitter Cards added competing tags in 2012, and every platform since has added its own quirks without coordination. There is no W3C body, no shared validator, no cross-platform refresh button. The result: every publisher fights the same nine bugs forever.</p>
+
+  <p>The shortcut is to <em>standardize your tooling</em> so the same nine fixes only apply once per site, not per post. Use a generator that outputs the canonical 1200×630 JPG. Set <code>og:image</code> server-side. Pin it to an HTTPS, public, no-redirect, no-query-string URL. Allowlist the known scraper user agents in your WAF. After that, link previews stop being a thing you debug and start being a thing that just works.</p>
+
+  <div class="related">
+    <h3>More from TinyTools</h3>
+    <div class="related-grid">
+      <a class="related-card" href="/og-image-generator/blog/og-image-best-practices-blogs-2026/">
+        <div class="name">OG Image Best Practices for Blogs</div>
+        <div class="desc">The dimensions, fonts, and safe zones that double click-through.</div>
+      </a>
+      <a class="related-card" href="/og-image-generator/blog/how-to-make-twitter-cards-convert-2026/">
+        <div class="name">Twitter Cards That Convert</div>
+        <div class="desc">The 4-tweet anatomy that actually drives clicks in 2026.</div>
+      </a>
+      <a class="related-card" href="/seo-meta-generator/">
+        <div class="name">SEO Meta Tag Generator</div>
+        <div class="desc">Generate clean meta + OG tags in one shot. Copy-paste ready.</div>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    Made by <a href="/">TinyTools</a> · Free, no signup. ·
+    <a href="/og-image-generator/">Try the OG Image Generator →</a>
+  </footer>
+</div>
+</body>
+</html>
