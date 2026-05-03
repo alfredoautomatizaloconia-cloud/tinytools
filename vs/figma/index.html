@@ -3,290 +3,234 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Favicon Best Practices in 2026 — A Practical Field Guide</title>
-<meta name="description" content="The favicon best practices that actually move the needle in 2026: which sizes still matter, dark-mode SVG tricks, the manifest.json block to copy, debugging cache issues, and the bare-minimum file set that beats the 14-file shotgun approach.">
-<meta name="keywords" content="favicon best practices 2026, favicon guide, favicon sizes, dark mode favicon, manifest.json favicon, favicon svg, apple-touch-icon, favicon generator">
-<meta property="og:title" content="Favicon Best Practices in 2026 — A Practical Field Guide">
-<meta property="og:description" content="The favicon best practices that actually move the needle in 2026 — sizes, dark mode, manifest.json, and a 5-file set that beats the old 14-file approach.">
+<title>TinyTools vs Figma (2026) — Free Alternative Comparison</title>
+<meta name="description" content="Honest TinyTools vs Figma comparison for 2026. When Figma wins, when TinyTools wins, side-by-side features, pricing, and which one fits your workflow.">
+<meta name="keywords" content="TinyTools vs Figma, Figma alternative, free Figma alternative, Figma no signup, Figma free tools 2026, Figma vs free tools">
+<meta property="og:title" content="TinyTools vs Figma (2026) — Free Alternative Comparison">
+<meta property="og:description" content="A balanced comparison: when Figma is better, when TinyTools is better, full feature & pricing breakdown.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-best-practices-2026/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Favicon Best Practices in 2026">
-<meta name="twitter:description" content="The favicon practices that actually move the needle in 2026 — sizes, dark mode, manifest, and the minimal file set that beats the 14-file shotgun.">
-<link rel="canonical" href="https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-best-practices-2026/">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/vs/figma/">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Favicon Best Practices in 2026 — A Practical Field Guide",
-  "description": "A 2026 field guide to favicon best practices: which sizes still matter, dark-mode SVG, the canonical manifest.json block, debugging stale icons, and the five-file set that covers 99% of traffic.",
+  "headline": "TinyTools vs Figma (2026) — Free Alternative Comparison",
+  "description": "A balanced 2026 comparison between TinyTools and Figma — pricing, features, use cases, and which one fits your workflow.",
   "author": { "@type": "Organization", "name": "TinyTools" },
   "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
   "datePublished": "2026-05-03",
   "dateModified": "2026-05-03",
-  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-best-practices-2026/",
-  "image": "https://tinytools-smoky.vercel.app/favicon-generator/og-default.png",
-  "keywords": "favicon, favicon best practices, favicon sizes 2026, dark mode favicon, manifest.json, apple-touch-icon, favicon svg"
+  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/vs/figma/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ComparisonResult",
+  "name": "TinyTools vs Figma",
+  "url": "https://tinytools-smoky.vercel.app/vs/figma/",
+  "datePublished": "2026-05-03",
+  "subjectOf": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "TinyTools",
+      "applicationCategory": "Design & Web Utilities",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "url": "https://tinytools-smoky.vercel.app/"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Figma",
+      "applicationCategory": "Interface Design & Prototyping",
+      "operatingSystem": "Web, macOS, Windows, iOS, Android",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "url": "https://www.figma.com/"
+    }
+  ]
 }
 </script>
 <style>
-  :root {
-    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a;
-    --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #f59e0b; --accent-glow: #f59e0b40;
-  }
+  :root { --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #8b5cf6; --accent-glow: #8b5cf640; --green: #10b981; --red: #ef4444; --yellow: #f59e0b; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
     background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
-    background-image:
-      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
-      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%);
   }
-  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .container { max-width: 820px; margin: 0 auto; padding: 32px 20px 80px; }
   .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
   .breadcrumb a { color: var(--accent); text-decoration: none; }
   h1 {
     font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15;
     margin: 16px 0 12px; letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #fff 0%, #fbbf24 100%);
+    background: linear-gradient(135deg, #fff 0%, #c4b5fd 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
   .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 28px; }
   h2 { font-size: 24px; font-weight: 700; margin: 36px 0 12px; color: var(--text); }
   h3 { font-size: 19px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
-  p, ul, ol { color: #d0d0e0; margin-bottom: 16px; font-size: 17px; }
-  ul, ol { margin-left: 24px; }
+  p { color: var(--text); margin-bottom: 14px; }
+  ul, ol { margin: 8px 0 18px 22px; color: var(--text); }
   li { margin-bottom: 6px; }
-  strong { color: var(--text); font-weight: 600; }
-  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-size: 14px; color: #fbbf24; }
-  pre { background: var(--bg-elevated); padding: 14px 16px; border-radius: 10px; overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); }
-  pre code { background: transparent; padding: 0; color: #fbbf24; font-size: 13px; line-height: 1.55; }
   a { color: var(--accent); }
-  blockquote {
-    border-left: 3px solid var(--accent); padding: 8px 16px; margin: 20px 0;
-    background: var(--bg-elevated); border-radius: 6px; font-style: italic; color: var(--text-dim);
+  .summary {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 20px 22px; margin: 18px 0 24px;
   }
-  table {
-    width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 15px;
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  .summary strong { color: #fff; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 14px; background: var(--bg-card); border-radius: 12px; overflow: hidden; }
+  th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { background: var(--bg-elevated); color: var(--text); font-weight: 600; font-size: 13px; }
+  td { color: var(--text); }
+  td:first-child { color: var(--text-dim); width: 36%; }
+  .yes { color: var(--green); font-weight: 600; }
+  .no { color: var(--red); font-weight: 600; }
+  .partial { color: var(--yellow); font-weight: 600; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 18px 22px; margin: 14px 0 18px;
   }
-  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); color: #d0d0e0; }
-  th { background: var(--bg-elevated); color: var(--text); font-weight: 600; font-size: 14px; }
-  tr:last-child td { border-bottom: none; }
-  .cta-box {
-    margin: 36px 0; padding: 24px; background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 16px; border-left: 4px solid var(--accent);
+  .panel.tt { border-left: 3px solid var(--accent); }
+  .panel.fg { border-left: 3px solid #f24e1e; }
+  .cta {
+    display: inline-block; background: var(--accent); color: #fff !important;
+    padding: 12px 22px; border-radius: 10px; text-decoration: none; font-weight: 600;
+    margin: 8px 8px 8px 0;
   }
-  .cta-box h3 { margin: 0 0 6px; font-size: 18px; color: var(--text); }
-  .cta-box p { margin-bottom: 12px; font-size: 15px; }
-  .cta-btn {
-    display: inline-block; padding: 12px 24px;
-    background: linear-gradient(135deg, #f59e0b, #ef4444);
-    color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
-    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
-  }
-  .related { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border); }
-  .related h3 { color: var(--text-dim); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
-  .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-  @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
-  .related-card {
-    padding: 14px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
-    text-decoration: none; color: var(--text); transition: all 0.15s;
-  }
-  .related-card:hover { border-color: var(--accent); transform: translateY(-1px); }
-  .related-card .name { font-weight: 600; font-size: 14px; }
-  .related-card .desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
-  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  .cta.alt { background: transparent; border: 1px solid var(--border); color: var(--text) !important; }
+  footer { color: var(--text-dim); font-size: 13px; border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; }
 </style>
 </head>
 <body>
 <div class="container">
-  <div class="breadcrumb">
-    <a href="/">TinyTools</a> &nbsp;/&nbsp; <a href="/favicon-generator/">Favicon Generator</a> &nbsp;/&nbsp; Blog
-  </div>
 
-  <h1>Favicon Best Practices in 2026 — A Practical Field Guide</h1>
-  <div class="meta">May 3, 2026 · ~8 min read · By TinyTools</div>
+<div class="breadcrumb">
+  <a href="/">TinyTools</a> &rsaquo; <a href="/vs/">Comparisons</a> &rsaquo; vs Figma
+</div>
 
-  <p>The favicon is the single smallest, most-rendered piece of branding you ship. It appears in every browser tab, every bookmark bar, every iOS home screen, every search-result row. Get it wrong and your site quietly looks broken — a fuzzy 16-pixel blob next to competitors with crisp logos. Get it right and you spend zero time thinking about it again for two years.</p>
+<h1>TinyTools vs Figma (2026)</h1>
+<div class="meta">Updated May 3, 2026 &middot; ~6 min read &middot; Honest comparison, not a takedown</div>
 
-  <p>Most favicon advice on the open web was written between 2014 and 2019 and has not aged well. Browsers changed, Apple standardized, Windows tile pinning died, and a half-dozen historical edge cases stopped mattering. This is the practical 2026 update.</p>
+<div class="summary">
+  <strong>The 30-second answer.</strong> Figma is a professional-grade interface design and prototyping tool — it's the right pick if you're designing a product UI, building a component library, or collaborating with engineers on a real handoff. TinyTools is a bag of small, single-purpose web utilities (favicon set, OG image, background remover, color palette, etc.) that run in your browser with no signup. They aren't substitutes. If you need a design canvas with auto-layout, components, and Dev Mode, use Figma. If you just need <em>one finished web asset</em> exported to spec, TinyTools is faster and stays free.
+</div>
 
-  <div class="cta-box">
-    <h3>Generate a complete 2026-ready favicon set in one click</h3>
-    <p>From text, emoji, or an image. ICO + SVG + PNG + apple-touch-icon + manifest.json, bundled in a ZIP. Free, no signup.</p>
-    <a class="cta-btn" href="/favicon-generator/">Try the Favicon Generator free →</a>
-  </div>
+<h2>What each one actually is</h2>
 
-  <h2>Best practice #1 — Ship five files, not fourteen</h2>
+<div class="panel fg">
+  <strong>Figma</strong> is a browser-based collaborative design platform launched in 2016 and now used by most product design teams. You get a high-performance vector canvas, real-time multiplayer editing, components and variants, auto-layout, prototyping with interactive flows, design tokens / variables, Dev Mode for engineer handoff, a large plugin and Community ecosystem, and FigJam for whiteboarding. In 2024–2025 Figma added Figma Slides (presentations), Figma Sites (publish to web), and Figma Make (AI-assisted design and code), expanding well past pure UI design. The Starter plan is free with limits; Professional is $15/editor/month annual ($18 monthly), Organization is $45/editor/month, Enterprise is $75/editor/month.
+</div>
 
-  <p>The PNG-at-every-size shotgun approach (16, 32, 48, 64, 96, 128, 144, 152, 167, 180, 192, 256, 384, 512) was solving for browser bugs that no longer exist. The 2026 minimum is five files and covers <strong>roughly 99% of real-world traffic</strong>:</p>
+<div class="panel tt">
+  <strong>TinyTools</strong> is a free collection of focused browser tools. Each tool does one job: <a href="/og-image-generator/">generate an OG image</a>, <a href="/favicon-generator/">make a favicon set</a>, <a href="/background-remover/">remove a background</a>, <a href="/color-palette/">build a palette</a>, <a href="/seo-meta-generator/">write SEO meta tags</a>, and so on. There's no canvas, no components, no project file, no account. You open a URL, you get a result, you download it.
+</div>
 
-  <table>
-    <thead>
-      <tr><th>File</th><th>Size</th><th>Format</th><th>What it covers</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><code>favicon.ico</code></td><td>16 + 32 + 48 multi</td><td>ICO</td><td>Legacy IE, Edge tab, address bar fallback</td></tr>
-      <tr><td><code>favicon.svg</code></td><td>any (vector)</td><td>SVG</td><td>All modern browsers — sharp at every zoom level</td></tr>
-      <tr><td><code>apple-touch-icon.png</code></td><td>180×180</td><td>PNG</td><td>iOS home screen, Safari pinned tab</td></tr>
-      <tr><td><code>icon-192.png</code></td><td>192×192</td><td>PNG</td><td>Android home screen, PWA install prompt</td></tr>
-      <tr><td><code>icon-512.png</code></td><td>512×512</td><td>PNG</td><td>Android splash, PWA store, social-card fallback</td></tr>
-    </tbody>
-  </table>
+<h2>Side-by-side feature comparison</h2>
 
-  <p>If you only ship those, every modern device picks the closest match and downscales. Browsers are good at downscaling. Browsers are <em>not</em> good at upscaling 16×16 ICOs to 512×512 launcher icons, which is why you need both ends of the range.</p>
+<table>
+  <thead>
+    <tr><th>Feature</th><th>TinyTools</th><th>Figma</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Price (core features)</td><td class="yes">Free, forever</td><td class="yes">Free Starter; Professional $15/editor/mo</td></tr>
+    <tr><td>Account / signup required</td><td class="yes">No</td><td class="no">Yes</td></tr>
+    <tr><td>Vector design canvas</td><td class="no">No</td><td class="yes">Best-in-class</td></tr>
+    <tr><td>Components &amp; variants</td><td class="no">No</td><td class="yes">Full system</td></tr>
+    <tr><td>Auto-layout / constraints</td><td class="no">No</td><td class="yes">Yes</td></tr>
+    <tr><td>Real-time multiplayer editing</td><td class="no">No</td><td class="yes">Yes</td></tr>
+    <tr><td>Prototyping &amp; interactive flows</td><td class="no">No</td><td class="yes">Yes</td></tr>
+    <tr><td>Dev Mode / engineer handoff</td><td class="no">No</td><td class="yes">Yes (paid)</td></tr>
+    <tr><td>Plugin ecosystem</td><td class="no">No</td><td class="yes">Thousands</td></tr>
+    <tr><td>Whiteboarding (FigJam)</td><td class="no">No</td><td class="yes">Yes</td></tr>
+    <tr><td>AI design / code (Figma Make)</td><td class="no">No</td><td class="yes">Yes (paid tiers)</td></tr>
+    <tr><td>Background remover</td><td class="yes">Free, in-browser</td><td class="partial">Plugin only</td></tr>
+    <tr><td>Favicon set (16/32/180/192/512)</td><td class="yes">One click, all sizes</td><td class="partial">Manual export per size</td></tr>
+    <tr><td>OG / Twitter card generator</td><td class="yes">Purpose-built tool</td><td class="partial">Frame template + manual export</td></tr>
+    <tr><td>Color palette extractor (from image)</td><td class="yes">Built-in</td><td class="partial">Plugin required</td></tr>
+    <tr><td>Image stays on your device</td><td class="yes">Background remover runs locally</td><td class="no">Files live in Figma's cloud</td></tr>
+    <tr><td>Mobile / desktop apps</td><td class="no">Web only</td><td class="yes">macOS, Windows, iOS, Android</td></tr>
+    <tr><td>Offline mode</td><td class="partial">Static pages cache</td><td class="partial">Limited (desktop app)</td></tr>
+    <tr><td>Open source / self-hostable</td><td class="partial">Source-visible static site</td><td class="no">Closed SaaS</td></tr>
+  </tbody>
+</table>
 
-  <h2>Best practice #2 — Design for 16 pixels first, not 512</h2>
+<h2>Pricing comparison</h2>
 
-  <p>Designers tend to mock up the favicon at 512×512 and assume it will look fine when scaled. It will not. At 16×16 you have <strong>roughly 200 effective pixels of canvas</strong>, and any stroke thinner than 2 actual pixels disappears or flickers between frames.</p>
+<p>Pricing is where the two are most different in shape. TinyTools has a single price: zero. Figma has a useful free tier with sharp limits, then per-editor pricing that scales for teams.</p>
 
-  <p>The reliable workflow:</p>
+<table>
+  <thead><tr><th>Plan</th><th>TinyTools</th><th>Figma (2026)</th></tr></thead>
+  <tbody>
+    <tr><td>Free</td><td>All tools, no caps</td><td>Starter: 3 Figma files, 3 FigJam files, unlimited drafts, basic features</td></tr>
+    <tr><td>Individual paid</td><td>n/a</td><td>Professional: $15/editor/mo annual, $18 monthly</td></tr>
+    <tr><td>Team paid</td><td>n/a</td><td>Organization: $45/editor/mo (annual)</td></tr>
+    <tr><td>Enterprise</td><td>n/a</td><td>Enterprise: $75/editor/mo with SSO, advanced admin, design system analytics</td></tr>
+    <tr><td>Education</td><td>Already free</td><td>Free Education plan for verified students and educators</td></tr>
+    <tr><td>Viewers / commenters</td><td>n/a</td><td>Free on most paid plans (you only pay per editor)</td></tr>
+  </tbody>
+</table>
 
-  <ol>
-    <li><strong>Start at 16×16 in a separate artboard.</strong> Design with hard pixel grid snapping. If you can't recognize it at 16, you can't recognize it anywhere.</li>
-    <li><strong>Snap a single dominant element.</strong> Two-letter monograms barely read at 16. Single letters, geometric shapes, or simple icons read crisply.</li>
-    <li><strong>Increase contrast aggressively.</strong> Mid-tones disappear at small sizes. Use full saturation and high tonal contrast.</li>
-    <li><strong>Then scale up to 32, 48, 192, 512 and refine separately.</strong> Treat them as four icons that share a concept, not one icon at four sizes.</li>
-  </ol>
+<p>One nuance worth flagging: Figma's per-editor model means a small team designing once a week can get expensive, but viewer/commenter seats are free, so engineers and PMs reviewing files don't add cost. If you're a one-person operation who only needs to <em>occasionally</em> open a file someone else made, you may never need a paid seat.</p>
 
-  <p>If your brand color sits in the muddy middle (gray, beige, sage, dusty pink), the 16-pixel favicon will be unreadable. Pin the icon to your accent color or use white-on-accent. If you don't have an accent yet, the <a href="/color-palette/">Color Palette Generator</a> ships AAA-contrast palettes you can lift from directly.</p>
+<h2>When Figma is the better choice</h2>
 
-  <h2>Best practice #3 — Use SVG with a built-in dark-mode variant</h2>
+<p>Figma is a serious design tool and we won't pretend otherwise. Pick Figma when:</p>
 
-  <p>SVG favicons have been universally supported since 2023, and they are objectively better at every size — one file, vector-perfect, ~1KB. The 2026 power move is embedding a dark-mode variant inside the same SVG using <code>prefers-color-scheme</code>:</p>
+<ul>
+  <li><strong>You're designing a product, not exporting an asset.</strong> Mobile app screens, web app UI, marketing sites, design systems — anything where the output is an interactive surface that other people will build. This is the home turf Figma was built for.</li>
+  <li><strong>You need components, variants, and auto-layout.</strong> If you're maintaining a button across forty screens, or a card that has eight states, no static-tool workflow can match a real component system.</li>
+  <li><strong>You're collaborating in real time.</strong> Multiplayer editing, comments, branching, version history, and Dev Mode handoff are mature here in a way no free tool replicates.</li>
+  <li><strong>You're handing off to engineers.</strong> Dev Mode lets developers inspect specs, copy variables, and pull production-ready code snippets. TinyTools has zero awareness of what's downstream.</li>
+  <li><strong>You want a plugin ecosystem.</strong> Thousands of community plugins for everything from icon libraries to accessibility checks to AI generation. TinyTools has no extension model.</li>
+  <li><strong>You need prototyping for user testing.</strong> Click-through prototypes, transitions, advanced interactions — Figma's prototyping is good enough that many teams skip dedicated tools entirely.</li>
+</ul>
 
-  <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"&gt;
-  &lt;style&gt;
-    .icon { fill: #1a1a1a; }
-    @media (prefers-color-scheme: dark) {
-      .icon { fill: #ffffff; }
-    }
-  &lt;/style&gt;
-  &lt;path class="icon" d="..."/&gt;
-&lt;/svg&gt;</code></pre>
+<h2>When TinyTools is the better choice</h2>
 
-  <p>Now your favicon flips automatically when the user is in dark mode. No second file, no JS, no CSS variable plumbing. Chrome, Firefox, Safari, and Edge all honor this in 2026.</p>
+<p>The honest case for TinyTools is narrower but real:</p>
 
-  <h2>Best practice #4 — Wire it up with these exact HTML tags</h2>
+<ul>
+  <li><strong>You need one specific web asset to spec, right now.</strong> A 16/32/180/192/512 favicon set, a 1200&times;630 OG image, a transparent-background photo, a hex code from an existing image. You can do all of these in Figma, but you'll fight frame sizes, exports, and a learning curve. TinyTools opens a page and gives you the file.</li>
+  <li><strong>You don't want another account or design file.</strong> If you're a developer or indie founder, opening Figma for a single favicon means a login, a workspace, a frame, and a PNG export. TinyTools skips all of that.</li>
+  <li><strong>You care about privacy on image work.</strong> The TinyTools <a href="/background-remover/">background remover</a> runs entirely in your browser via WebAssembly — your photo never leaves your device. Anything you upload to Figma lives in their cloud.</li>
+  <li><strong>The output is one-shot, not part of an ongoing design.</strong> If you're not going to revisit the file, the value of having it inside a Figma project is zero. The cost — login, file management, export sizing — is non-zero.</li>
+  <li><strong>You're doing dev / SEO chores, not visual design.</strong> Generating Open Graph images, writing structured meta tags, building a robots.txt for AI crawlers — these aren't design problems and Figma is the wrong shape for them.</li>
+  <li><strong>You're on a low-spec or locked-down machine.</strong> Each TinyTool is a static page that loads in a few hundred KB. Figma's canvas is a heavy WebAssembly application.</li>
+</ul>
 
-  <p>The canonical 2026 favicon block — copy this verbatim into <code>&lt;head&gt;</code>:</p>
+<h2>Three concrete use cases</h2>
 
-  <pre><code>&lt;link rel="icon" href="/favicon.ico" sizes="any"&gt;
-&lt;link rel="icon" href="/favicon.svg" type="image/svg+xml"&gt;
-&lt;link rel="apple-touch-icon" href="/apple-touch-icon.png"&gt;
-&lt;link rel="manifest" href="/site.webmanifest"&gt;</code></pre>
+<h3>1. Indie developer launching a SaaS</h3>
+<p>You need a favicon, an OG image, a color palette, and SEO meta tags. <strong>Recommendation:</strong> use TinyTools for the <a href="/favicon-generator/">favicon set</a>, the <a href="/og-image-generator/">OG image</a>, and the <a href="/color-palette/">palette</a>. If you're also designing the actual product UI, open Figma for that — it's a different job.</p>
 
-  <p>Three things to notice. First, no <code>sizes</code> attribute on the SVG line — vector means "any size". Second, no <code>sizes</code> attribute on the apple-touch-icon — Apple has only requested 180×180 since iOS 8 and the multi-size declarations from 2014 just bloated the head. Third, the <code>sizes="any"</code> on <code>favicon.ico</code> tells modern browsers to prefer the SVG when both are listed, while still falling back gracefully.</p>
+<h3>2. Product design team shipping a new feature</h3>
+<p>You need screens, components, prototypes, and a handoff to engineering. <strong>Recommendation:</strong> Figma, no contest. This is exactly what it's built for. TinyTools has nothing to offer here.</p>
 
-  <h2>Best practice #5 — A minimal manifest.json that works</h2>
+<h3>3. Solo blogger needing a hero image and OG card per post</h3>
+<p>Recurring asset work, no design system. <strong>Recommendation:</strong> mixed. If you already have a Figma file for hero images and you're comfortable in it, stay there. If you're starting from scratch and the hero image is mostly type-and-photo, TinyTools' <a href="/og-image-generator/">OG image generator</a> will probably get you to a finished file faster.</p>
 
-  <p>The Web App Manifest is what makes your site installable as a PWA, controls Android splash screens, and feeds icon hints to the OS. The minimum 2026 manifest:</p>
+<h2>Switching costs and lock-in</h2>
 
-  <pre><code>{
-  "name": "Your Site Name",
-  "short_name": "YourSite",
-  "icons": [
-    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
-  ],
-  "theme_color": "#0a0a0f",
-  "background_color": "#0a0a0f",
-  "display": "standalone",
-  "start_url": "/"
-}</code></pre>
+<p>One quiet advantage of TinyTools: there is nothing to leave. No design files, no component libraries, no shared drafts. Every output is a final file on your hard drive. If you stop using TinyTools tomorrow, you keep everything you made. Figma's lock-in is real but well-handled — you can export designs as PNG/SVG/PDF and copy frames between files, but components, variables, and prototype interactions are tied to the platform. Most teams who try to leave Figma find that the components are the part that doesn't migrate cleanly.</p>
 
-  <p>The one thing most older guides miss: the <strong>maskable</strong> icon variant. Android 12+ crops launcher icons into circular, squircle, or teardrop shapes depending on the device skin. A non-maskable icon gets cropped at the edges and your logo loses its corners. A maskable icon has a 20% safe zone of padding around the logo and looks correct on every Android skin.</p>
+<h2>Verdict</h2>
 
-  <h2>Best practice #6 — Cache-bust with version strings, not query params alone</h2>
+<p>Figma and TinyTools aren't competitors — they're different tools for different problems. Figma is the design tool for people who design as their job, or close to it. TinyTools is the toolbox for people who just need a web asset and don't want to learn a design tool to get one. Most websites will end up using both: Figma (or another design tool) for anything that looks like a product, and small specialized utilities for the favicon-shaped, OG-image-shaped, palette-shaped jobs that are too narrow to justify a project file.</p>
 
-  <p>Browsers cache favicons aggressively. Once a user has loaded <code>/favicon.ico</code>, they may not refetch it for weeks even after you push a new file. The clean fix is to include a version string in the path:</p>
+<p>If you came here looking for a full Figma replacement, the truthful answer is that TinyTools isn't one — and we'd rather say that than pretend otherwise. If you came looking for free, no-signup tools to handle the small web tasks Figma is overkill for, that's exactly what we're built for.</p>
 
-  <pre><code>&lt;link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml"&gt;</code></pre>
+<p>
+  <a class="cta" href="/">Try TinyTools (free, no signup)</a>
+  <a class="cta alt" href="https://www.figma.com/" rel="nofollow noopener" target="_blank">Visit Figma</a>
+</p>
 
-  <p>Bump <code>?v=</code> any time the favicon changes. Query params are usually enough — but Safari has a known bug where it ignores favicon query strings and you may need to actually rename the file (<code>favicon-v3.svg</code>) to force a refetch.</p>
+<footer>
+  <p>This comparison is maintained by TinyTools. We tried to be fair — if you spot something inaccurate about Figma's current pricing or features, the page is open-source on <a href="https://github.com/alfredoautomatizaloconia-cloud/tinytools" rel="nofollow">GitHub</a> and we'll fix it.</p>
+  <p>Pricing reflects publicly listed Figma plans as of May 2026 and may change.</p>
+</footer>
 
-  <h2>Best practice #7 — Keep total favicon weight under 10KB</h2>
-
-  <p>A complete favicon set should weigh well under 10KB. If yours is bigger, something is wrong:</p>
-
-  <ul>
-    <li><strong>SVG over 2KB?</strong> Run it through SVGO or use the optimizer built into our <a href="/favicon-generator/">favicon generator</a>. Most exported SVGs from Figma carry 1KB+ of editor metadata.</li>
-    <li><strong>PNG over 5KB at 192×192?</strong> Strip metadata and recompress with TinyPNG, ImageOptim, or any modern PNG optimizer. A flat-color 192×192 PNG should weigh ~1–2KB.</li>
-    <li><strong>ICO over 4KB?</strong> Don't include 256-pixel frames. The 16+32+48 multi-size ICO covers everything legacy.</li>
-  </ul>
-
-  <p>Favicons are loaded on every single page view across your entire site. Saving 30KB here is worth more than saving 300KB on a hero image only loaded once per session.</p>
-
-  <h2>Best practice #8 — Test it before you ship it</h2>
-
-  <p>The two free tools worth bookmarking:</p>
-
-  <ul>
-    <li><strong>RealFaviconChecker</strong> — fetches your favicon from prod and shows it rendered in actual iOS, Android, Chrome, Safari, and Firefox UI. The single highest-signal test.</li>
-    <li><strong>Lighthouse PWA audit</strong> — built into Chrome DevTools, flags missing manifest entries, wrong icon sizes, and bad MIME types.</li>
-  </ul>
-
-  <p>If you're publishing a blog post about your launch, also generate a matching <a href="/og-image-generator/">Open Graph image</a> and verify your <a href="/seo-meta-generator/">meta tags</a> render correctly — bare-minimum on-page SEO that compounds with backlinks.</p>
-
-  <h2>What you can safely stop doing in 2026</h2>
-
-  <p>A short list of historical favicon practices that no longer earn their keep:</p>
-
-  <ul>
-    <li><strong>Windows tile <code>browserconfig.xml</code></strong> — almost nobody pins sites to the Start menu anymore. Windows 11 silently ignores it.</li>
-    <li><strong>The 19-line <code>&lt;link rel="apple-touch-icon"&gt;</code> block with sizes 57, 60, 72, 76, 114, 120, 144, 152, 167, 180.</strong> Apple only requests 180×180 since iOS 8.</li>
-    <li><strong>Pinned-tab Safari mask icons</strong> (<code>rel="mask-icon"</code>). Safari deprecated this with the unified SVG favicon support.</li>
-    <li><strong>Separate Android Chrome icons in 36, 48, 72, 96, 144 sizes.</strong> The manifest's 192 + 512 entries cover every Android density tier.</li>
-  </ul>
-
-  <p>Strip those out. Your <code>&lt;head&gt;</code> shrinks, your manifest gets readable, and nothing breaks.</p>
-
-  <div class="cta-box">
-    <h3>Skip the manual work — generate it all in one click</h3>
-    <p>Type a letter, drop an emoji, or upload a logo. We output ICO + SVG + PNG (180, 192, 512, maskable) + manifest.json + the canonical HTML block. Free, no signup, no email gate.</p>
-    <a class="cta-btn" href="/favicon-generator/">Open the Favicon Generator →</a>
-  </div>
-
-  <h2>The two-minute audit</h2>
-
-  <p>If you only have two minutes, run this checklist on your live site:</p>
-
-  <ol>
-    <li>View source on your homepage. Confirm <code>favicon.ico</code>, <code>favicon.svg</code>, <code>apple-touch-icon.png</code>, and <code>manifest</code> are all present in <code>&lt;head&gt;</code>.</li>
-    <li>Open DevTools Network tab, filter by "favicon" and "icon". Every file should return 200 and be under 5KB.</li>
-    <li>Toggle dark mode in your OS. Reload. Check whether your SVG favicon flips. If not, add the <code>prefers-color-scheme</code> block from above.</li>
-    <li>On an Android phone, "Add to Home Screen". Confirm the icon is not cropped at the edges. If it is, ship a maskable variant.</li>
-    <li>In your tab strip, zoom the page to 200%. The favicon should remain crisp. If it goes blurry, your browser is rasterizing from the ICO instead of the SVG — make sure the SVG line comes after the ICO line in source order.</li>
-  </ol>
-
-  <p>Five checks. Ten minutes total. Ship it once, forget it for two years.</p>
-
-  <div class="related">
-    <h3>Related tools on TinyTools</h3>
-    <div class="related-grid">
-      <a class="related-card" href="/og-image-generator/">
-        <div class="name">OG Image Generator</div>
-        <div class="desc">Build link-preview images that render on every platform</div>
-      </a>
-      <a class="related-card" href="/color-palette/">
-        <div class="name">Color Palette Generator</div>
-        <div class="desc">AAA-contrast palettes for brand and UI</div>
-      </a>
-      <a class="related-card" href="/seo-meta-generator/">
-        <div class="name">SEO Meta Generator</div>
-        <div class="desc">Title, description, OG, Twitter — all valid</div>
-      </a>
-    </div>
-  </div>
-
-  <footer>
-    Built with care by <a href="/">TinyTools</a> · Free tools, no signup, no email gate ·
-    <a href="https://www.namecheap.com/?aff=tinytools" rel="sponsored nofollow">Domains by Namecheap</a> ·
-    <a href="https://vercel.com/?utm_source=tinytools" rel="sponsored nofollow">Hosted on Vercel</a> ·
-    <a href="https://buymeacoffee.com/tinytools" rel="sponsored nofollow">Tip the maker</a>
-  </footer>
 </div>
 </body>
 </html>
