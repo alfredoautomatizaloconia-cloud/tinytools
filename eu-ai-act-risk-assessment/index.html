@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free EU AI Act Risk Assessment Calculator (2026) — Article 6 Classifier</title>
+<meta name="description" content="Find out if your AI system is prohibited, high-risk, limited-risk, or minimal-risk under the EU AI Act. Interactive 9-question quiz with citations to Article 5, Article 6, and Annex III. Free, no signup. Avoid €35M fines.">
+<meta name="keywords" content="EU AI Act risk assessment, AI Act Article 6, high-risk AI system, prohibited AI practices, EU AI compliance, Annex III AI, AI Act classifier, AI risk calculator, AI Act 2026">
+<meta property="og:title" content="EU AI Act Risk Assessment Calculator — Free Article 6 Classifier">
+<meta property="og:description" content="9 questions to classify your AI system as prohibited, high-risk, limited, or minimal under the EU AI Act. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EU AI Act Risk Assessment Calculator">
+<meta name="twitter:description" content="Classify your AI system under the EU AI Act in 60 seconds.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "EU AI Act Risk Assessment Calculator",
+  "description": "Interactive flowchart that classifies AI systems as prohibited, high-risk, limited-risk, or minimal-risk under the EU AI Act, with citations to Article 5, Article 6, and Annex III.",
+  "url": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #ef4444; --accent-glow: #ef444440;
+    --green: #10b981; --yellow: #fbbf24; --orange: #f97316; --red: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #f9731640 0%, transparent 50%);
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 999px; font-size: 13px;
+    color: #fca5a5; margin-bottom: 20px; font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fca5a5 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 680px; margin: 0 auto; }
+
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 28px; margin-top: 28px; }
+
+  .progress-bar {
+    width: 100%; height: 6px; background: var(--bg-elevated); border-radius: 999px;
+    overflow: hidden; margin-bottom: 22px;
+  }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--orange)); transition: width 0.3s; }
+
+  .step-counter { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-bottom: 12px; }
+  .question { font-size: 22px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+  .question-context { color: var(--text-dim); font-size: 14px; margin-bottom: 22px; }
+  .question-context code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 12px; color: var(--accent); }
+
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option {
+    width: 100%; padding: 16px 18px; background: var(--bg-elevated);
+    border: 2px solid var(--border); border-radius: 12px; color: var(--text);
+    font-size: 15px; cursor: pointer; transition: all 0.15s; text-align: left;
+    font-family: inherit; font-weight: 500;
+  }
+  .option:hover { border-color: var(--accent); transform: translateX(2px); }
+  .option .opt-detail { font-size: 12px; color: var(--text-dim); margin-top: 4px; font-weight: 400; }
+
+  .nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .btn-back { padding: 8px 14px; background: transparent; border: 1px solid var(--border); border-radius: 8px; color: var(--text-dim); cursor: pointer; font-size: 13px; }
+  .btn-back:hover { border-color: var(--text-dim); color: var(--text); }
+  .btn-back:disabled { opacity: 0.3; cursor: not-allowed; }
+  .restart-btn { padding: 8px 14px; background: var(--accent); border: none; border-radius: 8px; color: white; cursor: pointer; font-size: 13px; font-weight: 600; }
+
+  /* Result panels */
+  .result { display: none; }
+  .result.active { display: block; }
+  .result-banner {
+    padding: 28px; border-radius: 16px; margin-bottom: 24px; text-align: center;
+  }
+  .result-banner.prohibited { background: linear-gradient(135deg, #7f1d1d, #991b1b); border: 2px solid var(--red); }
+  .result-banner.high-risk { background: linear-gradient(135deg, #7c2d12, #9a3412); border: 2px solid var(--orange); }
+  .result-banner.limited { background: linear-gradient(135deg, #713f12, #854d0e); border: 2px solid var(--yellow); }
+  .result-banner.minimal { background: linear-gradient(135deg, #064e3b, #065f46); border: 2px solid var(--green); }
+  .result-banner.gpai { background: linear-gradient(135deg, #581c87, #6b21a8); border: 2px solid #a855f7; }
+
+  .result-emoji { font-size: 56px; margin-bottom: 8px; }
+  .result-tier { font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; font-weight: 600; }
+  .result-title { font-size: 32px; font-weight: 800; margin: 4px 0 10px; letter-spacing: -0.01em; }
+  .result-tagline { font-size: 16px; opacity: 0.95; max-width: 600px; margin: 0 auto; }
+
+  .obligations { margin-top: 22px; }
+  .obligations h3 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; font-weight: 600; }
+  .obligation-item { display: flex; gap: 12px; padding: 12px 14px; background: var(--bg-elevated); border-left: 3px solid var(--accent); border-radius: 8px; margin-bottom: 8px; font-size: 14px; }
+  .obligation-item .check { color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+  .citation-box { background: var(--bg-elevated); padding: 16px 18px; border-radius: 10px; margin-top: 18px; font-size: 13px; color: var(--text-dim); border-left: 3px solid var(--text-dim); }
+  .citation-box strong { color: var(--text); }
+
+  .summary-table { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 13px; }
+  .summary-table th { text-align: left; padding: 8px 10px; color: var(--text-dim); border-bottom: 1px solid var(--border); font-weight: 600; }
+  .summary-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); color: var(--text-dim); }
+  .summary-table .ans { color: var(--text); }
+
+  .actions-row { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+  .action-btn { flex: 1; min-width: 160px; padding: 11px 16px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; color: var(--text); cursor: pointer; font-size: 13px; font-weight: 600; }
+  .action-btn:hover { border-color: var(--accent); }
+  .action-btn.primary { background: var(--accent); border-color: var(--accent); color: white; }
+  .action-btn.primary:hover { opacity: 0.9; }
+
+  .upsell {
+    margin-top: 28px; padding: 22px; background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(249, 115, 22, 0.1));
+    border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 14px;
+  }
+  .upsell h3 { font-size: 16px; margin-bottom: 6px; color: white; }
+  .upsell p { font-size: 14px; color: var(--text-dim); margin-bottom: 12px; }
+  .upsell a { display: inline-block; padding: 9px 16px; background: var(--accent); color: white; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600; }
+  .upsell a:hover { opacity: 0.9; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul, .content ol { margin-left: 24px; color: var(--text-dim); }
+  .content li { margin-bottom: 4px; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">⚠️ EU AI Act enforcement live · Up to €35M / 7% of turnover fines</div>
+    <h1>EU AI Act Risk Assessment</h1>
+    <p class="subtitle">Answer 9 quick questions and get your AI system's risk classification under Article 5, Article 6, and Annex III. Plus a checklist of what you need to do next. Free, no signup.</p>
+  </header>
+
+  <div class="panel" id="quizPanel">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 11%"></div></div>
+    <div class="step-counter" id="stepCounter">Question 1 of 9</div>
+    <div class="question" id="questionText">Loading…</div>
+    <div class="question-context" id="questionContext"></div>
+    <div class="options" id="optionsContainer"></div>
+    <div class="nav-row">
+      <button class="btn-back" id="backBtn" disabled>← Back</button>
+      <button class="restart-btn" id="restartBtn" style="display: none;">Restart</button>
+    </div>
+  </div>
+
+  <div class="panel result" id="resultPanel">
+    <div class="result-banner" id="resultBanner">
+      <div class="result-emoji" id="resultEmoji">🚫</div>
+      <div class="result-tier" id="resultTier">Tier</div>
+      <div class="result-title" id="resultTitle">Result</div>
+      <div class="result-tagline" id="resultTagline">Tagline</div>
+    </div>
+
+    <div class="obligations">
+      <h3>Your obligations under the AI Act</h3>
+      <div id="obligationsList"></div>
+    </div>
+
+    <div class="citation-box" id="citationBox"></div>
+
+    <h3 style="font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin: 22px 0 12px; font-weight: 600;">Your answers</h3>
+    <table class="summary-table" id="summaryTable"></table>
+
+    <div class="actions-row">
+      <button class="action-btn primary" id="copyResultBtn">📋 Copy report</button>
+      <button class="action-btn" id="printBtn">🖨️ Print / Save PDF</button>
+      <button class="action-btn" id="restartFromResultBtn">↻ Re-assess</button>
+    </div>
+
+    <div class="upsell">
+      <h3>Need a compliant AI disclosure label too?</h3>
+      <p>Article 50 requires labeling for AI-generated content. Generate the HTML, JSON-LD, and image overlay snippets in 30 seconds.</p>
+      <a href="/ai-disclosure-generator/">Open AI Disclosure Generator →</a>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>How the EU AI Act risk classification works</h2>
+    <p>The EU AI Act, fully applicable from August 2, 2026, sorts every AI system into one of four risk tiers. The tier determines what you have to do, who you have to notify, and how big the fine gets if you skip your obligations. This EU AI Act risk assessment tool walks you through the classification logic in the same order a Notified Body would.</p>
+
+    <h3>Prohibited AI practices (Article 5)</h3>
+    <p>Eight specific practices are flat-out banned in the EU. You cannot place these systems on the market, put them into service, or use them — there is no compliance path, only the off switch. The list includes social scoring of natural persons by public authorities, untargeted scraping of facial images for face databases, real-time remote biometric identification in public spaces by law enforcement (with narrow exceptions), emotion recognition in workplaces and schools, predictive policing based purely on profiling, and any AI that exploits vulnerabilities of children, the elderly, or persons with disabilities.</p>
+
+    <h3>High-risk AI systems (Article 6 + Annex III)</h3>
+    <p>High-risk is the heaviest compliance tier short of an outright ban. Article 6 routes a system here through two doors. Door one: the AI is a safety component of a product covered by EU harmonization law (Annex I) — think medical devices, vehicles, toys, lifts, machinery. Door two: the AI is used in one of the eight Annex III areas — biometric identification, critical infrastructure, education, employment, access to essential services (credit, insurance, public benefits), law enforcement, migration and border control, or administration of justice and democratic processes.</p>
+    <p>Article 6(3) carves out an exemption: even if you fall in an Annex III area, you may avoid high-risk classification if your system performs only narrow procedural tasks, improves a previously completed human activity, detects decision-making patterns without replacing human review, or performs a preparatory task. You still have to document the carve-out and register it.</p>
+
+    <h3>Limited-risk AI (Article 50)</h3>
+    <p>Limited-risk systems trigger transparency duties only. If your system interacts with humans (chatbots, voice agents), generates synthetic media (text, image, audio, video), or recognizes emotions or biometric category, users must be told they are dealing with AI or AI-generated output. Deepfakes get a specific labeling rule. Penalties for failure to disclose are smaller than the high-risk fines but still reach 1.5% of global turnover.</p>
+
+    <h3>Minimal-risk AI (Recital 165)</h3>
+    <p>Everything else — spam filters, AI-enabled video games, inventory optimization, recommendation engines that don't fall under DSA — is minimal-risk. No mandatory obligations, just a recommended voluntary code of conduct. Most consumer-facing SaaS AI features land here.</p>
+
+    <h3>General-purpose AI models (GPAI, Article 51-55)</h3>
+    <p>If you're a model provider rather than a deployer of an application, you may also fall under the GPAI rules. Standard GPAI obligations include technical documentation, copyright policy, and a public training data summary. GPAI models with systemic risk — currently any model trained with more than 10^25 FLOPs of compute, which captures GPT-4-class models and above — get a heavier set: model evaluation, adversarial testing, cybersecurity safeguards, and serious incident reporting to the AI Office.</p>
+
+    <h3>Penalties</h3>
+    <p>The fine ladder runs €7.5M / 1.5% of turnover for incorrect information to authorities, €15M / 3% for non-compliance with high-risk system obligations, and €35M / 7% for prohibited practices — whichever is higher. SMEs and startups get reduced caps in absolute terms but not as a percentage. The Act applies extraterritorially: a US or UK company with EU users is on the hook the same as an EU one.</p>
+
+    <h3>Common classification mistakes this calculator catches</h3>
+    <ul>
+      <li>Assuming "we're not in healthcare" means you're not high-risk — the Annex III scope is much wider, including HR, credit scoring, and education</li>
+      <li>Missing that your chatbot needs an Article 50 disclosure even if it's minimal-risk in every other respect</li>
+      <li>Forgetting that fine-tuning a foundation model can make you a downstream provider with separate obligations</li>
+      <li>Treating "internal use only" as a free pass — the Act distinguishes provider, deployer, importer, and distributor, not internal vs external</li>
+      <li>Assuming the August 2025 date for prohibitions means full compliance can wait until 2027 — high-risk obligations kick in August 2, 2026</li>
+    </ul>
+
+    <h3>FAQ</h3>
+    <p><strong>Is this EU AI Act risk assessment legally binding?</strong> No. This is an informational classifier built from the public text of Regulation (EU) 2024/1689. For binding classification you need a Notified Body assessment (for high-risk) or your own conformity assessment with documentation. Use this tool to find out where you stand before you spend lawyer hours.</p>
+    <p><strong>I'm a US-only company. Does this matter?</strong> Yes if any output is used in the EU. Article 2 makes the regulation extraterritorial — same logic as GDPR. The only safe assumption for any web product is that you have EU users.</p>
+    <p><strong>What about open-source AI?</strong> Open-source GPAI models get carve-outs from some technical documentation duties, but providers of open-source models with systemic risk still face the full obligation set. Open-source application-level systems still go through the Article 6 / Annex III test like any other.</p>
+    <p><strong>When does this all kick in?</strong> Prohibitions: February 2, 2025. GPAI rules: August 2, 2025. High-risk obligations and most of the rest: August 2, 2026. High-risk systems already covered by EU product law (Annex I): August 2, 2027.</p>
+    <p><strong>How do I document the result of this classifier?</strong> Click "Copy report" or "Print / Save PDF" at the end of the assessment. Keep it with your conformity assessment file. It does not replace legal review but it gives counsel a starting structure.</p>
+  </section>
+
+  <footer>
+    <p>Free EU AI Act risk assessment · Informational, not legal advice · <a href="/">More tools at TinyTools</a></p>
+  </footer>
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    id: 'prohibited-social',
+    q: 'Does your AI do social scoring of people based on behavior or personality?',
+    ctx: 'Social scoring = ranking or scoring natural persons over time by social behavior, leading to detrimental treatment in unrelated contexts. <code>Article 5(1)(c)</code>',
+    options: [
+      { label: 'No', value: 'no' },
+      { label: 'Yes — by a public authority', value: 'yes-public', terminal: 'prohibited', reason: 'Social scoring by public authorities' },
+      { label: 'Yes — by a private company', value: 'yes-private', terminal: 'prohibited', reason: 'Detrimental social scoring' }
+    ]
+  },
+  {
+    id: 'prohibited-biometric',
+    q: 'Does your AI do real-time remote biometric ID, scrape facial images, infer emotion at work/school, or categorize people by sensitive attributes?',
+    ctx: 'Covers face-recognition CCTV in public spaces, building face DBs from web scraping, emotion AI in workplaces or schools, and biometric categorization by race / political opinion / religion / sexual orientation. <code>Article 5(1)(d)–(g)</code>',
+    options: [
+      { label: 'No, none of those', value: 'no' },
+      { label: 'Yes — one or more of those', value: 'yes', terminal: 'prohibited', reason: 'Prohibited biometric or emotion-recognition practice' }
+    ]
+  },
+  {
+    id: 'prohibited-manipulation',
+    q: 'Does the system use subliminal techniques, exploit vulnerabilities of minors / elderly / disabled, or do predictive policing on profiling alone?',
+    ctx: 'Includes manipulative AI that materially distorts behavior to cause harm, and pure-profiling crime risk prediction without supporting facts. <code>Article 5(1)(a), (b), (h)</code>',
+    options: [
+      { label: 'No', value: 'no' },
+      { label: 'Yes', value: 'yes', terminal: 'prohibited', reason: 'Manipulative or profiling-based prohibited practice' }
+    ]
+  },
+  {
+    id: 'safety-component',
+    q: 'Is your AI a safety component of a product covered by EU harmonization law?',
+    ctx: 'Annex I lists medical devices, machinery, toys, lifts, vehicles, radio equipment, in-vitro diagnostics, civil aviation, marine equipment, etc. "Safety component" means failure could endanger health or property.',
+    options: [
+      { label: 'No', value: 'no' },
+      { label: 'Yes — and the product needs third-party conformity assessment', value: 'yes-thirdparty', terminal: 'high-risk', reason: 'Safety component of an Annex I product (Article 6(1))' },
+      { label: 'Not sure / probably not', value: 'maybe' }
+    ]
+  },
+  {
+    id: 'annex-iii',
+    q: 'Does your AI fall in any of the 8 Annex III high-risk areas?',
+    ctx: 'Annex III: (1) biometric ID, (2) critical infrastructure, (3) education / vocational training, (4) employment / HR / worker management, (5) access to essential services (credit, insurance, public benefits, emergency triage), (6) law enforcement, (7) migration / asylum / border, (8) administration of justice and democratic processes.',
+    options: [
+      { label: 'None of these', value: 'none' },
+      { label: 'Employment / HR / hiring / performance management', value: 'employment', flag: 'annex-iii' },
+      { label: 'Credit scoring, insurance pricing, or public-benefit eligibility', value: 'credit', flag: 'annex-iii' },
+      { label: 'Education — admission, evaluation, exam proctoring', value: 'education', flag: 'annex-iii' },
+      { label: 'Biometric ID / categorization / emotion recognition (non-prohibited contexts)', value: 'biometric', flag: 'annex-iii' },
+      { label: 'Critical infrastructure (energy, water, transport, digital)', value: 'critical', flag: 'annex-iii' },
+      { label: 'Law enforcement, migration, border, or justice', value: 'lawenf', flag: 'annex-iii' }
+    ]
+  },
+  {
+    id: 'annex-iii-carveout',
+    q: 'Inside that Annex III area, does your AI only do narrow procedural tasks or assist a human decision (Article 6(3) carve-out)?',
+    ctx: 'Carve-outs: (a) narrow procedural task, (b) improves the result of a completed human activity, (c) detects decision patterns without replacing human review, (d) preparatory task. You must still register and document the carve-out.',
+    skipIf: (a) => !a['annex-iii'] || a['annex-iii'] === 'none',
+    options: [
+      { label: 'No — the AI makes or materially influences the decision', value: 'no' },
+      { label: 'Yes — purely procedural / preparatory / human-in-the-loop assistant', value: 'yes', terminal: 'limited-or-minimal-via-carveout', reason: 'Annex III carve-out under Article 6(3)' }
+    ]
+  },
+  {
+    id: 'gpai',
+    q: 'Are you the provider of a general-purpose AI model (foundation model)?',
+    ctx: 'GPAI = a model trained on broad data, capable of competently performing a wide range of tasks. Includes most LLMs, image diffusion models, multimodal foundation models. Fine-tuning a third-party foundation model may make you a downstream provider.',
+    options: [
+      { label: 'No, I deploy or build on top of someone else\'s model', value: 'no' },
+      { label: 'Yes — and total training compute is < 10^25 FLOPs', value: 'yes-standard', flag: 'gpai-standard' },
+      { label: 'Yes — and ≥ 10^25 FLOPs (GPT-4-class or larger)', value: 'yes-systemic', flag: 'gpai-systemic' }
+    ]
+  },
+  {
+    id: 'transparency',
+    q: 'Does the system interact with humans, generate synthetic content, or recognize emotion / biometric category?',
+    ctx: 'Includes chatbots, voice agents, AI image / video / audio / text generators, deepfakes, emotion-recognition systems, biometric categorization. Triggers Article 50 transparency duties.',
+    options: [
+      { label: 'No — purely back-end / non-content / no human interaction', value: 'no' },
+      { label: 'Yes — chatbot or voice agent that talks to humans', value: 'chatbot', flag: 'transparency' },
+      { label: 'Yes — generates AI text / images / audio / video', value: 'genai', flag: 'transparency' },
+      { label: 'Yes — generates deepfakes of real people', value: 'deepfake', flag: 'transparency-deepfake' },
+      { label: 'Yes — emotion or biometric-category recognition (non-prohibited)', value: 'emotion', flag: 'transparency' }
+    ]
+  },
+  {
+    id: 'eu-reach',
+    q: 'Will any EU resident use, see, or be affected by the AI\'s output?',
+    ctx: 'Article 2 sets extraterritorial scope. If output reaches EU users, the regulation applies regardless of where you, your servers, or your company are.',
+    options: [
+      { label: 'Yes — EU users are in scope', value: 'yes', flag: 'eu-scope' },
+      { label: 'No — no EU users today and active geo-blocking in place', value: 'no' },
+      { label: 'Probably yes (any open web service)', value: 'probably', flag: 'eu-scope' }
+    ]
+  }
+];
+
+const RESULTS = {
+  prohibited: {
+    emoji: '🚫', tier: 'Tier 1 of 4', title: 'Prohibited AI practice',
+    tagline: 'You cannot place this AI system on the EU market, put it into service, or use it. There is no compliance path — only redesign or geofence.',
+    bannerClass: 'prohibited',
+    obligations: [
+      'Stop deployment in the EU immediately. The Article 5 ban has been in force since February 2, 2025.',
+      'Restructure the use case so it no longer falls under any Article 5 paragraph (a)–(h), or remove EU jurisdiction with verifiable geofencing.',
+      'If already deployed: notify your DPO and EU national supervisory authority before discovery — penalties drop with cooperation.',
+      'Penalty exposure: up to €35,000,000 or 7% of total worldwide annual turnover, whichever is higher.'
+    ],
+    citation: '<strong>Source:</strong> Regulation (EU) 2024/1689, <strong>Article 5</strong> (Prohibited AI practices). Effective February 2, 2025.'
+  },
+  'high-risk': {
+    emoji: '⚠️', tier: 'Tier 2 of 4', title: 'High-risk AI system',
+    tagline: 'Heavy compliance load, but legal. You can ship — but only after a conformity assessment, EU database registration, and a real risk-management system.',
+    bannerClass: 'high-risk',
+    obligations: [
+      'Build a continuous risk-management system covering the full lifecycle (Article 9).',
+      'Implement data governance: training, validation, and test sets must be relevant, representative, and largely free of errors (Article 10).',
+      'Produce technical documentation per Annex IV before placing on the market (Article 11).',
+      'Automatic event logging for the lifetime of the system (Article 12).',
+      'Transparency: clear instructions for use, expected accuracy, robustness, and cybersecurity metrics (Article 13).',
+      'Human oversight: design measures so a person can effectively oversee, intervene, and override (Article 14).',
+      'Accuracy, robustness, and cybersecurity proportional to intended use (Article 15).',
+      'Conformity assessment + CE marking + EU declaration of conformity (Article 43, Article 47, Article 48).',
+      'Register in the EU AI database before launch (Article 49 / Article 71).',
+      'Post-market monitoring + serious-incident reporting within 15 days (Article 72, Article 73).',
+      'Penalty exposure: up to €15M or 3% of global turnover.'
+    ],
+    citation: '<strong>Source:</strong> Regulation (EU) 2024/1689, <strong>Article 6 + Annex III</strong> + Chapter III. High-risk obligations apply from August 2, 2026 (or August 2, 2027 if your system is also covered by Annex I product law).'
+  },
+  'limited-or-minimal-via-carveout': {
+    emoji: '🟡', tier: 'Tier 3 of 4', title: 'Annex III carve-out — limited risk',
+    tagline: 'Your use case is in an Annex III area, but Article 6(3) lets you out of the high-risk track. You still have transparency duties and you must register the carve-out.',
+    bannerClass: 'limited',
+    obligations: [
+      'Document why you qualify under Article 6(3)(a)–(d). Keep the rationale on file.',
+      'Register the carve-out in the EU AI database before placing on the market (Article 49(2)).',
+      'Transparency duties from Article 50 still apply if you interact with humans, generate content, or recognize emotion / biometrics.',
+      'You must reclassify as high-risk if the system later starts profiling natural persons.',
+      'Penalty exposure if the carve-out is incorrectly claimed: up to €15M or 3% of turnover.'
+    ],
+    citation: '<strong>Source:</strong> Regulation (EU) 2024/1689, <strong>Article 6(3)</strong> + Article 49(2). The carve-out is narrow — track Commission guidelines, expected by Q1 2026.'
+  },
+  'limited': {
+    emoji: '💬', tier: 'Tier 3 of 4', title: 'Limited-risk AI system',
+    tagline: 'Transparency only. Tell users they are dealing with AI or with AI-generated content. That is the full obligation.',
+    bannerClass: 'limited',
+    obligations: [
+      'For chatbots / voice agents: inform users they are interacting with an AI system (Article 50(1)).',
+      'For AI-generated text, image, audio, or video: mark the output as artificially generated, machine-readably (Article 50(2)).',
+      'For deepfakes of real people: disclose that the content is artificially generated or manipulated (Article 50(4)). Narrow art / satire exemption.',
+      'For emotion-recognition / biometric-categorization systems: tell affected persons (Article 50(3)).',
+      'No conformity assessment or CE marking required.',
+      'Penalty exposure: up to €15M or 3% of global turnover for missing transparency duties.'
+    ],
+    citation: '<strong>Source:</strong> Regulation (EU) 2024/1689, <strong>Article 50</strong>. Transparency duties apply from August 2, 2026.'
+  },
+  'minimal': {
+    emoji: '✅', tier: 'Tier 4 of 4', title: 'Minimal-risk AI system',
+    tagline: 'No mandatory obligations under the AI Act. You may voluntarily adopt the Commission code of conduct — and you should still be GDPR-compliant.',
+    bannerClass: 'minimal',
+    obligations: [
+      'No mandatory AI Act obligations.',
+      'Recommended: voluntary code of conduct (Article 95) — useful for procurement and trust.',
+      'GDPR, DSA, DMA, Product Liability Directive still apply independently.',
+      'Re-run this classifier when you add features (especially generative output, profiling, or biometric processing) — those can flip you out of minimal-risk.'
+    ],
+    citation: '<strong>Source:</strong> Regulation (EU) 2024/1689, Recital 165 + Article 95. Minimal-risk is the residual category for any AI not in the prohibited / high-risk / limited tiers.'
+  }
+};
+
+const GPAI_OBLIGATIONS = {
+  'gpai-standard': [
+    'Maintain technical documentation of the model (training, evaluation, capabilities) — Article 53(1)(a).',
+    'Provide downstream-provider documentation so deployers can comply with their obligations — Article 53(1)(b).',
+    'Implement a copyright policy aligned with the EU Copyright Directive — Article 53(1)(c).',
+    'Publish a sufficiently detailed summary of training data — Article 53(1)(d).',
+    'Open-source models with public weights and architecture get a partial carve-out from (a) and (b) but not from (c) and (d).'
+  ],
+  'gpai-systemic': [
+    'All standard GPAI obligations above, plus:',
+    'Notify the AI Office within 2 weeks of crossing the 10^25 FLOP threshold — Article 52.',
+    'Run model evaluations including adversarial / red-team testing — Article 55(1)(a).',
+    'Assess and mitigate systemic risks at Union level — Article 55(1)(b).',
+    'Track and report serious incidents to the AI Office and national authorities — Article 55(1)(c).',
+    'Adequate cybersecurity for the model and its physical infrastructure — Article 55(1)(d).'
+  ]
+};
+
+let answers = {};
+let history = [];
+let currentIdx = 0;
+let terminalResult = null;
+let terminalReason = null;
+
+const $ = (id) => document.getElementById(id);
+
+function startQuiz() {
+  answers = {};
+  history = [];
+  currentIdx = 0;
+  terminalResult = null;
+  terminalReason = null;
+  $('quizPanel').style.display = 'block';
+  $('resultPanel').classList.remove('active');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  // Skip questions whose skipIf returns true
+  while (currentIdx < QUESTIONS.length) {
+    const q = QUESTIONS[currentIdx];
+    if (q.skipIf && q.skipIf(answers)) { currentIdx++; continue; }
+    break;
+  }
+  if (currentIdx >= QUESTIONS.length || terminalResult) {
+    showResult();
+    return;
+  }
+
+  const q = QUESTIONS[currentIdx];
+  const total = QUESTIONS.filter(x => !x.skipIf || !x.skipIf(answers)).length;
+  const progress = Math.round((history.length / total) * 100);
+  $('progressFill').style.width = Math.max(progress, 8) + '%';
+  $('stepCounter').textContent = `Question ${history.length + 1} of ${total}`;
+  $('questionText').textContent = q.q;
+  $('questionContext').innerHTML = q.ctx;
+  $('backBtn').disabled = history.length === 0;
+
+  const wrap = $('optionsContainer');
+  wrap.innerHTML = '';
+  q.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.innerHTML = opt.label + (opt.opt_detail ? '<div class="opt-detail">' + opt.opt_detail + '</div>' : '');
+    btn.onclick = () => answer(q, opt);
+    wrap.appendChild(btn);
+  });
+}
+
+function answer(q, opt) {
+  history.push({ qid: q.id, q: q.q, value: opt.value, label: opt.label });
+  answers[q.id] = opt.value;
+  if (opt.flag) answers[opt.flag] = opt.value;
+  if (opt.terminal) {
+    terminalResult = opt.terminal;
+    terminalReason = opt.reason;
+    showResult();
+    return;
+  }
+  currentIdx++;
+  renderQuestion();
+}
+
+$('backBtn').onclick = () => {
+  if (history.length === 0) return;
+  const last = history.pop();
+  delete answers[last.qid];
+  // also clear any flags the option set — easier: rebuild flags from history
+  const flagKeys = ['annex-iii','gpai-standard','gpai-systemic','transparency','transparency-deepfake','eu-scope'];
+  flagKeys.forEach(k => delete answers[k]);
+  history.forEach(h => {
+    answers[h.qid] = h.value;
+    const qDef = QUESTIONS.find(x => x.id === h.qid);
+    const optDef = qDef && qDef.options.find(o => o.value === h.value);
+    if (optDef && optDef.flag) answers[optDef.flag] = h.value;
+  });
+  terminalResult = null;
+  terminalReason = null;
+  // recompute currentIdx
+  currentIdx = QUESTIONS.findIndex(qq => qq.id === (history.length ? history[history.length - 1].qid : QUESTIONS[0].id));
+  if (history.length === 0) currentIdx = 0;
+  else currentIdx = QUESTIONS.findIndex(x => x.id === history[history.length - 1].qid) + 1;
+  renderQuestion();
+};
+
+function determineResult() {
+  if (terminalResult) return terminalResult;
+  if (answers['annex-iii'] && answers['annex-iii'] !== 'none') return 'high-risk';
+  if (answers['transparency'] || answers['transparency-deepfake']) return 'limited';
+  return 'minimal';
+}
+
+function showResult() {
+  $('quizPanel').style.display = 'none';
+  $('resultPanel').classList.add('active');
+
+  const tier = determineResult();
+  const r = RESULTS[tier] || RESULTS.minimal;
+
+  $('resultBanner').className = 'result-banner ' + r.bannerClass;
+  $('resultEmoji').textContent = r.emoji;
+  $('resultTier').textContent = r.tier;
+  $('resultTitle').textContent = r.title;
+  $('resultTagline').textContent = r.tagline + (terminalReason ? ' Triggered by: ' + terminalReason + '.' : '');
+
+  // Build obligations list (base + GPAI add-ons if applicable)
+  let obligations = r.obligations.slice();
+  if (answers['gpai-standard'] || answers['gpai-systemic']) {
+    obligations.push('— Plus, as a GPAI provider —');
+    const gpKey = answers['gpai-systemic'] ? 'gpai-systemic' : 'gpai-standard';
+    obligations = obligations.concat(GPAI_OBLIGATIONS[gpKey]);
+  }
+  if ((tier === 'minimal' || tier === 'limited' || tier === 'limited-or-minimal-via-carveout') && (answers['transparency'] || answers['transparency-deepfake'])) {
+    if (tier !== 'limited') {
+      obligations.push('— Plus Article 50 transparency duties because your system generates content or interacts with humans —');
+      obligations = obligations.concat(RESULTS['limited'].obligations.slice(0, 4));
+    }
+  }
+  if (answers['eu-scope'] === 'no') {
+    obligations.unshift('Note: you indicated no EU users. The AI Act does not apply unless EU users are reached. Re-run this assessment if your distribution changes.');
+  }
+
+  const oWrap = $('obligationsList');
+  oWrap.innerHTML = '';
+  obligations.forEach(o => {
+    if (o.startsWith('— ')) {
+      const div = document.createElement('div');
+      div.style.cssText = 'font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin: 14px 0 8px; font-weight: 600;';
+      div.textContent = o.replace(/^— /, '').replace(/ —$/, '');
+      oWrap.appendChild(div);
+      return;
+    }
+    const div = document.createElement('div');
+    div.className = 'obligation-item';
+    div.innerHTML = '<span class="check">✓</span><span>' + o + '</span>';
+    oWrap.appendChild(div);
+  });
+
+  $('citationBox').innerHTML = r.citation;
+
+  // Summary table
+  const tbl = $('summaryTable');
+  let html = '<thead><tr><th>Question</th><th>Your answer</th></tr></thead><tbody>';
+  history.forEach(h => {
+    html += '<tr><td>' + escapeHtml(h.q) + '</td><td class="ans">' + escapeHtml(h.label) + '</td></tr>';
+  });
+  html += '</tbody>';
+  tbl.innerHTML = html;
+}
+
+function escapeHtml(s) { return (s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+
+$('copyResultBtn').onclick = () => {
+  const tier = determineResult();
+  const r = RESULTS[tier];
+  let txt = '=== EU AI Act Risk Assessment ===\n';
+  txt += 'Result: ' + r.title + ' (' + r.tier + ')\n';
+  txt += r.tagline + '\n\n';
+  txt += '--- Your answers ---\n';
+  history.forEach(h => { txt += 'Q: ' + h.q + '\nA: ' + h.label + '\n\n'; });
+  txt += '--- Obligations ---\n';
+  r.obligations.forEach(o => { txt += '• ' + o + '\n'; });
+  txt += '\n' + r.citation.replace(/<[^>]+>/g, '');
+  txt += '\n\nGenerated by tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/';
+  navigator.clipboard.writeText(txt);
+  $('copyResultBtn').textContent = '✓ Copied';
+  setTimeout(() => $('copyResultBtn').textContent = '📋 Copy report', 1500);
+};
+
+$('printBtn').onclick = () => window.print();
+$('restartFromResultBtn').onclick = startQuiz;
+$('restartBtn').onclick = startQuiz;
+
+startQuiz();
+</script>
+</body>
+</html>
