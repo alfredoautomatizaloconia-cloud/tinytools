@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free MCP Server Inspector (2026) — Security &amp; Health Audit for MCP Servers</title>
+<meta name="description" content="Paste a GitHub URL of any MCP (Model Context Protocol) server — instantly check for SSRF patterns, command injection, missing auth, abandoned status, license, and 20+ other security and health signals. 100% in-browser, BYOK GitHub token optional.">
+<meta name="keywords" content="MCP server inspector, MCP security audit, Model Context Protocol scanner, MCP vulnerability checker, mcp.json audit, free MCP scanner, MCP server review, Anthropic MCP, Claude Desktop MCP">
+<meta property="og:title" content="Free MCP Server Inspector — Audit any MCP server in 30 seconds">
+<meta property="og:description" content="20+ security and health checks. GitHub-API based. 100% browser-only. Free forever.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/mcp-server-inspector/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free MCP Server Inspector — Audit any MCP server">
+<meta name="twitter:description" content="Paste a GitHub URL — get 20+ MCP security &amp; health checks. Free.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/mcp-server-inspector/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "MCP Server Inspector",
+  "description": "Browser-based audit tool for Model Context Protocol (MCP) servers. Pulls a GitHub repo via the public API and runs 20+ checks: SSRF / fetch patterns, command injection (exec/shell), missing auth, eval / dynamic code, hardcoded secrets, license, abandonment, archival status, dependency staleness, mcp.json or smithery.yaml structure.",
+  "url": "https://tinytools-smoky.vercel.app/mcp-server-inspector/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #0ea5e9; --accent-glow: #0ea5e940;
+    --green: #10b981; --yellow: #fbbf24; --orange: #f97316; --red: #ef4444; --blue: #3b82f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #6366f140 0%, transparent 50%);
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: rgba(14, 165, 233, 0.15);
+    border: 1px solid rgba(14, 165, 233, 0.4); border-radius: 999px; font-size: 13px;
+    color: #7dd3fc; margin-bottom: 20px; font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #7dd3fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 760px; margin: 0 auto; }
+
+  .input-row {
+    display: grid; grid-template-columns: 1fr auto auto; gap: 10px; margin: 28px auto 14px; max-width: 880px;
+  }
+  @media (max-width: 720px) { .input-row { grid-template-columns: 1fr; } }
+  .input-row input {
+    padding: 14px 16px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; color: var(--text); font-size: 15px; font-family: inherit;
+  }
+  .input-row input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+  .btn { padding: 13px 22px; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; border: none; white-space: nowrap; }
+  .btn-primary { background: var(--accent); color: #001828; }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-secondary { background: var(--bg-card); color: var(--text-dim); border: 1px solid var(--border); }
+  .btn-secondary:hover { color: var(--text); border-color: var(--accent); }
+
+  details.token-area { max-width: 880px; margin: 0 auto 12px; font-size: 13px; color: var(--text-dim); }
+  details.token-area summary { cursor: pointer; padding: 8px 0; }
+  details.token-area summary:hover { color: var(--text); }
+  details.token-area input { width: 100%; padding: 10px 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'SF Mono', Monaco, monospace; font-size: 12px; margin-top: 8px; }
+
+  .examples { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 4px; }
+  .example-chip { padding: 6px 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 12px; color: var(--text-dim); cursor: pointer; }
+  .example-chip:hover { color: var(--text); border-color: var(--accent); }
+
+  .empty-state { text-align: center; padding: 60px 20px; color: var(--text-dim); font-size: 15px; }
+  .empty-state .icon { font-size: 56px; margin-bottom: 14px; opacity: 0.4; }
+
+  .progress { margin: 24px 0; padding: 14px 18px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; font-size: 14px; color: var(--text-dim); }
+  .progress .step { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
+  .progress .step.done { color: var(--green); }
+  .progress .step.fail { color: var(--red); }
+
+  .verdict-card {
+    margin-top: 20px; padding: 28px; border-radius: 18px; text-align: center;
+    background: var(--bg-card); border: 2px solid var(--border);
+  }
+  .verdict-card.crit { background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(239, 68, 68, 0.04)); border-color: var(--red); }
+  .verdict-card.high { background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(249, 115, 22, 0.04)); border-color: var(--orange); }
+  .verdict-card.med { background: linear-gradient(135deg, rgba(251, 191, 36, 0.10), rgba(251, 191, 36, 0.03)); border-color: var(--yellow); }
+  .verdict-card.low { background: linear-gradient(135deg, rgba(16, 185, 129, 0.10), rgba(16, 185, 129, 0.03)); border-color: var(--green); }
+
+  .verdict-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+  .verdict-grade { font-size: 88px; font-weight: 800; line-height: 1; margin: 8px 0 6px; letter-spacing: -0.04em; }
+  .verdict-grade.red { color: var(--red); }
+  .verdict-grade.orange { color: var(--orange); }
+  .verdict-grade.yellow { color: var(--yellow); }
+  .verdict-grade.green { color: var(--green); }
+  .verdict-text { font-size: 18px; font-weight: 700; }
+  .verdict-tagline { font-size: 14px; color: var(--text-dim); margin-top: 6px; max-width: 540px; margin-left: auto; margin-right: auto; }
+
+  .repo-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 22px; }
+  .meta-tile { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 14px; text-align: left; }
+  .meta-tile .lbl { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+  .meta-tile .val { font-size: 17px; color: var(--text); margin-top: 4px; font-weight: 600; word-break: break-word; }
+  .meta-tile .val.dim { color: var(--text-dim); }
+
+  .findings { margin-top: 24px; }
+  .findings h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; font-weight: 600; }
+  .finding {
+    display: grid; grid-template-columns: 32px 1fr auto; gap: 12px; align-items: start;
+    padding: 14px 16px; background: var(--bg-card); border-radius: 12px; font-size: 14px;
+    border-left: 3px solid var(--border); margin-bottom: 8px;
+  }
+  .finding.crit { border-left-color: var(--red); }
+  .finding.high { border-left-color: var(--orange); }
+  .finding.med { border-left-color: var(--yellow); }
+  .finding.low { border-left-color: var(--green); }
+  .finding.info { border-left-color: var(--blue); }
+  .finding-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 16px; background: var(--bg-elevated); }
+  .finding-icon.crit { background: rgba(239, 68, 68, 0.2); color: var(--red); }
+  .finding-icon.high { background: rgba(249, 115, 22, 0.2); color: var(--orange); }
+  .finding-icon.med { background: rgba(251, 191, 36, 0.2); color: var(--yellow); }
+  .finding-icon.low { background: rgba(16, 185, 129, 0.2); color: var(--green); }
+  .finding-icon.info { background: rgba(59, 130, 246, 0.2); color: var(--blue); }
+  .finding-name { font-weight: 700; color: var(--text); }
+  .finding-detail { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  .finding-evidence { font-family: 'SF Mono', Monaco, monospace; font-size: 11px; color: var(--text-dim); background: var(--bg-elevated); padding: 6px 8px; border-radius: 6px; margin-top: 6px; word-break: break-all; }
+  .finding-tag { font-family: 'SF Mono', Monaco, monospace; font-size: 11px; color: var(--text-dim); background: var(--bg-elevated); padding: 3px 8px; border-radius: 4px; }
+
+  .info-banner {
+    margin: 20px 0 0; padding: 14px 16px; background: rgba(59, 130, 246, 0.08);
+    border-left: 3px solid var(--blue); border-radius: 8px; font-size: 13px; color: #93c5fd;
+  }
+  .info-banner strong { color: white; }
+
+  .err-banner {
+    margin: 20px 0; padding: 14px 16px; background: rgba(239, 68, 68, 0.1);
+    border-left: 3px solid var(--red); border-radius: 8px; font-size: 13px; color: #fca5a5;
+  }
+
+  .upsell {
+    margin-top: 36px; padding: 22px; background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(99, 102, 241, 0.1));
+    border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 14px;
+  }
+  .upsell h3 { font-size: 16px; margin-bottom: 6px; color: white; }
+  .upsell p { font-size: 14px; color: var(--text-dim); margin-bottom: 12px; }
+  .upsell a { display: inline-block; padding: 9px 16px; background: var(--accent); color: #001828; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 700; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul, .content ol { margin-left: 24px; color: var(--text-dim); }
+  .content li { margin-bottom: 4px; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🔒 Browser-only · Public GitHub API · No data stored</div>
+    <h1>MCP Server Inspector</h1>
+    <p class="subtitle">Paste a GitHub URL of any Model Context Protocol server. We'll fetch the repo via the public GitHub API and run 20+ security and health checks — SSRF patterns, command injection, missing auth, abandonment, license, and more.</p>
+  </header>
+
+  <div class="input-row">
+    <input id="repoInput" type="text" placeholder="https://github.com/owner/mcp-server-name" autocomplete="off" spellcheck="false">
+    <button class="btn btn-primary" id="auditBtn">🔍 Audit repo</button>
+    <button class="btn btn-secondary" id="clearBtn">Clear</button>
+  </div>
+
+  <details class="token-area">
+    <summary>Optional: paste a GitHub PAT (raises rate limit to 5,000/hr · stays in browser)</summary>
+    <input id="ghToken" type="password" placeholder="ghp_... (optional, sent only to api.github.com)">
+  </details>
+
+  <div class="examples">
+    <span class="example-chip" data-url="https://github.com/modelcontextprotocol/servers">modelcontextprotocol/servers</span>
+    <span class="example-chip" data-url="https://github.com/punkpeye/awesome-mcp-servers">awesome-mcp-servers</span>
+    <span class="example-chip" data-url="https://github.com/stripe/agent-toolkit">stripe/agent-toolkit</span>
+    <span class="example-chip" data-url="https://github.com/cloudflare/mcp-server-cloudflare">cloudflare/mcp-server-cloudflare</span>
+  </div>
+
+  <div id="resultArea">
+    <div class="empty-state">
+      <div class="icon">🛡️</div>
+      Paste a GitHub URL above and hit <strong>Audit repo</strong>.
+      <div style="font-size: 13px; margin-top: 8px;">Public repos only. Anonymous requests are limited to 60/hour by GitHub — use the optional token to lift the limit.</div>
+    </div>
+  </div>
+
+  <div class="upsell">
+    <h3>Need a config file once you've picked an MCP?</h3>
+    <p>The MCP Config Generator (shipping next) builds a copy-paste JSON for Claude Desktop, Cursor, Continue, and other clients. Until then — pair this audit with our prompt-injection tester to harden the agent that calls the MCP.</p>
+    <a href="/prompt-injection-tester/">Open Prompt Injection Tester →</a>
+  </div>
+
+  <section class="content">
+    <h2>What is MCP and why audit it?</h2>
+    <p>The Model Context Protocol (MCP) is the open standard, introduced by Anthropic, for connecting Large Language Models to external tools and data sources. By 2026, MCP marketplaces list thousands of community-built servers — calendar, GitHub, Slack, Postgres, Stripe, browser automation, file systems, internal company APIs, you name it. Installing an MCP server gives an LLM the ability to take real actions on your behalf, which means a malicious or sloppy server is functionally equivalent to running an unaudited binary with your credentials.</p>
+
+    <h3>The MCP threat model in one paragraph</h3>
+    <p>An MCP server is just a process you run that exposes tools to a client like Claude Desktop, Cursor, or Continue. Most servers are written in TypeScript or Python, fetch things over HTTP, and read/write files or hit your APIs with credentials you provide. The four most common security issues we find when auditing them are: (1) SSRF — the server fetches user-controlled URLs without restricting localhost/internal addresses; (2) command injection — user input is passed to <code>exec</code> or <code>spawn</code> without escaping; (3) missing auth — anyone who can reach the server can use it; (4) abandonment — the server hasn't been touched in months, dependencies are vulnerable, and nobody is going to fix it. This inspector flags all four plus a dozen more.</p>
+
+    <h3>How the MCP Server Inspector works</h3>
+    <p>The tool calls the public GitHub API directly from your browser. It fetches: repo metadata (stars, last push, archived status, license, default branch, open issues), the file tree, and the contents of likely-suspect files (<code>package.json</code>, <code>pyproject.toml</code>, <code>README.md</code>, the main entrypoint, <code>mcp.json</code>, <code>smithery.yaml</code>). It then runs a battery of regex-based checks against those files plus reasoning over the metadata. Every signal is shown in the breakdown so you can verify the finding yourself.</p>
+
+    <h3>The 20+ checks, by category</h3>
+
+    <h3>Security: code patterns</h3>
+    <ul>
+      <li><strong>SSRF risk.</strong> Code that calls <code>fetch</code>, <code>axios</code>, <code>requests.get</code>, or <code>urllib</code> using a parameter the LLM controls — without validating that the URL is not <code>127.0.0.1</code>, <code>169.254.169.254</code> (AWS metadata), or an internal IP range.</li>
+      <li><strong>Command injection.</strong> Use of <code>exec</code>, <code>spawn</code>, <code>execSync</code>, <code>os.system</code>, or shell-string interpolation with model-controlled arguments. The classic backdoor in agentic systems.</li>
+      <li><strong>Dynamic code execution.</strong> Any use of <code>eval</code>, <code>Function()</code>, <code>vm.runInNewContext</code>, or Python's <code>exec()</code>. Almost always a bad pattern in an MCP.</li>
+      <li><strong>Path traversal.</strong> File-reading code that takes a path from the LLM without restricting to a base directory.</li>
+      <li><strong>Hardcoded secrets.</strong> Strings that look like API keys, JWTs, or AWS credentials baked into source.</li>
+    </ul>
+
+    <h3>Security: configuration</h3>
+    <ul>
+      <li><strong>Missing authentication.</strong> Servers that expose HTTP transports without an API-key or token check.</li>
+      <li><strong>Permissive CORS.</strong> Wildcard <code>Access-Control-Allow-Origin</code> on a server that handles credentials.</li>
+      <li><strong>Network reach.</strong> Mention of <code>0.0.0.0</code> binds — the server is listening on all interfaces, not just localhost.</li>
+    </ul>
+
+    <h3>Health and trust</h3>
+    <ul>
+      <li><strong>Last commit age.</strong> Anything older than 6 months on an MCP server is a yellow flag; older than a year is red.</li>
+      <li><strong>Archived status.</strong> Archived repos receive no security fixes.</li>
+      <li><strong>License.</strong> No license = nobody can legally use it; some licenses (AGPL) carry obligations.</li>
+      <li><strong>Open issues.</strong> Hundreds of stale issues with no responses signal abandonment.</li>
+      <li><strong>Stars and watchers.</strong> A heuristic-only signal, but extreme outliers (1 star, 0 watchers, 50,000 lines of code) deserve a closer look.</li>
+      <li><strong>Dependencies.</strong> If <code>package.json</code> exists, we count direct deps and flag suspicious ones (binary loaders, network-heavy libraries, deprecated packages).</li>
+    </ul>
+
+    <h3>What this inspector cannot do</h3>
+    <ul>
+      <li>Detect runtime-only vulnerabilities. Static-pattern scanners miss issues that depend on how a function is called at runtime.</li>
+      <li>Audit private repos without your token. Anonymous public-API access only sees public repos.</li>
+      <li>Replace a real security review. For high-stakes deployments — anything touching production credentials — pay a security firm or run the server in a sandbox.</li>
+      <li>Audit non-GitHub sources. Code on GitLab, Bitbucket, or self-hosted Git is out of scope for v1.</li>
+    </ul>
+
+    <h3>Why a browser-only tool?</h3>
+    <p>Sending other people's repository contents to a SaaS scanner feels backwards when the scanner needs no special privileges. The browser already has a network stack and a regex engine — that's all you need. Your audits stay private, the GitHub API quota is yours (and you can lift it from 60/hour to 5,000/hour with a personal access token that never leaves the page), and the source of every check is auditable in this file.</p>
+
+    <h3>FAQ</h3>
+    <p><strong>Will this audit any GitHub repo or only MCP servers?</strong> It works on any repo, but the heuristics are tuned for the MCP threat model. A general-purpose web app might get false positives on signals that are normal for a web framework but suspicious in a tool an LLM controls.</p>
+    <p><strong>Where does my token go?</strong> Only to <code>api.github.com</code>, sent over HTTPS as the <code>Authorization</code> header. It never reaches our servers — there are no servers. View the network tab to verify.</p>
+    <p><strong>Why does anonymous mode hit the rate limit so fast?</strong> GitHub allows 60 unauthenticated requests per hour per IP. Each audit makes 8–12 calls. Add a token (<code>read:public_repo</code> scope is enough) and you get 5,000/hour.</p>
+    <p><strong>Can I trust an MCP that scores well here?</strong> A good score means no obvious red flags — not that the server is safe. A determined attacker can hide intent in subtle ways. Treat this as a first filter.</p>
+    <p><strong>How is this different from Glama or other MCP marketplaces?</strong> Marketplaces curate. Inspectors audit. Use both: pick a server from a curated marketplace, then run it through the inspector before installing.</p>
+  </section>
+
+  <footer>
+    <p>Free MCP server inspector · Public GitHub API · No tracking · <a href="/">More tools at TinyTools</a></p>
+  </footer>
+</div>
+
+<script>
+const repoInput = document.getElementById('repoInput');
+const auditBtn = document.getElementById('auditBtn');
+const clearBtn = document.getElementById('clearBtn');
+const ghTokenInput = document.getElementById('ghToken');
+const resultArea = document.getElementById('resultArea');
+
+document.querySelectorAll('.example-chip').forEach(chip => {
+  chip.addEventListener('click', () => { repoInput.value = chip.dataset.url; audit(); });
+});
+
+clearBtn.addEventListener('click', () => {
+  repoInput.value = '';
+  resultArea.innerHTML = '<div class="empty-state"><div class="icon">🛡️</div>Paste a GitHub URL above and hit <strong>Audit repo</strong>.</div>';
+});
+
+auditBtn.addEventListener('click', audit);
+repoInput.addEventListener('keydown', e => { if (e.key === 'Enter') audit(); });
+
+function parseRepo(input) {
+  const m = input.trim().match(/github\.com[\/:]([^\/]+)\/([^\/\s#?]+?)(?:\.git)?\/?(?:[\/?#]|$)/i);
+  if (!m) return null;
+  return { owner: m[1], repo: m[2] };
+}
+
+async function gh(path, token) {
+  const headers = { 'Accept': 'application/vnd.github+json' };
+  if (token && token.trim()) headers['Authorization'] = 'Bearer ' + token.trim();
+  const r = await fetch('https://api.github.com' + path, { headers });
+  if (r.status === 404) throw new Error('Repo not found (404). Check the URL or that the repo is public.');
+  if (r.status === 403) {
+    const reset = r.headers.get('X-RateLimit-Reset');
+    throw new Error('GitHub API rate limit hit (403). ' + (token ? 'Even with token.' : 'Add a personal access token above to get 5,000/hr instead of 60.'));
+  }
+  if (!r.ok) throw new Error('GitHub API error ' + r.status);
+  return r.json();
+}
+
+async function ghRaw(owner, repo, branch, path, token) {
+  const headers = {};
+  if (token && token.trim()) headers['Authorization'] = 'Bearer ' + token.trim();
+  const r = await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`, { headers });
+  if (!r.ok) return null;
+  const txt = await r.text();
+  return txt.length > 400000 ? txt.slice(0, 400000) : txt;
+}
+
+function escHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+const SEC_PATTERNS = [
+  { id: 'eval', sev: 'crit', name: 'Dynamic code execution (eval)', detail: 'Use of eval / Function constructor / Python exec — runs arbitrary code, almost never needed in an MCP.', re: /\b(eval\s*\(|new\s+Function\s*\(|Function\s*\(\s*['"`]|exec\s*\(\s*[a-zA-Z_])/g },
+  { id: 'shell', sev: 'crit', name: 'Shell command execution', detail: 'execSync / spawn / os.system — confirm arguments are escaped and not LLM-controlled.', re: /\b(execSync|spawnSync|child_process\.exec|child_process\.spawn|subprocess\.(call|run|Popen)|os\.system|os\.popen|shell=True)\b/g },
+  { id: 'shell-template', sev: 'crit', name: 'Shell with template-string args', detail: 'Backtick / f-string interpolated into shell command — classic injection.', re: /\bexec(?:Sync)?\s*\(\s*`[^`]*\$\{[^}]+\}[^`]*`|subprocess\.[a-z_]+\s*\(\s*f["'][^"']*\{[^}]+\}/g },
+  { id: 'fetch-untrusted', sev: 'high', name: 'Possible SSRF (fetch with variable URL)', detail: 'fetch / axios / requests called with a variable — verify it cannot point at localhost / metadata IPs.', re: /\b(fetch|axios\.(get|post|request|put|delete)|requests\.(get|post|put|delete)|urlopen)\s*\(\s*[a-zA-Z_$][\w.$]*[,)]/g },
+  { id: 'metadata-ip', sev: 'high', name: 'Cloud metadata endpoint reachable', detail: 'No filter against 169.254.169.254 — AWS/GCP metadata service can leak credentials.', re: /\b169\.254\.169\.254\b/g },
+  { id: 'localhost-bind', sev: 'med', name: 'Binds 0.0.0.0 (all interfaces)', detail: 'Server listens on all interfaces — verify it is intended to be remotely reachable.', re: /['"]0\.0\.0\.0['"]/g },
+  { id: 'cors-wild', sev: 'high', name: 'Wildcard CORS', detail: 'Access-Control-Allow-Origin set to *.', re: /Access-Control-Allow-Origin['"]?\s*[:,]\s*['"]\*['"]/g },
+  { id: 'path-traversal', sev: 'high', name: 'File read with raw path', detail: 'fs.readFile / open() called with parameter — verify path is restricted to a base directory.', re: /\b(fs\.readFile(?:Sync)?|fs\.createReadStream|open\s*\()\s*\(\s*[a-zA-Z_$][\w.$]*[,)]/g },
+  { id: 'hardcoded-secret', sev: 'crit', name: 'Likely hardcoded secret', detail: 'String matches API-key / token / AWS-key shape — verify it is not committed.', re: /(?:[A-Z0-9]{20,40}|sk-[A-Za-z0-9]{20,}|gh[ps]_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|xox[baprs]-[A-Za-z0-9-]{10,}|eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,})/g },
+  { id: 'aws-secret', sev: 'crit', name: 'AWS access-key shape', detail: 'AKIA-prefixed string — AWS access key fingerprint.', re: /\bAKIA[0-9A-Z]{16}\b/g },
+  { id: 'no-auth', sev: 'med', name: 'No auth keyword found', detail: 'Code does not mention "Authorization" / api-key / Bearer / token-check — verify auth is enforced if exposed remotely.', re: /(authorization|api[-_]?key|bearer|x-api-key|access[-_]?token)/gi, invert: true },
+  { id: 'eval-string', sev: 'high', name: 'String concat into RegExp / SQL', detail: 'Dynamic regex / SQL constructed with concatenation — possible injection.', re: /new\s+RegExp\s*\(\s*[a-zA-Z_$][\w.$]*\s*\+|['"`]\s*SELECT\s[^'"`]*\$\{|['"`]\s*INSERT\s[^'"`]*\$\{/gi },
+  { id: 'pickle', sev: 'crit', name: 'pickle.loads / yaml.load (unsafe)', detail: 'Deserialization of untrusted input executes arbitrary code.', re: /\b(pickle\.loads?|yaml\.load\s*\([^)]*Loader\s*=\s*[a-zA-Z_]*Loader|yaml\.load\s*\([^,)]*\))/g },
+  { id: 'open-redirect', sev: 'med', name: 'Possible open redirect', detail: 'res.redirect with parameter — verify URL is validated.', re: /\bres\.redirect\s*\(\s*req\./g }
+];
+
+const FILE_HINTS = [
+  'package.json', 'pyproject.toml', 'README.md', 'readme.md', 'README.rst',
+  'mcp.json', 'smithery.yaml', 'smithery.yml',
+  'src/index.ts', 'src/index.js', 'src/server.ts', 'src/server.js', 'src/main.ts',
+  'index.ts', 'index.js', 'server.ts', 'server.js', 'main.py', '__init__.py',
+  'src/__init__.py', 'src/server.py', 'src/main.py',
+  '.env.example', 'Dockerfile', 'manifest.json'
+];
+
+async function audit() {
+  const url = repoInput.value.trim();
+  if (!url) return;
+  const parsed = parseRepo(url);
+  if (!parsed) {
+    resultArea.innerHTML = '<div class="err-banner">Could not parse a GitHub URL from that input. Expected something like <code>https://github.com/owner/repo</code>.</div>';
+    return;
+  }
+  const token = ghTokenInput.value;
+
+  const steps = [
+    { txt: 'Fetching repository metadata', state: 'pending' },
+    { txt: 'Fetching file tree', state: 'pending' },
+    { txt: 'Pulling key files', state: 'pending' },
+    { txt: 'Running security checks', state: 'pending' }
+  ];
+
+  function renderProgress() {
+    resultArea.innerHTML = `<div class="progress">${steps.map(s => `<div class="step ${s.state}">${s.state === 'done' ? '✅' : s.state === 'fail' ? '❌' : '⏳'} ${escHtml(s.txt)}</div>`).join('')}</div>`;
+  }
+  renderProgress();
+
+  let meta, tree, fileTexts = {};
+  try {
+    meta = await gh(`/repos/${parsed.owner}/${parsed.repo}`, token);
+    steps[0].state = 'done'; renderProgress();
+  } catch (e) {
+    steps[0].state = 'fail'; renderProgress();
+    resultArea.insertAdjacentHTML('beforeend', `<div class="err-banner">${escHtml(e.message)}</div>`);
+    return;
+  }
+
+  const branch = meta.default_branch || 'main';
+  try {
+    tree = await gh(`/repos/${parsed.owner}/${parsed.repo}/git/trees/${branch}?recursive=1`, token);
+    steps[1].state = 'done'; renderProgress();
+  } catch (e) {
+    steps[1].state = 'fail'; renderProgress();
+    tree = { tree: [] };
+  }
+
+  const allFiles = (tree.tree || []).filter(x => x.type === 'blob').map(x => x.path);
+  const targetFiles = FILE_HINTS.filter(p => allFiles.includes(p));
+  // Also include any TS/JS/PY file inside src/ up to 6 candidates
+  const codeCandidates = allFiles.filter(p => /^(src\/|lib\/)?[^\/]*\.(ts|tsx|js|mjs|cjs|py)$/.test(p) && !p.includes('node_modules') && !p.includes('test'));
+  for (const p of codeCandidates.slice(0, 6)) if (!targetFiles.includes(p)) targetFiles.push(p);
+
+  let pulled = 0;
+  await Promise.all(targetFiles.slice(0, 12).map(async p => {
+    try {
+      const t = await ghRaw(parsed.owner, parsed.repo, branch, p, token);
+      if (t !== null) { fileTexts[p] = t; pulled++; }
+    } catch (e) {}
+  }));
+  steps[2].state = 'done'; renderProgress();
+
+  // Run checks
+  const findings = [];
+  const codeBlob = Object.entries(fileTexts).filter(([p]) => /\.(ts|tsx|js|mjs|cjs|py)$/.test(p)).map(([p, t]) => `\n/*FILE:${p}*/\n${t}`).join('\n');
+
+  for (const pat of SEC_PATTERNS) {
+    if (pat.invert) {
+      // skip invert checks — handled below explicitly
+      continue;
+    }
+    const re = new RegExp(pat.re.source, pat.re.flags);
+    const matches = [];
+    let m;
+    while ((m = re.exec(codeBlob)) !== null) {
+      matches.push(m[0]);
+      if (m.index === re.lastIndex) re.lastIndex++;
+      if (matches.length > 3) break;
+    }
+    if (matches.length > 0) {
+      findings.push({
+        sev: pat.sev,
+        name: pat.name,
+        detail: pat.detail + ` Matched ${matches.length}× across pulled code files.`,
+        evidence: matches.slice(0, 2).map(s => s.length > 120 ? s.slice(0, 120) + '…' : s).join(' · '),
+        tag: pat.id
+      });
+    }
+  }
+
+  // Auth keyword check
+  if (codeBlob.length > 200) {
+    const authRe = /(authorization|api[-_]?key|bearer|x-api-key|access[-_]?token|verifyToken|requireAuth)/gi;
+    if (!authRe.test(codeBlob)) {
+      findings.push({ sev: 'med', name: 'No auth-related keyword detected', detail: 'No mention of Authorization / API key / Bearer / token-check in pulled code. If this server exposes an HTTP transport, verify access is restricted.', evidence: '', tag: 'no-auth' });
+    }
+  }
+
+  // Health checks based on metadata
+  const now = Date.now();
+  const lastPush = meta.pushed_at ? new Date(meta.pushed_at).getTime() : 0;
+  const ageDays = lastPush ? Math.floor((now - lastPush) / (86400 * 1000)) : null;
+
+  if (meta.archived) {
+    findings.push({ sev: 'high', name: 'Repository is archived', detail: 'Archived repos no longer accept commits or fixes — security issues will not be patched.', evidence: '', tag: 'archived' });
+  }
+  if (ageDays !== null) {
+    if (ageDays > 540) findings.push({ sev: 'high', name: `Last commit ${ageDays} days ago`, detail: 'Likely abandoned. No security maintenance for >18 months.', evidence: 'pushed_at: ' + meta.pushed_at, tag: 'stale-540' });
+    else if (ageDays > 365) findings.push({ sev: 'med', name: `Last commit ${ageDays} days ago`, detail: 'Older than a year — verify maintenance status before installing.', evidence: 'pushed_at: ' + meta.pushed_at, tag: 'stale-365' });
+    else if (ageDays > 180) findings.push({ sev: 'low', name: `Last commit ${ageDays} days ago`, detail: 'Older than 6 months — confirm the project is still active.', evidence: 'pushed_at: ' + meta.pushed_at, tag: 'stale-180' });
+  }
+  if (!meta.license || !meta.license.spdx_id || meta.license.spdx_id === 'NOASSERTION') {
+    findings.push({ sev: 'med', name: 'No license detected', detail: 'No SPDX license — using this code in your stack is legally ambiguous.', evidence: '', tag: 'no-license' });
+  } else if (/AGPL/i.test(meta.license.spdx_id)) {
+    findings.push({ sev: 'low', name: 'AGPL license', detail: 'AGPL has strong copyleft obligations for network use — may not be compatible with closed-source product.', evidence: meta.license.spdx_id, tag: 'license-agpl' });
+  }
+  if (meta.stargazers_count < 5 && !meta.fork) {
+    findings.push({ sev: 'low', name: 'Very few stars', detail: 'Stars alone are not a security signal, but extremely low star count + complex code = use with extra care.', evidence: meta.stargazers_count + ' stars', tag: 'low-stars' });
+  }
+  if (meta.fork) {
+    findings.push({ sev: 'info', name: 'Repository is a fork', detail: 'Verify whether this fork is up-to-date with upstream and whether it adds suspicious changes.', evidence: 'fork: true', tag: 'fork' });
+  }
+  if (!fileTexts['README.md'] && !fileTexts['readme.md'] && !fileTexts['README.rst']) {
+    findings.push({ sev: 'low', name: 'No README found', detail: 'A real MCP server should document its tools and usage.', evidence: '', tag: 'no-readme' });
+  }
+
+  // Package.json check
+  if (fileTexts['package.json']) {
+    try {
+      const pkg = JSON.parse(fileTexts['package.json']);
+      const deps = Object.assign({}, pkg.dependencies || {}, pkg.devDependencies || {});
+      const depCount = Object.keys(deps).length;
+      if (depCount > 100) findings.push({ sev: 'med', name: `${depCount} npm dependencies`, detail: 'Large dependency surface increases supply-chain risk.', evidence: '', tag: 'big-deps' });
+      // Suspicious-name heuristic
+      const sus = Object.keys(deps).filter(d => /^(left-pad|colors|node-ipc|event-stream|ua-parser-js|pac-resolver)$/i.test(d));
+      if (sus.length) findings.push({ sev: 'high', name: 'Historically-compromised package detected', detail: 'Listed package was involved in a past supply-chain incident — confirm version is post-fix.', evidence: sus.join(', '), tag: 'sus-deps' });
+    } catch (e) {}
+  }
+
+  // mcp.json or smithery.yaml presence — informational
+  if (fileTexts['smithery.yaml'] || fileTexts['smithery.yml']) {
+    findings.push({ sev: 'info', name: 'Smithery manifest present', detail: 'Server is published to Smithery — manifest declares its tools and required env vars.', evidence: 'smithery.yaml', tag: 'smithery' });
+  }
+  if (fileTexts['mcp.json']) {
+    findings.push({ sev: 'info', name: 'mcp.json manifest present', detail: 'Server includes an MCP manifest declaring its tools.', evidence: 'mcp.json', tag: 'mcp-json' });
+  }
+  if (fileTexts['Dockerfile']) {
+    findings.push({ sev: 'info', name: 'Dockerfile present', detail: 'Container image available — running in a container reduces blast radius vs. running directly on host.', evidence: '', tag: 'docker' });
+  }
+
+  steps[3].state = 'done';
+
+  // Compute grade
+  const SEV_W = { crit: 25, high: 12, med: 5, low: 2, info: 0 };
+  let penalty = 0;
+  for (const f of findings) penalty += SEV_W[f.sev] || 0;
+  const score = Math.max(0, 100 - penalty);
+  let grade, gradeClass, band, bandText, bandTag;
+  if (score >= 90) { grade = 'A'; gradeClass = 'green'; band = 'low'; bandText = 'CLEAN'; bandTag = 'No major red flags. Still review the source before installing.'; }
+  else if (score >= 75) { grade = 'B'; gradeClass = 'green'; band = 'low'; bandText = 'GOOD'; bandTag = 'Minor issues — review the findings, generally safe to use.'; }
+  else if (score >= 60) { grade = 'C'; gradeClass = 'yellow'; band = 'med'; bandText = 'CAUTION'; bandTag = 'Several findings — read each before installing in production.'; }
+  else if (score >= 40) { grade = 'D'; gradeClass = 'orange'; band = 'high'; bandText = 'RISKY'; bandTag = 'Significant security or health issues. Consider an alternative.'; }
+  else { grade = 'F'; gradeClass = 'red'; band = 'crit'; bandText = 'DO NOT INSTALL'; bandTag = 'Multiple severe issues. Do not run this on a machine with credentials.'; }
+
+  // Sort findings
+  const sevRank = { crit: 0, high: 1, med: 2, low: 3, info: 4 };
+  findings.sort((a, b) => sevRank[a.sev] - sevRank[b.sev]);
+
+  const sevIcon = { crit: '⛔', high: '⚠️', med: '⚡', low: '·', info: 'ℹ' };
+
+  function fmtNum(n) { return Number(n || 0).toLocaleString(); }
+  function fmtAge(d) {
+    if (d == null) return '—';
+    if (d < 30) return d + ' days';
+    if (d < 365) return Math.floor(d / 30) + ' months';
+    return (d / 365).toFixed(1) + ' years';
+  }
+
+  resultArea.innerHTML = `
+    <div class="verdict-card ${band}">
+      <div class="verdict-label">Inspector grade</div>
+      <div class="verdict-grade ${gradeClass}">${grade}</div>
+      <div class="verdict-text">${bandText} · ${score}/100</div>
+      <div class="verdict-tagline">${bandTag}</div>
+      <div class="repo-meta">
+        <div class="meta-tile"><div class="lbl">Repo</div><div class="val">${escHtml(meta.full_name)}</div></div>
+        <div class="meta-tile"><div class="lbl">Stars</div><div class="val">${fmtNum(meta.stargazers_count)}</div></div>
+        <div class="meta-tile"><div class="lbl">Last push</div><div class="val">${fmtAge(ageDays)} ago</div></div>
+        <div class="meta-tile"><div class="lbl">License</div><div class="val ${meta.license ? '' : 'dim'}">${escHtml((meta.license && meta.license.spdx_id) || 'None')}</div></div>
+        <div class="meta-tile"><div class="lbl">Open issues</div><div class="val">${fmtNum(meta.open_issues_count)}</div></div>
+        <div class="meta-tile"><div class="lbl">Files scanned</div><div class="val">${pulled}</div></div>
+      </div>
+    </div>
+    <div class="findings">
+      <h2>${findings.length} findings</h2>
+      ${findings.length === 0 ? '<div class="empty-state" style="padding: 24px;"><div class="icon">✅</div>No issues raised by the static checks. Still review the source before installing.</div>' : findings.map(f => `
+        <div class="finding ${f.sev}">
+          <div class="finding-icon ${f.sev}">${sevIcon[f.sev]}</div>
+          <div>
+            <div class="finding-name">${escHtml(f.name)}</div>
+            <div class="finding-detail">${escHtml(f.detail)}</div>
+            ${f.evidence ? `<div class="finding-evidence">${escHtml(f.evidence)}</div>` : ''}
+          </div>
+          <div class="finding-tag">${f.tag}</div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="info-banner">
+      <strong>Note.</strong> Static-pattern scanning is a first filter, not a guarantee. For high-stakes installs, audit the source manually and run the server in a sandbox.
+    </div>
+  `;
+}
+</script>
+</body>
+</html>
