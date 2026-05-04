@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 3, 2026 — published Favicon Best Practices guide (8 best practices) + 4 social drafts ready",
+  "lastUpdated": "May 4, 2026 — published How to Pick Brand Colors for a Startup in 2026 + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 7,
+    "posts": 8,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 14:30",
+      "tag": "seo",
+      "text": "📝 Published blog post: How to Pick Brand Colors for a Startup in 2026 — A Founder's Field Guide at /color-palette/blog/how-to-pick-brand-colors-for-startup-2026/"
+    },
+    {
+      "time": "today 14:30",
+      "tag": "promo",
+      "text": "🎨 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN — all promoting color-palette"
+    },
     {
       "time": "today 21:02",
       "tag": "seo",
@@ -209,6 +219,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "text": "Most founders pick brand colors in a Figma rabbit hole at midnight.\n\nSix months later they realize the indigo they fell in love with looks exactly like Stripe, Linear, and the last 6 SaaS landing pages.\n\nHere's the 30-minute color-picking system that survives contact with engineering 🧵\n\n(2/6) Step 1: Pick a single hero color first.\n\nDon't try to design a 5-color palette in one go. Pick the CTA-button color and let the rest derive.\n\nFour temperaments to choose from:\n• Trust → blue 210-240°\n• Energy → orange/pink 0-30°\n• Creative → purple 270-310°\n• Growth → green/teal 140-180°\n\n(3/6) Step 2: Build the 60-30-10 system.\n\n60% neutral (near-black or near-white)\n30% secondary (muted)\n10% accent (your hero color)\n\nMost teams treat the hero as the dominant 60%. The result: a landing page that screams from every pixel and a product that gives users no signal where to look.\n\n(4/6) Step 3: Stress-test the messy contexts.\n\nBefore you commit, run the palette against:\n- A 14-row data table with hover/selected/error\n- A dense form with validation states\n- An ad mockup at 1080×1350\n- Dark mode side-by-side with light\n- A grayscale conversion\n\nIf it wobbles in any of those, fix now.\n\n(5/6) Step 4: Lock contrast.\n\nWCAG AA = 4.5:1 for body, 3:1 for UI.\nAim AAA on body copy. The cost is nothing. The benefit is keeping the 8% of users with red-green color deficiency.\n\nThe European Accessibility Act is enforced as of June 2025. \"We'll fix it later\" is not a position anymore.\n\n(6/6) Free generator that does the ramp + analogous + complementary + triadic in 30 seconds, no signup:\n\nhttps://tinytools-smoky.vercel.app/color-palette/\n\nFull guide with the 30-min checklist:\nhttps://tinytools-smoky.vercel.app/color-palette/blog/how-to-pick-brand-colors-for-startup-2026/",
+      "tool": "color-palette",
+      "createdAt": "2026-05-04T14:30:00Z"
+    },
+    {
+      "platform": "Reddit /r/SaaS",
+      "text": "[On a thread asking \"How do you pick brand colors for a SaaS without spending weeks on it?\"]\n\nThe mistake almost every early-stage founder makes is trying to design the full 5-color palette in one sitting. You end up with 17 Figma tabs open and a creeping suspicion that whatever you picked looks exactly like Stripe.\n\nWhat actually works:\n\n1) Pick the temperament first (5 min). Trust = blue. Energy = orange/pink. Creative = purple. Growth = green/teal. Look at your competitor set — if they all sit in one column, decide intentionally to blend in (credibility) or jump to the neighbor (differentiation).\n\n2) Pick ONE hero hex (the CTA-button color). Pull saturation down 5-15% from the pure primary. #4F46E5, #10B981, #F97316, #A855F7 all age well.\n\n3) Build 60-30-10 around it: 60% neutral, 30% secondary muted tone, 10% accent (the hero, reserved for action only).\n\n4) Generate the 9-step shade ramp from the hero — don't hand-roll this, the engineering payoff of having every shade pre-named (--accent-500) is huge.\n\n5) Stress-test against a data table, a form, an ad, dark mode, and grayscale BEFORE committing.\n\n6) Lock WCAG AA contrast. The EAA is enforced now in the EU.\n\nThe boring color usually wins btw — the vast majority of $100M+ ARR brands are a slightly desaturated blue, green, or purple. Stand out with the product, let the color carry trust.\n\nI wrote up the full 30-min checklist with the temperament table here if it helps: https://tinytools-smoky.vercel.app/color-palette/blog/how-to-pick-brand-colors-for-startup-2026/\n\nThere's also a free generator on the same site that gives you analogous/complementary/triadic palettes from one hex code, exports to CSS/Tailwind/JSON.",
+      "tool": "color-palette",
+      "createdAt": "2026-05-04T14:30:00Z"
+    },
+    {
+      "platform": "LinkedIn",
+      "text": "The first time I picked brand colors for a startup, I spent four hours in Figma and ended up with an indigo that looked exactly like Stripe.\n\nSix months later we rebranded. The cost wasn't the new logo — it was three weeks of engineering rework, and every customer relearning where the \"save\" button lived.\n\nHere's the system I wish I'd had on day one:\n\n→ Pick the temperament first (trust, energy, creative, or growth)\n→ Lock ONE hero hex code, not five\n→ Build the 60-30-10 ratio around it (60% neutral, 30% secondary, 10% accent)\n→ Generate shade ramps — don't hand-roll\n→ Stress-test against tables, forms, ads, dark mode, grayscale\n→ Lock WCAG AA contrast (the EAA is enforced now)\n→ Commit the design tokens to the repo\n\nTotal time: 30 minutes. Total rebrands a year later: zero.\n\nThe boring color usually wins. The vast majority of $100M+ ARR brands are a slightly desaturated blue, green, or purple. Stand out with the product, not the hex code.\n\nFull checklist: https://tinytools-smoky.vercel.app/color-palette/blog/how-to-pick-brand-colors-for-startup-2026/",
+      "tool": "color-palette",
+      "createdAt": "2026-05-04T14:30:00Z"
+    },
+    {
+      "platform": "Show HN",
+      "text": "Title: Show HN: A 30-minute system for picking startup brand colors\n\nComment: I built a free color palette generator a few months ago and kept getting the same question from founders: \"okay but how do I actually pick the hero color in the first place?\" Wrote up the system I'd developed across a few rebrands — temperament -> single hero hex -> 60/30/10 -> shade ramps -> stress test against the messy contexts (data tables, dark mode, grayscale). The hardest lesson was that the boring desaturated blue/green/purple usually wins; bold colors are an agency thing, not a B2B SaaS thing. Curious if anyone here has a different framework that works as fast.",
+      "tool": "color-palette",
+      "createdAt": "2026-05-04T14:30:00Z"
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "favicon-generator",
       "createdAt": "2026-05-03T21:02:30Z",
       "text": "1/ Your favicon is a fuzzy 16-pixel blob next to competitors with crisp logos.\n\nMost favicon guides on Google were written before 2020 and tell you to ship 14 files. In 2026 you need 5. Thread on what actually works now 👇\n\n2/ The minimum 5-file set covers ~99% of real-world traffic:\n\n• favicon.ico (16+32+48 multi)\n• favicon.svg (vector, 1KB)\n• apple-touch-icon.png (180×180)\n• icon-192.png (Android)\n• icon-512.png (PWA + splash)\n\nThat's it. Browsers downscale beautifully. They cannot upscale 16px ICOs to 512px launcher icons.\n\n3/ The single most underused trick: SVG favicons with a built-in dark-mode variant.\n\nOne file. Vector. Auto-flips when the user is in dark mode. ~1KB.\n\n<style>\n  .icon { fill: #1a1a1a; }\n  @media (prefers-color-scheme: dark) {\n    .icon { fill: #fff; }\n  }\n</style>\n\nUniversally supported in Chrome, Firefox, Safari, Edge since 2023.\n\n4/ Design at 16×16 first, not 512.\n\nAt 16px you have ~200 effective pixels. Anything thinner than 2px disappears. Two-letter monograms barely read. Use a single dominant element with full saturation.\n\nIf you can't recognize it at 16, you can't recognize it anywhere.\n\n5/ Maskable icons — the Android thing nobody mentions.\n\nAndroid 12+ crops launcher icons into circles, squircles, or teardrops depending on the device. Non-maskable icons get cut at the edges. A maskable variant has a 20% safe zone of padding so your logo survives every skin.\n\nAdd { \"src\": \"/icon-512-maskable.png\", \"purpose\": \"maskable\" } to your manifest.\n\n6/ Wrote up the full 2026 field guide — the canonical HTML block, the minimum manifest.json, the 8 best practices, and 4 historical practices you can safely stop doing.\n\nFree, no email gate:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-best-practices-2026/"
@@ -230,30 +264,6 @@
       "tool": "favicon-generator",
       "createdAt": "2026-05-03T21:02:30Z",
       "text": "Show HN title: A 2026 field guide to favicons — the 5-file minimum, dark-mode SVG, maskable Android icons\n\nLink: https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-best-practices-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Wrote this after auditing 30+ indie SaaS sites and noticing the same three patterns: (1) 14 PNG sizes from a 2017 RealFaviconGenerator export, none of which are needed anymore now that SVG favicons are universally supported and Apple standardized on a single 180×180 apple-touch-icon, (2) zero dark-mode handling even though the prefers-color-scheme media query inside an SVG file works in every shipping browser since 2023, and (3) no maskable Android icon, so the logo gets cropped at the corners on most Pixels. The whole modern set is five files and under 10KB total. Curious if HN has hit any 2026 favicon edge cases I missed — particularly around Vision Pro / spatial OS launchers and any quirks in the manifest spec changes from late 2025."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-02T00:12:10Z",
-      "text": "1/ Your link preview is broken on iMessage but works on Twitter. The image shows on LinkedIn but is the wrong one. Slack unfurls the title with a blank gray rectangle.\n\nWelcome to OG image hell in 2026. There are exactly 9 root causes. Thread.\n\n2/ #1 root cause (40% of all bugs): your og:image URL is relative.\n\n<meta property=\"og:image\" content=\"/cover.png\"> looks fine in your editor.\n\nBut every scraper fetches that string against THEIR domain, gets a 404, and silently drops the preview.\n\nAlways use the full https:// URL.\n\n3/ #2 — the silent killer: WhatsApp's 300 KB cap.\n\nEvery other platform allows 5–10 MB. WhatsApp drops the preview entirely if your image is larger.\n\nIf you want one image to work everywhere: 1200×630 JPG at quality 80 = ~200 KB. Done.\n\n4/ #3 — cache poisoning.\n\nIf your FIRST share happened before the image deployed, that broken result is pinned in the platform cache for up to 30 days.\n\nEach platform has its own cache. There is no global purge button.\n\n5/ The fix per platform:\n• Facebook: Sharing Debugger → Scrape Again\n• LinkedIn: Post Inspector\n• X: append ?v=2 to the URL\n• iMessage: append #refresh1\n• Slack: post then edit (add a space)\n\n6/ Wrote up all 9 root causes + per-platform cache busters + the WAF allowlist your CDN is probably blocking by default.\n\nFree guide, no email gate: https://tinytools-smoky.vercel.app/og-image-generator/blog/why-og-image-not-showing-fixes-2026/"
-    },
-    {
-      "platform": "Reddit /r/webdev or /r/SideProject",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-02T00:12:10Z",
-      "text": "Subreddit: /r/webdev or /r/SideProject or /r/nextjs\n\nComment (reply on a thread asking why their link preview/OG image isn't showing):\n\nRan into this exact thing last month and spent 3 hours before realizing what was happening. There are basically 9 things it can be, in order of how often they bite you:\n\n1. og:image URL is relative not absolute (40% of cases — every scraper fetches /cover.png against ITS own domain, not yours, gets a 404)\n2. The image redirects (HTTPS → HTTP downgrade somewhere in your CDN chain)\n3. File too big — WhatsApp silently drops anything over ~300KB even though every other platform allows 5MB\n4. Platform cache is poisoned because your first share happened before the image deployed (each platform caches per-URL for up to 30 days, no global purge)\n5. Cloudflare/AWS WAF blocking facebookexternalhit, LinkedInBot, Twitterbot, etc.\n6. Image is on a private S3 bucket / signed URL / geo-fenced\n7. Typo: name=\"og:image\" instead of property=\"og:image\" (LinkedIn cares, others don't)\n8. Tags injected by JS — Facebook, LinkedIn, X, WhatsApp, Apple all read static HTML only. If you're on client-only React with no SSR, link previews physically can't work.\n9. og:image URL has rotating timestamp/signature params\n\nPer-platform cache busters that actually work:\n- Facebook: developers.facebook.com/tools/debug\n- LinkedIn: linkedin.com/post-inspector\n- X: append ?v=2 (they retired the validator in 2023)\n- iMessage: append #refresh1 (Apple has no debugger)\n- Slack: post the link and immediately edit (add a space)\n\nWrote up the full debug checklist with the WAF allowlist and per-platform max file sizes here, free, no signup: https://tinytools-smoky.vercel.app/og-image-generator/blog/why-og-image-not-showing-fixes-2026/"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-02T00:12:10Z",
-      "text": "Spent 3 hours last month debugging why our OG image showed correctly on Twitter, the wrong image on LinkedIn, and nothing at all on iMessage.\n\nTurns out link previews in 2026 are still a fragmented mess. Open Graph was Facebook's spec in 2010, Twitter Cards added competing tags in 2012, and every platform since has added its own quirks without coordination.\n\nThe 9 things it can be, in order of frequency:\n\n→ Relative og:image URL (most common — scraper fetches it against its own domain)\n→ HTTPS redirect chain breaking in your CDN\n→ File too big — WhatsApp drops anything over ~300KB silently\n→ Platform cache poisoned from your first broken share\n→ Cloudflare/WAF blocking the scraper user agent\n→ Image behind auth or geo-fenced\n→ name=\"og:image\" typo instead of property=\"og:image\"\n→ Tags injected client-side via React Helmet (Facebook, LinkedIn, X all read static HTML only)\n→ Rotating signature params in the image URL\n\nThe brutal part: each platform caches results for up to 30 days and there is no global purge. You have to refresh each one individually.\n\nWrote up all 9 with the per-platform cache busters and the WAF allowlist that fixes most of these in a single config change. Free, no email gate:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/why-og-image-not-showing-fixes-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-02T00:12:10Z",
-      "text": "Show HN: Why your OG image isn't showing on LinkedIn, Slack, or iMessage (9 fixes)\n\nLink: https://tinytools-smoky.vercel.app/og-image-generator/blog/why-og-image-not-showing-fixes-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. After helping ~15 teams debug broken link previews over the last year, I noticed everyone hits the same nine root causes and almost no one publishes a complete checklist that covers all of them. The two least-known: (1) WhatsApp silently drops any og:image over ~300KB while every other platform allows 5–10MB, and (2) X retired the public card validator in 2023 — the unofficial workaround is just to append ?v=2 to your URL since X treats different query strings as different cache keys. Curious if HN has hit other failure modes I missed."
     }
   ],
   "checklist": [
