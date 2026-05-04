@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Disclosure Generator for News Publishers — IPTC, C2PA &amp; EU AI Act-Ready Labels (2026)</title>
+<meta name="description" content="Newsroom-grade AI content disclosure labels for AI-illustrated stories, AI-narrated articles, AI-translated editions, and synthetic broadcast voices. Outputs IPTC NewsML hints, C2PA-friendly badges, JSON-LD schema, and visible banners. EU AI Act compliant. Free, no signup.">
+<meta name="keywords" content="ai disclosure for news publishers, newsroom ai labeling, ap ai guidelines, reuters ai disclosure, iptc ai metadata, c2pa news, eu ai act news media, synthetic media news, ai illustration news, deepfake disclosure newsroom">
+<meta property="og:title" content="AI Disclosure Generator for News Publishers — Newsroom-Grade Labels in 60 Seconds">
+<meta property="og:description" content="Visible banners, image overlays, IPTC-aligned hints, and JSON-LD schema for AI-generated illustrations, AI narration, AI translations, and synthetic voices. EU AI Act ready. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-news-publishers/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-news-publishers/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Disclosure Generator for News Publishers",
+  "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-news-publishers/",
+  "applicationCategory": "DeveloperApplication",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "News Publishers, Newsrooms, Editors, Journalists, Digital News Editors, Standards Editors"
+  },
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Generates EU AI Act-compliant disclosure labels and IPTC-aligned metadata hints for newsrooms publishing AI-generated illustrations, AI-narrated audio articles, AI-translated stories, and synthetic broadcast voices. Outputs visible HTML banners, image overlays, JSON-LD schema, and a C2PA-friendly content-credentials block."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do news publishers have to disclose AI-generated illustrations and audio under the EU AI Act?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Article 50 of the EU AI Act applies to anyone making AI-generated text, image, audio, video, or deepfake content publicly available, with no minimum-traffic carve-out. News publishers are explicitly contemplated because their reach is high and the harm from undisclosed synthetic media is high. The August 2, 2026 enforcement date is the binding deadline. Penalties scale to €15 million or 3% of global turnover, whichever is higher. The generator emits the visible banner, image overlay, and JSON-LD block in one step."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the AP, Reuters, and BBC guidance compare to the EU AI Act?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AP's standards, Reuters Trust Principles, and BBC editorial guidelines all require disclosure of AI-generated or AI-altered content in news, and all of them go further than the EU AI Act on a few points: AP forbids AI-generated photorealistic images of real events; Reuters requires editorial sign-off on every synthetic asset; the BBC requires a named human editor of record. The generator's 'newsroom strict' preset emits a label that satisfies all three guidelines plus Article 50 in one block."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about Google News and Discover — will an AI label hurt distribution?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, and increasingly the opposite. Google News and Discover have signaled they prioritize provenance signals — the Originator Profile, the C2PA content credentials, and visible AI disclosures all count as positive trust factors. Undisclosed AI content is what gets demoted under the 'scaled content abuse' policy. The generator outputs a JSON-LD CreativeWork block that surfaces the human author, the AI tools used, and an editorial-review attestation, which is exactly the signal Google's news ranking treats favorably."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this support C2PA content credentials and IPTC NewsML metadata?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It supports both at the metadata-hint level. C2PA itself requires cryptographic signing at the asset-creation step, which the generator cannot do for you, but it emits a sibling JSON-LD block that mirrors C2PA's c2pa.actions and c2pa.ai_model fields and is recognized by content-authentication tooling. For IPTC, it outputs the photoMetadata.AIcontentMarker hint and a NewsML newsItem fragment with the contentSet/digitalSourceType set to the relevant trainedAlgorithmicMedia or compositeSynthetic value. Drop them next to your existing IPTC headers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How should we label AI translations and AI-narrated audio articles?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both are in scope of Article 50 and AP's standards. For an AI translation, the generator emits a header line ('Translated by AI from English; reviewed by [editor name]') plus a hreflang-aware schema fragment. For AI-narrated audio articles, it emits an inline disclosure that runs at the start of the audio plus an RSS-aligned synthetic-voice tag. The strict preset adds the model name (ElevenLabs, Play.ht, Microsoft Azure, etc.) which is best practice and is required under several state-level deepfake laws."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the highest-risk AI usage in a newsroom?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Photorealistic AI illustrations of real, contested events. Multiple newsrooms have already issued corrections after publishing AI imagery that readers mistook for actual photography of news events. Article 50 calls this out as the deepfake category and applies the strictest labeling requirement. The generator's 'deepfake/strict' preset emits a high-contrast banner, a corner overlay, and a JSON-LD block that explicitly identifies the asset as photorealistic synthetic media not depicting an actual scene."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #fbbf24; --accent-glow: #fbbf2440;
+    --green: #10b981; --red: #ef4444; --amber: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #ef444440 0%, transparent 50%);
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 20px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; }
+  .breadcrumb a { color: var(--text-dim); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+
+  header { text-align: center; padding: 24px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 999px; font-size: 13px;
+    color: #fca5a5; margin-bottom: 18px; font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(28px, 4.2vw, 42px); font-weight: 800; line-height: 1.12; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fde68a 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 720px; margin: 0 auto 24px; }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 8px 0 24px; }
+  .cta {
+    display: inline-block; padding: 13px 26px; border-radius: 10px;
+    font-weight: 600; text-decoration: none; transition: all 0.15s; font-size: 15px;
+  }
+  .cta-primary { background: var(--accent); color: #1f1300; }
+  .cta-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px var(--accent-glow); }
+  .cta-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+  .cta-secondary:hover { border-color: var(--accent); }
+
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-top: 24px; }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  /* Mock newsroom article header preview */
+  .news-mock { background: #fff; padding: 22px 26px; border-radius: 12px; max-width: 640px; margin: 0 auto; font-family: 'Georgia', serif; color: #111; }
+  .news-mock .kicker {
+    font-family: -apple-system, sans-serif; font-size: 12px; font-weight: 700; color: #b91c1c;
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;
+  }
+  .news-mock .ai-badge {
+    display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px;
+    background: #fef3c7; border: 1px solid #fbbf24; border-radius: 6px;
+    font-size: 12px; font-weight: 700; color: #78350f; font-family: -apple-system, sans-serif;
+    margin-bottom: 12px; letter-spacing: 0.02em;
+  }
+  .news-mock h3.mock-title { font-size: 26px; line-height: 1.2; color: #111; margin-bottom: 6px; font-weight: 700; }
+  .news-mock .mock-meta { font-size: 13px; color: #666; font-family: -apple-system, sans-serif; }
+  .news-mock .mock-img {
+    margin-top: 14px; height: 180px; border-radius: 8px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #1e3a8a 0%, #6366f1 50%, #ec4899 100%);
+  }
+  .news-mock .mock-overlay {
+    position: absolute; bottom: 10px; left: 10px;
+    padding: 5px 10px; background: rgba(0,0,0,0.82); color: #fff; border-radius: 6px;
+    font-size: 11px; font-weight: 600; font-family: -apple-system, sans-serif;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .news-mock .mock-caption {
+    margin-top: 8px; font-size: 12px; color: #555; font-family: -apple-system, sans-serif; font-style: italic;
+  }
+
+  .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 14px; }
+  .use-case { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .use-case .icon { font-size: 22px; margin-bottom: 8px; }
+  .use-case h3 { font-size: 15px; margin-bottom: 6px; color: var(--text); }
+  .use-case p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+  .content { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; color: var(--text); letter-spacing: -0.01em; }
+  .content h3 { font-size: 18px; margin: 24px 0 8px; color: var(--text); }
+  .content p { color: var(--text-dim); margin-bottom: 12px; font-size: 15px; }
+  .content ul { margin: 8px 0 16px 24px; color: var(--text-dim); }
+  .content ul li { margin-bottom: 6px; font-size: 15px; }
+  .content a { color: var(--accent); text-decoration: none; }
+  .content a:hover { text-decoration: underline; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Menlo, monospace; font-size: 13px; color: var(--accent); }
+  .content blockquote { border-left: 3px solid var(--accent); padding: 6px 16px; margin: 16px 0; color: var(--text-dim); font-style: italic; }
+
+  .compare { width: 100%; border-collapse: collapse; margin: 14px 0 8px; font-size: 14px; }
+  .compare th, .compare td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+  .compare th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .compare td { color: var(--text-dim); }
+  .compare td.good { color: var(--green); }
+  .compare td.bad { color: var(--red); }
+  .compare td.warn { color: var(--amber); }
+
+  .faq-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: 0; }
+  .faq-item h3 { font-size: 16px; margin-bottom: 6px; color: var(--text); }
+  .faq-item p { color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+
+  .final-cta { text-align: center; padding: 36px 24px; margin-top: 40px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
+  .final-cta h2 { font-size: 22px; margin-bottom: 10px; color: var(--text); }
+  .final-cta p { color: var(--text-dim); margin-bottom: 18px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">Home</a> &nbsp;&rsaquo;&nbsp;
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> &nbsp;&rsaquo;&nbsp;
+    For News Publishers
+  </div>
+
+  <header>
+    <div class="badge">&#9888;&#65039; EU AI Act &middot; AP &middot; Reuters &middot; IPTC NewsML &middot; C2PA</div>
+    <h1>AI Disclosure Generator for News Publishers</h1>
+    <p class="subtitle">Newsroom-grade disclosure banners, image overlays, IPTC-aligned metadata hints, and JSON-LD schema for AI-illustrated stories, AI-narrated audio, AI-translated editions, and synthetic broadcast voices &mdash; aligned with AP, Reuters, and BBC guidelines and the EU AI Act&apos;s August 2026 deadline.</p>
+    <div class="cta-row">
+      <a href="/ai-disclosure-generator/" class="cta cta-primary">Open the Generator &rarr;</a>
+      <a href="#example" class="cta cta-secondary">See a newsroom example</a>
+    </div>
+  </header>
+
+  <div class="panel" id="example">
+    <h2>What a compliant news article header looks like</h2>
+    <div class="news-mock">
+      <div class="kicker">Climate &middot; Analysis</div>
+      <div class="ai-badge">&#9889; Illustration generated by AI &middot; Edited by R. Chen</div>
+      <h3 class="mock-title">What a 1.7&deg;C World Looks Like for the Mediterranean Coast</h3>
+      <div class="mock-meta">By Anna Petrova &middot; May 4, 2026 &middot; 8 min read</div>
+      <div class="mock-img">
+        <div class="mock-overlay">&#129302; AI-generated illustration &middot; Not a photograph</div>
+      </div>
+      <div class="mock-caption">Illustration: Generated with Midjourney v7 to depict modeled scenarios from IPCC AR7. Reviewed by the photo desk.</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Why news publishers need a per-story AI disclosure tool</h2>
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="icon">&#127757;</div>
+        <h3>EU AI Act Article 50 &mdash; high-traffic, high-stakes</h3>
+        <p>News content has no traffic floor and the highest reputational stakes. The August 2, 2026 deadline is binding, and regulators have signaled news publishers are an enforcement priority.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#128240;</div>
+        <h3>AP, Reuters &amp; BBC standards alignment</h3>
+        <p>The generator&apos;s &quot;newsroom strict&quot; preset satisfies AP&apos;s ban on photorealistic AI of real events, Reuters&apos; sign-off requirement, and BBC&apos;s named-editor rule in one block.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#127908;</div>
+        <h3>AI-narrated audio articles</h3>
+        <p>The Wapo, Bloomberg, and FT-style audio version of a story counts as synthetic audio. The generator emits an inline pre-roll disclosure plus an RSS-aligned synthetic-voice tag.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#127760;</div>
+        <h3>AI translations for international editions</h3>
+        <p>Header line plus a hreflang-aware JSON-LD fragment so readers and crawlers know the article was machine-translated and human-reviewed, with the editor of record named.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#129489;&#8205;&#128187;</div>
+        <h3>IPTC &amp; C2PA metadata hints</h3>
+        <p>NewsML <code>digitalSourceType</code> values (<code>trainedAlgorithmicMedia</code>, <code>compositeSynthetic</code>) and a sibling block mirroring C2PA <code>actions</code> and <code>ai_model</code> fields.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#128202;</div>
+        <h3>Distribution-safe</h3>
+        <p>Google News, Apple News, NewsGuard, and the Originator Profile all read provenance signals as a positive trust factor. The generator outputs the schema each one parses.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>The newsroom-specific case for AI disclosure</h2>
+    <p>Newsrooms sit at the worst point on the AI-disclosure risk curve. Reach is high, the half-life of a trust scandal is years, and an undisclosed synthetic image on a breaking-news story is the textbook fact-pattern regulators want to make examples of. The default reaction in 2025 was to write a one-paragraph &quot;ethics policy&quot; on the &quot;About&quot; page and assume that handled it. By 2026 that approach is failing on three fronts at once: the EU AI Act binds in August, the AP and Reuters standards already require per-asset disclosure, and Google News, Apple News, and the Originator Profile have started reading provenance signals into ranking and inclusion.</p>
+
+    <p>The cheapest insurance against any of those outcomes is a per-story label that emits in three places at once: the visible reader-facing banner, the asset-level overlay or metadata, and the machine-readable JSON-LD block in the page <code>&lt;head&gt;</code>. This generator outputs all three for the four AI usage patterns that actually appear in a typical newsroom workflow.</p>
+
+    <h2>The four AI usages newsrooms actually publish</h2>
+    <p>Not every story needs a label, and overdisclosing dilutes the signal. The generator&apos;s presets map to the four cases that genuinely require disclosure under Article 50, AP standards, and the Reuters Trust Principles:</p>
+    <ul>
+      <li><strong>AI-generated illustrations.</strong> The single highest-risk case. Photorealistic AI imagery presented next to a real news event is what the EU AI Act calls out under the deepfake category and what AP&apos;s standards forbid outright. The generator&apos;s &quot;illustration&quot; preset emits a banner above the headline, a corner overlay sized for a 1200&times;630 hero, and a JSON-LD <code>CreativeWork</code> with <code>creator</code> set to the AI tool and <code>contentReferenceTime</code> noting the asset is illustrative, not depictive.</li>
+      <li><strong>AI-narrated audio articles.</strong> The Wapo, FT, Bloomberg, and Axios pattern of converting print stories to audio with an ElevenLabs, Play.ht, or Azure voice. Article 50 names this explicitly as &quot;synthetic audio.&quot; The preset emits an audio-pre-roll disclosure and an RSS-aligned <code>&lt;itunes:summary&gt;</code> note plus a <code>spokenAudioObject</code> JSON-LD block that names the voice model.</li>
+      <li><strong>AI translations.</strong> A growing share of international editions are machine-translated with light human edit. The generator emits a header line (&quot;Translated by AI from English; reviewed by [editor]&quot;) plus an <code>inLanguage</code> + <code>translationOfWork</code> JSON-LD pair so the relationship to the original article is preserved for both readers and the IPTC pipeline.</li>
+      <li><strong>Synthetic broadcast voices.</strong> Voiceover for short video clips, breaking-news push notifications read aloud, or a presenter&apos;s voice cloned for late-night updates. The generator&apos;s strict preset emits a high-contrast banner, an audible pre-roll, and a deepfake-category JSON-LD block, which is what Article 50 specifically requires for cloned likenesses.</li>
+    </ul>
+
+    <h2>Where to place the disclosure on a typical news layout</h2>
+    <p>The legal text says &quot;clearly and distinguishably perceptible at the latest at the time of the first interaction or exposure.&quot; For a news article that means three placements working together:</p>
+    <ul>
+      <li><strong>Above the byline, under the headline.</strong> A tight pill at 12&ndash;13px on a soft-amber background, one line: &quot;Illustration generated by AI &middot; Edited by R. Chen.&quot; Visible before the reader scrolls into the body.</li>
+      <li><strong>Inside the lead photo.</strong> A bottom-left overlay reading &quot;AI-generated illustration &mdash; Not a photograph.&quot; This is the placement that survives social-card unfurling, RSS readers, Apple News, and screenshots, because the label is part of the asset.</li>
+      <li><strong>In the IPTC/EXIF metadata of the asset.</strong> Out of view of casual readers but in plain view of every aggregator, fact-checking pipeline, and content-credentials reader. The generator emits the <code>photoMetadata.AIcontentMarker</code> hint and the matching <code>digitalSourceType</code> NewsML enum value.</li>
+    </ul>
+    <p>Together those three cover the in-page reader, every downstream surface where the asset gets clipped, and every machine-readable consumer of the article.</p>
+
+    <h2>JSON-LD, IPTC, and C2PA: how the three fit together</h2>
+    <p>JSON-LD is the on-page schema Google and Bing parse and is the cheapest universal signal. IPTC NewsML is what wire services, syndication partners, and most CMS-to-CMS handoffs read; the relevant field is <code>digitalSourceType</code> with values like <code>trainedAlgorithmicMedia</code> for fully synthetic and <code>compositeSynthetic</code> for AI-altered real imagery. C2PA is the cryptographically signed, asset-level standard the <a href="https://c2pa.org/" rel="nofollow noopener">Coalition for Content Provenance and Authenticity</a> publishes; full C2PA requires signing at the creation step (Content Credentials in Photoshop, Adobe Firefly, or a camera with C2PA support), which this generator does not do. What it does emit is a sibling JSON-LD block that mirrors C2PA&apos;s <code>actions</code> and <code>ai_model</code> fields, so a downstream verifier that doesn&apos;t find a signed manifest still finds a structured declaration.</p>
+
+    <h2>What this is not: an editorial ethics policy</h2>
+    <blockquote>A per-asset disclosure label is the public-facing receipt. It does not replace the internal policy that decides which AI uses are permitted in the first place.</blockquote>
+    <p>Most newsrooms in 2025 wrote one of those policies. Almost none of them mapped cleanly to a per-story label workflow. The generator presupposes the policy exists &mdash; pick the matching preset, fill the editor of record and the model used, paste the output into the article&apos;s template. If your newsroom has not yet written that policy, the <a href="https://www.poynter.org/ethics-trust/" rel="nofollow noopener">Poynter Institute&apos;s Ethics &amp; Trust resources</a> are the standard reference, and the <a href="https://www.cjr.org/" rel="nofollow noopener">Columbia Journalism Review</a> tracks newsroom-by-newsroom guidelines as they get published.</p>
+
+    <h2>Compliance vs. theatre: what bad newsroom disclosure looks like</h2>
+    <table class="compare">
+      <thead>
+        <tr><th>Pattern</th><th>What it does</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>One paragraph in the &quot;Ethics&quot; page</td><td>Reader of the article never sees it</td><td class="bad">Non-compliant</td></tr>
+        <tr><td>Photorealistic AI image with no label</td><td>Article 50 deepfake category; AP forbids outright</td><td class="bad">Aggravated risk</td></tr>
+        <tr><td>Generic &quot;some content may be AI-assisted&quot; site-wide</td><td>Doesn&apos;t identify the asset; weak under audit</td><td class="warn">Borderline</td></tr>
+        <tr><td>Visible image overlay only, no schema</td><td>Reader sees it; aggregators and AI search don&apos;t</td><td class="warn">Partial</td></tr>
+        <tr><td>Per-asset overlay + per-story banner + JSON-LD + IPTC</td><td>Reader, aggregator, fact-checker, regulator all see it</td><td class="good">Best practice</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Workflow for a wire-service-shape pipeline</h2>
+    <p>A news CMS does not want a humans-in-the-loop step at publish time. The pattern that works: open the generator once, build the standard variants for the newsroom &mdash; &quot;AI illustration,&quot; &quot;AI illustration + AI translation,&quot; &quot;AI-narrated audio,&quot; &quot;Synthetic broadcast voice,&quot; &quot;Deepfake/strict&quot; &mdash; and store each output as a CMS reusable component. The IPTC <code>digitalSourceType</code> emits at the asset level and rides through the wire. The JSON-LD lives once in the article template&apos;s head partial; only the <code>creator</code>, <code>editor</code>, and model fields change per story. Publishing does not slow down; the receipt is in place automatically.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <h3>Do news publishers have to disclose AI-generated illustrations and audio under the EU AI Act?</h3>
+      <p>Yes. Article 50 has no traffic floor and the August 2, 2026 deadline is binding. Penalties scale to &euro;15M or 3% global turnover. Newsrooms are an enforcement priority because reach is high and the harm from undisclosed synthetic media is high.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How does the AP, Reuters, and BBC guidance compare to the EU AI Act?</h3>
+      <p>All three already require disclosure and go further than Article 50 on specifics: AP forbids photorealistic AI of real events, Reuters requires editorial sign-off per asset, the BBC requires a named editor of record. The strict preset satisfies all three plus the EU AI Act in one block.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Will an AI label hurt Google News and Discover distribution?</h3>
+      <p>No. Google has signaled provenance is a positive trust factor; what gets demoted is undisclosed scaled AI content. The generator&apos;s JSON-LD names the human author, the AI tools, and the editorial review &mdash; the exact signal news ranking treats favorably.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does this support C2PA content credentials and IPTC NewsML metadata?</h3>
+      <p>At the metadata-hint level. C2PA requires cryptographic signing at the creation step, which this generator cannot do. It does emit a JSON-LD block mirroring C2PA <code>actions</code> and <code>ai_model</code>, plus the IPTC <code>digitalSourceType</code> NewsML value and the <code>photoMetadata.AIcontentMarker</code> hint.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How should we label AI translations and AI-narrated audio articles?</h3>
+      <p>For translations: a header line naming the source language, the AI translator, and the human reviewer, plus a <code>translationOfWork</code> JSON-LD pair. For AI audio: an inline pre-roll, an RSS synthetic-voice tag, and a <code>spokenAudioObject</code> block naming the voice model.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is the highest-risk AI usage in a newsroom?</h3>
+      <p>Photorealistic AI illustrations of real, contested events. That is Article 50&apos;s deepfake category and the AP &quot;do not publish&quot; line. The strict preset emits a high-contrast banner, a corner overlay, and a JSON-LD block identifying the asset as synthetic and not depictive.</p>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    <h2>Generate your newsroom AI disclosure</h2>
+    <p>Free, no signup. Pick the AI element, the editor of record, and the model. Copy the visible banner, the image overlay, the IPTC hint, and the JSON-LD. Done in under 60 seconds &mdash; aligned with AP, Reuters, BBC, and the EU AI Act&apos;s August 2026 deadline.</p>
+    <a href="/ai-disclosure-generator/" class="cta cta-primary">Open the AI Disclosure Generator &rarr;</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> &middot; Free indie tools for the AI era &middot;
+    See also: <a href="/ai-disclosure-generator/for-bloggers/">AI Disclosure for Bloggers</a> &middot;
+    <a href="/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> &middot;
+    <a href="/seo-meta-generator/">SEO Meta Generator</a>
+  </footer>
+</div>
+</body>
+</html>
