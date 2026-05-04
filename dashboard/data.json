@@ -54,6 +54,11 @@
   },
   "activity": [
     {
+      "time": "today 12:45",
+      "tag": "promo",
+      "text": "🚀 PR #652 → aniftyco/awesome-tailwindcss (14,996 ⭐) — TinyTools Tailwind color palette generator | https://github.com/aniftyco/awesome-tailwindcss/pull/652"
+    },
+    {
       "time": "today 12:30",
       "tag": "seo",
       "text": "🚀 AUTONOMOUS PUSH: 8 new SEO pages live + llms.txt overhauled — total 9 pages today"
@@ -197,11 +202,6 @@
       "time": "just now",
       "tag": "promo",
       "text": "🚀 PR #1226 → mahseema/awesome-ai-tools (5,045 ⭐) — TinyTools entry"
-    },
-    {
-      "time": "just now",
-      "tag": "promo",
-      "text": "🚀 PR #416 → aviaryan/awesome-no-login-web-apps (3,211 ⭐) — 6 entries"
     }
   ],
   "roadmap": [
