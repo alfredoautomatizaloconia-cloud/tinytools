@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Disclosure Generator for Bloggers — Stay EU AI Act Compliant Without Tanking SEO (2026)</title>
+<meta name="description" content="Drop-in AI disclosure labels built for blog posts. EU AI Act-compliant banners for AI cover images, voice clones, and AI-assisted writing — with JSON-LD schema Google reads. Free, no signup. Avoid &euro;15M fines.">
+<meta name="keywords" content="ai disclosure for bloggers, ai content label blog post, eu ai act blogger compliance, ai generated image disclosure, ai disclosure wordpress, ai disclaimer blog, ai disclosure schema, ai content transparency">
+<meta property="og:title" content="AI Disclosure Generator for Bloggers — EU AI Act Compliant Labels for Every Post">
+<meta property="og:description" content="HTML banners, image overlays, and JSON-LD schema for AI cover images and AI-assisted blog posts. Compliant with the EU AI Act&apos;s August 2026 deadline. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-bloggers/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-bloggers/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Disclosure Generator for Bloggers",
+  "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-bloggers/",
+  "applicationCategory": "DeveloperApplication",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Bloggers, Content Creators, Niche Site Owners, Affiliate Marketers"
+  },
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Generates EU AI Act-compliant disclosure labels for blog posts that use AI cover images, AI voice narration, or AI-assisted writing. Outputs HTML banners, image overlays, and JSON-LD schema."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do bloggers actually need to disclose AI-generated content under the EU AI Act?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, if any reader sits inside the EU. Article 50 of the EU AI Act applies to anyone making AI-generated text, image, audio, or video publicly available — independent platform or self-hosted blog, hobbyist or business. The August 2, 2026 enforcement date is the hard deadline. The generator produces compliant labels in 30 seconds; ignoring it risks fines up to €15 million or 3% of global turnover, whichever is higher."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will adding an AI disclosure label hurt my Google rankings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — and Google has been explicit about this. Their 2024 spam-policy update said AI-assisted content is fine as long as it's helpful and original; what they penalize is scaled, low-quality output. A visible disclosure plus JSON-LD schema actually feeds the E-E-A-T signal: it shows transparency about how the post was made. The generator outputs both the human-readable banner and the structured-data block in one click."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is an AI disclosure the same as an FTC affiliate disclosure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — they are two separate legal requirements that often appear on the same blog post. FTC 16 CFR §255 requires disclosure of paid relationships (affiliate links, sponsorships, free product). The EU AI Act and incoming US state laws require disclosure that content is AI-generated or AI-altered. A single line — 'This post contains affiliate links and uses AI-generated cover art' — covers both, and the generator outputs the AI half in machine-readable form for free."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to label posts where I just used ChatGPT to brainstorm?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The EU AI Act draws the line at material alteration. Outline-only assistance, grammar checks, or research lookups don't trigger labeling. If AI wrote substantial passages of the final published text, generated the cover image, narrated the audio version, or produced video clips, you label it. The generator has presets for each — pick 'AI-assisted writing,' 'AI cover image,' or 'AI voice narration' and copy the matching block."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do I put the disclosure on a blog post?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two placements satisfy the 'clearly perceptible' standard. First: directly under the headline, above the byline, as a small badge — readers see it before scrolling. Second: as an overlay watermark on the cover image itself, which travels with the image when it gets pinned, embedded, or scraped. The generator outputs both at once, plus a JSON-LD block that goes in your <head> for AI search engines and Google."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this work with WordPress, Ghost, Substack, and Medium?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The HTML banner is portable — paste it in a WordPress block, a Ghost HTML card, a Substack section, or a Medium embed. The JSON-LD schema works on any platform that lets you edit <head> (WordPress, Ghost, self-hosted). Substack and Medium ignore the schema, but the visible banner still satisfies the disclosure requirement."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #fbbf24; --accent-glow: #fbbf2440;
+    --green: #10b981; --red: #ef4444; --amber: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #ef444440 0%, transparent 50%);
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 20px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; }
+  .breadcrumb a { color: var(--text-dim); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+
+  header { text-align: center; padding: 24px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 999px; font-size: 13px;
+    color: #fca5a5; margin-bottom: 18px; font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(28px, 4.2vw, 42px); font-weight: 800; line-height: 1.12; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fde68a 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 680px; margin: 0 auto 24px; }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 8px 0 24px; }
+  .cta {
+    display: inline-block; padding: 13px 26px; border-radius: 10px;
+    font-weight: 600; text-decoration: none; transition: all 0.15s; font-size: 15px;
+  }
+  .cta-primary { background: var(--accent); color: #1f1300; }
+  .cta-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px var(--accent-glow); }
+  .cta-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+  .cta-secondary:hover { border-color: var(--accent); }
+
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-top: 24px; }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  /* Mock blog header preview */
+  .blog-mock { background: #fff; padding: 22px 26px; border-radius: 12px; max-width: 640px; margin: 0 auto; font-family: Georgia, serif; color: #111; }
+  .blog-mock .ai-badge {
+    display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px;
+    background: #fef3c7; border: 1px solid #fbbf24; border-radius: 999px;
+    font-size: 12px; font-weight: 700; color: #78350f; font-family: -apple-system, sans-serif;
+    margin-bottom: 12px; letter-spacing: 0.02em;
+  }
+  .blog-mock h3.mock-title { font-size: 24px; line-height: 1.25; color: #111; margin-bottom: 6px; font-weight: 700; }
+  .blog-mock .mock-meta { font-size: 13px; color: #666; font-family: -apple-system, sans-serif; }
+  .blog-mock .mock-img {
+    margin-top: 14px; height: 180px; border-radius: 8px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #f59e0b 100%);
+  }
+  .blog-mock .mock-overlay {
+    position: absolute; bottom: 10px; left: 10px;
+    padding: 5px 10px; background: rgba(0,0,0,0.78); color: #fff; border-radius: 6px;
+    font-size: 11px; font-weight: 600; font-family: -apple-system, sans-serif;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+
+  .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 14px; }
+  .use-case { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .use-case .icon { font-size: 22px; margin-bottom: 8px; }
+  .use-case h3 { font-size: 15px; margin-bottom: 6px; color: var(--text); }
+  .use-case p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+  .content { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; color: var(--text); letter-spacing: -0.01em; }
+  .content h3 { font-size: 18px; margin: 24px 0 8px; color: var(--text); }
+  .content p { color: var(--text-dim); margin-bottom: 12px; font-size: 15px; }
+  .content ul { margin: 8px 0 16px 24px; color: var(--text-dim); }
+  .content ul li { margin-bottom: 6px; font-size: 15px; }
+  .content a { color: var(--accent); text-decoration: none; }
+  .content a:hover { text-decoration: underline; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Menlo, monospace; font-size: 13px; color: var(--accent); }
+  .content blockquote { border-left: 3px solid var(--accent); padding: 6px 16px; margin: 16px 0; color: var(--text-dim); font-style: italic; }
+
+  .compare { width: 100%; border-collapse: collapse; margin: 14px 0 8px; font-size: 14px; }
+  .compare th, .compare td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+  .compare th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .compare td { color: var(--text-dim); }
+  .compare td.good { color: var(--green); }
+  .compare td.bad { color: var(--red); }
+  .compare td.warn { color: var(--amber); }
+
+  .faq-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: 0; }
+  .faq-item h3 { font-size: 16px; margin-bottom: 6px; color: var(--text); }
+  .faq-item p { color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+
+  .final-cta { text-align: center; padding: 36px 24px; margin-top: 40px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
+  .final-cta h2 { font-size: 22px; margin-bottom: 10px; color: var(--text); }
+  .final-cta p { color: var(--text-dim); margin-bottom: 18px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">Home</a> &nbsp;&rsaquo;&nbsp;
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> &nbsp;&rsaquo;&nbsp;
+    For Bloggers
+  </div>
+
+  <header>
+    <div class="badge">&#9888;&#65039; EU AI Act &middot; August 2, 2026 deadline &middot; Free</div>
+    <h1>AI Disclosure Generator for Bloggers</h1>
+    <p class="subtitle">Drop-in disclosure banners, image overlays, and JSON-LD schema for the parts of your post that AI actually wrote, drew, or narrated &mdash; compliant with the EU AI Act and built so it doesn&apos;t tank your rankings.</p>
+    <div class="cta-row">
+      <a href="/ai-disclosure-generator/" class="cta cta-primary">Open the Generator &rarr;</a>
+      <a href="#example" class="cta cta-secondary">See a blog example</a>
+    </div>
+  </header>
+
+  <div class="panel" id="example">
+    <h2>What a compliant blog post header looks like</h2>
+    <div class="blog-mock">
+      <div class="ai-badge">&#9889; AI-assisted &middot; Cover image generated by AI</div>
+      <h3 class="mock-title">7 Sourdough Mistakes I Made (and How I Finally Fixed Them)</h3>
+      <div class="mock-meta">By Maria L. &middot; April 28, 2026 &middot; 6 min read</div>
+      <div class="mock-img">
+        <div class="mock-overlay">&#129302; AI-generated image</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Why bloggers need a per-post AI disclosure tool</h2>
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="icon">&#128205;</div>
+        <h3>EU AI Act &mdash; if any reader is in the EU</h3>
+        <p>Article 50 doesn&apos;t care if you&apos;re a hobbyist food blog or a Series B media company. AI-generated text, image, audio or video published to the open web is in scope. August 2, 2026 is the deadline.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#127912;</div>
+        <h3>Cover images from Midjourney &amp; DALL&middot;E</h3>
+        <p>The single most common AI element on a blog post. The generator emits a corner watermark for the image itself plus a banner above the post &mdash; both at once.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#127908;</div>
+        <h3>AI voice narration &amp; podcasts of posts</h3>
+        <p>ElevenLabs and PlayHT voices count as &quot;synthetic audio&quot; under Article 50. Pick &quot;AI voice&quot; in the generator and it adds the right RSS &lt;itunes:explicit-tag&gt; equivalent for AI.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#129504;</div>
+        <h3>AI-assisted drafting</h3>
+        <p>Outline-only doesn&apos;t require labeling. Substantial passages do. The presets cover both bands so you don&apos;t over- or under-disclose.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#128270;</div>
+        <h3>Doesn&apos;t tank Google rankings</h3>
+        <p>Google&apos;s position: AI-assisted content is fine if it&apos;s helpful and original. Visible disclosure + JSON-LD schema reads to the crawler as a trust signal, not a penalty.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#127757;</div>
+        <h3>Survives the scrape</h3>
+        <p>The image overlay travels with your hero when Pinterest, X, or an aggregator reposts it. The schema travels when an AI search engine cites you. Your label arrives intact.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>The blog-specific case for AI disclosure</h2>
+    <p>The default blogger reaction to the EU AI Act has been: &quot;That&apos;s a Big Tech problem, not a my-recipe-blog problem.&quot; Read Article 50 carefully and that turns out to be wrong. The article applies to <em>providers and deployers</em> of AI systems whose output is &quot;made available to the public.&quot; A self-hosted WordPress blog with a Midjourney cover image meets that definition exactly. There is no minimum-traffic carve-out. There is no hobbyist exemption. The only geographic gate is whether any reader is in the EU &mdash; and for any blog with global indexing, that is essentially always yes.</p>
+
+    <p>Penalties for non-compliance scale with company size, but they start at &euro;15 million or 3% of global turnover, whichever is higher. In practice, regulators have signaled they will pursue platforms and high-traffic publishers first; small bloggers face a more diffuse risk &mdash; demonetization on ad networks that increasingly require disclosure attestation, removal from Google Discover and Apple News, and the slow drift of being categorized as &quot;low-trust AI content.&quot; The cheapest insurance against any of those outcomes is a per-post label. This generator outputs that label in three formats at once.</p>
+
+    <h2>The four AI elements bloggers actually publish</h2>
+    <p>Not every post needs a label. The generator's presets map to the four cases that genuinely require one for a typical blog:</p>
+    <ul>
+      <li><strong>AI cover image.</strong> The dominant case. Midjourney, DALL&middot;E 3, Ideogram, Stable Diffusion, Adobe Firefly. The generator outputs an HTML banner and a corner overlay PNG snippet sized for a 1200&times;630 hero. Both are emitted with the prompt and model embedded in <code>schema.org/CreativeWork</code> properties so AI search engines parse it cleanly.</li>
+      <li><strong>AI voice narration.</strong> The audio version of a post produced through ElevenLabs, PlayHT, or OpenAI&apos;s text-to-speech. Article 50 calls this out explicitly as &quot;synthetic audio.&quot; The generator outputs an RSS-friendly disclosure block plus inline text for the player&apos;s caption.</li>
+      <li><strong>AI-assisted writing.</strong> Where the line sits is &quot;material alteration.&quot; A grammar pass: not material. Three full sections written by the model and lightly edited: material. The two presets are &quot;AI-edited&quot; (lighter language) and &quot;AI-assisted&quot; (firmer language).</li>
+      <li><strong>AI deepfake quote or interview.</strong> Rarer on blogs, but the highest-stakes case. If the post quotes a synthesized voice or a generated likeness, the generator emits the strict variant of the label, which Article 50 specifically requires for deepfakes.</li>
+    </ul>
+
+    <h2>Where to place the disclosure on a typical blog layout</h2>
+    <p>The legal text says &quot;clearly and distinguishably perceptible at the latest at the time of the first interaction or exposure.&quot; In practice for a blog post, two placements satisfy that bar without uglying up the design:</p>
+    <ul>
+      <li><strong>A small pill above the byline.</strong> 12&ndash;13px font, amber or neutral background, one-line text like &quot;AI-assisted &middot; Cover image generated by AI.&quot; The reader sees it before they scroll into the body. The generator emits this as a single self-contained HTML block.</li>
+      <li><strong>An overlay on the cover image.</strong> Bottom-left corner, 11px text, semi-transparent dark background, the words &quot;AI-generated image.&quot; This is the placement that survives Pinterest, X embeds, RSS readers, and screenshots, because the label is part of the asset, not part of the page.</li>
+    </ul>
+    <p>Both together cover the in-page reader and every downstream surface where the post gets clipped. The generator&apos;s output panel gives you both copy-pasteable in adjacent tabs.</p>
+
+    <h2>JSON-LD schema: why it matters more for bloggers than for big platforms</h2>
+    <p>Big platforms can negotiate directly with regulators about how compliance gets reported. A solo blogger cannot &mdash; which makes machine-readable schema the practical equivalent of a compliance log. The generator outputs a <code>WebPage</code> + <code>CreativeWork</code> JSON-LD block where the relevant <code>creator</code> is marked as an AI tool, the human author is preserved, and an <code>identifier</code> field carries the prompt or model. It pastes into your post template&apos;s <code>&lt;head&gt;</code>. Google, Bing, Perplexity, and ChatGPT&apos;s browse mode all parse it. So does the <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" rel="nofollow noopener">European Commission&apos;s AI Office</a> when they audit a domain.</p>
+
+    <h2>What this is not: the FTC affiliate disclosure</h2>
+    <blockquote>An AI disclosure tells the reader the content was generated. An FTC affiliate disclosure tells the reader you get paid if they buy. Different laws, different audiences, different placements.</blockquote>
+    <p>Bloggers regularly conflate the two and try to handle both with one line of fine print. That doesn&apos;t actually satisfy either rule. The FTC&apos;s <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" rel="nofollow noopener">Disclosures 101</a> requires the affiliate disclosure to be &quot;clear and conspicuous&quot; in the same context as the recommendation. Article 50 of the EU AI Act requires the AI disclosure to be perceptible at first exposure to the AI element. Two separate spots, two separate purposes &mdash; or one combined badge that handles both. The generator&apos;s &quot;blog header pill&quot; preset includes the combined variant.</p>
+
+    <h2>Compliance vs. theatre: what bad disclosure looks like</h2>
+    <table class="compare">
+      <thead>
+        <tr><th>Pattern</th><th>What it does</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Hidden in footer disclaimer</td><td>Reader never sees it; not perceptible at first interaction</td><td class="bad">Non-compliant</td></tr>
+        <tr><td>White text on white background</td><td>Hides label; treated as deception</td><td class="bad">Aggravated risk</td></tr>
+        <tr><td>One sentence in &quot;About&quot; page</td><td>Not in scope of the post</td><td class="bad">Non-compliant</td></tr>
+        <tr><td>Generic &quot;This site uses AI&quot; site-wide</td><td>Doesn&apos;t identify which content; weak under audit</td><td class="warn">Borderline</td></tr>
+        <tr><td>Per-post visible badge above byline</td><td>Perceptible at first exposure; matches the rule</td><td class="good">Compliant</td></tr>
+        <tr><td>Image overlay + per-post badge + JSON-LD</td><td>Reader, scraper, and crawler all see it</td><td class="good">Best practice</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Workflow for a typical blog publishing pipeline</h2>
+    <p>You don&apos;t want to revisit the generator at 11pm on publish day. The lighter touch is to template it. Open the generator once, build your standard variants &mdash; &quot;AI cover image,&quot; &quot;AI cover + AI-assisted writing,&quot; &quot;AI voice narration only&quot; &mdash; and paste each output into a snippet manager (TextExpander, espanso, your CMS&apos;s reusable blocks). On publish, you pick the matching snippet, fill the prompt or model line, ship. The schema block lives once in your post template&apos;s head partial; only the variable parts change per post.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <h3>Do bloggers actually need to disclose AI-generated content under the EU AI Act?</h3>
+      <p>Yes if any reader sits inside the EU. Article 50 applies to anyone making AI-generated text, image, audio, or video publicly available &mdash; independent platform or self-hosted blog. August 2, 2026 is the hard deadline. Risk: fines up to &euro;15M or 3% global turnover.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Will adding an AI disclosure label hurt my Google rankings?</h3>
+      <p>No. Google&apos;s 2024 spam-policy update said AI-assisted content is fine when it&apos;s helpful and original. A visible disclosure plus JSON-LD schema reads as transparency &mdash; an E-E-A-T signal, not a penalty.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is an AI disclosure the same as an FTC affiliate disclosure?</h3>
+      <p>No &mdash; two different legal requirements. FTC: paid relationships. EU AI Act: AI generation. They can share a badge but not satisfy each other. The generator&apos;s &quot;blog header pill&quot; preset has a combined variant.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do I need to label posts where I just used ChatGPT to brainstorm?</h3>
+      <p>No. The threshold is &quot;material alteration.&quot; Outline-only assistance, grammar checks, and research don&apos;t trigger labeling. Substantial generated passages, AI cover images, AI narration, or AI video do.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Where do I put the disclosure on a blog post?</h3>
+      <p>A small badge above the byline (reader-facing) plus an overlay watermark on the cover image (survives Pinterest, X embeds, scrapers). The generator outputs both, plus a JSON-LD block for your &lt;head&gt;.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does this work with WordPress, Ghost, Substack, and Medium?</h3>
+      <p>Yes. The HTML banner is portable to all four. JSON-LD schema works wherever you can edit &lt;head&gt; (WordPress, Ghost, self-hosted). Substack and Medium ignore schema, but the visible banner alone still satisfies the disclosure rule.</p>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    <h2>Generate your AI disclosure for this post</h2>
+    <p>Free, no signup. Pick the AI elements your post uses, choose a label style, copy the HTML and JSON-LD. Done in under 60 seconds &mdash; compliant for the August 2026 deadline.</p>
+    <a href="/ai-disclosure-generator/" class="cta cta-primary">Open the AI Disclosure Generator &rarr;</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> &middot; Free indie tools for the AI era &middot;
+    See also: <a href="/seo-meta-generator/for-bloggers/">SEO Meta Generator for Bloggers</a> &middot;
+    <a href="/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> &middot;
+    <a href="/og-image-generator/">OG Image Generator</a>
+  </footer>
+</div>
+</body>
+</html>
