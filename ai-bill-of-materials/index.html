@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Bill of Materials Generator (2026) — AIBOM in SPDX 3.0 + CycloneDX 1.6 Format</title>
+<meta name="description" content="Generate a compliant AI Bill of Materials (AIBOM) listing every model, dataset, and training source in your AI system. SPDX 3.0 AI profile + CycloneDX 1.6 ML-BOM. Required by NIST AI RMF, EU AI Act, US Executive Order. Browser-only.">
+<meta name="keywords" content="AIBOM generator, AI bill of materials, SPDX 3.0 AI profile, CycloneDX ML-BOM, NIST AI RMF, EU AI Act technical documentation, AI supply chain, model card, dataset documentation, AI compliance">
+<meta property="og:title" content="Free AI Bill of Materials Generator — AIBOM in 2 minutes">
+<meta property="og:description" content="Generate a compliant AIBOM in SPDX 3.0 or CycloneDX 1.6 format. Free, browser-only.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-bill-of-materials/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free AI Bill of Materials Generator (AIBOM)">
+<meta name="twitter:description" content="Document every model + dataset in your AI system. SPDX 3.0 / CycloneDX 1.6.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-bill-of-materials/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Bill of Materials Generator",
+  "description": "Browser-based generator for an AI Bill of Materials (AIBOM) in either the SPDX 3.0 AI profile or the CycloneDX 1.6 ML-BOM format. Documents every model, dataset, training source, and license in an AI system for compliance with NIST AI RMF, the EU AI Act, and US Executive Order 14110.",
+  "url": "https://tinytools-smoky.vercel.app/ai-bill-of-materials/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #10b981; --accent-glow: #10b98140;
+    --green: #10b981; --yellow: #fbbf24; --orange: #f97316; --red: #ef4444; --blue: #3b82f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 999px; font-size: 13px;
+    color: #6ee7b7; margin-bottom: 20px; font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #6ee7b7 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 760px; margin: 0 auto; }
+
+  .format-toggle { display: inline-flex; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; padding: 4px; margin: 22px auto 0; }
+  .format-toggle button { padding: 8px 18px; background: transparent; border: none; color: var(--text-dim); border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 600; font-family: inherit; }
+  .format-toggle button.active { background: var(--accent); color: #002418; }
+
+  .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 22px; }
+  @media (max-width: 1000px) { .layout { grid-template-columns: 1fr; } }
+
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+  .panel h2 { font-size: 14px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; font-weight: 600; }
+  .panel h2 .count { color: var(--accent); margin-left: 6px; }
+
+  .section { padding: 14px; background: var(--bg-elevated); border-radius: 10px; margin-bottom: 12px; border-left: 3px solid var(--border); }
+  .section.model { border-left-color: var(--accent); }
+  .section.dataset { border-left-color: var(--blue); }
+  .section.system { border-left-color: var(--yellow); }
+  .section h3 { font-size: 13px; color: var(--text); margin-bottom: 10px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+  .section h3 button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 16px; }
+  .section h3 button:hover { color: var(--red); }
+
+  .field { margin-bottom: 10px; }
+  .field label { display: block; font-size: 12px; font-weight: 600; color: var(--text-dim); margin-bottom: 4px; }
+  .field input, .field select, .field textarea {
+    width: 100%; padding: 9px 11px; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text); font-size: 13px; font-family: inherit;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+  .field textarea { min-height: 56px; resize: vertical; font-size: 12.5px; }
+
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  @media (max-width: 540px) { .row2, .row3 { grid-template-columns: 1fr; } }
+
+  .add-btn {
+    width: 100%; padding: 11px; background: var(--bg-elevated); border: 1px dashed var(--border);
+    color: var(--text-dim); border-radius: 10px; cursor: pointer; font-size: 13px; font-weight: 600; font-family: inherit;
+    margin-bottom: 14px;
+  }
+  .add-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+  .actions { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+  .btn { padding: 10px 16px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; border: none; }
+  .btn-primary { background: var(--accent); color: #002418; }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-secondary { background: var(--bg-elevated); color: var(--text-dim); border: 1px solid var(--border); }
+  .btn-secondary:hover { color: var(--text); border-color: var(--accent); }
+
+  pre.output {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px; overflow: auto; max-height: 620px; font-family: 'SF Mono', Monaco, monospace;
+    font-size: 12.2px; line-height: 1.55; color: #a7f3d0; white-space: pre;
+  }
+  pre.output .k { color: #6ee7b7; }
+  pre.output .s { color: #fde68a; }
+  pre.output .n { color: #93c5fd; }
+  pre.output .b { color: #f9a8d4; }
+
+  .compliance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin-top: 10px; }
+  .compliance-tile { padding: 10px 12px; background: var(--bg); border-radius: 8px; border-left: 3px solid var(--green); font-size: 12px; }
+  .compliance-tile.warn { border-left-color: var(--yellow); }
+  .compliance-tile.miss { border-left-color: var(--red); }
+  .compliance-tile .name { font-weight: 700; color: var(--text); margin-bottom: 2px; }
+  .compliance-tile .note { color: var(--text-dim); font-size: 11px; }
+
+  .upsell {
+    margin-top: 36px; padding: 22px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1));
+    border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 14px;
+  }
+  .upsell h3 { font-size: 16px; margin-bottom: 6px; color: white; }
+  .upsell p { font-size: 14px; color: var(--text-dim); margin-bottom: 12px; }
+  .upsell a { display: inline-block; padding: 9px 16px; background: var(--accent); color: #002418; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 700; margin-right: 8px; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul, .content ol { margin-left: 24px; color: var(--text-dim); }
+  .content li { margin-bottom: 4px; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  .copied-toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #002418; padding: 9px 18px; border-radius: 999px; font-size: 13px; font-weight: 700; z-index: 50; opacity: 0; transition: opacity .2s; }
+  .copied-toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">📋 SPDX 3.0 AI · CycloneDX 1.6 ML-BOM · NIST-aligned</div>
+    <h1>AI Bill of Materials Generator</h1>
+    <p class="subtitle">Document every model, dataset, and training source in your AI system as a machine-readable AIBOM. Outputs both SPDX 3.0 AI profile and CycloneDX 1.6 ML-BOM. Required by NIST AI RMF, the EU AI Act technical documentation, and US Executive Order 14110.</p>
+    <div class="format-toggle">
+      <button id="fmt-spdx" class="active">SPDX 3.0 (AI profile)</button>
+      <button id="fmt-cyclonedx">CycloneDX 1.6 (ML-BOM)</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <div class="panel">
+      <h2>Inputs</h2>
+
+      <div class="section system">
+        <h3>System metadata</h3>
+        <div class="row2">
+          <div class="field">
+            <label>System name</label>
+            <input id="sys-name" type="text" value="MyAI Customer Support Bot">
+          </div>
+          <div class="field">
+            <label>Version</label>
+            <input id="sys-ver" type="text" value="2.3.1">
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label>Producer / vendor</label>
+            <input id="sys-vendor" type="text" value="Acme Corp">
+          </div>
+          <div class="field">
+            <label>License</label>
+            <input id="sys-license" type="text" value="Proprietary" placeholder="SPDX expression or 'Proprietary'">
+          </div>
+        </div>
+        <div class="field">
+          <label>Description</label>
+          <textarea id="sys-desc">RAG-based customer support assistant fine-tuned on internal knowledge base. Handles tier-1 inquiries.</textarea>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 22px;">Models <span class="count" id="model-count">0</span></h2>
+      <div id="models"></div>
+      <button class="add-btn" id="add-model">+ Add model</button>
+
+      <h2>Datasets <span class="count" id="ds-count">0</span></h2>
+      <div id="datasets"></div>
+      <button class="add-btn" id="add-dataset">+ Add dataset</button>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="copyBtn">📋 Copy AIBOM</button>
+        <button class="btn btn-secondary" id="downloadBtn">⬇ Download .json</button>
+        <button class="btn btn-secondary" id="loadExample">📄 Load LLM-RAG example</button>
+        <button class="btn btn-secondary" id="resetBtn">↺ Reset</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2 id="outputTitle">SPDX 3.0 AIBOM</h2>
+      <pre class="output" id="output"></pre>
+      <h2 style="margin-top: 18px;">Compliance coverage</h2>
+      <div class="compliance-grid" id="compliance"></div>
+    </div>
+  </div>
+
+  <div class="upsell">
+    <h3>Pair this with the rest of your compliance stack</h3>
+    <p>An AIBOM is one of three documents the EU AI Act expects from high-risk system providers. Add a risk classification, AI disclosure labels, and a C2PA manifest for content the system generates.</p>
+    <a href="/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment →</a>
+    <a href="/c2pa-manifest-generator/">C2PA Manifest Generator →</a>
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator →</a>
+  </div>
+
+  <section class="content">
+    <h2>What is an AI Bill of Materials (AIBOM)?</h2>
+    <p>An AI Bill of Materials, or AIBOM, is a machine-readable inventory of every component that goes into an AI system: foundation models, fine-tuned weights, training datasets, evaluation datasets, software dependencies, and the licenses that govern each. It's the AI-system equivalent of a Software Bill of Materials (SBOM) — except SBOMs were designed for compiled binaries, and AI systems have fundamentally different supply-chain shapes (a 70B-parameter model trained on a trillion tokens of web data has very different provenance questions than a Python wheel).</p>
+
+    <p>Two formats dominate by 2026: SPDX 3.0's AI profile (ratified by the Linux Foundation, ISO/IEC 5962:2021 successor) and CycloneDX 1.6 ML-BOM (OWASP, the de facto SBOM format in security tooling). Most regulators accept either; large enterprises usually generate both. This tool produces both at the click of a button.</p>
+
+    <h2>Why every AI team needs an AIBOM in 2026</h2>
+    <p>Three regulatory forces converged in 2025–2026 to make AIBOMs effectively mandatory for production AI systems:</p>
+    <ul>
+      <li><strong>EU AI Act technical documentation (Annex IV)</strong>. High-risk providers must document the "general logic of the AI system" plus "the data used to train, validate, and test the system." An AIBOM is the structured form most providers use to satisfy this. Article 53 requires general-purpose AI providers to publish a "sufficiently detailed summary" of their training data — also satisfiable via AIBOM.</li>
+      <li><strong>NIST AI Risk Management Framework (AI RMF 1.0 + Generative AI Profile)</strong>. The MAP function explicitly calls for documenting model lineage, dataset provenance, and component licenses. CISA's 2024 SBOM-for-AI guidance is now the template federal contractors use.</li>
+      <li><strong>US Executive Order 14110 + OMB M-24-10</strong>. Federal agencies and contractors must inventory their AI systems with sufficient granularity to support red-teaming and incident response. AIBOMs satisfy the inventory requirement.</li>
+    </ul>
+
+    <p>Beyond compliance, AIBOMs have practical value: when a base model gets recalled (Meta's Llama Guard 2 issue in early 2025) or a dataset is shown to contain copyrighted material (the Books3 / LAION lawsuits), you need to know — within minutes, not weeks — which of your production systems are affected.</p>
+
+    <h2>What this generator produces</h2>
+    <p>You declare three categories of components: the system itself (your product), the models (foundation, fine-tuned, or hybrid), and the datasets (training, fine-tuning, evaluation, RAG). The tool emits a fully-formed JSON document in either SPDX 3.0 with the AI profile (using <code>spdx:AI</code> and <code>spdx:Dataset</code> classes) or CycloneDX 1.6 ML-BOM (using <code>component[type=machine-learning-model]</code> and <code>component[type=data]</code>). Both formats include the relationship graph the EU AI Act requires (system → uses → models → trainedOn → datasets).</p>
+
+    <h3>SPDX 3.0 AI profile vs. CycloneDX 1.6 ML-BOM — which to pick</h3>
+    <p>SPDX 3.0 has the deeper AI vocabulary: it knows about training-energy consumption, model bias evaluations, and intended use cases as first-class fields. It's preferred by the Linux Foundation, the EU Commission's draft delegated acts, and most academic citations. CycloneDX is more widely adopted in security tooling (Snyk, Dependency-Track, Anchore, GitHub Dependabot), so if you already publish SBOMs in CycloneDX, generating ML-BOM in the same format keeps one toolchain. There's no wrong answer; produce both if your auditor's preference is unclear.</p>
+
+    <h3>Fields this generator covers</h3>
+    <ul>
+      <li><strong>System level</strong>: name, version, vendor, license, description, intended use, primary purpose.</li>
+      <li><strong>Per model</strong>: name, version, type (foundation / fine-tuned / classifier / embedding / multimodal), source URL, license, parameter count, training compute (FLOPs), modality, evaluation metrics.</li>
+      <li><strong>Per dataset</strong>: name, version, source URL, license, size, modality, collection method, time range, content type, known issues.</li>
+      <li><strong>Relationships</strong>: <code>USES</code>, <code>TRAINED_ON</code>, <code>FINE_TUNED_FROM</code>, <code>EVALUATED_WITH</code>.</li>
+      <li><strong>Provenance hashes</strong>: SHA-256 placeholder slots for each component, fillable from your registry of record.</li>
+    </ul>
+
+    <h3>FAQ</h3>
+    <p><strong>How is an AIBOM different from a model card?</strong> A model card describes one model in narrative, human-readable form. An AIBOM is a structured graph of every component in a system, machine-readable, designed for automated tooling. They complement each other.</p>
+    <p><strong>Do I have to publish my AIBOM?</strong> No. Most companies treat it as internal compliance documentation. The EU AI Act requires that you can produce it on request from a regulator. Some open-source projects (like Hugging Face's "transparency reports") publish it voluntarily.</p>
+    <p><strong>What if I use a closed model like GPT-5 or Claude Opus?</strong> You list the API endpoint, version, vendor, and license-by-reference (the API terms). You aren't expected to know the foundation model's training data — but you must declare that the foundation model is third-party and identify it.</p>
+    <p><strong>What's a SHA-256 hash for a model?</strong> Cryptographic fingerprint of the model weights file (or files). Lets a downstream auditor verify the same weights you declared are the same weights actually deployed. <code>sha256sum model.safetensors</code> on the file does it.</p>
+    <p><strong>Does the EU AI Act demand SPDX specifically?</strong> No — the Act is technology-neutral on format. But the Commission's harmonised standards (under preparation by CEN/CENELEC JTC 21) name SPDX 3.0 and CycloneDX 1.6 as conforming examples. Producing one of these gets you the rebuttable presumption of conformity.</p>
+
+    <h3>Pre-loaded examples</h3>
+    <p>Click "Load LLM-RAG example" to see a typical retrieval-augmented chatbot built on a third-party foundation model plus a fine-tune plus an embedding model plus three datasets. Most production AI systems look something like that — the example is faster to edit than a blank form.</p>
+
+    <h3>Limitations</h3>
+    <ul>
+      <li>This tool is a manifest <em>generator</em>, not a discovery tool. If you don't know which model your team uses, this won't tell you — talk to engineering.</li>
+      <li>SPDX 3.0 and CycloneDX 1.6 schemas evolve; this tool tracks the November 2025 specs. Always validate the output against the latest schema using the official validators (<code>spdx-tools</code> / <code>cyclonedx-cli validate</code>) before submitting to a regulator.</li>
+      <li>The tool cannot sign your AIBOM. SPDX 3.0 supports detached signatures via <code>spdx:Signature</code>; sign with your code-signing certificate after generation.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Free AI Bill of Materials generator · No data leaves your browser · <a href="/">More tools at TinyTools</a></p>
+  </footer>
+</div>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<script>
+let format = 'spdx';
+let models = [];
+let datasets = [];
+
+function uid() { return crypto.randomUUID(); }
+
+function addModel(m = {}) {
+  models.push({
+    id: uid(),
+    name: m.name || '',
+    version: m.version || '',
+    type: m.type || 'foundation',
+    source: m.source || '',
+    license: m.license || '',
+    params: m.params || '',
+    flops: m.flops || '',
+    modality: m.modality || 'text',
+    sha256: m.sha256 || '',
+    fineTunedFrom: m.fineTunedFrom || ''
+  });
+  renderModels(); build();
+}
+function addDataset(d = {}) {
+  datasets.push({
+    id: uid(),
+    name: d.name || '',
+    version: d.version || '',
+    source: d.source || '',
+    license: d.license || '',
+    size: d.size || '',
+    modality: d.modality || 'text',
+    purpose: d.purpose || 'training',
+    sha256: d.sha256 || '',
+    timeRange: d.timeRange || '',
+    knownIssues: d.knownIssues || ''
+  });
+  renderDatasets(); build();
+}
+
+function renderModels() {
+  document.getElementById('model-count').textContent = `(${models.length})`;
+  const wrap = document.getElementById('models');
+  wrap.innerHTML = models.map((m, i) => `
+    <div class="section model" data-i="${i}">
+      <h3>Model ${i + 1}: ${escHtml(m.name) || '<span style="color:var(--text-dim)">unnamed</span>'} <button data-rm="m${i}">✕</button></h3>
+      <div class="row2">
+        <div class="field"><label>Name</label><input data-i="${i}" data-k="name" type="text" value="${escAttr(m.name)}" placeholder="e.g. Claude Opus 4.6"></div>
+        <div class="field"><label>Version</label><input data-i="${i}" data-k="version" type="text" value="${escAttr(m.version)}" placeholder="4.6"></div>
+      </div>
+      <div class="row3">
+        <div class="field"><label>Type</label><select data-i="${i}" data-k="type">
+          <option value="foundation"${m.type==='foundation'?' selected':''}>Foundation</option>
+          <option value="fine-tuned"${m.type==='fine-tuned'?' selected':''}>Fine-tuned</option>
+          <option value="embedding"${m.type==='embedding'?' selected':''}>Embedding</option>
+          <option value="classifier"${m.type==='classifier'?' selected':''}>Classifier</option>
+          <option value="multimodal"${m.type==='multimodal'?' selected':''}>Multimodal</option>
+          <option value="reranker"${m.type==='reranker'?' selected':''}>Reranker</option>
+        </select></div>
+        <div class="field"><label>Modality</label><select data-i="${i}" data-k="modality">
+          <option value="text"${m.modality==='text'?' selected':''}>Text</option>
+          <option value="image"${m.modality==='image'?' selected':''}>Image</option>
+          <option value="audio"${m.modality==='audio'?' selected':''}>Audio</option>
+          <option value="video"${m.modality==='video'?' selected':''}>Video</option>
+          <option value="multimodal"${m.modality==='multimodal'?' selected':''}>Multimodal</option>
+        </select></div>
+        <div class="field"><label>Parameters</label><input data-i="${i}" data-k="params" type="text" value="${escAttr(m.params)}" placeholder="70B"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>License</label><input data-i="${i}" data-k="license" type="text" value="${escAttr(m.license)}" placeholder="Apache-2.0 / Proprietary / Llama-3-Community"></div>
+        <div class="field"><label>Source URL</label><input data-i="${i}" data-k="source" type="text" value="${escAttr(m.source)}" placeholder="https://huggingface.co/..."></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Training compute (FLOPs)</label><input data-i="${i}" data-k="flops" type="text" value="${escAttr(m.flops)}" placeholder="1e25"></div>
+        <div class="field"><label>SHA-256 (optional)</label><input data-i="${i}" data-k="sha256" type="text" value="${escAttr(m.sha256)}" placeholder="abc123…"></div>
+      </div>
+      ${m.type === 'fine-tuned' ? `<div class="field"><label>Fine-tuned from (model id)</label><input data-i="${i}" data-k="fineTunedFrom" type="text" value="${escAttr(m.fineTunedFrom)}" placeholder="meta-llama/Llama-3-70b"></div>` : ''}
+    </div>`).join('');
+  bindFieldEvents(wrap, models, renderModels);
+}
+
+function renderDatasets() {
+  document.getElementById('ds-count').textContent = `(${datasets.length})`;
+  const wrap = document.getElementById('datasets');
+  wrap.innerHTML = datasets.map((d, i) => `
+    <div class="section dataset" data-i="${i}">
+      <h3>Dataset ${i + 1}: ${escHtml(d.name) || '<span style="color:var(--text-dim)">unnamed</span>'} <button data-rm="d${i}">✕</button></h3>
+      <div class="row2">
+        <div class="field"><label>Name</label><input data-i="${i}" data-k="name" type="text" value="${escAttr(d.name)}" placeholder="e.g. The Pile"></div>
+        <div class="field"><label>Version</label><input data-i="${i}" data-k="version" type="text" value="${escAttr(d.version)}" placeholder="v1.0"></div>
+      </div>
+      <div class="row3">
+        <div class="field"><label>Purpose</label><select data-i="${i}" data-k="purpose">
+          <option value="training"${d.purpose==='training'?' selected':''}>Training (pre-train)</option>
+          <option value="fine-tuning"${d.purpose==='fine-tuning'?' selected':''}>Fine-tuning</option>
+          <option value="evaluation"${d.purpose==='evaluation'?' selected':''}>Evaluation</option>
+          <option value="rag"${d.purpose==='rag'?' selected':''}>RAG / retrieval</option>
+          <option value="rlhf"${d.purpose==='rlhf'?' selected':''}>RLHF / preference</option>
+        </select></div>
+        <div class="field"><label>Modality</label><select data-i="${i}" data-k="modality">
+          <option value="text"${d.modality==='text'?' selected':''}>Text</option>
+          <option value="image"${d.modality==='image'?' selected':''}>Image</option>
+          <option value="audio"${d.modality==='audio'?' selected':''}>Audio</option>
+          <option value="video"${d.modality==='video'?' selected':''}>Video</option>
+          <option value="tabular"${d.modality==='tabular'?' selected':''}>Tabular</option>
+          <option value="multimodal"${d.modality==='multimodal'?' selected':''}>Multimodal</option>
+        </select></div>
+        <div class="field"><label>Size</label><input data-i="${i}" data-k="size" type="text" value="${escAttr(d.size)}" placeholder="800GB / 2T tokens"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>License</label><input data-i="${i}" data-k="license" type="text" value="${escAttr(d.license)}" placeholder="MIT / CC-BY-4.0 / Proprietary"></div>
+        <div class="field"><label>Source URL</label><input data-i="${i}" data-k="source" type="text" value="${escAttr(d.source)}" placeholder="https://huggingface.co/datasets/..."></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Time range</label><input data-i="${i}" data-k="timeRange" type="text" value="${escAttr(d.timeRange)}" placeholder="2008–2023"></div>
+        <div class="field"><label>SHA-256 (optional)</label><input data-i="${i}" data-k="sha256" type="text" value="${escAttr(d.sha256)}" placeholder="abc123…"></div>
+      </div>
+      <div class="field"><label>Known issues / biases</label><textarea data-i="${i}" data-k="knownIssues" placeholder="e.g. English-dominant, may include copyrighted books">${escHtml(d.knownIssues)}</textarea></div>
+    </div>`).join('');
+  bindFieldEvents(wrap, datasets, renderDatasets);
+}
+
+function bindFieldEvents(wrap, list, rerender) {
+  wrap.querySelectorAll('input, select, textarea').forEach(el => {
+    el.addEventListener('input', () => {
+      const i = +el.dataset.i, k = el.dataset.k;
+      list[i][k] = el.value;
+      // re-render only if name changed (to refresh title)
+      if (k === 'name' || k === 'type') { rerender(); }
+      build();
+    });
+    el.addEventListener('change', () => {
+      const i = +el.dataset.i, k = el.dataset.k;
+      list[i][k] = el.value;
+      if (k === 'type') rerender();
+      build();
+    });
+  });
+  wrap.querySelectorAll('button[data-rm]').forEach(b => {
+    b.addEventListener('click', () => {
+      const tag = b.dataset.rm;
+      const idx = +tag.slice(1);
+      if (tag.startsWith('m')) { models.splice(idx, 1); renderModels(); }
+      else { datasets.splice(idx, 1); renderDatasets(); }
+      build();
+    });
+  });
+}
+
+function escHtml(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function escAttr(s) { return escHtml(s); }
+
+document.getElementById('add-model').addEventListener('click', () => addModel());
+document.getElementById('add-dataset').addEventListener('click', () => addDataset());
+['sys-name','sys-ver','sys-vendor','sys-license','sys-desc'].forEach(id => {
+  document.getElementById(id).addEventListener('input', build);
+});
+
+document.getElementById('fmt-spdx').addEventListener('click', () => { format = 'spdx'; setActive(); build(); });
+document.getElementById('fmt-cyclonedx').addEventListener('click', () => { format = 'cyclonedx'; setActive(); build(); });
+function setActive() {
+  document.getElementById('fmt-spdx').classList.toggle('active', format === 'spdx');
+  document.getElementById('fmt-cyclonedx').classList.toggle('active', format === 'cyclonedx');
+  document.getElementById('outputTitle').textContent = format === 'spdx' ? 'SPDX 3.0 AIBOM' : 'CycloneDX 1.6 ML-BOM';
+}
+
+function buildSPDX() {
+  const sysName = document.getElementById('sys-name').value || 'unnamed-system';
+  const sysVer = document.getElementById('sys-ver').value || '0.0.0';
+  const sysVendor = document.getElementById('sys-vendor').value || '';
+  const sysLic = document.getElementById('sys-license').value || 'NOASSERTION';
+  const sysDesc = document.getElementById('sys-desc').value || '';
+  const docId = `https://example.com/spdx/${sysName.replace(/\s+/g,'-')}-${sysVer}-${Math.random().toString(36).slice(2,8)}`;
+
+  const elements = [];
+  // System
+  elements.push({
+    'spdxId': `SPDXRef-System-${slug(sysName)}`,
+    'type': 'software_AIPackage',
+    'name': sysName,
+    'packageVersion': sysVer,
+    'supplier': sysVendor ? `Organization: ${sysVendor}` : 'NOASSERTION',
+    'licenseDeclared': sysLic,
+    'description': sysDesc,
+    'primaryPurpose': 'application',
+    'ai_useSensitivePersonalInformation': 'noAssertion',
+    'ai_safetyRiskAssessment': 'noAssertion',
+    'ai_autonomyType': 'noAssertion'
+  });
+  // Models
+  models.forEach(m => {
+    elements.push({
+      'spdxId': `SPDXRef-Model-${slug(m.name || 'unnamed')}-${m.id.slice(0,6)}`,
+      'type': 'software_AIPackage',
+      'name': m.name || 'unnamed-model',
+      'packageVersion': m.version || 'NOASSERTION',
+      'licenseDeclared': m.license || 'NOASSERTION',
+      'downloadLocation': m.source || 'NOASSERTION',
+      'ai_modelDataPreprocessing': [],
+      'ai_modelExplainability': [],
+      'ai_metric': m.flops ? [{ 'metric': 'training_flops', 'value': m.flops }] : [],
+      'ai_typeOfModel': [m.type],
+      'ai_modality': m.modality,
+      ...(m.params ? { 'ai_safetyRiskAssessment': `parameters: ${m.params}` } : {}),
+      ...(m.sha256 ? { 'verifiedUsing': [{ 'algorithm': 'sha256', 'hashValue': m.sha256 }] } : {})
+    });
+  });
+  // Datasets
+  datasets.forEach(d => {
+    elements.push({
+      'spdxId': `SPDXRef-Dataset-${slug(d.name || 'unnamed')}-${d.id.slice(0,6)}`,
+      'type': 'dataset_DatasetPackage',
+      'name': d.name || 'unnamed-dataset',
+      'packageVersion': d.version || 'NOASSERTION',
+      'licenseDeclared': d.license || 'NOASSERTION',
+      'downloadLocation': d.source || 'NOASSERTION',
+      'dataset_datasetType': [d.modality],
+      'dataset_intendedUse': d.purpose,
+      'dataset_datasetSize': d.size || 'NOASSERTION',
+      ...(d.timeRange ? { 'dataset_dataCollectionProcess': `Time range: ${d.timeRange}` } : {}),
+      ...(d.knownIssues ? { 'dataset_knownBias': [d.knownIssues] } : {}),
+      ...(d.sha256 ? { 'verifiedUsing': [{ 'algorithm': 'sha256', 'hashValue': d.sha256 }] } : {})
+    });
+  });
+
+  // Relationships
+  const relationships = [];
+  const sysId = elements[0].spdxId;
+  models.forEach((m, i) => {
+    const mid = elements[1 + i].spdxId;
+    relationships.push({ 'spdxId': `SPDXRef-Rel-uses-${i}`, 'type': 'relationship', 'relationshipType': 'usesTool', 'from': sysId, 'to': [mid] });
+    if (m.type === 'fine-tuned' && m.fineTunedFrom) {
+      relationships.push({ 'spdxId': `SPDXRef-Rel-ft-${i}`, 'type': 'relationship', 'relationshipType': 'descendantOf', 'from': mid, 'to': [`urn:huggingface:${m.fineTunedFrom}`] });
+    }
+    datasets.forEach((d, j) => {
+      const did = elements[1 + models.length + j].spdxId;
+      const rt = d.purpose === 'evaluation' ? 'testedOn' : (d.purpose === 'rag' ? 'hasInput' : 'trainedOn');
+      relationships.push({ 'spdxId': `SPDXRef-Rel-${i}-${j}`, 'type': 'relationship', 'relationshipType': rt, 'from': mid, 'to': [did] });
+    });
+  });
+
+  return {
+    '@context': 'https://spdx.org/rdf/3.0.1/spdx-context.jsonld',
+    '@graph': [
+      {
+        'spdxId': docId,
+        'type': 'SpdxDocument',
+        'specVersion': '3.0.1',
+        'profile': ['core', 'software', 'ai', 'dataset'],
+        'name': `${sysName} AIBOM`,
+        'creationInfo': {
+          'specVersion': '3.0.1',
+          'created': new Date().toISOString(),
+          'createdBy': [sysVendor ? `Organization: ${sysVendor}` : 'Tool: tinytools-aibom'],
+          'createdUsing': ['Tool: tinytools-aibom-generator-1.0']
+        },
+        'rootElement': [sysId]
+      },
+      ...elements,
+      ...relationships
+    ]
+  };
+}
+
+function buildCycloneDX() {
+  const sysName = document.getElementById('sys-name').value || 'unnamed-system';
+  const sysVer = document.getElementById('sys-ver').value || '0.0.0';
+  const sysVendor = document.getElementById('sys-vendor').value || '';
+  const sysLic = document.getElementById('sys-license').value || 'Proprietary';
+  const sysDesc = document.getElementById('sys-desc').value || '';
+
+  const components = [];
+  models.forEach(m => {
+    components.push({
+      'type': 'machine-learning-model',
+      'bom-ref': `model:${slug(m.name || 'unnamed')}@${m.version || '0.0.0'}`,
+      'name': m.name || 'unnamed-model',
+      'version': m.version || '',
+      'description': `${m.type} ${m.modality} model${m.params ? ` (${m.params} params)` : ''}`,
+      ...(m.license ? { 'licenses': [{ 'license': { 'name': m.license } }] } : {}),
+      ...(m.source ? { 'externalReferences': [{ 'type': 'website', 'url': m.source }] } : {}),
+      ...(m.sha256 ? { 'hashes': [{ 'alg': 'SHA-256', 'content': m.sha256 }] } : {}),
+      'modelCard': {
+        'modelParameters': {
+          'task': m.type,
+          ...(m.fineTunedFrom ? { 'architectureFamily': m.fineTunedFrom } : {}),
+          'datasets': datasets.map(d => ({
+            'ref': `dataset:${slug(d.name || 'unnamed')}@${d.version || '0.0.0'}`
+          }))
+        },
+        'quantitativeAnalysis': m.flops ? { 'performanceMetrics': [{ 'type': 'training_compute_flops', 'value': m.flops }] } : {}
+      }
+    });
+  });
+  datasets.forEach(d => {
+    components.push({
+      'type': 'data',
+      'bom-ref': `dataset:${slug(d.name || 'unnamed')}@${d.version || '0.0.0'}`,
+      'name': d.name || 'unnamed-dataset',
+      'version': d.version || '',
+      'description': `${d.purpose} ${d.modality} dataset${d.size ? `, ${d.size}` : ''}${d.timeRange ? `, ${d.timeRange}` : ''}`,
+      ...(d.license ? { 'licenses': [{ 'license': { 'name': d.license } }] } : {}),
+      ...(d.source ? { 'externalReferences': [{ 'type': 'website', 'url': d.source }] } : {}),
+      ...(d.sha256 ? { 'hashes': [{ 'alg': 'SHA-256', 'content': d.sha256 }] } : {}),
+      'data': [{
+        'type': 'dataset',
+        'name': d.name || 'unnamed-dataset',
+        'classification': d.modality,
+        ...(d.knownIssues ? { 'governance': { 'custodians': [{ 'organization': { 'name': sysVendor || 'unknown' } }], 'description': d.knownIssues } } : {})
+      }]
+    });
+  });
+
+  return {
+    'bomFormat': 'CycloneDX',
+    'specVersion': '1.6',
+    'version': 1,
+    'serialNumber': `urn:uuid:${uid()}`,
+    'metadata': {
+      'timestamp': new Date().toISOString(),
+      'tools': [{ 'vendor': 'TinyTools', 'name': 'aibom-generator', 'version': '1.0.0' }],
+      'component': {
+        'type': 'application',
+        'bom-ref': `system:${slug(sysName)}@${sysVer}`,
+        'name': sysName,
+        'version': sysVer,
+        'description': sysDesc,
+        'licenses': [{ 'license': { 'name': sysLic } }],
+        'supplier': sysVendor ? { 'name': sysVendor } : undefined
+      }
+    },
+    'components': components,
+    'dependencies': [
+      {
+        'ref': `system:${slug(sysName)}@${sysVer}`,
+        'dependsOn': models.map(m => `model:${slug(m.name || 'unnamed')}@${m.version || '0.0.0'}`)
+      },
+      ...models.map(m => ({
+        'ref': `model:${slug(m.name || 'unnamed')}@${m.version || '0.0.0'}`,
+        'dependsOn': datasets.map(d => `dataset:${slug(d.name || 'unnamed')}@${d.version || '0.0.0'}`)
+      }))
+    ]
+  };
+}
+
+function slug(s) { return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'item'; }
+
+function highlight(json) {
+  return json
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/("(?:\\.|[^"\\])*")\s*:/g, '<span class="k">$1</span>:')
+    .replace(/: ?("(?:\\.|[^"\\])*")/g, ': <span class="s">$1</span>')
+    .replace(/(\b\d+(?:\.\d+)?(?:e[+-]?\d+)?\b)/gi, '<span class="n">$1</span>')
+    .replace(/\b(true|false|null)\b/g, '<span class="b">$1</span>');
+}
+
+function build() {
+  const obj = format === 'spdx' ? buildSPDX() : buildCycloneDX();
+  const json = JSON.stringify(obj, null, 2);
+  document.getElementById('output').innerHTML = highlight(json);
+  renderCompliance();
+}
+
+function renderCompliance() {
+  const checks = [];
+  const sysName = document.getElementById('sys-name').value;
+  checks.push({ name: 'System named', state: sysName ? 'ok' : 'miss', note: sysName ? sysName : 'Required' });
+  checks.push({ name: 'At least one model', state: models.length ? 'ok' : 'miss', note: `${models.length} declared` });
+  checks.push({ name: 'At least one dataset', state: datasets.length ? 'ok' : 'warn', note: datasets.length ? `${datasets.length} declared` : 'EU AI Act Annex IV requires it' });
+  const allLicensed = [...models, ...datasets].every(x => x.license);
+  checks.push({ name: 'All licenses declared', state: allLicensed && (models.length + datasets.length) ? 'ok' : 'warn', note: allLicensed ? 'OK' : 'Missing licenses' });
+  const allHashed = models.every(m => m.sha256) && datasets.every(d => d.sha256);
+  checks.push({ name: 'SHA-256 hashes', state: allHashed && (models.length + datasets.length) ? 'ok' : 'warn', note: allHashed ? 'All hashed' : 'Optional but recommended' });
+  const allFlops = models.every(m => m.flops);
+  checks.push({ name: 'Training compute logged', state: allFlops && models.length ? 'ok' : 'warn', note: 'EU AI Act GPAI threshold: 10²⁵ FLOPs' });
+  const wrap = document.getElementById('compliance');
+  wrap.innerHTML = checks.map(c => `
+    <div class="compliance-tile ${c.state === 'ok' ? '' : c.state}">
+      <div class="name">${c.state === 'ok' ? '✓' : c.state === 'warn' ? '!' : '✕'} ${c.name}</div>
+      <div class="note">${c.note}</div>
+    </div>
+  `).join('');
+}
+
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const obj = format === 'spdx' ? buildSPDX() : buildCycloneDX();
+  try { await navigator.clipboard.writeText(JSON.stringify(obj, null, 2)); toast('Copied!'); }
+  catch (e) { toast('Copy failed'); }
+});
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  const obj = format === 'spdx' ? buildSPDX() : buildCycloneDX();
+  const blob = new Blob([JSON.stringify(obj, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = format === 'spdx' ? 'aibom.spdx.json' : 'aibom.cdx.json'; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+});
+document.getElementById('loadExample').addEventListener('click', () => {
+  models = []; datasets = [];
+  document.getElementById('sys-name').value = 'AcmeBot Customer Support';
+  document.getElementById('sys-ver').value = '2.3.1';
+  document.getElementById('sys-vendor').value = 'Acme Corp';
+  document.getElementById('sys-license').value = 'Proprietary';
+  document.getElementById('sys-desc').value = 'Retrieval-augmented chatbot for tier-1 customer support, fine-tuned on 18 months of historical conversations.';
+  addModel({ name: 'Claude Sonnet 4.6', version: '4.6', type: 'foundation', source: 'https://api.anthropic.com', license: 'Proprietary', params: 'undisclosed', flops: 'undisclosed', modality: 'text' });
+  addModel({ name: 'AcmeBot fine-tune', version: '2.3.1', type: 'fine-tuned', license: 'Proprietary', params: '7B', flops: '5e22', modality: 'text', fineTunedFrom: 'meta-llama/Llama-3.1-8B' });
+  addModel({ name: 'OpenAI text-embedding-3-large', version: '3', type: 'embedding', source: 'https://platform.openai.com', license: 'Proprietary', params: 'undisclosed', modality: 'text' });
+  addDataset({ name: 'AcmeBot conversations 2024-2025', version: '2025-12-01', source: 'internal://acme-kb', license: 'Proprietary', size: '2.4M conversations', purpose: 'fine-tuning', modality: 'text', timeRange: '2024-01 — 2025-12', knownIssues: 'English-only; long-tail intents under-represented.' });
+  addDataset({ name: 'Acme product knowledge base', version: '2026-04', source: 'internal://acme-kb', license: 'Proprietary', size: '12,400 documents', purpose: 'rag', modality: 'text', timeRange: 'updated rolling' });
+  addDataset({ name: 'MMLU-Customer-Support eval', version: '0.3', source: 'https://huggingface.co/datasets/...', license: 'CC-BY-4.0', size: '4,200 examples', purpose: 'evaluation', modality: 'text' });
+});
+document.getElementById('resetBtn').addEventListener('click', () => {
+  models = []; datasets = []; renderModels(); renderDatasets(); build();
+});
+
+function toast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 1400); }
+
+// Seed with one model + one dataset
+addModel({ name: 'Foundation model', type: 'foundation', modality: 'text', license: 'Apache-2.0' });
+addDataset({ name: 'Training corpus', purpose: 'training', modality: 'text', license: 'CC-BY-4.0' });
+build();
+</script>
+</body>
+</html>
