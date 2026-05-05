@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Favicon Generator for Marketing Agencies — Ship Branded Client Favicons in Minutes (2026)</title>
+<meta name="description" content="Generate complete favicon bundles for every client microsite, landing page and campaign in seconds. All sizes, apple-touch-icon and manifest.json &mdash; bundled into a ZIP your dev team can drop into a deploy. Free, no signup.">
+<meta name="keywords" content="favicon generator for marketing agencies, agency favicon workflow, client favicon set, branded favicon, microsite favicon, campaign landing page favicon, favicon ico generator, manifest.json generator, apple-touch-icon agency">
+<meta property="og:title" content="Favicon Generator for Marketing Agencies — Ship Branded Client Favicons in Minutes">
+<meta property="og:description" content="A complete favicon set per client, per microsite, per campaign &mdash; all sizes, manifest.json, apple-touch-icon &mdash; in a single ZIP your dev team can drop into the next deploy.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/favicon-generator/for-marketing-agencies/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/favicon-generator/for-marketing-agencies/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Favicon Generator for Marketing Agencies",
+  "url": "https://tinytools-smoky.vercel.app/favicon-generator/for-marketing-agencies/",
+  "applicationCategory": "DesignApplication",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Marketing Agencies, Creative Studios, Performance Agencies, Brand Studios, Digital Agencies"
+  },
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Generate full favicon sets &mdash; ico, png at every size, apple-touch-icon and manifest.json &mdash; for every client microsite, campaign landing page or sub-brand. Free, browser-based, no signup. Built for agencies running dozens of client sites with brand-consistent favicons across each."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many favicon sizes does a 2026 client microsite actually need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A complete bundle for a modern microsite is favicon.ico (multi-resolution), 16x16, 32x32, 48x48, 96x96 PNG, 192x192 and 512x512 for Android/PWA, apple-touch-icon at 180x180, and a manifest.json that references the 192 and 512 PNGs. Skipping any of these still works in most browsers but generates 404s in the Network tab during client QA, which is exactly the kind of nit a procurement team flags. The generator outputs the full bundle so you never argue about whether a 96px exists."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can an agency use one favicon across a client's microsites or does each campaign need its own?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If the microsite carries the master brand, reuse the master favicon. If it's a sub-brand, campaign with its own visual identity, partnership co-brand, or product line with distinct positioning, ship a campaign-specific favicon. Modern browsers cache by hostname plus path, so a campaign at promo.client.com with its own favicon is what users see in the tab and bookmark bar. Match the favicon to the visible logo on the page and the bookmark click-throughs hold up under analytics scrutiny."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the cleanest way to hand a favicon set to a client's dev team?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Send the ZIP plus the four-line HTML snippet that references it (rel=icon for ico, rel=apple-touch-icon for the 180, link to manifest.json, and theme-color meta). Pin the ZIP in the deal record as a versioned asset (favicon_v1.zip, favicon_v2.zip on rebrand) so future devs can find the canonical source instead of resampling from the website. Most agencies skip the snippet and the dev team writes their own &mdash; that's where the 404s on apple-touch-icon-precomposed come from."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should the favicon match the client's logo exactly or be a simplified mark?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Simplified, almost always. A full logo legible at 200px collapses to noise at 16px. The standard agency move is to extract a single letterform, monogram, or icon element from the master mark and render that on a brand-color background. The generator's text-and-emoji modes are built for this; for image-mode you upload a pre-cropped square asset. If the client doesn't already have a favicon mark in their brand book, designing one is a five-minute add-on you can charge for as 'digital asset extension'."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does favicon work fit into an agency's launch checklist?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It belongs in the pre-launch QA pass, after the site is on the staging domain and before the dev team flips DNS. Three checks: open every page on staging and confirm the tab favicon renders, check the Network tab for 404s on any /favicon* or /apple-touch-icon* URL, and view the site as a saved bookmark to confirm the icon shows up in the bookmark bar. Most agencies still discover missing favicons the day of launch when a stakeholder screenshots a tab for a status update; running this checklist 48 hours earlier eliminates the fire drill."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f59e0b; --accent-glow: #f59e0b40;
+    --green: #10b981;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  header { text-align: center; padding: 24px 0 8px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(28px, 4.2vw, 42px); font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fbbf24 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 640px; margin: 0 auto 24px; }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 8px 0 24px; }
+  .cta {
+    display: inline-block; padding: 14px 28px; border-radius: 10px;
+    font-weight: 600; text-decoration: none; transition: all 0.15s; font-size: 15px;
+  }
+  .cta-primary {
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    color: #fff; box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+  }
+  .cta-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(245, 158, 11, 0.45); }
+  .cta-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+  .cta-secondary:hover { border-color: var(--accent); }
+
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-top: 24px; }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .checklist { background: var(--bg-elevated); border-radius: 10px; padding: 18px 22px; }
+  .check-row { display: grid; grid-template-columns: 28px 1fr auto; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; align-items: center; }
+  .check-row:last-child { border-bottom: 0; }
+  .check-row .icon { color: var(--green); font-weight: 700; font-size: 16px; }
+  .check-row .label { color: var(--text); font-weight: 500; }
+  .check-row .label small { color: var(--text-dim); display: block; font-size: 12px; font-weight: 400; margin-top: 2px; }
+  .check-row .size { color: var(--text-dim); font-variant-numeric: tabular-nums; font-size: 12px; }
+
+  .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 14px; }
+  .use-case { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .use-case .icon { font-size: 22px; margin-bottom: 8px; }
+  .use-case h3 { font-size: 15px; margin-bottom: 6px; color: var(--text); }
+  .use-case p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+  .content { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; color: var(--text); letter-spacing: -0.01em; }
+  .content h3 { font-size: 18px; margin: 24px 0 8px; color: var(--text); }
+  .content p { color: var(--text-dim); margin-bottom: 12px; font-size: 15px; }
+  .content ul { margin: 8px 0 16px 24px; color: var(--text-dim); }
+  .content ul li { margin-bottom: 6px; font-size: 15px; }
+  .content a { color: var(--accent); text-decoration: none; }
+  .content a:hover { text-decoration: underline; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', monospace; font-size: 13px; color: var(--accent); }
+  .content blockquote { border-left: 3px solid var(--accent); padding: 4px 16px; margin: 16px 0; color: var(--text-dim); font-style: italic; }
+
+  .faq-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: 0; }
+  .faq-item h3 { font-size: 16px; margin-bottom: 6px; color: var(--text); }
+  .faq-item p { color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+
+  .final-cta { text-align: center; padding: 36px 24px; margin-top: 40px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
+  .final-cta h2 { font-size: 22px; margin-bottom: 10px; color: var(--text); }
+  .final-cta p { color: var(--text-dim); margin-bottom: 18px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">Home</a> &nbsp;&rsaquo;&nbsp;
+    <a href="/favicon-generator/">Favicon Generator</a> &nbsp;&rsaquo;&nbsp;
+    For Marketing Agencies
+  </div>
+
+  <header>
+    <div class="badge">&#128205; Per-client bundles &middot; All sizes &middot; manifest.json &middot; Free</div>
+    <h1>Favicon Generator for Marketing Agencies</h1>
+    <p class="subtitle">Ship a complete favicon set for every client microsite, campaign landing page or sub-brand in under two minutes. Every size, apple-touch-icon and manifest.json bundled in a single ZIP your dev team can drop into the next deploy.</p>
+    <div class="cta-row">
+      <a href="/favicon-generator/" class="cta cta-primary">Open the Favicon Generator &rarr;</a>
+      <a href="#bundle" class="cta cta-secondary">See what&rsquo;s in the bundle</a>
+    </div>
+  </header>
+
+  <div class="panel" id="bundle">
+    <h2>What ships in every favicon bundle</h2>
+    <div class="checklist">
+      <div class="check-row">
+        <div class="icon">&check;</div>
+        <div class="label">favicon.ico<small>Multi-resolution legacy fallback &mdash; still required by older crawlers and email clients</small></div>
+        <div class="size">16, 32, 48</div>
+      </div>
+      <div class="check-row">
+        <div class="icon">&check;</div>
+        <div class="label">PNG icons<small>Tab favicon, retina tab, browser shortcut, large bookmark</small></div>
+        <div class="size">16, 32, 96</div>
+      </div>
+      <div class="check-row">
+        <div class="icon">&check;</div>
+        <div class="label">Android &amp; PWA icons<small>Used when a client&rsquo;s microsite is added to a phone home screen</small></div>
+        <div class="size">192, 512</div>
+      </div>
+      <div class="check-row">
+        <div class="icon">&check;</div>
+        <div class="label">apple-touch-icon.png<small>Required by iOS Safari for the home-screen icon &mdash; the #1 missing-favicon QA fail</small></div>
+        <div class="size">180</div>
+      </div>
+      <div class="check-row">
+        <div class="icon">&check;</div>
+        <div class="label">manifest.json<small>Auto-generated, references the 192 and 512 PNGs, sets theme color and short_name</small></div>
+        <div class="size">PWA</div>
+      </div>
+      <div class="check-row">
+        <div class="icon">&check;</div>
+        <div class="label">HTML snippet<small>Four-line copy-paste your dev team drops into the &lt;head&gt;</small></div>
+        <div class="size">link tags</div>
+      </div>
+    </div>
+    <p style="font-size: 13px; color: var(--text-dim); margin-top: 14px;">Generate from text (initials, monogram), an emoji (perfect for fast-turn campaign microsites), or upload an image (the standard for client master brands). All output stays in your browser &mdash; nothing is uploaded to a server.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Why agencies need a per-client favicon workflow</h2>
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="icon">&#127760;</div>
+        <h3>Multi-microsite client builds</h3>
+        <p>One client, eight campaign landing pages a quarter. Each needs a favicon that matches the campaign visual identity, not the master brand. Generate the set once per campaign, pin to the deal record, dev team ships it on day one instead of patching at QA.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#128218;</div>
+        <h3>Pre-launch QA hygiene</h3>
+        <p>Missing apple-touch-icon and a 404 on /favicon.ico are the two most-flagged items in agency launch QA reports in 2026. Pre-baked bundles eliminate both before staging review &mdash; the kind of detail procurement teams quietly grade you on.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#127919;</div>
+        <h3>Campaign-specific branding</h3>
+        <p>A co-marketing campaign with a partner brand needs its own favicon, not the agency&rsquo;s and not either parent brand&rsquo;s. Spin up a custom mark in the generator, attach to the campaign brief, and the deliverable matches the visible brand identity end-to-end.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#128737;&#65039;</div>
+        <h3>Rebrand and refresh handoffs</h3>
+        <p>Client rolls a new brand mark every 18&ndash;36 months. Generate the new favicon set, version it (favicon_v2.zip), update the in-flight campaigns, and you have a paper trail when next year&rsquo;s dev team asks &ldquo;which version is canonical?&rdquo;</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#128190;</div>
+        <h3>Templated proposal asset</h3>
+        <p>Pitching a new logo? Generate a favicon at the same time and drop a tab-bar mockup into the deck. Showing the prospect &ldquo;here&rsquo;s what your mark looks like as a tab favicon&rdquo; converts at noticeably higher rates than logo-on-white slides.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>The agency favicon problem, briefly</h2>
+    <p>Most agencies ship more client favicons in a year than the average in-house brand team will ship in a decade &mdash; one per master brand, then one per microsite, campaign, sub-brand and partnership. The work is small, but the failure surface is large. A 404 on apple-touch-icon shows up as a missing icon when a stakeholder saves the site to their iPhone home screen for a status meeting; a half-resolution favicon looks fuzzy in a Slack unfurl; a stale favicon from the previous brand system sits in a campaign directory for two quarters before someone notices.</p>
+    <p>None of those individually torpedo a retainer. Together, they erode the &ldquo;everything looks polished&rdquo; reputation that wins renewals. The fix is mechanical: a per-client, per-campaign favicon bundle generated once, versioned, and handed to the dev team alongside the rest of the launch package. The generator&rsquo;s job is to make &ldquo;once&rdquo; take ninety seconds.</p>
+
+    <h2>What a 2026 favicon bundle actually contains</h2>
+    <p>The minimum set has stabilized over the last two browser cycles. A complete bundle for a client microsite includes <code>favicon.ico</code> as a multi-resolution legacy fallback (still requested by older crawlers and a surprising number of email clients), PNG variants at 16, 32 and 96 for tab and bookmark contexts, 192 and 512 PNGs that Android and PWA installers consume, an <code>apple-touch-icon.png</code> at 180&times;180 for iOS Safari home-screen adds, and a <code>manifest.json</code> referencing the 192 and 512 PNGs along with a theme-color and short-name. The generator outputs all of these in a single ZIP plus the four-line HTML snippet you paste into the &lt;head&gt;.</p>
+    <p>Skipping any of these still &ldquo;works&rdquo; in the sense that browsers fall back gracefully &mdash; but each missing file generates a 404 in the Network tab during QA, and procurement teams routinely grep agency-built sites for exactly that pattern. The Web Hypertext Application Technology Working Group&rsquo;s <a href="https://html.spec.whatwg.org/multipage/links.html#rel-icon" rel="noopener" target="_blank">link relation spec</a> is the source of truth on which rel values are still standard; <a href="https://web.dev/articles/add-manifest" rel="noopener" target="_blank">web.dev&rsquo;s manifest guide</a> is the practical reference for the manifest.json side.</p>
+
+    <h2>Where favicon work fits in an agency launch checklist</h2>
+    <p>Favicons belong in the pre-launch QA pass, 48 hours before DNS flip, after the site is on its staging domain. Three checks survive in production: open every templated page on staging and confirm the tab favicon renders correctly; open the Network tab and grep for any 404 on a path matching <code>/favicon*</code> or <code>/apple-touch-icon*</code>; and bookmark the home page to confirm the icon shows in the bookmark bar at retina resolution. Most agencies discover missing favicons the morning of launch when a stakeholder screenshots a browser tab for an internal Slack &mdash; running this 48-hour-out check moves the discovery before the fire drill window.</p>
+
+    <h2>Master brand vs. campaign-specific favicons</h2>
+    <p>The decision rule is simple: match the favicon to the visible logo on the page. If the microsite carries the master brand, use the master favicon. If it&rsquo;s a sub-brand, partnership co-brand, named campaign with its own visual system, or product line with distinct positioning, ship a campaign-specific favicon. Modern browsers cache by hostname plus path, so a campaign at <code>promo.client.com</code> with its own favicon is what users see in the tab and what gets pinned to the bookmark bar. The visual mismatch when those two diverge &mdash; tab says master brand, page says campaign &mdash; is the kind of detail a brand-savvy CMO will flag in a 30-second review.</p>
+
+    <h2>Designing a favicon mark that actually reads at 16px</h2>
+    <p>A full logo legible at 200px collapses to noise at 16px. The standard agency move is to extract a single letterform, a monogram, or an icon element from the master mark, render it on a brand-color background, and treat that as the favicon mark. This is also a chargeable add-on under &ldquo;digital asset extension&rdquo; if the client&rsquo;s brand book doesn&rsquo;t include a favicon mark already &mdash; most don&rsquo;t.</p>
+    <ul>
+      <li><strong>Letterform.</strong> Pick the strongest letter from the wordmark, set in the brand display face, on a brand-primary fill. Works for ~80% of client brands.</li>
+      <li><strong>Monogram.</strong> Two letters or a stylized initial. Best for agency-owned client brands and law / professional services where the wordmark is the identity.</li>
+      <li><strong>Icon element.</strong> A glyph from the master mark used as a standalone. Reserve for clients with a strong existing icon &mdash; otherwise a custom one needs to go through the brand-book amendment process.</li>
+      <li><strong>Emoji shortcut.</strong> For internal tooling, throwaway campaign sites, or a fast-turn build where the brand isn&rsquo;t finalized. Don&rsquo;t ship to a flagship client microsite.</li>
+    </ul>
+
+    <h2>How agencies typically integrate the generator into ops</h2>
+    <ul>
+      <li><strong>Discovery doc template.</strong> Add a &ldquo;favicon source asset&rdquo; field next to logo in the client kickoff form. The PM generates the bundle the day the brand assets land.</li>
+      <li><strong>Per-campaign brief.</strong> Standard campaign brief lists &ldquo;favicon: master brand / custom&rdquo; as a tickbox. Custom triggers a 15-minute design slot and a generator run.</li>
+      <li><strong>Versioned deal-room asset.</strong> Pin <code>favicon_v1.zip</code> in the deal record. Increment on rebrand. Future devs and audits find the canonical source instead of resampling from the live site.</li>
+      <li><strong>QA tickbox.</strong> Pre-launch QA template includes the three checks above. Block DNS flip until all three pass.</li>
+      <li><strong>Pitch-deck mockup.</strong> When pitching a new identity, generate a favicon at the same time and include a browser-tab mockup slide. Underweighted in most decks; high-perceived-effort, low actual cost.</li>
+    </ul>
+    <p>If you also need to label AI-generated copy on those campaign microsites, pair this with the free <a href="/ai-disclosure-generator/">AI Disclosure Generator</a>; for the meta-tag side of the launch, the <a href="/seo-meta-generator/">SEO Meta Generator</a> covers og:image, twitter:card and the rest of the head block.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <h3>How many favicon sizes does a 2026 microsite need?</h3>
+      <p>favicon.ico (multi-resolution), 16/32/96 PNG, 192/512 for Android/PWA, 180 apple-touch-icon, plus manifest.json. The generator outputs the full set so launch QA stops flagging missing files.</p>
+    </div>
+    <div class="faq-item">
+      <h3>One favicon across client microsites, or per campaign?</h3>
+      <p>Match the favicon to the visible logo on the page. Master brand microsite uses master favicon; sub-brand or named campaign gets its own. Tab and bookmark match what users see on the page.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Best way to hand a favicon set to a client&rsquo;s dev team?</h3>
+      <p>The ZIP plus the four-line HTML snippet that references it. Pin a versioned copy in the deal record so the next dev team finds the canonical source instead of resampling.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should a favicon match the logo exactly?</h3>
+      <p>Almost never. Extract a letterform, monogram or icon element from the master mark and render that on a brand-color background. Full logos collapse to noise at 16px.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Where does favicon work fit in the launch checklist?</h3>
+      <p>Pre-launch QA, 48 hours before DNS flip. Three checks: tab favicon renders on every templated page, no 404s on /favicon* or /apple-touch-icon* in Network, and bookmark icon shows at retina resolution.</p>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    <h2>Ship the next client favicon bundle in under two minutes</h2>
+    <p>Free, no signup, runs in the browser. Every size, manifest.json, apple-touch-icon &mdash; one ZIP your dev team drops into the next deploy.</p>
+    <a href="/favicon-generator/" class="cta cta-primary">Open the Favicon Generator &rarr;</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> &middot; Free indie tools for the AI era &middot;
+    See also: <a href="/seo-meta-generator/">SEO Meta Generator</a> &middot;
+    <a href="/og-image-generator/">OG Image Generator</a> &middot;
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a>
+  </footer>
+</div>
+</body>
+</html>
