@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dark Mode Color Palette: A Complete Guide for 2026</title>
+<meta name="description" content="Build a dark mode color palette that doesn't burn eyes, kill contrast, or break in OLED. The 2026 field guide — surface elevation, accent picking, WCAG, and copy-paste tokens.">
+<meta name="keywords" content="dark mode color palette, dark mode design 2026, dark theme color palette, dark mode tailwind, dark mode oled, dark mode wcag, dark mode css variables, dark mode accent colors">
+<meta property="og:title" content="Dark Mode Color Palette: A Complete Guide for 2026">
+<meta property="og:description" content="The dark mode palette playbook — surface elevation, accent picking, WCAG contrast, copy-paste tokens. Free guide from TinyTools.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/color-palette/blog/dark-mode-color-palette-guide-2026/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dark Mode Color Palette: A Complete Guide for 2026">
+<meta name="twitter:description" content="Surface elevation, accent picking, WCAG contrast, copy-paste tokens. Free guide.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/color-palette/blog/dark-mode-color-palette-guide-2026/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Dark Mode Color Palette: A Complete Guide for 2026","description":"Build a dark mode color palette that doesn't burn eyes, kill contrast, or break in OLED. Surface elevation, accent picking, WCAG, and copy-paste tokens.","author":{"@type":"Organization","name":"TinyTools"},"publisher":{"@type":"Organization","name":"TinyTools","url":"https://tinytools-smoky.vercel.app/"},"datePublished":"2026-05-04","dateModified":"2026-05-04","mainEntityOfPage":"https://tinytools-smoky.vercel.app/color-palette/blog/dark-mode-color-palette-guide-2026/","keywords":"dark mode color palette, dark mode design, OLED, WCAG contrast, CSS variables"}</script>
+
+<style>
+:root{--bg:#0a0a0f;--bg-card:#15151f;--bg-elev:#1d1d2a;--border:#2a2a3a;--text:#f5f5fa;--text-dim:#a0a0b8;--accent:#a855f7;--accent-glow:#a855f740;--green:#10b981;--red:#ef4444;--amber:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;background-image:radial-gradient(circle at 20% 0%,var(--accent-glow) 0%,transparent 50%),radial-gradient(circle at 80% 60%,#ec489940 0%,transparent 50%)}
+.container{max-width:820px;margin:0 auto;padding:32px 20px 80px}
+.breadcrumb{font-size:13px;color:var(--text-dim);margin-bottom:24px}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+h1{font-size:clamp(28px,4vw,42px);font-weight:800;line-height:1.15;margin:16px 0 12px;letter-spacing:-0.02em;background:linear-gradient(135deg,#fff 0%,#d8b4fe 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.meta{color:var(--text-dim);font-size:14px;margin-bottom:28px}
+h2{font-size:24px;font-weight:700;margin:36px 0 12px;color:var(--text)}
+h3{font-size:19px;font-weight:600;margin:24px 0 8px;color:var(--text)}
+p,ul,ol{color:#d0d0e0;margin-bottom:16px;font-size:17px}
+ul,ol{margin-left:24px}li{margin-bottom:6px}
+strong{color:var(--text);font-weight:600}
+a{color:var(--accent)}
+code{background:var(--bg-elev);padding:2px 6px;border-radius:4px;font-size:14px;color:#d8b4fe}
+pre{background:var(--bg-elev);padding:14px 16px;border-radius:10px;overflow-x:auto;margin:16px 0;border:1px solid var(--border)}
+pre code{background:transparent;padding:0;color:#d8b4fe;font-size:13px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);color:#d0d0e0;vertical-align:top}
+th{background:var(--bg-elev);color:var(--text);font-weight:600;font-size:14px}
+tr:last-child td{border-bottom:none}
+.yes{color:var(--green);font-weight:600}.no{color:var(--red);font-weight:600}.partial{color:var(--amber);font-weight:600}
+.swatch-row{display:flex;gap:6px;margin:12px 0 20px;flex-wrap:wrap}
+.swatch{width:70px;height:70px;border-radius:10px;border:1px solid var(--border);display:flex;align-items:flex-end;justify-content:center;font-size:11px;color:rgba(255,255,255,0.85);font-family:'SF Mono',Monaco,monospace;padding:6px}
+.cta-box{margin:36px 0;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;border-left:4px solid var(--accent)}
+.cta-box h3{margin:0 0 6px;font-size:18px;color:var(--text)}
+.cta-box p{margin-bottom:12px;font-size:15px}
+.cta-btn{display:inline-block;padding:12px 24px;background:linear-gradient(135deg,#a855f7,#ec4899);color:white;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;box-shadow:0 4px 16px rgba(168,85,247,0.3)}
+.related{margin-top:60px;padding-top:28px;border-top:1px solid var(--border)}
+.related h3{color:var(--text-dim);font-size:13px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.related-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;text-decoration:none;color:var(--text);transition:transform 0.15s,border-color 0.15s}
+.related-card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.related-card .tag{font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.related-card .name{font-weight:600;font-size:15px}
+.callout{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:10px;padding:14px 18px;margin:18px 0;font-size:15px}
+.callout strong{color:var(--accent)}
+footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);font-size:13px;color:var(--text-dim);text-align:center}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="breadcrumb"><a href="/">TinyTools</a> &nbsp;›&nbsp; <a href="/color-palette/">Color Palette Generator</a> &nbsp;›&nbsp; Blog</div>
+
+<h1>Dark Mode Color Palette: A Complete Guide for 2026</h1>
+<div class="meta">Updated May 4, 2026 · 8 min read · By the TinyTools team</div>
+
+<p>Dark mode is the default. Roughly four out of five users on iOS and Android keep their device in dark mode all day, and on desktop the majority of long-form reading apps now ship dark-first. Designing a dark palette is no longer a "nice toggle in the corner" — it is your primary surface.</p>
+
+<p>And that is a problem, because the playbook most teams still copy was written for a 2018 web that assumed light mode was canonical. Pure black backgrounds, low-contrast grays, candy-bright accents straight off the brand deck — none of these survive contact with an OLED screen, an outdoor walk, or a real WCAG audit.</p>
+
+<p>This guide is the 2026 update. We will build a dark mode palette from scratch using six tokens, fix the four mistakes that cause 90% of "my dark theme looks ugly" tickets, and give you a copy-paste set of CSS variables you can drop into your project today.</p>
+
+<div class="cta-box">
+<h3>Want to skip the math?</h3>
+<p>Generate a full dark-mode-ready palette (with elevation surfaces, accent variants, and WCAG-checked text colors) in under 10 seconds.</p>
+<a class="cta-btn" href="/color-palette/">Try the Color Palette Generator free →</a>
+</div>
+
+<h2>The six tokens every dark palette needs</h2>
+
+<p>Forget naming things <code>--gray-900</code> through <code>--gray-50</code>. That is a Tailwind anti-pattern in dark mode because it forces you to think about a numeric scale instead of the role each color plays. A modern dark palette uses <strong>semantic tokens</strong>:</p>
+
+<table>
+<thead><tr><th>Token</th><th>Role</th><th>Example value</th></tr></thead>
+<tbody>
+<tr><td><code>--bg</code></td><td>Page background — the deepest layer</td><td><code>#0a0a0f</code></td></tr>
+<tr><td><code>--bg-card</code></td><td>Card / panel surface — one elevation up</td><td><code>#15151f</code></td></tr>
+<tr><td><code>--bg-elev</code></td><td>Inputs, hover states, popovers — two up</td><td><code>#1d1d2a</code></td></tr>
+<tr><td><code>--border</code></td><td>Subtle separators</td><td><code>#2a2a3a</code></td></tr>
+<tr><td><code>--text</code></td><td>Primary body and heading text</td><td><code>#f5f5fa</code></td></tr>
+<tr><td><code>--text-dim</code></td><td>Captions, meta, placeholder text</td><td><code>#a0a0b8</code></td></tr>
+</tbody>
+</table>
+
+<p>That is six tokens. Add one accent and you have a complete design system. Everything else (chips, dialogs, dropdowns) reuses these. If you find yourself reaching for a seventh background token, you almost certainly have a layering problem instead of a color problem.</p>
+
+<div class="swatch-row">
+<div class="swatch" style="background:#0a0a0f">#0a0a0f</div>
+<div class="swatch" style="background:#15151f">#15151f</div>
+<div class="swatch" style="background:#1d1d2a">#1d1d2a</div>
+<div class="swatch" style="background:#2a2a3a;color:#a0a0b8">#2a2a3a</div>
+<div class="swatch" style="background:#f5f5fa;color:#0a0a0f">#f5f5fa</div>
+<div class="swatch" style="background:#a0a0b8;color:#0a0a0f">#a0a0b8</div>
+</div>
+
+<h2>Mistake #1: Pure black backgrounds (#000)</h2>
+
+<p>Pure black sounds like the obvious choice for dark mode — and on an OLED display, it does turn pixels off, saving battery. But it also creates the highest possible contrast against white text, which causes <strong>halation</strong> (visual smearing of bright edges) for users with astigmatism, dry eye, or just tired eyes at 11pm.</p>
+
+<p>Use a near-black around <code>#0a0a0f</code> to <code>#0f0f15</code> instead. You keep most of the OLED battery savings, you keep the "premium" look, and you stop physically hurting people. Material Design 3, Apple's HIG, and IBM Carbon all moved off pure black between 2020 and 2023 for exactly this reason.</p>
+
+<h3>Bonus: tint your blacks</h3>
+
+<p>A neutral pure gray feels clinical. Tilting your background just a few degrees toward your accent (purple <code>#0a0a0f</code>, teal <code>#0a0f0f</code>, blue <code>#0a0a14</code>) makes the whole product feel like a deliberate brand. The shift is often invisible side by side, but in isolation it lands.</p>
+
+<h2>Mistake #2: Inverted light-mode colors</h2>
+
+<p>If your light-mode brand color is <code>#7c3aed</code> (Tailwind violet-600), that exact same hex looks <em>radioactive</em> on a dark background. Saturated colors gain perceived brightness on dark surfaces — a phenomenon documented all the way back in the 1839 Helmholtz–Kohlrausch effect.</p>
+
+<p>The fix is to <strong>desaturate accent colors by 10–20%</strong> when you switch to dark. Better still: use HSL or OKLCH to lower lightness <em>and</em> saturation simultaneously. Modern CSS makes this trivial:</p>
+
+<pre><code>:root {
+  --accent-light: oklch(60% 0.20 295);  /* light mode */
+  --accent-dark:  oklch(70% 0.15 295);  /* dark mode  */
+}
+@media (prefers-color-scheme: dark) {
+  :root { --accent: var(--accent-dark); }
+}</code></pre>
+
+<p>Same hue, but the dark variant is slightly lighter and noticeably calmer.</p>
+
+<h2>Mistake #3: Using opacity for elevation</h2>
+
+<p>You will see this pattern everywhere: <code>background: rgba(255,255,255,0.05)</code> on a card to "elevate" it. It works visually, but it breaks the moment a user lands on a colored background, drags a card over a gradient, or prints the page. Worse, it makes contrast unpredictable.</p>
+
+<p>Use <strong>solid elevation tokens</strong> instead. Each step up the elevation ladder is roughly <code>+8 to +12</code> on each RGB channel from the previous step. The TinyTools system goes <code>#0a0a0f</code> → <code>#15151f</code> → <code>#1d1d2a</code>: three discrete, testable, accessibility-friendly surfaces.</p>
+
+<div class="callout"><strong>Rule of thumb:</strong> if you can take a screenshot of one card and not be able to tell whether it is on the page background or sitting in a panel, your elevation tokens are too close. Bump them apart by 4-6 RGB points until each surface is visually distinct.</div>
+
+<h2>Mistake #4: Forgetting WCAG on dark mode</h2>
+
+<p>Light mode pages get audited because grey-on-white is obviously hard to read. Dark mode pages get a free pass because "everything is light text on dark, must be fine." It is not.</p>
+
+<p><code>#a0a0b8</code> on <code>#0a0a0f</code> hits a 9.4:1 contrast ratio — way above the WCAG AA threshold of 4.5:1 for body text. But <code>#5a5a6f</code> on <code>#15151f</code>? Only 2.8:1. Below AA. And that exact second pair is the placeholder color in shadcn/ui's defaults.</p>
+
+<p>Test every text-on-surface combination at build time. The <a href="/seo-meta-generator/" rel="noopener">TinyTools SEO Meta Tag Generator</a> includes a contrast checker, or you can run the official <a href="https://webaim.org/resources/contrastchecker/" rel="noopener">WebAIM contrast checker</a> as a CI step. The <a href="https://web.dev/learn/accessibility/color-contrast" rel="noopener">web.dev accessibility guide</a> is the definitive reference.</p>
+
+<h2>Picking your dark mode accent</h2>
+
+<p>Your accent color is the single most important decision in the palette. It is what your brand looks like when someone screenshots a button. Three rules for picking it well in dark mode:</p>
+
+<ol>
+<li><strong>Avoid pure red and pure yellow.</strong> Both vibrate aggressively on dark. Use a slightly orange-shifted red (<code>#f87171</code>, not <code>#ef4444</code>) and a warm amber (<code>#f59e0b</code>, not <code>#fbbf24</code>) for warning and danger.</li>
+<li><strong>Pick from the cool half of the wheel for primary actions.</strong> Purple, blue, teal, and cyan all sit gracefully on dark surfaces. Green works if you go forest (<code>#10b981</code>) instead of lime.</li>
+<li><strong>Generate two stops, not one.</strong> A solid accent and a 40%-alpha "glow" version. The glow is what you use for hover states, focus rings, and the soft radial gradients that make modern dark UIs feel alive.</li>
+</ol>
+
+<h2>The 60-second copy-paste palette</h2>
+
+<p>Drop this into the top of any CSS file and you have a working dark mode design system:</p>
+
+<pre><code>:root {
+  --bg: #0a0a0f;
+  --bg-card: #15151f;
+  --bg-elev: #1d1d2a;
+  --border: #2a2a3a;
+  --text: #f5f5fa;
+  --text-dim: #a0a0b8;
+  --accent: #a855f7;
+  --accent-glow: rgba(168, 85, 247, 0.25);
+
+  /* Semantic */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #f87171;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  background-image:
+    radial-gradient(circle at 20% 0%, var(--accent-glow), transparent 50%),
+    radial-gradient(circle at 80% 60%, rgba(236,72,153,0.2), transparent 50%);
+}
+.card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
+input, .popover { background: var(--bg-elev); border: 1px solid var(--border); }
+.muted { color: var(--text-dim); }</code></pre>
+
+<p>Swap the <code>--accent</code> hex for whatever your brand uses and you are done. If you do not have a brand color yet, our <a href="/color-palette/">color palette generator</a> will produce a dark-mode-tuned version from any seed in one click.</p>
+
+<h2>Handling system preference</h2>
+
+<p>The modern way to support both modes is the <code>color-scheme</code> property plus a <code>prefers-color-scheme</code> media query, with a manual override stored in <code>localStorage</code>. The <a href="https://web.dev/articles/color-scheme" rel="noopener">web.dev color-scheme guide</a> walks through it. Two gotchas:</p>
+
+<ul>
+<li>Set <code>color-scheme: dark light</code> on <code>:root</code> so native form controls and scrollbars adapt automatically. Without this, your <code>&lt;select&gt;</code> dropdowns will be white-on-white when a user toggles dark.</li>
+<li>Avoid the flash of light mode on first paint. Inline the theme detection script in <code>&lt;head&gt;</code> before any stylesheet loads.</li>
+</ul>
+
+<h2>Testing your dark palette</h2>
+
+<p>Before you ship, run through this five-minute checklist:</p>
+
+<ol>
+<li><strong>OLED test.</strong> View the page on a phone in a dark room. Does anything look like it is "vibrating"? Tone down the accent.</li>
+<li><strong>Bright sunlight test.</strong> Take the same phone outside. Is body text still readable? If not, your text-dim is too dim.</li>
+<li><strong>Color-blind test.</strong> Use Chrome DevTools → Rendering → Emulate vision deficiencies. Cycle through protanopia, deuteranopia, tritanopia. Status colors (success/warning/danger) must be distinguishable from each other without relying on hue alone.</li>
+<li><strong>Print stylesheet.</strong> Hit Cmd-P. If the page renders as black-on-black, you are missing a print stylesheet. Add <code>@media print { :root { --bg: white; --text: black; } }</code>.</li>
+<li><strong>Forced colors.</strong> Windows High Contrast mode overrides your palette. Make sure semantic HTML (<code>button</code>, <code>a</code>, <code>input</code>) is doing the heavy lifting, not divs styled with <code>--accent</code>.</li>
+</ol>
+
+<div class="cta-box">
+<h3>Generate your palette in 10 seconds</h3>
+<p>Skip the manual color math. Pick a base color, get a full dark-mode-ready palette with elevation surfaces, accent variants, and WCAG-compliant text — exportable as CSS variables, Tailwind config, or JSON.</p>
+<a class="cta-btn" href="/color-palette/">Try it free, no signup →</a>
+</div>
+
+<h2>The TL;DR</h2>
+
+<p>A great dark mode palette is six semantic tokens, not a 50-shade gray scale. Avoid pure black, desaturate your accents, use solid colors for elevation instead of opacity, and audit every text-on-surface pair against WCAG AA. Most "ugly dark mode" complaints trace back to one of those four mistakes, and fixing them is a one-afternoon project.</p>
+
+<p>If you want a head start, the <a href="/color-palette/">TinyTools color palette generator</a> ships these defaults out of the box. Pair it with the <a href="/favicon-generator/">favicon generator</a> (so your dark-mode favicon does not vanish in the macOS tab bar) and the <a href="/og-image-generator/">OG image generator</a> (so your share previews match your dark brand) and you have the visual identity for a SaaS in under 30 minutes.</p>
+
+<div class="related">
+<h3>Related TinyTools</h3>
+<div class="related-grid">
+<a class="related-card" href="/color-palette/">
+<div class="tag">Tool</div><div class="name">Color Palette Generator</div>
+</a>
+<a class="related-card" href="/favicon-generator/">
+<div class="tag">Tool</div><div class="name">Favicon Generator</div>
+</a>
+<a class="related-card" href="/og-image-generator/">
+<div class="tag">Tool</div><div class="name">OG Image Generator</div>
+</a>
+<a class="related-card" href="/color-palette/blog/color-theory-non-designers-2026/">
+<div class="tag">Article</div><div class="name">Color Theory for Non-Designers</div>
+</a>
+<a class="related-card" href="/color-palette/blog/how-to-pick-brand-colors-startup-2026/">
+<div class="tag">Article</div><div class="name">How to Pick Brand Colors</div>
+</a>
+<a class="related-card" href="/seo-meta-generator/">
+<div class="tag">Tool</div><div class="name">SEO Meta Tag Generator</div>
+</a>
+</div>
+</div>
+
+<footer>
+<p>© 2026 <a href="/">TinyTools</a> · Free tools for builders. <a href="/color-palette/">Generate a palette →</a></p>
+</footer>
+
+</div>
+</body></html>
