@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OG vs Twitter Card Differences in 2026 — The Practical Field Guide</title>
+<meta name="description" content="OG tags and Twitter Card tags look almost identical but render differently across LinkedIn, Slack, X, iMessage, Discord, and AI assistants. Here is the 2026 field guide with the exact tag set that ships clean everywhere — plus copy-paste templates.">
+<meta name="keywords" content="og vs twitter card, open graph vs twitter card, twitter card vs og tags, twitter card meta tags, og:image vs twitter:image, summary_large_image, twitter card validator 2026, og tags 2026, social meta tags differences">
+<meta property="og:title" content="OG vs Twitter Card Differences in 2026">
+<meta property="og:description" content="One tag set, six platforms, six rendering engines. Here is what is actually different between OG and Twitter Cards in 2026 — and the minimum tag set that ships clean on LinkedIn, Slack, iMessage, Discord, X, and AI search.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/seo-meta-generator/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OG vs Twitter Card Differences in 2026">
+<meta name="twitter:description" content="One tag set, six platforms, six rendering engines. The 2026 field guide.">
+<meta name="twitter:image" content="https://tinytools-smoky.vercel.app/seo-meta-generator/og-default.png">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "OG vs Twitter Card Differences in 2026 — The Practical Field Guide",
+  "description": "Open Graph and Twitter Card tags look nearly identical but render differently across LinkedIn, Slack, X, iMessage, Discord, and AI search engines. The complete 2026 reference: tag-by-tag differences, platform-by-platform fallback rules, and the minimum copy-paste set that ships clean everywhere.",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
+  "datePublished": "2026-05-05",
+  "dateModified": "2026-05-05",
+  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/",
+  "image": "https://tinytools-smoky.vercel.app/seo-meta-generator/og-default.png",
+  "keywords": "og vs twitter card, open graph protocol, twitter card meta tags, summary_large_image, social meta tags 2026"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I still need both OG tags and Twitter Card tags in 2026?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, but not as much as in 2018. X (formerly Twitter) now falls back to Open Graph tags when Twitter-specific tags are missing, so a clean OG set will render acceptably on X. The two cases where you still need explicit twitter: tags are setting twitter:card to summary_large_image so X uses the wide hero layout, and overriding the title or image specifically for X without changing what other platforms see. For everything else, OG alone is enough in 2026." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between og:image and twitter:image?",
+      "acceptedAnswer": { "@type": "Answer", "text": "They serve the same purpose but to different platforms. og:image is read by Facebook, LinkedIn, Slack, Discord, iMessage, WhatsApp, and most AI search engines. twitter:image is read only by X. If you set both, twitter:image wins on X and og:image wins everywhere else. If you set only og:image, X falls back to it. The recommended 2026 setup is to set og:image and only add twitter:image when you want a different image specifically for X." }
+    },
+    {
+      "@type": "Question",
+      "name": "What size should an OG image be in 2026?",
+      "acceptedAnswer": { "@type": "Answer", "text": "1200 by 630 pixels at a 1.91:1 ratio remains the safe universal size in 2026. It renders crisply on Facebook, LinkedIn, Slack, Discord, iMessage, and WhatsApp without cropping. X uses the same image when twitter:card is set to summary_large_image. Keep file size under 1 MB and use JPG or PNG. Avoid putting critical text in the outer 60 pixels of the image because LinkedIn and iMessage occasionally crop the edges." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does X still respect twitter:card in 2026?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. X reads twitter:card to choose between summary (small thumbnail) and summary_large_image (wide hero). Without the tag, X defaults to summary, which produces a much smaller and less clickable card. Setting twitter:card to summary_large_image is the single most important Twitter-specific tag you can add in 2026 — it is the difference between a 50 by 50 pixel thumbnail and a full-width hero image." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do AI search engines like ChatGPT and Perplexity use OG tags?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. ChatGPT Search, Perplexity, Google AI Overview, and Bing Copilot all read Open Graph tags as part of their citation rendering. og:title becomes the citation title, og:description seeds the citation snippet, and og:image is shown when the AI returns a rich card. None of them currently read twitter:* tags. If you want to optimize for AI search citation, focus your effort on og:title, og:description, og:image, og:url, and og:site_name." }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a;
+    --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #3b82f6; --accent-glow: #3b82f640;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 {
+    font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15;
+    margin: 16px 0 12px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 24px; font-weight: 700; margin: 36px 0 12px; color: var(--text); }
+  h3 { font-size: 19px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+  p, ul, ol { color: #d0d0e0; margin-bottom: 16px; font-size: 17px; }
+  ul, ol { margin-left: 24px; }
+  li { margin-bottom: 6px; }
+  strong { color: var(--text); font-weight: 600; }
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-size: 14px; color: #93c5fd; }
+  pre.code-block { background: #000; color: #e0e0ff; padding: 16px 18px; border-radius: 10px; border: 1px solid var(--border); overflow-x: auto; font-size: 13px; line-height: 1.55; margin: 14px 0 18px; font-family: ui-monospace, 'SF Mono', Menlo, monospace; }
+  a { color: var(--accent); }
+  blockquote {
+    border-left: 3px solid var(--accent); padding: 8px 16px; margin: 20px 0;
+    background: var(--bg-elevated); border-radius: 6px; font-style: italic; color: var(--text-dim);
+  }
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 15px;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); color: #d0d0e0; vertical-align: top; }
+  th { background: var(--bg-elevated); color: var(--text); font-weight: 600; font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  .cta-box {
+    margin: 36px 0; padding: 24px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; border-left: 4px solid var(--accent);
+  }
+  .cta-box h3 { margin: 0 0 6px; font-size: 18px; color: var(--text); }
+  .cta-box p { margin-bottom: 12px; font-size: 15px; }
+  .cta-btn {
+    display: inline-block; padding: 12px 24px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+  }
+  .related { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .related h3 { color: var(--text-dim); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card {
+    padding: 14px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--text); transition: all 0.15s;
+  }
+  .related-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .related-card .name { font-weight: 600; font-size: 14px; }
+  .related-card .desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="breadcrumb">
+  <a href="/">TinyTools</a> &nbsp;›&nbsp;
+  <a href="/seo-meta-generator/">SEO Meta Tag Generator</a> &nbsp;›&nbsp;
+  Blog &nbsp;›&nbsp;
+  OG vs Twitter Card Differences in 2026
+</div>
+
+<h1>OG vs Twitter Card Differences in 2026 — The Practical Field Guide</h1>
+
+<div class="meta">May 5, 2026 · 9 min read · For developers, marketers, and indie hackers shipping content</div>
+
+<p>You paste a link into LinkedIn. The card looks great. You paste the same link into X. The image is missing. You paste it into Slack. The title got truncated halfway. You paste it into iMessage. There is no preview at all.</p>
+
+<p>One URL. Six rendering engines. Six different decisions about what to show. The reason this happens almost always traces back to a quiet disagreement between <strong>Open Graph tags</strong> (<code>og:*</code>) and <strong>Twitter Card tags</strong> (<code>twitter:*</code>), and to platforms that fall back to one or the other in subtly different ways.</p>
+
+<p>Here is the 2026 field guide. What is actually different between OG and Twitter Cards, what each platform reads, what falls back to what, and the minimum tag set that ships clean everywhere.</p>
+
+<h2>The 30-second version</h2>
+
+<p>If you only have time for one sentence: <strong>set Open Graph tags for everything, and add exactly one Twitter Card tag — <code>twitter:card</code> set to <code>summary_large_image</code> — to make X render the wide hero layout instead of the small thumbnail.</strong></p>
+
+<p>The full reasoning, the platform-by-platform fallback table, and the copy-paste templates are below.</p>
+
+<h2>What OG and Twitter Cards actually are</h2>
+
+<p>Open Graph is a protocol Facebook released in 2010 to let any website describe itself to social sharers. The shape is simple: namespaced <code>&lt;meta property="og:*"&gt;</code> tags in your <code>&lt;head&gt;</code> describe the title, description, image, URL, and content type. Sixteen years later, OG is the closest thing the web has to a universal social-preview standard. Facebook reads it. LinkedIn reads it. Slack reads it. Discord reads it. iMessage reads it. WhatsApp reads it. AI search engines read it.</p>
+
+<p>Twitter Cards launched two years later, in 2012, as Twitter's own version of the same idea. The shape is intentionally similar: <code>&lt;meta name="twitter:*"&gt;</code> tags carry the same kinds of fields. The key addition is <code>twitter:card</code>, which tells X which layout to use — a small <code>summary</code> card with a thumbnail or a <code>summary_large_image</code> card with a full-width hero.</p>
+
+<p>For roughly a decade, you needed both. In 2026 you mostly do not — but the exceptions matter.</p>
+
+<h2>Tag-by-tag: what is the same and what is different</h2>
+
+<table>
+  <thead>
+    <tr><th>Open Graph</th><th>Twitter Card</th><th>What is different</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>og:title</code></td><td><code>twitter:title</code></td><td>Identical purpose. X falls back to <code>og:title</code> when missing.</td></tr>
+    <tr><td><code>og:description</code></td><td><code>twitter:description</code></td><td>Identical purpose. X falls back to <code>og:description</code> when missing.</td></tr>
+    <tr><td><code>og:image</code></td><td><code>twitter:image</code></td><td>Same image, different consumers. X uses <code>twitter:image</code> if set, else <code>og:image</code>.</td></tr>
+    <tr><td><code>og:url</code></td><td>—</td><td>Twitter has no equivalent. X uses the canonical URL of the page.</td></tr>
+    <tr><td><code>og:type</code></td><td>—</td><td>Twitter ignores it. OG uses it for <code>article</code>, <code>video</code>, <code>product</code>, etc.</td></tr>
+    <tr><td><code>og:site_name</code></td><td><code>twitter:site</code></td><td>OG expects a brand name. <code>twitter:site</code> expects an <code>@handle</code>.</td></tr>
+    <tr><td>—</td><td><code>twitter:card</code></td><td>The only Twitter-specific tag with no OG equivalent. Controls layout on X.</td></tr>
+    <tr><td>—</td><td><code>twitter:creator</code></td><td>Optional <code>@handle</code> of the author. No OG equivalent.</td></tr>
+    <tr><td><code>og:image:alt</code></td><td><code>twitter:image:alt</code></td><td>Both exist. X uses its own; everyone else uses OG's.</td></tr>
+  </tbody>
+</table>
+
+<h2>Platform-by-platform: who reads what</h2>
+
+<p>This is the table that actually decides what your card looks like in 2026. Each row is a major sharer or messaging app and which tag family it prefers, with what it falls back to.</p>
+
+<table>
+  <thead>
+    <tr><th>Platform</th><th>Reads first</th><th>Falls back to</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Facebook</td><td><code>og:*</code></td><td>Page <code>&lt;title&gt;</code>, first <code>&lt;img&gt;</code></td></tr>
+    <tr><td>LinkedIn</td><td><code>og:*</code></td><td>Same as Facebook. Ignores all <code>twitter:*</code>.</td></tr>
+    <tr><td>X (Twitter)</td><td><code>twitter:*</code></td><td><code>og:*</code> for missing fields. Uses <code>twitter:card</code> for layout.</td></tr>
+    <tr><td>Slack</td><td><code>og:*</code></td><td>Title tag, oEmbed</td></tr>
+    <tr><td>Discord</td><td><code>og:*</code></td><td>Title tag, embedded media URLs</td></tr>
+    <tr><td>iMessage / Messages</td><td><code>og:*</code></td><td>Apple Smart App Banner, page title</td></tr>
+    <tr><td>WhatsApp</td><td><code>og:*</code></td><td>Page title, first <code>&lt;img&gt;</code></td></tr>
+    <tr><td>Telegram</td><td><code>og:*</code></td><td>Title tag, oEmbed</td></tr>
+    <tr><td>ChatGPT Search</td><td><code>og:*</code></td><td>Page title, headline schema</td></tr>
+    <tr><td>Perplexity</td><td><code>og:*</code></td><td>Article schema, page title</td></tr>
+    <tr><td>Google AI Overview</td><td><code>og:*</code> + structured data</td><td>Page title, meta description</td></tr>
+  </tbody>
+</table>
+
+<p>Eleven major rendering engines. Ten of them prefer OG. Only X prefers Twitter-specific tags — and even X falls back to OG when those tags are missing. This is the core fact that should shape your strategy in 2026.</p>
+
+<h2>The 2026 minimum tag set</h2>
+
+<p>This is the smallest set of tags that produces a clean card on every platform listed above. Copy, paste, swap in your values, ship.</p>
+
+<pre class="code-block">&lt;!-- Universal: Open Graph --&gt;
+&lt;meta property="og:title" content="Your page title — under ~60 chars"&gt;
+&lt;meta property="og:description" content="One-sentence pitch — front-load value into first ~110 chars"&gt;
+&lt;meta property="og:image" content="https://example.com/og.png"&gt;
+&lt;meta property="og:url" content="https://example.com/the-page/"&gt;
+&lt;meta property="og:type" content="article"&gt;
+&lt;meta property="og:site_name" content="Your Brand"&gt;
+
+&lt;!-- X-specific: only what OG cannot express --&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;meta name="twitter:site" content="@yourhandle"&gt;</pre>
+
+<p>That is the entire delta from "I have OG tags" to "my card looks correct on every platform in 2026." Eight lines. The last two are the only Twitter-specific lines that actually pay rent.</p>
+
+<h3>When you do want a separate Twitter image</h3>
+
+<p>The one common reason to add a separate <code>twitter:image</code> in 2026: your OG image was designed for the LinkedIn and Facebook feed, and the layout reads poorly at X's slightly tighter aspect crop. If you find yourself regenerating images with X-specific text positioning, that is when adding an explicit <code>twitter:image</code> earns its keep. Otherwise, leave it out and let X fall back to <code>og:image</code>.</p>
+
+<h2>OG image specs that work in 2026</h2>
+
+<p>Image specs are where most cards still break in 2026, even with the right tags.</p>
+
+<ul>
+  <li><strong>Dimensions:</strong> 1200 × 630 pixels, 1.91:1 ratio. This is the universal safe size. It renders crisply on Facebook, LinkedIn, Slack, Discord, iMessage, and WhatsApp. It is also the size X uses for <code>summary_large_image</code> cards.</li>
+  <li><strong>File size:</strong> Under 1 MB. Some platforms (notably WhatsApp and iMessage) silently drop images larger than 1 MB and fall back to no image.</li>
+  <li><strong>Format:</strong> JPG or PNG. SVG is not supported by any major platform in 2026. WebP works on most platforms but still fails silently on iMessage and Slack legacy unfurlers.</li>
+  <li><strong>Safe area:</strong> Keep critical text inside the central 1080 × 540 region. LinkedIn and iMessage occasionally crop the outer 60 pixels.</li>
+  <li><strong>Absolute URLs only:</strong> Relative paths in <code>og:image</code> silently break on Slack and Discord. Always use a full <code>https://</code> URL.</li>
+</ul>
+
+<p>If you want a one-click way to generate compliant images at this exact spec, our <a href="/og-image-generator/">free OG Image Generator</a> ships them at 1200 × 630 with safe-area guides built in.</p>
+
+<h2>The five mistakes I still see weekly in 2026</h2>
+
+<ol>
+  <li><strong>Setting <code>twitter:card</code> to <code>summary</code> by accident.</strong> Many CMS plugins ship this default. The result is a tiny thumbnail card on X instead of a full-width hero. Always use <code>summary_large_image</code> unless you specifically want the small layout.</li>
+  <li><strong>Using a relative path in <code>og:image</code>.</strong> Slack, Discord, and iMessage drop the image entirely. LinkedIn and Facebook tolerate it but the image often loads slowly. Always absolute.</li>
+  <li><strong>Forgetting <code>og:url</code>.</strong> Without it, some platforms (Slack in particular) cannot deduplicate cards when the same page is shared from multiple URL variants. Set it to your canonical URL.</li>
+  <li><strong>Putting <code>twitter:site</code> as a brand name instead of an <code>@handle</code>.</strong> X expects an <code>@</code>-prefixed handle. A brand name makes the tag silently invalid. Either use your handle or leave the tag out.</li>
+  <li><strong>Generating images with critical text in the outer 60 px.</strong> LinkedIn crops it. iMessage crops it. Test on a real device, not in a desktop validator.</li>
+</ol>
+
+<h2>How AI search treats OG tags in 2026</h2>
+
+<p>The change that has quietly mattered most in the last two years: AI-powered search engines now read OG tags. <code>og:title</code> becomes the citation title in ChatGPT Search, Perplexity, Google AI Overview, and Bing Copilot. <code>og:description</code> seeds the snippet shown next to your citation. <code>og:image</code> appears when the AI returns a rich card. None of them currently read <code>twitter:*</code>.</p>
+
+<p>If you care about being cited cleanly in AI search results — and in 2026 you should — your highest-leverage edits are <code>og:title</code> (specific, verb-led, under 60 characters) and <code>og:description</code> (front-loaded value, ideally under 110 characters for the AI rewrite to stay faithful). A clean image at <code>og:image</code> is the third lever. The Twitter-specific tags do nothing here.</p>
+
+<p>For more on how to write descriptions AI assistants will cite faithfully, see our companion piece on <a href="/seo-meta-generator/blog/meta-description-length-2026/">meta description length in 2026</a> — same author, same data set.</p>
+
+<h2>Validate before you ship</h2>
+
+<p>Three validators that still work in 2026:</p>
+
+<ul>
+  <li><strong>X Card Validator:</strong> <a href="https://cards-dev.twitter.com/validator" rel="nofollow">cards-dev.twitter.com/validator</a> — exact rendering preview for X.</li>
+  <li><strong>LinkedIn Post Inspector:</strong> <a href="https://www.linkedin.com/post-inspector/" rel="nofollow">linkedin.com/post-inspector</a> — clears LinkedIn's cache and previews the card.</li>
+  <li><strong>Facebook Sharing Debugger:</strong> <a href="https://developers.facebook.com/tools/debug/" rel="nofollow">developers.facebook.com/tools/debug</a> — covers Facebook, Instagram, WhatsApp, and Messenger in one validator.</li>
+</ul>
+
+<p>Slack, Discord, iMessage, Telegram, and WhatsApp do not provide debuggers. The only reliable test is to send the link to yourself in each app. Caches typically expire in 24–72 hours, so plan to test before you announce.</p>
+
+<div class="cta-box">
+  <h3>Skip the typos</h3>
+  <p>Our free <strong>SEO Meta Tag Generator</strong> writes both OG and Twitter Card tag sets at the same time, with live previews of how the card will render on Google, X, Facebook, LinkedIn, and Slack as you type. No signup, no email gate, ships clean tags every time.</p>
+  <a class="cta-btn" href="/seo-meta-generator/">Try it free →</a>
+</div>
+
+<h2>The TL;DR you can paste in a doc</h2>
+
+<ul>
+  <li>OG tags are the universal standard in 2026. Set them.</li>
+  <li>The only Twitter-specific tag that materially changes your card is <code>twitter:card</code> set to <code>summary_large_image</code>. Set it.</li>
+  <li>X falls back to OG for everything else. You almost never need a separate <code>twitter:title</code>, <code>twitter:description</code>, or <code>twitter:image</code>.</li>
+  <li>Image: 1200 × 630, under 1 MB, absolute URL, JPG or PNG, critical text inside the central 1080 × 540.</li>
+  <li>Test in real apps, not just in validators. Slack and iMessage have no debuggers.</li>
+  <li>AI search engines read OG tags and ignore Twitter-specific tags. Optimize for OG.</li>
+</ul>
+
+<p>Eight lines of <code>&lt;meta&gt;</code> in your <code>&lt;head&gt;</code> will out-render every site that still maintains parallel <code>twitter:*</code> tags by hand. The protocol convergence already happened. The only thing left is to stop maintaining redundant tags and ship the cleaner set.</p>
+
+<div class="related">
+  <h3>Related TinyTools</h3>
+  <div class="related-grid">
+    <a class="related-card" href="/seo-meta-generator/">
+      <div class="name">SEO Meta Tag Generator</div>
+      <div class="desc">Live OG, Twitter, and Google preview as you type</div>
+    </a>
+    <a class="related-card" href="/og-image-generator/">
+      <div class="name">OG Image Generator</div>
+      <div class="desc">1200 × 630 social cards in seconds</div>
+    </a>
+    <a class="related-card" href="/favicon-generator/">
+      <div class="name">Favicon Generator</div>
+      <div class="desc">Every dimension every browser needs</div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  © 2026 TinyTools · <a href="/">All free tools</a> · <a href="/seo-meta-generator/blog/meta-description-length-2026/">More from this blog</a>
+</footer>
+
+</div>
+</body>
+</html>
