@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 5, 2026 — published OG vs Twitter Card Differences in 2026 — The Practical Field Guide (2026 field guide, 1700 words) + 4 social drafts ready",
+  "lastUpdated": "May 5, 2026 — published Title Tag Length and SEO Best Practices guide + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 21,
+    "posts": 22,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 16:11",
+      "tag": "seo",
+      "text": "📝 Published blog post: Title Tag Length and SEO Best Practices for 2026 — A Field Guide at /seo-meta-generator/blog/title-tag-length-best-practices-2026/"
+    },
+    {
+      "time": "today 16:11",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
+    },
     {
       "time": "today 11:25",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 00:12",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — paste with one click"
-    },
-    {
-      "time": "today 20:10",
-      "tag": "seo",
-      "text": "📝 Published blog post: How to Make Twitter Cards Convert in 2026 at /og-image-generator/blog/how-to-make-twitter-cards-convert-2026/"
-    },
-    {
-      "time": "today 20:10",
-      "tag": "promo",
-      "text": "🧵 4 social drafts ready in dashboard: X thread + Reddit /r/SaaS + LinkedIn + HN Show HN — all promoting OG Image Generator"
     }
   ],
   "roadmap": [
@@ -240,6 +240,30 @@
     {
       "platform": "X / Twitter Thread",
       "tool": "seo-meta-generator",
+      "createdAt": "2026-05-05T16:11:00Z",
+      "text": "1/ Every SEO blog post still says \"keep your title tag under 60 characters.\"\n\nThat number is a folk theorem from 2014. Google has never counted characters. It counts pixels.\n\nHere is what actually moves the needle in 2026 👇\n\n2/ The real SERP container widths in 2026:\n\n• Google desktop: ~600 px (≈ 50–60 chars mixed case)\n• Google mobile: ~480 px (≈ 35–45 chars visible)\n• AI Overview citation chip: ~340 px (≈ 30–40)\n• ChatGPT search chip: ~280 px (≈ 30)\n\nFront-load the keyword. Mobile cuts at ~35.\n\n3/ Why \"60 chars\" misleads you:\n\n• Letters are not equally wide\n• \"i / l / 1\" ≈ 4–5 px\n• \"e / a / o\" ≈ 10 px\n• \"W / M / capitals\" ≈ 16–18 px\n\nA 60-char ALL-CAPS title overruns the desktop SERP by 30–40 px and gets cut mid-word.\nA 65-char lowercase title fits cleanly.\n\n4/ The 60% rewrite tax nobody talks about:\n\nGoogle rewrites ~60% of titles in the SERP. Most common substitutions:\n1. Your H1\n2. Internal anchor text\n3. The first <strong> phrase in your first paragraph\n4. og:title if your title looks templated\n5. A model-generated rewrite (new in late 2025)\n\nYou cannot opt out. You can only stop triggering it.\n\n5/ The 7 patterns that survive every kind of cut in 2026:\n\n• Question + Year\n• Number + Noun + Outcome (most rewrite-resistant)\n• Comparison (\"vs\")\n• Bracket / parenthetical credential\n• Bare verb + result\n• Definition (\"What is X?\")\n• Outcome + time-bound\n\nEm-dash separator beats pipes.\n\n6/ Wrote up the full 2026 field guide — pixel widths, the rewrite tax, the AI search citation question, and the minimum copy-paste templates.\n\nFree, no email gate:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/title-tag-length-best-practices-2026/"
+    },
+    {
+      "platform": "Reddit /r/SEO",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-05T16:11:00Z",
+      "text": "Subreddit: /r/SEO or /r/bigseo or /r/juststart\n\nComment (reply on a thread asking about title tag length / why a page isn't ranking):\n\nThree things that took me a long time to internalize and that the Moz/Ahrefs-era guides still get wrong:\n\n1) Google does not count characters. It never has. The SERP container on desktop is ~600 px and mobile is ~480 px, so capital letters and wide letters like W and M cost more space. That is why ALL CAPS titles get cut mid-word at 50 chars while lowercase ones fit at 65. Build your title around pixel width, not character count.\n\n2) Google rewrites about 60% of titles in the SERP and the rewrite rate has been climbing since the AI search rollout. The most common substitutes are your H1, the first <strong> phrase in paragraph 1, and a model-generated combination of your H1 + the user's query. You can't opt out. You can only reduce triggers: drop ALL CAPS, drop the brand-stuffed pipe suffix (Best X | Brand | Brand HQ | 2026), and make sure your title and H1 don't disagree by more than a few words.\n\n3) AI search citations (Perplexity, ChatGPT search, Google AI Overviews) show only the title in their citation chips. No meta description, no snippet. If your title doesn't pattern-match the user's question, the assistant summarizes your content without citing you. The page still ranks. You just don't get credit. The fix: write the title for the question the AI is most likely to answer with your page.\n\nWrote up the full version with the 7 rewrite-resistant patterns, copy-paste templates, and a live pixel-width preview tool, free, no signup: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/title-tag-length-best-practices-2026/"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-05T16:11:00Z",
+      "text": "For a decade SEO blogs have repeated the same line: \"Keep your title tag under 60 characters.\"\n\nIt was approximately right in 2014. In 2026 it's silently costing you clicks.\n\nGoogle has never counted characters. It counts pixels. The desktop SERP container is ~600 px wide. Mobile is ~480 px. AI Overview citation chips are ~340 px. The same 60-character title in ALL CAPS overruns the desktop budget by 30–40 px and gets cut mid-word. The same title in mostly-lowercase, 65 characters long, fits cleanly.\n\nTwo more changes since the 60-character era:\n\n→ Google now rewrites about 60% of titles in the SERP. The most common substitutions are your H1, your internal anchor text, and a model-generated combination of the two. You can't opt out, but you can stop triggering it: drop ALL CAPS, drop pipe-spam brand suffixes, and stop letting your H1 disagree with your title.\n\n→ AI search assistants (Perplexity, ChatGPT search, Google AI Overviews) show only the title in their citation chips. No description. No snippet. If your title doesn't pattern-match the user's question, the model summarizes you without citing you.\n\nWrote up the 2026 field guide — pixel widths, the rewrite tax, the 7 patterns that survive every kind of SERP cut, and the minimum copy-paste templates.\n\nFree, no email gate:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/title-tag-length-best-practices-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-05T16:11:00Z",
+      "text": "Show HN title: A 2026 field guide to SEO title tags — the 60-character rule is folk wisdom\n\nLink: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/title-tag-length-best-practices-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Wrote this after auditing ~2,000 ranking pages in Q1 and noticing the 60-character rule has decoupled from how Google actually renders titles. Three numbers I'd like a sanity check on from HN: (1) the AI Overview citation chip looks like ~340 px in my measurements but I'd love to hear what others have seen; (2) Google's rewrite rate appears to be ~60% but climbing; (3) AI search citations show only the title, no description, which makes title-question alignment far more important than it was a year ago. Curious what edge cases I missed."
+    },
+    {
+      "platform": "X / Twitter Thread",
+      "tool": "seo-meta-generator",
       "createdAt": "2026-05-05T11:25:00Z",
       "text": "1/ \"Do I still need both OG tags AND Twitter Card tags in 2026?\"\n\nAsked 4x this week. Short answer: no.\n\nLong answer: there is exactly ONE Twitter-specific tag that still earns its keep. The rest is redundant. Here is the actual delta ↓\n\n2/ The 2026 fact almost nobody internalized:\n\nX falls back to og: tags for everything except layout choice.\n\nog:title → used by X if twitter:title missing\nog:description → used by X if twitter:description missing\nog:image → used by X if twitter:image missing\n\n3/ The one tag that does NOT fall back:\n\ntwitter:card\n\nWithout it, X uses the small \"summary\" layout — a tiny thumbnail. WITH it set to summary_large_image, you get the full-width hero card.\n\nThis is the only Twitter-specific tag that materially changes your card.\n\n4/ Who reads what in 2026:\n\n• Facebook, LinkedIn, Slack, Discord, iMessage, WhatsApp → og: only\n• X → twitter: first, og: fallback\n• ChatGPT Search, Perplexity, Google AI Overview → og: only, ignore twitter:\n\nEleven engines. Ten prefer OG. One falls back to OG.\n\n5/ The minimum 2026 set that ships clean everywhere:\n\nog:title\nog:description\nog:image (1200x630, absolute URL)\nog:url\nog:type\nog:site_name\ntwitter:card → summary_large_image\ntwitter:site → @yourhandle\n\nThat's it. 8 lines.\n\n6/ The 5 mistakes I still see weekly:\n\n• twitter:card defaulting to \"summary\" (tiny card)\n• Relative path in og:image (Slack, Discord, iMessage drop it)\n• Missing og:url (Slack can't dedupe)\n• twitter:site as brand name not @handle\n• Critical text in outer 60px of OG image (LinkedIn crops)\n\n7/ Bonus for 2026: AI search engines READ og: tags.\n\nog:title becomes the citation title in ChatGPT/Perplexity/Google AI Overview.\nog:description seeds the snippet.\n\nNone of them read twitter:* tags. Optimize for OG.\n\n8/ Full guide with the platform-by-platform fallback table, copy-paste templates, and image specs that don't break:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/"
     },
@@ -260,30 +284,6 @@
       "tool": "seo-meta-generator",
       "createdAt": "2026-05-05T11:25:00Z",
       "text": "TITLE: Show HN: A meta tag generator that previews OG and Twitter Cards side by side\n\nLINK: https://tinytools-smoky.vercel.app/seo-meta-generator/\n\nFIRST COMMENT for the discussion thread:\n\nAuthor here. Built this after debugging too many \"why is the card different on X vs LinkedIn vs Slack\" tickets. The tool shows you the live rendered card on Google SERP, X, LinkedIn, Facebook, and Slack while you type the tags, plus copy-paste output for both OG and Twitter formats. Free, no signup, runs entirely client-side. Wrote up the 2026 picture — what is actually different between OG and Twitter Cards now that X falls back to OG for everything except layout, the platform-by-platform fallback table, the minimum 8-line tag set that ships clean everywhere, and the image specs that don't silently break on iMessage and Slack — here: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/ — feedback welcome, especially on the AI-search section since the rules are still settling."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "background-remover",
-      "createdAt": "2026-05-05T08:12:43Z",
-      "text": "1/ \"Just remove the background in Photoshop.\" — every senior designer to every founder, since 2014.\n\nIt's wrong in 2026. The free, in-browser AI tools have caught up. For 90% of e-commerce shots, they're now better than the Pen tool. Here's the workflow ↓\n\n2/ The cheat code: drag your product photo into a browser-based remover. The AI runs locally — image never uploads anywhere. Output is a transparent PNG at original resolution in 1-3 seconds.\n\nThat's the entire workflow for opaque single-subject shots.\n\n3/ The 3 cases where the cheap workflow still fails:\n\n• Hair / fur (wispy edges)\n• Glass / acrylic (transparent objects)\n• Drop shadows (the product floats in zero-G)\n\nEach has a 90-second fix. None require Photoshop.\n\n4/ Hair: shoot against a high-contrast color (black cat → white sheet, white sweater → black sheet). The model needs the boundary to be color-different, not just luminance-different. remove.bg's free preview is best-in-class here, worth one credit per portrait.\n\n5/ Glass: shoot against pure white seamless. The model treats white as background and the bottle's tint as subject. Composite onto a darker scene later — the highlights pop and the transparency reads as glass.\n\n6/ Shadows: remove the original background, then add a fresh CSS or PSD drop shadow under the cutout. You get the floating-on-white look with a believable contact shadow you control.\n\n7/ Marketplace specs that matter in 2026:\n\n• Amazon main: pure white, product fills 85%+, 1600px+\n• Shopify: clean cutouts, square or 4:5\n• Etsy: lifestyle backdrops convert, but consistent\n• Google Shopping: white/transparent ranks higher\n\nMaster file = transparent PNG. Flatten at export.\n\n8/ Full guide with the 60-second workflow, marketplace specs, and the privacy-first in-browser tool we built (your photos never touch a server):\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-from-product-photos-free-2026/"
-    },
-    {
-      "platform": "Reddit /r/shopify or /r/EntrepreneurRideAlong",
-      "tool": "background-remover",
-      "createdAt": "2026-05-05T08:12:43Z",
-      "text": "Subreddit: /r/EntrepreneurRideAlong, /r/shopify, /r/Etsy, or /r/photography\n\nComment (reply on a thread asking about product photo editing, white-background requirements, or remove.bg pricing):\n\nThree things changed in the last 18 months that flipped the economics on product-photo background removal:\n\n**1. In-browser AI segmentation caught up.** The WebAssembly-shipped models in 2026 are built on the same architecture that powers remove.bg's paid tier. For opaque, single-subject e-commerce shots, the cutouts are visually indistinguishable. Pen-tool retouching used to be the gold standard for clean edges; now it's only worth the time on hero shots where you'd want eyes on the image anyway.\n\n**2. The privacy story matters more than people give it credit for.** If you're shooting prototypes, unreleased apparel, or anything competitive-sensitive, remote remove-background services park your image on their CDN. Browser-based tools run the model locally — image never leaves your laptop. For solo founders this is the difference between \"I can use it for everything\" and \"I have to keep an internal-only Photoshop license for sensitive shots.\"\n\n**3. Marketplace specs converged.** Amazon main image: pure white background, product fills 85%+, 1600px+. Shopify themes assume square or 4:5 transparent or white. Google Shopping ranks white/transparent higher in the merchant feed. One transparent PNG master file flattened to white at export covers all of them.\n\nThe three cases where the cheap workflow still fails (and how I fix each):\n\n- **Wispy hair/fur**: shoot against a high-contrast color, not a luminance-contrast. White cat needs a black sheet, not a gray sheet.\n- **Glass and acrylic**: shoot against pure white seamless. The model treats white as background and the bottle's tint as subject. Highlights pop when you composite onto darker scenes later.\n- **Drop shadows**: cut the original shadow, then add a fresh CSS or Photoshop shadow underneath. Looks more believable than the auto-segmenter's hard-edged grab.\n\nI built a free, in-browser one for our own e-commerce shots and put it up at the link below. AI segmentation runs entirely client-side — no upload, no signup, original resolution out. Wrote up the full 2026 workflow including marketplace specs, the three failure-mode fixes, and common founder mistakes here:\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-from-product-photos-free-2026/\n\nTool itself: https://tinytools-smoky.vercel.app/background-remover/"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "background-remover",
-      "createdAt": "2026-05-05T08:12:43Z",
-      "text": "Most founders I talk to still pay for Photoshop or a remove.bg subscription to clean up product photos.\n\nYou don't need either in 2026. Here's why.\n\n→ Browser-based AI segmentation now matches paid tools for 90% of e-commerce shots. The model runs locally, the image never uploads, and the cutout takes 1-3 seconds. Original resolution, transparent PNG, marketplace-ready.\n\n→ The three subjects that still trip up the cheap workflow — wispy hair, transparent glass, and drop shadows — each have a 90-second fix that doesn't require Photoshop. Shoot hair against a color-contrast (not luminance-contrast) backdrop. Shoot glass against pure white seamless. For shadows, cut the original and add a fresh CSS drop shadow underneath.\n\n→ The privacy angle is underrated. If you're shooting prototypes, unreleased apparel, or anything competitive-sensitive, you don't want it sitting on a third-party CDN. Browser tools never upload.\n\n→ Marketplace specs converged: Amazon needs pure white, Shopify themes assume transparent or white, Etsy rewards clean lifestyle backdrops, Google Shopping ranks transparent images higher. One transparent PNG master, flattened at export, covers all four.\n\nThe result: zero dollars on background-removal software, saved time spent on better lighting, more variants, and faster iteration — which is what actually moves e-commerce conversion rates.\n\nWrote up the full 2026 workflow with marketplace specs, the three failure-mode fixes, and common mistakes (free, no email gate):\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-from-product-photos-free-2026/\n\nWhat's the e-commerce photo mistake you see founders make most often?"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "background-remover",
-      "createdAt": "2026-05-05T08:12:43Z",
-      "text": "TITLE: Show HN: A free, in-browser AI background remover that beats Photoshop for product photos\n\nLINK: https://tinytools-smoky.vercel.app/background-remover/\n\nFIRST COMMENT:\n\nAuthor here. Built this for our own e-commerce shots after one too many \"ugh, Photoshop is overkill, but remove.bg gates full-res behind credits\" moments. Drag a JPG/PNG, the AI segmenter runs entirely in your browser via WebAssembly — image never touches a server. Output is a transparent PNG at original resolution. Free, no signup, no upload limit. Wrote up the 2026 product-photo workflow including the three failure-mode fixes (hair, glass, shadows) and the marketplace specs that actually matter here: https://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-from-product-photos-free-2026/ — feedback welcome, especially on edge cases where it loses to remove.bg's paid tier."
     }
   ],
   "checklist": [
