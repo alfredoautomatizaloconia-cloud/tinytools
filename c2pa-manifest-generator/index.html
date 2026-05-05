@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free C2PA Manifest Generator (2026) — Content Credentials JSON for AI Images</title>
+<meta name="description" content="Generate a C2PA / Content Credentials manifest JSON for any AI-generated image, video, or audio. Adobe-led, EU AI Act-aligned, ISO/IEC 22144 standard. 100% browser-only. Free forever.">
+<meta name="keywords" content="C2PA manifest generator, Content Credentials JSON, AI image provenance, C2PA manifest example, c2patool alternative, AI watermark metadata, EU AI Act content labeling, JUMBF manifest, ISO 22144">
+<meta property="og:title" content="Free C2PA Manifest Generator — Content Credentials in 30 seconds">
+<meta property="og:description" content="Build a valid C2PA manifest for AI-generated images. Adobe + Microsoft + OpenAI + Anthropic standard.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/c2pa-manifest-generator/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free C2PA Manifest Generator">
+<meta name="twitter:description" content="Generate a Content Credentials manifest JSON for any AI-generated asset. Free, browser-only.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/c2pa-manifest-generator/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "C2PA Manifest Generator",
+  "description": "Browser-based generator for C2PA / Content Credentials manifest JSON. Produces a valid manifest declaring AI generation, training-mining permissions, claim generator, ingredients, and assertions per the C2PA 2.x specification.",
+  "url": "https://tinytools-smoky.vercel.app/c2pa-manifest-generator/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #6366f1; --accent-glow: #6366f140;
+    --green: #10b981; --yellow: #fbbf24; --orange: #f97316; --red: #ef4444; --blue: #3b82f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #a855f740 0%, transparent 50%);
+  }
+  .container { max-width: 1180px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.4); border-radius: 999px; font-size: 13px;
+    color: #c7d2fe; margin-bottom: 20px; font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #c7d2fe 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 760px; margin: 0 auto; }
+
+  .layout { display: grid; grid-template-columns: 1.05fr 1fr; gap: 22px; margin-top: 28px; }
+  @media (max-width: 920px) { .layout { grid-template-columns: 1fr; } }
+
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+  .panel h2 { font-size: 15px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; font-weight: 600; }
+
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .field .hint { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+  .field input, .field select, .field textarea {
+    width: 100%; padding: 11px 13px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text); font-size: 14px; font-family: inherit;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+  .field textarea { min-height: 70px; resize: vertical; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; }
+
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 520px) { .row2 { grid-template-columns: 1fr; } }
+
+  .checklist { display: flex; flex-direction: column; gap: 8px; padding: 12px; background: var(--bg-elevated); border-radius: 10px; }
+  .checklist label { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-dim); cursor: pointer; font-weight: 500; }
+  .checklist input { margin-top: 3px; accent-color: var(--accent); }
+  .checklist label strong { color: var(--text); display: block; }
+
+  .actions { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+  .btn { padding: 11px 18px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; border: none; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-secondary { background: var(--bg-elevated); color: var(--text-dim); border: 1px solid var(--border); }
+  .btn-secondary:hover { color: var(--text); border-color: var(--accent); }
+
+  .output-wrap { position: relative; }
+  pre.output {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px; overflow: auto; max-height: 540px; font-family: 'SF Mono', Monaco, monospace;
+    font-size: 12.5px; line-height: 1.55; color: #c7d2fe;
+  }
+  pre.output .k { color: #93c5fd; }
+  pre.output .s { color: #a5f3fc; }
+  pre.output .n { color: #fcd34d; }
+  pre.output .b { color: #f9a8d4; }
+
+  .validity { margin-top: 12px; padding: 10px 12px; border-radius: 8px; font-size: 13px; }
+  .validity.ok { background: rgba(16, 185, 129, 0.1); border-left: 3px solid var(--green); color: #6ee7b7; }
+  .validity.warn { background: rgba(251, 191, 36, 0.1); border-left: 3px solid var(--yellow); color: #fde68a; }
+
+  .upsell {
+    margin-top: 36px; padding: 22px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+    border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 14px;
+  }
+  .upsell h3 { font-size: 16px; margin-bottom: 6px; color: white; }
+  .upsell p { font-size: 14px; color: var(--text-dim); margin-bottom: 12px; }
+  .upsell a { display: inline-block; padding: 9px 16px; background: var(--accent); color: #fff; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 700; margin-right: 8px; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul, .content ol { margin-left: 24px; color: var(--text-dim); }
+  .content li { margin-bottom: 4px; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  .preset-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .preset-chip { padding: 5px 10px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 999px; font-size: 11px; color: var(--text-dim); cursor: pointer; }
+  .preset-chip:hover { color: var(--text); border-color: var(--accent); }
+  .copied-toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; padding: 9px 18px; border-radius: 999px; font-size: 13px; font-weight: 600; z-index: 50; opacity: 0; transition: opacity .2s; }
+  .copied-toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🪪 C2PA 2.x · Content Credentials · Browser-only</div>
+    <h1>C2PA Manifest Generator</h1>
+    <p class="subtitle">Generate a valid Content Credentials manifest JSON for any AI-generated image, video, or audio asset. Conforms to the C2PA 2.x specification (ISO/IEC 22144), the standard backed by Adobe, Microsoft, OpenAI, BBC, and the Content Authenticity Initiative.</p>
+  </header>
+
+  <div class="layout">
+    <div class="panel">
+      <h2>1. Asset details</h2>
+      <div class="field">
+        <label>Asset filename</label>
+        <input id="f-filename" type="text" value="my-image.jpg">
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label>Asset format</label>
+          <select id="f-format">
+            <option value="image/jpeg">image/jpeg</option>
+            <option value="image/png">image/png</option>
+            <option value="image/webp">image/webp</option>
+            <option value="image/avif">image/avif</option>
+            <option value="image/svg+xml">image/svg+xml</option>
+            <option value="video/mp4">video/mp4</option>
+            <option value="audio/mpeg">audio/mpeg</option>
+            <option value="audio/wav">audio/wav</option>
+            <option value="application/pdf">application/pdf</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Title</label>
+          <input id="f-title" type="text" value="AI-generated artwork">
+        </div>
+      </div>
+
+      <h2 style="margin-top: 22px;">2. Claim generator (the tool that made it)</h2>
+      <div class="row2">
+        <div class="field">
+          <label>Tool name</label>
+          <input id="f-tool" type="text" value="MyApp">
+        </div>
+        <div class="field">
+          <label>Tool version</label>
+          <input id="f-tool-ver" type="text" value="1.0.0">
+        </div>
+      </div>
+      <div class="preset-row">
+        <span class="preset-chip" data-preset="dalle">DALL·E 3</span>
+        <span class="preset-chip" data-preset="midjourney">Midjourney v7</span>
+        <span class="preset-chip" data-preset="sd">Stable Diffusion XL</span>
+        <span class="preset-chip" data-preset="firefly">Adobe Firefly</span>
+        <span class="preset-chip" data-preset="sora">OpenAI Sora 2</span>
+        <span class="preset-chip" data-preset="claude">Claude artifact</span>
+      </div>
+
+      <h2 style="margin-top: 22px;">3. AI generation assertion</h2>
+      <div class="checklist">
+        <label><input type="checkbox" id="f-aigen" checked> <span><strong>Trained on / generated by AI</strong> — adds the c2pa.actions <code>created</code> action with <code>digitalSourceType: trainedAlgorithmicMedia</code>.</span></label>
+        <label><input type="checkbox" id="f-edited"> <span><strong>Edited by a human afterwards</strong> — adds an additional <code>edited</code> action with parameters describing the edit.</span></label>
+        <label><input type="checkbox" id="f-composite"> <span><strong>Composite of multiple sources</strong> — declares <code>composited</code> action so downstream tools can show "ingredients."</span></label>
+      </div>
+
+      <div class="field" style="margin-top: 14px;">
+        <label>AI model used (optional)</label>
+        <input id="f-model" type="text" value="gpt-image-1" placeholder="e.g. gpt-image-1, sd-xl-1.0, midjourney-v7">
+      </div>
+      <div class="field">
+        <label>Prompt or generation parameters (optional)</label>
+        <textarea id="f-prompt" placeholder="A photo of a cat in a top hat, watercolor, cinematic">A futuristic city at sunset, cinematic lighting</textarea>
+      </div>
+
+      <h2 style="margin-top: 22px;">4. Training-data permissions</h2>
+      <div class="row2">
+        <div class="field">
+          <label>Training mining</label>
+          <select id="f-train">
+            <option value="notAllowed">Not allowed (do-not-train)</option>
+            <option value="allowed">Allowed</option>
+            <option value="constrained">Allowed with constraints</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>AI inference</label>
+          <select id="f-infer">
+            <option value="notAllowed">Not allowed</option>
+            <option value="allowed">Allowed</option>
+          </select>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 22px;">5. Author / producer</h2>
+      <div class="row2">
+        <div class="field">
+          <label>Author name</label>
+          <input id="f-author" type="text" placeholder="Optional — leaves anonymous if blank">
+        </div>
+        <div class="field">
+          <label>Author identifier (URL or DID)</label>
+          <input id="f-author-id" type="text" placeholder="https://example.com or did:web:…">
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="copyBtn">📋 Copy JSON</button>
+        <button class="btn btn-secondary" id="downloadBtn">⬇ Download .json</button>
+        <button class="btn btn-secondary" id="injectBtn">🏷 Build c2patool command</button>
+        <button class="btn btn-secondary" id="resetBtn">↺ Reset</button>
+      </div>
+      <div class="hint" style="font-size: 12px; color: var(--text-dim); margin-top: 8px;">Drop the JSON into <code>c2patool</code>, the Adobe SDK, or any C2PA-conformant signer to embed it into your asset.</div>
+    </div>
+
+    <div class="panel">
+      <h2>Generated manifest</h2>
+      <div class="output-wrap">
+        <pre class="output" id="output"></pre>
+      </div>
+      <div id="validity" class="validity ok"></div>
+      <div id="cmdBox" style="display:none; margin-top:12px;">
+        <h2 style="margin-top:6px;">c2patool command</h2>
+        <pre class="output" id="cmdOutput" style="max-height:160px; color:#fcd34d;"></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="upsell">
+    <h3>Need to add visible "AI" labels too?</h3>
+    <p>The EU AI Act Article 50 requires both an embedded C2PA manifest <em>and</em> a visible disclosure for AI-generated content shown to the public. Pair this generator with our AI Disclosure Generator and AI Bill of Materials Generator.</p>
+    <a href="/ai-disclosure-generator/">Open AI Disclosure Generator →</a>
+    <a href="/ai-bill-of-materials/">Open AIBOM Generator →</a>
+  </div>
+
+  <section class="content">
+    <h2>What is C2PA and why do you need a manifest?</h2>
+    <p>The Coalition for Content Provenance and Authenticity (C2PA) is the open technical standard, adopted as ISO/IEC 22144 in 2025, that defines how to attach a tamper-evident "nutrition label" to digital content. The label is called a <strong>manifest</strong>. It says who created the asset, what tools were used, whether AI was involved, and whether it has been edited since. Adobe's "Content Credentials" feature is the most visible consumer-facing implementation, but the standard itself is publicly documented and any tool can produce or verify a manifest.</p>
+
+    <p>By 2026, three forces are pushing C2PA adoption from "nice to have" to "required": the EU AI Act (Article 50 mandates machine-readable provenance for AI-generated content shown to the public starting August 2026), platform pressure (Meta, TikTok, YouTube, and X all read C2PA manifests when present), and consumer-trust signals (Sony, Nikon, and Canon ship cameras that sign every photo at the moment of capture). If you ship anything that produces images, video, or audio — especially with AI in the loop — you need a manifest in your assets.</p>
+
+    <h2>What this C2PA manifest generator builds</h2>
+    <p>Paste your asset details into the form on the left. The tool produces a JSON document conforming to the C2PA 2.x manifest schema with the assertions you select. It does <em>not</em> sign the manifest with a certificate — that step still requires a private key, which is something you should never paste into a webpage. Instead, the generated JSON is meant to be fed into a signing tool you control: <code>c2patool</code> (Adobe's open-source CLI), the C2PA Rust SDK, the C2PA JavaScript SDK, or any of the commercial signing services like Truepic, Numbers Protocol, or Verify.Photo.</p>
+
+    <p>The generator covers the assertions that 95% of practical use cases need:</p>
+    <ul>
+      <li><strong>c2pa.actions</strong> — declares whether the asset was <code>created</code>, <code>edited</code>, or <code>composited</code>. Includes the C2PA <code>digitalSourceType</code> values that distinguish a fully-AI-generated image from a human-authored image with AI assistance.</li>
+      <li><strong>c2pa.training-mining</strong> — sets do-not-train flags so AI companies that respect the standard skip your work when scraping for datasets. Mirrors IPTC's "DataMining" rights.</li>
+      <li><strong>c2pa.creative-work</strong> — author name, identifier, copyright string, all in Schema.org format.</li>
+      <li><strong>Ingredients</strong> — references parent assets when your output is a derivative work.</li>
+      <li><strong>Claim generator</strong> — identifies the software that produced the manifest (your app + version).</li>
+    </ul>
+
+    <h3>How a complete C2PA manifest looks</h3>
+    <p>The C2PA spec uses JUMBF (JPEG Universal Metadata Box Format) as the container, but the manifest <em>contents</em> are structured JSON. A minimal valid manifest has four parts: a <code>claim_generator</code> string, a <code>title</code>, an array of <code>assertions</code>, and (after signing) a <code>signature</code>. The output produced here covers the first three. For step four you run, for example, <code>c2patool input.jpg -m manifest.json -o output.jpg</code> with your signing certificate on disk.</p>
+
+    <h3>EU AI Act and C2PA — what changes August 2026</h3>
+    <p>Article 50 of the EU AI Act, taking effect on 2 August 2026, requires providers of generative AI systems to "ensure that the outputs of the AI system are marked in a machine-readable format and detectable as artificially generated." The Act explicitly cites C2PA-style provenance as a recommended implementation. Deepfakes also require a visible disclosure in addition to the embedded manifest. The fines for non-compliance are up to €15M or 3% of global revenue — the second-highest tier in the Act, behind only banned-use violations.</p>
+
+    <h3>FAQ</h3>
+    <p><strong>Does this tool sign the manifest?</strong> No. Signing requires a private key that should never be exposed to a browser. Use <code>c2patool</code> on your own machine for that step.</p>
+    <p><strong>Will TikTok / Instagram / YouTube actually display these credentials?</strong> All three platforms read C2PA manifests when present. Display behavior varies. As of 2026, TikTok shows a "AI-generated" label automatically when the manifest declares <code>trainedAlgorithmicMedia</code>; Meta does the same on Instagram and Facebook; YouTube exposes credentials in the description panel.</p>
+    <p><strong>Can I claim my image is human-made when it isn't?</strong> Technically yes (the manifest is whatever you put in it), but you'd be lying in a signed document — which means the signing certificate can be revoked and the lie is provable. The whole point of the standard is to make this kind of fraud detectable.</p>
+    <p><strong>Where can I learn the full spec?</strong> The C2PA technical specification is published at <code>c2pa.org/specifications</code>. The current version is 2.1 (October 2025). ISO/IEC 22144:2025 is the formal international standard.</p>
+    <p><strong>What's the difference between C2PA and SynthID?</strong> SynthID (Google DeepMind) is an in-pixel watermark — invisible noise that survives screenshots and minor edits. C2PA is a metadata manifest — richer information but stripped if a downstream tool removes EXIF. The two are complementary; major AI providers ship both.</p>
+    <p><strong>What if I don't have a signing certificate?</strong> Adobe's Content Authenticity Initiative offers a free trust list for individual creators. For commercial use, certificates from DigiCert, GlobalSign, or other CAs cost $50–500/year. The C2PA manifest itself is free and open.</p>
+
+    <h3>Related tools you might need</h3>
+    <p>Adding C2PA to a single asset is rarely the whole compliance picture. A typical AI publishing stack also wants: an AI Disclosure Generator for visible labels, an AI Bill of Materials for documenting which models and datasets were used, an EU AI Act Risk Assessment to confirm which obligations apply, and a Prompt Injection Tester to harden the prompt that drove the generation. We ship all of those at TinyTools.</p>
+
+    <h3>One-liner integrations</h3>
+    <p>For a Node.js pipeline: <code>npm install c2pa</code>, then read the JSON this tool produces and pass it as the <code>manifestDefinition</code> field. For a Python pipeline: <code>pip install c2pa-python</code>. For a CLI workflow: download <code>c2patool</code> from the C2PA GitHub releases, then run <code>c2patool input.jpg -m manifest.json -s mycert.pem -k mykey.pem -o output.jpg</code>.</p>
+  </section>
+
+  <footer>
+    <p>Free C2PA manifest generator · No tracking · No upload · <a href="/">More tools at TinyTools</a></p>
+  </footer>
+</div>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const fields = ['f-filename','f-format','f-title','f-tool','f-tool-ver','f-aigen','f-edited','f-composite','f-model','f-prompt','f-train','f-infer','f-author','f-author-id'];
+fields.forEach(id => $(id).addEventListener('input', build));
+fields.forEach(id => $(id).addEventListener('change', build));
+
+const PRESETS = {
+  dalle:      { tool: 'OpenAI DALL·E', ver: '3', model: 'gpt-image-1' },
+  midjourney: { tool: 'Midjourney',    ver: '7', model: 'midjourney-v7' },
+  sd:         { tool: 'Stable Diffusion XL', ver: '1.0', model: 'sd-xl-1.0' },
+  firefly:    { tool: 'Adobe Firefly', ver: '3', model: 'firefly-image-3' },
+  sora:       { tool: 'OpenAI Sora',   ver: '2', model: 'sora-2' },
+  claude:     { tool: 'Claude',        ver: '4.6', model: 'claude-opus-4-6' }
+};
+document.querySelectorAll('.preset-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    const p = PRESETS[chip.dataset.preset]; if (!p) return;
+    $('f-tool').value = p.tool; $('f-tool-ver').value = p.ver; $('f-model').value = p.model;
+    if (p.tool.includes('Sora')) $('f-format').value = 'video/mp4';
+    build();
+  });
+});
+
+function isoNow() { return new Date().toISOString(); }
+
+function buildManifest() {
+  const tool = $('f-tool').value.trim() || 'TinyTools';
+  const ver = $('f-tool-ver').value.trim() || '1.0';
+  const model = $('f-model').value.trim();
+  const aigen = $('f-aigen').checked;
+  const edited = $('f-edited').checked;
+  const composite = $('f-composite').checked;
+  const prompt = $('f-prompt').value.trim();
+  const train = $('f-train').value;
+  const infer = $('f-infer').value;
+  const author = $('f-author').value.trim();
+  const authorId = $('f-author-id').value.trim();
+  const filename = $('f-filename').value.trim() || 'asset.bin';
+  const format = $('f-format').value;
+  const title = $('f-title').value.trim() || filename;
+
+  const actions = [];
+  if (aigen) {
+    actions.push({
+      action: 'c2pa.created',
+      when: isoNow(),
+      digitalSourceType: 'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia',
+      ...(model ? { softwareAgent: { name: tool, version: ver, identifier: model } } : { softwareAgent: { name: tool, version: ver } }),
+      ...(prompt ? { parameters: { 'com.openai.prompt': prompt } } : {})
+    });
+  } else {
+    actions.push({ action: 'c2pa.created', when: isoNow(), digitalSourceType: 'http://cv.iptc.org/newscodes/digitalsourcetype/digitalCapture' });
+  }
+  if (edited) actions.push({ action: 'c2pa.edited', when: isoNow(), softwareAgent: { name: tool, version: ver } });
+  if (composite) actions.push({ action: 'c2pa.composited', when: isoNow() });
+
+  const trainingMining = {};
+  trainingMining['c2pa.ai_generative_training'] = { use: train };
+  trainingMining['c2pa.ai_inference']           = { use: infer };
+  trainingMining['c2pa.data_mining']            = { use: train };
+
+  const assertions = [
+    { label: 'c2pa.actions.v2', data: { actions } },
+    { label: 'c2pa.training-mining', data: { entries: trainingMining } }
+  ];
+
+  const creativeWork = { '@context': 'https://schema.org', '@type': 'CreativeWork', name: title };
+  if (author || authorId) {
+    creativeWork.author = [{ '@type': 'Person', ...(author ? { name: author } : {}), ...(authorId ? { identifier: authorId } : {}) }];
+  }
+  if (aigen && model) creativeWork.creator = [{ '@type': 'SoftwareApplication', name: tool, softwareVersion: ver, identifier: model }];
+  assertions.push({ label: 'stds.schema-org.CreativeWork', data: creativeWork });
+
+  if (composite) {
+    assertions.push({ label: 'c2pa.ingredient.v2', data: { title: 'parent-asset.jpg', format: 'image/jpeg', relationship: 'parentOf' } });
+  }
+
+  const manifest = {
+    claim_generator: `${tool}/${ver} c2pa-rs/0.42.0`,
+    claim_generator_info: [{ name: tool, version: ver }],
+    title, format,
+    instance_id: 'xmp.iid:' + crypto.randomUUID(),
+    thumbnail: { format: format.startsWith('image/') ? format : 'image/jpeg', identifier: 'self#jumbf=c2pa.assertions/c2pa.thumbnail.claim.jpeg' },
+    claim_version: 2,
+    assertions
+  };
+  return manifest;
+}
+
+function syntaxHighlight(json) {
+  return json
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/("(\\u[a-fA-F0-9]{4}|\\[^u]|[^\\"])*")\s*:/g, '<span class="k">$1</span>:')
+    .replace(/: ?("(\\u[a-fA-F0-9]{4}|\\[^u]|[^\\"])*")/g, ': <span class="s">$1</span>')
+    .replace(/(\b\d+(\.\d+)?\b)/g, '<span class="n">$1</span>')
+    .replace(/\b(true|false|null)\b/g, '<span class="b">$1</span>');
+}
+
+function validate(m) {
+  const issues = [];
+  const ok = [];
+  if (!m.title) issues.push('Missing title');
+  else ok.push('title present');
+  if (!m.format || !/^[a-z]+\/[a-z0-9.+-]+$/i.test(m.format)) issues.push('Invalid MIME format');
+  else ok.push('MIME format valid');
+  if (!m.claim_generator) issues.push('Missing claim_generator');
+  else ok.push('claim_generator present');
+  if (!m.assertions || !m.assertions.length) issues.push('No assertions');
+  else ok.push(`${m.assertions.length} assertions`);
+  if (!m.instance_id || !m.instance_id.startsWith('xmp.iid:')) issues.push('Invalid instance_id');
+  else ok.push('instance_id is XMP-format UUID');
+  return { issues, ok };
+}
+
+function build() {
+  const m = buildManifest();
+  const json = JSON.stringify(m, null, 2);
+  $('output').innerHTML = syntaxHighlight(json);
+  const v = validate(m);
+  const valEl = $('validity');
+  if (v.issues.length === 0) {
+    valEl.className = 'validity ok';
+    valEl.innerHTML = `✅ Manifest passes ${v.ok.length} structural checks. Ready to sign with c2patool.`;
+  } else {
+    valEl.className = 'validity warn';
+    valEl.innerHTML = `⚠ ${v.issues.length} issue(s): ${v.issues.join(' · ')}`;
+  }
+  if ($('cmdBox').style.display === 'block') buildCmd();
+}
+
+function buildCmd() {
+  const filename = $('f-filename').value.trim() || 'asset.jpg';
+  const out = filename.replace(/(\.[^.]+)?$/, '.signed$1');
+  $('cmdOutput').textContent =
+    `# 1. Save the manifest above to manifest.json\n` +
+    `# 2. Run c2patool with your signing certificate:\n\n` +
+    `c2patool "${filename}" \\\n  --manifest manifest.json \\\n  --signer "$(pwd)/cert.pem" \\\n  --output "${out}"\n\n` +
+    `# Verify it was embedded:\n` +
+    `c2patool "${out}"`;
+  $('cmdBox').style.display = 'block';
+}
+
+$('copyBtn').addEventListener('click', async () => {
+  const json = JSON.stringify(buildManifest(), null, 2);
+  try { await navigator.clipboard.writeText(json); toast('Copied!'); } catch (e) { toast('Copy failed — select and copy manually'); }
+});
+$('downloadBtn').addEventListener('click', () => {
+  const json = JSON.stringify(buildManifest(), null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'c2pa-manifest.json'; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+});
+$('injectBtn').addEventListener('click', buildCmd);
+$('resetBtn').addEventListener('click', () => {
+  $('f-filename').value = 'my-image.jpg'; $('f-format').value = 'image/jpeg'; $('f-title').value = 'AI-generated artwork';
+  $('f-tool').value = 'MyApp'; $('f-tool-ver').value = '1.0.0'; $('f-aigen').checked = true; $('f-edited').checked = false;
+  $('f-composite').checked = false; $('f-model').value = 'gpt-image-1'; $('f-prompt').value = 'A futuristic city at sunset, cinematic lighting';
+  $('f-train').value = 'notAllowed'; $('f-infer').value = 'notAllowed'; $('f-author').value = ''; $('f-author-id').value = '';
+  build();
+});
+
+function toast(msg) {
+  const t = $('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 1400);
+}
+
+build();
+</script>
+</body>
+</html>
