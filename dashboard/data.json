@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 4, 2026 — MASSIVE SEO push: 9 new pages live (1 blog + 3 vs-comparison + 3 use-case + 1 listicle + sister blog), llms.txt overhauled for AI citations",
+  "lastUpdated": "May 4, 2026 — published Dark Mode Color Palette Guide (6 tokens + 4 mistakes) + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 17,
-    "postsDelta": "+9 today (autonomous push)",
+    "posts": 18,
+    "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 00:12",
+      "tag": "seo",
+      "text": "📝 Published blog post: Dark Mode Color Palette: A Complete Guide for 2026 at /color-palette/blog/dark-mode-color-palette-guide-2026/"
+    },
+    {
+      "time": "today 00:12",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting color-palette"
+    },
     {
       "time": "today 12:45",
       "tag": "promo",
@@ -192,16 +202,6 @@
       "time": "today 00:10",
       "tag": "promo",
       "text": "4 social drafts queued: X thread, Reddit /r/SaaS, LinkedIn, Hacker News (Show HN) — all promoting domain-generator"
-    },
-    {
-      "time": "just now",
-      "tag": "promo",
-      "text": "🚀 PR #525 → goabstract/Awesome-Design-Tools (39,787 ⭐) — Color Palette + Favicon + OG Image"
-    },
-    {
-      "time": "just now",
-      "tag": "promo",
-      "text": "🚀 PR #1226 → mahseema/awesome-ai-tools (5,045 ⭐) — TinyTools entry"
     }
   ],
   "roadmap": [
@@ -240,6 +240,30 @@
     {
       "platform": "X / Twitter Thread",
       "tool": "color-palette",
+      "createdAt": "2026-05-04T13:30:00Z",
+      "text": "1/ Your dark mode looks ugly because you copied the 2018 playbook.\n\n80% of mobile users are dark-first now. The old rules — pure black bg, inverted brand color, opacity for elevation — break on OLED, in WCAG, in real eyes.\n\nThe 2026 dark palette playbook in 5 tweets 👇\n\n2/ Mistake #1: Pure black (#000) backgrounds.\n\nFeels premium. Saves OLED battery. Also causes halation — visual smearing of bright text edges for anyone with astigmatism or tired eyes.\n\nUse #0a0a0f instead. Material, Apple HIG, IBM Carbon all moved off pure black years ago.\n\n3/ Mistake #2: Same brand hex in both modes.\n\nA saturated color that pops on white looks RADIOACTIVE on dark. Helmholtz–Kohlrausch effect, documented since 1839.\n\nFix: desaturate accents 10-20% in dark mode. With OKLCH:\n\n--accent-light: oklch(60% 0.20 295)\n--accent-dark:  oklch(70% 0.15 295)\n\n4/ Mistake #3: Opacity for elevation.\n\nrgba(255,255,255,0.05) on a card looks fine until the user lands on a colored bg, drags it over a gradient, or prints.\n\nUse SOLID elevation tokens instead. +8 to +12 RGB per layer. 3 surfaces is enough for any UI.\n\n5/ Mistake #4: No WCAG audit.\n\n#5a5a6f on #15151f is shadcn/ui's default placeholder color.\n\nIt's 2.8:1. Below AA. Below AAA. Below 'can humans read this.'\n\nTest every text-on-surface pair at build time.\n\n6/ Full guide with copy-paste CSS variables, OKLCH conversion, the 5-min testing checklist, and a free generator that ships these defaults out of the box:\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/dark-mode-color-palette-guide-2026/"
+    },
+    {
+      "platform": "Reddit /r/web_design",
+      "tool": "color-palette",
+      "createdAt": "2026-05-04T13:30:00Z",
+      "text": "If your dark mode 'looks weird but you can't say why,' it's almost always one of these four:\n\n1. **Pure black background.** #000 causes halation against white text — visual smearing for anyone with astigmatism. Use #0a0a0f or so. Apple, Material, and IBM Carbon all moved off pure black years ago.\n\n2. **Same accent hex as light mode.** Saturated colors gain perceived brightness on dark surfaces (Helmholtz–Kohlrausch). Desaturate by 10-20% for the dark variant. OKLCH makes this trivial — same hue, lower lightness AND chroma.\n\n3. **Opacity for elevation.** rgba(255,255,255,0.05) cards look fine until they sit on a gradient or you print the page. Use solid surface tokens instead — +8 to +12 RGB per elevation step. Three discrete surfaces is enough for any UI.\n\n4. **No WCAG audit on dark.** Light pages get audited because gray-on-white is obviously hard. Dark pages get a free pass. Don't. shadcn's default placeholder color is 2.8:1 — below AA.\n\nWrote up the full breakdown with copy-paste CSS variables and a 5-min testing checklist (OLED test, sunlight test, color-blind, print, forced-colors): https://tinytools-smoky.vercel.app/color-palette/blog/dark-mode-color-palette-guide-2026/\n\nTool's free, no signup if you just want a generator that ships these defaults: https://tinytools-smoky.vercel.app/color-palette/"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "color-palette",
+      "createdAt": "2026-05-04T13:30:00Z",
+      "text": "Four out of five mobile users now keep their device in dark mode all day.\n\nWhich means dark mode isn't 'a toggle in the corner' anymore. It's your primary surface. And most teams are still designing for it using the 2018 playbook.\n\nThe 4 mistakes I see almost every week:\n\n→ Pure black backgrounds (#000). Saves OLED battery, causes halation. Use #0a0a0f instead.\n\n→ Same brand color in both modes. Saturated hues gain perceived brightness on dark surfaces — your light-mode purple looks radioactive in dark. Desaturate 10-20%.\n\n→ Opacity for card elevation. Breaks on gradients, breaks in print, makes contrast unpredictable. Use solid surface tokens.\n\n→ No WCAG audit. Light pages get reviewed. Dark pages don't. shadcn's default placeholder color is 2.8:1 — below AA.\n\nFix all four and your dark mode stops looking 'a bit off' and starts looking deliberate.\n\nFull guide with copy-paste CSS tokens and a 5-minute testing checklist (free, no signup): https://tinytools-smoky.vercel.app/color-palette/blog/dark-mode-color-palette-guide-2026/\n\nWhat's the dark-mode mistake you see most often? Curious."
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "color-palette",
+      "createdAt": "2026-05-04T13:30:00Z",
+      "text": "TITLE: Show HN: A dark-mode color palette generator that ships WCAG-checked defaults\n\nCOMMENT: Built this after one too many 'why does our dark mode look weird?' Slack threads. Pick a base color, get six semantic tokens (bg, bg-card, bg-elev, border, text, text-dim) plus an accent that's already desaturated for dark surfaces. Exports as CSS variables, Tailwind config, or JSON. Free, no signup. Wrote up the reasoning here: https://tinytools-smoky.vercel.app/color-palette/blog/dark-mode-color-palette-guide-2026/ — feedback welcome."
+    },
+    {
+      "platform": "X / Twitter Thread",
+      "tool": "color-palette",
       "createdAt": "2026-05-04T12:00:00Z",
       "text": "1/ Brand color is the decision that should take an afternoon and somehow takes six months.\n\nFounders pay $40k branding agencies who pick a teal anyway.\n\nHere's the 5-minute framework — survives 16px favicons, dark mode, and every social platform 👇\n\n2/ Stop picking 'five colors that represent your brand.' That makes a Pantone explosion.\n\nPick ONE accent. Derive the rest.\n\nYour accent appears on every CTA, every focus ring, every link, every chart highlight. It carries 90% of brand recognition. Get it right — the other 4 colors are functional supporting cast.\n\n3/ The 16-pixel test:\n\nDrop your candidate accent into a 16×16 favicon mockup. If you can't see it cleanly against both white AND black at that size — wrong color. Pick another.\n\nFilter rule: skip the muddy middle.\n• Saturation 30–60% = dead at favicon size\n• Lightness 35–65% = dead at favicon size\n\nGo to saturation 70%+ and either L>55% (vivid) or L<25% (deep).\n\n4/ WCAG contrast is a hard constraint, not a preference.\n\n• Accent vs background: needs 4.5:1\n• White text on accent: needs 4.5:1\n\nFail either, you fail ADA in the US and EAA in the EU. Filter for it on day one — don't rewrite the week before launch.\n\n5/ The whole startup design system fits in 6 tokens:\n\n--bg, --bg-card, --border, --text, --text-dim, --accent\n\nAdd semantic tokens (success, warning, danger) only when you actually render a toast. Most design systems are 90% premature optimization.\n\nNever use pure #000 or pure #fff. Push to 1–3% / 95–97% lightness instead.\n\n6/ Once you've picked, lock the tokens in code and DO NOT TOUCH for 12 months.\n\nFounders waste enormous time tweaking accent in month 3 because 'it doesn't quite feel right.'\n\nIt almost never does. The discomfort isn't the color — it's seeing the color too many times.\n\nBrand recognition = repetition.\n\n7/ Wrote up the full 8-step playbook — accent picking, harmony rules, dark mode shifts, the surfaces to test on, and the 5-minute compressed version.\n\nFree, no email gate:\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/how-to-pick-brand-colors-startup-2026/"
     },
@@ -260,30 +284,6 @@
       "tool": "color-palette",
       "createdAt": "2026-05-04T12:00:00Z",
       "text": "Show HN title: How to pick brand colors for a startup in 2026 — the 5-minute non-designer framework\n\nLink: https://tinytools-smoky.vercel.app/color-palette/blog/how-to-pick-brand-colors-startup-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Wrote this after watching too many founders burn 3–6 months and $5–40k on brand-color decisions that customers cannot perceive. The compressed argument: pick ONE accent (not five), filter for the 16-pixel favicon test (skip the muddy middle saturation/lightness ranges), hard-check WCAG 4.5:1 contrast on day one, and ship the whole supporting palette as six tokens not eighty. The brand-recognition payoff is 100% from repetition, ~0% from picking the 'right' hue — but founders still re-pick the accent in month three and reset the clock. Curious if HN has counter-examples where the specific brand color materially moved a metric beyond what consistent reuse of any defensible color would have produced."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "text": "Most founders pick brand colors in a Figma rabbit hole at midnight.\n\nSix months later they realize the indigo they fell in love with looks exactly like Stripe, Linear, and the last 6 SaaS landing pages.\n\nHere's the 30-minute color-picking system that survives contact with engineering 🧵\n\n(2/6) Step 1: Pick a single hero color first.\n\nDon't try to design a 5-color palette in one go. Pick the CTA-button color and let the rest derive.\n\nFour temperaments to choose from:\n• Trust → blue 210-240°\n• Energy → orange/pink 0-30°\n• Creative → purple 270-310°\n• Growth → green/teal 140-180°\n\n(3/6) Step 2: Build the 60-30-10 system.\n\n60% neutral (near-black or near-white)\n30% secondary (muted)\n10% accent (your hero color)\n\nMost teams treat the hero as the dominant 60%. The result: a landing page that screams from every pixel and a product that gives users no signal where to look.\n\n(4/6) Step 3: Stress-test the messy contexts.\n\nBefore you commit, run the palette against:\n- A 14-row data table with hover/selected/error\n- A dense form with validation states\n- An ad mockup at 1080×1350\n- Dark mode side-by-side with light\n- A grayscale conversion\n\nIf it wobbles in any of those, fix now.\n\n(5/6) Step 4: Lock contrast.\n\nWCAG AA = 4.5:1 for body, 3:1 for UI.\nAim AAA on body copy. The cost is nothing. The benefit is keeping the 8% of users with red-green color deficiency.\n\nThe European Accessibility Act is enforced as of June 2025. \"We'll fix it later\" is not a position anymore.\n\n(6/6) Free generator that does the ramp + analogous + complementary + triadic in 30 seconds, no signup:\n\nhttps://tinytools-smoky.vercel.app/color-palette/\n\nFull guide with the 30-min checklist:\nhttps://tinytools-smoky.vercel.app/color-palette/blog/how-to-pick-brand-colors-for-startup-2026/",
-      "tool": "color-palette",
-      "createdAt": "2026-05-04T14:30:00Z"
-    },
-    {
-      "platform": "Reddit /r/SaaS",
-      "text": "[On a thread asking \"How do you pick brand colors for a SaaS without spending weeks on it?\"]\n\nThe mistake almost every early-stage founder makes is trying to design the full 5-color palette in one sitting. You end up with 17 Figma tabs open and a creeping suspicion that whatever you picked looks exactly like Stripe.\n\nWhat actually works:\n\n1) Pick the temperament first (5 min). Trust = blue. Energy = orange/pink. Creative = purple. Growth = green/teal. Look at your competitor set — if they all sit in one column, decide intentionally to blend in (credibility) or jump to the neighbor (differentiation).\n\n2) Pick ONE hero hex (the CTA-button color). Pull saturation down 5-15% from the pure primary. #4F46E5, #10B981, #F97316, #A855F7 all age well.\n\n3) Build 60-30-10 around it: 60% neutral, 30% secondary muted tone, 10% accent (the hero, reserved for action only).\n\n4) Generate the 9-step shade ramp from the hero — don't hand-roll this, the engineering payoff of having every shade pre-named (--accent-500) is huge.\n\n5) Stress-test against a data table, a form, an ad, dark mode, and grayscale BEFORE committing.\n\n6) Lock WCAG AA contrast. The EAA is enforced now in the EU.\n\nThe boring color usually wins btw — the vast majority of $100M+ ARR brands are a slightly desaturated blue, green, or purple. Stand out with the product, let the color carry trust.\n\nI wrote up the full 30-min checklist with the temperament table here if it helps: https://tinytools-smoky.vercel.app/color-palette/blog/how-to-pick-brand-colors-for-startup-2026/\n\nThere's also a free generator on the same site that gives you analogous/complementary/triadic palettes from one hex code, exports to CSS/Tailwind/JSON.",
-      "tool": "color-palette",
-      "createdAt": "2026-05-04T14:30:00Z"
-    },
-    {
-      "platform": "LinkedIn",
-      "text": "The first time I picked brand colors for a startup, I spent four hours in Figma and ended up with an indigo that looked exactly like Stripe.\n\nSix months later we rebranded. The cost wasn't the new logo — it was three weeks of engineering rework, and every customer relearning where the \"save\" button lived.\n\nHere's the system I wish I'd had on day one:\n\n→ Pick the temperament first (trust, energy, creative, or growth)\n→ Lock ONE hero hex code, not five\n→ Build the 60-30-10 ratio around it (60% neutral, 30% secondary, 10% accent)\n→ Generate shade ramps — don't hand-roll\n→ Stress-test against tables, forms, ads, dark mode, grayscale\n→ Lock WCAG AA contrast (the EAA is enforced now)\n→ Commit the design tokens to the repo\n\nTotal time: 30 minutes. Total rebrands a year later: zero.\n\nThe boring color usually wins. The vast majority of $100M+ ARR brands are a slightly desaturated blue, green, or purple. Stand out with the product, not the hex code.\n\nFull checklist: https://tinytools-smoky.vercel.app/color-palette/blog/how-to-pick-brand-colors-for-startup-2026/",
-      "tool": "color-palette",
-      "createdAt": "2026-05-04T14:30:00Z"
-    },
-    {
-      "platform": "Show HN",
-      "text": "Title: Show HN: A 30-minute system for picking startup brand colors\n\nComment: I built a free color palette generator a few months ago and kept getting the same question from founders: \"okay but how do I actually pick the hero color in the first place?\" Wrote up the system I'd developed across a few rebrands — temperament -> single hero hex -> 60/30/10 -> shade ramps -> stress test against the messy contexts (data tables, dark mode, grayscale). The hardest lesson was that the boring desaturated blue/green/purple usually wins; bold colors are an agency thing, not a B2B SaaS thing. Curious if anyone here has a different framework that works as fast.",
-      "tool": "color-palette",
-      "createdAt": "2026-05-04T14:30:00Z"
     }
   ],
   "checklist": [
