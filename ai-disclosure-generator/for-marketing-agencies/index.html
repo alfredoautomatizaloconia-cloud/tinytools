@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Disclosure Generator for Marketing Agencies — Per-Client Compliance at Scale (2026)</title>
+<meta name="description" content="Bulk AI disclosure labels for agency content workflows. Per-client banners, image overlays, and JSON-LD schema across blogs, ads, social, and email — EU AI Act compliant before the August 2026 deadline. Free, no signup.">
+<meta name="keywords" content="ai disclosure for marketing agencies, agency ai compliance tool, eu ai act marketing agency, ai content disclosure white label, ai disclaimer client deliverables, ai disclosure schema generator, agency ai policy, ftc ai endorsement guide">
+<meta property="og:title" content="AI Disclosure Generator for Marketing Agencies — Per-Client Compliance Without the Lawyer Bill">
+<meta property="og:description" content="Generate per-client AI disclosure banners, image overlays, and JSON-LD schema across blogs, ads, social, and email. EU AI Act &amp; FTC compliant. Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-marketing-agencies/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-marketing-agencies/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Disclosure Generator for Marketing Agencies",
+  "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-marketing-agencies/",
+  "applicationCategory": "BusinessApplication",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Marketing Agencies, Creative Agencies, Performance Marketing Teams, Account Managers, Agency Compliance Leads"
+  },
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Generates per-client EU AI Act-compliant disclosure labels for agency-produced content: blog posts, paid ads, social, email, and white-label deliverables. Outputs HTML banners, image overlays, and JSON-LD schema, with a per-client preset library so account managers don't reinvent compliance for every brief."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is the agency or the client liable for missing AI disclosure under the EU AI Act?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both can be, and Article 50 doesn't make you choose. The agency is treated as a 'deployer' of the AI system that produced the content; the client is treated as the publisher 'making it available to the public.' Joint and several liability is the default reading. In practice, regulators look at who controlled the disclosure decision — and if your MSA is silent on AI, that ambiguity tends to flow back to the agency. The fix is a per-client disclosure SOP plus a contractual carve-out that names the responsible party. The generator handles the SOP half."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do paid ads need AI disclosure too, or only organic content?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Paid ads are explicitly in scope under Article 50 when they use AI-generated imagery, synthetic voice, or AI-written copy that materially alters the message. Meta, TikTok, and Google have all rolled out platform-level AI disclosure flags as a parallel requirement — the regulatory rule and the platform rule both apply, and meeting one doesn't satisfy the other. The generator emits both the platform-flag JSON the ad APIs accept and the on-creative overlay regulators look for."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the FTC's 2024 Endorsement Guide update interact with AI disclosure for agency-produced influencer content?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 2024 update added 'fake reviews and testimonials' as a separately enforceable category and explicitly included AI-generated endorsements. If your agency briefs an influencer and any of the deliverable was AI-written, AI-narrated, or AI-imaged on the agency's behalf, the disclosure trail has to name that. The generator's 'influencer / endorsement' preset emits both the AI label and the FTC-style #ad disclosure as a combined block, in formats the major influencer platforms accept."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do agencies actually scale disclosure across hundreds of monthly assets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three-step pattern that has worked for the agencies we've seen. First: build a per-client preset in the generator — one for the blog, one for paid social, one for email, one for landing pages — so account managers pick from a list rather than freelance the language. Second: bake the JSON-LD schema into the client's CMS partial so it ships automatically with every page. Third: log the preset chosen in your project-management tool's deliverable record, so the audit trail exists if a regulator asks. The generator outputs presets in copy-paste form for any of the major PM tools."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about regulated-industry clients — pharma, finance, legal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Regulated verticals layer their own rules on top of Article 50. Pharma adds the EU MDR / FDA promotional review trail. Finance adds MiFID II marketing-communication labeling and US FINRA Rule 2210. Legal adds state-bar advertising rules, several of which have already published AI-specific guidance. The generator has presets that emit the EU AI Act label plus the regulated-industry attestation in the same block, so the asset doesn't get held up in client-side compliance review for missing one or the other."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "We white-label content for resellers. Whose name goes on the disclosure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Article 50 requires the disclosure to identify that the content is AI-generated; it does not require it to name the producing agency. So the white-label model survives — the disclosure can name the publishing brand, not the agency that produced the asset. That said, your reseller MSA should explicitly assign disclosure responsibility, because if the reseller fails to publish your label, the regulator's first call goes to whoever can be reached. The generator's white-label preset removes any agency-identifying language and produces a brand-neutral block."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #fbbf24; --accent-glow: #fbbf2440;
+    --green: #10b981; --red: #ef4444; --amber: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #ef444440 0%, transparent 50%);
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 20px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; }
+  .breadcrumb a { color: var(--text-dim); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+
+  header { text-align: center; padding: 24px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 999px; font-size: 13px;
+    color: #fca5a5; margin-bottom: 18px; font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(28px, 4.2vw, 42px); font-weight: 800; line-height: 1.12; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fde68a 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 680px; margin: 0 auto 24px; }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 8px 0 24px; }
+  .cta {
+    display: inline-block; padding: 13px 26px; border-radius: 10px;
+    font-weight: 600; text-decoration: none; transition: all 0.15s; font-size: 15px;
+  }
+  .cta-primary { background: var(--accent); color: #1f1300; }
+  .cta-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px var(--accent-glow); }
+  .cta-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+  .cta-secondary:hover { border-color: var(--accent); }
+
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-top: 24px; }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  /* Mock client deliverable preview */
+  .client-mock { background: #fff; padding: 22px 26px; border-radius: 12px; max-width: 640px; margin: 0 auto; font-family: -apple-system, sans-serif; color: #111; }
+  .client-mock .client-row { display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid #eee; margin-bottom: 14px; }
+  .client-mock .client-tag { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+  .client-mock .ai-badge {
+    display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px;
+    background: #fef3c7; border: 1px solid #fbbf24; border-radius: 999px;
+    font-size: 12px; font-weight: 700; color: #78350f;
+    margin-bottom: 12px; letter-spacing: 0.02em;
+  }
+  .client-mock h3.mock-title { font-size: 22px; line-height: 1.25; color: #111; margin-bottom: 6px; font-weight: 700; }
+  .client-mock .mock-meta { font-size: 13px; color: #666; }
+  .client-mock .mock-img {
+    margin-top: 14px; height: 170px; border-radius: 8px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+  }
+  .client-mock .mock-overlay {
+    position: absolute; bottom: 10px; left: 10px;
+    padding: 5px 10px; background: rgba(0,0,0,0.78); color: #fff; border-radius: 6px;
+    font-size: 11px; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+
+  .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 14px; }
+  .use-case { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .use-case .icon { font-size: 22px; margin-bottom: 8px; }
+  .use-case h3 { font-size: 15px; margin-bottom: 6px; color: var(--text); }
+  .use-case p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+  .content { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; color: var(--text); letter-spacing: -0.01em; }
+  .content h3 { font-size: 18px; margin: 24px 0 8px; color: var(--text); }
+  .content p { color: var(--text-dim); margin-bottom: 12px; font-size: 15px; }
+  .content ul { margin: 8px 0 16px 24px; color: var(--text-dim); }
+  .content ul li { margin-bottom: 6px; font-size: 15px; }
+  .content a { color: var(--accent); text-decoration: none; }
+  .content a:hover { text-decoration: underline; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Menlo, monospace; font-size: 13px; color: var(--accent); }
+  .content blockquote { border-left: 3px solid var(--accent); padding: 6px 16px; margin: 16px 0; color: var(--text-dim); font-style: italic; }
+
+  .compare { width: 100%; border-collapse: collapse; margin: 14px 0 8px; font-size: 14px; }
+  .compare th, .compare td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+  .compare th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .compare td { color: var(--text-dim); }
+  .compare td.good { color: var(--green); }
+  .compare td.bad { color: var(--red); }
+  .compare td.warn { color: var(--amber); }
+
+  .faq-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: 0; }
+  .faq-item h3 { font-size: 16px; margin-bottom: 6px; color: var(--text); }
+  .faq-item p { color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+
+  .final-cta { text-align: center; padding: 36px 24px; margin-top: 40px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
+  .final-cta h2 { font-size: 22px; margin-bottom: 10px; color: var(--text); }
+  .final-cta p { color: var(--text-dim); margin-bottom: 18px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">Home</a> &nbsp;&rsaquo;&nbsp;
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> &nbsp;&rsaquo;&nbsp;
+    For Marketing Agencies
+  </div>
+
+  <header>
+    <div class="badge">&#9888;&#65039; EU AI Act &middot; August 2, 2026 deadline &middot; Free</div>
+    <h1>AI Disclosure Generator for Marketing Agencies</h1>
+    <p class="subtitle">Per-client AI disclosure labels &mdash; banners, image overlays, ad-platform flags, JSON-LD schema &mdash; that scale across every brief, channel and white-label deliverable your account managers ship this quarter.</p>
+    <div class="cta-row">
+      <a href="/ai-disclosure-generator/" class="cta cta-primary">Open the Generator &rarr;</a>
+      <a href="#example" class="cta cta-secondary">See an agency example</a>
+    </div>
+  </header>
+
+  <div class="panel" id="example">
+    <h2>What a compliant agency-produced asset looks like</h2>
+    <div class="client-mock">
+      <div class="client-row">
+        <div>
+          <div class="client-tag">Client &middot; Acme DTC</div>
+          <div style="font-size: 12px; color: #888; margin-top: 2px;">Channel: Editorial blog &middot; Q2 content calendar</div>
+        </div>
+        <div class="client-tag" style="text-align: right;">Brief #2614</div>
+      </div>
+      <div class="ai-badge">&#9889; AI-assisted &middot; Cover image generated by AI</div>
+      <h3 class="mock-title">5 Skin-Care Ingredients That Quietly Took Over 2026</h3>
+      <div class="mock-meta">By Acme Editorial &middot; April 30, 2026 &middot; 7 min read</div>
+      <div class="mock-img">
+        <div class="mock-overlay">&#129302; AI-generated image &middot; Acme DTC</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Why marketing agencies need a per-client AI disclosure tool</h2>
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="icon">&#128188;</div>
+        <h3>Joint liability with clients</h3>
+        <p>Article 50 reads agencies as &quot;deployers&quot; and clients as publishers. If your MSA is silent on AI disclosure, ambiguity flows back to the agency. The generator emits the SOP half of the fix.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#128202;</div>
+        <h3>Paid social &amp; performance ads</h3>
+        <p>Meta, TikTok, and Google now require platform-level AI flags. The regulator wants on-creative disclosure too. The generator emits both, in the JSON shapes the ad APIs accept.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#128221;</div>
+        <h3>Account-manager handoff</h3>
+        <p>Compliance can&apos;t depend on each AM remembering the right phrasing. Build per-client presets once; the team picks from a list rather than freelancing legal language at 6pm on Friday.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#127914;</div>
+        <h3>Influencer &amp; endorsement briefs</h3>
+        <p>The FTC&apos;s 2024 Endorsement Guide update specifically targets AI-generated endorsements. The generator stacks the AI label and the #ad disclosure as a combined block.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#127981;</div>
+        <h3>Regulated-industry clients</h3>
+        <p>Pharma, finance, legal layer their own rules on top. Presets emit the EU AI Act label plus the FINRA / MDR / state-bar attestation in one block, so client compliance doesn&apos;t bounce the asset back.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#127759;</div>
+        <h3>White-label deliverables</h3>
+        <p>Disclosure must name the AI element, not your agency. The white-label preset emits brand-neutral language so reseller relationships and confidential client lists stay intact.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>The agency-specific case for AI disclosure</h2>
+    <p>Most agencies treated the EU AI Act as a client-side problem &mdash; something the in-house legal team at the brand would handle. That reading hasn&apos;t aged well. Article 50 attaches to the &quot;deployer&quot; of the AI system, defined as &quot;a natural or legal person&hellip; using an AI system under its authority.&quot; If your account team prompts Midjourney to generate a hero image for a client landing page, the agency is the deployer in that transaction. The client is the publisher. Both touch the asset; both can be reached.</p>
+
+    <p>That joint-and-several reading isn&apos;t hypothetical. The first wave of regulator guidance from the European Commission&apos;s AI Office has explicitly named &quot;contractors and creative agencies producing content on behalf of platforms&quot; as in-scope deployers. The practical consequence: your MSAs need a clean disclosure clause, your account managers need a per-client SOP, and your delivered assets need labels that survive whatever happens downstream. The generator handles the asset-and-SOP layer; your legal team handles the MSA. Together it&apos;s the smallest viable compliance footprint for an agency running multiple client books in 2026.</p>
+
+    <h2>The four channels where agencies actually owe disclosure</h2>
+    <p>Disclosure obligations don&apos;t map cleanly to a single content type &mdash; agencies produce in mixed surfaces, and each surface has its own placement rules. The generator&apos;s presets cover the four where agency exposure is highest:</p>
+    <ul>
+      <li><strong>Editorial &amp; SEO content for client blogs.</strong> Cover image from Midjourney or Firefly, AI-assisted drafting, sometimes AI voice for the audio version. Per-post badge above the byline plus an image overlay; JSON-LD schema in the post&apos;s <code>&lt;head&gt;</code>. The white-label preset strips any agency-identifying language so the post reads as the client&apos;s own.</li>
+      <li><strong>Paid social &amp; performance ads.</strong> Meta&apos;s &quot;AI Info&quot; flag, TikTok&apos;s &quot;AI-Generated Content&quot; toggle, and Google Ads&apos; <code>aiContentDisclosure</code> field are platform requirements that don&apos;t replace on-creative labeling. The generator emits the platform-specific JSON your ad-ops or media-buying tool can ingest, plus the on-creative overlay sized for 1:1, 4:5, and 9:16.</li>
+      <li><strong>Email campaigns &amp; lifecycle marketing.</strong> Subject-line A/B tests written by GPT, AI-generated hero images in the email body, AI-personalized copy variants. The disclosure goes in the email footer with a one-line schema-equivalent for analytics. Less visible than blog placement, but auditable.</li>
+      <li><strong>Influencer &amp; endorsement deliverables.</strong> When the agency briefs an influencer and any of the deliverable was AI-produced on the agency&apos;s behalf, the FTC&apos;s 2024 Endorsement Guide update requires that to be disclosed alongside the standard #ad. The generator&apos;s combined preset emits both labels in a single line.</li>
+    </ul>
+
+    <h2>Per-client preset libraries: how agencies actually scale this</h2>
+    <p>The slowest version of compliance is the version where every account manager opens the generator from scratch for every brief. The fast version is a per-client preset library. The pattern that has worked for the multi-client teams we&apos;ve seen:</p>
+    <ul>
+      <li><strong>One preset per client &times; channel.</strong> Acme DTC blog. Acme DTC paid social. Acme DTC email. Each preset locks the brand voice line, the responsible-party language, and the JSON-LD <code>publisher</code> field so account managers don&apos;t edit them.</li>
+      <li><strong>Schema in the CMS partial, not the asset.</strong> The visible badge ships per-asset. The JSON-LD block lives in the client&apos;s post template head. New posts inherit it automatically; deliverable count goes up but compliance overhead stays flat.</li>
+      <li><strong>Preset name in the PM tool deliverable record.</strong> Asana, Monday, Notion, Wrike &mdash; whichever you run, the deliverable card stores the preset slug used. That&apos;s your audit trail when a regulator or a client&apos;s in-house counsel asks for one.</li>
+    </ul>
+    <p>Built that way, the marginal cost of disclosure on a new asset is one click in the PM tool plus a paste in the CMS. Below the threshold where account managers route around it.</p>
+
+    <h2>Compliance is also business development</h2>
+    <blockquote>The agencies winning enterprise pitches in 2026 are the ones whose RFP responses include an AI compliance posture. Procurement teams have started asking. The agencies without an answer are losing the round.</blockquote>
+    <p>Enterprise procurement now routinely includes AI-handling questions in RFPs &mdash; not just whether you use AI, but what disclosures, what audit trail, what indemnification posture. A documented per-client disclosure SOP backed by a generator and a preset library reads as &quot;mature&quot; in a way that &quot;we&apos;ll figure it out per-engagement&quot; does not. That&apos;s a real revenue lever, particularly in regulated verticals where the alternative answer kills the relationship at the legal-review step.</p>
+
+    <h2>Regulated-industry clients: pharma, finance, legal</h2>
+    <p>If your client book includes any of these, the EU AI Act sits on top of an existing compliance stack rather than replacing it. The generator&apos;s presets stack the layers in the right order so the asset doesn&apos;t bounce back from client-side review:</p>
+    <ul>
+      <li><strong>Pharma &amp; medical-device clients.</strong> EU MDR plus EMA promotional review on top of Article 50. The preset emits the AI label plus a placeholder for the EU-MDR-required device identifier and a flag the medical legal-regulatory (MLR) reviewer expects.</li>
+      <li><strong>Finance &amp; fintech clients.</strong> MiFID II marketing-communication labeling in the EU, US FINRA Rule 2210 for broker-dealers. The generator&apos;s finance preset emits both an AI disclosure and the &quot;not investment advice&quot; standard line that ad and content review wants.</li>
+      <li><strong>Legal-services clients.</strong> Multiple US state bars have published 2024&ndash;2026 guidance on AI in attorney advertising. <a href="https://www.americanbar.org/groups/professional_responsibility/" rel="nofollow noopener">ABA Center for Professional Responsibility</a> has the rolling tracker. The legal-vertical preset reads against the strictest active state rule so the asset clears in any jurisdiction.</li>
+    </ul>
+
+    <h2>Compliance vs. theatre: what bad agency disclosure looks like</h2>
+    <table class="compare">
+      <thead>
+        <tr><th>Pattern</th><th>What it does</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Agency-wide AI policy on agency website</td><td>Doesn&apos;t reach the client&apos;s readers; not asset-level</td><td class="bad">Non-compliant</td></tr>
+        <tr><td>Single boilerplate clause in MSA appendix</td><td>Contractual but not perceptible; doesn&apos;t satisfy Article 50</td><td class="bad">Non-compliant</td></tr>
+        <tr><td>Disclosure in client&apos;s site footer only</td><td>Reader doesn&apos;t see it at first exposure to the AI element</td><td class="bad">Non-compliant</td></tr>
+        <tr><td>Per-asset badge for blogs only, not paid ads</td><td>Covers one channel; ad creative is unprotected</td><td class="warn">Partial</td></tr>
+        <tr><td>Per-client preset across blog, ads, email, social</td><td>Asset-level on every channel; survives audit</td><td class="good">Compliant</td></tr>
+        <tr><td>Per-client preset + JSON-LD + PM-tool audit log</td><td>Reader, scraper, regulator, and client procurement all see it</td><td class="good">Best practice</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Workflow for a typical agency content factory</h2>
+    <p>The realistic publishing rhythm for a mid-sized agency is 200&ndash;800 client assets a month across 8&ndash;15 brands. At that volume, every gram of friction matters. The pattern that holds up:</p>
+    <ul>
+      <li><strong>Onboarding step.</strong> When you sign a new client, build their preset library in the generator that day &mdash; before the first deliverable. Five presets (blog, paid social, email, landing page, white-label) take about 20 minutes. Save the slugs into the client&apos;s onboarding doc.</li>
+      <li><strong>Brief step.</strong> The brief template includes a &quot;disclosure preset&quot; field. The strategist or AM picks the preset slug when they create the brief, not later.</li>
+      <li><strong>Production step.</strong> The producer pastes the preset output. The visible badge goes in the asset; the JSON-LD goes in the CMS template once and stays there.</li>
+      <li><strong>QA step.</strong> The reviewer&apos;s checklist has &quot;disclosure preset matches brief&quot; as a tick item. Five seconds. The audit trail is the brief itself.</li>
+    </ul>
+    <p>Built that way, your agency carries roughly 0.5% additional production overhead for full Article 50 compliance &mdash; well below the threshold where teams route around it. For broader context on agency AI governance, the <a href="https://www.iab.com/" rel="nofollow noopener">IAB</a> publishes a rolling agency-AI-policy template that pairs naturally with this generator&apos;s output.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <h3>Is the agency or the client liable for missing AI disclosure under the EU AI Act?</h3>
+      <p>Both. Article 50 treats the agency as the &quot;deployer&quot; and the client as the publisher; joint and several liability is the default. If your MSA is silent on AI, ambiguity flows back to the agency. The generator handles the SOP half; your legal team handles the contract clause.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do paid ads need AI disclosure too, or only organic content?</h3>
+      <p>Paid ads are explicitly in scope. Meta, TikTok and Google now layer their own platform-level AI flags on top &mdash; meeting one rule doesn&apos;t satisfy the other. The generator emits both the platform-flag JSON and the on-creative overlay.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How does the FTC&apos;s 2024 Endorsement Guide update interact with AI disclosure for influencer briefs?</h3>
+      <p>The 2024 update added AI-generated endorsements as separately enforceable. If your agency briefs an influencer and any of the deliverable was AI-produced, the disclosure trail names that. The combined preset emits the AI label and the FTC #ad disclosure as one block.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do agencies actually scale disclosure across hundreds of monthly assets?</h3>
+      <p>Per-client preset library &middot; JSON-LD baked into the CMS partial &middot; preset slug logged in the PM tool deliverable record. That&apos;s the audit trail. Marginal cost per asset drops to one click.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What about regulated-industry clients &mdash; pharma, finance, legal?</h3>
+      <p>The EU AI Act sits on top of EU MDR / FDA, MiFID II / FINRA, and state-bar advertising rules. The vertical presets stack the layers in one block so client compliance review doesn&apos;t bounce the asset back.</p>
+    </div>
+    <div class="faq-item">
+      <h3>We white-label content for resellers. Whose name goes on the disclosure?</h3>
+      <p>The disclosure names the AI element, not the agency. The white-label preset removes any agency-identifying language so the publishing brand carries the label. Your reseller MSA should still assign disclosure responsibility explicitly.</p>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    <h2>Build your per-client disclosure library</h2>
+    <p>Free, no signup. Pick your channels, generate per-client presets, paste the HTML and JSON-LD into your CMS and ad platform. A full client preset library takes about 20 minutes &mdash; compliant before the August 2026 deadline.</p>
+    <a href="/ai-disclosure-generator/" class="cta cta-primary">Open the AI Disclosure Generator &rarr;</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> &middot; Free indie tools for the AI era &middot;
+    See also: <a href="/ai-disclosure-generator/for-bloggers/">AI Disclosure Generator for Bloggers</a> &middot;
+    <a href="/favicon-generator/for-marketing-agencies/">Favicon Generator for Agencies</a> &middot;
+    <a href="/ai-cost-calculator/for-marketing-agencies/">AI Cost Calculator for Agencies</a>
+  </footer>
+</div>
+</body>
+</html>
