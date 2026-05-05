@@ -131,17 +131,144 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tinytools-smoky.vercel.app/prompt-injection-tester/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://tinytools-smoky.vercel.app/vs/adobe-express/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tinytools-smoky.vercel.app/mcp-server-inspector/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/prompt-injection-tester/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/c2pa-manifest-generator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/ai-bill-of-materials/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/color-palette/blog/how-to-pick-brand-colors-startup-2026/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/vs/bannerbear/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-fitness-coaches/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/color-palette/blog/color-theory-non-designers-2026/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/color-palette/vs/coolors/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/color-palette/vs/adobe-color/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/color-palette/vs/khroma/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/color-palette/for-saas-founders/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/color-palette/for-react-developers/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/color-palette/for-tailwind-users/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/best-free-color-palette-generators-2026/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/color-palette/blog/dark-mode-color-palette-guide-2026/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/favicon-generator/for-marketing-agencies/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/seo-meta-generator/blog/meta-description-length-2026/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/vs/remove-bg/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-marketing-agencies/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-from-product-photos-free-2026/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/background-remover/for-web-developers/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/vs/photoroom/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/ai-cost-calculator/for-web-developers/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/seo-meta-generator/blog/title-tag-length-best-practices-2026/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/og-image-generator/for-designers/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
-
-
-
 
