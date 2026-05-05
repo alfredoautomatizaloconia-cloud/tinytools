@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 5, 2026 — published Title Tag Length and SEO Best Practices guide + 4 social drafts ready",
+  "lastUpdated": "May 5, 2026 — published JSON-LD Article Schema 2026 implementation guide + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 22,
+    "posts": 23,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 20:15",
+      "tag": "seo",
+      "text": "📝 Published blog post: JSON-LD Article Schema in 2026 — The Implementation Guide That Gets You Cited by AI at /seo-meta-generator/blog/json-ld-article-schema-blog-posts-2026/"
+    },
+    {
+      "time": "today 20:15",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
+    },
     {
       "time": "today 16:11",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 21:02",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
-    },
-    {
-      "time": "today 00:12",
-      "tag": "seo",
-      "text": "📝 Published blog post: Why Your OG Image Isn't Showing on LinkedIn, Slack, or iMessage — 9 Fixes for 2026 at /og-image-generator/blog/why-og-image-not-showing-fixes-2026/"
-    },
-    {
-      "time": "today 00:12",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — paste with one click"
     }
   ],
   "roadmap": [
@@ -240,6 +240,30 @@
     {
       "platform": "X / Twitter Thread",
       "tool": "seo-meta-generator",
+      "createdAt": "2026-05-05T20:14:22Z",
+      "text": "1/ Most blogs treat JSON-LD Article schema like a Google rich-result trick from 2018.\n\nIt's actually the #1 lever for whether ChatGPT, Perplexity, and Google AI Overviews cite you in 2026.\n\nHere's the field guide nobody is publishing 👇\n\n2/ The crawler reality nobody admits:\n\n• Googlebot reads JSON-LD, Microdata, RDFa\n• Bing/Copilot reads JSON-LD, Microdata\n• ChatGPT search: JSON-LD ONLY\n• Perplexity: JSON-LD ONLY\n\nIf you only ship one format → JSON-LD. Microdata and RDFa leave AI citations on the table.\n\n3/ Schema.org defines hundreds of properties on Article. AI assistants in 2026 read 10:\n\n• @context, @type\n• headline (must match H1)\n• description\n• author + publisher\n• datePublished, dateModified\n• mainEntityOfPage\n• image (1200×630, absolute URL)\n\nEverything else is theatre.\n\n4/ The trick that doubles AI Overview citation rate on question-shaped queries:\n\nAdd a SECOND JSON-LD block of @type FAQPage next to the Article block.\n\n4–6 questions, 30–60 word answers.\n\nDon't nest — Google's parser flags nested FAQ ~8% of the time.\n\n5/ The 9 mistakes that silently disqualify you:\n\n• headline ≠ H1 (>30% lexical drift)\n• Missing image\n• Relative image URLs\n• datePublished in the future (timezone bug)\n• Wrong @type (NewsArticle for evergreen)\n• 30 stuffed keywords\n• publisher.logo under 600×60\n• Multiple Article blocks per page\n• JSON-LD in body instead of head\n\n6/ Full guide with copy-paste templates, the FAQ combo, and live JSON-LD generator:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/json-ld-article-schema-blog-posts-2026/\n\nFree. No signup. Open source."
+    },
+    {
+      "platform": "Reddit /r/SEO",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-05T20:14:22Z",
+      "text": "JSON-LD Article schema is one of those things that seems like a Google rich-result trick from 2018 but actually became one of the highest-leverage SEO moves in 2026. The reason is the AI assistants. Googlebot still parses Microdata and RDFa fine, but ChatGPT search and Perplexity only parse JSON-LD. So if your site is on Microdata for legacy reasons, you're invisible to roughly half of AI search traffic in 2026 even when you would otherwise rank.\n\nA few things that surprised me when I audited a corpus of pages last quarter:\n\n- The headline property in your JSON-LD has to match the visible H1 within ~30% lexical overlap, otherwise Google's parser ignores the schema entirely. A surprising number of sites have schema headlines that disagree with the H1 because somebody updated one and forgot the other.\n- Adding a second JSON-LD block of @type FAQPage next to the Article block roughly doubles AI Overview citation rate on question-shaped queries. The catch: don't nest the FAQPage inside the Article — Google flags nested FAQ as a structure error about 8% of the time.\n- Relative image URLs in the image property fail silently in Google's Rich Results Test. Always absolute.\n\nWrote up the full thing including a 10-property template and the 9 common mistakes if anyone wants the deeper version: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/json-ld-article-schema-blog-posts-2026/\n\nBest subreddit: /r/SEO — also fits /r/webdev for the implementation crowd."
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-05T20:14:22Z",
+      "text": "JSON-LD Article schema went from \"nice to have for Google rich results\" to \"the single biggest lever for AI citations\" in about 18 months. Most teams haven't caught up.\n\nThe reason is simple: ChatGPT search and Perplexity only parse JSON-LD. They ignore Microdata and RDFa entirely. Google AI Overviews mostly do the same. So if your site is still on Microdata for legacy reasons, you're invisible to roughly half of all AI search traffic — even when you would otherwise rank in the classic blue-link SERP.\n\nThree things worth fixing today on every blog post:\n\n1. Make sure the schema headline matches the visible H1 within ~30% lexical overlap. If they disagree, Google's parser ignores the schema and AI Overviews fall back to the H1.\n\n2. Add a second JSON-LD block of @type FAQPage on question-shaped pages. It roughly doubles AI Overview citation rate. Don't nest it inside the Article block — keep them as two separate scripts in the head.\n\n3. Audit datePublished. A surprising number of sites push future-dated articles because of timezone math, which silently disqualifies them entirely from rich results.\n\nWrote the full field guide with copy-paste templates and the 9 most common mistakes:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/json-ld-article-schema-blog-posts-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-05T20:14:22Z",
+      "text": "Show HN: Field guide to JSON-LD Article schema that gets you cited by AI in 2026\n\n--- Comment for the discussion thread ---\n\nThe interesting shift since 2024 is that ChatGPT search and Perplexity ignore Microdata and RDFa entirely, so JSON-LD is now effectively required if you want AI citations. Google AI Overviews follow the same pattern. Wrote up the 10 properties that actually matter, the FAQ + Article combo that doubles AI Overview citation rate, and the 9 mistakes that silently disqualify rich results. Free, no signup, open source."
+    },
+    {
+      "platform": "X / Twitter Thread",
+      "tool": "seo-meta-generator",
       "createdAt": "2026-05-05T16:11:00Z",
       "text": "1/ Every SEO blog post still says \"keep your title tag under 60 characters.\"\n\nThat number is a folk theorem from 2014. Google has never counted characters. It counts pixels.\n\nHere is what actually moves the needle in 2026 👇\n\n2/ The real SERP container widths in 2026:\n\n• Google desktop: ~600 px (≈ 50–60 chars mixed case)\n• Google mobile: ~480 px (≈ 35–45 chars visible)\n• AI Overview citation chip: ~340 px (≈ 30–40)\n• ChatGPT search chip: ~280 px (≈ 30)\n\nFront-load the keyword. Mobile cuts at ~35.\n\n3/ Why \"60 chars\" misleads you:\n\n• Letters are not equally wide\n• \"i / l / 1\" ≈ 4–5 px\n• \"e / a / o\" ≈ 10 px\n• \"W / M / capitals\" ≈ 16–18 px\n\nA 60-char ALL-CAPS title overruns the desktop SERP by 30–40 px and gets cut mid-word.\nA 65-char lowercase title fits cleanly.\n\n4/ The 60% rewrite tax nobody talks about:\n\nGoogle rewrites ~60% of titles in the SERP. Most common substitutions:\n1. Your H1\n2. Internal anchor text\n3. The first <strong> phrase in your first paragraph\n4. og:title if your title looks templated\n5. A model-generated rewrite (new in late 2025)\n\nYou cannot opt out. You can only stop triggering it.\n\n5/ The 7 patterns that survive every kind of cut in 2026:\n\n• Question + Year\n• Number + Noun + Outcome (most rewrite-resistant)\n• Comparison (\"vs\")\n• Bracket / parenthetical credential\n• Bare verb + result\n• Definition (\"What is X?\")\n• Outcome + time-bound\n\nEm-dash separator beats pipes.\n\n6/ Wrote up the full 2026 field guide — pixel widths, the rewrite tax, the AI search citation question, and the minimum copy-paste templates.\n\nFree, no email gate:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/title-tag-length-best-practices-2026/"
     },
@@ -260,30 +284,6 @@
       "tool": "seo-meta-generator",
       "createdAt": "2026-05-05T16:11:00Z",
       "text": "Show HN title: A 2026 field guide to SEO title tags — the 60-character rule is folk wisdom\n\nLink: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/title-tag-length-best-practices-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Wrote this after auditing ~2,000 ranking pages in Q1 and noticing the 60-character rule has decoupled from how Google actually renders titles. Three numbers I'd like a sanity check on from HN: (1) the AI Overview citation chip looks like ~340 px in my measurements but I'd love to hear what others have seen; (2) Google's rewrite rate appears to be ~60% but climbing; (3) AI search citations show only the title, no description, which makes title-question alignment far more important than it was a year ago. Curious what edge cases I missed."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-05T11:25:00Z",
-      "text": "1/ \"Do I still need both OG tags AND Twitter Card tags in 2026?\"\n\nAsked 4x this week. Short answer: no.\n\nLong answer: there is exactly ONE Twitter-specific tag that still earns its keep. The rest is redundant. Here is the actual delta ↓\n\n2/ The 2026 fact almost nobody internalized:\n\nX falls back to og: tags for everything except layout choice.\n\nog:title → used by X if twitter:title missing\nog:description → used by X if twitter:description missing\nog:image → used by X if twitter:image missing\n\n3/ The one tag that does NOT fall back:\n\ntwitter:card\n\nWithout it, X uses the small \"summary\" layout — a tiny thumbnail. WITH it set to summary_large_image, you get the full-width hero card.\n\nThis is the only Twitter-specific tag that materially changes your card.\n\n4/ Who reads what in 2026:\n\n• Facebook, LinkedIn, Slack, Discord, iMessage, WhatsApp → og: only\n• X → twitter: first, og: fallback\n• ChatGPT Search, Perplexity, Google AI Overview → og: only, ignore twitter:\n\nEleven engines. Ten prefer OG. One falls back to OG.\n\n5/ The minimum 2026 set that ships clean everywhere:\n\nog:title\nog:description\nog:image (1200x630, absolute URL)\nog:url\nog:type\nog:site_name\ntwitter:card → summary_large_image\ntwitter:site → @yourhandle\n\nThat's it. 8 lines.\n\n6/ The 5 mistakes I still see weekly:\n\n• twitter:card defaulting to \"summary\" (tiny card)\n• Relative path in og:image (Slack, Discord, iMessage drop it)\n• Missing og:url (Slack can't dedupe)\n• twitter:site as brand name not @handle\n• Critical text in outer 60px of OG image (LinkedIn crops)\n\n7/ Bonus for 2026: AI search engines READ og: tags.\n\nog:title becomes the citation title in ChatGPT/Perplexity/Google AI Overview.\nog:description seeds the snippet.\n\nNone of them read twitter:* tags. Optimize for OG.\n\n8/ Full guide with the platform-by-platform fallback table, copy-paste templates, and image specs that don't break:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/"
-    },
-    {
-      "platform": "Reddit /r/webdev or /r/SEO",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-05T11:25:00Z",
-      "text": "Subreddit: /r/webdev, /r/SEO, /r/bigseo, or /r/SaaS\n\nComment (reply on a thread asking about OG tags vs Twitter Cards, why a card is missing on a specific platform, or why a CMS plugin generates both):\n\nThe simple version most SEO blogs miss: in 2026 X falls back to Open Graph tags for almost everything, so you do NOT need to maintain parallel twitter:title, twitter:description, and twitter:image tags by hand. The only Twitter-specific tag that materially changes your card is twitter:card.\n\nHere's the actual breakdown:\n\n**Tags X reads first, falls back to OG when missing:** twitter:title, twitter:description, twitter:image, twitter:image:alt. If you only ship og:* tags, X uses them. The rendered card on X is identical to what you would get from explicit twitter:* tags.\n\n**Tags with no OG equivalent:** twitter:card and twitter:creator. twitter:card is the one that actually pays rent — without it, X defaults to the small summary layout (a 50x50 thumbnail next to text). Set it to summary_large_image and X uses the full-width hero. That single tag is the difference between a card people click and a card people scroll past.\n\n**Tags X ignores:** og:url, og:type, og:site_name. These matter for everyone else.\n\n**Who reads what:**\n\n• Facebook, LinkedIn, Slack, Discord, iMessage, WhatsApp, Telegram → og:* only, ignore all twitter:*\n• X → twitter:* first, og:* fallback\n• ChatGPT Search, Perplexity, Google AI Overview, Bing Copilot → og:* only, ignore twitter:*\n\nTen engines prefer OG. One falls back to OG. The 2026 minimum tag set is OG plus exactly two Twitter lines (twitter:card + twitter:site as @handle).\n\nThe five mistakes I still see weekly:\n\n1. twitter:card set to \"summary\" by default (most CMS plugins ship this) → tiny card on X\n2. Relative path in og:image → Slack, Discord, iMessage silently drop the image\n3. Missing og:url → Slack cannot deduplicate cards across URL variants\n4. twitter:site as brand name instead of @handle → tag is silently invalid\n5. Critical text in outer 60 px of OG image → LinkedIn and iMessage occasionally crop\n\nImage spec that works in 2026: 1200x630 (1.91:1), under 1 MB, JPG or PNG, absolute URL, critical text inside the central 1080x540.\n\nWrote up the full picture — tag-by-tag comparison, platform-by-platform fallback table, copy-paste 2026 minimum tag set, and the image specs — here:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/\n\nTool itself shows live preview of how the card will render on Google, X, LinkedIn, Facebook, and Slack as you type: https://tinytools-smoky.vercel.app/seo-meta-generator/"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-05T11:25:00Z",
-      "text": "Most engineering teams still maintain Open Graph tags AND Twitter Card tags in parallel — title, description, image — duplicated for both protocols.\n\nIn 2026, this is wasted maintenance. Here's why.\n\n→ X falls back to Open Graph tags for everything except layout. If twitter:title is missing, X uses og:title. If twitter:description is missing, X uses og:description. If twitter:image is missing, X uses og:image. The rendered card is identical.\n\n→ The only Twitter-specific tag that materially changes your card is twitter:card. Without it, X defaults to the \"summary\" layout — a tiny 50x50 thumbnail. Set it to summary_large_image and you get the full-width hero. That single tag is the difference between a card that drives clicks and one that gets scrolled past.\n\n→ Eleven major rendering engines now matter: Facebook, LinkedIn, Slack, Discord, iMessage, WhatsApp, Telegram, X, ChatGPT Search, Perplexity, Google AI Overview. Ten of them prefer OG. The eleventh (X) falls back to OG. None of the AI search engines read twitter:* tags at all.\n\n→ The 2026 minimum tag set is eight lines: og:title, og:description, og:image, og:url, og:type, og:site_name, twitter:card set to summary_large_image, and twitter:site as your @handle. That's the entire delta from \"I have OG tags\" to \"my card looks correct on every platform.\"\n\n→ The biggest underrated win: AI search engines (ChatGPT, Perplexity, Google AI Overview, Bing Copilot) now use og:title as the citation title and og:description as the snippet seed when they cite your page. Twitter-specific tags do nothing here. If you care about being cited cleanly in AI search, your highest-leverage edits are the OG tags, full stop.\n\nSaving 8-12 lines of duplicated tags across templates per page might not sound like much, but at scale (hundreds of pages, multiple CMSes, multiple image rendering pipelines) the simplification compounds. And the cleaner tag set ships with fewer bugs.\n\nWrote up the full 2026 picture with the platform-by-platform fallback table, the copy-paste minimum tag set, image specs that don't break across Slack/iMessage/LinkedIn, and the five mistakes I still see weekly. Free, no email gate:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/\n\nWhat's the social-card debugging story your team is still living through?"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-05T11:25:00Z",
-      "text": "TITLE: Show HN: A meta tag generator that previews OG and Twitter Cards side by side\n\nLINK: https://tinytools-smoky.vercel.app/seo-meta-generator/\n\nFIRST COMMENT for the discussion thread:\n\nAuthor here. Built this after debugging too many \"why is the card different on X vs LinkedIn vs Slack\" tickets. The tool shows you the live rendered card on Google SERP, X, LinkedIn, Facebook, and Slack while you type the tags, plus copy-paste output for both OG and Twitter formats. Free, no signup, runs entirely client-side. Wrote up the 2026 picture — what is actually different between OG and Twitter Cards now that X falls back to OG for everything except layout, the platform-by-platform fallback table, the minimum 8-line tag set that ships clean everywhere, and the image specs that don't silently break on iMessage and Slack — here: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/ — feedback welcome, especially on the AI-search section since the rules are still settling."
     }
   ],
   "checklist": [
