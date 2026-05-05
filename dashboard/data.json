@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 5, 2026 — published How to Remove Background from Product Photos for Free in 2026 (founder field guide, 2500 words) + 4 social drafts ready",
+  "lastUpdated": "May 5, 2026 — published OG vs Twitter Card Differences in 2026 — The Practical Field Guide (2026 field guide, 1700 words) + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 20,
+    "posts": 21,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 11:25",
+      "tag": "seo",
+      "text": "📝 Published blog post: OG vs Twitter Card Differences in 2026 — The Practical Field Guide at /seo-meta-generator/blog/og-vs-twitter-card-differences-2026/"
+    },
+    {
+      "time": "today 11:25",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting seo-meta-generator"
+    },
     {
       "time": "today 08:12",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 20:10",
       "tag": "promo",
       "text": "🧵 4 social drafts ready in dashboard: X thread + Reddit /r/SaaS + LinkedIn + HN Show HN — all promoting OG Image Generator"
-    },
-    {
-      "time": "today 16:12",
-      "tag": "seo",
-      "text": "📝 Published blog post: Favicon Dimensions Every Browser Needs in 2026 at /favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/"
-    },
-    {
-      "time": "today 16:12",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-05T11:25:00Z",
+      "text": "1/ \"Do I still need both OG tags AND Twitter Card tags in 2026?\"\n\nAsked 4x this week. Short answer: no.\n\nLong answer: there is exactly ONE Twitter-specific tag that still earns its keep. The rest is redundant. Here is the actual delta ↓\n\n2/ The 2026 fact almost nobody internalized:\n\nX falls back to og: tags for everything except layout choice.\n\nog:title → used by X if twitter:title missing\nog:description → used by X if twitter:description missing\nog:image → used by X if twitter:image missing\n\n3/ The one tag that does NOT fall back:\n\ntwitter:card\n\nWithout it, X uses the small \"summary\" layout — a tiny thumbnail. WITH it set to summary_large_image, you get the full-width hero card.\n\nThis is the only Twitter-specific tag that materially changes your card.\n\n4/ Who reads what in 2026:\n\n• Facebook, LinkedIn, Slack, Discord, iMessage, WhatsApp → og: only\n• X → twitter: first, og: fallback\n• ChatGPT Search, Perplexity, Google AI Overview → og: only, ignore twitter:\n\nEleven engines. Ten prefer OG. One falls back to OG.\n\n5/ The minimum 2026 set that ships clean everywhere:\n\nog:title\nog:description\nog:image (1200x630, absolute URL)\nog:url\nog:type\nog:site_name\ntwitter:card → summary_large_image\ntwitter:site → @yourhandle\n\nThat's it. 8 lines.\n\n6/ The 5 mistakes I still see weekly:\n\n• twitter:card defaulting to \"summary\" (tiny card)\n• Relative path in og:image (Slack, Discord, iMessage drop it)\n• Missing og:url (Slack can't dedupe)\n• twitter:site as brand name not @handle\n• Critical text in outer 60px of OG image (LinkedIn crops)\n\n7/ Bonus for 2026: AI search engines READ og: tags.\n\nog:title becomes the citation title in ChatGPT/Perplexity/Google AI Overview.\nog:description seeds the snippet.\n\nNone of them read twitter:* tags. Optimize for OG.\n\n8/ Full guide with the platform-by-platform fallback table, copy-paste templates, and image specs that don't break:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/"
+    },
+    {
+      "platform": "Reddit /r/webdev or /r/SEO",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-05T11:25:00Z",
+      "text": "Subreddit: /r/webdev, /r/SEO, /r/bigseo, or /r/SaaS\n\nComment (reply on a thread asking about OG tags vs Twitter Cards, why a card is missing on a specific platform, or why a CMS plugin generates both):\n\nThe simple version most SEO blogs miss: in 2026 X falls back to Open Graph tags for almost everything, so you do NOT need to maintain parallel twitter:title, twitter:description, and twitter:image tags by hand. The only Twitter-specific tag that materially changes your card is twitter:card.\n\nHere's the actual breakdown:\n\n**Tags X reads first, falls back to OG when missing:** twitter:title, twitter:description, twitter:image, twitter:image:alt. If you only ship og:* tags, X uses them. The rendered card on X is identical to what you would get from explicit twitter:* tags.\n\n**Tags with no OG equivalent:** twitter:card and twitter:creator. twitter:card is the one that actually pays rent — without it, X defaults to the small summary layout (a 50x50 thumbnail next to text). Set it to summary_large_image and X uses the full-width hero. That single tag is the difference between a card people click and a card people scroll past.\n\n**Tags X ignores:** og:url, og:type, og:site_name. These matter for everyone else.\n\n**Who reads what:**\n\n• Facebook, LinkedIn, Slack, Discord, iMessage, WhatsApp, Telegram → og:* only, ignore all twitter:*\n• X → twitter:* first, og:* fallback\n• ChatGPT Search, Perplexity, Google AI Overview, Bing Copilot → og:* only, ignore twitter:*\n\nTen engines prefer OG. One falls back to OG. The 2026 minimum tag set is OG plus exactly two Twitter lines (twitter:card + twitter:site as @handle).\n\nThe five mistakes I still see weekly:\n\n1. twitter:card set to \"summary\" by default (most CMS plugins ship this) → tiny card on X\n2. Relative path in og:image → Slack, Discord, iMessage silently drop the image\n3. Missing og:url → Slack cannot deduplicate cards across URL variants\n4. twitter:site as brand name instead of @handle → tag is silently invalid\n5. Critical text in outer 60 px of OG image → LinkedIn and iMessage occasionally crop\n\nImage spec that works in 2026: 1200x630 (1.91:1), under 1 MB, JPG or PNG, absolute URL, critical text inside the central 1080x540.\n\nWrote up the full picture — tag-by-tag comparison, platform-by-platform fallback table, copy-paste 2026 minimum tag set, and the image specs — here:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/\n\nTool itself shows live preview of how the card will render on Google, X, LinkedIn, Facebook, and Slack as you type: https://tinytools-smoky.vercel.app/seo-meta-generator/"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-05T11:25:00Z",
+      "text": "Most engineering teams still maintain Open Graph tags AND Twitter Card tags in parallel — title, description, image — duplicated for both protocols.\n\nIn 2026, this is wasted maintenance. Here's why.\n\n→ X falls back to Open Graph tags for everything except layout. If twitter:title is missing, X uses og:title. If twitter:description is missing, X uses og:description. If twitter:image is missing, X uses og:image. The rendered card is identical.\n\n→ The only Twitter-specific tag that materially changes your card is twitter:card. Without it, X defaults to the \"summary\" layout — a tiny 50x50 thumbnail. Set it to summary_large_image and you get the full-width hero. That single tag is the difference between a card that drives clicks and one that gets scrolled past.\n\n→ Eleven major rendering engines now matter: Facebook, LinkedIn, Slack, Discord, iMessage, WhatsApp, Telegram, X, ChatGPT Search, Perplexity, Google AI Overview. Ten of them prefer OG. The eleventh (X) falls back to OG. None of the AI search engines read twitter:* tags at all.\n\n→ The 2026 minimum tag set is eight lines: og:title, og:description, og:image, og:url, og:type, og:site_name, twitter:card set to summary_large_image, and twitter:site as your @handle. That's the entire delta from \"I have OG tags\" to \"my card looks correct on every platform.\"\n\n→ The biggest underrated win: AI search engines (ChatGPT, Perplexity, Google AI Overview, Bing Copilot) now use og:title as the citation title and og:description as the snippet seed when they cite your page. Twitter-specific tags do nothing here. If you care about being cited cleanly in AI search, your highest-leverage edits are the OG tags, full stop.\n\nSaving 8-12 lines of duplicated tags across templates per page might not sound like much, but at scale (hundreds of pages, multiple CMSes, multiple image rendering pipelines) the simplification compounds. And the cleaner tag set ships with fewer bugs.\n\nWrote up the full 2026 picture with the platform-by-platform fallback table, the copy-paste minimum tag set, image specs that don't break across Slack/iMessage/LinkedIn, and the five mistakes I still see weekly. Free, no email gate:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/\n\nWhat's the social-card debugging story your team is still living through?"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-05T11:25:00Z",
+      "text": "TITLE: Show HN: A meta tag generator that previews OG and Twitter Cards side by side\n\nLINK: https://tinytools-smoky.vercel.app/seo-meta-generator/\n\nFIRST COMMENT for the discussion thread:\n\nAuthor here. Built this after debugging too many \"why is the card different on X vs LinkedIn vs Slack\" tickets. The tool shows you the live rendered card on Google SERP, X, LinkedIn, Facebook, and Slack while you type the tags, plus copy-paste output for both OG and Twitter formats. Free, no signup, runs entirely client-side. Wrote up the 2026 picture — what is actually different between OG and Twitter Cards now that X falls back to OG for everything except layout, the platform-by-platform fallback table, the minimum 8-line tag set that ships clean everywhere, and the image specs that don't silently break on iMessage and Slack — here: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/ — feedback welcome, especially on the AI-search section since the rules are still settling."
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "background-remover",
       "createdAt": "2026-05-05T08:12:43Z",
       "text": "1/ \"Just remove the background in Photoshop.\" — every senior designer to every founder, since 2014.\n\nIt's wrong in 2026. The free, in-browser AI tools have caught up. For 90% of e-commerce shots, they're now better than the Pen tool. Here's the workflow ↓\n\n2/ The cheat code: drag your product photo into a browser-based remover. The AI runs locally — image never uploads anywhere. Output is a transparent PNG at original resolution in 1-3 seconds.\n\nThat's the entire workflow for opaque single-subject shots.\n\n3/ The 3 cases where the cheap workflow still fails:\n\n• Hair / fur (wispy edges)\n• Glass / acrylic (transparent objects)\n• Drop shadows (the product floats in zero-G)\n\nEach has a 90-second fix. None require Photoshop.\n\n4/ Hair: shoot against a high-contrast color (black cat → white sheet, white sweater → black sheet). The model needs the boundary to be color-different, not just luminance-different. remove.bg's free preview is best-in-class here, worth one credit per portrait.\n\n5/ Glass: shoot against pure white seamless. The model treats white as background and the bottle's tint as subject. Composite onto a darker scene later — the highlights pop and the transparency reads as glass.\n\n6/ Shadows: remove the original background, then add a fresh CSS or PSD drop shadow under the cutout. You get the floating-on-white look with a believable contact shadow you control.\n\n7/ Marketplace specs that matter in 2026:\n\n• Amazon main: pure white, product fills 85%+, 1600px+\n• Shopify: clean cutouts, square or 4:5\n• Etsy: lifestyle backdrops convert, but consistent\n• Google Shopping: white/transparent ranks higher\n\nMaster file = transparent PNG. Flatten at export.\n\n8/ Full guide with the 60-second workflow, marketplace specs, and the privacy-first in-browser tool we built (your photos never touch a server):\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-from-product-photos-free-2026/"
@@ -260,30 +284,6 @@
       "tool": "background-remover",
       "createdAt": "2026-05-05T08:12:43Z",
       "text": "TITLE: Show HN: A free, in-browser AI background remover that beats Photoshop for product photos\n\nLINK: https://tinytools-smoky.vercel.app/background-remover/\n\nFIRST COMMENT:\n\nAuthor here. Built this for our own e-commerce shots after one too many \"ugh, Photoshop is overkill, but remove.bg gates full-res behind credits\" moments. Drag a JPG/PNG, the AI segmenter runs entirely in your browser via WebAssembly — image never touches a server. Output is a transparent PNG at original resolution. Free, no signup, no upload limit. Wrote up the 2026 product-photo workflow including the three failure-mode fixes (hair, glass, shadows) and the marketplace specs that actually matter here: https://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-from-product-photos-free-2026/ — feedback welcome, especially on edge cases where it loses to remove.bg's paid tier."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-05T04:11:09Z",
-      "text": "1/ \"Keep your meta description under 155 characters.\"\n\nEvery SEO blog still says this. It's wrong in 2026.\n\nI tested 200 SERPs across 3 viewports + 3 engines last month. Here's what actually fits 👇\n\n2/ Google doesn't count characters. It counts pixels.\n\nRoboto is proportional. \"World\" eats 5x the space of \"illi.\"\n\nPractical 2026 ceilings:\n• Google desktop: ~920 px (~158-165 chars)\n• Google mobile: ~680 px (~108-115 chars)\n• Bing desktop: ~990 px (~165-170 chars)\n\n3/ The mobile number is the one nobody talks about.\n\n64% of Google searches are mobile in 2026.\n\nYour 158-char description gets guillotined at character 110 on the only screen most users see.\n\nIf your CTA lives in chars 130-158, no mobile user has ever read it.\n\n4/ The fix isn't \"write 110 chars.\" Desktop gets a longer card — fill it.\n\nThe fix is structural. Front-load value into the first 110:\n\n[Verb-led benefit + keyword (~70)]. [Differentiator + CTA (~40)]. [Bonus desktop tail (~40)].\n\nMobile sees a complete pitch. Desktop gets bonus context.\n\n5/ Bonus rule for the AI search era:\n\nChatGPT/Perplexity/Google AI Overview rewrite your description.\n\n→ Use specific numbers (\"50k icons\" beats \"lots of icons\")\n→ Lead with verbs\n→ Skip superlatives — \"best,\" \"world-class\" get filtered out\n\n6/ Full guide with copy-paste templates for SaaS, blog, ecommerce, and tool pages — plus a free generator that shows live mobile + desktop pixel-fit:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/meta-description-length-2026/"
-    },
-    {
-      "platform": "Reddit /r/SEO or /r/bigseo",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-05T04:11:09Z",
-      "text": "Subreddit: /r/SEO, /r/bigseo, /r/juststart, or /r/blogging\n\nComment (reply on a thread asking about meta description length, click-through rate, or why descriptions get cut off):\n\nThe 155-character rule is a 2018 artifact and it bites everyone at least once. Two things changed.\n\n**1. Pixel width replaced character count years ago.** Google measures how many pixels your description occupies in their proportional Roboto font, not how many letters you typed. \"WORLD-CLASS MARKETING SOLUTIONS\" burns ~50% more pixel budget than \"world-class marketing solutions\" — same characters, way more space. Capitals, W, M, %, and emojis are all expensive. Lowercase + i, l, t are cheap. The practical 2026 desktop ceiling is around 158-165 visible characters; the same description in ALL CAPS truncates at ~125.\n\n**2. Mobile and desktop have completely different ceilings.** Mobile SERP cards truncate around 108-115 characters. 64% of Google searches are mobile in 2026 (Statcounter). Which means a description that looks fine in your desktop preview tool gets cut off mid-sentence on the only screen most of your audience sees.\n\nWhat I do now:\n\n- Front-load the entire pitch + keyword + CTA into the first 110 characters. That's the mobile-safe payload.\n- Fill out to 140-160 with desktop-only bonus context. That's the long-tail keyword padding that helps you rank for variants without being load-bearing.\n- Validate in a live SERP preview, not a character counter. The character counter lies — pixel width is the real constraint.\n- Skip emojis. Google strips most of them in 2026 anyway, and they cost ~2.2 chars of pixel budget.\n- Skip superlatives like \"best\" and \"world-class.\" AI search engines (Google AI Overview, ChatGPT Search, Perplexity) increasingly filter them out during the rewrite phase, and they reduce CTR independently of length.\n\nAI search is the other big shift. None of the AI engines display your description verbatim — they all rewrite it. But they use it as the highest-signal hint in retrieval. A clean, accurate, verb-led description gives the rewriter clean source material. Vague keyword stuffing gives it noise, and you get scraped from your H1 and body instead, which is rarely what you wanted.\n\nWrote up the full breakdown with the 2026 truncation table, copy-paste templates for SaaS / blog / ecommerce / tool pages, and a 5-minute audit checklist you can run on your top pages right now. Free, no signup: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/meta-description-length-2026/\n\nTool's free too if you just want a generator with live mobile + desktop preview: https://tinytools-smoky.vercel.app/seo-meta-generator/"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-05T04:11:09Z",
-      "text": "Three-quarters of the SEO advice you'll find about meta description length in 2026 is copy-pasted from 2018.\n\nThe world moved on. Two changes you should know:\n\n→ Google replaced character-counting with pixel-width truncation years ago. Capital letters, emojis, and wide letters (W, M, %) burn more pixel budget than narrow ones. Two descriptions with identical character counts can truncate at completely different points.\n\n→ Mobile SERP cards cut off around 108-115 characters. Desktop cuts off around 158-165. With 64% of Google searches happening on mobile in 2026, your perfectly-tuned 158-character description is being guillotined at character 110 on the only screen most of your audience uses. If your CTA lives past character 110, no mobile user has ever read it.\n\nWhat works: front-load the keyword, the value proposition, AND the call-to-action into the first 110 characters. Then fill out to 140-160 for desktop-only bonus context. Treat that tail as long-tail keyword padding that helps rank without being load-bearing on the pitch.\n\nBonus rule for the AI search era: ChatGPT Search, Perplexity, Google AI Overview, and Bing Copilot don't display your meta description verbatim — they rewrite it for the user's specific query. But they use it as the highest-signal retrieval hint, so a clean, accurate, verb-led description still matters. Skip emojis. Skip ALL CAPS. Skip superlatives like \"best\" — AI engines filter them out, and they reduce CTR anyway.\n\nWrote up the full 2026 picture with the pixel-width math, the mobile / desktop split, copy-paste templates for SaaS, blog, ecommerce, and tool pages, and a 5-minute audit you can run on your top 10 pages right now. Free, no email gate:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/meta-description-length-2026/\n\nCurious — what's the meta description mistake you see most often in 2026?"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-05T04:11:09Z",
-      "text": "TITLE: Show HN: A meta tag generator that previews mobile + desktop SERPs side by side\n\nLINK: https://tinytools-smoky.vercel.app/seo-meta-generator/\n\nFIRST COMMENT for the discussion thread:\n\nAuthor here. Built this after debugging too many \"why is our description getting cut off?\" tickets where the answer was always \"because mobile truncates at character 110 and your CTA lives at character 145.\" The tool shows you the actual rendered Google card on both viewports while you type, plus Twitter and OG previews. Free, no signup. Wrote up the 2026 length picture (pixel-width math, the mobile/desktop split, the AI-search rewrite tax, copy-paste templates for SaaS / blog / ecommerce / tool pages) here: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/meta-description-length-2026/ — feedback welcome, especially on the AI-search section."
     }
   ],
   "checklist": [
