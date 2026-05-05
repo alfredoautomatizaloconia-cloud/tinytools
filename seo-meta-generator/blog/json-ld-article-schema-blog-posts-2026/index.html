@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Pick Brand Colors for a Startup in 2026 — A Founder's Field Guide</title>
+<meta name="description" content="The 2026 founder's guide to choosing brand colors that actually work in product, ads, and on a 13-inch laptop. Color psychology, contrast rules, accent vs. neutral ratios, and the 60-30-10 system explained without design jargon.">
+<meta name="keywords" content="how to pick brand colors, brand colors for startup, startup color palette, choose brand colors, color theory for founders, 60-30-10 rule, brand color guide 2026, startup branding colors">
+<meta property="og:title" content="How to Pick Brand Colors for a Startup in 2026">
+<meta property="og:description" content="A no-nonsense color-picking guide for founders: psychology, contrast, the 60-30-10 rule, and the mistakes that cost six months of rebrand work.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/color-palette/blog/how-to-pick-brand-colors-for-startup-2026/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Pick Brand Colors for a Startup in 2026">
+<meta name="twitter:description" content="The exact color-picking framework that survives contact with engineering, ads, and your designer's bad day.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/color-palette/blog/how-to-pick-brand-colors-for-startup-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Pick Brand Colors for a Startup in 2026",
+  "description": "A practical 2026 guide to choosing brand colors for an early-stage startup — covering color psychology, the 60-30-10 ratio, accessibility contrast, and how to test palettes against real product, ad, and dark-mode contexts before committing.",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
+  "datePublished": "2026-05-04",
+  "dateModified": "2026-05-04",
+  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/color-palette/blog/how-to-pick-brand-colors-for-startup-2026/",
+  "image": "https://tinytools-smoky.vercel.app/color-palette/og-default.png",
+  "keywords": "brand colors, startup branding, color palette, color theory, 60-30-10 rule, accessibility, WCAG contrast"
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a;
+    --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #a855f7; --accent-glow: #a855f740;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #ec489940 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .breadcrumb { color: var(--text-dim); font-size: 13px; margin-bottom: 18px; }
+  .breadcrumb a { color: var(--text-dim); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.15; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #d8b4fe 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 24px; margin: 40px 0 14px; color: var(--text); letter-spacing: -0.01em; }
+  h3 { font-size: 19px; margin: 28px 0 10px; color: var(--text); }
+  p { margin-bottom: 16px; color: #d0d0e0; }
+  ul, ol { margin: 12px 0 18px 24px; color: #d0d0e0; }
+  li { margin-bottom: 8px; }
+  strong { color: var(--text); font-weight: 600; }
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-size: 14px; color: #f0abfc; }
+  a { color: var(--accent); }
+  blockquote {
+    border-left: 3px solid var(--accent); padding: 8px 16px; margin: 20px 0;
+    background: var(--bg-elevated); border-radius: 6px; font-style: italic; color: var(--text-dim);
+  }
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 15px;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); color: #d0d0e0; }
+  th { background: var(--bg-elevated); color: var(--text); font-weight: 600; font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  .cta-box {
+    margin: 36px 0; padding: 24px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; border-left: 4px solid var(--accent);
+  }
+  .cta-box h3 { margin: 0 0 6px; font-size: 18px; color: var(--text); }
+  .cta-box p { margin-bottom: 12px; font-size: 15px; }
+  .cta-btn {
+    display: inline-block; padding: 12px 24px;
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
+    box-shadow: 0 4px 16px rgba(168, 85, 247, 0.3);
+  }
+  .related { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .related h3 { color: var(--text-dim); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card {
+    padding: 14px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--text); transition: all 0.15s;
+  }
+  .related-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .related-card .name { font-weight: 600; font-size: 14px; }
+  .related-card .desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb"><a href="/">TinyTools</a> · <a href="/color-palette/">Color Palette</a> · Blog</div>
+
+  <h1>How to Pick Brand Colors for a Startup in 2026</h1>
+  <div class="meta">May 4, 2026 · 9 min read · By TinyTools</div>
+
+  <p>Picking your startup's brand colors feels like the kind of decision you should be able to make in twenty minutes over coffee. Then you actually try, and four hours later you have nineteen Figma tabs open, three browser tabs about color psychology from 2014, and the creeping suspicion that the indigo you thought was perfect looks exactly like Stripe, Linear, and the last six SaaS landing pages you scrolled past.</p>
+
+  <p>This guide is the version I wish someone had handed me before my first pitch deck. It is short on poetry and long on rules that survive contact with engineering, ads, and a designer who joins six months later. By the end you will have a five-color system that holds up in product, on a billboard, and in dark mode — and you'll have done it without arguing about whether <em>cobalt</em> feels different from <em>azure</em>.</p>
+
+  <h2>What a brand palette actually has to do</h2>
+
+  <p>A founder's brand palette has exactly three jobs. Forget the rest.</p>
+
+  <ol>
+    <li><strong>Be recognizable.</strong> When someone sees an ad, a tweet, and a landing page from you in the same week, all three should feel like the same company.</li>
+    <li><strong>Be readable.</strong> Body text on background must pass WCAG contrast, in light <em>and</em> dark mode, on a $200 laptop monitor in a sunlit coffee shop.</li>
+    <li><strong>Be flexible.</strong> Marketing wants gradients. Product wants 12 shades of gray for a dense table. The palette has to make both possible without a rebrand.</li>
+  </ol>
+
+  <p>Most of the bad startup branding I see fails on job two or three. The accent color looks gorgeous in the Figma frame and unusable when product engineering tries to ship a state-management dashboard with it. Pick colors with the messiest screen in your future product in mind, not the homepage hero.</p>
+
+  <h2>Step 1: Pick a single hero color first</h2>
+
+  <p>Don't try to design a five-color palette in one sitting. Pick the hero color — the one your CTA buttons live in, the one that becomes the background of the favicon — and let the rest of the palette derive from it.</p>
+
+  <p>For most early-stage software startups, the hero color falls into one of four temperaments. Choose by the feeling you want users to associate with your product, not by the color you personally like:</p>
+
+  <table>
+    <thead><tr><th>Temperament</th><th>Hue range</th><th>Reads as</th><th>Used by</th></tr></thead>
+    <tbody>
+      <tr><td>Trust / serious</td><td>Blue 210–240°</td><td>Bank-grade, calm, default-safe</td><td>Stripe, Plaid, Notion, Linear</td></tr>
+      <tr><td>Energy / playful</td><td>Orange / pink 0–30°, 320–340°</td><td>Consumer, social, exciting</td><td>HubSpot, Substack, Cash App</td></tr>
+      <tr><td>Creative / smart</td><td>Purple / magenta 270–310°</td><td>AI, design tools, generative</td><td>Figma, Anthropic, Discord</td></tr>
+      <tr><td>Growth / fresh</td><td>Green / teal 140–180°</td><td>Health, finance-positive, eco</td><td>Robinhood, Whoop, Spotify</td></tr>
+    </tbody>
+  </table>
+
+  <p>If your competitors all sit in one column, you have a real choice: blend in to look credible, or jump to a neighboring column to look different. Both work. What does <em>not</em> work is staring at the wheel hoping the right answer reveals itself. Pick a temperament in five minutes and move on.</p>
+
+  <p>Once you have the temperament, pin a single hex code. Pure web-safe primaries (#0000FF, #FF0000) are noisy and date themselves to 1999. Pull the saturation down 5–15% and shift the hue 5–10° off the primary. Examples that age well: <code>#4F46E5</code> (indigo), <code>#10B981</code> (emerald), <code>#F97316</code> (warm orange), <code>#A855F7</code> (violet).</p>
+
+  <h2>Step 2: Build the 60-30-10 system around it</h2>
+
+  <p>The 60-30-10 rule is the oldest interior-design heuristic still worth knowing. Sixty percent of any composition is a dominant neutral. Thirty percent is a secondary tone. Ten percent is the accent that grabs the eye. It works for living rooms, websites, and pitch decks for the same reason: the eye gets bored when one color hogs the canvas and overstimulated when three colors fight for attention.</p>
+
+  <p>Translated to a startup palette:</p>
+
+  <ul>
+    <li><strong>60% — Neutral.</strong> A near-black or near-white that owns most of the screen. Pure <code>#000</code> and <code>#FFF</code> are too harsh; nudge them. <code>#0A0A0F</code> for dark, <code>#FAFAFC</code> for light.</li>
+    <li><strong>30% — Secondary.</strong> A muted version of your hero color or a complementary low-saturation tone. This is what cards, table headers, and disabled states are made of.</li>
+    <li><strong>10% — Accent (your hero).</strong> Reserved exclusively for action: primary buttons, links, focus rings, the dot on the favicon. If it shows up everywhere, it stops meaning anything.</li>
+  </ul>
+
+  <p>The most common mistake I see early-stage teams make: treating their hero color as the dominant 60%. The result is a landing page that screams from every pixel and a product that gives users no signal where to look. Restraint compounds.</p>
+
+  <h2>Step 3: Generate your shade ramps</h2>
+
+  <p>One hex code is not a palette. You need 9–12 shades of each working color so engineering can build hover states, borders, backgrounds, and disabled variants. The industry standard is the Tailwind-style 50/100/200/.../900/950 ramp.</p>
+
+  <p>You do not need to hand-roll this. Pick the hero color, drop it into a generator that outputs an analogous, complementary, and triadic set of palettes, and copy the ramp. The two minutes you save here is two minutes; the two weeks you save by having every shade pre-named (<code>--accent-500</code> not "the medium purple") is the actual gift.</p>
+
+  <div class="cta-box">
+    <h3>Generate a full ramp from one hex code in 30 seconds</h3>
+    <p>Drop in your hero color, get analogous, complementary, triadic, and monochromatic palettes with full 50–950 shade ramps. Export as CSS variables, Tailwind config, or JSON. No signup, no watermark, no email.</p>
+    <a href="/color-palette/" class="cta-btn">Open the Color Palette Generator →</a>
+  </div>
+
+  <h2>Step 4: Stress-test against the messy contexts</h2>
+
+  <p>Most palettes look great on a Dribbble shot and fall apart in real product. Before you commit, run yours against five contexts that find the cracks fast:</p>
+
+  <ol>
+    <li><strong>A 14-row data table</strong> with hover, selected, and error states.</li>
+    <li><strong>A dense form</strong> with required-field markers and validation errors.</li>
+    <li><strong>A Facebook ad mockup</strong> at 1080 × 1350 with a real headline.</li>
+    <li><strong>Dark mode and light mode</strong> side-by-side, on the same screen.</li>
+    <li><strong>A grayscale conversion</strong> — does your CTA still pop, or does it disappear into the body text?</li>
+  </ol>
+
+  <p>If the palette wobbles in any of those, fix it now. Rebrands six months in cost three weeks of engineering time and the goodwill of every customer who has to relearn where the "save" button is.</p>
+
+  <h2>Step 5: Lock contrast and accessibility</h2>
+
+  <p>WCAG 2.2 contrast is the floor. AA requires 4.5:1 for body text and 3:1 for large text and UI components. AAA — the higher bar — requires 7:1 and 4.5:1. Pick AA as the absolute minimum and aim for AAA on body copy. The cost is nothing. The benefit is your product staying usable for the 8% of men with red-green color deficiency, the 4% of users on poor displays, and every regulator who's started enforcing the European Accessibility Act this year.</p>
+
+  <p>Two pitfalls catch almost every early-stage team:</p>
+
+  <ul>
+    <li><strong>Light gray on white body text.</strong> <code>#A0A0A0</code> on <code>#FFFFFF</code> is 2.5:1 — fails AA. It looks elegant in the comp and unreadable on a real screen. Push to <code>#6B7280</code> or darker.</li>
+    <li><strong>Color as the only signal.</strong> A red error border without an icon or text label is invisible to anyone with red-green color blindness. Always pair color with shape or text.</li>
+  </ul>
+
+  <p>Run every text/background pair through a contrast checker before locking. If you only check the homepage hero, you'll miss the form labels that quietly lock half your users out.</p>
+
+  <h2>Step 6: Document, name, and ship</h2>
+
+  <p>The palette only exists once it's named and committed. Two engineers using "the medium purple" mean two different colors. The ten minutes you spend on naming is what stops a year of inconsistency.</p>
+
+  <p>The minimum viable design-token file:</p>
+
+  <blockquote>
+    --color-bg: #0A0A0F;<br>
+    --color-bg-card: #15151F;<br>
+    --color-text: #F5F5FA;<br>
+    --color-text-dim: #A0A0B8;<br>
+    --color-accent: #A855F7;<br>
+    --color-accent-hover: #9333EA;<br>
+    --color-success: #10B981;<br>
+    --color-warning: #F59E0B;<br>
+    --color-danger: #EF4444;
+  </blockquote>
+
+  <p>Commit it to the repo. Reference variables, never raw hex codes, in product code. When marketing wants to test a new accent for a campaign, you change one line and the whole product follows.</p>
+
+  <h2>What changed in 2026</h2>
+
+  <p>Three things shifted this year that older brand-color guides don't account for:</p>
+
+  <h3>1. OLED and HDR mean color literally renders differently</h3>
+
+  <p>The dominant phone display in 2026 is OLED with HDR support. Pure black <code>#000</code> is now actually black — pixel off — and high-saturation accents on dark backgrounds glow in a way that LCDs never showed. Test your dark mode on an actual OLED phone, not just a designer's M3 MacBook.</p>
+
+  <h3>2. AI-generated brands have flooded the same pastel palette</h3>
+
+  <p>Every AI design tool defaults to the same gradient lavender, pale teal, and soft coral. If your color picker output looks like the homepage of every AI startup launched on Product Hunt this quarter, push the saturation up or pick the unfashionable temperament on purpose.</p>
+
+  <h3>3. The European Accessibility Act is enforced</h3>
+
+  <p>As of June 28, 2025, the EAA requires WCAG 2.1 AA conformance for any consumer-facing software sold in the EU. "We'll fix accessibility after launch" is no longer a viable position if you have any European users. Bake contrast into the palette decision, not the post-launch backlog.</p>
+
+  <h2>The 30-minute checklist</h2>
+
+  <ol>
+    <li><strong>Pick a temperament</strong> in 5 minutes (trust / energy / creative / growth).</li>
+    <li><strong>Lock one hero hex code</strong> using a generator. <a href="/color-palette/">Drop it here</a> to get the four schemes side by side.</li>
+    <li><strong>Build the 60-30-10 system</strong> — neutral, secondary, accent.</li>
+    <li><strong>Generate the 9-step ramp</strong> for each working color.</li>
+    <li><strong>Stress-test</strong> against table / form / ad / dark mode / grayscale.</li>
+    <li><strong>Run contrast checks</strong> on every text/background pair.</li>
+    <li><strong>Commit design tokens</strong> to the repo. Use variable names, not hex codes, in code.</li>
+  </ol>
+
+  <p>Thirty minutes, no rebrand a year later. The startups that nail their palette early do not have better taste than everyone else — they had a checklist and the discipline to follow it.</p>
+
+  <h2>One last thing — the boring color usually wins</h2>
+
+  <p>Look at the brand colors of the last ten companies that crossed $100M ARR. The vast majority are a slightly desaturated blue, green, or purple. The exotic colors — neon yellow, deep maroon, electric coral — show up in agencies, in fashion, and in a handful of consumer apps. They almost never show up in software that businesses pay for.</p>
+
+  <p>This is not a coincidence. The boring color is boring because it's the color the largest group of buyers feels safe paying with a corporate card. If you're a B2B founder, picking the bold color to "stand out" is a way to lose a year of growth to vibes. Stand out with your product. Let the color carry trust.</p>
+
+  <p>Now: open the generator, pick a temperament, lock the hex, ship the palette.</p>
+
+  <div class="cta-box">
+    <h3>Stop opening seventeen Figma tabs. Use the picker.</h3>
+    <p>Type or paste a hex code. Get analogous, complementary, triadic, and monochromatic palettes with shade ramps. Export to CSS, Tailwind, or JSON. Free, no signup, no email.</p>
+    <a href="/color-palette/" class="cta-btn">Open the Color Palette Generator →</a>
+  </div>
+
+  <div class="related">
+    <h3>Related tools</h3>
+    <div class="related-grid">
+      <a href="/favicon-generator/" class="related-card">
+        <div class="name">⭐ Favicon Generator</div>
+        <div class="desc">Turn your hero color into a 32px brand mark</div>
+      </a>
+      <a href="/og-image-generator/" class="related-card">
+        <div class="name">🖼️ OG Image Generator</div>
+        <div class="desc">Lock the same accent into every social link card</div>
+      </a>
+      <a href="/seo-meta-generator/" class="related-card">
+        <div class="name">🔍 SEO Meta Generator</div>
+        <div class="desc">Set the theme-color meta tag in one click</div>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p>TinyTools — free tools for builders. <a href="/" style="color: var(--accent);">More tools</a></p>
+  </footer>
+</div>
+</body>
+</html>
