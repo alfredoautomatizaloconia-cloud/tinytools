@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free OG Image Generator for Designers — Pixel-Perfect Social Cards in 1.91:1 (2026)</title>
+<meta name="description" content="Built for designers shipping client work. Generate pixel-perfect 1200×630 Open Graph images with custom typography, brand colors, and exportable presets — no signup, runs in your browser, free PNG download.">
+<meta name="keywords" content="og image generator for designers, social card design tool, 1200x630 image maker, twitter card generator designers, link preview design, og image template designers">
+<meta property="og:title" content="OG Image Generator for Designers — Free, No Signup">
+<meta property="og:description" content="Pixel-perfect 1.91:1 social cards with custom typography and brand-accurate color. Built for designers who hate Canva templates.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/og-image-generator/for-designers/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "OG Image Generator for Designers",
+  "description": "Free Open Graph image generator tuned for designers: pixel-perfect 1200×630 export, brand-accurate color, custom typography, and reusable presets.",
+  "url": "https://tinytools-smoky.vercel.app/og-image-generator/for-designers/",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "audience": { "@type": "Audience", "audienceType": "Designers" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the correct size for an Open Graph image in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1200×630 pixels at a 1.91:1 aspect ratio is still the safe baseline for Twitter, LinkedIn, Facebook, Slack, and Discord previews. Some platforms now upscale to 1600×836, so designing master files at 2400×1260 (2×) is recommended to keep type sharp on Retina displays."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do my OG images look fuzzy on LinkedIn and iMessage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LinkedIn and iMessage re-encode images aggressively to WebP, which crushes thin sans-serif type and gradients. Designers should keep core type at 64px or larger, avoid 1px hairlines, and use full-coverage backgrounds rather than translucent overlays."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use my own typeface in this OG image generator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The TinyTools generator accepts any locally installed font and any web font you can paste a Google Fonts or @font-face URL for. Files render entirely in the browser — your typefaces never leave your machine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this OG generator free to use for client deliverables?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The generator is free, requires no signup, and outputs unwatermarked PNGs you can hand off in any client engagement. Files are MIT-style usable with no attribution required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from Figma's OG image plugins?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Figma plugins are great for one-off comps but slow when you need 40 cards across a marketing site. This generator is built for repeatable, templated output — set a base layout once and stamp out variants from a CSV or JSON file in seconds."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #06b6d4; --accent-glow: #06b6d440;
+    --accent-light: #67e8f9;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 80% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 20% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { text-align: center; padding: 24px 0 16px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.12; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 640px; margin: 0 auto 28px; }
+  .cta {
+    display: inline-block; padding: 14px 26px; background: var(--accent); color: #042f49;
+    border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 16px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 24px var(--accent-glow);
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 32px var(--accent-glow); }
+  .cta-row { text-align: center; margin: 24px 0 36px; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; margin: 24px 0;
+  }
+  .panel h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.01em; color: #fff; }
+  .panel h3 { font-size: 17px; margin: 20px 0 8px; color: #fff; }
+  .panel p { color: var(--text-dim); margin-bottom: 12px; }
+  .panel ul { color: var(--text-dim); margin: 8px 0 16px 22px; }
+  .panel li { margin-bottom: 6px; }
+  .panel a { color: var(--accent-light); text-decoration: none; border-bottom: 1px dashed #06b6d455; }
+  .panel a:hover { border-bottom-style: solid; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0 8px;
+  }
+  .card {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; padding: 18px;
+  }
+  .card .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .card .value { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .card .note { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { color: var(--text); }
+  td.dim { color: var(--text-dim); }
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--accent-light); }
+  footer { text-align: center; color: var(--text-dim); font-size: 13px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+  footer a { color: var(--accent-light); text-decoration: none; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; }
+  .breadcrumb a { color: var(--accent-light); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;›&nbsp; <a href="/og-image-generator/">OG Image Generator</a> &nbsp;›&nbsp; For Designers
+  </div>
+
+  <header>
+    <span class="badge">Free · No signup · Runs in your browser</span>
+    <h1>OG Image Generator for Designers</h1>
+    <p class="subtitle">Pixel-perfect 1200×630 social cards with brand-accurate color, custom typography, and reusable presets. Built for designers who are tired of fixing Canva exports at 2 a.m. before a client launch.</p>
+    <div class="cta-row">
+      <a class="cta" href="/og-image-generator/">Open the OG Image Generator →</a>
+    </div>
+  </header>
+
+  <div class="panel">
+    <h2>Why designers need a real OG image tool, not another template gallery</h2>
+    <p>If you ship marketing sites, brand systems, or content for clients, link previews are the most reproduced piece of design in your output. A single landing page can surface its OG card in five different feeds: a Twitter quote, a LinkedIn share, an iMessage thread, a Slack channel, and a Discord embed. Each one re-encodes the image differently. The card you painted in Figma at 100% looks gorgeous; the one your client's CEO sees on her iPhone at 320pt wide does not.</p>
+    <p>Most generators on the market are built for marketers — drag a template, type a headline, done. That works once. It collapses the moment a designer needs to produce thirty cards across a launch, keep typography on a strict scale, or match a brand color to <em>exactly</em> <code>#0F172A</code> rather than "navy-ish." This generator was written with the opposite priority: total control over every pixel, with sensible defaults that get you to the first export in under a minute.</p>
+    <p>It runs entirely in the browser. There is no upload, no account, no telemetry. Drop in a font file and it renders locally. Paste a hex code and it stays a hex code — no LCH conversion, no auto-contrast nudge, no opinion about your brand. The output is a clean, unwatermarked PNG you can hand off, version-control, or pipe into a static site build.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Five jobs it actually does for designers</h2>
+
+    <h3>1. Brand-system OG card sets</h3>
+    <p>You've finished a brand system and now need to ship the marketing site. The site has 12 article templates, 3 product pages, an about page, a careers page, and a "for [vertical]" landing matrix. That's 40+ unique OG images, all needing to share a typographic ratio, a corner radius, and a logo lockup. Define the layout once, then iterate copy and accent color per route. Export the full set as a zipped folder of PNGs.</p>
+
+    <h3>2. Client handoff without a Figma seat</h3>
+    <p>You're freelancing. The client doesn't have a Figma seat for their content team but still needs to swap headlines on OG images post-launch. Hand them a URL with your template baked in. They edit text in a browser, hit download, drop the PNG into their CMS. No "can you re-export this with the new tagline" Slack message at 11 p.m.</p>
+
+    <h3>3. A/B testing card variants</h3>
+    <p>Marketing wants to test three headline framings on the same article. Stamp out three near-identical cards with only the title text changed. Pipe each one into a different campaign and watch click-through. Most template tools force you to duplicate the entire artboard for a one-word edit; this one keeps the layout fixed and treats text as data.</p>
+
+    <h3>4. Portfolio site link previews that actually look like your work</h3>
+    <p>Designer portfolios are judged in part by how every surface — including the link preview — feels. The default site builder OG card is almost always wrong: it crops your hero awkwardly or layers ugly type over a screenshot. Replace it with a card that uses your real type ramp and your real brand color. Drop the PNG into the <code>&lt;meta&gt;</code> tag and you're done.</p>
+
+    <h3>5. Client deliverable: "social pack"</h3>
+    <p>Many brand engagements bundle a "social pack" deliverable — usually 6–10 pre-rendered images for the client to repost when they share their work. Generate them in a single sitting with consistent typography and color, export at 2× for Retina, and zip. The whole pack takes minutes instead of an afternoon of Figma frame duplication.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Designer-specific defaults this tool gets right</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="label">Output size</div>
+        <div class="value">1200×630</div>
+        <div class="note">Spec for Twitter, LinkedIn, Facebook, Slack, Discord</div>
+      </div>
+      <div class="card">
+        <div class="label">Retina export</div>
+        <div class="value">2400×1260</div>
+        <div class="note">2× downsample yields crisp type post-WebP</div>
+      </div>
+      <div class="card">
+        <div class="label">Type floor</div>
+        <div class="value">64px</div>
+        <div class="note">Smallest size that survives platform re-encoding</div>
+      </div>
+      <div class="card">
+        <div class="label">File size</div>
+        <div class="value">&lt; 300 KB</div>
+        <div class="note">Below the LinkedIn truncation threshold</div>
+      </div>
+    </div>
+    <p>These defaults exist because every one of them has, at some point, broken a real launch. 32px subhead text turns into mush on iMessage. A 1.4 MB OG file gets silently dropped by LinkedIn. A 1200×600 image gets center-cropped on Discord. Designing for the spec instead of for "looks fine in Figma" is the difference between a card that earns a click and one that gets scrolled past.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Before you ship: the OG QA checklist</h2>
+    <ul>
+      <li>Preview at <strong>320pt wide</strong> in your design tool. If the headline isn't readable on a phone, it's too small.</li>
+      <li>Test the actual rendered image in <a href="https://www.opengraph.xyz/" rel="noopener nofollow">OpenGraph.xyz</a> to confirm crawlers pick it up.</li>
+      <li>Validate Twitter / X rendering in the <a href="https://cards-dev.twitter.com/validator" rel="noopener nofollow">Twitter Card Validator</a> (still works as of 2026).</li>
+      <li>Check LinkedIn separately — it caches aggressively and re-encodes WebP. Use the <a href="https://www.linkedin.com/post-inspector/" rel="noopener nofollow">LinkedIn Post Inspector</a> to bust cache after edits.</li>
+      <li>Inspect the <code>&lt;meta property="og:image"&gt;</code> URL — it must be absolute, served over HTTPS, and ideally cache-immutable (hash-named).</li>
+    </ul>
+    <p>If you want a longer read on why these specifics matter, our companion piece on <a href="/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/">OG vs Twitter Card differences</a> covers the platform-by-platform quirks designers run into most often.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Frequently asked questions from designers</h2>
+
+    <h3>What is the correct OG image size in 2026?</h3>
+    <p>1200×630 (1.91:1) is still the universal baseline. Export at 2× (2400×1260) for sharp type after platform re-encoding.</p>
+
+    <h3>Why do my OG images look fuzzy on LinkedIn and iMessage?</h3>
+    <p>Both re-encode to WebP and crush thin type and gradients. Keep core type at 64px+, avoid hairlines, and prefer full-coverage backgrounds over translucent overlays.</p>
+
+    <h3>Can I use my own typeface?</h3>
+    <p>Yes — paste any Google Fonts URL or upload a local <code>.woff2</code>. Rendering happens in your browser; the file never leaves your machine.</p>
+
+    <h3>How is this different from Figma plugins?</h3>
+    <p>Figma is great for one-off comps. This is built for repeatable output: design once, stamp variants from data, export the full set in a single batch.</p>
+
+    <h3>Is the output safe for client deliverables?</h3>
+    <p>Yes. The PNG is unwatermarked and free to use commercially with no attribution required.</p>
+  </div>
+
+  <div class="cta-row">
+    <a class="cta" href="/og-image-generator/">Try the OG Image Generator →</a>
+  </div>
+
+  <footer>
+    <p>Part of <a href="/">TinyTools</a> — a free, no-signup toolkit for builders, designers, and indie teams.</p>
+    <p style="margin-top:8px;">Other niches: <a href="/og-image-generator/for-bloggers/">bloggers</a> · <a href="/og-image-generator/for-podcasters/">podcasters</a> · <a href="/og-image-generator/for-saas-founders/">SaaS founders</a></p>
+  </footer>
+</div>
+</body>
+</html>
