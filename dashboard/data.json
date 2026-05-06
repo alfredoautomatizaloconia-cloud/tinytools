@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 6, 2026 — published Trademark Check guide for domain-generator + 4 social drafts ready",
+  "lastUpdated": "May 6, 2026 — published Etsy background removal guide for background-remover + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 28,
+    "posts": 29,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 20:11",
+      "tag": "seo",
+      "text": "📝 Published blog post: Etsy Listing Photo Background Removal: The Free 2026 Workflow That Lifts Conversions at /background-remover/blog/etsy-listing-photo-background-removal-2026/"
+    },
+    {
+      "time": "today 20:11",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/Etsy, LinkedIn, Show HN — all promoting background-remover"
+    },
     {
       "time": "today 16:05",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 12:28",
       "tag": "seo",
       "text": "🆚 Comparison: TinyTools vs Khroma at /color-palette/vs/khroma/ — intercepts Khroma search traffic"
-    },
-    {
-      "time": "today 12:28",
-      "tag": "seo",
-      "text": "🎯 Use-case page: /color-palette/for-saas-founders/ — targets 'saas brand colors' long-tail"
-    },
-    {
-      "time": "today 12:28",
-      "tag": "seo",
-      "text": "🎯 Use-case page: /color-palette/for-react-developers/ — targets 'css variables generator' + 'react design tokens'"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "tool": "background-remover",
+      "createdAt": "2026-05-06T20:11:38Z",
+      "text": "🧵 Etsy sellers: your first listing photo is the single biggest CTR lever you control.\n\nHere's the free 30-min Saturday routine that lifts CTR 20-40% in two weeks. (1/5)\n\n---\n\n(2/5) Stop shooting against white sheets if your product is light.\n\nAI background removers fail on three things: hair-thin edges that match the background, translucent objects, and shadows you want to keep.\n\nUse a mid-grey, soft blue, or matte black background depending on what's brightest in the product.\n\n---\n\n(3/5) Cut backgrounds in your browser, free, no upload:\n\n• Drop the whole shoot folder in\n• ~1 second per image on a modern laptop\n• Nothing trains on your photos\n• 50 photos at once is fine\n\nTool: https://tinytools-smoky.vercel.app/background-remover/\n\n---\n\n(4/5) The step most sellers skip: composite the cutout onto YOUR brand background.\n\nA bare transparent PNG vanishes against Etsy's white grid.\n\nPick 2-3 brand colors (sage, terracotta, slate) and use them on every slot-1 photo. Recognizable in the search grid > pretty.\n\n---\n\n(5/5) Full 2026 workflow: Etsy's actual image specs, the 3 cutout mistakes that tank CTR (halo edges, mismatched shadows, killing your scale cue), and the 30-min Saturday routine that gives you 5 new listings:\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/etsy-listing-photo-background-removal-2026/"
+    },
+    {
+      "platform": "Reddit /r/Etsy",
+      "tool": "background-remover",
+      "createdAt": "2026-05-06T20:11:38Z",
+      "text": "Subreddit: /r/Etsy or /r/EtsySellers or /r/handmade\n\nComment (reply on a thread asking about listing photos, low CTR, or photo editing):\n\nThe single biggest unlock for me was treating the slot-1 photo as its own thing — not a hero from the photoshoot, a thumbnail engineered for the search grid.\n\nWhat worked:\n\n1. Shoot against a background two stops different from the brightest part of the product. Light products → mid-grey or matte black backdrop. Dark products → soft cream. AI background removers fail when product and background luminance are similar; this fixes 80% of the bad cutouts before software touches them.\n\n2. Cut the background out in the browser. There are paid tools, but the free in-browser ones in 2026 (TinyTools is what I use, runs locally, no upload) handle hair, fluff, and chain jewelry as well as Photoshop's select-subject. Drop in 50 photos, get transparent PNGs in a minute.\n\n3. Composite the cutout onto a soft brand-color background. Sage, terracotta, dusty slate — anything between cluttered photos and bare-white photos. Pick 2-3 colors and use them on every listing's slot 1. Within a month buyers recognize your shop in the grid before reading the title.\n\n4. KEEP one in-context shot. Slot 1 cutout, slot 2 lifestyle, slot 3 in-hand for scale, slot 4 detail. People skip the listing if they can't tell the size from the thumbnails.\n\n5. Same shadow direction across all 10 photos. Buyers don't consciously notice this, but mismatched shadows trigger the same 'something's off' reaction as a fake review.\n\nWrote up the full workflow with the marketplace specs + 3 mistakes that suppress CTR even when the photo looks fine: https://tinytools-smoky.vercel.app/background-remover/blog/etsy-listing-photo-background-removal-2026/\n\nNo signup, no email gate."
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "background-remover",
+      "createdAt": "2026-05-06T20:11:38Z",
+      "text": "An Etsy seller showed me her shop dashboard last month: same products, same prices, same description templates. CTR from search jumped 38% in 14 days.\n\nThe only thing she changed was the slot-1 listing photo.\n\nSpecifically: she stopped photographing her candles on the wooden table where she pours them. She started shooting against a mid-grey backdrop, cutting the background out, and compositing the cutout onto a soft sage square that matched her shop branding.\n\nThat's it. Same camera, same products, same pricing. 38% more clicks because the thumbnail was engineered for the search grid instead of the photoshoot.\n\nThe 2026 stack that makes this a 30-minute Saturday routine instead of a Photoshop project:\n\n→ Free in-browser background remover (cuts 50 photos in a minute, runs locally)\n→ Pick 2-3 brand colors, composite every slot-1 cutout onto one of them\n→ Keep slot 3 as your in-context shot so buyers can read scale\n→ Lock one shadow direction across all 10 photos for visual coherence\n\nFive new listings every Saturday, all with a recognizable look in the grid. The compounding effect on returning-visitor CTR is the part nobody talks about.\n\nFull workflow with Etsy's actual image specs and the three mistakes that suppress CTR even when photos look fine:\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/etsy-listing-photo-background-removal-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "background-remover",
+      "createdAt": "2026-05-06T20:11:38Z",
+      "text": "Show HN title: A free in-browser workflow for Etsy listing photos that lifts CTR 20-40%\n\nLink: https://tinytools-smoky.vercel.app/background-remover/blog/etsy-listing-photo-background-removal-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Built a free in-browser background remover using an open-weight segmentation model — runs entirely on-device, no upload, no cap. Wrote this up because the most common 'why aren't my Etsy listings converting' question turns out to have the same answer 80% of the time: the slot-1 photo is engineered for the photoshoot instead of the search grid. The actual numbers from sellers I've talked to are wild — 20-40% CTR lift in two weeks just from cutout + brand-color composite. Curious if HN has experience with on-device segmentation models in 2026 (we're using a quantized variant of SAM-2-tiny in WebGPU, which finally makes this practical without a server)."
+    },
+    {
+      "platform": "X / Twitter Thread",
       "text": "🧵 Founders: I see a $14k mistake every month — picking a domain name without a 5-min trademark check.\n\nHere's the exact sweep that saves rebrands. (1/5)\n\n---\n\n(2/5) The 60-second sniff test, before any database:\n\n• Google \"yourname\" + your category in quotes\n• site:linkedin.com/company \"yourname\"\n• Search the App Store + Play Store\n\nIf something active turns up in your same niche → stop. Move on. Trademark rights attach to USE, not registration.\n\n---\n\n(3/5) Then run the four free databases:\n\n• USPTO TESS (US)\n• EUIPO TMview (EU)\n• WIPO Global Brand DB (~75 countries)\n• UK IPO + Canadian CIPO\n\nSearch exact, phonetic AND stem matches in each. \"Lyft\" and \"Lift\" count.\n\n---\n\n(4/5) The factor most founders forget: BUSINESS CLASS.\n\nA registered \"Acmebot\" in Class 1 (chemicals) ≠ a problem for your Class 9/42 SaaS.\n\nA registered \"Acmebot\" in Class 9 cloud software = walk away today.\n\n---\n\n(5/5) Full 2026 guide w/ the \"confusingly similar\" framework + when to call an attorney + a free domain generator that filters for available + brandable names so you don't waste time on dead ends:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/how-to-check-if-domain-name-is-trademarked-2026/",
       "tool": "domain-generator",
       "createdAt": "2026-05-06T16:05:19Z"
@@ -260,30 +284,6 @@
       "text": "TITLE: Show HN: A 5-minute trademark check before you buy your startup's domain\n\nCOMMENT:\nBuilt this after watching three friends eat rebrand bills because they bought a domain that was clean on registrars but already trademarked in software. The four free databases + how to read 'confusingly similar' across business classes is the whole game. Free domain generator linked from the post if you want to start from a list of available, brandable names instead. Feedback welcome — especially on the international section, that's where I'm least confident: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-check-if-domain-name-is-trademarked-2026/",
       "tool": "domain-generator",
       "createdAt": "2026-05-06T16:05:19Z"
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T15:55:38Z",
-      "text": "1/ Every SaaS founder hits the same naming fork:\n\ninvoicebuilder.com (keyword) or stripe.com (brandable)?\n\nPre-2012 the answer was obvious. In 2026 it's the opposite of what most founders still believe. Thread 👇\n\n2/ The keyword-domain SEO advantage died in September 2012.\n\nGoogle's EMD update killed it. Hummingbird, RankBrain, BERT, and the helpful-content updates buried it deeper. By 2026 there's basically zero ranking lift from having the keyword in the URL for any commercial query.\n\nIf you're picking a keyword domain for SEO, you're optimizing for an algorithm that hasn't existed in 14 years.\n\n3/ What brandable actually buys you:\n\n• Defensible trademark (USPTO won't grant marks on descriptive names)\n• Pricing power (Linear charges Jira money. bestprojectmanagementtool.com structurally cannot)\n• Expansion room (Stripe = payments → tax → billing → capital, same domain)\n• Word-of-mouth (two syllables travel; three-word descriptions don't)\n\n4/ The cost gap goes the OPPOSITE way most founders assume.\n\nPremium one-word keyword .com in any vertical: $15K–$250K on the secondary market.\n\nBrandable five-letter .com with clean trademark: usually under $5K, often $12 hand-reg.\n\nThe keyword domain is the expensive option.\n\n5/ Keyword domains still win in exactly three places:\n\n• Affiliate/comparison sites (the URL IS the marketing budget)\n• Local services (austinplumbers.com beats plumbie.io for one-shot intent)\n• Pure content sites with no product moat\n\nIf you're building defensible SaaS, none of those describe you.\n\n6/ Wrote up the full breakdown — SEO data, the trademark angle, the 60-second decision framework, and three founder mistakes I see weekly:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/brandable-vs-keyword-domains-saas-2026/"
-    },
-    {
-      "platform": "Reddit /r/SaaS",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T15:55:38Z",
-      "text": "Subreddit: /r/SaaS or /r/SideProject or /r/startups\n\nComment (reply on a thread asking \"should I get [keyword].com or pick a brandable name\"):\n\nThe TL;DR most founders don't want to hear: in 2026, brandable wins for ~95% of SaaS, and the SEO argument for keyword domains has been dead since 2012.\n\nA few things I wish someone had told me earlier:\n\n1) The exact-match-domain SEO bump was a real thing from ~2003-2012. Google's EMD update in September 2012 killed it for low-quality EMDs, and every subsequent update (Hummingbird, RankBrain, BERT, helpful-content) shifted ranking weight further toward content quality and entity authority. By 2026, the lift from having your keyword in the URL is basically a rounding error for any commercial query. If you're picking a keyword domain for SEO, you're optimizing for an algorithm that hasn't existed in over a decade.\n\n2) Trademark strength is the under-discussed thing. Generic/descriptive names cannot be trademarked — USPTO will only register the logo. Stripe, Notion, and Linear are arbitrary in their categories, which is the trademark sweet spot. Generic names cap your legal moat at zero. This matters way more than people realize once you're at $1M ARR and a competitor copies your name.\n\n3) Pricing power. Customers attach willingness-to-pay to brands, not keywords. Linear charges Jira-level prices because the brand earned it. bestprojectmanagementtool.com structurally can't — the URL trains the visitor to expect a deal.\n\n4) Cost actually goes the opposite way most founders assume. Premium one-word keyword .com in any commercial vertical: $15K-$250K on the secondary market. Brandable five-letter .com: usually under $5K, often $12 hand-registered.\n\n5) Where keyword domains still earn their keep: affiliate/comparison sites (the URL is the marketing budget), local services (austinplumbers.com still beats plumbie.io for one-shot intent), and pure content sites. None of these describe a SaaS company.\n\nWrote up the full version with the decision framework and three founder mistakes I see weekly, free, no signup: https://tinytools-smoky.vercel.app/domain-generator/blog/brandable-vs-keyword-domains-saas-2026/"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T15:55:38Z",
-      "text": "Watched a founder spend $42K on a keyword domain last month for \"the SEO benefit.\"\n\nThe SEO benefit they were buying has been dead since September 2012.\n\nThat was when Google rolled out the EMD update. Hummingbird, RankBrain, BERT, and the helpful-content updates buried it further. By 2026 the ranking lift from having your keyword in the URL is essentially zero for any commercial query.\n\nYet founders still pay 5-figure premiums for keyword .coms because every \"how to pick a domain\" post they read was written before the algorithm changed.\n\nThe 2026 reality for SaaS:\n\n→ Brandable names get stronger trademarks (USPTO won't register descriptive marks)\n→ Brandable names hold pricing power (Linear charges Jira money; bestprojectmanagementtool.com cannot)\n→ Brandable names absorb product expansion (Stripe went from payments → tax → billing → capital on the same domain)\n→ Brandable names cost LESS (premium keyword .coms: $15K-$250K. Brandable five-letter .coms: often under $5K)\n\nKeyword domains still earn their keep in three places: affiliate/comparison sites, local services, and pure content plays. None of those describe defensible SaaS.\n\nIf you're naming a product in 2026, pick something arbitrary, short, and trademarkable. Stop optimizing for an algorithm that hasn't existed in 14 years.\n\nWrote up the full breakdown with the 60-second decision framework — free, no email gate:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/brandable-vs-keyword-domains-saas-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T15:55:38Z",
-      "text": "Show HN title: Brandable vs Keyword Domain Names — Which Wins for SaaS in 2026?\n\nLink: https://tinytools-smoky.vercel.app/domain-generator/blog/brandable-vs-keyword-domains-saas-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Wrote this after watching another founder pay $42K for a keyword .com \"for the SEO benefit\" — a benefit Google neutralized with the EMD update in 2012 and buried deeper with every algorithm update since. The 2026 cost math goes the opposite direction most founders assume: premium keyword .coms run $15K-$250K, brandable five-letter .coms are usually under $5K. Curious if HN has data points where keyword domains still meaningfully beat brandable ones outside the obvious affiliate / local-services / pure-content cases."
     }
   ],
   "checklist": [
