@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Robots.txt Generator for Bloggers — Stop ChatGPT &amp; Gemini Training on Your Posts (2026)</title>
+<meta name="description" content="A robots.txt built for bloggers. Block GPTBot, ClaudeBot, Google-Extended and Bytespider from training on your posts — while keeping Google, Bing and AI-citation traffic flowing. WordPress, Ghost, Substack, static sites. Free, no signup.">
+<meta name="keywords" content="ai robots.txt for bloggers, block GPTBot wordpress, blogger robots.txt 2026, block ClaudeBot blog, opt out ai training blog, Google-Extended blogger, llms.txt blog, ghost robots.txt ai, substack ai opt out">
+<meta property="og:title" content="AI Robots.txt for Bloggers — Block AI Training, Keep Search">
+<meta property="og:description" content="Stop AI labs from training on your posts without losing search traffic or AI citations. Free generator built for indie bloggers.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-bloggers/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-bloggers/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Robots.txt Generator for Bloggers",
+  "url": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-bloggers/",
+  "applicationCategory": "DeveloperApplication",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Bloggers, Indie Writers, Content Creators, WordPress users, Ghost users"
+  },
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Generate a robots.txt that blocks AI training crawlers (GPTBot, ClaudeBot, Google-Extended, Bytespider, Applebot-Extended) on personal blogs and content sites while preserving Google, Bing and AI-citation traffic."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Will blocking AI crawlers hurt my Google or Bing rankings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Googlebot (search) and Google-Extended (Gemini training) are completely separate user agents. The same is true for Applebot vs Applebot-Extended. You can block every AI training crawler in your robots.txt and your blog will continue to rank in Google and Bing exactly as before. Search rankings depend on Googlebot — which you should never block."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I block AI crawlers or let them in for traffic?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most indie bloggers block training crawlers (GPTBot, ClaudeBot, Google-Extended, Bytespider) but keep live-citation crawlers (OAI-SearchBot, PerplexityBot, ChatGPT-User) allowed. That way your posts cannot be ingested into the next foundation model for free, but you still get cited and linked when ChatGPT or Perplexity answers a related question."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I add robots.txt on WordPress?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WordPress generates a virtual robots.txt by default. To override it, install a plugin like Yoast SEO or Rank Math (both have a robots.txt editor in the dashboard) or upload a static robots.txt to your site's root directory via FTP or your host's file manager. The static file always wins over the virtual one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I add robots.txt on Substack, Medium or Ghost(Pro)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On self-hosted Ghost: yes, place a robots.txt in /content/files/robots.txt or use a routes.yaml override. On Substack and Medium: no — you don't control the robots.txt of substack.com or medium.com. Your only AI opt-out option is the platform's setting (Substack added one in 2024). If AI control matters to you, host on your own domain with WordPress, Ghost self-hosted, or a static site generator."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will AI crawlers actually respect my robots.txt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OpenAI, Anthropic, Google, Apple, Perplexity and Microsoft publicly commit to honoring robots.txt directives for their AI crawlers. Bytespider, Common Crawl (CCBot) and Diffbot also honor it. A small number of scrapers ignore it — for those, you'd need a CDN-level User-Agent block (Cloudflare ships a free one-click 'Block AI Bots' rule). For 95% of training data flow, robots.txt is the working opt-out."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f97316; --accent-glow: #f9731640;
+    --green: #10b981; --red: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #ec489940 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  header { text-align: center; padding: 24px 0 8px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(28px, 4.2vw, 42px); font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fed7aa 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 640px; margin: 0 auto 24px; }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 8px 0 24px; }
+  .cta {
+    display: inline-block; padding: 14px 28px; border-radius: 10px;
+    font-weight: 600; text-decoration: none; transition: all 0.15s; font-size: 15px;
+  }
+  .cta-primary { background: var(--accent); color: #0a0a0f; }
+  .cta-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px var(--accent-glow); }
+  .cta-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+  .cta-secondary:hover { border-color: var(--accent); }
+
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-top: 24px; }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .preview { background: #000; padding: 18px; border-radius: 12px; border: 1px solid var(--border); }
+  .preview pre { margin: 0; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: #e0e0ff; white-space: pre-wrap; }
+  .preview .comment { color: #6b7280; }
+  .preview .ua { color: #f97316; }
+  .preview .allow { color: #10b981; }
+  .preview .disallow { color: #ef4444; }
+
+  .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 14px; }
+  .use-case { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .use-case .icon { font-size: 22px; margin-bottom: 8px; }
+  .use-case h3 { font-size: 15px; margin-bottom: 6px; color: var(--text); }
+  .use-case p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+  .content { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; color: var(--text); letter-spacing: -0.01em; }
+  .content h3 { font-size: 18px; margin: 24px 0 8px; color: var(--text); }
+  .content p { color: var(--text-dim); margin-bottom: 12px; font-size: 15px; }
+  .content ul { margin: 8px 0 16px 24px; color: var(--text-dim); }
+  .content ul li { margin-bottom: 6px; font-size: 15px; }
+  .content a { color: var(--accent); text-decoration: none; }
+  .content a:hover { text-decoration: underline; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', monospace; font-size: 13px; color: var(--accent); }
+  .content blockquote { border-left: 3px solid var(--accent); padding: 4px 16px; margin: 16px 0; color: var(--text-dim); font-style: italic; }
+
+  .faq-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: 0; }
+  .faq-item h3 { font-size: 16px; margin-bottom: 6px; color: var(--text); }
+  .faq-item p { color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+
+  .final-cta { text-align: center; padding: 36px 24px; margin-top: 40px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
+  .final-cta h2 { font-size: 22px; margin-bottom: 10px; color: var(--text); }
+  .final-cta p { color: var(--text-dim); margin-bottom: 18px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">Home</a> &nbsp;›&nbsp;
+    <a href="/ai-robots-txt-generator/">AI Robots.txt Generator</a> &nbsp;›&nbsp;
+    For Bloggers
+  </div>
+
+  <header>
+    <div class="badge">✍️ Built for indie bloggers · 25+ AI crawlers · Free</div>
+    <h1>AI Robots.txt Generator for Bloggers</h1>
+    <p class="subtitle">Stop OpenAI, Anthropic, Google and ByteDance from training their next model on your posts — without losing a single visitor from Google, Bing, or AI search citations. Built for WordPress, Ghost, and static blogs.</p>
+    <div class="cta-row">
+      <a href="/ai-robots-txt-generator/" class="cta cta-primary">Open the Generator →</a>
+      <a href="#example" class="cta cta-secondary">See blogger example</a>
+    </div>
+  </header>
+
+  <div class="panel" id="example">
+    <h2>What a blogger's robots.txt looks like</h2>
+    <div class="preview">
+<pre><span class="comment"># robots.txt for an indie blog
+# Goal: block AI training, keep search + AI citation traffic</span>
+
+<span class="comment"># --- Search engines: fully allowed ---</span>
+<span class="ua">User-agent: Googlebot</span>
+<span class="allow">Allow: /</span>
+
+<span class="ua">User-agent: Bingbot</span>
+<span class="allow">Allow: /</span>
+
+<span class="ua">User-agent: DuckDuckBot</span>
+<span class="allow">Allow: /</span>
+
+<span class="comment"># --- AI training crawlers: blocked ---</span>
+<span class="ua">User-agent: GPTBot</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: ClaudeBot</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: anthropic-ai</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: Google-Extended</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: Applebot-Extended</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: Bytespider</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: CCBot</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: Meta-ExternalAgent</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="comment"># --- Live-citation crawlers: keep allowed for traffic ---</span>
+<span class="ua">User-agent: OAI-SearchBot</span>
+<span class="allow">Allow: /</span>
+
+<span class="ua">User-agent: ChatGPT-User</span>
+<span class="allow">Allow: /</span>
+
+<span class="ua">User-agent: PerplexityBot</span>
+<span class="allow">Allow: /</span>
+
+<span class="ua">Sitemap: https://yourblog.com/sitemap.xml</span></pre>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Why bloggers need this in 2026</h2>
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="icon">📝</div>
+        <h3>Stop free training on your archive</h3>
+        <p>Five years of Saturday-morning writing can be ingested by a single training run. A targeted robots.txt is the legal opt-out signal every major AI lab has agreed to honor.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">🔍</div>
+        <h3>Don't lose Google traffic</h3>
+        <p>Block <code>Google-Extended</code> (Gemini training) without touching <code>Googlebot</code>. Your posts keep ranking in Search and AI Overviews still cite you with a link.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">💸</div>
+        <h3>Protect AdSense and affiliate revenue</h3>
+        <p>If a reader gets the full answer from ChatGPT trained on your post, they never visit. Blocking training preserves the click that pays your hosting bill.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">🤖</div>
+        <h3>Stay quoted, not consumed</h3>
+        <p>Allow <code>OAI-SearchBot</code> and <code>PerplexityBot</code> so AI answer engines still cite you with attribution — you get traffic, they don't get training data.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">⚡</div>
+        <h3>Set it once, ship in 30 seconds</h3>
+        <p>Generate, copy, paste into your WordPress or Ghost robots.txt editor. Five minutes of work that locks in your AI policy across every post you'll ever publish.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>The AI training problem for indie bloggers</h2>
+    <p>Between 2022 and 2025, virtually every major foundation model was trained partly on Common Crawl — a public dump of the open web that includes hundreds of millions of blog posts. Bloggers got nothing. The labs got the models. Search-engine click-throughs to articles dropped between 15% and 35% in the same window because Google's AI Overviews and ChatGPT started answering the question directly from your content.</p>
+    <p>Two years later, the answer for indie writers has settled: <strong>opt out of training, opt in to citation</strong>. Block the bots that take your work to train the next model. Keep allowed the bots that fetch your post to answer a live question, with a link back to you. Done well, the policy looks like the example above and takes one minute to deploy.</p>
+
+    <h2>The four crawler categories every blogger should know</h2>
+
+    <h3>1. Training-only crawlers — block these</h3>
+    <p>These bots only exist to harvest data for foundation-model training. They do not send any traffic back to your blog. Blocking them is pure upside:</p>
+    <ul>
+      <li><code>GPTBot</code> — OpenAI's training crawler</li>
+      <li><code>ClaudeBot</code> and <code>anthropic-ai</code> — Anthropic training</li>
+      <li><code>Google-Extended</code> — Gemini training (totally separate from Googlebot search)</li>
+      <li><code>Applebot-Extended</code> — Apple Intelligence training</li>
+      <li><code>Bytespider</code> — TikTok/ByteDance training</li>
+      <li><code>CCBot</code> — Common Crawl, the training-data backbone of most open-source LLMs</li>
+      <li><code>Meta-ExternalAgent</code>, <code>cohere-ai</code>, <code>Diffbot</code>, <code>Omgilibot</code> — smaller training crawlers</li>
+    </ul>
+
+    <h3>2. Live-citation crawlers — usually keep allowed</h3>
+    <p>These bots fetch a single page on demand when a user asks an AI a question, and the AI cites your post with a clickable link. They are how AI search drives traffic to indie blogs:</p>
+    <ul>
+      <li><code>OAI-SearchBot</code> — ChatGPT search and live answers</li>
+      <li><code>ChatGPT-User</code> — when a ChatGPT user clicks "browse the web"</li>
+      <li><code>PerplexityBot</code> and <code>Perplexity-User</code> — Perplexity answer engine</li>
+      <li><code>Bingbot</code> — Microsoft search and Copilot grounding (also gets you into search results)</li>
+    </ul>
+
+    <h3>3. Search engines — always allowed</h3>
+    <p><code>Googlebot</code>, <code>Bingbot</code>, <code>DuckDuckBot</code>, <code>Slurp</code> (Yahoo), <code>YandexBot</code> — these are your traffic. Never block them.</p>
+
+    <h3>4. Generic spam bots — out of scope here</h3>
+    <p>Scrapers that ignore robots.txt entirely (content thieves, SEO data brokers) are not stopped by any robots.txt. For those you need server-side protection — a Cloudflare WAF rule or a plugin like Wordfence on WordPress.</p>
+
+    <h2>The Google-Extended trick every blogger gets wrong</h2>
+    <p>This is the single biggest mistake in blogger robots.txt files. <code>Googlebot</code> is the search crawler that decides whether your post ranks for "best espresso machine 2026". <code>Google-Extended</code> is a separate user agent Google introduced in late 2023 specifically so publishers could opt out of Gemini training without losing Search visibility. The two are completely independent.</p>
+    <p>If you set <code>User-agent: *  Disallow: /</code>, you have just deindexed your blog from Google entirely. If you set nothing at all, Google is using your posts to train Gemini for free. The right answer is the one in the example above: <code>Googlebot: Allow</code> and <code>Google-Extended: Disallow</code>. The same logic applies to Apple: keep <code>Applebot</code> allowed, block <code>Applebot-Extended</code>.</p>
+
+    <h2>How to deploy on the most common blogging platforms</h2>
+
+    <h3>WordPress</h3>
+    <p>WordPress generates a virtual robots.txt at <code>/robots.txt</code> by default, but it's not what you want. Two ways to override it:</p>
+    <ul>
+      <li><strong>Plugin route:</strong> Install <a href="https://yoast.com/" rel="noopener" target="_blank">Yoast SEO</a> or Rank Math. Both have a robots.txt editor under SEO → Tools. Paste the generated file, save.</li>
+      <li><strong>Static file route:</strong> Upload the file as <code>/robots.txt</code> in your site root via FTP, cPanel File Manager, or your host's dashboard. The static file always overrides the WordPress virtual one.</li>
+    </ul>
+
+    <h3>Ghost (self-hosted)</h3>
+    <p>Drop the file at <code>/content/files/robots.txt</code> or use a <code>routes.yaml</code> override that maps <code>/robots.txt</code> to your file. Ghost(Pro) doesn't allow this — you're stuck with Ghost's defaults, which block GPTBot since 2024 but not the full list.</p>
+
+    <h3>Static sites (Jekyll, Hugo, Eleventy, Astro, Next.js)</h3>
+    <p>Drop <code>robots.txt</code> in your static output folder (<code>public/</code>, <code>_site/</code>, <code>dist/</code>, depending on the generator). Commit, deploy, done. Vercel, Netlify and Cloudflare Pages serve it automatically from the project root.</p>
+
+    <h3>Substack, Medium, and other hosted platforms</h3>
+    <p>You don't control robots.txt on substack.com or medium.com. Substack added a platform-wide AI opt-out toggle in 2024 — turn it on in your publication's settings. Medium has a similar opt-out in account settings. If full control matters to you, the long-term fix is moving to your own domain with WordPress, Ghost self-hosted, or a static site.</p>
+
+    <h2>Belt and suspenders: enforce at the edge</h2>
+    <p>robots.txt is a polite request. Major AI labs (OpenAI, Anthropic, Google, Apple, Perplexity, Microsoft) have publicly committed to honoring it for their crawlers. A small fringe of scrapers ignores it. For belt-and-suspenders enforcement, Cloudflare's free tier ships a one-click "<a href="https://blog.cloudflare.com/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click/" rel="noopener" target="_blank">Block AI Bots</a>" rule that enforces the same list at the network edge — even bots that ignore robots.txt cannot get past it. Layer the two and you've covered both the polite and the impolite paths.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <h3>Will blocking AI crawlers hurt my Google or Bing rankings?</h3>
+      <p>No. <code>Googlebot</code> (search) and <code>Google-Extended</code> (Gemini training) are completely separate user agents. The same is true for <code>Applebot</code> vs <code>Applebot-Extended</code>. You can block every AI training crawler in your robots.txt and your blog will rank in Google and Bing exactly as before.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should I block AI crawlers or let them in for traffic?</h3>
+      <p>The mainstream indie answer in 2026 is: block training crawlers (<code>GPTBot</code>, <code>ClaudeBot</code>, <code>Google-Extended</code>, <code>Bytespider</code>) but keep live-citation crawlers (<code>OAI-SearchBot</code>, <code>PerplexityBot</code>, <code>ChatGPT-User</code>) allowed. You stop free training, you keep the AI-search traffic.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I add robots.txt on WordPress?</h3>
+      <p>Two options: install Yoast SEO or Rank Math (both have a robots.txt editor in the dashboard) or upload a static <code>robots.txt</code> to your site root via FTP or your host's file manager. The static file overrides WordPress's default virtual one.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I add robots.txt on Substack, Medium or Ghost(Pro)?</h3>
+      <p>On self-hosted Ghost: yes. On Substack, Medium, and Ghost(Pro): no — you don't control the platform's robots.txt. Use the platform's built-in AI opt-out toggle (Substack and Medium added one in 2024). For full control, host on your own domain.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Will AI crawlers actually respect my robots.txt?</h3>
+      <p>OpenAI, Anthropic, Google, Apple, Perplexity and Microsoft publicly commit to honoring it. Bytespider and CCBot also do. A small number of fringe scrapers ignore it — for those, pair the file with Cloudflare's free "Block AI Bots" edge rule. For 95% of the training-data flow, robots.txt is the working opt-out.</p>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    <h2>Generate your blog's robots.txt in 30 seconds</h2>
+    <p>Free, no signup. Pick which bots to block, copy the file, paste into Yoast or upload to your site root. One config change, lifetime AI policy.</p>
+    <a href="/ai-robots-txt-generator/" class="cta cta-primary">Open the AI Robots.txt Generator →</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> · Free indie tools for the AI era ·
+    See also: <a href="/ai-disclosure-generator/for-bloggers/">AI Disclosure Generator for Bloggers</a> ·
+    <a href="/seo-meta-generator/for-bloggers/">SEO Meta Generator for Bloggers</a>
+  </footer>
+</div>
+</body>
+</html>
