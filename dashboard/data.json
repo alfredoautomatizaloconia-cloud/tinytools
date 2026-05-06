@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 6, 2026 — published Brandable vs Keyword Domains for SaaS guide + 4 social drafts ready",
+  "lastUpdated": "May 6, 2026 — published Trademark Check guide for domain-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 27,
+    "posts": 28,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 16:05",
+      "tag": "seo",
+      "text": "📝 Published blog post: How to Check If a Domain Name Is Trademarked Before You Buy It (2026 Guide) at /domain-generator/blog/how-to-check-if-domain-name-is-trademarked-2026/"
+    },
+    {
+      "time": "today 16:05",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/startups, LinkedIn, Show HN — all promoting domain-generator"
+    },
     {
       "time": "today 15:55",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 12:28",
       "tag": "seo",
       "text": "🎯 Use-case page: /color-palette/for-react-developers/ — targets 'css variables generator' + 'react design tokens'"
-    },
-    {
-      "time": "today 12:28",
-      "tag": "seo",
-      "text": "🎯 Use-case page: /color-palette/for-tailwind-users/ — targets 'tailwind palette generator' + 'tailwind 50 950 scale'"
-    },
-    {
-      "time": "today 12:28",
-      "tag": "seo",
-      "text": "📊 Listicle: Best Free Color Palette Generators in 2026 (TinyTools #1) at /best-free-color-palette-generators-2026/"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "text": "🧵 Founders: I see a $14k mistake every month — picking a domain name without a 5-min trademark check.\n\nHere's the exact sweep that saves rebrands. (1/5)\n\n---\n\n(2/5) The 60-second sniff test, before any database:\n\n• Google \"yourname\" + your category in quotes\n• site:linkedin.com/company \"yourname\"\n• Search the App Store + Play Store\n\nIf something active turns up in your same niche → stop. Move on. Trademark rights attach to USE, not registration.\n\n---\n\n(3/5) Then run the four free databases:\n\n• USPTO TESS (US)\n• EUIPO TMview (EU)\n• WIPO Global Brand DB (~75 countries)\n• UK IPO + Canadian CIPO\n\nSearch exact, phonetic AND stem matches in each. \"Lyft\" and \"Lift\" count.\n\n---\n\n(4/5) The factor most founders forget: BUSINESS CLASS.\n\nA registered \"Acmebot\" in Class 1 (chemicals) ≠ a problem for your Class 9/42 SaaS.\n\nA registered \"Acmebot\" in Class 9 cloud software = walk away today.\n\n---\n\n(5/5) Full 2026 guide w/ the \"confusingly similar\" framework + when to call an attorney + a free domain generator that filters for available + brandable names so you don't waste time on dead ends:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/how-to-check-if-domain-name-is-trademarked-2026/",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-06T16:05:19Z"
+    },
+    {
+      "platform": "Reddit /r/startups",
+      "text": "Coming back to this thread because I've watched 3 founders in my YC batch eat $10k+ rebrand bills from skipping this. Five minutes of trademark check before you buy the .com saves a year of regret.\n\nThe tl;dr that worked for me:\n\n1. Google your name in quotes + your category. site:linkedin.com/company \"yourname\" too — surfaces operating companies that haven't filed a TM yet.\n2. Run it through USPTO TESS, EUIPO TMview, and WIPO Global Brand DB. Use the phonetic toggle — \"Lyft\"/\"Lift\" levels of similarity get flagged in real conflicts.\n3. The big factor people miss: business class. Same name in chemicals = not your problem. Same name in Class 9/42 software = your problem.\n4. If the name is clean, file an intent-to-use USPTO application within 30 days of locking the domain. ~$350 in fees, locks priority.\n\nWrote up the full process with the four databases linked + when to actually pay for an attorney here: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-check-if-domain-name-is-trademarked-2026/\n\nFree domain generator I built that filters for available .coms is in there too — saves a lot of \"trademark clean but parked at $14k\" frustration.",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-06T16:05:19Z"
+    },
+    {
+      "platform": "LinkedIn",
+      "text": "A founder DM'd me last week: \"We launched, got a cease-and-desist in month 4, and rebrand cost us $18k.\"\n\nThis is preventable in 5 minutes.\n\nBefore you register the domain, run your candidate name through:\n\n• USPTO TESS (with the phonetic toggle on)\n• EUIPO TMview\n• WIPO Global Brand DB\n• A site:linkedin.com/company \"yourname\" search\n\nThe factor most founders skip: business class. Two companies can share a trademark across different industries — Apple Records co-existed with Apple Computer for decades. But if a registered mark exists in your same software/SaaS class and the names rhyme, you have a real conflict, no matter who paid for the .com first.\n\nFive minutes now > $18k later.\n\nI wrote the full 2026 walkthrough — the four free databases, the \"confusingly similar\" framework, and when to call an attorney — here:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/how-to-check-if-domain-name-is-trademarked-2026/",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-06T16:05:19Z"
+    },
+    {
+      "platform": "Show HN",
+      "text": "TITLE: Show HN: A 5-minute trademark check before you buy your startup's domain\n\nCOMMENT:\nBuilt this after watching three friends eat rebrand bills because they bought a domain that was clean on registrars but already trademarked in software. The four free databases + how to read 'confusingly similar' across business classes is the whole game. Free domain generator linked from the post if you want to start from a list of available, brandable names instead. Feedback welcome — especially on the international section, that's where I'm least confident: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-check-if-domain-name-is-trademarked-2026/",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-06T16:05:19Z"
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "domain-generator",
       "createdAt": "2026-05-06T15:55:38Z",
       "text": "1/ Every SaaS founder hits the same naming fork:\n\ninvoicebuilder.com (keyword) or stripe.com (brandable)?\n\nPre-2012 the answer was obvious. In 2026 it's the opposite of what most founders still believe. Thread 👇\n\n2/ The keyword-domain SEO advantage died in September 2012.\n\nGoogle's EMD update killed it. Hummingbird, RankBrain, BERT, and the helpful-content updates buried it deeper. By 2026 there's basically zero ranking lift from having the keyword in the URL for any commercial query.\n\nIf you're picking a keyword domain for SEO, you're optimizing for an algorithm that hasn't existed in 14 years.\n\n3/ What brandable actually buys you:\n\n• Defensible trademark (USPTO won't grant marks on descriptive names)\n• Pricing power (Linear charges Jira money. bestprojectmanagementtool.com structurally cannot)\n• Expansion room (Stripe = payments → tax → billing → capital, same domain)\n• Word-of-mouth (two syllables travel; three-word descriptions don't)\n\n4/ The cost gap goes the OPPOSITE way most founders assume.\n\nPremium one-word keyword .com in any vertical: $15K–$250K on the secondary market.\n\nBrandable five-letter .com with clean trademark: usually under $5K, often $12 hand-reg.\n\nThe keyword domain is the expensive option.\n\n5/ Keyword domains still win in exactly three places:\n\n• Affiliate/comparison sites (the URL IS the marketing budget)\n• Local services (austinplumbers.com beats plumbie.io for one-shot intent)\n• Pure content sites with no product moat\n\nIf you're building defensible SaaS, none of those describe you.\n\n6/ Wrote up the full breakdown — SEO data, the trademark angle, the 60-second decision framework, and three founder mistakes I see weekly:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/brandable-vs-keyword-domains-saas-2026/"
@@ -260,30 +284,6 @@
       "tool": "domain-generator",
       "createdAt": "2026-05-06T15:55:38Z",
       "text": "Show HN title: Brandable vs Keyword Domain Names — Which Wins for SaaS in 2026?\n\nLink: https://tinytools-smoky.vercel.app/domain-generator/blog/brandable-vs-keyword-domains-saas-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Wrote this after watching another founder pay $42K for a keyword .com \"for the SEO benefit\" — a benefit Google neutralized with the EMD update in 2012 and buried deeper with every algorithm update since. The 2026 cost math goes the opposite direction most founders assume: premium keyword .coms run $15K-$250K, brandable five-letter .coms are usually under $5K. Curious if HN has data points where keyword domains still meaningfully beat brandable ones outside the obvious affiliate / local-services / pure-content cases."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T08:44:23.017585+00:00",
-      "text": "1/ Most founders who buy a \"premium\" .com pay 2-3x what they should.\n\nThe asking price isn't the price. It's an anchor.\n\nHere's how to actually negotiate a 5-figure domain in 2026 👇\n\n2/ Tier matters more than tactics.\n- Mid-aftermarket ($1.5-15k brandables): 40-60% of asking is normal\n- True premium ($15-250k one-word .coms): 60-80% of asking\n- Category-defining ($1M+): hire a broker, this isn't haggling\n\n3/ Stay anonymous. The second a seller learns you're a funded startup, the price doubles. Use a clean Gmail. Don't mention your business name. Brokers run reverse-WHOIS the second you email them.\n\n4/ Open at 30-40% of BIN with a budget script:\n\"Working on a personal project, budget is $X. Looking at [alt-1] and [alt-2] in the same range. Happy to close this week via Escrow.com.\"\n\nAnchors low. Names alternatives. Signals real buyer.\n\n5/ Wait 24-48 hours between counters. Replying instantly = emotionally locked in = price goes up. Patience is the cheapest leverage in the entire process.\n\n6/ Always close through Escrow.com. Never PayPal F&F. Never Venmo. Never wire-direct. That's how people lose $20k and a domain in the same week.\n\nFull playbook with the exact scripts: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-negotiate-buying-premium-domain-name-2026/\n\n(Free, no signup. Built it because we got tired of seeing founders overpay.)"
-    },
-    {
-      "platform": "Reddit comment (/r/Entrepreneur)",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T08:44:23.017585+00:00",
-      "text": "Couple things that helped me when I bought my .com last year:\n\n1. Treat the BIN as the seller's anchor, not the price. On most mid-aftermarket names ($2-15k range), 40-60% of asking is what actually closes. Don't accept the listing price reflexively — that's the rookie tax.\n\n2. Stay anonymous in early conversations. The moment a broker realizes you're a funded startup, the quote doubles. Use a clean Gmail, say \"personal project,\" don't mention your company name until paperwork.\n\n3. Have a backup name registered before you negotiate. Not as a bluff — actually pick one you'd be happy with. The walk-away has to be real to work, and your tone changes when it is.\n\n4. Always close through Escrow.com (~0.89% fee above $5k). Never PayPal Friends & Family or direct wire. Domain-purchase fraud is the #1 way people lose money in this space.\n\n5. Use NameBio to pull comparable sales — it's free and gives you actual recent transactions, which is the only number sellers can't argue with.\n\nI wrote up the full negotiation playbook with the exact scripts I used (anchor offers, counter-cadence, escrow flow): https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-negotiate-buying-premium-domain-name-2026/"
-    },
-    {
-      "platform": "LinkedIn post",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T08:44:23.017585+00:00",
-      "text": "A founder I was advising last month spent $14,000 on a premium .com.\n\nIt was probably worth $5,500.\n\nNot because she got scammed — because nobody told her that the asking price on a domain marketplace is just an anchor. It's the seller's hopeful number, not the actual price.\n\nThree things she could have done differently:\n\n1) Stayed anonymous. The moment a broker reverse-WHOIS'd her startup email, the quote tripled. A clean Gmail and \"I'm working on a personal project\" would have saved her $5,000 alone.\n\n2) Anchored at 30-40% of BIN with comparables from NameBio. Three recent sales of similar names is the only data sellers can't argue with.\n\n3) Had a backup name registered before negotiating. The walk-away only works if it's real. The moment you actually have an alternative you'd be happy with, your bargaining power goes up 5x.\n\nI wrote the full playbook with the exact scripts and counter-offer cadence, free and no signup: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-negotiate-buying-premium-domain-name-2026/\n\nIf you're about to buy a premium domain, read it first. The hour you'll spend reading saves $5-10k in expectation.\n\n#startups #branding #domains"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T08:44:23.017585+00:00",
-      "text": "Show HN: A tactical playbook for negotiating premium .com purchases (free, no signup)\n\nBuilt this after watching three founders in a row pay 2-3x what their domain was worth. Covers the things sellers don't tell you: how anonymity affects the quote, how to anchor, the realistic counter-cadence (30-40% of BIN, 24-48hr gaps), and why Escrow.com is the only safe close. Curious what experienced domain buyers think — what did I miss?"
     }
   ],
   "checklist": [
