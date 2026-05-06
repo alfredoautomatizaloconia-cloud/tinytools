@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Free Color Palette Generator for Bloggers — Pick a Blog Theme Palette in 5 Minutes (2026)</title>
+<meta name="description" content="Free color palette generator built for bloggers. Pick a brand-safe blog theme palette in 5 minutes — WCAG contrast checked, exportable to Ghost, WordPress, Substack, and Beehiiv.">
+<meta name="keywords" content="color palette for bloggers, blog color scheme generator, blog theme colors, ghost theme palette, wordpress color scheme, substack color palette, blogger brand colors 2026">
+<meta property="og:title" content="Color Palette Generator for Bloggers — Blog Theme Palette in 5 Minutes">
+<meta property="og:description" content="Free color palette generator built for bloggers. WCAG-checked, exportable to Ghost, WordPress, Substack, and Beehiiv.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/color-palette/for-bloggers/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Color Palette Generator for Bloggers — Blog Theme Palette in 5 Minutes">
+<meta name="twitter:description" content="Free color palette generator built for bloggers. WCAG-checked, exportable to Ghost, WordPress, Substack, and Beehiiv.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/color-palette/for-bloggers/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Color Palette Generator for Bloggers","url":"https://tinytools-smoky.vercel.app/color-palette/for-bloggers/","applicationCategory":"DesignApplication","audience":{"@type":"Audience","audienceType":"Bloggers, Newsletter Writers, Content Creators"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the best color palette for a blog?","acceptedAnswer":{"@type":"Answer","text":"The best blog palette is one accent color (saturation 70%+, lightness 25% or 65%), one neutral background (off-white or near-black), one body text color with WCAG AA contrast (4.5:1 minimum), one muted text for metadata, and one link color distinct from body text. Five tokens. That's it."}},{"@type":"Question","name":"How many colors should a blog theme use?","acceptedAnswer":{"@type":"Answer","text":"Five tokens: background, surface, text, muted text, accent. Add one optional code-block or quote-block tint if you publish technical content. Anything past seven tokens makes maintenance painful and weakens visual identity."}},{"@type":"Question","name":"Should bloggers use light mode or dark mode by default?","acceptedAnswer":{"@type":"Answer","text":"Default to light mode for SEO and readability — most readers still prefer it, and Google's Core Web Vitals favor lower-contrast hero images that look better on light backgrounds. Offer dark mode as a toggle by inverting your token set, not by re-picking colors."}},{"@type":"Question","name":"Can I export the palette to Ghost or WordPress?","acceptedAnswer":{"@type":"Answer","text":"Yes. The TinyTools color palette generator exports CSS custom properties (works in Ghost, Substack code injection, Beehiiv custom CSS) and a Tailwind config block (works in WordPress block themes that ship Tailwind). Copy-paste, no account."}},{"@type":"Question","name":"What contrast ratio does Google care about for blogs?","acceptedAnswer":{"@type":"Answer","text":"Google's Lighthouse accessibility audit fails any text under 4.5:1 contrast (WCAG AA for body text) and 3:1 for large text. Failing accessibility hurts your Core Web Vitals score, which now influences ranking for editorial queries."}}]}</script>
+
+<style>
+:root{--bg:#0a0a0f;--bg-card:#15151f;--bg-elev:#1d1d2a;--border:#2a2a3a;--text:#f5f5fa;--text-dim:#a0a0b8;--accent:#a855f7;--accent-glow:#a855f740;--green:#10b981;--red:#ef4444;--amber:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;background-image:radial-gradient(circle at 20% 0%,var(--accent-glow) 0%,transparent 50%),radial-gradient(circle at 80% 60%,#ec489940 0%,transparent 50%)}
+.container{max-width:820px;margin:0 auto;padding:32px 20px 80px}
+.breadcrumb{font-size:13px;color:var(--text-dim);margin-bottom:24px}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+h1{font-size:clamp(28px,4vw,42px);font-weight:800;line-height:1.15;margin:16px 0 12px;letter-spacing:-0.02em;background:linear-gradient(135deg,#fff 0%,#d8b4fe 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.meta{color:var(--text-dim);font-size:14px;margin-bottom:28px}
+h2{font-size:24px;font-weight:700;margin:36px 0 12px;color:var(--text)}
+h3{font-size:19px;font-weight:600;margin:24px 0 8px;color:var(--text)}
+p,ul,ol{color:#d0d0e0;margin-bottom:16px;font-size:17px}
+ul,ol{margin-left:24px}li{margin-bottom:6px}
+strong{color:var(--text);font-weight:600}
+a{color:var(--accent)}
+code{background:var(--bg-elev);padding:2px 6px;border-radius:4px;font-size:14px;color:#d8b4fe}
+pre{background:var(--bg-elev);padding:14px 16px;border-radius:10px;overflow-x:auto;margin:16px 0;border:1px solid var(--border)}
+pre code{background:transparent;padding:0;color:#d8b4fe;font-size:13px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);color:#d0d0e0;vertical-align:top}
+th{background:var(--bg-elev);color:var(--text);font-weight:600;font-size:14px}
+tr:last-child td{border-bottom:none}
+.yes{color:var(--green);font-weight:600}.no{color:var(--red);font-weight:600}.partial{color:var(--amber);font-weight:600}
+.cta-box{margin:36px 0;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;border-left:4px solid var(--accent)}
+.cta-box h3{margin:0 0 6px;font-size:18px;color:var(--text)}
+.cta-box p{margin-bottom:12px;font-size:15px}
+.cta-btn{display:inline-block;padding:12px 24px;background:linear-gradient(135deg,#a855f7,#ec4899);color:white;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;box-shadow:0 4px 16px rgba(168,85,247,0.3)}
+.related{margin-top:60px;padding-top:28px;border-top:1px solid var(--border)}
+.related h3{color:var(--text-dim);font-size:13px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
+.related-card{padding:14px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text);transition:all 0.15s}
+.related-card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.related-card .name{font-weight:600;font-size:14px}
+.related-card .desc{font-size:12px;color:var(--text-dim);margin-top:2px}
+.panel{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin:14px 0 18px}
+.panel.tt{border-left:3px solid var(--accent)}
+.panel.alt{border-left:3px solid #00c4cc}
+.summary{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin:18px 0 24px}
+.summary strong{color:#fff}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);text-align:center;color:var(--text-dim);font-size:13px}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head><body><div class="container">
+<div class="breadcrumb"><a href="/">TinyTools</a> &nbsp;/&nbsp; <a href="/color-palette/">Color Palette Generator</a> &nbsp;/&nbsp; For Bloggers</div>
+
+<h1>Color Palette Generator for Bloggers</h1>
+<div class="meta">Updated May 6, 2026 · For Ghost, WordPress, Substack, Beehiiv, and self-hosted blogs</div>
+<div class="summary"><strong>The pitch.</strong> A blog's visual identity is 80% type and 20% color, but the 20% is the part readers screenshot. You don't need a designer or a Figma file — pick one accent, derive five brand-safe tokens in 5 minutes, paste them into your theme, and stop tweaking. This page is the blogger-specific version of the TinyTools color palette generator with the 2026 publishing playbook baked in.</div>
+
+<h2>Why bloggers need a real palette (not just &#8220;a hex code I like&#8221;)</h2>
+<p>Most bloggers pick a color the way they pick a profile photo: open the theme editor, scroll through swatches, click whichever blue feels &#8220;trustworthy enough,&#8221; and move on. That works for the first six months. Then you start running into the same five problems.</p>
+<ul>
+<li><strong>The accent looks fine on hero images, but unreadable on link text.</strong> A 4.2:1 contrast ratio passes the eye test and fails Lighthouse — Google's Core Web Vitals accessibility audit dings you, which now feeds back into ranking for editorial queries in 2026.</li>
+<li><strong>Your social cards don't match your blog.</strong> You picked one color in Ghost, a different one in your <a href="/og-image-generator/">OG image generator</a>, and a third in your Twitter header. Brand recall dies at the first inconsistency.</li>
+<li><strong>Dark mode looks broken.</strong> You inverted background and text but left the accent at full saturation, so it now glows like a hyperlink alarm.</li>
+<li><strong>Sponsored sections are visually identical to editorial.</strong> Without a tinted &#8220;sponsored&#8221; surface color, FTC-required disclosure becomes ambiguous, which is bad for both readers and the algorithm.</li>
+<li><strong>You can't theme code blocks, callouts, or pull quotes</strong> because you only ever picked one color, not a token system.</li>
+</ul>
+<p>A real palette fixes all five in one pass: five named tokens, exported once, referenced everywhere. The TinyTools generator does the contrast math, the dark-mode inversion, and the export so you don't have to.</p>
+
+<div class="cta-box">
+<h3>Skip the reading?</h3>
+<p>Open the <a href="/color-palette/">color palette generator</a> and pick your accent. The page below is the playbook — the tool itself takes 60 seconds.</p>
+<a class="cta-btn" href="/color-palette/">Try the Color Palette Generator &rarr;</a>
+</div>
+
+<h2>The 5-token blog palette (and what each does)</h2>
+<p>Forget 12-color brand systems. A blog needs exactly five tokens, and a sixth optional one if you publish code or long quotes:</p>
+<table>
+<tr><th>Token</th><th>Role</th><th>Light mode example</th><th>Dark mode example</th></tr>
+<tr><td><code>--bg</code></td><td>Page background</td><td><code>#fafaf7</code></td><td><code>#0a0a0f</code></td></tr>
+<tr><td><code>--surface</code></td><td>Cards, callouts, quotes</td><td><code>#ffffff</code></td><td><code>#15151f</code></td></tr>
+<tr><td><code>--text</code></td><td>Body copy (must hit 4.5:1)</td><td><code>#1a1a1a</code></td><td><code>#f5f5fa</code></td></tr>
+<tr><td><code>--muted</code></td><td>Bylines, dates, captions</td><td><code>#666</code></td><td><code>#a0a0b8</code></td></tr>
+<tr><td><code>--accent</code></td><td>Links, buttons, brand</td><td><code>#a855f7</code></td><td><code>#c084fc</code></td></tr>
+<tr><td><code>--code</code> (opt.)</td><td>Inline code, tints</td><td><code>#f0f0f5</code></td><td><code>#1d1d2a</code></td></tr>
+</table>
+<p>Notice the accent shifts lightness between modes. That's deliberate — a vivid purple at 50% lightness reads great on light backgrounds and screams on dark. Bumping it 10–15 points lighter in dark mode keeps the brand recognizable without burning retinas. The generator does this automatically when you toggle modes.</p>
+
+<h2>5 niche-specific use cases for bloggers</h2>
+
+<h3>1. Picking a Ghost or Substack accent that matches your tone</h3>
+<p>News-style blogs (deep blues, charcoal grays, blood red), longform essays (warm tans, oxblood, ink), tech blogs (electric purple, cyan, lime), recipe blogs (terracotta, basil green, butter yellow), and personal newsletters (whatever the writer's couch looks like) each have a recognizable color signature. Pick wrong and readers subconsciously file you in the wrong genre. The generator's <strong>analogous</strong> mode is your friend for tonal harmony, <strong>complementary</strong> for op-eds and high-energy takes.</p>
+
+<h3>2. Generating WCAG-AA-safe link colors so Lighthouse stops yelling</h3>
+<p>Your blog's accent is also your link color 90% of the time. The generator runs every accent against your background and against white, and tells you which combinations clear 4.5:1 (body text) and 3:1 (large text). Failing this is the most common Lighthouse hit on independent blogs in 2026 — and Google's <a href="https://web.dev/articles/vitals" rel="nofollow">Core Web Vitals</a> guidance now explicitly weights accessibility into editorial ranking signals.</p>
+
+<h3>3. Exporting CSS variables straight into Ghost code injection</h3>
+<p>Ghost themes (Casper, Edition, Source, and most marketplace themes) expose <code>:root</code> via Code Injection. Paste five lines, save, ship.</p>
+<pre><code>:root {
+  --ghost-accent-color: #a855f7;
+  --color-base: #fafaf7;
+  --color-text: #1a1a1a;
+  --color-muted: #666;
+  --color-surface: #ffffff;
+}</code></pre>
+<p>WordPress block themes ship Tailwind-compatible token blocks that work the same way — paste into <em>Appearance → Customize → Additional CSS</em>. Substack uses Custom Theme Colors for the basics; for the rest, the Substack &#8220;Custom Code&#8221; option (paid plan) eats the same CSS variables.</p>
+
+<h3>4. Coordinating blog colors with newsletter, OG cards, and social</h3>
+<p>Pick the palette once, reuse the accent in your <a href="/og-image-generator/">OG image generator</a> for social cards, in your <a href="/favicon-generator/">favicon generator</a> for browser tabs, and in your Beehiiv or ConvertKit newsletter template. One accent, four placements, one cohesive brand. Most bloggers under-index on this — every cross-channel mismatch is a chance for the reader's brain to file you somewhere new.</p>
+
+<h3>5. Differentiating sponsored content with a tinted surface</h3>
+<p>The FTC's 2024 endorsement guides require visible disclosure for sponsored posts, and a separate background tint is the cleanest visual cue. The generator's <strong>tint</strong> output gives you a 5%-mixed version of your accent — light enough for body text to stay readable, distinct enough that &#8220;Sponsored&#8221; doesn't blend into the page. Pair with a small disclosure label generated by the <a href="/ai-disclosure-generator/">AI disclosure generator</a> if your sponsored content involves AI assistance.</p>
+
+<h2>The blogger-specific palette playbook</h2>
+<ol>
+<li><strong>Open the <a href="/color-palette/">palette generator</a></strong> in one tab and your blog theme editor in another.</li>
+<li><strong>Pick one accent.</strong> Trust your gut on hue. Lock saturation to 65–80%, lightness to 45–55% for light mode, 60–70% for dark mode.</li>
+<li><strong>Pick analogous mode</strong> for tonal blogs (essays, fiction, recipes), <strong>complementary</strong> for editorial blogs (news, opinion, tech).</li>
+<li><strong>Verify all five token pairs hit WCAG AA.</strong> The generator highlights any failure in red. Do not ship with a red flag.</li>
+<li><strong>Click &#8220;Export CSS variables.&#8221;</strong> Paste into Ghost Code Injection / WordPress Additional CSS / Substack Custom Code.</li>
+<li><strong>Toggle dark mode in the generator</strong> to get the inverted token set. Paste in a <code>@media (prefers-color-scheme: dark)</code> wrapper.</li>
+<li><strong>Lock the palette for 12 months.</strong> Pin the hex values in a <code>BRAND.md</code> at the root of your blog repo. Re-picking colors is a procrastination tax — the only honest reason to change a palette is a category pivot.</li>
+</ol>
+
+<h2>Compared to other tools bloggers reach for</h2>
+<table>
+<tr><th></th><th>TinyTools palette</th><th>Coolors</th><th>Adobe Color</th><th>Theme editor swatch</th></tr>
+<tr><td>Free, no account</td><td class="yes">Yes</td><td class="partial">Limited</td><td class="partial">Adobe ID</td><td class="yes">Yes</td></tr>
+<tr><td>WCAG contrast check</td><td class="yes">Built-in</td><td class="yes">Built-in</td><td class="yes">Built-in</td><td class="no">No</td></tr>
+<tr><td>5-token blog export</td><td class="yes">Yes</td><td class="no">No (5 hexes)</td><td class="no">No</td><td class="no">No</td></tr>
+<tr><td>Auto dark-mode inversion</td><td class="yes">Yes</td><td class="no">Manual</td><td class="no">Manual</td><td class="partial">Theme-dep.</td></tr>
+<tr><td>CSS variable + Tailwind export</td><td class="yes">Both</td><td class="partial">CSS only</td><td class="no">No</td><td class="no">No</td></tr>
+<tr><td>Built for blog publishing</td><td class="yes">Yes</td><td class="no">Generic</td><td class="no">Print/UI</td><td class="partial">Sometimes</td></tr>
+</table>
+
+<h2>Frequently asked questions</h2>
+
+<h3>What's the best color for a blog in 2026?</h3>
+<p>There isn't one — there's a category fit. Tech and AI blogs lean electric purple, cyan, or lime; business and finance blogs lean deep navy or oxblood; lifestyle and personal blogs lean warm earth tones (terracotta, sage, ochre). Pick the category color first, then differentiate within it by 15–20 degrees of hue.</p>
+
+<h3>Should I match my blog colors to my logo?</h3>
+<p>Yes — use the logo's primary color as the accent. If the logo has multiple colors, pick the most saturated one and treat the rest as supporting (not in the 5-token system). If you don't have a logo yet, pick the palette first and design the logomark in the accent color afterward.</p>
+
+<h3>How often should bloggers update their palette?</h3>
+<p>Once every 12–24 months at most. Brand recognition compounds over time; a palette refresh resets the meter. The exception is a category pivot — if your blog turns from cooking into crypto, the palette has to go with it.</p>
+
+<h3>Can I use this for my newsletter template too?</h3>
+<p>Absolutely. Beehiiv, ConvertKit, Substack, and Mailchimp all accept either inline CSS or hex codes for their template builders. Use the same five tokens. Newsletters and blogs are the same brand to the reader.</p>
+
+<h3>Does the tool work offline / can I self-host?</h3>
+<p>The generator runs entirely in your browser — no server, no account, no tracking. Once the page loads, you can disconnect and keep working. The palette math (analogous, complementary, triadic, tints, contrast checking) all happens client-side.</p>
+
+<h2>For further reading</h2>
+<p>Three credible references on blog color and accessibility worth your time:</p>
+<ul>
+<li><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html" rel="nofollow">W3C WCAG 2.2 — Contrast (Minimum)</a> — the actual spec your Lighthouse score is measured against.</li>
+<li><a href="https://web.dev/articles/vitals" rel="nofollow">web.dev — Core Web Vitals</a> — Google's guidance on the accessibility and visual signals that feed editorial ranking.</li>
+<li><a href="https://ghost.org/docs/themes/" rel="nofollow">Ghost theme documentation</a> — for bloggers shipping on Ghost, the canonical reference for theme variables and code injection.</li>
+</ul>
+
+<div class="cta-box">
+<h3>Ready to lock your palette?</h3>
+<p>Open the generator, pick one accent, export the five tokens, and ship. 5 minutes from now you'll have a blog palette you can stop thinking about for a year.</p>
+<a class="cta-btn" href="/color-palette/">Try the Color Palette Generator &rarr;</a>
+</div>
+
+<div class="related">
+<h3>Related TinyTools for bloggers</h3>
+<div class="related-grid">
+<a class="related-card" href="/og-image-generator/"><div class="name">OG Image Generator</div><div class="desc">Social cards in your brand colors</div></a>
+<a class="related-card" href="/favicon-generator/"><div class="name">Favicon Generator</div><div class="desc">Browser tab icon from your accent</div></a>
+<a class="related-card" href="/seo-meta-generator/"><div class="name">SEO Meta Generator</div><div class="desc">Title + description that ranks</div></a>
+</div>
+</div>
+
+<footer>&copy; 2026 <a href="/">TinyTools</a> &middot; Free, no account, no tracking &middot; Built for indie publishers</footer>
+</div></body></html>
