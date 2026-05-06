@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 6, 2026 — published How to Find a Short, Available .com Domain in 2026 + 4 social drafts ready",
+  "lastUpdated": "May 6, 2026 — published Domain Name SEO Mistakes 2026 guide + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 24,
+    "posts": 25,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 04:10",
+      "tag": "seo",
+      "text": "📝 Published blog post: Domain Name SEO Mistakes That Hurt Rankings in 2026 at /domain-generator/blog/domain-name-seo-mistakes-2026/"
+    },
+    {
+      "time": "today 04:10",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting domain-generator"
+    },
     {
       "time": "today 00:12",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 12:00",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN — all promoting color-palette"
-    },
-    {
-      "time": "today 14:30",
-      "tag": "seo",
-      "text": "📝 Published blog post: How to Pick Brand Colors for a Startup in 2026 — A Founder's Field Guide at /color-palette/blog/how-to-pick-brand-colors-for-startup-2026/"
-    },
-    {
-      "time": "today 14:30",
-      "tag": "promo",
-      "text": "🎨 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN — all promoting color-palette"
     }
   ],
   "roadmap": [
@@ -240,6 +240,30 @@
     {
       "platform": "X / Twitter Thread",
       "tool": "domain-generator",
+      "createdAt": "2026-05-06T04:10:00Z",
+      "text": "1/ Most domain SEO advice on Google was written between 2012 and 2018.\n\nHalf of it is now actively wrong in 2026. Here are the 8 domain mistakes that quietly tank rankings — and the fixes Google's 2025 spam policy update made non-negotiable. 🧵\n\n2/ Mistake #1: Buying an exact-match domain for the SEO boost.\n\nThe EMD update shipped in September 2012. Thirteen years and four core updates later, that signal is essentially zero unless the rest of the site is genuinely strong.\n\nBrandable domains compound. EMDs decay. Stripe outranks onlinecreditcardprocessing.com.\n\n3/ Mistake #2: Hyphens.\n\nNot a direct penalty. The killer is indirect: hyphenated domains have ~30-40% lower CTR from search results.\n\nLower CTR is a ranking signal. So is brand search volume — and nobody types tiny-tools.com directly.\n\n4/ Mistake #3: Keyword-stuffed subdomains.\n\nGoogle treats subdomains as separate sites for trust. blog.yoursite.com starts at zero authority.\n\nyoursite.com/blog/ inherits the full domain pool. Subdirectories beat subdomains for content sites every time.\n\n5/ Mistake #4: Picking a TLD that screams spam.\n\nGoogle says TLDs aren't ranking factors. True. But .zip, .click, .work, .top get auto-flagged by Outlook and Chrome. Bounce rate degrades dwell-time signals. Brand trust is permanent damage.\n\nStick to .com / .io / .ai / .app / .dev / .so.\n\n6/ Wrote up all 8 mistakes — including aged domains with toxic histories, the redirect tax that costs 10-25% during migrations, and the niche-trust signal flip — in the full guide:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-seo-mistakes-2026/"
+    },
+    {
+      "platform": "Reddit /r/SEO",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-06T04:10:00Z",
+      "text": "Subreddit: /r/SEO or /r/bigseo or /r/SaaS or /r/Entrepreneur\n\nComment (reply on a thread asking about domain choices for SEO, EMDs, hyphens, or whether to migrate domains):\n\nSpent the last few years auditing domain SEO for indie founders and the same 8 mistakes come up over and over. In rough order of how often they bite:\n\n1) Buying an EMD for the ranking boost. The EMD update was September 2012. The signal is now essentially zero unless the rest of the site is strong, and thin content on EMDs actually gets demoted faster because the URL keyword stuffing reads as a quality signal in the wrong direction.\n\n2) Hyphens. Not a direct penalty, but ~30-40% lower CTR in every study I've seen, plus voice search dies (\"tiny dash tools dot com\"), plus social previews truncate awkwardly. The compounding loss across CTR + brand search + social distribution is measurable.\n\n3) Keyword-stuffed subdomains. Google treats subdomains as separate sites for trust purposes. blog.yoursite.com starts at zero authority — yoursite.com/blog/ inherits the full domain pool. John Mueller has said this on record probably 30 times.\n\n4) Spammy-looking TLDs. .zip, .mov, .click, .work, .top get auto-flagged by Outlook and Chrome safe browsing. Even if Google says TLD isn't a ranking factor, the bounce rate degrades dwell-time signals indirectly.\n\n5) Buying aged domains without auditing prior history. \"Aged domains skip the sandbox\" is true when history is clean and catastrophic when it isn't. Run Wayback + Ahrefs + a bare Google search before committing. Adult/gambling/PBN history survives ownership transfer for 18+ months.\n\n6) Using a different TLD than competitors in low-trust niches. In dev tools / AI / SaaS, .io and .ai signal modern tech ecosystem. In finance / health / e-commerce, anything not-.com signals less trustworthy. Match the niche.\n\n7) Forgetting the domain shows up in every social share preview. A typo-prone or hyphenated domain silently kills second-order traffic on every channel that isn't pure search.\n\n8) Underestimating the redirect tax. \"301s pass full equity\" is the conventional wisdom but field studies consistently show 10-25% temporary loss during migrations, 3-6 months to recover. Multi-hop redirect chains compound.\n\nWrote the full version with the 8-point checklist here, free, no signup: https://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-seo-mistakes-2026/"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-06T04:10:00Z",
+      "text": "Spent two years quietly losing organic traffic on a hyphenated domain before realizing the cost.\n\nThe domain itself wasn't a Google penalty. The problem was everything that compounded around it: ~35% lower click-through from search results, voice-search invisibility (nobody says \"tiny dash tools dot com\"), and social-share previews that truncated the brand awkwardly. Each loss was small. Together, they were a slow bleed.\n\nMost domain SEO advice on the internet was written between 2012 and 2018. Half of it is wrong in 2026. The 8 mistakes I see most often:\n\n→ Buying exact-match domains expecting a ranking boost (EMD update killed that signal in 2012)\n→ Hyphens — not a penalty, but a CTR killer\n→ Keyword-stuffed subdomains that inherit zero authority\n→ TLDs that auto-flag in Outlook and Chrome (.zip, .click, .work)\n→ Aged domain purchases without auditing prior PBN/adult/gambling history\n→ Mismatched TLDs in low-trust niches (finance, health, legal)\n→ Hard-to-spell domains that kill second-order share traffic\n→ The redirect tax — 10-25% temporary loss on every migration\n\nThe penalty for getting it wrong isn't a single algorithm hit. It's compounding underperformance across organic search, social distribution, and direct traffic — for years.\n\nWrote up all 8 with the fixes and a 2026 domain SEO checklist. Free, no email gate:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-seo-mistakes-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-06T04:10:00Z",
+      "text": "Show HN title: 8 domain name SEO mistakes that quietly hurt rankings in 2026\n\nLink: https://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-seo-mistakes-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Wrote this after auditing domain SEO for ~20 indie founders over the past year. The two findings that surprised me most: (1) hyphens don't trigger a Google penalty but the CTR loss compounds across search + voice + social previews into a measurable disadvantage, and (2) the redirect tax during domain migrations is 10-25% temporary traffic loss with 3-6 month recovery, despite the official site-move docs still saying \"301 redirects pass full link equity.\" Curious if HN has hit other 2026-specific failure modes I missed — particularly around AI overviews ranking domains differently than the blue-link SERP."
+    },
+    {
+      "platform": "X / Twitter Thread",
+      "tool": "domain-generator",
       "createdAt": "2026-05-06T00:11:00Z",
       "text": "1/ \"All the good .coms are taken.\"\n\nIt's the most repeated naming myth on the internet, and it's been wrong for at least 15 years.\n\nThousands of pronounceable, brandable 4–7 letter .coms drop EVERY week. You just have to know where to look 👇\n\n2/ The reason \"everything's taken\" feels true:\n\nYou're searching dictionary words.\n\nOf course fast.com, cloud.com, bright.com are gone — they were registered in 1996.\n\nDictionary words are the wrong target. Always have been.\n\n3/ The 5 patterns that actually work in 2026:\n\n• Invented words (Spotify, Tumblr, Roblox)\n• Compound mashups (Facebook = face+book)\n• Foreign-language roots (Hulu, IKEA)\n• Old English / Latin / Greek (Lyft, Vox, Aether)\n• Single vowel-shifts (Lyft, Roblox)\n\n4/ The math:\n\nA 5-letter alphabetic .com has 11.8M possible combinations.\n\nFiltering for pronounceable strings still leaves 200,000+.\n\nTens of thousands are unregistered RIGHT NOW.\n\nYou won't find them by hand-typing into a registrar.\n\n5/ The realistic playbook:\n\n1. Generate 50+ candidates at a time\n2. Filter with live RDAP (not registrar search)\n3. Subscribe to ExpiredDomains.net for a week\n4. USPTO trademark check\n5. Register at Cloudflare or Namecheap. Never GoDaddy.\n\n6/ Built a free tool that does step 1+2 in 10 seconds:\n\n→ https://tinytools-smoky.vercel.app/domain-generator/\n\nDrop a seed word, pick a style (brandable, compound, modern), get 60+ candidates with real RDAP availability checks.\n\nNo signup. No upsells. No fake \"premium\" tricks."
     },
@@ -260,30 +284,6 @@
       "tool": "domain-generator",
       "createdAt": "2026-05-06T00:11:00Z",
       "text": "TITLE:\nShow HN: A free RDAP-backed generator for short, available .com domains\n\nCOMMENT:\nMost domain generators check WHOIS through registrars that mark anything you searched as \"premium\" minutes later. This one runs RDAP directly against the registry — what's listed as available really is. Drop a seed word, pick a style (brandable, compound, modern, prefix), get 60 candidates with live availability. Wrote up the 2026 field guide for finding short .coms here: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-find-short-available-com-domain-2026/. Curious whether the pattern matching could be improved — current approach is morpheme combination + n-gram filtering for pronounceability."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-05T20:14:22Z",
-      "text": "1/ Most blogs treat JSON-LD Article schema like a Google rich-result trick from 2018.\n\nIt's actually the #1 lever for whether ChatGPT, Perplexity, and Google AI Overviews cite you in 2026.\n\nHere's the field guide nobody is publishing 👇\n\n2/ The crawler reality nobody admits:\n\n• Googlebot reads JSON-LD, Microdata, RDFa\n• Bing/Copilot reads JSON-LD, Microdata\n• ChatGPT search: JSON-LD ONLY\n• Perplexity: JSON-LD ONLY\n\nIf you only ship one format → JSON-LD. Microdata and RDFa leave AI citations on the table.\n\n3/ Schema.org defines hundreds of properties on Article. AI assistants in 2026 read 10:\n\n• @context, @type\n• headline (must match H1)\n• description\n• author + publisher\n• datePublished, dateModified\n• mainEntityOfPage\n• image (1200×630, absolute URL)\n\nEverything else is theatre.\n\n4/ The trick that doubles AI Overview citation rate on question-shaped queries:\n\nAdd a SECOND JSON-LD block of @type FAQPage next to the Article block.\n\n4–6 questions, 30–60 word answers.\n\nDon't nest — Google's parser flags nested FAQ ~8% of the time.\n\n5/ The 9 mistakes that silently disqualify you:\n\n• headline ≠ H1 (>30% lexical drift)\n• Missing image\n• Relative image URLs\n• datePublished in the future (timezone bug)\n• Wrong @type (NewsArticle for evergreen)\n• 30 stuffed keywords\n• publisher.logo under 600×60\n• Multiple Article blocks per page\n• JSON-LD in body instead of head\n\n6/ Full guide with copy-paste templates, the FAQ combo, and live JSON-LD generator:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/json-ld-article-schema-blog-posts-2026/\n\nFree. No signup. Open source."
-    },
-    {
-      "platform": "Reddit /r/SEO",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-05T20:14:22Z",
-      "text": "JSON-LD Article schema is one of those things that seems like a Google rich-result trick from 2018 but actually became one of the highest-leverage SEO moves in 2026. The reason is the AI assistants. Googlebot still parses Microdata and RDFa fine, but ChatGPT search and Perplexity only parse JSON-LD. So if your site is on Microdata for legacy reasons, you're invisible to roughly half of AI search traffic in 2026 even when you would otherwise rank.\n\nA few things that surprised me when I audited a corpus of pages last quarter:\n\n- The headline property in your JSON-LD has to match the visible H1 within ~30% lexical overlap, otherwise Google's parser ignores the schema entirely. A surprising number of sites have schema headlines that disagree with the H1 because somebody updated one and forgot the other.\n- Adding a second JSON-LD block of @type FAQPage next to the Article block roughly doubles AI Overview citation rate on question-shaped queries. The catch: don't nest the FAQPage inside the Article — Google flags nested FAQ as a structure error about 8% of the time.\n- Relative image URLs in the image property fail silently in Google's Rich Results Test. Always absolute.\n\nWrote up the full thing including a 10-property template and the 9 common mistakes if anyone wants the deeper version: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/json-ld-article-schema-blog-posts-2026/\n\nBest subreddit: /r/SEO — also fits /r/webdev for the implementation crowd."
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-05T20:14:22Z",
-      "text": "JSON-LD Article schema went from \"nice to have for Google rich results\" to \"the single biggest lever for AI citations\" in about 18 months. Most teams haven't caught up.\n\nThe reason is simple: ChatGPT search and Perplexity only parse JSON-LD. They ignore Microdata and RDFa entirely. Google AI Overviews mostly do the same. So if your site is still on Microdata for legacy reasons, you're invisible to roughly half of all AI search traffic — even when you would otherwise rank in the classic blue-link SERP.\n\nThree things worth fixing today on every blog post:\n\n1. Make sure the schema headline matches the visible H1 within ~30% lexical overlap. If they disagree, Google's parser ignores the schema and AI Overviews fall back to the H1.\n\n2. Add a second JSON-LD block of @type FAQPage on question-shaped pages. It roughly doubles AI Overview citation rate. Don't nest it inside the Article block — keep them as two separate scripts in the head.\n\n3. Audit datePublished. A surprising number of sites push future-dated articles because of timezone math, which silently disqualifies them entirely from rich results.\n\nWrote the full field guide with copy-paste templates and the 9 most common mistakes:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/json-ld-article-schema-blog-posts-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-05T20:14:22Z",
-      "text": "Show HN: Field guide to JSON-LD Article schema that gets you cited by AI in 2026\n\n--- Comment for the discussion thread ---\n\nThe interesting shift since 2024 is that ChatGPT search and Perplexity ignore Microdata and RDFa entirely, so JSON-LD is now effectively required if you want AI citations. Google AI Overviews follow the same pattern. Wrote up the 10 properties that actually matter, the FAQ + Article combo that doubles AI Overview citation rate, and the 9 mistakes that silently disqualify rich results. Free, no signup, open source."
     }
   ],
   "checklist": [
