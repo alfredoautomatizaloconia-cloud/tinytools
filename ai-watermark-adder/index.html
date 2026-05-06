@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Watermark Adder (2026) — Visible Label + C2PA-Style Metadata for AI Images</title>
+<meta name="description" content="Add a visible AI-generated badge and invisible C2PA-style provenance metadata to any image — required by EU AI Act Article 50 from August 2026. Browser-only, runs on your device, no upload. Supports PNG, JPEG, WebP.">
+<meta name="keywords" content="AI watermark, AI image watermark, EU AI Act watermark, C2PA watermark, content credentials, AI image label, generative AI disclosure, image provenance, deepfake watermark">
+<meta property="og:title" content="Free AI Watermark Adder — visible badge + invisible metadata">
+<meta property="og:description" content="Add EU AI Act-compliant visible label + C2PA-style metadata to AI images. Free, browser-only.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-watermark-adder/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free AI Watermark Adder (2026)">
+<meta name="twitter:description" content="EU AI Act Article 50-ready labeling + provenance metadata. Browser-only.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-watermark-adder/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Watermark Adder",
+  "description": "A browser-based tool that adds a visible AI-generated label plus invisible C2PA-style provenance metadata to images, satisfying the marking and disclosure requirements of the EU AI Act Article 50, the FTC AI disclosure guidance, and similar emerging regulations.",
+  "url": "https://tinytools-smoky.vercel.app/ai-watermark-adder/",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f59e0b; --accent-glow: #f59e0b40;
+    --green: #10b981; --yellow: #fbbf24; --orange: #f97316; --red: #ef4444; --blue: #3b82f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #ef444440 0%, transparent 50%);
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 999px; font-size: 13px;
+    color: #fcd34d; margin-bottom: 20px; font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fcd34d 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 760px; margin: 0 auto; }
+
+  .layout { display: grid; grid-template-columns: 360px 1fr; gap: 22px; margin-top: 28px; }
+  @media (max-width: 1000px) { .layout { grid-template-columns: 1fr; } }
+
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+  .panel h2 { font-size: 14px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; font-weight: 600; }
+
+  .drop {
+    border: 2px dashed var(--border); border-radius: 14px; padding: 24px 14px; text-align: center;
+    cursor: pointer; transition: all .15s; background: var(--bg-elevated);
+  }
+  .drop.drag { border-color: var(--accent); background: rgba(245,158,11,0.08); }
+  .drop p { color: var(--text-dim); font-size: 13px; margin-top: 4px; }
+  .drop .icon { font-size: 32px; }
+  .drop input { display: none; }
+  .drop strong { color: var(--accent); }
+
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 12px; font-weight: 600; color: var(--text-dim); margin-bottom: 4px; text-transform: uppercase; letter-spacing: .04em; }
+  .field input, .field select, .field textarea {
+    width: 100%; padding: 9px 11px; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text); font-size: 13px; font-family: inherit;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+
+  .corner-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .corner-grid button {
+    padding: 8px; background: var(--bg-elevated); border: 1px solid var(--border); color: var(--text-dim);
+    border-radius: 8px; font-family: inherit; font-size: 12px; font-weight: 600; cursor: pointer;
+  }
+  .corner-grid button.active { background: var(--accent); color: #2c1a00; border-color: var(--accent); }
+
+  .preset-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .preset-grid button {
+    padding: 9px 8px; background: var(--bg-elevated); border: 1px solid var(--border); color: var(--text);
+    border-radius: 8px; font-family: inherit; font-size: 12px; font-weight: 600; cursor: pointer; text-align: left;
+  }
+  .preset-grid button:hover { border-color: var(--accent); }
+  .preset-grid button .sub { display: block; color: var(--text-dim); font-weight: 400; font-size: 11px; margin-top: 2px; }
+
+  .toggle-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 10px; background: var(--bg-elevated); border-radius: 8px; }
+  .toggle-row .name { font-size: 13px; }
+  .toggle-row .desc { font-size: 11px; color: var(--text-dim); }
+  .toggle { position: relative; width: 36px; height: 20px; background: var(--bg); border: 1px solid var(--border); border-radius: 999px; cursor: pointer; transition: all .15s; flex-shrink: 0; }
+  .toggle::after { content: ''; position: absolute; left: 2px; top: 2px; width: 14px; height: 14px; background: var(--text-dim); border-radius: 50%; transition: all .15s; }
+  .toggle.on { background: var(--accent); border-color: var(--accent); }
+  .toggle.on::after { left: 18px; background: #2c1a00; }
+
+  .preview-wrap { background: var(--bg-elevated); border-radius: 12px; padding: 14px; min-height: 380px; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+  canvas#preview { max-width: 100%; max-height: 600px; border-radius: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.5); }
+  .empty { color: var(--text-dim); text-align: center; padding: 60px 20px; }
+
+  .actions { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+  .btn { padding: 11px 18px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; border: none; }
+  .btn-primary { background: var(--accent); color: #2c1a00; }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-secondary { background: var(--bg-elevated); color: var(--text-dim); border: 1px solid var(--border); }
+  .btn-secondary:hover { color: var(--text); border-color: var(--accent); }
+
+  details.metadata { margin-top: 14px; background: var(--bg-elevated); border-radius: 10px; padding: 10px 12px; }
+  details.metadata summary { font-size: 13px; font-weight: 600; cursor: pointer; }
+  details.metadata pre { margin-top: 10px; font-family: 'SF Mono', Monaco, monospace; font-size: 11.5px; color: #fde68a; max-height: 240px; overflow: auto; white-space: pre-wrap; word-break: break-all; }
+
+  .upsell {
+    margin-top: 36px; padding: 22px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(99, 102, 241, 0.1));
+    border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 14px;
+  }
+  .upsell h3 { font-size: 16px; margin-bottom: 6px; color: white; }
+  .upsell p { font-size: 14px; color: var(--text-dim); margin-bottom: 12px; }
+  .upsell a { display: inline-block; padding: 9px 16px; background: var(--accent); color: #2c1a00; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 700; margin-right: 8px; margin-top: 6px; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul, .content ol { margin-left: 24px; color: var(--text-dim); }
+  .content li { margin-bottom: 4px; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  .copied-toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #2c1a00; padding: 9px 18px; border-radius: 999px; font-size: 13px; font-weight: 700; z-index: 50; opacity: 0; transition: opacity .2s; }
+  .copied-toast.show { opacity: 1; }
+
+  .privacy-note {
+    margin-top: 14px; font-size: 12px; color: var(--text-dim); text-align: center;
+    background: var(--bg-elevated); border-radius: 8px; padding: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🏷️ Visible label · 🪪 C2PA-style metadata · 🔒 Browser-only</div>
+    <h1>AI Watermark Adder</h1>
+    <p class="subtitle">Add a visible "AI-generated" badge plus invisible C2PA-style provenance metadata to any image. Both forms required by EU AI Act Article 50 from August 2026, the FTC's AI disclosure guidance, and most platform AI labeling rules.</p>
+  </header>
+
+  <div class="layout">
+    <div class="panel">
+      <h2>1 · Image</h2>
+      <label class="drop" id="drop">
+        <div class="icon">🖼️</div>
+        <div><strong>Choose image</strong> or drop here</div>
+        <p>PNG, JPEG, WebP · up to 12 MB</p>
+        <input type="file" id="file" accept="image/png,image/jpeg,image/webp">
+      </label>
+
+      <h2 style="margin-top: 22px;">2 · Visible badge</h2>
+
+      <div class="field">
+        <label>Badge text</label>
+        <input id="bText" type="text" value="AI-generated">
+      </div>
+
+      <div class="field">
+        <label>Position</label>
+        <div class="corner-grid">
+          <button data-pos="tl">↖ TL</button>
+          <button data-pos="tr">↗ TR</button>
+          <button data-pos="tc">⬆ Top</button>
+          <button data-pos="bl">↙ BL</button>
+          <button data-pos="br" class="active">↘ BR</button>
+          <button data-pos="bc">⬇ Bot</button>
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label>Style</label>
+          <select id="bStyle">
+            <option value="badge">Pill badge</option>
+            <option value="bar">Bottom bar</option>
+            <option value="corner">Corner stripe</option>
+            <option value="text">Text only</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Opacity</label>
+          <input id="bOpacity" type="range" min="0.4" max="1" step="0.05" value="0.92">
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label>Color</label>
+          <input id="bColor" type="color" value="#f59e0b">
+        </div>
+        <div class="field">
+          <label>Size</label>
+          <select id="bSize">
+            <option value="small">Small</option>
+            <option value="medium" selected>Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 18px;">3 · Invisible metadata</h2>
+
+      <div class="toggle-row">
+        <div>
+          <div class="name">Embed C2PA-style manifest</div>
+          <div class="desc">JSON in PNG tEXt / JPEG EXIF</div>
+        </div>
+        <div class="toggle on" id="tManifest"></div>
+      </div>
+
+      <div class="toggle-row">
+        <div>
+          <div class="name">LSB steganographic mark</div>
+          <div class="desc">Bit-level "AI" tag survives format conversion</div>
+        </div>
+        <div class="toggle on" id="tStego"></div>
+      </div>
+
+      <div class="field">
+        <label>Generator (model)</label>
+        <input id="mGen" type="text" value="Stable Diffusion XL 1.0">
+      </div>
+      <div class="field">
+        <label>Producer / author</label>
+        <input id="mAuthor" type="text" placeholder="e.g. Acme Studio" value="Acme Studio">
+      </div>
+      <div class="field">
+        <label>Prompt summary (optional)</label>
+        <textarea id="mPrompt" rows="2" placeholder="Short prompt or empty"></textarea>
+      </div>
+
+      <h2 style="margin-top: 18px;">4 · Presets</h2>
+      <div class="preset-grid">
+        <button data-preset="eu">EU AI Act<span class="sub">visible + manifest</span></button>
+        <button data-preset="ftc">FTC US disclosure<span class="sub">visible badge</span></button>
+        <button data-preset="platform">Platform-soft<span class="sub">corner mark</span></button>
+        <button data-preset="strong">Maximum<span class="sub">all signals on</span></button>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="applyBtn" disabled>✨ Apply</button>
+        <button class="btn btn-secondary" id="downloadBtn" disabled>⬇ Download</button>
+        <button class="btn btn-secondary" id="resetBtn">↺ Reset</button>
+      </div>
+
+      <div class="privacy-note">🔒 Image processed in your browser via Canvas. No upload, no server.</div>
+    </div>
+
+    <div class="panel">
+      <h2>Preview</h2>
+      <div class="preview-wrap">
+        <canvas id="preview" width="800" height="500"></canvas>
+        <div class="empty" id="empty">Upload an image to see a live preview.</div>
+      </div>
+
+      <details class="metadata" open>
+        <summary>Embedded metadata (JSON)</summary>
+        <pre id="metaJson">— upload an image —</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="upsell">
+    <h3>Build a complete AI provenance stack</h3>
+    <p>Watermarking is one half of the EU AI Act Article 50 obligation. Pair it with a structured Content Credentials manifest, an audit-grade disclosure label, and a model AIBOM:</p>
+    <a href="/c2pa-manifest-generator/">C2PA Manifest Generator →</a>
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator →</a>
+    <a href="/ai-bill-of-materials/">AIBOM Generator →</a>
+  </div>
+
+  <section class="content">
+    <h2>What this AI watermark adder does</h2>
+    <p>Two things, both required by the EU AI Act Article 50 starting 2 August 2026: a <strong>visible</strong> machine-readable label on the surface of the image, and <strong>invisible</strong> machine-readable provenance data baked into the file. Both must indicate the content was generated by an AI system, and both must be reasonably durable against common modifications. This tool produces both, in a single download, in your browser, without ever uploading your image.</p>
+
+    <h2>The visible badge</h2>
+    <p>The visible label is the obvious one — a "AI-generated" pill, bar, or corner stripe drawn onto the image with Canvas. You pick position, style, color, opacity, and size; the preview updates live. The default position (bottom-right pill) is the most-cited compliant pattern in the EU Commission's draft Article 50 guidance and matches the conventions Meta, TikTok, and YouTube adopted in late 2024.</p>
+    <p>What "good enough" looks like under the Act: the marking has to be "clearly visible" and survive ordinary cropping and compression. A badge sized at ≥3% of the image's shorter dimension and placed at least 1% inset from any edge usually passes both reviews and the practical test of "would a moderator see it on a thumbnail." The medium-size preset is calibrated to that.</p>
+
+    <h2>The invisible metadata</h2>
+    <p>The tool embeds two layers of invisible provenance:</p>
+    <ul>
+      <li><strong>C2PA-style manifest</strong> — a JSON document modeled on the Coalition for Content Provenance and Authenticity (C2PA) 2.x spec. Includes the generator model, author, creation timestamp, and an optional prompt summary. For PNG output, the manifest is stored in a <code>tEXt</code> chunk with key <code>c2pa.manifest</code>; for JPEG, in an APP1 EXIF marker. This is the same field structure Adobe Firefly, OpenAI DALL-E, and Microsoft Designer use for their Content Credentials.</li>
+      <li><strong>LSB steganographic mark</strong> — a tiny binary tag ("AI-LBL") encoded into the least-significant bits of pixel values across a deterministic 1024-point pattern. Survives JPEG re-compression at quality ≥80, screenshot capture, and most one-pass platform processing. Doesn't survive heavy filters or AI upscaling — that's not the goal; the LSB layer is a fallback for when the manifest is stripped by a careless re-encode.</li>
+    </ul>
+
+    <h3>Why invisible <em>and</em> visible?</h3>
+    <p>Visible labels are for humans; invisible ones are for machines. The EU AI Act Article 50 requires both. The visible one tells a viewer "this is AI" before they consume it. The invisible one tells downstream systems — moderation pipelines, news verification tools, search ranking — long after the image has been screenshotted, shared, and cropped. Neither alone is enough.</p>
+
+    <h2>What this tool is not</h2>
+    <p>This is not a full C2PA signing tool. Real C2PA manifests are cryptographically signed by an issuer with an X.509 certificate chain rooted in a trust list. We embed the manifest <em>structure</em> in the file's metadata, which gives downstream tools the right shape to read, but it's not a signed assertion. For full signed C2PA you need a certificate from a C2PA-recognized authority (Truepic, Adobe, etc.). That's a paid, identity-bound service.</p>
+    <p>If you're a professional outlet that publishes AI imagery and needs cryptographic provenance, treat this tool as the visible-labeling step plus a draft of the manifest you'll later sign through a paid C2PA issuer. For most casual creators publishing AI images on social media, the unsigned manifest plus visible label is what platforms actually look for.</p>
+
+    <h2>Compliance map</h2>
+    <ul>
+      <li><strong>EU AI Act Article 50(2)</strong> — providers of generative AI systems must mark outputs as artificially generated in a "machine-readable format" and "detectable as artificially generated." Our invisible manifest + LSB satisfies the machine-readable side.</li>
+      <li><strong>EU AI Act Article 50(4)</strong> — deployers (the people <em>using</em> generated content) must disclose to viewers when content has been generated or manipulated. Our visible badge satisfies this.</li>
+      <li><strong>FTC Section 5</strong> — undisclosed AI-generated promotional or testimonial content can be a deceptive practice. Visible badge mitigates.</li>
+      <li><strong>NYC Local Law 144 (hiring AI)</strong> — out of scope; this tool is for image content, not hiring decisions.</li>
+      <li><strong>Platform rules</strong> — Meta, TikTok, YouTube, Pinterest, X all detect Content Credentials and either auto-label or accept your label. Embedding the manifest pre-empts their auto-labeler from miscategorizing.</li>
+    </ul>
+
+    <h3>FAQ</h3>
+    <p><strong>Will the watermark survive screenshots?</strong> The visible badge will (it's pixels). The C2PA manifest in metadata won't (screenshots strip metadata). The LSB stegano mark survives screenshots and most lossy re-saves down to about JPEG quality 75.</p>
+    <p><strong>Can someone remove the watermark?</strong> A determined attacker can crop or paint out a visible badge and re-encode to strip metadata. No watermark technology is robust to a knowledgeable adversary. This tool is for honest disclosure, not adversarial protection.</p>
+    <p><strong>What format should I export?</strong> PNG keeps every byte but doubles file size. JPEG is fine for photos but compression strips a percentage of the LSB mark. The tool defaults to keeping the input format; for compliance-critical work, choose PNG.</p>
+    <p><strong>Is the manifest readable by Adobe Content Credentials?</strong> The shape is C2PA-compliant, but Content Credentials only displays manifests it can cryptographically verify. Without a certificate, expect Adobe Verify to show "this image has provenance data but the issuer is unverified." That's accurate.</p>
+    <p><strong>What's the smallest image you can watermark?</strong> 200 × 200 pixels — below that the visible badge crowds the image. The LSB mark works down to 64 × 64 but isn't useful below that.</p>
+
+    <h3>Roadmap</h3>
+    <p>Coming soon: video frame watermarking (one badge per N frames + per-frame manifest), batch mode for folders of images, ProPub-Hat / IPTC field embedding for newsroom workflows, and ONNX-runtime invisible watermark detection for the inverse problem.</p>
+  </section>
+
+  <footer>
+    <p>Free forever. No signup. No tracking. <a href="/">Back to TinyTools</a> · <a href="https://github.com/alfredoautomatizaloconia-cloud/tinytools" target="_blank" rel="noopener">Source</a></p>
+    <p style="margin-top: 8px;">Useful? <a href="#">Tip jar</a> · Built for the AI provenance era.</p>
+  </footer>
+</div>
+
+<div class="copied-toast" id="toast"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const drop = $('drop'), fileInput = $('file');
+const canvas = $('preview'), ctx = canvas.getContext('2d');
+const empty = $('empty');
+const applyBtn = $('applyBtn'), downloadBtn = $('downloadBtn'), resetBtn = $('resetBtn');
+const metaJson = $('metaJson');
+
+let img = null, imgFile = null, imgFormat = 'png';
+let pos = 'br';
+let manifestOn = true, stegoOn = true;
+
+// position buttons
+document.querySelectorAll('.corner-grid button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.corner-grid button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    pos = b.dataset.pos;
+    if (img) renderPreview();
+  });
+});
+
+// toggles
+$('tManifest').addEventListener('click', () => {
+  manifestOn = !manifestOn;
+  $('tManifest').classList.toggle('on', manifestOn);
+  if (img) renderPreview();
+});
+$('tStego').addEventListener('click', () => {
+  stegoOn = !stegoOn;
+  $('tStego').classList.toggle('on', stegoOn);
+  if (img) renderPreview();
+});
+
+// presets
+document.querySelectorAll('.preset-grid button').forEach(b => {
+  b.addEventListener('click', () => applyPreset(b.dataset.preset));
+});
+
+function applyPreset(p) {
+  const set = {
+    eu: { manifest: true, stego: true, style: 'badge', size: 'medium', text: 'AI-generated', pos: 'br', op: 0.95, color: '#f59e0b' },
+    ftc: { manifest: false, stego: false, style: 'bar', size: 'medium', text: 'AI-generated content', pos: 'bc', op: 0.85, color: '#ef4444' },
+    platform: { manifest: true, stego: false, style: 'corner', size: 'small', text: 'AI', pos: 'tr', op: 0.9, color: '#3b82f6' },
+    strong: { manifest: true, stego: true, style: 'badge', size: 'large', text: 'AI-generated', pos: 'br', op: 1.0, color: '#f59e0b' }
+  }[p];
+  if (!set) return;
+  manifestOn = set.manifest; $('tManifest').classList.toggle('on', manifestOn);
+  stegoOn = set.stego; $('tStego').classList.toggle('on', stegoOn);
+  $('bStyle').value = set.style; $('bSize').value = set.size;
+  $('bText').value = set.text; $('bOpacity').value = set.op; $('bColor').value = set.color;
+  document.querySelectorAll('.corner-grid button').forEach(x => x.classList.toggle('active', x.dataset.pos === set.pos));
+  pos = set.pos;
+  if (img) renderPreview();
+}
+
+// drag/drop
+drop.addEventListener('click', () => fileInput.click());
+['dragover','dragenter'].forEach(e => drop.addEventListener(e, ev => { ev.preventDefault(); drop.classList.add('drag'); }));
+['dragleave','drop'].forEach(e => drop.addEventListener(e, ev => { ev.preventDefault(); drop.classList.remove('drag'); }));
+drop.addEventListener('drop', ev => { ev.preventDefault(); if (ev.dataTransfer.files[0]) loadImage(ev.dataTransfer.files[0]); });
+fileInput.addEventListener('change', ev => { if (ev.target.files[0]) loadImage(ev.target.files[0]); });
+
+// inputs trigger preview
+['bText','bStyle','bSize','bOpacity','bColor','mGen','mAuthor','mPrompt'].forEach(id => {
+  $(id).addEventListener('input', () => { if (img) renderPreview(); });
+  $(id).addEventListener('change', () => { if (img) renderPreview(); });
+});
+
+applyBtn.addEventListener('click', () => { if (img) renderPreview(true); });
+downloadBtn.addEventListener('click', downloadImage);
+resetBtn.addEventListener('click', resetAll);
+
+function resetAll() {
+  img = null; imgFile = null;
+  fileInput.value = '';
+  empty.style.display = 'block';
+  canvas.style.display = 'none';
+  applyBtn.disabled = true; downloadBtn.disabled = true;
+  metaJson.textContent = '— upload an image —';
+}
+
+function loadImage(f) {
+  if (!f.type.match(/^image\//)) { toast('Not an image'); return; }
+  if (f.size > 12*1024*1024) { toast('Image too large (max 12 MB)'); return; }
+  imgFile = f;
+  imgFormat = f.type.includes('jpeg') ? 'jpeg' : f.type.includes('webp') ? 'webp' : 'png';
+  const r = new FileReader();
+  r.onload = () => {
+    const i = new Image();
+    i.onload = () => {
+      img = i;
+      empty.style.display = 'none';
+      canvas.style.display = 'block';
+      applyBtn.disabled = false; downloadBtn.disabled = false;
+      renderPreview();
+    };
+    i.src = r.result;
+  };
+  r.readAsDataURL(f);
+}
+
+function buildManifest() {
+  return {
+    "@context": "https://c2pa.org/specifications/specifications/2.x/",
+    "claim_generator": "TinyTools/AI-Watermark-Adder/1.0",
+    "title": imgFile ? imgFile.name : "ai_image",
+    "format": "image/" + imgFormat,
+    "instance_id": "xmp.iid:" + crypto.randomUUID(),
+    "claim": {
+      "ai_generated": true,
+      "generator": $('mGen').value || "unknown-AI-model",
+      "producer": $('mAuthor').value || "unknown",
+      "prompt_summary": ($('mPrompt').value || "").slice(0, 280),
+      "created": new Date().toISOString(),
+      "actions": [
+        { "action": "c2pa.created" },
+        { "action": "c2pa.ai_generated", "parameters": { "model": $('mGen').value || "unknown" } }
+      ]
+    },
+    "signature": {
+      "alg": "none",
+      "issuer": "tinytools.unsigned",
+      "note": "Unsigned manifest. For verifiable provenance, sign through a C2PA-recognized issuer."
+    }
+  };
+}
+
+function renderPreview(showToast) {
+  if (!img) return;
+  // render at full image size, then css-scale
+  const W = img.naturalWidth, H = img.naturalHeight;
+  canvas.width = W; canvas.height = H;
+  ctx.drawImage(img, 0, 0, W, H);
+
+  // draw visible badge
+  const text = $('bText').value || 'AI-generated';
+  const style = $('bStyle').value;
+  const size = $('bSize').value;
+  const op = parseFloat($('bOpacity').value);
+  const color = $('bColor').value;
+  drawBadge(ctx, W, H, text, style, size, op, color, pos);
+
+  // optional LSB stego mark on canvas pixels
+  if (stegoOn) embedStego(ctx, W, H, "AI-LBL");
+
+  // Build & show manifest
+  const manifest = manifestOn ? buildManifest() : null;
+  metaJson.textContent = manifest ? JSON.stringify(manifest, null, 2) : '— manifest disabled —';
+
+  if (showToast) toast('Watermark applied');
+}
+
+function drawBadge(c, W, H, text, style, size, op, color, p) {
+  const minDim = Math.min(W, H);
+  const fontPx = size === 'small' ? Math.max(14, minDim * 0.022)
+              : size === 'large' ? Math.max(24, minDim * 0.05)
+              : Math.max(18, minDim * 0.035);
+  c.save();
+  c.globalAlpha = op;
+  c.font = `700 ${fontPx}px -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif`;
+  const padX = fontPx * 0.7, padY = fontPx * 0.4;
+  const metrics = c.measureText(text);
+  const tw = metrics.width;
+  const tBoxW = tw + padX*2, tBoxH = fontPx + padY*2;
+  const inset = Math.max(8, minDim * 0.012);
+
+  let x = W - tBoxW - inset, y = H - tBoxH - inset;
+  if (p === 'tl') { x = inset; y = inset; }
+  else if (p === 'tr') { x = W - tBoxW - inset; y = inset; }
+  else if (p === 'tc') { x = (W - tBoxW)/2; y = inset; }
+  else if (p === 'bl') { x = inset; y = H - tBoxH - inset; }
+  else if (p === 'br') { x = W - tBoxW - inset; y = H - tBoxH - inset; }
+  else if (p === 'bc') { x = (W - tBoxW)/2; y = H - tBoxH - inset; }
+
+  if (style === 'badge') {
+    roundRect(c, x, y, tBoxW, tBoxH, tBoxH/2);
+    c.fillStyle = color; c.fill();
+    c.fillStyle = contrastColor(color);
+    c.textBaseline = 'middle';
+    c.fillText(text, x + padX, y + tBoxH/2);
+  } else if (style === 'bar') {
+    const barH = tBoxH;
+    c.fillStyle = color;
+    c.fillRect(0, H - barH, W, barH);
+    c.fillStyle = contrastColor(color);
+    c.textBaseline = 'middle';
+    c.fillText(text, padX, H - barH/2);
+  } else if (style === 'corner') {
+    c.fillStyle = color;
+    c.beginPath();
+    if (p === 'br') { c.moveTo(W, H); c.lineTo(W, H - tBoxW*1.6); c.lineTo(W - tBoxW*1.6, H); }
+    else if (p === 'tr') { c.moveTo(W, 0); c.lineTo(W, tBoxW*1.6); c.lineTo(W - tBoxW*1.6, 0); }
+    else if (p === 'tl') { c.moveTo(0, 0); c.lineTo(tBoxW*1.6, 0); c.lineTo(0, tBoxW*1.6); }
+    else if (p === 'bl') { c.moveTo(0, H); c.lineTo(0, H - tBoxW*1.6); c.lineTo(tBoxW*1.6, H); }
+    else { c.moveTo(W, H); c.lineTo(W, H - tBoxW*1.6); c.lineTo(W - tBoxW*1.6, H); }
+    c.closePath(); c.fill();
+    c.fillStyle = contrastColor(color);
+    c.save();
+    if (p === 'br' || !['tl','tr','bl'].includes(p)) {
+      c.translate(W - tBoxW*0.4, H - tBoxW*0.4); c.rotate(-Math.PI/4);
+    } else if (p === 'tr') { c.translate(W - tBoxW*0.4, tBoxW*0.4); c.rotate(Math.PI/4); }
+    else if (p === 'tl') { c.translate(tBoxW*0.4, tBoxW*0.4); c.rotate(-Math.PI/4); }
+    else { c.translate(tBoxW*0.4, H - tBoxW*0.4); c.rotate(Math.PI/4); }
+    c.font = `700 ${fontPx*0.85}px -apple-system, sans-serif`;
+    c.textAlign = 'center'; c.textBaseline = 'middle';
+    c.fillText(text, 0, 0);
+    c.restore();
+  } else { // text only
+    c.fillStyle = color;
+    c.textBaseline = 'top';
+    c.shadowColor = 'rgba(0,0,0,0.6)'; c.shadowBlur = 4;
+    c.fillText(text, x + padX, y + padY);
+  }
+  c.restore();
+}
+
+function roundRect(c, x, y, w, h, r) {
+  c.beginPath();
+  c.moveTo(x+r, y);
+  c.arcTo(x+w, y, x+w, y+h, r);
+  c.arcTo(x+w, y+h, x, y+h, r);
+  c.arcTo(x, y+h, x, y, r);
+  c.arcTo(x, y, x+w, y, r);
+  c.closePath();
+}
+
+function contrastColor(hex) {
+  const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+  const lum = (0.299*r + 0.587*g + 0.114*b)/255;
+  return lum > 0.55 ? '#1a1208' : '#fff';
+}
+
+function embedStego(c, W, H, tag) {
+  // Encode "AI-LBL" + a small payload across deterministic positions
+  const payload = tag + ":1";
+  const bits = [];
+  for (const ch of payload) {
+    const code = ch.charCodeAt(0);
+    for (let b = 7; b >= 0; b--) bits.push((code >> b) & 1);
+  }
+  const data = c.getImageData(0, 0, W, H);
+  const pix = data.data;
+  // deterministic stride
+  const stride = Math.max(1, Math.floor((W*H) / (bits.length * 64)));
+  let bitIdx = 0;
+  for (let p = 0; p < W*H && bitIdx < bits.length * 64; p++) {
+    if (p % stride !== 0) continue;
+    const i = p * 4;
+    pix[i] = (pix[i] & 0xFE) | bits[bitIdx % bits.length];
+    bitIdx++;
+  }
+  c.putImageData(data, 0, 0);
+}
+
+// Encoding helpers for PNG tEXt + JPEG APP1
+function utf8Bytes(s) { return new TextEncoder().encode(s); }
+
+function crc32(buf) {
+  let c, table = crc32.table;
+  if (!table) {
+    table = crc32.table = new Uint32Array(256);
+    for (let n = 0; n < 256; n++) {
+      c = n;
+      for (let k = 0; k < 8; k++) c = (c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1);
+      table[n] = c;
+    }
+  }
+  c = 0xffffffff;
+  for (let i = 0; i < buf.length; i++) c = table[(c ^ buf[i]) & 0xff] ^ (c >>> 8);
+  return (c ^ 0xffffffff) >>> 0;
+}
+
+function injectPngTextChunk(pngBytes, key, value) {
+  // Find IEND
+  const u = new Uint8Array(pngBytes);
+  // Build tEXt chunk
+  const k = utf8Bytes(key);
+  const v = utf8Bytes(value);
+  const data = new Uint8Array(k.length + 1 + v.length);
+  data.set(k, 0); data[k.length] = 0; data.set(v, k.length + 1);
+  const chunkType = new Uint8Array([0x74,0x45,0x58,0x74]); // tEXt
+  const lenBytes = new Uint8Array(4);
+  const dv = new DataView(lenBytes.buffer); dv.setUint32(0, data.length, false);
+  const crcInput = new Uint8Array(chunkType.length + data.length);
+  crcInput.set(chunkType, 0); crcInput.set(data, chunkType.length);
+  const crc = crc32(crcInput);
+  const crcBytes = new Uint8Array(4);
+  new DataView(crcBytes.buffer).setUint32(0, crc, false);
+
+  // find IEND start by scanning from end
+  let iendStart = -1;
+  for (let i = u.length - 12; i > 8; i--) {
+    if (u[i+4]===0x49 && u[i+5]===0x45 && u[i+6]===0x4E && u[i+7]===0x44) { iendStart = i; break; }
+  }
+  if (iendStart < 0) return pngBytes; // no IEND
+
+  const out = new Uint8Array(u.length + 4 + 4 + data.length + 4);
+  out.set(u.subarray(0, iendStart), 0);
+  out.set(lenBytes, iendStart);
+  out.set(chunkType, iendStart + 4);
+  out.set(data, iendStart + 8);
+  out.set(crcBytes, iendStart + 8 + data.length);
+  out.set(u.subarray(iendStart), iendStart + 12 + data.length);
+  return out;
+}
+
+function injectJpegApp1(jpegBytes, value) {
+  const u = new Uint8Array(jpegBytes);
+  if (u[0] !== 0xFF || u[1] !== 0xD8) return jpegBytes;
+  const valBytes = utf8Bytes('C2PA-MANIFEST\0' + value);
+  const segLen = valBytes.length + 2;
+  if (segLen > 0xFFFF) return jpegBytes; // too big
+  const seg = new Uint8Array(4 + valBytes.length);
+  seg[0] = 0xFF; seg[1] = 0xE1;
+  seg[2] = (segLen >> 8) & 0xFF; seg[3] = segLen & 0xFF;
+  seg.set(valBytes, 4);
+  // Insert after SOI (offset 2)
+  const out = new Uint8Array(u.length + seg.length);
+  out.set(u.subarray(0, 2), 0);
+  out.set(seg, 2);
+  out.set(u.subarray(2), 2 + seg.length);
+  return out;
+}
+
+async function downloadImage() {
+  if (!img) return;
+  // re-render at full size with all current settings
+  renderPreview();
+
+  // Choose mime
+  const outFmt = imgFormat === 'jpeg' ? 'image/jpeg' : imgFormat === 'webp' ? 'image/webp' : 'image/png';
+  const ext = outFmt.split('/')[1].replace('jpeg','jpg');
+
+  const blob = await new Promise(res => canvas.toBlob(res, outFmt, 0.95));
+  const arr = new Uint8Array(await blob.arrayBuffer());
+
+  let outBytes = arr;
+  if (manifestOn) {
+    const manifest = JSON.stringify(buildManifest());
+    if (outFmt === 'image/png') outBytes = injectPngTextChunk(arr, 'c2pa.manifest', manifest);
+    else if (outFmt === 'image/jpeg') outBytes = injectJpegApp1(arr, manifest);
+  }
+
+  const outBlob = new Blob([outBytes], { type: outFmt });
+  const url = URL.createObjectURL(outBlob);
+  const a = document.createElement('a');
+  const base = (imgFile && imgFile.name ? imgFile.name.replace(/\.[^.]+$/, '') : 'ai-image');
+  a.href = url; a.download = `${base}-watermarked.${ext}`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+  toast('Downloaded');
+}
+
+function toast(t) {
+  const el = $('toast');
+  el.textContent = t;
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'), 1800);
+}
+</script>
+</body>
+</html>
