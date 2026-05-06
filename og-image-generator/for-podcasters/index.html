@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free OG Image Generator for Podcasters — Episode Cards, Guest Announcements & Show Notes (2026)</title>
+<meta name="description" content="Built for podcasters who share new episodes on Twitter, LinkedIn and Threads. Generate per-episode 1200×630 Open Graph images with guest photos, episode numbers, and show branding — free, browser-only, no signup.">
+<meta name="keywords" content="og image generator for podcasters, podcast episode social card, podcast twitter card, podcast guest announcement graphic, podcast share image, episode artwork generator, podcast og image">
+<meta property="og:title" content="OG Image Generator for Podcasters — Free Episode Cards, No Signup">
+<meta property="og:description" content="Per-episode 1200×630 Open Graph cards with guest photos and episode numbers. Built for podcasters dropping weekly shows on Twitter, LinkedIn, and Threads.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/og-image-generator/for-podcasters/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "OG Image Generator for Podcasters",
+  "description": "Free Open Graph image generator built for podcasters: per-episode 1200×630 social cards with guest photo slots, episode numbering, and reusable show templates. Browser-only, no signup, free PNG export.",
+  "url": "https://tinytools-smoky.vercel.app/og-image-generator/for-podcasters/",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "audience": { "@type": "Audience", "audienceType": "Podcasters" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What size should podcast Open Graph images be in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1200×630 pixels at a 1.91:1 ratio is still the safe baseline for Twitter, LinkedIn, Facebook, Threads, and Slack previews. This is different from your square 3000×3000 cover art used on Apple Podcasts and Spotify — OG images live at the link-preview layer, not inside the player. Many podcasters keep both: the square cover for directories, and a horizontal OG card for every episode share."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why not just share the square cover art everywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most social platforms crop or letterbox a 1:1 image into their 1.91:1 link card slot, which leaves dead space, shrinks your title text, and makes the post feel low-effort. A purpose-built OG card lets you fit the episode title, guest name, and episode number at readable size — which is what actually drives the click."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I generate an OG image for every episode without redesigning each one?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Set up the show template once with your colors, logo, and episode-number style, then swap the title and guest photo for each new episode. Most podcasters can produce a new episode card in under 60 seconds without leaving the browser."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this free to use for monetized or sponsored episodes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The generator is free, requires no signup, and outputs unwatermarked PNGs you can use on sponsored posts, paid Patreon tiers, or syndicated network shows. Files render entirely in your browser, so guest photos never leave your machine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do I put the OG image after I generate it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Upload it to the per-episode page on your show's website (most podcast hosts like Transistor, Buzzsprout, and Captivate let you set a custom social image per episode), then add the og:image meta tag pointing to that URL. When listeners share the episode link, the platform pulls your card automatically."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #06b6d4; --accent-glow: #06b6d440;
+    --accent-light: #67e8f9;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 80% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 20% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { text-align: center; padding: 24px 0 16px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.12; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 640px; margin: 0 auto 28px; }
+  .cta {
+    display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px;
+    background: var(--accent); color: #001218; border-radius: 12px; font-weight: 700;
+    text-decoration: none; font-size: 16px; transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 30px var(--accent-glow);
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 40px var(--accent-glow); }
+  h2 {
+    font-size: 26px; font-weight: 700; margin: 48px 0 14px; letter-spacing: -0.01em;
+  }
+  h3 { font-size: 19px; font-weight: 600; margin: 24px 0 8px; color: var(--accent-light); }
+  p { color: var(--text-dim); margin-bottom: 14px; font-size: 16px; }
+  ul { color: var(--text-dim); padding-left: 22px; margin-bottom: 14px; }
+  ul li { margin-bottom: 8px; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px; margin: 18px 0;
+  }
+  a { color: var(--accent-light); text-decoration: underline; text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  .footer-cta {
+    text-align: center; padding: 36px 24px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 20px; margin-top: 48px;
+  }
+  .footer-cta h2 { margin-top: 0; }
+  footer { text-align: center; padding: 32px 0 16px; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--text-dim); }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="badge">For podcasters · Free · No signup</span>
+    <h1>OG Image Generator for Podcasters</h1>
+    <p class="subtitle">Per-episode 1200×630 Open Graph cards that make every Twitter, LinkedIn, and Threads share look intentional — not like a cropped square cover.</p>
+    <a class="cta" href="/og-image-generator/">Open the Generator →</a>
+  </header>
+
+  <h2>The link-preview problem podcasters keep running into</h2>
+  <p>Your show's cover art is square — 3000×3000, designed for the rounded thumbnail in Apple Podcasts and the corner of Spotify. That's the right asset for directories. It's the wrong asset for the link-preview card that shows up when a listener tweets your latest episode.</p>
+  <p>Twitter, LinkedIn, Threads, Facebook, Slack, and Discord all pull a 1.91:1 horizontal image from the <a href="https://ogp.me/" rel="noopener" target="_blank">Open Graph protocol</a> tags on your episode page. When you don't supply one, the platform either crops your square cover into a horizontal slot (cutting off your show's wordmark) or falls back to a generic favicon-sized thumbnail. Either way, the share looks lazy — and the click-through rate reflects it.</p>
+  <p>The fix is not subtle: ship a real 1200×630 image for every episode, with the title large enough to read on a phone in a feed scroll. This generator was built for that exact loop.</p>
+
+  <h2>5 ways podcasters use this generator every week</h2>
+
+  <div class="panel">
+    <h3>1. Episode drop cards</h3>
+    <p>The bread and butter. New episode goes live Tuesday at 6am, you tweet it at 9am with a card that shows the episode number, the title, the guest's name, and a small headshot. The episode number alone lifts engagement noticeably for serial shows — listeners use it to gauge whether they're caught up.</p>
+  </div>
+
+  <div class="panel">
+    <h3>2. Guest announcement teasers</h3>
+    <p>Drop a "this week on the show" card 48 hours before the episode goes live, featuring the guest's name and credential. This works especially well when your guest reshares it — their network sees a cleanly designed card, not a screenshot of your DMs. Build one template called "Coming Tuesday" and reuse it forever.</p>
+  </div>
+
+  <div class="panel">
+    <h3>3. Pull-quote cards for show notes</h3>
+    <p>Pick the sharpest 8-12 word line your guest said and drop it into a quote-style OG card. Pin it to the episode page. When someone shares the link weeks later, the preview is a quotable moment instead of a generic thumbnail — turning your back catalog into something searchable.</p>
+  </div>
+
+  <div class="panel">
+    <h3>4. Season trailer and best-of cards</h3>
+    <p>End-of-season recaps and "best moments" episodes get more reach than weekly drops, but only if the share image signals the occasion. A "Season 3 — All Episodes" card with the season number set in display type tells the algorithm and the listener that this is a tentpole moment, not a standard Tuesday release.</p>
+  </div>
+
+  <div class="panel">
+    <h3>5. Cross-promotion swaps</h3>
+    <p>If you're trading guest spots with another show, generate a co-branded card with both logos and both episode numbers. It's a clean way to signal partnership and gives both audiences a visual cue that the conversation lives in two places. Most podcasters skip this because it sounds like work — it takes 90 seconds in the generator.</p>
+  </div>
+
+  <h2>Why this beats Canva for weekly podcasts</h2>
+  <p>Canva is fine if you make four social images a year. For podcasters shipping 50 episodes annually plus guest teasers and pull-quote cards, the friction adds up: opening the app, finding the right template, exporting, downloading, organizing the file. Multiply that by hundreds of cards per year and the time cost is real.</p>
+  <p>This tool runs in a single browser tab. Set your show template once — accent color, logo position, episode-number font — then swap title and guest photo per episode. Files render locally in your browser, so guest headshots never leave your machine. There's no account, no quota, no watermark, no upgrade nag.</p>
+
+  <h2>Quick checklist before you publish the episode</h2>
+  <ul>
+    <li>Image is exactly 1200×630 (the generator outputs this by default)</li>
+    <li>Title text is at least 60px so it's legible on a phone</li>
+    <li>Guest photo has a transparent or full-coverage background, not a translucent overlay (LinkedIn re-encodes to WebP and crushes thin overlays)</li>
+    <li>Show wordmark appears in a consistent corner across episodes — listeners learn the visual signature</li>
+    <li>The og:image meta tag on your episode page points to the new file, not last week's</li>
+    <li>Cache-bust by adding <code>?v=ep042</code> if you re-upload to the same URL — <a href="https://www.linkedin.com/post-inspector/" rel="noopener" target="_blank">LinkedIn's Post Inspector</a> caches aggressively and won't refetch otherwise</li>
+  </ul>
+
+  <h2>Frequently asked questions</h2>
+  <h3>Do I need a separate OG image for Apple Podcasts and Spotify?</h3>
+  <p>No. Apple Podcasts and Spotify pull from your RSS feed's <code>itunes:image</code> tag — that's your square cover art, unrelated to OG images. OG images only matter when someone shares the episode link on social or in a chat app. The two assets serve different surfaces.</p>
+
+  <h3>What if my podcast host doesn't let me set a custom social image per episode?</h3>
+  <p>Most modern hosts do. If yours doesn't, run a small static site (the show's marketing page) with one HTML file per episode and host it on Vercel, Netlify, or GitHub Pages. Each file gets its own og:image meta tag. You can keep the audio file on your existing host — the episode page just needs to be the canonical share URL.</p>
+
+  <h3>Can I batch-generate cards for a season at once?</h3>
+  <p>Yes. Once your template is dialed in, generating 10 episode cards back-to-back takes a few minutes. The generator keeps your settings between renders so you only swap the per-episode fields. Some podcasters do a full season's worth in one sitting on launch day.</p>
+
+  <div class="footer-cta">
+    <h2>Ship a card for your next episode</h2>
+    <p>Free, browser-only, no signup. Your guest photos and audio metadata never leave your machine.</p>
+    <a class="cta" href="/og-image-generator/">Open the Generator →</a>
+  </div>
+
+  <footer>
+    <p><a href="/">TinyTools</a> · <a href="/og-image-generator/">OG Image Generator</a> · Open Graph card generator for podcasters · Updated 2026</p>
+  </footer>
+</div>
+</body>
+</html>
