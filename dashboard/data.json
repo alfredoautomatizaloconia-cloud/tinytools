@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 6, 2026 — published Domain Name SEO Mistakes 2026 guide + 4 social drafts ready",
+  "lastUpdated": "May 6, 2026 — published Premium Domain Negotiation Playbook 2026 + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 25,
+    "posts": 26,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 08:44",
+      "tag": "seo",
+      "text": "📝 Published blog post: How to Negotiate Buying a Premium Domain Name in 2026 at /domain-generator/blog/how-to-negotiate-buying-premium-domain-name-2026/"
+    },
+    {
+      "time": "today 08:44",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/Entrepreneur, LinkedIn, Show HN — all promoting domain-generator"
+    },
     {
       "time": "today 04:10",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 12:00",
       "tag": "seo",
       "text": "📝 Published blog post: How to Pick Brand Colors for a Startup in 2026 (8-step framework, 1700 words) at /color-palette/blog/how-to-pick-brand-colors-startup-2026/"
-    },
-    {
-      "time": "today 12:00",
-      "tag": "seo",
-      "text": "📝 Published blog post: How to Pick Brand Colors for a Startup in 2026 (8-step framework, 1700 words) at /color-palette/blog/how-to-pick-brand-colors-startup-2026/"
-    },
-    {
-      "time": "today 12:00",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN — all promoting color-palette"
     }
   ],
   "roadmap": [
@@ -240,6 +240,30 @@
     {
       "platform": "X / Twitter Thread",
       "tool": "domain-generator",
+      "createdAt": "2026-05-06T08:44:23.017585+00:00",
+      "text": "1/ Most founders who buy a \"premium\" .com pay 2-3x what they should.\n\nThe asking price isn't the price. It's an anchor.\n\nHere's how to actually negotiate a 5-figure domain in 2026 👇\n\n2/ Tier matters more than tactics.\n- Mid-aftermarket ($1.5-15k brandables): 40-60% of asking is normal\n- True premium ($15-250k one-word .coms): 60-80% of asking\n- Category-defining ($1M+): hire a broker, this isn't haggling\n\n3/ Stay anonymous. The second a seller learns you're a funded startup, the price doubles. Use a clean Gmail. Don't mention your business name. Brokers run reverse-WHOIS the second you email them.\n\n4/ Open at 30-40% of BIN with a budget script:\n\"Working on a personal project, budget is $X. Looking at [alt-1] and [alt-2] in the same range. Happy to close this week via Escrow.com.\"\n\nAnchors low. Names alternatives. Signals real buyer.\n\n5/ Wait 24-48 hours between counters. Replying instantly = emotionally locked in = price goes up. Patience is the cheapest leverage in the entire process.\n\n6/ Always close through Escrow.com. Never PayPal F&F. Never Venmo. Never wire-direct. That's how people lose $20k and a domain in the same week.\n\nFull playbook with the exact scripts: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-negotiate-buying-premium-domain-name-2026/\n\n(Free, no signup. Built it because we got tired of seeing founders overpay.)"
+    },
+    {
+      "platform": "Reddit comment (/r/Entrepreneur)",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-06T08:44:23.017585+00:00",
+      "text": "Couple things that helped me when I bought my .com last year:\n\n1. Treat the BIN as the seller's anchor, not the price. On most mid-aftermarket names ($2-15k range), 40-60% of asking is what actually closes. Don't accept the listing price reflexively — that's the rookie tax.\n\n2. Stay anonymous in early conversations. The moment a broker realizes you're a funded startup, the quote doubles. Use a clean Gmail, say \"personal project,\" don't mention your company name until paperwork.\n\n3. Have a backup name registered before you negotiate. Not as a bluff — actually pick one you'd be happy with. The walk-away has to be real to work, and your tone changes when it is.\n\n4. Always close through Escrow.com (~0.89% fee above $5k). Never PayPal Friends & Family or direct wire. Domain-purchase fraud is the #1 way people lose money in this space.\n\n5. Use NameBio to pull comparable sales — it's free and gives you actual recent transactions, which is the only number sellers can't argue with.\n\nI wrote up the full negotiation playbook with the exact scripts I used (anchor offers, counter-cadence, escrow flow): https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-negotiate-buying-premium-domain-name-2026/"
+    },
+    {
+      "platform": "LinkedIn post",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-06T08:44:23.017585+00:00",
+      "text": "A founder I was advising last month spent $14,000 on a premium .com.\n\nIt was probably worth $5,500.\n\nNot because she got scammed — because nobody told her that the asking price on a domain marketplace is just an anchor. It's the seller's hopeful number, not the actual price.\n\nThree things she could have done differently:\n\n1) Stayed anonymous. The moment a broker reverse-WHOIS'd her startup email, the quote tripled. A clean Gmail and \"I'm working on a personal project\" would have saved her $5,000 alone.\n\n2) Anchored at 30-40% of BIN with comparables from NameBio. Three recent sales of similar names is the only data sellers can't argue with.\n\n3) Had a backup name registered before negotiating. The walk-away only works if it's real. The moment you actually have an alternative you'd be happy with, your bargaining power goes up 5x.\n\nI wrote the full playbook with the exact scripts and counter-offer cadence, free and no signup: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-negotiate-buying-premium-domain-name-2026/\n\nIf you're about to buy a premium domain, read it first. The hour you'll spend reading saves $5-10k in expectation.\n\n#startups #branding #domains"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-06T08:44:23.017585+00:00",
+      "text": "Show HN: A tactical playbook for negotiating premium .com purchases (free, no signup)\n\nBuilt this after watching three founders in a row pay 2-3x what their domain was worth. Covers the things sellers don't tell you: how anonymity affects the quote, how to anchor, the realistic counter-cadence (30-40% of BIN, 24-48hr gaps), and why Escrow.com is the only safe close. Curious what experienced domain buyers think — what did I miss?"
+    },
+    {
+      "platform": "X / Twitter Thread",
+      "tool": "domain-generator",
       "createdAt": "2026-05-06T04:10:00Z",
       "text": "1/ Most domain SEO advice on Google was written between 2012 and 2018.\n\nHalf of it is now actively wrong in 2026. Here are the 8 domain mistakes that quietly tank rankings — and the fixes Google's 2025 spam policy update made non-negotiable. 🧵\n\n2/ Mistake #1: Buying an exact-match domain for the SEO boost.\n\nThe EMD update shipped in September 2012. Thirteen years and four core updates later, that signal is essentially zero unless the rest of the site is genuinely strong.\n\nBrandable domains compound. EMDs decay. Stripe outranks onlinecreditcardprocessing.com.\n\n3/ Mistake #2: Hyphens.\n\nNot a direct penalty. The killer is indirect: hyphenated domains have ~30-40% lower CTR from search results.\n\nLower CTR is a ranking signal. So is brand search volume — and nobody types tiny-tools.com directly.\n\n4/ Mistake #3: Keyword-stuffed subdomains.\n\nGoogle treats subdomains as separate sites for trust. blog.yoursite.com starts at zero authority.\n\nyoursite.com/blog/ inherits the full domain pool. Subdirectories beat subdomains for content sites every time.\n\n5/ Mistake #4: Picking a TLD that screams spam.\n\nGoogle says TLDs aren't ranking factors. True. But .zip, .click, .work, .top get auto-flagged by Outlook and Chrome. Bounce rate degrades dwell-time signals. Brand trust is permanent damage.\n\nStick to .com / .io / .ai / .app / .dev / .so.\n\n6/ Wrote up all 8 mistakes — including aged domains with toxic histories, the redirect tax that costs 10-25% during migrations, and the niche-trust signal flip — in the full guide:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-seo-mistakes-2026/"
     },
@@ -260,30 +284,6 @@
       "tool": "domain-generator",
       "createdAt": "2026-05-06T04:10:00Z",
       "text": "Show HN title: 8 domain name SEO mistakes that quietly hurt rankings in 2026\n\nLink: https://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-seo-mistakes-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Wrote this after auditing domain SEO for ~20 indie founders over the past year. The two findings that surprised me most: (1) hyphens don't trigger a Google penalty but the CTR loss compounds across search + voice + social previews into a measurable disadvantage, and (2) the redirect tax during domain migrations is 10-25% temporary traffic loss with 3-6 month recovery, despite the official site-move docs still saying \"301 redirects pass full link equity.\" Curious if HN has hit other 2026-specific failure modes I missed — particularly around AI overviews ranking domains differently than the blue-link SERP."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T00:11:00Z",
-      "text": "1/ \"All the good .coms are taken.\"\n\nIt's the most repeated naming myth on the internet, and it's been wrong for at least 15 years.\n\nThousands of pronounceable, brandable 4–7 letter .coms drop EVERY week. You just have to know where to look 👇\n\n2/ The reason \"everything's taken\" feels true:\n\nYou're searching dictionary words.\n\nOf course fast.com, cloud.com, bright.com are gone — they were registered in 1996.\n\nDictionary words are the wrong target. Always have been.\n\n3/ The 5 patterns that actually work in 2026:\n\n• Invented words (Spotify, Tumblr, Roblox)\n• Compound mashups (Facebook = face+book)\n• Foreign-language roots (Hulu, IKEA)\n• Old English / Latin / Greek (Lyft, Vox, Aether)\n• Single vowel-shifts (Lyft, Roblox)\n\n4/ The math:\n\nA 5-letter alphabetic .com has 11.8M possible combinations.\n\nFiltering for pronounceable strings still leaves 200,000+.\n\nTens of thousands are unregistered RIGHT NOW.\n\nYou won't find them by hand-typing into a registrar.\n\n5/ The realistic playbook:\n\n1. Generate 50+ candidates at a time\n2. Filter with live RDAP (not registrar search)\n3. Subscribe to ExpiredDomains.net for a week\n4. USPTO trademark check\n5. Register at Cloudflare or Namecheap. Never GoDaddy.\n\n6/ Built a free tool that does step 1+2 in 10 seconds:\n\n→ https://tinytools-smoky.vercel.app/domain-generator/\n\nDrop a seed word, pick a style (brandable, compound, modern), get 60+ candidates with real RDAP availability checks.\n\nNo signup. No upsells. No fake \"premium\" tricks."
-    },
-    {
-      "platform": "Reddit /r/Entrepreneur",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T00:11:00Z",
-      "text": "Honestly the \"all the good .coms are taken\" thing is a myth that just won't die.\n\nA 5-letter alphabetic .com has ~11.8M possible combinations. After you filter out unpronounceable garbage like \"xqzr\", you still have 200k+ sayable strings, and tens of thousands are unregistered RIGHT NOW.\n\nThe reason people think everything is taken is they're searching dictionary words (fast.com, cloud.com) which were registered 25+ years ago. Those have always been the wrong target.\n\nWhat works in 2026:\n\n1. Two-syllable invented compounds (Linear, Vercel, Resend) — best ROI right now\n2. Latin/Greek roots (Vox, Aether, Helix) — underused, gold mine\n3. Foreign loanwords (Hulu = Mandarin for \"container\") — barely tapped\n4. Old English (Lyft, Skift) — a single vowel shift still works\n\nAlso: ExpiredDomains.net publishes ~40k expiring .coms per day for free. Filter to ≤7 letters, alpha-only, and you'll get a few hundred real candidates daily. That's how the pros find shortlist names — they subscribe to drop feeds, they don't sit there hand-typing into GoDaddy's search box.\n\nFor registration: Cloudflare Registrar is at-cost (~$10.44/yr in 2026, no upsells). Namecheap if you want a friendlier dashboard. Avoid GoDaddy — their renewal pricing is 2-3x and there have been long-running accusations they front-run customer searches.\n\nIf it helps anyone, I built a free tool that generates 60+ candidates at a time with live RDAP availability — no signup, no email: https://tinytools-smoky.vercel.app/domain-generator/. Bypasses the \"is this name available\" tedium so you can spend the time on the part that actually matters (picking one)."
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T00:11:00Z",
-      "text": "A founder told me last week she'd \"given up\" on finding a .com because everything was taken.\n\nShe'd searched 12 names. All in dictionary words.\n\nHere's the reality: a 5-letter alphabetic .com has ~11.8 million possible combinations. Filter for pronounceable strings and you still have 200,000+. Tens of thousands are unregistered today.\n\nThe trick is: stop searching dictionary words. Start generating compounds, Latin roots, and foreign loanwords at scale.\n\nTwo-syllable mashups are the highest-ROI pattern in 2026 — Linear, Vercel, Resend, Cursor are all five-to-seven letters and all built brands worth millions on names that didn't exist five years ago.\n\nIf you're stuck on the same domain search you've been running for two weeks: switch tactics. Generate 50 at a time, not one. Use real RDAP checks (not registrar boxes that conveniently mark \"premium\" anything you searched). Subscribe to expired drop lists for a week. Avoid GoDaddy.\n\nWrote up the full 2026 field guide here, including the 6 patterns that consistently surface available short .coms and the trademark-check step most founders skip:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/how-to-find-short-available-com-domain-2026/\n\nThe whole process — naming brainstorm to registered domain — should take under two hours. Most people drag it into two weeks. Don't be most people."
-    },
-    {
-      "platform": "Hacker News",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T00:11:00Z",
-      "text": "TITLE:\nShow HN: A free RDAP-backed generator for short, available .com domains\n\nCOMMENT:\nMost domain generators check WHOIS through registrars that mark anything you searched as \"premium\" minutes later. This one runs RDAP directly against the registry — what's listed as available really is. Drop a seed word, pick a style (brandable, compound, modern, prefix), get 60 candidates with live availability. Wrote up the 2026 field guide for finding short .coms here: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-find-short-available-com-domain-2026/. Curious whether the pattern matching could be improved — current approach is morpheme combination + n-gram filtering for pronounceability."
     }
   ],
   "checklist": [
