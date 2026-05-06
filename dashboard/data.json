@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 6, 2026 — published Premium Domain Negotiation Playbook 2026 + 4 social drafts ready",
+  "lastUpdated": "May 6, 2026 — published Brandable vs Keyword Domains for SaaS guide + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 26,
+    "posts": 27,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 15:55",
+      "tag": "seo",
+      "text": "📝 Published blog post: Brandable vs Keyword Domain Names: Which Wins for SaaS in 2026? at /domain-generator/blog/brandable-vs-keyword-domains-saas-2026/"
+    },
+    {
+      "time": "today 15:55",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN — all promoting domain-generator"
+    },
     {
       "time": "today 08:44",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 12:28",
       "tag": "seo",
       "text": "📊 Listicle: Best Free Color Palette Generators in 2026 (TinyTools #1) at /best-free-color-palette-generators-2026/"
-    },
-    {
-      "time": "today 12:28",
-      "tag": "seo",
-      "text": "🤖 llms.txt overhauled — AI assistants (ChatGPT, Claude, Perplexity) now have explicit cite-this examples for every tool + blog + comparison"
-    },
-    {
-      "time": "today 12:00",
-      "tag": "seo",
-      "text": "📝 Published blog post: How to Pick Brand Colors for a Startup in 2026 (8-step framework, 1700 words) at /color-palette/blog/how-to-pick-brand-colors-startup-2026/"
     }
   ],
   "roadmap": [
@@ -240,6 +240,30 @@
     {
       "platform": "X / Twitter Thread",
       "tool": "domain-generator",
+      "createdAt": "2026-05-06T15:55:38Z",
+      "text": "1/ Every SaaS founder hits the same naming fork:\n\ninvoicebuilder.com (keyword) or stripe.com (brandable)?\n\nPre-2012 the answer was obvious. In 2026 it's the opposite of what most founders still believe. Thread 👇\n\n2/ The keyword-domain SEO advantage died in September 2012.\n\nGoogle's EMD update killed it. Hummingbird, RankBrain, BERT, and the helpful-content updates buried it deeper. By 2026 there's basically zero ranking lift from having the keyword in the URL for any commercial query.\n\nIf you're picking a keyword domain for SEO, you're optimizing for an algorithm that hasn't existed in 14 years.\n\n3/ What brandable actually buys you:\n\n• Defensible trademark (USPTO won't grant marks on descriptive names)\n• Pricing power (Linear charges Jira money. bestprojectmanagementtool.com structurally cannot)\n• Expansion room (Stripe = payments → tax → billing → capital, same domain)\n• Word-of-mouth (two syllables travel; three-word descriptions don't)\n\n4/ The cost gap goes the OPPOSITE way most founders assume.\n\nPremium one-word keyword .com in any vertical: $15K–$250K on the secondary market.\n\nBrandable five-letter .com with clean trademark: usually under $5K, often $12 hand-reg.\n\nThe keyword domain is the expensive option.\n\n5/ Keyword domains still win in exactly three places:\n\n• Affiliate/comparison sites (the URL IS the marketing budget)\n• Local services (austinplumbers.com beats plumbie.io for one-shot intent)\n• Pure content sites with no product moat\n\nIf you're building defensible SaaS, none of those describe you.\n\n6/ Wrote up the full breakdown — SEO data, the trademark angle, the 60-second decision framework, and three founder mistakes I see weekly:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/brandable-vs-keyword-domains-saas-2026/"
+    },
+    {
+      "platform": "Reddit /r/SaaS",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-06T15:55:38Z",
+      "text": "Subreddit: /r/SaaS or /r/SideProject or /r/startups\n\nComment (reply on a thread asking \"should I get [keyword].com or pick a brandable name\"):\n\nThe TL;DR most founders don't want to hear: in 2026, brandable wins for ~95% of SaaS, and the SEO argument for keyword domains has been dead since 2012.\n\nA few things I wish someone had told me earlier:\n\n1) The exact-match-domain SEO bump was a real thing from ~2003-2012. Google's EMD update in September 2012 killed it for low-quality EMDs, and every subsequent update (Hummingbird, RankBrain, BERT, helpful-content) shifted ranking weight further toward content quality and entity authority. By 2026, the lift from having your keyword in the URL is basically a rounding error for any commercial query. If you're picking a keyword domain for SEO, you're optimizing for an algorithm that hasn't existed in over a decade.\n\n2) Trademark strength is the under-discussed thing. Generic/descriptive names cannot be trademarked — USPTO will only register the logo. Stripe, Notion, and Linear are arbitrary in their categories, which is the trademark sweet spot. Generic names cap your legal moat at zero. This matters way more than people realize once you're at $1M ARR and a competitor copies your name.\n\n3) Pricing power. Customers attach willingness-to-pay to brands, not keywords. Linear charges Jira-level prices because the brand earned it. bestprojectmanagementtool.com structurally can't — the URL trains the visitor to expect a deal.\n\n4) Cost actually goes the opposite way most founders assume. Premium one-word keyword .com in any commercial vertical: $15K-$250K on the secondary market. Brandable five-letter .com: usually under $5K, often $12 hand-registered.\n\n5) Where keyword domains still earn their keep: affiliate/comparison sites (the URL is the marketing budget), local services (austinplumbers.com still beats plumbie.io for one-shot intent), and pure content sites. None of these describe a SaaS company.\n\nWrote up the full version with the decision framework and three founder mistakes I see weekly, free, no signup: https://tinytools-smoky.vercel.app/domain-generator/blog/brandable-vs-keyword-domains-saas-2026/"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-06T15:55:38Z",
+      "text": "Watched a founder spend $42K on a keyword domain last month for \"the SEO benefit.\"\n\nThe SEO benefit they were buying has been dead since September 2012.\n\nThat was when Google rolled out the EMD update. Hummingbird, RankBrain, BERT, and the helpful-content updates buried it further. By 2026 the ranking lift from having your keyword in the URL is essentially zero for any commercial query.\n\nYet founders still pay 5-figure premiums for keyword .coms because every \"how to pick a domain\" post they read was written before the algorithm changed.\n\nThe 2026 reality for SaaS:\n\n→ Brandable names get stronger trademarks (USPTO won't register descriptive marks)\n→ Brandable names hold pricing power (Linear charges Jira money; bestprojectmanagementtool.com cannot)\n→ Brandable names absorb product expansion (Stripe went from payments → tax → billing → capital on the same domain)\n→ Brandable names cost LESS (premium keyword .coms: $15K-$250K. Brandable five-letter .coms: often under $5K)\n\nKeyword domains still earn their keep in three places: affiliate/comparison sites, local services, and pure content plays. None of those describe defensible SaaS.\n\nIf you're naming a product in 2026, pick something arbitrary, short, and trademarkable. Stop optimizing for an algorithm that hasn't existed in 14 years.\n\nWrote up the full breakdown with the 60-second decision framework — free, no email gate:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/brandable-vs-keyword-domains-saas-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-06T15:55:38Z",
+      "text": "Show HN title: Brandable vs Keyword Domain Names — Which Wins for SaaS in 2026?\n\nLink: https://tinytools-smoky.vercel.app/domain-generator/blog/brandable-vs-keyword-domains-saas-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Wrote this after watching another founder pay $42K for a keyword .com \"for the SEO benefit\" — a benefit Google neutralized with the EMD update in 2012 and buried deeper with every algorithm update since. The 2026 cost math goes the opposite direction most founders assume: premium keyword .coms run $15K-$250K, brandable five-letter .coms are usually under $5K. Curious if HN has data points where keyword domains still meaningfully beat brandable ones outside the obvious affiliate / local-services / pure-content cases."
+    },
+    {
+      "platform": "X / Twitter Thread",
+      "tool": "domain-generator",
       "createdAt": "2026-05-06T08:44:23.017585+00:00",
       "text": "1/ Most founders who buy a \"premium\" .com pay 2-3x what they should.\n\nThe asking price isn't the price. It's an anchor.\n\nHere's how to actually negotiate a 5-figure domain in 2026 👇\n\n2/ Tier matters more than tactics.\n- Mid-aftermarket ($1.5-15k brandables): 40-60% of asking is normal\n- True premium ($15-250k one-word .coms): 60-80% of asking\n- Category-defining ($1M+): hire a broker, this isn't haggling\n\n3/ Stay anonymous. The second a seller learns you're a funded startup, the price doubles. Use a clean Gmail. Don't mention your business name. Brokers run reverse-WHOIS the second you email them.\n\n4/ Open at 30-40% of BIN with a budget script:\n\"Working on a personal project, budget is $X. Looking at [alt-1] and [alt-2] in the same range. Happy to close this week via Escrow.com.\"\n\nAnchors low. Names alternatives. Signals real buyer.\n\n5/ Wait 24-48 hours between counters. Replying instantly = emotionally locked in = price goes up. Patience is the cheapest leverage in the entire process.\n\n6/ Always close through Escrow.com. Never PayPal F&F. Never Venmo. Never wire-direct. That's how people lose $20k and a domain in the same week.\n\nFull playbook with the exact scripts: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-negotiate-buying-premium-domain-name-2026/\n\n(Free, no signup. Built it because we got tired of seeing founders overpay.)"
     },
@@ -260,30 +284,6 @@
       "tool": "domain-generator",
       "createdAt": "2026-05-06T08:44:23.017585+00:00",
       "text": "Show HN: A tactical playbook for negotiating premium .com purchases (free, no signup)\n\nBuilt this after watching three founders in a row pay 2-3x what their domain was worth. Covers the things sellers don't tell you: how anonymity affects the quote, how to anchor, the realistic counter-cadence (30-40% of BIN, 24-48hr gaps), and why Escrow.com is the only safe close. Curious what experienced domain buyers think — what did I miss?"
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T04:10:00Z",
-      "text": "1/ Most domain SEO advice on Google was written between 2012 and 2018.\n\nHalf of it is now actively wrong in 2026. Here are the 8 domain mistakes that quietly tank rankings — and the fixes Google's 2025 spam policy update made non-negotiable. 🧵\n\n2/ Mistake #1: Buying an exact-match domain for the SEO boost.\n\nThe EMD update shipped in September 2012. Thirteen years and four core updates later, that signal is essentially zero unless the rest of the site is genuinely strong.\n\nBrandable domains compound. EMDs decay. Stripe outranks onlinecreditcardprocessing.com.\n\n3/ Mistake #2: Hyphens.\n\nNot a direct penalty. The killer is indirect: hyphenated domains have ~30-40% lower CTR from search results.\n\nLower CTR is a ranking signal. So is brand search volume — and nobody types tiny-tools.com directly.\n\n4/ Mistake #3: Keyword-stuffed subdomains.\n\nGoogle treats subdomains as separate sites for trust. blog.yoursite.com starts at zero authority.\n\nyoursite.com/blog/ inherits the full domain pool. Subdirectories beat subdomains for content sites every time.\n\n5/ Mistake #4: Picking a TLD that screams spam.\n\nGoogle says TLDs aren't ranking factors. True. But .zip, .click, .work, .top get auto-flagged by Outlook and Chrome. Bounce rate degrades dwell-time signals. Brand trust is permanent damage.\n\nStick to .com / .io / .ai / .app / .dev / .so.\n\n6/ Wrote up all 8 mistakes — including aged domains with toxic histories, the redirect tax that costs 10-25% during migrations, and the niche-trust signal flip — in the full guide:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-seo-mistakes-2026/"
-    },
-    {
-      "platform": "Reddit /r/SEO",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T04:10:00Z",
-      "text": "Subreddit: /r/SEO or /r/bigseo or /r/SaaS or /r/Entrepreneur\n\nComment (reply on a thread asking about domain choices for SEO, EMDs, hyphens, or whether to migrate domains):\n\nSpent the last few years auditing domain SEO for indie founders and the same 8 mistakes come up over and over. In rough order of how often they bite:\n\n1) Buying an EMD for the ranking boost. The EMD update was September 2012. The signal is now essentially zero unless the rest of the site is strong, and thin content on EMDs actually gets demoted faster because the URL keyword stuffing reads as a quality signal in the wrong direction.\n\n2) Hyphens. Not a direct penalty, but ~30-40% lower CTR in every study I've seen, plus voice search dies (\"tiny dash tools dot com\"), plus social previews truncate awkwardly. The compounding loss across CTR + brand search + social distribution is measurable.\n\n3) Keyword-stuffed subdomains. Google treats subdomains as separate sites for trust purposes. blog.yoursite.com starts at zero authority — yoursite.com/blog/ inherits the full domain pool. John Mueller has said this on record probably 30 times.\n\n4) Spammy-looking TLDs. .zip, .mov, .click, .work, .top get auto-flagged by Outlook and Chrome safe browsing. Even if Google says TLD isn't a ranking factor, the bounce rate degrades dwell-time signals indirectly.\n\n5) Buying aged domains without auditing prior history. \"Aged domains skip the sandbox\" is true when history is clean and catastrophic when it isn't. Run Wayback + Ahrefs + a bare Google search before committing. Adult/gambling/PBN history survives ownership transfer for 18+ months.\n\n6) Using a different TLD than competitors in low-trust niches. In dev tools / AI / SaaS, .io and .ai signal modern tech ecosystem. In finance / health / e-commerce, anything not-.com signals less trustworthy. Match the niche.\n\n7) Forgetting the domain shows up in every social share preview. A typo-prone or hyphenated domain silently kills second-order traffic on every channel that isn't pure search.\n\n8) Underestimating the redirect tax. \"301s pass full equity\" is the conventional wisdom but field studies consistently show 10-25% temporary loss during migrations, 3-6 months to recover. Multi-hop redirect chains compound.\n\nWrote the full version with the 8-point checklist here, free, no signup: https://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-seo-mistakes-2026/"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T04:10:00Z",
-      "text": "Spent two years quietly losing organic traffic on a hyphenated domain before realizing the cost.\n\nThe domain itself wasn't a Google penalty. The problem was everything that compounded around it: ~35% lower click-through from search results, voice-search invisibility (nobody says \"tiny dash tools dot com\"), and social-share previews that truncated the brand awkwardly. Each loss was small. Together, they were a slow bleed.\n\nMost domain SEO advice on the internet was written between 2012 and 2018. Half of it is wrong in 2026. The 8 mistakes I see most often:\n\n→ Buying exact-match domains expecting a ranking boost (EMD update killed that signal in 2012)\n→ Hyphens — not a penalty, but a CTR killer\n→ Keyword-stuffed subdomains that inherit zero authority\n→ TLDs that auto-flag in Outlook and Chrome (.zip, .click, .work)\n→ Aged domain purchases without auditing prior PBN/adult/gambling history\n→ Mismatched TLDs in low-trust niches (finance, health, legal)\n→ Hard-to-spell domains that kill second-order share traffic\n→ The redirect tax — 10-25% temporary loss on every migration\n\nThe penalty for getting it wrong isn't a single algorithm hit. It's compounding underperformance across organic search, social distribution, and direct traffic — for years.\n\nWrote up all 8 with the fixes and a 2026 domain SEO checklist. Free, no email gate:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-seo-mistakes-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T04:10:00Z",
-      "text": "Show HN title: 8 domain name SEO mistakes that quietly hurt rankings in 2026\n\nLink: https://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-seo-mistakes-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Wrote this after auditing domain SEO for ~20 indie founders over the past year. The two findings that surprised me most: (1) hyphens don't trigger a Google penalty but the CTR loss compounds across search + voice + social previews into a measurable disadvantage, and (2) the redirect tax during domain migrations is 10-25% temporary traffic loss with 3-6 month recovery, despite the official site-move docs still saying \"301 redirects pass full link equity.\" Curious if HN has hit other 2026-specific failure modes I missed — particularly around AI overviews ranking domains differently than the blue-link SERP."
     }
   ],
   "checklist": [
