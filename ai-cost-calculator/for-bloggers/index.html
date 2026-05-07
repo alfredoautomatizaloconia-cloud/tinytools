@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Cost Calculator for Bloggers — Forecast Your Writing Bill Before It Eats Your Margins (2026)</title>
+<meta name="description" content="Built for bloggers using GPT-5, Claude, or Gemini to draft posts, outlines, and SEO meta. Estimate your monthly AI writing bill from word count, post cadence, and revision passes — before it outruns your AdSense revenue.">
+<meta name="keywords" content="ai cost calculator for bloggers, llm cost calculator blog, openai writing cost, claude cost per article, ai blog post pricing, content cost calculator, blogger ai budget">
+<meta property="og:title" content="AI Cost Calculator for Bloggers — Free, No Signup">
+<meta property="og:description" content="See exactly what your AI writing workflow costs per post and per month. Compare GPT-5, Claude 4.6, Gemini 3, DeepSeek, and more — tuned for bloggers.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-cost-calculator/for-bloggers/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Cost Calculator for Bloggers",
+  "description": "Free AI API cost calculator tuned for bloggers: estimate per-post and monthly costs across 30+ LLMs from word count, posting cadence, and revision passes.",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-bloggers/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "audience": { "@type": "Audience", "audienceType": "Bloggers" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does it cost to write a blog post with AI in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A typical 1,500-word blog post drafted with GPT-5 from a detailed outline costs roughly $0.20 to $0.60 per draft, depending on how much research context you feed the model. Claude Sonnet 4.6 lands in a similar range; Gemini 3 Flash and DeepSeek V3.1 can drop the per-post cost below $0.05. The TinyTools AI Cost Calculator computes the exact number from your word count, outline size, and revision passes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is my AI blog writing bill higher than I expected?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three reasons usually explain it. First, output tokens are 3-5x the price of input — a 2,500-word post costs more to generate than to brief. Second, multi-pass workflows (outline, draft, edit, SEO rewrite) re-send the full article on each pass. Third, long research dumps inflate input cost on every prompt. The calculator separates these so you can see which lever moves the bill."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI model is cheapest for blog writing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For raw cost-per-word, Gemini 3 Flash and DeepSeek V3.1 are currently the cheapest among major hosted models. For prose quality at a defensible price, Claude Sonnet 4.6 and GPT-5 mini are the usual sweet spot. Frontier models like GPT-5 and Claude Opus are best reserved for the final polish pass, not the draft."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the AI Cost Calculator free for bloggers and content creators?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The calculator is free, requires no signup, and runs entirely in your browser. Use the estimates for your own budgeting, in client proposals if you ghostwrite, or to decide whether AdSense and affiliate revenue from a given niche actually covers the writing cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I disclose AI assistance in my blog posts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Disclosure is increasingly expected in 2026. Many ad networks, affiliate programs, and search guidelines treat undisclosed AI as a quality signal. Tools like the TinyTools AI Disclosure Generator produce standard labels you can drop in a footer or sidebar."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #14b8a6; --accent-glow: #14b8a640;
+    --green: #10b981; --red: #ef4444; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { text-align: center; padding: 24px 0 16px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.12; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #5eead4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 640px; margin: 0 auto 28px; }
+  .cta {
+    display: inline-block; padding: 14px 26px; background: var(--accent); color: #042f2e;
+    border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 16px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 24px var(--accent-glow);
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 32px var(--accent-glow); }
+  .cta-row { text-align: center; margin: 24px 0 36px; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; margin: 24px 0;
+  }
+  .panel h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.01em; color: #fff; }
+  .panel h3 { font-size: 17px; margin: 20px 0 8px; color: #fff; }
+  .panel p { color: var(--text-dim); margin-bottom: 12px; }
+  .panel ul { color: var(--text-dim); margin: 8px 0 16px 22px; }
+  .panel li { margin-bottom: 6px; }
+  .panel a { color: #5eead4; text-decoration: none; border-bottom: 1px dashed #14b8a655; }
+  .panel a:hover { border-bottom-style: solid; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0 8px;
+  }
+  .card {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; padding: 18px;
+  }
+  .card .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .card .value { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .card .note { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { color: var(--text); }
+  td.dim { color: var(--text-dim); }
+  footer { text-align: center; color: var(--text-dim); font-size: 13px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+  footer a { color: #5eead4; text-decoration: none; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; }
+  .breadcrumb a { color: #5eead4; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;›&nbsp; <a href="/ai-cost-calculator/">AI Cost Calculator</a> &nbsp;›&nbsp; For Bloggers
+  </div>
+
+  <header>
+    <span class="badge">Free · No signup · Runs in your browser</span>
+    <h1>AI Cost Calculator for Bloggers</h1>
+    <p class="subtitle">Forecast your monthly AI writing bill before it eats your AdSense margin. Plug in word count, posting cadence, and how many revision passes you actually do — get a per-post and per-month cost across GPT-5, Claude 4.6, Gemini 3, DeepSeek, and 25+ more models.</p>
+    <div class="cta-row">
+      <a class="cta" href="/ai-cost-calculator/">Open the AI Cost Calculator →</a>
+    </div>
+  </header>
+
+  <div class="panel">
+    <h2>Why bloggers need an honest LLM cost calculator</h2>
+    <p>If you publish three posts a week and run each one through an outline pass, a draft pass, an edit pass, and an SEO rewrite, you're not paying for one article — you're paying for four. Every pass re-sends the full prompt and the prior draft. By the time you hit publish, that "$0.10 article" has quietly turned into a $0.60 article. Multiply by 12 a month and your AI line item is the same size as your hosting bill.</p>
+    <p>Most pricing pages give you a flat number per million tokens. That's useful for accounting, useless for content workflow planning. As a blogger, the question you actually have to answer is: <em>"If I scale to 20 posts a month with the same multi-pass quality bar, does the AI cost still fit inside my Mediavine RPM?"</em></p>
+    <p>This calculator is built to short-circuit that surprise. Enter the shape of your workflow — outline length, draft word count, revision count, and posting cadence — and it cross-multiplies against the published rates for every major model. Output: a sortable monthly bill you can drop straight into a Notion page or a content P&amp;L spreadsheet.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Five jobs it actually does for bloggers</h2>
+
+    <h3>1. Per-post unit economics</h3>
+    <p>Before you commit to a topic, model whether the AI cost survives the affiliate or display-ad payout. A 2,500-word product roundup that pulls a $0.08 RPM only earns about $1.40 from 17,000 page-views — if your AI workflow already costs $0.85 per draft, you're publishing for thin margins. The calculator answers that ratio in seconds.</p>
+
+    <h3>2. Multi-pass workflow audit</h3>
+    <p>Bloggers love the outline → draft → edit → SEO loop. The math gets brutal because each pass re-sends the prior draft. Run your real number of passes through the calculator and you'll usually find that 60-75% of the cost lives in passes 3 and 4. Cutting one pass or moving it to a cheaper model is the single biggest lever.</p>
+
+    <h3>3. Provider switching ROI</h3>
+    <p>Anthropic raises a tier? OpenAI ships a cheaper mini? Drop the same workflow into the comparison view and see whether changing models is worth the prompt-tuning effort. Most bloggers discover that 80% of their cost is in one polish call that has no business being on the frontier tier.</p>
+
+    <h3>4. Niche-by-niche budgeting</h3>
+    <p>If you run a portfolio of niche blogs — recipes, finance, travel, parenting — the cost per post varies wildly depending on how much research context you paste into the prompt. The calculator's input/output split lets you set a per-niche budget instead of one blanket number, so the high-RPM niches subsidize the lower ones.</p>
+
+    <h3>5. Ghostwriting and client proposals</h3>
+    <p>If you ghostwrite for clients or run a small content shop, model the AI cost into your per-word price before quoting. A 1,500-word post at $0.05/word is a $75 deliverable. If your AI cost is $0.60 and your editor's hour is $35, the margin is real but tight. Plug it into the calculator and price with eyes open.</p>
+  </div>
+
+  <div class="panel">
+    <h2>What bloggers usually get wrong</h2>
+    <p>Three failure modes show up over and over in production AI writing workflows:</p>
+    <ul>
+      <li><strong>Treating output tokens as free.</strong> Output is typically 3-5x the price of input. A long, chatty system prompt that asks for verbose 2,500-word drafts can flip the cost curve entirely versus a tight system prompt that produces 1,200 well-structured words.</li>
+      <li><strong>Forgetting that revision re-sends the whole draft.</strong> When you ask the model to "tighten paragraph three," many tools quietly resubmit the entire article as input. By revision four, you've paid for the same 2,500 words four times on the input side.</li>
+      <li><strong>Using one model for everything.</strong> Outlines and meta descriptions don't need a frontier-tier model. Pushing those steps to Gemini Flash or DeepSeek and reserving GPT-5 or Claude Opus for the polish step typically halves the bill without a quality drop.</li>
+    </ul>
+    <p>The calculator surfaces all three by design — it asks for context size, output length, revision count, and post cadence separately, then recomputes the bill against every supported provider. See <a href="https://platform.openai.com/docs/pricing" rel="nofollow noopener" target="_blank">OpenAI's pricing page</a> for the canonical input/output split, or <a href="https://www.anthropic.com/pricing" rel="nofollow noopener" target="_blank">Anthropic's Claude pricing</a> for the latest Sonnet and Opus tier numbers, or <a href="https://ai.google.dev/pricing" rel="nofollow noopener" target="_blank">Gemini's pricing matrix</a> for context-window tier breakpoints that matter when you paste long research dumps.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Sample blogger workload</h2>
+    <p>To make the numbers concrete, here's how a typical "mid-traffic niche blog" lands when run through the calculator:</p>
+    <div class="grid">
+      <div class="card"><div class="label">Posts per month</div><div class="value">12</div><div class="note">Three a week, with breaks</div></div>
+      <div class="card"><div class="label">Avg post length</div><div class="value">1,800 wd</div><div class="note">~2,400 output tokens</div></div>
+      <div class="card"><div class="label">Revision passes</div><div class="value">3</div><div class="note">Outline, draft, polish</div></div>
+      <div class="card"><div class="label">Research context</div><div class="value">3,200 tok</div><div class="note">Notes pasted per draft</div></div>
+    </div>
+    <table>
+      <thead><tr><th>Model</th><th>Cost / post</th><th>Monthly bill</th></tr></thead>
+      <tbody>
+        <tr><td>GPT-5</td><td>$0.58</td><td class="dim">$6.96</td></tr>
+        <tr><td>Claude Sonnet 4.6</td><td>$0.42</td><td class="dim">$5.04</td></tr>
+        <tr><td>Gemini 3 Flash</td><td>$0.06</td><td class="dim">$0.72</td></tr>
+        <tr><td>DeepSeek V3.1</td><td>$0.04</td><td class="dim">$0.48</td></tr>
+        <tr><td>Mixed (Flash draft + Sonnet polish)</td><td>$0.18</td><td class="dim">$2.16</td></tr>
+      </tbody>
+    </table>
+    <p>Numbers above are illustrative. Plug your real workflow into the live tool to get a current comparison with the latest published rates. The "mixed" row is the pattern most successful bloggers settle into — a cheap workhorse for drafting, a smarter model for the final pass.</p>
+  </div>
+
+  <div class="panel">
+    <h2>How this fits the rest of a blogger's stack</h2>
+    <p>An AI bill is one line on the content P&amp;L. The other lines that matter — and where the TinyTools suite already covers the rest:</p>
+    <ul>
+      <li>Domain selection: the <a href="/domain-generator/for-bloggers/">Domain Generator for bloggers</a> shortcuts the brainstorm-and-WHOIS loop.</li>
+      <li>Open Graph images: the <a href="/og-image-generator/">OG Image Generator</a> creates social previews without a Canva subscription.</li>
+      <li>SEO meta: the <a href="/seo-meta-generator/for-bloggers/">SEO Meta Generator for bloggers</a> writes title tags and descriptions that fit the SERP character limits.</li>
+      <li>AI disclosure: the <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> produces compliant labels for posts that used AI assistance.</li>
+      <li>Robots.txt for AI crawlers: the <a href="/ai-robots-txt-generator/for-bloggers/">AI Robots.txt Generator for bloggers</a> handles which crawlers may train on your archives.</li>
+    </ul>
+    <p>The pattern is the same across all of them: free, single-purpose, no signup. If you want a broader view of how niche bloggers think about AI economics in 2026, <a href="https://searchengineland.com/" rel="nofollow noopener" target="_blank">Search Engine Land</a> and <a href="https://www.detailed.com/" rel="nofollow noopener" target="_blank">Detailed</a> both publish solid coverage of the search-traffic side of the equation.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Frequently asked questions</h2>
+    <h3>Can I use the calculator for client ghostwriting work?</h3>
+    <p>Yes — the comparison table is plain HTML, so you can copy it into a Notion proposal, a client SOW, or a Linear issue. Many freelance writers use the per-post number as a floor when pricing AI-assisted retainers.</p>
+
+    <h3>Does it cover the cheaper "mini" tiers?</h3>
+    <p>Yes. GPT-5 mini, Claude Haiku 4.5, Gemini Flash, and DeepSeek's full lineup are all in the comparison. Mini tiers are usually 5-20x cheaper than the flagship and good enough for outline and meta work.</p>
+
+    <h3>How current is the pricing data?</h3>
+    <p>The calculator reads from a price table that we update whenever a major provider publishes a change. Expect 1-3 day lag on smaller providers, near-real-time on the top five.</p>
+
+    <h3>What about self-hosted models on a homelab?</h3>
+    <p>Self-hosted GPU pricing is too workload-dependent to model accurately, but we cover the major hosted serverless rates (Together, Fireworks, Groq) for Llama, Mistral, Qwen, and DeepSeek — those are a reasonable upper bound for what self-hosting saves.</p>
+  </div>
+
+  <div class="cta-row">
+    <a class="cta" href="/ai-cost-calculator/">Try the AI Cost Calculator →</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> — focused, free utilities for bloggers, indie publishers, and content creators.
+  </footer>
+</div>
+</body>
+</html>
