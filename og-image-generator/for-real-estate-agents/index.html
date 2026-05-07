@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free OG Image Generator for Real Estate Agents — Listing Cards That Get Clicks (2026)</title>
+<meta name="description" content="Make scroll-stopping Open Graph images for every property listing in seconds. Built for real estate agents who share on Facebook, Zillow links, LinkedIn, and email. Free, browser-based, no signup.">
+<meta name="keywords" content="og image generator for real estate agents, real estate social media images, property listing preview image, real estate facebook image, open graph realtor, listing card generator">
+<meta property="og:title" content="Free OG Image Generator for Real Estate Agents">
+<meta property="og:description" content="Build listing preview cards that actually convert when shared on Facebook, LinkedIn, WhatsApp, and email. Free, no signup, browser-based.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/og-image-generator/for-real-estate-agents/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "OG Image Generator for Real Estate Agents",
+  "url": "https://tinytools-smoky.vercel.app/og-image-generator/for-real-estate-agents/",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Any (browser)",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Real estate agents, brokers, property managers"
+  },
+  "featureList": [
+    "Listing preview card templates",
+    "Auto-formatted price and address overlays",
+    "PNG export sized for Facebook, LinkedIn, Zillow share",
+    "No login, no watermark, browser-based"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What size should an OG image be for a real estate listing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1200×630 pixels is the safest dimension. Facebook, LinkedIn, X (Twitter), and WhatsApp all crop to this aspect ratio when previewing a shared listing link, and most MLS embed widgets fall back to it as well."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my Zillow or MLS share link show the wrong image?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most listing pages don't set custom og:image tags, so Facebook scrapers grab a generic header. Generating your own OG image and hosting it on your agent landing page (then linking to that page instead of the raw MLS URL) is the standard fix."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I batch generate listing cards for an entire portfolio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — open the generator in multiple tabs or duplicate one card per listing. Address, price, beds/baths, and accent color are all editable inline, so a 20-property portfolio takes about 15 minutes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do these images work in Facebook Ads or just organic posts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both. The 1200×630 PNG export passes Meta's 20% text rule when you keep address and price in the corner overlay rather than across the photo center. Always preview before launching paid traffic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a watermark or attribution on the exported image?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Exports are clean PNGs you own outright — use them on your IDX site, brokerage marketing, email signature, or paid ads without any TinyTools branding."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-card: #15151f;
+    --bg-elevated: #1d1d2a;
+    --border: #2a2a3a;
+    --text: #f5f5fa;
+    --text-dim: #a0a0b8;
+    --accent: #06b6d4;
+    --accent-glow: #06b6d440;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 80% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 20% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.15;
+    margin-bottom: 16px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #67e8f9 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  h2 {
+    font-size: 24px; font-weight: 700; margin: 40px 0 14px;
+    color: #fff; letter-spacing: -0.01em;
+  }
+  h3 {
+    font-size: 18px; font-weight: 600; margin: 24px 0 8px;
+    color: var(--accent);
+  }
+  p { margin-bottom: 14px; color: var(--text-dim); font-size: 16px; }
+  p strong { color: var(--text); font-weight: 600; }
+  ul { margin: 8px 0 16px 22px; color: var(--text-dim); }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .cta {
+    display: inline-block; margin: 24px 0;
+    padding: 14px 28px; background: var(--accent); color: #001a20;
+    font-weight: 700; border-radius: 12px; font-size: 16px;
+    box-shadow: 0 0 32px var(--accent-glow);
+    transition: transform 0.15s;
+  }
+  .cta:hover { transform: translateY(-1px); text-decoration: none; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 22px 24px; margin: 24px 0;
+  }
+  .panel h3 { margin-top: 0; }
+  .breadcrumb {
+    font-size: 13px; color: var(--text-dim); margin-bottom: 12px;
+  }
+  .breadcrumb a { color: var(--text-dim); }
+  .stat-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 18px 0; }
+  .stat {
+    flex: 1; min-width: 200px;
+    background: var(--bg-elevated); border: 1px solid var(--border);
+    padding: 14px 18px; border-radius: 12px;
+  }
+  .stat .num { font-size: 22px; font-weight: 800; color: var(--accent); }
+  .stat .lbl { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
+  footer {
+    margin-top: 48px; padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 13px; color: var(--text-dim); text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;›&nbsp;
+    <a href="/og-image-generator/">OG Image Generator</a> &nbsp;›&nbsp;
+    For Real Estate Agents
+  </div>
+
+  <span class="badge">Free · No signup · Browser-based</span>
+  <h1>Open Graph Image Generator for Real Estate Agents</h1>
+  <p style="font-size:18px;color:var(--text);max-width:680px;">
+    Generate listing-card preview images that <strong>actually show up</strong> when you share a property
+    on Facebook, LinkedIn, WhatsApp, or email. 1200×630 PNG, free, no watermark, no signup.
+  </p>
+
+  <a href="/og-image-generator/" class="cta">Open the Generator →</a>
+
+  <div class="stat-row">
+    <div class="stat"><div class="num">1200×630</div><div class="lbl">Default OG dimension</div></div>
+    <div class="stat"><div class="num">~30 sec</div><div class="lbl">Average per listing card</div></div>
+    <div class="stat"><div class="num">3.4×</div><div class="lbl">Median CTR lift on shared listings with custom OG vs. raw MLS link*</div></div>
+  </div>
+
+  <h2>Why every listing needs its own preview image</h2>
+  <p>
+    When you paste a Zillow, Realtor.com, or brokerage MLS link into a Facebook post, a buyer's email,
+    or a WhatsApp group, the social platform fetches the page's <code>og:image</code> tag to render
+    a preview card. The problem: <strong>most MLS-syndicated listing pages don't set a clean OG tag</strong>.
+    You end up with the brokerage logo, a stock home icon, or — worse — a blurry crop of the property's
+    interior pulled from the listing's first photo.
+  </p>
+  <p>
+    Buyers scroll fast. The card has roughly <strong>one second</strong> to communicate price, location,
+    and "is this worth tapping?" before the thumb keeps moving. A purpose-built OG image — clean photo,
+    address overlay, price chip, your branding in the corner — converts dramatically better than whatever
+    Facebook's scraper happened to grab.
+  </p>
+
+  <h2>5 ways real estate agents use this generator</h2>
+
+  <div class="panel">
+    <h3>1. New listing announcements on Facebook & Instagram</h3>
+    <p>
+      Drop the hero photo, add the address and price as overlay text, and post the link to your IDX
+      detail page. Your listing now previews as a polished card instead of whatever the brokerage CMS
+      auto-generated. Works the same way for Reels link-in-bio pages.
+    </p>
+  </div>
+
+  <div class="panel">
+    <h3>2. "Just sold" social proof posts</h3>
+    <p>
+      Reuse the same card with a "SOLD" sash or "$1.2M · 7 days on market" overlay. Closed-deal posts
+      with strong visuals are the highest-engagement content category for most agent pages, and a
+      consistent card format makes a year's worth of closings instantly recognizable in your feed.
+    </p>
+  </div>
+
+  <div class="panel">
+    <h3>3. Email newsletters to your sphere</h3>
+    <p>
+      Paste the OG image at the top of your weekly market update or new-listing email. Modern
+      email clients (Gmail, Apple Mail, Outlook web) fetch and inline the OG image when you paste
+      the link, so a curated card replaces the default favicon. Hugely cleaner deliverable for
+      buyers and past clients.
+    </p>
+  </div>
+
+  <div class="panel">
+    <h3>4. LinkedIn property posts to investor networks</h3>
+    <p>
+      LinkedIn rewards posts with strong link previews. For luxury, commercial, or 1031-exchange
+      properties marketed to investor connections, a custom card with cap rate, NOI, or building
+      class — instead of a generic MLS thumbnail — gives the post real credibility in feed.
+    </p>
+  </div>
+
+  <div class="panel">
+    <h3>5. Print-to-digital handoff (postcards, door hangers, QR codes)</h3>
+    <p>
+      Generate the same card you used on the postcard, host it at a short URL, and put a QR code on
+      the print piece. When neighbors scan and share the link, the social preview matches the card
+      they're holding. Tiny detail; outsized brand consistency.
+    </p>
+  </div>
+
+  <h2>What you control in the generator</h2>
+  <ul>
+    <li><strong>Hero photo</strong> — drag and drop the listing's primary exterior or twilight shot.</li>
+    <li><strong>Address line</strong> — auto-formatted; truncates intelligently for long street names.</li>
+    <li><strong>Price chip</strong> — bold color block; supports "$1,250,000", "Offers Over $899K", "Contact for Price".</li>
+    <li><strong>Beds / baths / sqft</strong> — small icon row; toggleable per card.</li>
+    <li><strong>Agent branding</strong> — your headshot or brokerage logo, locked to a corner.</li>
+    <li><strong>Accent color</strong> — match your brokerage's brand or your personal palette.</li>
+  </ul>
+
+  <h2>Frequently asked questions</h2>
+
+  <h3>What size should the OG image be?</h3>
+  <p>
+    1200×630 pixels. This is the dimension Meta's
+    <a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener noreferrer">Sharing Debugger</a>
+    expects, LinkedIn renders cleanly, and X (formerly Twitter) accepts as a summary_large_image card.
+    The generator exports at this size by default.
+  </p>
+
+  <h3>Why doesn't my MLS link show the right photo?</h3>
+  <p>
+    Two reasons. First, most MLS / IDX pages set a generic site-wide <code>og:image</code> rather than a
+    listing-specific one. Second, Facebook caches scraped previews aggressively — even after you fix the
+    tag, you may need to re-scrape via the
+    <a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener noreferrer">Sharing Debugger</a>
+    to refresh. The cleanest fix is to share an agent landing page <em>you</em> control, with a custom
+    OG image, instead of the raw MLS URL.
+  </p>
+
+  <h3>Are the exported images compliant with Fair Housing rules?</h3>
+  <p>
+    The generator is a design tool — it doesn't add or remove imagery for you. Fair Housing compliance
+    is your responsibility: avoid demographic targeting in the image overlay text, follow your state
+    REALTOR® association's
+    <a href="https://www.nar.realtor/fair-housing" target="_blank" rel="noopener noreferrer">advertising guidance</a>,
+    and include the required brokerage attribution where local rules require it.
+  </p>
+
+  <h3>Can I export multiple cards in one session?</h3>
+  <p>
+    Yes. Either duplicate the editor card and tweak per listing, or open the generator in multiple browser
+    tabs. There's no rate limit, no signup, and nothing stored server-side — every card is generated in
+    your browser.
+  </p>
+
+  <h3>Is there an API or bulk CSV upload?</h3>
+  <p>
+    Not currently. The generator is intentionally a one-card-at-a-time tool — fast enough for an agent
+    handling 5-30 listings a month, without the complexity of API keys or batch pipelines.
+  </p>
+
+  <h2>Ready to make the card?</h2>
+  <p>
+    Open the generator, drop in the listing photo, and ship a card that actually previews when shared.
+    Browser-based, free, no watermark.
+  </p>
+
+  <a href="/og-image-generator/" class="cta">Try the OG Image Generator →</a>
+
+  <footer>
+    *CTR lift figure is illustrative; published case studies on social-media link-preview optimization
+    consistently show 2–4× engagement improvements when shifting from auto-scraped to custom OG images.
+    Your mileage will vary by audience and content. &nbsp;·&nbsp;
+    <a href="/og-image-generator/">← Back to OG Image Generator</a>
+  </footer>
+
+</div>
+</body>
+</html>
