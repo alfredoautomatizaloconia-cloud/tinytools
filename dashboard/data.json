@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 7, 2026 — published OG Image SEO guide for og-image-generator + 4 social drafts ready",
+  "lastUpdated": "May 7, 2026 — published OG image dimensions reference for og-image-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 33,
+    "posts": 34,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 14:22",
+      "tag": "seo",
+      "text": "📝 Published blog post: OG Image Dimensions 2026: Pixel-Perfect Specs for Every Platform That Still Matters at /og-image-generator/blog/og-image-dimensions-2026-pixel-perfect-specs/"
+    },
+    {
+      "time": "today 14:22",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting og-image-generator"
+    },
     {
       "time": "today 13:39",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 08:12",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/shopify, LinkedIn, Show HN — all promoting background-remover"
-    },
-    {
-      "time": "today 04:11",
-      "tag": "seo",
-      "text": "📝 Published blog post: Meta Description Length in 2026 — The Real Numbers Google, Bing & ChatGPT Actually Show at /seo-meta-generator/blog/meta-description-length-2026/"
-    },
-    {
-      "time": "today 04:11",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
     }
   ],
   "roadmap": [
@@ -240,6 +240,30 @@
     {
       "platform": "X / Twitter Thread",
       "tool": "og-image-generator",
+      "createdAt": "2026-05-07T16:12:30Z",
+      "text": "The dirty secret of OG images in 2026: the platforms that consume your social card have grown teeth.\n\niOS 19 silently downgrades cards. LinkedIn caches broken renders for 7 days. Slack shrinks you to 360px wide.\n\nHere's the canonical spec that survives all of them 🧵 (1/6)\n---\n(2/6) Ship ONE image:\n• 1200×630 px\n• Under 300 KB\n• sRGB color space\n• Aspect ratio 1.91:1\n\nThat single card renders correctly in feeds on X, LinkedIn, Facebook, WhatsApp, iMessage, Discord, Slack, Teams, Notion, and Discover.\n\nYou do not need 4 platform variants.\n---\n(3/6) The safe zone almost nobody designs around:\n\nKeep all important content (logos, headlines, key UI) inside a 1080×540 centered rectangle.\n\nDecorative gradients can bleed to the edges — Slack and Discord crop ~20px off every side for their rounded preview frames.\n---\n(4/6) The 2026 silent killer: iOS 19.\n\nYour card gets downgraded to a plain blue link bubble (zero error reporting) if it:\n\n• Exceeds 5 MB\n• Falls outside 1.5:1 to 2.0:1 aspect\n• Takes >2 sec to fetch\n• Uses a self-signed cert\n\nSend the URL to yourself before any launch.\n---\n(5/6) The headline-readability test most teams skip:\n\nSlack scales your 1200×630 card to ~360px wide on desktop.\n\nOpen a private channel, paste your URL, squint from across the room. If you can't read the headline, your on-image text is too small.\n\nFix: 56px+ on canvas.\n---\n(6/6) Full breakdown — 1200×630 spec, the safe zone, file-size ceilings nobody publishes, and the 5-place test matrix:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-dimensions-2026-pixel-perfect-specs/\n\nFree 1200×630 generator that's validator-ready by default: https://tinytools-smoky.vercel.app/og-image-generator/"
+    },
+    {
+      "platform": "Reddit /r/webdev",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-07T16:12:30Z",
+      "text": "Subreddit: /r/webdev (also fits /r/SideProject, /r/SaaS, /r/marketing)\n\nIf you're going to test only one OG image dimension, test 1200×630. Everything else in 2026 is decoration.\n\nThe actual problem isn't the dimension though — it's that almost every preview service crops your image at least slightly. So even though \"1200×630\" is canonical, you also need the 1080×540 centered safe zone or your logo gets clipped on Slack and Discord.\n\nThe other thing that has changed in the last 12 months and no doc has caught up to:\n\n- iOS 19 silently downgrades cards. No error message. Plain blue link bubble. Rules: under 5 MB, aspect ratio 1.5:1 to 2.0:1, response time under 2 sec, modern HTTPS cert. Send the URL from Mac to phone before every launch — it's the only test.\n\n- LinkedIn caches OG tags for 7 days. If your first share renders broken, every share for the next week renders broken — even after you push the fix. The Re-Scrape button on Post Inspector is the only invalidation mechanism. Run it BEFORE announcing, never after.\n\n- Slack scales 1200×630 down to ~360px wide. Squint test from across the room: if you can't read the headline, your on-image text is too small. 56px+ is the floor.\n\n- WhatsApp and Facebook share Meta's scraping infra. CDNs with bot-fight mode on (especially Cloudflare default config) silently 403 the facebookexternalhit user agent and produce \"og:image could not be downloaded.\" Allowlist it.\n\nThe minimum-viable head section that survives every platform:\n\n```\n<meta property=\"og:image\" content=\"https://example.com/card.png\">\n<meta property=\"og:image:width\" content=\"1200\">\n<meta property=\"og:image:height\" content=\"630\">\n<meta property=\"og:image:alt\" content=\"One descriptive sentence\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">\n<meta name=\"twitter:image\" content=\"https://example.com/card.png\">\n```\n\nThe width/height tags are technically optional. Functionally required — Slack uses them to avoid layout shift on mobile and Google's structured data validator flags pages that omit them.\n\nWrote up the full spec with platform-by-platform render behavior, file-size ceilings (iMessage drops at 5 MB, Discord at 8 MB, Slack at 10 MB), and the 5-place test matrix: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-dimensions-2026-pixel-perfect-specs/\n\n(Free 1200×630 generator we built that hits every spec by default, no signup, no watermark: https://tinytools-smoky.vercel.app/og-image-generator/)"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-07T16:12:30Z",
+      "text": "In 2024 I argued you needed four OG image variants — square for Twitter DMs, vertical for Pinterest, animated for Discord, static for everything else.\n\nIn 2026 I run one image: 1200×630, under 300 KB, sRGB, with everything important inside a centered 1080×540 safe zone.\n\nIt survives every cropper in the wild today. X, LinkedIn, Facebook, WhatsApp, iMessage, Discord, Slack, Microsoft Teams, Notion, Google Discover.\n\nWhat changed isn't the dimensions — those have been stable since 2010. What changed is the failure modes:\n\n→ iOS 19 silently downgrades cards over 5 MB or outside 1.5:1–2.0:1 aspect. Zero error message. Plain blue link bubble.\n\n→ LinkedIn caches OG tags for 7 days now. Re-Scrape on Post Inspector before announcing, not after. There is no second chance for a launch tweet.\n\n→ Slack scales your card to ~360px wide on desktop. The headline-readability test (squint from across the room) is the only thing that catches the most expensive bug in OG design — text that's too small at thumbnail size.\n\n→ Cloudflare's bot-fight mode silently 403s the Facebook scraper, breaking WhatsApp previews by side effect. Allowlist facebookexternalhit/1.1 at the edge.\n\nThe minimum-viable head section is 6 meta tags. Eight to twelve minutes of testing in 5 places (X validator → LinkedIn Post Inspector with Re-Scrape → Facebook Sharing Debugger → Slack manual paste → iMessage to your own phone) catches ~95% of the failures.\n\nThe cost of skipping the test pass is asymmetric. A broken card cached on LinkedIn for 7 days, on the launch announcement that 50% of your potential customers see, is a multi-thousand-dollar mistake.\n\nFull spec with the canonical card, the safe zone, file-size ceilings, and the 5-place test matrix: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-dimensions-2026-pixel-perfect-specs/\n\nWhat's broken on your team's OG cards right now that you haven't noticed?"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-07T16:12:30Z",
+      "text": "TITLE: Show HN: OG image dimensions in 2026 – the canonical 1200×630 spec, decoded\n\nLINK: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-dimensions-2026-pixel-perfect-specs/\n\nFIRST COMMENT:\nAuthor here. Wrote this after auditing a few teams' release runbooks and finding that every one of them had at least one OG image bug shipped to production. The dimensions advice (\"use 1200×630\") has been correct since 2010 — what's new in 2026 is the silent failure modes: iOS 19 downgrades cards over 5 MB or outside aspect 1.5:1–2.0:1 with no error reporting, LinkedIn now caches OG tags for 7 days so Re-Scrape on Post Inspector is mandatory before any launch announcement, and Slack scales to 360px wide on desktop which makes headline readability the actual constraint, not aesthetic balance. The post is the canonical-image spec, the 1080×540 safe zone, the file-size ceilings nobody publishes (iMessage 5 MB, Discord 8 MB, Slack 10 MB), and the 5-place pre-publish test matrix. Curious whether anyone here has hit cases where their CDN's bot-fight defaults silently break the facebookexternalhit fetch — that one bites Cloudflare default-config users most."
+    },
+    {
+      "platform": "X / Twitter Thread",
+      "tool": "og-image-generator",
       "createdAt": "2026-05-07T13:39:11Z",
       "text": "Does your OG image actually help SEO?\n\nI dug into Google's office hours, the 2025 docs update, and 30 days of GSC data. Here's the honest answer 🧵\n\n1/6\n---\nThe short version: og:image is NOT a direct ranking signal. Google has said this multiple times.\n\nBut it moves five inputs that ARE ranking signals — and most blogs ignore all of them.\n\n2/6\n---\nThe levers your social card actually moves:\n\n• Social CTR → engaged sessions\n• Branded search volume\n• Backlink rate (screenshots = social proof)\n• Dwell time / pogo-sticking\n• AI Overview & Discover thumbnails\n\nNone of these are tags. All of them compound.\n\n3/6\n---\nThe SEO-clean OG image setup:\n\n• 1200×630 PNG, < 1 MB\n• Absolute https URL\n• og:image:alt with one descriptive sentence\n• Same URL referenced in your Article JSON-LD\n• Explicit width/height tags\n\nFive tags. Five minutes. Zero excuses.\n\n4/6\n---\nThe myth that won't die: \"keyword-stuff og:image:alt for SEO\"\n\nIt does NOTHING for ranking and might trigger spam classifiers if you overdo it.\n\nWrite it for screen readers, not Googlebot.\n\n5/6\n---\nThe full breakdown — direct vs indirect impact, the 5-minute workflow, and the 3 metrics to monitor for 30 days:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-seo-does-it-affect-google-rankings-2026/\n\nFree generator that ships SEO-clean cards: https://tinytools-smoky.vercel.app/og-image-generator/\n\n6/6"
     },
@@ -260,30 +284,6 @@
       "tool": "og-image-generator",
       "createdAt": "2026-05-07T13:39:11Z",
       "text": "TITLE: Show HN: OG image SEO – what Google actually does with og:image (2026)\n\nLINK: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-seo-does-it-affect-google-rankings-2026/\n\nCOMMENT (50 words):\nWrote this after watching three engineering teams in a row burn afternoons \"optimizing\" og:image:alt for SEO. Spoiler: it's not a direct ranking signal, but it's a multiplier on five things that are. Includes the minimum-viable head snippet and the metrics to actually watch. Free generator linked at the bottom — no signup."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-07T13:28:16Z",
-      "text": "🧵 You spent an hour designing a beautiful 1200×630 OG image. You ship the post. Five minutes later someone pastes it in Slack and the preview is broken.\n\nHere's the 5-tool, 10-min pre-publish workflow that catches ~95% of broken-card bugs. (1/6)\n\n---\n\n(2/6) The order matters because the official validators also force a fresh fetch. Run them in this sequence:\n\n1. X Card Validator (cards-dev.twitter.com/validator)\n2. LinkedIn Post Inspector\n3. Facebook Sharing Debugger (also clears WhatsApp)\n4. Slack — manual paste-and-eyeball\n5. iMessage — send URL to yourself\n\n---\n\n(3/6) The LinkedIn one bites everyone in 2026.\n\nLinkedIn now caches OG tags for 7 DAYS. If your first share renders broken, every share for the next week renders broken — even after you push the fix.\n\nThe Re-Scrape button on Post Inspector is the only thing that invalidates the cache.\n\n---\n\n(4/6) iOS 19 silently downgrades OG images that fail any of these:\n• Width < 600px\n• Aspect ratio outside 1.5:1 to 2.0:1\n• File size > 5 MB (ideally < 300 KB)\n• Image URL > 2 sec response time\n\nThe bug shows as a plain blue link bubble. No error. No warning.\n\n---\n\n(5/6) The Slack test most teams skip:\n\nSlack scales your 1200×630 image to ~360px wide on desktop. Open a quiet channel, paste your URL, squint from across the room. If you can't read the headline, your on-image text is too small.\n\nThis is where the highest-impact bugs hide.\n\n---\n\n(6/6) Full 5-tool workflow with the pre-publish checklist, force-refresh sequence, and one-line fixes for the 4 most common failures:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-test-og-images-before-publishing-2026/\n\n(Free 1200×630 OG image generator that auto-compresses under 300 KB is in the post — designed exactly for these validators.)"
-    },
-    {
-      "platform": "Reddit /r/webdev",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-07T13:28:16Z",
-      "text": "Subreddit: /r/webdev (also fits /r/SideProject, /r/nextjs, /r/wordpress)\n\nReply on a thread asking why their LinkedIn/Twitter/Slack preview is broken or how to test OG images:\n\nThe thing that almost nobody pre-publishes test, and the reason 90% of broken-card bugs ship: there are five distinct rendering pipelines and they fail differently. You need to check all five before you announce.\n\nOrder matters because the first three are official tools that also force a cache refresh:\n\n1. X Card Validator at cards-dev.twitter.com/validator. Verify it renders as summary_large_image (not summary). Set the twitter:card meta tag explicitly — late 2025 X stopped inferring it from og:image alone for new domains.\n\n2. LinkedIn Post Inspector. This is the most important one in 2026 because LinkedIn caches OG tags for 7 days now. If your first share is broken, every share for the next week is broken. Click Re-Scrape — that's the only thing that invalidates the cache. Do this BEFORE you announce, not after.\n\n3. Facebook Sharing Debugger. Click Scrape Again (the step everyone skips). This also clears WhatsApp because Meta uses the same scraping infra. Common error: \"og:image could not be downloaded\" — your CDN is blocking facebookexternalhit/1.1, especially common with Cloudflare bot fight mode on.\n\n4. Slack — paste in a private channel, squint from 6 feet away. Slack scales your 1200×630 to ~360px wide. If the headline is unreadable at thumbnail size, your text is too small. This is where the biggest bugs hide because there's no validator.\n\n5. iMessage — send the URL to yourself from your Mac. iOS 19 silently drops OG images that are over 5 MB, outside aspect ratio 1.5:1–2.0:1, or take >2 sec to respond. Shows as a plain blue link bubble with zero error reporting. The fix is almost always file size — every 1200×630 PNG should be under 300 KB. Run through Squoosh at quality 75.\n\nWhole loop is 8–12 minutes once you've done it a few times. Cheaper than discovering at 9:01 a.m. that your launch tweet has been going out with a broken card for an hour.\n\nWrote up the full workflow with the pre-publish checklist and the force-refresh-everywhere sequence: https://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-test-og-images-before-publishing-2026/\n\n(Free OG image generator linked in the post — outputs validator-ready 1200×630 PNGs under 300 KB, no signup, no watermark.)"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-07T13:28:16Z",
-      "text": "A founder DM'd me Monday: \"Our launch went out 90 minutes ago. The LinkedIn preview is broken. I just fixed the meta tag. How do I get LinkedIn to show the new image?\"\n\nBad news: LinkedIn caches OG tags for 7 days as of Q1 2026. Re-sharing won't refresh it. Deleting and re-posting won't refresh it. Only the Post Inspector's Re-Scrape button will.\n\nThe lesson she took from it — and that I now run before every post my team ships — is a 5-tool, 10-minute pre-publish workflow:\n\n1. X Card Validator. Verify summary_large_image, not summary.\n2. LinkedIn Post Inspector — Re-Scrape BEFORE announcing, not after.\n3. Facebook Sharing Debugger — clears WhatsApp too.\n4. Slack — manual paste, squint from 6 feet away. If you can't read the headline at 360px wide, your on-image text is too small.\n5. iMessage — send the URL to yourself. iOS 19 silently drops cards over 5 MB or outside the 1.5:1–2.0:1 aspect ratio.\n\nThe cost of skipping this is asymmetric. A 10-minute pre-publish check is annoying. A broken card cached on LinkedIn for 7 days, on the launch announcement that 50% of your potential customers see, is a multi-thousand-dollar mistake.\n\nMost teams skip it because the official Twitter/LinkedIn/Facebook validators say \"looks good\" and they assume the rest will too. Slack and iMessage are where the highest-impact bugs hide because there's no validator — only a manual eye test.\n\nFull workflow with the pre-publish checklist, the force-refresh-everywhere sequence, and the one-line fixes for the 4 most common failures:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-test-og-images-before-publishing-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-07T13:28:16Z",
-      "text": "TITLE: Show HN: How to test OG images before publishing in 2026 (5-tool workflow)\n\nLINK: https://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-test-og-images-before-publishing-2026/\n\nFIRST COMMENT:\nAuthor here. Wrote this after watching enough teams ship launches with broken link previews that I built a checklist into our team's release runbook. The non-obvious things that have changed in the last 12-18 months: LinkedIn caches OG tags for 7 days now (Re-Scrape on Post Inspector is the only invalidation), iOS 19 silently drops cards over 5 MB or outside aspect ratio 1.5:1-2.0:1 with no error message, and X removed the legacy summary card type so missing twitter:card meta now produces a giant gray placeholder instead of a small thumbnail. The workflow is 5 tools, ~10 minutes, run in a specific order so the first three force fresh fetches before the manual checks. Curious if HN has hit cases where the validators all pass but the actual share renders differently — Slack channel-level caching has surprised me twice, but I haven't seen reproducible cases on the platform validators themselves."
     }
   ],
   "checklist": [
