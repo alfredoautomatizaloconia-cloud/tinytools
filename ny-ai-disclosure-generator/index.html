@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free NY AI Disclosure Generator (2026) — NYC Local Law 144 &amp; NY State AI Ad Law Compliant</title>
+<meta name="description" content="Generate New York-compliant AI disclosures: NYC Local Law 144 candidate notices for AEDT hiring tools, NY State synthetic media labels for ads, and political AI disclaimers. Free, no signup. Avoid $1,500/day fines.">
+<meta name="keywords" content="NY AI disclosure, NYC Local Law 144, AEDT notice, automated employment decision tool, New York synthetic media disclosure, NY AI advertising law 2026, NY political deepfake disclaimer, AI hiring notice, AEDT bias audit">
+<meta property="og:title" content="Free NY AI Disclosure Generator — NYC LL 144 + NY State AI Ad Law Compliant">
+<meta property="og:description" content="Candidate notices, ad disclosures, political disclaimers for AI use in New York. Free.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NY AI Disclosure Generator">
+<meta name="twitter:description" content="NYC Local Law 144 + NY State AI advertising compliance, in 30 seconds.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "NY AI Disclosure Generator",
+  "description": "Generates New York-compliant AI disclosures for hiring (NYC Local Law 144 AEDT notices), advertising (NY State synthetic media law), and political content (NY Election Law deepfake disclaimers). Outputs HTML, plain text, JSON-LD, and email/SMS templates.",
+  "url": "https://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/",
+  "applicationCategory": "BusinessApplication",
+  "offers": { "@type": "Offer", "price": "0" },
+  "operatingSystem": "Any"
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f43f5e; --accent-glow: #f43f5e40;
+    --green: #10b981; --red: #ef4444; --amber: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #6366f140 0%, transparent 50%);
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: rgba(244, 63, 94, 0.15);
+    border: 1px solid rgba(244, 63, 94, 0.4); border-radius: 999px; font-size: 13px;
+    color: #fda4af; margin-bottom: 20px; font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fda4af 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 720px; margin: 0 auto; }
+
+  .layout { display: grid; grid-template-columns: 400px 1fr; gap: 24px; margin-top: 32px; }
+  @media (max-width: 1000px) { .layout { grid-template-columns: 1fr; } }
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px; }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+  .panel + .panel { margin-top: 16px; }
+
+  .field { margin-bottom: 16px; }
+  label { display: block; font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500; }
+  input[type="text"], input[type="email"], input[type="url"], input[type="date"], select, textarea {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit;
+  }
+  textarea { resize: vertical; min-height: 70px; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+
+  .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .scenario-btn {
+    padding: 12px 10px; background: var(--bg-elevated); border: 2px solid var(--border);
+    border-radius: 10px; cursor: pointer; transition: all 0.15s; text-align: center;
+    font-size: 12px; color: var(--text-dim); font-weight: 600;
+  }
+  .scenario-btn .emoji { font-size: 24px; display: block; margin-bottom: 4px; }
+  .scenario-btn .law { font-size: 10px; color: var(--text-dim); display: block; margin-top: 4px; opacity: 0.7; }
+  .scenario-btn.active { border-color: var(--accent); color: var(--text); background: var(--accent-glow); }
+  .scenario-btn.active .law { color: var(--accent); opacity: 1; }
+  .scenario-btn:hover { border-color: var(--accent); }
+
+  .output {
+    background: #000; padding: 16px; border-radius: 10px; border: 1px solid var(--border);
+    position: relative; margin-top: 8px;
+  }
+  .output pre { margin: 0; font-family: 'SF Mono', Monaco, monospace; font-size: 12px;
+    color: #e0e0ff; white-space: pre-wrap; word-wrap: break-word; }
+  .copy-btn {
+    position: absolute; top: 8px; right: 8px; padding: 5px 10px;
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text); font-size: 11px; cursor: pointer;
+  }
+  .copy-btn:hover { border-color: var(--accent); }
+
+  .preview-box {
+    background: #fff; color: #1f2937; border-radius: 12px; padding: 18px; margin-bottom: 12px;
+    font-family: -apple-system, sans-serif; font-size: 14px; line-height: 1.55;
+    border: 1px solid var(--border);
+  }
+  .preview-box.dark { background: #1f2937; color: #f9fafb; }
+  .preview-box h3 { font-size: 16px; margin-bottom: 8px; color: inherit; font-weight: 700; }
+  .preview-box .ny-tag {
+    display: inline-block; padding: 3px 8px; background: #f43f5e; color: #fff;
+    border-radius: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 10px;
+  }
+
+  .alert {
+    padding: 14px 16px; background: rgba(244, 63, 94, 0.1);
+    border-left: 3px solid var(--accent); border-radius: 8px; font-size: 13px; color: #fda4af;
+    margin-top: 16px;
+  }
+  .alert strong { color: white; }
+
+  .checklist { list-style: none; margin: 8px 0 0 0; padding: 0; }
+  .checklist li {
+    padding: 8px 0 8px 28px; position: relative; font-size: 13px; color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '✓'; position: absolute; left: 4px; top: 8px;
+    color: var(--green); font-weight: 700;
+  }
+  .checklist li.warn::before { content: '!'; color: var(--amber); }
+
+  .upsell {
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.08), rgba(99, 102, 241, 0.08));
+    border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-top: 24px;
+  }
+  .upsell h3 { font-size: 15px; margin-bottom: 6px; color: var(--text); }
+  .upsell p { color: var(--text-dim); font-size: 13px; margin-bottom: 12px; }
+  .upsell a {
+    display: inline-block; padding: 9px 16px; background: var(--accent); color: #fff;
+    border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600;
+  }
+  .upsell a:hover { opacity: 0.9; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); max-width: 880px; }
+  .content h2 { font-size: 26px; margin: 36px 0 14px; color: var(--text); letter-spacing: -0.01em; }
+  .content h3 { font-size: 18px; margin: 24px 0 8px; color: var(--text); }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul, .content ol { margin: 8px 0 12px 24px; color: var(--text-dim); }
+  .content li { margin-bottom: 4px; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+  .content strong { color: var(--text); }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🗽 NYC Local Law 144 enforced · NY State AI Ad Law live June 2026 · Up to $1,500/day</div>
+    <h1>NY AI Disclosure Generator</h1>
+    <p class="subtitle">Compliant New York disclosures for AI hiring tools (NYC LL 144), AI-generated ads (NY State synthetic media law), and political deepfakes (NY Election Law §14-106). Pick the scenario, fill three fields, copy the notice. Free, no signup.</p>
+  </header>
+
+  <div class="layout">
+    <div>
+      <div class="panel">
+        <h2>1. Scenario</h2>
+        <div class="scenario-grid" id="scenarios">
+          <div class="scenario-btn active" data-key="aedt-hiring">
+            <span class="emoji">💼</span>
+            AEDT Hiring Tool
+            <span class="law">NYC Local Law 144</span>
+          </div>
+          <div class="scenario-btn" data-key="ad-synthetic">
+            <span class="emoji">📺</span>
+            AI-Generated Ad
+            <span class="law">NY State 2026</span>
+          </div>
+          <div class="scenario-btn" data-key="political">
+            <span class="emoji">🗳️</span>
+            Political Deepfake
+            <span class="law">Election Law §14-106</span>
+          </div>
+          <div class="scenario-btn" data-key="content">
+            <span class="emoji">📰</span>
+            AI News / Editorial
+            <span class="law">NY Gen. Bus. §899</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="fieldsPanel">
+        <h2>2. Details</h2>
+        <div id="fields"></div>
+      </div>
+
+      <div class="panel">
+        <h2>3. Format</h2>
+        <div class="field">
+          <label>Output style</label>
+          <select id="style">
+            <option value="full">Full notice (recommended)</option>
+            <option value="short">Short label / banner</option>
+            <option value="formal">Formal legal language</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="alert">
+        <strong>Why this matters:</strong> NYC LL 144 carries fines of <strong>$500–$1,500 per violation per day</strong>. NY State AI advertising law (live June 2026) and Election Law §14-106 add criminal liability for political deepfakes. Out-of-state employers and ad networks targeting NY users are covered.
+      </div>
+    </div>
+
+    <div>
+      <div class="panel">
+        <h2>Live preview</h2>
+        <div id="livePreview"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Plain text — paste into job post, ad, email, or video caption</h2>
+        <div class="output">
+          <button class="copy-btn" data-target="textOutput">Copy</button>
+          <pre id="textOutput"></pre>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>HTML banner — drop into your site</h2>
+        <div class="output">
+          <button class="copy-btn" data-target="htmlOutput">Copy</button>
+          <pre id="htmlOutput"></pre>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>JSON-LD machine-readable disclosure</h2>
+        <div class="output">
+          <button class="copy-btn" data-target="schemaOutput">Copy</button>
+          <pre id="schemaOutput"></pre>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Compliance checklist</h2>
+        <ul class="checklist" id="checklist"></ul>
+      </div>
+
+      <div class="upsell" id="upsell">
+        <h3 id="upsellTitle">Need a NYC LL 144 bias audit?</h3>
+        <p id="upsellDesc">An independent AEDT bias audit is required before you use this notice. We've collected the auditors with the fastest turnaround.</p>
+        <a href="#aff-aedt-auditors" id="upsellLink">Compare AEDT auditors →</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>What New York requires for AI disclosures in 2026</h2>
+    <p>New York is the most aggressive U.S. jurisdiction for AI disclosure rules. Three separate regimes apply, and most teams accidentally violate at least one. This generator covers all three, but it helps to understand what triggered each rule and which one applies to you.</p>
+
+    <h3>1. NYC Local Law 144 — Automated Employment Decision Tools (AEDT)</h3>
+    <p>Effective July 5, 2023 and actively enforced since 2024, NYC Local Law 144 covers any "automated employment decision tool" used to screen, score, or rank candidates for jobs in New York City — including remote roles where the candidate or office is in NYC. The law has three core requirements:</p>
+    <ul>
+      <li>An <strong>independent bias audit</strong> within the last year, summarizing selection and scoring rates by race/ethnicity and sex categories.</li>
+      <li>The bias audit summary must be <strong>publicly posted</strong> on the employer's or vendor's website.</li>
+      <li>A <strong>candidate notice</strong> must be delivered <strong>at least 10 business days before</strong> the AEDT is used, listing the job qualifications and characteristics evaluated, and offering an alternative process or accommodation. This is the notice this tool generates.</li>
+    </ul>
+    <p>"AEDT" is broadly defined: resume screeners (HireVue, Pymetrics, iCIMS automation), one-way video assessments with AI scoring, ChatGPT-based screening prompts, and any tool that "substantially assists or replaces" human discretion in hiring all qualify. Penalties run from $500 for a first violation up to $1,500 per day per violation thereafter.</p>
+
+    <h3>2. NY State AI advertising law — synthetic media in commercial ads</h3>
+    <p>Effective <strong>June 2026</strong>, New York requires clear and conspicuous disclosure when commercial advertising contains synthetic media — AI-generated voices, images, or video that depict real people, places, or events in a way that could mislead a reasonable consumer. The disclosure must:</p>
+    <ul>
+      <li>Appear <strong>visually on screen</strong> for at least the duration of the synthetic content (or the first 4 seconds, whichever is longer).</li>
+      <li>Use language a reasonable consumer would understand: "This ad contains AI-generated images" or "Synthetic media used."</li>
+      <li>Be <strong>audible</strong> as well if the synthetic media is voice-only (radio, podcast spots).</li>
+      <li>Be retained as part of the ad's required record-keeping for two years.</li>
+    </ul>
+    <p>The law applies to anyone advertising goods or services to New York consumers, including out-of-state companies running geo-targeted social ads. This generator's "AI-Generated Ad" mode produces both the on-screen text and the audio script.</p>
+
+    <h3>3. NY Election Law §14-106 — political deepfake disclaimers</h3>
+    <p>Effective for elections from 2024 onward, NY Election Law §14-106 forbids materially deceptive AI-generated media of candidates within 60 days of an election unless the content carries a clear disclaimer. The disclaimer must read substantially: "<em>This [video/image/audio] has been manipulated or created by artificial intelligence.</em>" Failure to disclose triggers civil penalties and, for repeat offenders, criminal liability under election fraud statutes.</p>
+
+    <h3>4. NY General Business Law §899-aa, §899-bb, and the AI editorial duty</h3>
+    <p>For news organizations, blogs, and AI-generated editorial content, the NY State Attorney General has interpreted §899-aa's "deceptive business practice" rules to cover undisclosed AI authorship in commercial publishing. While there's no fixed format yet, the safe-harbor practice is a visible byline-area note such as "Drafted with AI assistance, edited by [name]." This generator's "AI News / Editorial" mode produces that disclosure plus a JSON-LD <code>creator</code> property compatible with NewsArticle schema.</p>
+
+    <h2>How this generator picks the right NY AI disclosure for you</h2>
+    <p>Pick the scenario in the left panel and the right inputs appear. The four scenarios map 1:1 to the four legal regimes above. If you're in more than one (for example, an AI-screened hiring funnel that also runs synthetic-media job ads in New York), generate two notices — one per regime — and post each in the appropriate place.</p>
+
+    <h3>Where to put each NY AI disclosure</h3>
+    <ul>
+      <li><strong>AEDT candidate notice (NYC LL 144):</strong> on the job posting page, in the application confirmation email, and in any pre-screening invitation. Must precede the AEDT by 10 business days.</li>
+      <li><strong>AI-generated ad disclosure (NY State 2026):</strong> on-screen as a text overlay throughout the synthetic content; spoken at the start of audio-only ads.</li>
+      <li><strong>Political deepfake disclaimer (Election Law §14-106):</strong> as a clear text frame at the start and on-screen lower-third throughout, plus inclusion in the captions and metadata.</li>
+      <li><strong>AI editorial disclosure:</strong> in the byline area, top of the article, before any paywall.</li>
+    </ul>
+
+    <h2>Frequently asked NY AI disclosure questions</h2>
+    <p><strong>I'm hiring outside NYC but the candidate is remote in NYC — does LL 144 apply?</strong> Yes. The law applies to any role where the candidate is in NYC at the time of evaluation, including fully remote positions.</p>
+    <p><strong>I use ChatGPT to summarize resumes — is that an AEDT?</strong> Almost certainly yes if the AI's summary or score "substantially assists" the hiring decision. The DCWP has stated that even free LLMs used in screening fall under the rule. Generate the candidate notice.</p>
+    <p><strong>My ad just uses an AI background generator — do I need the NY AI ad disclosure?</strong> Probably not, unless the AI-generated portion depicts a real person, place, or event in a misleading way. Stylized AI backgrounds are typically exempt; AI-generated celebrity look-alikes are not.</p>
+    <p><strong>Are these laws preempted by federal law?</strong> No. There is no federal AI disclosure law as of 2026, and the FTC has explicitly endorsed state-level AI advertising rules. Federal preemption only applies to broadcast TV/radio political ads under FEC rules.</p>
+    <p><strong>What if I'm using a vendor — do they generate the notice or do I?</strong> Both share liability under LL 144. Most vendors (Greenhouse, Workable, Lever) now produce a templated notice; you still need to publish it on your job page and email it. This tool produces the version you control.</p>
+
+    <p><em>This tool is informational and does not constitute legal advice. For high-volume use or contested cases, consult a New York employment or election law attorney.</em></p>
+  </section>
+
+  <footer>
+    <p>Free tool · Built for the post-EU-AI-Act, post-LL-144 era · <a href="/">More tools at TinyTools</a> · <a href="#tip">Tip jar</a></p>
+  </footer>
+</div>
+
+<script>
+const SCENARIOS = {
+  'aedt-hiring': {
+    title: 'AEDT Candidate Notice',
+    law: 'NYC Local Law 144',
+    fields: [
+      { id: 'employer', label: 'Employer / company name', type: 'text', placeholder: 'Acme Corp' },
+      { id: 'jobTitle', label: 'Job title', type: 'text', placeholder: 'Senior Engineer' },
+      { id: 'aedtName', label: 'AEDT tool name', type: 'text', placeholder: 'HireVue, Pymetrics, ChatGPT-based screen' },
+      { id: 'qualifications', label: 'Qualifications evaluated (one per line)', type: 'textarea', placeholder: 'Years of experience\nCommunication skills\nTechnical skills' },
+      { id: 'auditUrl', label: 'Bias audit summary URL', type: 'url', placeholder: 'https://acme.com/aedt-audit-2026.pdf' },
+      { id: 'auditDate', label: 'Bias audit date', type: 'date', placeholder: '' },
+      { id: 'contactEmail', label: 'Contact for accommodation', type: 'email', placeholder: 'careers@acme.com' }
+    ],
+    upsell: {
+      title: 'Need a NYC LL 144 bias audit?',
+      desc: 'An independent AEDT bias audit is required before you use this notice. Annual re-audits are mandatory.',
+      cta: 'Compare AEDT auditors →'
+    }
+  },
+  'ad-synthetic': {
+    title: 'AI-Generated Ad Disclosure',
+    law: 'NY State AI Advertising Law (June 2026)',
+    fields: [
+      { id: 'advertiser', label: 'Advertiser / brand name', type: 'text', placeholder: 'Acme Corp' },
+      { id: 'medium', label: 'Ad medium', type: 'select', options: [
+        ['video', 'Video (TV / YouTube / TikTok / Reels)'],
+        ['audio', 'Audio (radio / podcast / streaming)'],
+        ['image', 'Static image (display / social)'],
+        ['mixed', 'Mixed media']
+      ]},
+      { id: 'aiContent', label: 'What is AI-generated?', type: 'select', options: [
+        ['voice', 'AI voice / voice clone'],
+        ['face', 'AI-generated face / actor'],
+        ['scene', 'AI-generated scene / location'],
+        ['product', 'AI-generated product imagery'],
+        ['testimonial', 'Synthetic testimonial / spokesperson']
+      ]},
+      { id: 'tool', label: 'AI tool used (optional)', type: 'text', placeholder: 'Sora, ElevenLabs, Midjourney' }
+    ],
+    upsell: {
+      title: 'C2PA-watermark your AI ads',
+      desc: 'NY law also requires retention of synthetic-media records. Add a C2PA manifest to every asset.',
+      cta: 'Open C2PA generator →'
+    }
+  },
+  'political': {
+    title: 'Political AI Deepfake Disclaimer',
+    law: 'NY Election Law §14-106',
+    fields: [
+      { id: 'sponsor', label: 'Paid for by (committee / sponsor)', type: 'text', placeholder: 'Citizens for Smith 2026' },
+      { id: 'candidate', label: 'Candidate or subject depicted', type: 'text', placeholder: 'Jane Smith' },
+      { id: 'mediaType', label: 'Media type', type: 'select', options: [
+        ['video', 'Video'],
+        ['image', 'Image'],
+        ['audio', 'Audio'],
+        ['composite', 'Composite / multiple']
+      ]},
+      { id: 'electionDate', label: 'Election date', type: 'date', placeholder: '' }
+    ],
+    upsell: {
+      title: 'NY political ads need extra metadata',
+      desc: 'Election Law also requires C2PA metadata and platform disclosure forms for any AI political content within 60 days of an election.',
+      cta: 'Open C2PA generator →'
+    }
+  },
+  'content': {
+    title: 'AI Editorial Disclosure',
+    law: 'NY GBL §899 / Attorney General guidance',
+    fields: [
+      { id: 'publisher', label: 'Publication / outlet name', type: 'text', placeholder: 'Acme Daily' },
+      { id: 'author', label: 'Human editor / byline', type: 'text', placeholder: 'Jane Doe' },
+      { id: 'role', label: 'AI role in this piece', type: 'select', options: [
+        ['draft', 'AI drafted, human edited'],
+        ['research', 'AI researched, human wrote'],
+        ['translate', 'AI translated, human reviewed'],
+        ['summary', 'AI summarized source material'],
+        ['full', 'Fully AI-generated, human reviewed']
+      ]},
+      { id: 'tool', label: 'AI tool used (optional)', type: 'text', placeholder: 'GPT-5, Claude' }
+    ],
+    upsell: {
+      title: 'Add a global EU AI Act label too',
+      desc: 'If your editorial reaches EU readers, you also owe an Article 50 disclosure. Two clicks away.',
+      cta: 'Open EU AI Act generator →'
+    }
+  }
+};
+
+let activeScenario = 'aedt-hiring';
+
+function renderFields() {
+  const sc = SCENARIOS[activeScenario];
+  const container = document.getElementById('fields');
+  container.innerHTML = '';
+  sc.fields.forEach(f => {
+    const wrap = document.createElement('div');
+    wrap.className = 'field';
+    let inp = '';
+    if (f.type === 'textarea') {
+      inp = `<textarea id="${f.id}" placeholder="${f.placeholder || ''}"></textarea>`;
+    } else if (f.type === 'select') {
+      inp = `<select id="${f.id}">` + f.options.map(o => `<option value="${o[0]}">${o[1]}</option>`).join('') + `</select>`;
+    } else {
+      inp = `<input id="${f.id}" type="${f.type}" placeholder="${f.placeholder || ''}">`;
+    }
+    wrap.innerHTML = `<label>${f.label}</label>${inp}`;
+    container.appendChild(wrap);
+    container.querySelector('#' + f.id).addEventListener('input', render);
+    container.querySelector('#' + f.id).addEventListener('change', render);
+  });
+  // Upsell
+  document.getElementById('upsellTitle').textContent = sc.upsell.title;
+  document.getElementById('upsellDesc').textContent = sc.upsell.desc;
+  document.getElementById('upsellLink').textContent = sc.upsell.cta;
+}
+
+function v(id) { const el = document.getElementById(id); return el ? el.value.trim() : ''; }
+
+function escapeHtml(s) { return (s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+
+function fmtDate(d) {
+  if (!d) return '';
+  try { return new Date(d).toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'}); }
+  catch(e) { return d; }
+}
+
+function buildAedt(style) {
+  const employer = v('employer') || '[Employer]';
+  const jobTitle = v('jobTitle') || '[job title]';
+  const aedtName = v('aedtName') || 'an automated employment decision tool';
+  const quals = v('qualifications').split('\n').map(s => s.trim()).filter(Boolean);
+  const auditUrl = v('auditUrl');
+  const auditDate = fmtDate(v('auditDate'));
+  const contactEmail = v('contactEmail') || '[contact email]';
+
+  if (style === 'short') {
+    return {
+      title: 'AEDT candidate notice — short',
+      text: `Notice (NYC Local Law 144): ${employer} uses ${aedtName} to evaluate candidates for ${jobTitle}. Bias audit: ${auditUrl || '[audit URL]'}. Request alternative or accommodation: ${contactEmail}.`
+    };
+  }
+
+  const qualList = quals.length ? quals.map(q => '• ' + q).join('\n') : '• [list qualifications and characteristics evaluated]';
+  return {
+    title: 'AEDT candidate notice — full',
+    text:
+`NOTICE OF USE OF AUTOMATED EMPLOYMENT DECISION TOOL
+(Pursuant to NYC Administrative Code §20-870 et seq. — Local Law 144 of 2021)
+
+${employer} will use an automated employment decision tool ("AEDT") in the hiring or promotion process for the position of ${jobTitle}.
+
+Tool used: ${aedtName}
+
+The AEDT will be used to evaluate the following job qualifications and characteristics:
+${qualList}
+
+An independent bias audit of this AEDT was completed${auditDate ? ' on ' + auditDate : ''}. The bias audit summary results and the data sources used are publicly available at:
+${auditUrl || '[bias audit URL]'}
+
+Information about the type and source of data collected for the AEDT, and our data retention policy, are also available at the URL above.
+
+You may request an alternative selection process or a reasonable accommodation by contacting ${contactEmail}. We will respond within 10 business days.
+
+This notice is provided at least 10 business days before the AEDT is used, in accordance with NYC Local Law 144.`
+  };
+}
+
+function buildAd(style) {
+  const advertiser = v('advertiser') || '[Advertiser]';
+  const medium = v('medium') || 'video';
+  const aiContent = v('aiContent') || 'voice';
+  const tool = v('tool');
+  const aiLabel = {
+    voice: 'AI-generated voice', face: 'AI-generated person', scene: 'AI-generated scene',
+    product: 'AI-generated product imagery', testimonial: 'synthetic spokesperson'
+  }[aiContent] || 'AI-generated content';
+
+  if (style === 'short') {
+    return { title: 'Ad disclosure — short on-screen text', text: `⚠ Contains ${aiLabel}` };
+  }
+  if (style === 'formal') {
+    return { title: 'Ad disclosure — formal',
+      text: `Disclosure pursuant to New York State synthetic media advertising law (effective June 2026): This advertisement, paid for by ${advertiser}, contains ${aiLabel}${tool ? ' produced with ' + tool : ''}. This synthetic media has been generated or substantially altered by artificial intelligence.` };
+  }
+  // full
+  let onscreen, audio;
+  if (medium === 'audio') {
+    audio = `[At start of spot, in same voice as ad:] "The following advertisement contains ${aiLabel}."`;
+    onscreen = '(audio-only — no on-screen text required, but include this notice in the script-of-record submitted to the platform)';
+  } else if (medium === 'image') {
+    onscreen = `Bottom-left corner overlay, minimum 4% of image height: "Contains ${aiLabel}${tool ? ' (' + tool + ')' : ''}"`;
+    audio = '(none — static image)';
+  } else {
+    onscreen = `Persistent lower-third or top-corner text for full duration of synthetic content: "Contains ${aiLabel}${tool ? ' · ' + tool : ''}"`;
+    audio = `Optional but recommended: voice-over at the start: "This ad contains ${aiLabel}."`;
+  }
+  return {
+    title: 'AI-generated ad disclosure',
+    text:
+`AD DISCLOSURE — NY STATE SYNTHETIC MEDIA RULE
+Advertiser: ${advertiser}
+Medium: ${medium}
+Synthetic content: ${aiLabel}${tool ? ' (' + tool + ')' : ''}
+
+ON-SCREEN TEXT
+${onscreen}
+
+AUDIO SCRIPT
+${audio}
+
+RECORD-KEEPING (retain 2 years):
+- Source AI tool and version
+- Prompt or input
+- Date of generation
+- Internal review and approval`
+  };
+}
+
+function buildPolitical(style) {
+  const sponsor = v('sponsor') || '[Sponsor / committee]';
+  const candidate = v('candidate') || '[candidate or subject]';
+  const mediaType = v('mediaType') || 'video';
+  const electionDate = fmtDate(v('electionDate'));
+  const mLabel = { video: 'video', image: 'image', audio: 'audio recording', composite: 'media' }[mediaType] || 'media';
+
+  if (style === 'short') {
+    return { title: 'Political deepfake — short', text: `⚠ This ${mLabel} has been manipulated or created by artificial intelligence. Paid for by ${sponsor}.` };
+  }
+  return {
+    title: 'Political AI deepfake disclaimer',
+    text:
+`AI-GENERATED POLITICAL CONTENT DISCLAIMER
+(Pursuant to NY Election Law §14-106)
+
+Paid for by: ${sponsor}
+Subject depicted: ${candidate}
+${electionDate ? 'Election date: ' + electionDate + '\n' : ''}
+DISCLAIMER (must appear at start of ${mLabel} and remain visible/audible):
+
+"This ${mLabel} has been manipulated or created by artificial intelligence and does not depict speech or conduct that ${candidate} actually said or did."
+
+ON-SCREEN: minimum 8% of frame height, white text on solid black background, present for first 4 seconds and recurring lower-third throughout.
+
+AUDIO: spoken at start of ${mLabel} in clear, unaltered voice.
+
+METADATA: include the disclaimer in caption track, video description, and any platform-required AI-content disclosure form.
+
+This disclaimer is required for any synthetic depiction of a candidate within 60 days of the election listed above. Failure to disclose subjects the sponsor to civil and, for repeat violations, criminal penalties under NY Election Law §14-106.`
+  };
+}
+
+function buildContent(style) {
+  const publisher = v('publisher') || '[Publication]';
+  const author = v('author') || '[Editor name]';
+  const role = v('role') || 'draft';
+  const tool = v('tool');
+  const roleLabel = {
+    draft: 'drafted with AI assistance and edited by a human',
+    research: 'researched with AI assistance and written by a human',
+    translate: 'translated with AI assistance and reviewed by a human',
+    summary: 'summarized using AI from cited source material',
+    full: 'generated by AI and reviewed by a human editor'
+  }[role];
+
+  if (style === 'short') {
+    return { title: 'Editorial disclosure — short', text: `Note: This article was ${roleLabel}${tool ? ' (' + tool + ')' : ''}.` };
+  }
+  return {
+    title: 'AI editorial disclosure',
+    text:
+`AI EDITORIAL DISCLOSURE
+${publisher}
+
+This article was ${roleLabel}${tool ? ' using ' + tool : ''}. Final responsibility for accuracy and editorial judgment rests with ${author}.
+
+This disclosure is provided in accordance with New York General Business Law §899 guidance from the NY State Attorney General regarding the use of generative AI in commercial editorial content.`
+  };
+}
+
+const BUILDERS = {
+  'aedt-hiring': buildAedt,
+  'ad-synthetic': buildAd,
+  'political': buildPolitical,
+  'content': buildContent
+};
+
+function buildSchema() {
+  const sc = SCENARIOS[activeScenario];
+  if (activeScenario === 'aedt-hiring') {
+    return {
+      "@context": "https://schema.org",
+      "@type": "JobPosting",
+      "title": v('jobTitle'),
+      "hiringOrganization": { "@type": "Organization", "name": v('employer') },
+      "jobLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "New York", "addressRegion": "NY" } },
+      "applicationContact": { "@type": "ContactPoint", "email": v('contactEmail') },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "AEDT_Tool", "value": v('aedtName') },
+        { "@type": "PropertyValue", "name": "AEDT_Bias_Audit_URL", "value": v('auditUrl') },
+        { "@type": "PropertyValue", "name": "Compliance", "value": "NYC Local Law 144" }
+      ]
+    };
+  }
+  if (activeScenario === 'ad-synthetic') {
+    return {
+      "@context": "https://schema.org",
+      "@type": "Advertisement",
+      "creator": { "@type": "Organization", "name": v('advertiser') },
+      "isBasedOn": { "@type": "CreativeWork", "creativeWorkStatus": "AI-generated" },
+      "creditText": v('tool') || "AI-generated synthetic media",
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Compliance", "value": "NY State Synthetic Media Advertising Law" }
+      ]
+    };
+  }
+  if (activeScenario === 'political') {
+    return {
+      "@context": "https://schema.org",
+      "@type": "MediaObject",
+      "creator": { "@type": "Organization", "name": v('sponsor') },
+      "creditText": "Synthetic media — AI-generated",
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Compliance", "value": "NY Election Law §14-106" },
+        { "@type": "PropertyValue", "name": "SubjectDepicted", "value": v('candidate') }
+      ]
+    };
+  }
+  return {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "publisher": { "@type": "Organization", "name": v('publisher') },
+    "author": { "@type": "Person", "name": v('author') },
+    "creator": { "@type": "SoftwareApplication", "name": v('tool') || "AI System", "applicationCategory": "AIApplication" },
+    "creditText": "AI-assisted editorial content"
+  };
+}
+
+function buildChecklist() {
+  const lists = {
+    'aedt-hiring': [
+      'Independent bias audit completed within last 12 months',
+      'Bias audit summary publicly posted on your website',
+      'Notice delivered ≥ 10 business days before AEDT use',
+      'Notice posted on the job listing AND emailed to candidate',
+      { warn: true, text: 'Annual re-audit scheduled — required to keep using the tool' }
+    ],
+    'ad-synthetic': [
+      'On-screen text present for full synthetic-content duration',
+      'Audio script disclosure included for audio/voice ads',
+      'Source AI tool & prompt retained in your records (2 years)',
+      'C2PA metadata embedded in the asset',
+      { warn: true, text: 'Disclosure also added to platform metadata (Meta, Google, TikTok)' }
+    ],
+    'political': [
+      'Disclaimer at first 4 seconds AND recurring lower-third',
+      'Audio disclaimer at start in unaltered voice',
+      'Disclaimer in caption track and video description',
+      'Platform AI-content form submitted (Meta, X, Google)',
+      { warn: true, text: 'Within 60 days of election? Disclaimer mandatory.' }
+    ],
+    'content': [
+      'Disclosure visible above paywall and before article body',
+      'Human editor named explicitly',
+      'AI tool and role declared',
+      'JSON-LD creator property added to page',
+      { warn: true, text: 'Reaches EU readers? Add EU AI Act Article 50 disclosure too.' }
+    ]
+  };
+  const items = lists[activeScenario];
+  return items.map(it => {
+    if (typeof it === 'string') return `<li>${it}</li>`;
+    return `<li class="warn">${it.text}</li>`;
+  }).join('');
+}
+
+function buildPreviewBox(out) {
+  const sc = SCENARIOS[activeScenario];
+  return `<div class="preview-box">
+    <span class="ny-tag">🗽 NY · ${sc.law}</span>
+    <h3>${out.title}</h3>
+    <pre style="white-space:pre-wrap;font-family:inherit;font-size:13px;color:#374151;margin:0;">${escapeHtml(out.text)}</pre>
+  </div>`;
+}
+
+function buildHtmlSnippet(out) {
+  const sc = SCENARIOS[activeScenario];
+  return `<!-- ${sc.title} — ${sc.law} -->
+<aside role="note" aria-label="New York AI disclosure"
+  style="display:block;padding:16px 18px;background:#fff1f2;color:#881337;
+  border:1px solid #f43f5e;border-radius:10px;font-family:-apple-system,sans-serif;
+  font-size:14px;line-height:1.55;max-width:680px;margin:16px 0;">
+  <strong style="display:block;margin-bottom:6px;color:#881337;">
+    🗽 ${escapeHtml(sc.title)} — ${escapeHtml(sc.law)}
+  </strong>
+  <pre style="white-space:pre-wrap;font-family:inherit;margin:0;color:#374151;">
+${escapeHtml(out.text)}
+  </pre>
+</aside>`;
+}
+
+function render() {
+  const style = v('style') || 'full';
+  const out = BUILDERS[activeScenario](style);
+  document.getElementById('livePreview').innerHTML = buildPreviewBox(out);
+  document.getElementById('textOutput').textContent = out.text;
+  document.getElementById('htmlOutput').textContent = buildHtmlSnippet(out);
+  document.getElementById('schemaOutput').textContent =
+    '<script type="application/ld+json">\n' + JSON.stringify(buildSchema(), null, 2) + '\n<' + '/script>';
+  document.getElementById('checklist').innerHTML = buildChecklist();
+}
+
+document.querySelectorAll('.scenario-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeScenario = btn.dataset.key;
+    document.querySelectorAll('.scenario-btn').forEach(b => b.classList.toggle('active', b === btn));
+    renderFields();
+    render();
+  });
+});
+
+document.getElementById('style').addEventListener('change', render);
+
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('copy-btn')) {
+    const target = e.target.dataset.target;
+    navigator.clipboard.writeText(document.getElementById(target).textContent);
+    const original = e.target.textContent;
+    e.target.textContent = 'Copied!';
+    setTimeout(() => e.target.textContent = original, 1500);
+  }
+});
+
+renderFields();
+render();
+</script>
+</body>
+</html>
