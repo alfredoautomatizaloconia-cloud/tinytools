@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Domain Name Generator for Indie Hackers — Find a Shippable .com in Minutes (2026)</title>
+<meta name="description" content="The fastest free AI domain generator built for indie hackers. Generate 100+ brandable, available, ship-this-weekend domain names with live .com / .io / .dev availability. No signup, no rate limit.">
+<meta name="keywords" content="domain generator for indie hackers, indie hacker domain names, startup domain generator, brandable domain names, available .com domains, ai domain generator, side project domain ideas, micro saas domain names">
+<meta property="og:title" content="Free Domain Name Generator for Indie Hackers (2026)">
+<meta property="og:description" content="Find a shippable, brandable domain in under 60 seconds. Free, no signup, real-time .com / .io / .dev availability.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/domain-generator/for-indie-hackers/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Domain Name Generator for Indie Hackers (2026)">
+<meta name="twitter:description" content="Generate 100+ available indie-hacker-ready domain names instantly. Brandable, short, and pronounceable.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/domain-generator/for-indie-hackers/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "TinyTools Domain Generator for Indie Hackers",
+  "url": "https://tinytools-smoky.vercel.app/domain-generator/for-indie-hackers/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any (web)",
+  "description": "A free AI-powered domain name generator tuned for indie hackers and solo founders. Generates brandable, short, pronounceable side-project and micro-SaaS domain names with live availability checking across .com, .io, .dev, .app and more.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "creator": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
+  "featureList": [
+    "AI-generated brandable startup names",
+    "Short, pronounceable, ship-this-weekend names",
+    "Live .com / .io / .dev / .app availability",
+    "Micro-SaaS and side-project naming patterns",
+    "100% free, no signup, no rate limit"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What makes a good domain name for an indie hacker side project?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A strong indie hacker domain is short (ideally under 10 characters), pronounceable on a podcast without spelling it, brandable enough that it stays usable when the product pivots, and available on .com or a clean .io / .dev. Avoid hyphens, numbers, and double letters at boundaries — they kill direct-load traffic. Most successful indie products use either an invented brandable word (Stripe, Plausible) or a compressed two-word mash-up (Carrd, Tally)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I buy .com or .io for a micro SaaS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Buy .com if it is available. It still wins on direct-load trust and is the only TLD most non-technical users will type unprompted. .io is a strong second choice for developer-focused tools — Plausible, Resend, Mintlify and many others run on .io with no measurable ranking penalty. Avoid .io for any product targeting non-technical buyers or anything in regulated verticals like health, finance, or legal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast should I name a side project before shipping?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you are pre-launch and pre-revenue, give yourself 60 minutes — not 60 days. Generate a list of 50 candidates, filter to a shortlist of 5 available .com or .io domains, and pick the one you would not be embarrassed to put in a Show HN title. Naming is reversible until you have backlinks. The most expensive naming mistake indie hackers make is delaying ship by two months while bikeshedding the name."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are weird made-up words good for indie SaaS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, when they are short and pronounceable. Made-up brandable names (Plausible, Beehiiv, Tally, Carrd, Resend) win because they are trademark-clean, the .com is usually available, and they have no semantic baggage when the product expands beyond the original use case. Avoid made-up words that need to be spelled letter-by-letter when said aloud — those quietly leak conversions for the rest of the product's life."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this domain generator cost anything?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The TinyTools Domain Generator is 100% free, no signup, no credit card, no rate limit on generation. Availability checks are powered by live registry queries, and the buy links go to standard registrars where you pay normal registration fees (typically $10–$15 per year for .com, ~$30/yr for .io, ~$15/yr for .dev)."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a;
+    --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #8b5cf6; --accent-2: #6366f1; --accent-glow: #8b5cf640;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d420 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .breadcrumb { color: var(--text-dim); font-size: 13px; margin-bottom: 18px; }
+  .breadcrumb a { color: var(--text-dim); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .badge {
+    display: inline-block; padding: 5px 12px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 12px;
+    color: var(--text-dim); margin-bottom: 16px; letter-spacing: 0.02em;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.15; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #a78bfa 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .lede { color: var(--text-dim); font-size: 17px; margin-bottom: 28px; }
+  h2 { font-size: 24px; margin: 40px 0 14px; color: var(--text); letter-spacing: -0.01em; }
+  h3 { font-size: 19px; margin: 28px 0 10px; color: var(--text); }
+  p { margin-bottom: 16px; color: #d0d0e0; }
+  ul, ol { margin: 12px 0 18px 24px; color: #d0d0e0; }
+  li { margin-bottom: 8px; }
+  strong { color: var(--text); font-weight: 600; }
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-size: 14px; color: #c4b5fd; }
+  a { color: var(--accent); }
+  blockquote {
+    border-left: 3px solid var(--accent); padding: 10px 18px; margin: 22px 0;
+    background: var(--bg-elevated); border-radius: 6px; color: var(--text-dim);
+  }
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 15px;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); color: #d0d0e0; }
+  th { background: var(--bg-elevated); color: var(--text); font-weight: 600; font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  .cta-box {
+    margin: 36px 0; padding: 28px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; border-left: 4px solid var(--accent);
+  }
+  .cta-box h3 { margin: 0 0 6px; font-size: 19px; color: var(--text); }
+  .cta-box p { margin-bottom: 14px; font-size: 15px; }
+  .cta-btn {
+    display: inline-block; padding: 13px 26px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
+    box-shadow: 0 4px 18px rgba(139, 92, 246, 0.32);
+  }
+  .cta-btn:hover { transform: translateY(-1px); }
+  .use-cases { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0 24px; }
+  @media (max-width: 600px) { .use-cases { grid-template-columns: 1fr; } }
+  .use-case {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px;
+  }
+  .use-case h4 { font-size: 15px; margin: 0 0 6px; color: var(--text); }
+  .use-case p { font-size: 14px; color: var(--text-dim); margin: 0; line-height: 1.55; }
+  .related { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .related h3 { color: var(--text-dim); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card {
+    padding: 12px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--text); font-size: 14px; transition: border-color 0.15s;
+  }
+  .related-card:hover { border-color: var(--accent); }
+  .related-card .label { color: var(--text-dim); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; }
+  footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 13px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;›&nbsp;
+    <a href="/domain-generator/">Domain Generator</a> &nbsp;›&nbsp;
+    For Indie Hackers
+  </nav>
+
+  <span class="badge">For Indie Hackers · Free · No signup</span>
+  <h1>Free Domain Name Generator for Indie Hackers</h1>
+  <p class="lede">Find a shippable, brandable, <code>.com</code>-available domain in under 60 seconds. Generate 100+ ideas tuned for indie hackers — short brandables, micro-SaaS mash-ups, and developer-friendly <code>.io</code> / <code>.dev</code> alternates — with live availability checks built in. No signup, no rate limit, no upsell.</p>
+
+  <div class="cta-box">
+    <h3>Stop bikeshedding. Generate names now.</h3>
+    <p>The same TinyTools generator, pre-tuned for indie-hacker naming patterns. Brandable suggestions, real-time availability across <code>.com</code>, <code>.io</code>, <code>.dev</code>, <code>.app</code>. No email gate.</p>
+    <a class="cta-btn" href="/domain-generator/">Try the Domain Generator →</a>
+  </div>
+
+  <h2>Why indie hackers need a different domain generator</h2>
+  <p>Most domain name generators are built for two audiences: enterprise marketing teams who can afford to spend $40,000 on a premium <code>.com</code>, and SEO bloggers who want long descriptive keyword stuffs like <code>besttoolsforproductivity</code>. Neither shape fits an indie hacker. You are shipping a side project this weekend, you have a $50 budget that includes the domain plus the first month of hosting, and the name has to survive a pivot from "AI invoice scanner" to "expense reports for freelancers" without you having to migrate everything in six months.</p>
+  <p>The <strong>TinyTools Domain Generator for Indie Hackers</strong> is tuned for those constraints. It weights short, pronounceable, brandable names higher; it skips the spammy stem-and-suffix patterns ("yourapp-pro", "smarttools-hub") that signal low effort on a Show HN post; and it prioritizes available <code>.com</code> first, then <code>.io</code> and <code>.dev</code> — the three TLDs that actually convert direct-load traffic for technical products in 2026. It is the kind of generator <a href="https://www.indiehackers.com/" target="_blank" rel="nofollow noopener">indie hackers</a> actually use the night before a launch, not a marketing tool that gates the result behind a 14-day trial.</p>
+
+  <h2>What "good" looks like for an indie SaaS domain</h2>
+  <p>The sub-100-character checklist that separates names you will keep from names you will quietly migrate away from in six months:</p>
+  <ul>
+    <li><strong>Under 10 characters where possible.</strong> Stripe (6), Linear (6), Resend (6), Carrd (5), Tally (5), Plausible (9). Length compounds against you in every podcast intro, business card, and copy-paste forever.</li>
+    <li><strong>Pronounceable on a phone call.</strong> If you have to spell it letter by letter to your mom, it is not a brand, it is a license plate.</li>
+    <li><strong>Trademark-clean.</strong> Generic dictionary words are landmines. Made-up words like <em>Plausible</em>, <em>Stripe</em>, <em>Resend</em> sail through trademark search. Run a quick check at the <a href="https://tmsearch.uspto.gov/" target="_blank" rel="nofollow noopener">USPTO TESS database</a> before you buy.</li>
+    <li><strong>Available on .com, .io, or .dev.</strong> Not <code>.xyz</code>, not <code>.tech</code>. Indie hackers earn the right to weird TLDs after their second exit.</li>
+    <li><strong>No hyphens, no numbers, no doubled letters at boundaries.</strong> <code>my-app</code> loses 30% of direct-load traffic to <code>myapp.com</code>. Numbers (e.g. <code>4u</code>) make the name unspeakable. Doubled letters (<code>tooolsforyou</code>) make it unspellable.</li>
+  </ul>
+
+  <h2>5 ways indie hackers actually use this tool</h2>
+  <div class="use-cases">
+    <div class="use-case">
+      <h4>1. Naming a weekend micro-SaaS</h4>
+      <p>You have an idea on Friday and you want <code>.com</code> + Vercel + Stripe live by Sunday. The generator gives you 100 short, available, ship-tonight names so naming does not eat the weekend.</p>
+    </div>
+    <div class="use-case">
+      <h4>2. Renaming after a pivot</h4>
+      <p>Your "AI scheduler for dentists" is now a generic team scheduler. The old domain reads as a vertical-specific tool. Generate brandable, niche-agnostic alternates and migrate before you accumulate backlinks.</p>
+    </div>
+    <div class="use-case">
+      <h4>3. Picking a Show HN-safe name</h4>
+      <p>Hacker News will roast a name like <em>AIBuddyPro</em> in three comments. The generator filters out spammy "-AI", "-Pro", "-Hub" suffixes and surfaces real brandable candidates.</p>
+    </div>
+    <div class="use-case">
+      <h4>4. Finding a clean .io for a dev tool</h4>
+      <p>Building for developers? The generator prioritizes available <code>.io</code> and <code>.dev</code> alongside <code>.com</code>, so you can pick the one your audience will actually trust on a CLI install command.</p>
+    </div>
+    <div class="use-case">
+      <h4>5. Generating a 5-domain shortlist for your group chat</h4>
+      <p>You will not pick the name alone. Generate 50, filter to 5 available, drop them in your founder Slack or your indie hacker friends' DMs, ship by Sunday.</p>
+    </div>
+  </div>
+
+  <h2>The indie hacker domain stack in 2026</h2>
+  <p>Here is the cheap, defensive, no-regret setup most successful indie products run, with the parts that actually matter to naming:</p>
+  <table>
+    <thead>
+      <tr><th>Decision</th><th>Indie hacker default</th><th>When to deviate</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Primary TLD</td><td><code>.com</code></td><td>Take <code>.io</code> if <code>.com</code> is parked above $2,000</td></tr>
+      <tr><td>Backup TLD</td><td><code>.io</code> or <code>.dev</code></td><td>Use <code>.app</code> for mobile-first products</td></tr>
+      <tr><td>Length</td><td>5–9 characters</td><td>Up to 12 if it is one obvious word</td></tr>
+      <tr><td>Style</td><td>Brandable invented word</td><td>Two-word mash-up if it compresses cleanly (e.g. <em>Carrd</em>)</td></tr>
+      <tr><td>Trademark check</td><td>USPTO TESS + 30-second Google</td><td>Pay a lawyer once you cross $5K MRR</td></tr>
+      <tr><td>Registrar</td><td>Cloudflare or Porkbun (at-cost renewal)</td><td>GoDaddy never — renewal pricing is predatory</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Common indie hacker naming mistakes</h2>
+  <p>Patterns that show up over and over in the <a href="https://news.ycombinator.com/show" target="_blank" rel="nofollow noopener">Show HN graveyard</a> and that the generator is built to avoid:</p>
+  <ol>
+    <li><strong>The "-AI" tax.</strong> Slapping "AI" onto your name in 2026 dates the product to the month you launched and pre-loads it with hype baggage. Pick a name that survives the moment AI stops being the marketing wedge.</li>
+    <li><strong>Hyphenated workarounds.</strong> <code>my-cool-tool.com</code> is not the <code>.com</code>. You are paying full <code>.com</code> registration for a domain that will leak a third of its direct-load traffic forever to whoever owns <code>mycooltool.com</code>.</li>
+    <li><strong>Geographic lock-in.</strong> <em>NYCFreelanceTracker</em> reads great until you have a paying user in São Paulo. Pick a name that doesn't pin you to a city.</li>
+    <li><strong>Spelling traps.</strong> <em>Throo</em>, <em>Lytly</em>, <em>Quikz</em> — the kind of name that requires "with two o's, no e" forever. Every single sale becomes an email-correction tax.</li>
+    <li><strong>Generic dictionary words.</strong> Going for <code>journal.com</code> or <code>tasks.com</code> is a fantasy. Premium dictionary <code>.com</code>s start at five figures and the brandable invented alternative is almost always cheaper, more memorable, and trademark-clean.</li>
+  </ol>
+
+  <h2>Frequently asked questions</h2>
+
+  <h3>What makes a good domain name for an indie hacker side project?</h3>
+  <p>A strong indie hacker domain is short (ideally under 10 characters), pronounceable on a podcast without spelling it, brandable enough that it stays usable when the product pivots, and available on <code>.com</code> or a clean <code>.io</code>/<code>.dev</code>. Avoid hyphens, numbers, and double letters at boundaries — they kill direct-load traffic. Most successful indie products use either an invented brandable word (Stripe, Plausible) or a compressed two-word mash-up (Carrd, Tally).</p>
+
+  <h3>Should I buy .com or .io for a micro SaaS?</h3>
+  <p>Buy <code>.com</code> if it is available. It still wins on direct-load trust and is the only TLD most non-technical users will type unprompted. <code>.io</code> is a strong second choice for developer-focused tools — Plausible, Resend, Mintlify and many others run on <code>.io</code> with no measurable ranking penalty. Avoid <code>.io</code> for any product targeting non-technical buyers or anything in regulated verticals like health, finance, or legal.</p>
+
+  <h3>How fast should I name a side project before shipping?</h3>
+  <p>If you are pre-launch and pre-revenue, give yourself 60 minutes — not 60 days. Generate a list of 50 candidates, filter to a shortlist of 5 available <code>.com</code> or <code>.io</code> domains, and pick the one you would not be embarrassed to put in a Show HN title. Naming is reversible until you have backlinks. The most expensive naming mistake indie hackers make is delaying ship by two months while bikeshedding the name.</p>
+
+  <h3>Are weird made-up words good for indie SaaS?</h3>
+  <p>Yes, when they are short and pronounceable. Made-up brandable names (Plausible, Beehiiv, Tally, Carrd, Resend) win because they are trademark-clean, the <code>.com</code> is usually available, and they have no semantic baggage when the product expands beyond the original use case. Avoid made-up words that need to be spelled letter-by-letter when said aloud — those quietly leak conversions for the rest of the product's life.</p>
+
+  <h3>Does this domain generator cost anything?</h3>
+  <p>No. The TinyTools Domain Generator is 100% free, no signup, no credit card, no rate limit on generation. Availability checks are powered by live registry queries, and the buy links go to standard registrars where you pay normal registration fees (typically $10–$15 per year for <code>.com</code>, ~$30/yr for <code>.io</code>, ~$15/yr for <code>.dev</code>).</p>
+
+  <div class="cta-box">
+    <h3>Generate your shortlist now</h3>
+    <p>Stop bikeshedding. 100+ brandable, available, indie-hacker-tuned names with live <code>.com</code> / <code>.io</code> / <code>.dev</code> checks.</p>
+    <a class="cta-btn" href="/domain-generator/">Try the Domain Generator →</a>
+  </div>
+
+  <div class="related">
+    <h3>Related guides</h3>
+    <div class="related-grid">
+      <a class="related-card" href="/domain-generator/blog/brandable-vs-keyword-domains-saas-2026/">
+        <span class="label">Guide</span><br>Brandable vs keyword domains
+      </a>
+      <a class="related-card" href="/domain-generator/blog/how-to-find-short-available-com-domain-2026/">
+        <span class="label">Guide</span><br>Finding a short available .com
+      </a>
+      <a class="related-card" href="/domain-generator/blog/what-to-do-when-com-domain-taken-2026/">
+        <span class="label">Guide</span><br>When the .com is taken
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    Built by <a href="/">TinyTools</a> · Free, open, no signup · 2026
+  </footer>
+</div>
+</body>
+</html>
