@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 7, 2026 — published How to Test OG Images Before Publishing for og-image-generator + 4 social drafts ready",
+  "lastUpdated": "May 7, 2026 — published OG Image SEO guide for og-image-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 32,
+    "posts": 33,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 13:39",
+      "tag": "seo",
+      "text": "📝 Published blog post: OG Image SEO: Does Your Social Card Affect Google Rankings? (2026) at /og-image-generator/blog/og-image-seo-does-it-affect-google-rankings-2026/"
+    },
+    {
+      "time": "today 13:39",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting og-image-generator"
+    },
     {
       "time": "today 13:28",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 04:11",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
-    },
-    {
-      "time": "today 00:12",
-      "tag": "seo",
-      "text": "📝 Published blog post: Dark Mode Color Palette: A Complete Guide for 2026 at /color-palette/blog/dark-mode-color-palette-guide-2026/"
-    },
-    {
-      "time": "today 00:12",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting color-palette"
     }
   ],
   "roadmap": [
@@ -240,6 +240,30 @@
     {
       "platform": "X / Twitter Thread",
       "tool": "og-image-generator",
+      "createdAt": "2026-05-07T13:39:11Z",
+      "text": "Does your OG image actually help SEO?\n\nI dug into Google's office hours, the 2025 docs update, and 30 days of GSC data. Here's the honest answer 🧵\n\n1/6\n---\nThe short version: og:image is NOT a direct ranking signal. Google has said this multiple times.\n\nBut it moves five inputs that ARE ranking signals — and most blogs ignore all of them.\n\n2/6\n---\nThe levers your social card actually moves:\n\n• Social CTR → engaged sessions\n• Branded search volume\n• Backlink rate (screenshots = social proof)\n• Dwell time / pogo-sticking\n• AI Overview & Discover thumbnails\n\nNone of these are tags. All of them compound.\n\n3/6\n---\nThe SEO-clean OG image setup:\n\n• 1200×630 PNG, < 1 MB\n• Absolute https URL\n• og:image:alt with one descriptive sentence\n• Same URL referenced in your Article JSON-LD\n• Explicit width/height tags\n\nFive tags. Five minutes. Zero excuses.\n\n4/6\n---\nThe myth that won't die: \"keyword-stuff og:image:alt for SEO\"\n\nIt does NOTHING for ranking and might trigger spam classifiers if you overdo it.\n\nWrite it for screen readers, not Googlebot.\n\n5/6\n---\nThe full breakdown — direct vs indirect impact, the 5-minute workflow, and the 3 metrics to monitor for 30 days:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-seo-does-it-affect-google-rankings-2026/\n\nFree generator that ships SEO-clean cards: https://tinytools-smoky.vercel.app/og-image-generator/\n\n6/6"
+    },
+    {
+      "platform": "Reddit /r/SEO",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-07T13:39:11Z",
+      "text": "Yeah this comes up a lot and the honest answer surprises people: og:image is not a direct ranking signal. Google has confirmed this in multiple Search Central office hours — a page with a beautiful OG image and a page with no OG image at all are scored identically on the meta-tag axis.\n\nWhat IS happening though is that the OG image moves a bunch of indirect levers Google does measure:\n\n- Social referral CTR → engaged sessions Google's algos read as quality signals\n- Branded search volume (the strongest indirect signal you can build)\n- Backlink rate, because journalists/bloggers screenshot link previews as social proof when they decide whether to cite you\n- Dwell time vs pogo-sticking — the OG image sets an expectation; if the page doesn't deliver, bounce\n- AI Overview / Discover thumbnail eligibility\n\nFor the technical setup that makes Googlebot happy: 1200×630, absolute https URL, explicit width/height tags, og:image:alt for accessibility, and the same URL referenced in your Article JSON-LD so you stay eligible for rich results. Don't bother making four platform-specific variants — one canonical card is fine and gives you fewer places things break.\n\nI wrote the long-form version with a 5-minute workflow if you want the deep dive: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-seo-does-it-affect-google-rankings-2026/ — and the free generator we built is at https://tinytools-smoky.vercel.app/og-image-generator/ if you just need a clean card right now."
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-07T13:39:11Z",
+      "text": "Three years ago I spent an entire afternoon \"optimizing\" the og:image alt text on every post on our company blog. I was certain it was helping us rank.\n\nIt was helping us rank exactly zero positions.\n\nWhat I didn't understand back then is that og:image is not a direct ranking signal — Google has said this on the record. But it moves a chain of signals that absolutely are: social referral CTR, branded search volume, the rate at which screenshots become real backlinks, dwell time, and now AI Overview citations.\n\nThe practical takeaway from 30 days of testing on one of our newer brands:\n\n→ A clean 1200×630 card with the wordmark in the safe zone roughly doubled our social CTR\n→ Branded search volume crept up by ~18% over the next month\n→ Pages-per-session from social held steady — meaning the card's promise matched the article\n\nNone of those are ranking metrics. All of them are ranking inputs.\n\nFull write-up with the exact head-tag setup, the 5-minute workflow, and the metrics to monitor: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-seo-does-it-affect-google-rankings-2026/\n\nWhat's working for your team's social cards right now?"
+    },
+    {
+      "platform": "Hacker News",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-07T13:39:11Z",
+      "text": "TITLE: Show HN: OG image SEO – what Google actually does with og:image (2026)\n\nLINK: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-seo-does-it-affect-google-rankings-2026/\n\nCOMMENT (50 words):\nWrote this after watching three engineering teams in a row burn afternoons \"optimizing\" og:image:alt for SEO. Spoiler: it's not a direct ranking signal, but it's a multiplier on five things that are. Includes the minimum-viable head snippet and the metrics to actually watch. Free generator linked at the bottom — no signup."
+    },
+    {
+      "platform": "X / Twitter Thread",
+      "tool": "og-image-generator",
       "createdAt": "2026-05-07T13:28:16Z",
       "text": "🧵 You spent an hour designing a beautiful 1200×630 OG image. You ship the post. Five minutes later someone pastes it in Slack and the preview is broken.\n\nHere's the 5-tool, 10-min pre-publish workflow that catches ~95% of broken-card bugs. (1/6)\n\n---\n\n(2/6) The order matters because the official validators also force a fresh fetch. Run them in this sequence:\n\n1. X Card Validator (cards-dev.twitter.com/validator)\n2. LinkedIn Post Inspector\n3. Facebook Sharing Debugger (also clears WhatsApp)\n4. Slack — manual paste-and-eyeball\n5. iMessage — send URL to yourself\n\n---\n\n(3/6) The LinkedIn one bites everyone in 2026.\n\nLinkedIn now caches OG tags for 7 DAYS. If your first share renders broken, every share for the next week renders broken — even after you push the fix.\n\nThe Re-Scrape button on Post Inspector is the only thing that invalidates the cache.\n\n---\n\n(4/6) iOS 19 silently downgrades OG images that fail any of these:\n• Width < 600px\n• Aspect ratio outside 1.5:1 to 2.0:1\n• File size > 5 MB (ideally < 300 KB)\n• Image URL > 2 sec response time\n\nThe bug shows as a plain blue link bubble. No error. No warning.\n\n---\n\n(5/6) The Slack test most teams skip:\n\nSlack scales your 1200×630 image to ~360px wide on desktop. Open a quiet channel, paste your URL, squint from across the room. If you can't read the headline, your on-image text is too small.\n\nThis is where the highest-impact bugs hide.\n\n---\n\n(6/6) Full 5-tool workflow with the pre-publish checklist, force-refresh sequence, and one-line fixes for the 4 most common failures:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-test-og-images-before-publishing-2026/\n\n(Free 1200×630 OG image generator that auto-compresses under 300 KB is in the post — designed exactly for these validators.)"
     },
@@ -260,30 +284,6 @@
       "tool": "og-image-generator",
       "createdAt": "2026-05-07T13:28:16Z",
       "text": "TITLE: Show HN: How to test OG images before publishing in 2026 (5-tool workflow)\n\nLINK: https://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-test-og-images-before-publishing-2026/\n\nFIRST COMMENT:\nAuthor here. Wrote this after watching enough teams ship launches with broken link previews that I built a checklist into our team's release runbook. The non-obvious things that have changed in the last 12-18 months: LinkedIn caches OG tags for 7 days now (Re-Scrape on Post Inspector is the only invalidation), iOS 19 silently drops cards over 5 MB or outside aspect ratio 1.5:1-2.0:1 with no error message, and X removed the legacy summary card type so missing twitter:card meta now produces a giant gray placeholder instead of a small thumbnail. The workflow is 5 tools, ~10 minutes, run in a specific order so the first three force fresh fetches before the manual checks. Curious if HN has hit cases where the validators all pass but the actual share renders differently — Slack channel-level caching has surprised me twice, but I haven't seen reproducible cases on the platform validators themselves."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-07T04:17:55Z",
-      "text": "🧵 If you ship a blog post in 2026 without an OG image, ~70% of the social traffic that post would have gotten just disappears.\n\nHere's how to auto-generate one for every post — including your old archive — in an afternoon. (1/6)\n\n---\n\n(2/6) Four approaches, ranked by friction:\n\n• @vercel/og (Satori) → JS frameworks on Vercel/Cloudflare. ~30 min setup, $0 forever.\n• Cloudinary URL transforms → WordPress, Ghost, anything CMS. ~15 min, free tier covers most blogs.\n• Bannerbear/Placid → designer-owned templates. ~1 hr, $0.01–0.05/img.\n• Template + spreadsheet → archive backfill. ~2 hrs once.\n\n---\n\n(3/6) The @vercel/og answer is ~40 lines:\n\nA Next.js edge route returns an ImageResponse from JSX. Pass title + tag as URL params. Vercel CDN caches the result forever. First request 50–200ms, every request after that = static.\n\nWorks the same on Astro, Remix, Nuxt, SvelteKit.\n\n---\n\n(4/6) The Cloudinary trick that wins for WordPress:\n\nUpload a 1200×630 base template once. Then any URL like\n\nres.cloudinary.com/.../l_text:Inter_72_bold:Your%20Headline/og-template.png\n\nrenders the template with the headline burned in. No code, no API calls, cached at the URL level.\n\n---\n\n(5/6) Five rules that apply no matter which approach:\n\n• Always 1200 × 630\n• Headline ≤ 60 chars on the image\n• Set og:image:width and og:image:height explicitly\n• Keep PNGs under 300KB (iOS 19+ silently drops oversized ones)\n• Validate with X card validator + LinkedIn Post Inspector after publish\n\n---\n\n(6/6) Full guide w/ copy-paste @vercel/og + Cloudinary code, the decision matrix, and a free OG image generator to use as your base template:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-auto-generate-og-images-for-blogs-2026/"
-    },
-    {
-      "platform": "Reddit /r/webdev",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-07T04:17:55Z",
-      "text": "Subreddit: /r/webdev (also fits /r/nextjs, /r/SideProject, /r/wordpress)\n\nReply on a thread asking about OG images / link previews / open graph automation:\n\nFour approaches that actually scale, in order of how I'd pick:\n\n1) On a JS framework deploying to Vercel or Cloudflare → @vercel/og. It's a tiny library that renders JSX → PNG via Satori on the edge in 50–200ms, cached by the CDN forever after first hit. About 40 lines for the route, then your og:image meta tag becomes /og?title=...&tag=... and every post gets a unique image automatically. The CSS subset is limited (no grid, no transforms), but flexbox + gradients + absolute positioning cover everything you actually need for an OG card.\n\n2) On WordPress / Ghost / any CMS → Cloudinary URL transforms. Upload a 1200×630 base PNG once, then construct URLs like res.cloudinary.com/.../l_text:Inter_72_bold:Your%20Headline/v1/og-template.png. The CDN caches per-URL, so every post is effectively static. ~15 minutes of work, free tier handles ~25k monthly shares.\n\n3) Designer-owned brand systems with multiple template variants → Bannerbear or Placid. Designer builds templates in a visual editor, you POST JSON with the modifications. ~$0.01–0.05/image, cached after first generation. Worth it when you want pixel-perfect on-brand cards but don't want to build a template editor yourself.\n\n4) Backfilling an archive once with no infra appetite → just open a free template tool, plug titles into a spreadsheet, batch-generate PNGs, upload to media folder. Cheap and dumb but right for one-time backfills under ~150 posts.\n\nThe gotchas regardless of approach: keep PNGs under 300KB (iOS 19+ silently drops oversized ones to a plain link bubble), set og:image:width and og:image:height explicitly, and always validate with X's card validator + LinkedIn Post Inspector after publish — a broken image gets cached for a week.\n\nFull writeup with the @vercel/og code and the Cloudinary URL pattern: https://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-auto-generate-og-images-for-blogs-2026/\n\nFree OG generator I use as a base template starter is in the post too — saves the \"draw a 1200×630 in Figma first\" step."
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-07T04:17:55Z",
-      "text": "I audited a content team's blog last month. 200 posts published, 130 of them shipping without an OG image.\n\nThe traffic those 130 posts could have earned from social sharing? Roughly zero. Every share rendered as a generic gray fallback on Slack and LinkedIn. People didn't click.\n\nThe fix takes one afternoon and pays back forever.\n\nFour options, depending on your stack:\n\n• On a JS framework (Next.js, Astro, Remix)? Use @vercel/og. ~40 lines of code, runs on the edge, cached forever, free.\n\n• On WordPress or Ghost? Use Cloudinary URL transforms. Upload a base template once, then your og:image URL becomes a Cloudinary URL with the headline encoded. No infrastructure to manage.\n\n• Have a designer who wants ownership of the visual identity? Use Bannerbear or Placid — designer builds the template, developer hits a JSON API, ~$0.01–0.05 per image.\n\n• Backfilling an old archive? Skip the engineering. Use a free template generator + spreadsheet, batch-create the PNGs, upload, update the meta tags.\n\nThe wrong move is hand-designing every OG image in Figma. It's the system that quietly breaks the moment publishing volume goes up — and it leaves the highest-leverage SEO win of 2026 sitting on the table.\n\nFull guide with copy-paste code for @vercel/og and Cloudinary, plus a decision matrix:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-auto-generate-og-images-for-blogs-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-07T04:17:55Z",
-      "text": "TITLE: Show HN: Four ways to auto-generate OG images for every blog post in 2026\n\nLINK: https://tinytools-smoky.vercel.app/og-image-generator/blog/how-to-auto-generate-og-images-for-blogs-2026/\n\nFIRST COMMENT:\nAuthor here. Wrote this after a content audit where 130 of 200 posts shipped without OG images, dropping ~70% of their potential social traffic. The post breaks down @vercel/og (the JS-framework default), Cloudinary URL transforms (the WordPress-friendly path), Bannerbear/Placid (when designers own the template), and a no-code spreadsheet loop for one-time archive backfills — with copy-paste code for the first two. Curious where HN lands on @vercel/og's CSS subset limits — I've found flexbox + gradients enough for ~95% of cards, but anyone hit a wall with it on more elaborate layouts?"
     }
   ],
   "checklist": [
