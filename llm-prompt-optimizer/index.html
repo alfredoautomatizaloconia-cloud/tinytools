@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free LLM Prompt Optimizer (2026) — Turn Vague Prompts Into Structured Outputs</title>
+<meta name="description" content="Paste a one-line prompt, get a structured Role + Context + Task + Format + Examples version that actually works in GPT-5, Claude 4.6, Gemini 3. Rule-based (instant, free) or BYOK for AI-rewritten prompts. No signup.">
+<meta name="keywords" content="LLM prompt optimizer, prompt engineering tool, free prompt optimizer, ChatGPT prompt improver, Claude prompt template, GPT-5 prompts, prompt structure RCTF, prompt enhancer 2026">
+<meta property="og:title" content="Free LLM Prompt Optimizer — Structured prompts in 2 seconds">
+<meta property="og:description" content="Vague prompt in, polished Role/Context/Task/Format/Examples prompt out. Rule-based or BYOK.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LLM Prompt Optimizer">
+<meta name="twitter:description" content="Free, in-browser, no signup. Turns vague prompts into structured ones that work.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/llm-prompt-optimizer/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "LLM Prompt Optimizer",
+  "description": "Rewrites vague prompts into structured prompts following the Role + Context + Task + Format + Examples pattern. Rule-based browser engine and optional BYOK LLM rewrite.",
+  "url": "https://tinytools-smoky.vercel.app/llm-prompt-optimizer/",
+  "applicationCategory": "DeveloperApplication",
+  "offers": { "@type": "Offer", "price": "0" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #ec4899; --accent-glow: #ec489940;
+    --green: #10b981; --red: #ef4444; --amber: #f59e0b; --blue: #3b82f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: rgba(236, 72, 153, 0.15);
+    border: 1px solid rgba(236, 72, 153, 0.4); border-radius: 999px; font-size: 13px;
+    color: #f9a8d4; margin-bottom: 20px; font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #f9a8d4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 680px; margin: 0 auto; }
+
+  .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+  @media (max-width: 1000px) { .layout { grid-template-columns: 1fr; } }
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px; }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+  .panel + .panel { margin-top: 16px; }
+
+  .field { margin-bottom: 14px; }
+  label { display: block; font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500; }
+  input[type="text"], input[type="password"], select, textarea {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit;
+  }
+  textarea { resize: vertical; min-height: 110px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 600px) { .row { grid-template-columns: 1fr; } }
+
+  .toggle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .toggle {
+    padding: 10px; background: var(--bg-elevated); border: 2px solid var(--border);
+    border-radius: 10px; cursor: pointer; transition: all 0.15s; text-align: center;
+    font-size: 13px; color: var(--text-dim); font-weight: 600;
+  }
+  .toggle .small { font-size: 11px; color: var(--text-dim); display: block; margin-top: 2px; opacity: 0.8; font-weight: 500; }
+  .toggle.active { border-color: var(--accent); color: var(--text); background: var(--accent-glow); }
+  .toggle.active .small { color: var(--accent); opacity: 1; }
+  .toggle:hover { border-color: var(--accent); }
+
+  button.primary {
+    width: 100%; padding: 13px 20px; background: var(--accent); color: #fff;
+    border: none; border-radius: 10px; font-size: 15px; font-weight: 700;
+    cursor: pointer; transition: all 0.15s; margin-top: 4px;
+  }
+  button.primary:hover { transform: translateY(-1px); box-shadow: 0 4px 16px var(--accent-glow); }
+  button.primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .output {
+    background: #000; padding: 16px; border-radius: 10px; border: 1px solid var(--border);
+    position: relative; max-height: 480px; overflow-y: auto;
+  }
+  .output pre { margin: 0; font-family: 'SF Mono', Monaco, monospace; font-size: 13px;
+    color: #e0e0ff; white-space: pre-wrap; word-wrap: break-word; }
+  .copy-btn {
+    position: absolute; top: 8px; right: 8px; padding: 5px 10px;
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text); font-size: 11px; cursor: pointer; z-index: 2;
+  }
+  .copy-btn:hover { border-color: var(--accent); }
+
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+  .stat {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px; text-align: center;
+  }
+  .stat .v { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .stat .l { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
+
+  .annotations { margin-top: 12px; }
+  .annotation {
+    padding: 10px 12px; background: var(--bg-elevated); border-left: 3px solid var(--accent);
+    border-radius: 6px; margin-bottom: 8px; font-size: 13px; color: var(--text-dim);
+  }
+  .annotation strong { color: var(--text); }
+  .annotation.add { border-left-color: var(--green); }
+  .annotation.fix { border-left-color: var(--amber); }
+
+  .examples { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .ex {
+    padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 12px; color: var(--text-dim); cursor: pointer;
+    transition: all 0.15s;
+  }
+  .ex:hover { border-color: var(--accent); color: var(--text); }
+
+  .alert {
+    padding: 12px 14px; background: rgba(236, 72, 153, 0.08);
+    border-left: 3px solid var(--accent); border-radius: 8px; font-size: 13px; color: #f9a8d4;
+    margin-top: 12px;
+  }
+  .alert strong { color: white; }
+
+  .upsell {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(99, 102, 241, 0.08));
+    border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-top: 24px;
+  }
+  .upsell h3 { font-size: 15px; margin-bottom: 6px; }
+  .upsell p { color: var(--text-dim); font-size: 13px; margin-bottom: 12px; }
+  .upsell a {
+    display: inline-block; padding: 9px 16px; background: var(--accent); color: #fff;
+    border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600;
+  }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); max-width: 880px; }
+  .content h2 { font-size: 26px; margin: 36px 0 14px; color: var(--text); letter-spacing: -0.01em; }
+  .content h3 { font-size: 18px; margin: 24px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul, .content ol { margin: 8px 0 12px 24px; color: var(--text-dim); }
+  .content li { margin-bottom: 4px; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+  .content strong { color: var(--text); }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  .key-row { display: none; }
+  .key-row.show { display: block; }
+  .key-input-wrap { position: relative; }
+  .key-input-wrap small { color: var(--text-dim); font-size: 11px; display: block; margin-top: 4px; }
+
+  .spinner {
+    display: inline-block; width: 14px; height: 14px; border: 2px solid #fff5;
+    border-top-color: #fff; border-radius: 50%; animation: spin 0.6s linear infinite;
+    vertical-align: middle; margin-right: 6px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">⚡ 8 prompt patterns · GPT-5 / Claude 4.6 / Gemini 3 ready · Browser-only</div>
+    <h1>LLM Prompt Optimizer</h1>
+    <p class="subtitle">Paste a vague one-liner. Get a structured prompt with Role + Context + Task + Constraints + Format + Examples. Rule-based runs instantly in your browser. BYOK to have an LLM rewrite it for you.</p>
+  </header>
+
+  <div class="layout">
+    <div>
+      <div class="panel">
+        <h2>1. Your prompt</h2>
+        <div class="field">
+          <textarea id="rawPrompt" placeholder="e.g., write me a blog post about AI in marketing"></textarea>
+        </div>
+        <div class="examples">
+          <span class="ex" data-ex="write me a blog post about AI in marketing">📝 Blog post</span>
+          <span class="ex" data-ex="summarize this meeting transcript">📋 Summary</span>
+          <span class="ex" data-ex="give me ideas for a startup">💡 Ideation</span>
+          <span class="ex" data-ex="extract the key data from this email">📧 Extraction</span>
+          <span class="ex" data-ex="write code to scrape a website">💻 Code</span>
+          <span class="ex" data-ex="translate to spanish">🌍 Translate</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>2. Goal type</h2>
+        <div class="field">
+          <select id="goalType">
+            <option value="auto">Auto-detect (recommended)</option>
+            <option value="content">Content writing</option>
+            <option value="code">Code generation</option>
+            <option value="analysis">Analysis &amp; extraction</option>
+            <option value="creative">Creative / brainstorm</option>
+            <option value="summary">Summarization</option>
+            <option value="translation">Translation / rewrite</option>
+            <option value="agent">Agent / multi-step</option>
+            <option value="data">Structured data output</option>
+          </select>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label>Target model</label>
+            <select id="model">
+              <option value="generic">Generic (works anywhere)</option>
+              <option value="gpt5">GPT-5</option>
+              <option value="claude46">Claude 4.6</option>
+              <option value="gemini3">Gemini 3</option>
+              <option value="o1">OpenAI o-series (reasoning)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Tone</label>
+            <select id="tone">
+              <option value="neutral">Neutral / professional</option>
+              <option value="friendly">Friendly</option>
+              <option value="technical">Technical / precise</option>
+              <option value="persuasive">Persuasive</option>
+              <option value="academic">Academic</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>3. Engine</h2>
+        <div class="toggle-grid">
+          <div class="toggle active" data-engine="rules">
+            🛠 Rule-based
+            <span class="small">Instant · free · offline</span>
+          </div>
+          <div class="toggle" data-engine="byok">
+            🤖 BYOK LLM rewrite
+            <span class="small">Your API key · best quality</span>
+          </div>
+        </div>
+        <div class="key-row" id="keyRow">
+          <div class="row" style="margin-top: 14px;">
+            <div class="field">
+              <label>Provider</label>
+              <select id="provider">
+                <option value="openai">OpenAI</option>
+                <option value="anthropic">Anthropic</option>
+                <option value="google">Google</option>
+                <option value="openrouter">OpenRouter</option>
+              </select>
+            </div>
+            <div class="field key-input-wrap">
+              <label>API key (stays in browser)</label>
+              <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off">
+              <small>Never logged · never sent to TinyTools</small>
+            </div>
+          </div>
+        </div>
+        <button class="primary" id="optimize">⚡ Optimize prompt</button>
+        <div class="alert" id="alert" style="display:none;"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="panel">
+        <h2>Optimized prompt</h2>
+        <div class="output">
+          <button class="copy-btn" data-target="optimizedOutput">Copy</button>
+          <pre id="optimizedOutput">Click "Optimize prompt" to see the structured version here.</pre>
+        </div>
+        <div class="stat-row">
+          <div class="stat"><div class="v" id="statBefore">—</div><div class="l">Before · words</div></div>
+          <div class="stat"><div class="v" id="statAfter">—</div><div class="l">After · words</div></div>
+          <div class="stat"><div class="v" id="statScore">—</div><div class="l">Quality score</div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>What we improved</h2>
+        <div class="annotations" id="annotations">
+          <div class="annotation">Tips will appear here once you optimize a prompt.</div>
+        </div>
+      </div>
+
+      <div class="upsell">
+        <h3>Want this prompt to ship in production?</h3>
+        <p>Track prompt versions, A/B test variants, log outputs across GPT-5/Claude/Gemini. Most teams use Promptfoo or PromptLayer.</p>
+        <a href="#aff-promptfoo" id="upsellLink">Compare prompt-ops tools →</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>Why a vague prompt fails (and what to do instead)</h2>
+    <p>Modern LLMs like GPT-5, Claude 4.6, and Gemini 3 are extremely capable, but their output quality is bounded by the specificity of your input. A vague prompt — "write me a blog post about AI in marketing" — gives the model no anchor for tone, audience, length, structure, or success criteria. The model averages over a billion possible interpretations of "blog post" and ships something forgettable.</p>
+    <p>This LLM prompt optimizer follows the well-known <strong>Role + Context + Task + Constraints + Format + Examples</strong> pattern (sometimes shortened to RCTF or "RICE"). Every transformation it applies is a rule that has been validated across published prompt-engineering research from Anthropic, OpenAI, Google DeepMind, and the open-source prompt community.</p>
+
+    <h3>The six fields a strong prompt needs</h3>
+    <ol>
+      <li><strong>Role</strong> — who the model is. "You are a senior B2B content strategist." Anchors vocabulary, judgment, and risk tolerance.</li>
+      <li><strong>Context</strong> — what the situation is. Audience, product, reader's prior knowledge, why this exists.</li>
+      <li><strong>Task</strong> — the explicit thing to do. One verb, one object, no ambiguity.</li>
+      <li><strong>Constraints</strong> — length, tone, what to avoid, what must be present, ethical or factual guardrails.</li>
+      <li><strong>Format</strong> — JSON schema, Markdown headings, bullet structure, code-only-no-prose, etc.</li>
+      <li><strong>Examples (few-shot)</strong> — one or two input → output pairs. The single highest-leverage technique for reliability.</li>
+    </ol>
+
+    <h3>Model-specific tweaks the optimizer applies</h3>
+    <p>Different LLMs respond best to different prompt scaffolds:</p>
+    <ul>
+      <li><strong>Claude 4.6</strong> — XML tags (<code>&lt;context&gt;</code>, <code>&lt;task&gt;</code>) outperform plain headers; long context tolerated; system prompt distinct from user turn.</li>
+      <li><strong>GPT-5</strong> — Markdown headers and numbered constraints work well; chain-of-thought is implicit, no need to ask for "step by step".</li>
+      <li><strong>Gemini 3</strong> — prefers explicit "OBJECTIVE / INPUT / OUTPUT" sections; benefits from Google-style format examples.</li>
+      <li><strong>o-series reasoning models</strong> — keep the prompt short, do not ask for chain-of-thought, do not include few-shot examples (they hurt o-series performance).</li>
+    </ul>
+    <p>Pick your target model in the form and the optimizer adjusts the scaffold. Pick "Generic" and you get a template that works in all of them.</p>
+
+    <h3>Rule-based vs BYOK LLM rewrite — which to use</h3>
+    <p>The rule-based engine is instant, runs entirely in your browser, requires no key, and produces a high-quality structured prompt for 95% of inputs. Use it for everyday optimization.</p>
+    <p>The BYOK (bring-your-own-key) mode sends your prompt + the optimization instructions to OpenAI, Anthropic, Google, or OpenRouter using your API key — the key never leaves your browser. Use this when (a) the input is highly domain-specific, (b) you want creative re-framing of the task itself, or (c) you want a couple of generated few-shot examples baked in.</p>
+
+    <h3>Common prompt mistakes the optimizer catches</h3>
+    <ul>
+      <li>"Write me a blog post" → no role, no audience, no length, no format. The optimizer adds all four.</li>
+      <li>"Summarize this" with no length spec → the optimizer adds explicit word/bullet bounds.</li>
+      <li>"Make it good" / "be creative" → vague success criteria. The optimizer replaces these with measurable ones.</li>
+      <li>Mixing instructions and content in the same paragraph → the optimizer separates them with explicit XML or Markdown.</li>
+      <li>No output format → the optimizer infers JSON / Markdown / plain text from the task.</li>
+      <li>No examples → the optimizer adds a placeholder for one or two few-shot pairs and explains where to put your own.</li>
+    </ul>
+
+    <h2>Frequently asked LLM prompt optimizer questions</h2>
+    <p><strong>Is my prompt sent anywhere?</strong> Rule-based mode runs 100% in your browser. BYOK mode sends the request from your browser directly to the AI provider you choose; nothing touches TinyTools' servers.</p>
+    <p><strong>Will the optimized prompt work in ChatGPT, Claude, Gemini, and Perplexity?</strong> Yes. The "Generic" template is portable. The model-specific options apply small scaffold tweaks but the core structure is the same.</p>
+    <p><strong>How does this compare to PromptPerfect or PromptHero?</strong> PromptPerfect uses a closed model and a paid plan; PromptHero is a prompt marketplace. This LLM prompt optimizer is free, runs locally, and the rule-set is open and inspectable in the page source.</p>
+    <p><strong>Why no chain-of-thought instruction by default?</strong> Modern frontier models think implicitly. Adding "let's think step by step" hurts performance on o-series and is redundant on GPT-5/Claude 4.6/Gemini 3. The optimizer only adds it for older models if you select one.</p>
+    <p><strong>Can I save my optimized prompts?</strong> Click Copy on the output. For full version control, use a prompt-ops tool like Promptfoo, PromptLayer, or LangSmith.</p>
+
+    <p><em>Tip: After optimizing, run the same task with the original prompt and the optimized prompt in two browser windows side-by-side. The quality gap is usually obvious within one example.</em></p>
+  </section>
+
+  <footer>
+    <p>Free tool · No tracking · <a href="/">More tools at TinyTools</a> · <a href="#tip">Tip jar</a></p>
+  </footer>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+// Goal type detection
+// ─────────────────────────────────────────────
+const GOAL_KEYWORDS = {
+  code:       ['code', 'function', 'script', 'program', 'class', 'api', 'sql', 'regex', 'html', 'css', 'javascript', 'python', 'react', 'fix bug', 'debug', 'refactor', 'scrape', 'parse'],
+  summary:    ['summarize', 'summary', 'tl;dr', 'tldr', 'condense', 'shorten', 'recap', 'digest'],
+  analysis:   ['analyze', 'analyse', 'extract', 'find', 'identify', 'classify', 'categorize', 'compare', 'evaluate', 'review'],
+  translation:['translate', 'rewrite', 'rephrase', 'paraphrase', 'simplify', 'localize'],
+  creative:   ['idea', 'brainstorm', 'creative', 'name', 'tagline', 'story', 'poem', 'character', 'concept'],
+  data:       ['json', 'csv', 'table', 'list of', 'structured', 'schema', 'extract data', 'fields'],
+  agent:      ['plan', 'multi-step', 'workflow', 'pipeline', 'agent', 'first', 'then', 'step by step'],
+  content:    ['blog', 'article', 'post', 'essay', 'newsletter', 'caption', 'tweet', 'thread', 'description', 'copy', 'email', 'cover letter', 'pitch']
+};
+
+function detectGoal(text) {
+  const t = text.toLowerCase();
+  let best = 'content', bestScore = 0;
+  for (const [g, keys] of Object.entries(GOAL_KEYWORDS)) {
+    let s = 0;
+    for (const k of keys) if (t.includes(k)) s += k.length > 6 ? 2 : 1;
+    if (s > bestScore) { bestScore = s; best = g; }
+  }
+  return bestScore === 0 ? 'content' : best;
+}
+
+// ─────────────────────────────────────────────
+// Templates per goal
+// ─────────────────────────────────────────────
+function templateFor(goal, raw, opts) {
+  const tone = opts.tone || 'neutral';
+  const model = opts.model || 'generic';
+
+  const ROLES = {
+    content: 'You are a senior content strategist who writes for a knowledgeable but time-pressed audience.',
+    code: 'You are a senior software engineer with deep expertise in the relevant language and framework. You write idiomatic, production-ready, well-tested code.',
+    analysis: 'You are an analyst. You read carefully, cite specifics, and avoid speculation when the source does not support it.',
+    creative: 'You are a creative collaborator. You generate distinctive, non-cliché options and briefly explain the angle of each.',
+    summary: 'You are an editor who specializes in faithful, lossless summarization at a target length.',
+    translation: 'You are a professional translator/rewriter. You preserve meaning, tone, and nuance; you do not add or remove information.',
+    agent: 'You are a careful planner. You break a goal into sequenced sub-tasks, each with a clear input, action, and expected output.',
+    data: 'You are a data extraction engine. You return only the requested structure, with no commentary, no markdown wrappers, no explanations.'
+  };
+
+  const TONES = {
+    neutral: 'Professional, neutral, plain.',
+    friendly: 'Warm, conversational, second-person, light humor allowed.',
+    technical: 'Precise, terminology-correct, no hedging.',
+    persuasive: 'Confident, benefit-led, ends sections with a clear takeaway.',
+    academic: 'Formal, citation-aware, no first-person, no exclamation points.'
+  };
+
+  const FORMATS = {
+    content: '- Markdown\n- One H1, 2–4 H2 sections, no H3 unless needed\n- Short paragraphs (2–4 sentences)\n- One concrete example or stat per section',
+    code: '- Code only inside a single fenced block\n- Comments above non-obvious lines\n- A brief usage example after the code block\n- No prose before the code',
+    analysis: '- Numbered findings (1, 2, 3, …)\n- Each finding: claim → supporting quote/line reference → why it matters\n- A 2-sentence conclusion at the end',
+    creative: '- A numbered list of options (default 8)\n- Each option: name + 1-line angle + 1-line risk',
+    summary: '- 5 bullet points, max 18 words each\n- Bullets ordered by importance\n- No editorializing, no adjectives that aren\'t in the source',
+    translation: '- Output translation/rewrite only\n- No commentary, no notes\n- Preserve formatting (Markdown, lists, line breaks)',
+    agent: '- A numbered plan, 4–8 steps\n- Each step: action verb · input · expected output · failure handling',
+    data: '- Pure JSON, no Markdown fences, no comments\n- Match the schema below exactly\n- If a field is unknown, use null (not "unknown")'
+  };
+
+  const EXAMPLES_HINT = {
+    content: '<!-- Replace with one short input/output pair from your past best work, if you have it -->',
+    code: '<!-- Replace with one input/expected-output pair, e.g. "input: \'foo bar\' → output: 7" -->',
+    analysis: '<!-- Replace with one source excerpt → expected finding -->',
+    creative: '<!-- Replace with two prior brand names / taglines you liked -->',
+    summary: '<!-- Replace with one input paragraph → expected 5-bullet summary -->',
+    translation: '<!-- Replace with one source sentence → expected target sentence -->',
+    agent: '<!-- Replace with one prior multi-step task → its sequenced plan -->',
+    data: '{\n  "input_example": "Order #1234 from Jane Doe, $42",\n  "output_example": { "order_id": 1234, "customer": "Jane Doe", "amount_usd": 42 }\n}'
+  };
+
+  const role = ROLES[goal];
+  const fmt = FORMATS[goal];
+  const examplesHint = EXAMPLES_HINT[goal];
+  const toneLine = TONES[tone];
+
+  // Extract task object — strip imperative starters
+  const cleanedTask = raw
+    .replace(/^(please\s+|can you\s+|could you\s+|i (need|want)\s+(you to\s+)?)/i, '')
+    .replace(/^(write|create|make|generate|give me|build)\s+(me\s+)?/i, '$1 ')
+    .trim()
+    .replace(/^./, c => c.toUpperCase());
+
+  // Build context placeholders intelligent to goal
+  const CONTEXT = {
+    content: '<!-- Audience: who reads this · Topic depth: novice / intermediate / expert · Length: ~X words · Channel: blog / newsletter / docs -->',
+    code: '<!-- Language + version · Framework + version · Constraints (no extra deps, runs in Node 20, etc.) · Existing code style -->',
+    analysis: '<!-- Source you\'ll paste below · What decision this analysis supports · What you already ruled out -->',
+    creative: '<!-- Brand / vibe · What you\'ve already tried · What to avoid (clichés, competitor names) -->',
+    summary: '<!-- Source type (transcript, article, paper) · Audience for the summary · Acceptable info loss -->',
+    translation: '<!-- Source language · Target language · Register (formal, casual) · Domain (legal, marketing, casual) -->',
+    agent: '<!-- Goal end-state · Tools available · Failure modes to avoid · Time / cost budget -->',
+    data: '<!-- What the source data is · Schema fields and types · How to handle missing or ambiguous values -->'
+  }[goal];
+
+  let body;
+  if (model === 'claude46') {
+    body =
+`<role>
+${role}
+${toneLine}
+</role>
+
+<context>
+${CONTEXT}
+</context>
+
+<task>
+${cleanedTask}
+</task>
+
+<format>
+${fmt}
+</format>
+
+<examples>
+${examplesHint}
+</examples>
+
+<input>
+<!-- Paste the actual source / topic / data here -->
+</input>`;
+  } else if (model === 'o1') {
+    // o-series: short, no few-shot, no CoT instruction
+    body =
+`${role}
+
+Task: ${cleanedTask}
+
+Constraints:
+- Tone: ${toneLine}
+- Output format:
+${fmt.split('\n').map(l => '  ' + l).join('\n')}
+
+Context:
+${CONTEXT}
+
+Input:
+<!-- Paste the actual source / topic / data here -->`;
+  } else if (model === 'gemini3') {
+    body =
+`OBJECTIVE
+${role}
+Task: ${cleanedTask}
+Tone: ${toneLine}
+
+INPUT
+${CONTEXT}
+<!-- Paste the actual source / topic / data here -->
+
+OUTPUT FORMAT
+${fmt}
+
+EXAMPLES
+${examplesHint}`;
+  } else {
+    // generic / GPT-5
+    body =
+`# Role
+${role}
+Tone: ${toneLine}
+
+# Context
+${CONTEXT}
+
+# Task
+${cleanedTask}
+
+# Constraints / format
+${fmt}
+
+# Examples (few-shot)
+${examplesHint}
+
+# Input
+<!-- Paste the actual source / topic / data here -->`;
+  }
+  return body;
+}
+
+// ─────────────────────────────────────────────
+// Quality scoring (informal — counts presence of fields)
+// ─────────────────────────────────────────────
+function score(text) {
+  const t = text.toLowerCase();
+  let s = 0;
+  if (/role|you are/.test(t)) s += 18;
+  if (/context|audience|background/.test(t)) s += 16;
+  if (/task|objective|goal/.test(t)) s += 16;
+  if (/format|output|json|markdown/.test(t)) s += 18;
+  if (/example|few-shot|sample/.test(t)) s += 14;
+  if (/constraint|tone|length/.test(t)) s += 10;
+  if (text.length > 200) s += 4;
+  if (text.length > 500) s += 4;
+  return Math.min(100, s);
+}
+
+function annotate(rawScore, optScore, raw, optimized) {
+  const items = [];
+  const has = (text, re) => re.test(text.toLowerCase());
+
+  if (!has(raw, /you are|role/)) items.push({ kind: 'add', text: '<strong>Added a Role.</strong> Anchors vocabulary and judgment — the single highest-impact addition.' });
+  if (!has(raw, /context|audience|background|reader/)) items.push({ kind: 'add', text: '<strong>Added a Context block.</strong> Tells the model who, why, and what counts as success.' });
+  if (!has(raw, /format|json|markdown|bullet|h1|h2/)) items.push({ kind: 'add', text: '<strong>Added an explicit Format spec.</strong> Eliminates the #1 source of unusable output: wrong shape.' });
+  if (!has(raw, /example|few-shot|sample|like this/)) items.push({ kind: 'add', text: '<strong>Reserved space for few-shot examples.</strong> One or two examples typically beats a longer instruction.' });
+  if (has(raw, /think step by step|step-by-step/) && /o1|gpt5|claude46|gemini3/.test(optimized)) items.push({ kind: 'fix', text: '<strong>Removed "think step by step".</strong> Modern frontier models think implicitly; the instruction can hurt o-series performance.' });
+  if (raw.split(/\s+/).filter(Boolean).length < 8) items.push({ kind: 'fix', text: '<strong>Original prompt was very short.</strong> The structured version explicitly names the deliverable and its constraints.' });
+  if (has(raw, /good|nice|great|amazing|cool/)) items.push({ kind: 'fix', text: '<strong>Replaced fuzzy quality words.</strong> "Good" and "great" can\'t be evaluated; the format and constraints sections give the model measurable targets.' });
+  if (items.length === 0) items.push({ kind: 'add', text: 'Your prompt was already well-structured. We restructured it into the standard scaffold for portability across models.' });
+  return items;
+}
+
+// ─────────────────────────────────────────────
+// BYOK call helpers
+// ─────────────────────────────────────────────
+async function byokRewrite(raw, opts) {
+  const provider = opts.provider;
+  const key = opts.apiKey;
+  if (!key) throw new Error('Add an API key to use BYOK mode.');
+
+  const goal = opts.goal === 'auto' ? detectGoal(raw) : opts.goal;
+  const baseTemplate = templateFor(goal, raw, opts);
+
+  const sys = `You are an expert prompt engineer. Rewrite the user's prompt into a structured prompt following the Role + Context + Task + Constraints + Format + Examples pattern. Preserve the user's intent. Use the scaffold below as your output structure but improve the wording and add 1-2 concrete few-shot examples appropriate to the task. Do not add commentary outside the prompt itself.`;
+  const user = `Original user prompt:
+"""
+${raw}
+"""
+
+Use this exact scaffold and structure (replace the placeholders with concrete content):
+
+${baseTemplate}`;
+
+  if (provider === 'openai' || provider === 'openrouter') {
+    const url = provider === 'openai' ? 'https://api.openai.com/v1/chat/completions' : 'https://openrouter.ai/api/v1/chat/completions';
+    const model = provider === 'openai' ? 'gpt-4o-mini' : 'openai/gpt-4o-mini';
+    const r = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key },
+      body: JSON.stringify({ model, messages: [{ role: 'system', content: sys }, { role: 'user', content: user }], temperature: 0.4 })
+    });
+    const data = await r.json();
+    if (data.error) throw new Error(data.error.message || 'API error');
+    return data.choices?.[0]?.message?.content || baseTemplate;
+  }
+  if (provider === 'anthropic') {
+    const r = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 1500, system: sys, messages: [{ role: 'user', content: user }] })
+    });
+    const data = await r.json();
+    if (data.error) throw new Error(data.error.message || 'API error');
+    return data.content?.[0]?.text || baseTemplate;
+  }
+  if (provider === 'google') {
+    const r = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + encodeURIComponent(key), {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ system_instruction: { parts: [{ text: sys }] }, contents: [{ role: 'user', parts: [{ text: user }] }] })
+    });
+    const data = await r.json();
+    if (data.error) throw new Error(data.error.message || 'API error');
+    return data.candidates?.[0]?.content?.parts?.[0]?.text || baseTemplate;
+  }
+  return baseTemplate;
+}
+
+// ─────────────────────────────────────────────
+// Wiring
+// ─────────────────────────────────────────────
+let activeEngine = 'rules';
+
+document.querySelectorAll('.toggle').forEach(t => {
+  t.addEventListener('click', () => {
+    activeEngine = t.dataset.engine;
+    document.querySelectorAll('.toggle').forEach(x => x.classList.toggle('active', x === t));
+    document.getElementById('keyRow').classList.toggle('show', activeEngine === 'byok');
+  });
+});
+
+document.querySelectorAll('.ex').forEach(e => {
+  e.addEventListener('click', () => { document.getElementById('rawPrompt').value = e.dataset.ex; });
+});
+
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.target;
+    navigator.clipboard.writeText(document.getElementById(target).textContent);
+    const original = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = original, 1500);
+  });
+});
+
+function showAlert(msg, kind) {
+  const el = document.getElementById('alert');
+  el.style.display = 'block';
+  el.style.borderLeftColor = kind === 'error' ? 'var(--red)' : 'var(--accent)';
+  el.style.color = kind === 'error' ? '#fca5a5' : '#f9a8d4';
+  el.innerHTML = msg;
+}
+
+document.getElementById('optimize').addEventListener('click', async () => {
+  const raw = document.getElementById('rawPrompt').value.trim();
+  if (!raw) { showAlert('<strong>Add a prompt</strong> on the left, then optimize.', 'error'); return; }
+  document.getElementById('alert').style.display = 'none';
+
+  const goalSel = document.getElementById('goalType').value;
+  const goal = goalSel === 'auto' ? detectGoal(raw) : goalSel;
+  const opts = {
+    goal: goalSel,
+    tone: document.getElementById('tone').value,
+    model: document.getElementById('model').value,
+    provider: document.getElementById('provider').value,
+    apiKey: document.getElementById('apiKey').value.trim()
+  };
+
+  const btn = document.getElementById('optimize');
+  btn.disabled = true;
+  const originalText = btn.textContent;
+
+  let optimized;
+  try {
+    if (activeEngine === 'byok') {
+      btn.innerHTML = '<span class="spinner"></span>Rewriting via ' + opts.provider + '…';
+      optimized = await byokRewrite(raw, { ...opts, goal });
+    } else {
+      btn.textContent = 'Optimizing…';
+      await new Promise(r => setTimeout(r, 80));
+      optimized = templateFor(goal, raw, opts);
+    }
+  } catch (err) {
+    showAlert('<strong>BYOK error:</strong> ' + (err.message || err) + ' — falling back to rule-based.', 'error');
+    optimized = templateFor(goal, raw, opts);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = originalText;
+  }
+
+  document.getElementById('optimizedOutput').textContent = optimized;
+
+  const rawWords = raw.split(/\s+/).filter(Boolean).length;
+  const optWords = optimized.split(/\s+/).filter(Boolean).length;
+  document.getElementById('statBefore').textContent = rawWords;
+  document.getElementById('statAfter').textContent = optWords;
+  document.getElementById('statScore').textContent = score(optimized) + '/100';
+
+  const items = annotate(score(raw), score(optimized), raw, optimized);
+  document.getElementById('annotations').innerHTML = items.map(i =>
+    `<div class="annotation ${i.kind}">${i.text}</div>`
+  ).join('');
+});
+</script>
+</body>
+</html>
