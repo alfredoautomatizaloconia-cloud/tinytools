@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Free Color Palette Generator for News Publishers — Editorial Brand Colors That Pass WCAG (2026)</title>
+<meta name="description" content="Free color palette generator built for news publishers. Lock an editorial brand palette in 10 minutes — WCAG-AA contrast checked, breaking-news red certified, exportable to WordPress VIP, Arc XP, and custom CMS theme tokens.">
+<meta name="keywords" content="color palette for news publishers, editorial color scheme, newsroom brand colors, news website palette, breaking news red, wordpress vip color tokens, arc xp theme colors, news publisher branding 2026">
+<meta property="og:title" content="Color Palette Generator for News Publishers — Editorial Brand Colors in 10 Minutes">
+<meta property="og:description" content="Free color palette generator built for news publishers. WCAG-AA checked, breaking-news certified, exportable to WordPress VIP, Arc XP, and custom CMS tokens.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/color-palette/for-news-publishers/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Color Palette Generator for News Publishers — Editorial Brand Colors in 10 Minutes">
+<meta name="twitter:description" content="Free color palette generator built for news publishers. WCAG-AA checked, breaking-news certified, exportable to WordPress VIP, Arc XP, and custom CMS tokens.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/color-palette/for-news-publishers/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Color Palette Generator for News Publishers","url":"https://tinytools-smoky.vercel.app/color-palette/for-news-publishers/","applicationCategory":"DesignApplication","audience":{"@type":"Audience","audienceType":"News Publishers, Editorial Teams, Newsrooms, Magazine Publishers"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What colors do news websites use?","acceptedAnswer":{"@type":"Answer","text":"Major news outlets converge on a tight palette: a single trust-signaling primary (deep navy, oxblood red, or charcoal), a near-black body text on off-white background, a desaturated muted gray for bylines and timestamps, and one alert color reserved exclusively for breaking news. The New York Times uses near-black on cream; The Washington Post uses navy; The Guardian uses a muted blue. The pattern is intentional — restrained palettes signal seriousness and protect long reads from visual fatigue."}},{"@type":"Question","name":"What red should I use for breaking news?","acceptedAnswer":{"@type":"Answer","text":"Use a saturated red between #c00 and #d72d2d — high enough to alert, low enough to clear WCAG AA contrast on white (4.5:1). Reserve it strictly for breaking-news labels, live blog indicators, and time-sensitive alerts. Using your alert red as a generic accent destroys its signal value within weeks. The TinyTools generator flags any red below 4.5:1 contrast."}},{"@type":"Question","name":"How many colors should a news site use?","acceptedAnswer":{"@type":"Answer","text":"Six tokens for the editorial layer: background, surface, text, muted text, brand primary, and alert. Add two more for monetization separation: a sponsored-content tint and a subscription paywall accent. Eight tokens total. More colors than that and section identity collapses — readers lose track of where opinion ends and news begins."}},{"@type":"Question","name":"Why do news sites avoid bright colors?","acceptedAnswer":{"@type":"Answer","text":"Bright saturation reads as opinion or entertainment. Long-form news consumption averages 4–6 minutes per article — bright accents fatigue the eye and reduce time on page. Restrained palettes (saturation under 60%, lightness near the extremes) project authority and protect readability. The exception is the alert red, which is supposed to interrupt."}},{"@type":"Question","name":"Can I export the palette to WordPress VIP or Arc XP?","acceptedAnswer":{"@type":"Answer","text":"Yes. The generator exports CSS custom properties (works in WordPress VIP block themes, Arc XP component overrides, and any custom Next.js / Eleventy build), plus a Tailwind config block for newer headless newsrooms. Naming follows the editorial token convention (--color-text, --color-alert, --color-sponsored) so you can paste into existing design systems without renaming."}},{"@type":"Question","name":"What contrast does Google care about for news sites?","acceptedAnswer":{"@type":"Answer","text":"Google News and Top Stories carousels weight Core Web Vitals, including Lighthouse accessibility. Body text under 4.5:1 contrast fails the audit and downweights the URL in News surfaces. Headlines (large text) need 3:1 minimum. The TinyTools generator runs both checks against your background and surface tokens before you export."}}]}</script>
+
+<style>
+:root{--bg:#0a0a0f;--bg-card:#15151f;--bg-elev:#1d1d2a;--border:#2a2a3a;--text:#f5f5fa;--text-dim:#a0a0b8;--accent:#a855f7;--accent-glow:#a855f740;--green:#10b981;--red:#ef4444;--amber:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;background-image:radial-gradient(circle at 20% 0%,var(--accent-glow) 0%,transparent 50%),radial-gradient(circle at 80% 60%,#ec489940 0%,transparent 50%)}
+.container{max-width:820px;margin:0 auto;padding:32px 20px 80px}
+.breadcrumb{font-size:13px;color:var(--text-dim);margin-bottom:24px}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+h1{font-size:clamp(28px,4vw,42px);font-weight:800;line-height:1.15;margin:16px 0 12px;letter-spacing:-0.02em;background:linear-gradient(135deg,#fff 0%,#d8b4fe 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.meta{color:var(--text-dim);font-size:14px;margin-bottom:28px}
+h2{font-size:24px;font-weight:700;margin:36px 0 12px;color:var(--text)}
+h3{font-size:19px;font-weight:600;margin:24px 0 8px;color:var(--text)}
+p,ul,ol{color:#d0d0e0;margin-bottom:16px;font-size:17px}
+ul,ol{margin-left:24px}li{margin-bottom:6px}
+strong{color:var(--text);font-weight:600}
+a{color:var(--accent)}
+code{background:var(--bg-elev);padding:2px 6px;border-radius:4px;font-size:14px;color:#d8b4fe}
+pre{background:var(--bg-elev);padding:14px 16px;border-radius:10px;overflow-x:auto;margin:16px 0;border:1px solid var(--border)}
+pre code{background:transparent;padding:0;color:#d8b4fe;font-size:13px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);color:#d0d0e0;vertical-align:top}
+th{background:var(--bg-elev);color:var(--text);font-weight:600;font-size:14px}
+tr:last-child td{border-bottom:none}
+.yes{color:var(--green);font-weight:600}.no{color:var(--red);font-weight:600}.partial{color:var(--amber);font-weight:600}
+.cta-box{margin:36px 0;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;border-left:4px solid var(--accent)}
+.cta-box h3{margin:0 0 6px;font-size:18px;color:var(--text)}
+.cta-box p{margin-bottom:12px;font-size:15px}
+.cta-btn{display:inline-block;padding:12px 24px;background:linear-gradient(135deg,#a855f7,#ec4899);color:white;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;box-shadow:0 4px 16px rgba(168,85,247,0.3)}
+.related{margin-top:60px;padding-top:28px;border-top:1px solid var(--border)}
+.related h3{color:var(--text-dim);font-size:13px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
+.related-card{padding:14px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text);transition:all 0.15s}
+.related-card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.related-card .name{font-weight:600;font-size:14px}
+.related-card .desc{font-size:12px;color:var(--text-dim);margin-top:2px}
+.panel{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin:14px 0 18px}
+.panel.tt{border-left:3px solid var(--accent)}
+.panel.alt{border-left:3px solid #00c4cc}
+.summary{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin:18px 0 24px}
+.summary strong{color:#fff}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);text-align:center;color:var(--text-dim);font-size:13px}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head><body><div class="container">
+<div class="breadcrumb"><a href="/">TinyTools</a> &nbsp;/&nbsp; <a href="/color-palette/">Color Palette Generator</a> &nbsp;/&nbsp; For News Publishers</div>
+
+<h1>Color Palette Generator for News Publishers</h1>
+<div class="meta">Updated May 7, 2026 · For WordPress VIP, Arc XP, Ghost Pro, headless newsrooms, and digital magazines</div>
+<div class="summary"><strong>The pitch.</strong> A news brand lives or dies on the perception of authority, and authority is mostly a color problem. Eight tokens, two of them sacred (the alert red and the navy/oxblood primary), and you have a palette that survives a section redesign, a paywall, a Google News audit, and ten thousand article pages. This page is the news-publisher-specific configuration of the TinyTools color palette generator with the 2026 editorial design playbook baked in.</div>
+
+<h2>Why news publishers can't pick colors like everyone else</h2>
+<p>A SaaS landing page picks a vivid accent and ships. A news publisher can't. Editorial color choices have to do six jobs at once that nobody else cares about: signal trust, separate news from opinion from sponsored content, reserve an emergency-only alert, survive long-read fatigue, render correctly on AMP and Google News carousels, and not drift across the seventeen different page templates a typical newsroom maintains. Pick wrong and you end up like every redesign-gone-bad: the home page looks fine, but the live blog template glows, the opinion pages look like editorial, and the paywall gate is the same blue as a regular link.</p>
+<ul>
+<li><strong>Trust is a color choice.</strong> Reader studies in 2024–2025 consistently show desaturated primaries (navy, oxblood, charcoal) outscore vivid accents on perceived credibility for news brands. Bright accents read as entertainment or opinion, not reporting.</li>
+<li><strong>Breaking-news alerts must be sacred.</strong> If your &#8220;Read more&#8221; button uses the same red as your live-blog alert, the alert dies as a signal. The alert color is a one-job token.</li>
+<li><strong>Section colors compound.</strong> Politics, business, opinion, lifestyle, and sports each want a tonal accent. Without a system, you end up with twelve hex codes and no rules.</li>
+<li><strong>Paywall and sponsored content need visual separation.</strong> The FTC requires it for sponsored, and revenue teams will complain if the paywall doesn't pop. Both require dedicated tints.</li>
+<li><strong>Lighthouse and Google News are unforgiving.</strong> Body text below 4.5:1 contrast fails the audit, which downweights you in Top Stories. This is not a designer-preference debate any more — it's a ranking signal.</li>
+</ul>
+<p>A real editorial palette fixes all six in one pass: eight named tokens, exported once, referenced everywhere. The TinyTools generator does the contrast math, the section-tint derivation, and the WCAG verification so your design lead doesn't have to babysit it.</p>
+
+<div class="cta-box">
+<h3>Skip the reading?</h3>
+<p>Open the <a href="/color-palette/">color palette generator</a> and pick your editorial primary. The page below is the playbook — the tool itself takes 90 seconds.</p>
+<a class="cta-btn" href="/color-palette/">Try the Color Palette Generator &rarr;</a>
+</div>
+
+<h2>The 8-token editorial palette (and what each does)</h2>
+<p>Newsrooms that survive a redesign without re-fighting the same internal battles use a fixed eight-token system. Names matter — they map to your design tokens, your CMS theme, and your brand guide.</p>
+<table>
+<tr><th>Token</th><th>Role</th><th>Light mode example</th><th>Dark mode example</th></tr>
+<tr><td><code>--color-bg</code></td><td>Page background</td><td><code>#fafaf7</code></td><td><code>#0d1117</code></td></tr>
+<tr><td><code>--color-surface</code></td><td>Cards, callouts, pull quotes</td><td><code>#ffffff</code></td><td><code>#161b22</code></td></tr>
+<tr><td><code>--color-text</code></td><td>Body copy (must hit 4.5:1)</td><td><code>#1a1a1a</code></td><td><code>#e6edf3</code></td></tr>
+<tr><td><code>--color-muted</code></td><td>Bylines, timestamps, captions</td><td><code>#6b6b6b</code></td><td><code>#8b949e</code></td></tr>
+<tr><td><code>--color-primary</code></td><td>Brand, links, masthead</td><td><code>#0f3460</code></td><td><code>#5b8def</code></td></tr>
+<tr><td><code>--color-alert</code></td><td>Breaking news only</td><td><code>#c8102e</code></td><td><code>#f04e5e</code></td></tr>
+<tr><td><code>--color-sponsored</code></td><td>FTC-disclosed sponsored tint</td><td><code>#fff8e1</code></td><td><code>#1f1a08</code></td></tr>
+<tr><td><code>--color-paywall</code></td><td>Subscription gate accent</td><td><code>#1d8a55</code></td><td><code>#2ea66b</code></td></tr>
+</table>
+<p>Notice <code>--color-primary</code> and <code>--color-alert</code> are deliberately not the same hue family. If your brand is red (oxblood, claret), your alert has to be a different red — usually a brighter, more saturated one — or readers can't tell &#8220;this article&#8221; from &#8220;BREAKING.&#8221; The generator flags this collision and offers a complementary alert if your primary is already in the red space.</p>
+
+<h2>5 niche-specific use cases for news publishers</h2>
+
+<h3>1. Picking an editorial primary that signals trust without screaming</h3>
+<p>The reliable trust-signaling hue ranges in news design: deep navy (#0f3460–#1a3a5c), oxblood/claret (#5c1010–#7a1e1e), charcoal (#1a1a1a–#2a2a2a), and forest green (#1d4731–#2d5c3f). Saturation should sit under 60%, lightness near the extremes (under 25% for light mode, over 60% for dark mode). The generator's <strong>monochromatic</strong> mode is your default — pick one trust hue and derive a tonal scale. <strong>Complementary</strong> mode is for the alert pairing, not the brand primary.</p>
+
+<h3>2. Locking a breaking-news red that passes WCAG AA on white</h3>
+<p>Your alert red is the most-tested color on the page. It has to clear 4.5:1 contrast on the page background, 3:1 on a sponsored tint, and survive next to an editorial photo without bleeding. The generator runs all three checks against the alert candidate. Common safe alerts: <code>#c8102e</code>, <code>#d72d2d</code>, <code>#b91c1c</code>. Anything brighter than <code>#ef4444</code> tends to fail accessibility audits on white backgrounds. The official W3C guidance on <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html" rel="nofollow">contrast minimums</a> is the source of truth.</p>
+
+<h3>3. Deriving section accents from a single primary</h3>
+<p>Politics, business, opinion, lifestyle, and sports want visual differentiation without a free-for-all. Use the generator's <strong>analogous</strong> mode on your primary to derive five section tints, each shifted 15–20 degrees of hue. The reader's eye picks up the shift even on the verticals page; the design system stays coherent. Major outlets (Bloomberg's bold yellow for opinion, the FT's pink-tinted papers) are the textbook example of section accents derived from a brand foundation.</p>
+
+<h3>4. Theming a paywall and sponsored content without breaking trust</h3>
+<p>Sponsored content needs a tinted background distinct enough that &#8220;Sponsored&#8221; isn't ambiguous (FTC requirement) but not so loud that readers lose context. The generator's <strong>tint</strong> output mixes 5–8% of a warm hue (cream, parchment, butter yellow) into your background, producing a sponsored surface that reads correctly on both desktop and mobile. The paywall gate uses a separate accent — usually green or gold — to differentiate &#8220;subscribe&#8221; from &#8220;continue reading.&#8221; Pair the FTC-required disclosure with a label generated by the <a href="/ai-disclosure-generator/">AI disclosure generator</a> if your sponsored or AI-assisted content needs explicit labeling.</p>
+
+<h3>5. Coordinating colors across CMS, social cards, AMP, and Apple News</h3>
+<p>A 2026 newsroom ships the same article in eight surfaces: web, AMP, Apple News, Google News, RSS, newsletter, Twitter/X social card, and a syndication feed. Each one renders differently. Pick one primary and one alert in the generator, export CSS variables for the web/AMP build, copy the hex codes into your <a href="/og-image-generator/">OG image generator</a> for social cards, and paste them into your Apple News template. Your <a href="/favicon-generator/">favicon</a> uses the primary. Cross-surface brand recall lives or dies here — and 2026 reader studies show recognizability across surfaces is one of the strongest predictors of repeat visits.</p>
+
+<h2>The news-publisher palette playbook</h2>
+<ol>
+<li><strong>Open the <a href="/color-palette/">palette generator</a></strong> in one tab and your CMS theme tokens (or design system Figma file) in another.</li>
+<li><strong>Pick your editorial primary.</strong> Stay in the trust-hue range. Lock saturation 35–55%, lightness 18–28% for light mode.</li>
+<li><strong>Pick monochromatic mode</strong> to derive surface tints, then add a single complementary alert outside the brand hue family.</li>
+<li><strong>Verify all eight token pairs hit WCAG AA.</strong> The generator highlights failures in red. Body text under 4.5:1 will not ship — full stop.</li>
+<li><strong>Click &#8220;Export CSS variables.&#8221;</strong> Paste into your CMS theme tokens (WordPress VIP <code>theme.json</code>, Arc XP component overrides, Eleventy/Next.js global CSS).</li>
+<li><strong>Toggle dark mode</strong> for the inverted token set. Wrap in <code>@media (prefers-color-scheme: dark)</code> or use a class-based toggle.</li>
+<li><strong>Pin the palette in <code>BRAND.md</code> at the repo root.</strong> The brand primary and alert red are sacred — anything else can be discussed in design review. Discipline is the whole game.</li>
+<li><strong>Run a Lighthouse pass</strong> on a representative article, the home page, the live blog, and the paywall gate. Any accessibility audit failures get a fix-or-revert.</li>
+</ol>
+
+<h2>Compared to other tools newsrooms reach for</h2>
+<table>
+<tr><th></th><th>TinyTools palette</th><th>Coolors</th><th>Adobe Color</th><th>Figma plugins</th></tr>
+<tr><td>Free, no account</td><td class="yes">Yes</td><td class="partial">Limited</td><td class="partial">Adobe ID</td><td class="partial">Figma seat</td></tr>
+<tr><td>WCAG AA contrast verification</td><td class="yes">Built-in</td><td class="yes">Built-in</td><td class="yes">Built-in</td><td class="partial">Plugin-dep.</td></tr>
+<tr><td>8-token editorial export</td><td class="yes">Yes</td><td class="no">No (5 hexes)</td><td class="no">No</td><td class="no">No</td></tr>
+<tr><td>Auto dark-mode inversion</td><td class="yes">Yes</td><td class="no">Manual</td><td class="no">Manual</td><td class="partial">Plugin-dep.</td></tr>
+<tr><td>CSS variable + Tailwind export</td><td class="yes">Both</td><td class="partial">CSS only</td><td class="no">No</td><td class="partial">Plugin-dep.</td></tr>
+<tr><td>Built for editorial publishing</td><td class="yes">Yes</td><td class="no">Generic</td><td class="no">Print/UI</td><td class="no">Generic</td></tr>
+<tr><td>Sponsored / paywall tint output</td><td class="yes">Yes</td><td class="no">No</td><td class="no">No</td><td class="no">No</td></tr>
+</table>
+
+<h2>Frequently asked questions</h2>
+
+<h3>What's the most credible color for a news website in 2026?</h3>
+<p>Deep navy in the <code>#0f3460</code>–<code>#1a3a5c</code> range remains the highest-trust hue across reader studies. Oxblood (<code>#5c1010</code>–<code>#7a1e1e</code>) signals editorial heritage. Charcoal works for design-forward outlets that want neutrality. Avoid bright primaries (electric blue, vivid teal, hot orange) for the brand mark — they push the brand toward entertainment or tech, not news.</p>
+
+<h3>Should our opinion section have a different color than news?</h3>
+<p>Yes — and it should be obvious. The standard pattern is a section-specific accent (often warm: amber, oxblood, or terracotta) that swaps in for the masthead bar and section header on opinion templates. The body type stays the same. Readers should be able to tell &#8220;news&#8221; from &#8220;opinion&#8221; in under a second without reading the section label.</p>
+
+<h3>How do we handle election or live-event red without diluting the alert color?</h3>
+<p>Reserve the alert red strictly for breaking-news labels and live-blog status indicators. For election results, use a separate political-color pair (Democratic blue / Republican red in US contexts, or a category-neutral pair like teal/orange for international). The generator's <strong>complementary</strong> mode gives you a balanced political pair that doesn't collide with your alert.</p>
+
+<h3>Does the palette generator handle our paywall and subscription tier colors?</h3>
+<p>Yes. The 8-token system includes a dedicated <code>--color-paywall</code> for subscription accents — typically green or gold — separate from the alert and brand primary. Tier-specific accents (Standard, Premium, All-Access) can be derived from the paywall token using the monochromatic scale.</p>
+
+<h3>Can we use this for a localized or non-English edition?</h3>
+<p>Yes. The palette is purely visual — it doesn't depend on language. Editions in Arabic, Hebrew, or RTL scripts work fine; the generator's contrast checks are language-agnostic. For editions that ship a culturally distinct primary (some local-news outlets prefer regional flag-derived primaries), regenerate with the local primary and reuse the alert/paywall/sponsored tokens.</p>
+
+<h3>Does the tool work offline / can we self-host?</h3>
+<p>The generator runs entirely in your browser — no server, no account, no tracking. Once the page loads, you can disconnect. The palette math (analogous, complementary, triadic, monochromatic, tints, contrast checking) all happens client-side. Suitable for newsrooms with strict CMS-vendor IT review processes.</p>
+
+<h2>For further reading</h2>
+<p>Three credible references on news design and accessibility worth your design team's time:</p>
+<ul>
+<li><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html" rel="nofollow">W3C WCAG 2.2 — Contrast (Minimum)</a> — the actual spec your Lighthouse and Google News audits are measured against.</li>
+<li><a href="https://www.poynter.org/" rel="nofollow">Poynter Institute</a> — the standing reference on editorial standards, including ongoing coverage of design and accessibility in newsrooms.</li>
+<li><a href="https://web.dev/articles/vitals" rel="nofollow">web.dev — Core Web Vitals</a> — Google's guidance on the visual and accessibility signals that feed Top Stories ranking.</li>
+</ul>
+
+<div class="cta-box">
+<h3>Ready to lock your editorial palette?</h3>
+<p>Open the generator, pick your trust-hue primary, derive the eight tokens, ship to your CMS. 10 minutes from now your newsroom will have a palette nobody has to re-debate at the next redesign.</p>
+<a class="cta-btn" href="/color-palette/">Try the Color Palette Generator &rarr;</a>
+</div>
+
+<div class="related">
+<h3>Related TinyTools for news publishers</h3>
+<div class="related-grid">
+<a class="related-card" href="/og-image-generator/"><div class="name">OG Image Generator</div><div class="desc">Social cards in your editorial colors</div></a>
+<a class="related-card" href="/seo-meta-generator/"><div class="name">SEO Meta Generator</div><div class="desc">Headline + description that ranks</div></a>
+<a class="related-card" href="/ai-disclosure-generator/"><div class="name">AI Disclosure Generator</div><div class="desc">Reader-facing AI labels</div></a>
+</div>
+</div>
+
+<footer>&copy; 2026 <a href="/">TinyTools</a> &middot; Free, no account, no tracking &middot; Built for editorial teams</footer>
+</div></body></html>
