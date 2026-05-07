@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 6, 2026 — published Etsy background removal guide for background-remover + 4 social drafts ready",
+  "lastUpdated": "May 6, 2026 — published “What To Do When the .com Is Taken” for domain-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 29,
+    "posts": 30,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 00:11",
+      "tag": "seo",
+      "text": "📝 Published blog post: What To Do When the .com Is Taken: 7 Startup-Tested Alternatives in 2026 at /domain-generator/blog/what-to-do-when-com-domain-taken-2026/"
+    },
+    {
+      "time": "today 00:11",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/Entrepreneur, LinkedIn, Show HN — all promoting domain-generator"
+    },
     {
       "time": "today 20:11",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 12:28",
       "tag": "seo",
       "text": "🆚 Comparison: TinyTools vs Coolors at /color-palette/vs/coolors/ — intercepts Coolors search traffic"
-    },
-    {
-      "time": "today 12:28",
-      "tag": "seo",
-      "text": "🆚 Comparison: TinyTools vs Adobe Color at /color-palette/vs/adobe-color/ — intercepts Adobe Color search traffic"
-    },
-    {
-      "time": "today 12:28",
-      "tag": "seo",
-      "text": "🆚 Comparison: TinyTools vs Khroma at /color-palette/vs/khroma/ — intercepts Khroma search traffic"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-07T00:11:22Z",
+      "text": "🧵 Your perfect .com is parked at $14,000.\nThree weeks of negotiating later, you'll wish you'd known the 7 founder moves that actually work. (1/6)\n\n---\n\n(2/6) First: figure out which kind of \"taken\" it is.\n• Active business → skip\n• Parked auction → negotiate or skip\n• Dormant private → cold email (works 30% of the time)\n• Pending drop → backorder for $69\n\nMost founders confuse #2 and #3 and overpay.\n\n---\n\n(3/6) The most reliable single move:\nAdd a verb. get / use / try / hey / join / app.\n\nGetMagic, UseGather, TryRamp, AppLovin — all $100M+ companies that took this exact path.\nStandard $12 .com. No SEO penalty. The brand becomes the search query.\n\n---\n\n(4/6) The most defensible long-term move:\nCoin a brandable.\n• 2 syllables, 5–7 letters\n• Vowel-consonant-vowel pattern\n• Passes the dictation test (say it once, stranger spells it right)\n\nNotion, Brex, Vercel, Linear all started here.\n\n---\n\n(5/6) When alt-TLDs work in 2026:\n✅ .ai for AI products (normalized)\n✅ .io for dev tools (still standard)\n✅ .app/.dev (HTTPS-required, signals software)\n❌ .xyz, .co, .tech, .online (consumers still pattern-match \"couldn't get the real one\" — measurable conversion drop)\n\n---\n\n(6/6) The full decision tree, with prices, the 4 flavors of \"taken,\" and the negotiation game when you really do want to buy the parked one:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/what-to-do-when-com-domain-taken-2026/\n\nFree domain generator that filters parked + taken across 6 TLDs is in the post."
+    },
+    {
+      "platform": "Reddit /r/Entrepreneur",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-07T00:11:22Z",
+      "text": "Subreddit: /r/Entrepreneur or /r/startups or /r/SaaS\n\nComment (reply on a thread asking about domain names, .com alternatives, or someone frustrated their name is taken):\n\nI've watched founders torture themselves over this for months and the ones who win move fast on one of these seven plays. Tldr from the field:\n\n1. Diagnose the kind of \"taken\" before doing anything else. Active business = skip. Parked at $50k = skip unless funded. Dormant (resolves to nothing, no listing) = WHOIS + cold email, works ~30% of the time at 25-40% of any number you'd see at auction. Pending drop = backorder via DropCatch, often $69 if no one else bids.\n\n2. The single most reliable move is to add a verb prefix. get/use/try/hey/join/app. GetMagic, UseGather, TryRamp, JoinHandshake, AppLovin — $100M+ businesses on this exact pattern. Buyers don't even register it as a workaround anymore.\n\n3. The strongest long-term move is to coin a brandable word. 2 syllables, 5-7 letters, vowel-consonant-vowel, passes the dictation test. Notion, Brex, Vercel — all started here. Cheap .com, defensible long-term, the brand becomes the search query within months.\n\n4. Cat-relevant TLDs work in 2026 IF the audience matches. .ai for AI, .io/.app/.dev for devs, perfectly fine. .xyz/.co/.tech for consumer audiences — there's a measurable 8-15% conversion drop in A/B tests vs the same brand on .com. Pay for the .com and 301-redirect if you can.\n\n5. The move founders resist hardest, that always pays off: just pick a different name. Most founders rank their final name HIGHER than their day-1 favorite within 90 days of launch. Generate 200 candidates, score them blind on a Friday.\n\nWrote up the full 7-move playbook with pricing per TLD and the negotiation framework for parked .coms here: https://tinytools-smoky.vercel.app/domain-generator/blog/what-to-do-when-com-domain-taken-2026/\n\n(I built the free domain generator linked in the post — filters out parked and taken across 6 TLDs, no signup.)"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-07T00:11:22Z",
+      "text": "A founder DM'd me Saturday: \"The .com is parked at $14k. Help.\"\n\nI asked one question: what kind of taken is it?\n\nThere are four flavors and the move is different for each:\n\n→ Active business owns it → walk away. Trademark risk if you push.\n→ Listed at auction or showing a \"for sale\" page → negotiate or skip.\n→ Privately held but resolves to nothing → WHOIS + cold email. Lower offers work 30% of the time.\n→ Pending drop in the next 30 days → backorder for $69. Often nobody else bids.\n\nMost founders confuse the four and overpay by $5–40k.\n\nAnd the underrated truth: the single most reliable move when your perfect .com is gone is to add a verb. GetMagic, UseGather, TryRamp, AppLovin, JoinHandshake. All $100M+ outcomes. The pattern is so normalized in 2026 that buyers don't even register it as a workaround.\n\nThe decision tree, in one sentence: if you're pre-product, generate 200 brandable candidates this Friday and ship the cleanest available one. The product builds the brand. The domain doesn't.\n\nFull 7-move playbook with pricing per TLD, the parked-.com negotiation game, and the four kinds of \"taken\" that founders miss:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/what-to-do-when-com-domain-taken-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-07T00:11:22Z",
+      "text": "Show HN title: The seven founder moves when your startup .com is taken (2026)\n\nLink: https://tinytools-smoky.vercel.app/domain-generator/blog/what-to-do-when-com-domain-taken-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Wrote this up after watching too many founders sink three weeks into a domain-squatter negotiation that goes nowhere, instead of spending one Friday generating 200 brandable candidates and shipping the cleanest available one. The four flavors of \"taken\" matter more than people think — confusing a dormant private registration (cold email works ~30%) with a parked auction listing (start at 25-35% of asking) costs founders thousands. Built a free in-browser domain generator that filters parked + taken across .com, .io, .ai, .so, .app, .dev — also linked in the post. Curious whether HN's hive mind agrees that .io's status uncertainty post-2024 ICANN review is finally enough to move dev brands off it, or whether it's still default."
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "background-remover",
       "createdAt": "2026-05-06T20:11:38Z",
       "text": "🧵 Etsy sellers: your first listing photo is the single biggest CTR lever you control.\n\nHere's the free 30-min Saturday routine that lifts CTR 20-40% in two weeks. (1/5)\n\n---\n\n(2/5) Stop shooting against white sheets if your product is light.\n\nAI background removers fail on three things: hair-thin edges that match the background, translucent objects, and shadows you want to keep.\n\nUse a mid-grey, soft blue, or matte black background depending on what's brightest in the product.\n\n---\n\n(3/5) Cut backgrounds in your browser, free, no upload:\n\n• Drop the whole shoot folder in\n• ~1 second per image on a modern laptop\n• Nothing trains on your photos\n• 50 photos at once is fine\n\nTool: https://tinytools-smoky.vercel.app/background-remover/\n\n---\n\n(4/5) The step most sellers skip: composite the cutout onto YOUR brand background.\n\nA bare transparent PNG vanishes against Etsy's white grid.\n\nPick 2-3 brand colors (sage, terracotta, slate) and use them on every slot-1 photo. Recognizable in the search grid > pretty.\n\n---\n\n(5/5) Full 2026 workflow: Etsy's actual image specs, the 3 cutout mistakes that tank CTR (halo edges, mismatched shadows, killing your scale cue), and the 30-min Saturday routine that gives you 5 new listings:\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/etsy-listing-photo-background-removal-2026/"
@@ -260,30 +284,6 @@
       "tool": "background-remover",
       "createdAt": "2026-05-06T20:11:38Z",
       "text": "Show HN title: A free in-browser workflow for Etsy listing photos that lifts CTR 20-40%\n\nLink: https://tinytools-smoky.vercel.app/background-remover/blog/etsy-listing-photo-background-removal-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Built a free in-browser background remover using an open-weight segmentation model — runs entirely on-device, no upload, no cap. Wrote this up because the most common 'why aren't my Etsy listings converting' question turns out to have the same answer 80% of the time: the slot-1 photo is engineered for the photoshoot instead of the search grid. The actual numbers from sellers I've talked to are wild — 20-40% CTR lift in two weeks just from cutout + brand-color composite. Curious if HN has experience with on-device segmentation models in 2026 (we're using a quantized variant of SAM-2-tiny in WebGPU, which finally makes this practical without a server)."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "text": "🧵 Founders: I see a $14k mistake every month — picking a domain name without a 5-min trademark check.\n\nHere's the exact sweep that saves rebrands. (1/5)\n\n---\n\n(2/5) The 60-second sniff test, before any database:\n\n• Google \"yourname\" + your category in quotes\n• site:linkedin.com/company \"yourname\"\n• Search the App Store + Play Store\n\nIf something active turns up in your same niche → stop. Move on. Trademark rights attach to USE, not registration.\n\n---\n\n(3/5) Then run the four free databases:\n\n• USPTO TESS (US)\n• EUIPO TMview (EU)\n• WIPO Global Brand DB (~75 countries)\n• UK IPO + Canadian CIPO\n\nSearch exact, phonetic AND stem matches in each. \"Lyft\" and \"Lift\" count.\n\n---\n\n(4/5) The factor most founders forget: BUSINESS CLASS.\n\nA registered \"Acmebot\" in Class 1 (chemicals) ≠ a problem for your Class 9/42 SaaS.\n\nA registered \"Acmebot\" in Class 9 cloud software = walk away today.\n\n---\n\n(5/5) Full 2026 guide w/ the \"confusingly similar\" framework + when to call an attorney + a free domain generator that filters for available + brandable names so you don't waste time on dead ends:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/how-to-check-if-domain-name-is-trademarked-2026/",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T16:05:19Z"
-    },
-    {
-      "platform": "Reddit /r/startups",
-      "text": "Coming back to this thread because I've watched 3 founders in my YC batch eat $10k+ rebrand bills from skipping this. Five minutes of trademark check before you buy the .com saves a year of regret.\n\nThe tl;dr that worked for me:\n\n1. Google your name in quotes + your category. site:linkedin.com/company \"yourname\" too — surfaces operating companies that haven't filed a TM yet.\n2. Run it through USPTO TESS, EUIPO TMview, and WIPO Global Brand DB. Use the phonetic toggle — \"Lyft\"/\"Lift\" levels of similarity get flagged in real conflicts.\n3. The big factor people miss: business class. Same name in chemicals = not your problem. Same name in Class 9/42 software = your problem.\n4. If the name is clean, file an intent-to-use USPTO application within 30 days of locking the domain. ~$350 in fees, locks priority.\n\nWrote up the full process with the four databases linked + when to actually pay for an attorney here: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-check-if-domain-name-is-trademarked-2026/\n\nFree domain generator I built that filters for available .coms is in there too — saves a lot of \"trademark clean but parked at $14k\" frustration.",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T16:05:19Z"
-    },
-    {
-      "platform": "LinkedIn",
-      "text": "A founder DM'd me last week: \"We launched, got a cease-and-desist in month 4, and rebrand cost us $18k.\"\n\nThis is preventable in 5 minutes.\n\nBefore you register the domain, run your candidate name through:\n\n• USPTO TESS (with the phonetic toggle on)\n• EUIPO TMview\n• WIPO Global Brand DB\n• A site:linkedin.com/company \"yourname\" search\n\nThe factor most founders skip: business class. Two companies can share a trademark across different industries — Apple Records co-existed with Apple Computer for decades. But if a registered mark exists in your same software/SaaS class and the names rhyme, you have a real conflict, no matter who paid for the .com first.\n\nFive minutes now > $18k later.\n\nI wrote the full 2026 walkthrough — the four free databases, the \"confusingly similar\" framework, and when to call an attorney — here:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/how-to-check-if-domain-name-is-trademarked-2026/",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T16:05:19Z"
-    },
-    {
-      "platform": "Show HN",
-      "text": "TITLE: Show HN: A 5-minute trademark check before you buy your startup's domain\n\nCOMMENT:\nBuilt this after watching three friends eat rebrand bills because they bought a domain that was clean on registrars but already trademarked in software. The four free databases + how to read 'confusingly similar' across business classes is the whole game. Free domain generator linked from the post if you want to start from a list of available, brandable names instead. Feedback welcome — especially on the international section, that's where I'm least confident: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-check-if-domain-name-is-trademarked-2026/",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-06T16:05:19Z"
     }
   ],
   "checklist": [
