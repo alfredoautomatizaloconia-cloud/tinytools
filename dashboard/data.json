@@ -1,207 +1,207 @@
 {
-  "lastUpdated": "May 8, 2026 \u2014 published Transparent PNG Workflow guide for background-remover + 4 social drafts ready",
+  "lastUpdated": "May 8, 2026 — published “Amazon Product Photo Background Removal” for background-remover + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
       "slug": "domain-generator",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     },
     {
       "name": "OG Image Generator",
       "slug": "og-image-generator",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     },
     {
       "name": "AI Background Remover",
       "slug": "background-remover",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     },
     {
       "name": "Favicon Generator",
       "slug": "favicon-generator",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     },
     {
       "name": "Color Palette Generator",
       "slug": "color-palette",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     },
     {
       "name": "SEO Meta Tag Generator",
       "slug": "seo-meta-generator",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     }
   ],
   "stats": {
     "tools": 6,
     "toolsDelta": "+6 since launch",
-    "visitors": "\u2014",
+    "visitors": "—",
     "visitorsDelta": "Vercel Analytics: enable in 1 click",
     "clicks": "0",
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 37,
+    "posts": 38,
     "postsDelta": "+1 today",
-    "indexed": "\u2014",
+    "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
     {
+      "time": "today 20:13",
+      "tag": "seo",
+      "text": "📝 Published blog post: Amazon Product Photo Background Removal: The Free 2026 Workflow That Passes Listing Review at /background-remover/blog/amazon-product-photo-background-removal-2026/"
+    },
+    {
+      "time": "today 20:13",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/FulfillmentByAmazon, LinkedIn, Show HN — all promoting background-remover"
+    },
+    {
       "time": "today 17:30",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: How to Make a Transparent PNG From Any Image in 2026 \u2014 The Free In-Browser Workflow at /background-remover/blog/how-to-make-transparent-png-from-image-2026/"
+      "text": "📝 Published blog post: How to Make a Transparent PNG From Any Image in 2026 — The Free In-Browser Workflow at /background-remover/blog/how-to-make-transparent-png-from-image-2026/"
     },
     {
       "time": "today 17:30",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/graphic_design, LinkedIn, Show HN \u2014 all promoting background-remover"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/graphic_design, LinkedIn, Show HN — all promoting background-remover"
     },
     {
       "time": "today 13:35",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: How to Remove the Background from a LinkedIn Headshot for Free in 2026 at /background-remover/blog/how-to-remove-background-from-linkedin-headshot-free-2026/"
+      "text": "📝 Published blog post: How to Remove the Background from a LinkedIn Headshot for Free in 2026 at /background-remover/blog/how-to-remove-background-from-linkedin-headshot-free-2026/"
     },
     {
       "time": "today 13:35",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/jobs, LinkedIn, Show HN \u2014 all promoting background-remover"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/jobs, LinkedIn, Show HN — all promoting background-remover"
     },
     {
       "time": "today 16:08",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: OG Image Templates That Convert: 7 Layout Patterns for SaaS, Ecommerce & Newsletters in 2026 at /og-image-generator/blog/og-image-templates-layouts-that-convert-2026/"
+      "text": "📝 Published blog post: OG Image Templates That Convert: 7 Layout Patterns for SaaS, Ecommerce & Newsletters in 2026 at /og-image-generator/blog/og-image-templates-layouts-that-convert-2026/"
     },
     {
       "time": "today 16:08",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN \u2014 all promoting og-image-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN — all promoting og-image-generator"
     },
     {
       "time": "today 14:22",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: OG Image Dimensions 2026: Pixel-Perfect Specs for Every Platform That Still Matters at /og-image-generator/blog/og-image-dimensions-2026-pixel-perfect-specs/"
+      "text": "📝 Published blog post: OG Image Dimensions 2026: Pixel-Perfect Specs for Every Platform That Still Matters at /og-image-generator/blog/og-image-dimensions-2026-pixel-perfect-specs/"
     },
     {
       "time": "today 14:22",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN \u2014 all promoting og-image-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting og-image-generator"
     },
     {
       "time": "today 13:39",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: OG Image SEO: Does Your Social Card Affect Google Rankings? (2026) at /og-image-generator/blog/og-image-seo-does-it-affect-google-rankings-2026/"
+      "text": "📝 Published blog post: OG Image SEO: Does Your Social Card Affect Google Rankings? (2026) at /og-image-generator/blog/og-image-seo-does-it-affect-google-rankings-2026/"
     },
     {
       "time": "today 13:39",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting og-image-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting og-image-generator"
     },
     {
       "time": "today 13:28",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: How to Test OG Images Before Publishing in 2026 \u2014 The 5-Tool Validator Workflow at /og-image-generator/blog/how-to-test-og-images-before-publishing-2026/"
+      "text": "📝 Published blog post: How to Test OG Images Before Publishing in 2026 — The 5-Tool Validator Workflow at /og-image-generator/blog/how-to-test-og-images-before-publishing-2026/"
     },
     {
       "time": "today 13:28",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN \u2014 all promoting og-image-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting og-image-generator"
     },
     {
       "time": "today 04:18",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: How to Auto-Generate OG Images for Every Blog Post in 2026 at /og-image-generator/blog/how-to-auto-generate-og-images-for-blogs-2026/"
+      "text": "📝 Published blog post: How to Auto-Generate OG Images for Every Blog Post in 2026 at /og-image-generator/blog/how-to-auto-generate-og-images-for-blogs-2026/"
     },
     {
       "time": "today 04:18",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN \u2014 all promoting og-image-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting og-image-generator"
     },
     {
       "time": "today 00:11",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: What To Do When the .com Is Taken: 7 Startup-Tested Alternatives in 2026 at /domain-generator/blog/what-to-do-when-com-domain-taken-2026/"
+      "text": "📝 Published blog post: What To Do When the .com Is Taken: 7 Startup-Tested Alternatives in 2026 at /domain-generator/blog/what-to-do-when-com-domain-taken-2026/"
     },
     {
       "time": "today 00:11",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/Entrepreneur, LinkedIn, Show HN \u2014 all promoting domain-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/Entrepreneur, LinkedIn, Show HN — all promoting domain-generator"
     },
     {
       "time": "today 20:11",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: Etsy Listing Photo Background Removal: The Free 2026 Workflow That Lifts Conversions at /background-remover/blog/etsy-listing-photo-background-removal-2026/"
+      "text": "📝 Published blog post: Etsy Listing Photo Background Removal: The Free 2026 Workflow That Lifts Conversions at /background-remover/blog/etsy-listing-photo-background-removal-2026/"
     },
     {
       "time": "today 20:11",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/Etsy, LinkedIn, Show HN \u2014 all promoting background-remover"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/Etsy, LinkedIn, Show HN — all promoting background-remover"
     },
     {
       "time": "today 16:05",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: How to Check If a Domain Name Is Trademarked Before You Buy It (2026 Guide) at /domain-generator/blog/how-to-check-if-domain-name-is-trademarked-2026/"
+      "text": "📝 Published blog post: How to Check If a Domain Name Is Trademarked Before You Buy It (2026 Guide) at /domain-generator/blog/how-to-check-if-domain-name-is-trademarked-2026/"
     },
     {
       "time": "today 16:05",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/startups, LinkedIn, Show HN \u2014 all promoting domain-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/startups, LinkedIn, Show HN — all promoting domain-generator"
     },
     {
       "time": "today 15:55",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: Brandable vs Keyword Domain Names: Which Wins for SaaS in 2026? at /domain-generator/blog/brandable-vs-keyword-domains-saas-2026/"
+      "text": "📝 Published blog post: Brandable vs Keyword Domain Names: Which Wins for SaaS in 2026? at /domain-generator/blog/brandable-vs-keyword-domains-saas-2026/"
     },
     {
       "time": "today 15:55",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN \u2014 all promoting domain-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN — all promoting domain-generator"
     },
     {
       "time": "today 08:44",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: How to Negotiate Buying a Premium Domain Name in 2026 at /domain-generator/blog/how-to-negotiate-buying-premium-domain-name-2026/"
+      "text": "📝 Published blog post: How to Negotiate Buying a Premium Domain Name in 2026 at /domain-generator/blog/how-to-negotiate-buying-premium-domain-name-2026/"
     },
     {
       "time": "today 08:44",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/Entrepreneur, LinkedIn, Show HN \u2014 all promoting domain-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/Entrepreneur, LinkedIn, Show HN — all promoting domain-generator"
     },
     {
       "time": "today 04:10",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: Domain Name SEO Mistakes That Hurt Rankings in 2026 at /domain-generator/blog/domain-name-seo-mistakes-2026/"
+      "text": "📝 Published blog post: Domain Name SEO Mistakes That Hurt Rankings in 2026 at /domain-generator/blog/domain-name-seo-mistakes-2026/"
     },
     {
       "time": "today 04:10",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting domain-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting domain-generator"
     },
     {
       "time": "today 00:12",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: How to Find a Short, Available .com Domain in 2026 \u2014 A Realistic Field Guide at /domain-generator/blog/how-to-find-short-available-com-domain-2026/"
+      "text": "📝 Published blog post: How to Find a Short, Available .com Domain in 2026 — A Realistic Field Guide at /domain-generator/blog/how-to-find-short-available-com-domain-2026/"
     },
     {
       "time": "today 00:12",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/Entrepreneur, LinkedIn, Show HN \u2014 all promoting domain-generator"
-    },
-    {
-      "time": "today 20:15",
-      "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: JSON-LD Article Schema in 2026 \u2014 The Implementation Guide That Gets You Cited by AI at /seo-meta-generator/blog/json-ld-article-schema-blog-posts-2026/"
-    },
-    {
-      "time": "today 20:15",
-      "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting seo-meta-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/Entrepreneur, LinkedIn, Show HN — all promoting domain-generator"
     }
   ],
   "roadmap": [
@@ -240,61 +240,62 @@
     {
       "platform": "X / Twitter Thread",
       "tool": "background-remover",
+      "createdAt": "2026-05-08T20:12:40Z",
+      "text": "1/ Amazon quietly suppresses listings whose main image fails its background spec.\n\nNot removed. Not flagged. Just demoted to page 14.\n\nHere's the 2026 free workflow that passes audit on the first try (and the 3 mistakes I see weekly): 🧵\n\n2/ The main-image rules in 2026:\n• Background must be PURE white — RGB 255,255,255\n• Product fills 85% of frame minimum\n• No props, no text, no logos, no shadows\n• 1600px on the long edge (top sellers ship 2560px)\n\n#FCFCFC fails. #FEFEFE fails. Eyedropper-strict.\n\n3/ Workflow that holds up:\n\n• Shoot against MID-GREY, not white. Gives the cutout model edge separation.\n• Cut bg in-browser with TinyTools (no upload, no signup)\n• Composite onto pure #FFFFFF at 87% frame fit\n• Export flat JPG @ 92 quality\n\nDone in <2 min/SKU.\n\n4/ The 3 mistakes I see weekly:\n\n→ Off-white halo at edges (audit catches it)\n→ Cutout under 85% fill (the #1 reason for suppression)\n→ Props that look like accessories (the case, cord, plant — all banned in main image)\n\n5/ Free tool, runs entirely in your browser, handles batches of 50:\n\nhttps://tinytools-smoky.vercel.app/background-remover/\n\nFull guide w/ Amazon-specific edge cases (translucent products, glossy electronics, hangers): https://tinytools-smoky.vercel.app/background-remover/blog/amazon-product-photo-background-removal-2026/"
+    },
+    {
+      "platform": "Reddit /r/FulfillmentByAmazon",
+      "tool": "background-remover",
+      "createdAt": "2026-05-08T20:12:40Z",
+      "text": "Re: \"why did my listing suddenly drop in BSR\" — image suppression is a really common cause and Amazon doesn't tell you when it happens.\n\nThe quick check: in Seller Central → Manage Inventory → filter by 'Suppressed.' Yellow caution icon = image issue. Most common reason is 'Main image must have a pure white background' — and the trap is that 'pure white' means literal RGB 255,255,255. Anything in the 252–254 range silently fails the audit.\n\nA few things that fixed it for me on a beauty SKU last quarter:\n\n• Shoot against mid-grey, not white. The cutout model needs separation; white-on-white is a nightmare.\n• Cut the background in-browser instead of in Photoshop. Photoshop's default 'white' fill has been color-managed for years and the actual pixels often aren't 255,255,255 — that's why you can have a 'white' canvas that still fails. I've been using https://tinytools-smoky.vercel.app/background-remover/ which has a 'pure white background + 85% frame fit' export toggle. Free, no signup, runs locally.\n• Spot-check at 200% zoom for halo edges before uploading.\n\nIf you want the long version with the FBA-specific edge cases (hangers count as props, translucent products need a different setting, etc.), I wrote it up here: https://tinytools-smoky.vercel.app/background-remover/blog/amazon-product-photo-background-removal-2026/"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "background-remover",
+      "createdAt": "2026-05-08T20:12:40Z",
+      "text": "Three months ago an Amazon FBA seller I work with watched her BSR slide for two weeks with no obvious cause.\n\nNothing on the listing had changed. Title, price, inventory, ads — all stable. Conversion was just quietly dropping.\n\nThe culprit turned out to be a 16-pixel halo of off-white pixels around her main product image. Amazon's image audit had flagged it. Her listing wasn't removed — just deprioritized in search until she fixed it.\n\nThe fix took 4 minutes: re-cut the original photo against mid-grey, run it through a browser-based background remover with a 'pure white #FFFFFF' export setting, and re-upload. Her listing recovered in 48 hours.\n\nThe broader lesson: Amazon's main-image policy is the strictest of any major marketplace, and it's binary. You either pass or you don't. The tools that pass it consistently in 2026 aren't Photoshop — they're browser-based AI cutout tools that can force pure 255,255,255 backgrounds and the 85% frame-fill rule on export.\n\nI wrote up the full 2026 workflow — what Amazon's policy actually requires, the 3 mistakes that get listings suppressed, and a 30-minute Saturday routine that scales — here: https://tinytools-smoky.vercel.app/background-remover/blog/amazon-product-photo-background-removal-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "background-remover",
+      "createdAt": "2026-05-08T20:12:40Z",
+      "title": "Show HN: Free in-browser background remover that hits Amazon's pure-white spec",
+      "text": "Hi HN — built this after a friend's Amazon listing got quietly suppressed by an off-white halo around her cutout. The audit treats #FCFCFC the same as a colored background.\n\nIt runs an open-weight segmentation model entirely in the browser (no upload, no signup, no watermark), and the export pipeline forces a real 255,255,255 background at 87% frame fit so you don't fail Amazon's audit on a color-managed Photoshop 'white.'\n\nFree, batches of 50 work, takes ~1s/image on a modern laptop. Source of the suppression rules + workflow writeup in the post.\n\nLink: https://tinytools-smoky.vercel.app/background-remover/blog/amazon-product-photo-background-removal-2026/\n\nWould love feedback on the segmentation edge cases I haven't handled well yet — translucent products and tightly-cropped chains are still imperfect."
+    },
+    {
+      "platform": "X / Twitter Thread",
+      "tool": "background-remover",
       "createdAt": "2026-05-08T17:30:00Z",
-      "text": "\ud83e\uddf5 In 2026 you don't need Photoshop to make a transparent PNG. You need a browser tab and ~1 second.\n\nHere's the workflow that handles hair, glass, and soft shadows \u2014 for free, with no upload. (1/5)\n\n---\n\n(2/5) The thing JPGs cannot do: transparency.\n\nJPG = 3 channels (RGB). PNG = 4 (RGB + alpha). The alpha channel is how every modern app \u2014 Figma, Canva, Keynote, Slides, Notion \u2014 knows what to \"see through.\"\n\nIf you save your cutout as JPG, the empty pixels get filled with white. Transparency dies in the encoder.\n\n---\n\n(3/5) The 4 export traps that quietly destroy your alpha channel:\n\n\u2022 Right-click \"save as\" defaulting to .jpg\n\u2022 Copy-pasting between apps (drag-drop the file instead)\n\u2022 PowerPoint silently re-compressing on save (turn that OFF in Options \u2192 Advanced)\n\u2022 CMS thumbnails flattening to white on upload\n\n---\n\n(4/5) Why in-browser tools matter for sensitive images:\n\nServer-based \"free\" tools upload your file to a black box. That's fine for memes. Not fine for unreleased product photos, exec headshots, or anything under NDA.\n\nIn-browser cutouts run the model in your tab. The file never leaves the laptop.\n\n---\n\n(5/5) Full guide w/ the 4 export mistakes & the 2026 cutout stack:\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/how-to-make-transparent-png-from-image-2026/\n\nFree in-browser remover linked in the post. No signup, no watermark."
+      "text": "🧵 In 2026 you don't need Photoshop to make a transparent PNG. You need a browser tab and ~1 second.\n\nHere's the workflow that handles hair, glass, and soft shadows — for free, with no upload. (1/5)\n\n---\n\n(2/5) The thing JPGs cannot do: transparency.\n\nJPG = 3 channels (RGB). PNG = 4 (RGB + alpha). The alpha channel is how every modern app — Figma, Canva, Keynote, Slides, Notion — knows what to \"see through.\"\n\nIf you save your cutout as JPG, the empty pixels get filled with white. Transparency dies in the encoder.\n\n---\n\n(3/5) The 4 export traps that quietly destroy your alpha channel:\n\n• Right-click \"save as\" defaulting to .jpg\n• Copy-pasting between apps (drag-drop the file instead)\n• PowerPoint silently re-compressing on save (turn that OFF in Options → Advanced)\n• CMS thumbnails flattening to white on upload\n\n---\n\n(4/5) Why in-browser tools matter for sensitive images:\n\nServer-based \"free\" tools upload your file to a black box. That's fine for memes. Not fine for unreleased product photos, exec headshots, or anything under NDA.\n\nIn-browser cutouts run the model in your tab. The file never leaves the laptop.\n\n---\n\n(5/5) Full guide w/ the 4 export mistakes & the 2026 cutout stack:\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/how-to-make-transparent-png-from-image-2026/\n\nFree in-browser remover linked in the post. No signup, no watermark."
     },
     {
       "platform": "Reddit Comment (/r/graphic_design)",
       "tool": "background-remover",
       "createdAt": "2026-05-08T17:30:00Z",
-      "text": "For anyone hitting this in 2026, the in-browser segmentation tools have actually caught up to Photoshop on the three things that used to break automated cutouts: hair, glass, and soft shadows.\n\nTwo practical things that aren't obvious:\n\n1. Make sure you're saving as PNG, not JPG. JPGs literally cannot store transparency \u2014 there's no alpha channel in the format. If your \"transparent\" image shows up with a white background, the first thing to check is the file extension. Same for \"transparent JPG\" \u2014 it doesn't exist.\n\n2. PowerPoint will silently re-compress your image on save and chunk up the edges. Go to File \u2192 Options \u2192 Advanced \u2192 Image Size and Quality and tick \"Do not compress images in file.\" This is the single biggest reason cutouts that looked great in Figma look crunchy in a deck.\n\nIf you don't already have a workflow, I've been using TinyTools' background remover (https://tinytools-smoky.vercel.app/background-remover/) \u2014 runs entirely in your browser, no upload/signup/watermark, handles flyaway hair surprisingly well. There's a longer write-up of the export traps here if it's useful: https://tinytools-smoky.vercel.app/background-remover/blog/how-to-make-transparent-png-from-image-2026/"
+      "text": "For anyone hitting this in 2026, the in-browser segmentation tools have actually caught up to Photoshop on the three things that used to break automated cutouts: hair, glass, and soft shadows.\n\nTwo practical things that aren't obvious:\n\n1. Make sure you're saving as PNG, not JPG. JPGs literally cannot store transparency — there's no alpha channel in the format. If your \"transparent\" image shows up with a white background, the first thing to check is the file extension. Same for \"transparent JPG\" — it doesn't exist.\n\n2. PowerPoint will silently re-compress your image on save and chunk up the edges. Go to File → Options → Advanced → Image Size and Quality and tick \"Do not compress images in file.\" This is the single biggest reason cutouts that looked great in Figma look crunchy in a deck.\n\nIf you don't already have a workflow, I've been using TinyTools' background remover (https://tinytools-smoky.vercel.app/background-remover/) — runs entirely in your browser, no upload/signup/watermark, handles flyaway hair surprisingly well. There's a longer write-up of the export traps here if it's useful: https://tinytools-smoky.vercel.app/background-remover/blog/how-to-make-transparent-png-from-image-2026/"
     },
     {
       "platform": "LinkedIn Post",
       "tool": "background-remover",
       "createdAt": "2026-05-08T17:30:00Z",
-      "text": "A small thing that quietly improves every deck and pitch you make in 2026: stop using cutouts that show up as white squares on dark slides.\n\nThe fix is a transparent PNG \u2014 same image, but with an alpha channel that lets your slide background show through. It's the difference between a cutout that looks intentional and one that looks like nobody knew how to use Photoshop.\n\nWhat changed in 2026: you no longer need Photoshop. Modern in-browser segmentation models handle hair, glass, and soft edges in about a second, and they run locally on your laptop. No upload, no signup, no watermark \u2014 and crucially, no risk of leaking unreleased product photos to a server you don't control.\n\nThe four traps that quietly ruin transparency between export and your destination app:\n\u2022 Saving as JPG by accident (JPG has no alpha channel)\n\u2022 Copy-paste flattening alpha \u2014 drag the file instead\n\u2022 PowerPoint's silent re-compression on save\n\u2022 CMS auto-thumbnails flattening to white\n\nWrote up the full workflow plus the 2026 cutout stack: https://tinytools-smoky.vercel.app/background-remover/blog/how-to-make-transparent-png-from-image-2026/\n\nFree, in-browser, no upload."
+      "text": "A small thing that quietly improves every deck and pitch you make in 2026: stop using cutouts that show up as white squares on dark slides.\n\nThe fix is a transparent PNG — same image, but with an alpha channel that lets your slide background show through. It's the difference between a cutout that looks intentional and one that looks like nobody knew how to use Photoshop.\n\nWhat changed in 2026: you no longer need Photoshop. Modern in-browser segmentation models handle hair, glass, and soft edges in about a second, and they run locally on your laptop. No upload, no signup, no watermark — and crucially, no risk of leaking unreleased product photos to a server you don't control.\n\nThe four traps that quietly ruin transparency between export and your destination app:\n• Saving as JPG by accident (JPG has no alpha channel)\n• Copy-paste flattening alpha — drag the file instead\n• PowerPoint's silent re-compression on save\n• CMS auto-thumbnails flattening to white\n\nWrote up the full workflow plus the 2026 cutout stack: https://tinytools-smoky.vercel.app/background-remover/blog/how-to-make-transparent-png-from-image-2026/\n\nFree, in-browser, no upload."
     },
     {
       "platform": "Hacker News (Show HN)",
       "tool": "background-remover",
       "createdAt": "2026-05-08T17:30:00Z",
-      "text": "Show HN: A free browser-based tool to make transparent PNGs (no upload)\n\n---\n\nBuilt this because every \"free\" background remover I tried in 2026 still uploaded the file to a server. That's fine for memes; not fine for pre-launch product shots. This one runs the segmentation model in your tab via WebGPU \u2014 file never leaves the laptop. Handles hair, glass, soft shadows. Wrote up the export traps that ruin transparency in PowerPoint/Figma here: https://tinytools-smoky.vercel.app/background-remover/blog/how-to-make-transparent-png-from-image-2026/"
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "background-remover",
-      "createdAt": "2026-05-08T13:35:41Z",
-      "text": "\ud83e\uddf5 LinkedIn's own data: profiles with a clean headshot get ~14\u00d7 more views.\n\nBut the headshot photo doesn't have to cost $250 anymore. Here's the free 2026 workflow that beats most studios on flyaway hair. (1/6)\n\n---\n\n(2/6) The 4 signals recruiters notice in the first 7 seconds:\n\n\u2022 Direct eye contact with the lens\n\u2022 A calm, uncluttered background\n\u2022 Even, diffuse light on the face\n\u2022 Headroom + shoulders inside the circular crop\n\nBackground removal solves #2 and gives you control over #3.\n\n---\n\n(3/6) Pick the right SOURCE photo before any editing:\n\n\u2022 Dark hair \u2192 light wall. Light hair \u2192 dark wall.\n\u2022 North-facing window at 10am > $300 softbox\n\u2022 Burst-shoot 30 frames. Pick frame 22.\n\u2022 10% headroom or LinkedIn's circle eats your hair\n\n---\n\n(4/6) Cut the background in your browser. ~1 second per photo.\n\nThe 2026 segmentation model handles:\n\u2022 Flyaway hair (with 'preserve hair detail' on)\n\u2022 Eyeglasses + glare\n\u2022 Beards + curly hair\n\nNo upload, no signup, no watermark. Runs entirely on your device.\n\n---\n\n(5/6) The composite step everyone skips.\n\nBare cutout on white = passport photo.\nCutout on a calm brand color = intentional.\n\nBackgrounds that perform on LinkedIn in 2026:\n\u2022 Soft warm gray #e8e4dc\n\u2022 Muted sage #c8d4c5\n\u2022 Deep navy #1a2a3f\n\u2022 Soft terracotta #d4a087\n\n---\n\n(6/6) Full guide w/ the 4 mistakes that tank conversions (the halo edge, the circle clip, color-collision, mismatched lighting):\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-from-linkedin-headshot-free-2026/\n\nFree in-browser remover linked in the post. No signup."
-    },
-    {
-      "platform": "Reddit /r/jobs",
-      "tool": "background-remover",
-      "createdAt": "2026-05-08T13:35:41Z",
-      "text": "Subreddit: /r/jobs (also fits /r/cscareerquestions, /r/recruitinghell, /r/EngineeringResumes, /r/consulting)\n\nReply on a thread asking about LinkedIn headshots, profile photos, or someone debating whether to pay for studio shots:\n\nYou don't need to pay $250 for studio shots in 2026 anymore. The AI segmentation that powers Photoshop's 'Select Subject' runs in your browser now, free, no signup. The 4-step workflow that I keep coming back to:\n\n1) Source photo matters more than the editing. Dark hair against a light wall, or light hair against a darker wall \u2014 the model needs a luminance gap to separate hair from background. Stand in a north-facing window at 10am, burst-shoot 30 frames, pick the natural smile. This single rule does 80% of the work.\n\n2) Cut the background in your browser. The current open-weight portrait models handle flyaways, glasses with glare, beards, and curly hair without halos \u2014 better than what paid tools were doing 2 years ago. Drop the photo, wait a second, download a transparent PNG.\n\n3) Composite onto a calm color, NOT pure white. Pure white reads as 'passport photo.' A soft warm gray (#e8e4dc), muted sage (#c8d4c5), deep navy (#1a2a3f), or soft terracotta (#d4a087) all photograph distinctively at thumbnail size and contrast well in both LinkedIn light AND dark mode.\n\n4) Square crop to 800\u00d7800 with eyes on the upper-third line. JPG at 85% quality. LinkedIn re-encodes anyway, so giving it a smaller cleaner file beats sending an 8MB monster.\n\nThings that still tank conversions even with a clean cutout:\n- The 'halo' edge if your shooting background is bright and your composite is dark \u2014 fix with the decontaminate-edges pass\n- A square crop that ignores the circular mask LinkedIn applies; always preview in a circle and add 10% padding\n- Background color same as your shirt = floating-head effect\n- Light-direction mismatch between face and background reads as 'off' even when people can't say why\n\nWrote up the full workflow with the source-photo rules and the 4 common mistakes here: https://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-from-linkedin-headshot-free-2026/\n\n(Built the free in-browser remover linked in it \u2014 runs locally, no upload, no signup. Use whatever tool you want, the source-photo rules apply equally.)"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "background-remover",
-      "createdAt": "2026-05-08T13:35:41Z",
-      "text": "I audited 40 LinkedIn profiles last week for a client's outbound team.\n\n31 of the 40 headshots had been taken on a phone, in an office, with overhead fluorescents and a half-visible coworker in the background.\n\nThese were senior people. Directors and VPs.\n\nAnd LinkedIn's own data is clear: a clean, well-cropped headshot drives ~14\u00d7 more profile views than a missing or busy one.\n\nThe fix in 2026 is free and takes seven minutes.\n\n1) Pick a recent photo where you're looking at the camera, smiling naturally, and the lighting hits both sides of your face. (If you don't have one \u2014 burst-shoot 30 frames in front of a north-facing window. The natural smile lands at frame 22.)\n\n2) Run it through a free in-browser background remover. The 2026 AI models handle flyaway hair, glasses, and beards without the halo problem.\n\n3) Composite the cutout onto a calm brand color \u2014 soft warm gray, muted sage, deep navy, or soft terracotta. Avoid pure white. It reads as 'passport photo.'\n\n4) Crop square 800\u00d7800 with eyes on the upper-third line. Add 10% padding so LinkedIn's circular crop doesn't slice off your ears.\n\nThe single biggest mistake people make is matching the background color to their shirt. Your shoulders disappear and you look like a floating head.\n\nFull guide with the 4 background colors that consistently outperform, the eyeglass-glare fix, and the circle-crop trick:\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-from-linkedin-headshot-free-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "background-remover",
-      "createdAt": "2026-05-08T13:35:41Z",
-      "text": "TITLE: Show HN: Free in-browser workflow to remove the background from a LinkedIn headshot\n\nLINK: https://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-from-linkedin-headshot-free-2026/\n\nFIRST COMMENT:\nAuthor here. Wrote this up after a profile audit where 31 of 40 senior LinkedIn headshots had been taken on a phone with a coworker in the background. The post breaks down (1) source-photo rules \u2014 luminance gap between hair and background matters more than the editing \u2014 (2) the 2026 open-weight portrait segmentation models handling flyaways, glasses, and beards without halos, and (3) the composite step everyone skips, with the four background colors that consistently outperform pure white at thumbnail size. The free remover linked in the post runs entirely client-side via WASM, no upload. Curious whether HN has experiences with the new portrait-segmentation models on edge cases \u2014 particularly very dark hair on dark backgrounds, where I still see the model occasionally crop at the temple."
+      "text": "Show HN: A free browser-based tool to make transparent PNGs (no upload)\n\n---\n\nBuilt this because every \"free\" background remover I tried in 2026 still uploaded the file to a server. That's fine for memes; not fine for pre-launch product shots. This one runs the segmentation model in your tab via WebGPU — file never leaves the laptop. Handles hair, glass, soft shadows. Wrote up the export traps that ruin transparency in PowerPoint/Figma here: https://tinytools-smoky.vercel.app/background-remover/blog/how-to-make-transparent-png-from-image-2026/"
     }
   ],
   "checklist": [
     {
-      "task": "\ud83d\udd25 PASTE ONE OF THE 3 DRAFTS BELOW (30 seconds = first 100 visitors)",
+      "task": "🔥 PASTE ONE OF THE 3 DRAFTS BELOW (30 seconds = first 100 visitors)",
       "url": "#drafts",
       "done": false,
       "value": "First 100 visitors come from this. Affiliate revenue follows traffic."
     },
     {
-      "task": "\u2705 Watch awesome-list PRs for merge \u2014 auto-emails on merge",
+      "task": "✅ Watch awesome-list PRs for merge — auto-emails on merge",
       "url": "https://github.com/pulls?q=is%3Apr+author%3Aalfredoautomatizaloconia-cloud",
       "done": false,
       "value": "5 PRs submitted to lists with combined 49,500 stars. Each merge = permanent backlink."
@@ -303,7 +304,7 @@
       "task": "Wait for Namecheap brand approval (1-3 days)",
       "url": "https://app.impact.com/secure/member/home/mview.ihtml",
       "done": false,
-      "value": "Once approved, paste tracking link to me \u2014 instant Domain Generator activation"
+      "value": "Once approved, paste tracking link to me — instant Domain Generator activation"
     },
     {
       "task": "Sign up: Buy Me a Coffee (instant)",
