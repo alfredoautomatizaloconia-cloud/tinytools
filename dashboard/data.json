@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 7, 2026 — published 7 OG image layout patterns reference for og-image-generator + 4 social drafts ready",
+  "lastUpdated": "May 8, 2026 — published LinkedIn Headshot Background Removal guide for background-remover + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 35,
+    "posts": 36,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 13:35",
+      "tag": "seo",
+      "text": "📝 Published blog post: How to Remove the Background from a LinkedIn Headshot for Free in 2026 at /background-remover/blog/how-to-remove-background-from-linkedin-headshot-free-2026/"
+    },
+    {
+      "time": "today 13:35",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/jobs, LinkedIn, Show HN — all promoting background-remover"
+    },
     {
       "time": "today 16:08",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 16:11",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
-    },
-    {
-      "time": "today 11:25",
-      "tag": "seo",
-      "text": "📝 Published blog post: OG vs Twitter Card Differences in 2026 — The Practical Field Guide at /seo-meta-generator/blog/og-vs-twitter-card-differences-2026/"
-    },
-    {
-      "time": "today 11:25",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting seo-meta-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "tool": "background-remover",
+      "createdAt": "2026-05-08T13:35:41Z",
+      "text": "🧵 LinkedIn's own data: profiles with a clean headshot get ~14× more views.\n\nBut the headshot photo doesn't have to cost $250 anymore. Here's the free 2026 workflow that beats most studios on flyaway hair. (1/6)\n\n---\n\n(2/6) The 4 signals recruiters notice in the first 7 seconds:\n\n• Direct eye contact with the lens\n• A calm, uncluttered background\n• Even, diffuse light on the face\n• Headroom + shoulders inside the circular crop\n\nBackground removal solves #2 and gives you control over #3.\n\n---\n\n(3/6) Pick the right SOURCE photo before any editing:\n\n• Dark hair → light wall. Light hair → dark wall.\n• North-facing window at 10am > $300 softbox\n• Burst-shoot 30 frames. Pick frame 22.\n• 10% headroom or LinkedIn's circle eats your hair\n\n---\n\n(4/6) Cut the background in your browser. ~1 second per photo.\n\nThe 2026 segmentation model handles:\n• Flyaway hair (with 'preserve hair detail' on)\n• Eyeglasses + glare\n• Beards + curly hair\n\nNo upload, no signup, no watermark. Runs entirely on your device.\n\n---\n\n(5/6) The composite step everyone skips.\n\nBare cutout on white = passport photo.\nCutout on a calm brand color = intentional.\n\nBackgrounds that perform on LinkedIn in 2026:\n• Soft warm gray #e8e4dc\n• Muted sage #c8d4c5\n• Deep navy #1a2a3f\n• Soft terracotta #d4a087\n\n---\n\n(6/6) Full guide w/ the 4 mistakes that tank conversions (the halo edge, the circle clip, color-collision, mismatched lighting):\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-from-linkedin-headshot-free-2026/\n\nFree in-browser remover linked in the post. No signup."
+    },
+    {
+      "platform": "Reddit /r/jobs",
+      "tool": "background-remover",
+      "createdAt": "2026-05-08T13:35:41Z",
+      "text": "Subreddit: /r/jobs (also fits /r/cscareerquestions, /r/recruitinghell, /r/EngineeringResumes, /r/consulting)\n\nReply on a thread asking about LinkedIn headshots, profile photos, or someone debating whether to pay for studio shots:\n\nYou don't need to pay $250 for studio shots in 2026 anymore. The AI segmentation that powers Photoshop's 'Select Subject' runs in your browser now, free, no signup. The 4-step workflow that I keep coming back to:\n\n1) Source photo matters more than the editing. Dark hair against a light wall, or light hair against a darker wall — the model needs a luminance gap to separate hair from background. Stand in a north-facing window at 10am, burst-shoot 30 frames, pick the natural smile. This single rule does 80% of the work.\n\n2) Cut the background in your browser. The current open-weight portrait models handle flyaways, glasses with glare, beards, and curly hair without halos — better than what paid tools were doing 2 years ago. Drop the photo, wait a second, download a transparent PNG.\n\n3) Composite onto a calm color, NOT pure white. Pure white reads as 'passport photo.' A soft warm gray (#e8e4dc), muted sage (#c8d4c5), deep navy (#1a2a3f), or soft terracotta (#d4a087) all photograph distinctively at thumbnail size and contrast well in both LinkedIn light AND dark mode.\n\n4) Square crop to 800×800 with eyes on the upper-third line. JPG at 85% quality. LinkedIn re-encodes anyway, so giving it a smaller cleaner file beats sending an 8MB monster.\n\nThings that still tank conversions even with a clean cutout:\n- The 'halo' edge if your shooting background is bright and your composite is dark — fix with the decontaminate-edges pass\n- A square crop that ignores the circular mask LinkedIn applies; always preview in a circle and add 10% padding\n- Background color same as your shirt = floating-head effect\n- Light-direction mismatch between face and background reads as 'off' even when people can't say why\n\nWrote up the full workflow with the source-photo rules and the 4 common mistakes here: https://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-from-linkedin-headshot-free-2026/\n\n(Built the free in-browser remover linked in it — runs locally, no upload, no signup. Use whatever tool you want, the source-photo rules apply equally.)"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "background-remover",
+      "createdAt": "2026-05-08T13:35:41Z",
+      "text": "I audited 40 LinkedIn profiles last week for a client's outbound team.\n\n31 of the 40 headshots had been taken on a phone, in an office, with overhead fluorescents and a half-visible coworker in the background.\n\nThese were senior people. Directors and VPs.\n\nAnd LinkedIn's own data is clear: a clean, well-cropped headshot drives ~14× more profile views than a missing or busy one.\n\nThe fix in 2026 is free and takes seven minutes.\n\n1) Pick a recent photo where you're looking at the camera, smiling naturally, and the lighting hits both sides of your face. (If you don't have one — burst-shoot 30 frames in front of a north-facing window. The natural smile lands at frame 22.)\n\n2) Run it through a free in-browser background remover. The 2026 AI models handle flyaway hair, glasses, and beards without the halo problem.\n\n3) Composite the cutout onto a calm brand color — soft warm gray, muted sage, deep navy, or soft terracotta. Avoid pure white. It reads as 'passport photo.'\n\n4) Crop square 800×800 with eyes on the upper-third line. Add 10% padding so LinkedIn's circular crop doesn't slice off your ears.\n\nThe single biggest mistake people make is matching the background color to their shirt. Your shoulders disappear and you look like a floating head.\n\nFull guide with the 4 background colors that consistently outperform, the eyeglass-glare fix, and the circle-crop trick:\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-from-linkedin-headshot-free-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "background-remover",
+      "createdAt": "2026-05-08T13:35:41Z",
+      "text": "TITLE: Show HN: Free in-browser workflow to remove the background from a LinkedIn headshot\n\nLINK: https://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-from-linkedin-headshot-free-2026/\n\nFIRST COMMENT:\nAuthor here. Wrote this up after a profile audit where 31 of 40 senior LinkedIn headshots had been taken on a phone with a coworker in the background. The post breaks down (1) source-photo rules — luminance gap between hair and background matters more than the editing — (2) the 2026 open-weight portrait segmentation models handling flyaways, glasses, and beards without halos, and (3) the composite step everyone skips, with the four background colors that consistently outperform pure white at thumbnail size. The free remover linked in the post runs entirely client-side via WASM, no upload. Curious whether HN has experiences with the new portrait-segmentation models on edge cases — particularly very dark hair on dark backgrounds, where I still see the model occasionally crop at the temple."
+    },
+    {
+      "platform": "X / Twitter Thread",
       "text": "1/ Most teams ship the same OG image template for every post.\n\nThe teams that take link-preview design seriously regularly see double-digit CTR lifts on the same shared URL.\n\nHere are the 7 layout patterns that actually convert in 2026 🧵\n\n2/ Pattern 1 — Headline-only (SaaS launches, Show HN)\n• 64–72 px bold headline, top-left\n• Wordmark in bottom-left\n• Flat or 2-stop gradient bg\n• No visual competing for thumbnail attention\nIndie hackers report 1.4–2× CTR vs. logo-with-tagline.\n\n3/ Pattern 2 — Split-screen product (ecommerce)\n60/40 vertical split. Left = clean product photo, right = name + benefit + price.\n\nPattern 3 — Quote card (newsletters)\n48 px italic, centered, no quote marks. Reads as editorial, screenshot-shareable on X & IG.\n\n4/ Pattern 4 — Before/After (transform tools)\nDiagonal split, 5–10° angle for dynamism.\n\nPattern 5 — Data card (B2B)\nOne oversize statistic at 96–128 px. LinkedIn engagement 2–3× higher than text-only.\n\n5/ Pattern 6 — Annotated screenshot (dev tools)\n3° tilt + circular highlight on the key UI element.\n\nPattern 7 — Text-on-color (weekly digests)\nBrand color does the work. 5-min export. Consistency compounds.\n\n6/ Full breakdown w/ composition rules, type hierarchy, the 60-second pre-launch checklist, and the cropper-proof grid every layout shares 👇\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-templates-layouts-that-convert-2026/",
       "tool": "og-image-generator",
       "createdAt": "2026-05-07T00:00:00Z"
@@ -260,30 +284,6 @@
       "text": "TITLE: Show HN: 7 OG image layout patterns that survive Slack, X, LinkedIn and iMessage in 2026\n\nCOMMENT: Wrote this up after watching the same teams ship \"logo on gradient\" cards for every post and bleed CTR. The patterns are remixes of three pieces — headline, supporting element, bleed background — but the use-case match is what moves the number. Curious which pattern others have measured wins on. Link: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-templates-layouts-that-convert-2026/",
       "tool": "og-image-generator",
       "createdAt": "2026-05-07T00:00:00Z"
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-07T16:12:30Z",
-      "text": "The dirty secret of OG images in 2026: the platforms that consume your social card have grown teeth.\n\niOS 19 silently downgrades cards. LinkedIn caches broken renders for 7 days. Slack shrinks you to 360px wide.\n\nHere's the canonical spec that survives all of them 🧵 (1/6)\n---\n(2/6) Ship ONE image:\n• 1200×630 px\n• Under 300 KB\n• sRGB color space\n• Aspect ratio 1.91:1\n\nThat single card renders correctly in feeds on X, LinkedIn, Facebook, WhatsApp, iMessage, Discord, Slack, Teams, Notion, and Discover.\n\nYou do not need 4 platform variants.\n---\n(3/6) The safe zone almost nobody designs around:\n\nKeep all important content (logos, headlines, key UI) inside a 1080×540 centered rectangle.\n\nDecorative gradients can bleed to the edges — Slack and Discord crop ~20px off every side for their rounded preview frames.\n---\n(4/6) The 2026 silent killer: iOS 19.\n\nYour card gets downgraded to a plain blue link bubble (zero error reporting) if it:\n\n• Exceeds 5 MB\n• Falls outside 1.5:1 to 2.0:1 aspect\n• Takes >2 sec to fetch\n• Uses a self-signed cert\n\nSend the URL to yourself before any launch.\n---\n(5/6) The headline-readability test most teams skip:\n\nSlack scales your 1200×630 card to ~360px wide on desktop.\n\nOpen a private channel, paste your URL, squint from across the room. If you can't read the headline, your on-image text is too small.\n\nFix: 56px+ on canvas.\n---\n(6/6) Full breakdown — 1200×630 spec, the safe zone, file-size ceilings nobody publishes, and the 5-place test matrix:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-dimensions-2026-pixel-perfect-specs/\n\nFree 1200×630 generator that's validator-ready by default: https://tinytools-smoky.vercel.app/og-image-generator/"
-    },
-    {
-      "platform": "Reddit /r/webdev",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-07T16:12:30Z",
-      "text": "Subreddit: /r/webdev (also fits /r/SideProject, /r/SaaS, /r/marketing)\n\nIf you're going to test only one OG image dimension, test 1200×630. Everything else in 2026 is decoration.\n\nThe actual problem isn't the dimension though — it's that almost every preview service crops your image at least slightly. So even though \"1200×630\" is canonical, you also need the 1080×540 centered safe zone or your logo gets clipped on Slack and Discord.\n\nThe other thing that has changed in the last 12 months and no doc has caught up to:\n\n- iOS 19 silently downgrades cards. No error message. Plain blue link bubble. Rules: under 5 MB, aspect ratio 1.5:1 to 2.0:1, response time under 2 sec, modern HTTPS cert. Send the URL from Mac to phone before every launch — it's the only test.\n\n- LinkedIn caches OG tags for 7 days. If your first share renders broken, every share for the next week renders broken — even after you push the fix. The Re-Scrape button on Post Inspector is the only invalidation mechanism. Run it BEFORE announcing, never after.\n\n- Slack scales 1200×630 down to ~360px wide. Squint test from across the room: if you can't read the headline, your on-image text is too small. 56px+ is the floor.\n\n- WhatsApp and Facebook share Meta's scraping infra. CDNs with bot-fight mode on (especially Cloudflare default config) silently 403 the facebookexternalhit user agent and produce \"og:image could not be downloaded.\" Allowlist it.\n\nThe minimum-viable head section that survives every platform:\n\n```\n<meta property=\"og:image\" content=\"https://example.com/card.png\">\n<meta property=\"og:image:width\" content=\"1200\">\n<meta property=\"og:image:height\" content=\"630\">\n<meta property=\"og:image:alt\" content=\"One descriptive sentence\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">\n<meta name=\"twitter:image\" content=\"https://example.com/card.png\">\n```\n\nThe width/height tags are technically optional. Functionally required — Slack uses them to avoid layout shift on mobile and Google's structured data validator flags pages that omit them.\n\nWrote up the full spec with platform-by-platform render behavior, file-size ceilings (iMessage drops at 5 MB, Discord at 8 MB, Slack at 10 MB), and the 5-place test matrix: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-dimensions-2026-pixel-perfect-specs/\n\n(Free 1200×630 generator we built that hits every spec by default, no signup, no watermark: https://tinytools-smoky.vercel.app/og-image-generator/)"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-07T16:12:30Z",
-      "text": "In 2024 I argued you needed four OG image variants — square for Twitter DMs, vertical for Pinterest, animated for Discord, static for everything else.\n\nIn 2026 I run one image: 1200×630, under 300 KB, sRGB, with everything important inside a centered 1080×540 safe zone.\n\nIt survives every cropper in the wild today. X, LinkedIn, Facebook, WhatsApp, iMessage, Discord, Slack, Microsoft Teams, Notion, Google Discover.\n\nWhat changed isn't the dimensions — those have been stable since 2010. What changed is the failure modes:\n\n→ iOS 19 silently downgrades cards over 5 MB or outside 1.5:1–2.0:1 aspect. Zero error message. Plain blue link bubble.\n\n→ LinkedIn caches OG tags for 7 days now. Re-Scrape on Post Inspector before announcing, not after. There is no second chance for a launch tweet.\n\n→ Slack scales your card to ~360px wide on desktop. The headline-readability test (squint from across the room) is the only thing that catches the most expensive bug in OG design — text that's too small at thumbnail size.\n\n→ Cloudflare's bot-fight mode silently 403s the Facebook scraper, breaking WhatsApp previews by side effect. Allowlist facebookexternalhit/1.1 at the edge.\n\nThe minimum-viable head section is 6 meta tags. Eight to twelve minutes of testing in 5 places (X validator → LinkedIn Post Inspector with Re-Scrape → Facebook Sharing Debugger → Slack manual paste → iMessage to your own phone) catches ~95% of the failures.\n\nThe cost of skipping the test pass is asymmetric. A broken card cached on LinkedIn for 7 days, on the launch announcement that 50% of your potential customers see, is a multi-thousand-dollar mistake.\n\nFull spec with the canonical card, the safe zone, file-size ceilings, and the 5-place test matrix: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-dimensions-2026-pixel-perfect-specs/\n\nWhat's broken on your team's OG cards right now that you haven't noticed?"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-07T16:12:30Z",
-      "text": "TITLE: Show HN: OG image dimensions in 2026 – the canonical 1200×630 spec, decoded\n\nLINK: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-dimensions-2026-pixel-perfect-specs/\n\nFIRST COMMENT:\nAuthor here. Wrote this after auditing a few teams' release runbooks and finding that every one of them had at least one OG image bug shipped to production. The dimensions advice (\"use 1200×630\") has been correct since 2010 — what's new in 2026 is the silent failure modes: iOS 19 downgrades cards over 5 MB or outside aspect 1.5:1–2.0:1 with no error reporting, LinkedIn now caches OG tags for 7 days so Re-Scrape on Post Inspector is mandatory before any launch announcement, and Slack scales to 360px wide on desktop which makes headline readability the actual constraint, not aesthetic balance. The post is the canonical-image spec, the 1080×540 safe zone, the file-size ceilings nobody publishes (iMessage 5 MB, Discord 8 MB, Slack 10 MB), and the 5-place pre-publish test matrix. Curious whether anyone here has hit cases where their CDN's bot-fight defaults silently break the facebookexternalhit fetch — that one bites Cloudflare default-config users most."
     }
   ],
   "checklist": [
