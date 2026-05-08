@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free MCP Server Config Generator (2026) — Claude Desktop, Cursor, Continue, Cline, Windsurf, Zed</title>
+<meta name="description" content="Generate copy-paste MCP server config JSON for Claude Desktop, Cursor, Continue, Cline, Windsurf, Zed, and the Claude Code CLI. Pick from 40+ popular Model Context Protocol servers — Filesystem, GitHub, Postgres, Slack, Linear, Notion, and more. Free, no signup.">
+<meta name="keywords" content="MCP config generator, Model Context Protocol, claude_desktop_config.json, Cursor MCP, Continue MCP, Cline MCP, Windsurf MCP, Zed MCP, MCP server config">
+<meta property="og:title" content="MCP Server Config Generator — Pick servers, get config JSON">
+<meta property="og:description" content="40+ popular Model Context Protocol servers, six host formats, copy-paste in 30 seconds.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MCP Server Config Generator (2026)">
+<meta name="twitter:description" content="Generate Claude Desktop / Cursor / Continue / Cline / Windsurf / Zed config in seconds.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/mcp-config-generator/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "MCP Server Config Generator",
+  "description": "Generate ready-to-paste MCP server configuration files for Claude Desktop, Cursor, Continue, Cline, Windsurf, Zed, and Claude Code CLI from 40+ popular Model Context Protocol servers.",
+  "url": "https://tinytools-smoky.vercel.app/mcp-config-generator/",
+  "applicationCategory": "DeveloperApplication",
+  "offers": { "@type": "Offer", "price": "0" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #14b8a6; --accent-glow: #14b8a640;
+    --green: #10b981; --red: #ef4444; --yellow: #f59e0b; --blue: #3b82f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #5eead4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 700px; margin: 0 auto; }
+
+  .layout { display: grid; grid-template-columns: 420px 1fr; gap: 24px; margin-top: 32px; }
+  @media (max-width: 1000px) { .layout { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+  }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .host-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 18px; }
+  .host-tab {
+    padding: 10px 8px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text-dim); cursor: pointer; font-size: 12px;
+    text-align: center; transition: all 0.15s; font-weight: 500;
+  }
+  .host-tab.active { background: var(--accent); color: white; border-color: var(--accent); }
+  .host-tab:hover { color: var(--text); }
+
+  .search-box {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; margin-bottom: 14px;
+  }
+  .search-box:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+
+  .category-filters { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+  .cat-filter {
+    padding: 5px 10px; background: var(--bg-elevated); border-radius: 999px; font-size: 11px;
+    cursor: pointer; color: var(--text-dim); border: 1px solid transparent;
+  }
+  .cat-filter.active { background: var(--accent); color: white; }
+
+  .server-list { max-height: 540px; overflow-y: auto; padding-right: 4px; }
+  .server-list::-webkit-scrollbar { width: 8px; }
+  .server-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  .server-item {
+    padding: 12px 14px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 10px; margin-bottom: 8px; cursor: pointer; transition: all 0.12s;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .server-item:hover { border-color: var(--accent); }
+  .server-item.selected { border-color: var(--accent); background: rgba(20, 184, 166, 0.08); }
+  .server-item input { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; margin-top: 2px; flex-shrink: 0; }
+  .server-meta { flex: 1; }
+  .server-name { font-weight: 600; font-size: 14px; }
+  .server-cat { display: inline-block; font-size: 10px; color: var(--text-dim);
+    margin-left: 8px; padding: 1px 6px; background: var(--bg-card); border-radius: 4px;
+    text-transform: uppercase; letter-spacing: 0.04em; }
+  .server-desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  .server-args { font-size: 11px; color: var(--yellow); margin-top: 4px; font-family: 'SF Mono', monospace; }
+
+  .selected-summary {
+    padding: 12px 14px; background: var(--bg-elevated); border-radius: 10px;
+    margin-bottom: 14px; font-size: 13px; color: var(--text-dim);
+  }
+  .selected-summary strong { color: var(--accent); }
+
+  .output-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+  .output-path { font-size: 12px; color: var(--text-dim); font-family: 'SF Mono', monospace;
+    background: var(--bg-elevated); padding: 4px 10px; border-radius: 6px; }
+  .copy-btn {
+    padding: 8px 16px; background: var(--accent); color: white; border: none;
+    border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;
+  }
+  .copy-btn:hover { opacity: 0.9; }
+  .copy-btn.copied { background: var(--green); }
+
+  pre.output {
+    background: #07070d; border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px; overflow-x: auto; font-size: 13px; line-height: 1.55;
+    color: #e5e7eb; font-family: 'SF Mono', Menlo, Consolas, monospace;
+    max-height: 540px; overflow-y: auto;
+  }
+  pre.output .k { color: #93c5fd; } /* key */
+  pre.output .s { color: #86efac; } /* string */
+  pre.output .c { color: #6b7280; } /* comment */
+  pre.output .p { color: #f9a8d4; } /* placeholder */
+
+  .placeholder-box {
+    padding: 12px 14px; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 10px; margin-bottom: 14px; font-size: 13px; color: var(--text);
+  }
+  .placeholder-box strong { color: var(--yellow); }
+  .placeholder-list { margin-top: 8px; font-family: 'SF Mono', monospace; font-size: 12px; color: var(--text-dim); }
+
+  .upsell {
+    margin-top: 20px; padding: 18px; background: var(--bg-elevated);
+    border-radius: 12px; border-left: 3px solid var(--accent); font-size: 14px;
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .empty-state { text-align: center; padding: 60px 20px; color: var(--text-dim); }
+  .empty-state h3 { color: var(--text); font-size: 18px; margin-bottom: 8px; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; color: var(--text); }
+  .content h3 { font-size: 18px; margin: 22px 0 8px; color: var(--text); }
+  .content p { color: var(--text-dim); margin-bottom: 12px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); margin-bottom: 12px; }
+  .content li { margin-bottom: 4px; }
+  .content strong { color: var(--text); }
+  .content code { background: var(--bg-elevated); padding: 1px 6px; border-radius: 4px;
+    font-family: 'SF Mono', monospace; font-size: 13px; color: #5eead4; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">⚡ 40+ Servers &nbsp;·&nbsp; 7 Hosts &nbsp;·&nbsp; Free</div>
+    <h1>MCP Server Config Generator</h1>
+    <p class="subtitle">Pick the Model Context Protocol servers you need, get a copy-paste-ready config file for Claude Desktop, Cursor, Continue, Cline, Windsurf, Zed, or the Claude Code CLI.</p>
+  </header>
+
+  <div class="layout">
+    <div class="panel">
+      <h2>1 · Pick a host</h2>
+      <div class="host-tabs" id="hostTabs">
+        <div class="host-tab active" data-host="claude-desktop">Claude Desktop</div>
+        <div class="host-tab" data-host="claude-code">Claude Code CLI</div>
+        <div class="host-tab" data-host="cursor">Cursor</div>
+        <div class="host-tab" data-host="continue">Continue</div>
+        <div class="host-tab" data-host="cline">Cline</div>
+        <div class="host-tab" data-host="windsurf">Windsurf</div>
+        <div class="host-tab" data-host="zed">Zed</div>
+      </div>
+
+      <h2>2 · Pick servers</h2>
+
+      <input type="text" id="search" class="search-box" placeholder="Search servers (github, postgres, slack…)">
+
+      <div class="category-filters" id="catFilters">
+        <div class="cat-filter active" data-cat="all">All</div>
+        <div class="cat-filter" data-cat="storage">Storage</div>
+        <div class="cat-filter" data-cat="dev">Dev</div>
+        <div class="cat-filter" data-cat="data">Data</div>
+        <div class="cat-filter" data-cat="comms">Comms</div>
+        <div class="cat-filter" data-cat="docs">Docs</div>
+        <div class="cat-filter" data-cat="web">Web</div>
+        <div class="cat-filter" data-cat="utils">Utils</div>
+      </div>
+
+      <div class="selected-summary"><strong id="selCount">0</strong> servers selected</div>
+
+      <div class="server-list" id="serverList"></div>
+    </div>
+
+    <div>
+      <div class="panel">
+        <div class="output-header">
+          <h2 style="margin:0;">3 · Copy your config <span id="hostLabel" style="text-transform: none; color: var(--text); margin-left:6px;"></span></h2>
+          <button id="copyBtn" class="copy-btn">Copy JSON</button>
+        </div>
+        <div class="output-path" id="outputPath"></div>
+
+        <div id="placeholderBox" class="placeholder-box" style="display:none; margin-top:14px;">
+          <strong>⚠ Replace these placeholders</strong> before pasting — they're env vars or paths your servers need.
+          <div class="placeholder-list" id="placeholderList"></div>
+        </div>
+
+        <pre class="output" id="output" style="margin-top:14px;"></pre>
+
+        <div class="upsell">
+          <strong>Worried any of these MCP servers might be malicious?</strong>
+          Run them through our <a href="/mcp-server-inspector/">MCP Server Inspector</a> first — it scans the source for SSRF patterns, command injection, missing auth, and abandonment signals. Free, browser-only.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>What is an MCP server config and why do you need one?</h2>
+    <p>The Model Context Protocol (MCP) is the open standard Anthropic launched in November 2024 for connecting language models to external tools and data. By 2026 it's been adopted by Claude Desktop, Cursor, Windsurf, Continue, Cline, Zed, the Claude Code CLI, OpenAI's Agents SDK, Goose, and a dozen smaller hosts. Every MCP host needs a configuration file that tells it which MCP servers to launch and how — that's exactly what this MCP server config generator produces.</p>
+
+    <p>The format isn't standardized across hosts: Claude Desktop reads <code>claude_desktop_config.json</code>, Cursor uses <code>.cursor/mcp.json</code>, Continue puts servers inside <code>config.yaml</code>, Cline reads <code>cline_mcp_settings.json</code>, Windsurf uses <code>~/.codeium/windsurf/mcp_config.json</code>, Zed uses <code>~/.config/zed/settings.json</code> with <code>context_servers</code>, and the Claude Code CLI uses <code>.mcp.json</code> per-project or <code>~/.claude.json</code> globally. They all describe the same servers — but each in a slightly different shape. This MCP config generator handles the translation.</p>
+
+    <h3>How to use this MCP config generator</h3>
+    <p>Three steps: pick your MCP host (Claude Desktop, Cursor, Continue, etc.), check the servers you want from the curated list of 40+ popular options, and copy the generated JSON into the path shown at the top of the output panel. Restart your host after editing, and the new tools will appear automatically. Servers that need API keys or paths will leave clearly-marked placeholders like <code>${'{GITHUB_TOKEN}'}</code> for you to fill in.</p>
+
+    <h3>The 10 most popular MCP servers in 2026</h3>
+    <ul>
+      <li><strong>Filesystem</strong> — read/write files in a sandbox dir. The most-used MCP server, period.</li>
+      <li><strong>GitHub</strong> — issues, PRs, file contents, search. Needs a personal access token.</li>
+      <li><strong>Postgres / SQLite</strong> — read-only SQL access for analysis and natural-language queries.</li>
+      <li><strong>Slack</strong> — read messages, post replies, search channels. OAuth or bot token.</li>
+      <li><strong>Brave Search / Tavily</strong> — web search inside chat. The two most-used search MCPs.</li>
+      <li><strong>Memory</strong> — persistent knowledge graph across sessions. Pure local, no API.</li>
+      <li><strong>Puppeteer / Playwright</strong> — headless browsing, screenshots, scraping.</li>
+      <li><strong>Sequential Thinking</strong> — chain-of-thought reasoning with branchable steps.</li>
+      <li><strong>Linear / Notion</strong> — issue tracking and docs as first-class context.</li>
+      <li><strong>Time</strong> — current time, date math, timezone conversion. Tiny but used everywhere.</li>
+    </ul>
+
+    <h3>Security checklist before you paste any MCP server config</h3>
+    <p>MCP servers run as subprocesses on your machine with whatever permissions your shell has. Two mistakes are common: (1) installing a typosquat — there are already several lookalike packages on npm masquerading as official servers, so always copy the exact package name from the official MCP repo or vendor docs, and (2) handing over API tokens with broader scopes than necessary. Use a fine-grained GitHub PAT scoped to specific repos, a Slack bot token with read-only OAuth scopes, and never paste production database credentials when a read-only replica works. If you're unsure about a community server, run it through the <a href="/mcp-server-inspector/" style="color: var(--accent);">MCP Server Inspector</a> first.</p>
+
+    <h3>Claude Desktop vs Cursor vs Continue — which host should you use?</h3>
+    <p>Claude Desktop is the simplest for non-developers — install the app, paste the MCP config, restart, done. Cursor is the most popular for developers in 2026 — it inherits the IDE you already know plus first-class MCP support. Continue is the most flexible — open-source, works in VS Code and JetBrains, supports any model via BYOK. Windsurf has the deepest agent loop. Cline is the cheapest because it runs on your existing Anthropic API key. Zed is the fastest. Claude Code CLI is the only terminal-native option. They all read the same MCP servers — pick on UX, not capability.</p>
+
+    <h3>Why isn't my MCP server showing up after I pasted the config?</h3>
+    <p>Three things to check in order. First, did you fully quit and relaunch your host? On Mac, "Cmd+Q" — closing the window doesn't reload the config. Second, are the placeholders filled in? Servers with empty <code>${'{TOKEN}'}</code> values usually fail silently and just don't appear. Third, run the host's MCP debug command — Claude Desktop has a "MCP Servers" view in Developer settings that shows startup errors, Cursor logs them in the Output panel, Continue logs them in the IDE console. The most common error is a missing Node or Python runtime; npx-based servers need Node 20+, uvx-based servers need uv installed.</p>
+  </div>
+
+  <footer>
+    <p>Server data updated April 2026. Suggest a server: <a href="https://github.com/alfredoautomatizaloconia-cloud/tinytools/issues" target="_blank" rel="noopener">open an issue</a>.</p>
+    <p style="margin-top: 8px;"><a href="/" >← All TinyTools</a> · <a href="https://github.com/alfredoautomatizaloconia-cloud/tinytools" target="_blank" rel="noopener">Source on GitHub</a> · <a href="#">Tip jar ☕</a></p>
+  </footer>
+</div>
+
+<script>
+// Server catalog. Each entry describes how to launch via stdio.
+// type: stdio (default) — uses command + args + env
+const servers = [
+  // STORAGE
+  { id:'filesystem', name:'Filesystem', cat:'storage',
+    desc:'Read/write files in a sandboxed directory.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-filesystem','${ALLOWED_DIR}'],
+    placeholders:[{key:'ALLOWED_DIR', hint:'absolute path, e.g. /Users/you/Projects'}] },
+  { id:'memory', name:'Memory', cat:'storage',
+    desc:'Persistent knowledge-graph memory across sessions.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-memory'] },
+  { id:'gdrive', name:'Google Drive', cat:'storage',
+    desc:'List, read, and search files in Google Drive.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-gdrive'],
+    env:{ GDRIVE_CREDENTIALS_PATH:'${GDRIVE_CREDS_PATH}' },
+    placeholders:[{key:'GDRIVE_CREDS_PATH', hint:'path to OAuth creds JSON'}] },
+  { id:'gdocs', name:'Google Docs', cat:'storage',
+    desc:'Create and edit Google Docs.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-gdocs'],
+    env:{ GOOGLE_OAUTH_CLIENT_ID:'${GOOGLE_CLIENT_ID}', GOOGLE_OAUTH_CLIENT_SECRET:'${GOOGLE_CLIENT_SECRET}' } },
+  { id:'s3', name:'AWS S3', cat:'storage',
+    desc:'List buckets and read objects.',
+    cmd:'uvx', args:['mcp-server-aws-s3'],
+    env:{ AWS_ACCESS_KEY_ID:'${AWS_ACCESS_KEY_ID}', AWS_SECRET_ACCESS_KEY:'${AWS_SECRET_ACCESS_KEY}', AWS_REGION:'${AWS_REGION}' } },
+
+  // DEV
+  { id:'github', name:'GitHub', cat:'dev',
+    desc:'Issues, PRs, search, file contents.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-github'],
+    env:{ GITHUB_PERSONAL_ACCESS_TOKEN:'${GITHUB_TOKEN}' },
+    placeholders:[{key:'GITHUB_TOKEN', hint:'fine-grained PAT, scoped to needed repos'}] },
+  { id:'gitlab', name:'GitLab', cat:'dev',
+    desc:'GitLab projects, MRs, issues.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-gitlab'],
+    env:{ GITLAB_PERSONAL_ACCESS_TOKEN:'${GITLAB_TOKEN}', GITLAB_API_URL:'https://gitlab.com/api/v4' } },
+  { id:'git', name:'Git', cat:'dev',
+    desc:'Local git repo operations (log, diff, blame).',
+    cmd:'uvx', args:['mcp-server-git','--repository','${REPO_PATH}'],
+    placeholders:[{key:'REPO_PATH', hint:'absolute path to local git repo'}] },
+  { id:'sentry', name:'Sentry', cat:'dev',
+    desc:'Fetch and analyze production errors.',
+    cmd:'uvx', args:['mcp-server-sentry'],
+    env:{ SENTRY_AUTH_TOKEN:'${SENTRY_AUTH_TOKEN}' } },
+  { id:'cloudflare', name:'Cloudflare', cat:'dev',
+    desc:'Workers, KV, R2, D1, account analytics.',
+    cmd:'npx', args:['-y','@cloudflare/mcp-server-cloudflare'],
+    env:{ CLOUDFLARE_API_TOKEN:'${CLOUDFLARE_API_TOKEN}' } },
+  { id:'docker', name:'Docker', cat:'dev',
+    desc:'List containers, images, run commands.',
+    cmd:'uvx', args:['docker-mcp'] },
+  { id:'kubernetes', name:'Kubernetes', cat:'dev',
+    desc:'kubectl-style cluster inspection (read-only).',
+    cmd:'npx', args:['-y','mcp-server-kubernetes'],
+    env:{ KUBECONFIG:'${KUBECONFIG_PATH}' } },
+
+  // DATA
+  { id:'postgres', name:'PostgreSQL', cat:'data',
+    desc:'Read-only Postgres queries.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-postgres','${POSTGRES_URL}'],
+    placeholders:[{key:'POSTGRES_URL', hint:'postgres://user:pass@host:5432/db'}] },
+  { id:'sqlite', name:'SQLite', cat:'data',
+    desc:'Local SQLite database access.',
+    cmd:'uvx', args:['mcp-server-sqlite','--db-path','${SQLITE_PATH}'],
+    placeholders:[{key:'SQLITE_PATH', hint:'absolute path to .db file'}] },
+  { id:'mysql', name:'MySQL', cat:'data',
+    desc:'Read-only MySQL queries.',
+    cmd:'npx', args:['-y','@benborla29/mcp-server-mysql'],
+    env:{ MYSQL_HOST:'${MYSQL_HOST}', MYSQL_USER:'${MYSQL_USER}', MYSQL_PASS:'${MYSQL_PASS}', MYSQL_DB:'${MYSQL_DB}' } },
+  { id:'mongodb', name:'MongoDB', cat:'data',
+    desc:'Find, aggregate, count.',
+    cmd:'npx', args:['-y','mongodb-mcp-server','--connectionString','${MONGO_URL}'] },
+  { id:'redis', name:'Redis', cat:'data',
+    desc:'Get, set, scan keys.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-redis','${REDIS_URL}'] },
+  { id:'bigquery', name:'BigQuery', cat:'data',
+    desc:'Run BigQuery SQL with cost limits.',
+    cmd:'uvx', args:['mcp-server-bigquery'],
+    env:{ GOOGLE_APPLICATION_CREDENTIALS:'${GCP_CREDS_PATH}', BQ_PROJECT_ID:'${BQ_PROJECT}' } },
+  { id:'snowflake', name:'Snowflake', cat:'data',
+    desc:'Snowflake SQL with role-scoped access.',
+    cmd:'uvx', args:['mcp-server-snowflake'],
+    env:{ SNOWFLAKE_ACCOUNT:'${SNOWFLAKE_ACCOUNT}', SNOWFLAKE_USER:'${SNOWFLAKE_USER}', SNOWFLAKE_PASSWORD:'${SNOWFLAKE_PASSWORD}' } },
+
+  // COMMS
+  { id:'slack', name:'Slack', cat:'comms',
+    desc:'Read messages, post replies, search channels.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-slack'],
+    env:{ SLACK_BOT_TOKEN:'${SLACK_BOT_TOKEN}', SLACK_TEAM_ID:'${SLACK_TEAM_ID}' } },
+  { id:'discord', name:'Discord', cat:'comms',
+    desc:'Send messages, fetch channel history.',
+    cmd:'npx', args:['-y','mcp-discord'],
+    env:{ DISCORD_TOKEN:'${DISCORD_BOT_TOKEN}' } },
+  { id:'gmail', name:'Gmail', cat:'comms',
+    desc:'Search, read, draft, send emails.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-gmail'],
+    env:{ GMAIL_CREDENTIALS_PATH:'${GMAIL_CREDS_PATH}' } },
+  { id:'gcal', name:'Google Calendar', cat:'comms',
+    desc:'List, create, update calendar events.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-gcal'],
+    env:{ GOOGLE_OAUTH_CLIENT_ID:'${GOOGLE_CLIENT_ID}', GOOGLE_OAUTH_CLIENT_SECRET:'${GOOGLE_CLIENT_SECRET}' } },
+  { id:'twilio', name:'Twilio', cat:'comms',
+    desc:'Send SMS, fetch call logs.',
+    cmd:'npx', args:['-y','@twilio-alpha/mcp-server'],
+    env:{ TWILIO_ACCOUNT_SID:'${TWILIO_SID}', TWILIO_AUTH_TOKEN:'${TWILIO_TOKEN}' } },
+
+  // DOCS / PM
+  { id:'linear', name:'Linear', cat:'docs',
+    desc:'Issues, projects, comments.',
+    cmd:'npx', args:['-y','mcp-linear'],
+    env:{ LINEAR_API_KEY:'${LINEAR_API_KEY}' } },
+  { id:'notion', name:'Notion', cat:'docs',
+    desc:'Search, read, create pages and databases.',
+    cmd:'npx', args:['-y','@notionhq/notion-mcp-server'],
+    env:{ NOTION_API_KEY:'${NOTION_API_KEY}' } },
+  { id:'jira', name:'Jira', cat:'docs',
+    desc:'Atlassian Jira issues, projects, JQL.',
+    cmd:'npx', args:['-y','@atlassian/mcp-server-jira'],
+    env:{ JIRA_BASE_URL:'${JIRA_URL}', JIRA_USER_EMAIL:'${JIRA_EMAIL}', JIRA_API_TOKEN:'${JIRA_TOKEN}' } },
+  { id:'confluence', name:'Confluence', cat:'docs',
+    desc:'Search and read Confluence pages.',
+    cmd:'npx', args:['-y','@atlassian/mcp-server-confluence'],
+    env:{ CONFLUENCE_BASE_URL:'${CONFLUENCE_URL}', CONFLUENCE_USER_EMAIL:'${CONF_EMAIL}', CONFLUENCE_API_TOKEN:'${CONF_TOKEN}' } },
+  { id:'asana', name:'Asana', cat:'docs',
+    desc:'Tasks, projects, workspaces.',
+    cmd:'npx', args:['-y','@asana/mcp-server'],
+    env:{ ASANA_ACCESS_TOKEN:'${ASANA_TOKEN}' } },
+  { id:'figma', name:'Figma', cat:'docs',
+    desc:'Read Figma files, components, comments.',
+    cmd:'npx', args:['-y','figma-developer-mcp','--figma-api-key=${FIGMA_TOKEN}'] },
+
+  // WEB / SEARCH
+  { id:'brave', name:'Brave Search', cat:'web',
+    desc:'Web + local search via Brave API.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-brave-search'],
+    env:{ BRAVE_API_KEY:'${BRAVE_API_KEY}' } },
+  { id:'tavily', name:'Tavily Search', cat:'web',
+    desc:'AI-optimized web search and extraction.',
+    cmd:'npx', args:['-y','tavily-mcp'],
+    env:{ TAVILY_API_KEY:'${TAVILY_API_KEY}' } },
+  { id:'fetch', name:'Fetch', cat:'web',
+    desc:'Fetch any URL as markdown.',
+    cmd:'uvx', args:['mcp-server-fetch'] },
+  { id:'puppeteer', name:'Puppeteer', cat:'web',
+    desc:'Headless Chrome for screenshots, scraping.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-puppeteer'] },
+  { id:'playwright', name:'Playwright', cat:'web',
+    desc:'Cross-browser automation and testing.',
+    cmd:'npx', args:['-y','@playwright/mcp'] },
+  { id:'gmaps', name:'Google Maps', cat:'web',
+    desc:'Geocoding, places, directions.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-google-maps'],
+    env:{ GOOGLE_MAPS_API_KEY:'${GOOGLE_MAPS_KEY}' } },
+
+  // UTILS
+  { id:'time', name:'Time', cat:'utils',
+    desc:'Current time, date math, timezone conversion.',
+    cmd:'uvx', args:['mcp-server-time','--local-timezone','America/Los_Angeles'] },
+  { id:'sequential', name:'Sequential Thinking', cat:'utils',
+    desc:'Branchable chain-of-thought reasoning.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-sequential-thinking'] },
+  { id:'everything', name:'Everything', cat:'utils',
+    desc:'Reference test server with prompts, tools, resources.',
+    cmd:'npx', args:['-y','@modelcontextprotocol/server-everything'] },
+  { id:'stripe', name:'Stripe', cat:'utils',
+    desc:'Customers, payments, subscriptions (test mode recommended).',
+    cmd:'npx', args:['-y','@stripe/mcp','--tools=all','--api-key=${STRIPE_SECRET}'],
+    placeholders:[{key:'STRIPE_SECRET', hint:'use sk_test_… in development'}] },
+];
+
+const hosts = {
+  'claude-desktop': {
+    label: 'Claude Desktop',
+    path: '~/Library/Application Support/Claude/claude_desktop_config.json (Mac) · %APPDATA%/Claude/claude_desktop_config.json (Win)',
+    build: (selected) => {
+      const out = { mcpServers: {} };
+      selected.forEach(s => {
+        out.mcpServers[s.id] = {
+          command: s.cmd,
+          args: s.args || [],
+          ...(s.env ? { env: s.env } : {})
+        };
+      });
+      return JSON.stringify(out, null, 2);
+    }
+  },
+  'claude-code': {
+    label: 'Claude Code CLI',
+    path: '.mcp.json (per-project) · ~/.claude.json (global)',
+    build: (selected) => {
+      const out = { mcpServers: {} };
+      selected.forEach(s => {
+        out.mcpServers[s.id] = {
+          type: 'stdio',
+          command: s.cmd,
+          args: s.args || [],
+          ...(s.env ? { env: s.env } : {})
+        };
+      });
+      return JSON.stringify(out, null, 2);
+    }
+  },
+  'cursor': {
+    label: 'Cursor',
+    path: '.cursor/mcp.json (project) · ~/.cursor/mcp.json (global)',
+    build: (selected) => {
+      const out = { mcpServers: {} };
+      selected.forEach(s => {
+        out.mcpServers[s.id] = {
+          command: s.cmd,
+          args: s.args || [],
+          ...(s.env ? { env: s.env } : {})
+        };
+      });
+      return JSON.stringify(out, null, 2);
+    }
+  },
+  'continue': {
+    label: 'Continue',
+    path: '~/.continue/config.yaml (paste under mcpServers:)',
+    build: (selected) => {
+      // YAML output for Continue
+      let yaml = 'mcpServers:\n';
+      selected.forEach(s => {
+        yaml += `  - name: ${s.id}\n`;
+        yaml += `    command: ${s.cmd}\n`;
+        if (s.args && s.args.length) {
+          yaml += `    args:\n`;
+          s.args.forEach(a => { yaml += `      - "${a}"\n`; });
+        }
+        if (s.env) {
+          yaml += `    env:\n`;
+          Object.entries(s.env).forEach(([k,v]) => { yaml += `      ${k}: "${v}"\n`; });
+        }
+      });
+      return yaml;
+    }
+  },
+  'cline': {
+    label: 'Cline',
+    path: '~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json',
+    build: (selected) => {
+      const out = { mcpServers: {} };
+      selected.forEach(s => {
+        out.mcpServers[s.id] = {
+          command: s.cmd,
+          args: s.args || [],
+          ...(s.env ? { env: s.env } : {}),
+          disabled: false,
+          autoApprove: []
+        };
+      });
+      return JSON.stringify(out, null, 2);
+    }
+  },
+  'windsurf': {
+    label: 'Windsurf',
+    path: '~/.codeium/windsurf/mcp_config.json',
+    build: (selected) => {
+      const out = { mcpServers: {} };
+      selected.forEach(s => {
+        out.mcpServers[s.id] = {
+          command: s.cmd,
+          args: s.args || [],
+          ...(s.env ? { env: s.env } : {})
+        };
+      });
+      return JSON.stringify(out, null, 2);
+    }
+  },
+  'zed': {
+    label: 'Zed',
+    path: '~/.config/zed/settings.json (under "context_servers")',
+    build: (selected) => {
+      const out = { context_servers: {} };
+      selected.forEach(s => {
+        out.context_servers[s.id] = {
+          command: { path: s.cmd, args: s.args || [], env: s.env || {} },
+          settings: {}
+        };
+      });
+      return JSON.stringify(out, null, 2);
+    }
+  },
+};
+
+let host = 'claude-desktop';
+let cat = 'all';
+let search = '';
+const selected = new Set();
+
+const $ = id => document.getElementById(id);
+
+function escapeHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function highlight(json) {
+  return escapeHtml(json)
+    .replace(/(&quot;[^&]+?&quot;)(\s*:)/g, '<span class="k">$1</span>$2')
+    .replace(/:\s*(&quot;.*?&quot;)/g, m => m.replace(/(&quot;.*?&quot;)/, '<span class="s">$1</span>'))
+    .replace(/(\$\{[A-Z0-9_]+\})/g, '<span class="p">$1</span>');
+}
+
+function renderServers() {
+  const list = $('serverList');
+  list.innerHTML = '';
+  const q = search.trim().toLowerCase();
+  const filtered = servers.filter(s =>
+    (cat === 'all' || s.cat === cat) &&
+    (!q || s.name.toLowerCase().includes(q) || s.desc.toLowerCase().includes(q) || s.id.includes(q))
+  );
+
+  if (filtered.length === 0) {
+    list.innerHTML = '<div style="text-align:center; padding:30px; color:var(--text-dim);">No servers match.</div>';
+    return;
+  }
+
+  filtered.forEach(s => {
+    const wrap = document.createElement('label');
+    wrap.className = 'server-item' + (selected.has(s.id) ? ' selected' : '');
+    const argHint = (s.args || []).join(' ');
+    wrap.innerHTML = `
+      <input type="checkbox" data-id="${s.id}" ${selected.has(s.id) ? 'checked' : ''}>
+      <div class="server-meta">
+        <div><span class="server-name">${s.name}</span><span class="server-cat">${s.cat}</span></div>
+        <div class="server-desc">${s.desc}</div>
+        <div class="server-args">${escapeHtml(s.cmd + ' ' + argHint)}</div>
+      </div>
+    `;
+    wrap.querySelector('input').addEventListener('change', e => {
+      if (e.target.checked) selected.add(s.id); else selected.delete(s.id);
+      wrap.classList.toggle('selected', e.target.checked);
+      renderOutput();
+      $('selCount').textContent = selected.size;
+    });
+    list.appendChild(wrap);
+  });
+}
+
+function collectPlaceholders(selectedServers) {
+  const set = new Set();
+  selectedServers.forEach(s => {
+    (s.placeholders || []).forEach(p => set.add(p.key));
+    if (s.env) {
+      Object.values(s.env).forEach(v => {
+        const m = String(v).match(/\$\{([A-Z0-9_]+)\}/g);
+        if (m) m.forEach(x => set.add(x.slice(2,-1)));
+      });
+    }
+    (s.args || []).forEach(v => {
+      const m = String(v).match(/\$\{([A-Z0-9_]+)\}/g);
+      if (m) m.forEach(x => set.add(x.slice(2,-1)));
+    });
+  });
+  return Array.from(set);
+}
+
+function renderOutput() {
+  const sel = servers.filter(s => selected.has(s.id));
+  const h = hosts[host];
+  $('hostLabel').textContent = '· ' + h.label;
+  $('outputPath').textContent = '📄 ' + h.path;
+
+  if (sel.length === 0) {
+    $('output').innerHTML = '<span class="c">// Pick at least one server on the left to generate config.</span>';
+    $('placeholderBox').style.display = 'none';
+    return;
+  }
+
+  const json = h.build(sel);
+  $('output').innerHTML = highlight(json);
+  $('output').dataset.raw = json;
+
+  const placeholders = collectPlaceholders(sel);
+  if (placeholders.length > 0) {
+    $('placeholderBox').style.display = 'block';
+    $('placeholderList').innerHTML = placeholders.map(p => '${' + p + '}').join('  ·  ');
+  } else {
+    $('placeholderBox').style.display = 'none';
+  }
+}
+
+document.querySelectorAll('.host-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.host-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    host = tab.dataset.host;
+    renderOutput();
+  });
+});
+
+document.querySelectorAll('.cat-filter').forEach(c => {
+  c.addEventListener('click', () => {
+    document.querySelectorAll('.cat-filter').forEach(t => t.classList.remove('active'));
+    c.classList.add('active');
+    cat = c.dataset.cat;
+    renderServers();
+  });
+});
+
+$('search').addEventListener('input', e => { search = e.target.value; renderServers(); });
+
+$('copyBtn').addEventListener('click', () => {
+  const raw = $('output').dataset.raw;
+  if (!raw) return;
+  navigator.clipboard.writeText(raw).then(() => {
+    const btn = $('copyBtn');
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1800);
+  });
+});
+
+renderServers();
+renderOutput();
+</script>
+</body>
+</html>
