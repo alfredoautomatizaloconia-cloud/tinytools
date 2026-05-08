@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Coding Assistant Cost Calculator (2026) — Compare Cursor, Copilot, Claude Code, Windsurf, Cody Pricing</title>
+<meta name="description" content="Compare AI coding assistant pricing for your team across Cursor, GitHub Copilot, Claude Code, Windsurf, Cody, Tabnine, Continue, Augment, JetBrains AI, and more. See exactly how much you'll pay per developer per month. Free, no signup.">
+<meta name="keywords" content="AI coding assistant cost calculator, Cursor pricing, GitHub Copilot pricing, Claude Code pricing, Windsurf pricing, Cody pricing, AI dev tools cost, team pricing comparison">
+<meta property="og:title" content="AI Coding Assistant Cost Calculator — Compare Cursor, Copilot, Claude Code & 12 More">
+<meta property="og:description" content="See your team's monthly cost across every major AI coding assistant. Free, instant comparison.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Coding Assistant Cost Calculator (2026)">
+<meta name="twitter:description" content="Compare Cursor, Copilot, Claude Code, Windsurf, Cody pricing for teams in 30 seconds.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Coding Assistant Cost Calculator",
+  "description": "Compare per-seat pricing across Cursor, GitHub Copilot, Claude Code, Windsurf, Cody, Tabnine, Continue, Augment, JetBrains AI, Replit Agent, Warp, and Zed AI for engineering teams.",
+  "url": "https://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/",
+  "applicationCategory": "DeveloperApplication",
+  "offers": { "@type": "Offer", "price": "0" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #3b82f6; --accent-glow: #3b82f640;
+    --green: #10b981; --red: #ef4444; --yellow: #f59e0b; --purple: #a78bfa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 700px; margin: 0 auto; }
+
+  .layout { display: grid; grid-template-columns: 380px 1fr; gap: 24px; margin-top: 32px; }
+  @media (max-width: 1000px) { .layout { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+  }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .field { margin-bottom: 16px; }
+  label { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500; }
+  label .help { color: var(--text-dim); font-size: 11px; font-weight: normal; }
+  input[type="number"], input[type="text"], select {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit; font-variant-numeric: tabular-nums;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+
+  .checkbox-row { display: flex; align-items: center; gap: 10px; margin: 8px 0; cursor: pointer; }
+  .checkbox-row input { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; }
+  .checkbox-row span { font-size: 14px; }
+
+  .results-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .results-table th {
+    text-align: left; padding: 10px 12px; color: var(--text-dim); font-weight: 600;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border);
+    background: var(--bg-elevated);
+  }
+  .results-table th.numeric { text-align: right; }
+  .results-table td { padding: 14px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .results-table td.numeric { text-align: right; font-variant-numeric: tabular-nums; }
+  .results-table tr:hover td { background: var(--bg-elevated); }
+  .product-name { font-weight: 700; font-size: 15px; }
+  .product-vendor { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  .product-tag {
+    display: inline-block; padding: 2px 7px; border-radius: 5px; font-size: 10px;
+    font-weight: 600; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .tag-byok { background: rgba(168, 139, 250, 0.18); color: var(--purple); }
+  .tag-free { background: rgba(16, 185, 129, 0.18); color: var(--green); }
+  .tag-flat { background: rgba(59, 130, 246, 0.18); color: var(--accent); }
+  .tag-credits { background: rgba(245, 158, 11, 0.18); color: var(--yellow); }
+
+  .cost-cell { font-weight: 700; font-size: 15px; }
+  .cheapest { color: var(--green); }
+  .expensive { color: var(--red); opacity: 0.85; }
+  .savings-pill {
+    display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 600;
+    margin-left: 6px;
+  }
+  .savings-pill.cheap { background: rgba(16, 185, 129, 0.15); color: var(--green); }
+  .savings-pill.exp { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+
+  .summary {
+    margin-bottom: 16px; padding: 18px; background: var(--bg-elevated);
+    border-radius: 12px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
+  }
+  @media (max-width: 700px) { .summary { grid-template-columns: 1fr; } }
+  .summary-item .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+  .summary-item .value { font-size: 24px; font-weight: 700; margin-top: 4px; }
+  .summary-item .sub { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+
+  .filter-tabs { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+  .filter-tab {
+    padding: 6px 12px; background: var(--bg-elevated); border-radius: 999px; font-size: 12px;
+    cursor: pointer; color: var(--text-dim); border: 1px solid transparent; transition: all 0.15s;
+  }
+  .filter-tab.active { background: var(--accent); color: white; }
+  .filter-tab:hover { color: var(--text); }
+
+  .feature-cell { font-size: 12px; color: var(--text-dim); }
+  .feature-cell .yes { color: var(--green); }
+  .feature-cell .no { color: var(--red); opacity: 0.6; }
+
+  .upsell {
+    margin-top: 20px; padding: 18px; background: var(--bg-elevated);
+    border-radius: 12px; border-left: 3px solid var(--accent); font-size: 14px;
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .toggle-row { display: flex; gap: 8px; margin-bottom: 14px; }
+  .toggle-btn {
+    flex: 1; padding: 8px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text-dim); cursor: pointer; font-size: 13px;
+    text-align: center; transition: all 0.15s; font-weight: 500;
+  }
+  .toggle-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; color: var(--text); }
+  .content h3 { font-size: 18px; margin: 22px 0 8px; color: var(--text); }
+  .content p { color: var(--text-dim); margin-bottom: 12px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); margin-bottom: 12px; }
+  .content li { margin-bottom: 4px; }
+  .content strong { color: var(--text); }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  .price-detail { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">⚡ 14 Tools &nbsp;·&nbsp; Updated April 2026 &nbsp;·&nbsp; Free</div>
+    <h1>AI Coding Assistant Cost Calculator</h1>
+    <p class="subtitle">Compare your team's monthly cost across Cursor, GitHub Copilot, Claude Code, Windsurf, Cody, Tabnine, Continue, Augment, JetBrains AI, Replit Agent, Warp AI, Zed AI, and more.</p>
+  </header>
+
+  <div class="layout">
+    <div class="panel">
+      <h2>Your team</h2>
+
+      <div class="field">
+        <label>Number of developers</label>
+        <input id="seats" type="number" value="10" min="1" max="10000">
+      </div>
+
+      <div class="toggle-row">
+        <div class="toggle-btn active" data-billing="monthly">Monthly</div>
+        <div class="toggle-btn" data-billing="annual">Annual (save ~17%)</div>
+      </div>
+
+      <div class="field">
+        <label>Usage profile</label>
+        <select id="usage">
+          <option value="light">Light · IDE autocomplete only</option>
+          <option value="moderate" selected>Moderate · daily chat + completions</option>
+          <option value="heavy">Heavy · agentic, long-running tasks</option>
+          <option value="extreme">Extreme · 8+ hrs/day, always running agents</option>
+        </select>
+      </div>
+
+      <h2 style="margin-top: 28px;">Required features</h2>
+
+      <label class="checkbox-row"><input type="checkbox" id="reqAgent"> <span>Autonomous agent mode</span></label>
+      <label class="checkbox-row"><input type="checkbox" id="reqLocal"> <span>Local-only / on-prem option</span></label>
+      <label class="checkbox-row"><input type="checkbox" id="reqByok"> <span>Bring your own API key</span></label>
+      <label class="checkbox-row"><input type="checkbox" id="reqSso"> <span>SSO / SAML</span></label>
+      <label class="checkbox-row"><input type="checkbox" id="reqAudit"> <span>Audit logs</span></label>
+      <label class="checkbox-row"><input type="checkbox" id="reqPrivacy"> <span>No-training privacy guarantee</span></label>
+
+      <div class="summary" style="margin-top: 24px;">
+        <div class="summary-item">
+          <div class="label">Cheapest / mo</div>
+          <div class="value" id="cheapestCost" style="color: var(--green);">—</div>
+          <div class="sub" id="cheapestModel">—</div>
+        </div>
+        <div class="summary-item">
+          <div class="label">Most expensive / mo</div>
+          <div class="value" id="expensiveCost" style="color: var(--red);">—</div>
+          <div class="sub" id="expensiveModel">—</div>
+        </div>
+        <div class="summary-item">
+          <div class="label">Annual swing</div>
+          <div class="value" id="annualSwing">—</div>
+          <div class="sub">savings cheap vs expensive</div>
+        </div>
+      </div>
+
+      <div class="upsell">
+        <strong>One IDE for any model — and route requests to the cheapest one automatically.</strong>
+        <a href="#" id="upsell-link" target="_blank" rel="noopener">OpenRouter</a> gives you GPT-5, Claude 4.6, Gemini 3, and DeepSeek behind a single key — pay-per-token, no commitment. Pair it with <a href="https://www.continue.dev/" target="_blank" rel="noopener">Continue</a> or <a href="https://aider.chat/" target="_blank" rel="noopener">Aider</a> for a free, BYOK setup. <em>(Affiliate.)</em>
+      </div>
+    </div>
+
+    <div>
+      <div class="panel">
+        <h2>Monthly cost across all assistants <span style="float:right; color: var(--text-dim); font-weight: normal; text-transform: none; font-size: 12px;">prices verified April 2026</span></h2>
+
+        <div class="filter-tabs" id="filters">
+          <div class="filter-tab active" data-filter="all">All</div>
+          <div class="filter-tab" data-filter="ide">IDE-native</div>
+          <div class="filter-tab" data-filter="agent">Agentic</div>
+          <div class="filter-tab" data-filter="byok">BYOK</div>
+          <div class="filter-tab" data-filter="free">Free tier</div>
+          <div class="filter-tab" data-filter="enterprise">Enterprise-ready</div>
+        </div>
+
+        <table class="results-table" id="resultsTable">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Plan</th>
+              <th class="numeric">$/seat/mo</th>
+              <th class="numeric">Team total/mo</th>
+              <th class="numeric">vs cheapest</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>How to choose an AI coding assistant in 2026</h2>
+    <p>The AI coding assistant market exploded in 2024–2025 and consolidated in early 2026 around three clear tiers: <strong>IDE autocomplete</strong> (GitHub Copilot, Tabnine), <strong>chat-first IDEs</strong> (Cursor, Windsurf, Zed), and <strong>fully agentic terminals</strong> (Claude Code, Aider, OpenAI Codex CLI, Augment). Picking the right one is no longer a question of "which is best" — it's a question of which is best <em>for the way your team actually writes code</em>.</p>
+    <p>This AI coding assistant cost calculator compares fourteen of the most-used products by per-seat monthly price for any team size you enter. Toggle annual billing to see the typical 15–17% discount, and check the boxes for must-have features (SSO, on-prem, no-training privacy guarantee) to filter out plans that won't pass your security review.</p>
+
+    <h3>Pricing tiers — what each tool actually charges in 2026</h3>
+    <p>Most AI coding assistants follow one of three pricing models. <strong>Flat-rate per-seat</strong> (Cursor, Copilot, JetBrains AI) is the simplest — you pay $10–$40 per developer per month and get a fixed quota of fast-model requests plus unlimited slow-model fallback. <strong>Credit-based</strong> (Augment Code, Replit Agent, Windsurf) charges by token or "flow action" consumption, which gets expensive fast for agentic work but stays cheap for light autocomplete. <strong>BYOK</strong> (Continue, Aider, Cline, plain Claude Code with API billing) shifts cost to your provider bill but unlocks the latest models the moment they ship.</p>
+
+    <h3>Hidden costs nobody talks about</h3>
+    <p>The sticker price is rarely the full picture for an AI coding assistant. Three line items consistently surprise teams: (1) <strong>fast-model overage</strong> — Cursor's $20/mo Pro plan caps fast requests at 500/mo, after which you pay per request or wait in the slow queue; (2) <strong>agentic credit burn</strong> — a single hour of agent work in Augment or Windsurf can cost $5–$15 in API tokens depending on the model; (3) <strong>seat sprawl</strong> — many teams pay for both Copilot and Cursor because devs prefer different tools, doubling per-seat cost.</p>
+
+    <h3>What "team-ready" really means</h3>
+    <p>Not every plan in this AI coding assistant cost calculator is enterprise-ready. The minimum bar most security teams require in 2026: SAML SSO, SCIM provisioning, audit logs, customer-managed encryption keys, and a contractual no-training guarantee with verifiable data residency. Cursor Business, GitHub Copilot Enterprise, Claude Code Team via Anthropic Enterprise, Tabnine Enterprise, Cody Enterprise, and Augment Teams all clear that bar. Continue, Aider, and Zed AI do not on their own — they require BYOK with a compliant provider.</p>
+
+    <h3>BYOK vs flat rate — a simple decision rule</h3>
+    <p>If your developers run agents for more than two hours a day each, BYOK with a compliant provider is almost always cheaper than any flat-rate AI coding assistant plan. If they mostly use autocomplete and short chats, flat-rate Copilot or Cursor wins on convenience and predictable cost. The break-even for a team of 10 is roughly 25 hours/week of agent use — below that, take a flat plan; above it, take BYOK and route through OpenRouter or Bedrock.</p>
+
+    <h3>Which AI coding assistant is best for solo developers?</h3>
+    <p>For solo developers in 2026, the two most popular setups are Cursor Pro at $20/mo (best all-in-one IDE) and Claude Code Pro at $20/mo (best terminal agent). Many indie devs run both; total cost is $40/mo, less than a typical SaaS subscription. Free options that actually work: GitHub Copilot Free (limited to 50 chat messages and 2,000 completions per month), Continue + a local Ollama model (truly free, weaker quality), and Cody Free.</p>
+
+    <h3>Which AI coding assistant is best for engineering teams of 10–100?</h3>
+    <p>Mid-sized teams have the most options. Cursor Business at $40/seat is the popular default in 2026. Claude Code Team (via Anthropic Team at $30/seat plus per-seat API allowance) is rapidly catching up for teams that prefer terminal-first agents. GitHub Copilot Business at $19/seat remains the safest choice for heavily-regulated industries because of GitHub's existing compliance footprint. Use the calculator above to see your exact total — and remember the hidden costs.</p>
+  </div>
+
+  <footer>
+    <p>Pricing data updated April 2026. We may earn a small commission from links to OpenRouter — never affects the comparison.</p>
+    <p style="margin-top: 8px;"><a href="/" >← All TinyTools</a> · <a href="https://github.com/alfredoautomatizaloconia-cloud/tinytools" target="_blank" rel="noopener">Source on GitHub</a> · <a href="#">Tip jar ☕</a></p>
+  </footer>
+</div>
+
+<script>
+const products = [
+  // [id, name, vendor, plan, monthlyPerSeat, annualPerSeat, tags, features, notes]
+  // tags: ide, agent, byok, free, enterprise
+  // features: agent, local, byok, sso, audit, privacy
+  { id:'cursor-pro', name:'Cursor', vendor:'Anysphere', plan:'Pro', monthly:20, annual:16,
+    tags:['ide','agent'], features:{agent:1,local:0,byok:1,sso:0,audit:0,privacy:1},
+    pricetag:'flat', detail:'500 fast req/mo, agent included' },
+  { id:'cursor-business', name:'Cursor', vendor:'Anysphere', plan:'Business', monthly:40, annual:32,
+    tags:['ide','agent','enterprise'], features:{agent:1,local:0,byok:1,sso:1,audit:1,privacy:1},
+    pricetag:'flat', detail:'unlimited slow, SSO, no-training' },
+  { id:'cursor-ultra', name:'Cursor', vendor:'Anysphere', plan:'Ultra', monthly:200, annual:170,
+    tags:['ide','agent','enterprise'], features:{agent:1,local:0,byok:1,sso:1,audit:1,privacy:1},
+    pricetag:'flat', detail:'20× quota for power users' },
+  { id:'copilot-pro', name:'GitHub Copilot', vendor:'GitHub/Microsoft', plan:'Pro', monthly:10, annual:8.33,
+    tags:['ide'], features:{agent:1,local:0,byok:0,sso:0,audit:0,privacy:1},
+    pricetag:'flat', detail:'autocomplete + chat + agent mode' },
+  { id:'copilot-business', name:'GitHub Copilot', vendor:'GitHub/Microsoft', plan:'Business', monthly:19, annual:19,
+    tags:['ide','agent','enterprise'], features:{agent:1,local:0,byok:0,sso:1,audit:1,privacy:1},
+    pricetag:'flat', detail:'SSO, no-training, policy ctrl' },
+  { id:'copilot-enterprise', name:'GitHub Copilot', vendor:'GitHub/Microsoft', plan:'Enterprise', monthly:39, annual:39,
+    tags:['ide','agent','enterprise'], features:{agent:1,local:0,byok:0,sso:1,audit:1,privacy:1},
+    pricetag:'flat', detail:'KB indexing, SCIM, code review' },
+  { id:'claude-pro', name:'Claude Code', vendor:'Anthropic', plan:'Pro', monthly:20, annual:17,
+    tags:['agent'], features:{agent:1,local:0,byok:1,sso:0,audit:0,privacy:1},
+    pricetag:'flat', detail:'~225 msgs/5h Sonnet, terminal-first' },
+  { id:'claude-max', name:'Claude Code', vendor:'Anthropic', plan:'Max 5×', monthly:100, annual:85,
+    tags:['agent'], features:{agent:1,local:0,byok:1,sso:0,audit:0,privacy:1},
+    pricetag:'flat', detail:'5× Pro quota, Opus 4.6 access' },
+  { id:'claude-team', name:'Claude Code', vendor:'Anthropic', plan:'Team', monthly:30, annual:25,
+    tags:['agent','enterprise'], features:{agent:1,local:0,byok:1,sso:1,audit:1,privacy:1},
+    pricetag:'flat', detail:'shared admin, central billing' },
+  { id:'claude-enterprise', name:'Claude Code', vendor:'Anthropic', plan:'Enterprise', monthly:60, annual:50,
+    tags:['agent','enterprise'], features:{agent:1,local:0,byok:1,sso:1,audit:1,privacy:1},
+    pricetag:'flat', detail:'SSO, audit logs, data residency' },
+  { id:'windsurf-pro', name:'Windsurf', vendor:'Codeium', plan:'Pro', monthly:15, annual:12.5,
+    tags:['ide','agent'], features:{agent:1,local:0,byok:0,sso:0,audit:0,privacy:1},
+    pricetag:'credits', detail:'500 user prompts + flow credits' },
+  { id:'windsurf-teams', name:'Windsurf', vendor:'Codeium', plan:'Teams', monthly:35, annual:30,
+    tags:['ide','agent','enterprise'], features:{agent:1,local:0,byok:0,sso:1,audit:1,privacy:1},
+    pricetag:'credits', detail:'team analytics, SSO' },
+  { id:'codeium-free', name:'Codeium', vendor:'Codeium', plan:'Free', monthly:0, annual:0,
+    tags:['ide','free'], features:{agent:0,local:0,byok:0,sso:0,audit:0,privacy:1},
+    pricetag:'free', detail:'unlimited completions, no agent' },
+  { id:'codeium-teams', name:'Codeium', vendor:'Codeium', plan:'Teams', monthly:12, annual:10,
+    tags:['ide','enterprise'], features:{agent:0,local:0,byok:0,sso:1,audit:1,privacy:1},
+    pricetag:'flat', detail:'team admin, SSO' },
+  { id:'cody-free', name:'Cody', vendor:'Sourcegraph', plan:'Free', monthly:0, annual:0,
+    tags:['ide','free'], features:{agent:0,local:0,byok:1,sso:0,audit:0,privacy:1},
+    pricetag:'free', detail:'200 autocomplete + 20 chat/mo' },
+  { id:'cody-pro', name:'Cody', vendor:'Sourcegraph', plan:'Pro', monthly:9, annual:9,
+    tags:['ide'], features:{agent:0,local:0,byok:1,sso:0,audit:0,privacy:1},
+    pricetag:'flat', detail:'unlimited completions, BYOK' },
+  { id:'cody-enterprise', name:'Cody', vendor:'Sourcegraph', plan:'Enterprise', monthly:59, annual:59,
+    tags:['ide','enterprise'], features:{agent:1,local:1,byok:1,sso:1,audit:1,privacy:1},
+    pricetag:'flat', detail:'air-gapped option, code search' },
+  { id:'tabnine-pro', name:'Tabnine', vendor:'Tabnine', plan:'Pro', monthly:12, annual:9,
+    tags:['ide'], features:{agent:0,local:1,byok:0,sso:0,audit:0,privacy:1},
+    pricetag:'flat', detail:'IDE autocomplete + chat' },
+  { id:'tabnine-enterprise', name:'Tabnine', vendor:'Tabnine', plan:'Enterprise', monthly:39, annual:39,
+    tags:['ide','enterprise'], features:{agent:1,local:1,byok:1,sso:1,audit:1,privacy:1},
+    pricetag:'flat', detail:'fully air-gapped, custom models' },
+  { id:'continue-byok', name:'Continue', vendor:'Continue Dev', plan:'OSS / BYOK', monthly:0, annual:0,
+    tags:['ide','byok','free'], features:{agent:1,local:1,byok:1,sso:0,audit:0,privacy:1},
+    pricetag:'byok', detail:'open-source IDE plugin, you pay model' },
+  { id:'continue-team', name:'Continue', vendor:'Continue Dev', plan:'Team', monthly:25, annual:20,
+    tags:['ide','byok','enterprise'], features:{agent:1,local:1,byok:1,sso:1,audit:1,privacy:1},
+    pricetag:'flat', detail:'shared config, gateway, audit' },
+  { id:'aider-byok', name:'Aider', vendor:'Aider', plan:'OSS / BYOK', monthly:0, annual:0,
+    tags:['agent','byok','free'], features:{agent:1,local:1,byok:1,sso:0,audit:0,privacy:1},
+    pricetag:'byok', detail:'CLI agent, you pay model' },
+  { id:'cline-byok', name:'Cline', vendor:'Cline (OSS)', plan:'OSS / BYOK', monthly:0, annual:0,
+    tags:['agent','byok','free'], features:{agent:1,local:1,byok:1,sso:0,audit:0,privacy:1},
+    pricetag:'byok', detail:'VS Code agent, you pay model' },
+  { id:'augment-dev', name:'Augment Code', vendor:'Augment', plan:'Developer', monthly:60, annual:50,
+    tags:['ide','agent'], features:{agent:1,local:0,byok:0,sso:0,audit:0,privacy:1},
+    pricetag:'credits', detail:'codebase-aware agent, 600 msgs' },
+  { id:'augment-teams', name:'Augment Code', vendor:'Augment', plan:'Teams', monthly:75, annual:65,
+    tags:['ide','agent','enterprise'], features:{agent:1,local:0,byok:0,sso:1,audit:1,privacy:1},
+    pricetag:'credits', detail:'codebase indexing, SSO' },
+  { id:'replit-core', name:'Replit Agent', vendor:'Replit', plan:'Core', monthly:20, annual:15,
+    tags:['agent'], features:{agent:1,local:0,byok:0,sso:0,audit:0,privacy:1},
+    pricetag:'credits', detail:'$25 credit/mo, web IDE' },
+  { id:'replit-teams', name:'Replit Agent', vendor:'Replit', plan:'Teams', monthly:35, annual:30,
+    tags:['agent','enterprise'], features:{agent:1,local:0,byok:0,sso:1,audit:0,privacy:1},
+    pricetag:'credits', detail:'$40 credit/seat, team mgmt' },
+  { id:'jetbrains-ai', name:'JetBrains AI', vendor:'JetBrains', plan:'AI Pro', monthly:10, annual:8.33,
+    tags:['ide'], features:{agent:1,local:1,byok:1,sso:1,audit:0,privacy:1},
+    pricetag:'flat', detail:'native to all JetBrains IDEs' },
+  { id:'jetbrains-ai-ult', name:'JetBrains AI', vendor:'JetBrains', plan:'AI Ultimate', monthly:20, annual:16.67,
+    tags:['ide','agent'], features:{agent:1,local:1,byok:1,sso:1,audit:1,privacy:1},
+    pricetag:'flat', detail:'agent + premium models' },
+  { id:'warp-pro', name:'Warp AI', vendor:'Warp', plan:'Pro', monthly:15, annual:12,
+    tags:['agent'], features:{agent:1,local:0,byok:0,sso:0,audit:0,privacy:1},
+    pricetag:'flat', detail:'AI-native terminal, agent mode' },
+  { id:'warp-teams', name:'Warp AI', vendor:'Warp', plan:'Teams', monthly:22, annual:18,
+    tags:['agent','enterprise'], features:{agent:1,local:0,byok:0,sso:1,audit:1,privacy:1},
+    pricetag:'flat', detail:'team workflows, SSO' },
+  { id:'zed-pro', name:'Zed AI', vendor:'Zed Industries', plan:'Pro', monthly:20, annual:17,
+    tags:['ide','byok'], features:{agent:1,local:1,byok:1,sso:0,audit:0,privacy:1},
+    pricetag:'flat', detail:'500 prompts/mo, BYOK option' },
+  { id:'codex-cli', name:'OpenAI Codex CLI', vendor:'OpenAI', plan:'Plus', monthly:20, annual:20,
+    tags:['agent'], features:{agent:1,local:0,byok:1,sso:0,audit:0,privacy:1},
+    pricetag:'flat', detail:'incl. with ChatGPT Plus, Codex agent' },
+];
+
+let billing = 'monthly';
+let activeFilter = 'all';
+
+const $ = id => document.getElementById(id);
+
+function getUsageMultiplier() {
+  const u = $('usage').value;
+  return { light:1, moderate:1, heavy:1.15, extreme:1.35 }[u] || 1;
+}
+
+function passesFeatureFilter(p) {
+  if ($('reqAgent').checked && !p.features.agent) return false;
+  if ($('reqLocal').checked && !p.features.local) return false;
+  if ($('reqByok').checked && !p.features.byok) return false;
+  if ($('reqSso').checked && !p.features.sso) return false;
+  if ($('reqAudit').checked && !p.features.audit) return false;
+  if ($('reqPrivacy').checked && !p.features.privacy) return false;
+  return true;
+}
+
+function passesTabFilter(p) {
+  if (activeFilter === 'all') return true;
+  return p.tags.includes(activeFilter);
+}
+
+function tagPill(tag) {
+  const map = {
+    flat: ['Flat', 'tag-flat'], free: ['Free', 'tag-free'],
+    byok: ['BYOK', 'tag-byok'], credits: ['Credits', 'tag-credits']
+  };
+  const [label, cls] = map[tag] || ['', ''];
+  return `<span class="product-tag ${cls}">${label}</span>`;
+}
+
+function fmt(n) {
+  if (n === 0) return '$0';
+  if (n < 10) return '$' + n.toFixed(2);
+  return '$' + Math.round(n).toLocaleString();
+}
+
+function render() {
+  const seats = Math.max(1, parseInt($('seats').value) || 1);
+  const mult = getUsageMultiplier();
+  const list = products
+    .filter(passesFeatureFilter)
+    .filter(passesTabFilter)
+    .map(p => {
+      const perSeat = (billing === 'annual' ? p.annual : p.monthly) * mult;
+      const total = perSeat * seats;
+      return { ...p, perSeat, total };
+    })
+    .sort((a, b) => a.total - b.total);
+
+  const tbody = $('tableBody');
+  tbody.innerHTML = '';
+
+  if (list.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding: 40px; color: var(--text-dim);">No products match your filters. Try unchecking some required features.</td></tr>`;
+    $('cheapestCost').textContent = '—'; $('cheapestModel').textContent = '—';
+    $('expensiveCost').textContent = '—'; $('expensiveModel').textContent = '—';
+    $('annualSwing').textContent = '—';
+    return;
+  }
+
+  const cheapest = list[0];
+  const mostExp = list[list.length - 1];
+
+  list.forEach((p, i) => {
+    const isCheapest = i === 0 && p.total >= 0;
+    const vsCheapest = p.total - cheapest.total;
+    const vsLabel = vsCheapest === 0
+      ? '<span class="savings-pill cheap">cheapest</span>'
+      : `+${fmt(vsCheapest)}/mo`;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>
+        <div class="product-name">${p.name} ${tagPill(p.pricetag)}</div>
+        <div class="product-vendor">${p.vendor}</div>
+      </td>
+      <td>
+        <div>${p.plan}</div>
+        <div class="price-detail">${p.detail}</div>
+      </td>
+      <td class="numeric"><div class="cost-cell">${fmt(p.perSeat)}</div></td>
+      <td class="numeric"><div class="cost-cell ${isCheapest ? 'cheapest' : ''}">${fmt(p.total)}</div></td>
+      <td class="numeric">${vsLabel}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  $('cheapestCost').textContent = fmt(cheapest.total);
+  $('cheapestModel').textContent = cheapest.name + ' ' + cheapest.plan;
+  $('expensiveCost').textContent = fmt(mostExp.total);
+  $('expensiveModel').textContent = mostExp.name + ' ' + mostExp.plan;
+  const swing = (mostExp.total - cheapest.total) * 12;
+  $('annualSwing').textContent = fmt(swing) + '/yr';
+}
+
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    billing = btn.dataset.billing;
+    render();
+  });
+});
+
+document.querySelectorAll('.filter-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    activeFilter = tab.dataset.filter;
+    render();
+  });
+});
+
+['seats','usage','reqAgent','reqLocal','reqByok','reqSso','reqAudit','reqPrivacy']
+  .forEach(id => $(id).addEventListener('input', render));
+
+render();
+</script>
+</body>
+</html>
