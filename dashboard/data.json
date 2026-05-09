@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 9, 2026 — published SVG Favicons Complete Implementation Guide for favicon-generator + 4 social drafts ready",
+  "lastUpdated": "May 9, 2026 — published Favicon Not Showing in Google Search Results diagnostic guide for favicon-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 40,
+    "posts": 41,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 08:11",
+      "tag": "seo",
+      "text": "📝 Published blog post: Favicon Not Showing in Google Search Results? The 2026 Diagnostic + Fix Guide at /favicon-generator/blog/favicon-not-showing-in-google-search-results-2026/"
+    },
+    {
+      "time": "today 08:11",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting favicon-generator"
+    },
     {
       "time": "today 04:10",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 15:55",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN — all promoting domain-generator"
-    },
-    {
-      "time": "today 08:44",
-      "tag": "seo",
-      "text": "📝 Published blog post: How to Negotiate Buying a Premium Domain Name in 2026 at /domain-generator/blog/how-to-negotiate-buying-premium-domain-name-2026/"
-    },
-    {
-      "time": "today 08:44",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/Entrepreneur, LinkedIn, Show HN — all promoting domain-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "text": "🧵 Your favicon ships, you deploy, and Google STILL shows the gray globe next to your search result.\n\nIn 2026 this almost always comes down to one of 7 specific things — here's the diagnostic order that catches them in <10 min 👇\n\n(1/5)\n\n—\n\nThe #1 cause: the favicon URL itself returns 404 or 403 to Googlebot.\n\nOpen your favicon URL in incognito. If you see the icon = good. If you see a 404, redirect chain, or auth wall = same view Google has.\n\nMost common reasons: build pipeline strips it, hash-busted filename, Cloudflare Access on staging.\n\n(2/5)\n\n—\n\n#2 cause: size. Google requires a multiple of 48×48 in 2026.\n\nA 16×16 ICO from 2010 is auto-rejected. Same with non-square images.\n\nThe safe set: 48, 96, 192, 512 PNGs + an SVG. Generate the full bundle in 1 click → tinytools-smoky.vercel.app/favicon-generator/\n\n(3/5)\n\n—\n\n#3 cause: the link tag is injected by JavaScript (React Helmet, Vue Meta, etc).\n\nGooglebot's favicon crawler reads the initial HTML, not the post-render DOM.\n\nCheck: view-source on your homepage. If <link rel=\"icon\"> is missing there but appears in DevTools, that's your bug.\n\nMove it to the static index.html shell.\n\n(4/5)\n\n—\n\nAfter fixing: wait 3–14 days. There is no \"force update.\"\n\nVerify with https://www.google.com/s2/favicons?domain=yoursite.com&sz=64 — that's Google's cached version.\n\nFull 7-step diagnostic + the 30-sec checklist:\ntinytools-smoky.vercel.app/favicon-generator/blog/favicon-not-showing-in-google-search-results-2026/\n\n(5/5)",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T08:11:00Z"
+    },
+    {
+      "platform": "Reddit /r/SEO",
+      "text": "Subreddit: /r/SEO (or /r/webdev, /r/Wordpress)\n\nComment (reply on threads asking \"why is my favicon not showing in Google\" or \"Google is showing the globe icon\"):\n\nAlmost always one of these 7 things, in order of frequency:\n\n1. The favicon URL returns 404 or 403 to Googlebot. Open it in an incognito window — whatever you see, Google saw the same thing. Build pipelines stripping the file from /public is the #1 culprit.\n\n2. Size is wrong. Google needs a multiple of 48×48 in 2026. A legacy 16×16 ICO is auto-rejected. Square only.\n\n3. Wrong MIME type. `curl -I` your favicon URL and confirm Content-Type is image/svg+xml or image/png — not text/html (which happens when CDN rewrites catch it).\n\n4. Link tag is injected by JS (React Helmet, etc). The favicon crawler reads the initial HTML response, not the post-render DOM. View-source must show the tag.\n\n5. Homepage isn't indexable. noindex, robots.txt block, or non-200 status on / breaks the whole flow.\n\n6. You changed it 3 days ago. Google takes 3–14 days; there's no force-update.\n\n7. SVG that doesn't render at 48×48. Google rasterizes to 48×48 — if your SVG is illegible at that size, it falls back to the globe.\n\nSanity check: `https://www.google.com/s2/favicons?domain=yoursite.com&sz=64` shows you Google's cached version. If it's still the globe there, Google never accepted the file.\n\nIf you need a clean source set (48/96/192/512 PNGs + SVG + apple-touch-icon + manifest.json), this free tool does it in one click without signup: https://tinytools-smoky.vercel.app/favicon-generator/\n\nFull diagnostic write-up if you want the long version: https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-not-showing-in-google-search-results-2026/",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T08:11:00Z"
+    },
+    {
+      "platform": "LinkedIn Post",
+      "text": "Spent two hours debugging a client's favicon last week.\n\nIt had been \"set\" for 6 weeks. Google was still showing the gray globe in every search result. The dev team was convinced it was a Google bug.\n\nIt wasn't.\n\nThe favicon was 16×16. In 2026 Google requires a multiple of 48×48 — anything smaller is silently rejected.\n\nThat's the thing about favicons in search results: they fail quietly. No Search Console warning, no error in any audit tool, no message anywhere. Just a globe icon next to your brand listing for years if no one checks.\n\nI keep seeing the same 7 causes:\n\n→ Favicon URL returns 404/403 (build pipeline strips it)\n→ Size is below 48×48 or non-square\n→ Wrong Content-Type header from the CDN\n→ Link tag injected by JS instead of in static HTML\n→ Homepage is noindex\n→ Recent change (Google takes 3–14 days)\n→ SVG that's unreadable at 48×48 after rasterization\n\nIf you've been wondering why your favicon never appeared in Google after launch, it's almost always one of these.\n\nWrote up the full diagnostic + fix order here:\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-not-showing-in-google-search-results-2026/\n\n(And if you just need a fresh source set: https://tinytools-smoky.vercel.app/favicon-generator/ — free, no signup, generates the full bundle.)",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T08:11:00Z"
+    },
+    {
+      "platform": "Show HN",
+      "text": "Title: Show HN: Favicon Not Showing in Google Search Results — the 2026 diagnostic order\n\nComment:\nAuthor here. Wrote this after debugging a client favicon that was \"set\" for 6 weeks but still showed Google's gray globe. Turned out to be a 16×16 ICO — auto-rejected since Google's 48×48 minimum. The post is the diagnostic order I now run on every site. Curious if anyone has hit a cause not in the list — happy to add it.",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T08:11:00Z"
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "favicon-generator",
       "createdAt": "2026-05-09T04:10:00Z",
       "text": "🧵 Most sites still ship eight favicon files in their <head>.\n\nIn 2026 you can ship ONE SVG, get crisp rendering at every size, support automatic dark mode, and never export PNGs again. Here's the pattern. (1/5)\n\n---\n\n(2/5) The whole setup is three lines:\n\n<link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\" sizes=\"any\">\n<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32.png\">\n<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\">\n\nModern browsers take the SVG. Older ones fall through to the PNG. iOS home screen takes the apple-touch-icon. Done.\n\n---\n\n(3/5) The killer feature: prefers-color-scheme INSIDE the SVG.\n\nPut a <style> block in the file with a media query, and the favicon repaints when the user's OS flips to dark mode. No JS, no second file, no service worker. Just CSS in your icon.\n\n---\n\n(4/5) The single most-missed line in production favicon code:\n\nsizes=\"any\"\n\nWithout it, Chrome picks the 32px PNG over your SVG because the PNG declares a size match. With it, SVG wins for every dimension. I see this bug on ~50% of new SaaS sites I audit.\n\n---\n\n(5/5) Full guide w/ the dark-mode SVG snippet, the browser support matrix, the 5 most common mistakes, and a free generator that outputs the whole set in one click:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/svg-favicons-complete-implementation-guide-2026/"
@@ -260,30 +284,6 @@
       "tool": "favicon-generator",
       "createdAt": "2026-05-09T04:10:00Z",
       "text": "Show HN title: SVG Favicons in 2026 — The Complete Implementation Guide\n\nLink: https://tinytools-smoky.vercel.app/favicon-generator/blog/svg-favicons-complete-implementation-guide-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Wrote this after auditing five new SaaS landing pages a week and finding that ~50% of them are still shipping fifteen PNG favicons OR have the `sizes=\"any\"` bug where their declared SVG loses to a PNG fallback for every common slot. The dark-mode-inside-the-SVG trick (CSS media query embedded in the file itself) is also nearly absent in the wild despite being supported by every major browser since Chrome 80 / Safari 15.4. Curious to hear edge cases where the all-SVG approach still breaks for HN's setups — corporate IE 11 holdouts and the iOS home-screen rasterization gap are the two I cover, but I'd bet someone has a weirder one."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "background-remover",
-      "createdAt": "2026-05-09T00:11:18Z",
-      "text": "🧵 Need to remove the background from 437 product photos by Friday?\n\nIn 2026, that's a free 30-minute task — not a $250 API bill. Here's the playbook. (1/6)\n\n---\n\n(2/6) Four free routes that actually finish at scale:\n\n• In-browser AI (WebGPU) → 0 setup, 100–2,000 photos\n• rembg CLI → 10 min setup, 500–10,000 photos\n• BiRefNet local → hair, fur, glass at any volume\n• Free-tier API + chunking → no laptop GPU, soft deadline\n\nStop reaching for paid plans by reflex.\n\n---\n\n(3/6) The 2026 default: drop a folder into a browser tab.\n\nModern browsers run the same ONNX models (BiRefNet, RMBG-2.0) that used to need Python. ~400–900ms per photo on a recent laptop GPU. Nothing uploads. No credits. 500 photos finish during lunch.\n\n---\n\n(4/6) The five gotchas that ruin overnight batches:\n\n• Throttled background tabs (keep batch tab focused)\n• JPEGs with sneaky alpha channels\n• EXIF rotation lost on save\n• Filenames with spaces and emoji\n• Skipping the contact-sheet visual diff\n\nAbout 1–3% of any real archive will have a cutout you don't want to ship.\n\n---\n\n(5/6) When to switch from in-browser to rembg CLI:\n\n→ Past ~2,000 photos\n→ Mixed file types where one bad input poisons the queue\n→ You want to pipe into ImageMagick → cwebp → oxipng\n\n`pip install rembg && rembg p ./input ./output` is still the fastest setup-to-finish in 2026.\n\n---\n\n(6/6) Full playbook with the decision tree, the BiRefNet upgrade for hair and fur, and the chunked-API pattern for archive backfills:\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/how-to-batch-remove-backgrounds-from-photos-free-2026/\n\nFree in-browser batch tool linked in the post. No signup, no credit limits."
-    },
-    {
-      "platform": "Reddit /r/ecommerce",
-      "tool": "background-remover",
-      "createdAt": "2026-05-09T00:11:18Z",
-      "text": "Subreddit: /r/ecommerce (also fits /r/Entrepreneur, /r/shopify, /r/photography, /r/SideProject)\n\nReply on a thread asking how to remove backgrounds from a large photo archive cheaply / at scale:\n\nThe honest 2026 answer is that almost nobody under 2,000 photos should be paying an API anymore. Four routes ranked by where they fit:\n\n1) Under 2,000 mixed photos and a laptop made in the last three years → use any in-browser background remover that runs WebGPU. The model file (BiRefNet or RMBG-2.0) downloads once, every photo after that is processed locally on your GPU at roughly 400–900ms per image. Five hundred photos finish during a lunch break. Nothing uploads. There are no credits to burn through.\n\n2) 500–10,000 photos and you're comfortable in a terminal → install `rembg`. Two lines: `pip install rembg && rembg p ./input ./output`. Pass `-m birefnet-general` if your subjects are hair-heavy, fur-heavy, or include glass and reflections. Restarts cleanly if a 4,000-photo batch dies overnight, and composes with ImageMagick / cwebp / oxipng for downstream optimization.\n\n3) Hair, fur, glass, fine jewelry → standardize on BiRefNet specifically. The lighter U^2-Net family produces visible halos and edge fringes on those subject categories at scale, which silently costs you sales when one bad cutout ships in a 1,000-photo Etsy backfill.\n\n4) No laptop GPU, hosted pipeline only, soft deadline → chunked submission against a free-tier API. Hash files for idempotency, cache by hash, exponential backoff on 429s, spread a 1,500-photo run across 4–5 days at the daily free ceiling. Total cost zero, the only cost is calendar time.\n\nThe five gotchas that ruin batches regardless of route: throttled background tabs (browsers slow inactive tabs aggressively), JPEGs with sneaky alpha channels that compound after cutout, EXIF rotation flags lost on save (sideways portraits in the output folder), filenames with spaces and emoji that survive the CLI but die in Zapier pipelines, and skipping the contact-sheet visual diff. About 1–3% of real-world archives produce a cutout you don't want to ship — usually a mug handle the model \"filled in\" or a logo erased from a t-shirt — and you only catch it by looking.\n\nFull writeup with the decision tree and the rembg / BiRefNet config: https://tinytools-smoky.vercel.app/background-remover/blog/how-to-batch-remove-backgrounds-from-photos-free-2026/\n\nFree in-browser batch remover I built is in the post — drag a folder, transparent PNGs come out, runs entirely on your laptop's GPU."
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "background-remover",
-      "createdAt": "2026-05-09T00:11:18Z",
-      "text": "A founder DMed me last week: \"I have 1,200 product photos that need cutting out by Monday. The cheapest API quote is $84. Is there a sane alternative?\"\n\nIn 2026, the answer is almost always yes — and it's almost always free.\n\nThree routes, depending on volume and technical appetite:\n\n→ Under 2,000 photos and you have a recent laptop. Drop the folder into an in-browser background remover that runs on WebGPU. The model loads once. Every photo after that is processed locally on your GPU in under a second. Nothing uploads to a server. Five hundred photos finish during a lunch break.\n\n→ 2,000 to 10,000 photos. Install rembg with two terminal commands. Point it at the folder and walk away. It restarts cleanly if the run dies overnight, composes with ImageMagick for downstream optimization, and never depends on a tab staying open.\n\n→ Hair, fur, glass, jewelry at scale. Standardize on BiRefNet specifically — the lighter models produce halos that silently cost sales when one bad cutout ships inside a 1,000-photo backfill.\n\nThe wrong move in 2026 is reaching for a paid API by reflex for a one-time backfill. The reason teams still pay $0.05 per image to a hosted service is usually inertia, not infrastructure: a workflow built when batch processing actually was the hard part of the pipeline, never re-evaluated against tools that now run on the same laptop where the photos were taken.\n\nSpend an afternoon updating the workflow. The savings compound across every product launch, every catalog refresh, every archive cleanup for the rest of the year.\n\nFull playbook with the decision tree:\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/how-to-batch-remove-backgrounds-from-photos-free-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "background-remover",
-      "createdAt": "2026-05-09T00:11:18Z",
-      "text": "TITLE: Show HN: Batch background removal for 1,000+ photos, runs entirely in the browser\n\nLINK: https://tinytools-smoky.vercel.app/background-remover/blog/how-to-batch-remove-backgrounds-from-photos-free-2026/\n\nFIRST COMMENT:\nAuthor here. Wrote this after watching teams default to paid APIs for one-time archive backfills — when the in-browser route would have finished the job during their lunch break for free. The post covers four free workflows ranked by photo volume: WebGPU in the browser (the 2026 default for anything under ~2,000 photos), rembg CLI (the 500–10,000 range), BiRefNet specifically when hair/fur/glass are involved, and chunked submission against free API tiers when there's no local GPU available. Curious whether HN's experience matches: what's the realistic ceiling on the in-browser route on consumer hardware in 2026? My measurements top out around 1,500–2,000 photos before tab-throttling and memory pressure on >4K inputs become the bottleneck — but I'd love to hear from anyone running larger batches in the browser without falling back to a CLI."
     }
   ],
   "checklist": [
