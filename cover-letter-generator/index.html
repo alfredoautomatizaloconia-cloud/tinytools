@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Cover Letter Generator (2026) — Tailored to the Job in 30 Seconds</title>
+<meta name="description" content="Paste your resume + a job description. Your AI key writes a tailored, ATS-friendly cover letter that mirrors the role's keywords. BYOK, free, in-browser. No signup.">
+<meta name="keywords" content="cover letter generator, ai cover letter, free cover letter writer, job application cover letter, tailored cover letter, ats cover letter, cover letter for resume">
+<meta property="og:title" content="Free AI Cover Letter Generator — Tailored in Seconds">
+<meta property="og:description" content="Paste resume + job description. AI writes a one-page, role-specific cover letter. BYOK, free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/cover-letter-generator/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free AI Cover Letter Generator">
+<meta name="twitter:description" content="Resume + job posting → polished cover letter. BYOK, in-browser only.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/cover-letter-generator/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Cover Letter Generator",
+  "url": "https://tinytools-smoky.vercel.app/cover-letter-generator/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any (browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Free AI cover letter generator. Paste resume + job description, BYOK an OpenAI or Anthropic key, get a tailored one-page cover letter in seconds."
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #14b8a6; --accent-glow: #14b8a640;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 1180px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #5eead4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 680px; margin: 0 auto; }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+    margin-top: 24px;
+  }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .field { margin-bottom: 14px; }
+  label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500;
+  }
+  input[type="text"], input[type="password"], textarea, select {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit;
+  }
+  textarea { resize: vertical; min-height: 200px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; }
+  .resume-area { min-height: 260px; }
+  input:focus, textarea:focus, select:focus {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 800px) { .grid2, .row, .row2 { grid-template-columns: 1fr; } }
+
+  .btn {
+    width: 100%; padding: 13px 18px; background: var(--accent); color: white;
+    border: none; border-radius: 10px; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: all 0.15s; font-family: inherit;
+  }
+  .btn:hover:not(:disabled) { filter: brightness(1.1); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-ghost { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+
+  .status {
+    margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 13px;
+    background: var(--bg-elevated); color: var(--text-dim); display: none;
+  }
+  .status.show { display: block; }
+  .status.error { color: #fca5a5; border: 1px solid #ef444450; }
+  .status.success { color: #86efac; border: 1px solid #10b98150; }
+
+  .stages { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; font-size: 12px; }
+  .stage { padding: 6px 10px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; color: var(--text-dim); }
+  .stage.done { border-color: #10b981; color: #86efac; }
+  .stage.active { border-color: var(--accent); color: var(--accent); }
+
+  .tabs { display: flex; gap: 4px; margin-bottom: 12px; flex-wrap: wrap; }
+  .tab {
+    padding: 8px 14px; background: var(--bg-elevated); border-radius: 8px; font-size: 13px;
+    cursor: pointer; color: var(--text-dim); transition: all 0.15s;
+  }
+  .tab.active { background: var(--accent); color: white; }
+
+  .output {
+    background: #000; padding: 18px; border-radius: 12px; margin-top: 4px;
+    border: 1px solid var(--border); position: relative; min-height: 320px;
+  }
+  .output pre { margin: 0; font-family: 'SF Mono', Monaco, monospace; font-size: 13px;
+    color: #e6fffa; white-space: pre-wrap; word-wrap: break-word; max-height: 600px; overflow: auto; }
+  .copy-btn, .download-btn {
+    position: absolute; top: 10px; padding: 6px 12px;
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text); font-size: 12px; cursor: pointer;
+  }
+  .copy-btn { right: 10px; }
+  .download-btn { right: 78px; }
+  .copy-btn:hover, .download-btn:hover { border-color: var(--accent); }
+
+  .keywords {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
+  }
+  .kw { padding: 4px 10px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 12px; color: var(--text-dim); }
+  .kw.match { border-color: var(--accent); color: var(--accent); background: rgba(20, 184, 166, 0.08); }
+  .kw.miss { border-color: #f59e0b50; color: #fbbf24; }
+
+  .upsell {
+    margin-top: 16px; padding: 16px; background: var(--bg-elevated);
+    border-radius: 10px; border-left: 3px solid var(--accent); font-size: 13px;
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .privacy {
+    margin-top: 12px; padding: 12px; background: var(--bg-elevated);
+    border-radius: 8px; font-size: 12px; color: var(--text-dim);
+    border: 1px dashed var(--border);
+  }
+  .privacy strong { color: var(--text); }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); margin-bottom: 10px; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+  .content a { color: var(--accent); text-decoration: none; }
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">📝 Resume + Job Post &nbsp;·&nbsp; AI tailoring &nbsp;·&nbsp; BYOK</div>
+    <h1>AI Cover Letter Generator</h1>
+    <p class="subtitle">Paste your resume and the job description. Your AI key writes a tailored, ATS-friendly one-page cover letter that mirrors the role's keywords without sounding like a template. Free, BYOK, browser-only.</p>
+  </header>
+
+  <div class="panel">
+    <div class="grid2">
+      <div>
+        <h2>1 — Your resume</h2>
+        <div class="field">
+          <label>Paste your resume <span id="resWords">0 words</span></label>
+          <textarea id="resume" class="resume-area" placeholder="Paste plain-text resume — name, summary, experience bullets, skills, education. We don't store anything."></textarea>
+        </div>
+      </div>
+      <div>
+        <h2>2 — The job</h2>
+        <div class="field">
+          <label>Paste the job description <span id="jobWords">0 words</span></label>
+          <textarea id="job" class="resume-area" placeholder="Paste the full job posting — requirements, responsibilities, company description. The more we have, the better the match."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="margin-top:8px;">3 — Tailoring options</h2>
+    <div class="row">
+      <div class="field">
+        <label>Tone</label>
+        <select id="tone">
+          <option>Professional &amp; warm</option>
+          <option>Confident / direct</option>
+          <option>Enthusiastic / startup</option>
+          <option>Formal / corporate</option>
+          <option>Conversational</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Length</label>
+        <select id="length">
+          <option value="short">Short (~180 words)</option>
+          <option value="medium" selected>Medium (~300 words)</option>
+          <option value="long">Long (~450 words)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Format</label>
+        <select id="format">
+          <option value="letter">Full letter (with date + address)</option>
+          <option value="body" selected>Body only (paste-ready for portals)</option>
+          <option value="email">Email format</option>
+        </select>
+      </div>
+    </div>
+    <div class="row2">
+      <div class="field">
+        <label>Hiring manager (optional)</label>
+        <input id="manager" type="text" placeholder="Jane Smith, Director of Engineering">
+      </div>
+      <div class="field">
+        <label>Specific hook (optional)</label>
+        <input id="hook" type="text" placeholder="e.g. saw your launch on Product Hunt last week">
+      </div>
+    </div>
+
+    <h2 style="margin-top:8px;">4 — AI provider</h2>
+    <div class="row2">
+      <div class="field">
+        <label>Provider</label>
+        <select id="provider">
+          <option value="openai">OpenAI (GPT-4o-mini)</option>
+          <option value="anthropic">Anthropic (Claude Haiku)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>API key (stays in your browser)</label>
+        <input id="apiKey" type="password" placeholder="sk-... or sk-ant-...">
+      </div>
+    </div>
+    <div class="privacy">
+      <strong>Privacy:</strong> Your resume, the job posting, and your API key never touch our servers. The request goes from your browser straight to OpenAI / Anthropic.
+    </div>
+
+    <div style="margin-top: 14px;" class="row2">
+      <button class="btn" id="goBtn">✍️ Generate cover letter</button>
+      <button class="btn btn-ghost" id="analyzeBtn">🔎 Just analyze keywords</button>
+    </div>
+
+    <div class="stages" id="stages">
+      <div class="stage" data-stage="parse">1. Parse</div>
+      <div class="stage" data-stage="match">2. Match keywords</div>
+      <div class="stage" data-stage="write">3. Write letter</div>
+    </div>
+    <div id="status" class="status"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Output</h2>
+    <div class="tabs">
+      <div class="tab active" data-view="letter">Cover letter</div>
+      <div class="tab" data-view="keywords">Keyword match</div>
+      <div class="tab" data-view="tips">Why these choices</div>
+    </div>
+    <div class="output">
+      <button class="download-btn" id="downloadBtn">Download .txt</button>
+      <button class="copy-btn" id="copyBtn">Copy</button>
+      <pre id="outputCode">Your tailored cover letter will appear here.
+
+Tip: paste the full job description, including the "About us" section. Generic prompts produce generic letters.</pre>
+    </div>
+    <div id="keywordWrap" style="display:none; margin-top: 14px;">
+      <div style="font-size:12px; color: var(--text-dim); margin-bottom: 6px;">Top job-posting keywords (green = found in your resume, amber = missing — consider adding to the letter):</div>
+      <div class="keywords" id="keywords"></div>
+    </div>
+
+    <div class="upsell">
+      <strong>Job-hunting full-time?</strong>
+      <a href="#" id="upsell-teal" target="_blank" rel="noopener">Teal HQ</a> tracks every application + version of your resume,
+      <a href="#" id="upsell-resume" target="_blank" rel="noopener">Resume.io</a> for ATS-safe templates, and
+      <a href="#" id="upsell-linkedin" target="_blank" rel="noopener">LinkedIn Premium</a> for InMail to bypass the resume pile.
+      <em>(Affiliate links — no extra cost to you.)</em>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>Why most cover letters fail — and what an AI cover letter generator should actually do</h2>
+    <p>Hiring managers and ATS scanners both reject the same thing: a generic cover letter. The four-paragraph "I am writing to apply for…" template was already obsolete in 2015, but in 2026 it's actively penalized — hiring teams use AI summarizers to triage cover letters, and a templated one tags as low-effort within the first 50 tokens. A good AI cover letter generator doesn't write a template; it writes a specific letter that proves you read the posting and that your background addresses what the role actually needs.</p>
+
+    <h3>What this AI cover letter generator does differently</h3>
+    <p>Three things separate this cover letter generator from the dozen "free AI cover letter writer" tools that all output the same flavor of corporate-speak:</p>
+    <ul>
+      <li><strong>It mirrors the job posting's keywords.</strong> ATS systems score on keyword overlap. The tool extracts the top terms from the job description and instructs the LLM to weave the ones that genuinely apply to your resume into the body, naturally.</li>
+      <li><strong>It uses your real bullets, not made-up wins.</strong> The system prompt forbids the LLM from inventing experience. Every claim in the cover letter has to anchor to something on your resume.</li>
+      <li><strong>It avoids template phrases.</strong> "I am writing to express my interest," "I would be a great fit," "self-starter" — these are explicitly banned. The output reads like a thoughtful human who actually cares about the role.</li>
+    </ul>
+
+    <h3>Cover letter best practices the prompt enforces</h3>
+    <p>The hidden system prompt this cover letter generator uses bakes in five rules every recruiter agrees on. The opening hook references something specific about the company or role, not your name and the title you're applying for. Body paragraphs lead with results, not responsibilities — "shipped X that drove Y" beats "responsible for shipping X." The closing names a concrete next step instead of "I look forward to hearing from you." Length stays under one page; padding signals desperation. And the tone matches the company — startups want energy, banks want polish, mission-driven nonprofits want sincerity.</p>
+
+    <h3>FAQ — questions people ask before using a free AI cover letter generator</h3>
+    <p><strong>Is this AI cover letter generator actually free?</strong> Yes. You bring your own OpenAI or Anthropic key — typical generation costs less than a cent. There's no signup, no credit card, no daily limit on our side.</p>
+    <p><strong>Will hiring managers know it's AI-written?</strong> Not if your resume is real. The tool grounds every claim in your actual experience and uses your phrasing where useful. The output reads like you wrote it on a focused day — which is the goal.</p>
+    <p><strong>Should I edit before sending?</strong> Yes — every time. Read it out loud, swap one or two phrases for your own voice, and verify every fact. The AI will occasionally embellish if your resume is thin; trim anything that overstates.</p>
+    <p><strong>Does this work for non-US English markets?</strong> Yes. The model picks up British, Australian, or Canadian conventions from your resume. For non-English cover letters, paste a non-English resume and job description — output language matches input.</p>
+    <p><strong>What if I don't have a resume yet?</strong> Pair this with our <a href="/resume-tailorer/">AI Resume Tailorer</a> first — write the resume, then come back and feed both into the cover letter generator.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · No signup · Made by tinytools.dev. <a href="#" id="footer-tip">Tip jar</a> · <a href="/">Back to all tools</a></p>
+  </footer>
+</div>
+
+<script>
+const AFFILIATE = {
+  tealUrl: 'https://www.tealhq.com/?aff=YOUR_TEAL_ID',
+  resumeUrl: 'https://resume.io/?aff=YOUR_RESUMEIO_ID',
+  linkedinUrl: 'https://www.linkedin.com/premium/?aff=YOUR_LI_ID',
+  bmacUrl: 'https://www.buymeacoffee.com/YOURNAME'
+};
+document.getElementById('upsell-teal').href = AFFILIATE.tealUrl;
+document.getElementById('upsell-resume').href = AFFILIATE.resumeUrl;
+document.getElementById('upsell-linkedin').href = AFFILIATE.linkedinUrl;
+document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
+
+const $ = function(id){ return document.getElementById(id); };
+
+try {
+  const k = sessionStorage.getItem('clg_apiKey'); if (k) $('apiKey').value = k;
+  const p = sessionStorage.getItem('clg_provider'); if (p) $('provider').value = p;
+  $('apiKey').addEventListener('input', function(e){ sessionStorage.setItem('clg_apiKey', e.target.value); });
+  $('provider').addEventListener('change', function(e){ sessionStorage.setItem('clg_provider', e.target.value); });
+} catch(e){}
+
+let lastLetter = '';
+let lastKeywords = [];
+let lastTips = '';
+let currentView = 'letter';
+
+function setStatus(msg, kind) {
+  const el = $('status');
+  el.textContent = msg;
+  el.className = 'status show' + (kind === 'error' ? ' error' : kind === 'success' ? ' success' : '');
+}
+function clearStatus(){ $('status').className = 'status'; }
+function setStage(name, state) {
+  document.querySelectorAll('.stage').forEach(function(s){
+    if (s.dataset.stage === name) {
+      s.classList.remove('done','active');
+      if (state) s.classList.add(state);
+    }
+  });
+}
+function resetStages(){ document.querySelectorAll('.stage').forEach(function(s){ s.classList.remove('done','active'); }); }
+
+function countWords(s){ return (s.trim().match(/\b[\w'-]+\b/g) || []).length; }
+$('resume').addEventListener('input', function(){ $('resWords').textContent = countWords($('resume').value) + ' words'; });
+$('job').addEventListener('input', function(){ $('jobWords').textContent = countWords($('job').value) + ' words'; });
+
+const STOP = new Set(('a,an,and,or,but,the,is,are,was,were,be,been,being,to,for,of,in,on,at,by,from,with,as,that,this,those,these,it,its,we,you,your,our,their,they,he,she,his,her,not,no,do,does,did,have,has,had,can,will,would,should,could,may,might,must,if,then,else,about,into,over,under,between,across,through,during,after,before,within,without,more,most,less,least,many,much,some,any,all,each,every,who,whom,whose,which,what,when,where,why,how,also,just,only,very,really,etc,e.g,i.e,you\'ll,we\'ll,we\'re,you\'re,role,job,team,company,position,candidate,candidates,years,year,experience,looking,strong,great,excellent,solid,proven,plus,bonus,nice,must,required,preferred,responsibilities,qualifications,about,benefits').split(','));
+
+function topKeywords(text, n) {
+  const tokens = (text.toLowerCase().match(/[a-z][a-z0-9+.#-]{1,}/g) || []);
+  const phrases = (text.toLowerCase().match(/[a-z][a-z0-9+.#-]+(?:\s+[a-z][a-z0-9+.#-]+){0,2}/g) || []);
+  const counts = {};
+  // Count phrases up to 3 words, prefer technical-sounding ones
+  phrases.forEach(function(p){
+    const parts = p.split(/\s+/);
+    if (parts.length >= 2 && parts.length <= 3) {
+      if (parts.every(function(w){ return STOP.has(w); })) return;
+      counts[p] = (counts[p] || 0) + 2;
+    }
+  });
+  tokens.forEach(function(w){
+    if (STOP.has(w) || w.length < 3) return;
+    counts[w] = (counts[w] || 0) + 1;
+  });
+  const arr = Object.keys(counts).map(function(k){ return [k, counts[k]]; });
+  arr.sort(function(a,b){ return b[1] - a[1]; });
+  // Dedupe overlaps
+  const seen = new Set(); const out = [];
+  for (let i = 0; i < arr.length && out.length < n; i++) {
+    const term = arr[i][0];
+    if (seen.has(term)) continue;
+    let dup = false;
+    for (const s of seen) {
+      if ((s.includes(term) && s !== term) || (term.includes(s) && term !== s)) { dup = true; break; }
+    }
+    if (dup) continue;
+    seen.add(term);
+    out.push(term);
+  }
+  return out;
+}
+
+function matchKeywords(jobText, resumeText, n) {
+  const top = topKeywords(jobText, n);
+  const resumeLow = resumeText.toLowerCase();
+  return top.map(function(t){ return { term: t, match: resumeLow.includes(t) }; });
+}
+
+function buildSystemPrompt(tone, length, format, manager, hook, missingTerms, presentTerms) {
+  const wordBudget = length === 'short' ? '160–200' : length === 'long' ? '420–480' : '280–320';
+  return [
+    'You are a senior career coach writing a cover letter for the candidate.',
+    '',
+    'Hard rules:',
+    '- Tone: ' + tone + '.',
+    '- Length: ' + wordBudget + ' words. Stay tight; cut anything that doesn\'t earn its place.',
+    '- Format: ' + (format === 'letter' ? 'full letter with placeholder date and address block' : format === 'email' ? 'email format with subject line' : 'body paragraphs only, no header/date/address'),
+    '- Open with a SPECIFIC hook about the company or role — never "I am writing to apply for..." or "I would like to express my interest..."',
+    '- Every concrete claim about the candidate MUST anchor to a real bullet on their resume. NEVER invent experience, projects, or numbers.',
+    '- Lead with results and outcomes, not responsibilities. "Shipped X, drove Y" beats "responsible for X."',
+    '- Naturally weave in these matching keywords from the job posting (only if they\'re truly present in the resume): ' + presentTerms.join(', ') + '.',
+    '- Acknowledge (without faking) any clear gap if it\'s short — bridge to a transferable strength.',
+    '- BANNED phrases: "I am writing to", "would be a great fit", "self-starter", "team player", "passionate about", "synergy", "results-driven", "in today\'s fast-paced", "to whom it may concern".',
+    '- Close with a concrete next step (a question, a proposed call, a portfolio link).',
+    manager ? '- Address the letter to: ' + manager + '.' : '- Use "Dear Hiring Team," (no name was provided).',
+    hook ? '- Build the opening around this user-supplied hook: "' + hook + '". Make it feel earned, not forced.' : '',
+    '',
+    'Output ONLY the cover letter text. No preamble, no commentary, no "here is your cover letter:".'
+  ].filter(Boolean).join('\n');
+}
+
+async function callOpenAI(key, system, user, maxTokens) {
+  const r = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key },
+    body: JSON.stringify({
+      model: 'gpt-4o-mini',
+      messages: [{ role: 'system', content: system }, { role: 'user', content: user }],
+      temperature: 0.55,
+      max_tokens: maxTokens
+    })
+  });
+  if (!r.ok) {
+    const t = await r.text();
+    throw new Error('OpenAI ' + r.status + ': ' + t.slice(0, 300));
+  }
+  const j = await r.json();
+  return j.choices[0].message.content;
+}
+
+async function callAnthropic(key, system, user, maxTokens) {
+  const r = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': key,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: maxTokens,
+      system: system,
+      messages: [{ role: 'user', content: user }]
+    })
+  });
+  if (!r.ok) {
+    const t = await r.text();
+    throw new Error('Anthropic ' + r.status + ': ' + t.slice(0, 300));
+  }
+  const j = await r.json();
+  return j.content[0].text;
+}
+
+function renderKeywords(matches) {
+  const wrap = $('keywords'); wrap.innerHTML = '';
+  matches.forEach(function(m){
+    const span = document.createElement('span');
+    span.className = 'kw ' + (m.match ? 'match' : 'miss');
+    span.textContent = (m.match ? '✓ ' : '· ') + m.term;
+    wrap.appendChild(span);
+  });
+  $('keywordWrap').style.display = matches.length ? 'block' : 'none';
+}
+
+function refreshOutput() {
+  if (currentView === 'letter') $('outputCode').textContent = lastLetter || 'Your cover letter will appear here.';
+  else if (currentView === 'keywords') {
+    if (!lastKeywords.length) { $('outputCode').textContent = 'Run an analysis first.'; return; }
+    const m = lastKeywords.filter(function(k){ return k.match; }).map(function(k){ return '✓ ' + k.term; });
+    const x = lastKeywords.filter(function(k){ return !k.match; }).map(function(k){ return '· ' + k.term; });
+    $('outputCode').textContent = 'KEYWORD MATCH\n=============\n\nFound in your resume (' + m.length + '):\n' + m.join('\n') + '\n\nMissing from your resume (' + x.length + '):\n' + x.join('\n') + '\n\nTip: if any "missing" keyword is something you\'ve genuinely done but didn\'t put on the resume, mention it in the cover letter.';
+  } else {
+    $('outputCode').textContent = lastTips || 'Generate a letter to see the rationale.';
+  }
+}
+
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click', function(){
+    document.querySelectorAll('.tab').forEach(function(x){ x.classList.toggle('active', x === t); });
+    currentView = t.dataset.view;
+    refreshOutput();
+  });
+});
+
+$('analyzeBtn').addEventListener('click', function(){
+  resetStages();
+  const resume = $('resume').value.trim();
+  const job = $('job').value.trim();
+  if (!resume || !job) { setStatus('Paste both resume and job description.', 'error'); return; }
+  setStage('parse','active'); setStage('parse','done');
+  setStage('match','active');
+  lastKeywords = matchKeywords(job, resume, 18);
+  renderKeywords(lastKeywords);
+  setStage('match','done');
+  document.querySelector('.tab[data-view="keywords"]').click();
+  const matchedCount = lastKeywords.filter(function(k){ return k.match; }).length;
+  setStatus('Keyword match: ' + matchedCount + '/' + lastKeywords.length + '. Switch tabs to see details.', 'success');
+});
+
+$('goBtn').addEventListener('click', async function(){
+  resetStages();
+  const resume = $('resume').value.trim();
+  const job = $('job').value.trim();
+  const provider = $('provider').value;
+  const key = $('apiKey').value.trim();
+  const tone = $('tone').value;
+  const length = $('length').value;
+  const format = $('format').value;
+  const manager = $('manager').value.trim();
+  const hook = $('hook').value.trim();
+
+  if (!resume) { setStatus('Paste your resume.', 'error'); return; }
+  if (!job) { setStatus('Paste the job description.', 'error'); return; }
+  if (!key) { setStatus('Add your API key (it stays in your browser).', 'error'); return; }
+
+  $('goBtn').disabled = true; $('goBtn').textContent = 'Working…';
+
+  try {
+    setStage('parse','active'); setStage('parse','done');
+
+    setStage('match','active');
+    lastKeywords = matchKeywords(job, resume, 18);
+    renderKeywords(lastKeywords);
+    const present = lastKeywords.filter(function(k){ return k.match; }).map(function(k){ return k.term; });
+    const missing = lastKeywords.filter(function(k){ return !k.match; }).map(function(k){ return k.term; });
+    setStage('match','done');
+
+    setStage('write','active');
+    setStatus('Writing cover letter with ' + (provider === 'openai' ? 'OpenAI' : 'Anthropic') + '…');
+    const sys = buildSystemPrompt(tone, length, format, manager, hook, missing, present);
+    const resumeT = resume.length > 9000 ? resume.slice(0, 9000) + '\n[...truncated]' : resume;
+    const jobT = job.length > 9000 ? job.slice(0, 9000) + '\n[...truncated]' : job;
+    const userPrompt = 'CANDIDATE RESUME:\n' + resumeT + '\n\nJOB POSTING:\n' + jobT + '\n\nWrite the cover letter following all rules.';
+    const maxTokens = length === 'short' ? 600 : length === 'long' ? 1400 : 950;
+    lastLetter = provider === 'openai'
+      ? await callOpenAI(key, sys, userPrompt, maxTokens)
+      : await callAnthropic(key, sys, userPrompt, maxTokens);
+    lastLetter = lastLetter.replace(/^\s*here(?:'s| is) (?:your |the |a )?(cover letter|letter)[:.]?\s*/i, '').trim();
+
+    lastTips = 'Tailoring rationale\n===================\n\n' +
+      '- Tone: ' + tone + '\n' +
+      '- Length target: ' + length + '\n' +
+      '- Format: ' + format + '\n' +
+      '- Hiring manager: ' + (manager || '(not provided)') + '\n' +
+      '- Custom hook: ' + (hook || '(not provided)') + '\n\n' +
+      'Top keywords from the job posting that already appear in your resume (woven into the letter where natural):\n' + present.map(function(t){ return '  ✓ ' + t; }).join('\n') + '\n\n' +
+      'Top keywords missing from your resume (NOT fabricated — review whether you\'ve done these but forgot to list them):\n' + missing.map(function(t){ return '  · ' + t; }).join('\n') + '\n\n' +
+      'Banned template phrases were excluded from the prompt: "I am writing to apply for", "great fit", "self-starter", "team player", "passionate about", "synergy", "results-driven", "to whom it may concern".';
+
+    setStage('write','done');
+    setStatus('Done. Tabs above show the letter, keyword match, and rationale.', 'success');
+    refreshOutput();
+  } catch(e) {
+    setStatus(e.message, 'error');
+  } finally {
+    $('goBtn').disabled = false; $('goBtn').textContent = '✍️ Generate cover letter';
+  }
+});
+
+$('copyBtn').addEventListener('click', function(){
+  navigator.clipboard.writeText($('outputCode').textContent || '');
+  const b = $('copyBtn'); b.textContent = 'Copied!';
+  setTimeout(function(){ b.textContent = 'Copy'; }, 1500);
+});
+$('downloadBtn').addEventListener('click', function(){
+  const text = $('outputCode').textContent || '';
+  if (!text || text === 'Your cover letter will appear here.') return;
+  const blob = new Blob([text], { type: 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = currentView === 'keywords' ? 'keyword-match.txt' : currentView === 'tips' ? 'cover-letter-rationale.txt' : 'cover-letter.txt';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+});
+</script>
+</body>
+</html>
