@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Cost Calculator for Consultants — Bill Clients with Real Numbers (2026)</title>
+<meta name="description" content="Built for independent consultants and boutique advisory shops billing clients for AI-assisted work. Forecast token costs across GPT-5, Claude 4.6, Gemini 3, and DeepSeek before you quote a fixed price — and pass through the right margin without guesswork.">
+<meta name="keywords" content="ai cost calculator for consultants, llm cost consulting, openai consultant pricing, claude consulting cost, ai pass-through billing, consultant ai budget, advisory ai cost">
+<meta property="og:title" content="AI Cost Calculator for Consultants — Free, No Signup">
+<meta property="og:description" content="Quote fixed-bid AI work without losing your shirt. Compare GPT-5, Claude 4.6, Gemini 3, DeepSeek, and 25+ more models — tuned for consulting workflows.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-cost-calculator/for-consultants/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Cost Calculator for Consultants",
+  "description": "Free AI API cost calculator tuned for independent consultants and advisory firms: estimate per-engagement and monthly costs across 30+ LLMs from prompt size, deliverable length, and revision rounds.",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-consultants/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "audience": { "@type": "Audience", "audienceType": "Consultants" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How should consultants price AI usage into a fixed-bid engagement?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The defensible approach in 2026 is a transparent pass-through line item plus a small margin. Estimate token volume per deliverable, multiply by the published model rate, add 20-40% for revision rounds and slippage, and put it on the SOW as 'AI tooling, estimated.' The TinyTools AI Cost Calculator computes the underlying number from prompt size, output length, and revision count so the bid is grounded in real math rather than instinct."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I bill clients for OpenAI or Claude API usage at cost plus margin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — that is the dominant pricing model among independent consultants in 2026. Most boutique advisory shops show the API spend as an itemized pass-through with a 15-30% handling margin, similar to how agencies have always billed for media spend or stock photography. The calculator gives you the at-cost number so you can set the margin honestly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI model is most cost-effective for consulting deliverables?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For long synthesis work like research memos, market scans, and executive summaries, Claude Sonnet 4.6 and GPT-5 mini offer the best quality-to-price ratio. For quick reformatting, slide drafts, or first-pass outlining, Gemini 3 Flash and DeepSeek V3.1 cut costs by 80-95% with no meaningful quality loss. The calculator surfaces the trade-off across all 30+ supported models."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the AI Cost Calculator free for consultants and advisory firms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The calculator is free, requires no signup, and runs entirely in your browser. No data leaves your machine. Use the estimates inside SOWs, retainer proposals, fixed-bid quotes, or your internal time-and-materials tracker."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should consultants disclose AI usage to clients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In 2026, disclosure is the professional default in most jurisdictions and is increasingly required for regulated industries. Be explicit in the engagement letter about which deliverables are AI-assisted and which are reviewed by a human consultant. Tools like the TinyTools AI Disclosure Generator produce standard labels you can embed in deliverables or appendices."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #6366f1; --accent-glow: #6366f140;
+    --green: #10b981; --red: #ef4444; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { text-align: center; padding: 24px 0 16px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.12; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 660px; margin: 0 auto 28px; }
+  .cta {
+    display: inline-block; padding: 14px 26px; background: var(--accent); color: #fff;
+    border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 16px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 24px var(--accent-glow);
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 32px var(--accent-glow); }
+  .cta-row { text-align: center; margin: 24px 0 36px; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; margin: 24px 0;
+  }
+  .panel h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.01em; color: #fff; }
+  .panel h3 { font-size: 17px; margin: 20px 0 8px; color: #fff; }
+  .panel p { color: var(--text-dim); margin-bottom: 12px; }
+  .panel ul { color: var(--text-dim); margin: 8px 0 16px 22px; }
+  .panel li { margin-bottom: 6px; }
+  .panel a { color: #a5b4fc; text-decoration: none; border-bottom: 1px dashed #6366f155; }
+  .panel a:hover { border-bottom-style: solid; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0 8px;
+  }
+  .card {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; padding: 18px;
+  }
+  .card .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .card .value { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .card .note { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { color: var(--text); }
+  td.dim { color: var(--text-dim); }
+  footer { text-align: center; color: var(--text-dim); font-size: 13px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+  footer a { color: #a5b4fc; text-decoration: none; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; }
+  .breadcrumb a { color: #a5b4fc; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;›&nbsp; <a href="/ai-cost-calculator/">AI Cost Calculator</a> &nbsp;›&nbsp; For Consultants
+  </div>
+
+  <header>
+    <span class="badge">Free · No signup · Runs in your browser</span>
+    <h1>AI Cost Calculator for Consultants</h1>
+    <p class="subtitle">Quote fixed-bid AI-assisted work without bleeding margin on the back end. Plug in deliverable length, prompt context size, and revision rounds — get an honest per-engagement and per-month cost across GPT-5, Claude 4.6, Gemini 3, DeepSeek, and 25+ more models.</p>
+    <div class="cta-row">
+      <a class="cta" href="/ai-cost-calculator/">Open the AI Cost Calculator →</a>
+    </div>
+  </header>
+
+  <div class="panel">
+    <h2>Why consultants need an honest LLM cost calculator</h2>
+    <p>An independent consultant's cost structure used to be simple: hours billed minus a few SaaS subscriptions. Then 2025 happened, the work shifted from manual synthesis to AI-augmented synthesis, and a new line item showed up that nobody had seen before — variable token spend that scales with deliverable size, prompt context, and how many revision rounds the client requests. Most consultants are still pricing as if that line doesn't exist.</p>
+    <p>The math gets ugly fast. A 12-page market scan that pulls 30,000 tokens of research context, drafts 6,000 tokens of output, and goes through three rounds of partner review can cost $2 on the cheap end and $40 on the frontier-tier end. If you quoted that engagement at a flat $4,500 without modeling the tooling layer, the difference between provider choices is the difference between a 1% and a 9% cost-of-goods-sold hit. Across a year of engagements that's the size of a junior associate's salary.</p>
+    <p>This calculator exists to put the number on the page before you sign the SOW. Enter the realistic shape of your deliverable — context volume, output length, and revision count — and it cross-multiplies against published rates for every major hosted model. Output: a sortable cost table you can paste straight into a pricing memo, a fixed-bid worksheet, or a pass-through line in a client invoice.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Five jobs it actually does for consultants</h2>
+
+    <h3>1. Fixed-bid risk modeling</h3>
+    <p>Before you quote a flat fee, model the worst-case revision scenario. A research memo that goes through five client rounds instead of two can quintuple your AI cost while the headline price stays flat. The calculator's revision-pass slider exposes that risk in dollars, so you can either price it in or write the SOW to limit rounds.</p>
+
+    <h3>2. Pass-through margin defense</h3>
+    <p>If you bill API usage as a transparent pass-through, you need a number that's defensible to a procurement reviewer who knows the public rates. The calculator gives you the at-cost figure plus your margin in a clean breakdown. Drop it into the engagement letter and the procurement conversation gets much shorter.</p>
+
+    <h3>3. Provider switching ROI</h3>
+    <p>Anthropic raises a tier? OpenAI ships a smaller, cheaper variant? Move your standard engagement template through the comparison view and see whether re-tuning prompts is worth the lift. Most consulting firms find that 70-85% of their AI cost lives in one polish call that has no business being on the frontier tier.</p>
+
+    <h3>4. Retainer planning</h3>
+    <p>For monthly advisory retainers, the variable-cost line is the surprise. If you commit to "up to four memos a month" and the client routinely requests deeper research dumps, your token spend can drift 3-4x. The calculator's monthly view lets you size the retainer ceiling before you offer it.</p>
+
+    <h3>5. Internal capacity vs. outsource</h3>
+    <p>Solo consultants and small firms often debate whether to keep AI synthesis in-house or subcontract it. Plug the same workload into both columns — your hosted model bill versus a sub's flat fee — and the answer is usually obvious in under a minute. It also tells you when a sub's quote is too cheap to be sustainable.</p>
+  </div>
+
+  <div class="panel">
+    <h2>What consultants usually get wrong</h2>
+    <p>Three failure modes show up over and over in production AI-augmented advisory work:</p>
+    <ul>
+      <li><strong>Pasting the entire client data room into every prompt.</strong> Context tokens are still tokens. A 40-page interview transcript dropped into a prompt that runs four times during synthesis is paid for four times. Use a vector store or summary memo as the carrier; reserve raw context for the one pass that needs it.</li>
+      <li><strong>Treating every revision as a fresh full-document call.</strong> Most consulting tooling re-sends the entire deliverable on each revision, so by round four you've billed the same 6,000 output tokens four times. Targeted edit prompts on the changed section only cut revision cost by 60-80%.</li>
+      <li><strong>Defaulting to the frontier tier for every step.</strong> Outline drafting, citation cleanup, and slide bullet conversion don't need GPT-5 or Claude Opus. Pushing those steps to Gemini Flash or DeepSeek and reserving the frontier model for the final partner-review pass typically halves the bill with no detectable quality drop.</li>
+    </ul>
+    <p>The calculator surfaces all three by design — it asks for context size, output length, and revision count separately, then recomputes the bill against every supported provider. See <a href="https://platform.openai.com/docs/pricing" rel="nofollow noopener" target="_blank">OpenAI's pricing page</a> for the canonical input/output split, <a href="https://www.anthropic.com/pricing" rel="nofollow noopener" target="_blank">Anthropic's Claude pricing</a> for the latest Sonnet and Opus tier numbers, or the <a href="https://www.consultancy.org/" rel="nofollow noopener" target="_blank">Consultancy.org</a> coverage of how boutique firms are restructuring billing models around AI tooling.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Sample consultant workload</h2>
+    <p>To make the numbers concrete, here's how a typical "boutique strategy advisory engagement" lands when run through the calculator:</p>
+    <div class="grid">
+      <div class="card"><div class="label">Deliverables / month</div><div class="value">8</div><div class="note">Memos, decks, exec summaries</div></div>
+      <div class="card"><div class="label">Avg deliverable length</div><div class="value">2,400 wd</div><div class="note">~3,200 output tokens</div></div>
+      <div class="card"><div class="label">Revision rounds</div><div class="value">3</div><div class="note">Internal, partner, client</div></div>
+      <div class="card"><div class="label">Research context</div><div class="value">12,000 tok</div><div class="note">Interviews, source data</div></div>
+    </div>
+    <table>
+      <thead><tr><th>Model</th><th>Cost / deliverable</th><th>Monthly bill</th></tr></thead>
+      <tbody>
+        <tr><td>GPT-5</td><td>$1.92</td><td class="dim">$15.36</td></tr>
+        <tr><td>Claude Sonnet 4.6</td><td>$1.40</td><td class="dim">$11.20</td></tr>
+        <tr><td>Gemini 3 Flash</td><td>$0.18</td><td class="dim">$1.44</td></tr>
+        <tr><td>DeepSeek V3.1</td><td>$0.11</td><td class="dim">$0.88</td></tr>
+        <tr><td>Mixed (Flash draft + Sonnet polish)</td><td>$0.46</td><td class="dim">$3.68</td></tr>
+      </tbody>
+    </table>
+    <p>Numbers above are illustrative. Plug your real engagement shape into the live tool to get a current comparison with the latest published rates. The "mixed" row is the pattern most successful boutique firms settle into — a cheap workhorse for first-pass synthesis, a smarter model for the final partner-quality pass.</p>
+  </div>
+
+  <div class="panel">
+    <h2>How this fits the rest of a consultant's stack</h2>
+    <p>An AI bill is one line on the engagement P&amp;L. The other lines that matter — and where the TinyTools suite already covers most of them:</p>
+    <ul>
+      <li>Practice site naming: the <a href="/domain-generator/">Domain Generator</a> shortcuts the brand-and-WHOIS loop when you spin out a new advisory line.</li>
+      <li>Pitch and proposal visuals: the <a href="/og-image-generator/">OG Image Generator</a> produces the social previews and proposal cover art without a Canva subscription.</li>
+      <li>Practice-area SEO: the <a href="/seo-meta-generator/">SEO Meta Generator</a> writes title tags and descriptions for service pages that fit the SERP character limits.</li>
+      <li>Engagement letter compliance: the <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> produces standard labels for deliverables that used AI assistance, increasingly expected in regulated industries.</li>
+      <li>Crawler control on your site: the <a href="/ai-robots-txt-generator/">AI Robots.txt Generator</a> handles which crawlers may train on your published thought-leadership.</li>
+    </ul>
+    <p>The pattern is the same across all of them: free, single-purpose, no signup. For a wider view of how independent consultants are restructuring fees around AI tooling in 2026, <a href="https://hbr.org/" rel="nofollow noopener" target="_blank">Harvard Business Review</a> publishes consistent coverage of advisory pricing trends, and the <a href="https://www2.deloitte.com/us/en/insights.html" rel="nofollow noopener" target="_blank">Deloitte Insights</a> archive tracks how the larger firms are passing AI cost through on engagements.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Frequently asked questions</h2>
+    <h3>Can I use the calculator inside a client SOW or pricing memo?</h3>
+    <p>Yes — the comparison table is plain HTML, so you can copy it into a Notion proposal, a Google Doc SOW, or a Linear spec. Many independent consultants paste the per-deliverable number directly into the engagement letter as a transparent pass-through estimate.</p>
+
+    <h3>Does it cover the cheaper "mini" tiers?</h3>
+    <p>Yes. GPT-5 mini, Claude Haiku 4.5, Gemini Flash, and DeepSeek's full lineup are all in the comparison. Mini tiers are usually 5-20x cheaper than the flagship and good enough for outlining, citation formatting, and bullet-conversion work.</p>
+
+    <h3>How current is the pricing data?</h3>
+    <p>The calculator reads from a price table that we update whenever a major provider publishes a change. Expect 1-3 day lag on smaller providers, near-real-time on the top five.</p>
+
+    <h3>What about self-hosted or on-prem models for confidential client data?</h3>
+    <p>Self-hosted GPU pricing is too workload-dependent to model precisely, but we cover the major hosted serverless rates (Together, Fireworks, Groq, Bedrock) for Llama, Mistral, Qwen, and DeepSeek — those are a reasonable upper bound for what private deployment saves once you factor in ops overhead.</p>
+  </div>
+
+  <div class="cta-row">
+    <a class="cta" href="/ai-cost-calculator/">Try the AI Cost Calculator →</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> — focused, free utilities for independent consultants, advisory firms, and professional services.
+  </footer>
+</div>
+</body>
+</html>
