@@ -3,226 +3,349 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TinyTools vs Nameboy (2026) — Free Alternative Comparison</title>
-<meta name="description" content="Honest TinyTools vs Nameboy comparison for 2026. When Nameboy wins, when TinyTools wins, side-by-side feature breakdown, pricing, and which domain name generator fits your launch.">
-<meta name="keywords" content="TinyTools vs Nameboy, Nameboy alternative, free Nameboy alternative, domain name generator no signup, Nameboy free 2026, domain ideas, startup name generator">
-<meta property="og:title" content="TinyTools vs Nameboy (2026) — Free Alternative Comparison">
-<meta property="og:description" content="A balanced comparison: when Nameboy is better, when TinyTools is better, full feature & pricing breakdown for domain name generators.">
+<title>SVG Favicons in 2026 — The Complete Implementation Guide | TinyTools</title>
+<meta name="description" content="SVG favicons render crisp at every size, support dark mode, and ship in one tag. Here is the 2026 implementation pattern that works in Chrome, Safari, Firefox, Edge — with PNG fallbacks for older browsers.">
+<meta name="keywords" content="svg favicon, svg favicon 2026, dark mode favicon, favicon implementation guide, browser support svg favicon, favicon best practices">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/favicon-generator/blog/svg-favicons-complete-implementation-guide-2026/">
+<meta property="og:title" content="SVG Favicons in 2026 — The Complete Implementation Guide">
+<meta property="og:description" content="Crisp at every size, dark-mode aware, one tag in the head. The 2026 SVG favicon pattern with PNG fallbacks.">
 <meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/favicon-generator/blog/svg-favicons-complete-implementation-guide-2026/">
+<meta property="article:published_time" content="2026-05-09T00:00:00Z">
+<meta property="article:author" content="TinyTools">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://tinytools-smoky.vercel.app/vs/nameboy/">
+<meta name="twitter:title" content="SVG Favicons in 2026 — The Complete Implementation Guide">
+<meta name="twitter:description" content="One tag, crisp at every size, dark-mode aware. The 2026 SVG favicon pattern.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "TinyTools vs Nameboy (2026) — Free Alternative Comparison",
-  "description": "A balanced 2026 comparison between TinyTools and Nameboy — pricing, features, use cases, and which domain name generator fits your workflow.",
-  "author": { "@type": "Organization", "name": "TinyTools" },
-  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
-  "datePublished": "2026-05-06",
-  "dateModified": "2026-05-06",
-  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/vs/nameboy/"
+  "headline": "SVG Favicons in 2026 — The Complete Implementation Guide",
+  "description": "SVG favicons render crisp at every size, support dark mode, and ship in one tag. The 2026 implementation pattern that works in Chrome, Safari, Firefox, Edge with PNG fallbacks for older browsers.",
+  "datePublished": "2026-05-09T00:00:00Z",
+  "dateModified": "2026-05-09T00:00:00Z",
+  "author": {
+    "@type": "Organization",
+    "name": "TinyTools",
+    "url": "https://tinytools-smoky.vercel.app/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "TinyTools",
+    "url": "https://tinytools-smoky.vercel.app/"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://tinytools-smoky.vercel.app/favicon-generator/blog/svg-favicons-complete-implementation-guide-2026/"
+  },
+  "keywords": "svg favicon, dark mode favicon, favicon implementation, browser support, favicon 2026"
 }
 </script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ComparisonResult",
-  "name": "TinyTools vs Nameboy",
-  "url": "https://tinytools-smoky.vercel.app/vs/nameboy/",
-  "datePublished": "2026-05-06",
-  "subjectOf": [
-    {
-      "@type": "SoftwareApplication",
-      "name": "TinyTools",
-      "applicationCategory": "Design & Web Utilities",
-      "operatingSystem": "Web",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "url": "https://tinytools-smoky.vercel.app/"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "Nameboy",
-      "applicationCategory": "Domain Name Generator",
-      "operatingSystem": "Web",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "url": "https://www.nameboy.com/"
-    }
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/"},
+    {"@type": "ListItem", "position": 2, "name": "Favicon Generator", "item": "https://tinytools-smoky.vercel.app/favicon-generator/"},
+    {"@type": "ListItem", "position": 3, "name": "SVG Favicons Complete Guide", "item": "https://tinytools-smoky.vercel.app/favicon-generator/blog/svg-favicons-complete-implementation-guide-2026/"}
   ]
 }
 </script>
 <style>
-  :root { --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #8b5cf6; --accent-glow: #8b5cf640; --green: #10b981; --red: #ef4444; --yellow: #f59e0b; }
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f59e0b; --accent-glow: #f59e0b40;
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
     background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
-    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%);
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
   }
-  .container { max-width: 820px; margin: 0 auto; padding: 32px 20px 80px; }
-  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
   .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 12px;
+    color: var(--text-dim); margin-bottom: 20px; letter-spacing: 0.04em; text-transform: uppercase;
+  }
   h1 {
-    font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15;
-    margin: 16px 0 12px; letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #fff 0%, #c4b5fd 100%);
+    font-size: clamp(30px, 5vw, 46px); font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fbbf24 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
-  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 28px; }
-  h2 { font-size: 24px; font-weight: 700; margin: 36px 0 12px; color: var(--text); }
-  h3 { font-size: 19px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
-  p { color: var(--text); margin-bottom: 14px; }
-  ul, ol { margin: 8px 0 18px 22px; color: var(--text); }
-  li { margin-bottom: 6px; }
-  a { color: var(--accent); }
-  .summary {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
-    padding: 20px 22px; margin: 18px 0 24px;
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 32px; }
+  .lede { font-size: 19px; color: var(--text); margin-bottom: 28px; line-height: 1.6; }
+  article h2 {
+    font-size: 26px; font-weight: 700; margin-top: 44px; margin-bottom: 14px;
+    letter-spacing: -0.01em; color: var(--text);
   }
-  .summary strong { color: #fff; }
-  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 14px; background: var(--bg-card); border-radius: 12px; overflow: hidden; }
-  th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
-  th { background: var(--bg-elevated); color: var(--text); font-weight: 600; font-size: 13px; }
-  td { color: var(--text); }
-  td:first-child { color: var(--text-dim); width: 36%; }
-  .yes { color: var(--green); font-weight: 600; }
-  .no { color: var(--red); font-weight: 600; }
-  .partial { color: var(--yellow); font-weight: 600; }
-  .panel {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
-    padding: 18px 22px; margin: 14px 0 18px;
+  article h3 {
+    font-size: 19px; font-weight: 600; margin-top: 28px; margin-bottom: 10px; color: var(--text);
   }
-  .panel.tt { border-left: 3px solid var(--accent); }
-  .panel.nb { border-left: 3px solid #f59e0b; }
+  article p { margin-bottom: 16px; color: #d6d6e0; }
+  article ul, article ol { margin: 12px 0 20px 22px; color: #d6d6e0; }
+  article li { margin-bottom: 8px; }
+  article a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .15s; }
+  article a:hover { border-bottom-color: var(--accent); }
+  article code {
+    background: var(--bg-elevated); padding: 2px 7px; border-radius: 5px;
+    font-family: ui-monospace, SFMono-Regular, monospace; font-size: 0.92em;
+    color: #fbbf24; border: 1px solid var(--border);
+  }
+  article pre {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px 20px; margin: 18px 0 24px; overflow-x: auto; font-size: 13.5px; line-height: 1.55;
+  }
+  article pre code {
+    background: none; border: none; padding: 0; color: #d6d6e0; font-size: inherit;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent); padding: 12px 18px; margin: 18px 0;
+    background: rgba(245, 158, 11, 0.06); border-radius: 0 10px 10px 0; color: var(--text);
+    font-style: italic;
+  }
   .cta {
-    display: inline-block; background: var(--accent); color: #fff !important;
-    padding: 12px 22px; border-radius: 10px; text-decoration: none; font-weight: 600;
-    margin: 8px 8px 8px 0;
+    margin: 36px 0; padding: 24px 28px; background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+    border: 1px solid var(--accent); border-radius: 16px; text-align: center;
   }
-  .cta.alt { background: transparent; border: 1px solid var(--border); color: var(--text) !important; }
-  footer { color: var(--text-dim); font-size: 13px; border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; }
+  .cta h3 { margin-top: 0; font-size: 20px; }
+  .cta p { color: var(--text-dim); margin-bottom: 14px; }
+  .btn {
+    display: inline-block; padding: 12px 24px; background: var(--accent); color: #1c1917;
+    border-radius: 10px; font-weight: 700; text-decoration: none; transition: transform .15s;
+    border-bottom: none !important;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .related {
+    margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--border);
+  }
+  .related h3 { font-size: 15px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+  .related ul { list-style: none; margin: 0; padding: 0; }
+  .related li { margin-bottom: 8px; }
+  .related a { color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 2px; }
+  .related a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0 24px;
+    font-size: 14px; background: var(--bg-card); border-radius: 10px; overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: var(--bg-elevated); color: var(--text); font-weight: 600; font-size: 13px; }
+  td { color: #d6d6e0; }
+  tr:last-child td { border-bottom: none; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border);
+    color: var(--text-dim); font-size: 13px; text-align: center; }
+  footer a { color: var(--accent); }
 </style>
 </head>
 <body>
 <div class="container">
+  <nav class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;›&nbsp;
+    <a href="/favicon-generator/">Favicon Generator</a> &nbsp;›&nbsp;
+    SVG Favicons Complete Guide
+  </nav>
 
-<div class="breadcrumb">
-  <a href="/">TinyTools</a> &rsaquo; <a href="/vs/">Comparisons</a> &rsaquo; vs Nameboy
-</div>
+  <span class="badge">Implementation Guide · 2026</span>
 
-<h1>TinyTools vs Nameboy (2026)</h1>
-<div class="meta">Updated May 6, 2026 &middot; ~6 min read &middot; Honest comparison, not a takedown</div>
+  <h1>SVG Favicons in 2026 — The Complete Implementation Guide</h1>
+  <div class="meta">May 9, 2026 · ~9 min read · By TinyTools</div>
 
-<div class="summary">
-  <strong>The 30-second answer.</strong> Nameboy is one of the oldest domain name generators on the web — it has been brainstorming domain ideas since 1999 and works as a thin layer over registrar APIs to surface available .coms quickly. TinyTools' <a href="/domain-generator/">domain name generator</a> is a single browser page that mixes keywords, prefixes, suffixes, and modern TLDs, then lets you copy or check availability without an affiliate funnel pushing a specific host. If you want a battle-tested generator that immediately routes you toward buying through a registrar partner, Nameboy is fine. If you want a generator that stays out of your way and supports newer TLDs alongside .com, TinyTools is the closer fit.
-</div>
+  <p class="lede">Most sites still ship eight favicon files in the head. In 2026, you can ship one SVG, get crisp rendering at every size from 16&nbsp;px to 512&nbsp;px, support automatic dark mode, and add a four-line PNG fallback for the &lt;3% of traffic that needs it. Here is the exact pattern.</p>
 
-<h2>What each one actually is</h2>
+  <article>
 
-<div class="panel nb">
-  <strong>Nameboy</strong> launched in 1999 and is now part of the Awesome Motive family (WPBeginner, OptinMonster, MonsterInsights). It generates domain ideas from one or two seed keywords, primarily focusing on .com results, and links available domains through to Bluehost or other partnered registrars to complete the purchase. The product is free to use; the business model is affiliate revenue from domain registrations and hosting bundles. Nameboy's strength is decades of brand familiarity and a consistent, simple input box that has barely changed in 25 years.
-</div>
+  <h2>Why SVG Favicons Finally Make Sense in 2026</h2>
 
-<div class="panel tt">
-  <strong>TinyTools</strong> is a free collection of focused browser tools. The <a href="/domain-generator/">domain generator</a> takes a keyword or two, applies common naming patterns (prefixes like "get", suffixes like "ly", "hq", "ai", "io"), generates pronounceable invented names, and returns a long list of candidates. There's no signup, no affiliate gate, and no preselected registrar. You copy the names you like and check them wherever you want.
-</div>
+  <p>Eight years ago, the conventional advice was to export a favicon at fifteen different pixel dimensions: <code>16x16</code>, <code>32x32</code>, <code>48x48</code>, <code>96x96</code>, <code>180x180</code>, <code>192x192</code>, <code>512x512</code>, an <code>.ico</code> bundle, an <code>apple-touch-icon</code>, and a <code>manifest.json</code> with a few more PNGs. That was correct then. It is wrong now.</p>
 
-<h2>Side-by-side feature comparison</h2>
+  <p>Three things changed:</p>
 
-<table>
-  <thead>
-    <tr><th>Feature</th><th>TinyTools</th><th>Nameboy</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Price (core features)</td><td class="yes">Free, forever</td><td class="yes">Free</td></tr>
-    <tr><td>Account / signup required</td><td class="yes">No</td><td class="yes">No</td></tr>
-    <tr><td>Keyword-based suggestions</td><td class="yes">Yes</td><td class="yes">Yes (the original)</td></tr>
-    <tr><td>Mash-up / two-keyword combinations</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-    <tr><td>Invented / pronounceable names</td><td class="yes">Yes</td><td class="partial">Limited</td></tr>
-    <tr><td>Modern TLDs (.ai, .io, .dev, .app)</td><td class="yes">Yes</td><td class="partial">Mostly .com-first</td></tr>
-    <tr><td>Live availability check</td><td class="yes">Yes (in-page)</td><td class="yes">Yes (via registrar partner)</td></tr>
-    <tr><td>Tied to a specific registrar</td><td class="yes">No, register anywhere</td><td class="no">Push toward Bluehost / partners</td></tr>
-    <tr><td>Affiliate links / sponsored upsell</td><td class="yes">None</td><td class="no">Yes, that's the business model</td></tr>
-    <tr><td>Save / favorite suggestions</td><td class="partial">Copy out only</td><td class="no">No persistent saves</td></tr>
-    <tr><td>AI-style brand naming (vibe / tone)</td><td class="partial">Pattern-based, not LLM</td><td class="no">No</td></tr>
-    <tr><td>Filtering by length / TLD</td><td class="yes">Yes</td><td class="partial">Basic</td></tr>
-    <tr><td>Speed / page weight</td><td class="yes">Static page, very small</td><td class="partial">Heavy WordPress site</td></tr>
-    <tr><td>Ads on free tier</td><td class="yes">None</td><td class="no">Yes (affiliate placements)</td></tr>
-    <tr><td>API access</td><td class="no">No</td><td class="no">No</td></tr>
-  </tbody>
-</table>
+  <ol>
+    <li>Chrome, Safari, Firefox, and Edge all support <code>&lt;link rel="icon" type="image/svg+xml"&gt;</code>. Combined market share is roughly 97% of global browser traffic.</li>
+    <li>Modern OS bookmark surfaces — macOS Sonoma+, Windows 11 taskbar pins, iOS 17+ home screen — accept SVG sources and rasterize them locally at the device's actual pixel density.</li>
+    <li>The CSS <code>prefers-color-scheme</code> media query works <em>inside</em> SVG files, so a single asset can flip its colors when the user's OS switches to dark mode.</li>
+  </ol>
 
-<h2>Pricing comparison</h2>
+  <p>The result is the smallest, sharpest, most maintainable favicon you have ever shipped. Let's build it.</p>
 
-<p>Both tools are free at the surface. The real cost question is what happens after you pick a name.</p>
+  <h2>The Minimum-Viable 2026 Favicon Setup</h2>
 
-<table>
-  <thead><tr><th>Plan</th><th>TinyTools</th><th>Nameboy</th></tr></thead>
-  <tbody>
-    <tr><td>Generator usage</td><td>Free, no caps, no ads</td><td>Free, ad-supported</td></tr>
-    <tr><td>Domain registration</td><td>Bring your own registrar — Cloudflare, Porkbun, Namecheap, etc.</td><td>Routes through partner registrars where Nameboy earns affiliate commissions</td></tr>
-    <tr><td>Hosting upsell</td><td>None</td><td>Bluehost / hosting bundles surfaced after picking a name</td></tr>
-    <tr><td>Pro / paid tier</td><td>n/a</td><td>n/a (no paid plan)</td></tr>
-  </tbody>
-</table>
+  <p>Three lines in your HTML <code>&lt;head&gt;</code>. That is the whole thing.</p>
 
-<p class="meta">Nameboy itself is free; the financial relationship is between you and the registrar Nameboy refers you to.</p>
+  <pre><code>&lt;link rel="icon" type="image/svg+xml" href="/favicon.svg"&gt;
+&lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"&gt;
+&lt;link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"&gt;</code></pre>
 
-<h2>When Nameboy is the better choice</h2>
+  <p>Browsers that understand SVG icons take the first line and ignore the others. Older browsers fall through to the 32&nbsp;px PNG. iOS Safari uses the <code>apple-touch-icon</code> for home-screen bookmarks because the OS has not yet caught up to the SVG-source pattern there (more on that below).</p>
 
-<p>Nameboy has nearly a quarter-century of head start and a clear use case. Pick Nameboy when:</p>
+  <p>Three files. No <code>.ico</code> bundle, no <code>manifest.json</code> for a basic site, no fifteen-PNG buffet. Done.</p>
 
-<ul>
-  <li><strong>You want the canonical brainstorming experience.</strong> Nameboy invented this category. The two-keyword input, the mash-up logic, the long-list output — most modern generators are descendants. If you've used it before and like the rhythm, sticking with what you know is fine.</li>
-  <li><strong>You're already buying through Bluehost or a partner.</strong> If your plan is to buy hosting and a domain together through Bluehost, Nameboy's referral funnel saves you a click and the affiliate kickback funds the free tool. That's a fair trade.</li>
-  <li><strong>You want a .com-first list.</strong> Nameboy is calibrated for classic .com naming. If your project will only feel real with a .com, the result set leans hard in that direction by default.</li>
-  <li><strong>You trust the WPBeginner ecosystem.</strong> Nameboy is part of Awesome Motive, the same company behind WPBeginner, OptinMonster, and MonsterInsights. If you're a WordPress builder already inside that orbit, the editorial recommendations and the tool feel coherent.</li>
-</ul>
+  <h2>Writing the SVG Favicon Itself</h2>
 
-<h2>When TinyTools is the better choice</h2>
+  <p>Open your editor and write actual SVG markup. Stop exporting from raster tools. The whole point is that vector renders perfectly at any size, so you want the source shape, not a PNG-converted-to-SVG-via-tracing approximation.</p>
 
-<p>The honest case for TinyTools is real but specific:</p>
+  <p>A good favicon SVG has four traits:</p>
 
-<ul>
-  <li><strong>You want a clean tool, not a funnel.</strong> Open <a href="/domain-generator/">tinytools-smoky.vercel.app/domain-generator/</a>, type a keyword, get a list, leave. There's no "register this with our partner" screen, no auto-cart, no upsell to a hosting bundle.</li>
-  <li><strong>You'd rather buy through Cloudflare, Porkbun, or Namecheap.</strong> These registrars are usually cheaper, have better DNS UIs, and don't aggressively renew at 3x the first-year price. TinyTools doesn't push you anywhere — you pick the registrar.</li>
-  <li><strong>You're considering modern TLDs.</strong> If your idea fits a .ai, .io, .dev, .app, .so, or .xyz, TinyTools weights those normally. Nameboy's defaults still feel optimized for the .com era.</li>
-  <li><strong>Page weight matters.</strong> The TinyTools generator is a static page that loads in under a second. Nameboy is a full WordPress site with header, footer, ad slots, and tracking; it works, but it's an order of magnitude heavier.</li>
-  <li><strong>You also need design assets after the name.</strong> Once you've picked a name you'll need a favicon, an OG image, and probably a color palette. TinyTools has all three a click away — the <a href="/favicon-generator/">favicon generator</a>, the <a href="/og-image-generator/">OG image generator</a>, and the <a href="/color-palette/">color palette tool</a>. Nameboy hands you off to a registrar and the rest is on you.</li>
-  <li><strong>You don't want any ads.</strong> Nameboy's free tier is funded by affiliate placements — not invasive, but visible. TinyTools has no ads because there's no business model that requires them.</li>
-</ul>
+  <ul>
+    <li><strong>A <code>viewBox</code> of <code>0 0 32 32</code> or <code>0 0 64 64</code>.</strong> Browsers scale this. The number itself does not matter; what matters is that the design fills the box edge-to-edge.</li>
+    <li><strong>Strokes thick enough to read at 16&nbsp;px.</strong> The browser tab is the smallest size you'll render at. If a stroke disappears at 16&nbsp;px in your editor, it'll disappear in the tab.</li>
+    <li><strong>No fine text.</strong> A single letter is fine; a wordmark is not.</li>
+    <li><strong>Inline only.</strong> No <code>&lt;use href="..."&gt;</code> referencing external files, no embedded raster <code>&lt;image&gt;</code> tags. The SVG must be fully self-contained.</li>
+  </ul>
 
-<h2>Three concrete use cases</h2>
+  <p>Here is a real example — an amber lightning bolt:</p>
 
-<h3>1. Indie developer launching a side project this weekend</h3>
-<p>You need a name, a domain, a favicon, and an OG image by Sunday night. <strong>Recommendation:</strong> TinyTools end-to-end. Generate names, then pivot straight into the favicon and OG generators in the same site. Buy the domain at Cloudflare or Porkbun where renewals don't sting.</p>
+  <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"&gt;
+  &lt;rect width="32" height="32" rx="6" fill="#0a0a0f"/&gt;
+  &lt;path d="M18 4 L8 18 H14 L12 28 L24 12 H17 L18 4 Z"
+        fill="#f59e0b" stroke="#fbbf24" stroke-width="0.5"/&gt;
+&lt;/svg&gt;</code></pre>
 
-<h3>2. WordPress consultant setting up a client's first site</h3>
-<p>The client has no preferences and you're already provisioning their hosting through Bluehost. <strong>Recommendation:</strong> Nameboy. The affiliate flow is going to happen anyway, and using the tool that funds itself off the same partnership is consistent.</p>
+  <p>That is the entire file. Save it as <code>favicon.svg</code> at your site root, and the first line of the HTML snippet above will pick it up.</p>
 
-<h3>3. Founder naming a SaaS that wants .ai or .io</h3>
-<p>You're choosing between a few invented brandable names with modern TLDs. <strong>Recommendation:</strong> TinyTools, plus a backup pass with a registrar's bulk-search. Nameboy's defaults aren't tuned for this — its strength is .com mash-ups, not vibey two-syllable .ai names.</p>
+  <h2>Adding Dark Mode (the Reason to Ship SVG)</h2>
 
-<h2>Switching costs and lock-in</h2>
+  <p>This is where SVG earns its keep. You can put a <code>&lt;style&gt;</code> block <em>inside</em> the SVG file with a <code>prefers-color-scheme</code> rule, and the browser will repaint the icon when the user's OS theme changes. No JavaScript, no second file, no service worker.</p>
 
-<p>Neither tool has lock-in. Both are stateless generators. The only switching cost is mental: if you've used Nameboy for a decade, the rhythm of typing two keywords and scrolling a flat list will feel natural, and TinyTools' filtered grid will feel different. Most people who try both end up keeping Nameboy bookmarked for nostalgic .com brainstorms and TinyTools for everything else, especially when they need design assets immediately after.</p>
+  <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"&gt;
+  &lt;style&gt;
+    .bg { fill: #ffffff; }
+    .fg { fill: #0a0a0f; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #0a0a0f; }
+      .fg { fill: #f5f5fa; }
+    }
+  &lt;/style&gt;
+  &lt;rect class="bg" width="32" height="32" rx="6"/&gt;
+  &lt;path class="fg" d="M8 8 H24 V24 H8 Z"/&gt;
+&lt;/svg&gt;</code></pre>
 
-<h2>Verdict</h2>
+  <p>A user on macOS who flips to dark mode at 7pm will watch the favicon in their tab change colors in real time. The same file. No round-trip to your server.</p>
 
-<p>Nameboy and TinyTools are both honest about what they are. Nameboy is a 25-year-old keyword combiner monetized through registrar referrals — it works, it's familiar, and the affiliate funnel is the price of free. TinyTools is a single-page generator with no commercial relationship to any registrar, designed to plug into the rest of a launch toolkit (favicon, OG image, palette) on the same domain.</p>
+  <p>Most teams stop the dark-mode treatment at the website itself and forget the favicon, which then sits there with a white background bleeding light into a black tab strip. Fixing this is a 60-second design improvement that nobody else is doing.</p>
 
-<p>If you're loyal to .com, building on WordPress through Bluehost, and don't mind the affiliate path, Nameboy still does the job it has always done. If you want a quieter generator that supports modern TLDs, lets you register anywhere, and connects directly to the other tools you'll need for launch day, that's where TinyTools fits.</p>
+  <h2>Browser Support — The Honest Table</h2>
 
-<p>
-  <a class="cta" href="/domain-generator/">Try TinyTools domain generator (free, no signup)</a>
-  <a class="cta alt" href="https://www.nameboy.com/" rel="nofollow noopener" target="_blank">Visit Nameboy</a>
-</p>
+  <p>Here is the actual support matrix as of May 2026, based on the <a href="https://caniuse.com/link-icon-svg" rel="noopener" target="_blank">caniuse.com</a> data plus my own testing.</p>
 
-<footer>
-  <p>This comparison is maintained by TinyTools. We tried to be fair — if you spot something inaccurate about Nameboy's current behavior or referral partners, the page is open-source on <a href="https://github.com/alfredoautomatizaloconia-cloud/tinytools" rel="nofollow">GitHub</a> and we'll fix it.</p>
-  <p>Information about Nameboy reflects publicly observable behavior as of May 2026 and may change.</p>
-</footer>
+  <table>
+    <thead>
+      <tr><th>Browser</th><th>SVG icon</th><th><code>prefers-color-scheme</code> in SVG</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Chrome 80+</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>Firefox 41+</td><td>Yes</td><td>Yes (FR 99+)</td></tr>
+      <tr><td>Safari 14+</td><td>Yes</td><td>Yes (15.4+)</td></tr>
+      <tr><td>Edge 80+</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>Samsung Internet 12+</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>iOS Safari (home screen)</td><td>No (uses apple-touch-icon)</td><td>—</td></tr>
+      <tr><td>IE 11 / legacy</td><td>No (falls back to PNG)</td><td>—</td></tr>
+    </tbody>
+  </table>
 
+  <p>The PNG fallback line in the snippet above is what catches IE 11, ancient corporate browsers, and a handful of obscure RSS readers. The Apple touch icon line is what catches the case where a user adds your site to their iPhone home screen — iOS still wants a 180&nbsp;px square PNG for that surface, and Apple has been dragging on SVG support there since 2020. Ship both fallbacks; they cost two files and zero milliseconds at runtime.</p>
+
+  <h2>The Sizes Attribute — Use <code>any</code></h2>
+
+  <p>One detail that trips people up: when the browser has both an SVG icon and a PNG icon to choose from, it picks based on the <code>sizes</code> attribute. If you write <code>sizes="32x32"</code> on the SVG, the browser will only consider it for 32-pixel slots, which defeats the entire point of vector.</p>
+
+  <p>Use <code>sizes="any"</code>:</p>
+
+  <pre><code>&lt;link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any"&gt;</code></pre>
+
+  <p>Now the SVG wins for every size the browser asks for, and the PNG only gets pulled if the SVG type is unsupported. This is the single most-missed line in production favicon code in 2026 — I run a Lighthouse pass on five new SaaS sites a week and roughly half of them ship the SVG with no <code>sizes</code> attribute and a 32&nbsp;px PNG declared first, which means Chrome takes the PNG.</p>
+
+  <h2>The PWA / Manifest Case</h2>
+
+  <p>If your site is a Progressive Web App with an installable home-screen experience, you still need a <code>manifest.json</code> with PNG icons at 192&nbsp;px and 512&nbsp;px. Browsers do not yet rasterize SVG sources for the install icon — that is the same Apple-shaped hole as the iOS home screen.</p>
+
+  <p>Minimum PWA manifest:</p>
+
+  <pre><code>{
+  "name": "My App",
+  "short_name": "App",
+  "icons": [
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" },
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" }
+  ],
+  "theme_color": "#0a0a0f",
+  "background_color": "#0a0a0f",
+  "display": "standalone"
+}</code></pre>
+
+  <p>Note the SVG is still listed — install prompts in Chrome 116+ now read it for the desktop install dialog. Older surfaces use the PNGs.</p>
+
+  <div class="cta">
+    <h3>Don't hand-author all of this</h3>
+    <p>Generate a complete favicon set — SVG with dark-mode toggle, PNG fallbacks, apple-touch-icon, and manifest.json — in one click. Free, no signup, no email gate.</p>
+    <a class="btn" href="/favicon-generator/">Try the Favicon Generator →</a>
+  </div>
+
+  <h2>Common Mistakes I See Weekly</h2>
+
+  <h3>1. Re-saving a PNG as <code>.svg</code></h3>
+  <p>Some image editors will let you save a raster image with a <code>.svg</code> extension by wrapping it in an <code>&lt;image&gt;</code> tag. The file is technically SVG, but it is just a PNG inside an XML wrapper — no vector data, no scaling benefit. Verify by opening the file in a text editor; if you see <code>&lt;path&gt;</code> or <code>&lt;rect&gt;</code> tags, it's real vector. If you see <code>&lt;image href="data:image/png;base64..."&gt;</code>, throw it out and start over with a vector tool.</p>
+
+  <h3>2. Forgetting the <code>viewBox</code></h3>
+  <p>An SVG without a <code>viewBox</code> renders at whatever pixel dimensions are in the <code>width</code> and <code>height</code> attributes — which means it doesn't actually scale. The browser will render your favicon at its source size and let CSS clip the rest. Always include <code>viewBox="0 0 32 32"</code> (or whatever your design's coordinate system is).</p>
+
+  <h3>3. Using <code>currentColor</code> in the SVG</h3>
+  <p>Inside the SVG, <code>currentColor</code> resolves to the SVG element's own <code>color</code> property — not your page's text color. There is no parent context. Use literal hex values or the embedded <code>prefers-color-scheme</code> trick from above.</p>
+
+  <h3>4. Setting cache headers too aggressively</h3>
+  <p>Browsers cache favicons for the lifetime of the tab regardless of headers — Safari is especially stubborn. When you redesign, ship the new file at <code>/favicon-v2.svg</code> and update the <code>&lt;link&gt;</code> tag rather than overwriting <code>/favicon.svg</code>. Otherwise users will keep seeing the old icon for weeks.</p>
+
+  <h3>5. Skipping the <code>apple-touch-icon</code></h3>
+  <p>If a user adds your site to their iPhone home screen and you don't have an <code>apple-touch-icon</code>, iOS generates a screenshot of the page top-left corner and uses that. It looks awful. Ship the 180&nbsp;px PNG.</p>
+
+  <h2>Validating Your Favicon Setup</h2>
+
+  <p>Three checks before shipping:</p>
+
+  <ol>
+    <li><strong>Open the SVG directly in your browser.</strong> Visit <code>https://yoursite.com/favicon.svg</code>. You should see the icon rendered at fullscreen. If you see XML source, your server is sending the wrong <code>Content-Type</code> header — it should be <code>image/svg+xml</code>.</li>
+    <li><strong>Hard-refresh the homepage and check the tab.</strong> Cmd-Shift-R on Mac, Ctrl-Shift-R on Windows. Then look at the tab's favicon. If it is blurry, your SVG has a fixed-size raster <code>&lt;image&gt;</code> embedded in it — see mistake #1.</li>
+    <li><strong>Toggle your OS theme.</strong> System Settings → Appearance → Dark on macOS, or the equivalent on Windows. The favicon in the open tab should repaint within ~1 second. If it doesn't, your <code>prefers-color-scheme</code> rule is wrong or your browser is below the support cutoff.</li>
+  </ol>
+
+  <p>That's it. You have just shipped the cleanest favicon setup the modern web supports, and you'll never have to export fifteen PNGs again.</p>
+
+  <h2>What to Read Next</h2>
+
+  <p>If you haven't yet picked the brand colors that will define this favicon, start at our <a href="/color-palette/">free color palette generator</a> — it'll give you a hex value you can drop straight into the SVG. If you also need an <code>&lt;meta&gt;</code> setup for the same page, the <a href="/seo-meta-generator/">SEO meta tag generator</a> handles OG images, Twitter cards, and canonical tags in the same dark-mode style. And if you want the deeper background on every favicon dimension that browsers still request, the <a href="/favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/">favicon dimensions guide</a> breaks down each one.</p>
+
+  </article>
+
+  <div class="cta">
+    <h3>Skip the manual work — build your favicon set in 30 seconds</h3>
+    <p>Upload an image, type a letter, or pick an emoji. We'll output an SVG with dark-mode support, every PNG fallback your site needs, and a ready-to-paste HTML snippet.</p>
+    <a class="btn" href="/favicon-generator/">Open the Favicon Generator →</a>
+  </div>
+
+  <div class="related">
+    <h3>Related on TinyTools</h3>
+    <ul>
+      <li><a href="/favicon-generator/blog/favicon-best-practices-2026/">Favicon best practices in 2026</a></li>
+      <li><a href="/favicon-generator/blog/favicon-dimensions-every-browser-needs-2026/">Every favicon dimension every browser needs</a></li>
+      <li><a href="/seo-meta-generator/blog/og-vs-twitter-card-differences-2026/">OG vs Twitter card differences</a></li>
+      <li><a href="/color-palette/blog/dark-mode-color-palette-guide-2026/">Dark mode color palette guide</a></li>
+    </ul>
+  </div>
+
+  <footer>
+    Free tools for builders · <a href="/">TinyTools</a>
+  </footer>
 </div>
 </body>
 </html>
