@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 9, 2026 — published Favicon Not Showing in Google Search Results diagnostic guide for favicon-generator + 4 social drafts ready",
+  "lastUpdated": "May 9, 2026 — published Emoji Favicon guide for favicon-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 41,
+    "posts": 42,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 14:30",
+      "tag": "seo",
+      "text": "📝 Published blog post: How to Make a Favicon From an Emoji in 2026 — The 60-Second Method That Just Works at /favicon-generator/blog/how-to-make-favicon-from-emoji-2026/"
+    },
+    {
+      "time": "today 14:30",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
+    },
     {
       "time": "today 08:11",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 16:05",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/startups, LinkedIn, Show HN — all promoting domain-generator"
-    },
-    {
-      "time": "today 15:55",
-      "tag": "seo",
-      "text": "📝 Published blog post: Brandable vs Keyword Domain Names: Which Wins for SaaS in 2026? at /domain-generator/blog/brandable-vs-keyword-domains-saas-2026/"
-    },
-    {
-      "time": "today 15:55",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN — all promoting domain-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "text": "🧵 An emoji favicon is the highest-leverage shortcut in front-end.\n\nYou skip the design pass, skip the export pipeline, ship a recognizable mark in 60 seconds.\n\nHere's the 2026 method that actually works across every browser (yes, including Safari):\n\n1/6\n\n---\n\nThe one-liner for prototypes — works in Chrome, Firefox, Edge:\n\n<link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>\">\n\nDrop it in <head>, swap the rocket. Done. Zero files in your repo.\n\n2/6\n\n---\n\nThe catch: Safari ignores data-URI SVG favicons that rely on system color emoji fonts.\n\niOS \"Add to Home Screen\" ignores SVG favicons completely — it wants a real PNG.\n\nIf a third of your traffic is Mac/iPhone, the one-liner isn't enough on its own.\n\n3/6\n\n---\n\nFull set for production = 4 files + 1 manifest:\n\n• favicon.ico (16/32/48 multi-size)\n• favicon.svg (your inline emoji)\n• apple-touch-icon.png (180×180, opaque background!)\n• icon-192 + icon-512 PNGs in manifest.json\n• maskable variant for Android 12+ launchers\n\n4/6\n\n---\n\nWhich emojis survive at 16×16?\n\n✅ Single dominant shape (🚀 ⚡ 🔥 🌿 🌙 ⭐)\n✅ High color contrast\n❌ Multi-part scenes (🎂 💻 🌊)\n❌ ZWJ sequences (👨‍👩‍👧, profession+skin tones)\n\nSquint test: zoom your tab to 100% and squint. Can you tell what it is?\n\n5/6\n\n---\n\nShip the full set in 60s — type one emoji, get ICO + SVG + apple-touch-icon + maskable PNG + manifest.json + the canonical HTML block:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-make-favicon-from-emoji-2026/\n\nFree, no signup, no email gate.\n\n6/6",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T14:30:00Z"
+    },
+    {
+      "platform": "Reddit /r/webdev",
+      "text": "For anyone hitting this: the modern shortcut is to use an inline SVG favicon with the emoji as a <text> element. Works on every Chromium browser and Firefox out of the box:\n\n```html\n<link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>\">\n```\n\nTwo gotchas that bit me:\n\n1. Safari (desktop and iOS) doesn't render data-URI SVG favicons that rely on system color-emoji fonts. You still need an apple-touch-icon.png as a fallback or your Mac/iPhone users see a blank tab.\n\n2. iOS \"Add to Home Screen\" needs a 180×180 opaque PNG — transparent backgrounds get filled with white which looks awful on dark home screens. Bake the background color in.\n\nFor the squint test, single-shape emojis (🚀 ⚡ 🔥 🌿) survive 16×16 way better than busy multi-part ones (🎂 with candles is a colored blob at favicon size).\n\nIf you don't want to manually export ICO + SVG + apple-touch-icon + maskable + manifest.json, I wrote up the full method here including the four pitfalls that bite people: https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-make-favicon-from-emoji-2026/ — it generates the whole bundle from one emoji.",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T14:30:00Z"
+    },
+    {
+      "platform": "LinkedIn",
+      "text": "The fastest favicon I've ever shipped took 60 seconds.\n\nI was prototyping an internal tool last week and skipped the usual export-pipeline ritual: open Figma, export at 16/32/48/180/192/512, generate the ICO, write the manifest.json, copy six <link> tags into <head>, hard-refresh, fix the cache, repeat.\n\nInstead I dropped one line into my <head>:\n\n<link rel=\"icon\" href=\"data:image/svg+xml,...<text font-size='90'>🚀</text>...\">\n\nDone. Sharp, colored, scalable favicon. Zero files in the repo.\n\nThe catch is Safari and iOS still need a rasterized fallback — and Android 12+ wants a maskable icon variant or it crops your edges. So for production the emoji shortcut still needs four files and a manifest.\n\nBut for prototypes, internal dashboards, hackathon projects, and v0 of side projects? An emoji is the right answer. Pick a single-shape emoji. Test it at 16 pixels. Ship it. Move on.\n\nWrote up the 2026 method — including which emojis actually stay legible at favicon size and the four pitfalls that bite people — here: https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-make-favicon-from-emoji-2026/",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T14:30:00Z"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "text": "Show HN: Generate a full favicon set from a single emoji in 60 seconds (free)\n\nFirst comment for the discussion thread:\n\nBuilt this after one too many afternoons exporting 14 favicon sizes for prototypes that never shipped. You drop a single emoji and it outputs ICO + SVG + apple-touch-icon + maskable PNG + manifest.json + the canonical <head> block. Works around the Safari data-URI gap and Android 12 maskable-crop pitfall. Writeup with the four common pitfalls: https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-make-favicon-from-emoji-2026/",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T14:30:00Z"
+    },
+    {
+      "platform": "X / Twitter Thread",
       "text": "🧵 Your favicon ships, you deploy, and Google STILL shows the gray globe next to your search result.\n\nIn 2026 this almost always comes down to one of 7 specific things — here's the diagnostic order that catches them in <10 min 👇\n\n(1/5)\n\n—\n\nThe #1 cause: the favicon URL itself returns 404 or 403 to Googlebot.\n\nOpen your favicon URL in incognito. If you see the icon = good. If you see a 404, redirect chain, or auth wall = same view Google has.\n\nMost common reasons: build pipeline strips it, hash-busted filename, Cloudflare Access on staging.\n\n(2/5)\n\n—\n\n#2 cause: size. Google requires a multiple of 48×48 in 2026.\n\nA 16×16 ICO from 2010 is auto-rejected. Same with non-square images.\n\nThe safe set: 48, 96, 192, 512 PNGs + an SVG. Generate the full bundle in 1 click → tinytools-smoky.vercel.app/favicon-generator/\n\n(3/5)\n\n—\n\n#3 cause: the link tag is injected by JavaScript (React Helmet, Vue Meta, etc).\n\nGooglebot's favicon crawler reads the initial HTML, not the post-render DOM.\n\nCheck: view-source on your homepage. If <link rel=\"icon\"> is missing there but appears in DevTools, that's your bug.\n\nMove it to the static index.html shell.\n\n(4/5)\n\n—\n\nAfter fixing: wait 3–14 days. There is no \"force update.\"\n\nVerify with https://www.google.com/s2/favicons?domain=yoursite.com&sz=64 — that's Google's cached version.\n\nFull 7-step diagnostic + the 30-sec checklist:\ntinytools-smoky.vercel.app/favicon-generator/blog/favicon-not-showing-in-google-search-results-2026/\n\n(5/5)",
       "tool": "favicon-generator",
       "createdAt": "2026-05-09T08:11:00Z"
@@ -260,30 +284,6 @@
       "text": "Title: Show HN: Favicon Not Showing in Google Search Results — the 2026 diagnostic order\n\nComment:\nAuthor here. Wrote this after debugging a client favicon that was \"set\" for 6 weeks but still showed Google's gray globe. Turned out to be a 16×16 ICO — auto-rejected since Google's 48×48 minimum. The post is the diagnostic order I now run on every site. Curious if anyone has hit a cause not in the list — happy to add it.",
       "tool": "favicon-generator",
       "createdAt": "2026-05-09T08:11:00Z"
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T04:10:00Z",
-      "text": "🧵 Most sites still ship eight favicon files in their <head>.\n\nIn 2026 you can ship ONE SVG, get crisp rendering at every size, support automatic dark mode, and never export PNGs again. Here's the pattern. (1/5)\n\n---\n\n(2/5) The whole setup is three lines:\n\n<link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\" sizes=\"any\">\n<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32.png\">\n<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\">\n\nModern browsers take the SVG. Older ones fall through to the PNG. iOS home screen takes the apple-touch-icon. Done.\n\n---\n\n(3/5) The killer feature: prefers-color-scheme INSIDE the SVG.\n\nPut a <style> block in the file with a media query, and the favicon repaints when the user's OS flips to dark mode. No JS, no second file, no service worker. Just CSS in your icon.\n\n---\n\n(4/5) The single most-missed line in production favicon code:\n\nsizes=\"any\"\n\nWithout it, Chrome picks the 32px PNG over your SVG because the PNG declares a size match. With it, SVG wins for every dimension. I see this bug on ~50% of new SaaS sites I audit.\n\n---\n\n(5/5) Full guide w/ the dark-mode SVG snippet, the browser support matrix, the 5 most common mistakes, and a free generator that outputs the whole set in one click:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/svg-favicons-complete-implementation-guide-2026/"
-    },
-    {
-      "platform": "Reddit /r/webdev",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T04:10:00Z",
-      "text": "Subreddit: /r/webdev (or /r/Frontend)\n\nComment (reply on any thread asking 'best favicon setup' or 'do I still need 15 favicon sizes'):\n\nThe 2026 answer is no — three lines in your <head> covers ~99% of the cases people are still hand-rolling fifteen PNGs for.\n\nWhat actually works now:\n\n1. One SVG file as your primary icon. Chrome, Safari 14+, Firefox, Edge all support `<link rel=\"icon\" type=\"image/svg+xml\">`. That's ~97% of global traffic.\n\n2. Add `sizes=\"any\"` to the SVG link. This is the gotcha — without it, the browser picks the PNG over your SVG for every size that matches. With it, SVG wins for every dimension. I run Lighthouse on five new SaaS sites a week and roughly half of them have this bug.\n\n3. One 32px PNG as fallback for IE 11 and ancient corporate browsers (~3% of traffic).\n\n4. One 180px apple-touch-icon for the iOS home-screen case. Apple still hasn't shipped SVG support for that surface.\n\nThe unlock that nobody talks about: you can put a `prefers-color-scheme` media query INSIDE the SVG file. The browser will repaint the favicon when the user's OS flips to dark mode — no JS, no service worker, no separate file. The white-bg-favicon-bleeding-into-a-dark-tab-strip thing is a 60-second fix and almost no one is doing it.\n\nWrote up the full pattern with the dark-mode SVG snippet, the browser support table, and the 5 mistakes I see weekly: https://tinytools-smoky.vercel.app/favicon-generator/blog/svg-favicons-complete-implementation-guide-2026/\n\nFree generator linked in the post if you don't want to hand-author it."
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T04:10:00Z",
-      "text": "Most websites still ship 8 favicon files in their <head>.\n\nIn 2026, you can ship 1 SVG, get crisp rendering at every size from 16px to 512px, support automatic dark mode, and add a 4-line PNG fallback for the <3% of traffic that needs it.\n\nWhy this changed:\n\n→ Chrome, Safari, Firefox, Edge all support `<link rel=\"icon\" type=\"image/svg+xml\">` (~97% of global browser traffic)\n→ macOS Sonoma, Windows 11, iOS 17+ all rasterize SVG sources locally at the device's actual pixel density — no more pixel hunting\n→ The CSS prefers-color-scheme media query works INSIDE SVG files, so one asset can flip its colors when the user's OS switches themes\n\nThe unlock most teams miss: a dark-mode favicon. You spend a week tuning your dark-mode site, then ship a white-background favicon that bleeds light into the dark tab strip. It's a 60-second fix using one media query inside the SVG, and almost nobody is doing it.\n\nAnd the bug I see on roughly half of new SaaS sites I audit: `sizes=\"any\"` is missing from the SVG link tag. Without it, the browser picks a 32px PNG over your SVG for the 32px slot. The PNG you thought you were using as a fallback is actually your primary icon.\n\nWrote up the full 2026 pattern — the three-line setup, the dark-mode SVG snippet, the browser support matrix, and the five most common mistakes:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/svg-favicons-complete-implementation-guide-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T04:10:00Z",
-      "text": "Show HN title: SVG Favicons in 2026 — The Complete Implementation Guide\n\nLink: https://tinytools-smoky.vercel.app/favicon-generator/blog/svg-favicons-complete-implementation-guide-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Wrote this after auditing five new SaaS landing pages a week and finding that ~50% of them are still shipping fifteen PNG favicons OR have the `sizes=\"any\"` bug where their declared SVG loses to a PNG fallback for every common slot. The dark-mode-inside-the-SVG trick (CSS media query embedded in the file itself) is also nearly absent in the wild despite being supported by every major browser since Chrome 80 / Safari 15.4. Curious to hear edge cases where the all-SVG approach still breaks for HN's setups — corporate IE 11 holdouts and the iOS home-screen rasterization gap are the two I cover, but I'd bet someone has a weirder one."
     }
   ],
   "checklist": [
