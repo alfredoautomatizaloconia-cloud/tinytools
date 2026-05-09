@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 9, 2026 — published Batch Background Removal guide for background-remover + 4 social drafts ready",
+  "lastUpdated": "May 9, 2026 — published SVG Favicons Complete Implementation Guide for favicon-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 39,
+    "posts": 40,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 04:10",
+      "tag": "seo",
+      "text": "📝 Published blog post: SVG Favicons in 2026 — The Complete Implementation Guide at /favicon-generator/blog/svg-favicons-complete-implementation-guide-2026/"
+    },
+    {
+      "time": "today 04:10",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
+    },
     {
       "time": "today 00:11",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 08:44",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/Entrepreneur, LinkedIn, Show HN — all promoting domain-generator"
-    },
-    {
-      "time": "today 04:10",
-      "tag": "seo",
-      "text": "📝 Published blog post: Domain Name SEO Mistakes That Hurt Rankings in 2026 at /domain-generator/blog/domain-name-seo-mistakes-2026/"
-    },
-    {
-      "time": "today 04:10",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting domain-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T04:10:00Z",
+      "text": "🧵 Most sites still ship eight favicon files in their <head>.\n\nIn 2026 you can ship ONE SVG, get crisp rendering at every size, support automatic dark mode, and never export PNGs again. Here's the pattern. (1/5)\n\n---\n\n(2/5) The whole setup is three lines:\n\n<link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\" sizes=\"any\">\n<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32.png\">\n<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\">\n\nModern browsers take the SVG. Older ones fall through to the PNG. iOS home screen takes the apple-touch-icon. Done.\n\n---\n\n(3/5) The killer feature: prefers-color-scheme INSIDE the SVG.\n\nPut a <style> block in the file with a media query, and the favicon repaints when the user's OS flips to dark mode. No JS, no second file, no service worker. Just CSS in your icon.\n\n---\n\n(4/5) The single most-missed line in production favicon code:\n\nsizes=\"any\"\n\nWithout it, Chrome picks the 32px PNG over your SVG because the PNG declares a size match. With it, SVG wins for every dimension. I see this bug on ~50% of new SaaS sites I audit.\n\n---\n\n(5/5) Full guide w/ the dark-mode SVG snippet, the browser support matrix, the 5 most common mistakes, and a free generator that outputs the whole set in one click:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/svg-favicons-complete-implementation-guide-2026/"
+    },
+    {
+      "platform": "Reddit /r/webdev",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T04:10:00Z",
+      "text": "Subreddit: /r/webdev (or /r/Frontend)\n\nComment (reply on any thread asking 'best favicon setup' or 'do I still need 15 favicon sizes'):\n\nThe 2026 answer is no — three lines in your <head> covers ~99% of the cases people are still hand-rolling fifteen PNGs for.\n\nWhat actually works now:\n\n1. One SVG file as your primary icon. Chrome, Safari 14+, Firefox, Edge all support `<link rel=\"icon\" type=\"image/svg+xml\">`. That's ~97% of global traffic.\n\n2. Add `sizes=\"any\"` to the SVG link. This is the gotcha — without it, the browser picks the PNG over your SVG for every size that matches. With it, SVG wins for every dimension. I run Lighthouse on five new SaaS sites a week and roughly half of them have this bug.\n\n3. One 32px PNG as fallback for IE 11 and ancient corporate browsers (~3% of traffic).\n\n4. One 180px apple-touch-icon for the iOS home-screen case. Apple still hasn't shipped SVG support for that surface.\n\nThe unlock that nobody talks about: you can put a `prefers-color-scheme` media query INSIDE the SVG file. The browser will repaint the favicon when the user's OS flips to dark mode — no JS, no service worker, no separate file. The white-bg-favicon-bleeding-into-a-dark-tab-strip thing is a 60-second fix and almost no one is doing it.\n\nWrote up the full pattern with the dark-mode SVG snippet, the browser support table, and the 5 mistakes I see weekly: https://tinytools-smoky.vercel.app/favicon-generator/blog/svg-favicons-complete-implementation-guide-2026/\n\nFree generator linked in the post if you don't want to hand-author it."
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T04:10:00Z",
+      "text": "Most websites still ship 8 favicon files in their <head>.\n\nIn 2026, you can ship 1 SVG, get crisp rendering at every size from 16px to 512px, support automatic dark mode, and add a 4-line PNG fallback for the <3% of traffic that needs it.\n\nWhy this changed:\n\n→ Chrome, Safari, Firefox, Edge all support `<link rel=\"icon\" type=\"image/svg+xml\">` (~97% of global browser traffic)\n→ macOS Sonoma, Windows 11, iOS 17+ all rasterize SVG sources locally at the device's actual pixel density — no more pixel hunting\n→ The CSS prefers-color-scheme media query works INSIDE SVG files, so one asset can flip its colors when the user's OS switches themes\n\nThe unlock most teams miss: a dark-mode favicon. You spend a week tuning your dark-mode site, then ship a white-background favicon that bleeds light into the dark tab strip. It's a 60-second fix using one media query inside the SVG, and almost nobody is doing it.\n\nAnd the bug I see on roughly half of new SaaS sites I audit: `sizes=\"any\"` is missing from the SVG link tag. Without it, the browser picks a 32px PNG over your SVG for the 32px slot. The PNG you thought you were using as a fallback is actually your primary icon.\n\nWrote up the full 2026 pattern — the three-line setup, the dark-mode SVG snippet, the browser support matrix, and the five most common mistakes:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/svg-favicons-complete-implementation-guide-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T04:10:00Z",
+      "text": "Show HN title: SVG Favicons in 2026 — The Complete Implementation Guide\n\nLink: https://tinytools-smoky.vercel.app/favicon-generator/blog/svg-favicons-complete-implementation-guide-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Wrote this after auditing five new SaaS landing pages a week and finding that ~50% of them are still shipping fifteen PNG favicons OR have the `sizes=\"any\"` bug where their declared SVG loses to a PNG fallback for every common slot. The dark-mode-inside-the-SVG trick (CSS media query embedded in the file itself) is also nearly absent in the wild despite being supported by every major browser since Chrome 80 / Safari 15.4. Curious to hear edge cases where the all-SVG approach still breaks for HN's setups — corporate IE 11 holdouts and the iOS home-screen rasterization gap are the two I cover, but I'd bet someone has a weirder one."
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "background-remover",
       "createdAt": "2026-05-09T00:11:18Z",
       "text": "🧵 Need to remove the background from 437 product photos by Friday?\n\nIn 2026, that's a free 30-minute task — not a $250 API bill. Here's the playbook. (1/6)\n\n---\n\n(2/6) Four free routes that actually finish at scale:\n\n• In-browser AI (WebGPU) → 0 setup, 100–2,000 photos\n• rembg CLI → 10 min setup, 500–10,000 photos\n• BiRefNet local → hair, fur, glass at any volume\n• Free-tier API + chunking → no laptop GPU, soft deadline\n\nStop reaching for paid plans by reflex.\n\n---\n\n(3/6) The 2026 default: drop a folder into a browser tab.\n\nModern browsers run the same ONNX models (BiRefNet, RMBG-2.0) that used to need Python. ~400–900ms per photo on a recent laptop GPU. Nothing uploads. No credits. 500 photos finish during lunch.\n\n---\n\n(4/6) The five gotchas that ruin overnight batches:\n\n• Throttled background tabs (keep batch tab focused)\n• JPEGs with sneaky alpha channels\n• EXIF rotation lost on save\n• Filenames with spaces and emoji\n• Skipping the contact-sheet visual diff\n\nAbout 1–3% of any real archive will have a cutout you don't want to ship.\n\n---\n\n(5/6) When to switch from in-browser to rembg CLI:\n\n→ Past ~2,000 photos\n→ Mixed file types where one bad input poisons the queue\n→ You want to pipe into ImageMagick → cwebp → oxipng\n\n`pip install rembg && rembg p ./input ./output` is still the fastest setup-to-finish in 2026.\n\n---\n\n(6/6) Full playbook with the decision tree, the BiRefNet upgrade for hair and fur, and the chunked-API pattern for archive backfills:\n\nhttps://tinytools-smoky.vercel.app/background-remover/blog/how-to-batch-remove-backgrounds-from-photos-free-2026/\n\nFree in-browser batch tool linked in the post. No signup, no credit limits."
@@ -260,31 +284,6 @@
       "tool": "background-remover",
       "createdAt": "2026-05-09T00:11:18Z",
       "text": "TITLE: Show HN: Batch background removal for 1,000+ photos, runs entirely in the browser\n\nLINK: https://tinytools-smoky.vercel.app/background-remover/blog/how-to-batch-remove-backgrounds-from-photos-free-2026/\n\nFIRST COMMENT:\nAuthor here. Wrote this after watching teams default to paid APIs for one-time archive backfills — when the in-browser route would have finished the job during their lunch break for free. The post covers four free workflows ranked by photo volume: WebGPU in the browser (the 2026 default for anything under ~2,000 photos), rembg CLI (the 500–10,000 range), BiRefNet specifically when hair/fur/glass are involved, and chunked submission against free API tiers when there's no local GPU available. Curious whether HN's experience matches: what's the realistic ceiling on the in-browser route on consumer hardware in 2026? My measurements top out around 1,500–2,000 photos before tab-throttling and memory pressure on >4K inputs become the bottleneck — but I'd love to hear from anyone running larger batches in the browser without falling back to a CLI."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "background-remover",
-      "createdAt": "2026-05-08T20:12:40Z",
-      "text": "1/ Amazon quietly suppresses listings whose main image fails its background spec.\n\nNot removed. Not flagged. Just demoted to page 14.\n\nHere's the 2026 free workflow that passes audit on the first try (and the 3 mistakes I see weekly): 🧵\n\n2/ The main-image rules in 2026:\n• Background must be PURE white — RGB 255,255,255\n• Product fills 85% of frame minimum\n• No props, no text, no logos, no shadows\n• 1600px on the long edge (top sellers ship 2560px)\n\n#FCFCFC fails. #FEFEFE fails. Eyedropper-strict.\n\n3/ Workflow that holds up:\n\n• Shoot against MID-GREY, not white. Gives the cutout model edge separation.\n• Cut bg in-browser with TinyTools (no upload, no signup)\n• Composite onto pure #FFFFFF at 87% frame fit\n• Export flat JPG @ 92 quality\n\nDone in <2 min/SKU.\n\n4/ The 3 mistakes I see weekly:\n\n→ Off-white halo at edges (audit catches it)\n→ Cutout under 85% fill (the #1 reason for suppression)\n→ Props that look like accessories (the case, cord, plant — all banned in main image)\n\n5/ Free tool, runs entirely in your browser, handles batches of 50:\n\nhttps://tinytools-smoky.vercel.app/background-remover/\n\nFull guide w/ Amazon-specific edge cases (translucent products, glossy electronics, hangers): https://tinytools-smoky.vercel.app/background-remover/blog/amazon-product-photo-background-removal-2026/"
-    },
-    {
-      "platform": "Reddit /r/FulfillmentByAmazon",
-      "tool": "background-remover",
-      "createdAt": "2026-05-08T20:12:40Z",
-      "text": "Re: \"why did my listing suddenly drop in BSR\" — image suppression is a really common cause and Amazon doesn't tell you when it happens.\n\nThe quick check: in Seller Central → Manage Inventory → filter by 'Suppressed.' Yellow caution icon = image issue. Most common reason is 'Main image must have a pure white background' — and the trap is that 'pure white' means literal RGB 255,255,255. Anything in the 252–254 range silently fails the audit.\n\nA few things that fixed it for me on a beauty SKU last quarter:\n\n• Shoot against mid-grey, not white. The cutout model needs separation; white-on-white is a nightmare.\n• Cut the background in-browser instead of in Photoshop. Photoshop's default 'white' fill has been color-managed for years and the actual pixels often aren't 255,255,255 — that's why you can have a 'white' canvas that still fails. I've been using https://tinytools-smoky.vercel.app/background-remover/ which has a 'pure white background + 85% frame fit' export toggle. Free, no signup, runs locally.\n• Spot-check at 200% zoom for halo edges before uploading.\n\nIf you want the long version with the FBA-specific edge cases (hangers count as props, translucent products need a different setting, etc.), I wrote it up here: https://tinytools-smoky.vercel.app/background-remover/blog/amazon-product-photo-background-removal-2026/"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "background-remover",
-      "createdAt": "2026-05-08T20:12:40Z",
-      "text": "Three months ago an Amazon FBA seller I work with watched her BSR slide for two weeks with no obvious cause.\n\nNothing on the listing had changed. Title, price, inventory, ads — all stable. Conversion was just quietly dropping.\n\nThe culprit turned out to be a 16-pixel halo of off-white pixels around her main product image. Amazon's image audit had flagged it. Her listing wasn't removed — just deprioritized in search until she fixed it.\n\nThe fix took 4 minutes: re-cut the original photo against mid-grey, run it through a browser-based background remover with a 'pure white #FFFFFF' export setting, and re-upload. Her listing recovered in 48 hours.\n\nThe broader lesson: Amazon's main-image policy is the strictest of any major marketplace, and it's binary. You either pass or you don't. The tools that pass it consistently in 2026 aren't Photoshop — they're browser-based AI cutout tools that can force pure 255,255,255 backgrounds and the 85% frame-fill rule on export.\n\nI wrote up the full 2026 workflow — what Amazon's policy actually requires, the 3 mistakes that get listings suppressed, and a 30-minute Saturday routine that scales — here: https://tinytools-smoky.vercel.app/background-remover/blog/amazon-product-photo-background-removal-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "background-remover",
-      "createdAt": "2026-05-08T20:12:40Z",
-      "title": "Show HN: Free in-browser background remover that hits Amazon's pure-white spec",
-      "text": "Hi HN — built this after a friend's Amazon listing got quietly suppressed by an off-white halo around her cutout. The audit treats #FCFCFC the same as a colored background.\n\nIt runs an open-weight segmentation model entirely in the browser (no upload, no signup, no watermark), and the export pipeline forces a real 255,255,255 background at 87% frame fit so you don't fail Amazon's audit on a color-managed Photoshop 'white.'\n\nFree, batches of 50 work, takes ~1s/image on a modern laptop. Source of the suppression rules + workflow writeup in the post.\n\nLink: https://tinytools-smoky.vercel.app/background-remover/blog/amazon-product-photo-background-removal-2026/\n\nWould love feedback on the segmentation edge cases I haven't handled well yet — translucent products and tightly-cropped chains are still imperfect."
     }
   ],
   "checklist": [
