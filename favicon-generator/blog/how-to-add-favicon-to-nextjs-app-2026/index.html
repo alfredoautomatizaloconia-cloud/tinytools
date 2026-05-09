@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Add a Favicon to a Next.js App in 2026 — The Complete Guide</title>
+<meta name="description" content="The 2026 guide to adding favicons to Next.js — App Router conventions, the metadata API, dark-mode SVG, manifest.webmanifest, debugging the cache, and the minimal file set that beats the legacy 14-file dump.">
+<meta name="keywords" content="how to add favicon to nextjs, nextjs favicon 2026, app router favicon, nextjs metadata api favicon, dark mode favicon nextjs, manifest.webmanifest, apple-touch-icon nextjs, favicon generator">
+<meta property="og:title" content="How to Add a Favicon to a Next.js App in 2026 — The Complete Guide">
+<meta property="og:description" content="App Router conventions, the metadata API, dark-mode SVG, manifest.webmanifest, and the minimal file set that ships in 5 minutes.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-add-favicon-to-nextjs-app-2026/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Add a Favicon to a Next.js App in 2026">
+<meta name="twitter:description" content="App Router conventions, the metadata API, dark-mode SVG, and the minimal file set that ships in 5 minutes.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-add-favicon-to-nextjs-app-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Add a Favicon to a Next.js App in 2026 — The Complete Guide",
+  "description": "The complete 2026 walkthrough for adding favicons to a Next.js project: App Router file conventions, the metadata API, dark-mode SVG icons, manifest.webmanifest, debugging the cache, and the minimal five-file set that covers 99% of real traffic.",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
+  "datePublished": "2026-05-09",
+  "dateModified": "2026-05-09",
+  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-add-favicon-to-nextjs-app-2026/",
+  "image": "https://tinytools-smoky.vercel.app/favicon-generator/og-default.png",
+  "keywords": "nextjs favicon, app router favicon, nextjs metadata api, favicon dark mode, manifest.webmanifest, apple-touch-icon, svg favicon"
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a;
+    --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #f59e0b; --accent-glow: #f59e0b40;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 {
+    font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15;
+    margin: 16px 0 12px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fbbf24 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 24px; font-weight: 700; margin: 36px 0 12px; color: var(--text); }
+  h3 { font-size: 19px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+  p, ul, ol { color: #d0d0e0; margin-bottom: 16px; font-size: 17px; }
+  ul, ol { margin-left: 24px; }
+  li { margin-bottom: 6px; }
+  strong { color: var(--text); font-weight: 600; }
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-size: 14px; color: #fbbf24; }
+  pre { background: var(--bg-elevated); padding: 14px 16px; border-radius: 10px; overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); }
+  pre code { background: transparent; padding: 0; color: #fbbf24; font-size: 13px; line-height: 1.55; }
+  a { color: var(--accent); }
+  blockquote {
+    border-left: 3px solid var(--accent); padding: 8px 16px; margin: 20px 0;
+    background: var(--bg-elevated); border-radius: 6px; font-style: italic; color: var(--text-dim);
+  }
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 15px;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); color: #d0d0e0; }
+  th { background: var(--bg-elevated); color: var(--text); font-weight: 600; font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  .cta-box {
+    margin: 36px 0; padding: 24px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; border-left: 4px solid var(--accent);
+  }
+  .cta-box h3 { margin: 0 0 6px; font-size: 18px; color: var(--text); }
+  .cta-box p { margin-bottom: 12px; font-size: 15px; }
+  .cta-btn {
+    display: inline-block; padding: 12px 24px;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+  }
+  .related { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .related h3 { color: var(--text-dim); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card {
+    padding: 14px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--text); transition: all 0.15s;
+  }
+  .related-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .related-card .name { font-weight: 600; font-size: 14px; }
+  .related-card .desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;›&nbsp;
+    <a href="/favicon-generator/">Favicon Generator</a> &nbsp;›&nbsp;
+    Next.js Favicon Guide
+  </nav>
+
+  <h1>How to Add a Favicon to a Next.js App in 2026 — The Complete Guide</h1>
+  <p class="meta">Published May 9, 2026 · 9 min read · Tagged: nextjs, favicon, app-router, metadata-api</p>
+
+  <p>Adding a favicon to a Next.js app should take five minutes. Yet a remarkable number of production sites ship in 2026 with a 404 on <code>/favicon.ico</code>, a stale icon Chrome refuses to forget, or a 14-file zip from a 2017 favicon generator that nobody actually needs anymore.</p>
+
+  <p>This guide walks through what works in modern Next.js — App Router conventions, the metadata API, dark-mode SVG, the <code>manifest.webmanifest</code>, and the cache-busting trick that saves an afternoon of frustration. By the end you'll have a minimal five-file set that covers 99% of real traffic, plus the exact code to copy.</p>
+
+  <h2>The two ways Next.js handles favicons</h2>
+
+  <p>Next.js (App Router, 13+) gives you two paths. Both work; they trade convenience for control.</p>
+
+  <h3>1. File-based conventions (the magic path)</h3>
+
+  <p>Drop a file with a known name into <code>app/</code> and Next.js automatically generates the right <code>&lt;link&gt;</code> tags at build time. The recognized names:</p>
+
+  <ul>
+    <li><code>favicon.ico</code> — the legacy fallback, served at <code>/favicon.ico</code></li>
+    <li><code>icon.svg</code> (or <code>.png</code>) — the modern icon</li>
+    <li><code>apple-icon.png</code> — for iOS home-screen and Safari pinned tabs</li>
+    <li><code>opengraph-image.png</code>, <code>twitter-image.png</code> — for social cards</li>
+  </ul>
+
+  <p>Put them in <code>app/</code> (the root segment) and they apply globally. Put them in <code>app/blog/</code> and they apply only to <code>/blog/*</code> routes — useful for sub-brands.</p>
+
+  <h3>2. The metadata API (the explicit path)</h3>
+
+  <p>If you want to control sizes, types, and dark-mode media queries explicitly, export a <code>metadata</code> object from your root layout:</p>
+
+  <pre><code>// app/layout.tsx
+export const metadata = {
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: '/apple-icon.png',
+    other: [
+      { rel: 'mask-icon', url: '/safari-pinned.svg', color: '#f59e0b' },
+    ],
+  },
+};</code></pre>
+
+  <p>Use the metadata API when the file conventions can't express what you need — multiple icon sizes, custom <code>rel</code> values, or dark-mode swaps. Otherwise lean on conventions; less code is less to break.</p>
+
+  <h2>The minimal file set for 2026</h2>
+
+  <p>You don't need 14 PNGs anymore. Browsers in 2026 have consolidated around three things: SVG, one Apple-touch PNG, and a fallback ICO. Here's the set:</p>
+
+  <table>
+    <thead><tr><th>File</th><th>Size</th><th>Why it's there</th></tr></thead>
+    <tbody>
+      <tr><td><code>icon.svg</code></td><td>any</td><td>Crisp at every DPI, supports dark mode</td></tr>
+      <tr><td><code>favicon.ico</code></td><td>32×32 + 16×16</td><td>Older browsers, RSS readers, IE compat</td></tr>
+      <tr><td><code>apple-icon.png</code></td><td>180×180</td><td>iOS home screen, Safari pinned</td></tr>
+      <tr><td><code>icon-192.png</code></td><td>192×192</td><td>Android home screen via manifest</td></tr>
+      <tr><td><code>icon-512.png</code></td><td>512×512</td><td>PWA splash screens, app stores</td></tr>
+    </tbody>
+  </table>
+
+  <p>That's it. Five files. No more <code>android-chrome-144x144.png</code>, no <code>mstile-310x150.png</code>, no Microsoft browserconfig.xml. If a tool is still asking you for those, the tool is from another decade.</p>
+
+  <div class="cta-box">
+    <h3>Need the five files in 30 seconds?</h3>
+    <p>Drop a logo into the TinyTools favicon generator and it spits out the exact set above — SVG with dark-mode rules, <code>apple-icon.png</code>, ICO, and the manifest icons. No upload, no email gate, runs locally in your browser.</p>
+    <a class="cta-btn" href="/favicon-generator/">Try the favicon generator free →</a>
+  </div>
+
+  <h2>Step-by-step: adding the favicon to a fresh Next.js app</h2>
+
+  <h3>Step 1 — Place the files</h3>
+
+  <p>With App Router (Next.js 13+), put the files in <code>app/</code>:</p>
+
+  <pre><code>app/
+  ├── layout.tsx
+  ├── page.tsx
+  ├── favicon.ico
+  ├── icon.svg
+  ├── apple-icon.png
+  └── opengraph-image.png</code></pre>
+
+  <p>If you're still on Pages Router, put them in <code>public/</code> instead and reference them manually in <code>_document.tsx</code>. The conventions only fire under <code>app/</code>.</p>
+
+  <h3>Step 2 — Wire the manifest</h3>
+
+  <p>For PWA install prompts and Android home-screen icons, you need a manifest. The cleanest approach is <code>app/manifest.ts</code>:</p>
+
+  <pre><code>// app/manifest.ts
+import type { MetadataRoute } from 'next';
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: 'My App',
+    short_name: 'MyApp',
+    description: 'A description for the install prompt.',
+    start_url: '/',
+    display: 'standalone',
+    background_color: '#0a0a0f',
+    theme_color: '#f59e0b',
+    icons: [
+      { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+      { src: '/icon-512-maskable.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+    ],
+  };
+}</code></pre>
+
+  <p>Next.js serves this at <code>/manifest.webmanifest</code> with the right MIME type. The <code>maskable</code> icon is the one with safe padding — Android crops aggressively, and a non-maskable icon will get its edges chopped off on Pixel devices.</p>
+
+  <h3>Step 3 — Dark-mode SVG (optional but cheap)</h3>
+
+  <p>Browsers honor <code>prefers-color-scheme</code> inside an SVG favicon. Add a <code>&lt;style&gt;</code> block:</p>
+
+  <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"&gt;
+  &lt;style&gt;
+    path { fill: #1a1a1a; }
+    @media (prefers-color-scheme: dark) {
+      path { fill: #fafafa; }
+    }
+  &lt;/style&gt;
+  &lt;path d="..."/&gt;
+&lt;/svg&gt;</code></pre>
+
+  <p>Now the browser tab icon is dark-on-light during the day and light-on-dark at night. No JavaScript, no extra requests.</p>
+
+  <h3>Step 4 — Verify the build</h3>
+
+  <p>Run <code>next build</code>, then inspect the rendered HTML in <code>.next/server/app/index.html</code> (or the network tab). You should see something like:</p>
+
+  <pre><code>&lt;link rel="icon" href="/icon.svg?xyz" type="image/svg+xml"/&gt;
+&lt;link rel="apple-touch-icon" href="/apple-icon.png?abc"/&gt;
+&lt;link rel="manifest" href="/manifest.webmanifest"/&gt;</code></pre>
+
+  <p>The query strings (<code>?xyz</code>) are Next.js cache-busting hashes — they change whenever the source file changes, which solves the single most annoying favicon problem in existence.</p>
+
+  <h2>Debugging: "I updated the favicon but Chrome won't show it"</h2>
+
+  <p>This is the favicon problem everyone hits eventually. Five things to try, in order:</p>
+
+  <ol>
+    <li><strong>Hard reload won't fix it.</strong> Favicons are cached separately from the page. Hard-reloading <code>/</code> does nothing.</li>
+    <li><strong>Open <code>/favicon.ico</code> directly</strong> in a new tab and hard-reload <em>that</em> URL. This is the usual fix.</li>
+    <li><strong>Check DevTools → Application → Manifest → Icons.</strong> If the icon URL there is wrong, your <code>manifest.webmanifest</code> is the culprit, not the file.</li>
+    <li><strong>Append a dummy query string</strong> in your link tag (<code>?v=2</code>). Useful for testing only — remove it after.</li>
+    <li><strong>Try an incognito window.</strong> If it works there, you have a stale cache, not a bug.</li>
+  </ol>
+
+  <p>If incognito <em>also</em> shows the wrong icon, the file you uploaded is genuinely wrong — open the deployed URL of <code>/icon.svg</code> directly and look at it.</p>
+
+  <h2>Common pitfalls</h2>
+
+  <p><strong>Putting files in <code>public/</code> with App Router.</strong> Files in <code>public/</code> still serve, but Next.js won't auto-generate the <code>&lt;link&gt;</code> tags. You get a working favicon at the root URL but nothing in the HTML — which means social previews and AI scrapers miss it.</p>
+
+  <p><strong>Conflicting <code>favicon.ico</code> in <code>public/</code> and <code>app/</code>.</strong> If both exist, <code>app/favicon.ico</code> wins, but the <code>public/</code> one still serves at <code>/favicon.ico</code>. Pick one.</p>
+
+  <p><strong>Forgetting the maskable icon.</strong> Android adds a circular crop. Without a maskable icon, your logo gets a haircut on every Pixel. Add a 512×512 with ~10% padding and label it <code>purpose: 'maskable'</code> in the manifest.</p>
+
+  <p><strong>SVG without <code>viewBox</code>.</strong> SVG favicons need a <code>viewBox</code> attribute. Without it, the icon renders at literal pixel sizes and clips weirdly in some browsers.</p>
+
+  <h2>What about Pages Router?</h2>
+
+  <p>If you're on <code>pages/</code> instead of <code>app/</code>, the file conventions don't fire. Put the icons in <code>public/</code> and reference them in <code>_document.tsx</code>:</p>
+
+  <pre><code>// pages/_document.tsx
+&lt;Head&gt;
+  &lt;link rel="icon" type="image/svg+xml" href="/icon.svg"/&gt;
+  &lt;link rel="icon" type="image/x-icon" href="/favicon.ico"/&gt;
+  &lt;link rel="apple-touch-icon" href="/apple-icon.png"/&gt;
+  &lt;link rel="manifest" href="/manifest.webmanifest"/&gt;
+&lt;/Head&gt;</code></pre>
+
+  <p>It works fine. But if you're starting a new project in 2026, default to App Router — the conventions are genuinely less code.</p>
+
+  <h2>The five-minute checklist</h2>
+
+  <ol>
+    <li>Generate the five files (SVG, ICO, apple-icon, 192, 512).</li>
+    <li>Drop them into <code>app/</code> with the right names.</li>
+    <li>Add <code>app/manifest.ts</code> with both 192 and 512 icons (one maskable).</li>
+    <li>Run <code>next build</code> and verify the rendered HTML has the link tags.</li>
+    <li>Test in an incognito window after deploy. If it shows the right icon there, you're done.</li>
+  </ol>
+
+  <p>Five files, five steps, five minutes. The favicon problem is only mysterious if you're using a 2017 generator with a 2017 file list. With the modern conventions, it's almost boring.</p>
+
+  <div class="cta-box">
+    <h3>Generate your set with TinyTools</h3>
+    <p>Free, browser-based, no upload. Drop your logo, get the five files plus a working <code>manifest.webmanifest</code> snippet you can paste into Next.js.</p>
+    <a class="cta-btn" href="/favicon-generator/">Open the favicon generator →</a>
+  </div>
+
+  <p>Further reading: <a href="https://nextjs.org/docs/app/api-reference/file-conventions/metadata" rel="nofollow">Next.js metadata file conventions</a>, <a href="https://web.dev/articles/maskable-icon" rel="nofollow">maskable icons on web.dev</a>, and <a href="https://www.namecheap.com/domains/" rel="sponsored nofollow">Namecheap domains</a> for the URL you'll be putting this favicon on in the first place.</p>
+
+  <div class="related">
+    <h3>More from TinyTools</h3>
+    <div class="related-grid">
+      <a class="related-card" href="/favicon-generator/blog/favicon-best-practices-2026/">
+        <div class="name">Favicon best practices 2026</div>
+        <div class="desc">The principles behind the file set</div>
+      </a>
+      <a class="related-card" href="/og-image-generator/">
+        <div class="name">OG Image Generator</div>
+        <div class="desc">Pair your favicon with a good social card</div>
+      </a>
+      <a class="related-card" href="/seo-meta-generator/">
+        <div class="name">SEO Meta Generator</div>
+        <div class="desc">Generate the rest of your &lt;head&gt;</div>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 TinyTools · <a href="/">All tools</a> · <a href="/favicon-generator/">Favicon Generator</a>
+  </footer>
+</div>
+</body>
+</html>
