@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 9, 2026 — published Emoji Favicon guide for favicon-generator + 4 social drafts ready",
+  "lastUpdated": "May 9, 2026 — published Next.js favicon guide for favicon-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 42,
+    "posts": 43,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 09:14",
+      "tag": "seo",
+      "text": "📝 Published blog post: How to Add a Favicon to a Next.js App in 2026 — The Complete Guide at /favicon-generator/blog/how-to-add-favicon-to-nextjs-app-2026/"
+    },
+    {
+      "time": "today 09:14",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/nextjs, LinkedIn, Show HN — all promoting favicon-generator"
+    },
     {
       "time": "today 14:30",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 20:11",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/Etsy, LinkedIn, Show HN — all promoting background-remover"
-    },
-    {
-      "time": "today 16:05",
-      "tag": "seo",
-      "text": "📝 Published blog post: How to Check If a Domain Name Is Trademarked Before You Buy It (2026 Guide) at /domain-generator/blog/how-to-check-if-domain-name-is-trademarked-2026/"
-    },
-    {
-      "time": "today 16:05",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/startups, LinkedIn, Show HN — all promoting domain-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "text": "🧵 Adding a favicon to Next.js in 2026 should take 5 minutes.\n\nYet half the production sites I open ship with a 404 on /favicon.ico, a stale icon Chrome refuses to forget, or a 14-file zip from a 2017 generator that nobody actually needs anymore.\n\nHere's the modern method that just works:\n\n1/6\n\n---\n\nThe App Router (13+) has file conventions. Drop these into app/ and Next.js auto-generates the link tags at build:\n\n• favicon.ico\n• icon.svg\n• apple-icon.png\n• opengraph-image.png\n\nNo _document.tsx. No useEffect. No \"did I forget the rel attribute?\"\n\n2/6\n\n---\n\nThe 2026 minimal set is FIVE files, not fourteen:\n\n• icon.svg — crisp at every DPI\n• favicon.ico — 32+16 fallback\n• apple-icon.png — 180×180\n• icon-192.png — Android\n• icon-512.png — PWA splash\n\nIf a tool is still asking for android-chrome-144x144.png, it's from another decade.\n\n3/6\n\n---\n\nDark-mode favicons are free. Inside your icon.svg:\n\n<style>\n path { fill: #1a1a1a }\n @media (prefers-color-scheme: dark) {\n   path { fill: #fafafa }\n }\n</style>\n\nTab icon now reads in both themes. No JS, no extra requests.\n\n4/6\n\n---\n\nThe #1 favicon problem: \"I updated the file but Chrome won't show it.\"\n\nHard reload won't fix it. Favicons are cached separately.\n\nThe fix: open /favicon.ico directly in a new tab and hard-reload THAT. Or test in incognito.\n\n5/6\n\n---\n\nGenerated my favicon set in TinyTools — free, runs in your browser, no upload. Drops out exactly the 5 files + a working manifest.webmanifest snippet you can paste into Next.js:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/\n\nFull guide with code: https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-add-favicon-to-nextjs-app-2026/\n\n6/6",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T16:12:29.135629+00:00"
+    },
+    {
+      "platform": "Reddit /r/nextjs",
+      "text": "The Next.js metadata API does most of this for you in 2026. App Router (13+) auto-generates the link tags if you put files in app/ with the right names:\n\n- app/favicon.ico\n- app/icon.svg\n- app/apple-icon.png\n- app/manifest.ts (export default a function returning a Manifest object)\n\nYou don't need 14 files anymore. The minimal modern set is five: SVG + ICO + apple-icon + 192 + 512. The browsers consolidated. If a tool is still asking for android-chrome-144x144.png it's from another decade.\n\nFor the cache problem (favicon won't update), the fix is to open /favicon.ico directly in a new tab and hard-reload it — favicons are cached separately from the page so a normal hard reload doesn't touch them. Or test in incognito.\n\nI wrote up the whole flow with code samples here if useful: https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-add-favicon-to-nextjs-app-2026/ — also has a free generator that spits out the 5 files + a manifest.webmanifest snippet you can paste straight into a Next.js project.",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T16:12:29.135629+00:00"
+    },
+    {
+      "platform": "LinkedIn",
+      "text": "Five minutes. That's all it should take to add a favicon to a Next.js app in 2026.\n\nYet I keep opening production sites with a 404 on /favicon.ico, or a stale icon Chrome refuses to forget, or a 14-file zip from a 2017 generator that nobody actually needs anymore.\n\nThe App Router collapsed the whole thing into a file convention. Drop favicon.ico, icon.svg, apple-icon.png into app/ — Next.js auto-generates the link tags at build. The minimal modern set is FIVE files (SVG, ICO, apple-icon, 192, 512), not fourteen. Browsers consolidated. The old shotgun approach is dead.\n\nTwo tips that save the most time:\n\n1. Dark-mode SVG favicons are free. Inline a prefers-color-scheme media query and your tab icon reads in both themes with zero JS.\n\n2. The \"I updated the favicon but Chrome won't show it\" problem isn't a bug. Favicons are cached separately from the page, so a hard reload doesn't fix it. Open /favicon.ico directly in a new tab and hard-reload that.\n\nWrote up the full walkthrough with code samples — including a free browser-based generator that produces the exact 5-file set Next.js expects:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-add-favicon-to-nextjs-app-2026/",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T16:12:29.135629+00:00"
+    },
+    {
+      "platform": "Show HN",
+      "text": "Title: Show HN: A favicon generator that outputs exactly what Next.js App Router expects\n\n---\n\nFirst comment:\nBuilt this because every favicon generator I tried still output a 14-file zip from the 2017 era. Modern Next.js (App Router 13+) only needs five: icon.svg, favicon.ico, apple-icon.png, icon-192.png, icon-512.png. Plus a manifest.webmanifest snippet. This generates exactly that set in the browser, no upload. Wrote the full Next.js integration guide here: https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-add-favicon-to-nextjs-app-2026/",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-09T16:12:29.135629+00:00"
+    },
+    {
+      "platform": "X / Twitter Thread",
       "text": "🧵 An emoji favicon is the highest-leverage shortcut in front-end.\n\nYou skip the design pass, skip the export pipeline, ship a recognizable mark in 60 seconds.\n\nHere's the 2026 method that actually works across every browser (yes, including Safari):\n\n1/6\n\n---\n\nThe one-liner for prototypes — works in Chrome, Firefox, Edge:\n\n<link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>\">\n\nDrop it in <head>, swap the rocket. Done. Zero files in your repo.\n\n2/6\n\n---\n\nThe catch: Safari ignores data-URI SVG favicons that rely on system color emoji fonts.\n\niOS \"Add to Home Screen\" ignores SVG favicons completely — it wants a real PNG.\n\nIf a third of your traffic is Mac/iPhone, the one-liner isn't enough on its own.\n\n3/6\n\n---\n\nFull set for production = 4 files + 1 manifest:\n\n• favicon.ico (16/32/48 multi-size)\n• favicon.svg (your inline emoji)\n• apple-touch-icon.png (180×180, opaque background!)\n• icon-192 + icon-512 PNGs in manifest.json\n• maskable variant for Android 12+ launchers\n\n4/6\n\n---\n\nWhich emojis survive at 16×16?\n\n✅ Single dominant shape (🚀 ⚡ 🔥 🌿 🌙 ⭐)\n✅ High color contrast\n❌ Multi-part scenes (🎂 💻 🌊)\n❌ ZWJ sequences (👨‍👩‍👧, profession+skin tones)\n\nSquint test: zoom your tab to 100% and squint. Can you tell what it is?\n\n5/6\n\n---\n\nShip the full set in 60s — type one emoji, get ICO + SVG + apple-touch-icon + maskable PNG + manifest.json + the canonical HTML block:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-make-favicon-from-emoji-2026/\n\nFree, no signup, no email gate.\n\n6/6",
       "tool": "favicon-generator",
       "createdAt": "2026-05-09T14:30:00Z"
@@ -260,30 +284,6 @@
       "text": "Show HN: Generate a full favicon set from a single emoji in 60 seconds (free)\n\nFirst comment for the discussion thread:\n\nBuilt this after one too many afternoons exporting 14 favicon sizes for prototypes that never shipped. You drop a single emoji and it outputs ICO + SVG + apple-touch-icon + maskable PNG + manifest.json + the canonical <head> block. Works around the Safari data-URI gap and Android 12 maskable-crop pitfall. Writeup with the four common pitfalls: https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-make-favicon-from-emoji-2026/",
       "tool": "favicon-generator",
       "createdAt": "2026-05-09T14:30:00Z"
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "text": "🧵 Your favicon ships, you deploy, and Google STILL shows the gray globe next to your search result.\n\nIn 2026 this almost always comes down to one of 7 specific things — here's the diagnostic order that catches them in <10 min 👇\n\n(1/5)\n\n—\n\nThe #1 cause: the favicon URL itself returns 404 or 403 to Googlebot.\n\nOpen your favicon URL in incognito. If you see the icon = good. If you see a 404, redirect chain, or auth wall = same view Google has.\n\nMost common reasons: build pipeline strips it, hash-busted filename, Cloudflare Access on staging.\n\n(2/5)\n\n—\n\n#2 cause: size. Google requires a multiple of 48×48 in 2026.\n\nA 16×16 ICO from 2010 is auto-rejected. Same with non-square images.\n\nThe safe set: 48, 96, 192, 512 PNGs + an SVG. Generate the full bundle in 1 click → tinytools-smoky.vercel.app/favicon-generator/\n\n(3/5)\n\n—\n\n#3 cause: the link tag is injected by JavaScript (React Helmet, Vue Meta, etc).\n\nGooglebot's favicon crawler reads the initial HTML, not the post-render DOM.\n\nCheck: view-source on your homepage. If <link rel=\"icon\"> is missing there but appears in DevTools, that's your bug.\n\nMove it to the static index.html shell.\n\n(4/5)\n\n—\n\nAfter fixing: wait 3–14 days. There is no \"force update.\"\n\nVerify with https://www.google.com/s2/favicons?domain=yoursite.com&sz=64 — that's Google's cached version.\n\nFull 7-step diagnostic + the 30-sec checklist:\ntinytools-smoky.vercel.app/favicon-generator/blog/favicon-not-showing-in-google-search-results-2026/\n\n(5/5)",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T08:11:00Z"
-    },
-    {
-      "platform": "Reddit /r/SEO",
-      "text": "Subreddit: /r/SEO (or /r/webdev, /r/Wordpress)\n\nComment (reply on threads asking \"why is my favicon not showing in Google\" or \"Google is showing the globe icon\"):\n\nAlmost always one of these 7 things, in order of frequency:\n\n1. The favicon URL returns 404 or 403 to Googlebot. Open it in an incognito window — whatever you see, Google saw the same thing. Build pipelines stripping the file from /public is the #1 culprit.\n\n2. Size is wrong. Google needs a multiple of 48×48 in 2026. A legacy 16×16 ICO is auto-rejected. Square only.\n\n3. Wrong MIME type. `curl -I` your favicon URL and confirm Content-Type is image/svg+xml or image/png — not text/html (which happens when CDN rewrites catch it).\n\n4. Link tag is injected by JS (React Helmet, etc). The favicon crawler reads the initial HTML response, not the post-render DOM. View-source must show the tag.\n\n5. Homepage isn't indexable. noindex, robots.txt block, or non-200 status on / breaks the whole flow.\n\n6. You changed it 3 days ago. Google takes 3–14 days; there's no force-update.\n\n7. SVG that doesn't render at 48×48. Google rasterizes to 48×48 — if your SVG is illegible at that size, it falls back to the globe.\n\nSanity check: `https://www.google.com/s2/favicons?domain=yoursite.com&sz=64` shows you Google's cached version. If it's still the globe there, Google never accepted the file.\n\nIf you need a clean source set (48/96/192/512 PNGs + SVG + apple-touch-icon + manifest.json), this free tool does it in one click without signup: https://tinytools-smoky.vercel.app/favicon-generator/\n\nFull diagnostic write-up if you want the long version: https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-not-showing-in-google-search-results-2026/",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T08:11:00Z"
-    },
-    {
-      "platform": "LinkedIn Post",
-      "text": "Spent two hours debugging a client's favicon last week.\n\nIt had been \"set\" for 6 weeks. Google was still showing the gray globe in every search result. The dev team was convinced it was a Google bug.\n\nIt wasn't.\n\nThe favicon was 16×16. In 2026 Google requires a multiple of 48×48 — anything smaller is silently rejected.\n\nThat's the thing about favicons in search results: they fail quietly. No Search Console warning, no error in any audit tool, no message anywhere. Just a globe icon next to your brand listing for years if no one checks.\n\nI keep seeing the same 7 causes:\n\n→ Favicon URL returns 404/403 (build pipeline strips it)\n→ Size is below 48×48 or non-square\n→ Wrong Content-Type header from the CDN\n→ Link tag injected by JS instead of in static HTML\n→ Homepage is noindex\n→ Recent change (Google takes 3–14 days)\n→ SVG that's unreadable at 48×48 after rasterization\n\nIf you've been wondering why your favicon never appeared in Google after launch, it's almost always one of these.\n\nWrote up the full diagnostic + fix order here:\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-not-showing-in-google-search-results-2026/\n\n(And if you just need a fresh source set: https://tinytools-smoky.vercel.app/favicon-generator/ — free, no signup, generates the full bundle.)",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T08:11:00Z"
-    },
-    {
-      "platform": "Show HN",
-      "text": "Title: Show HN: Favicon Not Showing in Google Search Results — the 2026 diagnostic order\n\nComment:\nAuthor here. Wrote this after debugging a client favicon that was \"set\" for 6 weeks but still showed Google's gray globe. Turned out to be a 16×16 ICO — auto-rejected since Google's 48×48 minimum. The post is the diagnostic order I now run on every site. Curious if anyone has hit a cause not in the list — happy to add it.",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T08:11:00Z"
     }
   ],
   "checklist": [
