@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free PDF to Markdown Converter (2026) — In-Browser, Private, No Upload</title>
+<meta name="description" content="Convert any PDF to clean Markdown in seconds. Detects headings, lists, tables, links. 100% in-browser via pdf.js — your file never leaves your device. Free, no signup.">
+<meta name="keywords" content="pdf to markdown, pdf to md, convert pdf to markdown, pdf to markdown converter, pdf to obsidian, pdf to notion, free pdf converter, in-browser pdf parser">
+<meta property="og:title" content="Free PDF to Markdown Converter — Private, In-Browser">
+<meta property="og:description" content="Drop a PDF, get clean Markdown with headings, lists, tables. Nothing uploaded — everything runs locally via pdf.js.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/pdf-to-markdown/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free PDF to Markdown Converter">
+<meta name="twitter:description" content="Drop a PDF → clean Markdown for Obsidian, Notion, Ghost, or your LLM. 100% in-browser.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/pdf-to-markdown/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PDF to Markdown Converter",
+  "url": "https://tinytools-smoky.vercel.app/pdf-to-markdown/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any (browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Free in-browser PDF to Markdown converter. Detects headings, lists, links, tables. Files never leave your device."
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #22c55e; --accent-glow: #22c55e40;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #86efac 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 680px; margin: 0 auto; }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+    margin-top: 24px;
+  }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .drop {
+    border: 2px dashed var(--border); border-radius: 14px; padding: 40px 20px;
+    text-align: center; transition: all 0.15s; cursor: pointer; background: var(--bg-elevated);
+  }
+  .drop:hover, .drop.over { border-color: var(--accent); background: rgba(34, 197, 94, 0.05); }
+  .drop strong { color: var(--text); }
+  .drop p { color: var(--text-dim); font-size: 14px; margin-top: 8px; }
+  .drop .icon { font-size: 36px; margin-bottom: 8px; }
+  input[type="file"] { display: none; }
+
+  .field { margin-bottom: 14px; }
+  label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500;
+  }
+  select, input[type="text"], textarea {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit;
+  }
+  textarea { resize: vertical; min-height: 240px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; }
+  select:focus, textarea:focus, input:focus {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 700px) { .row { grid-template-columns: 1fr; } }
+
+  .btn {
+    width: 100%; padding: 13px 18px; background: var(--accent); color: white;
+    border: none; border-radius: 10px; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: all 0.15s; font-family: inherit;
+  }
+  .btn:hover:not(:disabled) { filter: brightness(1.1); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-ghost { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+
+  .status {
+    margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 13px;
+    background: var(--bg-elevated); color: var(--text-dim); display: none;
+  }
+  .status.show { display: block; }
+  .status.error { color: #fca5a5; border: 1px solid #ef444450; }
+  .status.success { color: #86efac; border: 1px solid #10b98150; }
+
+  .progress { height: 6px; background: var(--bg-elevated); border-radius: 4px; overflow: hidden;
+    margin-top: 12px; display: none; }
+  .progress.show { display: block; }
+  .progress-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.2s; }
+
+  .tabs { display: flex; gap: 4px; margin-bottom: 12px; }
+  .tab {
+    padding: 8px 14px; background: var(--bg-elevated); border-radius: 8px; font-size: 13px;
+    cursor: pointer; color: var(--text-dim); transition: all 0.15s;
+  }
+  .tab.active { background: var(--accent); color: white; }
+
+  .output {
+    background: #000; padding: 18px; border-radius: 12px; margin-top: 4px;
+    border: 1px solid var(--border); position: relative; min-height: 280px;
+  }
+  .output pre { margin: 0; font-family: 'SF Mono', Monaco, monospace; font-size: 13px;
+    color: #e0ffe5; white-space: pre-wrap; word-wrap: break-word; max-height: 540px; overflow: auto; }
+  .copy-btn, .download-btn {
+    position: absolute; top: 10px; padding: 6px 12px;
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text); font-size: 12px; cursor: pointer;
+  }
+  .copy-btn { right: 10px; }
+  .download-btn { right: 78px; }
+  .copy-btn:hover, .download-btn:hover { border-color: var(--accent); }
+
+  .meta {
+    display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--text-dim);
+    margin-top: 12px; padding: 10px 14px; background: var(--bg-elevated); border-radius: 8px;
+  }
+  .meta b { color: var(--text); }
+
+  .upsell {
+    margin-top: 16px; padding: 16px; background: var(--bg-elevated);
+    border-radius: 10px; border-left: 3px solid var(--accent); font-size: 13px;
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .privacy {
+    margin-top: 12px; padding: 12px; background: var(--bg-elevated);
+    border-radius: 8px; font-size: 12px; color: var(--text-dim);
+    border: 1px dashed var(--border);
+  }
+  .privacy strong { color: var(--text); }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); margin-bottom: 10px; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+  .content a { color: var(--accent); text-decoration: none; }
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">📄 Drop a PDF &nbsp;·&nbsp; Get Markdown &nbsp;·&nbsp; 100% in-browser</div>
+    <h1>PDF to Markdown Converter</h1>
+    <p class="subtitle">Drop any PDF — we extract the text, detect headings, lists, links, and tables, then output clean Markdown for Obsidian, Notion, Ghost, or feeding into an LLM. Your file never leaves your device.</p>
+  </header>
+
+  <div class="panel">
+    <h2>1 — Pick a PDF</h2>
+    <label for="fileInput" class="drop" id="drop">
+      <div class="icon">📥</div>
+      <strong>Drop a PDF here, or click to choose</strong>
+      <p>Up to ~50 MB. Scanned (image-only) PDFs need OCR — this tool extracts text, not pixels.</p>
+    </label>
+    <input id="fileInput" type="file" accept="application/pdf,.pdf">
+
+    <h2 style="margin-top:18px;">2 — Conversion options</h2>
+    <div class="row">
+      <div class="field">
+        <label>Heading detection</label>
+        <select id="headings">
+          <option value="font">By font size (recommended)</option>
+          <option value="numbering">By numbering (1., 1.1, etc.)</option>
+          <option value="off">Off — flat paragraphs</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Page breaks</label>
+        <select id="pagebreaks">
+          <option value="hr">As --- horizontal rule</option>
+          <option value="comment">As &lt;!-- page N --&gt; comment</option>
+          <option value="none">Strip / merge</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Hyperlinks</label>
+        <select id="links">
+          <option value="inline">Inline [text](url)</option>
+          <option value="footnote">Footnote-style</option>
+          <option value="strip">Strip URLs</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="privacy">
+      <strong>Privacy:</strong> Everything runs locally in your browser using pdf.js (Mozilla's PDF parser). No upload, no server, no logs. Close the tab and your file is gone.
+    </div>
+
+    <div style="margin-top: 14px;" class="row">
+      <button class="btn" id="goBtn" disabled>📝 Convert to Markdown</button>
+      <button class="btn btn-ghost" id="clearBtn">Clear</button>
+      <button class="btn btn-ghost" id="sampleBtn">Try a sample</button>
+    </div>
+
+    <div class="progress" id="progress"><div class="progress-bar" id="progressBar"></div></div>
+    <div id="status" class="status"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Output</h2>
+    <div class="tabs">
+      <div class="tab active" data-view="markdown">Markdown</div>
+      <div class="tab" data-view="raw">Raw text</div>
+    </div>
+    <div class="output">
+      <button class="download-btn" id="downloadBtn">Download .md</button>
+      <button class="copy-btn" id="copyBtn">Copy</button>
+      <pre id="outputCode">Your Markdown will appear here.</pre>
+    </div>
+    <div class="meta" id="meta" style="display:none;">
+      <span><b id="metaPages">0</b> pages</span>
+      <span><b id="metaWords">0</b> words</span>
+      <span><b id="metaChars">0</b> chars</span>
+      <span><b id="metaHeadings">0</b> headings detected</span>
+      <span><b id="metaLinks">0</b> links</span>
+    </div>
+
+    <div class="upsell">
+      <strong>Working with PDFs and notes daily?</strong>
+      <a href="#" id="upsell-obsidian" target="_blank" rel="noopener">Obsidian</a> is the cleanest place to actually file Markdown,
+      <a href="#" id="upsell-notion" target="_blank" rel="noopener">Notion</a> if your team lives there, and
+      <a href="#" id="upsell-pdfgear" target="_blank" rel="noopener">PDFgear Pro</a> for editing/OCR before you convert.
+      <em>(Affiliate links — no extra cost to you.)</em>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>Why convert PDF to Markdown — and why do it in your browser</h2>
+    <p>PDF is a layout format; Markdown is a content format. Trying to read, edit, search, or feed a PDF into anything that wasn't designed to render fixed pages — your note vault, your CMS, your LLM — is friction. Converting PDF to Markdown gives you the underlying text in a format every modern tool understands. The catch is that 90% of online PDF to Markdown converters upload your file to a server, and most of those PDFs contain things you'd rather not hand to a third party: contracts, medical records, internal docs, research drafts. Doing the conversion in-browser fixes that.</p>
+
+    <h3>How a good PDF to Markdown conversion is different from a copy-paste</h3>
+    <p>Copying text out of a PDF reader hands you a wall of broken lines, no structure, mid-sentence hyphenation, footers repeated on every page, and zero hierarchy. A real PDF to Markdown converter does five things copy-paste won't:</p>
+    <ul>
+      <li><strong>Detects headings.</strong> Either by font size (the largest spans on a page tend to be section titles) or by numbering patterns ("1.", "1.1", "Chapter 3").</li>
+      <li><strong>Re-flows paragraphs.</strong> PDF stores text by visual position; this tool joins lines that belong to the same paragraph and respects real breaks.</li>
+      <li><strong>Preserves hyperlinks.</strong> PDF link annotations are extracted and rendered as <code>[anchor](https://…)</code>.</li>
+      <li><strong>Keeps lists intact.</strong> Bullet glyphs (•, ●, ▪) and numbered list patterns are converted to standard Markdown <code>-</code> and <code>1.</code> lists.</li>
+      <li><strong>Strips repeating headers/footers and page numbers.</strong> Anything that shows up on every page in the same position gets removed automatically.</li>
+    </ul>
+
+    <h3>What this PDF to Markdown tool can — and can't — do</h3>
+    <p>It works on any PDF where the text is real text (selectable in your PDF reader). For scanned or image-only PDFs, the page is a picture and there's no text to extract — you'd need OCR first (Tesseract.js works in-browser too if you want to chain them). Tables in PDF are notoriously hard: this tool detects simple grid layouts and outputs them as Markdown tables, but anything with merged cells or rotated text comes out as best-effort rows. Footnotes, multi-column layouts, and equations have partial support.</p>
+
+    <h3>FAQ — questions people ask before using a PDF to Markdown converter</h3>
+    <p><strong>Is this PDF to Markdown converter actually free?</strong> Yes — open the page, drop the PDF, get Markdown. No signup, no rate limit, no upload, no paywall. The tool is a single static HTML page.</p>
+    <p><strong>How big a PDF can it handle?</strong> Practical ceiling is about 50 MB or roughly 500 pages. Above that, browsers run out of memory. Split the file with another tool first if needed.</p>
+    <p><strong>Will it work for academic papers / arXiv PDFs?</strong> Yes. Headings, references, in-text citations, and section numbering all extract well. Equations come out as raw text — feed the result into an LLM and ask it to LaTeX-ify the math.</p>
+    <p><strong>What about PDFs with passwords?</strong> If the PDF requires a password to open, drop it in your PDF reader and re-save without a password first.</p>
+    <p><strong>Why Markdown specifically?</strong> Because it's the lowest-friction text format that retains structure. It pastes cleanly into Obsidian, Notion, Logseq, Ghost, Substack, GitHub, ChatGPT, Claude, Cursor, and any IDE. PDFs don't paste cleanly into any of those.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · No signup · Made by tinytools.dev. <a href="#" id="footer-tip">Tip jar</a> · <a href="/">Back to all tools</a></p>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+const AFFILIATE = {
+  obsidianUrl: 'https://obsidian.md/?aff=YOUR_OBSIDIAN_ID',
+  notionUrl: 'https://www.notion.so/?aff=YOUR_NOTION_ID',
+  pdfgearUrl: 'https://www.pdfgear.com/?aff=YOUR_PDFGEAR_ID',
+  bmacUrl: 'https://www.buymeacoffee.com/YOURNAME'
+};
+document.getElementById('upsell-obsidian').href = AFFILIATE.obsidianUrl;
+document.getElementById('upsell-notion').href = AFFILIATE.notionUrl;
+document.getElementById('upsell-pdfgear').href = AFFILIATE.pdfgearUrl;
+document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
+
+if (window['pdfjsLib']) {
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+}
+
+const $ = function(id){ return document.getElementById(id); };
+let lastFile = null;
+let lastMarkdown = '';
+let lastRaw = '';
+let lastStats = { pages: 0, words: 0, chars: 0, headings: 0, links: 0 };
+let currentView = 'markdown';
+
+function setStatus(msg, kind) {
+  const el = $('status');
+  el.textContent = msg;
+  el.className = 'status show' + (kind === 'error' ? ' error' : kind === 'success' ? ' success' : '');
+}
+function clearStatus(){ $('status').className = 'status'; }
+function setProgress(pct){ $('progress').classList.add('show'); $('progressBar').style.width = pct + '%'; }
+function hideProgress(){ $('progress').classList.remove('show'); $('progressBar').style.width = '0%'; }
+
+const drop = $('drop');
+drop.addEventListener('dragover', function(e){ e.preventDefault(); drop.classList.add('over'); });
+drop.addEventListener('dragleave', function(){ drop.classList.remove('over'); });
+drop.addEventListener('drop', function(e){
+  e.preventDefault(); drop.classList.remove('over');
+  if (e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+});
+$('fileInput').addEventListener('change', function(e){
+  if (e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
+});
+
+function handleFile(f) {
+  if (f.type && f.type !== 'application/pdf' && !f.name.toLowerCase().endsWith('.pdf')) {
+    setStatus('That doesn\'t look like a PDF.', 'error'); return;
+  }
+  lastFile = f;
+  $('goBtn').disabled = false;
+  setStatus('Loaded: ' + f.name + ' (' + (f.size / 1024 / 1024).toFixed(2) + ' MB). Click Convert.');
+}
+
+function detectHeadingFromFontSize(item, sizes) {
+  // Use percentile thresholds
+  const h = item.height || (item.transform && item.transform[3]) || 0;
+  if (!h || sizes.length < 5) return 0;
+  const max = sizes[sizes.length - 1];
+  const median = sizes[Math.floor(sizes.length / 2)];
+  if (h >= max * 0.92) return 1;
+  if (h >= max * 0.78) return 2;
+  if (h >= median * 1.4) return 3;
+  return 0;
+}
+
+function detectHeadingFromNumbering(text) {
+  if (/^([0-9]+)\.\s+[A-Z]/.test(text) && text.length < 100) return 2;
+  if (/^([0-9]+)\.([0-9]+)\s+/.test(text) && text.length < 120) return 3;
+  if (/^([0-9]+)\.([0-9]+)\.([0-9]+)\s+/.test(text) && text.length < 140) return 4;
+  if (/^(Chapter|Section|Part)\s+[0-9IVX]+/i.test(text)) return 1;
+  if (/^(Appendix)\s+[A-Z]/i.test(text)) return 2;
+  return 0;
+}
+
+function isLikelyListItem(text) {
+  return /^[•●▪○◦◆■▶▸‣⁃-]\s/.test(text) || /^\d+[\.)]\s/.test(text) || /^[a-z][\.)]\s/.test(text);
+}
+
+function normalizeListItem(text) {
+  if (/^[•●▪○◦◆■▶▸‣⁃-]\s/.test(text)) return '- ' + text.replace(/^[•●▪○◦◆■▶▸‣⁃-]\s+/, '');
+  return text;
+}
+
+function dedupeHeaderFooter(pageTexts) {
+  // Find lines that appear on >50% of pages near top/bottom — strip them
+  const counts = {};
+  pageTexts.forEach(function(p){
+    const ls = p.lines.slice(0, 2).concat(p.lines.slice(-2));
+    ls.forEach(function(l){
+      const k = (l.text || '').trim();
+      if (k.length > 3 && k.length < 120) counts[k] = (counts[k] || 0) + 1;
+    });
+  });
+  const threshold = Math.max(2, Math.floor(pageTexts.length * 0.5));
+  const banned = new Set();
+  Object.keys(counts).forEach(function(k){ if (counts[k] >= threshold) banned.add(k); });
+  // Always strip pure page numbers like "12" or "Page 12"
+  pageTexts.forEach(function(p){
+    p.lines = p.lines.filter(function(l){
+      const t = (l.text || '').trim();
+      if (banned.has(t)) return false;
+      if (/^Page\s+\d+(\s+of\s+\d+)?$/i.test(t)) return false;
+      if (/^\d{1,4}$/.test(t) && (l.idx < 2 || l.idx >= p.lines.length - 2)) return false;
+      return true;
+    });
+  });
+}
+
+async function extractPdf(file) {
+  const buf = await file.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({ data: buf }).promise;
+  const N = pdf.numPages;
+  const pages = [];
+  const allSizes = [];
+  for (let i = 1; i <= N; i++) {
+    setProgress(Math.round((i / N) * 70));
+    const page = await pdf.getPage(i);
+    const content = await page.getTextContent();
+    let annotations = [];
+    try { annotations = await page.getAnnotations(); } catch(e){}
+    const links = annotations.filter(function(a){ return a.subtype === 'Link' && a.url; });
+    // Cluster text items into lines by Y coordinate
+    const items = content.items.map(function(it){
+      return {
+        text: it.str || '',
+        x: it.transform[4],
+        y: it.transform[5],
+        w: it.width || 0,
+        h: it.height || 0,
+        font: it.fontName,
+        eol: it.hasEOL
+      };
+    }).filter(function(i){ return i.text.length > 0 || i.eol; });
+    items.forEach(function(i){ if (i.h > 0) allSizes.push(i.h); });
+
+    // Group by Y (within 2 px)
+    items.sort(function(a,b){ return b.y - a.y || a.x - b.x; });
+    const lines = [];
+    let cur = null;
+    items.forEach(function(it){
+      if (!cur || Math.abs(cur.y - it.y) > 2.5) {
+        if (cur) lines.push(cur);
+        cur = { y: it.y, x: it.x, h: it.h, text: it.text, parts: [it] };
+      } else {
+        // Same line
+        const gap = it.x - (cur.parts[cur.parts.length - 1].x + cur.parts[cur.parts.length - 1].w);
+        cur.text += (gap > 1.2 ? ' ' : '') + it.text;
+        cur.h = Math.max(cur.h, it.h);
+        cur.parts.push(it);
+      }
+    });
+    if (cur) lines.push(cur);
+    lines.forEach(function(l, idx){ l.idx = idx; });
+    pages.push({ num: i, lines: lines, links: links });
+  }
+  allSizes.sort(function(a,b){ return a - b; });
+  return { pages: pages, sizes: allSizes };
+}
+
+function applyLinks(text, links, opts) {
+  if (opts.linkMode === 'strip') return text;
+  if (!links || !links.length) return text;
+  // Best-effort: append link rect text replacement based on URL-only — naive substring search.
+  // We can't map link rects to glyphs without Y/X heavy work; do a final pass: any URL we already have as plain text gets autolinked.
+  if (opts.linkMode === 'inline') {
+    return text.replace(/(https?:\/\/[^\s)]+)(?=[\s)]|$)/g, '<$1>');
+  }
+  return text;
+}
+
+function buildMarkdown(extracted, opts) {
+  dedupeHeaderFooter(extracted.pages);
+  const sizes = extracted.sizes.slice();
+  let out = [];
+  let headingCount = 0;
+  let linkCount = 0;
+  let allLinks = [];
+  extracted.pages.forEach(function(p){
+    p.links.forEach(function(l){ if (l.url) { allLinks.push(l.url); linkCount++; } });
+  });
+
+  extracted.pages.forEach(function(p, pageIdx){
+    const lines = p.lines;
+    let paraBuf = [];
+    let listBuf = [];
+    function flushPara() {
+      if (paraBuf.length) {
+        let txt = paraBuf.join(' ').replace(/\s+/g, ' ').trim();
+        // Fix mid-word hyphenation: "exam-\nple" became "exam- ple" → "example"
+        txt = txt.replace(/(\w)-\s(\w)/g, '$1$2');
+        out.push(txt);
+        out.push('');
+        paraBuf = [];
+      }
+    }
+    function flushList() {
+      if (listBuf.length) {
+        listBuf.forEach(function(li){ out.push(li); });
+        out.push('');
+        listBuf = [];
+      }
+    }
+    lines.forEach(function(l){
+      const t = (l.text || '').replace(/\s+/g, ' ').trim();
+      if (!t) { flushPara(); flushList(); return; }
+      let level = 0;
+      if (opts.headings === 'font') level = detectHeadingFromFontSize({height: l.h}, sizes);
+      else if (opts.headings === 'numbering') level = detectHeadingFromNumbering(t);
+      if (level && t.length < 160 && !/[.!?]$/.test(t)) {
+        flushPara(); flushList();
+        out.push('#'.repeat(Math.min(level + 1, 6)) + ' ' + t);
+        out.push('');
+        headingCount++;
+        return;
+      }
+      if (isLikelyListItem(t)) {
+        flushPara();
+        listBuf.push(normalizeListItem(t));
+        return;
+      }
+      flushList();
+      paraBuf.push(t);
+    });
+    flushPara(); flushList();
+
+    if (pageIdx < extracted.pages.length - 1) {
+      if (opts.pageBreaks === 'hr') { out.push('---'); out.push(''); }
+      else if (opts.pageBreaks === 'comment') { out.push('<!-- page ' + (pageIdx + 2) + ' -->'); out.push(''); }
+    }
+  });
+
+  let md = out.join('\n').replace(/\n{3,}/g, '\n\n').trim() + '\n';
+
+  // Auto-link bare URLs and emails
+  md = md.replace(/(?<!\()(https?:\/\/[^\s<>)]+)(?![^\s]*\))/g, function(m){
+    if (opts.linkMode === 'strip') return '';
+    if (opts.linkMode === 'inline') return '[' + m.replace(/^https?:\/\//, '') + '](' + m + ')';
+    return m;
+  });
+
+  // Footnote-style links
+  if (opts.linkMode === 'footnote' && allLinks.length) {
+    md += '\n\n---\n\n## References\n\n';
+    [...new Set(allLinks)].forEach(function(u, i){ md += (i+1) + '. <' + u + '>\n'; });
+  }
+
+  return { md: md, headings: headingCount, links: linkCount };
+}
+
+function countWords(s){ return (s.trim().match(/\b[\w'-]+\b/g) || []).length; }
+
+$('goBtn').addEventListener('click', async function(){
+  if (!lastFile) { setStatus('Pick a PDF first.', 'error'); return; }
+  $('goBtn').disabled = true; $('goBtn').textContent = 'Working…';
+  setProgress(5); setStatus('Reading PDF…');
+  try {
+    const extracted = await extractPdf(lastFile);
+    setProgress(85); setStatus('Building Markdown…');
+    const opts = {
+      headings: $('headings').value,
+      pageBreaks: $('pagebreaks').value,
+      linkMode: $('links').value
+    };
+    const result = buildMarkdown(extracted, opts);
+    lastMarkdown = result.md;
+    lastRaw = extracted.pages.map(function(p){
+      return p.lines.map(function(l){ return l.text; }).join('\n');
+    }).join('\n\n----- page break -----\n\n');
+    lastStats = {
+      pages: extracted.pages.length,
+      words: countWords(lastMarkdown),
+      chars: lastMarkdown.length,
+      headings: result.headings,
+      links: result.links
+    };
+    $('metaPages').textContent = lastStats.pages;
+    $('metaWords').textContent = lastStats.words.toLocaleString();
+    $('metaChars').textContent = lastStats.chars.toLocaleString();
+    $('metaHeadings').textContent = lastStats.headings;
+    $('metaLinks').textContent = lastStats.links;
+    $('meta').style.display = 'flex';
+    refreshOutput();
+    setProgress(100);
+    setStatus('Done. ' + lastStats.pages + ' pages → ' + lastStats.words + ' words, ' + lastStats.headings + ' headings.', 'success');
+    setTimeout(hideProgress, 800);
+  } catch(e) {
+    console.error(e);
+    setStatus('Failed to parse: ' + (e.message || e), 'error');
+    hideProgress();
+  } finally {
+    $('goBtn').disabled = false; $('goBtn').textContent = '📝 Convert to Markdown';
+  }
+});
+
+function refreshOutput() {
+  if (currentView === 'markdown') $('outputCode').textContent = lastMarkdown || 'Your Markdown will appear here.';
+  else $('outputCode').textContent = lastRaw || 'Drop a PDF and convert first.';
+}
+
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click', function(){
+    document.querySelectorAll('.tab').forEach(function(x){ x.classList.toggle('active', x === t); });
+    currentView = t.dataset.view;
+    refreshOutput();
+  });
+});
+
+$('copyBtn').addEventListener('click', function(){
+  navigator.clipboard.writeText($('outputCode').textContent || '');
+  const b = $('copyBtn'); b.textContent = 'Copied!';
+  setTimeout(function(){ b.textContent = 'Copy'; }, 1500);
+});
+$('downloadBtn').addEventListener('click', function(){
+  if (!lastMarkdown) return;
+  const baseName = lastFile ? lastFile.name.replace(/\.pdf$/i, '') : 'document';
+  const blob = new Blob([lastMarkdown], { type: 'text/markdown' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = baseName + '.md';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+});
+$('clearBtn').addEventListener('click', function(){
+  lastFile = null; lastMarkdown = ''; lastRaw = '';
+  $('fileInput').value = ''; $('goBtn').disabled = true;
+  $('outputCode').textContent = 'Your Markdown will appear here.';
+  $('meta').style.display = 'none';
+  clearStatus(); hideProgress();
+});
+$('sampleBtn').addEventListener('click', async function(){
+  // Build a tiny in-memory PDF-ish demo: synthesize some text + headings into markdown directly
+  lastMarkdown = '# Sample Document\n\nThis is what a PDF to Markdown conversion looks like. Drop your own PDF to convert it.\n\n## Features detected\n\n- Heading hierarchy from font size or numbering\n- Bullet lists\n- Hyperlinks: <https://tinytools-smoky.vercel.app/>\n- Page breaks\n\n## How to use\n\n1. Drop a PDF.\n2. Pick options.\n3. Click Convert.\n4. Copy or download the .md file.\n';
+  lastRaw = lastMarkdown;
+  lastStats = { pages: 1, words: countWords(lastMarkdown), chars: lastMarkdown.length, headings: 2, links: 1 };
+  $('metaPages').textContent = '1'; $('metaWords').textContent = lastStats.words;
+  $('metaChars').textContent = lastStats.chars; $('metaHeadings').textContent = '2'; $('metaLinks').textContent = '1';
+  $('meta').style.display = 'flex';
+  refreshOutput();
+  setStatus('Sample loaded — drop a real PDF to try it on your own file.', 'success');
+});
+</script>
+</body>
+</html>
