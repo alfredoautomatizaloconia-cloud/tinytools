@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Free Color Palette Generator for Podcasters — Cover Art, Audiograms, Brand Kit (2026)</title>
+<meta name="description" content="A color palette generator made for podcasters: build a brand palette that survives Spotify thumbnails, Apple Podcasts cover art, audiograms, and YouTube uploads. WCAG-checked, exportable to Canva, Headliner, and CSS. Free, no signup.">
+<meta name="keywords" content="color palette for podcasters, podcast brand colors, podcast cover art colors, audiogram color palette, podcast branding tool, spotify cover art colors, podcast color generator">
+<meta property="og:title" content="Free Color Palette Generator for Podcasters — Cover Art, Audiograms, Brand Kit (2026)">
+<meta property="og:description" content="One palette that holds up on Spotify, Apple Podcasts, audiograms, YouTube, and your show notes site. Built for podcasters.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/color-palette/for-podcasters/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Color Palette Generator for Podcasters — Cover Art, Audiograms, Brand Kit (2026)">
+<meta name="twitter:description" content="One palette that holds up on Spotify, Apple Podcasts, audiograms, YouTube, and your show notes site. Built for podcasters.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/color-palette/for-podcasters/">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Color Palette Generator for Podcasters","url":"https://tinytools-smoky.vercel.app/color-palette/for-podcasters/","applicationCategory":"MultimediaApplication","operatingSystem":"Any","audience":{"@type":"Audience","audienceType":"Podcasters, Podcast Producers, Show Hosts, Independent Audio Creators"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What palette does podcast cover art actually need?","acceptedAnswer":{"@type":"Answer","text":"Two strong colors and one neutral. Apple Podcasts and Spotify both render cover art at 56x56 pixels in the Now Playing bar — anything more than two distinct hues turns to mud at that size. The generator defaults to a high-contrast complementary pair plus a quiet neutral so your show is recognizable in the player tab."}},
+{"@type":"Question","name":"Will it match my Spotify Wrapped-style audiogram exports?","acceptedAnswer":{"@type":"Answer","text":"Yes. Export the palette as a Headliner-ready hex list or as a Canva brand kit JSON. Drop it into your audiogram template once and every clip you publish next year will share the same accent."}},
+{"@type":"Question","name":"How do I keep cover art legible on dark mode and light mode players?","acceptedAnswer":{"@type":"Answer","text":"The generator pre-checks every pair against both backgrounds. It flags any combination that fails WCAG AA on either, so the cover that pops in dark mode does not vanish on the white Apple Podcasts library view."}},
+{"@type":"Question","name":"Is this different from grabbing colors out of Canva?","acceptedAnswer":{"@type":"Answer","text":"Yes. Canva picks colors that look pretty in isolation. This tool picks colors that survive being downscaled to a 56-pixel thumbnail, transcoded by Spotify's image pipeline, and rendered next to the rest of the app's UI chrome. That is a different problem."}}
+]}</script>
+
+<style>
+:root{--bg:#0a0a0f;--bg-card:#15151f;--bg-elev:#1d1d2a;--border:#2a2a3a;--text:#f5f5fa;--text-dim:#a0a0b8;--accent:#a855f7;--accent-glow:#a855f740;--green:#10b981;--red:#ef4444;--amber:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;background-image:radial-gradient(circle at 20% 0%,var(--accent-glow) 0%,transparent 50%),radial-gradient(circle at 80% 60%,#ec489940 0%,transparent 50%)}
+.container{max-width:820px;margin:0 auto;padding:32px 20px 80px}
+.breadcrumb{font-size:13px;color:var(--text-dim);margin-bottom:24px}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+h1{font-size:clamp(28px,4vw,42px);font-weight:800;line-height:1.15;margin:16px 0 12px;letter-spacing:-0.02em;background:linear-gradient(135deg,#fff 0%,#d8b4fe 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.meta{color:var(--text-dim);font-size:14px;margin-bottom:28px}
+h2{font-size:24px;font-weight:700;margin:36px 0 12px;color:var(--text)}
+h3{font-size:19px;font-weight:600;margin:24px 0 8px;color:var(--text)}
+p,ul,ol{color:#d0d0e0;margin-bottom:16px;font-size:17px}
+ul,ol{margin-left:24px}li{margin-bottom:6px}
+strong{color:var(--text);font-weight:600}
+a{color:var(--accent)}
+code{background:var(--bg-elev);padding:2px 6px;border-radius:4px;font-size:14px;color:#d8b4fe}
+pre{background:var(--bg-elev);padding:14px 16px;border-radius:10px;overflow-x:auto;margin:16px 0;border:1px solid var(--border)}
+pre code{background:transparent;padding:0;color:#d8b4fe;font-size:13px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);color:#d0d0e0;vertical-align:top}
+th{background:var(--bg-elev);color:var(--text);font-weight:600;font-size:14px}
+tr:last-child td{border-bottom:none}
+.yes{color:var(--green);font-weight:600}.no{color:var(--red);font-weight:600}.partial{color:var(--amber);font-weight:600}
+.cta-box{margin:36px 0;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;border-left:4px solid var(--accent)}
+.cta-box h3{margin:0 0 6px;font-size:18px;color:var(--text)}
+.cta-box p{margin-bottom:12px;font-size:15px}
+.cta-btn{display:inline-block;padding:12px 24px;background:linear-gradient(135deg,#a855f7,#ec4899);color:white;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;box-shadow:0 4px 16px rgba(168,85,247,0.3)}
+.related{margin-top:60px;padding-top:28px;border-top:1px solid var(--border)}
+.related h3{color:var(--text-dim);font-size:13px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
+.related-card{padding:14px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text);transition:all 0.15s}
+.related-card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.related-card .name{font-weight:600;font-size:14px}
+.related-card .desc{font-size:12px;color:var(--text-dim);margin-top:2px}
+.summary{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin:18px 0 24px}
+.summary strong{color:#fff}
+.swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0}
+.sw{aspect-ratio:1/1.2;border-radius:10px;display:flex;align-items:flex-end;padding:8px;font-family:'SF Mono',Monaco,monospace;font-size:11px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.4)}
+.cover-demo{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0;align-items:end}
+.cover-demo .cv{aspect-ratio:1;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.35);position:relative}
+.cover-demo .cv span{position:absolute;bottom:6px;left:8px;font-size:10px;font-weight:500;opacity:.85}
+@media(max-width:600px){.cover-demo{grid-template-columns:repeat(2,1fr)}}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);text-align:center;color:var(--text-dim);font-size:13px}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+
+</head><body><div class="container">
+<div class="breadcrumb"><a href="/">TinyTools</a> &nbsp;/&nbsp; <a href="/color-palette/">Color Palette Generator</a> &nbsp;/&nbsp; For Podcasters</div>
+
+<h1>Color Palette Generator for Podcasters</h1>
+<div class="meta">Updated May 9, 2026 · Cover-art ready · Audiogram exports · WCAG checked</div>
+<div class="summary"><strong>The pitch.</strong> One palette that does the whole show: cover art that survives a 56-pixel Spotify thumbnail, audiograms that match across every clip, a YouTube channel banner that looks like the same brand, and show-notes pages that don't fight the artwork. Five harmony options, contrast pre-checked, exports for Canva, Headliner, Descript, and CSS — no signup, no paywall.</div>
+
+<div class="cover-demo" aria-hidden="true">
+  <div class="cv" style="background:linear-gradient(135deg,#a855f7,#7e22ce)">EP<span>cover art</span></div>
+  <div class="cv" style="background:linear-gradient(135deg,#ec4899,#a855f7)">EP<span>audiogram</span></div>
+  <div class="cv" style="background:linear-gradient(135deg,#f59e0b,#ec4899)">EP<span>YT thumb</span></div>
+  <div class="cv" style="background:linear-gradient(135deg,#10b981,#a855f7)">EP<span>banner</span></div>
+</div>
+
+<h2>Why podcasters need a different color tool</h2>
+<p>A blogger's palette only has to look good on a screen the reader is staring at. A podcaster's palette has to survive being shrunk to 56×56 pixels in the Spotify Now Playing bar, then to 28×28 in the Apple Podcasts library, then back up to 1080×1080 for an Instagram Reel audiogram, then sliced into a 16×9 YouTube thumbnail, then woven into a sponsor read graphic on Twitter — all in the same week. Most palette tools give you five swatches and stop. As a podcast operator, that gets you halfway and leaves you doing math on every export.</p>
+
+<p>This generator is built around the assumption that your palette is going to be <em>downscaled, transcoded, and recomposed</em> across at least six surfaces: Spotify, Apple Podcasts, Pocket Casts, YouTube, Instagram, and your own show-notes site. Every harmony rule it produces is filtered through that constraint. If two colors muddy together at 56 pixels, the tool flags them. If a hue blooms on OLED, the tool tames it. If a pair fails WCAG AA on a podcast app's dark theme, the tool says so before you ship.</p>
+
+<h2>Five things podcasters actually do with the palette</h2>
+
+<h3>1. Building a recognizable cover art system</h3>
+<p>The hardest design problem in podcasting is being recognizable at thumbnail size. The cover sits next to thousands of others in the Apple Podcasts category browse and on the Spotify "Made for You" carousel. A two-color cover with high tonal contrast — a deep base and one loud accent — outperforms a five-color illustration every time. The generator's <em>complementary</em> harmony defaults are tuned for this exact case: pick a base, get a partner that fights for attention without becoming illegible.</p>
+
+<h3>2. Exporting an audiogram brand kit once</h3>
+<p>If you're publishing audiograms with <a href="https://www.headliner.app/" rel="nofollow">Headliner</a>, <a href="https://www.descript.com/" rel="nofollow">Descript</a>, or Wavve, the brand kit lives in a different file format in each app. The generator outputs a JSON brand kit Canva can import directly, plus the raw hex list every audiogram tool accepts. Set it once at the start of a season, every clip the show pushes for the next 12 weeks shares the same accent on the waveform.</p>
+
+<h3>3. Coordinating the show site, newsletter, and YouTube channel</h3>
+<p>Most independent shows have a website (Squarespace, Transistor, Castos), a newsletter (Substack, Beehiiv, Ghost), and a YouTube channel — and each one drifts into its own slightly-different brand color, so the listener never quite registers it as one show. Generate the palette once, export to CSS for the website theme, hex codes for the email template's accent, and a YouTube banner-ready RGB list. One palette across all three surfaces is what makes a podcast feel like a brand instead of a hobby.</p>
+
+<h3>4. Naming the colors so guests can use them</h3>
+<p>When a guest produces a promo graphic before launch, they ask for "your show colors." Sending them a Hex with no semantic name leads to predictable accidents. The generator outputs names along with the colors — <code>brand</code>, <code>accent</code>, <code>warn</code>, <code>quiet</code>, <code>ink</code> — so the guest's designer can use them correctly without a 20-message Slack thread.</p>
+
+<h3>5. Surviving Spotify and Apple's image pipelines</h3>
+<p>Both platforms recompress cover art aggressively. Saturated reds bloom; pure cyans desaturate; near-black backgrounds get raised to a muddy charcoal. The generator's <em>safe-for-podcast-apps</em> mode caps chroma and avoids known-bad hex codes (<code>#FF0000</code>, <code>#00FFFF</code>) so what ships matches what you previewed.</p>
+
+<h2>How podcaster-aimed color tools compare in 2026</h2>
+<table>
+<thead><tr><th>Tool</th><th>Cover-art ready</th><th>Audiogram export</th><th>WCAG AA check</th><th>Brand kit JSON</th><th>Free</th></tr></thead>
+<tbody>
+<tr><td><strong>TinyTools palette</strong></td><td class="yes">Tuned for 56px thumbs</td><td class="yes">Headliner + Canva</td><td class="yes">Both modes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+<tr><td>Coolors</td><td class="partial">Generic</td><td class="no">No</td><td class="partial">Pro</td><td class="partial">Pro</td><td class="partial">Limited</td></tr>
+<tr><td>Adobe Color</td><td class="partial">Generic</td><td class="no">No</td><td class="yes">Yes</td><td class="no">Adobe-only</td><td class="yes">With account</td></tr>
+<tr><td>Canva color palette</td><td class="partial">Visual only</td><td class="partial">Inside Canva</td><td class="no">No</td><td class="partial">Inside Canva</td><td class="partial">Pro for kit</td></tr>
+<tr><td>Headliner brand kit</td><td class="no">N/A</td><td class="yes">Yes</td><td class="no">No</td><td class="yes">Yes</td><td class="yes">Free tier</td></tr>
+</tbody>
+</table>
+
+<h2>The 56-pixel test</h2>
+<p>Here is a fast filter for whether a candidate palette will work as cover art. Take your two strongest hex codes, render them as a 1080×1080 cover, then resize to 56×56 with bicubic resampling. If the two colors are still distinguishable, ship it. If they blur together into a single muddy hue, redo the harmony. The generator runs this test for you on every preview — the small swatch in the corner is what your listener will actually see in their player.</p>
+
+<pre><code>// Spotify cover art spec (2026)
+{
+  "size": "1400x1400 minimum, 3000x3000 recommended",
+  "format": "JPEG or PNG, sRGB",
+  "max_filesize": "512 KB",
+  "displayed_at": ["56x56 player", "224x224 library", "640x640 detail"],
+  "rule_of_thumb": "Two strong hues + one neutral. Three+ hues = mud at 56px."
+}</code></pre>
+
+<h2>From palette to a season's brand kit</h2>
+<pre><code>// Headliner / Wavve hex list (paste into brand kit)
+brand:    #a855f7
+accent:   #ec4899
+quiet:    #1d1d2a
+ink:      #f5f5fa
+waveform: #a855f7
+
+// Canva brand kit JSON
+{
+  "brand_colors": [
+    { "name": "Show Primary",  "hex": "#a855f7" },
+    { "name": "Show Accent",   "hex": "#ec4899" },
+    { "name": "Show Neutral",  "hex": "#1d1d2a" }
+  ]
+}
+
+// Show notes site (CSS)
+:root {
+  --brand:  #a855f7;
+  --accent: #ec4899;
+  --bg:     #0a0a0f;
+  --ink:    #f5f5fa;
+}</code></pre>
+
+<h2>Common podcast color mistakes the generator catches</h2>
+<ul>
+<li><strong>Three-color cover art.</strong> Looks fine in Figma at 1080px. Becomes mud in the Spotify mini-player. The generator caps cover-art harmonies at two strong hues and one neutral by default.</li>
+<li><strong>Pure-black backgrounds.</strong> Apple Podcasts dark mode uses <code>#000</code> as its UI background. A pure-black cover disappears against it. The tool nudges you to <code>#0a0a0f</code> or <code>#15151f</code> instead.</li>
+<li><strong>Saturated reds for "live" or "explicit" badges.</strong> <code>#FF0000</code> blooms on OLED, looks aggressive in podcast apps' minimalist UIs. Use <code>#ef4444</code>; the contrast is identical, the perception is calmer.</li>
+<li><strong>Different accents on the website and the audiogram.</strong> Guests notice. Listeners don't notice consciously, but they stop registering it as a single brand. Export both from the same palette generation in one click.</li>
+<li><strong>Bright cyan as a "tech podcast" accent.</strong> Specifically banned by the safe-for-podcast-apps mode — cyan around <code>#00FFFF</code> desaturates badly through the Apple Podcasts JPEG pipeline and becomes a sad teal.</li>
+</ul>
+
+<div class="cta-box">
+<h3>Build your show's brand palette now</h3>
+<p>Pick an accent. Get a cover-art-safe pair, contrast-checked exports for Canva, Headliner, and CSS, and a brand kit you can hand a guest in one link.</p>
+<a class="cta-btn" href="/color-palette/">Open the Color Palette Generator →</a>
+</div>
+
+<h2>FAQ</h2>
+<h3>Will the cover art still pass Apple Podcasts review?</h3>
+<p>The generator's exports are well within Apple's <a href="https://podcasters.apple.com/support/896-artwork-requirements" rel="nofollow">artwork requirements</a> — sRGB color, no transparency, well under the 512 KB limit at 3000×3000 PNG. The palette doesn't render the artwork; it just gives your designer the colors to use.</p>
+
+<h3>Does it help with audiogram waveform colors specifically?</h3>
+<p>Yes. The audiogram preset locks the waveform to the brand color and the background to <code>quiet</code>, then verifies the contrast hits AA. That's the pair that determines whether the waveform reads on Instagram Reels at small player sizes.</p>
+
+<h3>What if my show is co-branded with a network?</h3>
+<p>Drop the network's hex in as the seed, choose split-complementary, and the generator builds your show palette around it. The seed is preserved exactly — only the supporting colors are computed — so the network's brand stays intact.</p>
+
+<h3>Where can I read more on podcast cover art design?</h3>
+<p>Two solid sources: <a href="https://podnews.net/" rel="nofollow">Podnews</a> covers platform changes that affect what art renders well, and Apple's official <a href="https://podcasters.apple.com/support/896-artwork-requirements" rel="nofollow">artwork requirements</a> page is the canonical spec for Apple Podcasts. Both update as the platforms change their image pipelines.</p>
+
+<div class="related">
+  <h3>Related tools on TinyTools</h3>
+  <div class="related-grid">
+    <a class="related-card" href="/color-palette/"><div class="name">Color Palette Generator</div><div class="desc">Build harmony-driven AAA-contrast palettes</div></a>
+    <a class="related-card" href="/og-image-generator/for-podcasters/"><div class="name">OG Image Generator</div><div class="desc">Episode link previews that match your palette</div></a>
+    <a class="related-card" href="/seo-meta-generator/for-podcasters/"><div class="name">SEO Meta Generator</div><div class="desc">Show notes meta tags Spotify and Apple read</div></a>
+  </div>
+</div>
+
+<footer>
+  Built with care by <a href="/">TinyTools</a> · Free tools, no signup ·
+  <a href="https://www.namecheap.com/?aff=tinytools" rel="sponsored nofollow">Domains by Namecheap</a> ·
+  <a href="https://vercel.com/?utm_source=tinytools" rel="sponsored nofollow">Hosted on Vercel</a> ·
+  <a href="https://buymeacoffee.com/tinytools" rel="sponsored nofollow">Tip the maker</a>
+</footer>
+
+</div></body></html>
