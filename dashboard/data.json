@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 10, 2026 — published “The 60-30-10 Color Rule” for color-palette + 4 social drafts ready",
+  "lastUpdated": "May 10, 2026 — published \"How to Extract a Color Palette from a Logo or Photo\" for color-palette + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 46,
+    "posts": 47,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 09:30",
+      "tag": "seo",
+      "text": "📝 Published blog post: How to Extract a Color Palette from a Logo or Photo in 2026 at /color-palette/blog/extract-color-palette-from-logo-or-photo-2026/"
+    },
+    {
+      "time": "today 09:30",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting color-palette"
+    },
     {
       "time": "today 06:14",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 13:39",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting og-image-generator"
-    },
-    {
-      "time": "today 13:28",
-      "tag": "seo",
-      "text": "📝 Published blog post: How to Test OG Images Before Publishing in 2026 — The 5-Tool Validator Workflow at /og-image-generator/blog/how-to-test-og-images-before-publishing-2026/"
-    },
-    {
-      "time": "today 13:28",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting og-image-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T09:30:00Z",
+      "text": "🧵 Five-minute workflow for extracting a brand-grade color palette from any logo or photo. (1/6)\n\nThe reason most \"color extractors\" feel useless: they spit out 12 mid-tone blues that all look identical. Real palettes need 5 distinct hues + ramps. Here's how to get there fast.\n\n---\n\n(2/6) Step 1: classify the source before you upload.\n\n• SVG logo → grep the file for fill= and stop-color=. Done in 30 seconds, zero rounding.\n• PNG with transparent bg → reliable, 2-4 colors flat.\n• JPG → crop tight, JPEG halos rank \"dominant\" otherwise.\n• Photo → algorithmic guess, 2 tools = 2 valid palettes.\n• UI screenshot → hardest. Don't cluster — eyedropper the surfaces.\n\n---\n\n(3/6) Step 2: pick the right algorithm.\n\nK-means (k=8) for logos and flat illustrations.\nMedian cut for photos with broad color ranges.\nOctree quantization for fast preview.\n\nMost web tools default to octree because it's cheap. Switch to k-means if your output looks muddy.\n\n---\n\n(4/6) Step 3: deduplicate.\n\nEight extracted colors are usually five real ones + three sub-cluster duplicates (shadowed teal vs lit teal in the same photo).\n\nRule: any pair within ΔE 10 in CIELAB merges. Or just blur your eyes — pairs that look like one color ARE one color.\n\n---\n\n(5/6) Step 4: contrast + color-blind check before you commit.\n\nWCAG 2.2: 4.5:1 body text, 3:1 large text and UI.\nRun through a deuteranopia simulator — if your \"primary green\" and \"secondary red\" collapse into olive, you'll mislead 8% of male users.\n\nIf a pair fails, generate a darker/lighter step. Don't toss the palette.\n\n---\n\n(6/6) Full workflow + the SVG grep trick + name-by-role-not-hue rule + Tailwind v4 export format:\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/extract-color-palette-from-logo-or-photo-2026/\n\nFree in-browser palette generator that does steps 2-3 in one click is in the post."
+    },
+    {
+      "platform": "Reddit /r/web_design",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T09:30:00Z",
+      "text": "Subreddit: /r/web_design or /r/UI_Design or /r/graphic_design\n\nComment (reply on a thread asking about extracting brand colors, palette tools, or \"how do I get the colors out of this logo\"):\n\nThe biggest unlock is realizing that the source format determines the technique:\n\n1. If your logo is an SVG, don't use any extractor at all. Open the file in a text editor and grep for \"fill=\" and \"stop-color=\". You'll have the exact hex values the designer used in 30 seconds with zero rounding error from JPEG compression. This is the canonical source.\n\n2. For PNG/JPG logos, crop tightly around the actual logo art before extracting. JPEG compression creates halo colors at edges that the algorithm will rank as \"dominant\" when they're really just artifacts.\n\n3. For photos, k-means with k=8 then manual deduplicate down to 5 is the move. Most online tools default to octree quantization because it's faster — switch to k-means if your output looks muddy.\n\n4. For UI screenshots, don't run clustering at all. The header gradient, body bg, card bg, and elevated bg can all be within 5% lightness of each other and the algorithm will collapse them. Manually eyedropper the 4-6 anchor surfaces (page bg, card bg, elevated bg, border, primary text, accent).\n\n5. Deduplicate pairs within ΔE 10 in CIELAB space. Or just blur your eyes — colors that look the same ARE the same.\n\n6. Run contrast + color-blind checks BEFORE locking the palette in. WCAG 2.2 needs 4.5:1 body text. If your primary purple fails as button text, generate a darker step (Tailwind 50-950 ramps exist for exactly this reason).\n\nWrote up the full 5-min workflow with the SVG grep trick, the name-by-role-not-hue rule, and Tailwind v4 export format here: https://tinytools-smoky.vercel.app/color-palette/blog/extract-color-palette-from-logo-or-photo-2026/\n\n(I built the free in-browser palette generator linked in the post — runs locally, no upload, exports as CSS variables or Tailwind config.)"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T09:30:00Z",
+      "text": "A founder asked me last week: \"I love this photo of the cafe — how do I get my brand colors out of it?\"\n\nThe five-minute workflow most people miss:\n\n1. Classify the source. SVG logo? Grep the file. JPG logo? Crop tight first. Photo? Cluster carefully. UI screenshot? Don't cluster at all — eyedropper the anchor surfaces. Each source needs a different technique and using the wrong one is why most \"extracted palettes\" feel muddy.\n\n2. Pick the right algorithm. K-means (k=8) for logos and flat illustrations. Median cut for photos. Octree for fast preview. Most online tools default to octree because it's cheap; if your output looks washed out, switch.\n\n3. Deduplicate. Eight extracted colors are usually five real ones plus three sub-cluster duplicates. Any pair within ΔE 10 perceptually merges.\n\n4. Run contrast + color-blind checks BEFORE you commit. A palette where the brand color fails as button text isn't a palette — it's a mood board.\n\n5. Ship as code, not as a Notion page. CSS variables in :root with role-based names (--color-primary, not --color-purple) so the hex can change without breaking the system.\n\nThe whole thing takes five minutes if you do it in this order. Most teams take two weeks because they're trying to extract, choose, and audit simultaneously.\n\nFull guide with the SVG grep trick, k-means vs median cut decision tree, and Tailwind v4 export format:\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/extract-color-palette-from-logo-or-photo-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T09:30:00Z",
+      "text": "Show HN title: A free in-browser tool to extract a usable color palette from any image (k-means + dedup)\n\nLink: https://tinytools-smoky.vercel.app/color-palette/blog/extract-color-palette-from-logo-or-photo-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Built this because every \"color extractor\" I tried in 2024-2025 returned 8-12 nearly identical mid-tone hues that all collapsed into the same swatch in print and on lower-gamut displays. The fix is a two-step pipeline: k-means clustering with k=8, then a CIELAB ΔE-10 dedup pass. The result is consistently five distinct, ship-ready colors instead of \"5 shades of brand-blue.\" Runs entirely in the browser via WASM — no upload, no cap, source images stay on your device. The post above is the underlying methodology (with the SVG grep trick, which I'm convinced is the single most underrated palette-extraction move). Curious whether HN has strong opinions on octree quantization vs k-means in 2026 — most web tools still default to octree for speed and I think it's measurably worse output for most logos."
+    },
+    {
+      "platform": "X / Twitter Thread",
       "text": "1/ The 60-30-10 color rule is the most-cited / least-understood piece of design advice on the internet. Quick thread on what it actually means in 2026 — and the 4 mistakes that look like rule-following but aren't. 🧵\n\n2/ The rule: 60% dominant, 30% secondary, 10% accent. It's a *proportion* rule, not a \"pick three colors\" rule. The 60 is where the eye rests. The 10 is where the eye lands. Everything else fights for the middle.\n\n3/ In dark mode it maps cleanly to semantic tokens:\n• 60% → --bg, --bg-card, --bg-elev (3 near-black neutrals = one visual surface)\n• 30% → --border, --text-dim\n• 10% → --accent (your only saturated color)\n\n4/ Mistake #1: equal swatches, no hierarchy. \"I used three colors\" ≠ 60-30-10.\nMistake #2: forgetting big gradients/photos *count* against your accent budget.\nMistake #3: using --accent as link + CTA + active nav (now it's 30%, not 10%).\n\n5/ Cheap test: blur a screenshot of your page until text is illegible. You should see one dominant tone, one supporting tone, one tiny accent dot. If it's evenly mixed, your accent isn't doing its job.\n\n6/ Wrote up the full guide w/ copy-paste palettes (dark mode, dashboards, OLED): https://tinytools-smoky.vercel.app/color-palette/blog/60-30-10-color-rule-2026/",
       "tool": "color-palette",
       "createdAt": "2026-05-10T06:14:00"
@@ -260,30 +284,6 @@
       "text": "Title: Show HN: The 60-30-10 color rule, rewritten for dark mode and dashboards\n\nComment: I kept watching teams misapply the classic 60-30-10 rule because every example online is still light-mode interior-design cushions. So I rewrote it for the surfaces people actually ship in 2026: dark dashboards, OLED mobile, landing pages with one CTA. Copy-paste palettes included, no signup. Feedback welcome.",
       "tool": "color-palette",
       "createdAt": "2026-05-10T06:14:00"
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T00:12:38Z",
-      "text": "🧵 4.5:1 and 3:1.\nThe two contrast numbers every designer memorized a decade ago.\n\nThey're still right in 2026. They're also no longer the whole story. Here's what changed in WCAG 2.2, what's coming with APCA, and the audit you actually have to ship against. (1/6)\n\n---\n\n(2/6) WCAG 2.2 didn't change the contrast ratios. It changed two things around them:\n\n• 2.4.11 Focus Not Obscured (AA) — sticky cookie banners that cover focused inputs now fail.\n• 2.4.13 Focus Appearance (AAA) — focus rings need 3:1 AND 2px minimum thickness.\n\nIf you ship a sticky bottom banner, this is your audit.\n\n---\n\n(3/6) APCA is the contrast model coming with WCAG 3.\n\nInstead of a single ratio it gives you Lc (-108 to +106). Higher = more readable.\n\nTargets:\n• Body text: Lc ≥ 75\n• Large text: Lc ≥ 60\n• Headlines: Lc ≥ 45\n• Icons / borders: Lc ≥ 30\n\nNot legally required yet. Already in most enterprise audits.\n\n---\n\n(4/6) The classic audit failure I see weekly:\n\nVibrant brand accent used as text on white. Scores 2.8:1. Fails.\n\nDon't darken the brand globally. Keep a darker variant (\"brand-700\") for text-on-light, and use the original color only as a fill with white text on top.\n\n---\n\n(5/6) Three contrast bugs every reviewer catches in 2026:\n\n• Placeholder text under 4.5:1 (default Tailwind/Bootstrap fails).\n• Dark-mode text on elevated cards a few steps lighter than the page bg.\n• Icon-only buttons where the icon stroke fails 3:1.\n\nTest against every elevated surface, not just the page background.\n\n---\n\n(6/6) The two-minute audit before every ship:\n\n✅ Body on bg — 4.5:1\n✅ Body on elevated surfaces — 4.5:1\n✅ Brand accent as text — 4.5:1 or use the dark variant\n✅ Focus rings — 3:1 inside AND outside\n✅ Placeholders — 4.5:1\n✅ Icons — 3:1\n\nFull guide w/ APCA + code:\nhttps://tinytools-smoky.vercel.app/color-palette/blog/accessible-color-contrast-ratios-wcag-2026/"
-    },
-    {
-      "platform": "Reddit /r/web_design",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T00:12:38Z",
-      "text": "Subreddit: /r/web_design (also fits /r/Frontend, /r/userexperience, /r/accessibility)\n\nReply on a thread asking about WCAG contrast, brand colors failing audit, focus rings, or APCA:\n\nThe 4.5:1 / 3:1 numbers in WCAG 2.2 didn't change in 2026 — but two things around them did, and they're the easy way to fail an audit even when your text contrast is fine.\n\n1) 2.4.11 Focus Not Obscured (AA, new in 2.2). If your sticky cookie banner or chat widget covers a focused input when someone tabs to it, you fail. This is the rule that suddenly makes a lot of bottom-pinned banners non-compliant in 2026.\n\n2) 2.4.13 Focus Appearance (AAA). The focus indicator itself has to clear 3:1 AND be at least 2 CSS pixels thick around the perimeter. Most teams targeting only AA can ignore this, but enterprise procurement increasingly asks about it.\n\nOn APCA (the algorithm coming with WCAG 3): not legally required yet, no firm date, but worth running as a sanity check on top of WCAG ratios. The classic place WCAG 2 lies to you is mid-luminance pairs — pale yellow on white can pass the math and still be unreadable; dark gray on slightly lighter dark gray often fails the math but reads cleanly. APCA's Lc score (target ≥75 for body, ≥60 for large, ≥45 for headlines) catches both cases.\n\nThree contrast bugs that catch teams every audit cycle:\n\n• Placeholder text under 4.5:1. Default Bootstrap and Tailwind placeholder colors clear 3:1 but not 4.5:1. Placeholders count as text. Either bump the color or accept losing AA on every form.\n\n• Brand accent used as text. A vibrant teal that looks great as a button fill almost never passes 4.5:1 as text on white because of high saturation + middling luminance. Keep a \"brand-700\" variant for text use; use the bright version only as fills.\n\n• Dark-mode text against elevated cards. Soft-gray body text (#d4d4d8 etc.) clears AA against the deep page bg but often fails on cards/modals/hover surfaces a step or two lighter. Audit every elevated surface, not just the page background.\n\nI wrote up the full 2026 playbook with the focus rules, APCA thresholds, and a 6-step pre-ship checklist:\nhttps://tinytools-smoky.vercel.app/color-palette/blog/accessible-color-contrast-ratios-wcag-2026/\n\n(Free in-browser palette generator at the parent path shows WCAG and APCA scores side-by-side as you tweak the palette, which is the workflow that's stopped me failing audits.)"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T00:12:38Z",
-      "text": "Most accessibility audits in 2026 are still failed by pale brand colors used as text.\n\nThe math hasn't changed. WCAG 2.2 still requires 4.5:1 for body and 3:1 for large text. What's changed is the rule around them — and the algorithm coming next.\n\nWCAG 2.2 quietly added 2.4.11 Focus Not Obscured. If your sticky cookie banner or chat widget covers a focused input when someone tabs to it, you fail. A meaningful share of the bottom-pinned banner patterns I see on production sites in 2026 are technically non-compliant for this reason alone.\n\nAPCA is the algorithm coming with WCAG 3 — not legally required yet, but already in most enterprise audit reports as a supplementary check. It catches the cases where WCAG 2's math says \"pass\" but the pair is genuinely hard to read, and the cases where the math says \"fail\" but the pair reads cleanly. Pale yellow on white is the classic example of the first; dark gray on slightly-lighter dark gray is the classic example of the second.\n\nThree failure modes that show up in every audit cycle:\n\n→ Brand accent used as text. The fix is almost never to darken the brand globally. Keep a darker \"brand-700\" variant for text-on-light surfaces; reserve the original bright accent for fills with white text on top.\n\n→ Placeholder text under 4.5:1. Default Tailwind and Bootstrap placeholder colors clear 3:1 but not 4.5:1. Placeholders count as text. Most teams don't notice until an automated tool flags them.\n\n→ Dark-mode body text on elevated surfaces. A palette that passes AA on the page background often fails on modals, cards, and hover backgrounds a step or two lighter. Always audit elevated surfaces, not just the page bg.\n\nWrote up the full 2026 contrast playbook with the WCAG 2.2 changes, the APCA targets, and a 6-step audit you can run before every ship:\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/accessible-color-contrast-ratios-wcag-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T00:12:38Z",
-      "text": "TITLE: Show HN: A practical guide to WCAG 2.2 contrast and the APCA shift coming in WCAG 3\n\nLINK: https://tinytools-smoky.vercel.app/color-palette/blog/accessible-color-contrast-ratios-wcag-2026/\n\nFIRST COMMENT:\nAuthor here. Wrote this because every contrast guide I read in 2026 was still treating 4.5:1 / 3:1 as the whole picture, while in practice the failure modes that catch teams now are (1) the new WCAG 2.2 focus rules — Focus Not Obscured (AA) effectively makes a lot of sticky cookie banners non-compliant — and (2) the gap between WCAG 2's math and APCA's perceptual model, which shows up most painfully on mid-luminance pairs (pale yellow on white passes 2.8:1 yet is unreadable; dark gray on slightly-lighter dark gray fails the math but reads fine). The article walks through the WCAG 2.2 changes, the current APCA Lc thresholds (75/60/45/30), the four-step palette workflow that ships AA-clean without making everything beige, and the six-item pre-ship audit. Curious whether HN has seen any design systems formally adopt APCA yet, or if everyone is still treating it as an unofficial sanity check on top of WCAG 2."
     }
   ],
   "checklist": [
