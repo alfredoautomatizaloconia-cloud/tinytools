@@ -391,8 +391,17 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tinytools-smoky.vercel.app/color-palette/blog/extract-color-palette-from-logo-or-photo-2026/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://tinytools-smoky.vercel.app/ai-image-upscaler/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/ai-text-humanizer/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>
+
+
+
+
