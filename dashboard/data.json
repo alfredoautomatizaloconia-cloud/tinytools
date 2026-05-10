@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 9, 2026 — published Accessible Color Contrast Ratios (WCAG 2.2 + APCA) guide for color-palette + 4 social drafts ready",
+  "lastUpdated": "May 10, 2026 — published “The 60-30-10 Color Rule” for color-palette + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 45,
+    "posts": 46,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 06:14",
+      "tag": "seo",
+      "text": "📝 Published blog post: The 60-30-10 Color Rule: How Modern Designers Actually Use It in 2026 at /color-palette/blog/60-30-10-color-rule-2026/"
+    },
+    {
+      "time": "today 06:14",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting color-palette"
+    },
     {
       "time": "today 00:12",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 13:28",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting og-image-generator"
-    },
-    {
-      "time": "today 04:18",
-      "tag": "seo",
-      "text": "📝 Published blog post: How to Auto-Generate OG Images for Every Blog Post in 2026 at /og-image-generator/blog/how-to-auto-generate-og-images-for-blogs-2026/"
-    },
-    {
-      "time": "today 04:18",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting og-image-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "text": "1/ The 60-30-10 color rule is the most-cited / least-understood piece of design advice on the internet. Quick thread on what it actually means in 2026 — and the 4 mistakes that look like rule-following but aren't. 🧵\n\n2/ The rule: 60% dominant, 30% secondary, 10% accent. It's a *proportion* rule, not a \"pick three colors\" rule. The 60 is where the eye rests. The 10 is where the eye lands. Everything else fights for the middle.\n\n3/ In dark mode it maps cleanly to semantic tokens:\n• 60% → --bg, --bg-card, --bg-elev (3 near-black neutrals = one visual surface)\n• 30% → --border, --text-dim\n• 10% → --accent (your only saturated color)\n\n4/ Mistake #1: equal swatches, no hierarchy. \"I used three colors\" ≠ 60-30-10.\nMistake #2: forgetting big gradients/photos *count* against your accent budget.\nMistake #3: using --accent as link + CTA + active nav (now it's 30%, not 10%).\n\n5/ Cheap test: blur a screenshot of your page until text is illegible. You should see one dominant tone, one supporting tone, one tiny accent dot. If it's evenly mixed, your accent isn't doing its job.\n\n6/ Wrote up the full guide w/ copy-paste palettes (dark mode, dashboards, OLED): https://tinytools-smoky.vercel.app/color-palette/blog/60-30-10-color-rule-2026/",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T06:14:00"
+    },
+    {
+      "platform": "Reddit /r/web_design",
+      "text": "The \"use 3 colors in 60/30/10 proportion\" advice gets repeated constantly but I think it confuses more designers than it helps. The thing it's actually trying to teach is **visual hierarchy by proportion**, not \"pick three swatches and divide them up.\"\n\nWhat it really means in a real digital product:\n- The 60% isn't a single color, it's usually 3 near-neutral surfaces sharing a hue family (your bg, card, elevated surface)\n- The 30% is borders + dim text + secondary UI — it has visual weight even though no single element is \"30% of the screen\"\n- The 10% is the *only* color that should be saturated — your CTA, your focus state, your brand moment\n\nCommon failure mode: people use their brand color for both the link color *and* the CTA *and* the active nav. Now the accent is 30% of the page and there's nothing for the eye to land on.\n\nQuickest test I've found: blur a screenshot of your page until text is illegible. You should see one dominant blob, one supporting tone, one tiny accent dot. If everything's evenly mixed, the rule isn't holding.\n\nWrote a longer version of this with copy-paste dark-mode palettes (also covers OLED + dashboards) here if it helps: https://tinytools-smoky.vercel.app/color-palette/blog/60-30-10-color-rule-2026/ — no signup, free.",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T06:14:00"
+    },
+    {
+      "platform": "LinkedIn",
+      "text": "The 60-30-10 color rule is in every \"design fundamentals\" article, but I keep meeting product designers who apply it wrong — and underperform their competitors because of it.\n\nThe rule isn't \"pick three colors.\" It's a proportion rule:\n• 60% — dominant resting surface\n• 30% — supporting band (borders, dim text, secondary UI)\n• 10% — accent (the *only* saturated color, where the eye lands)\n\nThe mistake I see most often: teams use their brand color as link color AND CTA AND active nav state. Now the \"accent\" is 30% of every screen — which means there is no accent. The eye has nowhere to land. Conversion drops.\n\nThe fix is structural, not aesthetic: introduce a desaturated version of your brand hue for the supporting band, and reserve the saturated version for primary actions only. Same color family, different visual weight.\n\nI wrote up the 2026 update — including copy-paste palettes for dark mode, OLED-friendly mobile, and SaaS dashboards. Free, no signup:\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/60-30-10-color-rule-2026/\n\nWhat's the biggest color mistake you keep seeing in shipped products?",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T06:14:00"
+    },
+    {
+      "platform": "Show HN",
+      "text": "Title: Show HN: The 60-30-10 color rule, rewritten for dark mode and dashboards\n\nComment: I kept watching teams misapply the classic 60-30-10 rule because every example online is still light-mode interior-design cushions. So I rewrote it for the surfaces people actually ship in 2026: dark dashboards, OLED mobile, landing pages with one CTA. Copy-paste palettes included, no signup. Feedback welcome.",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T06:14:00"
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "color-palette",
       "createdAt": "2026-05-10T00:12:38Z",
       "text": "🧵 4.5:1 and 3:1.\nThe two contrast numbers every designer memorized a decade ago.\n\nThey're still right in 2026. They're also no longer the whole story. Here's what changed in WCAG 2.2, what's coming with APCA, and the audit you actually have to ship against. (1/6)\n\n---\n\n(2/6) WCAG 2.2 didn't change the contrast ratios. It changed two things around them:\n\n• 2.4.11 Focus Not Obscured (AA) — sticky cookie banners that cover focused inputs now fail.\n• 2.4.13 Focus Appearance (AAA) — focus rings need 3:1 AND 2px minimum thickness.\n\nIf you ship a sticky bottom banner, this is your audit.\n\n---\n\n(3/6) APCA is the contrast model coming with WCAG 3.\n\nInstead of a single ratio it gives you Lc (-108 to +106). Higher = more readable.\n\nTargets:\n• Body text: Lc ≥ 75\n• Large text: Lc ≥ 60\n• Headlines: Lc ≥ 45\n• Icons / borders: Lc ≥ 30\n\nNot legally required yet. Already in most enterprise audits.\n\n---\n\n(4/6) The classic audit failure I see weekly:\n\nVibrant brand accent used as text on white. Scores 2.8:1. Fails.\n\nDon't darken the brand globally. Keep a darker variant (\"brand-700\") for text-on-light, and use the original color only as a fill with white text on top.\n\n---\n\n(5/6) Three contrast bugs every reviewer catches in 2026:\n\n• Placeholder text under 4.5:1 (default Tailwind/Bootstrap fails).\n• Dark-mode text on elevated cards a few steps lighter than the page bg.\n• Icon-only buttons where the icon stroke fails 3:1.\n\nTest against every elevated surface, not just the page background.\n\n---\n\n(6/6) The two-minute audit before every ship:\n\n✅ Body on bg — 4.5:1\n✅ Body on elevated surfaces — 4.5:1\n✅ Brand accent as text — 4.5:1 or use the dark variant\n✅ Focus rings — 3:1 inside AND outside\n✅ Placeholders — 4.5:1\n✅ Icons — 3:1\n\nFull guide w/ APCA + code:\nhttps://tinytools-smoky.vercel.app/color-palette/blog/accessible-color-contrast-ratios-wcag-2026/"
@@ -260,30 +284,6 @@
       "tool": "color-palette",
       "createdAt": "2026-05-10T00:12:38Z",
       "text": "TITLE: Show HN: A practical guide to WCAG 2.2 contrast and the APCA shift coming in WCAG 3\n\nLINK: https://tinytools-smoky.vercel.app/color-palette/blog/accessible-color-contrast-ratios-wcag-2026/\n\nFIRST COMMENT:\nAuthor here. Wrote this because every contrast guide I read in 2026 was still treating 4.5:1 / 3:1 as the whole picture, while in practice the failure modes that catch teams now are (1) the new WCAG 2.2 focus rules — Focus Not Obscured (AA) effectively makes a lot of sticky cookie banners non-compliant — and (2) the gap between WCAG 2's math and APCA's perceptual model, which shows up most painfully on mid-luminance pairs (pale yellow on white passes 2.8:1 yet is unreadable; dark gray on slightly-lighter dark gray fails the math but reads fine). The article walks through the WCAG 2.2 changes, the current APCA Lc thresholds (75/60/45/30), the four-step palette workflow that ships AA-clean without making everything beige, and the six-item pre-ship audit. Curious whether HN has seen any design systems formally adopt APCA yet, or if everyone is still treating it as an unofficial sanity check on top of WCAG 2."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T20:12:22Z",
-      "text": "🧵 Your favicon won't update.\nYou hard-refreshed three times. Cmd+Shift+R'd. Cleared the cache. The OLD icon is still in the tab.\n\nYou're not crazy. Browsers cache favicons more aggressively than ANY other asset. Here's the 2026 fix. (1/6)\n\n---\n\n(2/6) Why this happens:\n\nBrowsers store favicons in a separate database (Chrome's Favicons SQLite store, Firefox's favicons.sqlite, Safari's WebpageIcons.db).\n\nHard refresh invalidates the page cache. NOT the favicon cache.\n\nThe browser sees /favicon.ico in your <head>, sees /favicon.ico in its DB → done. Never refetches.\n\n---\n\n(3/6) The lazy fix that breaks in Safari:\n\n<link rel=\"icon\" href=\"/favicon.ico?v=2\">\n\n✅ Works in Chrome and Firefox\n❌ Safari STRIPS the query string before keying its cache\n❌ Crawlers (Googlebot, GPTBot, Slack unfurler) hit /favicon.ico directly\n\n---\n\n(4/6) The robust fix: change the URL path itself.\n\n/favicon.ico → /favicon-a3f2.ico (content hash)\n\nUpdate <link rel=\"icon\">. Update apple-touch-icon. Update msapplication-TileImage. Update every icons[].src in manifest.json.\n\nAll in lockstep. Miss one and iOS keeps the old home-screen icon for a year.\n\n---\n\n(5/6) Don't delete the old file.\n\nCrawlers, RSS readers, and Slack previews keep requesting /favicon.ico for weeks.\n\nLeave the old file at the old path for 30-90 days. Cost: a few KB. Upside: no broken icons in Slack previews during the transition.\n\n---\n\n(6/6) Then set Cache-Control: public, max-age=31536000, immutable on the new versioned files.\n\nOne year. Forever. Because the URL changes when contents change, you'll never have a staleness problem again.\n\nFull guide w/ Safari quirks, iOS home-screen fix, and Google search-snippet timing:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-cache-not-updating-fix-2026/"
-    },
-    {
-      "platform": "Reddit /r/webdev",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T20:12:22Z",
-      "text": "Subreddit: /r/webdev (also fits /r/Frontend, /r/web_design, /r/nextjs)\n\nReply on a thread asking about \"favicon won't update,\" \"favicon stuck,\" or someone confused about why hard refresh isn't busting it:\n\nHard refresh doesn't touch the favicon cache. That's the whole problem.\n\nBrowsers store favicons in a separate database from the page cache — Chrome's Favicons SQLite store, Firefox's favicons.sqlite, Safari's WebpageIcons.db. When the browser sees /favicon.ico in your <head>, it checks that DB first and short-circuits the network request entirely. Cmd+Shift+R only invalidates the page cache, not the favicon cache, which is why nothing seems to be working.\n\nThe reliable fix is to change the URL of the favicon itself. Two notes on how to do it correctly:\n\n1) The lazy version — appending ?v=2 — works in Chrome and Firefox but Safari strips the query string before keying its favicon cache. Crawlers (Googlebot, the various LLM bots, Slack/Discord/Notion link previewers) often hit /favicon.ico directly with no query string at all, so they never see the new file. Use a real path change like /favicon-v2.ico or /favicon-{hash}.ico.\n\n2) Update everything in lockstep, not just the <link rel=\"icon\"> tag. The full set is: icon, apple-touch-icon, every icons[].src inside manifest.json, msapplication-TileImage, and og:image. Most people version the favicon and forget the manifest, then wonder why iOS home-screen icons stay stuck on the old design for months.\n\nTwo extra gotchas worth mentioning:\n\n• Don't 404 the old path immediately. Leave the old file at the old URL for 30-90 days so RSS readers, link unfurlers, and Google's separately-cached favicon snippet have time to re-crawl. Removing too aggressively shows broken icons in Slack previews during the transition.\n\n• Once you're on a versioned filename, you actually want max-age=31536000, immutable on the response. Same pattern as hashed JS bundles. The cache becomes your friend instead of your enemy.\n\nWrote up the full troubleshooting flow with the Safari/iOS specifics and the four-step checklist: https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-cache-not-updating-fix-2026/\n\n(Free favicon generator at the parent path also outputs hashed filenames, which makes step 1 zero-effort if you're starting fresh.)"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T20:12:22Z",
-      "text": "A junior dev pinged me Friday: \"My favicon won't update. I've hard-refreshed twenty times.\"\n\nI asked one question: \"Did you change the URL of the file, or just the contents?\"\n\nShe'd only changed the contents. That's the whole problem.\n\nBrowsers cache favicons in a completely separate database from the page cache. Chrome stores them in a SQLite file. Firefox uses favicons.sqlite. Safari has WebpageIcons.db. When the browser sees /favicon.ico in your HTML, it checks that DB first and short-circuits the network entirely.\n\nCmd+Shift+R only invalidates the page cache. It does nothing to the favicon database.\n\nThe only reliable way to force a favicon update is to change the URL itself. And not with a query string — Safari strips ?v=2 before keying its cache, and crawlers (Googlebot, GPTBot, the link unfurlers in Slack and Notion) often request /favicon.ico directly with no query string at all.\n\nWhat actually works:\n\n→ Change the path: /favicon.ico becomes /favicon-a3f2.ico\n→ Update every related tag in lockstep: icon, apple-touch-icon, msapplication-TileImage, every entry in manifest.json\n→ Leave the old file at the old path for 30-90 days so crawlers don't 404\n→ Set Cache-Control: public, max-age=31536000, immutable on the new versioned files\n\nThe favicon cache is uniquely sticky on purpose. Once you stop fighting it and start versioning around it, it becomes one of the most reliable parts of your site instead of one of the most frustrating.\n\nFull troubleshooting guide with the Safari quirks, iOS home-screen specifics, and Google search-snippet timing:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-cache-not-updating-fix-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T20:12:22Z",
-      "text": "TITLE: Show HN: Why your favicon won't update — and the 2026 fix that works in every browser\n\nLINK: https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-cache-not-updating-fix-2026/\n\nFIRST COMMENT:\nAuthor here. Wrote this after watching the same favicon-cache confusion play out in three different teams in two weeks. The mental model that fixes it: browsers keep favicons in a SEPARATE database from the page cache (Chrome's Favicons SQLite store, Firefox's favicons.sqlite, Safari's WebpageIcons.db), and a hard refresh doesn't touch that DB at all. The only reliable cache-bust is changing the URL — and the ?v=2 trick fails in Safari because Safari strips query strings before keying its favicon cache, and fails for crawlers (Googlebot, the link unfurlers) because they request /favicon.ico directly. Curious whether HN has hit the iOS home-screen variant where users have to long-press → remove → re-add the shortcut to pick up a new apple-touch-icon — there doesn't seem to be a programmatic way to invalidate that one, and I'd love to be wrong about it."
     }
   ],
   "checklist": [
