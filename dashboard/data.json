@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 10, 2026 — published \"How to Extract a Color Palette from a Logo or Photo\" for color-palette + 4 social drafts ready",
+  "lastUpdated": "May 10, 2026 — published Color Psychology for Landing Pages guide for color-palette + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 47,
+    "posts": 48,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 08:30",
+      "tag": "seo",
+      "text": "📝 Published blog post: Color Psychology for Landing Pages: What Actually Converts in 2026 at /color-palette/blog/color-psychology-landing-pages-conversion-2026/"
+    },
+    {
+      "time": "today 08:30",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting color-palette"
+    },
     {
       "time": "today 09:30",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 14:22",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting og-image-generator"
-    },
-    {
-      "time": "today 13:39",
-      "tag": "seo",
-      "text": "📝 Published blog post: OG Image SEO: Does Your Social Card Affect Google Rankings? (2026) at /og-image-generator/blog/og-image-seo-does-it-affect-google-rankings-2026/"
-    },
-    {
-      "time": "today 13:39",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting og-image-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "text": "Most of what you've heard about \"red buttons convert better\" traces back to ONE 2011 A/B test on ONE page. Repeated for 15 years until it became gospel.\n\nHere's what actually moves landing-page conversion in 2026 — a thread 🧵\n\n---\n\n1/ The 2011 study didn't prove red beats green. It proved CONTRAST beats no-contrast. The original green button matched the page's green header so closely visitors stopped seeing it.\n\nHue is a second-order decision. Contrast is the conversion lever.\n\n---\n\n2/ Eye-tracking studies (2024-2025) keep finding the same thing: the highest-contrast element gets 2-4x more first fixations than the next-loudest.\n\nIf your CTA isn't the loudest pixel within 400px, you're optimizing the wrong variable.\n\n---\n\n3/ The biggest landing-page CTA mistake in 2026:\n\nUsing your brand accent for the logo + link underlines + CTA + testimonial highlights + \"new\" badge.\n\nThe button stops being the loudest pixel because everything around it is the same color. Reserve the CTA hue for the CTA.\n\n---\n\n4/ Dark mode breaks every \"black CTA\" guide ever written.\n\nPure black on a near-black bg disappears. Saturated reds read as \"error,\" not \"buy.\"\n\nGlow (box-shadow in accent color) replaces the contrast that white pages got for free.\n\n---\n\n5/ The order of operations that beats vibes-driven palettes:\n\n1. Pick category convention (or break it deliberately)\n2. Choose primary brand hue\n3. Generate full palette around it\n4. Reserve CTA color\n5. WCAG-test contrast (not optional in 2026)\n6. Test BUTTON COPY before button color\n\n---\n\n6/ Wrote it all up — including 3 copy-paste palettes for SaaS, e-commerce, and AI/dev tools (with CSS vars):\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/color-psychology-landing-pages-conversion-2026/\n\nBuilt with the free Color Palette Generator at tinytools-smoky.vercel.app/color-palette/ — bakes WCAG checks into every palette.",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T08:30:00Z"
+    },
+    {
+      "platform": "Reddit /r/web_design",
+      "text": "The honest answer most threads miss: the conversion gain from \"the right color\" is in the 1-3% range across well-designed A/B tests. The conversion gain from making your CTA the loudest pixel on the screen is 2-4x (eye-tracking studies, 2024-2025).\n\nWhat actually matters, in descending order:\n\n1. The CTA color is not used anywhere else in that viewport. (This is the #1 mistake — using your brand accent for logo + links + CTA + badges, so the button stops standing out.)\n2. Button is at least 44px tall and clearly tappable on mobile.\n3. Button copy is action-first (\"Generate my palette\" not \"Submit\").\n4. Quiet zone of ~24px around the button so the eye lands cleanly.\n\nSolve those four and almost any high-contrast hue beats a low-contrast version of the \"psychologically correct\" color.\n\nCategory conventions matter too — fintech blue, climate green, AI purple/pink in 2026. You can break them deliberately (Linear's purple in a sea of blue PM tools) but breaking them accidentally just looks unserious.\n\nWrote up the full version with 3 copy-paste palettes (SaaS / e-commerce / AI dev tool) here if useful: https://tinytools-smoky.vercel.app/color-palette/blog/color-psychology-landing-pages-conversion-2026/",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T08:30:00Z"
+    },
+    {
+      "platform": "LinkedIn",
+      "text": "The single most common landing-page color mistake I see in 2026:\n\nTeams use their brand accent for the logo, the link underlines, the CTA, the testimonial highlights, AND the little \"new\" badge in the nav.\n\nThen they wonder why their CTA isn't converting.\n\nThe button stopped being the loudest pixel three sections ago. Everything around it is the same color.\n\nEye-tracking studies from 2024-2025 are pretty consistent: the highest-contrast element gets 2-4x more first fixations than the next-loudest. That fixation time correlates with click-through.\n\nColor psychology is real but small. Contrast is real and big.\n\nReserve your CTA hue for CTAs only. Audit your hero section and remove the accent color from anywhere that isn't a primary action. You can ship that change in an hour and probably outperform whatever \"orange vs blue\" test you were planning.\n\nWrote up the full color-psychology-vs-contrast playbook with 3 copy-paste palettes for SaaS, e-commerce, and AI dev tools (CSS variables included): https://tinytools-smoky.vercel.app/color-palette/blog/color-psychology-landing-pages-conversion-2026/",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T08:30:00Z"
+    },
+    {
+      "platform": "Show HN",
+      "text": "TITLE: Show HN: Color psychology for landing pages – what actually converts in 2026\n\nFIRST COMMENT:\nBuilt TinyTools (free, no signup) and got tired of the \"red buttons convert better\" folklore traced to one 2011 A/B test. Wrote up what the eye-tracking research actually shows: contrast does the work, hue is second-order. Includes 3 copy-paste palettes (SaaS, premium DTC, AI/dev) with CSS variables and WCAG-checked CTAs. Curious if HN readers see the same pattern in their own A/B data.",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T08:30:00Z"
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "color-palette",
       "createdAt": "2026-05-10T09:30:00Z",
       "text": "🧵 Five-minute workflow for extracting a brand-grade color palette from any logo or photo. (1/6)\n\nThe reason most \"color extractors\" feel useless: they spit out 12 mid-tone blues that all look identical. Real palettes need 5 distinct hues + ramps. Here's how to get there fast.\n\n---\n\n(2/6) Step 1: classify the source before you upload.\n\n• SVG logo → grep the file for fill= and stop-color=. Done in 30 seconds, zero rounding.\n• PNG with transparent bg → reliable, 2-4 colors flat.\n• JPG → crop tight, JPEG halos rank \"dominant\" otherwise.\n• Photo → algorithmic guess, 2 tools = 2 valid palettes.\n• UI screenshot → hardest. Don't cluster — eyedropper the surfaces.\n\n---\n\n(3/6) Step 2: pick the right algorithm.\n\nK-means (k=8) for logos and flat illustrations.\nMedian cut for photos with broad color ranges.\nOctree quantization for fast preview.\n\nMost web tools default to octree because it's cheap. Switch to k-means if your output looks muddy.\n\n---\n\n(4/6) Step 3: deduplicate.\n\nEight extracted colors are usually five real ones + three sub-cluster duplicates (shadowed teal vs lit teal in the same photo).\n\nRule: any pair within ΔE 10 in CIELAB merges. Or just blur your eyes — pairs that look like one color ARE one color.\n\n---\n\n(5/6) Step 4: contrast + color-blind check before you commit.\n\nWCAG 2.2: 4.5:1 body text, 3:1 large text and UI.\nRun through a deuteranopia simulator — if your \"primary green\" and \"secondary red\" collapse into olive, you'll mislead 8% of male users.\n\nIf a pair fails, generate a darker/lighter step. Don't toss the palette.\n\n---\n\n(6/6) Full workflow + the SVG grep trick + name-by-role-not-hue rule + Tailwind v4 export format:\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/extract-color-palette-from-logo-or-photo-2026/\n\nFree in-browser palette generator that does steps 2-3 in one click is in the post."
@@ -260,30 +284,6 @@
       "tool": "color-palette",
       "createdAt": "2026-05-10T09:30:00Z",
       "text": "Show HN title: A free in-browser tool to extract a usable color palette from any image (k-means + dedup)\n\nLink: https://tinytools-smoky.vercel.app/color-palette/blog/extract-color-palette-from-logo-or-photo-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Built this because every \"color extractor\" I tried in 2024-2025 returned 8-12 nearly identical mid-tone hues that all collapsed into the same swatch in print and on lower-gamut displays. The fix is a two-step pipeline: k-means clustering with k=8, then a CIELAB ΔE-10 dedup pass. The result is consistently five distinct, ship-ready colors instead of \"5 shades of brand-blue.\" Runs entirely in the browser via WASM — no upload, no cap, source images stay on your device. The post above is the underlying methodology (with the SVG grep trick, which I'm convinced is the single most underrated palette-extraction move). Curious whether HN has strong opinions on octree quantization vs k-means in 2026 — most web tools still default to octree for speed and I think it's measurably worse output for most logos."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "text": "1/ The 60-30-10 color rule is the most-cited / least-understood piece of design advice on the internet. Quick thread on what it actually means in 2026 — and the 4 mistakes that look like rule-following but aren't. 🧵\n\n2/ The rule: 60% dominant, 30% secondary, 10% accent. It's a *proportion* rule, not a \"pick three colors\" rule. The 60 is where the eye rests. The 10 is where the eye lands. Everything else fights for the middle.\n\n3/ In dark mode it maps cleanly to semantic tokens:\n• 60% → --bg, --bg-card, --bg-elev (3 near-black neutrals = one visual surface)\n• 30% → --border, --text-dim\n• 10% → --accent (your only saturated color)\n\n4/ Mistake #1: equal swatches, no hierarchy. \"I used three colors\" ≠ 60-30-10.\nMistake #2: forgetting big gradients/photos *count* against your accent budget.\nMistake #3: using --accent as link + CTA + active nav (now it's 30%, not 10%).\n\n5/ Cheap test: blur a screenshot of your page until text is illegible. You should see one dominant tone, one supporting tone, one tiny accent dot. If it's evenly mixed, your accent isn't doing its job.\n\n6/ Wrote up the full guide w/ copy-paste palettes (dark mode, dashboards, OLED): https://tinytools-smoky.vercel.app/color-palette/blog/60-30-10-color-rule-2026/",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T06:14:00"
-    },
-    {
-      "platform": "Reddit /r/web_design",
-      "text": "The \"use 3 colors in 60/30/10 proportion\" advice gets repeated constantly but I think it confuses more designers than it helps. The thing it's actually trying to teach is **visual hierarchy by proportion**, not \"pick three swatches and divide them up.\"\n\nWhat it really means in a real digital product:\n- The 60% isn't a single color, it's usually 3 near-neutral surfaces sharing a hue family (your bg, card, elevated surface)\n- The 30% is borders + dim text + secondary UI — it has visual weight even though no single element is \"30% of the screen\"\n- The 10% is the *only* color that should be saturated — your CTA, your focus state, your brand moment\n\nCommon failure mode: people use their brand color for both the link color *and* the CTA *and* the active nav. Now the accent is 30% of the page and there's nothing for the eye to land on.\n\nQuickest test I've found: blur a screenshot of your page until text is illegible. You should see one dominant blob, one supporting tone, one tiny accent dot. If everything's evenly mixed, the rule isn't holding.\n\nWrote a longer version of this with copy-paste dark-mode palettes (also covers OLED + dashboards) here if it helps: https://tinytools-smoky.vercel.app/color-palette/blog/60-30-10-color-rule-2026/ — no signup, free.",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T06:14:00"
-    },
-    {
-      "platform": "LinkedIn",
-      "text": "The 60-30-10 color rule is in every \"design fundamentals\" article, but I keep meeting product designers who apply it wrong — and underperform their competitors because of it.\n\nThe rule isn't \"pick three colors.\" It's a proportion rule:\n• 60% — dominant resting surface\n• 30% — supporting band (borders, dim text, secondary UI)\n• 10% — accent (the *only* saturated color, where the eye lands)\n\nThe mistake I see most often: teams use their brand color as link color AND CTA AND active nav state. Now the \"accent\" is 30% of every screen — which means there is no accent. The eye has nowhere to land. Conversion drops.\n\nThe fix is structural, not aesthetic: introduce a desaturated version of your brand hue for the supporting band, and reserve the saturated version for primary actions only. Same color family, different visual weight.\n\nI wrote up the 2026 update — including copy-paste palettes for dark mode, OLED-friendly mobile, and SaaS dashboards. Free, no signup:\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/60-30-10-color-rule-2026/\n\nWhat's the biggest color mistake you keep seeing in shipped products?",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T06:14:00"
-    },
-    {
-      "platform": "Show HN",
-      "text": "Title: Show HN: The 60-30-10 color rule, rewritten for dark mode and dashboards\n\nComment: I kept watching teams misapply the classic 60-30-10 rule because every example online is still light-mode interior-design cushions. So I rewrote it for the surfaces people actually ship in 2026: dark dashboards, OLED mobile, landing pages with one CTA. Copy-paste palettes included, no signup. Feedback welcome.",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T06:14:00"
     }
   ],
   "checklist": [
