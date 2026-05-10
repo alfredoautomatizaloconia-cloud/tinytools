@@ -6,3 +6,4 @@
 2026-05-09 00:12 | tool=background-remover | post=how-to-batch-remove-backgrounds-from-photos-free-2026 | sitemap=updated | drafts=4 | google_ping=404(deprecated) | status=OK
 2026-05-09 04:10 | tool=favicon-generator | post=svg-favicons-complete-implementation-guide-2026 | sitemap=updated | drafts=4 | status=OK
 2026-05-09 20:12 | tool=favicon-generator | post=favicon-cache-not-updating-fix-2026 | sitemap=updated | drafts=4 | status=OK | note=local log path /Users/alfredoromero/Documents/Claude/Scheduled/tinytools-daily-promo/log.md not accessible from sandbox; logged here instead
+2026-05-10 00:13 | tool=color-palette | post=accessible-color-contrast-ratios-wcag-2026 | sitemap=updated | drafts=4 | google_ping=404(deprecated) | status=OK | note=rotated to color-palette (day-of-year landed on favicon-generator but earlier 2026-05-09 run already covered favicon, picked next under-served tool)
