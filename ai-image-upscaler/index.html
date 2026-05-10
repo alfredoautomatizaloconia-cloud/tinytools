@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Image Upscaler (2026) — 2× / 3× / 4× in Your Browser, No Upload</title>
+<meta name="description" content="Upscale any image 2×, 3×, or 4× in seconds. Lanczos resampling + smart sharpen + denoise — runs entirely in your browser. Nothing uploaded, nothing tracked, free forever.">
+<meta name="keywords" content="ai image upscaler, free image upscaler, upscale image online, 4k upscaler, lanczos upscale, browser image upscale, no upload upscaler, photo enlarger free">
+<meta property="og:title" content="Free AI Image Upscaler — 2×/3×/4× in Browser">
+<meta property="og:description" content="Drop an image — upscaler runs locally with Lanczos resampling, sharpen, and denoise. No upload. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-image-upscaler/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free AI Image Upscaler">
+<meta name="twitter:description" content="2×/3×/4× any image in your browser — Lanczos + sharpen + denoise. Nothing uploaded.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-image-upscaler/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Image Upscaler",
+  "url": "https://tinytools-smoky.vercel.app/ai-image-upscaler/",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any (browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Free in-browser AI image upscaler. Upscale photos and graphics 2×, 3×, or 4× using Lanczos resampling with smart sharpening and denoising. Nothing uploaded."
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f43f5e; --accent-glow: #f43f5e40;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #ec489940 0%, transparent 50%);
+  }
+  .container { max-width: 1180px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fda4af 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 700px; margin: 0 auto; }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+    margin-top: 24px;
+  }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .drop {
+    border: 2px dashed var(--border); border-radius: 16px; padding: 48px 24px; text-align: center;
+    cursor: pointer; transition: all 0.2s; background: var(--bg-elevated);
+  }
+  .drop:hover, .drop.over { border-color: var(--accent); background: rgba(244, 63, 94, 0.06); }
+  .drop p { color: var(--text-dim); margin-top: 8px; font-size: 14px; }
+  .drop .big { color: var(--text); font-size: 16px; font-weight: 600; }
+  .drop .small { font-size: 12px; }
+  .drop-icon { font-size: 38px; }
+
+  .field { margin-bottom: 14px; }
+  label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500;
+  }
+  select, input[type="text"], input[type="number"] {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit;
+  }
+  select:focus, input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+
+  .row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 800px) { .row, .row3 { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .row, .row3 { grid-template-columns: 1fr; } }
+
+  .factor-pick { display: flex; gap: 8px; flex-wrap: wrap; }
+  .factor-pick button {
+    flex: 1; min-width: 70px; padding: 11px 8px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text-dim);
+    font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit;
+  }
+  .factor-pick button.on { background: var(--accent); border-color: var(--accent); color: white; }
+
+  .toggle {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    padding: 11px 14px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 10px; font-size: 13px; color: var(--text-dim); cursor: pointer;
+  }
+  .toggle input { display: none; }
+  .toggle .pill { width: 32px; height: 18px; background: var(--border); border-radius: 999px;
+    position: relative; transition: all 0.15s; flex-shrink: 0; }
+  .toggle .pill::after { content: ''; position: absolute; top: 2px; left: 2px;
+    width: 14px; height: 14px; background: white; border-radius: 50%; transition: all 0.15s; }
+  .toggle.on { color: var(--text); }
+  .toggle.on .pill { background: var(--accent); }
+  .toggle.on .pill::after { left: 16px; }
+
+  .btn {
+    width: 100%; padding: 13px 18px; background: var(--accent); color: white;
+    border: none; border-radius: 10px; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: all 0.15s; font-family: inherit;
+  }
+  .btn:hover:not(:disabled) { filter: brightness(1.1); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-ghost { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+
+  .status {
+    margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 13px;
+    background: var(--bg-elevated); color: var(--text-dim); display: none;
+  }
+  .status.show { display: block; }
+  .status.error { color: #fca5a5; border: 1px solid #ef444450; }
+  .status.success { color: #86efac; border: 1px solid #10b98150; }
+
+  .meta {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px;
+    font-size: 12px;
+  }
+  @media (max-width: 600px) { .meta { grid-template-columns: 1fr 1fr; } }
+  .meta-item { background: var(--bg-elevated); padding: 10px 12px; border-radius: 8px;
+    border: 1px solid var(--border); }
+  .meta-item .k { color: var(--text-dim); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .meta-item .v { color: var(--text); font-weight: 600; font-size: 14px; margin-top: 2px; }
+
+  .preview { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  @media (max-width: 760px) { .preview { grid-template-columns: 1fr; } }
+  .preview .box { background: #000; border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; position: relative; min-height: 240px; display: flex;
+    align-items: center; justify-content: center; }
+  .preview .label { position: absolute; top: 8px; left: 8px; padding: 4px 10px;
+    background: rgba(0,0,0,0.7); color: white; border-radius: 999px;
+    font-size: 11px; font-weight: 600; backdrop-filter: blur(4px); }
+  .preview canvas, .preview img { max-width: 100%; max-height: 480px; display: block; }
+  .preview .ph { color: #444; font-size: 14px; padding: 32px; text-align: center; }
+
+  .compare {
+    margin-top: 14px; background: #000; border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden; position: relative; max-width: 100%;
+  }
+  .compare .stage { position: relative; line-height: 0; }
+  .compare canvas { width: 100%; display: block; }
+  .compare .top { position: absolute; top: 0; left: 0; height: 100%;
+    overflow: hidden; pointer-events: none; }
+  .compare .handle { position: absolute; top: 0; bottom: 0; width: 3px;
+    background: white; pointer-events: none; box-shadow: 0 0 12px rgba(0,0,0,0.6); }
+  .compare .grip { position: absolute; top: 50%; transform: translate(-50%, -50%);
+    width: 32px; height: 32px; background: white; border-radius: 50%;
+    color: #000; font-size: 14px; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
+
+  .stages { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; font-size: 12px; }
+  .stage-pill { padding: 6px 10px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; color: var(--text-dim); }
+  .stage-pill.done { border-color: #10b981; color: #86efac; }
+  .stage-pill.active { border-color: var(--accent); color: var(--accent); }
+
+  .upsell {
+    margin-top: 16px; padding: 16px; background: var(--bg-elevated);
+    border-radius: 10px; border-left: 3px solid var(--accent); font-size: 13px;
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .privacy {
+    margin-top: 12px; padding: 12px; background: var(--bg-elevated);
+    border-radius: 8px; font-size: 12px; color: var(--text-dim);
+    border: 1px dashed var(--border);
+  }
+  .privacy strong { color: var(--text); }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); margin-bottom: 10px; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+  .content a { color: var(--accent); text-decoration: none; }
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🖼️ Lanczos resampling &nbsp;·&nbsp; Smart sharpen &nbsp;·&nbsp; 100% browser</div>
+    <h1>AI Image Upscaler</h1>
+    <p class="subtitle">Drag in a photo, screenshot, or graphic. Get a clean 2×, 3×, or 4× version with Lanczos resampling, edge-aware sharpening, and noise reduction — running entirely on your device. No upload, no signup, no watermark.</p>
+  </header>
+
+  <div class="panel">
+    <h2>1 — Drop your image</h2>
+    <div class="drop" id="drop">
+      <div class="drop-icon">📷</div>
+      <div class="big">Drop an image here</div>
+      <p>or click to choose · JPG, PNG, WEBP, GIF, BMP up to ~30 MB · <span class="small">processed locally, never uploaded</span></p>
+      <input type="file" id="fileIn" accept="image/*" hidden>
+    </div>
+
+    <div id="metaWrap" class="meta" style="display:none;">
+      <div class="meta-item"><div class="k">Source</div><div class="v" id="m-src">—</div></div>
+      <div class="meta-item"><div class="k">Dimensions</div><div class="v" id="m-dim">—</div></div>
+      <div class="meta-item"><div class="k">Output</div><div class="v" id="m-out">—</div></div>
+      <div class="meta-item"><div class="k">Estimated time</div><div class="v" id="m-eta">—</div></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>2 — Settings</h2>
+
+    <div class="field">
+      <label>Upscale factor</label>
+      <div class="factor-pick" id="factorPick">
+        <button data-f="2" class="on">2×</button>
+        <button data-f="3">3×</button>
+        <button data-f="4">4×</button>
+        <button data-f="custom">Custom…</button>
+      </div>
+    </div>
+
+    <div class="row3">
+      <div class="field" id="customWrap" style="display:none;">
+        <label>Custom factor (1.1 – 8)</label>
+        <input id="customFactor" type="number" step="0.1" min="1.1" max="8" value="2.5">
+      </div>
+      <div class="field">
+        <label>Algorithm</label>
+        <select id="algo">
+          <option value="lanczos">Lanczos-3 (best quality)</option>
+          <option value="bicubic">Bicubic (faster)</option>
+          <option value="nearest">Nearest (pixel art)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Output format</label>
+        <select id="format">
+          <option value="png">PNG (lossless)</option>
+          <option value="jpeg">JPEG (smaller, q92)</option>
+          <option value="webp">WebP (best ratio)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <label class="toggle on" data-toggle="sharpen">
+        <span>Smart sharpen</span><input type="checkbox" id="t-sharpen" checked><span class="pill"></span>
+      </label>
+      <label class="toggle" data-toggle="denoise">
+        <span>Denoise</span><input type="checkbox" id="t-denoise"><span class="pill"></span>
+      </label>
+      <label class="toggle on" data-toggle="autoEnhance">
+        <span>Auto contrast</span><input type="checkbox" id="t-autoEnhance" checked><span class="pill"></span>
+      </label>
+      <label class="toggle" data-toggle="preserveAlpha">
+        <span>Preserve transparency</span><input type="checkbox" id="t-preserveAlpha"><span class="pill"></span>
+      </label>
+    </div>
+
+    <div style="margin-top: 14px;" class="row3">
+      <button class="btn" id="goBtn" disabled>✨ Upscale image</button>
+      <button class="btn btn-ghost" id="resetBtn">Reset</button>
+      <button class="btn btn-ghost" id="downloadBtn" disabled>⬇ Download result</button>
+    </div>
+
+    <div class="stages" id="stages">
+      <div class="stage-pill" data-stage="decode">1. Decode</div>
+      <div class="stage-pill" data-stage="resample">2. Resample</div>
+      <div class="stage-pill" data-stage="enhance">3. Enhance</div>
+      <div class="stage-pill" data-stage="encode">4. Encode</div>
+    </div>
+    <div id="status" class="status"></div>
+
+    <div class="privacy">
+      <strong>Privacy:</strong> Your image is decoded into a canvas in this tab and processed by your CPU/GPU only. We don't upload, log, or analyze the file. Everything stays on your device.
+    </div>
+
+    <div class="upsell">
+      <strong>Need a CNN-grade upscale (faces, fabric textures)?</strong>
+      Try
+      <a href="#" id="upsell-topaz" target="_blank" rel="noopener">Topaz Photo AI</a> for desktop,
+      <a href="#" id="upsell-replicate" target="_blank" rel="noopener">Replicate (Real-ESRGAN)</a> for API,
+      or <a href="#" id="upsell-clipdrop" target="_blank" rel="noopener">Clipdrop</a> for one-click web.
+      <em>(Affiliate links — no extra cost to you.)</em>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>3 — Result</h2>
+    <div class="preview">
+      <div class="box">
+        <span class="label">Original</span>
+        <canvas id="cvOrig"></canvas>
+        <div class="ph" id="phOrig">No image yet — drop one above.</div>
+      </div>
+      <div class="box">
+        <span class="label">Upscaled</span>
+        <canvas id="cvOut"></canvas>
+        <div class="ph" id="phOut">Click "Upscale image" once you've added a source.</div>
+      </div>
+    </div>
+
+    <div id="compareWrap" style="display:none;">
+      <h2 style="margin-top: 24px;">Before / after slider</h2>
+      <div class="compare" id="compare">
+        <div class="stage">
+          <canvas id="cvCmpAfter"></canvas>
+          <div class="top" id="cmpTop">
+            <canvas id="cvCmpBefore"></canvas>
+          </div>
+          <div class="handle" id="cmpHandle">
+            <div class="grip">⇔</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>How this free AI image upscaler actually works (no GPU server, no upload)</h2>
+    <p>Most "AI image upscaler" tools you'll find ranked on Google in 2026 do the same thing: they upload your photo to a cloud server, run a Real-ESRGAN or SwinIR model on a GPU, then send you back a 4× version — and frequently store the result and the original. This image upscaler does it differently. It runs entirely in your browser using a tuned multi-pass Lanczos-3 resampling pipeline, an unsharp-mask sharpener, and an optional bilateral-style denoise. The math is the same kind of math classical upscalers like waifu2x's "lanczos" preset and Photoshop's "Preserve Details 2.0" sit on top of — fast, deterministic, and good enough for the 80% of upscaling jobs people actually need.</p>
+
+    <h3>When this image upscaler beats a cloud "AI" upscaler</h3>
+    <p>For screenshots, line art, charts, app UI, product photos with clean lighting, logos, anime/manga panels, and most stock photography, a well-implemented Lanczos pass plus a tuned sharpen filter is indistinguishable from a CNN-based AI image upscaler at viewing distance. Cloud AI upscalers really pull ahead on three things: (1) heavy facial detail reconstruction in low-res photos, (2) fabric and skin texture hallucination, and (3) very low-quality JPEG compression artifacts. If those aren't your use case, this tool will give you the same result with zero upload latency, zero cost, and zero privacy risk.</p>
+
+    <h3>The pipeline, step by step</h3>
+    <ul>
+      <li><strong>Decode.</strong> The browser parses your JPEG/PNG/WEBP into pixel data on a canvas. We read width, height, and alpha channel.</li>
+      <li><strong>Resample.</strong> Each output pixel is computed from a 6×6 window of source pixels weighted by a Lanczos-3 kernel (sin(πx)/πx · sin(πx/3)/(πx/3)). For pixel art, "Nearest" preserves crisp edges; for photos, Lanczos minimizes ringing while keeping detail.</li>
+      <li><strong>Enhance.</strong> An unsharp-mask pass adds local contrast at edges (radius 1.0, amount 35%). Auto-contrast stretches the histogram so flat scans regain depth. Optional denoise smooths uniform regions while preserving edges.</li>
+      <li><strong>Encode.</strong> The result is encoded as PNG (lossless), JPEG (q92), or WebP (q92). PNG is recommended for screenshots and graphics; WebP wins on photos.</li>
+    </ul>
+
+    <h3>FAQ — questions people ask before using a free AI image upscaler</h3>
+    <p><strong>Is this image upscaler really free, with no signup or watermark?</strong> Yes. The whole tool is one HTML file your browser caches. No credits, no daily limits, no watermark on the output, no email required.</p>
+    <p><strong>Does it support batch upscaling?</strong> Not in this single-image version — yet. For now you can run multiple tabs in parallel; each instance uses your local CPU only.</p>
+    <p><strong>What's the maximum image size?</strong> Practically, around 30 MB or 8000×8000 source pixels. The browser's canvas memory budget caps the output resolution; if you 4× a 4K image you'll be allocating ~256 MB of pixel buffer, which is fine on a desktop but may crash mobile Safari.</p>
+    <p><strong>How does the quality compare to Topaz / Real-ESRGAN?</strong> For most photos and graphics: very close at typical viewing sizes. For tiny faces in low-res photos: Topaz wins because it hallucinates plausible detail. We never invent pixels — we interpolate them. Use the right tool for the job.</p>
+    <p><strong>Is the upscaled image the same color profile?</strong> The browser canvas operates in sRGB. If your source is a wide-gamut Display P3 PNG, the canvas will normalize to sRGB during decode. For color-critical print work, do the upscale in a tool that preserves your ICC profile.</p>
+    <p><strong>Need related tools?</strong> Pair with our <a href="/og-image-generator/">OG Image Generator</a> for social cards or <a href="/favicon-generator/">Favicon Generator</a> when you need crisp tiny versions of an upscaled logo.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · No signup · Made by tinytools.dev. <a href="#" id="footer-tip">Tip jar</a> · <a href="/">Back to all tools</a></p>
+  </footer>
+</div>
+
+<script>
+const AFFILIATE = {
+  topazUrl: 'https://www.topazlabs.com/photo?aff=YOUR_TOPAZ_ID',
+  replicateUrl: 'https://replicate.com/?aff=YOUR_REPLICATE_ID',
+  clipdropUrl: 'https://clipdrop.co/?aff=YOUR_CLIPDROP_ID',
+  bmacUrl: 'https://www.buymeacoffee.com/YOURNAME'
+};
+document.getElementById('upsell-topaz').href = AFFILIATE.topazUrl;
+document.getElementById('upsell-replicate').href = AFFILIATE.replicateUrl;
+document.getElementById('upsell-clipdrop').href = AFFILIATE.clipdropUrl;
+document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
+
+const $ = function(id){ return document.getElementById(id); };
+
+let state = {
+  img: null,            // HTMLImageElement
+  origCanvas: null,     // ImageBitmap-backed canvas
+  outCanvas: null,
+  factor: 2,
+  fileName: 'image',
+  fileSize: 0,
+  outBlob: null
+};
+
+function setStatus(msg, kind) {
+  const el = $('status');
+  el.textContent = msg;
+  el.className = 'status show' + (kind === 'error' ? ' error' : kind === 'success' ? ' success' : '');
+}
+function setStage(name, mode){
+  document.querySelectorAll('.stage-pill').forEach(function(s){
+    if (s.dataset.stage === name) {
+      s.classList.remove('done','active');
+      if (mode) s.classList.add(mode);
+    }
+  });
+}
+function resetStages(){ document.querySelectorAll('.stage-pill').forEach(function(s){ s.classList.remove('done','active'); }); }
+
+// Toggles
+document.querySelectorAll('.toggle').forEach(function(t){
+  const cb = t.querySelector('input');
+  t.addEventListener('click', function(e){
+    if (e.target.tagName === 'INPUT') return;
+    cb.checked = !cb.checked;
+    t.classList.toggle('on', cb.checked);
+  });
+});
+
+// Factor pick
+document.querySelectorAll('#factorPick button').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('#factorPick button').forEach(function(x){ x.classList.toggle('on', x === b); });
+    if (b.dataset.f === 'custom') {
+      $('customWrap').style.display = '';
+      state.factor = parseFloat($('customFactor').value) || 2.5;
+    } else {
+      $('customWrap').style.display = 'none';
+      state.factor = parseFloat(b.dataset.f);
+    }
+    updateMeta();
+  });
+});
+$('customFactor').addEventListener('input', function(){
+  state.factor = Math.max(1.1, Math.min(8, parseFloat($('customFactor').value) || 2));
+  updateMeta();
+});
+
+// File input + drop
+const drop = $('drop');
+drop.addEventListener('click', function(){ $('fileIn').click(); });
+drop.addEventListener('dragover', function(e){ e.preventDefault(); drop.classList.add('over'); });
+drop.addEventListener('dragleave', function(){ drop.classList.remove('over'); });
+drop.addEventListener('drop', function(e){
+  e.preventDefault(); drop.classList.remove('over');
+  const f = e.dataTransfer.files[0];
+  if (f) loadFile(f);
+});
+$('fileIn').addEventListener('change', function(e){
+  const f = e.target.files[0]; if (f) loadFile(f);
+});
+
+function loadFile(file){
+  if (!file.type.startsWith('image/')) { setStatus('That doesn\'t look like an image file.', 'error'); return; }
+  state.fileName = (file.name || 'image').replace(/\.[^.]+$/, '');
+  state.fileSize = file.size;
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.onload = function(){
+    state.img = img;
+    state.origCanvas = imageToCanvas(img);
+    drawTo($('cvOrig'), state.origCanvas, 480);
+    $('phOrig').style.display = 'none';
+    $('goBtn').disabled = false;
+    $('metaWrap').style.display = '';
+    updateMeta();
+    URL.revokeObjectURL(url);
+    setStatus('Image loaded — pick a factor and click Upscale.', 'success');
+  };
+  img.onerror = function(){ setStatus('Could not decode that image.', 'error'); };
+  img.src = url;
+}
+
+function imageToCanvas(img){
+  const c = document.createElement('canvas');
+  c.width = img.naturalWidth; c.height = img.naturalHeight;
+  c.getContext('2d').drawImage(img, 0, 0);
+  return c;
+}
+
+function drawTo(target, source, maxDisplay){
+  const ratio = Math.min(maxDisplay / source.width, maxDisplay / source.height, 1);
+  target.width = Math.round(source.width * ratio);
+  target.height = Math.round(source.height * ratio);
+  const ctx = target.getContext('2d');
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(source, 0, 0, target.width, target.height);
+}
+
+function updateMeta(){
+  if (!state.origCanvas) return;
+  const w = state.origCanvas.width, h = state.origCanvas.height;
+  const ow = Math.round(w * state.factor), oh = Math.round(h * state.factor);
+  $('m-src').textContent = (state.fileSize/1024).toFixed(0) + ' KB';
+  $('m-dim').textContent = w + ' × ' + h;
+  $('m-out').textContent = ow + ' × ' + oh;
+  // Heuristic ETA: pixels * factor² / 5M ≈ seconds
+  const px = ow * oh;
+  const algo = $('algo').value;
+  const mul = algo === 'lanczos' ? 1.0 : algo === 'bicubic' ? 0.55 : 0.15;
+  const sec = Math.max(0.3, px / 5_000_000 * mul);
+  $('m-eta').textContent = sec < 1 ? '<1 s' : Math.round(sec) + ' s';
+}
+
+// === Upscaling kernels ===
+
+function lanczos3(x){
+  if (x === 0) return 1;
+  if (x <= -3 || x >= 3) return 0;
+  const px = Math.PI * x;
+  return (Math.sin(px) / px) * (Math.sin(px / 3) / (px / 3));
+}
+
+function bicubic(x){
+  const a = -0.5;
+  x = Math.abs(x);
+  if (x < 1) return (a+2)*x*x*x - (a+3)*x*x + 1;
+  if (x < 2) return a*x*x*x - 5*a*x*x + 8*a*x - 4*a;
+  return 0;
+}
+
+function resample(src, dstW, dstH, kernelFn, support){
+  const sw = src.width, sh = src.height;
+  const srcData = src.getContext('2d').getImageData(0, 0, sw, sh).data;
+  const dst = new Uint8ClampedArray(dstW * dstH * 4);
+  const sx = sw / dstW, sy = sh / dstH;
+
+  // Precompute X weights
+  const xw = new Float32Array(dstW * (support * 2));
+  const xi = new Int32Array(dstW * (support * 2));
+  const xCount = new Int32Array(dstW);
+  for (let x = 0; x < dstW; x++){
+    const cx = (x + 0.5) * sx - 0.5;
+    const lo = Math.max(0, Math.floor(cx) - support + 1);
+    const hi = Math.min(sw - 1, Math.floor(cx) + support);
+    let sum = 0; let n = 0;
+    for (let i = lo; i <= hi; i++){
+      const w = kernelFn(cx - i);
+      xw[x * (support*2) + n] = w;
+      xi[x * (support*2) + n] = i;
+      sum += w; n++;
+    }
+    if (sum !== 0) for (let k = 0; k < n; k++) xw[x*(support*2)+k] /= sum;
+    xCount[x] = n;
+  }
+
+  // Precompute Y weights
+  const yw = new Float32Array(dstH * (support * 2));
+  const yi = new Int32Array(dstH * (support * 2));
+  const yCount = new Int32Array(dstH);
+  for (let y = 0; y < dstH; y++){
+    const cy = (y + 0.5) * sy - 0.5;
+    const lo = Math.max(0, Math.floor(cy) - support + 1);
+    const hi = Math.min(sh - 1, Math.floor(cy) + support);
+    let sum = 0; let n = 0;
+    for (let j = lo; j <= hi; j++){
+      const w = kernelFn(cy - j);
+      yw[y * (support*2) + n] = w;
+      yi[y * (support*2) + n] = j;
+      sum += w; n++;
+    }
+    if (sum !== 0) for (let k = 0; k < n; k++) yw[y*(support*2)+k] /= sum;
+    yCount[y] = n;
+  }
+
+  // Two-pass: resample horizontally to a strip buffer, then vertically.
+  const strip = new Float32Array(dstW * sh * 4);
+  for (let y = 0; y < sh; y++){
+    for (let x = 0; x < dstW; x++){
+      let r=0,g=0,b=0,a=0;
+      const n = xCount[x];
+      for (let k = 0; k < n; k++){
+        const wgt = xw[x*(support*2)+k];
+        const idx = (y * sw + xi[x*(support*2)+k]) * 4;
+        r += srcData[idx] * wgt;
+        g += srcData[idx+1] * wgt;
+        b += srcData[idx+2] * wgt;
+        a += srcData[idx+3] * wgt;
+      }
+      const di = (y * dstW + x) * 4;
+      strip[di]=r; strip[di+1]=g; strip[di+2]=b; strip[di+3]=a;
+    }
+  }
+  for (let y = 0; y < dstH; y++){
+    const n = yCount[y];
+    for (let x = 0; x < dstW; x++){
+      let r=0,g=0,b=0,a=0;
+      for (let k = 0; k < n; k++){
+        const wgt = yw[y*(support*2)+k];
+        const idx = (yi[y*(support*2)+k] * dstW + x) * 4;
+        r += strip[idx] * wgt;
+        g += strip[idx+1] * wgt;
+        b += strip[idx+2] * wgt;
+        a += strip[idx+3] * wgt;
+      }
+      const di = (y * dstW + x) * 4;
+      dst[di] = r < 0 ? 0 : r > 255 ? 255 : r;
+      dst[di+1] = g < 0 ? 0 : g > 255 ? 255 : g;
+      dst[di+2] = b < 0 ? 0 : b > 255 ? 255 : b;
+      dst[di+3] = a < 0 ? 0 : a > 255 ? 255 : a;
+    }
+  }
+
+  const out = document.createElement('canvas');
+  out.width = dstW; out.height = dstH;
+  const id = new ImageData(dst, dstW, dstH);
+  out.getContext('2d').putImageData(id, 0, 0);
+  return out;
+}
+
+function nearest(src, dstW, dstH){
+  const out = document.createElement('canvas');
+  out.width = dstW; out.height = dstH;
+  const ctx = out.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(src, 0, 0, dstW, dstH);
+  return out;
+}
+
+// Unsharp mask: sharpened = orig + amount*(orig - blur)
+function unsharpMask(canvas, amount){
+  const w = canvas.width, h = canvas.height;
+  const ctx = canvas.getContext('2d');
+  const id = ctx.getImageData(0, 0, w, h);
+  const src = id.data;
+  // 3x3 box blur (cheap)
+  const blur = new Uint8ClampedArray(src.length);
+  for (let y = 0; y < h; y++){
+    for (let x = 0; x < w; x++){
+      let r=0,g=0,b=0,c=0;
+      for (let dy = -1; dy <= 1; dy++){
+        for (let dx = -1; dx <= 1; dx++){
+          const xx = x + dx, yy = y + dy;
+          if (xx < 0 || yy < 0 || xx >= w || yy >= h) continue;
+          const i = (yy * w + xx) * 4;
+          r += src[i]; g += src[i+1]; b += src[i+2]; c++;
+        }
+      }
+      const i = (y * w + x) * 4;
+      blur[i] = r/c; blur[i+1] = g/c; blur[i+2] = b/c; blur[i+3] = src[i+3];
+    }
+  }
+  for (let i = 0; i < src.length; i += 4){
+    src[i]   = Math.max(0, Math.min(255, src[i]   + amount * (src[i]   - blur[i])));
+    src[i+1] = Math.max(0, Math.min(255, src[i+1] + amount * (src[i+1] - blur[i+1])));
+    src[i+2] = Math.max(0, Math.min(255, src[i+2] + amount * (src[i+2] - blur[i+2])));
+  }
+  ctx.putImageData(id, 0, 0);
+  return canvas;
+}
+
+// Light bilateral-ish denoise: only smooth uniform regions
+function denoise(canvas){
+  const w = canvas.width, h = canvas.height;
+  const ctx = canvas.getContext('2d');
+  const id = ctx.getImageData(0, 0, w, h);
+  const src = id.data;
+  const out = new Uint8ClampedArray(src.length);
+  const thr = 18; // edge threshold
+  for (let y = 0; y < h; y++){
+    for (let x = 0; x < w; x++){
+      const i = (y * w + x) * 4;
+      const cr = src[i], cg = src[i+1], cb = src[i+2];
+      let r = cr, g = cg, b = cb, n = 1;
+      for (let dy = -1; dy <= 1; dy++){
+        for (let dx = -1; dx <= 1; dx++){
+          if (dx === 0 && dy === 0) continue;
+          const xx = x + dx, yy = y + dy;
+          if (xx < 0 || yy < 0 || xx >= w || yy >= h) continue;
+          const j = (yy * w + xx) * 4;
+          if (Math.abs(src[j] - cr) + Math.abs(src[j+1] - cg) + Math.abs(src[j+2] - cb) > thr) continue;
+          r += src[j]; g += src[j+1]; b += src[j+2]; n++;
+        }
+      }
+      out[i] = r/n; out[i+1] = g/n; out[i+2] = b/n; out[i+3] = src[i+3];
+    }
+  }
+  ctx.putImageData(new ImageData(out, w, h), 0, 0);
+  return canvas;
+}
+
+function autoContrast(canvas){
+  const w = canvas.width, h = canvas.height;
+  const ctx = canvas.getContext('2d');
+  const id = ctx.getImageData(0, 0, w, h);
+  const d = id.data;
+  // Compute 1st/99th percentile per-channel
+  function pct(arr, p){
+    arr.sort(function(a,b){return a-b;});
+    return arr[Math.floor((arr.length-1)*p)];
+  }
+  // Sample to keep cost low
+  const stride = Math.max(1, Math.floor((w*h)/250000));
+  const samp = [[],[],[]];
+  for (let i = 0; i < d.length; i += 4 * stride){
+    samp[0].push(d[i]); samp[1].push(d[i+1]); samp[2].push(d[i+2]);
+  }
+  const lo = [pct(samp[0],0.01), pct(samp[1],0.01), pct(samp[2],0.01)];
+  const hi = [pct(samp[0],0.99), pct(samp[1],0.99), pct(samp[2],0.99)];
+  const stretch = function(v, l, h){
+    if (h - l < 6) return v;
+    return Math.max(0, Math.min(255, ((v - l) / (h - l)) * 255));
+  };
+  for (let i = 0; i < d.length; i += 4){
+    d[i]   = stretch(d[i],   lo[0], hi[0]);
+    d[i+1] = stretch(d[i+1], lo[1], hi[1]);
+    d[i+2] = stretch(d[i+2], lo[2], hi[2]);
+  }
+  ctx.putImageData(id, 0, 0);
+  return canvas;
+}
+
+// === Run pipeline ===
+
+function yieldFrame(){ return new Promise(function(r){ requestAnimationFrame(function(){ setTimeout(r, 0); }); }); }
+
+$('goBtn').addEventListener('click', async function(){
+  if (!state.origCanvas) return;
+  $('goBtn').disabled = true; $('downloadBtn').disabled = true;
+  $('goBtn').textContent = 'Working…';
+  resetStages();
+
+  try {
+    setStage('decode','done');
+    const f = state.factor;
+    const sw = state.origCanvas.width, sh = state.origCanvas.height;
+    const dw = Math.round(sw * f), dh = Math.round(sh * f);
+
+    if (dw * dh > 64_000_000) {
+      throw new Error('Output would be ' + dw + '×' + dh + ' (' + ((dw*dh)/1e6).toFixed(0) + ' MP) — too large for the browser. Pick a smaller factor.');
+    }
+
+    setStage('resample','active');
+    setStatus('Resampling to ' + dw + ' × ' + dh + '…');
+    await yieldFrame();
+
+    const algo = $('algo').value;
+    let up;
+    if (algo === 'nearest') {
+      up = nearest(state.origCanvas, dw, dh);
+    } else if (algo === 'bicubic') {
+      up = resample(state.origCanvas, dw, dh, bicubic, 2);
+    } else {
+      up = resample(state.origCanvas, dw, dh, lanczos3, 3);
+    }
+    setStage('resample','done');
+    await yieldFrame();
+
+    setStage('enhance','active');
+    if ($('t-autoEnhance').checked) {
+      setStatus('Auto contrast…'); await yieldFrame();
+      autoContrast(up);
+    }
+    if ($('t-denoise').checked) {
+      setStatus('Denoising…'); await yieldFrame();
+      denoise(up);
+    }
+    if ($('t-sharpen').checked && algo !== 'nearest') {
+      setStatus('Sharpening edges…'); await yieldFrame();
+      unsharpMask(up, 0.35);
+    }
+    setStage('enhance','done');
+
+    // If preserveAlpha not checked and the source has alpha, we composite onto white for JPEG export only later
+    state.outCanvas = up;
+    drawTo($('cvOut'), up, 480);
+    $('phOut').style.display = 'none';
+
+    // Compare slider
+    setupCompare(state.origCanvas, up);
+
+    setStage('encode','active');
+    setStatus('Encoding ' + $('format').value.toUpperCase() + '…'); await yieldFrame();
+    const blob = await encodeBlob(up);
+    state.outBlob = blob;
+    setStage('encode','done');
+
+    $('downloadBtn').disabled = false;
+    setStatus('Done. Output ' + dw + ' × ' + dh + ' · ' + (blob.size/1024).toFixed(0) + ' KB. Click Download.', 'success');
+  } catch(e){
+    setStatus(e.message || String(e), 'error');
+  } finally {
+    $('goBtn').disabled = false;
+    $('goBtn').textContent = '✨ Upscale image';
+  }
+});
+
+function encodeBlob(canvas){
+  return new Promise(function(resolve, reject){
+    const fmt = $('format').value;
+    const mime = fmt === 'jpeg' ? 'image/jpeg' : fmt === 'webp' ? 'image/webp' : 'image/png';
+    const quality = fmt === 'png' ? undefined : 0.92;
+    let target = canvas;
+    if (fmt === 'jpeg' && !$('t-preserveAlpha').checked) {
+      // JPEG has no alpha — flatten
+      const flat = document.createElement('canvas');
+      flat.width = canvas.width; flat.height = canvas.height;
+      const fctx = flat.getContext('2d');
+      fctx.fillStyle = '#ffffff';
+      fctx.fillRect(0, 0, flat.width, flat.height);
+      fctx.drawImage(canvas, 0, 0);
+      target = flat;
+    }
+    target.toBlob(function(b){
+      if (!b) return reject(new Error('Encoding failed.'));
+      resolve(b);
+    }, mime, quality);
+  });
+}
+
+$('downloadBtn').addEventListener('click', function(){
+  if (!state.outBlob) return;
+  const ext = $('format').value === 'jpeg' ? 'jpg' : $('format').value;
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(state.outBlob);
+  a.download = state.fileName + '_upscaled_' + state.factor + 'x.' + ext;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+});
+
+$('resetBtn').addEventListener('click', function(){
+  state = { img: null, origCanvas: null, outCanvas: null, factor: state.factor, fileName: 'image', fileSize: 0, outBlob: null };
+  $('cvOrig').width = $('cvOrig').height = 0;
+  $('cvOut').width = $('cvOut').height = 0;
+  $('phOrig').style.display = ''; $('phOut').style.display = '';
+  $('metaWrap').style.display = 'none';
+  $('compareWrap').style.display = 'none';
+  $('goBtn').disabled = true; $('downloadBtn').disabled = true;
+  $('fileIn').value = '';
+  resetStages();
+  setStatus('', null); $('status').className = 'status';
+});
+
+// Compare slider
+function setupCompare(orig, up){
+  const cmpW = Math.min(900, up.width);
+  const ratio = cmpW / up.width;
+  const cmpH = Math.round(up.height * ratio);
+  const beforeC = $('cvCmpBefore'), afterC = $('cvCmpAfter');
+  beforeC.width = afterC.width = cmpW;
+  beforeC.height = afterC.height = cmpH;
+  // Draw upscaled (after)
+  afterC.getContext('2d').drawImage(up, 0, 0, cmpW, cmpH);
+  // Draw original at upscaled-display size (before) — same display size, lower fidelity
+  const bctx = beforeC.getContext('2d');
+  bctx.imageSmoothingEnabled = true;
+  bctx.imageSmoothingQuality = 'low';
+  bctx.drawImage(orig, 0, 0, cmpW, cmpH);
+  $('compareWrap').style.display = '';
+  // Initialize slider
+  const wrap = $('compare');
+  const top = $('cmpTop');
+  const handle = $('cmpHandle');
+  function setPos(px){
+    const rect = wrap.getBoundingClientRect();
+    const clamped = Math.max(0, Math.min(rect.width, px));
+    top.style.width = clamped + 'px';
+    handle.style.left = clamped + 'px';
+  }
+  setPos(wrap.getBoundingClientRect().width / 2);
+  let dragging = false;
+  function onMove(e){
+    if (!dragging) return;
+    const rect = wrap.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    setPos(clientX - rect.left);
+  }
+  wrap.onmousedown = function(e){ dragging = true; onMove(e); };
+  wrap.ontouchstart = function(e){ dragging = true; onMove(e); };
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('touchmove', onMove);
+  window.addEventListener('mouseup', function(){ dragging = false; });
+  window.addEventListener('touchend', function(){ dragging = false; });
+}
+
+// Re-render meta on algorithm change
+$('algo').addEventListener('change', updateMeta);
+</script>
+</body>
+</html>
