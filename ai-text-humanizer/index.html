@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Text Humanizer (2026) — Rewrite ChatGPT / Claude Output to Sound Human</title>
+<meta name="description" content="Paste AI-written text — get a version that reads like a human wrote it. Rule-based pre-pass strips AI tells (em-dashes, "delve", "tapestry"), then BYOK LLM rewrites for cadence and voice. Free, in-browser.">
+<meta name="keywords" content="ai text humanizer, humanize ai text, undetectable ai, rewrite ai content, chatgpt humanizer, claude humanizer, anti ai detector, free ai humanizer">
+<meta property="og:title" content="Free AI Text Humanizer — Rewrite GPT/Claude Output">
+<meta property="og:description" content="Strip the AI tells, then BYOK rewrite for natural cadence. Free, browser-only.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-text-humanizer/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free AI Text Humanizer">
+<meta name="twitter:description" content="Rule pre-pass + BYOK LLM rewrite. Browser-only, no signup.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-text-humanizer/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Text Humanizer",
+  "url": "https://tinytools-smoky.vercel.app/ai-text-humanizer/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any (browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Free AI text humanizer. Rule-based pre-pass + BYOK LLM rewrite turns ChatGPT or Claude output into natural-sounding human prose. No signup, browser-only."
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f97316; --accent-glow: #f9731640;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #eab30840 0%, transparent 50%);
+  }
+  .container { max-width: 1180px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fdba74 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 700px; margin: 0 auto; }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+    margin-top: 24px;
+  }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .field { margin-bottom: 14px; }
+  label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500;
+  }
+  input[type="text"], input[type="password"], textarea, select {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit;
+  }
+  textarea { resize: vertical; min-height: 240px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; }
+  input:focus, textarea:focus, select:focus {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 800px) { .grid2, .row, .row2 { grid-template-columns: 1fr; } }
+
+  .btn {
+    width: 100%; padding: 13px 18px; background: var(--accent); color: white;
+    border: none; border-radius: 10px; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: all 0.15s; font-family: inherit;
+  }
+  .btn:hover:not(:disabled) { filter: brightness(1.1); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-ghost { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+
+  .status {
+    margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 13px;
+    background: var(--bg-elevated); color: var(--text-dim); display: none;
+  }
+  .status.show { display: block; }
+  .status.error { color: #fca5a5; border: 1px solid #ef444450; }
+  .status.success { color: #86efac; border: 1px solid #10b98150; }
+
+  .stages { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; font-size: 12px; }
+  .stage { padding: 6px 10px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; color: var(--text-dim); }
+  .stage.done { border-color: #10b981; color: #86efac; }
+  .stage.active { border-color: var(--accent); color: var(--accent); }
+
+  .tabs { display: flex; gap: 4px; margin-bottom: 12px; flex-wrap: wrap; }
+  .tab {
+    padding: 8px 14px; background: var(--bg-elevated); border-radius: 8px; font-size: 13px;
+    cursor: pointer; color: var(--text-dim); transition: all 0.15s;
+  }
+  .tab.active { background: var(--accent); color: white; }
+
+  .output {
+    background: #000; padding: 18px; border-radius: 12px; margin-top: 4px;
+    border: 1px solid var(--border); position: relative; min-height: 320px;
+  }
+  .output pre { margin: 0; font-family: 'SF Mono', Monaco, monospace; font-size: 13px;
+    color: #fff7ed; white-space: pre-wrap; word-wrap: break-word; max-height: 600px; overflow: auto; }
+  .copy-btn, .download-btn {
+    position: absolute; top: 10px; padding: 6px 12px;
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text); font-size: 12px; cursor: pointer;
+  }
+  .copy-btn { right: 10px; }
+  .download-btn { right: 78px; }
+  .copy-btn:hover, .download-btn:hover { border-color: var(--accent); }
+
+  .scores { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px; }
+  @media (max-width: 700px) { .scores { grid-template-columns: 1fr 1fr; } }
+  .score { background: var(--bg-elevated); padding: 12px; border-radius: 10px;
+    border: 1px solid var(--border); }
+  .score .k { color: var(--text-dim); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .score .v { color: var(--text); font-weight: 700; font-size: 22px; margin-top: 4px; }
+  .score.high .v { color: #fca5a5; }
+  .score.mid .v { color: #fbbf24; }
+  .score.low .v { color: #86efac; }
+  .score .delta { font-size: 11px; margin-top: 2px; color: var(--text-dim); }
+  .score .delta.up { color: #fca5a5; }
+  .score .delta.down { color: #86efac; }
+
+  .findings { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .finding { padding: 4px 10px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 12px; color: var(--text-dim); }
+  .finding.hit { border-color: var(--accent); color: var(--accent); background: rgba(249, 115, 22, 0.08); }
+
+  .upsell {
+    margin-top: 16px; padding: 16px; background: var(--bg-elevated);
+    border-radius: 10px; border-left: 3px solid var(--accent); font-size: 13px;
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .privacy {
+    margin-top: 12px; padding: 12px; background: var(--bg-elevated);
+    border-radius: 8px; font-size: 12px; color: var(--text-dim);
+    border: 1px dashed var(--border);
+  }
+  .privacy strong { color: var(--text); }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); margin-bottom: 10px; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+  .content a { color: var(--accent); text-decoration: none; }
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🤖 → 🧑 &nbsp;·&nbsp; Rule pre-pass + BYOK rewrite &nbsp;·&nbsp; Browser-only</div>
+    <h1>AI Text Humanizer</h1>
+    <p class="subtitle">Paste ChatGPT, Claude, or Gemini output. A rule-based pre-pass strips the obvious AI tells (em-dashes, "delve", "tapestry", "in today's fast-paced world"), then your AI key rewrites it for natural cadence and voice. Free, BYOK, browser-only — your text never touches our servers.</p>
+  </header>
+
+  <div class="panel">
+    <h2>1 — Paste your AI text</h2>
+    <div class="field">
+      <label>The text to humanize <span id="srcStats">0 words · 0 sentences</span></label>
+      <textarea id="src" placeholder="Paste the AI-written paragraph or article. The tool works best on 100–2000 words."></textarea>
+    </div>
+
+    <h2 style="margin-top: 8px;">2 — Voice + style</h2>
+    <div class="row">
+      <div class="field">
+        <label>Target voice</label>
+        <select id="voice">
+          <option value="conversational">Conversational (default)</option>
+          <option value="professional">Professional / business</option>
+          <option value="casual">Casual / friendly</option>
+          <option value="academic">Academic (cautious, hedged)</option>
+          <option value="punchy">Punchy / direct</option>
+          <option value="storytelling">Storytelling / personal</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Reading level</label>
+        <select id="grade">
+          <option value="hs">High-school (Flesch ~70)</option>
+          <option value="general" selected>General reader (Flesch ~60)</option>
+          <option value="college">College (Flesch ~50)</option>
+          <option value="expert">Expert (Flesch ~40)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Strength</label>
+        <select id="strength">
+          <option value="light">Light edit (preserve meaning closely)</option>
+          <option value="medium" selected>Medium rewrite</option>
+          <option value="heavy">Heavy rewrite (full reword)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row2">
+      <div class="field">
+        <label>Variability (sentence-length variance)</label>
+        <select id="variability">
+          <option value="low">Low — uniform, calm</option>
+          <option value="medium" selected>Medium — natural mix</option>
+          <option value="high">High — short bursts + long sentences</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Optional sample of YOUR voice (writing sample)</label>
+        <input id="sample" type="text" placeholder="One sentence from something you wrote — the LLM mirrors the cadence">
+      </div>
+    </div>
+
+    <h2 style="margin-top: 8px;">3 — AI provider (BYOK)</h2>
+    <div class="row2">
+      <div class="field">
+        <label>Provider</label>
+        <select id="provider">
+          <option value="rules">Rule-based only (no API key needed)</option>
+          <option value="openai">OpenAI (GPT-4o-mini)</option>
+          <option value="anthropic">Anthropic (Claude Haiku)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>API key (stays in your browser)</label>
+        <input id="apiKey" type="password" placeholder="sk-... or sk-ant-... (not needed for rule-based)">
+      </div>
+    </div>
+    <div class="privacy">
+      <strong>Privacy:</strong> Your text and API key never touch our servers. The LLM request goes from your browser straight to OpenAI / Anthropic. Rule-based mode runs 100% locally.
+    </div>
+
+    <div style="margin-top: 14px;" class="row2">
+      <button class="btn" id="goBtn">✨ Humanize text</button>
+      <button class="btn btn-ghost" id="analyzeBtn">🔎 Just score AI tells</button>
+    </div>
+
+    <div class="stages" id="stages">
+      <div class="stage" data-stage="parse">1. Parse</div>
+      <div class="stage" data-stage="prepass">2. Strip tells</div>
+      <div class="stage" data-stage="rewrite">3. LLM rewrite</div>
+      <div class="stage" data-stage="score">4. Score</div>
+    </div>
+    <div id="status" class="status"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Result</h2>
+    <div class="tabs">
+      <div class="tab active" data-view="output">Humanized text</div>
+      <div class="tab" data-view="diff">Diff vs. original</div>
+      <div class="tab" data-view="findings">AI tells found</div>
+    </div>
+    <div class="output">
+      <button class="download-btn" id="downloadBtn">Download .txt</button>
+      <button class="copy-btn" id="copyBtn">Copy</button>
+      <pre id="outputCode">Your humanized text will appear here.
+
+Tip: 200–800 words is the sweet spot. Above 1500, run paragraphs separately for cleaner cadence.</pre>
+    </div>
+
+    <h2 style="margin-top: 18px;">AI-tell scorecard</h2>
+    <div class="scores">
+      <div class="score" id="s-overall"><div class="k">Overall AI score</div><div class="v">—</div><div class="delta"></div></div>
+      <div class="score" id="s-emdash"><div class="k">Em-dash density</div><div class="v">—</div><div class="delta"></div></div>
+      <div class="score" id="s-tellWords"><div class="k">Tell words</div><div class="v">—</div><div class="delta"></div></div>
+      <div class="score" id="s-variance"><div class="k">Sentence variance</div><div class="v">—</div><div class="delta"></div></div>
+    </div>
+
+    <div class="findings" id="findings"></div>
+
+    <div class="upsell">
+      <strong>Need to run AI detection first?</strong>
+      Our free <a href="/ai-text-detector/">AI Text Detector</a> uses 9 heuristics —
+      then for serious checks try <a href="#" id="upsell-orig" target="_blank" rel="noopener">Originality.ai</a>,
+      <a href="#" id="upsell-quill" target="_blank" rel="noopener">QuillBot Premium</a>, or
+      <a href="#" id="upsell-grammarly" target="_blank" rel="noopener">Grammarly</a> for editing.
+      <em>(Affiliate links — no extra cost to you.)</em>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>How an AI text humanizer should actually work in 2026</h2>
+    <p>Most "AI text humanizer" tools you'll find at the top of Google in 2026 do one of two things, both of them dumb. They run a thesaurus pass and call it humanization — output reads worse than the input. Or they pipe your text through their own GPT-4o-mini call with a hard-coded prompt and charge you $19/month for it. This AI text humanizer combines a rule-based pre-pass that catches the deterministic AI tells (em-dash density, banned vocabulary, opening hedges, three-item lists ad infinitum) with an optional BYOK LLM rewrite that targets the specific voice and reading level you ask for. Two stages, both inspectable, no monthly subscription.</p>
+
+    <h3>The AI tells the rule-based pre-pass catches</h3>
+    <p>Modern LLM output has a specific fingerprint. ChatGPT and Claude both reach for the same vocabulary cluster — "delve," "tapestry," "navigate the complexities," "in today's fast-paced world," "crucial," "robust," "underscore," "leverage." They overuse em-dashes (often 1 per sentence vs. a human's ~1 per 200 words). They open with formulaic transitions like "It's important to note that…" and "When it comes to…". They write in three-item parallel lists more often than humans do. The pre-pass strips these without changing meaning, so even before the LLM rewrite, the output reads measurably less AI-like.</p>
+
+    <h3>What the BYOK LLM rewrite adds on top</h3>
+    <p>The pre-pass can fix vocabulary and punctuation, but it can't change cadence, paragraph structure, or argument flow. That's where the LLM rewrite comes in. The system prompt instructs the model to:</p>
+    <ul>
+      <li><strong>Vary sentence length aggressively.</strong> Real human writing alternates short punchy sentences with longer reflective ones. AI defaults to a medium-length monotone.</li>
+      <li><strong>Use contractions naturally.</strong> "It's", "don't", "won't" — AI under-uses these in formal modes.</li>
+      <li><strong>Drop the hedging stems.</strong> "It is worth noting…", "It should be considered…" all go.</li>
+      <li><strong>Mirror your voice sample.</strong> If you paste a sentence you wrote, the LLM uses its cadence as a guide rather than reverting to corporate-LLM default.</li>
+    </ul>
+
+    <h3>Will this AI text humanizer pass AI detectors?</h3>
+    <p>Honest answer: sometimes, on some detectors. Modern detectors (GPTZero v3, Originality.ai 3.x, Turnitin's AI module) score on perplexity and burstiness — both metrics this tool actively targets — but no detector is consistent. The same text can score 95% AI on one tool and 5% on another. Use this humanizer to make AI output read better and sound like you, not as a guaranteed detector bypass. If you need detector-grade results, our free <a href="/ai-text-detector/">AI Text Detector</a> uses the same heuristic family the major detectors do — humanize, then check, then iterate.</p>
+
+    <h3>FAQ — questions people ask before using a free AI text humanizer</h3>
+    <p><strong>Is this AI text humanizer actually free?</strong> Yes. The rule-based mode needs no API key at all. The LLM rewrite mode uses your own OpenAI or Anthropic key — typical cost is well under a cent per article. No signup, no daily limits.</p>
+    <p><strong>Will it change the meaning of my text?</strong> "Light" mode preserves meaning almost exactly — it only edits vocabulary and punctuation. "Medium" rewords sentences but keeps every claim. "Heavy" can rephrase or restructure paragraphs, so review the output if facts matter.</p>
+    <p><strong>Should I use this for academic submissions?</strong> No. Most universities now require students to declare AI assistance regardless of how the text was written. Using a humanizer to bypass that is academic misconduct. This tool is for blog posts, marketing copy, drafts, and any context where rewriting AI output for voice is welcome.</p>
+    <p><strong>Why is "rule-based" mode separate?</strong> So you can use it without an API key and see exactly which patterns get changed. It's also the fastest mode — runs in milliseconds — and is enough for some casual edits.</p>
+    <p><strong>Languages other than English?</strong> The rule list is English-only. The LLM rewrite handles other languages but the AI-tell scoring will be less accurate.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · No signup · Made by tinytools.dev. <a href="#" id="footer-tip">Tip jar</a> · <a href="/">Back to all tools</a></p>
+  </footer>
+</div>
+
+<script>
+const AFFILIATE = {
+  origUrl: 'https://originality.ai/?aff=YOUR_ORIG_ID',
+  quillUrl: 'https://quillbot.com/?aff=YOUR_QUILL_ID',
+  grammarlyUrl: 'https://www.grammarly.com/premium?aff=YOUR_GRAMMARLY_ID',
+  bmacUrl: 'https://www.buymeacoffee.com/YOURNAME'
+};
+document.getElementById('upsell-orig').href = AFFILIATE.origUrl;
+document.getElementById('upsell-quill').href = AFFILIATE.quillUrl;
+document.getElementById('upsell-grammarly').href = AFFILIATE.grammarlyUrl;
+document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
+
+const $ = function(id){ return document.getElementById(id); };
+
+try {
+  const k = sessionStorage.getItem('hum_apiKey'); if (k) $('apiKey').value = k;
+  const p = sessionStorage.getItem('hum_provider'); if (p) $('provider').value = p;
+  $('apiKey').addEventListener('input', function(e){ sessionStorage.setItem('hum_apiKey', e.target.value); });
+  $('provider').addEventListener('change', function(e){ sessionStorage.setItem('hum_provider', e.target.value); });
+} catch(e){}
+
+let lastOut = '';
+let lastDiff = '';
+let lastFindings = [];
+let lastScores = null;
+let origScores = null;
+let currentView = 'output';
+
+function setStatus(msg, kind){
+  const el = $('status'); el.textContent = msg;
+  el.className = 'status show' + (kind === 'error' ? ' error' : kind === 'success' ? ' success' : '');
+}
+function setStage(name, mode){
+  document.querySelectorAll('.stage').forEach(function(s){
+    if (s.dataset.stage === name) {
+      s.classList.remove('done','active');
+      if (mode) s.classList.add(mode);
+    }
+  });
+}
+function resetStages(){ document.querySelectorAll('.stage').forEach(function(s){ s.classList.remove('done','active'); }); }
+
+// Stats
+function countWords(s){ return (s.trim().match(/\b[\w'-]+\b/g) || []).length; }
+function splitSentences(s){ return s.replace(/\s+/g,' ').split(/(?<=[.!?])\s+(?=[A-Z"'(])/).filter(function(x){return x.trim().length;}); }
+$('src').addEventListener('input', function(){
+  const v = $('src').value;
+  $('srcStats').textContent = countWords(v) + ' words · ' + splitSentences(v).length + ' sentences';
+});
+
+// === AI tell detection ===
+const TELL_WORDS = [
+  'delve','delves','delved','tapestry','intricate','navigate','navigates','underscore','underscores',
+  'crucial','vital','robust','leverage','leverages','leveraging',
+  'in today\'s fast-paced','in the realm of','in the world of','it is important to note',
+  'it is worth noting','it should be noted','furthermore','moreover','additionally',
+  'a testament to','a beacon of','at the forefront','cutting-edge','game-changer','game changer',
+  'unleash','unparalleled','seamlessly','seamless','dive into','dive deep',
+  'embark','embarks','embarked','foster','fosters','fostering',
+  'paradigm','paradigm shift','synergy','holistic','realm',
+  'when it comes to','that being said','with that said'
+];
+
+function findTells(text){
+  const out = [];
+  const lower = text.toLowerCase();
+  TELL_WORDS.forEach(function(w){
+    const re = new RegExp('\\b' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi');
+    const matches = text.match(re);
+    if (matches) out.push({ term: w, count: matches.length });
+  });
+  return out;
+}
+
+function scoreText(text){
+  const sentences = splitSentences(text);
+  const words = countWords(text);
+  const emDashes = (text.match(/—|–/g) || []).length;
+  const semicolons = (text.match(/;/g) || []).length;
+  const tells = findTells(text);
+  const tellCount = tells.reduce(function(a, t){ return a + t.count; }, 0);
+  // sentence variance
+  const lens = sentences.map(function(s){ return countWords(s); }).filter(function(n){ return n > 0; });
+  let variance = 0;
+  if (lens.length > 1) {
+    const mean = lens.reduce(function(a,b){return a+b;},0) / lens.length;
+    variance = Math.sqrt(lens.reduce(function(a,b){ return a+(b-mean)*(b-mean); },0) / lens.length);
+  }
+  // density per 100 words
+  const emDashDensity = words ? (emDashes / words) * 100 : 0;
+  const tellDensity = words ? (tellCount / words) * 100 : 0;
+
+  // overall AI score 0-100 (higher = more AI-like)
+  let score = 0;
+  score += Math.min(35, emDashDensity * 12);    // 1/word ≈ 12 points per %
+  score += Math.min(30, tellDensity * 14);
+  score += Math.min(20, Math.max(0, 8 - variance) * 3); // low variance = more AI
+  score += Math.min(15, semicolons / Math.max(1, words/100) * 6);
+  score = Math.round(Math.min(100, score));
+
+  return {
+    overall: score,
+    emDashDensity: emDashDensity,
+    tellDensity: tellDensity,
+    variance: variance,
+    tells: tells,
+    words: words,
+    sentences: sentences.length
+  };
+}
+
+function renderScores(s, prev){
+  const fmt = function(n, d){ return n.toFixed(d); };
+  function setOne(id, val, suf, klass){
+    const el = $(id);
+    el.querySelector('.v').textContent = val;
+    el.classList.remove('high','mid','low');
+    if (klass) el.classList.add(klass);
+    return el;
+  }
+  setOne('s-overall', s.overall, '', s.overall >= 60 ? 'high' : s.overall >= 30 ? 'mid' : 'low');
+  setOne('s-emdash', fmt(s.emDashDensity, 2) + '/100w', '', s.emDashDensity >= 1 ? 'high' : s.emDashDensity >= 0.4 ? 'mid' : 'low');
+  setOne('s-tellWords', fmt(s.tellDensity, 2) + '/100w', '', s.tellDensity >= 1.5 ? 'high' : s.tellDensity >= 0.5 ? 'mid' : 'low');
+  setOne('s-variance', fmt(s.variance, 1), '', s.variance >= 6 ? 'low' : s.variance >= 3 ? 'mid' : 'high');
+
+  // Deltas
+  function delta(id, before, after, lowerIsBetter){
+    const d = $(id).querySelector('.delta');
+    if (before === undefined) { d.textContent = ''; return; }
+    const diff = after - before;
+    const sign = diff > 0 ? '+' : '';
+    const better = lowerIsBetter ? diff < 0 : diff > 0;
+    d.textContent = (Math.abs(diff) < 0.01 ? 'no change' : sign + fmt(diff, 2)) + ' vs original';
+    d.className = 'delta ' + (better ? 'down' : diff === 0 ? '' : 'up');
+  }
+  if (prev) {
+    delta('s-overall', prev.overall, s.overall, true);
+    delta('s-emdash', prev.emDashDensity, s.emDashDensity, true);
+    delta('s-tellWords', prev.tellDensity, s.tellDensity, true);
+    delta('s-variance', prev.variance, s.variance, false);
+  } else {
+    document.querySelectorAll('.score .delta').forEach(function(d){ d.textContent = ''; d.className = 'delta'; });
+  }
+}
+
+function renderFindings(tells){
+  const wrap = $('findings'); wrap.innerHTML = '';
+  if (!tells.length) {
+    const span = document.createElement('span');
+    span.className = 'finding'; span.textContent = 'No common AI-tell words detected ✓';
+    wrap.appendChild(span); return;
+  }
+  tells.forEach(function(t){
+    const span = document.createElement('span');
+    span.className = 'finding hit';
+    span.textContent = '"' + t.term + '" × ' + t.count;
+    wrap.appendChild(span);
+  });
+}
+
+// === Rule-based pre-pass ===
+const REPLACEMENTS = [
+  // em/en dash → comma or period
+  [/\s*[—–]\s*/g, ', '],
+  // banned phrases / words → replacements
+  [/\bdelve(s|d|ing)?\s+into\b/gi, 'look at'],
+  [/\bdelve(s|d|ing)?\b/gi, 'look at'],
+  [/\bnavigate(s|d|ing)?\s+the\s+(complexities|nuances|challenges)\s+of\b/gi, 'work through'],
+  [/\bnavigate(s|d|ing)?\s+the\s+complex(ities)?\b/gi, 'work through the complications'],
+  [/\bin\s+the\s+(realm|world)\s+of\b/gi, 'in'],
+  [/\bin\s+today'?s\s+(fast[- ]paced|rapidly[- ]changing|ever[- ]evolving)\s+(world|environment|landscape)\b/gi, 'these days'],
+  [/\bit\s+is\s+(important|worth)\s+(to\s+note|noting)\s+that\b/gi, ''],
+  [/\bit\s+should\s+be\s+noted\s+that\b/gi, ''],
+  [/\bwhen\s+it\s+comes\s+to\b/gi, 'with'],
+  [/\bthat\s+being\s+said\b/gi, 'still'],
+  [/\bwith\s+that\s+said\b/gi, 'still'],
+  [/\b(furthermore|moreover|additionally),?\s+/gi, 'Also, '],
+  [/\bunderscore(s|d)?\b/gi, function(_, s){ return 'highlight' + (s || ''); }],
+  [/\bleverage(s|d|ing)?\b/gi, function(_, s){
+    if (s === 's') return 'uses';
+    if (s === 'd') return 'used';
+    if (s === 'ing') return 'using';
+    return 'use';
+  }],
+  [/\brobust\b/gi, 'solid'],
+  [/\bcrucial\b/gi, 'key'],
+  [/\bvital\b/gi, 'key'],
+  [/\b(seamless|seamlessly)\b/gi, function(m){ return m === 'seamlessly' ? 'easily' : 'easy'; }],
+  [/\b(unparalleled|unrivaled)\b/gi, 'unmatched'],
+  [/\b(cutting[- ]edge)\b/gi, 'modern'],
+  [/\b(game[- ]chang(er|ing))\b/gi, 'big shift'],
+  [/\ba\s+testament\s+to\b/gi, 'proof of'],
+  [/\ba\s+beacon\s+of\b/gi, 'a sign of'],
+  [/\bat\s+the\s+forefront\s+of\b/gi, 'leading'],
+  [/\bdive\s+(deep\s+)?(into|in)\b/gi, 'look at'],
+  [/\bembark(s|ed|ing)?\s+on\b/gi, 'start'],
+  [/\bfoster(s|ed|ing)?\b/gi, function(_, s){
+    if (s === 's') return 'builds';
+    if (s === 'ed') return 'built';
+    if (s === 'ing') return 'building';
+    return 'build';
+  }],
+  [/\bparadigm\s+shift\b/gi, 'big change'],
+  [/\b(synergy|synergies)\b/gi, 'fit'],
+  [/\bholistic\b/gi, 'whole'],
+  [/\bintricate\b/gi, 'detailed'],
+  [/\btapestry\b/gi, 'mix'],
+  // collapse double spaces and stray ", , "
+  [/,\s*,/g, ','],
+  [/\s+,/g, ','],
+  [/\s{2,}/g, ' '],
+  // empty leading clauses
+  [/^\s*,\s*/g, ''],
+  [/\.\s*,\s*/g, '. '],
+  // contractions
+  [/\bdo not\b/gi, "don't"],
+  [/\bdoes not\b/gi, "doesn't"],
+  [/\bdid not\b/gi, "didn't"],
+  [/\bcan not\b/gi, "can't"],
+  [/\bcannot\b/gi, "can't"],
+  [/\bwill not\b/gi, "won't"],
+  [/\bis not\b/gi, "isn't"],
+  [/\bare not\b/gi, "aren't"],
+  [/\bwas not\b/gi, "wasn't"],
+  [/\bwere not\b/gi, "weren't"],
+  [/\bit is\b/g, "it's"],
+  [/\bIt is\b/g, "It's"],
+  [/\bthat is\b/g, "that's"],
+  [/\byou are\b/g, "you're"],
+  [/\bwe are\b/g, "we're"],
+  [/\bthey are\b/g, "they're"],
+  [/\bI am\b/g, "I'm"]
+];
+
+function rulePrepass(text, strength){
+  let out = text;
+  REPLACEMENTS.forEach(function(rep){ out = out.replace(rep[0], rep[1]); });
+  // Capitalize sentence starts
+  out = out.replace(/(^|[.!?]\s+)([a-z])/g, function(_, pre, c){ return pre + c.toUpperCase(); });
+  // For heavy strength, also break up some long sentences with conjunctions
+  if (strength === 'heavy') {
+    out = out.replace(/,\s+(however|but|yet|although|while|whereas)\s+/gi, '. $1 ');
+  }
+  return out.trim();
+}
+
+// === LLM call ===
+
+function buildPrompt(text, opts){
+  const wordTarget = opts.strength === 'light' ? 'within 5% of original' :
+                     opts.strength === 'heavy' ? 'within 30% of original (rephrase freely)' :
+                     'within 15% of original';
+  const fleschTarget = opts.grade === 'hs' ? '~70 (high school)' :
+                       opts.grade === 'college' ? '~50 (college)' :
+                       opts.grade === 'expert' ? '~40 (expert / technical)' :
+                       '~60 (general reader)';
+  const variability = opts.variability === 'low' ? 'low (mostly even sentence lengths)' :
+                      opts.variability === 'high' ? 'high (mix very short and very long sentences for rhythm)' :
+                      'medium (natural mix of short, medium, long sentences)';
+  return [
+    'You are an editor humanizing AI-generated prose without changing the meaning.',
+    '',
+    'Hard rules:',
+    '- Voice: ' + opts.voice + '.',
+    '- Reading level (Flesch): ' + fleschTarget + '.',
+    '- Sentence-length variability: ' + variability + '.',
+    '- Word count: ' + wordTarget + '.',
+    '- Use contractions naturally (it\'s, don\'t, won\'t).',
+    '- Strip transitional clichés ("furthermore", "moreover", "additionally", "in conclusion", "it is important to note").',
+    '- BANNED words: delve, tapestry, navigate (when used metaphorically), underscore, robust, leverage, crucial, vital, seamless, cutting-edge, game-changer, paradigm shift, synergy, holistic, intricate, in today\'s fast-paced world, when it comes to, embark on, foster.',
+    '- Use AT MOST one em-dash (—) per 200 words.',
+    '- Vary openings: do not start two consecutive paragraphs with the same word.',
+    '- Preserve all factual claims, names, numbers, and quoted material.',
+    opts.sample ? '- Mirror the cadence of this writing sample without copying its words: "' + opts.sample.replace(/"/g, "'") + '"' : '',
+    '',
+    'Output ONLY the rewritten text. No preamble, no commentary, no "here is the rewrite:".'
+  ].filter(Boolean).join('\n');
+}
+
+async function callOpenAI(key, system, user, maxTokens){
+  const r = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key },
+    body: JSON.stringify({
+      model: 'gpt-4o-mini',
+      messages: [{ role: 'system', content: system }, { role: 'user', content: user }],
+      temperature: 0.7,
+      max_tokens: maxTokens
+    })
+  });
+  if (!r.ok) {
+    const t = await r.text();
+    throw new Error('OpenAI ' + r.status + ': ' + t.slice(0, 300));
+  }
+  const j = await r.json();
+  return j.choices[0].message.content;
+}
+
+async function callAnthropic(key, system, user, maxTokens){
+  const r = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': key,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: maxTokens,
+      system: system,
+      messages: [{ role: 'user', content: user }]
+    })
+  });
+  if (!r.ok) {
+    const t = await r.text();
+    throw new Error('Anthropic ' + r.status + ': ' + t.slice(0, 300));
+  }
+  const j = await r.json();
+  return j.content[0].text;
+}
+
+// === Diff (word-level, simplified LCS) ===
+function makeDiff(a, b){
+  const aw = a.split(/(\s+)/);
+  const bw = b.split(/(\s+)/);
+  // Quick line-based diff for readability
+  const aLines = a.split(/\n+/);
+  const bLines = b.split(/\n+/);
+  let out = '';
+  const max = Math.max(aLines.length, bLines.length);
+  for (let i = 0; i < max; i++){
+    const oldL = aLines[i] || '';
+    const newL = bLines[i] || '';
+    if (oldL === newL) {
+      out += '  ' + oldL + '\n';
+    } else {
+      if (oldL) out += '- ' + oldL + '\n';
+      if (newL) out += '+ ' + newL + '\n';
+    }
+  }
+  return out.trim();
+}
+
+// === Tabs ===
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click', function(){
+    document.querySelectorAll('.tab').forEach(function(x){ x.classList.toggle('active', x === t); });
+    currentView = t.dataset.view;
+    refreshOutput();
+  });
+});
+
+function refreshOutput(){
+  if (currentView === 'output') $('outputCode').textContent = lastOut || 'Run "Humanize text" to see the result.';
+  else if (currentView === 'diff') $('outputCode').textContent = lastDiff || 'Run "Humanize text" to see a diff.';
+  else if (currentView === 'findings') {
+    if (!lastFindings.length) { $('outputCode').textContent = 'No AI-tell words found in this text.'; return; }
+    $('outputCode').textContent = 'AI-TELL WORDS FOUND IN ORIGINAL\n===============================\n\n' +
+      lastFindings.map(function(t){ return '· "' + t.term + '" × ' + t.count; }).join('\n');
+  }
+}
+
+// === Analyze button (just score, no rewrite) ===
+$('analyzeBtn').addEventListener('click', function(){
+  resetStages();
+  const text = $('src').value.trim();
+  if (!text) { setStatus('Paste some text first.', 'error'); return; }
+  setStage('parse','active'); setStage('parse','done');
+  setStage('score','active');
+  const s = scoreText(text);
+  origScores = s; lastScores = s;
+  lastFindings = s.tells;
+  renderScores(s);
+  renderFindings(s.tells);
+  setStage('score','done');
+  setStatus('AI score: ' + s.overall + '/100. ' + (s.tells.length ? s.tells.length + ' tell-words detected.' : 'No common AI tells found.'), s.overall >= 60 ? 'error' : 'success');
+});
+
+// === Main humanize button ===
+$('goBtn').addEventListener('click', async function(){
+  resetStages();
+  const text = $('src').value.trim();
+  if (!text) { setStatus('Paste some text first.', 'error'); return; }
+  const provider = $('provider').value;
+  const key = $('apiKey').value.trim();
+  if (provider !== 'rules' && !key) { setStatus('Add your API key, or switch to "Rule-based only".', 'error'); return; }
+
+  $('goBtn').disabled = true; $('goBtn').textContent = 'Working…';
+  try {
+    setStage('parse','active');
+    origScores = scoreText(text);
+    setStage('parse','done');
+
+    setStage('prepass','active');
+    setStatus('Stripping AI tells…');
+    const strength = $('strength').value;
+    const stripped = rulePrepass(text, strength);
+    setStage('prepass','done');
+
+    let final = stripped;
+    if (provider !== 'rules') {
+      setStage('rewrite','active');
+      setStatus('Rewriting with ' + (provider === 'openai' ? 'OpenAI' : 'Anthropic') + '…');
+      const opts = {
+        voice: $('voice').value,
+        grade: $('grade').value,
+        strength: strength,
+        variability: $('variability').value,
+        sample: $('sample').value.trim()
+      };
+      const sys = buildPrompt(stripped, opts);
+      const user = 'TEXT TO HUMANIZE:\n\n' + (stripped.length > 12000 ? stripped.slice(0, 12000) + '\n[…truncated]' : stripped);
+      const maxTok = Math.max(400, Math.min(3500, Math.ceil(countWords(stripped) * 1.6)));
+      final = provider === 'openai'
+        ? await callOpenAI(key, sys, user, maxTok)
+        : await callAnthropic(key, sys, user, maxTok);
+      final = final.replace(/^\s*here(?:'s| is) (?:your |the |a )?(rewrite|rewritten text|humanized text|version)[:.]?\s*/i, '').trim();
+      setStage('rewrite','done');
+    } else {
+      setStage('rewrite','done');
+    }
+
+    lastOut = final;
+    lastDiff = makeDiff(text, final);
+    lastFindings = origScores.tells;
+
+    setStage('score','active');
+    lastScores = scoreText(final);
+    renderScores(lastScores, origScores);
+    renderFindings(origScores.tells);
+    setStage('score','done');
+
+    refreshOutput();
+    const drop = origScores.overall - lastScores.overall;
+    const msg = 'Done. Overall AI score went from ' + origScores.overall + ' → ' + lastScores.overall + ' (' + (drop >= 0 ? '−' + drop : '+' + (-drop)) + ').';
+    setStatus(msg, drop > 0 ? 'success' : 'error');
+  } catch(e){
+    setStatus(e.message || String(e), 'error');
+  } finally {
+    $('goBtn').disabled = false; $('goBtn').textContent = '✨ Humanize text';
+  }
+});
+
+$('copyBtn').addEventListener('click', function(){
+  navigator.clipboard.writeText($('outputCode').textContent || '');
+  const b = $('copyBtn'); b.textContent = 'Copied!';
+  setTimeout(function(){ b.textContent = 'Copy'; }, 1500);
+});
+$('downloadBtn').addEventListener('click', function(){
+  const text = $('outputCode').textContent || '';
+  if (!text) return;
+  const blob = new Blob([text], { type: 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = currentView === 'diff' ? 'humanizer-diff.txt' : currentView === 'findings' ? 'ai-tells.txt' : 'humanized.txt';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+});
+</script>
+</body>
+</html>
