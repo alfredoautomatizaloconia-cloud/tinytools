@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>How to Extract a Color Palette from a Logo or Photo in 2026</title>
+<meta name="description" content="Step-by-step guide to extracting a usable color palette from a logo, screenshot, or photo in 2026 — from picking the right source image to deduplicating near-identical hues, fixing accessibility, and shipping the palette as CSS variables or a Tailwind config.">
+<meta name="keywords" content="extract color palette from image, extract color palette from logo, get colors from photo, color picker from image, palette from screenshot, extract brand colors, image to palette 2026">
+<meta property="og:title" content="How to Extract a Color Palette from a Logo or Photo (2026)">
+<meta property="og:description" content="A no-fluff 2026 workflow for pulling a usable, ship-ready color palette out of a logo, screenshot, or photo — and turning it into CSS variables in five minutes.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/color-palette/blog/extract-color-palette-from-logo-or-photo-2026/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Extract a Color Palette from a Logo or Photo (2026)">
+<meta name="twitter:description" content="The five-minute workflow that turns any image into a clean, deduplicated, accessibility-checked palette you can ship today.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/color-palette/blog/extract-color-palette-from-logo-or-photo-2026/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Extract a Color Palette from a Logo or Photo in 2026","description":"A no-fluff 2026 workflow for pulling a usable color palette out of a logo, screenshot, or photo and turning it into CSS variables or a Tailwind config in five minutes.","author":{"@type":"Organization","name":"TinyTools"},"publisher":{"@type":"Organization","name":"TinyTools","url":"https://tinytools-smoky.vercel.app/","logo":{"@type":"ImageObject","url":"https://tinytools-smoky.vercel.app/favicon.ico"}},"datePublished":"2026-05-10","dateModified":"2026-05-10","mainEntityOfPage":"https://tinytools-smoky.vercel.app/color-palette/blog/extract-color-palette-from-logo-or-photo-2026/","keywords":"extract color palette, image to palette, logo color extraction, brand colors, color picker from image"}</script>
+
+<style>
+:root{--bg:#0a0a0f;--bg-card:#15151f;--bg-elev:#1d1d2a;--border:#2a2a3a;--text:#f5f5fa;--text-dim:#a0a0b8;--accent:#a855f7;--accent-glow:#a855f740;--green:#10b981;--red:#ef4444;--amber:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;background-image:radial-gradient(circle at 20% 0%,var(--accent-glow) 0%,transparent 50%),radial-gradient(circle at 80% 60%,#ec489940 0%,transparent 50%)}
+.container{max-width:820px;margin:0 auto;padding:32px 20px 80px}
+.breadcrumb{font-size:13px;color:var(--text-dim);margin-bottom:24px}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+h1{font-size:clamp(28px,4vw,42px);font-weight:800;line-height:1.15;margin:16px 0 12px;letter-spacing:-0.02em;background:linear-gradient(135deg,#fff 0%,#d8b4fe 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.meta{color:var(--text-dim);font-size:14px;margin-bottom:28px}
+h2{font-size:24px;font-weight:700;margin:36px 0 12px;color:var(--text)}
+h3{font-size:19px;font-weight:600;margin:24px 0 8px;color:var(--text)}
+p,ul,ol{color:#d0d0e0;margin-bottom:16px;font-size:17px}
+ul,ol{margin-left:24px}li{margin-bottom:6px}
+strong{color:var(--text);font-weight:600}
+a{color:var(--accent)}
+code{background:var(--bg-elev);padding:2px 6px;border-radius:4px;font-size:14px;color:#d8b4fe}
+pre{background:var(--bg-elev);padding:14px 16px;border-radius:10px;overflow-x:auto;margin:16px 0;border:1px solid var(--border)}
+pre code{background:transparent;padding:0;color:#d8b4fe;font-size:13px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);color:#d0d0e0;vertical-align:top}
+th{background:var(--bg-elev);color:var(--text);font-weight:600;font-size:14px}
+tr:last-child td{border-bottom:none}
+.bar{display:flex;height:54px;border-radius:12px;overflow:hidden;border:1px solid var(--border);margin:14px 0 22px;font-family:'SF Mono',Monaco,monospace;font-size:12px;color:rgba(255,255,255,0.92)}
+.bar div{display:flex;align-items:center;justify-content:center}
+.cta-box{margin:36px 0;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;border-left:4px solid var(--accent)}
+.cta-box h3{margin:0 0 6px;font-size:18px;color:var(--text)}
+.cta-box p{margin-bottom:12px;font-size:15px}
+.cta-btn{display:inline-block;padding:12px 24px;background:linear-gradient(135deg,#a855f7,#ec4899);color:white;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;box-shadow:0 4px 16px rgba(168,85,247,0.3)}
+.related{margin-top:60px;padding-top:28px;border-top:1px solid var(--border)}
+.related h3{color:var(--text-dim);font-size:13px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.related-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;text-decoration:none;color:var(--text);transition:transform 0.15s,border-color 0.15s;display:block}
+.related-card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.related-card .tag{font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.related-card .name{font-weight:600;font-size:15px}
+.callout{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:10px;padding:14px 18px;margin:18px 0;font-size:15px}
+.callout strong{color:var(--accent)}
+footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);font-size:13px;color:var(--text-dim);text-align:center}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="breadcrumb"><a href="/">TinyTools</a> &nbsp;›&nbsp; <a href="/color-palette/">Color Palette Generator</a> &nbsp;›&nbsp; Blog</div>
+
+<h1>How to Extract a Color Palette from a Logo or Photo in 2026</h1>
+<div class="meta">Updated May 10, 2026 · 8 min read · By the TinyTools team</div>
+
+<p>You found the perfect reference — a competitor's landing page, a film still, a photo of your favorite cafe, the logo your designer mocked up six months ago — and now you need the colors. Not vibes. Real hex codes that survive a Tailwind config, a contrast audit, and the harsh fluorescent reality of someone screenshotting your dashboard onto a 2018 Dell monitor.</p>
+
+<p>The good news: extracting a usable palette from an image in 2026 takes about five minutes if you know what to look for. The bad news: most "color extractor" tools spit out twelve nearly identical mid-tone blues and call it a palette, which is why you keep ending up with brand systems that feel muddy. This guide walks through the workflow that actually ships.</p>
+
+<div class="cta-box">
+<h3>Skip the manual eyedropper</h3>
+<p>Drop any image into the TinyTools palette generator — it pulls the dominant hues, deduplicates near-identical colors, and lets you export as CSS variables or a Tailwind config in one click.</p>
+<a class="cta-btn" href="/color-palette/">Try it free →</a>
+</div>
+
+<h2>Pick the right source image first</h2>
+
+<p>The single biggest mistake people make is extracting from the wrong file. A photo and a logo need different treatment, and so does a screenshot of a finished UI vs. a marketing image with film grain over it. Before you upload anything, classify it.</p>
+
+<h3>Vector logos (SVG, AI, EPS)</h3>
+
+<p>If your logo is vector, skip image extraction entirely. Open the SVG in a text editor and grep for <code>fill=</code> and <code>stop-color=</code>. You'll have the exact hex values the designer used in under thirty seconds, with zero rounding error from JPEG compression. This is the canonical source — a palette extractor can only ever approximate what the SVG already states verbatim.</p>
+
+<h3>Raster logos (PNG, JPG)</h3>
+
+<p>For PNG logos with a transparent background, the extraction is reliable: there are usually only two to four distinct colors and they're flat fills, so any decent algorithm gets them right. For JPG logos, beware of compression artifacts — the edges blur into halo colors that the extractor may rank as "dominant" when they're really just JPEG noise. Crop tightly around the logo art before extracting, ignoring whitespace.</p>
+
+<h3>Photos</h3>
+
+<p>Photos are the trickiest case because there is no "correct" palette — the algorithm is making aesthetic choices on your behalf. A 4000×3000 sunset photo contains tens of thousands of distinct pixel values; the tool has to cluster them down to five or six. Two good tools will produce different palettes from the same photo, and both can be right.</p>
+
+<h3>UI screenshots</h3>
+
+<p>Screenshots are deceptively hard. The header gradient, the body background, the card surface, and the elevated modal background can all be within five percent of each other in lightness, and the extractor will collapse them into one color. For UI references, manually eyedropper the four to six anchor surfaces (page bg, card bg, elevated bg, border, primary text, accent) instead of running clustering across the whole image.</p>
+
+<h2>Run the extraction</h2>
+
+<p>Most modern extractors use one of three algorithms under the hood, and knowing which yours uses matters more than people realize.</p>
+
+<table>
+<thead><tr><th>Algorithm</th><th>How it picks</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td>Median cut</td><td>Splits the color space along the longest axis, recursively</td><td>Photos with broad color ranges</td></tr>
+<tr><td>K-means clustering</td><td>Finds <em>k</em> centroids that minimize distance to nearest pixel</td><td>Logos and flat-color illustrations</td></tr>
+<tr><td>Octree quantization</td><td>Builds a tree of color cubes, prunes to <em>n</em> leaves</td><td>Fast preview, web tools</td></tr>
+</tbody>
+</table>
+
+<p>For a balanced result on most images, k-means with k=8 then manual deduplication down to 5 is the move. The TinyTools palette generator does this automatically — you upload, it returns five distinct hues plus an auto-generated complementary palette derived from the dominant color.</p>
+
+<div class="callout">
+<strong>Field tip:</strong> if the extracted palette looks "muddy," your image probably has a global tint (warm/cool color cast from white balance). Run a quick auto-levels in any image editor before extracting and you'll usually get cleaner clusters.</div>
+
+<h2>Deduplicate near-identical hues</h2>
+
+<p>Eight extracted colors often look like five distinct ones plus three duplicates. The duplicates aren't bugs — they reflect that the algorithm found multiple sub-clusters within what your eye reads as one color (think: shadowed teal vs. lit teal in the same photo). For a brand palette you want one of each.</p>
+
+<p>The rule of thumb: any two colors within <strong>ΔE 10</strong> of each other in CIELAB space are perceptually similar enough to merge. You don't need to compute ΔE by hand — most palette tools have a "merge similar" toggle. If yours doesn't, eyeball it: hold your hand over the screen, blur your vision slightly, and any pair that looks like one color is one color.</p>
+
+<h2>Fix the accessibility problems early</h2>
+
+<p>An extracted palette is a starting point, not a finished design system. Run two checks before you commit:</p>
+
+<ol>
+<li><strong>Contrast pairs.</strong> Test every text-on-background combination you'll actually use. WCAG 2.2 still requires 4.5:1 for body text and 3:1 for large text and UI components. A palette where the brand color is a mid-tone purple frequently fails as button text on a white background — you'll need a darker or lighter variant.</li>
+<li><strong>Color-blind safety.</strong> Run the palette through a deuteranopia simulator (the most common form). If your "primary" green and "secondary" red collapse into the same olive, your charts and status indicators will mislead 8% of male users.</li>
+</ol>
+
+<p>If a contrast pair fails, don't throw the palette out — generate a darker and lighter shade of the offending color (a 9-step tint/shade ramp is the modern standard) and use whichever step passes. This is exactly what Tailwind's 50–950 scales are for.</p>
+
+<h2>Ship the palette as code</h2>
+
+<p>The last step that 70% of designers skip: turn the palette into the format your codebase actually uses. A Notion page full of swatches doesn't ship — CSS variables in <code>:root</code> ship.</p>
+
+<pre><code>:root {
+  --color-bg:        #0a0a0f;
+  --color-surface:   #15151f;
+  --color-elevated:  #1d1d2a;
+  --color-border:    #2a2a3a;
+  --color-text:      #f5f5fa;
+  --color-text-dim:  #a0a0b8;
+  --color-primary:   #a855f7;
+  --color-accent:    #ec4899;
+}</code></pre>
+
+<p>Or as a Tailwind v4 theme block:</p>
+
+<pre><code>@theme {
+  --color-brand-50:  #faf5ff;
+  --color-brand-500: #a855f7;
+  --color-brand-900: #581c87;
+}</code></pre>
+
+<p>Whichever format you ship, name the tokens by <em>role</em> (<code>--color-primary</code>) not by <em>hue</em> (<code>--color-purple</code>). The whole point of tokens is that the hex changes and the role doesn't.</p>
+
+<h2>The five-minute workflow, end to end</h2>
+
+<ol>
+<li>Pick the source image and crop tightly around the relevant area.</li>
+<li>If it's a vector logo, grep the SVG. Done.</li>
+<li>Otherwise, drop into a palette extractor with k=8 clustering.</li>
+<li>Merge any pairs within ΔE 10. You should land at 5 distinct colors.</li>
+<li>Run contrast and color-blind checks on the pairs you'll actually ship.</li>
+<li>Generate 9-step tint/shade ramps for the primary and accent.</li>
+<li>Export as CSS variables or Tailwind theme — name by role, not hue.</li>
+</ol>
+
+<p>That's the entire workflow. Done correctly, you'll go from "I love this photo" to a working brand token file in less time than it takes to make a coffee.</p>
+
+<div class="cta-box">
+<h3>Generate your palette in one click</h3>
+<p>Upload any image, get five deduplicated colors, copy as CSS variables, JSON, or Tailwind. No signup, no upload to a server — runs entirely in your browser.</p>
+<a class="cta-btn" href="/color-palette/">Open palette generator →</a>
+</div>
+
+<h2>Common questions</h2>
+
+<h3>Can AI tools like ChatGPT extract a palette from an uploaded image?</h3>
+
+<p>They can describe one ("warm terracotta, sage green, cream") but the hex values they return are usually wrong by 10–30 units in each channel — they're guessing from a verbal description, not measuring pixels. Always verify with a real extractor.</p>
+
+<h3>What's the right number of colors in a brand palette?</h3>
+
+<p>Most modern brand systems land on 5–7 named colors plus 9-step ramps for the primary and accent. Below 5 and you can't differentiate states (success, warning, error, info); above 7 and you'll struggle to remember which one is the "right" gray.</p>
+
+<h3>Should I match my competitor's palette?</h3>
+
+<p>Match the <em>structure</em> (one bold accent, one neutral system, one or two functional colors), not the <em>hues</em>. If the entire category is using cobalt blue, your cobalt blue is invisible. The fastest way to look distinct is to pick the second-best color in the category and own it — see Linear (purple in a sea of blue dev tools) and Vercel (black-and-white in a sea of gradients).</p>
+
+<h3>How do I keep an extracted palette consistent across light and dark mode?</h3>
+
+<p>Extract once, then derive the dark-mode counterparts by inverting lightness while preserving hue and saturation in HSL space. <code>hsl(265, 89%, 65%)</code> in light mode becomes <code>hsl(265, 89%, 55%)</code> in dark mode — same brand, different surface. Don't extract two separate palettes from light and dark reference images; you'll end up with a system that drifts.</p>
+
+<div class="related">
+<h3>Keep going</h3>
+<div class="related-grid">
+<a class="related-card" href="/color-palette/blog/color-theory-non-designers-2026/"><div class="tag">Read next</div><div class="name">Color theory for non-designers</div></a>
+<a class="related-card" href="/color-palette/blog/dark-mode-color-palette-guide-2026/"><div class="tag">Read next</div><div class="name">Dark mode palette guide</div></a>
+<a class="related-card" href="/color-palette/blog/accessible-color-contrast-ratios-wcag-2026/"><div class="tag">Read next</div><div class="name">WCAG color contrast in 2026</div></a>
+<a class="related-card" href="/og-image-generator/"><div class="tag">Free tool</div><div class="name">OG image generator</div></a>
+<a class="related-card" href="/favicon-generator/"><div class="tag">Free tool</div><div class="name">Favicon generator</div></a>
+<a class="related-card" href="/seo-meta-generator/"><div class="tag">Free tool</div><div class="name">SEO meta tag generator</div></a>
+</div>
+</div>
+
+<footer>
+<p><a href="/">TinyTools</a> · Free tools for builders · <a href="/color-palette/">Generate a palette</a></p>
+<p style="margin-top:8px;font-size:12px;opacity:0.7">Some links on this site are affiliate links. We test what we recommend.</p>
+</footer>
+
+</div>
+</body>
+</html>
