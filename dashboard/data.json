@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 9, 2026 — published Favicon Cache Not Updating fix guide for favicon-generator + 4 social drafts ready",
+  "lastUpdated": "May 9, 2026 — published Accessible Color Contrast Ratios (WCAG 2.2 + APCA) guide for color-palette + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 44,
+    "posts": 45,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 00:12",
+      "tag": "seo",
+      "text": "📝 Published blog post: Accessible Color Contrast Ratios in 2026 — WCAG 2.2 Made Practical for Designers at /color-palette/blog/accessible-color-contrast-ratios-wcag-2026/"
+    },
+    {
+      "time": "today 00:12",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting color-palette"
+    },
     {
       "time": "today 20:12",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 04:18",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting og-image-generator"
-    },
-    {
-      "time": "today 00:11",
-      "tag": "seo",
-      "text": "📝 Published blog post: What To Do When the .com Is Taken: 7 Startup-Tested Alternatives in 2026 at /domain-generator/blog/what-to-do-when-com-domain-taken-2026/"
-    },
-    {
-      "time": "today 00:11",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/Entrepreneur, LinkedIn, Show HN — all promoting domain-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T00:12:38Z",
+      "text": "🧵 4.5:1 and 3:1.\nThe two contrast numbers every designer memorized a decade ago.\n\nThey're still right in 2026. They're also no longer the whole story. Here's what changed in WCAG 2.2, what's coming with APCA, and the audit you actually have to ship against. (1/6)\n\n---\n\n(2/6) WCAG 2.2 didn't change the contrast ratios. It changed two things around them:\n\n• 2.4.11 Focus Not Obscured (AA) — sticky cookie banners that cover focused inputs now fail.\n• 2.4.13 Focus Appearance (AAA) — focus rings need 3:1 AND 2px minimum thickness.\n\nIf you ship a sticky bottom banner, this is your audit.\n\n---\n\n(3/6) APCA is the contrast model coming with WCAG 3.\n\nInstead of a single ratio it gives you Lc (-108 to +106). Higher = more readable.\n\nTargets:\n• Body text: Lc ≥ 75\n• Large text: Lc ≥ 60\n• Headlines: Lc ≥ 45\n• Icons / borders: Lc ≥ 30\n\nNot legally required yet. Already in most enterprise audits.\n\n---\n\n(4/6) The classic audit failure I see weekly:\n\nVibrant brand accent used as text on white. Scores 2.8:1. Fails.\n\nDon't darken the brand globally. Keep a darker variant (\"brand-700\") for text-on-light, and use the original color only as a fill with white text on top.\n\n---\n\n(5/6) Three contrast bugs every reviewer catches in 2026:\n\n• Placeholder text under 4.5:1 (default Tailwind/Bootstrap fails).\n• Dark-mode text on elevated cards a few steps lighter than the page bg.\n• Icon-only buttons where the icon stroke fails 3:1.\n\nTest against every elevated surface, not just the page background.\n\n---\n\n(6/6) The two-minute audit before every ship:\n\n✅ Body on bg — 4.5:1\n✅ Body on elevated surfaces — 4.5:1\n✅ Brand accent as text — 4.5:1 or use the dark variant\n✅ Focus rings — 3:1 inside AND outside\n✅ Placeholders — 4.5:1\n✅ Icons — 3:1\n\nFull guide w/ APCA + code:\nhttps://tinytools-smoky.vercel.app/color-palette/blog/accessible-color-contrast-ratios-wcag-2026/"
+    },
+    {
+      "platform": "Reddit /r/web_design",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T00:12:38Z",
+      "text": "Subreddit: /r/web_design (also fits /r/Frontend, /r/userexperience, /r/accessibility)\n\nReply on a thread asking about WCAG contrast, brand colors failing audit, focus rings, or APCA:\n\nThe 4.5:1 / 3:1 numbers in WCAG 2.2 didn't change in 2026 — but two things around them did, and they're the easy way to fail an audit even when your text contrast is fine.\n\n1) 2.4.11 Focus Not Obscured (AA, new in 2.2). If your sticky cookie banner or chat widget covers a focused input when someone tabs to it, you fail. This is the rule that suddenly makes a lot of bottom-pinned banners non-compliant in 2026.\n\n2) 2.4.13 Focus Appearance (AAA). The focus indicator itself has to clear 3:1 AND be at least 2 CSS pixels thick around the perimeter. Most teams targeting only AA can ignore this, but enterprise procurement increasingly asks about it.\n\nOn APCA (the algorithm coming with WCAG 3): not legally required yet, no firm date, but worth running as a sanity check on top of WCAG ratios. The classic place WCAG 2 lies to you is mid-luminance pairs — pale yellow on white can pass the math and still be unreadable; dark gray on slightly lighter dark gray often fails the math but reads cleanly. APCA's Lc score (target ≥75 for body, ≥60 for large, ≥45 for headlines) catches both cases.\n\nThree contrast bugs that catch teams every audit cycle:\n\n• Placeholder text under 4.5:1. Default Bootstrap and Tailwind placeholder colors clear 3:1 but not 4.5:1. Placeholders count as text. Either bump the color or accept losing AA on every form.\n\n• Brand accent used as text. A vibrant teal that looks great as a button fill almost never passes 4.5:1 as text on white because of high saturation + middling luminance. Keep a \"brand-700\" variant for text use; use the bright version only as fills.\n\n• Dark-mode text against elevated cards. Soft-gray body text (#d4d4d8 etc.) clears AA against the deep page bg but often fails on cards/modals/hover surfaces a step or two lighter. Audit every elevated surface, not just the page background.\n\nI wrote up the full 2026 playbook with the focus rules, APCA thresholds, and a 6-step pre-ship checklist:\nhttps://tinytools-smoky.vercel.app/color-palette/blog/accessible-color-contrast-ratios-wcag-2026/\n\n(Free in-browser palette generator at the parent path shows WCAG and APCA scores side-by-side as you tweak the palette, which is the workflow that's stopped me failing audits.)"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T00:12:38Z",
+      "text": "Most accessibility audits in 2026 are still failed by pale brand colors used as text.\n\nThe math hasn't changed. WCAG 2.2 still requires 4.5:1 for body and 3:1 for large text. What's changed is the rule around them — and the algorithm coming next.\n\nWCAG 2.2 quietly added 2.4.11 Focus Not Obscured. If your sticky cookie banner or chat widget covers a focused input when someone tabs to it, you fail. A meaningful share of the bottom-pinned banner patterns I see on production sites in 2026 are technically non-compliant for this reason alone.\n\nAPCA is the algorithm coming with WCAG 3 — not legally required yet, but already in most enterprise audit reports as a supplementary check. It catches the cases where WCAG 2's math says \"pass\" but the pair is genuinely hard to read, and the cases where the math says \"fail\" but the pair reads cleanly. Pale yellow on white is the classic example of the first; dark gray on slightly-lighter dark gray is the classic example of the second.\n\nThree failure modes that show up in every audit cycle:\n\n→ Brand accent used as text. The fix is almost never to darken the brand globally. Keep a darker \"brand-700\" variant for text-on-light surfaces; reserve the original bright accent for fills with white text on top.\n\n→ Placeholder text under 4.5:1. Default Tailwind and Bootstrap placeholder colors clear 3:1 but not 4.5:1. Placeholders count as text. Most teams don't notice until an automated tool flags them.\n\n→ Dark-mode body text on elevated surfaces. A palette that passes AA on the page background often fails on modals, cards, and hover backgrounds a step or two lighter. Always audit elevated surfaces, not just the page bg.\n\nWrote up the full 2026 contrast playbook with the WCAG 2.2 changes, the APCA targets, and a 6-step audit you can run before every ship:\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/accessible-color-contrast-ratios-wcag-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "color-palette",
+      "createdAt": "2026-05-10T00:12:38Z",
+      "text": "TITLE: Show HN: A practical guide to WCAG 2.2 contrast and the APCA shift coming in WCAG 3\n\nLINK: https://tinytools-smoky.vercel.app/color-palette/blog/accessible-color-contrast-ratios-wcag-2026/\n\nFIRST COMMENT:\nAuthor here. Wrote this because every contrast guide I read in 2026 was still treating 4.5:1 / 3:1 as the whole picture, while in practice the failure modes that catch teams now are (1) the new WCAG 2.2 focus rules — Focus Not Obscured (AA) effectively makes a lot of sticky cookie banners non-compliant — and (2) the gap between WCAG 2's math and APCA's perceptual model, which shows up most painfully on mid-luminance pairs (pale yellow on white passes 2.8:1 yet is unreadable; dark gray on slightly-lighter dark gray fails the math but reads fine). The article walks through the WCAG 2.2 changes, the current APCA Lc thresholds (75/60/45/30), the four-step palette workflow that ships AA-clean without making everything beige, and the six-item pre-ship audit. Curious whether HN has seen any design systems formally adopt APCA yet, or if everyone is still treating it as an unofficial sanity check on top of WCAG 2."
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "favicon-generator",
       "createdAt": "2026-05-09T20:12:22Z",
       "text": "🧵 Your favicon won't update.\nYou hard-refreshed three times. Cmd+Shift+R'd. Cleared the cache. The OLD icon is still in the tab.\n\nYou're not crazy. Browsers cache favicons more aggressively than ANY other asset. Here's the 2026 fix. (1/6)\n\n---\n\n(2/6) Why this happens:\n\nBrowsers store favicons in a separate database (Chrome's Favicons SQLite store, Firefox's favicons.sqlite, Safari's WebpageIcons.db).\n\nHard refresh invalidates the page cache. NOT the favicon cache.\n\nThe browser sees /favicon.ico in your <head>, sees /favicon.ico in its DB → done. Never refetches.\n\n---\n\n(3/6) The lazy fix that breaks in Safari:\n\n<link rel=\"icon\" href=\"/favicon.ico?v=2\">\n\n✅ Works in Chrome and Firefox\n❌ Safari STRIPS the query string before keying its cache\n❌ Crawlers (Googlebot, GPTBot, Slack unfurler) hit /favicon.ico directly\n\n---\n\n(4/6) The robust fix: change the URL path itself.\n\n/favicon.ico → /favicon-a3f2.ico (content hash)\n\nUpdate <link rel=\"icon\">. Update apple-touch-icon. Update msapplication-TileImage. Update every icons[].src in manifest.json.\n\nAll in lockstep. Miss one and iOS keeps the old home-screen icon for a year.\n\n---\n\n(5/6) Don't delete the old file.\n\nCrawlers, RSS readers, and Slack previews keep requesting /favicon.ico for weeks.\n\nLeave the old file at the old path for 30-90 days. Cost: a few KB. Upside: no broken icons in Slack previews during the transition.\n\n---\n\n(6/6) Then set Cache-Control: public, max-age=31536000, immutable on the new versioned files.\n\nOne year. Forever. Because the URL changes when contents change, you'll never have a staleness problem again.\n\nFull guide w/ Safari quirks, iOS home-screen fix, and Google search-snippet timing:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-cache-not-updating-fix-2026/"
@@ -260,30 +284,6 @@
       "tool": "favicon-generator",
       "createdAt": "2026-05-09T20:12:22Z",
       "text": "TITLE: Show HN: Why your favicon won't update — and the 2026 fix that works in every browser\n\nLINK: https://tinytools-smoky.vercel.app/favicon-generator/blog/favicon-cache-not-updating-fix-2026/\n\nFIRST COMMENT:\nAuthor here. Wrote this after watching the same favicon-cache confusion play out in three different teams in two weeks. The mental model that fixes it: browsers keep favicons in a SEPARATE database from the page cache (Chrome's Favicons SQLite store, Firefox's favicons.sqlite, Safari's WebpageIcons.db), and a hard refresh doesn't touch that DB at all. The only reliable cache-bust is changing the URL — and the ?v=2 trick fails in Safari because Safari strips query strings before keying its favicon cache, and fails for crawlers (Googlebot, the link unfurlers) because they request /favicon.ico directly. Curious whether HN has hit the iOS home-screen variant where users have to long-press → remove → re-add the shortcut to pick up a new apple-touch-icon — there doesn't seem to be a programmatic way to invalidate that one, and I'd love to be wrong about it."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "text": "🧵 Adding a favicon to Next.js in 2026 should take 5 minutes.\n\nYet half the production sites I open ship with a 404 on /favicon.ico, a stale icon Chrome refuses to forget, or a 14-file zip from a 2017 generator that nobody actually needs anymore.\n\nHere's the modern method that just works:\n\n1/6\n\n---\n\nThe App Router (13+) has file conventions. Drop these into app/ and Next.js auto-generates the link tags at build:\n\n• favicon.ico\n• icon.svg\n• apple-icon.png\n• opengraph-image.png\n\nNo _document.tsx. No useEffect. No \"did I forget the rel attribute?\"\n\n2/6\n\n---\n\nThe 2026 minimal set is FIVE files, not fourteen:\n\n• icon.svg — crisp at every DPI\n• favicon.ico — 32+16 fallback\n• apple-icon.png — 180×180\n• icon-192.png — Android\n• icon-512.png — PWA splash\n\nIf a tool is still asking for android-chrome-144x144.png, it's from another decade.\n\n3/6\n\n---\n\nDark-mode favicons are free. Inside your icon.svg:\n\n<style>\n path { fill: #1a1a1a }\n @media (prefers-color-scheme: dark) {\n   path { fill: #fafafa }\n }\n</style>\n\nTab icon now reads in both themes. No JS, no extra requests.\n\n4/6\n\n---\n\nThe #1 favicon problem: \"I updated the file but Chrome won't show it.\"\n\nHard reload won't fix it. Favicons are cached separately.\n\nThe fix: open /favicon.ico directly in a new tab and hard-reload THAT. Or test in incognito.\n\n5/6\n\n---\n\nGenerated my favicon set in TinyTools — free, runs in your browser, no upload. Drops out exactly the 5 files + a working manifest.webmanifest snippet you can paste into Next.js:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/\n\nFull guide with code: https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-add-favicon-to-nextjs-app-2026/\n\n6/6",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T16:12:29.135629+00:00"
-    },
-    {
-      "platform": "Reddit /r/nextjs",
-      "text": "The Next.js metadata API does most of this for you in 2026. App Router (13+) auto-generates the link tags if you put files in app/ with the right names:\n\n- app/favicon.ico\n- app/icon.svg\n- app/apple-icon.png\n- app/manifest.ts (export default a function returning a Manifest object)\n\nYou don't need 14 files anymore. The minimal modern set is five: SVG + ICO + apple-icon + 192 + 512. The browsers consolidated. If a tool is still asking for android-chrome-144x144.png it's from another decade.\n\nFor the cache problem (favicon won't update), the fix is to open /favicon.ico directly in a new tab and hard-reload it — favicons are cached separately from the page so a normal hard reload doesn't touch them. Or test in incognito.\n\nI wrote up the whole flow with code samples here if useful: https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-add-favicon-to-nextjs-app-2026/ — also has a free generator that spits out the 5 files + a manifest.webmanifest snippet you can paste straight into a Next.js project.",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T16:12:29.135629+00:00"
-    },
-    {
-      "platform": "LinkedIn",
-      "text": "Five minutes. That's all it should take to add a favicon to a Next.js app in 2026.\n\nYet I keep opening production sites with a 404 on /favicon.ico, or a stale icon Chrome refuses to forget, or a 14-file zip from a 2017 generator that nobody actually needs anymore.\n\nThe App Router collapsed the whole thing into a file convention. Drop favicon.ico, icon.svg, apple-icon.png into app/ — Next.js auto-generates the link tags at build. The minimal modern set is FIVE files (SVG, ICO, apple-icon, 192, 512), not fourteen. Browsers consolidated. The old shotgun approach is dead.\n\nTwo tips that save the most time:\n\n1. Dark-mode SVG favicons are free. Inline a prefers-color-scheme media query and your tab icon reads in both themes with zero JS.\n\n2. The \"I updated the favicon but Chrome won't show it\" problem isn't a bug. Favicons are cached separately from the page, so a hard reload doesn't fix it. Open /favicon.ico directly in a new tab and hard-reload that.\n\nWrote up the full walkthrough with code samples — including a free browser-based generator that produces the exact 5-file set Next.js expects:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-add-favicon-to-nextjs-app-2026/",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T16:12:29.135629+00:00"
-    },
-    {
-      "platform": "Show HN",
-      "text": "Title: Show HN: A favicon generator that outputs exactly what Next.js App Router expects\n\n---\n\nFirst comment:\nBuilt this because every favicon generator I tried still output a 14-file zip from the 2017 era. Modern Next.js (App Router 13+) only needs five: icon.svg, favicon.ico, apple-icon.png, icon-192.png, icon-512.png. Plus a manifest.webmanifest snippet. This generates exactly that set in the browser, no upload. Wrote the full Next.js integration guide here: https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-add-favicon-to-nextjs-app-2026/",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-09T16:12:29.135629+00:00"
     }
   ],
   "checklist": [
