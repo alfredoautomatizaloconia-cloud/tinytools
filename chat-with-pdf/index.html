@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Chat with PDF (2026) — Private, In-Browser, BYOK</title>
+<meta name="description" content="Upload any PDF and chat with it using your own OpenAI, Anthropic, or Gemini API key. PDF is parsed in your browser via pdf.js — nothing uploaded to us. Free, no signup.">
+<meta name="keywords" content="chat with pdf, talk to pdf, pdf chatbot, ask questions to pdf, pdf q&a, free chatpdf alternative, ai pdf reader, byok pdf chat, private pdf chat">
+<meta property="og:title" content="Free Chat with PDF — Private, BYOK, In-Browser">
+<meta property="og:description" content="Drop a PDF, ask questions. Your key, your model, your data. No upload, no signup, no quota.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/chat-with-pdf/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Chat with PDF — Private &amp; BYOK">
+<meta name="twitter:description" content="Drop a PDF and ask it questions. Browser-only PDF parsing, BYOK to OpenAI/Anthropic/Gemini. No server.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/chat-with-pdf/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Chat with PDF",
+  "url": "https://tinytools-smoky.vercel.app/chat-with-pdf/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any (browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Free in-browser Chat with PDF tool. Parses PDFs locally via pdf.js and lets you ask questions using your own OpenAI, Anthropic, or Gemini API key. Files never leave your device."
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #0ea5e9; --accent-glow: #0ea5e940;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 1180px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #7dd3fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 720px; margin: 0 auto; }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+    margin-top: 24px;
+  }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .drop {
+    border: 2px dashed var(--border); border-radius: 14px; padding: 36px 20px;
+    text-align: center; transition: all 0.15s; cursor: pointer; background: var(--bg-elevated);
+  }
+  .drop:hover, .drop.over { border-color: var(--accent); background: rgba(14, 165, 233, 0.06); }
+  .drop strong { color: var(--text); }
+  .drop p { color: var(--text-dim); font-size: 14px; margin-top: 8px; }
+  .drop .icon { font-size: 36px; margin-bottom: 8px; }
+  input[type="file"] { display: none; }
+
+  .field { margin-bottom: 14px; }
+  label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500;
+  }
+  select, input[type="text"], input[type="password"], textarea {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit;
+  }
+  textarea { resize: vertical; min-height: 70px; }
+  select:focus, textarea:focus, input:focus {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 700px) { .row, .row3 { grid-template-columns: 1fr; } }
+
+  .btn {
+    padding: 12px 18px; background: var(--accent); color: white;
+    border: none; border-radius: 10px; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all 0.15s; font-family: inherit;
+  }
+  .btn:hover:not(:disabled) { filter: brightness(1.1); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-ghost { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+  .btn-block { width: 100%; }
+
+  .status {
+    margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 13px;
+    background: var(--bg-elevated); color: var(--text-dim); display: none;
+  }
+  .status.show { display: block; }
+  .status.error { color: #fca5a5; border: 1px solid #ef444450; }
+  .status.success { color: #7dd3fc; border: 1px solid #0ea5e950; }
+
+  .progress { height: 6px; background: var(--bg-elevated); border-radius: 4px; overflow: hidden;
+    margin-top: 12px; display: none; }
+  .progress.show { display: block; }
+  .progress-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.2s; }
+
+  .chat {
+    background: #000; padding: 0; border-radius: 12px; margin-top: 4px;
+    border: 1px solid var(--border); min-height: 360px; max-height: 540px;
+    overflow-y: auto; display: flex; flex-direction: column;
+  }
+  .msg { padding: 14px 18px; border-bottom: 1px solid var(--border); }
+  .msg:last-child { border-bottom: none; }
+  .msg.user { background: rgba(14, 165, 233, 0.06); }
+  .msg.assistant { background: transparent; }
+  .msg .who { font-size: 11px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600; }
+  .msg.user .who { color: var(--accent); }
+  .msg .body { font-size: 14px; color: var(--text); white-space: pre-wrap; word-wrap: break-word; }
+  .msg .body code { background: var(--bg-elevated); padding: 1px 5px; border-radius: 4px;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 12px; }
+  .msg .cites { margin-top: 8px; font-size: 12px; color: var(--text-dim); }
+  .msg .cites b { color: var(--text); }
+  .empty-chat { padding: 40px 24px; text-align: center; color: var(--text-dim); font-size: 14px; margin: auto; }
+  .empty-chat strong { color: var(--text); display: block; margin-bottom: 6px; font-size: 16px; }
+
+  .ask-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; margin-top: 12px; }
+  .ask-row textarea { min-height: 52px; }
+
+  .suggestions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .suggestion {
+    padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 12px; color: var(--text-dim); cursor: pointer;
+    transition: all 0.15s;
+  }
+  .suggestion:hover { border-color: var(--accent); color: var(--text); }
+
+  .meta {
+    display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--text-dim);
+    margin-top: 12px; padding: 10px 14px; background: var(--bg-elevated); border-radius: 8px;
+  }
+  .meta b { color: var(--text); }
+
+  .upsell {
+    margin-top: 16px; padding: 16px; background: var(--bg-elevated);
+    border-radius: 10px; border-left: 3px solid var(--accent); font-size: 13px;
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .privacy {
+    margin-top: 12px; padding: 12px; background: var(--bg-elevated);
+    border-radius: 8px; font-size: 12px; color: var(--text-dim);
+    border: 1px dashed var(--border);
+  }
+  .privacy strong { color: var(--text); }
+
+  .key-toggle { font-size: 12px; color: var(--text-dim); cursor: pointer; }
+  .key-toggle:hover { color: var(--accent); }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); margin-bottom: 10px; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+  .content a { color: var(--accent); text-decoration: none; }
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">📄💬 Drop a PDF &nbsp;·&nbsp; Ask anything &nbsp;·&nbsp; BYOK · 100% in-browser</div>
+    <h1>Chat with PDF</h1>
+    <p class="subtitle">Drop a PDF, ask questions, get answers with citations to the exact pages. Parsing happens in your browser via pdf.js. Bring your own API key from OpenAI, Anthropic, or Gemini — your file and key never touch our servers.</p>
+  </header>
+
+  <div class="panel">
+    <h2>1 — Pick a PDF</h2>
+    <label for="fileInput" class="drop" id="drop">
+      <div class="icon">📥</div>
+      <strong>Drop a PDF here, or click to choose</strong>
+      <p>Up to ~50 MB / ~500 pages. Scanned PDFs need OCR first — this tool extracts real text, not pixels.</p>
+    </label>
+    <input id="fileInput" type="file" accept="application/pdf,.pdf">
+
+    <h2 style="margin-top:18px;">2 — Bring your API key</h2>
+    <div class="row">
+      <div class="field">
+        <label>Provider <span class="key-toggle" id="howKey">how to get a key →</span></label>
+        <select id="provider">
+          <option value="openai">OpenAI (gpt-4o, gpt-4o-mini)</option>
+          <option value="anthropic">Anthropic (Claude Sonnet, Haiku)</option>
+          <option value="google">Google (Gemini 2.0 Flash, Pro)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Model</label>
+        <select id="model">
+          <option value="gpt-4o-mini">gpt-4o-mini (cheap, fast)</option>
+          <option value="gpt-4o">gpt-4o (smart)</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>API key <span class="key-toggle" id="toggleKey">show</span></label>
+      <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off">
+    </div>
+
+    <div class="privacy">
+      <strong>Privacy:</strong> The PDF is parsed in your browser using pdf.js — never uploaded to us. The API key stays in your browser tab (optionally cached in localStorage if you tick the box) and is sent directly from your browser to your chosen provider. We don't proxy, log, or see any of it.
+    </div>
+    <div class="field" style="margin-top: 8px;">
+      <label style="display:flex; align-items:center; gap: 8px; cursor: pointer;">
+        <input id="saveKey" type="checkbox" style="width:auto; margin: 0;"> Remember key on this device (localStorage)
+      </label>
+    </div>
+
+    <div class="progress" id="progress"><div class="progress-bar" id="progressBar"></div></div>
+    <div id="status" class="status"></div>
+  </div>
+
+  <div class="panel">
+    <h2>3 — Ask the PDF</h2>
+    <div class="chat" id="chat">
+      <div class="empty-chat" id="emptyChat">
+        <strong>Drop a PDF above, then ask away.</strong>
+        Answers cite the page numbers they came from.
+      </div>
+    </div>
+
+    <div class="suggestions" id="suggestions" style="display:none;">
+      <div class="suggestion" data-q="Summarize this document in 5 bullet points.">Summarize in 5 bullets</div>
+      <div class="suggestion" data-q="What are the key conclusions or recommendations?">Key conclusions</div>
+      <div class="suggestion" data-q="List the main entities (people, companies, dates) mentioned.">Extract entities</div>
+      <div class="suggestion" data-q="Are there any numbers, statistics, or financial figures? List them with context.">Numbers &amp; stats</div>
+      <div class="suggestion" data-q="What questions does this document leave unanswered?">Open questions</div>
+    </div>
+
+    <div class="ask-row">
+      <textarea id="question" placeholder="Ask anything about the PDF — e.g. 'What does it say about pricing on page 4?'"></textarea>
+      <button class="btn" id="askBtn" disabled>Ask &rarr;</button>
+    </div>
+
+    <div class="meta" id="meta" style="display:none;">
+      <span><b id="metaPages">0</b> pages</span>
+      <span><b id="metaWords">0</b> words</span>
+      <span><b id="metaChars">0</b> chars</span>
+      <span><b id="metaChunks">0</b> chunks indexed</span>
+      <span>~<b id="metaCost">$0.00</b> per question (est.)</span>
+    </div>
+
+    <div class="upsell">
+      <strong>Need to handle PDFs at scale?</strong>
+      <a href="#" id="upsell-pdfgear" target="_blank" rel="noopener">PDFgear Pro</a> for OCR + bulk editing,
+      <a href="#" id="upsell-openai" target="_blank" rel="noopener">OpenAI</a> credits for the chat, and
+      <a href="#" id="upsell-anthropic" target="_blank" rel="noopener">Anthropic</a> if you prefer Claude's long-context reasoning.
+      <em>(Affiliate links — no extra cost to you.)</em>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>Chat with PDF — without uploading your PDF anywhere</h2>
+    <p>The category leader for "chat with PDF" is ChatPDF, and it works fine — but every PDF you ask a question of gets uploaded to a third-party server, parsed there, embedded there, and stored on someone else's disk. For a class reading or a public arXiv paper that's nothing. For a contract, a medical record, an internal report, or a draft you haven't published yet, that's a problem. This tool flips it: the PDF is parsed inside your browser using <code>pdf.js</code> (the same library Firefox ships), chunked locally, and only the relevant chunks plus your question are sent to your own API key at OpenAI, Anthropic, or Google. Your provider sees the question and the chunks, but nobody else does — including us. Our server is a static HTML page on a CDN; there's no backend to leak from.</p>
+
+    <h3>How "chat with PDF" actually works under the hood</h3>
+    <p>A naive approach would stuff the entire PDF text into the LLM prompt every time you ask a question. That works for short docs but blows your context window and burns dollars for long ones. The standard approach is RAG (retrieval-augmented generation): chunk the document into ~500-word passages, score each chunk against the question, send only the top few to the model. This tool does a lightweight in-browser version of that — chunks by page and overlap, then ranks chunks by TF-IDF-style keyword overlap against your question, sends the top 6 chunks plus your question to the model, and asks it to cite which chunks it used. The chunks-per-question is what keeps the cost low: a 60-page PDF doesn't cost 60 pages worth of tokens per question, it costs about 3,000 tokens — pennies on gpt-4o-mini, fractions of a cent on Gemini Flash.</p>
+
+    <h3>BYOK — bring your own key, get the real pricing</h3>
+    <p>"Bring your own key" (BYOK) means you paste your API key from OpenAI, Anthropic, or Google, and the browser sends requests directly to that provider. No middleman, no markup, no monthly subscription gating your usage. A 30-page document on gpt-4o-mini typically costs under a penny per question. The same document on Claude Sonnet costs a few cents per question. Gemini Flash is roughly free at this scale. The downside of BYOK is that you have to sign up for an API key once — links are in the "How to get a key" panel. The upside is you only pay for what you ask, and your data goes straight to your provider, not to a SaaS in the middle.</p>
+
+    <h3>What this Chat with PDF tool supports</h3>
+    <p>Any text-based PDF (selectable text in your viewer). The tool handles multi-column papers, financial reports, contracts, manuals, and books up to about 500 pages. It does not OCR scanned PDFs — for those, run them through an OCR tool like Tesseract.js first. It supports page-citation answers, follow-up questions in the same chat (history is included up to a budget), and instantly switching providers mid-conversation. Your key is never sent to our domain; open dev tools and check the network tab. The only outbound requests are to <code>api.openai.com</code>, <code>api.anthropic.com</code>, or <code>generativelanguage.googleapis.com</code>.</p>
+
+    <h3>Chat with PDF — FAQ</h3>
+    <p><strong>Is the chat actually free?</strong> The tool is free. You pay your LLM provider directly for tokens — usually pennies per long document.</p>
+    <p><strong>Does the PDF get uploaded?</strong> No. Open your browser's dev tools, watch the network tab. The PDF never leaves your machine.</p>
+    <p><strong>Will it work for huge PDFs?</strong> Up to about 500 pages / 50 MB. Above that, browsers run out of memory and chunk ranking gets slow.</p>
+    <p><strong>What about scanned PDFs?</strong> They have no extractable text. Run them through an OCR tool first.</p>
+    <p><strong>Can I save my key?</strong> Yes, tick "Remember key on this device" — it's stored in this browser's localStorage and only used by this page.</p>
+    <p><strong>Which model is best?</strong> Gemini Flash is the cheapest, gpt-4o-mini is the sweet spot, Claude Sonnet is the most accurate on long reasoning. For most "chat with PDF" use cases, gpt-4o-mini is plenty.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · No signup · Made by tinytools.dev. <a href="#" id="footer-tip">Tip jar</a> · <a href="/">Back to all tools</a></p>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+const AFFILIATE = {
+  pdfgearUrl: 'https://www.pdfgear.com/?aff=YOUR_PDFGEAR_ID',
+  openaiUrl: 'https://platform.openai.com/?aff=YOUR_OPENAI_ID',
+  anthropicUrl: 'https://www.anthropic.com/?aff=YOUR_ANTHROPIC_ID',
+  bmacUrl: 'https://www.buymeacoffee.com/YOURNAME'
+};
+document.getElementById('upsell-pdfgear').href = AFFILIATE.pdfgearUrl;
+document.getElementById('upsell-openai').href = AFFILIATE.openaiUrl;
+document.getElementById('upsell-anthropic').href = AFFILIATE.anthropicUrl;
+document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
+
+if (window['pdfjsLib']) {
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+}
+
+const $ = function(id){ return document.getElementById(id); };
+
+const MODELS = {
+  openai: [
+    { id: 'gpt-4o-mini', label: 'gpt-4o-mini (cheap, fast)' },
+    { id: 'gpt-4o', label: 'gpt-4o (smart)' },
+    { id: 'gpt-4-turbo', label: 'gpt-4-turbo' }
+  ],
+  anthropic: [
+    { id: 'claude-3-5-haiku-latest', label: 'Claude 3.5 Haiku (cheap, fast)' },
+    { id: 'claude-3-5-sonnet-latest', label: 'Claude 3.5 Sonnet (smart)' },
+    { id: 'claude-sonnet-4-5', label: 'Claude Sonnet 4.5 (newest)' }
+  ],
+  google: [
+    { id: 'gemini-2.0-flash', label: 'Gemini 2.0 Flash (cheap, fast)' },
+    { id: 'gemini-1.5-pro', label: 'Gemini 1.5 Pro' }
+  ]
+};
+
+const KEY_HELP = {
+  openai: 'Get a key: https://platform.openai.com/api-keys (starts with sk-...)',
+  anthropic: 'Get a key: https://console.anthropic.com/settings/keys (starts with sk-ant-...)',
+  google: 'Get a key: https://aistudio.google.com/apikey (long random string)'
+};
+
+function fillModels() {
+  const p = $('provider').value;
+  const sel = $('model');
+  sel.innerHTML = '';
+  MODELS[p].forEach(function(m){
+    const o = document.createElement('option');
+    o.value = m.id; o.textContent = m.label; sel.appendChild(o);
+  });
+  const saved = localStorage.getItem('chatpdf_key_' + p);
+  if (saved) { $('apiKey').value = saved; $('saveKey').checked = true; }
+  else { $('apiKey').value = ''; $('saveKey').checked = false; }
+}
+$('provider').addEventListener('change', fillModels);
+fillModels();
+
+$('howKey').addEventListener('click', function(){
+  alert(KEY_HELP[$('provider').value]);
+});
+$('toggleKey').addEventListener('click', function(){
+  const i = $('apiKey');
+  i.type = i.type === 'password' ? 'text' : 'password';
+  $('toggleKey').textContent = i.type === 'password' ? 'show' : 'hide';
+});
+$('apiKey').addEventListener('change', function(){
+  if ($('saveKey').checked) localStorage.setItem('chatpdf_key_' + $('provider').value, $('apiKey').value);
+});
+$('saveKey').addEventListener('change', function(){
+  if ($('saveKey').checked) localStorage.setItem('chatpdf_key_' + $('provider').value, $('apiKey').value);
+  else localStorage.removeItem('chatpdf_key_' + $('provider').value);
+});
+
+let pdfData = null;
+let history = [];
+
+function setStatus(msg, kind) {
+  const el = $('status');
+  el.textContent = msg;
+  el.className = 'status show' + (kind === 'error' ? ' error' : kind === 'success' ? ' success' : '');
+}
+function clearStatus(){ $('status').className = 'status'; }
+function setProgress(pct){ $('progress').classList.add('show'); $('progressBar').style.width = pct + '%'; }
+function hideProgress(){ $('progress').classList.remove('show'); $('progressBar').style.width = '0%'; }
+
+const drop = $('drop');
+drop.addEventListener('dragover', function(e){ e.preventDefault(); drop.classList.add('over'); });
+drop.addEventListener('dragleave', function(){ drop.classList.remove('over'); });
+drop.addEventListener('drop', function(e){
+  e.preventDefault(); drop.classList.remove('over');
+  if (e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+});
+$('fileInput').addEventListener('change', function(e){
+  if (e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
+});
+
+async function handleFile(f) {
+  if (f.type && f.type !== 'application/pdf' && !f.name.toLowerCase().endsWith('.pdf')) {
+    setStatus("That doesn't look like a PDF.", 'error'); return;
+  }
+  setStatus('Parsing PDF in your browser…');
+  setProgress(5);
+  try {
+    const buf = await f.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: buf }).promise;
+    const N = pdf.numPages;
+    const pageTexts = [];
+    let totalChars = 0;
+    for (let i = 1; i <= N; i++) {
+      setProgress(5 + Math.round((i / N) * 85));
+      const page = await pdf.getPage(i);
+      const content = await page.getTextContent();
+      const txt = content.items.map(function(it){ return it.str + (it.hasEOL ? '\n' : ' '); }).join('').replace(/\s+\n/g, '\n').replace(/\n\s+/g, '\n').replace(/[ \t]+/g, ' ').trim();
+      pageTexts.push({ page: i, text: txt });
+      totalChars += txt.length;
+    }
+    const chunks = [];
+    pageTexts.forEach(function(p){
+      const words = p.text.split(/\s+/).filter(Boolean);
+      if (words.length === 0) return;
+      const target = 400; const overlap = 60;
+      for (let i = 0; i < words.length; i += (target - overlap)) {
+        const slice = words.slice(i, i + target).join(' ');
+        if (slice.length > 50) chunks.push({ text: slice, page: p.page });
+      }
+    });
+    const totalWords = pageTexts.reduce(function(s, p){ return s + p.text.split(/\s+/).filter(Boolean).length; }, 0);
+    pdfData = { chunks: chunks, pages: N, words: totalWords, chars: totalChars, name: f.name };
+    setProgress(100);
+    setTimeout(hideProgress, 400);
+    setStatus('Indexed ' + N + ' pages, ' + chunks.length + ' chunks (' + totalWords.toLocaleString() + ' words). Ask away ↓', 'success');
+    $('askBtn').disabled = false;
+    $('suggestions').style.display = 'flex';
+    $('emptyChat').style.display = 'none';
+    $('meta').style.display = 'flex';
+    $('metaPages').textContent = N;
+    $('metaWords').textContent = totalWords.toLocaleString();
+    $('metaChars').textContent = totalChars.toLocaleString();
+    $('metaChunks').textContent = chunks.length;
+    $('metaCost').textContent = '~$' + Math.max(0.001, totalWords / 1000 * 0.0002).toFixed(4);
+  } catch (e) {
+    console.error(e);
+    setStatus('Failed to parse PDF: ' + e.message + '. If the PDF is password-protected, open and re-save it without a password.', 'error');
+    hideProgress();
+  }
+}
+
+const STOP = new Set(('a an and the of to in for on with that this is are was were be been being it as by at or but if then else so do does did has have had can could would should may might will not no yes you we they i me my your our their his her its from about into over under than into across against between through during after before above below within without while can also other some such these those any all very more most less many much each every').split(' '));
+function tokenize(s) {
+  return (s || '').toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').split(/\s+/).filter(function(t){ return t.length > 2 && !STOP.has(t); });
+}
+
+function scoreChunks(question, chunks) {
+  const qToks = tokenize(question);
+  if (!qToks.length) return chunks.map(function(c,i){ return { i: i, s: 0 }; });
+  const df = {};
+  chunks.forEach(function(c){
+    const set = new Set(tokenize(c.text));
+    set.forEach(function(t){ df[t] = (df[t] || 0) + 1; });
+  });
+  const N = chunks.length;
+  const scored = chunks.map(function(c, i){
+    const toks = tokenize(c.text);
+    const tf = {};
+    toks.forEach(function(t){ tf[t] = (tf[t] || 0) + 1; });
+    let s = 0;
+    qToks.forEach(function(qt){
+      if (tf[qt]) {
+        const idf = Math.log((N + 1) / ((df[qt] || 0) + 1)) + 1;
+        s += (tf[qt] / Math.max(1, toks.length)) * idf * 10;
+      }
+    });
+    qToks.forEach(function(qt){ if (c.text.toLowerCase().indexOf(qt) >= 0) s += 0.05; });
+    return { i: i, s: s };
+  });
+  scored.sort(function(a,b){ return b.s - a.s; });
+  return scored;
+}
+
+function renderChat() {
+  const c = $('chat');
+  if (!history.length && !pdfData) {
+    c.innerHTML = '<div class="empty-chat" id="emptyChat"><strong>Drop a PDF above, then ask away.</strong>Answers cite the page numbers they came from.</div>';
+    return;
+  }
+  c.innerHTML = '';
+  history.forEach(function(m){
+    const d = document.createElement('div');
+    d.className = 'msg ' + m.role;
+    const who = m.role === 'user' ? 'You' : 'PDF';
+    d.innerHTML = '<div class="who"></div><div class="body"></div>';
+    d.querySelector('.who').textContent = who;
+    d.querySelector('.body').textContent = m.content;
+    if (m.cites && m.cites.length) {
+      const cd = document.createElement('div');
+      cd.className = 'cites';
+      cd.innerHTML = '<b>Citations:</b> pages ';
+      const t = document.createTextNode(m.cites.join(', '));
+      cd.appendChild(t);
+      d.appendChild(cd);
+    }
+    c.appendChild(d);
+  });
+  c.scrollTop = c.scrollHeight;
+}
+
+function buildPrompt(question, topChunks) {
+  const ctx = topChunks.map(function(c){ return '[Page ' + c.page + ']\n' + c.text; }).join('\n\n---\n\n');
+  const sys = "You are a precise document Q&A assistant. Answer the user's question using ONLY the PDF excerpts provided. If the answer is not in the excerpts, say so plainly. Always cite the page numbers (e.g. \"[page 4]\") for every fact. Be concise.";
+  const user = 'PDF excerpts from "' + (pdfData.name || 'document') + '":\n\n' + ctx + '\n\n---\n\nQuestion: ' + question;
+  return { sys: sys, user: user };
+}
+
+async function callLLM(sys, user) {
+  const p = $('provider').value;
+  const model = $('model').value;
+  const key = $('apiKey').value.trim();
+  if (!key) throw new Error('API key required.');
+  if (p === 'openai') {
+    const messages = [{ role: 'system', content: sys }];
+    history.slice(-4).forEach(function(m){ messages.push({ role: m.role, content: m.content }); });
+    messages.push({ role: 'user', content: user });
+    const r = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key },
+      body: JSON.stringify({ model: model, messages: messages, temperature: 0.2 })
+    });
+    if (!r.ok) throw new Error('OpenAI: ' + r.status + ' ' + (await r.text()).slice(0, 200));
+    const d = await r.json();
+    return d.choices[0].message.content;
+  } else if (p === 'anthropic') {
+    const messages = [];
+    history.slice(-4).forEach(function(m){ messages.push({ role: m.role, content: m.content }); });
+    messages.push({ role: 'user', content: user });
+    const r = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': key,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({ model: model, system: sys, messages: messages, max_tokens: 1024 })
+    });
+    if (!r.ok) throw new Error('Anthropic: ' + r.status + ' ' + (await r.text()).slice(0, 200));
+    const d = await r.json();
+    return d.content[0].text;
+  } else if (p === 'google') {
+    const contents = [];
+    history.slice(-4).forEach(function(m){
+      contents.push({ role: m.role === 'assistant' ? 'model' : 'user', parts: [{ text: m.content }] });
+    });
+    contents.push({ role: 'user', parts: [{ text: user }] });
+    const r = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent?key=' + encodeURIComponent(key), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ systemInstruction: { parts: [{ text: sys }] }, contents: contents, generationConfig: { temperature: 0.2 } })
+    });
+    if (!r.ok) throw new Error('Gemini: ' + r.status + ' ' + (await r.text()).slice(0, 200));
+    const d = await r.json();
+    return (d.candidates[0].content.parts[0].text || '').trim();
+  }
+  throw new Error('Unknown provider.');
+}
+
+async function ask() {
+  const q = $('question').value.trim();
+  if (!q) return;
+  if (!pdfData) { setStatus('Drop a PDF first.', 'error'); return; }
+  if (!$('apiKey').value.trim()) { setStatus('Paste your API key first.', 'error'); return; }
+  clearStatus();
+  $('askBtn').disabled = true;
+  history.push({ role: 'user', content: q });
+  renderChat();
+  $('question').value = '';
+  try {
+    const scored = scoreChunks(q, pdfData.chunks).slice(0, 6);
+    const topChunks = scored.map(function(s){ return pdfData.chunks[s.i]; });
+    const pagesUsed = Array.from(new Set(topChunks.map(function(c){ return c.page; }))).sort(function(a,b){ return a-b; });
+    const built = buildPrompt(q, topChunks);
+    const out = await callLLM(built.sys, built.user);
+    history.push({ role: 'assistant', content: out, cites: pagesUsed });
+    renderChat();
+  } catch (e) {
+    history.pop();
+    setStatus(e.message, 'error');
+    renderChat();
+  } finally {
+    $('askBtn').disabled = false;
+  }
+}
+
+$('askBtn').addEventListener('click', ask);
+$('question').addEventListener('keydown', function(e){
+  if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); ask(); }
+});
+Array.prototype.forEach.call(document.querySelectorAll('.suggestion'), function(el){
+  el.addEventListener('click', function(){ $('question').value = el.getAttribute('data-q'); ask(); });
+});
+</script>
+</body>
+</html>
