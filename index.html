@@ -53,6 +53,16 @@
   footer { margin-top: 80px; text-align: center; color: var(--text-dim); font-size: 13px;
     padding-top: 32px; border-top: 1px solid var(--border); }
 </style>
+<!-- TinyTools visitor counter — free, no signup, queryable via REST API -->
+<script>
+(function() {
+  // Fire & forget — every page view increments the counter
+  fetch('https://abacus.jasoncameron.dev/hit/tinytools-smoky/' + (location.pathname || 'root').replace(/\//g, '_'))
+    .then(r => r.json())
+    .then(d => { window.__tinytools_views = d.value; console.log('TinyTools visitor count:', d.value); })
+    .catch(() => {});
+})();
+</script>
 </head>
 <body>
 <div class="container">
@@ -262,6 +272,7 @@
 </div>
 </body>
 </html>
+
 
 
 
