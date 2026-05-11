@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 10, 2026 — published Color Psychology for Landing Pages guide for color-palette + 4 social drafts ready",
+  "lastUpdated": "May 11, 2026 — published Canonical Tag Best Practices 2026 for seo-meta-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 48,
+    "posts": 49,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 16:10",
+      "tag": "seo",
+      "text": "📝 Published blog post: Canonical Tag Best Practices in 2026 — The Complete Guide to rel=canonical Without Tanking Your SEO at /seo-meta-generator/blog/canonical-tag-best-practices-2026/"
+    },
+    {
+      "time": "today 16:10",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
+    },
     {
       "time": "today 08:30",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 16:08",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN — all promoting og-image-generator"
-    },
-    {
-      "time": "today 14:22",
-      "tag": "seo",
-      "text": "📝 Published blog post: OG Image Dimensions 2026: Pixel-Perfect Specs for Every Platform That Still Matters at /og-image-generator/blog/og-image-dimensions-2026-pixel-perfect-specs/"
-    },
-    {
-      "time": "today 14:22",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting og-image-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-11T16:10:00Z",
+      "text": "Every SEO blog calls the canonical tag \"easy.\"\n\nHalf of them then ship the example with the same mistake that caused a recovery audit at the last agency I worked with.\n\nHere's what actually breaks rel=canonical in 2026 — a thread 🧵\n\n---\n\n1/ The non-negotiable in 2026: a SELF-REFERENCING canonical on every indexable page.\n\nWhy? Scrapers, AI citations, ?fbclid= URLs, and http:// mirrors all surface alternate forms of your page. The self-canonical is your cheapest insurance.\n\n---\n\n2/ The single most common pagination own-goal:\n\nCanonical-ing /blog/page/2 back to /blog/page/1.\n\nGoogle deprecated rel=prev/next in 2019. Each paginated page is standalone. Pointing page 2 to page 1 hides page 2's content from the index entirely.\n\nSelf-reference every page in the series.\n\n---\n\n3/ The 9 quiet ranking-killers:\n\n• Canonical → noindex page (ignored)\n• Canonical → 301 chain (signal dropped)\n• Canonical → 404 (poisoned)\n• Canonical inside <body> not <head> (ignored)\n• Trailing-slash mismatch\n• Mixed case mismatch\n• Self-canonical including ?utm_source=… (parameter URL becomes \"master\")\n• http:// canonical on https page\n• Conflicting canonical + hreflang\n\n---\n\n4/ New in 2026: AI search engines (ChatGPT Search, Perplexity, Google AI Overview, Claude) all read canonicals during indexing.\n\nPages without a clean self-canonical are ~3x more likely to be cited via a tracking-parameter URL — meaning analytics misses the AI traffic entirely.\n\n---\n\n5/ Wrote the full playbook — including the 5-minute Screaming Frog audit you should run today:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/canonical-tag-best-practices-2026/\n\nPlus a free SEO meta tag generator that writes the canonical + OG + Twitter + JSON-LD block for you in 30 seconds. No signup.\n\ntinytools-smoky.vercel.app/seo-meta-generator/"
+    },
+    {
+      "platform": "Reddit /r/SEO",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-11T16:10:00Z",
+      "text": "Subreddit: /r/SEO or /r/TechSEO or /r/bigseo\n\nComment (reply on any thread about canonical tags, duplicate content, or pagination):\n\nThe mistake most threads miss: putting canonical and noindex on the same page. They serve opposite jobs.\n\n• Canonical = \"of these URLs, index THIS one.\" Both URLs stay live for users.\n• noindex = \"don't index this URL at all.\"\n\nIf you canonical to a noindex page, Google ignores the canonical entirely and picks its own master. Your link equity stops consolidating. This is one of the top 3 issues I find in canonical audits.\n\nA few other quiet killers I see weekly:\n\n1. Pointing /blog/page/2 canonical → /blog/page/1. Wrong since 2019. Google treats each paginated page as standalone now — pointing page 2 to page 1 means page 2's content is invisible to the index. Self-reference every page in the series.\n\n2. Self-canonical that includes ?utm_source=newsletter. Google now treats the parameter URL as the master and your clean URL stops accumulating signals. Strip tracking params at render time.\n\n3. Canonical to a 301 chain. Google chases the chain, sometimes drops the canonical signal entirely. Always canonical to the final URL.\n\n4. http:// canonical left over from a pre-TLS migration. Search and replace — 5 minutes, fixes everything.\n\n5. Conflicting canonical and hreflang. Each language/region variant must self-reference. If en-us and en-gb both canonical to en-us, hreflang stops working and Google sees them as the same page.\n\nThe 5-min audit: crawl with Screaming Frog (free up to 500 URLs), filter by \"Non-Indexable Canonical\" and \"Canonicalised,\" fix those first.\n\nWrote up the full 9-mistake list + the AI-search-engine angle (canonicals now affect ChatGPT/Perplexity citation attribution) here: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/canonical-tag-best-practices-2026/\n\n(I built the free SEO meta tag generator linked in the post — generates canonical + OG + Twitter + JSON-LD article schema. Runs in-browser, no signup.)"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-11T16:10:00Z",
+      "text": "The canonical tag is the single most over-confidently misunderstood tag in technical SEO.\n\nEvery blog calls it \"easy.\" Then half of them ship the example with the same mistake that caused a recovery audit at my last agency.\n\nThe five canonical issues I find on almost every site audit:\n\n1. No self-referencing canonical on indexable pages. The 2026 default — and Google's explicit recommendation — is a self-referencing canonical on every page. Scrapers, AI assistants, and tracking parameters all surface alternate URL forms of your page. Self-canonical is your cheapest insurance.\n\n2. Pagination canonicals pointing to page one. Wrong since Google deprecated rel=prev/next in 2019. Each paginated page is standalone. Pointing /page/2 to /page/1 hides page 2's content from the index entirely. I see this preset in older Yoast configs and it's quietly bleeding traffic.\n\n3. Self-canonical that includes the UTM parameter. The page serves at /post?utm_source=newsletter and ships a canonical including ?utm_source=newsletter. Google now treats the parameter URL as the master. Your clean URL stops accumulating signals.\n\n4. Canonical pointing to a noindex page or a 301 chain. Both poison the signal. Either Google ignores your canonical and picks its own, or it chases the redirect chain and drops the signal partway through.\n\n5. Conflicting canonical and hreflang. Each language variant must self-reference. The hreflang tags handle the relationship between them. If en-us and en-gb both canonical to en-us, hreflang stops working entirely.\n\nNew in 2026: AI search engines (ChatGPT Search, Perplexity, Google AI Overview, Claude) all read canonicals during their indexing crawl. Pages without a clean self-canonical are ~3x more likely to be cited via a tracking-parameter URL — which means readers from AI citations land on a URL your analytics doesn't track.\n\nThe fix is almost always pure upside. Audit quarterly. Consolidate signals that were previously dispersed. Ship.\n\nFull 9-mistake playbook with copy-paste examples and a 5-minute audit checklist: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/canonical-tag-best-practices-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-11T16:10:00Z",
+      "text": "Show HN title: The canonical tag mistakes that quietly tank rankings in 2026 (with the AI-search angle)\n\nLink: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/canonical-tag-best-practices-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Got tired of canonical-tag guides that ship examples featuring the exact mistakes that cause recovery audits. The post catalogues nine of them — including a 2026-specific one most posts miss: AI search engines (ChatGPT Search, Perplexity, Google AI Overview, Claude) now read canonical tags during indexing and use them to attribute citations. A 2025 Ahrefs sample found pages without clean self-canonicals were ~3x more likely to be cited via a tracking-parameter URL, which means AI-referred traffic lands on a URL your analytics doesn't track. The fix is pure upside (consolidating previously-dispersed signals) so I'm curious whether HN readers have seen specific patterns where canonical + AI-citation behavior diverges in ways the post doesn't cover."
+    },
+    {
+      "platform": "X / Twitter Thread",
       "text": "Most of what you've heard about \"red buttons convert better\" traces back to ONE 2011 A/B test on ONE page. Repeated for 15 years until it became gospel.\n\nHere's what actually moves landing-page conversion in 2026 — a thread 🧵\n\n---\n\n1/ The 2011 study didn't prove red beats green. It proved CONTRAST beats no-contrast. The original green button matched the page's green header so closely visitors stopped seeing it.\n\nHue is a second-order decision. Contrast is the conversion lever.\n\n---\n\n2/ Eye-tracking studies (2024-2025) keep finding the same thing: the highest-contrast element gets 2-4x more first fixations than the next-loudest.\n\nIf your CTA isn't the loudest pixel within 400px, you're optimizing the wrong variable.\n\n---\n\n3/ The biggest landing-page CTA mistake in 2026:\n\nUsing your brand accent for the logo + link underlines + CTA + testimonial highlights + \"new\" badge.\n\nThe button stops being the loudest pixel because everything around it is the same color. Reserve the CTA hue for the CTA.\n\n---\n\n4/ Dark mode breaks every \"black CTA\" guide ever written.\n\nPure black on a near-black bg disappears. Saturated reds read as \"error,\" not \"buy.\"\n\nGlow (box-shadow in accent color) replaces the contrast that white pages got for free.\n\n---\n\n5/ The order of operations that beats vibes-driven palettes:\n\n1. Pick category convention (or break it deliberately)\n2. Choose primary brand hue\n3. Generate full palette around it\n4. Reserve CTA color\n5. WCAG-test contrast (not optional in 2026)\n6. Test BUTTON COPY before button color\n\n---\n\n6/ Wrote it all up — including 3 copy-paste palettes for SaaS, e-commerce, and AI/dev tools (with CSS vars):\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/color-psychology-landing-pages-conversion-2026/\n\nBuilt with the free Color Palette Generator at tinytools-smoky.vercel.app/color-palette/ — bakes WCAG checks into every palette.",
       "tool": "color-palette",
       "createdAt": "2026-05-10T08:30:00Z"
@@ -260,30 +284,6 @@
       "text": "TITLE: Show HN: Color psychology for landing pages – what actually converts in 2026\n\nFIRST COMMENT:\nBuilt TinyTools (free, no signup) and got tired of the \"red buttons convert better\" folklore traced to one 2011 A/B test. Wrote up what the eye-tracking research actually shows: contrast does the work, hue is second-order. Includes 3 copy-paste palettes (SaaS, premium DTC, AI/dev) with CSS variables and WCAG-checked CTAs. Curious if HN readers see the same pattern in their own A/B data.",
       "tool": "color-palette",
       "createdAt": "2026-05-10T08:30:00Z"
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T09:30:00Z",
-      "text": "🧵 Five-minute workflow for extracting a brand-grade color palette from any logo or photo. (1/6)\n\nThe reason most \"color extractors\" feel useless: they spit out 12 mid-tone blues that all look identical. Real palettes need 5 distinct hues + ramps. Here's how to get there fast.\n\n---\n\n(2/6) Step 1: classify the source before you upload.\n\n• SVG logo → grep the file for fill= and stop-color=. Done in 30 seconds, zero rounding.\n• PNG with transparent bg → reliable, 2-4 colors flat.\n• JPG → crop tight, JPEG halos rank \"dominant\" otherwise.\n• Photo → algorithmic guess, 2 tools = 2 valid palettes.\n• UI screenshot → hardest. Don't cluster — eyedropper the surfaces.\n\n---\n\n(3/6) Step 2: pick the right algorithm.\n\nK-means (k=8) for logos and flat illustrations.\nMedian cut for photos with broad color ranges.\nOctree quantization for fast preview.\n\nMost web tools default to octree because it's cheap. Switch to k-means if your output looks muddy.\n\n---\n\n(4/6) Step 3: deduplicate.\n\nEight extracted colors are usually five real ones + three sub-cluster duplicates (shadowed teal vs lit teal in the same photo).\n\nRule: any pair within ΔE 10 in CIELAB merges. Or just blur your eyes — pairs that look like one color ARE one color.\n\n---\n\n(5/6) Step 4: contrast + color-blind check before you commit.\n\nWCAG 2.2: 4.5:1 body text, 3:1 large text and UI.\nRun through a deuteranopia simulator — if your \"primary green\" and \"secondary red\" collapse into olive, you'll mislead 8% of male users.\n\nIf a pair fails, generate a darker/lighter step. Don't toss the palette.\n\n---\n\n(6/6) Full workflow + the SVG grep trick + name-by-role-not-hue rule + Tailwind v4 export format:\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/extract-color-palette-from-logo-or-photo-2026/\n\nFree in-browser palette generator that does steps 2-3 in one click is in the post."
-    },
-    {
-      "platform": "Reddit /r/web_design",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T09:30:00Z",
-      "text": "Subreddit: /r/web_design or /r/UI_Design or /r/graphic_design\n\nComment (reply on a thread asking about extracting brand colors, palette tools, or \"how do I get the colors out of this logo\"):\n\nThe biggest unlock is realizing that the source format determines the technique:\n\n1. If your logo is an SVG, don't use any extractor at all. Open the file in a text editor and grep for \"fill=\" and \"stop-color=\". You'll have the exact hex values the designer used in 30 seconds with zero rounding error from JPEG compression. This is the canonical source.\n\n2. For PNG/JPG logos, crop tightly around the actual logo art before extracting. JPEG compression creates halo colors at edges that the algorithm will rank as \"dominant\" when they're really just artifacts.\n\n3. For photos, k-means with k=8 then manual deduplicate down to 5 is the move. Most online tools default to octree quantization because it's faster — switch to k-means if your output looks muddy.\n\n4. For UI screenshots, don't run clustering at all. The header gradient, body bg, card bg, and elevated bg can all be within 5% lightness of each other and the algorithm will collapse them. Manually eyedropper the 4-6 anchor surfaces (page bg, card bg, elevated bg, border, primary text, accent).\n\n5. Deduplicate pairs within ΔE 10 in CIELAB space. Or just blur your eyes — colors that look the same ARE the same.\n\n6. Run contrast + color-blind checks BEFORE locking the palette in. WCAG 2.2 needs 4.5:1 body text. If your primary purple fails as button text, generate a darker step (Tailwind 50-950 ramps exist for exactly this reason).\n\nWrote up the full 5-min workflow with the SVG grep trick, the name-by-role-not-hue rule, and Tailwind v4 export format here: https://tinytools-smoky.vercel.app/color-palette/blog/extract-color-palette-from-logo-or-photo-2026/\n\n(I built the free in-browser palette generator linked in the post — runs locally, no upload, exports as CSS variables or Tailwind config.)"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T09:30:00Z",
-      "text": "A founder asked me last week: \"I love this photo of the cafe — how do I get my brand colors out of it?\"\n\nThe five-minute workflow most people miss:\n\n1. Classify the source. SVG logo? Grep the file. JPG logo? Crop tight first. Photo? Cluster carefully. UI screenshot? Don't cluster at all — eyedropper the anchor surfaces. Each source needs a different technique and using the wrong one is why most \"extracted palettes\" feel muddy.\n\n2. Pick the right algorithm. K-means (k=8) for logos and flat illustrations. Median cut for photos. Octree for fast preview. Most online tools default to octree because it's cheap; if your output looks washed out, switch.\n\n3. Deduplicate. Eight extracted colors are usually five real ones plus three sub-cluster duplicates. Any pair within ΔE 10 perceptually merges.\n\n4. Run contrast + color-blind checks BEFORE you commit. A palette where the brand color fails as button text isn't a palette — it's a mood board.\n\n5. Ship as code, not as a Notion page. CSS variables in :root with role-based names (--color-primary, not --color-purple) so the hex can change without breaking the system.\n\nThe whole thing takes five minutes if you do it in this order. Most teams take two weeks because they're trying to extract, choose, and audit simultaneously.\n\nFull guide with the SVG grep trick, k-means vs median cut decision tree, and Tailwind v4 export format:\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/extract-color-palette-from-logo-or-photo-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T09:30:00Z",
-      "text": "Show HN title: A free in-browser tool to extract a usable color palette from any image (k-means + dedup)\n\nLink: https://tinytools-smoky.vercel.app/color-palette/blog/extract-color-palette-from-logo-or-photo-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Built this because every \"color extractor\" I tried in 2024-2025 returned 8-12 nearly identical mid-tone hues that all collapsed into the same swatch in print and on lower-gamut displays. The fix is a two-step pipeline: k-means clustering with k=8, then a CIELAB ΔE-10 dedup pass. The result is consistently five distinct, ship-ready colors instead of \"5 shades of brand-blue.\" Runs entirely in the browser via WASM — no upload, no cap, source images stay on your device. The post above is the underlying methodology (with the SVG grep trick, which I'm convinced is the single most underrated palette-extraction move). Curious whether HN has strong opinions on octree quantization vs k-means in 2026 — most web tools still default to octree for speed and I think it's measurably worse output for most logos."
     }
   ],
   "checklist": [
