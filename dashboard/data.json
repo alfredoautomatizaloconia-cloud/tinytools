@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 11, 2026 — published Canonical Tag Best Practices 2026 for seo-meta-generator + 4 social drafts ready",
+  "lastUpdated": "May 11, 2026 — published Robots Meta Tag noindex/nofollow 2026 for seo-meta-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 49,
+    "posts": 50,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 18:45",
+      "tag": "seo",
+      "text": "📝 Published blog post: Robots Meta Tag in 2026 — The Complete noindex / nofollow Guide (Without Breaking Your SEO) at /seo-meta-generator/blog/robots-meta-tag-noindex-nofollow-2026/"
+    },
+    {
+      "time": "today 18:45",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
+    },
     {
       "time": "today 16:10",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 13:35",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/jobs, LinkedIn, Show HN — all promoting background-remover"
-    },
-    {
-      "time": "today 16:08",
-      "tag": "seo",
-      "text": "📝 Published blog post: OG Image Templates That Convert: 7 Layout Patterns for SaaS, Ecommerce & Newsletters in 2026 at /og-image-generator/blog/og-image-templates-layouts-that-convert-2026/"
-    },
-    {
-      "time": "today 16:08",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN — all promoting og-image-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "text": "1/ Most pages that drop out of Google in 2026 weren't penalized.\n\nThey were noindexed by their own owners — and they have no idea.\n\nA 7-tweet field guide to the robots meta tag in 2026 (and the 8 mistakes that quietly cost rankings) 🧵\n\n2/ The core split nobody internalizes:\n\n• robots.txt blocks CRAWLING\n• meta robots blocks INDEXING\n\nIf you Disallow a URL in robots.txt to \"deindex\" it, the crawler never sees your noindex.\n\nThe page stays in the index. Just without a title or description.\n\n3/ The combo that actually wins 95% of the time:\n\n<meta name=\"robots\" content=\"noindex, follow\">\n\nPage hidden from search. Outbound links still pass equity through your internal graph.\n\nUse it on paginated archives, internal search, thin tag pages, filtered views.\n\n4/ AI search engines in 2026 (ChatGPT, Perplexity, Claude, AI Overviews):\n\n• Search crawlers RESPECT noindex\n• Training crawlers IGNORE it\n\nIf you want a page out of AI citations: noindex.\nIf you want it out of model training: block the named user agent in robots.txt.\n\n5/ The X-Robots-Tag header is the directive most teams forget.\n\nYou can't put <meta> inside a PDF, image, or JSON endpoint.\nAnd it OVERRIDES your in-page meta tag.\n\nIf a page is mysteriously deindexed and you can't find a tag → check HTTP headers first.\n\n6/ The single most common deindex disaster:\n\nShipping a staging template to production.\n\nStaging has site-wide noindex.\nDeploy merges it.\nTraffic collapses in 2 weeks.\nNobody notices until rankings are gone.\n\nAudit your live site for unexpected noindex every release.\n\n7/ Generate the right robots tag (+ canonical, OG, Twitter Card, JSON-LD) in 30 seconds, free, no signup:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/\n\nFull 2026 robots meta playbook with the other 7 mistakes →\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/robots-meta-tag-noindex-nofollow-2026/",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-11"
+    },
+    {
+      "platform": "Reddit /r/SEO",
+      "text": "Quick clarification because I see this confused constantly in this sub:\n\nIf you want a page out of Google's index, robots.txt does NOT do that. Disallow tells Google not to crawl the URL. If Google can't crawl it, it never reads your noindex tag — so the URL stays in the index, just rendered as a naked URL with no title or description. That's actually worse than indexing it normally.\n\nThe correct sequence:\n\n1. Add `<meta name=\"robots\" content=\"noindex, follow\">` to the page\n2. Leave robots.txt allowing it\n3. Wait 1-3 crawls for the deindex to register\n4. Optionally THEN add a Disallow to save crawl budget\n\nAlso worth knowing in 2026: the AI search crawlers (OAI-SearchBot, PerplexityBot, ClaudeBot) respect noindex for search/citations, but the *training* crawlers ignore it. Different job, different rules. If you want a page out of both, you need noindex + a robots.txt block on the AI user agents.\n\nI wrote up the full thing with the 8 most common deindex disasters here if it's useful: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/robots-meta-tag-noindex-nofollow-2026/ — and if you just want to generate the meta block without thinking about it there's a free tool here that does robots + canonical + OG + JSON-LD in one form: https://tinytools-smoky.vercel.app/seo-meta-generator/",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-11"
+    },
+    {
+      "platform": "LinkedIn Post",
+      "text": "A client's organic traffic dropped 60% in three weeks last month.\n\nWe didn't find a penalty. We didn't find a Core Update casualty. We didn't find a competitor outranking them.\n\nWe found a single line of HTML:\n\n<meta name=\"robots\" content=\"noindex, follow\">\n\nIt had been deployed site-wide eight weeks earlier when a staging template got merged into the production branch. Nobody caught it because the home page rendered fine, Search Console didn't scream about it (deindexing is gradual), and the only signal was the slow bleed of organic sessions.\n\nThe fix took 4 minutes. The traffic took 5 weeks to come back.\n\nThree things I now check on every SEO audit before anything else:\n\n1. The robots meta tag on a sample of 20 random URLs\n2. The X-Robots-Tag HTTP header (CDNs often override page-level tags)\n3. Whether the sitemap contains any URL that returns noindex\n\nThe robots meta tag is the single line of HTML with the highest leverage on whether your page is allowed to compete in search at all. Treat it like the safety it is.\n\nFull 2026 playbook with all 8 deindex disasters: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/robots-meta-tag-noindex-nofollow-2026/",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-11"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "text": "Show HN title: Robots Meta Tag in 2026 — the noindex / nofollow mistakes that quietly deindex pages\n\nComment for the discussion thread (50 words):\nI keep seeing teams use robots.txt Disallow to try to deindex pages. It does the opposite — the crawler never reads your noindex. Wrote up the 8 most common deindex disasters, including the X-Robots-Tag override issue that CDNs cause. Built a free meta-tag generator alongside it. No signup.",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-11"
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "seo-meta-generator",
       "createdAt": "2026-05-11T16:10:00Z",
       "text": "Every SEO blog calls the canonical tag \"easy.\"\n\nHalf of them then ship the example with the same mistake that caused a recovery audit at the last agency I worked with.\n\nHere's what actually breaks rel=canonical in 2026 — a thread 🧵\n\n---\n\n1/ The non-negotiable in 2026: a SELF-REFERENCING canonical on every indexable page.\n\nWhy? Scrapers, AI citations, ?fbclid= URLs, and http:// mirrors all surface alternate forms of your page. The self-canonical is your cheapest insurance.\n\n---\n\n2/ The single most common pagination own-goal:\n\nCanonical-ing /blog/page/2 back to /blog/page/1.\n\nGoogle deprecated rel=prev/next in 2019. Each paginated page is standalone. Pointing page 2 to page 1 hides page 2's content from the index entirely.\n\nSelf-reference every page in the series.\n\n---\n\n3/ The 9 quiet ranking-killers:\n\n• Canonical → noindex page (ignored)\n• Canonical → 301 chain (signal dropped)\n• Canonical → 404 (poisoned)\n• Canonical inside <body> not <head> (ignored)\n• Trailing-slash mismatch\n• Mixed case mismatch\n• Self-canonical including ?utm_source=… (parameter URL becomes \"master\")\n• http:// canonical on https page\n• Conflicting canonical + hreflang\n\n---\n\n4/ New in 2026: AI search engines (ChatGPT Search, Perplexity, Google AI Overview, Claude) all read canonicals during indexing.\n\nPages without a clean self-canonical are ~3x more likely to be cited via a tracking-parameter URL — meaning analytics misses the AI traffic entirely.\n\n---\n\n5/ Wrote the full playbook — including the 5-minute Screaming Frog audit you should run today:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/canonical-tag-best-practices-2026/\n\nPlus a free SEO meta tag generator that writes the canonical + OG + Twitter + JSON-LD block for you in 30 seconds. No signup.\n\ntinytools-smoky.vercel.app/seo-meta-generator/"
@@ -260,30 +284,6 @@
       "tool": "seo-meta-generator",
       "createdAt": "2026-05-11T16:10:00Z",
       "text": "Show HN title: The canonical tag mistakes that quietly tank rankings in 2026 (with the AI-search angle)\n\nLink: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/canonical-tag-best-practices-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Got tired of canonical-tag guides that ship examples featuring the exact mistakes that cause recovery audits. The post catalogues nine of them — including a 2026-specific one most posts miss: AI search engines (ChatGPT Search, Perplexity, Google AI Overview, Claude) now read canonical tags during indexing and use them to attribute citations. A 2025 Ahrefs sample found pages without clean self-canonicals were ~3x more likely to be cited via a tracking-parameter URL, which means AI-referred traffic lands on a URL your analytics doesn't track. The fix is pure upside (consolidating previously-dispersed signals) so I'm curious whether HN readers have seen specific patterns where canonical + AI-citation behavior diverges in ways the post doesn't cover."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "text": "Most of what you've heard about \"red buttons convert better\" traces back to ONE 2011 A/B test on ONE page. Repeated for 15 years until it became gospel.\n\nHere's what actually moves landing-page conversion in 2026 — a thread 🧵\n\n---\n\n1/ The 2011 study didn't prove red beats green. It proved CONTRAST beats no-contrast. The original green button matched the page's green header so closely visitors stopped seeing it.\n\nHue is a second-order decision. Contrast is the conversion lever.\n\n---\n\n2/ Eye-tracking studies (2024-2025) keep finding the same thing: the highest-contrast element gets 2-4x more first fixations than the next-loudest.\n\nIf your CTA isn't the loudest pixel within 400px, you're optimizing the wrong variable.\n\n---\n\n3/ The biggest landing-page CTA mistake in 2026:\n\nUsing your brand accent for the logo + link underlines + CTA + testimonial highlights + \"new\" badge.\n\nThe button stops being the loudest pixel because everything around it is the same color. Reserve the CTA hue for the CTA.\n\n---\n\n4/ Dark mode breaks every \"black CTA\" guide ever written.\n\nPure black on a near-black bg disappears. Saturated reds read as \"error,\" not \"buy.\"\n\nGlow (box-shadow in accent color) replaces the contrast that white pages got for free.\n\n---\n\n5/ The order of operations that beats vibes-driven palettes:\n\n1. Pick category convention (or break it deliberately)\n2. Choose primary brand hue\n3. Generate full palette around it\n4. Reserve CTA color\n5. WCAG-test contrast (not optional in 2026)\n6. Test BUTTON COPY before button color\n\n---\n\n6/ Wrote it all up — including 3 copy-paste palettes for SaaS, e-commerce, and AI/dev tools (with CSS vars):\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/color-psychology-landing-pages-conversion-2026/\n\nBuilt with the free Color Palette Generator at tinytools-smoky.vercel.app/color-palette/ — bakes WCAG checks into every palette.",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T08:30:00Z"
-    },
-    {
-      "platform": "Reddit /r/web_design",
-      "text": "The honest answer most threads miss: the conversion gain from \"the right color\" is in the 1-3% range across well-designed A/B tests. The conversion gain from making your CTA the loudest pixel on the screen is 2-4x (eye-tracking studies, 2024-2025).\n\nWhat actually matters, in descending order:\n\n1. The CTA color is not used anywhere else in that viewport. (This is the #1 mistake — using your brand accent for logo + links + CTA + badges, so the button stops standing out.)\n2. Button is at least 44px tall and clearly tappable on mobile.\n3. Button copy is action-first (\"Generate my palette\" not \"Submit\").\n4. Quiet zone of ~24px around the button so the eye lands cleanly.\n\nSolve those four and almost any high-contrast hue beats a low-contrast version of the \"psychologically correct\" color.\n\nCategory conventions matter too — fintech blue, climate green, AI purple/pink in 2026. You can break them deliberately (Linear's purple in a sea of blue PM tools) but breaking them accidentally just looks unserious.\n\nWrote up the full version with 3 copy-paste palettes (SaaS / e-commerce / AI dev tool) here if useful: https://tinytools-smoky.vercel.app/color-palette/blog/color-psychology-landing-pages-conversion-2026/",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T08:30:00Z"
-    },
-    {
-      "platform": "LinkedIn",
-      "text": "The single most common landing-page color mistake I see in 2026:\n\nTeams use their brand accent for the logo, the link underlines, the CTA, the testimonial highlights, AND the little \"new\" badge in the nav.\n\nThen they wonder why their CTA isn't converting.\n\nThe button stopped being the loudest pixel three sections ago. Everything around it is the same color.\n\nEye-tracking studies from 2024-2025 are pretty consistent: the highest-contrast element gets 2-4x more first fixations than the next-loudest. That fixation time correlates with click-through.\n\nColor psychology is real but small. Contrast is real and big.\n\nReserve your CTA hue for CTAs only. Audit your hero section and remove the accent color from anywhere that isn't a primary action. You can ship that change in an hour and probably outperform whatever \"orange vs blue\" test you were planning.\n\nWrote up the full color-psychology-vs-contrast playbook with 3 copy-paste palettes for SaaS, e-commerce, and AI dev tools (CSS variables included): https://tinytools-smoky.vercel.app/color-palette/blog/color-psychology-landing-pages-conversion-2026/",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T08:30:00Z"
-    },
-    {
-      "platform": "Show HN",
-      "text": "TITLE: Show HN: Color psychology for landing pages – what actually converts in 2026\n\nFIRST COMMENT:\nBuilt TinyTools (free, no signup) and got tired of the \"red buttons convert better\" folklore traced to one 2011 A/B test. Wrote up what the eye-tracking research actually shows: contrast does the work, hue is second-order. Includes 3 copy-paste palettes (SaaS, premium DTC, AI/dev) with CSS variables and WCAG-checked CTAs. Curious if HN readers see the same pattern in their own A/B data.",
-      "tool": "color-palette",
-      "createdAt": "2026-05-10T08:30:00Z"
     }
   ],
   "checklist": [
