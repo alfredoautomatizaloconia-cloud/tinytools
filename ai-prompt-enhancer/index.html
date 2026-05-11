@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Prompt Enhancer (2026) — Midjourney, DALL-E, Flux, SD prompts in one click</title>
+<meta name="description" content="Paste a basic idea — get a richly detailed, model-tuned image prompt for Midjourney v7, DALL-E 3, Flux 1.1 Pro, Stable Diffusion XL, and Sora. Rule-based or BYOK LLM. Free, no signup.">
+<meta name="keywords" content="ai prompt enhancer, midjourney prompt generator, dall-e prompt builder, stable diffusion prompt enhancer, flux prompt, ai image prompt, prompt polisher, ai art prompt enhancer">
+<meta property="og:title" content="Free AI Prompt Enhancer — Midjourney, DALL-E, Flux, SD">
+<meta property="og:description" content="Turn a 5-word idea into a pro-grade image prompt with subject, style, lighting, lens, composition. Rule-based or BYOK LLM.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-prompt-enhancer/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Prompt Enhancer — Pro-grade image prompts in 1 click">
+<meta name="twitter:description" content="Paste an idea, get a Midjourney/DALL-E/Flux-tuned prompt. Free, browser-only, BYOK optional.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-prompt-enhancer/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Prompt Enhancer",
+  "url": "https://tinytools-smoky.vercel.app/ai-prompt-enhancer/",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Any (browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Free in-browser AI image prompt enhancer. Turns a short idea into a polished prompt for Midjourney, DALL-E 3, Flux, Stable Diffusion XL, or Sora. Rule-based or BYOK LLM."
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #d946ef; --accent-glow: #d946ef40;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 1180px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #f0abfc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 720px; margin: 0 auto; }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+    margin-top: 24px;
+  }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .field { margin-bottom: 14px; }
+  label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 13px; color: var(--text-dim); margin-bottom: 6px; font-weight: 500;
+  }
+  select, input[type="text"], input[type="password"], textarea {
+    width: 100%; padding: 11px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit;
+  }
+  textarea { resize: vertical; min-height: 80px; }
+  select:focus, textarea:focus, input:focus {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .row4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 800px) { .row2, .row3, .row4 { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .row2, .row3, .row4 { grid-template-columns: 1fr; } }
+
+  .btn {
+    padding: 13px 18px; background: var(--accent); color: white;
+    border: none; border-radius: 10px; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: all 0.15s; font-family: inherit;
+  }
+  .btn:hover:not(:disabled) { filter: brightness(1.1); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-ghost { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+
+  .status {
+    margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 13px;
+    background: var(--bg-elevated); color: var(--text-dim); display: none;
+  }
+  .status.show { display: block; }
+  .status.error { color: #fca5a5; border: 1px solid #ef444450; }
+  .status.success { color: #f0abfc; border: 1px solid #d946ef50; }
+
+  .tabs { display: flex; gap: 4px; margin-bottom: 12px; flex-wrap: wrap; }
+  .tab {
+    padding: 8px 14px; background: var(--bg-elevated); border-radius: 8px; font-size: 13px;
+    cursor: pointer; color: var(--text-dim); transition: all 0.15s;
+  }
+  .tab.active { background: var(--accent); color: white; }
+
+  .output {
+    background: #000; padding: 18px; border-radius: 12px; margin-top: 4px;
+    border: 1px solid var(--border); position: relative; min-height: 180px;
+  }
+  .output pre { margin: 0; font-family: 'SF Mono', Monaco, monospace; font-size: 13px;
+    color: #fbdcff; white-space: pre-wrap; word-wrap: break-word; max-height: 360px; overflow: auto; }
+  .copy-btn {
+    position: absolute; top: 10px; right: 10px; padding: 6px 12px;
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text); font-size: 12px; cursor: pointer;
+  }
+  .copy-btn:hover { border-color: var(--accent); }
+
+  .variant {
+    background: var(--bg-elevated); padding: 14px 16px; border-radius: 10px;
+    border-left: 3px solid var(--accent); margin-top: 10px; font-size: 13px;
+    color: var(--text); position: relative;
+  }
+  .variant .lbl { font-size: 11px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; font-weight: 600; margin-bottom: 6px; }
+  .variant .vcopy {
+    position: absolute; top: 10px; right: 10px; padding: 4px 10px;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text-dim); font-size: 11px; cursor: pointer;
+  }
+  .variant .vcopy:hover { color: var(--accent); border-color: var(--accent); }
+  .variant pre { margin: 0; white-space: pre-wrap; word-wrap: break-word;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 12.5px; color: #fbdcff; }
+  .variant .neg { margin-top: 6px; font-size: 12px; color: #fca5a5; }
+
+  .meta {
+    display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--text-dim);
+    margin-top: 12px; padding: 10px 14px; background: var(--bg-elevated); border-radius: 8px;
+  }
+  .meta b { color: var(--text); }
+
+  .upsell {
+    margin-top: 16px; padding: 16px; background: var(--bg-elevated);
+    border-radius: 10px; border-left: 3px solid var(--accent); font-size: 13px;
+  }
+  .upsell strong { color: var(--text); }
+  .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .pill {
+    padding: 5px 11px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 12px; color: var(--text-dim); cursor: pointer;
+    transition: all 0.15s; user-select: none;
+  }
+  .pill:hover { border-color: var(--accent); }
+  .pill.on { background: var(--accent); color: white; border-color: var(--accent); }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; }
+  .content h3 { font-size: 17px; margin: 22px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; }
+  .content ul { margin-left: 24px; color: var(--text-dim); margin-bottom: 10px; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--accent); }
+  .content a { color: var(--accent); text-decoration: none; }
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  .key-toggle { font-size: 12px; color: var(--text-dim); cursor: pointer; }
+  .key-toggle:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">✨ Idea in &nbsp;·&nbsp; Pro prompt out &nbsp;·&nbsp; Midjourney · DALL-E · Flux · SD · Sora</div>
+    <h1>AI Prompt Enhancer</h1>
+    <p class="subtitle">Paste a 5-word idea — get a richly detailed, model-tuned image prompt with subject, style, lighting, lens, composition, and the right syntax for Midjourney v7, DALL-E 3, Flux 1.1 Pro, Stable Diffusion XL, or Sora. Rule-based for free, BYOK LLM for stronger rewrites.</p>
+  </header>
+
+  <div class="panel">
+    <h2>1 — Your idea</h2>
+    <div class="field">
+      <label>Basic prompt — write it like you'd describe a picture to a friend
+        <span class="key-toggle" id="exampleLink">try an example →</span>
+      </label>
+      <textarea id="basic" placeholder="A cat astronaut on Mars holding a coffee cup"></textarea>
+    </div>
+
+    <h2 style="margin-top:18px;">2 — Target model &amp; vibe</h2>
+    <div class="row2">
+      <div class="field">
+        <label>Target model</label>
+        <select id="model">
+          <option value="midjourney">Midjourney v7 (uses --ar / --style)</option>
+          <option value="dalle">DALL-E 3 / GPT Image 1 (natural language)</option>
+          <option value="flux">Flux 1.1 Pro (detail-heavy, no negatives)</option>
+          <option value="sdxl">Stable Diffusion XL (tag-based + negatives)</option>
+          <option value="sora">Sora / Veo 3 (video prompt)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Aspect ratio</label>
+        <select id="ar">
+          <option value="1:1">Square 1:1</option>
+          <option value="16:9" selected>Wide 16:9</option>
+          <option value="9:16">Portrait 9:16</option>
+          <option value="3:2">Photo 3:2</option>
+          <option value="2:3">Tall 2:3</option>
+          <option value="21:9">Cinematic 21:9</option>
+          <option value="4:5">IG 4:5</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Style preset (pick any)</label>
+      <div class="pill-row" id="stylePills"></div>
+    </div>
+    <div class="field">
+      <label>Lighting</label>
+      <div class="pill-row" id="lightPills"></div>
+    </div>
+    <div class="field">
+      <label>Camera / lens</label>
+      <div class="pill-row" id="cameraPills"></div>
+    </div>
+    <div class="field">
+      <label>Mood</label>
+      <div class="pill-row" id="moodPills"></div>
+    </div>
+
+    <h2 style="margin-top:18px;">3 — Engine (optional)</h2>
+    <div class="row2">
+      <div class="field">
+        <label>Enhancement engine</label>
+        <select id="engine">
+          <option value="rules">Rule-based (free, instant, no key)</option>
+          <option value="openai">BYOK · OpenAI (gpt-4o-mini)</option>
+          <option value="anthropic">BYOK · Anthropic (Claude Haiku)</option>
+          <option value="google">BYOK · Google (Gemini Flash)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>How many variants</label>
+        <select id="variants">
+          <option value="3" selected>3 variants</option>
+          <option value="1">1 — just one polished prompt</option>
+          <option value="5">5 variants</option>
+        </select>
+      </div>
+    </div>
+    <div class="field" id="keyField" style="display: none;">
+      <label>API key <span class="key-toggle" id="toggleKey">show</span></label>
+      <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off">
+    </div>
+
+    <div style="margin-top: 14px;" class="row2">
+      <button class="btn" id="goBtn">✨ Enhance my prompt</button>
+      <button class="btn btn-ghost" id="clearBtn">Clear</button>
+    </div>
+
+    <div id="status" class="status"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Enhanced prompts</h2>
+    <div id="results">
+      <div style="padding: 24px; text-align: center; color: var(--text-dim); font-size: 14px;">
+        Your enhanced prompts will appear here.
+      </div>
+    </div>
+
+    <div class="meta" id="meta" style="display:none;">
+      <span>Engine: <b id="metaEngine">rules</b></span>
+      <span>Model: <b id="metaModel">midjourney</b></span>
+      <span>Words in: <b id="metaIn">0</b></span>
+      <span>Words out (avg): <b id="metaOut">0</b></span>
+      <span>Variants: <b id="metaVariants">0</b></span>
+    </div>
+
+    <div class="upsell">
+      <strong>Selling or buying AI image prompts?</strong>
+      <a href="#" id="upsell-promptbase" target="_blank" rel="noopener">PromptBase</a> is the largest marketplace,
+      <a href="#" id="upsell-midjourney" target="_blank" rel="noopener">Midjourney</a> for the rendering,
+      <a href="#" id="upsell-openai" target="_blank" rel="noopener">OpenAI</a> for DALL-E credits.
+      <em>(Affiliate links — no extra cost to you.)</em>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>Why an AI prompt enhancer matters in 2026</h2>
+    <p>Every major image model — Midjourney v7, DALL-E 3, Flux 1.1 Pro, Stable Diffusion XL, Sora — quietly rewrites your prompt before rendering. They each have a "prompt expander" baked in, and it works differently in each one. Midjourney rewards keyword-stacked tags ("cinematic, golden hour, 35mm, shallow depth of field"); DALL-E rewards natural-language sentences; Flux rewards dense paragraph descriptions and ignores negative prompts; Stable Diffusion XL still leans on the old "subject, style, modifiers, ((emphasis))" pattern and uses a separate negative prompt. A prompt that's great in Midjourney often gives mediocre output in DALL-E and vice versa. An AI prompt enhancer's job is to take your one-line idea and produce the version of it that the specific model you're targeting will respond to best.</p>
+
+    <h3>How this AI prompt enhancer works</h3>
+    <p>This tool has two engines. The <strong>rule-based engine</strong> is instant, free, and runs in your browser — it parses your idea, identifies subject and setting nouns, then layers in the style preset, lighting, camera/lens, and mood you picked, and formats the result for the target model (tag-based for Midjourney/SDXL, paragraph for DALL-E/Flux, shot-list narration for Sora/Veo). The <strong>BYOK engine</strong> uses your OpenAI, Anthropic, or Google API key to do a model-aware rewrite — better at preserving your intent, weaving in the modifiers naturally, and adapting to the target model's syntax. The BYOK pass costs fractions of a cent per prompt and gives noticeably more "directed" prompts (consistent characters, coherent lighting + lens choices, no contradictions).</p>
+
+    <h3>What separates a good Midjourney prompt from a bad one</h3>
+    <p>A good Midjourney v7 prompt is dense but coherent: <code>subject (clearly named), action, environment, art-style or photography style, lighting, lens / camera, mood, --ar X:Y --style raw</code>. The classic mistake is stacking 40 unrelated modifiers — "cinematic, anime, hyperrealistic, watercolor, low-poly" — which forces the model to average several incompatible looks. The enhancer's style preset picks one coherent visual language at a time, then layers the supporting modifiers that go with it. For SDXL it also generates a sensible <strong>negative prompt</strong> (deformed hands, watermark, low contrast, blurry, jpeg artifacts) tuned to the style. For DALL-E and Flux, no negative prompt is emitted — those models don't use them.</p>
+
+    <h3>What about prompts for video models — Sora, Veo, Runway?</h3>
+    <p>Video prompts work differently from image prompts. The model needs a shot description (wide / medium / close-up), camera movement (dolly, crane, handheld), subject motion, environment, lighting, and an explicit duration cue. The Sora / Veo 3 setting in this tool produces that shot-list-style prompt: opening shot, motion, camera direction, sound design hint, and a final beat. It's the same source idea but compiled into the temporal grammar video models understand.</p>
+
+    <h3>AI prompt enhancer — FAQ</h3>
+    <p><strong>Is this prompt enhancer free?</strong> Yes — the rule-based engine is fully free, in-browser, no signup. The BYOK engine is also free; you only pay your own LLM provider directly (typically fractions of a cent per prompt).</p>
+    <p><strong>Does it work for Midjourney v7?</strong> Yes — it adds <code>--ar</code> and <code>--style raw</code> flags where appropriate and uses Midjourney's preferred tag-stacking style.</p>
+    <p><strong>What about DALL-E 3 / GPT Image 1?</strong> DALL-E rewrites your prompt server-side. The enhancer formats it as a natural-language description (which DALL-E preserves more faithfully) instead of fighting the auto-rewriter.</p>
+    <p><strong>Stable Diffusion XL?</strong> Yes — emits both a positive and a negative prompt tuned to the chosen style.</p>
+    <p><strong>Will it work for Flux?</strong> Yes. Flux models reward dense paragraph descriptions; the enhancer outputs that format and omits negative prompts (Flux ignores them).</p>
+    <p><strong>Can I sell these prompts on PromptBase?</strong> Yes — the prompts you generate here are yours. Many sellers refine an enhancer output into a tested prompt before listing.</p>
+  </section>
+
+  <footer>
+    <p>Free tool · No signup · Made by tinytools.dev. <a href="#" id="footer-tip">Tip jar</a> · <a href="/">Back to all tools</a></p>
+  </footer>
+</div>
+
+<script>
+const AFFILIATE = {
+  promptbaseUrl: 'https://promptbase.com/?aff=YOUR_PROMPTBASE_ID',
+  midjourneyUrl: 'https://www.midjourney.com/?aff=YOUR_MJ_ID',
+  openaiUrl: 'https://platform.openai.com/?aff=YOUR_OPENAI_ID',
+  bmacUrl: 'https://www.buymeacoffee.com/YOURNAME'
+};
+document.getElementById('upsell-promptbase').href = AFFILIATE.promptbaseUrl;
+document.getElementById('upsell-midjourney').href = AFFILIATE.midjourneyUrl;
+document.getElementById('upsell-openai').href = AFFILIATE.openaiUrl;
+document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
+
+const $ = function(id){ return document.getElementById(id); };
+
+const STYLES = [
+  { id: 'photoreal', label: 'Photorealistic', tags: 'photorealistic, ultra-detailed, sharp focus, hyper-detailed, photograph', dalle: 'a photorealistic, ultra-detailed photograph' },
+  { id: 'cinematic', label: 'Cinematic', tags: 'cinematic still, dramatic composition, anamorphic, color graded, film grain', dalle: 'a cinematic still with dramatic color grading and anamorphic framing' },
+  { id: 'anime', label: 'Anime', tags: 'anime key visual, cel shading, vivid colors, expressive linework, Makoto Shinkai influence', dalle: 'an anime key visual with cel shading and expressive lines' },
+  { id: 'oilpaint', label: 'Oil painting', tags: 'oil painting on canvas, thick impasto, painterly brushwork, classical composition', dalle: 'an oil painting on canvas with painterly brushwork and warm classical tones' },
+  { id: 'watercolor', label: 'Watercolor', tags: 'watercolor on paper, soft washes, blooms, pencil underdrawing, light texture', dalle: 'a watercolor painting with soft washes and pencil underdrawing' },
+  { id: '3drender', label: '3D render', tags: 'octane render, subsurface scattering, ray-traced reflections, physically based materials, 8k', dalle: 'a 3D render with ray-traced lighting and physically based materials' },
+  { id: 'pixel', label: 'Pixel art', tags: '16-bit pixel art, limited palette, crisp pixels, side-scroller aesthetic', dalle: 'a 16-bit pixel art illustration with a limited retro palette' },
+  { id: 'studio', label: 'Studio Ghibli', tags: 'Studio Ghibli style, hand-painted backgrounds, soft watercolor skies, gentle warm tones', dalle: 'a Studio Ghibli style illustration with hand-painted backgrounds' },
+  { id: 'lineart', label: 'Line art', tags: 'minimal line art, single-weight black line, white background, editorial illustration', dalle: 'a minimal single-line black-line illustration on white' },
+  { id: 'lowpoly', label: 'Low poly', tags: 'low poly 3D, flat shading, geometric facets, isometric, pastel palette', dalle: 'a low-poly 3D scene with flat-shaded geometric facets' }
+];
+const LIGHTS = [
+  { id: 'golden', label: 'Golden hour', tags: 'golden hour, warm rim light, soft directional sunlight' },
+  { id: 'blue', label: 'Blue hour', tags: 'blue hour, cool ambient light, faint city glow' },
+  { id: 'studio', label: 'Studio strobes', tags: 'studio strobe lighting, softbox, octabox, controlled fill' },
+  { id: 'neon', label: 'Neon', tags: 'neon signage, magenta and cyan highlights, wet pavement reflections' },
+  { id: 'volumetric', label: 'Volumetric', tags: 'volumetric god rays, atmospheric haze, dust particles in light' },
+  { id: 'overcast', label: 'Overcast', tags: 'overcast diffuse daylight, soft shadows, even exposure' },
+  { id: 'candle', label: 'Candlelight', tags: 'candlelight, warm flicker, deep shadows, Caravaggio chiaroscuro' },
+  { id: 'moonlight', label: 'Moonlight', tags: 'moonlight, silver rim light, cool deep shadows' }
+];
+const CAMERAS = [
+  { id: '35mm', label: '35mm portrait', tags: '35mm lens, shallow depth of field, f/1.8, eye-level' },
+  { id: '85mm', label: '85mm tele', tags: '85mm lens, compressed depth, creamy bokeh, f/1.4' },
+  { id: 'wide', label: '24mm wide', tags: '24mm wide lens, low angle, dramatic perspective' },
+  { id: 'macro', label: '100mm macro', tags: '100mm macro lens, extreme close-up, razor-thin focus plane' },
+  { id: 'drone', label: 'Drone overhead', tags: 'drone overhead shot, top-down composition, wide vista' },
+  { id: 'film', label: 'Kodak Portra 400', tags: 'shot on Kodak Portra 400, fine grain, soft skin tones' },
+  { id: 'arri', label: 'ARRI Alexa', tags: 'shot on ARRI Alexa, cinematic color science, anamorphic flares' }
+];
+const MOODS = [
+  { id: 'serene', label: 'Serene', tags: 'serene, peaceful, contemplative' },
+  { id: 'eerie', label: 'Eerie', tags: 'eerie, unsettling, liminal' },
+  { id: 'whimsy', label: 'Whimsical', tags: 'whimsical, playful, dreamlike' },
+  { id: 'epic', label: 'Epic', tags: 'epic, monumental, awe-inspiring scale' },
+  { id: 'cozy', label: 'Cozy', tags: 'cozy, warm, intimate' },
+  { id: 'tense', label: 'Tense', tags: 'tense, suspenseful, high stakes' },
+  { id: 'melancholy', label: 'Melancholy', tags: 'melancholy, wistful, faded' },
+  { id: 'energetic', label: 'Energetic', tags: 'energetic, kinetic, motion-blurred' }
+];
+
+function renderPills(containerId, items, single) {
+  const c = $(containerId);
+  c.innerHTML = '';
+  items.forEach(function(it){
+    const p = document.createElement('div');
+    p.className = 'pill'; p.textContent = it.label; p.setAttribute('data-id', it.id);
+    p.addEventListener('click', function(){
+      if (single) {
+        Array.prototype.forEach.call(c.querySelectorAll('.pill'), function(x){ x.classList.remove('on'); });
+        p.classList.add('on');
+      } else {
+        p.classList.toggle('on');
+      }
+    });
+    c.appendChild(p);
+  });
+}
+renderPills('stylePills', STYLES, true);
+renderPills('lightPills', LIGHTS, true);
+renderPills('cameraPills', CAMERAS, true);
+renderPills('moodPills', MOODS, false);
+function pickedIds(containerId) {
+  return Array.prototype.map.call(document.querySelectorAll('#' + containerId + ' .pill.on'), function(p){ return p.getAttribute('data-id'); });
+}
+function defaultPick() {
+  // Pre-select a sensible default so the demo works with one click
+  document.querySelector('#stylePills .pill[data-id="cinematic"]').classList.add('on');
+  document.querySelector('#lightPills .pill[data-id="golden"]').classList.add('on');
+  document.querySelector('#cameraPills .pill[data-id="35mm"]').classList.add('on');
+  document.querySelector('#moodPills .pill[data-id="serene"]').classList.add('on');
+}
+defaultPick();
+
+$('engine').addEventListener('change', function(){
+  $('keyField').style.display = $('engine').value === 'rules' ? 'none' : 'block';
+});
+$('toggleKey').addEventListener('click', function(){
+  const i = $('apiKey');
+  i.type = i.type === 'password' ? 'text' : 'password';
+  $('toggleKey').textContent = i.type === 'password' ? 'show' : 'hide';
+});
+$('exampleLink').addEventListener('click', function(){
+  const examples = [
+    'A cat astronaut on Mars holding a coffee cup',
+    'A misty forest at dawn with a deer drinking from a stream',
+    'A neon-lit ramen shop at night, rain on the window',
+    'A cozy reading nook with a sleeping golden retriever',
+    'A wide shot of a Mars colony with greenhouses at sunset'
+  ];
+  $('basic').value = examples[Math.floor(Math.random() * examples.length)];
+});
+
+function getStyle() { const ids = pickedIds('stylePills'); return STYLES.find(function(s){ return s.id === ids[0]; }) || STYLES[1]; }
+function getLight() { const ids = pickedIds('lightPills'); return LIGHTS.find(function(s){ return s.id === ids[0]; }) || LIGHTS[0]; }
+function getCamera() { const ids = pickedIds('cameraPills'); return CAMERAS.find(function(s){ return s.id === ids[0]; }) || CAMERAS[0]; }
+function getMoods() { const ids = pickedIds('moodPills'); return MOODS.filter(function(s){ return ids.indexOf(s.id) >= 0; }); }
+
+function setStatus(msg, kind) {
+  const el = $('status');
+  el.textContent = msg;
+  el.className = 'status show' + (kind === 'error' ? ' error' : kind === 'success' ? ' success' : '');
+}
+function clearStatus(){ $('status').className = 'status'; }
+
+const NEG_PRESETS = {
+  photoreal: 'deformed, blurry, jpeg artifacts, watermark, text, signature, low contrast, extra fingers, bad anatomy',
+  cinematic: 'flat lighting, blown highlights, watermark, text, jpeg artifacts, deformed',
+  anime: 'realistic, 3d, deformed, extra limbs, blurry, watermark, lowres, sketch',
+  oilpaint: 'photorealistic, 3d render, watermark, signature, lowres',
+  watercolor: 'photorealistic, harsh lines, oversaturated, jpeg artifacts, watermark',
+  '3drender': 'flat shading, blurry, jpeg artifacts, watermark, deformed, low poly',
+  pixel: 'high resolution, smooth gradients, photorealistic, watermark, blurry',
+  studio: 'photorealistic, deformed, extra limbs, jpeg artifacts, watermark',
+  lineart: 'color, shading, photorealistic, watermark, jpeg artifacts',
+  lowpoly: 'photorealistic, high detail, watermark, jpeg artifacts, blurry'
+};
+
+function ruleEnhance(basic, opts, seed) {
+  const m = opts.model;
+  const style = opts.style;
+  const light = opts.light;
+  const camera = opts.camera;
+  const moods = opts.moods.length ? opts.moods.map(function(x){ return x.tags; }).join(', ') : '';
+  const ar = opts.ar;
+  const subjectMod = ['highly detailed', 'intricate details', 'rich texture', 'striking composition', 'centered subject', 'rule of thirds'];
+  const flair = subjectMod[seed % subjectMod.length];
+
+  if (m === 'midjourney') {
+    const tags = [basic.trim(), style.tags, light.tags, camera.tags, moods, flair].filter(Boolean).join(', ');
+    return { prompt: tags + ' --ar ' + ar + ' --style raw --v 7', negative: null, label: 'Midjourney v7' };
+  }
+  if (m === 'sdxl') {
+    const tags = [basic.trim(), style.tags, light.tags, camera.tags, moods, flair, 'masterpiece, best quality, 8k'].filter(Boolean).join(', ');
+    return { prompt: tags, negative: NEG_PRESETS[style.id] || NEG_PRESETS.photoreal, label: 'Stable Diffusion XL' };
+  }
+  if (m === 'dalle') {
+    const sentence = style.dalle + ' of ' + basic.trim() + '. ' + capitalize(light.tags) + '. ' + capitalize(camera.tags) + '. ' + (moods ? 'The mood is ' + moods + '. ' : '') + 'The composition is ' + flair + '. The aspect ratio is ' + ar + '.';
+    return { prompt: sentence, negative: null, label: 'DALL-E 3 / GPT Image 1' };
+  }
+  if (m === 'flux') {
+    const sentence = 'A ' + style.tags.split(',')[0] + ' image of ' + basic.trim() + ', ' + style.tags + '. ' + capitalize(light.tags) + '. Captured with ' + camera.tags + '. ' + (moods ? 'Mood: ' + moods + '. ' : '') + 'Composition: ' + flair + '. Frame ratio ' + ar + '. Hyper-detailed, every micro-texture visible.';
+    return { prompt: sentence, negative: null, label: 'Flux 1.1 Pro' };
+  }
+  if (m === 'sora') {
+    const sentence = 'Opening shot: ' + basic.trim() + '. ' + capitalize(style.tags.split(',')[0]) + ' visual style. ' + capitalize(camera.tags) + ', slow dolly forward. ' + capitalize(light.tags) + '. ' + (moods ? 'Mood: ' + moods + '. ' : '') + 'Subtle ambient sound. Hold for 6 seconds, then a gentle cut. Aspect ratio ' + ar + '. 24fps cinematic motion.';
+    return { prompt: sentence, negative: null, label: 'Sora / Veo 3' };
+  }
+}
+function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+async function llmEnhance(basic, opts, count) {
+  const engine = opts.engine; const key = $('apiKey').value.trim();
+  if (!key) throw new Error('API key required for the BYOK engine. Or switch the engine to "Rule-based".');
+  const sys = 'You are an expert AI image prompt engineer. Take the user\'s rough idea and produce ' + count + ' refined prompts targeting ' + opts.model.toUpperCase() + '. Each prompt MUST: respect the chosen style (' + opts.style.label + '), lighting (' + opts.light.label + '), camera (' + opts.camera.label + '), moods (' + opts.moods.map(function(m){return m.label;}).join(', ') + '). Output STRICT JSON: {"variants":[{"prompt":"...","negative":"..."}, ...]}. For Midjourney include --ar ' + opts.ar + ' --style raw --v 7 at the end. For DALL-E or Flux use natural-language paragraphs, no negatives. For SDXL use comma-tag style and include a negative prompt. For Sora include shot, camera move, lighting, and a duration cue.';
+  const user = 'Idea: ' + basic.trim() + '\nTarget model: ' + opts.model + '\nAspect ratio: ' + opts.ar + '\nProduce ' + count + ' distinct variants.';
+  let raw = '';
+  if (engine === 'openai') {
+    const r = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key },
+      body: JSON.stringify({ model: 'gpt-4o-mini', messages: [{role:'system',content:sys},{role:'user',content:user}], temperature: 0.8, response_format: { type: 'json_object' } })
+    });
+    if (!r.ok) throw new Error('OpenAI: ' + r.status + ' ' + (await r.text()).slice(0,200));
+    const d = await r.json(); raw = d.choices[0].message.content;
+  } else if (engine === 'anthropic') {
+    const r = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+      body: JSON.stringify({ model: 'claude-3-5-haiku-latest', system: sys + ' Respond with ONLY the JSON, no prose.', messages: [{role:'user',content:user}], max_tokens: 1500 })
+    });
+    if (!r.ok) throw new Error('Anthropic: ' + r.status + ' ' + (await r.text()).slice(0,200));
+    const d = await r.json(); raw = d.content[0].text;
+  } else if (engine === 'google') {
+    const r = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + encodeURIComponent(key), {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ systemInstruction: { parts: [{ text: sys + ' Respond with ONLY the JSON.' }] }, contents: [{ role: 'user', parts: [{ text: user }] }], generationConfig: { temperature: 0.8, responseMimeType: 'application/json' } })
+    });
+    if (!r.ok) throw new Error('Gemini: ' + r.status + ' ' + (await r.text()).slice(0,200));
+    const d = await r.json(); raw = d.candidates[0].content.parts[0].text;
+  }
+  // Parse JSON robustly
+  let json;
+  try { json = JSON.parse(raw); }
+  catch (e) {
+    const m = raw.match(/\{[\s\S]*\}/);
+    if (!m) throw new Error('LLM returned non-JSON; try again or switch engine.');
+    json = JSON.parse(m[0]);
+  }
+  return json.variants || [];
+}
+
+function render(variants, opts) {
+  const r = $('results');
+  r.innerHTML = '';
+  variants.forEach(function(v, i){
+    const d = document.createElement('div');
+    d.className = 'variant';
+    d.innerHTML = '<div class="lbl">Variant ' + (i+1) + ' · ' + (v.label || opts.modelLabel || opts.model) + '</div>' +
+      '<button class="vcopy" data-i="' + i + '">Copy</button>' +
+      '<pre></pre>' +
+      (v.negative ? '<div class="neg"><b>Negative prompt:</b> <span class="negtxt"></span></div>' : '');
+    d.querySelector('pre').textContent = v.prompt;
+    if (v.negative) d.querySelector('.negtxt').textContent = v.negative;
+    r.appendChild(d);
+  });
+  Array.prototype.forEach.call(r.querySelectorAll('.vcopy'), function(b){
+    b.addEventListener('click', function(){
+      const i = +b.getAttribute('data-i');
+      const txt = variants[i].prompt + (variants[i].negative ? '\nNegative: ' + variants[i].negative : '');
+      navigator.clipboard.writeText(txt).then(function(){ b.textContent = 'Copied'; setTimeout(function(){ b.textContent = 'Copy'; }, 1200); });
+    });
+  });
+
+  $('meta').style.display = 'flex';
+  $('metaEngine').textContent = opts.engine;
+  $('metaModel').textContent = opts.modelLabel || opts.model;
+  $('metaIn').textContent = $('basic').value.trim().split(/\s+/).filter(Boolean).length;
+  const outAvg = Math.round(variants.reduce(function(s,v){ return s + v.prompt.split(/\s+/).filter(Boolean).length; }, 0) / Math.max(1, variants.length));
+  $('metaOut').textContent = outAvg;
+  $('metaVariants').textContent = variants.length;
+}
+
+async function go() {
+  const basic = $('basic').value.trim();
+  if (!basic) { setStatus('Type your basic idea first.', 'error'); return; }
+  clearStatus();
+  const opts = {
+    model: $('model').value,
+    modelLabel: $('model').options[$('model').selectedIndex].text,
+    ar: $('ar').value,
+    style: getStyle(),
+    light: getLight(),
+    camera: getCamera(),
+    moods: getMoods(),
+    engine: $('engine').value
+  };
+  const count = parseInt($('variants').value, 10) || 3;
+  $('goBtn').disabled = true;
+  try {
+    let variants;
+    if (opts.engine === 'rules') {
+      variants = [];
+      for (let i = 0; i < count; i++) variants.push(ruleEnhance(basic, opts, i));
+      setStatus('Generated ' + count + ' rule-based variants. Copy and paste straight into ' + opts.modelLabel + '.', 'success');
+    } else {
+      setStatus('Calling ' + opts.engine + '… one moment.');
+      variants = await llmEnhance(basic, opts, count);
+      if (!variants.length) throw new Error('LLM returned 0 variants.');
+      setStatus('Generated ' + variants.length + ' BYOK variants.', 'success');
+    }
+    render(variants, opts);
+  } catch (e) {
+    setStatus(e.message, 'error');
+  } finally {
+    $('goBtn').disabled = false;
+  }
+}
+$('goBtn').addEventListener('click', go);
+$('clearBtn').addEventListener('click', function(){
+  $('basic').value = '';
+  $('results').innerHTML = '<div style="padding: 24px; text-align: center; color: var(--text-dim); font-size: 14px;">Your enhanced prompts will appear here.</div>';
+  $('meta').style.display = 'none';
+  clearStatus();
+});
+</script>
+</body>
+</html>
