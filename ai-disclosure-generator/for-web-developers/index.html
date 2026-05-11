@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Disclosure Generator for Web Developers &mdash; Label Copilot Code, AI-Drafted Docs, GPT Support Bots &amp; Client Sites Before the EU AI Act Hits (2026)</title>
+<meta name="description" content="Drop-in EU AI Act disclosure labels for web developers and dev agencies. Banners, README badges, footer blocks, and JSON-LD schema for Copilot/Cursor-generated code, AI-written docs, GPT support bots, and AI-built client landing pages. Free, no signup. Avoid &euro;15M fines.">
+<meta name="keywords" content="ai disclosure for web developers, copilot code disclosure, cursor ai disclaimer, ai readme badge, gpt chatbot disclosure, eu ai act web developer, ai client site disclosure, ai-generated code label, json-ld softwaresourcecode ai">
+<meta property="og:title" content="AI Disclosure Generator for Web Developers &mdash; EU AI Act Labels for Copilot, Cursor, READMEs &amp; Client Sites">
+<meta property="og:description" content="HTML banners, README badges, footer blocks, and JSON-LD schema for AI-generated code, AI-drafted docs, GPT support bots, and AI-built landing pages. Compliant with the August 2026 deadline. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-web-developers/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-web-developers/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Disclosure Generator for Web Developers",
+  "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-web-developers/",
+  "applicationCategory": "DeveloperApplication",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Web Developers, Freelance Developers, Dev Agencies, Full-Stack Engineers, Frontend Developers, Indie Hackers Shipping Sites"
+  },
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Generates EU AI Act-compliant disclosure labels for web development output that uses Copilot, Cursor, or Claude Code-generated code, AI-drafted READMEs and docs, GPT-powered support chatbots, AI-built client landing pages, and AI-generated marketing copy. Outputs HTML banners, README badges, footer blocks, and JSON-LD schema."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do freelance web developers and dev agencies really need to disclose AI under the EU AI Act?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes when the AI output is what the visitor or client receives. Article 50 covers AI-generated text, image, audio, and video that&apos;s &apos;made available to the public&apos; &mdash; which catches an AI-drafted landing page on a client site, a GPT-powered support chatbot you bolted into a SaaS, and AI-generated marketing copy on your portfolio. Copilot and Cursor output inside your own backend is not in scope; the user-facing copy and any conversational AI surface is. The August 2, 2026 deadline is the hard line. Fines reach &euro;15 million or 3% of global turnover &mdash; and agency clients are starting to insert AI-disclosure clauses into delivery contracts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "If GitHub Copilot, Cursor, or Claude Code wrote half my code, does the site need a label?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No for the code itself, yes if AI also wrote the visible page copy. The EU AI Act labels AI output that is &apos;made available to the public.&apos; Source code shipped to production isn&apos;t public output in the Article 50 sense &mdash; the rendered HTML, the marketing copy, the docs site, the support bot answers are. The generator emits a README badge for honest open-source attribution (a norm, not a regulation) and a separate user-facing banner for the marketing copy or chatbot surfaces that are actually in scope."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about a GPT or Claude-powered support chatbot or &apos;ask the docs&apos; assistant embedded in my SaaS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Highest-disclosure case. Article 50 has a dedicated clause for &apos;AI systems intended to interact directly with natural persons&apos; that&apos;s separate from generated-content rules. The disclosure has to appear at the start of every conversation and the bot must not be presented as a human. The generator&apos;s &apos;support chatbot&apos; preset emits an opening message, a persistent footer line, and a JSON-LD ChatAction block &mdash; the three surfaces regulators have signaled they&apos;ll inspect first. Works with Intercom Fin, Crisp MagicReply, Pylon, custom OpenAI Assistants, and self-hosted llama.cpp deployments."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I run a dev agency shipping client sites where the copy is GPT-drafted. Whose disclosure obligation is it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both, in different ways. Under the Act, the client is the &apos;deployer&apos; of the AI system on their domain and carries the legal duty. But agencies sit on the &apos;provider&apos; line when they integrate the AI into the delivered build, and increasingly carry contractual indemnity exposure when the client doesn&apos;t know how to comply. The clean delivery is: ship the site with the disclosure already in place (HTML banner + JSON-LD), document it in the handoff, and add an &apos;AI components disclosed&apos; line to the delivery contract. The generator&apos;s &apos;agency handoff&apos; output bundles all three artifacts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where exactly do I put the disclosure on a landing page, docs site, or README?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three placements that survive how visitors actually consume web output. First: a small badge in the page header or above the first AI-generated block, so it&apos;s perceptible at first exposure rather than buried in the footer. Second: a JSON-LD schema entry in &lt;head&gt; so the page is machine-readable as AI-generated and crawlers and the EU AI Office can parse it. Third: a README badge for any public repo &mdash; this is the open-source community norm and the generator emits a shields.io-compatible markdown badge. The legal text says &apos;clearly and distinguishably perceptible at the latest at the time of the first interaction&apos; &mdash; footer-only does not satisfy it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this work with Next.js, Astro, SvelteKit, Webflow, Framer, and Vercel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The HTML banner pastes into any JSX/TSX layout, Astro component, Svelte file, Webflow custom-code embed, or Framer code component. The JSON-LD schema goes in the head &mdash; next/head, Astro&apos;s &lt;Head&gt;, SvelteKit&apos;s svelte:head, or Webflow&apos;s site-wide custom code. The README badge is plain markdown that renders on GitHub, GitLab, and Codeberg. The chatbot opening-message string drops into any OpenAI Assistants instruction, Vercel AI SDK system prompt, or LangChain initial message."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #fbbf24; --accent-glow: #fbbf2440;
+    --green: #10b981; --red: #ef4444; --amber: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #ef444440 0%, transparent 50%);
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 20px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; }
+  .breadcrumb a { color: var(--text-dim); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+
+  header { text-align: center; padding: 24px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 999px; font-size: 13px;
+    color: #fca5a5; margin-bottom: 18px; font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(28px, 4.2vw, 42px); font-weight: 800; line-height: 1.12; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fde68a 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 720px; margin: 0 auto 24px; }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 8px 0 24px; }
+  .cta {
+    display: inline-block; padding: 13px 26px; border-radius: 10px;
+    font-weight: 600; text-decoration: none; transition: all 0.15s; font-size: 15px;
+  }
+  .cta-primary { background: var(--accent); color: #1f1300; }
+  .cta-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px var(--accent-glow); }
+  .cta-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+  .cta-secondary:hover { border-color: var(--accent); }
+
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-top: 24px; }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  /* Mock browser preview */
+  .browser-mock {
+    max-width: 520px; margin: 0 auto;
+    background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden; font-family: -apple-system, sans-serif;
+  }
+  .browser-mock .url-bar {
+    padding: 9px 14px; background: #11111a; border-bottom: 1px solid var(--border);
+    font-size: 12px; color: var(--text-dim);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .browser-mock .dots { display: flex; gap: 5px; }
+  .browser-mock .dots span { width: 9px; height: 9px; border-radius: 50%; background: #3b3b4a; }
+  .browser-mock .url { flex: 1; font-family: 'SF Mono', Menlo, monospace; font-size: 11px; }
+  .browser-mock .ai-tag {
+    margin: 14px 14px 0; padding: 7px 12px; background: #fef3c7;
+    color: #78350f; border: 1px solid #fbbf24; border-radius: 8px;
+    font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .browser-mock .page-body { padding: 14px; }
+  .browser-mock .page-body h3 { font-size: 16px; color: var(--text); margin-bottom: 6px; }
+  .browser-mock .page-body p { font-size: 13px; color: var(--text-dim); }
+  .browser-mock .page-foot {
+    padding: 10px 14px; background: #11111a; border-top: 1px solid var(--border);
+    font-size: 11px; color: var(--text-dim);
+  }
+  .readme-mock {
+    margin-top: 16px; padding: 12px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px;
+    font-family: 'SF Mono', Menlo, monospace; font-size: 12px; color: var(--text);
+    max-width: 520px; margin-left: auto; margin-right: auto;
+  }
+  .readme-mock .shield-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+  .readme-mock .shield {
+    display: inline-flex; height: 20px; border-radius: 4px; overflow: hidden;
+    font-size: 11px; font-weight: 600;
+  }
+  .readme-mock .shield .k { background: #555; color: white; padding: 0 7px; display: flex; align-items: center; }
+  .readme-mock .shield .v { background: #fbbf24; color: #1f1300; padding: 0 7px; display: flex; align-items: center; }
+
+  .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 14px; }
+  .use-case { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .use-case .icon { font-size: 22px; margin-bottom: 8px; }
+  .use-case h3 { font-size: 15px; margin-bottom: 6px; color: var(--text); }
+  .use-case p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+  .content { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; color: var(--text); letter-spacing: -0.01em; }
+  .content h3 { font-size: 18px; margin: 24px 0 8px; color: var(--text); }
+  .content p { color: var(--text-dim); margin-bottom: 12px; font-size: 15px; }
+  .content ul { margin: 8px 0 16px 24px; color: var(--text-dim); }
+  .content ul li { margin-bottom: 6px; font-size: 15px; }
+  .content a { color: var(--accent); text-decoration: none; }
+  .content a:hover { text-decoration: underline; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Menlo, monospace; font-size: 13px; color: var(--accent); }
+  .content blockquote { border-left: 3px solid var(--accent); padding: 6px 16px; margin: 16px 0; color: var(--text-dim); font-style: italic; }
+
+  .compare { width: 100%; border-collapse: collapse; margin: 14px 0 8px; font-size: 14px; }
+  .compare th, .compare td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+  .compare th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .compare td { color: var(--text-dim); }
+  .compare td.good { color: var(--green); }
+  .compare td.bad { color: var(--red); }
+  .compare td.warn { color: var(--amber); }
+
+  .faq-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: 0; }
+  .faq-item h3 { font-size: 16px; margin-bottom: 6px; color: var(--text); }
+  .faq-item p { color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+
+  .final-cta { text-align: center; padding: 36px 24px; margin-top: 40px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
+  .final-cta h2 { font-size: 22px; margin-bottom: 10px; color: var(--text); }
+  .final-cta p { color: var(--text-dim); margin-bottom: 18px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">Home</a> &nbsp;&rsaquo;&nbsp;
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> &nbsp;&rsaquo;&nbsp;
+    For Web Developers
+  </div>
+
+  <header>
+    <div class="badge">&#9888;&#65039; EU AI Act &middot; August 2, 2026 deadline &middot; Free</div>
+    <h1>AI Disclosure Generator for Web Developers</h1>
+    <p class="subtitle">Drop-in disclosure labels for the AI parts of a modern web build &mdash; AI-drafted landing copy, Copilot/Cursor-generated code, GPT-powered support bots, AI-written docs, and AI-built client sites &mdash; built so you stay compliant with the EU AI Act and don&apos;t inherit your clients&apos; exposure.</p>
+    <div class="cta-row">
+      <a href="/ai-disclosure-generator/" class="cta cta-primary">Open the Generator &rarr;</a>
+      <a href="#example" class="cta cta-secondary">See a landing-page example</a>
+    </div>
+  </header>
+
+  <div class="panel" id="example">
+    <h2>What a compliant AI-built landing page looks like</h2>
+    <div class="browser-mock">
+      <div class="url-bar">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <span class="url">acme-saas.com</span>
+      </div>
+      <div class="ai-tag">&#129302; AI-drafted copy &middot; Reviewed by the Acme team</div>
+      <div class="page-body">
+        <h3>Ship product 10x faster with Acme</h3>
+        <p>The all-in-one platform for indie founders who refuse to pay for fifteen separate tools.</p>
+      </div>
+      <div class="page-foot">&copy; Acme &middot; Marketing copy drafted with Claude 3.5 Sonnet and reviewed by the Acme team. Code human-authored. <a href="#" style="color: inherit;">AI disclosure &rarr;</a></div>
+    </div>
+    <div class="readme-mock">
+      <div class="shield-row">
+        <span class="shield"><span class="k">AI-assisted</span><span class="v">Copilot + Cursor</span></span>
+        <span class="shield"><span class="k">docs</span><span class="v">AI-drafted</span></span>
+      </div>
+      <div>## Disclosure<br>&nbsp;&nbsp;Code AI-assisted with GitHub Copilot and Cursor. Docs AI-drafted with Claude 3.5 Sonnet and reviewed by maintainers. See <code>/ai-disclosure</code> for details.</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Where AI shows up in a typical web build</h2>
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="icon">&#128221;</div>
+        <h3>AI-drafted landing &amp; marketing copy</h3>
+        <p>Headlines, hero subhead, feature blurbs, pricing-page copy, and SEO meta drafted by Claude or GPT. This is the part of the build that is most clearly &quot;public output&quot; under Article 50 &mdash; the generator emits a top-of-page banner plus JSON-LD <code>CreativeWork</code> with the AI tool as <code>creator</code> and you as <code>reviewer</code>.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#129302;</div>
+        <h3>GPT or Claude support chatbots</h3>
+        <p>Intercom Fin, Crisp MagicReply, Pylon, custom OpenAI Assistants, or self-hosted llama.cpp answers embedded in the product. Highest-disclosure case &mdash; its own Article 50 clause for &quot;systems that interact with natural persons.&quot; The generator outputs the opening message, persistent footer, and JSON-LD <code>ChatAction</code>.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#128187;</div>
+        <h3>Copilot, Cursor &amp; Claude Code-generated code</h3>
+        <p>Not Article 50 in scope (source code isn&apos;t public output) but a strong open-source norm. The generator emits a <code>shields.io</code>-compatible README badge plus a one-line <code>AI-ATTRIBUTION.md</code> snippet so contributors and downstream users see the provenance.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#128218;</div>
+        <h3>AI-written README &amp; docs</h3>
+        <p>Mintlify, Fern, GitBook, Docusaurus, or VitePress sites where the bulk of the prose is AI-drafted from your spec. Counts as public AI-generated text. The generator emits an above-the-fold callout and a JSON-LD <code>TechArticle</code> schema entry.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#127760;</div>
+        <h3>AI-built client landing pages (agencies)</h3>
+        <p>The deliverable that gets agencies in trouble fastest. You ship the site, the client is the legal deployer, both of you are exposed contractually. The generator&apos;s &quot;agency handoff&quot; output bundles the banner, JSON-LD, and a delivery-doc snippet to drop into the handoff contract.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#128206;</div>
+        <h3>AI-generated images, OG cards &amp; logos</h3>
+        <p>Midjourney, DALL&middot;E, or Flux output used as hero illustrations, OG cards, or favicon variants. Article 50 covers &quot;synthetic image&quot; output. The generator emits a corner overlay snippet, an <code>alt</code>-text attribution pattern, and a JSON-LD <code>ImageObject</code> with the model identifier.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>The web-developer case for AI disclosure</h2>
+    <p>The reflex from a lot of full-stack engineers and small agencies has been: &quot;The EU AI Act is for OpenAI and Meta, not for me pushing a Next.js site to Vercel.&quot; Article 50 doesn&apos;t pattern-match on company size. It applies to <em>providers and deployers</em> of AI systems whose output is &quot;made available to the public&quot; &mdash; which catches AI-drafted landing copy on a client domain, a GPT support chatbot wired into your SaaS, AI-generated images on a product page, and AI-written docs. There is no employee-count threshold, no single-developer exemption, and no &quot;just a side project&quot; carve-out. The geographic gate is whether any visitor or user is in the EU, which for any public site indexed by Google is essentially always yes.</p>
+
+    <p>The headline penalty is &euro;15 million or 3% of global turnover. A solo developer probably isn&apos;t the regulators&apos; first stop, but the practical exposure arrives much earlier than the regulator. Hosting providers (Vercel, Netlify, Cloudflare) are rolling out AI-attestation prompts through 2026. Agency clients are inserting AI-disclosure indemnity clauses into delivery contracts and increasingly checking that the shipped site already has the labels in place. Open-source maintainers downstream of AI-generated PRs are pushing for provenance norms. The cheapest insurance is a per-surface disclosure on the AI elements that actually appear in your build &mdash; nothing more, nothing less. This generator emits that disclosure in four formats simultaneously: HTML banner, README badge, footer block, and JSON-LD schema.</p>
+
+    <h2>The six AI elements web developers actually ship</h2>
+    <p>You don&apos;t need to label everything. The presets map to the six real cases:</p>
+    <ul>
+      <li><strong>AI-drafted landing &amp; marketing copy.</strong> The clearest in-scope case. AI-written headlines, hero subhead, feature blurbs, pricing copy. The generator emits a header banner, a footer line, and JSON-LD <code>CreativeWork</code> where the AI is <code>creator</code> and you are <code>reviewer</code>.</li>
+      <li><strong>Support &amp; docs chatbots.</strong> The highest-disclosure case because chatbots get their own Article 50 clause. The generator emits an opening-message string for the system prompt, a persistent UI footer, and a JSON-LD <code>ChatAction</code> block &mdash; the three surfaces regulators will check first.</li>
+      <li><strong>Copilot, Cursor, and Claude Code-generated code.</strong> Not Article 50 (source isn&apos;t public output) but a strong OSS norm. The generator emits a shields.io README badge, an <code>AI-ATTRIBUTION.md</code> snippet, and an optional <code>X-AI-Assisted</code> response-header note for downstream auditors.</li>
+      <li><strong>AI-written docs and READMEs.</strong> Mintlify, Fern, GitBook, Docusaurus prose drafted by AI from your spec. The generator emits an above-the-fold callout and JSON-LD <code>TechArticle</code> schema, plus a markdown <code>:::ai-disclosure</code> admonition for MDX-based docs.</li>
+      <li><strong>Client landing pages (agencies).</strong> Two-sided exposure: the client is the legal deployer, the agency carries integration responsibility. The generator&apos;s &quot;agency handoff&quot; preset bundles the banner, JSON-LD, and a delivery-contract snippet to attach to the handoff document.</li>
+      <li><strong>AI-generated images, OG cards, and logo variants.</strong> Article 50 covers synthetic images. The generator emits a corner-overlay snippet, an <code>alt</code>-text attribution pattern, and a JSON-LD <code>ImageObject</code> with the model identifier carried in <code>identifier</code>.</li>
+    </ul>
+
+    <h2>Where to place the disclosure inside a typical Next.js or Astro build</h2>
+    <p>The legal text says &quot;clearly and distinguishably perceptible at the latest at the time of the first interaction or exposure.&quot; For a web build, that translates to three placements that survive how visitors actually consume the page:</p>
+    <ul>
+      <li><strong>Visible header badge or above-the-fold callout.</strong> Above the first AI-generated block, not in the footer. A small badge plus &quot;AI-drafted copy, reviewed by [team]&quot; in plain text. This is the placement that satisfies regulators reading the page in a screenshot.</li>
+      <li><strong>JSON-LD schema in <code>&lt;head&gt;</code>.</strong> Drop it into <code>next/head</code>, Astro&apos;s <code>&lt;Head&gt;</code> component, SvelteKit&apos;s <code>svelte:head</code>, or a Webflow site-wide custom-code embed. The page becomes machine-readable as AI-generated, and the European Commission&apos;s AI Office has indicated it intends to parse this format. Both crawlers and auditors win.</li>
+      <li><strong>README badge for the repo.</strong> A shields.io-compatible markdown badge plus an <code>AI-ATTRIBUTION.md</code> file. Not strictly required by the Act but increasingly the OSS norm, and it travels with the project to GitHub, GitLab, and Codeberg without modification.</li>
+    </ul>
+
+    <h2>JSON-LD schema: machine-readable proof for crawlers, auditors, and clients</h2>
+    <p>Big platforms negotiate compliance reporting with regulators directly. A small dev shop can&apos;t &mdash; which makes machine-readable schema the practical equivalent of an audit log for everyone else. The generator outputs schema with the AI tool named in the <code>creator</code> field, the human reviewer (you or the team) named in <code>editor</code> or <code>reviewer</code>, the model identifier carried in <code>identifier</code>, and a <code>dateModified</code> stamp. Search engines, the <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" rel="nofollow noopener">European Commission&apos;s AI Office</a>, and modern attestation tooling all parse this format. If a client or platform ever asks you to demonstrate compliance for a particular page, the schema is your default answer &mdash; and unlike a screenshot, it travels with the page.</p>
+
+    <h2>What this is not: code license, attribution, GDPR consent, and a SOC 2 attestation</h2>
+    <blockquote>An AI disclosure tells a visitor that an asset was AI-generated. A code license tells downstream users what they can do with the code. An attribution file tells contributors which AI tools were used. GDPR consent tells the user how their data is processed. A SOC 2 report tells an enterprise buyer what your security posture is. Five different documents.</blockquote>
+    <p>Developers regularly try to roll these into one fine-print block or pretend an MIT license header is enough. Regulators have been explicit that this doesn&apos;t satisfy any of them. The <a href="https://www.w3.org/TR/edrm/" rel="nofollow noopener">W3C&apos;s emerging content-provenance work</a> and the <a href="https://c2pa.org/" rel="nofollow noopener">C2PA Content Credentials</a> standard both treat AI labeling as a distinct artifact that should ship alongside license metadata, not merged into it. The AI label goes on the AI surface. The license goes in <code>LICENSE</code>. GDPR consent lives in your privacy banner. The SOC 2 attestation goes in your enterprise sales doc. The generator focuses on the first only &mdash; and does it well.</p>
+
+    <h2>Compliance vs. theatre: what bad disclosure looks like on a web build</h2>
+    <table class="compare">
+      <thead>
+        <tr><th>Pattern</th><th>What it does</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>&quot;Built with AI&quot; in the &lt;meta name=&quot;generator&quot;&gt; tag only</td><td>Invisible to the user; perceptible only to crawlers</td><td class="bad">Non-compliant</td></tr>
+        <tr><td>One line buried in the privacy policy</td><td>Reader has to click through; not at first exposure</td><td class="bad">Non-compliant</td></tr>
+        <tr><td>Footer-only badge, no above-the-fold tag</td><td>Lost in screenshots and email previews</td><td class="warn">Borderline</td></tr>
+        <tr><td>Chatbot disclosure on the homepage but not in the bot itself</td><td>Doesn&apos;t satisfy the per-conversation rule</td><td class="bad">Aggravated risk</td></tr>
+        <tr><td>Header badge + JSON-LD in head</td><td>Visitor and crawler both see it</td><td class="good">Compliant</td></tr>
+        <tr><td>Header badge + JSON-LD + chatbot opening message + README badge</td><td>Visitor, crawler, contributor, and auditor all see it</td><td class="good">Best practice</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Workflow for a typical dev pipeline</h2>
+    <p>You don&apos;t want to revisit the generator on every PR. Template it. Open the generator once, build your standard variants &mdash; &quot;AI-drafted marketing copy,&quot; &quot;AI-written docs,&quot; &quot;AI support chatbot,&quot; &quot;AI-generated images&quot; &mdash; and check the outputs into the repo as a <code>/components/AIDisclosure</code> React/Svelte/Astro component, an <code>AI-ATTRIBUTION.md</code> at the repo root, and a JSON-LD partial in <code>/lib/seo</code>. On every new page or feature you import the component, pass the AI-tool prop, and ship. CI can lint that any route flagged as <code>aiAssisted: true</code> in your route manifest also imports the component. Start-to-shippable is roughly fifteen minutes for the initial wiring, then near-zero per page after that. The result is a build where AI disclosure becomes part of the type system, not a content-team afterthought.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <h3>Do freelance web developers and dev agencies really need to disclose AI under the EU AI Act?</h3>
+      <p>Yes when the AI output is what visitors or clients receive. Article 50 covers AI-generated text, image, audio, and video published publicly &mdash; an AI-drafted landing page, GPT-powered support chatbot, or AI-generated marketing copy all count. Copilot output in your backend isn&apos;t in scope; the user-facing surfaces are. Aug 2, 2026 deadline. Risk: up to &euro;15M fines and agency-contract indemnity exposure.</p>
+    </div>
+    <div class="faq-item">
+      <h3>If Copilot or Cursor wrote half my code, does the site need a label?</h3>
+      <p>No for the code itself, yes if AI also wrote the visible page copy. Source code isn&apos;t Article 50 &quot;public output.&quot; The rendered HTML, marketing copy, docs, and chatbot answers are. The generator emits a README badge (open-source norm) separate from the user-facing banner (Article 50 surface).</p>
+    </div>
+    <div class="faq-item">
+      <h3>What about a GPT-powered support or docs chatbot?</h3>
+      <p>Highest-disclosure case. Chatbots get their own Article 50 clause for &quot;systems that interact with natural persons.&quot; The disclosure has to appear at the start of every conversation and the bot must not be presented as human. The generator outputs the opening message, persistent footer line, and JSON-LD <code>ChatAction</code>.</p>
+    </div>
+    <div class="faq-item">
+      <h3>I run a dev agency. Whose obligation is the disclosure?</h3>
+      <p>Both, in different ways. The client is the legal &quot;deployer.&quot; Agencies sit on the &quot;provider&quot; line for integration and carry contractual indemnity. Clean delivery: ship with the disclosure in place, document it in the handoff, add an &quot;AI components disclosed&quot; line to the delivery contract. The generator&apos;s agency-handoff output bundles all three.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Where exactly do I put the disclosure on a Next.js page?</h3>
+      <p>A header badge above the first AI-generated block, JSON-LD in <code>next/head</code>, and (for any public repo) a README badge. Footer-only doesn&apos;t satisfy the &quot;first interaction or exposure&quot; rule.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does this work with Next.js, Astro, SvelteKit, Webflow, Framer, and Vercel?</h3>
+      <p>Yes. The HTML banner pastes into any JSX/TSX layout, Astro component, Svelte file, Webflow custom-code embed, or Framer code component. JSON-LD slots into <code>next/head</code>, Astro&apos;s <code>&lt;Head&gt;</code>, <code>svelte:head</code>, or Webflow&apos;s site-wide head injection. README markdown renders on GitHub, GitLab, Codeberg.</p>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    <h2>Generate your AI disclosure for this build, repo, or chatbot</h2>
+    <p>Free, no signup. Pick the AI surfaces your build actually uses, choose a label style, copy the HTML banner, README badge, footer block, and JSON-LD. Done in under 60 seconds &mdash; compliant for the August 2026 deadline.</p>
+    <a href="/ai-disclosure-generator/" class="cta cta-primary">Open the AI Disclosure Generator &rarr;</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> &middot; Free indie tools for the AI era &middot;
+    See also: <a href="/ai-disclosure-generator/for-bloggers/">AI Disclosure for Bloggers</a> &middot;
+    <a href="/ai-disclosure-generator/for-marketing-agencies/">AI Disclosure for Marketing Agencies</a> &middot;
+    <a href="/background-remover/for-web-developers/">Background Remover for Web Developers</a> &middot;
+    <a href="/ai-cost-calculator/for-web-developers/">AI Cost Calculator for Web Developers</a>
+  </footer>
+</div>
+</body>
+</html>
