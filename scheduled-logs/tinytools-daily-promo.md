@@ -9,3 +9,4 @@
 2026-05-10 00:13 | tool=color-palette | post=accessible-color-contrast-ratios-wcag-2026 | sitemap=updated | drafts=4 | google_ping=404(deprecated) | status=OK | note=rotated to color-palette (day-of-year landed on favicon-generator but earlier 2026-05-09 run already covered favicon, picked next under-served tool)
 2026-05-10 06:14 | tool=color-palette | post=60-30-10-color-rule-2026 | sitemap=updated | drafts=4 | google_ping=404(deprecated) | status=OK
 2026-05-11 16:10 | tool=seo-meta-generator | post=canonical-tag-best-practices-2026 | sitemap=updated | drafts=4 | status=OK
+2026-05-11 18:45 | tool=seo-meta-generator | post=robots-meta-tag-noindex-nofollow-2026 | sitemap=updated | drafts=4 | google_ping=404(deprecated) | status=OK
