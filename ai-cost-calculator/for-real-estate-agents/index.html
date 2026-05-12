@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Cost Calculator for Real Estate Agents — Price Listing Descriptions, Follow-ups, and Photo Captions Before You Burn a Marketing Budget (2026)</title>
+<meta name="description" content="Built for real estate agents using GPT-5, Claude, Gemini, or Whisper to draft listing descriptions, MLS remarks, buyer follow-ups, open-house recaps, and photo captions. Estimate per-listing and monthly AI bills from active inventory, lead volume, and how many touches you actually send.">
+<meta name="keywords" content="ai cost calculator for real estate agents, realtor ai cost, listing description ai cost, mls ai pricing, gpt-5 real estate, claude listing copy, llm real estate workflow cost, realtor ai budget, real estate ai api cost">
+<meta property="og:title" content="AI Cost Calculator for Real Estate Agents — Free, No Signup">
+<meta property="og:description" content="See exactly what listing descriptions, buyer follow-ups, open-house recaps, and photo captions cost per listing and per month. Compare GPT-5, Claude 4.6, Gemini 3, Whisper, and Deepgram — tuned for real estate agents.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-cost-calculator/for-real-estate-agents/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Cost Calculator for Real Estate Agents",
+  "description": "Free AI API cost calculator tuned for real estate agents: estimate per-listing and monthly costs for listing descriptions, MLS remarks, buyer follow-ups, open-house recaps, and photo captions across 30+ LLM and speech-to-text providers.",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-real-estate-agents/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "audience": { "@type": "Audience", "audienceType": "Real Estate Agents" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does it cost to generate a real estate listing description with AI in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A single 250-350 word MLS-grade listing description generated with GPT-5 or Claude Sonnet 4.6 typically runs $0.01 to $0.04 once you include the property details, comp context, and brand-voice instructions in the prompt. Gemini 3 Flash and DeepSeek V3.1 push the same job under $0.005. The TinyTools AI Cost Calculator quotes the exact number from your average input length and chosen provider."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does it cost to run an AI-drafted buyer or seller follow-up sequence?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A six-touch personalized follow-up sequence — initial intro, two property nudges, an open-house recap, a price-change alert, and a check-in — costs roughly $0.06 to $0.18 per lead on GPT-5 or Claude Sonnet 4.6. Across a 50-lead month that is $3 to $9 in total AI spend, well under the cost of a single Zillow Premier impression. The calculator splits the per-touch cost so you can drop expensive touches first if you need to."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI model is cheapest for listing copy and MLS remarks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For raw cost-per-token, Gemini 3 Flash and DeepSeek V3.1 are the cheapest among major hosted models in 2026. For listing-copy quality at a defensible price, Claude Sonnet 4.6 and GPT-5 mini are the typical sweet spot — they handle Fair Housing language carefully and preserve brand voice across many listings. Frontier models like GPT-5 and Claude Opus are best reserved for luxury listings or hero-property campaigns where a single line of copy can move a six-figure decision."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the AI Cost Calculator free for real estate agents and brokerages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The calculator is free, requires no signup, and runs entirely in your browser. Use the estimates for your own marketing budget, in commission-split conversations with your broker, or to decide whether the per-listing AI workflow leaves enough room under your average gross commission income."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to disclose AI-generated listing descriptions or buyer emails?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Disclosure expectations are tightening in 2026. Most state real estate commissions still treat AI as a drafting tool — like a copywriter — provided the licensed agent reviews and stands behind the final text. Several MLS systems and a handful of state regulators now request explicit AI-assisted labels on listing remarks and bulk-sent emails. A short disclosure line such as 'Listing remarks drafted with AI assistance and reviewed by the listing agent' satisfies most current policies. The TinyTools AI Disclosure Generator produces standard labels you can drop into your IDX pages, drip emails, or transaction-management notes."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #14b8a6; --accent-glow: #14b8a640;
+    --green: #10b981; --red: #ef4444; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { text-align: center; padding: 24px 0 16px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.12; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #5eead4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 640px; margin: 0 auto 28px; }
+  .cta {
+    display: inline-block; padding: 14px 26px; background: var(--accent); color: #042f2e;
+    border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 16px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 24px var(--accent-glow);
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 32px var(--accent-glow); }
+  .cta-row { text-align: center; margin: 24px 0 36px; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; margin: 24px 0;
+  }
+  .panel h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.01em; color: #fff; }
+  .panel h3 { font-size: 17px; margin: 20px 0 8px; color: #fff; }
+  .panel p { color: var(--text-dim); margin-bottom: 12px; }
+  .panel ul { color: var(--text-dim); margin: 8px 0 16px 22px; }
+  .panel li { margin-bottom: 6px; }
+  .panel a { color: #5eead4; text-decoration: none; border-bottom: 1px dashed #14b8a655; }
+  .panel a:hover { border-bottom-style: solid; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0 8px;
+  }
+  .card {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; padding: 18px;
+  }
+  .card .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .card .value { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .card .note { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { color: var(--text); }
+  td.dim { color: var(--text-dim); }
+  footer { text-align: center; color: var(--text-dim); font-size: 13px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+  footer a { color: #5eead4; text-decoration: none; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; }
+  .breadcrumb a { color: #5eead4; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;&rsaquo;&nbsp; <a href="/ai-cost-calculator/">AI Cost Calculator</a> &nbsp;&rsaquo;&nbsp; For Real Estate Agents
+  </div>
+
+  <header>
+    <span class="badge">Free &middot; No signup &middot; Runs in your browser</span>
+    <h1>AI Cost Calculator for Real Estate Agents</h1>
+    <p class="subtitle">Price your listing descriptions, MLS remarks, buyer follow-ups, open-house recaps, and photo captions before they quietly eat your marketing budget. Plug in your active inventory, lead volume, and how many touches you actually send per deal &mdash; get a per-listing and monthly bill across GPT-5, Claude 4.6, Gemini 3, Whisper, and 25+ more providers.</p>
+    <div class="cta-row">
+      <a class="cta" href="/ai-cost-calculator/">Open the AI Cost Calculator &rarr;</a>
+    </div>
+  </header>
+
+  <div class="panel">
+    <h2>Why real estate agents need an honest AI cost calculator</h2>
+    <p>A modern listing is not one document. It's an MLS remarks block, a polished web description, a four-line Zillow blurb, a 90-character Instagram caption, ten photo captions with Fair Housing-safe language, a single-property landing page, a "just listed" email to your sphere, a "just listed" SMS variant, two open-house recap emails, and a price-change announcement if the property sits more than 21 days. Every one of those goes through at least one AI call &mdash; sometimes the same property fact sheet fed seven different ways. By the time the home closes, you've quietly run a multi-step AI workflow whose total cost is nowhere near the "$20 a month for ChatGPT Plus" number you saw on a vendor's pitch deck.</p>
+    <p>Most realtor-tool pricing pages quote one number: a flat monthly subscription. That number is useful for budgeting one seat and useless for forecasting an actual production workflow at scale. The question agents actually have to answer is: <em>"If I list eight properties this month, run two open houses each, and follow up with 65 buyer leads through a six-touch sequence, does the full AI stack still fit under 1% of my expected gross commission income?"</em></p>
+    <p>This calculator is built to short-circuit that surprise. Enter the shape of your business &mdash; active listings, leads per month, average description length, follow-up sequence depth, and how many photo captions and recap emails you generate &mdash; and it cross-multiplies against the published rates for every major LLM and speech-to-text provider. Output: a sortable monthly bill you can drop straight into a brokerage budget conversation or a team-lead split negotiation.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Five jobs it actually does for real estate agents</h2>
+
+    <h3>1. Per-listing unit economics under your commission</h3>
+    <p>Before you commit to a listing-volume target, model whether the AI workflow survives a sub-2% buyer-side commission environment. A typical 60-day listing in a $450,000 median market at a 2.5% gross commission brings in about $11,250 before splits. If the full AI workflow &mdash; description, MLS remarks, ten photo captions, three drip emails, an open-house recap, and a price-change draft &mdash; runs $0.85 in API calls, the line item is invisible. But if you're running a 40-listing inventory and 200 leads per month, that's a different conversation, and the calculator tells you the exact number before you sign for a new admin tool.</p>
+
+    <h3>2. Listing description versus follow-up split</h3>
+    <p>Real estate agents routinely conflate listing-side AI cost with buyer-side AI cost. They're priced on the same per-token basis but move on completely different volume curves &mdash; you ship eight listings a month but you might send 400 follow-up emails. The calculator pulls them apart so you can see, say, "listing descriptions are $0.20 a month, but my buyer drip is $14 because I'm running each touch through GPT-5 with full property context."</p>
+
+    <h3>3. Photo caption and single-property page batching</h3>
+    <p>If you produce ten captioned photos plus a single-property landing page per listing, you're either re-sending the property fact sheet eleven times (expensive) or sending a single batched prompt that returns all eleven assets at once (cheap). The calculator lets you toggle batching to see exactly how much it saves. For a busy listing agent, batching is typically a $15-$30/month line-item difference &mdash; small, but it's the kind of optimization a top-producing team-lead notices.</p>
+
+    <h3>4. Open-house and showing-recap transcription</h3>
+    <p>Many high-volume agents now record voice memos after every showing and feed them through Whisper to generate a CRM note, a buyer follow-up draft, and a seller update. A 4-minute voice memo runs about $0.024 through the OpenAI Whisper API, plus another $0.01 for the LLM pass that turns the transcript into a structured note. The calculator lets you estimate how that scales across 30 showings a week before you decide whether to buy an off-the-shelf "AI assistant for agents" SaaS at $79/month per seat.</p>
+
+    <h3>5. Brokerage and team-split modeling</h3>
+    <p>If you run a team or pitch a brokerage on covering an AI tooling line, model the cost-per-agent and cost-per-transaction before the budget conversation. A 15-agent team at 80 transactions per quarter typically lands at $45-$110 in monthly AI spend if you're disciplined about routing, batching, and provider mix &mdash; trivial against gross commission income, but worth knowing if you're packaging it as a team-lead expense or recruiting talking point.</p>
+  </div>
+
+  <div class="panel">
+    <h2>What real estate agents usually get wrong</h2>
+    <p>Three failure modes show up over and over in production real estate AI workflows:</p>
+    <ul>
+      <li><strong>Paying $79/month per seat for a "realtor AI" wrapper.</strong> Most "AI for agents" SaaS products are thin wrappers over GPT-5 or Claude with a few real estate prompt templates baked in. If your monthly raw API consumption is &lt;$5 at production volume, you are paying a 15&times; markup for prompt engineering you could match with a saved-prompt library. The calculator gives you the raw number to negotiate against.</li>
+      <li><strong>Ignoring Fair Housing compliance in the prompt.</strong> Listing descriptions are the highest-risk surface in a real estate AI workflow. Words that nudge demographic preference &mdash; "perfect for young families," "walking distance to church," "exclusive neighborhood" &mdash; can violate the federal Fair Housing Act. A well-engineered system prompt that bans those phrases adds maybe 200 tokens per call (less than $0.001) and removes the single biggest career-ending risk. Don't optimize that prompt down to save half a cent.</li>
+      <li><strong>Using one model for everything.</strong> CRM auto-notes and routine showing recaps don't need a frontier-tier model. Pushing those steps to Gemini Flash or DeepSeek and reserving GPT-5 or Claude Opus for hero-listing descriptions and high-touch seller-update emails typically halves the bill without any noticeable quality drop on the assets clients actually read.</li>
+    </ul>
+    <p>The calculator surfaces all three by design &mdash; it asks for listing volume, lead volume, batching mode, and provider separately, then recomputes the bill against every supported speech-to-text and LLM service. See <a href="https://platform.openai.com/docs/pricing" rel="nofollow noopener" target="_blank">OpenAI's pricing page</a> for the canonical Whisper and GPT-5 rates, <a href="https://www.anthropic.com/pricing" rel="nofollow noopener" target="_blank">Anthropic's Claude pricing</a> for the latest Sonnet and Opus tier numbers, and the <a href="https://www.nar.realtor/fair-housing" rel="nofollow noopener" target="_blank">NAR Fair Housing program</a> for the language you must keep AI-generated copy clear of.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Sample real estate agent workload</h2>
+    <p>To make the numbers concrete, here's how a typical "solo listing agent + buyer-side practice" lands when run through the calculator:</p>
+    <div class="grid">
+      <div class="card"><div class="label">Active listings / month</div><div class="value">6</div><div class="note">Mix of resale and new construction</div></div>
+      <div class="card"><div class="label">Buyer leads / month</div><div class="value">52</div><div class="note">Inbound IDX + open-house</div></div>
+      <div class="card"><div class="label">Touches / lead</div><div class="value">6</div><div class="note">Intro, two nudges, recap, alert, check-in</div></div>
+      <div class="card"><div class="label">Photo captions / listing</div><div class="value">10</div><div class="note">Batched, Fair Housing-safe</div></div>
+      <div class="card"><div class="label">Voice-memo minutes / week</div><div class="value">45</div><div class="note">Showing notes + CRM updates</div></div>
+      <div class="card"><div class="label">Provider mix</div><div class="value">Mixed</div><div class="note">Claude for listings, Gemini Flash for CRM notes</div></div>
+    </div>
+    <p>Across that profile, the calculator typically lands in the $14-$22 per month range for raw API spend &mdash; less than a single sign rider and well under 0.05% of a typical month's gross commission income. If you find yourself paying a "realtor AI" subscription north of $80/month per seat, the calculator is the fastest way to see the gap.</p>
+    <table>
+      <tr><th>Asset</th><th>Per listing</th><th>Monthly (6 listings)</th></tr>
+      <tr><td>MLS remarks (300 words)</td><td class="dim">$0.02</td><td class="dim">$0.12</td></tr>
+      <tr><td>Web description (550 words)</td><td class="dim">$0.04</td><td class="dim">$0.24</td></tr>
+      <tr><td>10 photo captions (batched)</td><td class="dim">$0.03</td><td class="dim">$0.18</td></tr>
+      <tr><td>Single-property landing page</td><td class="dim">$0.06</td><td class="dim">$0.36</td></tr>
+      <tr><td>"Just listed" email + SMS</td><td class="dim">$0.02</td><td class="dim">$0.12</td></tr>
+      <tr><td>Open-house recap (transcript + email)</td><td class="dim">$0.05</td><td class="dim">$0.30</td></tr>
+      <tr><td><strong>Per-listing subtotal</strong></td><td><strong>$0.22</strong></td><td><strong>$1.32</strong></td></tr>
+    </table>
+    <p>Add buyer-side follow-ups (~$8/mo at 52 leads &times; 6 touches) and voice-memo transcription (~$5/mo at 45 min/week) and the full stack lands near $14-$18 in raw AI spend for a healthy solo practice.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Open the calculator</h2>
+    <p>Drop in your listing count, lead volume, and provider mix &mdash; the calculator returns a per-listing and monthly bill across GPT-5, Claude 4.6, Gemini 3, DeepSeek V3.1, Whisper, Deepgram, and 25+ more providers, with Fair Housing-aware prompt overhead already baked in.</p>
+    <div class="cta-row">
+      <a class="cta" href="/ai-cost-calculator/">Try the AI Cost Calculator &rarr;</a>
+    </div>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> &middot; Free utilities for builders, marketers, and real estate professionals.
+    <br>See also: <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> &middot; <a href="/seo-meta-generator/">SEO Meta Generator</a> &middot; <a href="/og-image-generator/">OG Image Generator</a>
+  </footer>
+</div>
+</body>
+</html>
