@@ -10,3 +10,4 @@
 2026-05-10 06:14 | tool=color-palette | post=60-30-10-color-rule-2026 | sitemap=updated | drafts=4 | google_ping=404(deprecated) | status=OK
 2026-05-11 16:10 | tool=seo-meta-generator | post=canonical-tag-best-practices-2026 | sitemap=updated | drafts=4 | status=OK
 2026-05-11 18:45 | tool=seo-meta-generator | post=robots-meta-tag-noindex-nofollow-2026 | sitemap=updated | drafts=4 | google_ping=404(deprecated) | status=OK
+2026-05-11 18:30 | tool=seo-meta-generator | post=meta-tags-for-ai-search-engines-2026 | sitemap=updated | drafts=4 | status=OK
