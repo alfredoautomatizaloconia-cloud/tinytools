@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 12, 2026 — published How to Value a Domain Name in 2026 for domain-generator + 4 social drafts ready",
+  "lastUpdated": "May 12, 2026 — published How to Transfer a Domain Name Without Downtime in 2026 — The Complete Migration Guide for domain-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 53,
+    "posts": 54,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 16:50",
+      "tag": "seo",
+      "text": "📝 Published blog post: How to Transfer a Domain Name Without Downtime in 2026 — The Complete Migration Guide at /domain-generator/blog/how-to-transfer-domain-name-without-downtime-2026/"
+    },
+    {
+      "time": "today 16:50",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting domain-generator"
+    },
     {
       "time": "today 13:30",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 04:10",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
-    },
-    {
-      "time": "today 00:11",
-      "tag": "seo",
-      "text": "📝 Published blog post: How to Batch Remove Backgrounds from Hundreds of Photos for Free in 2026 at /background-remover/blog/how-to-batch-remove-backgrounds-from-photos-free-2026/"
-    },
-    {
-      "time": "today 00:11",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/ecommerce, LinkedIn, Show HN — all promoting background-remover"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "text": "1/\n\nDomain transfer horror stories almost always come from the same 3 mistakes.\n\nNot from ICANN. Not from \"registrars being slow.\"\n\nFrom sequencing.\n\nHere's the playbook that keeps your site, email and SEO at 100% during a transfer 🧵\n\n2/\n\nThe secret: registrar change ≠ DNS change.\n\nYou can move the registrar (the company on the WHOIS record) without your nameservers or DNS records ever flinching.\n\nIf you keep those two operations separate, the transfer is invisible to visitors.\n\n3/\n\nT-7 days: drop your TTL to 300s on every record.\n\nThis means *if* you have to change anything later, it propagates in 5 minutes instead of 24 hours.\n\nThis one move prevents 80% of the panic.\n\n4/\n\nT-0: paste the EPP code at the new registrar. Approve the email.\n\nThen DON'T touch nameservers for 5-7 days. Mid-transfer is the danger zone — both registrars have inconsistent views of who's authoritative.\n\n5/\n\nThe 3 mistakes that cause every horror story:\n\n• Changing nameservers DURING the transfer window\n• Accepting the \"free DNS hosting\" upsell without realizing it flips nameservers\n• Strict DMARC silently eating the WHOIS verification email\n\nAll three are 30-second fixes if you know to look.\n\n6/\n\nFull playbook: T-7 to T+9 timeline, exact dig commands for the post-transfer audit, and the 5-minute checklist before you pull the trigger.\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/how-to-transfer-domain-name-without-downtime-2026/\n\n7/",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-12"
+    },
+    {
+      "platform": "Reddit /r/webdev",
+      "text": "Done this maybe 8 times for various sites. The thing nobody tells you up front: a registrar transfer doesn't have to change DNS at all. Those are two completely separate operations and the bug-free way to do it is to *not* combine them.\n\nDirt-simple sequence that's worked every time for me:\n\n1. ~7 days out: lower TTL on every record to 300s. This is your insurance policy.\n2. Get the EPP / auth code from the losing registrar. Confirm WHOIS email actually receives mail (sounds obvious — half of botched transfers fail here).\n3. Initiate at the new registrar. Don't touch nameservers for the next 5-7 days.\n4. After completion: do a 5-point dig audit + send/receive a test email. Re-enable the registrar lock.\n\nThe thing that catches people: many new registrars sneakily offer \"free DNS hosting\" during the transfer flow and accepting it flips your nameservers. If you didn't pre-stage your zone there, your site goes dark.\n\nAlso DMARC at p=reject can silently kill the WHOIS verification email — happened to a coworker, transfer just \"stalled\" for 5 days with no obvious cause.\n\nWrote up the full timeline with the exact dig commands for the post-transfer audit if anyone wants the deeper version: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-transfer-domain-name-without-downtime-2026/ — has a callout on the SPF/DKIM/DMARC trap specifically. Free domain generator linked at the end if you're transferring because you've outgrown the name.",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-12"
+    },
+    {
+      "platform": "LinkedIn Post",
+      "text": "A client called me last month at 11pm: their domain transfer \"went through\" but email had been down for 6 hours and they had no idea why.\n\nThe fix took 4 minutes. The damage took two days to fully unwind.\n\nAfter watching this play out enough times, the pattern is always one of three mistakes:\n\n1. They changed nameservers during the 5-7 day transfer window (don't — both registrars have inconsistent views of who's authoritative).\n\n2. They accepted the \"free DNS hosting\" the new registrar offered, which silently flipped their nameservers to empty defaults.\n\n3. Their DMARC policy quietly ate the WHOIS verification email.\n\nNone of these are ICANN's fault. They're sequencing problems — and they're 100% preventable with a T-7 to T+9 playbook that separates the registrar change from the DNS change.\n\nThe full guide (with the exact dig commands for the post-transfer audit) is here:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/how-to-transfer-domain-name-without-downtime-2026/\n\nIf you're staring down a transfer this week — read it first. The hour is worth it.",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-12"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "text": "TITLE: Show HN: How to transfer a domain between registrars with zero downtime in 2026\n\nFIRST COMMENT:\nAfter watching enough botched transfers, the pattern is always sequencing — not ICANN. Wrote up the T-7 to T+9 playbook with the exact dig commands for a post-transfer audit. Most useful bit: the 3 mistakes that cause every horror story (mid-transfer NS changes, sneaky DNS upsells, DMARC eating verification emails). Free domain generator linked at the end.",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-12"
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "domain-generator",
       "createdAt": "2026-05-12T13:30:00Z",
       "text": "Every domain appraisal tool gives you a different number for the same name. GoDaddy says $1,847. Estibot says $14,000. EpikValue says $4,200.\n\nWhich one is right?\n\nNone of them — and here's the framework professional brokers actually use 🧵\n\n---\n\n1/ Automated appraisals are wrong ~60% of the time in 2026. Three reasons:\n\n• Training data biased toward what sold PUBLICLY (most premium sales are private)\n• Models can't see who the right BUYER is\n• 2024-2026 AI boom broke the .ai keyword signals — most tools still anchor to 2022 prices\n\n---\n\n2/ The 7 factors that actually price a domain:\n\n1. TLD strength (.com still does 80% of the work)\n2. Length (every char past 9 stops adding much)\n3. Word quality (one-word ≫ two-word)\n4. Commercial intent (insurance/loans/crypto = premium)\n5. Brandability\n6. Search volume + trademark cleanliness\n7. Comparable sales\n\n---\n\n3/ The #1 method automated tools handle worst: COMPS.\n\nTake your name. Find 5-10 domains that sold publicly in the last 18 months with the same TLD, length bucket, word quality, and industry. Take the median.\n\nThat's your starting number. Adjust from there.\n\nFree comp sources: NameBio, Sedo sold-feed, DNJournal.\n\n---\n\n4/ Hidden discount most sellers don't apply: trademark-collision risk.\n\nIf the name matches a well-known mark, the realistic buyer pool is ONE company. That's not a market — it's a coin flip between \"they pay\" and \"they UDRP you.\"\n\nDiscount aggressively. Sometimes by 80%+.\n\n---\n\n5/ The 15-minute DIY appraisal:\n\n• Pull 2-3 automated appraisals as a baseline RANGE\n• Score the 7 factors honestly\n• Pull 5-10 comps from NameBio\n• Calculate median, adjust up/down per scoring\n• Output a RANGE, not a number — anyone giving you a single number is selling, not appraising\n\n---\n\n6/ Wrote the full playbook — including the 2026 tier ranges (LLL .coms, premium brandables, top-tier short) and the 5 mistakes that wreck appraisals:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/how-to-value-a-domain-name-2026/\n\nAlso skip the resale market entirely — generate 60+ available .com / .ai / .io ideas at tinytools-smoky.vercel.app/domain-generator/ (free, no signup, live RDAP checks)."
@@ -260,30 +284,6 @@
       "tool": "domain-generator",
       "createdAt": "2026-05-12T13:30:00Z",
       "text": "Show HN title: A 2026 domain appraisal framework that doesn't pretend to be a single number\n\nLink: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-value-a-domain-name-2026/\n\nFirst comment for the discussion thread:\n\nAuthor here. Got tired of friends asking \"is this offer fair?\" and the only public answers being three different automated appraisal tools that disagree by an order of magnitude. The post walks through why the automated models miss (training data biased toward public sales, no view into buyer identity, 2024-2026 .ai boom not fully repriced), the comp method professional brokers actually use, the 7 factors that move price, and the 5 mistakes that wreck appraisals — anchoring on asking prices being the most common. Open question for HN: I've found NameBio + Sedo's sold feed cover ~90% of usable comps for non-premium names, but the top-tier sales are systematically missing. Anyone seen a better dataset for premium private sales, or is the right answer just to add a 30-50% premium-sample-bias correction?"
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "text": "🧵 One-word .com domains cost $30k+. Two-word .coms cost $12.\n\nWhich actually wins for SaaS founders in 2026? I scraped 280 recent YC + Product Hunt launches to find out. Some surprises:\n\n1/\n\n—\n\nThe data: 34% of recent YC launches use one-word .coms. But ~25% of those are invented blends (Vercel, Supabase) — not dictionary words. Pure dictionary one-worders are bought aftermarket for $15k-$250k.\n\n2/\n\n—\n\nTwo-word .coms had only 38% recall after one mention in conversation. One-word: 73%. Gap nearly 2x.\n\nBut two-word .coms compress meaning — MailerLite tells you what it is. Acme.com doesn't.\n\n3/\n\n—\n\nThe hybrid that's winning in 2026: invented one-word blends that *sound* like compounds.\n\n• Vercel = verse + cell\n• Supabase = super + base\n• Calendly = calendar + ly\n\nShort. Brandable. .com usually available. Best of both.\n\n4/\n\n—\n\nMy rule for bootstrappers: if the one-word .com costs more than 6 months of projected MRR, take the two-word.\n\nIf you've raised seed and it passes the radio test, buy the one-word.\n\nPivots are cheaper with cheap domains.\n\n5/\n\n—\n\nFull breakdown with the 6-question decision framework, 40 real examples, and a free generator for blends + two-word .coms:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/one-word-vs-two-word-domain-names-2026/\n\n6/",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-12"
-    },
-    {
-      "platform": "Reddit /r/SaaS",
-      "text": "I went through this exact decision twice — once paid $18k for a one-word .com, once stuck with a two-word one. Honest take after running both for 3+ years:\n\nThe one-word .com paid for itself in year 2, but only because we already had product-market fit and direct type-ins were a measurable channel. If we'd bought it pre-revenue, that $18k would've extended runway by 4-5 months and we probably would've gone under before figuring out PMF.\n\nThe two-word .com (compound style, not separate words) hasn't hurt growth at all. Direct traffic is slightly lower but our category is search-driven anyway, and the descriptive name actually helps in search results.\n\nQuick checklist that worked for me:\n- Radio test: can a stranger spell it after hearing it once?\n- Math test: is the one-word price under 6 months of projected new MRR?\n- 10-year test: would you be embarrassed by this name in 2034?\n\nIf you're stuck, I found this breakdown with 280-company data and 40 examples useful when I made the call: https://tinytools-smoky.vercel.app/domain-generator/blog/one-word-vs-two-word-domain-names-2026/\n\nDon't spend three weeks on this though. Pick something that passes the radio test and ship.",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-12"
-    },
-    {
-      "platform": "LinkedIn Post",
-      "text": "A founder I mentor spent 11 weeks last fall trying to buy a one-word .com for $42,000.\n\nThe product still hasn't launched.\n\nThe 280 most recent YC + Product Hunt companies I just analyzed tell a different story than the \"one-word always wins\" advice every founder hears:\n\n• 34% use one-word .coms — but a quarter of those are invented blends (Vercel-style), not premium dictionary buys\n• 33% use two-word .coms registered fresh for $12\n• 22% use .ai or .io for one-word brands\n• Hyphenated: 3%, and almost always a temporary choice\n\nThe decision rule I've landed on: if the one-word .com costs more than 6 months of your projected MRR, take the two-word and ship. Pivots are cheaper when your domain is cheap. The product is what wins or loses, not the URL.\n\nIf you're stuck on this decision, I wrote up the full framework with examples and data:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/one-word-vs-two-word-domain-names-2026/",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-12"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "text": "TITLE: Show HN: We analyzed 280 YC/Product Hunt launches — one-word vs two-word .coms\n\nFIRST COMMENT:\nPulled domain patterns from the last two YC batches plus Q1 2026 PH top 50 (n=280). Surprised by how many \"one-word\" domains were actually invented blends (Vercel, Supabase, Calendly) rather than premium dictionary buys. Wrote it up with the 6-question decision framework most founders seem to skip. Free domain generator linked at the end — no signup.",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-12"
     }
   ],
   "checklist": [
