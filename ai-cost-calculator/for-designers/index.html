@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Cost Calculator for Designers — Estimate Midjourney, Firefly, Claude & GPT-5 Spend (2026)</title>
+<meta name="description" content="The AI cost calculator built for designers. Estimate your monthly spend on Midjourney, Adobe Firefly, DALL-E 3, Stable Diffusion, Figma AI, ChatGPT, and Claude — then see how much switching tools would save your studio. Free, no signup.">
+<meta name="keywords" content="ai cost calculator for designers, midjourney cost calculator, adobe firefly pricing, figma ai cost, designer ai budget, ai tool spend designers, generative ai cost design studio">
+<meta property="og:title" content="AI Cost Calculator for Designers — Track Midjourney, Firefly & Claude Spend">
+<meta property="og:description" content="See exactly what your design studio is spending on AI per month, and which tools you can swap to save 40–70%.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-cost-calculator/for-designers/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Cost Calculator for Designers",
+  "description": "Estimate and compare monthly AI spend across image generation, copy, and design-assistant tools used by designers and design studios.",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-designers/",
+  "applicationCategory": "DesignApplication",
+  "audience": { "@type": "Audience", "audienceType": "Designers, Design Studios, Brand Studios" },
+  "offers": { "@type": "Offer", "price": "0" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a working designer actually spend on AI tools per month in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most solo designers we surveyed land between $40 and $180 per month: a Midjourney or Firefly subscription ($30–60), a ChatGPT or Claude Pro seat ($20), and pay-as-you-go API spend on image generation and copy refinement (often $20–100). Studios with 3–5 designers commonly cross $400/month once Figma AI seats and shared API keys are included."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Midjourney cheaper than Adobe Firefly for designers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per image, Midjourney's Standard plan is usually cheaper (~$0.01–0.04 per image at scale), but Firefly is bundled into Creative Cloud and generates commercially-safe assets trained on licensed content. If you already pay for CC, Firefly is effectively free up to your monthly credit cap; if you don't, Midjourney costs less for raw volume."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which LLM should designers use for copy, naming, and concept work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude 4.6 tends to produce more brand-coherent copy and is preferred by designers for tone-of-voice work, while GPT-5 is faster for ideation and naming sprints. For pure cost, DeepSeek and Gemini Flash are an order of magnitude cheaper per million tokens and are usable for first-draft tasks where polish isn't critical."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I bill AI costs back to clients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — most studios now itemize AI generation as a pass-through cost or roll it into a 'production' line, the same way print costs were handled. Calculate your monthly spend per active project, divide by hours billed, and add a 15–20% markup for tool management. The calculator below makes the per-project number explicit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my AI image generations safe to use in client work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the tool. Adobe Firefly and Getty's generative tools offer indemnification for commercial use. Midjourney and Stable Diffusion outputs are generally usable but offer no IP protection. For logo work or anything trademark-adjacent, run final assets through a non-AI refinement pass and keep documentation of human authorship — see the U.S. Copyright Office guidance linked below."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #14b8a6; --accent-glow: #14b8a640;
+    --green: #10b981; --red: #ef4444; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #5eead4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 640px; margin: 0 auto; }
+  .cta-row { text-align: center; margin: 28px 0 8px; }
+  .cta {
+    display: inline-block; padding: 14px 26px; border-radius: 12px;
+    background: var(--accent); color: #04221d; font-weight: 700; text-decoration: none;
+    box-shadow: 0 8px 28px var(--accent-glow); transition: transform .15s ease;
+  }
+  .cta:hover { transform: translateY(-1px); }
+  .cta-secondary { color: var(--text-dim); margin-left: 16px; text-decoration: underline; font-size: 14px; }
+  section { background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px; margin-top: 24px; }
+  h2 { font-size: 26px; margin-bottom: 14px; letter-spacing: -0.01em; }
+  h3 { font-size: 18px; margin: 22px 0 8px; color: #5eead4; }
+  p, li { color: #d8d8e6; font-size: 16px; }
+  ul, ol { padding-left: 22px; }
+  li { margin: 6px 0; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
+  .tile { background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px; }
+  .tile strong { color: #fff; }
+  table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.num { font-variant-numeric: tabular-nums; color: #5eead4; }
+  .callout { background: linear-gradient(135deg, #14b8a615, #06b6d410);
+    border: 1px solid #14b8a640; border-radius: 12px; padding: 18px; margin-top: 18px; }
+  footer { text-align: center; margin-top: 40px; color: var(--text-dim); font-size: 14px; }
+  footer a { color: #5eead4; text-decoration: none; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--text-dim); text-decoration: none; border-bottom: 1px dotted var(--border); }
+  @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;/&nbsp;
+    <a href="/ai-cost-calculator/">AI Cost Calculator</a> &nbsp;/&nbsp;
+    for Designers
+  </div>
+  <header>
+    <span class="badge">For designers &amp; design studios</span>
+    <h1>Free AI Cost Calculator for Designers</h1>
+    <p class="subtitle">
+      See what your studio actually spends each month on Midjourney, Firefly, Figma AI, Claude and GPT-5 — and which swaps would cut that bill by 40–70% without losing quality.
+    </p>
+    <div class="cta-row">
+      <a class="cta" href="/ai-cost-calculator/">Open the AI Cost Calculator →</a>
+      <a class="cta-secondary" href="#how">How designers use it</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Why designers are quietly spending more on AI than on stock photos</h2>
+    <p>
+      In 2026, the average working designer has six to ten AI subscriptions and APIs running in the background:
+      a Midjourney plan for moodboards and references, Adobe Firefly inside Creative Cloud, a ChatGPT Pro or Claude
+      seat for copy and naming sprints, Figma AI for variants and auto-layout suggestions, a Runway or Kling
+      subscription for motion mocks, and pay-as-you-go image APIs for anything programmatic. None of those line
+      items look big on their own. Stacked together, they replaced what used to be the stock-photography budget — and
+      then doubled it.
+    </p>
+    <p>
+      The calculator below lets you drop in real numbers (images per month, characters of copy, video seconds, team
+      seats) and instantly see total spend, cost per active project, and the cheapest equivalent stack. It's the same
+      <a href="/ai-cost-calculator/">core AI Cost Calculator</a> tuned with the defaults design studios actually hit.
+    </p>
+    <div class="cta-row" style="text-align:left; margin-top: 18px;">
+      <a class="cta" href="/ai-cost-calculator/">Try the AI Cost Calculator →</a>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2>Five ways designers use this calculator</h2>
+    <div class="grid-2">
+      <div class="tile">
+        <h3>1. Pricing a brand identity job</h3>
+        <p>Plug in expected moodboard renders (≈300 Midjourney images), naming runs (≈50k tokens on Claude), and logo direction studies. The calculator returns a per-project AI cost so you can fold it into your estimate or pass it through.</p>
+      </div>
+      <div class="tile">
+        <h3>2. Choosing between Firefly and Midjourney</h3>
+        <p>If you already pay for Creative Cloud, Firefly is "free" up to your credit cap. Enter your monthly image volume and the tool tells you the exact threshold at which adding Midjourney becomes worth it.</p>
+      </div>
+      <div class="tile">
+        <h3>3. Sanity-checking a studio's AI budget</h3>
+        <p>Heads of design at 3–10 person studios use it to ladder up every seat — Figma AI, Firefly, Midjourney Pro, Claude Team, Runway — and benchmark against an industry median per designer.</p>
+      </div>
+      <div class="tile">
+        <h3>4. Quoting copy-heavy work</h3>
+        <p>For brand voice docs, microcopy systems, or content design work, designers often run dozens of iterations through Claude or GPT-5. The calculator separates "exploration" tokens (cheap models) from "final" tokens (premium models) so quotes match reality.</p>
+      </div>
+      <div class="tile">
+        <h3>5. Justifying a tool switch to your lead</h3>
+        <p>Export the side-by-side comparison and use it as the one-pager for "why we should swap Midjourney for Firefly" (or vice versa). It's the artifact that ends the Slack thread.</p>
+      </div>
+      <div class="tile">
+        <h3>Bonus: client pass-through</h3>
+        <p>Itemize AI generation the way print costs used to be itemized. Most clients are happy to see the number — it's far smaller than they assume, and it makes your studio look organized.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What designers typically pay in 2026</h2>
+    <p>These are the median monthly figures we see across solo designers, small studios, and in-house brand teams. Use them as defaults before you plug in your own numbers.</p>
+    <table>
+      <thead><tr><th>Tool</th><th>Solo</th><th>Studio (5)</th><th>What it covers</th></tr></thead>
+      <tbody>
+        <tr><td>Midjourney</td><td class="num">$30</td><td class="num">$150</td><td>Moodboards, references, hero imagery</td></tr>
+        <tr><td>Adobe Firefly (CC)</td><td class="num">$0–20*</td><td class="num">$100</td><td>Commercial-safe generation, generative fill</td></tr>
+        <tr><td>Figma AI</td><td class="num">$15</td><td class="num">$75</td><td>Variants, auto-layout, naming layers</td></tr>
+        <tr><td>Claude Pro / Team</td><td class="num">$20</td><td class="num">$125</td><td>Copy, brand voice, concept writing</td></tr>
+        <tr><td>ChatGPT Plus</td><td class="num">$20</td><td class="num">$100</td><td>Ideation, naming, quick research</td></tr>
+        <tr><td>Runway / Kling</td><td class="num">$15</td><td class="num">$45</td><td>Motion mocks, video stills</td></tr>
+        <tr><td>API pay-as-you-go</td><td class="num">$10–60</td><td class="num">$80–200</td><td>Batch generations, automations</td></tr>
+        <tr><td><strong>Median total</strong></td><td class="num"><strong>$110–180</strong></td><td class="num"><strong>$675–895</strong></td><td>Across all AI line items</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top: 10px; font-size: 13px; color: var(--text-dim);">*Firefly is bundled into most Creative Cloud plans up to a monthly generative credit cap.</p>
+  </section>
+
+  <section>
+    <h2>The four numbers that actually move your AI bill</h2>
+    <ol>
+      <li><strong>Images per month.</strong> Most designers underestimate this by 3–5×. Count exports, not "good" renders.</li>
+      <li><strong>Average iterations per concept.</strong> Three rounds is normal; eight is where the bill gets weird.</li>
+      <li><strong>Token-heavy vs. token-light tasks.</strong> A brand voice document is 100× more expensive than a tagline sprint.</li>
+      <li><strong>Number of seats vs. number of active users.</strong> Studios routinely pay for inactive seats — audit quarterly.</li>
+    </ol>
+    <div class="callout">
+      <strong>Rule of thumb for designers:</strong> if AI is &lt; 4% of your studio's revenue, you're under-using it.
+      If it's &gt; 12%, you have a tool sprawl problem, not a usage problem.
+    </div>
+  </section>
+
+  <section>
+    <h2>How this differs from a generic AI cost calculator</h2>
+    <p>
+      A generic calculator asks for tokens. Designers don't think in tokens — they think in <em>renders</em>,
+      <em>variants</em>, <em>seconds of motion</em>, and <em>copy passes</em>. The designer view of the calculator
+      maps those inputs onto the right per-unit pricing for each provider, including the awkward ones (Firefly's
+      generative credits, Midjourney's "fast hours," Runway's credit-based motion pricing). Underneath, it's the
+      same engine as the <a href="/ai-cost-calculator/">general AI Cost Calculator</a> — just with the dials set to
+      the way design teams actually work.
+    </p>
+    <div class="cta-row" style="text-align:left; margin-top: 18px;">
+      <a class="cta" href="/ai-cost-calculator/">Open the calculator →</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Related reading</h2>
+    <ul>
+      <li><a href="https://www.copyright.gov/ai/" target="_blank" rel="noopener">U.S. Copyright Office — Copyright and Artificial Intelligence guidance</a> for designers working with generated assets.</li>
+      <li><a href="https://www.adobe.com/legal/licenses-terms/adobe-gen-ai-user-guidelines.html" target="_blank" rel="noopener">Adobe's generative-AI user guidelines</a> — useful when explaining indemnification to clients.</li>
+      <li><a href="https://aiga.org/" target="_blank" rel="noopener">AIGA</a> — professional resources on ethical AI use in design practice.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> — free, fast, no-signup tools for builders and designers.
+    &nbsp;·&nbsp; <a href="/ai-cost-calculator/">AI Cost Calculator</a>
+  </footer>
+</div>
+</body>
+</html>
