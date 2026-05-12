@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Cost Calculator for Agencies — Price Retainers and Pass-Through Billing (2026)</title>
+<meta name="description" content="Built for creative, marketing, and digital agencies billing clients for AI-assisted work. Forecast token costs across GPT-5, Claude 4.6, Gemini 3, and DeepSeek across every account — so retainers, fixed bids, and pass-through invoices stay margin-positive.">
+<meta name="keywords" content="ai cost calculator for agencies, agency llm pricing, openai agency billing, claude agency cost, agency ai pass-through, agency retainer ai budget, ai markup agency, agency token spend">
+<meta property="og:title" content="AI Cost Calculator for Agencies — Free, No Signup">
+<meta property="og:description" content="Quote retainers and fixed-bid AI work without burning margin. Compare GPT-5, Claude 4.6, Gemini 3, DeepSeek, and 25+ more models — tuned for agency client work.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-cost-calculator/for-agencies/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Cost Calculator for Agencies",
+  "description": "Free AI API cost calculator tuned for creative, marketing, and digital agencies: estimate per-client and per-retainer costs across 30+ LLMs from prompt size, deliverable mix, and revision rounds.",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-agencies/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "audience": { "@type": "Audience", "audienceType": "Agencies" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How should agencies price AI usage into a client retainer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The dominant 2026 pattern is a transparent pass-through line with a 20-40% handling markup, modeled on how agencies have always billed media spend, stock assets, and third-party software. Estimate token volume per deliverable across the retainer scope, multiply by the published model rate, add headroom for revision rounds, and put it on the master service agreement as 'AI tooling, estimated.' The TinyTools AI Cost Calculator produces the underlying number so the retainer is grounded in math rather than guessed margin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can agencies mark up AI API costs the same way they mark up media?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — that is the prevailing model among independent and mid-sized agencies in 2026. Most shops show the API spend itemized as a pass-through with a 15-35% handling markup, identical to how billable expenses, programmatic media, and stock photography have always been billed. The calculator gives you the at-cost figure so the markup is defensible to a procurement reviewer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI model is most cost-effective for agency deliverables?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For creative ideation, long-form briefs, and strategic synthesis, Claude Sonnet 4.6 and GPT-5 offer the best quality-to-price ratio. For social copy variants, banner headlines, alt text, and first-pass outlines, Gemini 3 Flash and DeepSeek V3.1 cut costs by 80-95% with no visible quality drop on short outputs. The calculator surfaces the trade-off across all 30+ supported models so you can mix and match per service line."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the AI Cost Calculator free for agencies and creative shops?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The calculator is free, requires no signup, and runs entirely in your browser. No client data leaves your machine. Use the estimates inside SOWs, retainer proposals, fixed-bid pitches, scope-of-work documents, or internal capacity planning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should agencies disclose AI usage to clients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In 2026, AI disclosure is the professional default for most service categories and is contractually required by many enterprise procurement teams. Be explicit in the MSA about which deliverables are AI-assisted and which are reviewed by a human practitioner. Tools like the TinyTools AI Disclosure Generator produce standard labels you can embed in deliverables, decks, or invoice appendices."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #6366f1; --accent-glow: #6366f140;
+    --green: #10b981; --red: #ef4444; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { text-align: center; padding: 24px 0 16px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.12; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 660px; margin: 0 auto 28px; }
+  .cta {
+    display: inline-block; padding: 14px 26px; background: var(--accent); color: #fff;
+    border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 16px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 24px var(--accent-glow);
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 32px var(--accent-glow); }
+  .cta-row { text-align: center; margin: 24px 0 36px; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; margin: 24px 0;
+  }
+  .panel h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.01em; color: #fff; }
+  .panel h3 { font-size: 17px; margin: 20px 0 8px; color: #fff; }
+  .panel p { color: var(--text-dim); margin-bottom: 12px; }
+  .panel ul { color: var(--text-dim); margin: 8px 0 16px 22px; }
+  .panel li { margin-bottom: 6px; }
+  .panel a { color: #a5b4fc; text-decoration: none; border-bottom: 1px dashed #6366f155; }
+  .panel a:hover { border-bottom-style: solid; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0 8px;
+  }
+  .card {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; padding: 18px;
+  }
+  .card .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .card .value { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .card .note { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { color: var(--text); }
+  td.dim { color: var(--text-dim); }
+  footer { text-align: center; color: var(--text-dim); font-size: 13px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+  footer a { color: #a5b4fc; text-decoration: none; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; }
+  .breadcrumb a { color: #a5b4fc; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;&rsaquo;&nbsp; <a href="/ai-cost-calculator/">AI Cost Calculator</a> &nbsp;&rsaquo;&nbsp; For Agencies
+  </div>
+
+  <header>
+    <span class="badge">Free &middot; No signup &middot; Runs in your browser</span>
+    <h1>AI Cost Calculator for Agencies</h1>
+    <p class="subtitle">Price retainers and fixed-bid AI work without leaking margin client by client. Plug in deliverable mix, prompt context, and revision rounds &mdash; get an honest per-account and per-month cost across GPT-5, Claude 4.6, Gemini 3, DeepSeek, and 25+ more models.</p>
+    <div class="cta-row">
+      <a class="cta" href="/ai-cost-calculator/">Open the AI Cost Calculator &rarr;</a>
+    </div>
+  </header>
+
+  <div class="panel">
+    <h2>Why agencies need an honest LLM cost calculator</h2>
+    <p>An agency's cost stack used to be predictable: salaries, software seats, and pass-through media. Then 2025 happened, the work shifted from manual production to AI-augmented production, and a brand-new line item appeared inside almost every retainer &mdash; variable token spend that scales with deliverable volume, prompt context, and how many rounds a brand director sends back. Most agencies are still pricing as if that line doesn't exist, or as if it's small enough to swallow.</p>
+    <p>The math gets dangerous when you scale. A creative team running thirty social variants a week per account, with research briefs that pull 20,000 tokens of brand context and three revision cycles, can burn anywhere from $80 to $1,800 per month per client depending entirely on model selection. Multiply that across a roster of twelve accounts and the wrong default model can turn a 22% retainer margin into a 9% retainer margin without a single new hire on payroll. That difference is the size of an account director's salary or the difference between hitting and missing your annual bonus pool.</p>
+    <p>This calculator exists to put the number on the page before the SOW gets signed. Enter the realistic shape of your service mix &mdash; brief length, output volume, revision count, deliverables per month &mdash; and it cross-multiplies against published rates for every major hosted model. The output is a sortable cost table that pastes straight into a pitch deck, a retainer worksheet, or a pass-through line on a client invoice.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Five jobs it actually does for agencies</h2>
+
+    <h3>1. Retainer scoping with realistic AI overhead</h3>
+    <p>Before you commit to a monthly retainer ceiling, model the realistic AI bill at the agreed deliverable volume. A "content sprint" retainer that promises 40 social posts, 4 long-form blogs, and 2 email sequences a month sits in a very different cost band depending on whether the underlying model is GPT-5 or Gemini Flash. The calculator's volume slider shows the spread so you set the retainer at a number that survives Q4.</p>
+
+    <h3>2. Pass-through markup defense</h3>
+    <p>If you bill API usage as a transparent pass-through with markup (the dominant 2026 model), procurement reviewers will compare your number against the public per-token rate. The calculator gives you the at-cost figure plus a clean markup breakdown. Drop it into the MSA and the procurement conversation gets shorter, the renewal conversation gets cleaner, and the receivables aging stays under control.</p>
+
+    <h3>3. New-business pitch economics</h3>
+    <p>When you're pitching a new account, the AI line is the one number you can't easily back-of-envelope in a Slack thread. The calculator gives a defensible pitch number in under two minutes, and the same view exports the assumptions sheet your finance lead needs for the win-rate review. No more "we'll figure out tooling after we win it" surprises in week three.</p>
+
+    <h3>4. Service-line profitability</h3>
+    <p>Most agencies discover, sometimes painfully, that paid social management eats more AI token spend than long-form content because of the sheer number of variants. The calculator lets you slice by service line &mdash; SEO content, paid social, email, brand &mdash; and surfaces which lines are quietly margin-thin so you can re-price or restructure before the next pricing review.</p>
+
+    <h3>5. Make-vs-buy on AI-native subs</h3>
+    <p>Specialist subs (AI copy shops, automated UGC houses) are pitching agencies hard in 2026. Plug your in-house workload into the calculator, compare against the sub's flat per-deliverable price, and the answer is usually obvious in under a minute. It also exposes when a sub's quote is too cheap to be sustainable, which protects you from the inevitable mid-contract repricing.</p>
+  </div>
+
+  <div class="panel">
+    <h2>What agencies usually get wrong</h2>
+    <p>Three failure modes show up over and over inside AI-augmented agency work in 2026:</p>
+    <ul>
+      <li><strong>Pasting the entire brand book and asset library into every prompt.</strong> Context tokens are still billable tokens. A 60-page brand guidelines PDF dropped into a prompt that runs forty times across a campaign is paid for forty times. Use a retrieval store or a tight one-page brand brief as the carrier; reserve the full book for the one strategic pass that needs it.</li>
+      <li><strong>Treating every revision as a fresh full-document call.</strong> Most creative tools re-send the entire deliverable on each revision, so by round four you've billed the same 4,000 output tokens four times across one piece of content. Targeted edit prompts on the changed section only cut revision cost by 60-80% across an account's monthly volume.</li>
+      <li><strong>Defaulting to the frontier tier for production work.</strong> Hashtag generation, caption variants, alt text, and brief restructuring do not need GPT-5 or Claude Opus. Pushing routine production to Gemini Flash or DeepSeek and reserving the frontier model for the strategic and senior-creative pass typically cuts the bill by 60-75% with no detectable quality drop in client review.</li>
+    </ul>
+    <p>The calculator surfaces all three by design &mdash; it asks for context size, output length, and revision count separately, then recomputes against every supported provider. For the canonical per-token rates check <a href="https://platform.openai.com/docs/pricing" rel="nofollow noopener" target="_blank">OpenAI's pricing page</a> and <a href="https://www.anthropic.com/pricing" rel="nofollow noopener" target="_blank">Anthropic's Claude pricing</a>. For broader coverage of how agencies are restructuring retainers around AI tooling, <a href="https://digiday.com/" rel="nofollow noopener" target="_blank">Digiday</a> and the <a href="https://www.4as.org/" rel="nofollow noopener" target="_blank">4A's</a> publish regular pieces on agency billing models.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Sample agency account workload</h2>
+    <p>To make the numbers concrete, here's how a typical mid-size B2B content retainer lands when run through the calculator:</p>
+    <div class="grid">
+      <div class="card"><div class="label">Deliverables / month</div><div class="value">62</div><div class="note">Posts, blogs, emails, ads</div></div>
+      <div class="card"><div class="label">Avg output length</div><div class="value">900 wd</div><div class="note">~1,200 output tokens</div></div>
+      <div class="card"><div class="label">Revision rounds</div><div class="value">2</div><div class="note">Internal QA + client</div></div>
+      <div class="card"><div class="label">Brand &amp; brief context</div><div class="value">6,000 tok</div><div class="note">Guidelines, voice doc</div></div>
+    </div>
+    <table>
+      <thead><tr><th>Model</th><th>Cost / deliverable</th><th>Monthly per account</th></tr></thead>
+      <tbody>
+        <tr><td>GPT-5</td><td>$0.74</td><td class="dim">$45.88</td></tr>
+        <tr><td>Claude Sonnet 4.6</td><td>$0.51</td><td class="dim">$31.62</td></tr>
+        <tr><td>Gemini 3 Flash</td><td>$0.07</td><td class="dim">$4.34</td></tr>
+        <tr><td>DeepSeek V3.1</td><td>$0.04</td><td class="dim">$2.48</td></tr>
+        <tr><td>Mixed (Flash draft + Sonnet polish)</td><td>$0.18</td><td class="dim">$11.16</td></tr>
+      </tbody>
+    </table>
+    <p>Numbers above are illustrative. Plug your real per-account shape into the live tool to get a current comparison against the latest published rates. The "mixed" row is the pattern most profitable agencies settle into &mdash; a cheap workhorse for first-pass production, a smarter model for the senior-creative polish layer. Multiply by your roster size to see the annualized impact on agency margin.</p>
+  </div>
+
+  <div class="panel">
+    <h2>How this fits the rest of an agency stack</h2>
+    <p>The AI bill is one line on the account P&amp;L. The other lines that matter &mdash; and where the TinyTools suite already covers most of them without adding another seat or another vendor login:</p>
+    <ul>
+      <li>New-brand naming for client launches: the <a href="/domain-generator/">Domain Generator</a> shortcuts the brand-and-WHOIS loop on a new product line or sub-brand.</li>
+      <li>Social previews and pitch covers: the <a href="/og-image-generator/">OG Image Generator</a> produces social cards and proposal cover art without a Canva seat per account team.</li>
+      <li>Brand color systems: the <a href="/color-palette/">Color Palette</a> tool generates the accessible swatches that survive a brand audit.</li>
+      <li>On-page SEO for client service pages: the <a href="/seo-meta-generator/">SEO Meta Generator</a> writes title tags and meta descriptions that fit the SERP character limits.</li>
+      <li>Client deliverable compliance: the <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> produces standard labels for AI-assisted creative, increasingly required in enterprise and regulated client work.</li>
+      <li>Crawler control on agency and client sites: the <a href="/ai-robots-txt-generator/">AI Robots.txt Generator</a> manages which crawlers may train on published case studies and thought leadership.</li>
+    </ul>
+    <p>The pattern is the same across all of them: free, single-purpose, no signup, no extra seat license to expense. For a wider view of how agencies are restructuring fees around AI tooling, the <a href="https://www.adweek.com/" rel="nofollow noopener" target="_blank">Adweek</a> archive tracks billing-model shifts at independent and holding-company shops, and the <a href="https://www.iab.com/" rel="nofollow noopener" target="_blank">IAB</a> publishes guidance on how media markups translate to AI-assisted services.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Frequently asked questions</h2>
+    <h3>Can I drop the comparison table directly into a client SOW or pitch deck?</h3>
+    <p>Yes &mdash; the table is plain HTML, so it pastes cleanly into a Notion SOW, a Google Doc pitch, a Keynote deck, or a Figma proposal. Many agencies paste the per-account number directly into the master service agreement as a transparent pass-through estimate with a stated markup.</p>
+
+    <h3>Does it model the cheap "mini" tiers for high-volume production?</h3>
+    <p>Yes. GPT-5 mini, Claude Haiku 4.5, Gemini 3 Flash, and DeepSeek's full lineup are all included. Mini tiers run 5-20x cheaper than the flagship and are good enough for caption variants, alt text, hashtag generation, and outline drafts &mdash; the majority of an agency's volume.</p>
+
+    <h3>How current is the pricing data?</h3>
+    <p>The calculator reads from a price table that we update whenever a major provider publishes a change. Expect 1-3 day lag on smaller providers, near-real-time on the top five.</p>
+
+    <h3>Can I model across multiple accounts in one view?</h3>
+    <p>The current calculator models one workload at a time, but agencies typically run it three or four times &mdash; one per service line &mdash; and sum the totals into a roster-wide budget. We are working on a multi-account dashboard for the next release.</p>
+
+    <h3>What about self-hosted or private-tenant models for regulated clients?</h3>
+    <p>Self-hosted GPU pricing is too workload-dependent to model precisely, but we cover hosted serverless rates (Together, Fireworks, Groq, Bedrock) for Llama, Mistral, Qwen, and DeepSeek &mdash; those are a reasonable upper bound for what a private deployment saves once ops overhead is factored in. For regulated industries that require it, pair the calculator with the AI Disclosure Generator so the client deliverable carries the correct label.</p>
+  </div>
+
+  <div class="cta-row">
+    <a class="cta" href="/ai-cost-calculator/">Try the AI Cost Calculator &rarr;</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> &mdash; focused, free utilities for creative, marketing, and digital agencies.
+  </footer>
+</div>
+</body>
+</html>
