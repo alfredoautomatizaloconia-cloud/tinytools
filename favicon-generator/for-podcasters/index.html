@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Favicon Generator for Podcasters — Match Your Show Artwork to Your Site in 60 Seconds (2026)</title>
+<meta name="description" content="The fastest favicon generator built for podcasters. Turn your 3000x3000 podcast cover art into a complete favicon set (16, 32, 48, 96, 180, 192, 512 + apple-touch + manifest.json) for your show site, transcript pages, and Substack — without losing the art's recognizability at 16x16. Free, no signup, no upload tracking.">
+<meta name="keywords" content="favicon generator for podcasters, podcast website favicon, podcast cover to favicon, show artwork favicon, podcast site icon, podcasting website branding, transcript page favicon, indie podcaster favicon, podcast favicon sizes, Substack podcast favicon">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/favicon-generator/for-podcasters/">
+<meta property="og:title" content="Free Favicon Generator for Podcasters">
+<meta property="og:description" content="Turn your show artwork into a complete favicon set for your podcast site in under a minute. Every size, every device, no upload tracking.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/favicon-generator/for-podcasters/">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f59e0b; --accent-glow: #f59e0b40;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  nav.top { font-size: 14px; color: var(--text-dim); margin-bottom: 24px; }
+  nav.top a { color: var(--accent); text-decoration: none; }
+  nav.top a:hover { text-decoration: underline; }
+  header { text-align: center; padding: 24px 0 32px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 5vw, 46px); font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fbbf24 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 640px; margin: 0 auto; }
+  h2 { font-size: 26px; font-weight: 700; margin: 40px 0 14px; letter-spacing: -0.01em; }
+  h3 { font-size: 19px; font-weight: 700; margin: 22px 0 8px; color: var(--text); }
+  p { color: var(--text-dim); margin-bottom: 14px; }
+  p strong { color: var(--text); font-weight: 600; }
+  ul, ol { color: var(--text-dim); padding-left: 22px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); }
+  .cta {
+    display: inline-block; padding: 14px 28px; background: var(--accent); color: #0a0a0f;
+    border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 16px;
+    box-shadow: 0 8px 30px var(--accent-glow); margin: 8px 0;
+  }
+  .cta:hover { transform: translateY(-1px); }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 24px; margin: 20px 0;
+  }
+  .use-case {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 18px 20px; margin: 14px 0;
+  }
+  .use-case h3 { margin-top: 0; color: var(--accent); }
+  .faq-item {
+    border-bottom: 1px solid var(--border); padding: 16px 0;
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item h3 { color: var(--text); margin-top: 0; }
+  code {
+    background: var(--bg-elevated); padding: 2px 8px; border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px;
+    color: #fbbf24;
+  }
+  pre {
+    background: var(--bg-elevated); padding: 16px; border-radius: 10px;
+    overflow-x: auto; margin: 12px 0; border: 1px solid var(--border);
+  }
+  pre code { background: none; padding: 0; color: var(--text); font-size: 13px; }
+  footer { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 14px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Favicon Generator for Podcasters",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Any (browser-based)",
+  "url": "https://tinytools-smoky.vercel.app/favicon-generator/for-podcasters/",
+  "description": "Free favicon generator built specifically for podcasters and podcast websites. Convert your 3000x3000 show artwork into a complete favicon bundle (ICO, PNGs, apple-touch-icon, manifest.json) sized for every browser and device. Runs entirely in your browser — no upload tracking.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "audience": {"@type": "Audience", "audienceType": "Podcasters and Podcast Producers"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I just use my 3000x3000 podcast cover art as a favicon?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Technically you can drop it in, but it will look terrible. Podcast cover art is designed to read at thumbnail size in Apple Podcasts (around 300x300 in the listing), not at 16x16 in a browser tab. Most show art has the host name, podcast name, and a portrait — all of which become an unreadable blur at favicon sizes. The generator downsizes intelligently, but the real fix is to use a simplified mark derived from your cover art (a single icon, a monogram, or a strong silhouette) so it stays legible across every size from 16 up to 512."}
+    },
+    {
+      "@type": "Question",
+      "name": "What favicon sizes does a podcast website actually need in 2026?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Minimum useful set: 16x16 and 32x32 (browser tabs), 48x48 (Windows shortcuts), 180x180 apple-touch-icon (iOS home-screen pinning — essential, because mobile listeners often pin shows to their home screen), 192x192 and 512x512 PNGs referenced in manifest.json (Android Chrome and PWA installs), plus a safari-pinned-tab.svg if you support Safari pinned tabs. The generator produces all of them in one pass."}
+    },
+    {
+      "@type": "Question",
+      "name": "I host my podcast site on Substack, Transistor, Buzzsprout, or Podpage. Will this work?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes — with caveats. Substack lets you upload a single favicon image in publication settings, so use the 512x512 PNG from the bundle and ignore the rest. Transistor, Buzzsprout, and Podpage all let you upload a square site icon. If you control your own domain with a custom site (Webflow, Ghost, Eleventy, Astro), drop the full bundle into your root and paste the snippet into the head — that gets you the proper apple-touch-icon and PWA manifest, which the locked-down hosts won't."}
+    },
+    {
+      "@type": "Question",
+      "name": "Is my image uploaded anywhere?",
+      "acceptedAnswer": {"@type": "Answer", "text": "No. Generation runs entirely in your browser. The cover art you drop in never leaves your device — no upload, no server-side processing, no logs. The output is a downloadable zip you save locally. This matters less for podcasters than for, say, doctors, but it still means your unreleased show artwork doesn't end up cached on a third-party CDN before the trailer drops."}
+    },
+    {
+      "@type": "Question",
+      "name": "Should I match the favicon to the podcast cover or use a separate mark?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Use a derivative, not a downsize. The favicon should obviously belong to the show — same color, same vibe, recognizable at a glance — but it almost certainly cannot be the full cover art shrunk down. The strongest pattern: pick the single most distinctive element of your cover (a letter, a symbol, a silhouette) and rebuild it as a clean square. That way listeners see the show identity at every size, from the iTunes thumbnail down to a 16x16 tab pin."}
+    },
+    {
+      "@type": "Question",
+      "name": "Does the favicon affect podcast SEO or just the website?",
+      "acceptedAnswer": {"@type": "Answer", "text": "It affects the website, which is where most of your discoverable SEO actually lives. Apple Podcasts and Spotify don't index your favicon — but Google's site search results, transcript pages, and any backlinks pointing to your show site all surface the favicon. A polished favicon next to your site name in search results visibly increases click-through, and a missing or generic favicon visibly decreases it. The effect is real but small — worth doing once, not worth obsessing over."}
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <nav class="top">
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> &nbsp;/&nbsp;
+    <a href="https://tinytools-smoky.vercel.app/favicon-generator/">Favicon Generator</a> &nbsp;/&nbsp;
+    For Podcasters
+  </nav>
+
+  <header>
+    <div class="badge">Built for indie and pro podcasters</div>
+    <h1>Free Favicon Generator for Podcasters</h1>
+    <p class="subtitle">Turn your show artwork into a complete favicon set for your podcast site, transcript pages, and Substack mirror — without losing the cover's recognizability at 16×16.</p>
+  </header>
+
+  <div style="text-align:center; margin: 8px 0 32px;">
+    <a class="cta" href="https://tinytools-smoky.vercel.app/favicon-generator/">Generate your favicon set →</a>
+  </div>
+
+  <h2>Why podcasters need a real favicon set, not a shrunk-down cover</h2>
+  <p>Podcast cover art is engineered for one place: a 300×300 thumbnail in the Apple Podcasts or Spotify listing. That's where the name, the host portrait, and the wordmark have to read. The problem is that the same image, dropped into a browser tab at 16×16, becomes an unreadable smudge. And once you start spinning up a <strong>show site</strong>, a <strong>transcript subdomain</strong>, a <strong>newsletter mirror on Substack or Beehiiv</strong>, and a <strong>media-kit page for sponsors</strong>, each of those wants a favicon — and each one is the moment a listener decides whether your show looks like it's run by a real operation or a kid in a dorm room.</p>
+
+  <p>The fix is not to upload your 3000×3000 master and hope for the best. The fix is to <strong>derive a square mark from the cover</strong>: the single letter, symbol, or silhouette that makes the show recognizable, rebuilt clean so it stays legible from 16 pixels up to 512. The generator below does the resizing, the .ico packaging, the apple-touch-icon, and the manifest.json — but you have to feed it the right input.</p>
+
+  <div style="text-align:center; margin: 24px 0;">
+    <a class="cta" href="https://tinytools-smoky.vercel.app/favicon-generator/">Try the Favicon Generator →</a>
+  </div>
+
+  <h2>Use cases podcasters keep running into</h2>
+
+  <div class="use-case">
+    <h3>1. The show site that needs to look as polished as the show sounds</h3>
+    <p>You spent eighty bucks a month on production and a real microphone. Then your show site has a default WordPress globe or, worse, the green Buzzsprout square in the browser tab. Listeners who land on your site from a podcast app, a guest's tweet, or a search result form an opinion in the first half-second — and that half-second includes the tab icon. A proper favicon set is the cheapest production-value upgrade you can ship.</p>
+  </div>
+
+  <div class="use-case">
+    <h3>2. Transcript pages that get most of your search traffic</h3>
+    <p>Most podcasters get more long-tail search traffic from their transcript and show-notes pages than from any other source. Each of those pages opens in a tab next to a dozen others, and the favicon is the only thing that tells the visitor "you're still on the same show site." If three transcript pages all show the same recognizable mark in the tab, the listener perceives the site as one consistent property. If the favicon is generic, every page reads as a separate, forgettable hit.</p>
+  </div>
+
+  <div class="use-case">
+    <h3>3. The home-screen pin (iOS apple-touch-icon)</h3>
+    <p>Mobile listeners who follow a show on Apple Podcasts often also pin the show site to their iPhone home screen — for newsletter signup, episode-specific Q&A, or supporter perks. iOS uses the 180×180 <code>apple-touch-icon</code>, not the 16×16 favicon, and if you don't ship one, iOS substitutes a low-res screenshot of your homepage. That looks bad next to actual app icons. A proper apple-touch-icon makes your show site feel app-like on the device people are using to listen.</p>
+  </div>
+
+  <div class="use-case">
+    <h3>4. The Substack or Beehiiv mirror</h3>
+    <p>A growing share of podcasters publish a companion newsletter on Substack or Beehiiv, often at <code>shownname.substack.com</code> or a custom subdomain. Both platforms accept a single favicon upload in publication settings. Use the 512×512 PNG from the bundle. Subscribers will see the same mark in the tab when they read the newsletter as they see when they're on the main show site — which compounds brand recall across two surfaces a listener might encounter you on.</p>
+  </div>
+
+  <div class="use-case">
+    <h3>5. The sponsor media kit</h3>
+    <p>Sponsors evaluating your show open your media kit in a browser tab, often alongside five other shows' media kits. A favicon-less or generic tab signals amateur; a recognizable, on-brand mark signals "this person ships." The same tab cue holds for the Stripe checkout page on your supporter tier — Stripe lets you upload a favicon for your branded checkout, and it shows up in the buyer's tab during the moment they're deciding whether to actually commit five dollars a month.</p>
+  </div>
+
+  <h2>Practical rules for designing a podcast favicon that survives 16×16</h2>
+
+  <p><strong>Strip the wordmark.</strong> The full show name almost never reads at 16×16. Drop it. The favicon's job is the symbol, not the name — the browser tab already has the page title text right next to it.</p>
+
+  <p><strong>One element, one color.</strong> A single dominant element (a letter, a microphone silhouette, a geometric mark) in a single saturated color (warm orange, deep teal, magenta, mustard) reads at every size and survives both light and dark browser themes. Detailed gradients and host portraits die at 32×32.</p>
+
+  <p><strong>Test against the dark tab.</strong> Roughly 40% of users browse with dark mode on, which means Chrome, Safari, and Firefox show your favicon against a near-black tab bar. A black-on-white mark vanishes there. Pick a color saturated enough to read on white <em>and</em> on near-black, or ship a separate dark-mode variant via the <code>media</code> attribute on your favicon link tags.</p>
+
+  <p><strong>Keep the square clean.</strong> Podcast cover art often has bleed, drop shadows, and outer gradients. None of that survives downsizing. The favicon should be a tight, opaque square with the mark filling most of it — no padding, no inner border, no outer glow. The browser supplies the padding via the tab UI.</p>
+
+  <p><strong>Match the cover, don't copy it.</strong> The favicon should make a listener who knows the show go "ah, that's the same one." It doesn't have to literally be a tiny copy of the cover. Pull the one most-distinctive element and rebuild it cleanly.</p>
+
+  <h2>Where the favicon files actually go on common podcast stacks</h2>
+  <p>The generator outputs the same bundle regardless of stack — a folder of PNGs, an .ico, an SVG, a manifest.json, and an HTML snippet. Where it goes depends on your host:</p>
+  <ul>
+    <li><strong>Custom static site (Astro, Eleventy, Hugo, Next.js):</strong> Drop the whole bundle into your <code>public/</code> or <code>static/</code> root. Paste the HTML snippet into your global <code>&lt;head&gt;</code> partial. Done.</li>
+    <li><strong>Ghost:</strong> Upload via Settings → General → Publication icon for the small icon. For the full set, upload the bundle to your theme's <code>assets/</code> folder and reference in <code>default.hbs</code>.</li>
+    <li><strong>WordPress:</strong> Customize → Site Identity for the basic icon. For the full bundle, use a plugin (RealFaviconGenerator integration) or FTP the files into the theme root and add the snippet to <code>header.php</code>.</li>
+    <li><strong>Substack / Beehiiv:</strong> Use only the 512×512 PNG. Upload via publication settings → branding. The platform handles the rest.</li>
+    <li><strong>Transistor, Buzzsprout, Podpage, Captivate:</strong> Each lets you upload a single square site icon in branding settings. Use the 512×512.</li>
+  </ul>
+
+  <h2>Standards and resources worth knowing</h2>
+  <p>For the underlying spec on favicon sizes and link relations, see the <a href="https://html.spec.whatwg.org/multipage/links.html#rel-icon" rel="nofollow">WHATWG HTML Living Standard on <code>rel=icon</code></a> — it's the source of truth for what browsers actually do with each <code>&lt;link rel=icon&gt;</code> declaration. For the manifest.json fields that drive Android home-screen and PWA install prompts, the <a href="https://www.w3.org/TR/appmanifest/" rel="nofollow">W3C Web App Manifest spec</a> is the canonical reference. And for show-art design rules that constrain what makes sense as a favicon mark, <a href="https://podcasters.apple.com/support/896-artwork-requirements" rel="nofollow">Apple Podcasts' artwork requirements</a> are the de-facto standard the broader podcast ecosystem has aligned around.</p>
+
+  <div style="text-align:center; margin-top: 32px;">
+    <a class="cta" href="https://tinytools-smoky.vercel.app/favicon-generator/">Generate your podcast favicon now →</a>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+
+  <div class="panel">
+    <div class="faq-item">
+      <h3>Can I just use my 3000×3000 podcast cover art as a favicon?</h3>
+      <p>Technically yes, but it will look bad. Cover art is designed to read at 300×300 in Apple Podcasts, not 16×16 in a browser tab. The wordmark and portrait blur. Derive a simpler square mark from the cover and feed that to the generator.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What sizes does a podcast website actually need?</h3>
+      <p>16, 32, 48, 180 (apple-touch), 192, 512 (PWA), and a safari-pinned-tab.svg, plus a site.webmanifest. The generator outputs all of them.</p>
+    </div>
+    <div class="faq-item">
+      <h3>I host on Substack / Transistor / Buzzsprout — will this work?</h3>
+      <p>Partly. Hosted platforms accept one square image (use the 512×512 from the bundle). The full apple-touch + manifest set only matters if you control a custom domain and template.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is my cover art uploaded anywhere?</h3>
+      <p>No. Generation runs entirely in your browser. Nothing leaves your device. Useful when you're prepping a season trailer and don't want unreleased artwork cached on a third-party CDN.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should I match the cover exactly or use a separate mark?</h3>
+      <p>Use a derivative. Pick the single most distinctive element of your cover (a letter, a symbol, a silhouette) and rebuild it as a clean square. Same vibe, but optimized for sizes the cover was never designed for.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does the favicon affect podcast SEO?</h3>
+      <p>Not the podcast itself — Apple and Spotify don't index it. But your show site does get search traffic to transcript and episode pages, and a clean favicon next to your domain in search results measurably increases click-through compared to the default globe.</p>
+    </div>
+  </div>
+
+  <h2>Related TinyTools for podcasters</h2>
+  <ul>
+    <li><a href="https://tinytools-smoky.vercel.app/og-image-generator/">OG Image Generator</a> — preview cards for when listeners share your episode in iMessage, WhatsApp, or X</li>
+    <li><a href="https://tinytools-smoky.vercel.app/seo-meta-generator/">SEO Meta Generator</a> — title and description tags for transcript pages that need to rank</li>
+    <li><a href="https://tinytools-smoky.vercel.app/color-palette/">Color Palette Generator</a> — pull a usable web palette out of your show artwork</li>
+    <li><a href="https://tinytools-smoky.vercel.app/domain-generator/">Domain Generator</a> — for new shows still picking a short, memorable URL</li>
+  </ul>
+
+  <footer>
+    <p><a href="https://tinytools-smoky.vercel.app/">← Back to TinyTools</a> · Free, browser-based tools for builders</p>
+  </footer>
+</div>
+</body>
+</html>
