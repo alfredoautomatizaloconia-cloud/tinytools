@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Cost Calculator for Podcasters — Price Your Show Notes, Transcripts, and Clips Before You Hit Record (2026)</title>
+<meta name="description" content="Built for podcasters using GPT-5, Claude, Gemini, or Whisper to generate transcripts, show notes, chapter markers, and clip captions. Estimate per-episode and monthly AI bills from runtime, episode cadence, and how many derivative assets you actually ship.">
+<meta name="keywords" content="ai cost calculator for podcasters, podcast transcription cost, ai show notes pricing, whisper api cost, claude show notes, llm podcast workflow cost, podcast ai budget">
+<meta property="og:title" content="AI Cost Calculator for Podcasters — Free, No Signup">
+<meta property="og:description" content="See exactly what transcripts, show notes, chapter markers, and clip captions cost per episode and per month. Compare GPT-5, Claude 4.6, Gemini 3, Whisper, and Deepgram — tuned for podcasters.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-cost-calculator/for-podcasters/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Cost Calculator for Podcasters",
+  "description": "Free AI API cost calculator tuned for podcasters: estimate per-episode and monthly costs for transcription, show notes, chapter markers, and clip captions across 30+ LLM and speech-to-text providers.",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-podcasters/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "audience": { "@type": "Audience", "audienceType": "Podcasters" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does it cost to transcribe a podcast episode with AI in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 60-minute episode transcribed with OpenAI Whisper API runs about $0.36 at the standard rate. Deepgram Nova-3 and AssemblyAI land in a similar $0.20-$0.45 range. Self-hosting Whisper on a modest GPU can drop the marginal cost below $0.05 per hour. The TinyTools AI Cost Calculator quotes the exact number from your runtime and your chosen provider."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does it cost to generate show notes and a summary with GPT-5 or Claude?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Feeding a 60-minute transcript (roughly 10,000 words / 13,000 tokens) into GPT-5 or Claude Sonnet 4.6 to produce show notes, a description, a title, and a chapter list typically costs $0.15 to $0.40 per episode. Gemini 3 Flash and DeepSeek V3.1 cut that to under $0.05. The calculator splits transcription cost from LLM cost so you see both lines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI model is cheapest for podcast show notes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For raw cost-per-token on long transcripts, Gemini 3 Flash and DeepSeek V3.1 are the cheapest among major hosted models. For show-note quality at a defensible price, Claude Sonnet 4.6 and GPT-5 mini are the usual sweet spot. Frontier models like GPT-5 and Claude Opus are best reserved for the cold-open hook or pull-quote selection, not the full notes pass."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the AI Cost Calculator free for podcasters?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The calculator is free, requires no signup, and runs entirely in your browser. Use the estimates for your own budgeting, in sponsor proposals, or to decide whether the per-episode AI workflow leaves enough room under your CPM."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I disclose AI-generated show notes or transcripts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Disclosure is increasingly expected in 2026, especially when transcripts and show notes are search-indexed. A short footer line such as 'Show notes assisted by AI; transcript machine-generated and lightly edited' satisfies most directory and ad-network policies. The TinyTools AI Disclosure Generator produces standard labels you can drop into your episode page or RSS description."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #14b8a6; --accent-glow: #14b8a640;
+    --green: #10b981; --red: #ef4444; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { text-align: center; padding: 24px 0 16px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.12; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #5eead4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 640px; margin: 0 auto 28px; }
+  .cta {
+    display: inline-block; padding: 14px 26px; background: var(--accent); color: #042f2e;
+    border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 16px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 24px var(--accent-glow);
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 32px var(--accent-glow); }
+  .cta-row { text-align: center; margin: 24px 0 36px; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; margin: 24px 0;
+  }
+  .panel h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.01em; color: #fff; }
+  .panel h3 { font-size: 17px; margin: 20px 0 8px; color: #fff; }
+  .panel p { color: var(--text-dim); margin-bottom: 12px; }
+  .panel ul { color: var(--text-dim); margin: 8px 0 16px 22px; }
+  .panel li { margin-bottom: 6px; }
+  .panel a { color: #5eead4; text-decoration: none; border-bottom: 1px dashed #14b8a655; }
+  .panel a:hover { border-bottom-style: solid; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0 8px;
+  }
+  .card {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; padding: 18px;
+  }
+  .card .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .card .value { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .card .note { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { color: var(--text); }
+  td.dim { color: var(--text-dim); }
+  footer { text-align: center; color: var(--text-dim); font-size: 13px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+  footer a { color: #5eead4; text-decoration: none; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; }
+  .breadcrumb a { color: #5eead4; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;&rsaquo;&nbsp; <a href="/ai-cost-calculator/">AI Cost Calculator</a> &nbsp;&rsaquo;&nbsp; For Podcasters
+  </div>
+
+  <header>
+    <span class="badge">Free &middot; No signup &middot; Runs in your browser</span>
+    <h1>AI Cost Calculator for Podcasters</h1>
+    <p class="subtitle">Price your transcripts, show notes, chapter markers, and clip captions before they quietly eat your CPM. Plug in episode runtime, release cadence, and how many derivative assets you actually ship per drop &mdash; get a per-episode and per-month bill across Whisper, Deepgram, GPT-5, Claude 4.6, Gemini 3, and 25+ more providers.</p>
+    <div class="cta-row">
+      <a class="cta" href="/ai-cost-calculator/">Open the AI Cost Calculator &rarr;</a>
+    </div>
+  </header>
+
+  <div class="panel">
+    <h2>Why podcasters need an honest AI cost calculator</h2>
+    <p>A modern podcast episode is not one file. It's a transcript, a set of show notes, a description, a title, a chapter list, three to five social clips with burned-in captions, a YouTube description, and a newsletter blurb. Each of those goes through at least one AI call &mdash; sometimes the same transcript fed five different ways. By the time the episode is live everywhere, you've quietly run a multi-step AI workflow whose total cost is nowhere near the "per-minute transcription price" you saw on a vendor's landing page.</p>
+    <p>Most podcast-tool pricing pages quote one number: cost-per-minute of audio. That number is useful for the transcription line and useless for everything downstream. The question podcasters actually have to answer is: <em>"If I publish weekly at 70-minute average runtime and ship five clips, two newsletters, and a YouTube cut from each episode, does the full AI stack still fit under a single midroll sponsor read?"</em></p>
+    <p>This calculator is built to short-circuit that surprise. Enter the shape of your workflow &mdash; runtime, drops per month, transcript length, number of show-note passes, and how many derivative assets you generate &mdash; and it cross-multiplies against the published rates for every major speech-to-text and LLM provider. Output: a sortable monthly bill you can drop straight into a Notion budget or a sponsor proposal.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Five jobs it actually does for podcasters</h2>
+
+    <h3>1. Per-episode unit economics under your CPM</h3>
+    <p>Before you commit to a publishing cadence, model whether the AI cost survives the per-download payout. A weekly 60-minute show with 5,000 average downloads at a $25 host-read CPM brings in roughly $125 per episode. If transcript + show notes + five clips + a YouTube cut already cost $4.50, the line item is small but real &mdash; and it compounds if you scale to twice-weekly. The calculator answers that ratio in seconds.</p>
+
+    <h3>2. Transcript versus LLM split</h3>
+    <p>Podcasters routinely conflate transcription cost with show-note cost. They're priced on completely different units &mdash; per-minute of audio versus per-token of text &mdash; and they move independently when you change vendors. The calculator pulls them apart so you can see, say, "transcription is fine on Whisper at $0.36/episode, but my show-notes pass is $0.42 because I'm running it through GPT-5 four times."</p>
+
+    <h3>3. Clip and chapter-marker batching</h3>
+    <p>If you publish five short-form clips per episode, you're either re-sending the full transcript five times (expensive) or sending a single batched prompt that returns all five clips at once (cheap). The calculator lets you toggle batching to see exactly how much it saves. For most weekly shows, batching is a $20-$40/month line-item difference.</p>
+
+    <h3>4. Backlog rescue planning</h3>
+    <p>Most established podcasts have 50-300 untranscribed episodes sitting in the archive. The calculator lets you estimate a one-time backfill cost &mdash; useful for deciding whether to invest the spend now, before your transcripts become a search-traffic moat for your show page.</p>
+
+    <h3>5. Sponsor and proposal pricing</h3>
+    <p>If you sell a "sponsor-included clip package" or a branded transcript landing page, model the AI cost into your rate card before quoting. A custom-edited 60-second sponsor clip with captions might cost you $0.40 of AI to produce &mdash; trivial against a $400 read, but worth knowing if you're packaging it as a $50 add-on.</p>
+  </div>
+
+  <div class="panel">
+    <h2>What podcasters usually get wrong</h2>
+    <p>Three failure modes show up over and over in production podcast AI workflows:</p>
+    <ul>
+      <li><strong>Picking transcription by sticker price alone.</strong> Whisper API at $0.36/hr looks cheaper than Deepgram or AssemblyAI per minute, but if your downstream pipeline depends on speaker diarization, timestamps, or punctuation quality, switching costs (and re-runs) often eat the savings. The calculator lets you weigh transcription quality tiers, not just per-minute cost.</li>
+      <li><strong>Re-sending the full transcript for every derivative asset.</strong> A 60-minute episode is roughly 13,000 input tokens. If you ask separately for show notes, a description, a title, a chapter list, and five clips, you've paid for that transcript six times on the input side. One batched call returns all six artifacts for a single input charge.</li>
+      <li><strong>Using one model for everything.</strong> Titles and chapter timestamps don't need a frontier-tier model. Pushing those steps to Gemini Flash or DeepSeek and reserving GPT-5 or Claude Opus for the description or pull-quote step typically halves the bill without a quality drop on the artifacts listeners actually read.</li>
+    </ul>
+    <p>The calculator surfaces all three by design &mdash; it asks for runtime, asset count, batching mode, and provider separately, then recomputes the bill against every supported speech-to-text and LLM service. See <a href="https://platform.openai.com/docs/pricing" rel="nofollow noopener" target="_blank">OpenAI's pricing page</a> for the canonical Whisper and GPT-5 rates, <a href="https://www.anthropic.com/pricing" rel="nofollow noopener" target="_blank">Anthropic's Claude pricing</a> for the latest Sonnet and Opus tier numbers, or <a href="https://deepgram.com/pricing" rel="nofollow noopener" target="_blank">Deepgram's pricing page</a> for the streaming and pre-recorded splits that matter when you're transcribing a backlog versus a live show.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Sample podcaster workload</h2>
+    <p>To make the numbers concrete, here's how a typical "weekly interview show" lands when run through the calculator:</p>
+    <div class="grid">
+      <div class="card"><div class="label">Episodes / month</div><div class="value">4</div><div class="note">Weekly drop cadence</div></div>
+      <div class="card"><div class="label">Runtime / episode</div><div class="value">62 min</div><div class="note">~13,000 transcript tokens</div></div>
+      <div class="card"><div class="label">Derivative assets</div><div class="value">9</div><div class="note">Notes, title, chapters, 5 clips, newsletter</div></div>
+      <div class="card"><div class="label">Show-note passes</div><div class="value">2</div><div class="note">Draft + tighten</div></div>
+    </div>
+    <table>
+      <thead><tr><th>Stack</th><th>Cost / episode</th><th>Monthly bill</th></tr></thead>
+      <tbody>
+        <tr><td>Whisper + GPT-5 (un-batched)</td><td>$2.10</td><td class="dim">$8.40</td></tr>
+        <tr><td>Whisper + Claude Sonnet 4.6 (batched)</td><td>$0.84</td><td class="dim">$3.36</td></tr>
+        <tr><td>Deepgram + Gemini 3 Flash (batched)</td><td>$0.38</td><td class="dim">$1.52</td></tr>
+        <tr><td>Deepgram + DeepSeek V3.1 (batched)</td><td>$0.31</td><td class="dim">$1.24</td></tr>
+        <tr><td>Mixed (Whisper + Flash drafts + Sonnet polish)</td><td>$0.62</td><td class="dim">$2.48</td></tr>
+      </tbody>
+    </table>
+    <p>Numbers above are illustrative. Plug your real workflow into the live tool to get a current comparison with the latest published rates. The "mixed" row is the pattern most podcast teams settle into &mdash; a cheap workhorse for drafting all the artifacts, a smarter model for the title and description that actually appear on the episode card.</p>
+  </div>
+
+  <div class="panel">
+    <h2>How this fits the rest of a podcaster's stack</h2>
+    <p>An AI bill is one line on the show's P&amp;L. The other lines that matter &mdash; and where the TinyTools suite already covers the rest:</p>
+    <ul>
+      <li>Show branding: the <a href="/domain-generator/">Domain Generator</a> shortcuts the brainstorm-and-WHOIS loop when you spin off a sub-show or topic.</li>
+      <li>Episode social previews: the <a href="/og-image-generator/for-podcasters/">OG Image Generator for podcasters</a> builds the share card that appears when listeners post your episode link.</li>
+      <li>Show artwork starting points: the <a href="/color-palette/for-podcasters/">Color Palette for podcasters</a> seeds a cover-art palette that survives the Spotify thumbnail crop.</li>
+      <li>Episode SEO: the <a href="/seo-meta-generator/for-podcasters/">SEO Meta Generator for podcasters</a> writes title tags and descriptions that fit the SERP character limits.</li>
+      <li>AI disclosure: the <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> produces compliant labels for transcripts and show notes that used AI assistance.</li>
+    </ul>
+    <p>The pattern is the same across all of them: free, single-purpose, no signup. If you want a broader view of how independent podcasters think about workflow economics in 2026, <a href="https://podnews.net/" rel="nofollow noopener" target="_blank">Podnews</a> and <a href="https://riverside.fm/blog" rel="nofollow noopener" target="_blank">Riverside's blog</a> both publish solid coverage of the production-and-distribution side of the equation.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Frequently asked questions</h2>
+    <h3>Can I use the calculator for sponsor and rate-card proposals?</h3>
+    <p>Yes &mdash; the comparison table is plain HTML, so you can copy it into a Notion proposal, a sponsor SOW, or a Linear issue. Many podcasters use the per-episode number as a floor when pricing branded-content add-ons.</p>
+
+    <h3>Does it cover the cheaper "mini" tiers and serverless transcription?</h3>
+    <p>Yes. GPT-5 mini, Claude Haiku 4.5, Gemini Flash, DeepSeek's full lineup, plus Groq-hosted Whisper-large-v3 and Replicate's Whisper variants are all in the comparison. Mini tiers are usually 5-20x cheaper than the flagship and good enough for titles, chapter timestamps, and clip-caption work.</p>
+
+    <h3>How current is the pricing data?</h3>
+    <p>The calculator reads from a price table that we update whenever a major provider publishes a change. Expect 1-3 day lag on smaller providers, near-real-time on the top five.</p>
+
+    <h3>What about self-hosted Whisper on a homelab GPU?</h3>
+    <p>Self-hosted GPU pricing is too workload-dependent to model accurately, but we cover the major hosted serverless rates (Together, Fireworks, Groq, Replicate) for Whisper and the open-source LLMs &mdash; those are a reasonable upper bound for what self-hosting saves.</p>
+
+    <h3>Does it handle multi-host shows with speaker diarization?</h3>
+    <p>Yes. Toggle the diarization flag and the calculator switches to the diarized-tier price for each transcription provider that exposes one. The cost premium is usually 15-30% over the plain-transcript rate.</p>
+  </div>
+
+  <div class="cta-row">
+    <a class="cta" href="/ai-cost-calculator/">Try the AI Cost Calculator &rarr;</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> &mdash; focused, free utilities for podcasters, indie publishers, and audio creators.
+  </footer>
+</div>
+</body>
+</html>
