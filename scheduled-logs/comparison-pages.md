@@ -9,3 +9,4 @@
 | 2026-05-12 | Accessible Rich (ARIA scanners) | https://tinytools-smoky.vercel.app/vs/accessible-rich/ | 1347 visible words; sitemap updated; honest take — TinyTools is not an ARIA scanner, recommended axe DevTools/WAVE/Lighthouse as fair alternatives |
 
 | 2026-05-12 | GPTZero | https://tinytools-smoky.vercel.app/vs/gptzero/ | 1621 visible words; sitemap updated; AI-text-detection rotation (extends original list); honest take — recommended GPTZero for institutional/LMS/auditable use, TinyTools for ad-hoc sanity checks |
+| 2026-05-13 | QuillBot | https://tinytools-smoky.vercel.app/vs/quillbot/ | 1522 visible words; sitemap updated; AI-writing/paraphraser rotation (extends original list); honest take — recommended QuillBot Premium for academic/Word-add-in workflows, TinyTools for one-off humanizing without the 125-word free cap |
