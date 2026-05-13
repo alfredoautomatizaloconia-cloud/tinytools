@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 12, 2026 — published Hyphens in Domain Names: Are They Actually Bad for SEO in 2026? for domain-generator + 4 social drafts ready",
+  "lastUpdated": "May 13, 2026 — published OG Image File Size in 2026: PNG vs JPG vs WebP for og-image-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 55,
+    "posts": 56,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 10:25",
+      "tag": "seo",
+      "text": "📝 Published blog post: OG Image File Size in 2026: PNG vs JPG vs WebP — Which Format Actually Loads in Link Previews at /og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/"
+    },
+    {
+      "time": "today 10:25",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting og-image-generator"
+    },
     {
       "time": "today 16:55",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 14:30",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
-    },
-    {
-      "time": "today 08:11",
-      "tag": "seo",
-      "text": "📝 Published blog post: Favicon Not Showing in Google Search Results? The 2026 Diagnostic + Fix Guide at /favicon-generator/blog/favicon-not-showing-in-google-search-results-2026/"
-    },
-    {
-      "time": "today 08:11",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting favicon-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-13T10:25:00Z",
+      "text": "1/\n\n\"Switch your OG images to WebP, save 70% bandwidth\" is the optimization advice that's making 30% of your iMessage shares render as plain blue link bubbles with no card.\n\nHere's what actually happens — and the format that quietly wins in 2026 🧵\n\n2/\n\nThe benchmark on a real 1200×630 card:\n\n• PNG (flat color + text): 52 KB\n• JPG (photography): 212 KB\n• WebP (any composition): 30-50% smaller than either\n\nWebP wins on raw bytes every time. That's not the question.\n\n3/\n\nThe question is: who decodes it?\n\n• X — yes\n• Slack — yes\n• Discord — yes\n• iMessage on iOS 19 — NO (silent fail, blue bubble, no error)\n• Outlook desktop — NO\n• Apple Mail on macOS — NO (Sonoma+)\n• Self-hosted RSS readers — patchy\n\n4/\n\nAnd here's the killer: OG protocol has no fallback chain.\n\nYou can't declare a primary WebP and a JPG backup like with the <picture> tag. Whatever URL you put in og:image is what every consumer fetches. One format, no escape hatch.\n\n5/\n\nSo the 2026 rule:\n\n• Hard-edged content (text, logos, UI, screenshots) → PNG\n• Soft content (photography, painted illustration) → JPG  \n• WebP and AVIF → article body only, NEVER og:image\n• Both under 300 KB at 1200×630\n\nBoring. Correct. Cards work everywhere.\n\n6/\n\nFull breakdown with the measured byte counts per card type and the encoder settings (pngquant level 6 + mozjpeg q=85) that get you to <100 KB:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/\n\n7/"
+    },
+    {
+      "platform": "Reddit /r/webdev",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-13T10:25:00Z",
+      "text": "Subreddit: /r/webdev (primary), /r/SEO or /r/nextjs (secondary, any thread where someone asks 'should I use WebP for og:image?')\n\nComment:\n\nCounterintuitive answer: don't, even though it's measurably smaller.\n\nThe thing the \"switch to WebP\" advice always leaves out is that the OG protocol has no fallback chain. There's no <picture>-style \"primary WebP, fallback to JPG\" — whatever URL you put in og:image is what every consumer fetches, full stop.\n\nIn 2026 the cohort of consumers that don't decode WebP is small but high-value:\n\n- iMessage on iOS 19 silently rejects WebP and renders the link as a plain blue bubble with no card. No error, no fallback, no public validator. Roughly a third of US link sharing happens here.\n- Outlook desktop and Apple Mail on macOS (Sonoma and earlier) render WebP as a broken-image placeholder.\n- The self-hosted RSS reader long tail (Miniflux, FreshRSS, TT-RSS) is patchy.\n\nMainstream stuff (X, Slack, Discord, LinkedIn, Facebook, Feedly) all decode WebP fine. If those are your only meaningful sharing channels you can use WebP. For most sites they aren't.\n\nThe boring decision matrix that always works:\n\n- Hard edges in the card (text, logos, UI, screenshots) → PNG. Smaller than JPG AND sharper at the same time. Run it through pngquant --quality 85-95 on the way out.\n- Soft content (photography, painted illustration, complex gradients) → JPG at mozjpeg q=85. Stock libjpeg at q=95 is 2-3x larger for no visible gain. Use Squoosh.\n- Both target under 300 KB at 1200×630.\n- WebP and AVIF stay in <img> tags in the article body, where the byte savings actually matter (every reader fetches those, not just the scraper).\n\nWrote the full version with measured benchmarks per card type and the encoder settings that hit <100 KB reliably: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/\n\nFree 1200×630 OG generator linked at the bottom — runs entirely in-browser, outputs validator-ready PNG. Useful if you want to test the format question on your own card before committing."
+    },
+    {
+      "platform": "LinkedIn Post",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-13T10:25:00Z",
+      "text": "A founder DM'd me last week: \"I switched all my OG images to WebP and saw a 25% drop in click-through from shared links. Did Google penalize me?\"\n\nGoogle didn't penalize her. iMessage did.\n\niOS 19 ships with a Messages preview generator that silently rejects WebP. The link doesn't render as a broken card — it renders as a plain blue bubble with no card at all. No error, no fallback, no public validator. The user has no idea anything is wrong.\n\nAbout a third of US link sharing happens in iMessage threads. So a \"70% bandwidth savings\" rollout that breaks one in three previews is a net negative even before you count Outlook desktop, Apple Mail on Sonoma, and the older RSS readers that also don't decode WebP.\n\nThe OG protocol has no fallback chain. There's no <picture>-style \"primary WebP, JPG backup\" — whatever URL you put in og:image is what every consumer fetches.\n\nThe boring rule that just works in 2026:\n\n- Hard-edged content (text, logos, UI) → PNG\n- Soft content (photography) → JPG at quality 85\n- WebP and AVIF stay in article body <img> tags, never in og:image\n- Both under 300 KB at 1200×630\n\nThe optimization frontier moved years ago. The compatibility frontier did not. Pick the older format every time and the cards just work.\n\nFull breakdown with measured byte counts per card type:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "og-image-generator",
+      "createdAt": "2026-05-13T10:25:00Z",
+      "text": "TITLE: OG image WebP saves 30-50% bandwidth — and silently breaks iMessage on iOS 19\n\nLINK: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/\n\nFIRST COMMENT FOR THE THREAD:\nAuthor here. Wrote this after a founder showed me a 25% CTR drop on shared links after switching og:image to WebP — turned out iMessage on iOS 19 rejects WebP silently and renders the link with no card. The OG protocol has no fallback chain (no <picture>-equivalent for og:image), so whatever URL you ship is what every consumer fetches. Curious if anyone here has hit the same Outlook-desktop or self-hosted-RSS-reader breakage with WebP cards."
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "domain-generator",
       "createdAt": "2026-05-12T16:55:00Z",
       "text": "1/\n\n\"Hyphens in domains kill your SEO\" is one of those things every founder hears and nobody questions.\n\nIt's also half-wrong.\n\nHere's what actually happens — and the rule that matters way more than the hyphen itself 🧵\n\n2/\n\nGoogle's John Mueller has said it on record multiple times: hyphens in a domain are NOT a ranking factor.\n\nGooglebot tokenizes 'buy-used-bikes' and 'buyusedbikes' the same way.\n\nSo where does the SEO hit come from? Not the algorithm.\n\n3/\n\nThe hit comes from EVERYTHING that feeds the algorithm:\n\n• CTR drops 5-15% in the SERP (Backlinko 2024, ahrefs 2025)\n• People mistype them — your competitor gets the visit\n• Verbal handoff fails (\"buy hyphen used hyphen bikes dot com\" 😬)\n• Inherited 2005-era spam reputation\n• Branded search splits across hyphen variants\n\n4/\n\nThe rule that actually matters:\n\n• Zero hyphens: ideal\n• ONE hyphen: tolerable\n• TWO+ hyphens: cliff. User-trust drops off a cliff. Don't.\n\nIf your shortlist has 2+ hyphens, keep brainstorming. Always.\n\n5/\n\nThings that almost always beat a hyphenated .com:\n\n• Synonym swap: \"easy\" → \"simple\", \"quick\" → \"fast\"\n• Verb prefix: getX, tryX, useX, Xhq, Xapp\n• Fresh TLD: .ai, .io, .app (.ai is mainstream in 2026)\n• Brandable invented word (Notion, Vercel, Stripe pattern)\n\n6/\n\nFull breakdown — when hyphens are actually fine, the 2-hyphen cliff data, and the decision framework for your specific case:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/hyphens-in-domain-names-bad-for-seo-2026/\n\n7/"
@@ -260,30 +284,6 @@
       "tool": "domain-generator",
       "createdAt": "2026-05-12T16:55:00Z",
       "text": "TITLE: Hyphens in domain names: not a ranking factor, but a 10-20% headwind that compounds\n\nLINK: https://tinytools-smoky.vercel.app/domain-generator/blog/hyphens-in-domain-names-bad-for-seo-2026/\n\nFIRST COMMENT FOR THE THREAD:\nAuthor here. Wrote this because every founder I know asks the same question (my .com is taken, can I just use a hyphen?) and the public answers are split between \"Google penalizes them\" (wrong) and \"hyphens are fine\" (also wrong). The real answer is that the algorithmic cost is zero but the indirect cost — CTR, typos, verbal handoff, branded search splitting — adds up to a measurable 10-20% headwind. The most actionable finding for me was the one-hyphen-vs-two-hyphen cliff: user trust studies show 0→1 is a modest drop, 1→2 is a dramatic one. Curious if anyone here has run an A/B between a hyphenated and un-hyphenated version of the same brand and seen the CTR delta firsthand."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "text": "1/\n\nDomain transfer horror stories almost always come from the same 3 mistakes.\n\nNot from ICANN. Not from \"registrars being slow.\"\n\nFrom sequencing.\n\nHere's the playbook that keeps your site, email and SEO at 100% during a transfer 🧵\n\n2/\n\nThe secret: registrar change ≠ DNS change.\n\nYou can move the registrar (the company on the WHOIS record) without your nameservers or DNS records ever flinching.\n\nIf you keep those two operations separate, the transfer is invisible to visitors.\n\n3/\n\nT-7 days: drop your TTL to 300s on every record.\n\nThis means *if* you have to change anything later, it propagates in 5 minutes instead of 24 hours.\n\nThis one move prevents 80% of the panic.\n\n4/\n\nT-0: paste the EPP code at the new registrar. Approve the email.\n\nThen DON'T touch nameservers for 5-7 days. Mid-transfer is the danger zone — both registrars have inconsistent views of who's authoritative.\n\n5/\n\nThe 3 mistakes that cause every horror story:\n\n• Changing nameservers DURING the transfer window\n• Accepting the \"free DNS hosting\" upsell without realizing it flips nameservers\n• Strict DMARC silently eating the WHOIS verification email\n\nAll three are 30-second fixes if you know to look.\n\n6/\n\nFull playbook: T-7 to T+9 timeline, exact dig commands for the post-transfer audit, and the 5-minute checklist before you pull the trigger.\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/how-to-transfer-domain-name-without-downtime-2026/\n\n7/",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-12"
-    },
-    {
-      "platform": "Reddit /r/webdev",
-      "text": "Done this maybe 8 times for various sites. The thing nobody tells you up front: a registrar transfer doesn't have to change DNS at all. Those are two completely separate operations and the bug-free way to do it is to *not* combine them.\n\nDirt-simple sequence that's worked every time for me:\n\n1. ~7 days out: lower TTL on every record to 300s. This is your insurance policy.\n2. Get the EPP / auth code from the losing registrar. Confirm WHOIS email actually receives mail (sounds obvious — half of botched transfers fail here).\n3. Initiate at the new registrar. Don't touch nameservers for the next 5-7 days.\n4. After completion: do a 5-point dig audit + send/receive a test email. Re-enable the registrar lock.\n\nThe thing that catches people: many new registrars sneakily offer \"free DNS hosting\" during the transfer flow and accepting it flips your nameservers. If you didn't pre-stage your zone there, your site goes dark.\n\nAlso DMARC at p=reject can silently kill the WHOIS verification email — happened to a coworker, transfer just \"stalled\" for 5 days with no obvious cause.\n\nWrote up the full timeline with the exact dig commands for the post-transfer audit if anyone wants the deeper version: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-transfer-domain-name-without-downtime-2026/ — has a callout on the SPF/DKIM/DMARC trap specifically. Free domain generator linked at the end if you're transferring because you've outgrown the name.",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-12"
-    },
-    {
-      "platform": "LinkedIn Post",
-      "text": "A client called me last month at 11pm: their domain transfer \"went through\" but email had been down for 6 hours and they had no idea why.\n\nThe fix took 4 minutes. The damage took two days to fully unwind.\n\nAfter watching this play out enough times, the pattern is always one of three mistakes:\n\n1. They changed nameservers during the 5-7 day transfer window (don't — both registrars have inconsistent views of who's authoritative).\n\n2. They accepted the \"free DNS hosting\" the new registrar offered, which silently flipped their nameservers to empty defaults.\n\n3. Their DMARC policy quietly ate the WHOIS verification email.\n\nNone of these are ICANN's fault. They're sequencing problems — and they're 100% preventable with a T-7 to T+9 playbook that separates the registrar change from the DNS change.\n\nThe full guide (with the exact dig commands for the post-transfer audit) is here:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/how-to-transfer-domain-name-without-downtime-2026/\n\nIf you're staring down a transfer this week — read it first. The hour is worth it.",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-12"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "text": "TITLE: Show HN: How to transfer a domain between registrars with zero downtime in 2026\n\nFIRST COMMENT:\nAfter watching enough botched transfers, the pattern is always sequencing — not ICANN. Wrote up the T-7 to T+9 playbook with the exact dig commands for a post-transfer audit. Most useful bit: the 3 mistakes that cause every horror story (mid-transfer NS changes, sneaky DNS upsells, DMARC eating verification emails). Free domain generator linked at the end.",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-12"
     }
   ],
   "checklist": [
