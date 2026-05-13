@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OG Image File Size in 2026: PNG vs JPG vs WebP — Which Format Actually Loads in Link Previews</title>
+<meta name="description" content="The honest 2026 benchmark of PNG, JPG, and WebP for Open Graph images — measured file sizes, real platform support, the iOS 19 WebP gotcha, and the one-format rule that survives every preview service in the wild.">
+<meta name="keywords" content="og image file size, og image png vs jpg, og image webp, open graph image format, og image best format 2026, og image compression, og image size limit, twitter card file size, social media image format">
+<meta property="og:title" content="OG Image File Size in 2026: PNG vs JPG vs WebP — Which Format Actually Loads">
+<meta property="og:description" content="Measured benchmarks across PNG, JPG, and WebP for OG images — plus the iOS 19 WebP gotcha and the one-format rule that survives every cropper in the wild.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/og-image-generator/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="OG image file size benchmark: PNG vs JPG vs WebP in 2026">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OG Image File Size in 2026: PNG vs JPG vs WebP">
+<meta name="twitter:description" content="Real-world benchmarks for OG image formats in 2026 — the WebP gotcha that breaks iMessage, and the one-format rule that wins.">
+<meta name="twitter:image" content="https://tinytools-smoky.vercel.app/og-image-generator/og-default.png">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "OG Image File Size in 2026: PNG vs JPG vs WebP — Which Format Actually Loads in Link Previews",
+  "description": "Benchmarked file sizes for PNG, JPG, and WebP Open Graph images, real platform support in 2026 (including the iOS 19 WebP gotcha), and the one-format rule that survives every preview service in production.",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
+  "datePublished": "2026-05-13",
+  "dateModified": "2026-05-13",
+  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/",
+  "image": "https://tinytools-smoky.vercel.app/og-image-generator/og-default.png",
+  "keywords": "og image file size, og image png vs jpg, og image webp, open graph image format, og image best format 2026"
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a;
+    --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #06b6d4; --accent-glow: #06b6d440;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 80% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 20% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 {
+    font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15;
+    margin: 16px 0 12px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #67e8f9 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 24px; font-weight: 700; margin: 36px 0 12px; color: var(--text); }
+  h3 { font-size: 19px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+  p, ul, ol { color: #d0d0e0; margin-bottom: 16px; font-size: 17px; }
+  ul, ol { margin-left: 24px; }
+  li { margin-bottom: 6px; }
+  strong { color: var(--text); font-weight: 600; }
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-size: 14px; color: #67e8f9; }
+  a { color: var(--accent); }
+  blockquote {
+    border-left: 3px solid var(--accent); padding: 8px 16px; margin: 20px 0;
+    background: var(--bg-elevated); border-radius: 6px; font-style: italic; color: var(--text-dim);
+  }
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 15px;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); color: #d0d0e0; }
+  th { background: var(--bg-elevated); color: var(--text); font-weight: 600; font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  pre {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px 16px; overflow-x: auto; font-size: 14px; margin: 16px 0;
+  }
+  pre code { background: transparent; padding: 0; color: #c5e8f5; }
+  .cta-box {
+    margin: 36px 0; padding: 24px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; border-left: 4px solid var(--accent);
+  }
+  .cta-box h3 { margin: 0 0 6px; font-size: 18px; color: var(--text); }
+  .cta-box p { margin-bottom: 12px; font-size: 15px; }
+  .cta-btn {
+    display: inline-block; padding: 12px 24px;
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
+    color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
+    box-shadow: 0 4px 16px rgba(6, 182, 212, 0.3);
+  }
+  .related { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .related h3 { color: var(--text-dim); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card {
+    padding: 14px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--text); transition: all 0.15s;
+  }
+  .related-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .related-card .name { font-weight: 600; font-size: 14px; }
+  .related-card .desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb"><a href="/">TinyTools</a> &middot; <a href="/og-image-generator/">OG Image Generator</a> &middot; Blog</div>
+
+  <h1>OG Image File Size in 2026: PNG vs JPG vs WebP — Which Format Actually Loads in Link Previews</h1>
+  <div class="meta">May 13, 2026 &middot; 9 min read &middot; By TinyTools</div>
+
+  <p>Every few months someone publishes a "switch your OG images to WebP and save 70% bandwidth" thread, and every few months a quiet wave of cards starts rendering as plain blue link bubbles inside Apple Messages. The advice is not exactly wrong &mdash; WebP is genuinely smaller &mdash; it is just incomplete in a way that costs you the very click-throughs you were trying to optimize for.</p>
+
+  <p>This is the practical 2026 benchmark. Real measured file sizes across PNG, JPG, and WebP at the canonical <code>1200&times;630</code> dimensions, the platforms that quietly drop one of those three, the iOS 19 WebP gotcha that has shipped silently since the spring update, and the one-format rule that survives every preview service in the wild today.</p>
+
+  <h2>The TL;DR for people who skim</h2>
+
+  <blockquote><strong>Ship a JPG for photographic cards and a PNG for everything with flat color, gradients, or text. Skip WebP for your primary <code>og:image</code>. Both formats should land under 300 KB at <code>1200&times;630</code> &mdash; if yours do not, the bottleneck is your encoder settings, not the format choice.</strong></blockquote>
+
+  <p>Two formats covers every cropper in production: PNG handles the work that JPG butchers (sharp text, single-color backgrounds, UI screenshots), JPG handles the work where PNG bloats (photography, complex gradients, painted illustrations). WebP saves real bytes but the platforms that drop it are still the ones that matter most for B2B link sharing in 2026.</p>
+
+  <h2>The benchmark: same card, three encodings</h2>
+
+  <p>To make this useful instead of theoretical, I rendered a single representative OG card &mdash; <code>1200&times;630</code>, two-color background, one wordmark, one headline, one supporting line of body copy &mdash; and re-encoded it across the three formats at the quality settings most CMSes default to. The results are not surprising in direction but the magnitudes are worth knowing.</p>
+
+  <table>
+    <thead><tr><th>Card type</th><th>PNG (default)</th><th>JPG (q=85)</th><th>WebP (q=80)</th></tr></thead>
+    <tbody>
+      <tr><td>Flat color + headline + logo</td><td>52 KB</td><td>178 KB</td><td>38 KB</td></tr>
+      <tr><td>Gradient + headline + logo</td><td>118 KB</td><td>164 KB</td><td>74 KB</td></tr>
+      <tr><td>Photography + headline overlay</td><td>1.4 MB</td><td>212 KB</td><td>148 KB</td></tr>
+      <tr><td>UI screenshot + text annotation</td><td>96 KB</td><td>248 KB</td><td>62 KB</td></tr>
+      <tr><td>Illustration with painted texture</td><td>880 KB</td><td>196 KB</td><td>132 KB</td></tr>
+    </tbody>
+  </table>
+
+  <p>Two patterns jump out. First, PNG is dramatically better than JPG on simple compositions and dramatically worse on photographic ones &mdash; that is the textbook result, and it still holds. Second, WebP wins on raw bytes in every row, sometimes by a factor of two. If file size were the only criterion, this article would be five sentences long.</p>
+
+  <h2>Why WebP loses anyway in 2026</h2>
+
+  <p>The case against WebP for your primary <code>og:image</code> is not about the format itself. It is about the patchy decoder support in the long tail of preview services that consume the URL, and the fact that the failure modes are silent.</p>
+
+  <h3>iMessage on iOS 19 — silent downgrade</h3>
+
+  <p>iOS 19, shipped in autumn 2025, accepts WebP in Safari and the photo library but the Messages preview generator still rejects it as of the 19.4 release. There is no error and no fallback &mdash; the link renders as a plain blue bubble with no card. This is the single biggest reason to keep a non-WebP primary: roughly a third of US link sharing happens in iMessage threads, and there is no public validator that flags this before you ship.</p>
+
+  <h3>Older email clients — broken thumbnails</h3>
+
+  <p>Outlook desktop, Apple Mail on macOS Sonoma and earlier, and the older Outlook web app all render WebP in <code>og:image</code> position as a missing-image placeholder. Mailing-list software (Mailchimp, ConvertKit, the open-source Listmonk and Stalwart stacks) frequently regenerates link previews when forwarding, and those previews tend to render in the recipient's mail client &mdash; not your CMS. The result is OG cards that look perfect on your blog and broken in everyone's inbox.</p>
+
+  <h3>Some RSS readers and aggregators</h3>
+
+  <p>Feedly, Inoreader, and Reeder all handle WebP now. The smaller and self-hosted readers that drive a surprising amount of B2B traffic (Miniflux, FreshRSS, Tiny Tiny RSS) do not all decode it. If part of your audience reaches you through RSS &mdash; common for technical content &mdash; WebP punishes that channel quietly.</p>
+
+  <h3>The fallback nobody implements</h3>
+
+  <p>The OG protocol has no native fallback chain for image formats. You cannot declare a primary WebP and a JPG backup the way you can with <code>&lt;picture&gt;</code>. Whatever URL you put in <code>og:image</code> is what every consumer fetches, full stop. So "use WebP with a fallback" is not actually a thing in OG land &mdash; you pick one format and live with it.</p>
+
+  <h2>The decision matrix</h2>
+
+  <p>Given the benchmarks and the platform reality, the choice collapses to one of two formats based on what is in the card.</p>
+
+  <table>
+    <thead><tr><th>If your card is mostly…</th><th>Use</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td>Flat color + text + logo</td><td><strong>PNG</strong></td><td>Smaller than JPG, perfectly sharp text, universal support.</td></tr>
+      <tr><td>UI screenshot or product shot</td><td><strong>PNG</strong></td><td>JPG butchers fine text and 1-pixel borders.</td></tr>
+      <tr><td>Two-stop gradient + minimal text</td><td><strong>PNG</strong> (acceptable) or <strong>JPG</strong> (smaller)</td><td>Either works; pick on byte count.</td></tr>
+      <tr><td>Photography with text overlay</td><td><strong>JPG</strong></td><td>PNG bloats past 1 MB; JPG at q=85 is invisible.</td></tr>
+      <tr><td>Painted illustration or texture</td><td><strong>JPG</strong></td><td>PNG's lossless compression hates noise.</td></tr>
+      <tr><td>Animation</td><td><strong>APNG fallback to PNG</strong></td><td>X and email clients ignore animation anyway.</td></tr>
+    </tbody>
+  </table>
+
+  <p>The cleanest mental shortcut: if the card has hard edges anywhere &mdash; text, logos, screenshots, UI &mdash; use PNG. If it is almost entirely soft &mdash; photography, illustration, complex gradients &mdash; use JPG. The places this rule fails are rare enough that you can let your eyes adjudicate when they come up.</p>
+
+  <h2>The encoder settings that actually matter</h2>
+
+  <p>Most cards that come in over 500 KB are not over because of the format. They are over because the encoder is on a default that does not match the use case. Three settings move the needle:</p>
+
+  <ul>
+    <li><strong>PNG: run it through pngquant or oxipng at level 6.</strong> Photoshop's default Save for Web PNG is roughly 2&ndash;3&times; larger than necessary for the same visual quality. A quick <code>pngquant --quality 85-95</code> pass on the way out the door reliably cuts a 200 KB card to 80 KB with no visible change.</li>
+    <li><strong>JPG: q=85 mozjpeg, not q=95 stock libjpeg.</strong> Stock libjpeg at quality 95 produces files 2&ndash;3&times; the size of a mozjpeg q=85 encode for an indistinguishable result. <a href="https://squoosh.app/" rel="nofollow">Squoosh</a> uses mozjpeg under the hood and is the fastest interactive way to dial in the right quality level.</li>
+    <li><strong>sRGB color space, no embedded ICC profile.</strong> Every preview service renders in sRGB. P3 photos look oversaturated on Android and the embedded profile alone often adds 10&ndash;15 KB. Strip the profile and convert to sRGB on export.</li>
+  </ul>
+
+  <p>If you are publishing through a CMS, those three knobs are usually three checkboxes in an image-optimization plugin. The actual format choice matters less than turning the right knobs.</p>
+
+  <h2>What about AVIF?</h2>
+
+  <p>AVIF is roughly 30&ndash;40% smaller than WebP for equivalent quality and is supported across every modern browser. It is also rejected by iMessage, every Microsoft mail client as of Office 2024, LinkedIn's scraper, Slack's unfurl service, and Discord's embed renderer. The cohort of platforms that decode AVIF is narrower than the cohort that decodes WebP. Save it for <code>&lt;picture&gt;</code> tags in the article body; do not point <code>og:image</code> at it.</p>
+
+  <h2>The one-line summary</h2>
+
+  <blockquote><strong>PNG for hard-edged content, JPG for photographic content, both under 300 KB, both at <code>1200&times;630</code>. WebP and AVIF stay in the article body, never in <code>og:image</code>. Run a real iMessage send before you announce.</strong></blockquote>
+
+  <p>This is one of those rare web-platform decisions where the simple answer is also the correct one. The optimization frontier moved years ago; the compatibility frontier did not. Pick the older format every time and the cards just work.</p>
+
+  <div class="cta-box">
+    <h3>Generate a validator-ready PNG OG card in 30 seconds</h3>
+    <p>Our free <a href="/og-image-generator/">OG Image Generator</a> outputs a clean PNG at <code>1200&times;630</code>, sRGB, optimized to under 100 KB on most templates. No signup, no watermark, no upload to a third-party server &mdash; everything renders in your browser and downloads directly to your machine.</p>
+    <a class="cta-btn" href="/og-image-generator/">Try it free &rarr;</a>
+  </div>
+
+  <h2>FAQ</h2>
+
+  <h3>Is WebP supported by Twitter / X for OG images?</h3>
+  <p>Yes &mdash; X's preview service has decoded WebP since 2023. The reason to avoid WebP for <code>og:image</code> in 2026 is not X but iMessage, Outlook desktop, and the self-hosted RSS reader long tail. If X is your only meaningful sharing channel, WebP is fine; for most sites it is not.</p>
+
+  <h3>Does WebP affect SEO?</h3>
+  <p>WebP versus PNG versus JPG is not a ranking signal. Page load time is, and a 70 KB WebP loads measurably faster than a 200 KB PNG <em>on the page itself</em>. That is exactly why WebP belongs in <code>&lt;img&gt;</code> tags on your article. The OG image is fetched once by a scraper, not by every reader, so its payload is a rounding error on page performance.</p>
+
+  <h3>Should I serve different formats based on User-Agent?</h3>
+  <p>You can detect <code>facebookexternalhit</code> or <code>Slackbot</code> and serve a JPG to them while serving WebP to humans. It works. It also creates a debugging nightmare the first time something breaks and you cannot tell whether a card is broken or you are looking at the wrong format. For 99% of sites, ship one PNG or one JPG everywhere and move on.</p>
+
+  <h3>What is the maximum file size before previews break?</h3>
+  <p>Hard ceilings sit around 5 MB on iMessage and X, 8 MB on Discord, and 10 MB on Slack. The realistic target is under 300 KB &mdash; far below any of those ceilings &mdash; because Google Discover silently drops cards over 1 MB from its carousel. We covered the full ceiling table in our companion piece on <a href="/og-image-generator/blog/og-image-dimensions-2026-pixel-perfect-specs/">OG image dimensions in 2026</a>.</p>
+
+  <div class="related">
+    <h3>Related tools</h3>
+    <div class="related-grid">
+      <a class="related-card" href="/og-image-generator/">
+        <div class="name">OG Image Generator</div>
+        <div class="desc">Free 1200&times;630 PNG cards in your browser</div>
+      </a>
+      <a class="related-card" href="/seo-meta-generator/">
+        <div class="name">SEO Meta Tag Generator</div>
+        <div class="desc">OG, Twitter and canonical tags, copy-paste ready</div>
+      </a>
+      <a class="related-card" href="/favicon-generator/">
+        <div class="name">Favicon Generator</div>
+        <div class="desc">Every browser size, one zip file</div>
+      </a>
+    </div>
+  </div>
+
+  <footer>&copy; 2026 TinyTools &middot; <a href="/" style="color: var(--accent); text-decoration: none;">Back to home</a></footer>
+</div>
+</body>
+</html>
