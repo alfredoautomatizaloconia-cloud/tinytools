@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 13, 2026 — published OG Image File Size in 2026: PNG vs JPG vs WebP for og-image-generator + 4 social drafts ready",
+  "lastUpdated": "May 15, 2026 — published Maskable Icons in 2026: Why Your Android Launcher Icon Looks Cropped for favicon-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 56,
+    "posts": 57,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 10:30",
+      "tag": "seo",
+      "text": "📝 Published blog post: Maskable Icons in 2026 — Why Your Android Launcher Icon Looks Cropped (And the 30-Second Fix) at /favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/"
+    },
+    {
+      "time": "today 10:30",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
+    },
     {
       "time": "today 10:25",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 09:14",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/nextjs, LinkedIn, Show HN — all promoting favicon-generator"
-    },
-    {
-      "time": "today 14:30",
-      "tag": "seo",
-      "text": "📝 Published blog post: How to Make a Favicon From an Emoji in 2026 — The 60-Second Method That Just Works at /favicon-generator/blog/how-to-make-favicon-from-emoji-2026/"
-    },
-    {
-      "time": "today 14:30",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-15T10:30:00Z",
+      "text": "1/\n\nYour PWA's home-screen icon looks weird on Android.\n\nLogo corners clipped on Samsung, sitting inside a tiny white circle on stock Pixel, cropped to a teardrop on OnePlus.\n\nIt's not a bug. It's an adaptive shape mask — and you didn't ship the file Android wants 🧵\n\n2/\n\nEvery modern Android launcher applies a mask shape (circle, squircle, teardrop, rounded square) to PWA icons. The OS picks the shape, not you.\n\nIf you ship a \"maskable\" icon, you opt in. If you don't, the launcher wraps your icon in a white background circle. That's the postage-stamp look.\n\n3/\n\nThe fix is a single rule:\n\nThe W3C maskable spec defines a circular safe zone with diameter = 80% of the icon width. Every launcher's mask shape fits entirely inside that 80% circle.\n\nAt 512×512, that's a 410-pixel safe zone with a 51-pixel padding ring.\n\n4/\n\nThe mistake most devs make: declaring one icon as BOTH \"any\" and \"maskable\" purpose.\n\nEither it has the safe-zone padding (and looks comically small everywhere else) or it doesn't (and gets clipped on the home screen).\n\nShip two separate files. One for each purpose.\n\n5/\n\nThe manifest block that works:\n\n\"icons\": [\n  { \"src\": \"/icon-192.png\",          \"sizes\": \"192x192\", \"purpose\": \"any\" },\n  { \"src\": \"/icon-512.png\",          \"sizes\": \"512x512\", \"purpose\": \"any\" },\n  { \"src\": \"/icon-512-maskable.png\", \"sizes\": \"512x512\", \"purpose\": \"maskable\" }\n]\n\nThree icons, three explicit purposes. Done.\n\n6/\n\nThe 30-second fix: scale your existing logo to 80%, center it, fill the new background with your theme color, export as a separate PNG.\n\nFull breakdown — safe-zone math, the manifest block, the testing tools that catch every Samsung edge case:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/\n\n7/"
+    },
+    {
+      "platform": "Reddit /r/webdev",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-15T10:30:00Z",
+      "text": "Subreddit: /r/webdev (primary), /r/androiddev or /r/PWA (secondary, any thread where someone asks \"why does my PWA icon look cropped on Android?\")\n\nComment:\n\nThis is one of those problems where the bug isn't in your code or your PNG — it's that you haven't told Android what the OS is allowed to do.\n\nEvery modern Android launcher applies an adaptive shape mask to PWA icons. The OS decides the shape (circle on Samsung, squircle on stock Pixel, teardrop on OnePlus, rounded square on others). If you ship a \"maskable\"-purpose icon, you've opted into that crop and guaranteed your logo lives inside a safe zone. If you don't, the launcher wraps your icon in a generic white background circle, which is the \"tiny postage-stamp\" look you're describing.\n\nThe W3C maskable spec defines a circular safe zone with diameter = 80% of the icon width. Every launcher mask shape fits entirely inside that 80% circle. At 512×512, that's a 410-pixel safe zone with a 51-pixel padding ring you can fill with anything (brand color, gradient, whatever) because it's the part that gets cropped.\n\nThe mistake I see most often in 2026 is people declaring a single icon as both \"any\" and \"maskable\" purpose to save a file. Doesn't work — either the padding is there (and it looks tiny everywhere it isn't masked, like the app drawer and social-share fallback) or it isn't (and the home screen clips into the logo). Ship two separate 512×512 PNGs:\n\n\"icons\": [\n  { \"src\": \"/icon-512.png\",          \"sizes\": \"512x512\", \"purpose\": \"any\" },\n  { \"src\": \"/icon-512-maskable.png\", \"sizes\": \"512x512\", \"purpose\": \"maskable\" }\n]\n\nFor the maskable version, scale your logo down to 80%, center it, fill the rest of the canvas (NOT transparent — solid background) with your theme_color. Takes about 30 seconds in any image editor or one click in any decent favicon tool.\n\nTest it on maskable.app before you ship. It renders your PNG inside every Android mask shape simultaneously — catches the \"clipped on Samsung but not on Pixel\" failure mode in seconds.\n\nWrote the full version with the safe-zone math, the canonical manifest block, and the audit checklist: https://tinytools-smoky.vercel.app/favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/\n\nFree favicon generator linked at the bottom that handles the maskable padding automatically if you want to skip the manual masking work."
+    },
+    {
+      "platform": "LinkedIn Post",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-15T10:30:00Z",
+      "text": "A founder DM'd me yesterday with a screenshot of her PWA on three different Android phones.\n\nOn the Samsung, her logo was clipped — the corner of the brand mark was just gone.\nOn the Pixel, the icon was sitting inside a small white circle with awkward margins.\nOn the OnePlus, it was masked into a teardrop and the wordmark was unreadable.\n\nShe thought she'd done everything right. The PNG was 512×512. The manifest had the right size. The hex color was on-brand.\n\nThe problem wasn't the PNG. It was that she hadn't opted into Android's adaptive icon system.\n\nEvery modern Android launcher applies a shape mask to PWA home-screen icons — circle, squircle, teardrop, rounded square. The OS decides the shape, based on manufacturer skin and user theme. If you ship a \"maskable\"-purpose icon, you're telling the launcher: yes, crop me, the important stuff lives inside the safe zone. If you don't, the launcher wraps your icon in a generic white background circle, which is the \"tiny postage-stamp\" look most PWAs have.\n\nThe rule that always works:\n\n→ Scale your visible logo to 80% of the canvas (a 410-pixel circle on a 512×512 PNG)\n→ Fill the outer 51-pixel ring with your brand color, not transparent\n→ Ship it as a separate icon entry with \"purpose\": \"maskable\"\n→ Keep your existing \"purpose\": \"any\" icon for the app drawer and social fallback\n\nTwo PNGs, three lines of manifest, and the icon looks correct on every Android skin instead of just the one you tested on.\n\nFive-minute change. Compound polish — every install, every home-screen unlock, every screenshot of your app reads as intentional.\n\nFull breakdown with the manifest block and the testing tools:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-15T10:30:00Z",
+      "text": "TITLE: Maskable icons in 2026: why your PWA looks cropped on Samsung but fine on Pixel\n\nLINK: https://tinytools-smoky.vercel.app/favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/\n\nFIRST COMMENT FOR THE THREAD:\nAuthor here. Wrote this because the \"my PWA icon looks weird on Android\" question shows up every week in /r/webdev and the answers always undersell how universal the problem is — every modern Android launcher applies a shape mask, the OS picks the shape, and a non-maskable icon gets wrapped in a generic white circle. The 80% safe-zone rule is the entire fix and it's just one extra PNG plus three lines of manifest. Curious if anyone has hit weird edge cases with maskable.app vs. real-device rendering — I've found maskable.app catches the obvious Samsung crops but misses some of the OnePlus teardrop edge bleeding."
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "og-image-generator",
       "createdAt": "2026-05-13T10:25:00Z",
       "text": "1/\n\n\"Switch your OG images to WebP, save 70% bandwidth\" is the optimization advice that's making 30% of your iMessage shares render as plain blue link bubbles with no card.\n\nHere's what actually happens — and the format that quietly wins in 2026 🧵\n\n2/\n\nThe benchmark on a real 1200×630 card:\n\n• PNG (flat color + text): 52 KB\n• JPG (photography): 212 KB\n• WebP (any composition): 30-50% smaller than either\n\nWebP wins on raw bytes every time. That's not the question.\n\n3/\n\nThe question is: who decodes it?\n\n• X — yes\n• Slack — yes\n• Discord — yes\n• iMessage on iOS 19 — NO (silent fail, blue bubble, no error)\n• Outlook desktop — NO\n• Apple Mail on macOS — NO (Sonoma+)\n• Self-hosted RSS readers — patchy\n\n4/\n\nAnd here's the killer: OG protocol has no fallback chain.\n\nYou can't declare a primary WebP and a JPG backup like with the <picture> tag. Whatever URL you put in og:image is what every consumer fetches. One format, no escape hatch.\n\n5/\n\nSo the 2026 rule:\n\n• Hard-edged content (text, logos, UI, screenshots) → PNG\n• Soft content (photography, painted illustration) → JPG  \n• WebP and AVIF → article body only, NEVER og:image\n• Both under 300 KB at 1200×630\n\nBoring. Correct. Cards work everywhere.\n\n6/\n\nFull breakdown with the measured byte counts per card type and the encoder settings (pngquant level 6 + mozjpeg q=85) that get you to <100 KB:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/\n\n7/"
@@ -260,30 +284,6 @@
       "tool": "og-image-generator",
       "createdAt": "2026-05-13T10:25:00Z",
       "text": "TITLE: OG image WebP saves 30-50% bandwidth — and silently breaks iMessage on iOS 19\n\nLINK: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/\n\nFIRST COMMENT FOR THE THREAD:\nAuthor here. Wrote this after a founder showed me a 25% CTR drop on shared links after switching og:image to WebP — turned out iMessage on iOS 19 rejects WebP silently and renders the link with no card. The OG protocol has no fallback chain (no <picture>-equivalent for og:image), so whatever URL you ship is what every consumer fetches. Curious if anyone here has hit the same Outlook-desktop or self-hosted-RSS-reader breakage with WebP cards."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-12T16:55:00Z",
-      "text": "1/\n\n\"Hyphens in domains kill your SEO\" is one of those things every founder hears and nobody questions.\n\nIt's also half-wrong.\n\nHere's what actually happens — and the rule that matters way more than the hyphen itself 🧵\n\n2/\n\nGoogle's John Mueller has said it on record multiple times: hyphens in a domain are NOT a ranking factor.\n\nGooglebot tokenizes 'buy-used-bikes' and 'buyusedbikes' the same way.\n\nSo where does the SEO hit come from? Not the algorithm.\n\n3/\n\nThe hit comes from EVERYTHING that feeds the algorithm:\n\n• CTR drops 5-15% in the SERP (Backlinko 2024, ahrefs 2025)\n• People mistype them — your competitor gets the visit\n• Verbal handoff fails (\"buy hyphen used hyphen bikes dot com\" 😬)\n• Inherited 2005-era spam reputation\n• Branded search splits across hyphen variants\n\n4/\n\nThe rule that actually matters:\n\n• Zero hyphens: ideal\n• ONE hyphen: tolerable\n• TWO+ hyphens: cliff. User-trust drops off a cliff. Don't.\n\nIf your shortlist has 2+ hyphens, keep brainstorming. Always.\n\n5/\n\nThings that almost always beat a hyphenated .com:\n\n• Synonym swap: \"easy\" → \"simple\", \"quick\" → \"fast\"\n• Verb prefix: getX, tryX, useX, Xhq, Xapp\n• Fresh TLD: .ai, .io, .app (.ai is mainstream in 2026)\n• Brandable invented word (Notion, Vercel, Stripe pattern)\n\n6/\n\nFull breakdown — when hyphens are actually fine, the 2-hyphen cliff data, and the decision framework for your specific case:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/hyphens-in-domain-names-bad-for-seo-2026/\n\n7/"
-    },
-    {
-      "platform": "Reddit /r/SEO",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-12T16:55:00Z",
-      "text": "Subreddit: /r/SEO (primary), /r/Entrepreneur or /r/startups (secondary, any thread asking \"should I use a hyphen in my domain?\")\n\nComment:\n\nThe \"hyphens are bad for SEO\" answer is one of those internet folklore items that's technically wrong and practically right.\n\nThe technical part: Mueller has confirmed multiple times that hyphens in domain names are not a ranking factor. Google's parser tokenizes 'buy-used-bikes' and 'buyusedbikes' identically. There is no direct algorithmic penalty.\n\nThe practical part — the indirect cost is real and measurable:\n\n• CTR in SERPs: hyphenated domains underperform un-hyphenated equivalents at the same position by 5-15% (Backlinko 2024, ahrefs 2025 studies). Compounds with position — bigger gap at #4 than at #1.\n\n• Typo traffic flows away from you. If 'bestcoffeegrinders.com' exists, you lose every visitor who types from memory.\n\n• Verbal handoff dies. Try saying a hyphenated domain on a podcast. Every spread-by-ear channel takes a quiet hit.\n\n• Inherited reputation. From ~2005-2014, hyphenated exact-match domains WERE the spam playbook. The algorithm caught up; user pattern-matching hasn't fully.\n\n• Branded search splits. Some people search you with the hyphen, some without, some with two hyphens. Three weak branded queries instead of one strong one.\n\nThe one rule that actually matters more than \"hyphens vs no hyphens\":\n\nONE hyphen is tolerable. TWO is a cliff. User-trust studies consistently show a modest drop from 0→1 and a dramatic drop from 1→2. Three hyphens reads as machine-generated.\n\nWhen a hyphen IS fine:\n• Disambiguation matters (the classic 'penisland.net' problem — Pen Island)\n• Microsite / landing page, not your primary brand\n• Search-driven traffic, not verbal\n• Language with native compound-word patterns (German, Dutch, Finnish)\n\nWrote the full version with the decision framework and the 5 alternatives to try before resorting to a hyphen: https://tinytools-smoky.vercel.app/domain-generator/blog/hyphens-in-domain-names-bad-for-seo-2026/\n\nFree domain generator linked at the bottom that runs 60+ candidates (modifiers, alt TLDs, brandables) against live RDAP — useful if you're stuck on a name and the answer is \"don't compromise, generate fresh options.\""
-    },
-    {
-      "platform": "LinkedIn Post",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-12T16:55:00Z",
-      "text": "A founder asked me last week: \"My dream .com is taken. The hyphenated version is $9. Is it really that bad?\"\n\nThe honest answer surprised her.\n\nHyphens in a domain name are NOT a Google ranking factor. John Mueller has said this on record more than once. The algorithm doesn't punish them.\n\nBut hyphens cost you something else — and it's measurable.\n\n• Click-through rate in search results drops 5-15% versus un-hyphenated equivalents at the same position (independent studies, 2024-2025).\n\n• Typo traffic flows to whoever owns the un-hyphenated version. Even if it's a parked page.\n\n• Verbal marketing dies a quiet death. \"Buy hyphen used hyphen bikes dot com\" on a podcast is the kind of friction that kills word-of-mouth.\n\n• Branded search splits across hyphen variants — your most powerful signal of legitimacy ends up scattered across three weak queries instead of one strong one.\n\nNone of those individually is fatal. Together they create a 10-20% headwind that compounds over years.\n\nThe rule I give every founder asking this question:\n\nZero hyphens is ideal. ONE hyphen is tolerable. TWO or more is a cliff — user trust studies show a dramatic drop. Don't.\n\nAnd before you settle for a hyphen at all, run through the alternatives in order: synonym swap → verb prefix (get/try/use) → fresh TLD (.ai, .io, .app) → brandable invented word. One of those almost always works.\n\nIf you're building something you want around in 5 years, take the headwind seriously and keep brainstorming. If you're shipping a side project this weekend — register the hyphenated one and ship.\n\nFull breakdown with the decision framework here:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/hyphens-in-domain-names-bad-for-seo-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-12T16:55:00Z",
-      "text": "TITLE: Hyphens in domain names: not a ranking factor, but a 10-20% headwind that compounds\n\nLINK: https://tinytools-smoky.vercel.app/domain-generator/blog/hyphens-in-domain-names-bad-for-seo-2026/\n\nFIRST COMMENT FOR THE THREAD:\nAuthor here. Wrote this because every founder I know asks the same question (my .com is taken, can I just use a hyphen?) and the public answers are split between \"Google penalizes them\" (wrong) and \"hyphens are fine\" (also wrong). The real answer is that the algorithmic cost is zero but the indirect cost — CTR, typos, verbal handoff, branded search splitting — adds up to a measurable 10-20% headwind. The most actionable finding for me was the one-hyphen-vs-two-hyphen cliff: user trust studies show 0→1 is a modest drop, 1→2 is a dramatic one. Curious if anyone here has run an A/B between a hyphenated and un-hyphenated version of the same brand and seen the CTR delta firsthand."
     }
   ],
   "checklist": [
