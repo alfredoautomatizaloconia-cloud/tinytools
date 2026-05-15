@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maskable Icons in 2026 — Why Your Android Launcher Icon Looks Cropped (And the 30-Second Fix)</title>
+<meta name="description" content="Your favicon looks fine on the web but Android crops it into a weird circle on the home screen. The fix is a maskable icon variant — a 5-minute, single-PNG change that makes your PWA look correct on every Android skin in 2026.">
+<meta name="keywords" content="maskable icon 2026, android launcher icon cropped, pwa icon maskable, maskable favicon, android home screen icon, safe zone icon, adaptive icon android, manifest.json maskable, pwa install icon">
+<meta property="og:title" content="Maskable Icons in 2026 — Why Your Android Launcher Icon Looks Cropped">
+<meta property="og:description" content="Android crops PWA icons into circles, squircles, and teardrops. A non-maskable icon loses its corners. Here's the 30-second maskable fix that works on every Android skin in 2026.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Maskable Icons in 2026 — Why Your Android Launcher Icon Looks Cropped">
+<meta name="twitter:description" content="Android crops PWA icons into circles and squircles. Non-maskable icons lose their corners. Here's the 30-second fix.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Maskable Icons in 2026 — Why Your Android Launcher Icon Looks Cropped (And the 30-Second Fix)",
+  "description": "A 2026 field guide to maskable icons: why Android crops PWA launcher icons into circles, squircles, and teardrops, the 80% safe-zone rule, the manifest.json block, and how to generate a maskable variant in 30 seconds without redrawing your logo.",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
+  "datePublished": "2026-05-15",
+  "dateModified": "2026-05-15",
+  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/",
+  "image": "https://tinytools-smoky.vercel.app/favicon-generator/og-default.png",
+  "keywords": "maskable icon, android launcher icon, pwa icon cropped, safe zone, manifest.json maskable, adaptive icon, favicon generator"
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a;
+    --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #f59e0b; --accent-glow: #f59e0b40;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 {
+    font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15;
+    margin: 16px 0 12px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fbbf24 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 24px; font-weight: 700; margin: 36px 0 12px; color: var(--text); }
+  h3 { font-size: 19px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+  p, ul, ol { color: #d0d0e0; margin-bottom: 16px; font-size: 17px; }
+  ul, ol { margin-left: 24px; }
+  li { margin-bottom: 6px; }
+  strong { color: var(--text); font-weight: 600; }
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-size: 14px; color: #fbbf24; }
+  pre { background: var(--bg-elevated); padding: 14px 16px; border-radius: 10px; overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); }
+  pre code { background: transparent; padding: 0; color: #fbbf24; font-size: 13px; line-height: 1.55; }
+  a { color: var(--accent); }
+  blockquote {
+    border-left: 3px solid var(--accent); padding: 8px 16px; margin: 20px 0;
+    background: var(--bg-elevated); border-radius: 6px; font-style: italic; color: var(--text-dim);
+  }
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 15px;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); color: #d0d0e0; }
+  th { background: var(--bg-elevated); color: var(--text); font-weight: 600; font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  .cta-box {
+    margin: 36px 0; padding: 24px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; border-left: 4px solid var(--accent);
+  }
+  .cta-box h3 { margin: 0 0 6px; font-size: 18px; color: var(--text); }
+  .cta-box p { margin-bottom: 12px; font-size: 15px; }
+  .cta-btn {
+    display: inline-block; padding: 12px 24px;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+  }
+  .related { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .related h3 { color: var(--text-dim); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card {
+    padding: 14px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--text); transition: all 0.15s;
+  }
+  .related-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .related-card .name { font-weight: 600; font-size: 14px; }
+  .related-card .desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;/&nbsp; <a href="/favicon-generator/">Favicon Generator</a> &nbsp;/&nbsp; Blog
+  </div>
+
+  <h1>Maskable Icons in 2026 — Why Your Android Launcher Icon Looks Cropped (And the 30-Second Fix)</h1>
+  <div class="meta">May 15, 2026 · ~7 min read · By TinyTools</div>
+
+  <p>You ship a beautiful 512&times;512 PNG, link it in your manifest, install your PWA on an Android phone, and the home-screen icon looks <em>off</em>. The corners of your logo are missing. The edges feel uncomfortably tight. On a Samsung the icon sits inside a circle. On a stock Pixel it&rsquo;s a squircle. On a OnePlus it&rsquo;s a teardrop. Each one chops a different amount of your artwork.</p>
+
+  <p>This is not a bug, and it is not happening because your PNG is wrong. It&rsquo;s happening because every modern Android launcher applies an <strong>adaptive shape mask</strong> to PWA icons &mdash; and your icon was never designed with that shape in mind. The fix is a one-line manifest change and a single extra PNG, both takes about 30 seconds with the right tool.</p>
+
+  <div class="cta-box">
+    <h3>Generate a maskable icon variant in one click</h3>
+    <p>Upload your existing logo. We pad it to the 80% safe zone, fill the background, and export a 512&times;512 maskable PNG plus the manifest snippet. Free, no signup.</p>
+    <a class="cta-btn" href="/favicon-generator/">Try the Favicon Generator free &rarr;</a>
+  </div>
+
+  <h2>What an adaptive shape mask actually is</h2>
+
+  <p>Android 8 (2017) introduced &ldquo;adaptive icons&rdquo; for native apps. The OS, not the app, decides what shape the icon takes &mdash; circle, rounded square, squircle, teardrop &mdash; based on the device manufacturer and the user&rsquo;s launcher theme. Native Android apps ship a foreground layer and a background layer; the OS overlays them inside whatever mask shape is current.</p>
+
+  <p>Chrome brought the same model to PWAs in 2019 with the <code>maskable</code> icon purpose. Once you opt in, the launcher knows it&rsquo;s allowed to crop your icon into whatever shape it wants, because you&rsquo;ve guaranteed that the &ldquo;business end&rdquo; of the logo sits inside a safe zone. Without that guarantee, the launcher falls back to wrapping your icon in a generic white circle &mdash; which is what most users see when a PWA developer hasn&rsquo;t shipped a maskable variant.</p>
+
+  <p>So when you see your launcher icon looking cropped, one of two things is happening:</p>
+
+  <ul>
+    <li>You shipped a normal icon, the launcher wrapped it in a white background circle, and now your logo looks like it&rsquo;s sitting on a postage stamp with too much white space around it.</li>
+    <li>You shipped a maskable-purpose icon but didn&rsquo;t leave a safe zone, and the launcher cropped through the visible parts of your logo.</li>
+  </ul>
+
+  <p>Both look bad. Both are fixable from the same source PNG.</p>
+
+  <h2>The 80% safe-zone rule</h2>
+
+  <p>The official W3C maskable icon spec defines a circular safe zone with a diameter equal to 80% of the icon&rsquo;s width, centered on the canvas. Every Android launcher mask &mdash; circle, squircle, teardrop, rounded square &mdash; fits entirely within that circle. As long as everything you actually want visible (logo, text, key shapes) lives inside that 80% circle, every launcher renders it correctly.</p>
+
+  <p>For a 512&times;512 PNG, the safe zone is a circle of diameter 410 pixels, leaving a 51-pixel padding ring around all four edges. The pixels in that ring are <em>not invisible</em>. They have to be filled &mdash; with your brand color, a gradient, or any solid background &mdash; because launchers in &ldquo;circle&rdquo; mode show roughly the full square while launchers in &ldquo;circle-only&rdquo; modes crop right up to the 80% circle. Transparent corners produce a rough crop edge against the user&rsquo;s wallpaper. Always fill the full canvas.</p>
+
+  <table>
+    <thead>
+      <tr><th>Region</th><th>Pixels at 512&times;512</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Safe zone (centered circle)</td><td>410&times;410 inscribed</td><td>Logo + anything that must always be visible</td></tr>
+      <tr><td>Visible-but-croppable</td><td>51 px ring outside circle</td><td>Background fill, decorative pattern, OK to lose</td></tr>
+      <tr><td>Full canvas</td><td>512&times;512</td><td>Must be filled with solid color &mdash; no transparency</td></tr>
+    </tbody>
+  </table>
+
+  <h2>What goes wrong when you skip this</h2>
+
+  <p>The most common failure mode in 2026 is shipping a single icon that&rsquo;s declared as <em>both</em> <code>"any"</code> and <code>"maskable"</code> purpose. That seems efficient &mdash; one file, two purposes &mdash; but it&rsquo;s almost always wrong:</p>
+
+  <ul>
+    <li>If the file <strong>doesn&rsquo;t</strong> have a 51-pixel safe-zone ring, the launcher crops into the logo. Letters get clipped, corners disappear.</li>
+    <li>If the file <strong>does</strong> have the safe-zone padding, then when the same file is used as a regular favicon or a social-share fallback (<code>"any"</code> purpose), the logo looks comically small with huge margins.</li>
+  </ul>
+
+  <p>The correct pattern in 2026 is to ship two separate 512&times;512 files: one tight-cropped for <code>"any"</code> and one with the safe-zone padding for <code>"maskable"</code>. They share the same logo and brand color &mdash; the only difference is the padding ratio.</p>
+
+  <h2>The manifest.json block to copy</h2>
+
+  <p>Open your <code>site.webmanifest</code> (or <code>manifest.json</code>) and replace the <code>icons</code> array with:</p>
+
+  <pre><code>{
+  "icons": [
+    { "src": "/icon-192.png",          "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png",          "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}</code></pre>
+
+  <p>Three icons, three explicit purposes. The launcher picks <code>maskable</code> for the home screen; the app drawer, splash screen, and social fallback pick <code>any</code>. Listing both purposes separately is the single highest-signal change you can make to an existing manifest.</p>
+
+  <h2>The 30-second fix without redrawing your logo</h2>
+
+  <p>You do not need to open Figma. You do not need to re-export from your design tool. You need exactly one operation on your existing 512&times;512 PNG: scale the artwork down to 80% and fill the new background. The Favicon Generator does this in one click, but if you want to do it by hand in any image editor:</p>
+
+  <ol>
+    <li>Open your existing 512&times;512 PNG.</li>
+    <li>Add a new background layer the same dimensions, filled with your brand color (use the exact hex from your <code>theme_color</code> manifest field for consistency).</li>
+    <li>Scale your logo layer to 80% (410 pixels at its longest edge), center it on the canvas.</li>
+    <li>Flatten and export as <code>icon-512-maskable.png</code>.</li>
+    <li>Add the third entry to your manifest <code>icons</code> array.</li>
+    <li>Reinstall the PWA on an Android device to verify.</li>
+  </ol>
+
+  <p>If your logo is a wordmark longer than it is tall, scale it to fit inside the 410-pixel safe-zone circle (not the 410-pixel square). The circle&rsquo;s usable horizontal width at the vertical center is the full 410 pixels, but at the top and bottom edges it&rsquo;s zero. Centered short wordmarks work; tall narrow wordmarks fail; logos that radiate outward from a center point (most modern startup marks) work best of all.</p>
+
+  <h2>Picking the right background color</h2>
+
+  <p>The maskable icon&rsquo;s background fill is the most visible color choice your app makes after the logo itself &mdash; it&rsquo;s what users see every time they unlock their phone. Three rules that always hold:</p>
+
+  <ul>
+    <li><strong>Match your <code>theme_color</code>.</strong> The same hex appears in the splash screen, the task switcher, and the home screen. Continuity matters.</li>
+    <li><strong>Avoid pure white.</strong> White-on-white wallpapers (common in 2026 on minimalist Android skins) make a white maskable icon disappear into the background. Use a faint tint or your brand accent.</li>
+    <li><strong>Test against both wallpapers.</strong> Install your PWA, then change the device wallpaper between a dark photo and a light solid color. Your icon should remain legible against both.</li>
+  </ul>
+
+  <p>If you don&rsquo;t have a brand color yet, the <a href="/color-palette/">Color Palette Generator</a> outputs harmonious palettes you can lift the maskable background from directly, and pairs them with an accessible foreground tone for the logo.</p>
+
+  <h2>Testing it the right way</h2>
+
+  <p>Two tools, both free, both higher-signal than &ldquo;eyeballing it in Figma&rdquo;:</p>
+
+  <ul>
+    <li><strong>Maskable.app</strong> &mdash; drop in your PNG, see it rendered inside every Android mask shape at once. Catches the &ldquo;my logo gets clipped on Samsung but not on Pixel&rdquo; failure mode before you ship.</li>
+    <li><strong>Chrome DevTools &rarr; Application &rarr; Manifest</strong> &mdash; opens your live manifest, validates the icon array, and flags missing maskable variants explicitly. If you only audit one thing before launching a PWA, audit this.</li>
+  </ul>
+
+  <p>If you&rsquo;re launching a PWA properly, also confirm your <a href="/og-image-generator/">Open Graph image</a> is set so the install card looks correct when shared, and verify your <a href="/seo-meta-generator/">meta tags</a> &mdash; Chrome surfaces the description and screenshot directly in the install prompt.</p>
+
+  <h2>What you can safely stop doing</h2>
+
+  <p>A short list of advice that was correct in 2019 and is wrong in 2026:</p>
+
+  <ul>
+    <li><strong>Shipping a <code>any maskable</code> dual-purpose icon.</strong> The spec technically allows it; the result almost always looks bad. Ship two files.</li>
+    <li><strong>Specifying separate maskable PNGs at 192 and 96 sizes.</strong> Modern launchers downscale the 512 maskable as needed. One maskable file is enough.</li>
+    <li><strong>Building a separate &ldquo;background&rdquo; layer in your manifest.</strong> Android native apps use foreground + background layers, but PWAs do not &mdash; the maskable purpose is a single flat PNG with the background baked in.</li>
+    <li><strong>Adding <code>monochrome</code> icons for the Android themed-icon feature.</strong> Themed icons are still experimental on most Android skins as of mid-2026 and aren&rsquo;t worth the maintenance cost yet.</li>
+  </ul>
+
+  <h2>The 60-second audit</h2>
+
+  <p>If you only have a minute, run this on your live site:</p>
+
+  <ol>
+    <li>Open <code>/manifest.json</code> or <code>/site.webmanifest</code> in your browser.</li>
+    <li>Confirm at least one entry has <code>"purpose": "maskable"</code>.</li>
+    <li>Open that PNG directly. Verify it has a solid (not transparent) background filling the full canvas.</li>
+    <li>Visually confirm the visible logo occupies the centered 80% &mdash; not edge-to-edge.</li>
+    <li>Install on an Android device or use <code>maskable.app</code> to preview against every launcher shape.</li>
+  </ol>
+
+  <p>Five checks. Sixty seconds. Ship it once, and your PWA stops looking like the developer didn&rsquo;t care.</p>
+
+  <div class="cta-box">
+    <h3>Skip the safe-zone math &mdash; generate it in one click</h3>
+    <p>Upload your logo, pick a background color, and get a perfect 512&times;512 maskable PNG plus the manifest snippet to paste. Free, no signup, no email gate.</p>
+    <a class="cta-btn" href="/favicon-generator/">Open the Favicon Generator &rarr;</a>
+  </div>
+
+  <h2>Bottom line</h2>
+
+  <p>Maskable icons are the single most visible &ldquo;polish&rdquo; signal in a 2026 PWA. The work is trivial &mdash; one extra PNG with 20% padding, one extra entry in <code>manifest.json</code> &mdash; and the payoff is that your icon looks correct on every Android device, every launcher shape, every wallpaper combination. There are very few changes in modern web development with that ratio of effort to outcome. Ship the maskable variant.</p>
+
+  <p>If you want to skip the manual masking and the safe-zone math, the <a href="/favicon-generator/">TinyTools Favicon Generator</a> takes your logo, pads it to spec, and outputs the maskable PNG alongside the rest of the canonical 2026 favicon set in a single download.</p>
+
+  <div class="related">
+    <h3>Related tools on TinyTools</h3>
+    <div class="related-grid">
+      <a class="related-card" href="/og-image-generator/">
+        <div class="name">OG Image Generator</div>
+        <div class="desc">Build link-preview images that render on every platform</div>
+      </a>
+      <a class="related-card" href="/color-palette/">
+        <div class="name">Color Palette Generator</div>
+        <div class="desc">AAA-contrast palettes for brand and UI</div>
+      </a>
+      <a class="related-card" href="/seo-meta-generator/">
+        <div class="name">SEO Meta Generator</div>
+        <div class="desc">Title, description, OG, Twitter &mdash; all valid</div>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    Built with care by <a href="/">TinyTools</a> &middot; Free tools, no signup, no email gate &middot;
+    <a href="https://www.namecheap.com/?aff=tinytools" rel="sponsored nofollow">Domains by Namecheap</a> &middot;
+    <a href="https://vercel.com/?utm_source=tinytools" rel="sponsored nofollow">Hosted on Vercel</a> &middot;
+    <a href="https://buymeacoffee.com/tinytools" rel="sponsored nofollow">Tip the maker</a>
+  </footer>
+</div>
+</body>
+</html>
