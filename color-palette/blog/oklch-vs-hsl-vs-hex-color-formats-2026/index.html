@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>OKLCH vs HSL vs HEX: The 2026 Designer's Guide to Choosing a Color Format</title>
+<meta name="description" content="OKLCH, HSL, and HEX explained for working designers in 2026. Browser support, perceptual uniformity, palette generation, and copy-paste examples — pick the right format for your project.">
+<meta name="keywords" content="oklch vs hsl, oklch vs hex, oklch color format, oklch css, color formats 2026, perceptual color, css color level 4, oklch tailwind, oklch browser support, modern css colors">
+<meta property="og:title" content="OKLCH vs HSL vs HEX: The 2026 Designer's Guide to Choosing a Color Format">
+<meta property="og:description" content="Why OKLCH is replacing HSL in modern design systems — browser support, math, palette generation, and when HEX still wins. Free guide from TinyTools.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OKLCH vs HSL vs HEX: The 2026 Designer's Guide">
+<meta name="twitter:description" content="Why OKLCH is replacing HSL — browser support, math, and when HEX still wins.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"OKLCH vs HSL vs HEX: The 2026 Designer's Guide to Choosing a Color Format","description":"OKLCH, HSL, and HEX explained for working designers in 2026. Browser support, perceptual uniformity, palette generation, and copy-paste examples.","author":{"@type":"Organization","name":"TinyTools"},"publisher":{"@type":"Organization","name":"TinyTools","url":"https://tinytools-smoky.vercel.app/"},"datePublished":"2026-05-16","dateModified":"2026-05-16","mainEntityOfPage":"https://tinytools-smoky.vercel.app/color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/","keywords":"OKLCH, HSL, HEX, CSS color formats, perceptual uniformity, CSS Color Level 4, design tokens"}</script>
+
+<style>
+:root{--bg:#0a0a0f;--bg-card:#15151f;--bg-elev:#1d1d2a;--border:#2a2a3a;--text:#f5f5fa;--text-dim:#a0a0b8;--accent:#a855f7;--accent-glow:#a855f740;--green:#10b981;--red:#ef4444;--amber:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;background-image:radial-gradient(circle at 20% 0%,var(--accent-glow) 0%,transparent 50%),radial-gradient(circle at 80% 60%,#ec489940 0%,transparent 50%)}
+.container{max-width:820px;margin:0 auto;padding:32px 20px 80px}
+.breadcrumb{font-size:13px;color:var(--text-dim);margin-bottom:24px}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+h1{font-size:clamp(28px,4vw,42px);font-weight:800;line-height:1.15;margin:16px 0 12px;letter-spacing:-0.02em;background:linear-gradient(135deg,#fff 0%,#d8b4fe 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.meta{color:var(--text-dim);font-size:14px;margin-bottom:28px}
+h2{font-size:24px;font-weight:700;margin:36px 0 12px;color:var(--text)}
+h3{font-size:19px;font-weight:600;margin:24px 0 8px;color:var(--text)}
+p,ul,ol{color:#d0d0e0;margin-bottom:16px;font-size:17px}
+ul,ol{margin-left:24px}li{margin-bottom:6px}
+strong{color:var(--text);font-weight:600}
+a{color:var(--accent)}
+code{background:var(--bg-elev);padding:2px 6px;border-radius:4px;font-size:14px;color:#d8b4fe}
+pre{background:var(--bg-elev);padding:14px 16px;border-radius:10px;overflow-x:auto;margin:16px 0;border:1px solid var(--border)}
+pre code{background:transparent;padding:0;color:#d8b4fe;font-size:13px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);color:#d0d0e0;vertical-align:top}
+th{background:var(--bg-elev);color:var(--text);font-weight:600;font-size:14px}
+tr:last-child td{border-bottom:none}
+.yes{color:var(--green);font-weight:600}.no{color:var(--red);font-weight:600}.partial{color:var(--amber);font-weight:600}
+.swatch-row{display:flex;gap:6px;margin:12px 0 20px;flex-wrap:wrap}
+.swatch{width:70px;height:70px;border-radius:10px;border:1px solid var(--border);display:flex;align-items:flex-end;justify-content:center;font-size:11px;color:rgba(255,255,255,0.85);font-family:'SF Mono',Monaco,monospace;padding:6px}
+.cta-box{margin:36px 0;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;border-left:4px solid var(--accent)}
+.cta-box h3{margin:0 0 6px;font-size:18px;color:var(--text)}
+.cta-box p{margin-bottom:12px;font-size:15px}
+.cta-btn{display:inline-block;padding:12px 24px;background:linear-gradient(135deg,#a855f7,#ec4899);color:white;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;box-shadow:0 4px 16px rgba(168,85,247,0.3)}
+.related{margin-top:60px;padding-top:28px;border-top:1px solid var(--border)}
+.related h3{color:var(--text-dim);font-size:13px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.related-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;text-decoration:none;color:var(--text);transition:transform 0.15s,border-color 0.15s}
+.related-card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.related-card .tag{font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.related-card .name{font-weight:600;font-size:15px}
+.callout{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:10px;padding:14px 18px;margin:18px 0;font-size:15px}
+.callout strong{color:var(--accent)}
+footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);font-size:13px;color:var(--text-dim);text-align:center}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="breadcrumb"><a href="/">TinyTools</a> &nbsp;&rsaquo;&nbsp; <a href="/color-palette/">Color Palette Generator</a> &nbsp;&rsaquo;&nbsp; Blog</div>
+
+<h1>OKLCH vs HSL vs HEX: The 2026 Designer's Guide to Choosing a Color Format</h1>
+<div class="meta">Updated May 16, 2026 &middot; 9 min read &middot; By the TinyTools team</div>
+
+<p>If you opened a fresh design system repo in 2026 and saw <code>oklch(0.62 0.22 295)</code> instead of <code>#a855f7</code>, you are not alone in wondering what changed. OKLCH quietly became the default color format in Tailwind v4, the new shadcn/ui theming layer, and most of the design systems shipping at YC-stage startups this year. It is doing a job that HEX and HSL could not do well, and it is doing it in every modern browser without a polyfill.</p>
+
+<p>That does not mean HEX is dead, and it does not mean you should rewrite every variable in your codebase tonight. This guide explains the three formats in plain terms, shows where each one wins, and gives you a decision framework you can apply to your next project in about thirty seconds.</p>
+
+<div class="cta-box">
+<h3>Need a palette in any format?</h3>
+<p>Generate a complete brand palette and copy it as HEX, HSL, or OKLCH with one click — no signup, no watermark, dark-mode tokens included.</p>
+<a class="cta-btn" href="/color-palette/">Try the Color Palette Generator free &rarr;</a>
+</div>
+
+<h2>The three formats at a glance</h2>
+
+<p>Before we get into theory, here is the same color expressed three ways so the rest of the article has a shared reference point:</p>
+
+<table>
+<thead><tr><th>Format</th><th>Example</th><th>What it describes</th></tr></thead>
+<tbody>
+<tr><td><code>HEX</code></td><td><code>#a855f7</code></td><td>Three bytes of sRGB (red, green, blue) packed into base&nbsp;16</td></tr>
+<tr><td><code>HSL</code></td><td><code>hsl(271 91% 65%)</code></td><td>Hue angle, saturation, lightness &mdash; still sRGB underneath</td></tr>
+<tr><td><code>OKLCH</code></td><td><code>oklch(0.62 0.22 295)</code></td><td>Perceptual lightness, chroma, hue &mdash; in a wider color space</td></tr>
+</tbody>
+</table>
+
+<div class="swatch-row">
+<div class="swatch" style="background:#a855f7">#a855f7</div>
+<div class="swatch" style="background:hsl(271 91% 65%)">hsl()</div>
+<div class="swatch" style="background:oklch(0.62 0.22 295)">oklch()</div>
+</div>
+
+<p>To your eye they look identical. To the browser they are stored, interpolated, and clamped to display gamut in different ways &mdash; and that is where the practical differences start.</p>
+
+<h2>HEX: the universal default that hides everything</h2>
+
+<p>HEX is just a compressed way to write an sRGB triplet. <code>#a855f7</code> means red = 168, green = 85, blue = 247 on a 0&ndash;255 scale. Every device, every email client, every legacy CMS knows what to do with it.</p>
+
+<p>The trouble is that HEX is <strong>opaque to humans</strong>. If a stakeholder asks "can you make it slightly darker?" you have no idea which byte to nudge. You end up bouncing into a color picker, eyeballing it, copying a new hex back out. That is fine for a single brand color, painful for a 12-step ramp, and disastrous for generating themes programmatically.</p>
+
+<p>HEX also has no notion of <em>brightness</em> the way humans see it. <code>#ffff00</code> (yellow) and <code>#0000ff</code> (blue) both have one channel maxed out, but yellow looks roughly seven times brighter to the human eye. That mismatch is why naive "lighten by 10%" functions in HEX produce dirty, washed-out results.</p>
+
+<div class="callout"><strong>Use HEX when:</strong> the color leaves the browser. Email templates, social card metadata, brand guidelines as PDFs, design files shared with non-technical stakeholders. HEX is the universal lingua franca and that is its real superpower.</div>
+
+<h2>HSL: the 2010s upgrade that almost worked</h2>
+
+<p>HSL (hue, saturation, lightness) was added to CSS in 2011 and felt like a revelation. Suddenly you could write <code>hsl(271 91% 65%)</code> and a teammate could read it: "purple-ish, very saturated, medium-light." Changing the lightness from 65% to 45% gives you a darker shade of the same hue. Most design systems built between 2014 and 2022 are quietly HSL underneath.</p>
+
+<p>The problem is that HSL <strong>lies about lightness</strong>. The "L" channel is mathematically simple but perceptually wrong. Compare these three colors, all at lightness 50%:</p>
+
+<div class="swatch-row">
+<div class="swatch" style="background:hsl(60 100% 50%);color:#222">hsl(60 100% 50%)</div>
+<div class="swatch" style="background:hsl(120 100% 50%);color:#222">hsl(120 100% 50%)</div>
+<div class="swatch" style="background:hsl(240 100% 50%)">hsl(240 100% 50%)</div>
+</div>
+
+<p>To HSL, they are equally light. To your eye, the yellow is blinding, the green is bright, and the blue is dark. That difference is why a 10-step HSL ramp from <code>L: 95%</code> down to <code>L: 5%</code> produces a smooth gray ramp but a wildly uneven color ramp &mdash; the yellows clump at the light end, the blues clump at the dark end, and nothing in the middle feels evenly spaced.</p>
+
+<p>The other thing HSL gets wrong is gamut. It is locked to sRGB, which covers maybe 70% of what a modern P3 display can actually show. The reds in your iPhone photos are more saturated than anything HSL can describe.</p>
+
+<div class="callout"><strong>Use HSL when:</strong> you have an existing codebase full of HSL variables. It is not broken, it is just less precise than what you can have today. Migration is rarely worth the effort on its own.</div>
+
+<h2>OKLCH: perceptual color that finally shipped</h2>
+
+<p>OKLCH stands for Oklab Lightness, Chroma, Hue. Oklab is a color space designed by B&ouml;rn Ottosson in 2020 specifically to fix the "L means something" problem &mdash; if two OKLCH colors have the same L, they actually <em>look</em> equally bright to a typical observer.</p>
+
+<p>The three channels mean:</p>
+
+<ul>
+<li><strong>L (lightness):</strong> a number from 0 (black) to 1 (white) that maps to perceived brightness. <code>0.5</code> is a medium gray that genuinely sits halfway between black and white.</li>
+<li><strong>C (chroma):</strong> how saturated, with no fixed maximum. Typical sRGB chromas top out around <code>0.37</code>; wide-gamut displays can push higher.</li>
+<li><strong>H (hue):</strong> an angle in degrees, same convention as HSL: 0 is red, 120 is green, 240 is blue.</li>
+</ul>
+
+<p>Because L is perceptually uniform, you can build a 10-step ramp by walking from <code>L: 0.95</code> down to <code>L: 0.15</code> in equal increments and get a ramp that looks evenly spaced &mdash; in any hue, on any display. That is the property that makes OKLCH ideal for design systems.</p>
+
+<pre><code>/* A perceptually even purple ramp in OKLCH */
+--purple-50:  oklch(0.97 0.02 295);
+--purple-100: oklch(0.93 0.05 295);
+--purple-200: oklch(0.86 0.10 295);
+--purple-300: oklch(0.77 0.16 295);
+--purple-400: oklch(0.69 0.20 295);
+--purple-500: oklch(0.62 0.22 295);
+--purple-600: oklch(0.54 0.22 295);
+--purple-700: oklch(0.46 0.20 295);
+--purple-800: oklch(0.38 0.16 295);
+--purple-900: oklch(0.28 0.10 295);</code></pre>
+
+<p>Notice that only the L and C numbers move. Hue stays locked at 295. To make a teal ramp with identical perceptual spacing, you change one number: <code>295</code> &rarr; <code>195</code>. Try doing that in HEX.</p>
+
+<h3>The wide-gamut bonus</h3>
+
+<p>OKLCH is not tied to sRGB. When the browser renders <code>oklch(0.62 0.30 25)</code> on a P3-capable screen, it uses the wider gamut and you get a richer, more saturated red than any HEX value can express. On an older sRGB screen, the browser clamps it down gracefully. You write one color and get the best version your hardware can render &mdash; no media queries needed.</p>
+
+<h2>Browser support in May 2026</h2>
+
+<table>
+<thead><tr><th>Format</th><th>Chrome / Edge</th><th>Safari</th><th>Firefox</th><th>Old browsers</th></tr></thead>
+<tbody>
+<tr><td><code>HEX</code></td><td class="yes">Forever</td><td class="yes">Forever</td><td class="yes">Forever</td><td class="yes">Forever</td></tr>
+<tr><td><code>HSL</code></td><td class="yes">Since 2011</td><td class="yes">Since 2011</td><td class="yes">Since 2011</td><td class="yes">IE9+</td></tr>
+<tr><td><code>OKLCH</code></td><td class="yes">111+ (Mar 2023)</td><td class="yes">15.4+ (Mar 2022)</td><td class="yes">113+ (May 2023)</td><td class="no">No fallback in IE</td></tr>
+</tbody>
+</table>
+
+<p>Global support for OKLCH crossed 93% in late 2024 and is at roughly 96% as of Q2 2026 (caniuse). The remaining gap is mostly Android WebView versions older than 113 and Samsung Internet under 22. If your analytics show fewer than 1% of users on those, you can ship OKLCH without a fallback. Otherwise, modern build tools (Tailwind v4, PostCSS Preset Env, Lightning CSS) will compile <code>oklch()</code> down to the nearest <code>#hex</code> for you at build time.</p>
+
+<h2>Generating palettes: where OKLCH wins by a mile</h2>
+
+<p>This is the practical reason to care. A palette generator using HSL has to add hue-specific magic numbers to fake perceptual uniformity. A palette generator using OKLCH just walks the L axis.</p>
+
+<p>Here is the entire algorithm for a balanced 9-step accent ramp in OKLCH:</p>
+
+<pre><code>const hue = 295; // purple
+const chroma = 0.22; // saturation
+const steps = [0.95, 0.85, 0.75, 0.65, 0.55,
+               0.45, 0.35, 0.25, 0.15];
+
+steps.map((L, i) => `--accent-${(i+1)*100}: oklch(${L} ${chroma * Math.min(1, L * 1.6)} ${hue});`);</code></pre>
+
+<p>Twelve lines of code, applied to any hue, produces a Tailwind-quality ramp. The same algorithm in HSL needs a lookup table of hue corrections to stop the yellows from blowing out.</p>
+
+<div class="cta-box">
+<h3>Skip the math entirely</h3>
+<p>Pick a brand color, hit generate, and copy a full perceptually-balanced palette in OKLCH, HSL, or HEX. Includes dark-mode tokens and WCAG contrast checks.</p>
+<a class="cta-btn" href="/color-palette/">Generate a palette &rarr;</a>
+</div>
+
+<h2>When HEX still wins in 2026</h2>
+
+<p>OKLCH is the right default for new design tokens, but HEX is not going anywhere. Here are the places where HEX is still the correct choice:</p>
+
+<ul>
+<li><strong>Email.</strong> Outlook, Gmail's iOS app, and most CRMs strip or misrender modern color functions. Always serialize email colors to HEX.</li>
+<li><strong>SVG attributes.</strong> Many older SVG parsers and design tools (Figma export, Sketch, certain icon libraries) expect <code>fill="#a855f7"</code> not <code>fill="oklch(...)"</code>.</li>
+<li><strong>OG images and meta tags.</strong> Social cards are flat sRGB. There is no win from describing them in OKLCH and the wider gamut is wasted on Twitter's renderer anyway.</li>
+<li><strong>Brand guideline documents.</strong> Designers, agencies, and print vendors will still ask for a HEX. Give it to them and keep your authoring format separate.</li>
+</ul>
+
+<h2>Migration strategy if you already have HSL</h2>
+
+<p>If your codebase is already on HSL CSS variables, you do not need a rewrite. A staged migration costs nothing and lets you A/B the result:</p>
+
+<ol>
+<li><strong>Keep your existing semantic tokens.</strong> <code>--accent</code>, <code>--bg-card</code>, <code>--text</code> all stay where they are.</li>
+<li><strong>Rewrite the source-of-truth values</strong> in OKLCH inside a <code>:root</code> block. Use a converter to get exact equivalents the first pass.</li>
+<li><strong>Generate ramps</strong> by walking the L axis, replacing the eyeballed numbers from your old HSL ramp.</li>
+<li><strong>Add a P3 layer</strong> for accent colors only &mdash; bump the chroma where the display can handle it.</li>
+</ol>
+
+<p>Most teams report the swap takes an afternoon and produces visibly nicer dark-mode surfaces immediately, because the gray steps actually look evenly spaced for the first time.</p>
+
+<h2>The 30-second decision framework</h2>
+
+<table>
+<thead><tr><th>If you are&hellip;</th><th>Use</th></tr></thead>
+<tbody>
+<tr><td>Authoring a new design system or theme</td><td><code>OKLCH</code></td></tr>
+<tr><td>Generating a programmatic color ramp</td><td><code>OKLCH</code></td></tr>
+<tr><td>Maintaining an existing HSL system</td><td><code>HSL</code> (don&rsquo;t migrate for its own sake)</td></tr>
+<tr><td>Writing email HTML</td><td><code>HEX</code></td></tr>
+<tr><td>Sharing a value with a designer or brand guide</td><td><code>HEX</code></td></tr>
+<tr><td>Targeting users on browsers older than 2023</td><td><code>HEX</code> with a build-time fallback</td></tr>
+<tr><td>Doing anything that touches a wide-gamut display</td><td><code>OKLCH</code></td></tr>
+</tbody>
+</table>
+
+<h2>Further reading</h2>
+
+<p>If you want to go deeper, B&ouml;rn Ottosson's <a href="https://bottosson.github.io/posts/oklab/" rel="nofollow noopener">original Oklab post</a> is short and surprisingly readable. <a href="https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl" rel="nofollow noopener">Evil Martians' OKLCH writeup</a> has interactive visualizations that make the perceptual-uniformity claim obvious in about ten seconds. And the <a href="https://www.w3.org/TR/css-color-4/" rel="nofollow noopener">CSS Color Level 4 spec</a> is where this all became official &mdash; useful when you need to argue with a senior engineer about whether OKLCH is "standard."</p>
+
+<div class="cta-box">
+<h3>Build a palette in any format</h3>
+<p>Generate a complete brand palette &mdash; tints, shades, dark-mode surfaces, WCAG-checked text colors &mdash; and copy the values as HEX, HSL, or OKLCH. Free, no signup.</p>
+<a class="cta-btn" href="/color-palette/">Open the Color Palette Generator &rarr;</a>
+</div>
+
+<div class="related">
+<h3>Related guides on TinyTools</h3>
+<div class="related-grid">
+<a class="related-card" href="/color-palette/blog/dark-mode-color-palette-guide-2026/"><div class="tag">color palette</div><div class="name">Dark Mode Color Palette: A Complete Guide for 2026</div></a>
+<a class="related-card" href="/color-palette/blog/accessible-color-contrast-ratios-wcag-2026/"><div class="tag">color palette</div><div class="name">Accessible Color Contrast Ratios in 2026 (WCAG 2.2)</div></a>
+<a class="related-card" href="/seo-meta-generator/"><div class="tag">seo</div><div class="name">SEO Meta Tag Generator</div></a>
+<a class="related-card" href="/favicon-generator/"><div class="tag">design</div><div class="name">Favicon Generator</div></a>
+</div>
+</div>
+
+<footer>&copy; 2026 <a href="/">TinyTools</a> &middot; Free tools for builders &middot; <a href="/color-palette/">Color Palette Generator</a></footer>
+
+</div>
+</body></html>
