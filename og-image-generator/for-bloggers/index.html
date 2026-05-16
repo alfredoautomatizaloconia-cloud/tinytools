@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free OG Image Generator for Bloggers — Click-Worthy Social Cards in Seconds (2026)</title>
+<meta name="description" content="Built for bloggers who need link previews that actually get clicked. Generate 1200×630 Open Graph images for every post in seconds — no Photoshop, no Canva subscription, no signup. Free PNG download.">
+<meta name="keywords" content="og image generator for bloggers, blog post social card, twitter card for blog, linkedin preview blog, open graph blog post, free blog og image">
+<meta property="og:title" content="OG Image Generator for Bloggers — Free, No Signup">
+<meta property="og:description" content="Make every blog post link preview worth clicking. Pure browser, free PNG, no watermark, no subscription.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/og-image-generator/for-bloggers/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "OG Image Generator for Bloggers",
+  "description": "Free Open Graph image generator tuned for bloggers: per-post 1200x630 social cards, headline-first templates, instant PNG export, no signup.",
+  "url": "https://tinytools-smoky.vercel.app/og-image-generator/for-bloggers/",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "audience": { "@type": "Audience", "audienceType": "Bloggers" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does every blog post need its own Open Graph image?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Posts with a unique, headline-driven OG image consistently see 2-3x more click-throughs from Twitter, LinkedIn, and Facebook than posts that fall back to a generic site-wide image. The card is the first impression — and on a feed scroll, it's usually the only impression. A per-post image lets each headline earn its own click."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What size should a blog OG image be in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1200x630 pixels at a 1.91:1 aspect ratio is still the safe baseline across Twitter, LinkedIn, Facebook, Slack, Discord, and iMessage previews. Image files should stay under 1 MB to avoid lazy-load delays on the platforms that re-fetch them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I add the OG image to a WordPress or Ghost blog post?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On WordPress, install Yoast SEO or Rank Math, then set the social image per post in the sidebar editor. On Ghost, upload the image as the post's feature image and Ghost automatically wires it into the og:image meta tag. On a static blog (Hugo, Astro, Eleventy), drop the PNG into the post's frontmatter under a field like 'image' or 'cover' and reference it in your layout's og:image meta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this OG generator free for commercial blogs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The generator is free, requires no account, and produces unwatermarked PNGs that bloggers and indie publications can use on commercial sites, sponsored posts, and affiliate articles without attribution."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from Canva's blog post templates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Canva is fine for one-off graphics but heavy when all you need is the post title rendered crisply at 1200x630. This generator opens instantly, has no login wall, doesn't try to upsell Pro elements, and exports a single PNG sized exactly for Open Graph — usually under thirty seconds from page load to download."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #06b6d4; --accent-glow: #06b6d440;
+    --accent-light: #67e8f9;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 80% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 20% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { text-align: center; padding: 24px 0 16px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.12; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 640px; margin: 0 auto 28px; }
+  .cta {
+    display: inline-block; padding: 14px 26px; background: var(--accent); color: #042f49;
+    border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 16px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 24px var(--accent-glow);
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 32px var(--accent-glow); }
+  .cta-row { text-align: center; margin: 24px 0 36px; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; margin: 24px 0;
+  }
+  .panel h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.01em; color: #fff; }
+  .panel h3 { font-size: 17px; margin: 20px 0 8px; color: #fff; }
+  .panel p { color: var(--text-dim); margin-bottom: 12px; }
+  .panel ul { color: var(--text-dim); margin: 8px 0 16px 22px; }
+  .panel li { margin-bottom: 6px; }
+  .panel a { color: var(--accent-light); text-decoration: none; border-bottom: 1px dashed #06b6d455; }
+  .panel a:hover { border-bottom-style: solid; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0 8px;
+  }
+  .card {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; padding: 18px;
+  }
+  .card .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .card .value { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .card .note { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { color: var(--text); }
+  td.dim { color: var(--text-dim); }
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--accent-light); }
+  footer { text-align: center; color: var(--text-dim); font-size: 13px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+  footer a { color: var(--accent-light); text-decoration: none; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; }
+  .breadcrumb a { color: var(--accent-light); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;&rsaquo;&nbsp; <a href="/og-image-generator/">OG Image Generator</a> &nbsp;&rsaquo;&nbsp; For Bloggers
+  </div>
+
+  <header>
+    <span class="badge">Free &middot; No signup &middot; Runs in your browser</span>
+    <h1>OG Image Generator for Bloggers</h1>
+    <p class="subtitle">Make every link preview worth clicking. Generate per-post 1200&times;630 Open Graph images for Twitter, LinkedIn, Facebook, and iMessage in under a minute &mdash; no Canva subscription, no signup, no watermark.</p>
+    <div class="cta-row">
+      <a class="cta" href="/og-image-generator/">Open the OG Image Generator &rarr;</a>
+    </div>
+  </header>
+
+  <div class="panel">
+    <h2>Why your blog's link preview is the most under-invested asset on your site</h2>
+    <p>Bloggers obsess over headlines, SEO meta descriptions, and hero images. Almost nobody thinks about the Open Graph card &mdash; the little image that appears when a post gets shared on Twitter, LinkedIn, Facebook, Slack, Discord, or iMessage. Which is strange, because for most posts that image will be seen by ten or twenty times as many people as the post itself.</p>
+    <p>Here's the math that should worry you. A typical 1,500-word post gets, say, 2,000 organic readers. That same post, if a single person with a modestly engaged following shares it, can surface its link card to 20,000 feed scrollers in an afternoon. The card is what they see. The headline you spent two hours polishing? Cropped or overlaid. The hero photo you licensed from Unsplash? Auto-resized into something fuzzy. The actual click-through to your site depends almost entirely on whether that 1200&times;630 rectangle looks like it was made with intent.</p>
+    <p>The good news: making one is the cheapest performance lever you have. It takes thirty seconds per post and costs nothing. The TinyTools generator is built for exactly that workflow &mdash; open the page, type your headline, pick a template, download. No account. No template gallery to scroll through. No "upgrade to Pro" wall. The output is a clean PNG sized to spec, ready to drop into WordPress, Ghost, Substack, or whatever stack you write on.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Five jobs this generator actually does for bloggers</h2>
+
+    <h3>1. Per-post cards instead of a sitewide default</h3>
+    <p>Most blogs ship with a single OG image baked into the theme. Every post shares it. That image might be your logo, a stock photo, or whatever the theme author chose. The result is that on a Twitter feed, every one of your posts looks identical &mdash; the same rectangle, over and over, telling the scroller nothing about what's inside. A per-post card with the actual headline rendered as type is the single biggest visual difference between "this looks like a real publication" and "this looks like a template blog from 2019."</p>
+
+    <h3>2. Headline A/B testing across social platforms</h3>
+    <p>Bloggers who care about traffic know the headline on their post is rarely the headline that performs best on social. Generate two or three card variants with different framings &mdash; a question, a hot-take, a number &mdash; and post each from a different account or scheduled slot. The card with the highest click-through tells you which framing to lead with in your next post.</p>
+
+    <h3>3. Roundup, listicle, and series cards</h3>
+    <p>If you publish series content ("The 7 Best&hellip;", "10 Things I Wish I Knew About&hellip;", weekly roundups), you want a card system where the number, the topic, and the issue date can vary while the underlying layout stays consistent. Build the template once, swap copy per post, and your archive starts to feel like a magazine instead of a content farm.</p>
+
+    <h3>4. Newsletter handoff</h3>
+    <p>Bloggers who cross-post to a newsletter platform (Substack, Beehiiv, ConvertKit, Ghost newsletter) need an image that looks good both as an inline header and as the email's social preview when subscribers share the issue. A 1200&times;630 PNG drops cleanly into both spots. Same file, two channels, zero additional design work.</p>
+
+    <h3>5. Affiliate and sponsored post cards</h3>
+    <p>When a sponsor or affiliate partner asks for a "promo image" for the post you wrote about their product, they almost always mean an OG card &mdash; the thing that will appear in their own social posts pointing back to your site. Hand them a 1200&times;630 PNG that includes the post title and a tasteful credit to your blog. They get the asset they need; you get a branded share lane back to your domain.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Blogger-specific defaults this tool gets right</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="label">Output size</div>
+        <div class="value">1200&times;630</div>
+        <div class="note">Spec for Twitter, LinkedIn, Facebook, Slack, Discord, iMessage</div>
+      </div>
+      <div class="card">
+        <div class="label">Headline floor</div>
+        <div class="value">56px</div>
+        <div class="note">Stays readable after platform WebP re-encoding</div>
+      </div>
+      <div class="card">
+        <div class="label">Max file size</div>
+        <div class="value">&lt;500 KB</div>
+        <div class="note">Below the 1 MB cutoff some platforms enforce</div>
+      </div>
+      <div class="card">
+        <div class="label">Templates</div>
+        <div class="value">8</div>
+        <div class="note">Headline-first layouts &mdash; no logo-soup or stock photos</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>How to wire the image into your blog</h2>
+    <h3>WordPress</h3>
+    <p>Install <a href="https://yoast.com/wordpress/plugins/seo/" rel="nofollow">Yoast SEO</a> or Rank Math. In the post editor sidebar, scroll to the social section and upload the PNG as the Facebook/Twitter image. Both plugins write the correct <code>og:image</code> and <code>twitter:image</code> meta tags into the rendered HTML, with the right dimension hints.</p>
+    <h3>Ghost</h3>
+    <p>Upload the image as the post's Feature Image in the post settings panel. Ghost automatically pulls the feature image into the <code>og:image</code> meta tag for that post. No plugin or theme edit required.</p>
+    <h3>Substack and Beehiiv</h3>
+    <p>Set the image as the post's header image. Both platforms expose it as the social preview when a subscriber forwards the email or when the public post URL is shared.</p>
+    <h3>Static site generators (Astro, Hugo, Eleventy)</h3>
+    <p>Save the PNG into your post's bundle folder or static images directory, then reference it in the post's frontmatter under a field your layout already reads (commonly <code>image</code>, <code>cover</code>, or <code>ogImage</code>). The layout's <code>&lt;head&gt;</code> block should already pipe that field into the <code>og:image</code> and <code>twitter:image</code> meta tags &mdash; if it doesn't, the official <a href="https://docs.astro.build/en/recipes/social-images/" rel="nofollow">Astro recipe</a> covers the wiring in about ten lines.</p>
+  </div>
+
+  <div class="panel">
+    <h2>What a good blog OG card actually looks like</h2>
+    <p>A few patterns hold up consistently for blog content:</p>
+    <ul>
+      <li>The headline takes 60-70% of the canvas. Not your logo. Not your photo. The headline.</li>
+      <li>Type is set at 56-72px, in a sans-serif that survives WebP re-encoding. Hairlines and serif terminals get crushed on LinkedIn and iMessage.</li>
+      <li>Background is solid color or a single soft gradient. No stock photography behind type &mdash; it always fights the headline at small sizes.</li>
+      <li>Your site name and (optionally) author handle sit in the bottom-left or bottom-right at 24-28px, dimmed against the background. They're context, not the message.</li>
+      <li>Color contrast hits at least 7:1 between text and background. This is also a basic accessibility floor &mdash; see the <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" rel="nofollow">WCAG 2.2 contrast guidance</a>.</li>
+    </ul>
+    <p>Avoid the temptation to cram in a tagline, a CTA, three icons, and a QR code. The card has roughly two seconds of attention on a feed scroll. One headline. One brand cue. Done.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Frequently asked questions</h2>
+    <h3>What size should a blog OG image be?</h3>
+    <p>1200&times;630 pixels at 1.91:1 is the safe baseline across every major platform in 2026. If you want crisp output on Retina displays after platform-side WebP re-encoding, design at 2400&times;1260 and let the platform downscale.</p>
+
+    <h3>Do I need a different image for Twitter vs LinkedIn vs Facebook?</h3>
+    <p>No. A single 1200&times;630 PNG covers Twitter's <code>summary_large_image</code> card, LinkedIn's preview, Facebook's link card, Slack and Discord unfurls, and iMessage rich previews. Some bloggers also create a 1080&times;1080 square version for Instagram and Threads, but it's optional.</p>
+
+    <h3>How fast is "fast enough" for the file?</h3>
+    <p>Aim for under 500 KB. The image needs to be fetched and rendered by each platform's scraper within a couple of seconds, and big files sometimes get dropped silently, especially on iMessage. Pure PNG at this size will usually land at 80-180 KB.</p>
+
+    <h3>Will my old posts auto-update if I generate new cards now?</h3>
+    <p>Sort of. The image will update the next time each platform's scraper re-fetches your post URL. Twitter, Facebook, and LinkedIn all expose a card debugger tool that forces a fresh fetch &mdash; useful when you re-skin a popular old post and want the new card to surface immediately.</p>
+
+    <h3>Is this generator really free?</h3>
+    <p>Yes. No login, no watermark, no usage cap. The whole tool runs in your browser. We don't see your headlines, your draft posts, or your output files &mdash; nothing leaves your machine.</p>
+  </div>
+
+  <div class="cta-row">
+    <a class="cta" href="/og-image-generator/">Open the OG Image Generator &rarr;</a>
+  </div>
+
+  <footer>
+    <p>Part of <a href="/">TinyTools</a> &mdash; small, single-purpose tools for indie makers and writers. Also useful: <a href="/seo-meta-generator/for-bloggers/">SEO Meta Generator for Bloggers</a>, <a href="/favicon-generator/for-bloggers/">Favicon Generator for Bloggers</a>, <a href="/color-palette/for-bloggers/">Color Palette for Bloggers</a>.</p>
+  </footer>
+</div>
+</body>
+</html>
