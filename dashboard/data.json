@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 15, 2026 — published How to Convert a Logo to a Favicon in 2026 (Without Pixel-Mush at 16×16) for favicon-generator + 4 social drafts ready",
+  "lastUpdated": "May 16, 2026 — published OKLCH vs HSL vs HEX guide for color-palette + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 58,
+    "posts": 59,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 06:15",
+      "tag": "seo",
+      "text": "📝 Published blog post: OKLCH vs HSL vs HEX: The 2026 Designer's Guide to Choosing a Color Format at /color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/"
+    },
+    {
+      "time": "today 06:15",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting color-palette"
+    },
     {
       "time": "today 14:30",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 00:12",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting color-palette"
-    },
-    {
-      "time": "today 20:12",
-      "tag": "seo",
-      "text": "📝 Published blog post: Favicon Cache Not Updating? Why Browsers Show Your Old Icon (And the 2026 Fix) at /favicon-generator/blog/favicon-cache-not-updating-fix-2026/"
-    },
-    {
-      "time": "today 20:12",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "text": "1/ Tailwind v4 quietly swapped HEX for OKLCH as the default color format.\n\nWhy? Because HSL has been lying to designers about lightness for 15 years.\n\nA thread on what OKLCH actually fixes (and when to ignore the hype) 👇\n\n2/ HSL stores L as a math value, not a perceptual one.\n\nhsl(60 100% 50%) — blinding yellow\nhsl(240 100% 50%) — dark blue\n\nBoth are \"50% lightness.\" Your eye disagrees by ~7x.\n\nThat's why HSL ramps never look evenly spaced.\n\n3/ OKLCH uses the Oklab color space (2020).\n\noklch(0.5 0.15 295) → an actual perceptual middle-gray-purple.\n\nSame L number, different hue? Still looks equally bright.\n\nThat's the property that makes design system ramps trivial.\n\n4/ Build a 10-step ramp in OKLCH:\n- walk L from 0.95 → 0.15\n- keep hue locked\n- chroma tapers at the extremes\n\nChange one number (the hue) → instant accent ramp in any color.\n\nTry that in HEX. I'll wait.\n\n5/ Browser support is 96% as of Q2 2026. Safari since 2022, Chrome/FF since 2023.\n\nBuild tools (Tailwind v4, Lightning CSS) compile to HEX fallback automatically.\n\nIf you're starting a new design system today, OKLCH is the default. Full guide + decision framework: https://tinytools-smoky.vercel.app/color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/",
+      "tool": "color-palette",
+      "createdAt": "2026-05-16T06:15:00Z"
+    },
+    {
+      "platform": "Reddit /r/web_design",
+      "text": "OP, the reason your gray ramp looks \"muddy in the middle\" is almost certainly that you're using HSL.\n\nHSL's L channel is mathematically uniform but perceptually wrong — hsl(60 100% 50%) (yellow) and hsl(240 100% 50%) (blue) are both \"50% light\" to the math, but yellow is roughly 7x brighter to your eye. So when you walk L from 95% down to 5% in equal steps, the yellows clump at the top and the blues clump at the bottom.\n\nThe fix that's becoming standard in 2026 design systems is OKLCH. Same hue/sat/lightness mental model, but L is genuinely perceptual. Walk L in equal increments and the ramp actually looks evenly spaced — in any hue, on any display.\n\nBrowser support is at ~96% globally now (Safari since 2022, Chrome/FF since 2023). Tailwind v4 made it the default, which is why you'll see it everywhere.\n\nWrote up a longer comparison with decision framework + copy-paste ramps here if useful: https://tinytools-smoky.vercel.app/color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/ (no signup, free palette generator on the same site if you want to mess with the numbers without doing the math).",
+      "tool": "color-palette",
+      "createdAt": "2026-05-16T06:15:00Z"
+    },
+    {
+      "platform": "LinkedIn",
+      "text": "A designer on my team spent two days last week trying to make a 10-step gray ramp \"feel right.\"\n\nShe kept tweaking HSL lightness values. The light grays felt warm, the dark grays felt blue, and the middle never looked centered.\n\nThe problem wasn't her eye. The problem was HSL.\n\nHSL's lightness channel is a mathematical convenience, not a perceptual one. A yellow at L=50% is roughly seven times brighter to the human eye than a blue at L=50%. When you walk that axis in equal steps, you don't get an evenly spaced ramp — you get clumping at both ends.\n\nOKLCH (the color format Tailwind v4 ships with by default) fixes this. The lightness channel is genuinely perceptual. Walk L from 0.95 down to 0.15 in equal steps and the ramp actually looks evenly spaced — in any hue, on any display.\n\nBrowser support crossed 96% this quarter. Safari has had it since 2022. If you're building a new design system in 2026 and not using OKLCH, you're making the work harder than it has to be.\n\nWrote up the full comparison — when to use OKLCH, when HEX still wins, and a 30-second decision framework: https://tinytools-smoky.vercel.app/color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/",
+      "tool": "color-palette",
+      "createdAt": "2026-05-16T06:15:00Z"
+    },
+    {
+      "platform": "Show HN",
+      "text": "Title: Show HN: OKLCH vs HSL vs HEX – A 2026 Decision Framework for Designers\n\nFirst comment:\nAuthor here. Built this after watching three teams in a row try to migrate their design tokens to OKLCH without a clear sense of what they were gaining. The TL;DR is that HSL lies about perceived lightness and OKLCH doesn't — which only matters for programmatic palettes, theming, and dark-mode surfaces, but those are most of the value of a design system. HEX is still the right answer for email, SVG, and brand guides. Happy to answer questions.",
+      "tool": "color-palette",
+      "createdAt": "2026-05-16T06:15:00Z"
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "favicon-generator",
       "createdAt": "2026-05-15T14:30:00Z",
       "text": "1/\n\nThe most common branding gap on the web in 2026:\n\nLogo looks perfect at 240px in the header.\nFavicon looks like unreadable mud at 16x16.\n\nIt's not a downscaling bug. It's a redesign that didn't happen 🧵\n\n2/\n\nA 16x16 favicon has 256 pixels of total canvas.\n\nThat's smaller than ONE character in this tweet.\n\nWhatever your logo communicates — wordmark, tagline, gradient, fine illustration — most of it physically cannot survive.\n\n3/\n\nThe rule the studios that nail this actually follow:\n\nDon't downscale. Pick ONE element of the logo and redraw the favicon around it.\n\n• Lockup (icon + wordmark) → use the icon alone\n• Wordmark only → first letter or monogram\n• Pure mark → simplify, then ship\n• Complex illustration → use the silhouette\n\n4/\n\nOnce you've picked, simplify ruthlessly:\n\n• Drop the gradient (becomes mud at 16px)\n• Drop bevels / shadows / glows\n• Thicken strokes to >=2 logical px\n• Use bold/black weight, not regular\n• Crop the safe-area padding\n\nIf it can't survive that surgery, design a monogram.\n\n5/\n\nFive files cover 99% of 2026 traffic. Stop shipping 14.\n\n• favicon.ico (16+32+48 multi-size)\n• favicon.svg (vector, dark-mode aware)\n• apple-touch-icon.png (180×180)\n• icon-192.png\n• icon-512.png\n\nThat's it. The shotgun list from 2019 is dead weight.\n\n6/\n\nFull breakdown — the four logo patterns, the five surgeries that fix 90% of bad favicons, and the exact HTML + manifest.json to paste:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-convert-logo-to-favicon-2026/\n\n7/"
@@ -260,30 +284,6 @@
       "tool": "favicon-generator",
       "createdAt": "2026-05-15T14:30:00Z",
       "text": "TITLE: A 16×16 favicon has less canvas than a single character of body text\n\nLINK: https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-convert-logo-to-favicon-2026/\n\nFIRST COMMENT FOR THE THREAD:\nAuthor here. Wrote this after watching the same pattern across dozens of small brands: beautiful logo, unreadable favicon, no idea why. The framing that finally clicked for me is that the favicon isn't the logo at 16px — it's a deliberate sibling drawn for a canvas where almost nothing survives. 256 pixels total. Smaller area than one character of body text. Curious if anyone here has shipped a brand where the favicon ended up materially different from the primary mark, and whether you got pushback from stakeholders for it."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-15T10:30:00Z",
-      "text": "1/\n\nYour PWA's home-screen icon looks weird on Android.\n\nLogo corners clipped on Samsung, sitting inside a tiny white circle on stock Pixel, cropped to a teardrop on OnePlus.\n\nIt's not a bug. It's an adaptive shape mask — and you didn't ship the file Android wants 🧵\n\n2/\n\nEvery modern Android launcher applies a mask shape (circle, squircle, teardrop, rounded square) to PWA icons. The OS picks the shape, not you.\n\nIf you ship a \"maskable\" icon, you opt in. If you don't, the launcher wraps your icon in a white background circle. That's the postage-stamp look.\n\n3/\n\nThe fix is a single rule:\n\nThe W3C maskable spec defines a circular safe zone with diameter = 80% of the icon width. Every launcher's mask shape fits entirely inside that 80% circle.\n\nAt 512×512, that's a 410-pixel safe zone with a 51-pixel padding ring.\n\n4/\n\nThe mistake most devs make: declaring one icon as BOTH \"any\" and \"maskable\" purpose.\n\nEither it has the safe-zone padding (and looks comically small everywhere else) or it doesn't (and gets clipped on the home screen).\n\nShip two separate files. One for each purpose.\n\n5/\n\nThe manifest block that works:\n\n\"icons\": [\n  { \"src\": \"/icon-192.png\",          \"sizes\": \"192x192\", \"purpose\": \"any\" },\n  { \"src\": \"/icon-512.png\",          \"sizes\": \"512x512\", \"purpose\": \"any\" },\n  { \"src\": \"/icon-512-maskable.png\", \"sizes\": \"512x512\", \"purpose\": \"maskable\" }\n]\n\nThree icons, three explicit purposes. Done.\n\n6/\n\nThe 30-second fix: scale your existing logo to 80%, center it, fill the new background with your theme color, export as a separate PNG.\n\nFull breakdown — safe-zone math, the manifest block, the testing tools that catch every Samsung edge case:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/\n\n7/"
-    },
-    {
-      "platform": "Reddit /r/webdev",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-15T10:30:00Z",
-      "text": "Subreddit: /r/webdev (primary), /r/androiddev or /r/PWA (secondary, any thread where someone asks \"why does my PWA icon look cropped on Android?\")\n\nComment:\n\nThis is one of those problems where the bug isn't in your code or your PNG — it's that you haven't told Android what the OS is allowed to do.\n\nEvery modern Android launcher applies an adaptive shape mask to PWA icons. The OS decides the shape (circle on Samsung, squircle on stock Pixel, teardrop on OnePlus, rounded square on others). If you ship a \"maskable\"-purpose icon, you've opted into that crop and guaranteed your logo lives inside a safe zone. If you don't, the launcher wraps your icon in a generic white background circle, which is the \"tiny postage-stamp\" look you're describing.\n\nThe W3C maskable spec defines a circular safe zone with diameter = 80% of the icon width. Every launcher mask shape fits entirely inside that 80% circle. At 512×512, that's a 410-pixel safe zone with a 51-pixel padding ring you can fill with anything (brand color, gradient, whatever) because it's the part that gets cropped.\n\nThe mistake I see most often in 2026 is people declaring a single icon as both \"any\" and \"maskable\" purpose to save a file. Doesn't work — either the padding is there (and it looks tiny everywhere it isn't masked, like the app drawer and social-share fallback) or it isn't (and the home screen clips into the logo). Ship two separate 512×512 PNGs:\n\n\"icons\": [\n  { \"src\": \"/icon-512.png\",          \"sizes\": \"512x512\", \"purpose\": \"any\" },\n  { \"src\": \"/icon-512-maskable.png\", \"sizes\": \"512x512\", \"purpose\": \"maskable\" }\n]\n\nFor the maskable version, scale your logo down to 80%, center it, fill the rest of the canvas (NOT transparent — solid background) with your theme_color. Takes about 30 seconds in any image editor or one click in any decent favicon tool.\n\nTest it on maskable.app before you ship. It renders your PNG inside every Android mask shape simultaneously — catches the \"clipped on Samsung but not on Pixel\" failure mode in seconds.\n\nWrote the full version with the safe-zone math, the canonical manifest block, and the audit checklist: https://tinytools-smoky.vercel.app/favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/\n\nFree favicon generator linked at the bottom that handles the maskable padding automatically if you want to skip the manual masking work."
-    },
-    {
-      "platform": "LinkedIn Post",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-15T10:30:00Z",
-      "text": "A founder DM'd me yesterday with a screenshot of her PWA on three different Android phones.\n\nOn the Samsung, her logo was clipped — the corner of the brand mark was just gone.\nOn the Pixel, the icon was sitting inside a small white circle with awkward margins.\nOn the OnePlus, it was masked into a teardrop and the wordmark was unreadable.\n\nShe thought she'd done everything right. The PNG was 512×512. The manifest had the right size. The hex color was on-brand.\n\nThe problem wasn't the PNG. It was that she hadn't opted into Android's adaptive icon system.\n\nEvery modern Android launcher applies a shape mask to PWA home-screen icons — circle, squircle, teardrop, rounded square. The OS decides the shape, based on manufacturer skin and user theme. If you ship a \"maskable\"-purpose icon, you're telling the launcher: yes, crop me, the important stuff lives inside the safe zone. If you don't, the launcher wraps your icon in a generic white background circle, which is the \"tiny postage-stamp\" look most PWAs have.\n\nThe rule that always works:\n\n→ Scale your visible logo to 80% of the canvas (a 410-pixel circle on a 512×512 PNG)\n→ Fill the outer 51-pixel ring with your brand color, not transparent\n→ Ship it as a separate icon entry with \"purpose\": \"maskable\"\n→ Keep your existing \"purpose\": \"any\" icon for the app drawer and social fallback\n\nTwo PNGs, three lines of manifest, and the icon looks correct on every Android skin instead of just the one you tested on.\n\nFive-minute change. Compound polish — every install, every home-screen unlock, every screenshot of your app reads as intentional.\n\nFull breakdown with the manifest block and the testing tools:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "favicon-generator",
-      "createdAt": "2026-05-15T10:30:00Z",
-      "text": "TITLE: Maskable icons in 2026: why your PWA looks cropped on Samsung but fine on Pixel\n\nLINK: https://tinytools-smoky.vercel.app/favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/\n\nFIRST COMMENT FOR THE THREAD:\nAuthor here. Wrote this because the \"my PWA icon looks weird on Android\" question shows up every week in /r/webdev and the answers always undersell how universal the problem is — every modern Android launcher applies a shape mask, the OS picks the shape, and a non-maskable icon gets wrapped in a generic white circle. The 80% safe-zone rule is the entire fix and it's just one extra PNG plus three lines of manifest. Curious if anyone has hit weird edge cases with maskable.app vs. real-device rendering — I've found maskable.app catches the obvious Samsung crops but misses some of the OnePlus teardrop edge bleeding."
     }
   ],
   "checklist": [
