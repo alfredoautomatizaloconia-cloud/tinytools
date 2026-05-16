@@ -14,3 +14,4 @@
 2026-05-12 16:50 | tool=domain-generator | post=how-to-transfer-domain-name-without-downtime-2026 | sitemap=updated | drafts=4 | google_ping=404(deprecated) | status=OK
 2026-05-13 10:25 | tool=og-image-generator | post=og-image-png-vs-jpg-vs-webp-file-size-2026 | sitemap=updated | drafts=4 | status=OK
 2026-05-15 10:30 | tool=favicon-generator | post=maskable-icons-android-launcher-cropped-2026 | sitemap=updated | drafts=4 | google_ping=404(deprecated) | status=OK
+2026-05-15 14:30 | tool=favicon-generator | post=how-to-convert-logo-to-favicon-2026 | sitemap=updated | drafts=4 | status=OK
