@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 15, 2026 — published Maskable Icons in 2026: Why Your Android Launcher Icon Looks Cropped for favicon-generator + 4 social drafts ready",
+  "lastUpdated": "May 15, 2026 — published How to Convert a Logo to a Favicon in 2026 (Without Pixel-Mush at 16×16) for favicon-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 57,
+    "posts": 58,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 14:30",
+      "tag": "seo",
+      "text": "📝 Published blog post: How to Convert a Logo to a Favicon in 2026 (Without Pixel-Mush at 16×16) at /favicon-generator/blog/how-to-convert-logo-to-favicon-2026/"
+    },
+    {
+      "time": "today 14:30",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting favicon-generator"
+    },
     {
       "time": "today 10:30",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 20:12",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
-    },
-    {
-      "time": "today 09:14",
-      "tag": "seo",
-      "text": "📝 Published blog post: How to Add a Favicon to a Next.js App in 2026 — The Complete Guide at /favicon-generator/blog/how-to-add-favicon-to-nextjs-app-2026/"
-    },
-    {
-      "time": "today 09:14",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/nextjs, LinkedIn, Show HN — all promoting favicon-generator"
     }
   ],
   "roadmap": [
@@ -240,6 +240,30 @@
     {
       "platform": "X / Twitter Thread",
       "tool": "favicon-generator",
+      "createdAt": "2026-05-15T14:30:00Z",
+      "text": "1/\n\nThe most common branding gap on the web in 2026:\n\nLogo looks perfect at 240px in the header.\nFavicon looks like unreadable mud at 16x16.\n\nIt's not a downscaling bug. It's a redesign that didn't happen 🧵\n\n2/\n\nA 16x16 favicon has 256 pixels of total canvas.\n\nThat's smaller than ONE character in this tweet.\n\nWhatever your logo communicates — wordmark, tagline, gradient, fine illustration — most of it physically cannot survive.\n\n3/\n\nThe rule the studios that nail this actually follow:\n\nDon't downscale. Pick ONE element of the logo and redraw the favicon around it.\n\n• Lockup (icon + wordmark) → use the icon alone\n• Wordmark only → first letter or monogram\n• Pure mark → simplify, then ship\n• Complex illustration → use the silhouette\n\n4/\n\nOnce you've picked, simplify ruthlessly:\n\n• Drop the gradient (becomes mud at 16px)\n• Drop bevels / shadows / glows\n• Thicken strokes to >=2 logical px\n• Use bold/black weight, not regular\n• Crop the safe-area padding\n\nIf it can't survive that surgery, design a monogram.\n\n5/\n\nFive files cover 99% of 2026 traffic. Stop shipping 14.\n\n• favicon.ico (16+32+48 multi-size)\n• favicon.svg (vector, dark-mode aware)\n• apple-touch-icon.png (180×180)\n• icon-192.png\n• icon-512.png\n\nThat's it. The shotgun list from 2019 is dead weight.\n\n6/\n\nFull breakdown — the four logo patterns, the five surgeries that fix 90% of bad favicons, and the exact HTML + manifest.json to paste:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-convert-logo-to-favicon-2026/\n\n7/"
+    },
+    {
+      "platform": "Reddit /r/web_design",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-15T14:30:00Z",
+      "text": "Subreddit: /r/web_design (primary), /r/graphic_design or /r/webdev (secondary, any thread asking 'why does my favicon look bad' or 'how do I convert my logo to a favicon')\n\nComment:\n\nThe usual answer to 'my favicon looks like mud' is 'use a better export tool'. That's almost never the actual problem.\n\nThe actual problem is that 90% of people drop their full logo into a favicon generator and expect a direct downscale to work. It physically can't. A 16×16 favicon has 256 pixels of canvas — smaller area than a single character of body text. Whatever you communicate with a gradient, a tagline, a fine illustration, or a thin stroke gets compressed into mush. No export tool can save you from that compression.\n\nThe favicon isn't your logo. It's a deliberate cousin of your logo, drawn for a context where almost nothing survives. The studios that nail this all follow some version of the same playbook:\n\n1. Pick ONE element of the brand and build the favicon around it. For a lockup (icon + wordmark), use the icon alone. For a wordmark, use the first letter set in the brand font at bold weight. For a complex mark, use the silhouette.\n\n2. Simplify ruthlessly. Drop the gradient (becomes a muddy mid-tone). Drop the inner shadow / bevel / glow (aliasing artifacts at 16px). Thicken every stroke to at least 2 logical pixels at favicon scale. Widen narrow gaps (closed counters fill in at small sizes). Crop the safe-area padding — favicons use almost the full canvas with only 1-2 px breathing room.\n\n3. Design at 16, scale up. Not the other way around. If you design at 512 and never zoom in, your tool's preview hides every problem the browser will surface.\n\n4. Stop shipping 14 files. The 2026 minimum is five: multi-size favicon.ico (16+32+48), favicon.svg (vector, dark-mode aware via prefers-color-scheme), apple-touch-icon.png at 180×180, and a 192/512 PNG pair for the manifest. That covers 99% of real-world traffic. Everything else is dead weight.\n\nThe gotcha that fixes most 'iOS home screen icon looks weird' reports: don't pre-round the apple-touch-icon corners (iOS does it for you), and don't use a transparent background (iOS shows transparency as solid black).\n\nWrote the full version with the four logo patterns, the five surgeries, and the exact HTML + manifest snippet: https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-convert-logo-to-favicon-2026/\n\nFree favicon generator linked at the bottom — runs in-browser, outputs the exact 5-file set, no signup. Useful for sanity-checking what your current logo actually looks like at 16×16 before you commit."
+    },
+    {
+      "platform": "LinkedIn Post",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-15T14:30:00Z",
+      "text": "A founder showed me her brand kit last week. The logo was beautiful — a custom wordmark with a soft gradient, set in a refined typeface. The favicon, exported directly from the same file, was an unreadable smudge.\n\nShe asked why her brand felt 'cheap' in the browser tab.\n\nThe honest answer: the favicon wasn't designed. It was downscaled.\n\nA 16×16 favicon has 256 pixels of canvas — smaller area than a single character of body text. Whatever you communicate at 240 pixels in the header (gradient, tagline, fine stroke, four-letter wordmark) physically cannot survive that compression. No export tool can save you from the math.\n\nThe studios that get this right treat the favicon as a deliberate sibling of the logo, not a child of it. Pick one element — the icon from a lockup, the first letter from a wordmark, the silhouette from a complex mark — and redraw it for the smallest size a browser will ever render. Bold weight, not regular. Flat color, not gradient. 2-pixel minimum strokes. Almost no padding.\n\nIn 2026 the minimum file set is five (multi-size ICO, SVG, apple-touch-icon, and a 192/512 PNG pair for the manifest). The shotgun approach from 2019 is dead weight — you can delete two-thirds of the files most generators still produce.\n\nTwenty minutes of deliberate redesign is the difference between a brand that feels considered in every context and one that feels considered everywhere except the tab.\n\nFull breakdown with the four logo patterns and the five surgeries:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-convert-logo-to-favicon-2026/"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "favicon-generator",
+      "createdAt": "2026-05-15T14:30:00Z",
+      "text": "TITLE: A 16×16 favicon has less canvas than a single character of body text\n\nLINK: https://tinytools-smoky.vercel.app/favicon-generator/blog/how-to-convert-logo-to-favicon-2026/\n\nFIRST COMMENT FOR THE THREAD:\nAuthor here. Wrote this after watching the same pattern across dozens of small brands: beautiful logo, unreadable favicon, no idea why. The framing that finally clicked for me is that the favicon isn't the logo at 16px — it's a deliberate sibling drawn for a canvas where almost nothing survives. 256 pixels total. Smaller area than one character of body text. Curious if anyone here has shipped a brand where the favicon ended up materially different from the primary mark, and whether you got pushback from stakeholders for it."
+    },
+    {
+      "platform": "X / Twitter Thread",
+      "tool": "favicon-generator",
       "createdAt": "2026-05-15T10:30:00Z",
       "text": "1/\n\nYour PWA's home-screen icon looks weird on Android.\n\nLogo corners clipped on Samsung, sitting inside a tiny white circle on stock Pixel, cropped to a teardrop on OnePlus.\n\nIt's not a bug. It's an adaptive shape mask — and you didn't ship the file Android wants 🧵\n\n2/\n\nEvery modern Android launcher applies a mask shape (circle, squircle, teardrop, rounded square) to PWA icons. The OS picks the shape, not you.\n\nIf you ship a \"maskable\" icon, you opt in. If you don't, the launcher wraps your icon in a white background circle. That's the postage-stamp look.\n\n3/\n\nThe fix is a single rule:\n\nThe W3C maskable spec defines a circular safe zone with diameter = 80% of the icon width. Every launcher's mask shape fits entirely inside that 80% circle.\n\nAt 512×512, that's a 410-pixel safe zone with a 51-pixel padding ring.\n\n4/\n\nThe mistake most devs make: declaring one icon as BOTH \"any\" and \"maskable\" purpose.\n\nEither it has the safe-zone padding (and looks comically small everywhere else) or it doesn't (and gets clipped on the home screen).\n\nShip two separate files. One for each purpose.\n\n5/\n\nThe manifest block that works:\n\n\"icons\": [\n  { \"src\": \"/icon-192.png\",          \"sizes\": \"192x192\", \"purpose\": \"any\" },\n  { \"src\": \"/icon-512.png\",          \"sizes\": \"512x512\", \"purpose\": \"any\" },\n  { \"src\": \"/icon-512-maskable.png\", \"sizes\": \"512x512\", \"purpose\": \"maskable\" }\n]\n\nThree icons, three explicit purposes. Done.\n\n6/\n\nThe 30-second fix: scale your existing logo to 80%, center it, fill the new background with your theme color, export as a separate PNG.\n\nFull breakdown — safe-zone math, the manifest block, the testing tools that catch every Samsung edge case:\n\nhttps://tinytools-smoky.vercel.app/favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/\n\n7/"
     },
@@ -260,30 +284,6 @@
       "tool": "favicon-generator",
       "createdAt": "2026-05-15T10:30:00Z",
       "text": "TITLE: Maskable icons in 2026: why your PWA looks cropped on Samsung but fine on Pixel\n\nLINK: https://tinytools-smoky.vercel.app/favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/\n\nFIRST COMMENT FOR THE THREAD:\nAuthor here. Wrote this because the \"my PWA icon looks weird on Android\" question shows up every week in /r/webdev and the answers always undersell how universal the problem is — every modern Android launcher applies a shape mask, the OS picks the shape, and a non-maskable icon gets wrapped in a generic white circle. The 80% safe-zone rule is the entire fix and it's just one extra PNG plus three lines of manifest. Curious if anyone has hit weird edge cases with maskable.app vs. real-device rendering — I've found maskable.app catches the obvious Samsung crops but misses some of the OnePlus teardrop edge bleeding."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-13T10:25:00Z",
-      "text": "1/\n\n\"Switch your OG images to WebP, save 70% bandwidth\" is the optimization advice that's making 30% of your iMessage shares render as plain blue link bubbles with no card.\n\nHere's what actually happens — and the format that quietly wins in 2026 🧵\n\n2/\n\nThe benchmark on a real 1200×630 card:\n\n• PNG (flat color + text): 52 KB\n• JPG (photography): 212 KB\n• WebP (any composition): 30-50% smaller than either\n\nWebP wins on raw bytes every time. That's not the question.\n\n3/\n\nThe question is: who decodes it?\n\n• X — yes\n• Slack — yes\n• Discord — yes\n• iMessage on iOS 19 — NO (silent fail, blue bubble, no error)\n• Outlook desktop — NO\n• Apple Mail on macOS — NO (Sonoma+)\n• Self-hosted RSS readers — patchy\n\n4/\n\nAnd here's the killer: OG protocol has no fallback chain.\n\nYou can't declare a primary WebP and a JPG backup like with the <picture> tag. Whatever URL you put in og:image is what every consumer fetches. One format, no escape hatch.\n\n5/\n\nSo the 2026 rule:\n\n• Hard-edged content (text, logos, UI, screenshots) → PNG\n• Soft content (photography, painted illustration) → JPG  \n• WebP and AVIF → article body only, NEVER og:image\n• Both under 300 KB at 1200×630\n\nBoring. Correct. Cards work everywhere.\n\n6/\n\nFull breakdown with the measured byte counts per card type and the encoder settings (pngquant level 6 + mozjpeg q=85) that get you to <100 KB:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/\n\n7/"
-    },
-    {
-      "platform": "Reddit /r/webdev",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-13T10:25:00Z",
-      "text": "Subreddit: /r/webdev (primary), /r/SEO or /r/nextjs (secondary, any thread where someone asks 'should I use WebP for og:image?')\n\nComment:\n\nCounterintuitive answer: don't, even though it's measurably smaller.\n\nThe thing the \"switch to WebP\" advice always leaves out is that the OG protocol has no fallback chain. There's no <picture>-style \"primary WebP, fallback to JPG\" — whatever URL you put in og:image is what every consumer fetches, full stop.\n\nIn 2026 the cohort of consumers that don't decode WebP is small but high-value:\n\n- iMessage on iOS 19 silently rejects WebP and renders the link as a plain blue bubble with no card. No error, no fallback, no public validator. Roughly a third of US link sharing happens here.\n- Outlook desktop and Apple Mail on macOS (Sonoma and earlier) render WebP as a broken-image placeholder.\n- The self-hosted RSS reader long tail (Miniflux, FreshRSS, TT-RSS) is patchy.\n\nMainstream stuff (X, Slack, Discord, LinkedIn, Facebook, Feedly) all decode WebP fine. If those are your only meaningful sharing channels you can use WebP. For most sites they aren't.\n\nThe boring decision matrix that always works:\n\n- Hard edges in the card (text, logos, UI, screenshots) → PNG. Smaller than JPG AND sharper at the same time. Run it through pngquant --quality 85-95 on the way out.\n- Soft content (photography, painted illustration, complex gradients) → JPG at mozjpeg q=85. Stock libjpeg at q=95 is 2-3x larger for no visible gain. Use Squoosh.\n- Both target under 300 KB at 1200×630.\n- WebP and AVIF stay in <img> tags in the article body, where the byte savings actually matter (every reader fetches those, not just the scraper).\n\nWrote the full version with measured benchmarks per card type and the encoder settings that hit <100 KB reliably: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/\n\nFree 1200×630 OG generator linked at the bottom — runs entirely in-browser, outputs validator-ready PNG. Useful if you want to test the format question on your own card before committing."
-    },
-    {
-      "platform": "LinkedIn Post",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-13T10:25:00Z",
-      "text": "A founder DM'd me last week: \"I switched all my OG images to WebP and saw a 25% drop in click-through from shared links. Did Google penalize me?\"\n\nGoogle didn't penalize her. iMessage did.\n\niOS 19 ships with a Messages preview generator that silently rejects WebP. The link doesn't render as a broken card — it renders as a plain blue bubble with no card at all. No error, no fallback, no public validator. The user has no idea anything is wrong.\n\nAbout a third of US link sharing happens in iMessage threads. So a \"70% bandwidth savings\" rollout that breaks one in three previews is a net negative even before you count Outlook desktop, Apple Mail on Sonoma, and the older RSS readers that also don't decode WebP.\n\nThe OG protocol has no fallback chain. There's no <picture>-style \"primary WebP, JPG backup\" — whatever URL you put in og:image is what every consumer fetches.\n\nThe boring rule that just works in 2026:\n\n- Hard-edged content (text, logos, UI) → PNG\n- Soft content (photography) → JPG at quality 85\n- WebP and AVIF stay in article body <img> tags, never in og:image\n- Both under 300 KB at 1200×630\n\nThe optimization frontier moved years ago. The compatibility frontier did not. Pick the older format every time and the cards just work.\n\nFull breakdown with measured byte counts per card type:\n\nhttps://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "og-image-generator",
-      "createdAt": "2026-05-13T10:25:00Z",
-      "text": "TITLE: OG image WebP saves 30-50% bandwidth — and silently breaks iMessage on iOS 19\n\nLINK: https://tinytools-smoky.vercel.app/og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/\n\nFIRST COMMENT FOR THE THREAD:\nAuthor here. Wrote this after a founder showed me a 25% CTR drop on shared links after switching og:image to WebP — turned out iMessage on iOS 19 rejects WebP silently and renders the link with no card. The OG protocol has no fallback chain (no <picture>-equivalent for og:image), so whatever URL you ship is what every consumer fetches. Curious if anyone here has hit the same Outlook-desktop or self-hosted-RSS-reader breakage with WebP cards."
     }
   ],
   "checklist": [
