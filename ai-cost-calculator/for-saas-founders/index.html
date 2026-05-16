@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Cost Calculator for SaaS Founders — Protect Gross Margin Per Feature (2026)</title>
+<meta name="description" content="Built for SaaS founders shipping AI features. Forecast per-feature, per-MAU, and per-tier AI token costs across GPT-5, Claude 4.6, Gemini 3, and DeepSeek — so gross margin, free-tier abuse, and Series A unit economics stay defensible to your board.">
+<meta name="keywords" content="ai cost calculator for saas founders, saas ai cogs, ai feature gross margin, saas llm pricing, ai cost per mau, saas ai unit economics, free tier ai cost, ai feature pricing, openai cost saas, claude api cost saas">
+<meta property="og:title" content="AI Cost Calculator for SaaS Founders — Free, No Signup">
+<meta property="og:description" content="Model AI COGS per feature, per MAU, and per pricing tier before you ship. Compare GPT-5, Claude 4.6, Gemini 3, DeepSeek, and 25+ more models — tuned for SaaS gross margin and unit economics.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-cost-calculator/for-saas-founders/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Cost Calculator for SaaS Founders",
+  "description": "Free AI API cost calculator tuned for SaaS founders: estimate per-feature, per-MAU, and per-tier AI COGS across 30+ LLMs from prompt size, call frequency, and active-user counts.",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-saas-founders/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "audience": { "@type": "Audience", "audienceType": "SaaS Founders" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do SaaS founders model AI costs into gross margin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Treat AI API calls as variable COGS, the same way you treat hosting, payment processing, and outbound email. Estimate tokens per call multiplied by call frequency per active user, multiplied by MAU, and divide by MRR to get the AI COGS percentage. Healthy AI-native SaaS in 2026 keeps that figure below 18% of revenue at the median tier — above 25% and gross margin slips into territory where Series A and B investors start asking pointed questions. The TinyTools AI Cost Calculator produces the underlying per-user number so the COGS line is grounded in math rather than guessed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a safe AI COGS ratio for a SaaS product in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The current investor benchmark for AI-augmented SaaS is 70-80% blended gross margin, which leaves room for 12-22% AI COGS on top of standard hosting and infrastructure. Pure AI-native products with heavy generation workloads occasionally run 25-35% AI COGS at the free or low tier, but they generally subsidize that with a much higher-margin paid tier. If AI costs are pushing blended margin below 60%, the pricing model usually needs a usage-based component or a routing layer that pushes cheap workload to a smaller model."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI model gives the best margin for a SaaS feature?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For high-volume background features like AI summaries, smart search, embeddings, and classification, Gemini 3 Flash and DeepSeek V3.1 cut costs by 80-95% versus a frontier model with no measurable user-facing quality loss. For copilot, agent, and any feature the user explicitly sees as 'the AI feature', Claude Sonnet 4.6 and GPT-5 still win on perceived quality. Most profitable AI-native SaaS in 2026 routes by intent — cheap models for the invisible work, the flagship only when the user is watching."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can SaaS founders prevent free-tier AI cost abuse?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three layers protect a free tier: a hard token quota per user per day, a per-account rate limit on the AI endpoint, and a downgrade path that routes the heaviest free users to a cheaper model. Modeling the worst-case abuse scenario (one user hitting the daily quota every day) in the calculator gives you the maximum monthly loss per free signup. Above $0.40-0.80 per free MAU per month, most products either tighten quota or move the AI feature behind a paid wall."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the AI Cost Calculator free for SaaS founders?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The calculator is free, requires no signup, and runs entirely in your browser. Nothing about your usage assumptions, MAU projections, or pricing model leaves your machine. Use the estimates inside board decks, investor updates, pricing experiments, internal financial models, or fundraising materials."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #6366f1; --accent-glow: #6366f140;
+    --green: #10b981; --red: #ef4444; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { text-align: center; padding: 24px 0 16px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.12; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 660px; margin: 0 auto 28px; }
+  .cta {
+    display: inline-block; padding: 14px 26px; background: var(--accent); color: #fff;
+    border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 16px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 24px var(--accent-glow);
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 32px var(--accent-glow); }
+  .cta-row { text-align: center; margin: 24px 0 36px; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; margin: 24px 0;
+  }
+  .panel h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.01em; color: #fff; }
+  .panel h3 { font-size: 17px; margin: 20px 0 8px; color: #fff; }
+  .panel p { color: var(--text-dim); margin-bottom: 12px; }
+  .panel ul { color: var(--text-dim); margin: 8px 0 16px 22px; }
+  .panel li { margin-bottom: 6px; }
+  .panel a { color: #a5b4fc; text-decoration: none; border-bottom: 1px dashed #6366f155; }
+  .panel a:hover { border-bottom-style: solid; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0 8px;
+  }
+  .card {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; padding: 18px;
+  }
+  .card .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .card .value { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .card .note { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { color: var(--text); }
+  td.dim { color: var(--text-dim); }
+  footer { text-align: center; color: var(--text-dim); font-size: 13px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+  footer a { color: #a5b4fc; text-decoration: none; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; }
+  .breadcrumb a { color: #a5b4fc; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;&rsaquo;&nbsp; <a href="/ai-cost-calculator/">AI Cost Calculator</a> &nbsp;&rsaquo;&nbsp; For SaaS Founders
+  </div>
+
+  <header>
+    <span class="badge">Free &middot; No signup &middot; Runs in your browser</span>
+    <h1>AI Cost Calculator for SaaS Founders</h1>
+    <p class="subtitle">Forecast AI COGS per feature, per MAU, and per pricing tier before you ship &mdash; not after gross margin shows up red on the board deck. Compare GPT-5, Claude 4.6, Gemini 3, DeepSeek, and 25+ more models against your real usage shape.</p>
+    <div class="cta-row">
+      <a class="cta" href="/ai-cost-calculator/">Open the AI Cost Calculator &rarr;</a>
+    </div>
+  </header>
+
+  <div class="panel">
+    <h2>Why SaaS founders need an honest AI cost model</h2>
+    <p>SaaS economics used to be the cleanest story in software: 80%+ gross margin, near-zero marginal cost per user, the whole company chart pointed up and to the right. Then AI features happened. Suddenly every additional active user carries a variable token bill that scales with how aggressively they engage &mdash; and the most engaged users, the ones every product team optimizes for, are also the most expensive ones to serve.</p>
+    <p>That single line on the P&amp;L has quietly become the largest determinant of whether an AI-native SaaS is a fundable business or a heavily subsidized growth experiment. A copilot that costs $0.04 in tokens per session against a $25 seat is fine. The same copilot routed to a frontier model, called fifteen times a session, by a power user who logs in daily, can cost $11-$18 in tokens against the same $25 seat. The seat is now margin-negative, and the spreadsheet rolling up to investor relations has no idea.</p>
+    <p>This calculator exists to put the per-feature and per-tier number on the page before the pricing meeting. Enter realistic call counts, prompt size, output length, and MAU at each pricing tier, and it cross-multiplies against published rates for every major hosted model. The output is a sortable cost table that drops straight into a board appendix, a pricing experiment doc, or the COGS section of a fundraising model.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Five jobs it actually does for SaaS founders</h2>
+
+    <h3>1. Per-feature COGS modeling before shipping</h3>
+    <p>Before you green-light an AI feature in the next sprint, model the expected per-MAU AI bill at projected adoption. A new AI summary feature that fires twice per session across forty percent of weekly actives sits in a very different cost band depending on whether the underlying model is GPT-5 or DeepSeek. The calculator's adoption and frequency sliders show the spread so the feature ships with a defensible margin story rather than a hopeful one.</p>
+
+    <h3>2. Pricing tier and free-tier defense</h3>
+    <p>If you offer a free tier with any AI feature, you are quietly running a subsidy program. The calculator gives you the worst-case monthly cost per free signup, which is the number you need to know before launching a paid acquisition campaign or a viral loop. Drop it into the pricing doc and the conversation about quotas, throttles, and the move-to-paid wall gets considerably faster.</p>
+
+    <h3>3. Board deck and investor update math</h3>
+    <p>Every AI-native SaaS board deck in 2026 has a slide on AI COGS, gross margin trajectory, and the unit economics at the next ARR milestone. The calculator gives you a defensible AI COGS line in under two minutes, and the same view exports the assumptions block your CFO or finance lead needs for the audit trail. No more "we'll refine the COGS number before the next board" carried forward across three quarters.</p>
+
+    <h3>4. Model routing and arbitrage planning</h3>
+    <p>Most SaaS products discover, sometimes painfully, that running every AI call through the flagship model costs four to fifteen times more than it needs to. The calculator lets you model a routed setup &mdash; cheap model for first-pass and high-volume work, flagship for sensitive or explicit user-facing generation &mdash; and surfaces exactly how much margin a routing layer would unlock at current MAU. The payback period on building one is usually under thirty days.</p>
+
+    <h3>5. Seed and Series A fundraising prep</h3>
+    <p>Investors evaluating AI-native SaaS in 2026 underwrite to gross margin at scale, not gross margin today. They want to see a model that holds 70-80% blended margin at 10x current ARR, with a credible story about how model costs evolve. The calculator gives you the per-call cost curve under the current pricing regime, which is the starting point for the "what happens to margin when model X gets cheaper" sensitivity that every venture diligence asks for.</p>
+  </div>
+
+  <div class="panel">
+    <h2>What SaaS founders usually get wrong</h2>
+    <p>Three failure modes show up over and over inside AI-native SaaS in 2026:</p>
+    <ul>
+      <li><strong>Sending full conversation history on every turn.</strong> Token costs scale linearly with context length, so a chat feature that re-sends the entire prior conversation by turn ten is paying ten times the per-turn cost it paid at turn one. A rolling summary or sliding-window approach typically cuts long-conversation cost by 60-85% with no perceptible quality drop.</li>
+      <li><strong>Pasting the whole knowledge base into every prompt.</strong> Retrieval augmented generation works because it bounds context size. Teams that skip the retrieval layer and dump 30-page documents into every prompt are paying for the full document on every single call, even when only one paragraph is relevant.</li>
+      <li><strong>Defaulting to the frontier tier for invisible work.</strong> Embeddings, classification, intent routing, log summarization, autocomplete suggestions &mdash; none of these need GPT-5 or Claude Opus. Pushing the invisible workload to Gemini Flash, Haiku 4.5, or DeepSeek and reserving the frontier model for the user-facing generation pass typically cuts the bill by 70-85% with no detectable quality drop in user research.</li>
+    </ul>
+    <p>The calculator surfaces all three by design &mdash; it asks for context size, output length, and call frequency separately, then recomputes against every supported provider. For canonical per-token rates check <a href="https://platform.openai.com/docs/pricing" rel="nofollow noopener" target="_blank">OpenAI's pricing page</a> and <a href="https://www.anthropic.com/pricing" rel="nofollow noopener" target="_blank">Anthropic's Claude pricing</a>. For broader benchmarks on AI-SaaS unit economics, <a href="https://a16z.com/" rel="nofollow noopener" target="_blank">a16z</a> and <a href="https://openviewpartners.com/" rel="nofollow noopener" target="_blank">OpenView</a> publish regular reports on gross margin and pricing patterns at AI-native software companies.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Sample AI-native SaaS feature workload</h2>
+    <p>To make the numbers concrete, here is how a typical AI summary-and-copilot feature lands when run through the calculator at a small seed-stage MAU base:</p>
+    <div class="grid">
+      <div class="card"><div class="label">Monthly active users</div><div class="value">2,500</div><div class="note">~38% weekly active</div></div>
+      <div class="card"><div class="label">AI calls / MAU / month</div><div class="value">42</div><div class="note">Summary + copilot blended</div></div>
+      <div class="card"><div class="label">Avg input context</div><div class="value">3,200 tok</div><div class="note">Doc + history + system</div></div>
+      <div class="card"><div class="label">Avg output length</div><div class="value">400 tok</div><div class="note">~300 words</div></div>
+    </div>
+    <table>
+      <thead><tr><th>Model</th><th>Cost / MAU / mo</th><th>Total monthly COGS</th></tr></thead>
+      <tbody>
+        <tr><td>GPT-5</td><td>$1.94</td><td class="dim">$4,852</td></tr>
+        <tr><td>Claude Sonnet 4.6</td><td>$1.31</td><td class="dim">$3,278</td></tr>
+        <tr><td>Gemini 3 Flash</td><td>$0.18</td><td class="dim">$444</td></tr>
+        <tr><td>DeepSeek V3.1</td><td>$0.10</td><td class="dim">$248</td></tr>
+        <tr><td>Mixed (Flash route + Sonnet copilot)</td><td>$0.46</td><td class="dim">$1,158</td></tr>
+      </tbody>
+    </table>
+    <p>Numbers above are illustrative. Plug your real per-MAU shape into the live tool to get a current comparison against the latest published rates. The "mixed" row is the pattern most profitable AI-native SaaS settles into &mdash; a cheap model for the high-volume invisible work and a flagship for the explicit user-facing generation. Multiply by your projected MAU at the next ARR milestone to see how the COGS line scales, and divide by ARPU to get the gross margin impact in basis points.</p>
+  </div>
+
+  <div class="panel">
+    <h2>How this fits the rest of a SaaS founder's stack</h2>
+    <p>The AI bill is one line on the P&amp;L. The other lines &mdash; brand, marketing site, compliance, and acquisition &mdash; the TinyTools suite already covers most of them without adding another seat license or vendor login:</p>
+    <ul>
+      <li>Naming and domain for new products and sub-brands: the <a href="/domain-generator/">Domain Generator</a> shortcuts the brand-and-WHOIS loop on a product launch or rebrand.</li>
+      <li>Social previews and launch assets: the <a href="/og-image-generator/">OG Image Generator</a> produces share cards for ProductHunt, X, and LinkedIn launches without a design tool subscription.</li>
+      <li>App icons and browser tab branding: the <a href="/favicon-generator/">Favicon Generator</a> ships every size and format your install flow and tab strip need.</li>
+      <li>Brand color systems: the <a href="/color-palette/">Color Palette</a> tool generates the accessible swatches that survive a brand audit.</li>
+      <li>On-page SEO for marketing pages: the <a href="/seo-meta-generator/">SEO Meta Generator</a> writes title tags and meta descriptions that fit the SERP character limits and convert.</li>
+      <li>Compliance for AI features: the <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> produces standard labels increasingly required by enterprise procurement and EU AI Act conformity reviews.</li>
+      <li>Crawler control for your marketing site and docs: the <a href="/ai-robots-txt-generator/">AI Robots.txt Generator</a> manages which crawlers may train on your content marketing.</li>
+    </ul>
+    <p>The pattern is the same across all of them: free, single-purpose, no signup, no extra seat license to expense. For broader reading on AI-SaaS pricing and unit economics, the <a href="https://www.saastr.com/" rel="nofollow noopener" target="_blank">SaaStr</a> archive tracks pricing-model shifts at AI-native startups, and <a href="https://www.bvp.com/atlas" rel="nofollow noopener" target="_blank">Bessemer's Atlas</a> publishes benchmark reports on gross margin and growth efficiency.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Frequently asked questions</h2>
+    <h3>Can I drop the per-MAU comparison directly into a board deck or fundraising model?</h3>
+    <p>Yes &mdash; the table is plain HTML, so it pastes cleanly into a Notion doc, a Google Slides deck, a Linear spec, or a Figma board template. Many founders paste the per-feature COGS number directly into the COGS slide and the assumptions block into the model appendix.</p>
+
+    <h3>Does it model the cheap "mini" tiers for high-volume background features?</h3>
+    <p>Yes. GPT-5 mini, Claude Haiku 4.5, Gemini 3 Flash, and DeepSeek's full lineup are all included. Mini tiers run 5-20x cheaper than the flagship and are usually the right default for embeddings, classification, intent routing, autocomplete, and any feature the user does not consciously experience as "the AI feature."</p>
+
+    <h3>How current is the pricing data?</h3>
+    <p>The calculator reads from a price table that we update whenever a major provider publishes a change. Expect 1-3 day lag on smaller providers, near-real-time on the top five.</p>
+
+    <h3>Can I model multiple features and tiers in one run?</h3>
+    <p>The current calculator models one feature at a time, but founders typically run it three or four times &mdash; one per feature, one per pricing tier &mdash; and sum the totals into a product-wide COGS line. A multi-feature dashboard is on the roadmap for the next release.</p>
+
+    <h3>What about self-hosted or open-weight deployments?</h3>
+    <p>Self-hosted GPU pricing is too workload-dependent to model precisely, but we cover hosted serverless rates (Together, Fireworks, Groq, Bedrock) for Llama, Mistral, Qwen, and DeepSeek &mdash; those are a reasonable upper bound for what a self-hosted deployment saves once ops overhead and reliability engineering are factored in. Worth modeling once you cross roughly 50k MAU on a heavy feature.</p>
+  </div>
+
+  <div class="cta-row">
+    <a class="cta" href="/ai-cost-calculator/">Try the AI Cost Calculator &rarr;</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> &mdash; focused, free utilities for SaaS founders, indie hackers, and product teams.
+  </footer>
+</div>
+</body>
+</html>
