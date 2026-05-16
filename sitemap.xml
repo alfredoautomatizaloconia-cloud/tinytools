@@ -511,5 +511,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/color-palette/blog/color-blindness-testing-deuteranopia-protanopia-tritanopia-2026/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
 
