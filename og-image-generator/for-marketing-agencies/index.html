@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free OG Image Generator for Marketing Agencies — Per-Client Templates, Campaign Cards & White-Label PNGs (2026)</title>
+<meta name="description" content="Built for marketing agencies juggling 10+ client brands. Generate per-client 1200×630 Open Graph images with locked brand colors, campaign tags, and reusable templates — free, browser-only, no signup, unwatermarked PNG export.">
+<meta name="keywords" content="og image generator for marketing agencies, agency social card generator, client campaign og image, white label og image tool, multi-brand twitter card, agency open graph generator, link preview generator for agencies">
+<meta property="og:title" content="OG Image Generator for Marketing Agencies — Free Per-Client Cards, No Signup">
+<meta property="og:description" content="Per-client 1200×630 Open Graph cards with locked brand colors, campaign tags, and reusable templates. Built for agencies shipping launches across 10+ clients a month.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/og-image-generator/for-marketing-agencies/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "OG Image Generator for Marketing Agencies",
+  "description": "Free Open Graph image generator built for marketing agencies: per-client 1200×630 social cards with locked brand colors, campaign-tag overlays, and reusable per-brand templates. Browser-only, no signup, unwatermarked PNG export suitable for white-label client delivery.",
+  "url": "https://tinytools-smoky.vercel.app/og-image-generator/for-marketing-agencies/",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "audience": { "@type": "Audience", "audienceType": "Marketing Agencies" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I use this tool to deliver OG images to agency clients under a white label?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Exports are unwatermarked PNGs at 1200×630, so you can hand them to the client (or upload them directly to their CMS) without any TinyTools branding. There is no attribution requirement, no license to read, and no quota — the tool is a free utility that renders entirely in your browser."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I keep brand colors locked across an entire client roster?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Build one template per client and save the hex codes for primary, secondary, and accent in a shared agency spreadsheet or Notion table. When you open the generator for that client, paste the hex values into the color fields — they render identically every time. For larger rosters, many agencies keep a per-client one-pager with the locked palette, logo position, and typography rules so any team member can produce a card without account-manager approval."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why not just use Canva or Figma for client OG images?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Canva and Figma are great for hero campaign concepts, but they're heavy for the volume an agency actually ships: a typical mid-size agency produces 40–80 link-preview cards per month across announcements, blog posts, and paid campaigns. The friction of opening the file, finding the right brand template, exporting, downloading, and renaming adds up. A purpose-built browser tool with the right output size and a per-client template gets the same job done in under a minute per card."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I batch-generate cards for a full campaign launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The generator keeps your template settings between renders, so once the client's brand template is loaded you only swap the headline and any per-asset fields. Most campaign launches — five blog posts, two press release pages, and a launch hub — can be carded in one sitting before the campaign goes live."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does client image data leave my machine?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Rendering happens entirely in your browser. Client logos, executive headshots, and product photos you upload to the canvas are never sent to a server. This matters for agencies under NDA — especially around unannounced product launches, M&A communications, or anything covered by a client-side embargo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What sizes do I need beyond 1200×630 for client work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1200×630 is the safe baseline for Twitter/X, LinkedIn, Facebook, Threads, Slack, and Discord previews — it covers about 95% of share contexts. For pinned LinkedIn company-page posts and full-bleed Twitter ads you may also want a 1500×500 banner variant, and for Pinterest a 1000×1500 vertical. The generator outputs 1200×630 by default; resize in any tool of your choice for the rare exceptions."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #06b6d4; --accent-glow: #06b6d440;
+    --accent-light: #67e8f9;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 80% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 20% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { text-align: center; padding: 24px 0 16px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.12; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 640px; margin: 0 auto 28px; }
+  .cta {
+    display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px;
+    background: var(--accent); color: #001218; border-radius: 12px; font-weight: 700;
+    text-decoration: none; font-size: 16px; transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 30px var(--accent-glow);
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 40px var(--accent-glow); }
+  h2 {
+    font-size: 26px; font-weight: 700; margin: 48px 0 14px; letter-spacing: -0.01em;
+  }
+  h3 { font-size: 19px; font-weight: 600; margin: 24px 0 8px; color: var(--accent-light); }
+  p { color: var(--text-dim); margin-bottom: 14px; font-size: 16px; }
+  ul { color: var(--text-dim); padding-left: 22px; margin-bottom: 14px; }
+  ul li { margin-bottom: 8px; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px; margin: 18px 0;
+  }
+  a { color: var(--accent-light); text-decoration: underline; text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  .footer-cta {
+    text-align: center; padding: 36px 24px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 20px; margin-top: 48px;
+  }
+  .footer-cta h2 { margin-top: 0; }
+  footer { text-align: center; padding: 32px 0 16px; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--text-dim); }
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 6px; font-size: 0.92em; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="badge">For marketing agencies · Free · No signup</span>
+    <h1>OG Image Generator for Marketing Agencies</h1>
+    <p class="subtitle">Per-client 1200×630 Open Graph cards with locked brand colors and reusable templates — so every blog post, campaign, and press release ships with a share image that actually looks like the client's brand.</p>
+    <a class="cta" href="/og-image-generator/">Open the Generator →</a>
+  </header>
+
+  <h2>The volume problem agencies don't talk about</h2>
+  <p>A mid-size marketing agency with 10 active clients ships somewhere between 40 and 80 link-preview cards per month. Five blog posts per client, plus product launches, gated assets, press releases, and the occasional executive thought-leadership piece. None of them are individually important enough to justify opening Figma and pulling down the client's brand kit. All of them are collectively important enough that letting platforms auto-crop a stock photo into the link slot looks careless to the client's stakeholders.</p>
+  <p>That's the gap this generator fills. It's not for the hero campaign concept — Figma still wins there. It's for the long tail of weekly content where the design decision is already made (the client's brand template) and the only variable is the headline.</p>
+
+  <h2>5 ways agencies use this every week</h2>
+
+  <div class="panel">
+    <h3>1. Per-client blog post cards</h3>
+    <p>Every blog post the agency ships for a client needs an Open Graph image. Without one, the platform falls back to a cropped hero photo or, worse, the client's favicon at thumbnail size. Build one template per client — locked colors, locked logo position, locked typeface — and the only per-post work is pasting the headline. Account managers and junior strategists can ship cards without designer review.</p>
+  </div>
+
+  <div class="panel">
+    <h3>2. Campaign launch hubs and landing pages</h3>
+    <p>When a client launches a multi-channel campaign with its own microsite or landing-page hub, the campaign needs a dedicated OG image distinct from the regular brand template. Generate the campaign card once, drop it into the landing page's <code>og:image</code> meta tag, and every share — paid social, organic posts, internal Slack threads, the press release — pulls the same on-brand preview. Cohesion across channels is what makes the launch feel like a launch.</p>
+  </div>
+
+  <div class="panel">
+    <h3>3. Press release and earned-media cards</h3>
+    <p>PR pickups are where careless OG images cost the agency real money. A journalist tweets the client's press release link, the preview shows a stock newsroom thumbnail or a generic logo, and a sharable moment becomes a forgettable one. A press-release OG card with the headline and a clean client lockup looks deliberate — and trade publications increasingly pull the OG image straight into their own coverage as the article hero.</p>
+  </div>
+
+  <div class="panel">
+    <h3>4. Gated-asset and lead-magnet cards</h3>
+    <p>Whitepapers, industry reports, and benchmark surveys are the agency's bread-and-butter pipeline plays. The gated landing page needs an OG card that signals quality — title in display type, a one-line value prop, the client's accent color. This is the difference between a paid LinkedIn promotion that converts and one that gets scrolled past because the preview looks like clipart.</p>
+  </div>
+
+  <div class="panel">
+    <h3>5. Pitch decks and proposals</h3>
+    <p>When a new-business team sends a proposal link to a prospect, the link previews in email and Slack. A generic preview signals "we use a generic template for new business." A custom card with the prospect's company name and a campaign concept teaser signals the agency has already done the thinking. Five minutes of effort that lifts the win rate noticeably on enterprise pitches.</p>
+  </div>
+
+  <h2>White-label delivery without an account or watermark</h2>
+  <p>The output is an unwatermarked 1200×630 PNG. There is no TinyTools logo embedded, no attribution required in the file, and no agreement to sign before exporting. Agencies can hand the file directly to the client, upload it through the client's CMS, or include it in a delivery zip alongside the rest of the campaign assets. The tool sits in the same category as <a href="https://tinypng.com/" rel="noopener" target="_blank">TinyPNG</a> for compression or <a href="https://realfavicongenerator.net/" rel="noopener" target="_blank">RealFaviconGenerator</a> for favicons — a focused utility you use, ship the output, and close the tab.</p>
+  <p>Because rendering happens client-side, no logo, headshot, or product photo you load into the canvas is ever uploaded to a server. That matters for agencies under embargo on unannounced product launches, M&A announcements, or financial communications. Open the browser dev tools network tab while you generate — there are no outbound requests for image data.</p>
+
+  <h2>Standing up a per-client template the team can actually reuse</h2>
+  <p>The pattern that works for agencies of 5 to 50 people: keep a per-client one-pager in Notion or Google Docs with four things — the locked hex codes (primary, secondary, accent), the logo position rule, the headline typeface (or the closest web-safe fallback if the brand font isn't free), and one example card the creative director has signed off on. When any account manager opens the generator for that client, they paste in the hex codes, position the logo per the rule, and the output matches the signed-off example. No designer in the loop for routine cards.</p>
+  <p>For agencies with formal brand guidelines from the client, this template doc is also the place to note the specific safe zones — the corners reserved for the client's logo, the minimum size for the wordmark, any required tagline placement. Most client brand guides assume print or hero layouts and don't speak to OG specifically. The agency adds that interpretation once per client, then everyone follows it.</p>
+
+  <h2>Pre-publish checklist before the card goes live</h2>
+  <ul>
+    <li>Image is exactly 1200×630 pixels (the generator outputs this by default)</li>
+    <li>Headline is at least 60px so it's readable on a phone scroll</li>
+    <li>Client logo is in the locked position from the client's template doc</li>
+    <li>Accent color matches the hex code in the client one-pager (visual eyeballing is not enough — paste the hex)</li>
+    <li>The page's <code>og:image</code> meta tag points to the absolute URL of the new file, not a relative path</li>
+    <li>Run <a href="https://cards-dev.twitter.com/validator" rel="noopener" target="_blank">Twitter's Card Validator</a> and LinkedIn's Post Inspector after pushing — both cache aggressively, and the inspector run is what forces a re-fetch before the client's stakeholders share the link</li>
+    <li>Add a <code>?v=2026-05</code> cache-buster to the image URL if you're re-uploading to the same path</li>
+  </ul>
+
+  <h2>Frequently asked questions</h2>
+  <h3>Can multiple team members use the same per-client template?</h3>
+  <p>Yes. Templates are defined by the hex codes, logo position, and typography rules in the per-client one-pager — not by an account login. Any team member who opens the generator can recreate the client's locked template by pasting the same values. This is intentional: it removes the bottleneck of one designer owning every brand file.</p>
+
+  <h3>What about clients with very strict brand-compliance requirements?</h3>
+  <p>For Fortune 500 clients with formal brand-compliance review, treat the generator output the same as any other agency deliverable — route the first card per template through the client's brand team for sign-off, then reuse that approved template for the long tail. The output is a flat PNG, so it goes through whatever compliance pipeline the client already runs for static assets.</p>
+
+  <h3>Do we still need a designer on staff?</h3>
+  <p>For hero campaign concepts, brand-system work, and anything that requires actual design judgment — yes, absolutely. This generator handles the routine, high-volume share cards that don't require a designer's eye on each one. Most agencies find their designers prefer this split: more time on the work that uses their craft, less time exporting a thousand 1200×630 PNGs from a Figma frame.</p>
+
+  <div class="footer-cta">
+    <h2>Ship the next campaign's cards in one sitting</h2>
+    <p>Free, browser-only, no signup. Client logos and embargo'd assets never leave your machine.</p>
+    <a class="cta" href="/og-image-generator/">Open the Generator →</a>
+  </div>
+
+  <footer>
+    <p><a href="/">TinyTools</a> · <a href="/og-image-generator/">OG Image Generator</a> · Open Graph card generator for marketing agencies · Updated 2026</p>
+  </footer>
+</div>
+</body>
+</html>
