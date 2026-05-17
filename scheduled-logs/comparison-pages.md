@@ -15,3 +15,12 @@
 | 2026-05-16 | ChatPDF | https://tinytools-smoky.vercel.app/vs/chatpdf/ | sitemap updated; PDF-chat rotation (extends original list) — backfilled |
 | 2026-05-16 | Jobscan | https://tinytools-smoky.vercel.app/vs/jobscan/ | sitemap updated; ATS/resume rotation (extends original list) — backfilled |
 | 2026-05-16 | Grammarly | https://tinytools-smoky.vercel.app/vs/grammarly/ | 1658 visible words; sitemap updated; writing-assistant rotation (extends original list); honest take — recommended Grammarly Pro for cross-app real-time checking + plagiarism, TinyTools for one-off humanizing and AI-detection without an account |
+
+## 2026-05-17 — topaz-labs
+- URL: https://tinytools-smoky.vercel.app/vs/topaz-labs/
+- Competitor: Topaz Labs (Gigapixel AI, Photo AI, Video AI)
+- Category: AI image upscaling / pro photo enhancement
+- Maps to TinyTools tool: /ai-image-upscaler/
+- Word count: ~1,250
+- Total comparison pages live: 28
+- Notes: All 20 competitors from the original rotation list are now covered; this is an expansion pick targeting Topaz brand-search traffic for the ai-image-upscaler tool. Page is honest about Topaz's quality lead on RAW/print/video and positions TinyTools for the casual-web-use case.
