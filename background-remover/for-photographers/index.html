@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Free Background Remover for Photographers — Clean Cutouts Without Lightroom or Photoshop (2026)</title>
+<meta name="description" content="A browser-based background remover for working photographers. Fast PNG cutouts for portfolio teasers, e-commerce client deliverables, and headshot retouching scaffolding. No upload, no signup, no NDA risk.">
+<meta name="keywords" content="background remover for photographers, free background remover photography, png cutout for photographers, headshot background remover, product photo cutout 2026, ecommerce photo background remover, lightroom alternative photographer">
+<meta property="og:title" content="Free Background Remover for Photographers — Clean Cutouts Without Lightroom or Photoshop (2026)">
+<meta property="og:description" content="Browser-only cutouts built around how working photographers actually deliver. NDA-safe, no upload, free.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/background-remover/for-photographers/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Background Remover for Photographers — Clean Cutouts Without Lightroom or Photoshop (2026)">
+<meta name="twitter:description" content="Browser-only cutouts built around how working photographers actually deliver. NDA-safe, no upload, free.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/background-remover/for-photographers/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Background Remover for Photographers","url":"https://tinytools-smoky.vercel.app/background-remover/for-photographers/","applicationCategory":"PhotographyApplication","audience":{"@type":"Audience","audienceType":"Professional photographers, headshot photographers, product photographers, event photographers, real estate photographers"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"operatingSystem":"Web Browser"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is a browser background remover good enough for paid client delivery?","acceptedAnswer":{"@type":"Answer","text":"For social previews, headshot teasers, portfolio pages, and most e-commerce PDPs at standard web resolution, yes. For full-resolution print campaigns, billboards, or any image that will be scrutinized at 100% zoom on a 6K monitor, treat the cutout as the 80% pass and finish the mask in Capture One, Photoshop, or Affinity afterward."}},{"@type":"Question","name":"Can it handle flyaway hair on headshots?","acceptedAnswer":{"@type":"Answer","text":"Hair is rendered as a feathered alpha rather than a clipping path. Wispy strands survive on contrasty backgrounds — a dark suit against a pale studio cyclorama, for example. On busy or tonally similar backgrounds you'll need a 30-60 second brush refinement in your retouching app. The tool isn't replacing a skilled retoucher; it's saving you the first ten minutes of one."}},{"@type":"Question","name":"Are my client RAW or JPEG files uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"The cutout runs locally in your browser tab using a downloaded model. Images are not stored, indexed, or sent to a third-party API. That matters when you've signed an NDA on a fashion lookbook, a celebrity headshot session, or unreleased product photography."}},{"@type":"Question","name":"Does it accept RAW files like .CR3, .ARW, or .NEF?","acceptedAnswer":{"@type":"Answer","text":"No. Export a JPEG or PNG from Lightroom, Capture One, or your tethering software first. The browser canvas can't decode camera-vendor RAW formats. A full-resolution JPEG at quality 95 is the right input for a high-quality cutout."}},{"@type":"Question","name":"Can I batch-process a folder of product shots?","acceptedAnswer":{"@type":"Answer","text":"Drop multiple files into the dropzone at once. Each runs sequentially in the same browser session. For batches over 50 images, split into chunks of 20-25 to keep memory predictable and avoid the tab being killed by the OS during a long session."}}]}</script>
+<style>
+:root{--bg:#0a0a0f;--bg-card:#15151f;--bg-elev:#1d1d2a;--border:#2a2a3a;--text:#f5f5fa;--text-dim:#a0a0b8;--accent:#ec4899;--accent-glow:#ec489940;--green:#10b981;--red:#ef4444;--amber:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;background-image:radial-gradient(circle at 20% 0%,var(--accent-glow) 0%,transparent 50%),radial-gradient(circle at 80% 60%,#a855f740 0%,transparent 50%)}
+.container{max-width:820px;margin:0 auto;padding:32px 20px 80px}
+.breadcrumb{font-size:13px;color:var(--text-dim);margin-bottom:24px}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+h1{font-size:clamp(28px,4vw,42px);font-weight:800;line-height:1.15;margin:16px 0 12px;letter-spacing:-0.02em;background:linear-gradient(135deg,#fff 0%,#fbcfe8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.meta{color:var(--text-dim);font-size:14px;margin-bottom:28px}
+h2{font-size:24px;font-weight:700;margin:36px 0 12px;color:var(--text)}
+h3{font-size:19px;font-weight:600;margin:24px 0 8px;color:var(--text)}
+p,ul,ol{color:#d0d0e0;margin-bottom:16px;font-size:17px}
+ul,ol{margin-left:24px}li{margin-bottom:6px}
+strong{color:var(--text);font-weight:600}
+a{color:var(--accent)}
+code{background:var(--bg-elev);padding:2px 6px;border-radius:4px;font-size:14px;color:#fbcfe8}
+pre{background:var(--bg-elev);padding:14px 16px;border-radius:10px;overflow-x:auto;margin:16px 0;border:1px solid var(--border)}
+pre code{background:transparent;padding:0;color:#fbcfe8;font-size:13px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);color:#d0d0e0;vertical-align:top}
+th{background:var(--bg-elev);color:var(--text);font-weight:600;font-size:14px}
+tr:last-child td{border-bottom:none}
+.yes{color:var(--green);font-weight:600}.no{color:var(--red);font-weight:600}.partial{color:var(--amber);font-weight:600}
+.cta-box{margin:36px 0;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;border-left:4px solid var(--accent)}
+.cta-box h3{margin:0 0 6px;font-size:18px;color:var(--text)}
+.cta-box p{margin-bottom:12px;font-size:15px}
+.cta-btn{display:inline-block;padding:12px 24px;background:linear-gradient(135deg,#ec4899,#a855f7);color:white;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;box-shadow:0 4px 16px rgba(236,72,153,0.3)}
+.related{margin-top:60px;padding-top:28px;border-top:1px solid var(--border)}
+.related h3{color:var(--text-dim);font-size:13px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
+.related-card{padding:14px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text);transition:all 0.15s}
+.related-card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.related-card .name{font-weight:600;font-size:14px}
+.related-card .desc{font-size:12px;color:var(--text-dim);margin-top:2px}
+.panel{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin:14px 0 18px}
+.panel.tt{border-left:3px solid var(--accent)}
+.panel.alt{border-left:3px solid #00c4cc}
+.summary{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin:18px 0 24px}
+.summary strong{color:#fff}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);text-align:center;color:var(--text-dim);font-size:13px}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head><body><div class="container">
+<div class="breadcrumb"><a href="/">TinyTools</a> &nbsp;/&nbsp; <a href="/background-remover/">Background Remover</a> &nbsp;/&nbsp; For Photographers</div>
+
+<h1>Free Background Remover for Photographers</h1>
+<div class="meta">Updated May 17, 2026 · For working portrait, product, e-commerce, and event photographers</div>
+
+<div class="summary"><strong>The pitch.</strong> You shoot 400 frames of a fashion lookbook on a Tuesday and the client wants three teaser cutouts for Instagram by Wednesday lunchtime. You don't need a Photoshop ritual for that. You need to drop a JPEG, get a clean PNG with a transparent background, and move on with culling. This is a browser-only background remover designed around the actual rhythm of a working photographer's week — fast cutouts that respect your NDA and don't touch the cloud.</div>
+
+<h2>The 20-second photographer workflow</h2>
+<ol>
+<li><strong>Export a JPEG</strong> from Lightroom, Capture One, or your tethering app at full-resolution, quality 95.</li>
+<li><strong>Drop it into the dropzone</strong> (or paste with <code>⌘V</code> from clipboard if you've just copied from Capture One).</li>
+<li><strong>Wait ~3-6 seconds</strong> — the model runs locally in your browser tab, not on a server.</li>
+<li><strong>Inspect the alpha edges</strong> over the checkered background. Look at hair, jewelry edges, and rim lighting.</li>
+<li><strong>Download the transparent PNG</strong> and either ship to social, drop into a deck, or open in Photoshop for a 60-second refinement pass.</li>
+</ol>
+
+<div class="cta-box">
+<h3>Skip ahead</h3>
+<p>If you already know what you need, jump straight to the tool. No signup, no upload to a server, no watermark on the output.</p>
+<a class="cta-btn" href="/background-remover/">Try the Background Remover →</a>
+</div>
+
+<h2>Five places working photographers actually use this</h2>
+
+<h3>1. Headshot teasers for the client's social team</h3>
+<p>You shoot 40 corporate headshots on Tuesday. The marketing director needs three teaser images for LinkedIn that afternoon — knocked-out subject on a flat brand color so they sit cleanly inside the carousel template. Cutting all three by hand in Photoshop would take 15 minutes. Doing them in the browser, downloading PNGs, and dropping them into a Figma frame the marketing team can grab takes under two minutes. The retouching deadline for the full delivery doesn't move.</p>
+
+<h3>2. E-commerce product PDP scaffolding</h3>
+<p>You shot 60 SKUs for a small DTC apparel brand. The merchandising team wants to see the product on a pure-white PDP layout before you finalize retouching. Run the JPEG previews through the cutout tool, drop them on a #FFFFFF background, screenshot for the client. They sign off on framing and prop choices on Wednesday instead of waiting until Friday's retouched delivery to flag a hanger or shadow they don't like. Your reshoot risk drops to near zero.</p>
+
+<h3>3. Portfolio site cleanups and case study posts</h3>
+<p>For your own site, a clean cutout of a flagship product or a portrait subject sits well on a hero section. Pair it with a brand-aligned background color from the <a href="/color-palette/">palette tool</a> and you have a portfolio teaser without renting a studio cyc wall. Same trick works for blog posts and Substack newsletter art when you're writing up a shoot retrospective.</p>
+
+<h3>4. Real estate floor plan and listing comp art</h3>
+<p>Real estate photographers often need a quick subject-isolated shot of a kitchen island, a furniture piece, or a staged room for the listing agent's social posts. Cut out the focal element, place it on a brand-colored card, and the agent has a scroll-stopping carousel for Instagram Reels covers without you delivering 40 more retouched frames.</p>
+
+<h3>5. Event photography selects for press and PR teams</h3>
+<p>You're shooting a product launch. PR wants three hero shots of the founder holding the product, isolated, for the embargo-day press kit. Cull, export JPEGs, cutout, pass to PR. Done in the 90 minutes between the event ending and the press embargo lifting. The full edit gets delivered the next morning.</p>
+
+<h2>What this tool is and isn't, honestly</h2>
+<table>
+<thead><tr><th>Use case</th><th>Verdict</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Social teasers, IG carousels</td><td class="yes">Ship it</td><td>Compression on social platforms hides minor edge artifacts.</td></tr>
+<tr><td>PDP comps for client sign-off</td><td class="yes">Ship it</td><td>Speed of feedback beats pixel-perfect masking at the comp stage.</td></tr>
+<tr><td>E-commerce final hero shot</td><td class="partial">Touch up after</td><td>Run through, then refine the mask in Photoshop or Capture One.</td></tr>
+<tr><td>Print campaign at 300dpi</td><td class="partial">Touch up after</td><td>At A3 print scale the eye finds 1-pixel artifacts. Always do a final pass.</td></tr>
+<tr><td>Hair on busy backgrounds</td><td class="no">Manual mask</td><td>Translucent strands need either a paid tool (Topaz Mask AI, Photoroom) or a hand-refined mask.</td></tr>
+<tr><td>Glass, smoke, water, motion blur</td><td class="no">Manual mask</td><td>Anything genuinely translucent is a hand-mask job in any tool, free or paid.</td></tr>
+</tbody>
+</table>
+
+<h2>Why browser-only matters for paid client work</h2>
+<p>Three reasons it's worth a browser tab instead of a desktop subscription or an online upload service:</p>
+<ul>
+<li><strong>NDA and embargo safety.</strong> Unreleased product photography, celebrity headshots, and fashion lookbooks under a 30-day embargo cannot be uploaded to a third-party API that may train on your images. The cutout runs locally in your browser — the file never leaves your machine. Same protection as working offline, with the convenience of a web tool.</li>
+<li><strong>No second subscription.</strong> If you're already paying for the Adobe Photography plan and possibly Capture One, adding a £19/month dedicated cutout tool is a real line item. For occasional cutout work, a free browser tool is the right pricing.</li>
+<li><strong>Works on a borrowed or rental machine.</strong> Studio rental, traveling for a wedding, second body lent to an assistant — open a tab, do the cutout, AirDrop or email the PNG. No install, no licence reactivation, no two-factor auth ritual.</li>
+</ul>
+
+<h2>Pairing with your existing photographer stack</h2>
+<p>The cutout is rarely the final destination. Here's how working photographers wire it into a typical post-production pipeline:</p>
+<ul>
+<li><strong>Lightroom Classic / Lightroom CC:</strong> Export the selected frame as a full-resolution JPEG at quality 90-95 with sRGB embedded. Run the cutout. The transparent PNG goes into a separate "deliverables" folder, never back into the Lightroom catalog.</li>
+<li><strong>Capture One:</strong> Use Process Recipes to export a JPEG at full resolution. The cutout PNG can be re-imported as a referenced file if you want to keep client deliverables organized in the session.</li>
+<li><strong>Photoshop:</strong> Open the PNG, load the alpha channel as a selection, and Feather 1-2px before compositing onto the client's brand background. The <a href="https://helpx.adobe.com/photoshop/using/refine-edge.html" target="_blank" rel="noopener">Refine Edge / Select and Mask workflow</a> is your friend for hair-heavy headshots.</li>
+<li><strong>Affinity Photo 2:</strong> Open the PNG, use the Refine Selection dialog with the Smart Radius option set to around 8px for portrait edge work. Affinity's edge refinement on PNG inputs is solid and a one-time licence beats a monthly Photoshop bill if you only need basic compositing.</li>
+<li><strong>Tethered shooting setups:</strong> Tools like Capture One's Live View or <a href="https://www.dpreview.com/articles/9828658229/photoshelter-archives-cloud-based-services-photographers" target="_blank" rel="noopener">PhotoShelter's delivery workflow</a> pair well with quick browser cutouts when a client at the shoot wants a quick mockup before you wrap.</li>
+</ul>
+
+<h2>Hair, jewelry, and rim-lit edges — managing expectations</h2>
+<p>The model is good at clear subject-background separation. It's less good at three things photographers care about: wispy hair on backgrounds tonally close to it, fine jewelry chains, and dark rim lighting that softly blends a subject's edge into a dark backdrop. None of these are unique failure modes — they're the same edge cases that defeat every automatic cutout product on the market. The honest workflow is: do the auto cutout, identify which 10% of frames have edge issues, hand-refine only those in Photoshop, and ship the other 90% as-is. That keeps your effective rate at $300+/hour instead of $80/hour.</p>
+
+<h2>A note on resolution and EXIF</h2>
+<p>The output is a PNG at the input's pixel dimensions, capped at the browser's canvas limit (typically 16384px on the long edge — enough for any DSLR or mirrorless body shooting at native resolution). EXIF metadata is not preserved on the PNG output — that's an inherent limit of the PNG-from-canvas flow. If the client needs EXIF preserved for licensing or rights metadata, do the cutout, then in Photoshop or ExifTool copy the EXIF block from the original JPEG onto the PNG before delivery.</p>
+
+<h2>Privacy, training, and the cloud question</h2>
+<p>Several popular cutout services let you upload an image and get a cutout back via their API. The implicit deal is: you give them training data in exchange for free or cheap processing. That deal is fine for non-sensitive personal photos and disastrous for paid client work under an NDA. Running the model locally in the browser tab is the only architecture that fully sidesteps the question. Your client's pre-launch product photography stays on your laptop. The output PNG is the only thing that ever leaves your machine, and it leaves only when you upload it to your own delivery service.</p>
+
+<div class="cta-box">
+<h3>Ready to cut out a frame?</h3>
+<p>Drop a JPEG, get a transparent PNG. No signup, no upload, no watermark. Built for photographers who bill hours, not pixels.</p>
+<a class="cta-btn" href="/background-remover/">Try the Background Remover →</a>
+</div>
+
+<div class="related">
+<h3>Related tools for photographers</h3>
+<div class="related-grid">
+<a class="related-card" href="/color-palette/"><div class="name">Color Palette</div><div class="desc">Extract a palette from any shot for editing or branding.</div></a>
+<a class="related-card" href="/favicon-generator/"><div class="name">Favicon Generator</div><div class="desc">Brand your portfolio site tab with a clean favicon.</div></a>
+<a class="related-card" href="/og-image-generator/"><div class="name">OG Image Generator</div><div class="desc">Make link-preview cards for your portfolio posts.</div></a>
+</div>
+</div>
+
+<footer>
+<a href="/">TinyTools</a> · <a href="/background-remover/">Background Remover</a> · Free forever, no signup, your files never leave the browser.
+</footer>
+</div></body></html>
