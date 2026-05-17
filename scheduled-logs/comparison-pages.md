@@ -25,3 +25,11 @@
 - Total comparison pages live: 28
 - Notes: All 20 competitors from the original rotation list are now covered; this is an expansion pick targeting Topaz brand-search traffic for the ai-image-upscaler tool. Page is honest about Topaz's quality lead on RAW/print/video and positions TinyTools for the casual-web-use case.
 - 2026-05-17 — vs/smallpdf — Smallpdf (PDF suite) — https://tinytools-smoky.vercel.app/vs/smallpdf/
+## 2026-05-17 — vs/ilovepdf
+
+- Competitor: iLovePDF (online PDF suite, merge/split/compress/OCR/convert/sign)
+- URL: https://tinytools-smoky.vercel.app/vs/ilovepdf/
+- Maps to TinyTools tools: /chat-with-pdf/, /pdf-to-markdown/
+- Word count: ~1,300
+- Total comparison pages live: 30
+- Notes: This is a deliberately narrow overlap — TinyTools does not do merge/split/compress/sign/OCR and the page is upfront about that. Positions TinyTools as the AI-PDF complement to iLovePDF rather than a feature-equivalent alternative. Includes internal links to chat-with-pdf and pdf-to-markdown, plus a cross-link to the existing vs/smallpdf page for users looking for true feature-equivalent free alternatives. Honest about iLovePDF's strengths (OCR, conversion fidelity, mobile/desktop apps, signing) to avoid Google penalizing biased reviews.
