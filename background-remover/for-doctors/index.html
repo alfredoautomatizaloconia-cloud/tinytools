@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Free Background Remover for Doctors — HIPAA-Safe PNG Cutouts That Never Leave the Browser (2026)</title>
+<meta name="description" content="A browser-only background remover built around how clinical practices actually work. Cut out before-and-after photos, practice headshots, and patient education images without uploading PHI to a server.">
+<meta name="keywords" content="background remover for doctors, HIPAA background remover, medical photo background remover, before and after photo cutout, dermatology photo editor, plastic surgery photo background, clinical photography 2026, medical practice marketing tool">
+<meta property="og:title" content="Free Background Remover for Doctors — HIPAA-Safe PNG Cutouts That Never Leave the Browser (2026)">
+<meta property="og:description" content="Browser-only cutouts built around the constraints of clinical practice. Patient images never touch a server. Free, no signup, no PHI risk.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/background-remover/for-doctors/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Background Remover for Doctors — HIPAA-Safe PNG Cutouts That Never Leave the Browser (2026)">
+<meta name="twitter:description" content="Browser-only cutouts for clinical practices. Patient images never leave your device. Free, no signup.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/background-remover/for-doctors/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Background Remover for Doctors","url":"https://tinytools-smoky.vercel.app/background-remover/for-doctors/","applicationCategory":"MedicalApplication","audience":{"@type":"Audience","audienceType":"Physicians, dermatologists, plastic surgeons, orthopedic surgeons, dentists, medical practice managers, clinical educators"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"operatingSystem":"Web Browser"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this background remover HIPAA-safe for patient photos?","acceptedAnswer":{"@type":"Answer","text":"The cutout runs entirely in your browser tab using a model downloaded once and cached locally. Patient images are not uploaded, stored, indexed, or sent to any third-party API — there is no server-side processing at all. That makes it architecturally aligned with HIPAA's minimum-necessary principle for incidental image handling. It does not replace a Business Associate Agreement when one is required, and you remain responsible for your practice's overall HIPAA compliance, patient consent, and the platforms where you publish the final image. But the tool itself never sees the file."}},{"@type":"Question","name":"Can I use this for before-and-after photos in dermatology or plastic surgery?","acceptedAnswer":{"@type":"Answer","text":"Yes — this is one of the highest-value use cases. Drop the JPEG, get a transparent PNG, place it on a neutral clinical background, and pair before/after frames side-by-side. The original file never leaves your machine, so you can prep marketing assets from photos that are still inside your consent-protected workflow. Always confirm written patient consent covers the marketing use before publishing."}},{"@type":"Question","name":"Will the EHR keep working if I cut out an image first?","acceptedAnswer":{"@type":"Answer","text":"The output is a standard transparent PNG. It will import into Epic, Cerner, athenahealth, Practice Fusion, or any EHR that accepts image attachments. For documentation inside the chart, you typically want the original photo, not a cutout. Save cutouts for marketing, patient education handouts, and grand rounds slides — not the medical record itself."}},{"@type":"Question","name":"Can I batch process a folder of clinical photos?","acceptedAnswer":{"@type":"Answer","text":"Drop multiple files into the dropzone at once and each runs sequentially in the same browser tab. For batches over 50 images, split into chunks of 20-25 to keep browser memory predictable. Each image processes in 2-5 seconds after the first model load."}},{"@type":"Question","name":"Does it accept DICOM files or only standard photos?","acceptedAnswer":{"@type":"Answer","text":"Standard photos only — JPG, PNG, WebP. DICOM files from radiology imaging are a different workflow entirely and require dedicated viewers. For clinical photography taken with a smartphone, point-and-shoot, or DSLR, export as JPEG and you are good to go."}}]}</script>
+<style>
+:root{--bg:#0a0a0f;--bg-card:#15151f;--bg-elev:#1d1d2a;--border:#2a2a3a;--text:#f5f5fa;--text-dim:#a0a0b8;--accent:#ec4899;--accent-glow:#ec489940;--green:#10b981;--red:#ef4444;--amber:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;background-image:radial-gradient(circle at 20% 0%,var(--accent-glow) 0%,transparent 50%),radial-gradient(circle at 80% 60%,#a855f740 0%,transparent 50%)}
+.container{max-width:820px;margin:0 auto;padding:32px 20px 80px}
+.breadcrumb{font-size:13px;color:var(--text-dim);margin-bottom:24px}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+h1{font-size:clamp(28px,4vw,42px);font-weight:800;line-height:1.15;margin:16px 0 12px;letter-spacing:-0.02em;background:linear-gradient(135deg,#fff 0%,#fbcfe8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.meta{color:var(--text-dim);font-size:14px;margin-bottom:28px}
+h2{font-size:24px;font-weight:700;margin:36px 0 12px;color:var(--text)}
+h3{font-size:19px;font-weight:600;margin:24px 0 8px;color:var(--text)}
+p,ul,ol{color:#d0d0e0;margin-bottom:16px;font-size:17px}
+ul,ol{margin-left:24px}li{margin-bottom:6px}
+strong{color:var(--text);font-weight:600}
+a{color:var(--accent)}
+code{background:var(--bg-elev);padding:2px 6px;border-radius:4px;font-size:14px;color:#fbcfe8}
+pre{background:var(--bg-elev);padding:14px 16px;border-radius:10px;overflow-x:auto;margin:16px 0;border:1px solid var(--border)}
+pre code{background:transparent;padding:0;color:#fbcfe8;font-size:13px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);color:#d0d0e0;vertical-align:top}
+th{background:var(--bg-elev);color:var(--text);font-weight:600;font-size:14px}
+tr:last-child td{border-bottom:none}
+.yes{color:var(--green);font-weight:600}.no{color:var(--red);font-weight:600}.partial{color:var(--amber);font-weight:600}
+.cta-box{margin:36px 0;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;border-left:4px solid var(--accent)}
+.cta-box h3{margin:0 0 6px;font-size:18px;color:var(--text)}
+.cta-box p{margin-bottom:12px;font-size:15px}
+.cta-btn{display:inline-block;padding:12px 24px;background:linear-gradient(135deg,#ec4899,#a855f7);color:white;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;box-shadow:0 4px 16px rgba(236,72,153,0.3)}
+.related{margin-top:60px;padding-top:28px;border-top:1px solid var(--border)}
+.related h3{color:var(--text-dim);font-size:13px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
+.related-card{padding:14px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text);transition:all 0.15s}
+.related-card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.related-card .name{font-weight:600;font-size:14px}
+.related-card .desc{font-size:12px;color:var(--text-dim);margin-top:2px}
+.summary{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin:18px 0 24px}
+.summary strong{color:#fff}
+.callout{background:rgba(236,72,153,0.08);border:1px solid var(--accent);border-radius:12px;padding:16px 20px;margin:20px 0;font-size:15px;color:#fbcfe8}
+.callout strong{color:#fff}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);text-align:center;color:var(--text-dim);font-size:13px}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head><body><div class="container">
+<div class="breadcrumb"><a href="/">TinyTools</a> &nbsp;/&nbsp; <a href="/background-remover/">Background Remover</a> &nbsp;/&nbsp; For Doctors</div>
+
+<h1>Free Background Remover for Doctors</h1>
+<div class="meta">Updated May 17, 2026 · For physicians, dermatologists, plastic surgeons, and clinical practice managers</div>
+
+<div class="summary"><strong>The pitch.</strong> You need a clean cutout of a before-and-after dermatology image for the new practice landing page. Or a portrait headshot of every physician on the team with a transparent background, ready to drop into the "Meet the Team" template. Or a procedure-prep illustration cut out for a patient education handout. What you do not need is to upload protected health information to a random "AI image tool" that might cache, log, or train on the file. This is a browser-only background remover where the patient photo never leaves your laptop. Free, no signup, no PHI risk.</div>
+
+<h2>Why "in-browser" is the only safe architecture for clinical photography</h2>
+<p>Most of the popular AI background-remover services on the web work by uploading your image to their backend, running the model on their server, and sending the result back. That implicit data flow is fine for a photo of your dog. It is a serious problem for clinical photography that includes identifiable patient features — facial dermatology cases, full-body plastic surgery, dental smile-design photos, wound documentation, even some orthopedic range-of-motion shots. The U.S. Department of Health and Human Services publishes the <a href="https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html" target="_blank" rel="noopener">HIPAA Privacy Rule</a> with explicit guidance on photographs and identifiers; uploading them to a vendor without a Business Associate Agreement is exactly the kind of disclosure that creates audit risk.</p>
+<p>This tool side-steps the problem entirely. The model is downloaded to your browser once (about 50 MB) and cached. Every cutout after that runs locally in the tab, using your laptop's CPU or GPU through WebAssembly and the ONNX runtime. There is no server endpoint that processes the image. No file is uploaded. No metadata is logged. From a HIPAA architecture standpoint, this is the same as opening Preview.app on macOS or Photos on Windows — a local operation on a device you control.</p>
+
+<div class="callout"><strong>Important:</strong> This is a tool, not a compliance program. Your practice is still responsible for written patient consent for marketing uses, secure storage of the original files, and the privacy posture of wherever you publish the cutout (your website, social media, printed handouts). The tool just guarantees that <em>it</em> is not the source of a leak.</div>
+
+<h2>Five places clinical practices actually use this</h2>
+
+<h3>1. Before-and-after photos for the practice marketing site</h3>
+<p>Dermatology, plastic surgery, dental, dermal-filler, and orthodontics practices all rely on before-and-after photography for new patient acquisition. The standard workflow is: shoot consistent lighting and angle, cull selects, write up an informed-consent release for marketing use, then build a side-by-side comparison for the practice website or Instagram. Cutting both frames to a transparent PNG and placing them on a neutral clinical background (a flat #f8f8f8 or a brand-aligned color from the <a href="/color-palette/">palette tool</a>) makes the comparison read cleanly without the distraction of an exam-room corner, a clinic curtain, or an inconsistent backdrop. The cutout step happens locally — the patient file never leaves your workstation until you decide to publish.</p>
+
+<h3>2. Physician headshots for "Meet the Team" pages</h3>
+<p>A coastal medical group with 14 providers wants a consistent header on each provider's bio page: white coat, transparent background, identical framing. You shot the headshots in the office hallway between morning clinic and lunch — the backgrounds are inconsistent. Drop each JPEG, get a transparent PNG, drop them all onto a brand-aligned background card in Figma or Canva. Two hours for the whole roster, including the new locum who started yesterday. No need to schedule a studio session every time someone joins the practice.</p>
+
+<h3>3. Patient education and pre-procedure handouts</h3>
+<p>For a knee arthroscopy practice, the post-op handout includes a photo of the brace, the ice machine, and the assistive device — each cut out and placed on a clean white background with a number label. Cutting the product shots locally avoids uploading anything (even non-PHI product photography) to a third party. Pair with the <a href="/favicon-generator/">favicon generator</a> if you are also building a small patient portal or a branded PDF cover for the handout.</p>
+
+<h3>4. Conference and grand rounds slides</h3>
+<p>You are presenting a clinical case series at a regional meeting. You have de-identified patient photos with written research consent, but the original exam-room backgrounds are visually noisy and inconsistent across the cases. A clean transparent-PNG cutout, placed on a neutral slide background, makes the clinical findings the visual subject of each slide rather than the background clutter. This is also the right workflow for journal submission images — most journals prefer subject-isolated images with consistent backgrounds rather than original in-context exam-room shots.</p>
+
+<h3>5. Equipment and operatory photography for marketing</h3>
+<p>For dental practices, plastic surgery suites, and aesthetic dermatology offices, photos of the room, equipment, and chair are part of the brand story for new patient acquisition. These are not PHI — they are interiors and product photography — but the workflow benefits from the same speed: shoot with an iPhone, cut out the equipment onto a brand background, drop into the practice website hero or a Google Business profile post in under a minute per image. The <a href="https://www.aapc.com/blog/45620-photography-in-healthcare-marketing-the-legal-considerations/" target="_blank" rel="noopener">AAPC's overview of healthcare marketing photography</a> is a useful reference for what is and is not PHI in this context.</p>
+
+<h2>What this tool is and isn't, honestly</h2>
+<table>
+<thead><tr><th>Use case</th><th>Verdict</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Before-and-after marketing photos</td><td class="yes">Ship it</td><td>Patient file stays local, cutout is clean enough for web and print.</td></tr>
+<tr><td>Practice team headshots</td><td class="yes">Ship it</td><td>Consistent transparent backgrounds across providers without a studio.</td></tr>
+<tr><td>Patient education handouts</td><td class="yes">Ship it</td><td>Product and equipment shots cut quickly onto clean backgrounds.</td></tr>
+<tr><td>Clinical photography <em>inside</em> the chart</td><td class="no">Skip</td><td>EHRs want the original photo for documentation, not a cutout.</td></tr>
+<tr><td>DICOM imaging (X-ray, MRI, CT)</td><td class="no">Use a DICOM viewer</td><td>Wrong file format entirely — this tool handles JPG/PNG/WebP.</td></tr>
+<tr><td>Telemedicine live video</td><td class="no">Use Zoom's blur</td><td>This is a still-image tool, not a real-time background filter.</td></tr>
+</tbody>
+</table>
+
+<h2>The clinical photography workflow this fits into</h2>
+<ol>
+<li><strong>Capture</strong> with consistent lighting on a smartphone or DSLR. Store in your encrypted local folder or in your practice's HIPAA-covered cloud (e.g., a BAA-covered Google Workspace or Microsoft 365 tenant).</li>
+<li><strong>Confirm written consent</strong> for marketing or educational use is on file before doing anything with the image beyond the medical record.</li>
+<li><strong>Export a JPEG</strong> at full resolution from your photo software. Keep the original RAW or HEIC in the consented archive.</li>
+<li><strong>Cut the background</strong> in this tool. The browser handles the file locally; no upload occurs.</li>
+<li><strong>Composite</strong> onto a brand-aligned background in Figma, Canva, Photoshop, or PowerPoint.</li>
+<li><strong>Publish</strong> to the platform that is appropriate for the consent on file — practice website, marketing campaign, conference slide, or patient handout.</li>
+</ol>
+
+<div class="cta-box">
+<h3>Ready to cut a clinical photo?</h3>
+<p>Drop a JPEG, get a transparent PNG. The patient file never touches a server. No signup, no upload, no watermark. Free forever.</p>
+<a class="cta-btn" href="/background-remover/">Try the Background Remover →</a>
+</div>
+
+<h2>Common edge cases for medical imagery</h2>
+<p>Skin tones near the background color, glossy surgical instruments with strong specular highlights, and fine hair around the edge of a portrait — these are the same cases that defeat every automatic cutout tool, paid or free. The pragmatic workflow is: run the auto cutout, accept the 85-90% of frames where the edge is clinically acceptable, and hand-refine the rest in Photoshop's Select and Mask or Affinity Photo's Refine Selection. For dermatology close-ups where the lesion edge is the actual subject of the comparison, hand-refinement around the lesion margin is usually warranted regardless of which automated tool you start with.</p>
+
+<h2>Privacy posture in plain English</h2>
+<p>The model file (BRIA RMBG-1.4) is hosted on a CDN and downloaded to your browser cache on first use. After that, the page runs offline if needed. The image you drop in is decoded by the browser, fed to the model running in WebAssembly, and the resulting PNG is rendered back into the page for you to download. At no point is your image transmitted to TinyTools or any other server. If your IT team or compliance officer wants to verify this, open browser DevTools, go to the Network tab, drop in a test image, and watch — you will see the model download on first load, then zero outbound requests for subsequent cutouts.</p>
+
+<div class="cta-box">
+<h3>One more time, then back to clinic</h3>
+<p>Browser-only background removal. Patient files never leave the device. Built for practices that take HIPAA architecture seriously.</p>
+<a class="cta-btn" href="/background-remover/">Try the Background Remover →</a>
+</div>
+
+<div class="related">
+<h3>Related tools for medical practices</h3>
+<div class="related-grid">
+<a class="related-card" href="/color-palette/"><div class="name">Color Palette</div><div class="desc">Pull a brand palette from your practice photography.</div></a>
+<a class="related-card" href="/favicon-generator/for-doctors/"><div class="name">Favicon Generator</div><div class="desc">Brand the practice website tab with a clean favicon.</div></a>
+<a class="related-card" href="/seo-meta-generator/"><div class="name">SEO Meta Generator</div><div class="desc">Build the meta tags for each provider bio page.</div></a>
+</div>
+</div>
+
+<footer>
+<a href="/">TinyTools</a> · <a href="/background-remover/">Background Remover</a> · Free forever, no signup, your files never leave the browser.
+</footer>
+</div></body></html>
