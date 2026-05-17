@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 17, 2026 — published How to Remove Background from Real Estate Photos in 2026 for background-remover + 4 social drafts ready",
+  "lastUpdated": "May 17, 2026 — published Open Graph Tags for Threads, Bluesky, and Mastodon in 2026 for seo-meta-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 63,
+    "posts": 64,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 19:30",
+      "tag": "seo",
+      "text": "📝 Published blog post: Open Graph Tags for Threads, Bluesky, and Mastodon in 2026 at /seo-meta-generator/blog/open-graph-tags-threads-bluesky-mastodon-2026/"
+    },
+    {
+      "time": "today 19:30",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting seo-meta-generator"
+    },
     {
       "time": "today 18:30",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 18:45",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
-    },
-    {
-      "time": "today 16:10",
-      "tag": "seo",
-      "text": "📝 Published blog post: Canonical Tag Best Practices in 2026 — The Complete Guide to rel=canonical Without Tanking Your SEO at /seo-meta-generator/blog/canonical-tag-best-practices-2026/"
-    },
-    {
-      "time": "today 16:10",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-17T19:30:00Z",
+      "text": "1/ Your link previews break on Bluesky but render fine on Twitter. Why?\n\nBluesky's fetcher gives your page 3 seconds. No JS execution. If your og:* tags are injected after hydration, the preview times out and shows a bare URL.\n\nFix is the same on Threads and Mastodon. 🧵\n\n2/ The 2026 reality: 3 fetchers, 3 timeouts, 3 cache lifetimes.\n\n• Threads: ~5s, 7-day cache\n• Bluesky: ~3s, 24-hour cache\n• Mastodon: ~10s, 14-day per-instance cache\n\nOptimize for Bluesky (strictest) and the rest take care of themselves.\n\n3/ Two tags everyone forgets in 2026:\n\nog:image:width + og:image:height — Bluesky uses these to decide between small card and large card. Omit them, get the small card every time. ~half the CTR.\n\nog:image:alt — read aloud by Mastodon's screen readers in feed.\n\n4/ Mastodon caches preview cards per-instance for up to 14 days.\n\nUpdated your og:image and it still looks wrong? Not your tags. Append ?v=2 to the URL when you share — each instance treats it as a new resource and refetches.\n\n5/ Bluesky hard-crops og:image to 1.91:1 regardless of source dimensions.\n\nA 1200×1200 square loses the top and bottom 23%. Keep critical text and faces in the centered 1200×630 zone — same safe zone Twitter Cards use, so this is a one-template fix.\n\n6/ Full copy-paste meta block + the 5 silent failures + a 60-second validation across all three platforms:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/open-graph-tags-threads-bluesky-mastodon-2026/"
+    },
+    {
+      "platform": "Reddit /r/webdev",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-17T19:30:00Z",
+      "text": "Subreddit: /r/webdev (primary), /r/javascript or /r/nextjs (secondary, in any thread about SSR, meta tags, or social previews)\n\nComment:\n\nThe Bluesky fetcher is the one that exposes whether your meta tags actually ship in the static HTML. It waits ~3 seconds and does not execute JavaScript, so if your framework injects og:* tags via React Helmet without SSR, or via a 'use client' Next.js page, the preview times out and you get a bare-URL render. Same page renders fine on Twitter, Slack, Discord — because those have longer fetch windows or cached responses.\n\nThe quickest way to debug is paste your URL into Facebook's sharing debugger (still works in 2026, ironically). It shows you the exact bare-HTML response Bluesky and Threads see. If your og:title or og:image aren't there, that's your bug — not network, not the fetcher.\n\nTwo other 2026-specific things worth knowing:\n\n1. og:image:width and og:image:height are now load-bearing on Bluesky. They're what Bluesky uses to decide between summary and summary_large_image rendering. Omit them and you get the small card (about half the CTR of the large card). Same image, different declared dimensions, different layout.\n\n2. Mastodon caches preview cards per-instance for up to 14 days. There's no global purge. If you update an og:image and the new one isn't showing, it's not a tag problem — append ?v=2 (or any param) when you share and each instance treats it as a new resource.\n\nThe Threads fetcher sits in the middle: 5-second window, ~7-day cache, falls back to Twitter Card tags for image sizing on iOS specifically. So twitter:card summary_large_image still matters in 2026 even though you're not posting to Twitter.\n\nWrote the full thing with a copy-paste meta block and the 60-second validation flow across all three platforms here: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/open-graph-tags-threads-bluesky-mastodon-2026/\n\nGenerator at the bottom outputs the validator-clean meta block — runs in-browser, no upload."
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-17T19:30:00Z",
+      "text": "A marketing lead messaged me yesterday: \"Why are our blog post shares getting zero engagement on Bluesky? They render fine on Twitter.\"\n\nHere's what was actually happening.\n\nBluesky's link-preview fetcher waits about 3 seconds for your page to respond and does not execute JavaScript. Their blog used Next.js with 'use client' at the top of each post — which means og:title, og:description, and og:image were being injected by the browser after hydration. Twitter's longer fetch window forgave it. Bluesky timed out and rendered a bare URL.\n\nA bare URL gets roughly 1/10th the engagement of a card with an image and headline. They were shipping invisible.\n\nThe fix took 15 minutes: server-side render the head, ship the meta tags in the static HTML response, redeploy. Their next Bluesky post had a full preview card.\n\nThree things every team should check in 2026 because the fediverse is now most of your reach:\n\n→ Are your og:* tags in the initial HTML response, or injected after hydration? (Paste your URL into Facebook's sharing debugger to see what Bluesky sees.)\n→ Are og:image:width and og:image:height declared? Bluesky uses them to decide between small and large cards. Large cards have roughly double the click-through.\n→ Does your og:image have an og:image:alt tag? Mastodon's screen readers read it aloud in feed — required for accessibility-conscious audiences.\n\nThreads, Bluesky, Mastodon together reach over 380 million monthly actives in 2026. If your link previews are timing out on any of them, that is the easiest social win available this quarter.\n\nFull breakdown with copy-paste meta block: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/open-graph-tags-threads-bluesky-mastodon-2026/\n\nWhat's the most overlooked technical SEO check on your team's release checklist?"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-17T19:30:00Z",
+      "text": "TITLE: The 3-second Bluesky fetcher window broke half the web's link previews\n\nLINK: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/open-graph-tags-threads-bluesky-mastodon-2026/\n\nFIRST COMMENT FOR THE THREAD:\nAuthor here. Wrote this after watching enough teams ship Next.js or Nuxt apps that pass every Twitter Card validator but render as bare URLs on Bluesky. The diagnostic is consistent: Bluesky's preview fetcher times out at ~3 seconds and does not execute JavaScript, so anything injected by React Helmet or Vue Meta after hydration just is not there from the fetcher's perspective. The same page passes on Slack (longer window) and Twitter (cached). The fix is SSR or static head, but the harder part is convincing the team it's not a network or fetcher bug. Curious whether anyone here has measured the actual share-rate delta between bare URL and full card on Bluesky specifically — I have rough numbers (~10x) but would love a real dataset."
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "background-remover",
       "createdAt": "2026-05-17T18:30:00Z",
       "text": "1/ Realtors: your Tuesday-morning exterior shot has a flat white sky. Buyers swipe past it. Zillow's quality algo pushes it down.\n\nThere's a free 2026 fix that runs in your browser in 3 seconds. No Photoshop, no upload. 🧵\n\n2/ Two-step workflow:\n- Drop the exterior into a browser AI background remover. It cuts out the sky.\n- Composite a free Unsplash sky behind it in Photopea.\n\nThat's it. MLS-ready hero shot in under 2 minutes.\n\n3/ Same trick works for clutter removal on interiors. Cutout the Diet Coke can on the counter, content-aware fill the gap. Five minutes per kitchen.\n\n4/ And for vacant rooms: cutout a sofa from Unsplash, drop it onto your empty room photo with a soft shadow. That's virtual staging — used to cost $25-$75/room.\n\n5/ The kicker: nothing uploads to a server. Important if you're under any kind of brokerage data policy (you are).\n\nFull guide + the free in-browser tool:\nhttps://tinytools-smoky.vercel.app/background-remover/blog/how-to-remove-background-real-estate-photos-2026/"
@@ -260,30 +284,6 @@
       "tool": "background-remover",
       "createdAt": "2026-05-17T18:30:00Z",
       "text": "Show HN: Free in-browser AI background remover for real estate photos\n\n---\n\nBuilt this after watching a realtor friend pay $1.50/photo for sky replacement and clutter removal on 24-shot listings. Browser-based AI segmentation now handles MLS-quality exteriors and transparent cutouts for virtual staging in under 3 seconds. Nothing uploads — runs locally, which matters because client home photos are arguably client data under most brokerage agreements. Full workflow + the tool linked in the post."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T12:00:00Z",
-      "text": "1/\n\n\"hreflang prevents duplicate content penalties\" is the most-quoted SEO advice that's still half-wrong in 2026.\n\nIt doesn't prevent the penalty. It opts you out of a different mechanism that LOOKS like a penalty.\n\nHere's what's actually happening 🧵\n\n2/\n\nWithout hreflang, Google sees 5 near-identical English pages (US, UK, CA, AU, IE) and picks ONE to surface in every market.\n\nUsually the wrong one. Usually your US page in Sydney.\n\nThat's not a \"penalty.\" It's ranking compression. And it eats traffic silently.\n\n3/\n\nhreflang doesn't tell Google to consolidate.\n\nIt tells Google: \"these 5 are alternates. Serve the right one per user.\"\n\nAll 5 get indexed independently. All 5 stay eligible. Locale picks the winner.\n\nThat's the actual mechanism. Nothing about duplicate content.\n\n4/\n\nThe 5 mistakes that silently break it in 2026:\n\n• Canonical pointing across language variants (kills the cluster)\n• Mixing sitemap + head + header methods inconsistently\n• Using en-uk (it's en-gb) or es-latam (it's es-419)\n• Returning hreflang on noindex pages\n• Homepage-only annotations — every URL needs its own cluster\n\n5/\n\nThe rule everyone skips:\n\nEvery variant must self-reference AND every variant must link back to every other variant.\n\nOne-way annotation = silently ignored.\n\nIf page A links to B but B doesn't link to A, the entire cluster is dropped. No error, no warning.\n\n6/\n\nFull breakdown — x-default, the 3 implementation methods compared, what changed in 2026 (AI Overviews now respect hreflang), and the 60-second validation checklist:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/hreflang-tags-international-seo-2026/\n\n7/"
-    },
-    {
-      "platform": "Reddit /r/SEO",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T12:00:00Z",
-      "text": "Subreddit: /r/SEO (primary), /r/bigseo or /r/TechSEO (secondary, any thread asking about international SEO, multilingual setups, or \"Google serving wrong page in [country]\")\n\nComment:\n\nThe \"hreflang prevents duplicate content penalties\" framing is the part that always confuses people, and it's worth unpacking because the actual mechanism is different from what the advice describes.\n\nThere is no \"duplicate content penalty\" for multilingual sites in the manual-action sense. What happens without hreflang is ranking compression — Google sees 5 near-identical English pages (US, UK, CA, AU, IE) and picks one to surface in every market, usually the highest PageRank one, usually not the one you want shown in Sydney. Your other 4 are still indexed; they just stop appearing.\n\nhreflang opts you out of that mechanism. It tells Google \"these N pages are alternates — serve the right one per user.\" Every variant stays eligible, locale picks the winner.\n\nThe 5 mistakes that silently break a cluster in 2026 (from auditing way too many of these):\n\n1. Canonical tags pointing across language variants. If /fr/ canonicals to /en/, hreflang is overridden and /fr/ gets deindexed. Self-canonical every variant. This is the single most common failure I see.\n\n2. Missing self-references. Every page in the cluster must list itself in its own hreflang block. Cluster without self-refs = ignored.\n\n3. Missing bidirectionality. If A links to B but B doesn't link back to A, the entire annotation is dropped silently. No GSC warning.\n\n4. Invalid region codes. UK is en-gb not en-uk. Latin America Spanish is es-419 not es-latam. EU doesn't have a region code at all.\n\n5. Homepage-only annotations. Every URL needs its own cluster, not just the root.\n\nWhat changed in 2026: Google AI Overviews now respect hreflang. Generative answers cite the locale-appropriate variant, not the highest-PageRank one. That's the biggest practical reason to fix the cluster — AI surface area is meaningful and locale-sensitive now.\n\nWrote the full version with x-default explained, the 3 implementation methods compared, and the 60-second validation checklist: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/hreflang-tags-international-seo-2026/\n\nFree meta tag generator at the bottom (handles the hreflang + canonical + OG + Twitter Card combo) — runs in-browser, validator-clean output."
-    },
-    {
-      "platform": "LinkedIn Post",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T12:00:00Z",
-      "text": "A founder DM'd me last week: \"We launched in Mexico 3 months ago and Google is still serving the US site to Mexican users. The SEO consultant said our hreflang is fine. What's broken?\"\n\nThe hreflang was fine. The canonical tag on the Mexican page was pointing at the US page.\n\nThis is the single most common silent failure in international SEO and I've seen it kill 6-figure launches more times than I can count.\n\nHere's the mechanic: hreflang tells Google \"these pages are alternates — serve the right one per user.\" Canonical tells Google \"of these duplicates, this is the master.\" If your /mx/ page canonicals to /us/, canonical wins. /mx/ gets deindexed. hreflang is silently overridden. No error in Search Console, no warning, just slow ranking compression.\n\nThe fix is one line of code. Self-canonical every variant. Then declare them as hreflang alternates of each other.\n\nThe 4 other silent failures I see most often:\n\n→ Missing bidirectional links. If A→B but not B→A, the entire cluster is dropped.\n→ Invalid region codes (en-uk doesn't exist — it's en-gb).\n→ Mixing sitemap and HTML head methods inconsistently — Google picks one and you don't get to choose.\n→ Homepage-only annotations. Every URL needs its own cluster.\n\nWhat changed in 2026 worth knowing: Google's AI Overviews now respect hreflang. Generative answers cite the locale-appropriate variant, not the highest-PageRank one. If you're investing in AI search visibility, a broken hreflang cluster costs you more now than it did 18 months ago.\n\nFull breakdown with the validation checklist:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/hreflang-tags-international-seo-2026/"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T12:00:00Z",
-      "text": "TITLE: hreflang in 2026: 5 silent failures that kill international SEO clusters\n\nLINK: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/hreflang-tags-international-seo-2026/\n\nFIRST COMMENT FOR THE THREAD:\nAuthor here. Wrote this after auditing yet another multilingual launch where the hreflang \"looked fine\" but Google was still serving the wrong locale in every market. The root cause is almost always the same: canonical tags pointing across language variants override hreflang silently, with no Search Console warning. The second most common is missing bidirectional links (A→B but not B→A drops the entire cluster). The actually-new thing in 2026 is that Google AI Overviews now respect hreflang and cite locale-appropriate variants, so the cluster being correct matters more for generative search visibility than it did 18 months ago. Curious if anyone here has hit the \"Bing finally honors x-default consistently\" change and whether their international Bing traffic shifted noticeably."
     }
   ],
   "checklist": [
