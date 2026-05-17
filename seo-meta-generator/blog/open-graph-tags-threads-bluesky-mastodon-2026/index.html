@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Graph Tags for Threads, Bluesky, and Mastodon in 2026 — The Complete Federated Link Preview Guide</title>
+<meta name="description" content="How link previews actually work on Threads, Bluesky, and Mastodon in 2026: which Open Graph tags each platform reads, the fediverse fetch quirks that kill preview cards, and a copy-paste template that renders correctly everywhere.">
+<meta name="keywords" content="open graph threads bluesky mastodon 2026, og tags fediverse, bluesky link preview, mastodon link preview, threads og image, fediverse open graph, link preview activitypub, og:image bluesky, og tags federated social, social meta tags 2026">
+<meta property="og:title" content="Open Graph Tags for Threads, Bluesky, and Mastodon in 2026">
+<meta property="og:description" content="Which OG tags each fediverse platform actually reads, the fetch quirks that silently break preview cards, and a copy-paste template that renders correctly everywhere.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/seo-meta-generator/blog/open-graph-tags-threads-bluesky-mastodon-2026/">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/seo-meta-generator/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Open Graph Tags for Threads, Bluesky, and Mastodon in 2026">
+<meta name="twitter:description" content="Which OG tags each fediverse platform actually reads in 2026, and the fetch quirks that silently break previews.">
+<meta name="twitter:image" content="https://tinytools-smoky.vercel.app/seo-meta-generator/og-default.png">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/seo-meta-generator/blog/open-graph-tags-threads-bluesky-mastodon-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Open Graph Tags for Threads, Bluesky, and Mastodon in 2026 — The Complete Federated Link Preview Guide",
+  "description": "How link previews actually work on Threads, Bluesky, and Mastodon in 2026: which Open Graph tags each platform reads, the fediverse fetch quirks that kill preview cards, and a copy-paste template that renders correctly everywhere.",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
+  "datePublished": "2026-05-17",
+  "dateModified": "2026-05-17",
+  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/seo-meta-generator/blog/open-graph-tags-threads-bluesky-mastodon-2026/",
+  "image": "https://tinytools-smoky.vercel.app/seo-meta-generator/og-default.png",
+  "keywords": "open graph threads bluesky mastodon 2026, og tags fediverse, bluesky link preview, mastodon link preview, threads og image, fediverse open graph"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do Threads, Bluesky, and Mastodon all use Open Graph tags?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. All three read Open Graph meta tags as their primary source for link previews. Threads also falls back to Twitter Card tags for image sizing, Bluesky reads og:image dimensions to decide between summary and summary_large_image rendering, and Mastodon uses og:type to decide whether to show a player embed or a static card. The same OG block works for all three with two small additions covered below." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my link preview show on Threads but not on Bluesky?",
+      "acceptedAnswer": { "@type": "Answer", "text": "In 2026 the most common cause is the Bluesky fetcher timing out on slow first-paint pages. Bluesky's preview service waits about 3 seconds for the HTML response and does not execute JavaScript, so any page that renders meta tags client-side or has a slow TTFB will silently fail. The fix is to render og:title, og:description, and og:image server-side or in a static HTML head before any hydration." }
+    },
+    {
+      "@type": "Question",
+      "name": "What og:image dimensions work on all three platforms in 2026?",
+      "acceptedAnswer": { "@type": "Answer", "text": "1200x630 pixels at under 1 MB is the safe default that renders correctly on Threads, Bluesky, and Mastodon. Bluesky crops to a 1.91:1 ratio in the feed, Mastodon respects the full 1200x630, and Threads center-crops to 1.91:1 on desktop and a tighter ratio on mobile. Avoid critical content in the outer 10 percent on any side." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Mastodon cache preview cards aggressively?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Each Mastodon instance caches preview cards independently, and most instances keep cards for 14 days. There is no global purge — to force a refresh you append a tracking parameter to the URL so the fetcher treats it as a new resource. Updating og:image on a heavily-shared URL does not propagate retroactively." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need ActivityPub-specific meta tags for federated platforms?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. The fediverse uses standard Open Graph as its preview protocol. The only ActivityPub-specific tags are profile-discovery tags (rel=me, webfinger) that help users verify ownership on Mastodon — they do not affect link previews. For link cards, the same og:* and twitter:* tags that power Threads also power Bluesky and every Mastodon instance." }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a;
+    --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #3b82f6; --accent-glow: #3b82f640;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 {
+    font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15;
+    margin: 16px 0 12px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 24px; font-weight: 700; margin: 36px 0 12px; color: var(--text); }
+  h3 { font-size: 19px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+  p, ul, ol { color: #d0d0e0; margin-bottom: 16px; font-size: 17px; }
+  ul, ol { margin-left: 24px; }
+  li { margin-bottom: 6px; }
+  strong { color: var(--text); font-weight: 600; }
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-size: 14px; color: #93c5fd; }
+  pre { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; padding: 16px; overflow-x: auto; margin: 16px 0; font-size: 13px; line-height: 1.5; }
+  pre code { background: none; padding: 0; color: #d0d0e0; }
+  a { color: var(--accent); }
+  blockquote {
+    border-left: 3px solid var(--accent); padding: 8px 16px; margin: 20px 0;
+    background: var(--bg-elevated); border-radius: 6px; font-style: italic; color: var(--text-dim);
+  }
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 15px;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); color: #d0d0e0; }
+  th { background: var(--bg-elevated); color: var(--text); font-weight: 600; font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  .cta-box {
+    margin: 36px 0; padding: 24px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; border-left: 4px solid var(--accent);
+  }
+  .cta-box h3 { margin: 0 0 6px; font-size: 18px; color: var(--text); }
+  .cta-box p { margin-bottom: 12px; font-size: 15px; }
+  .cta-btn {
+    display: inline-block; padding: 12px 24px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+  }
+  .related { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .related h3 { color: var(--text-dim); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card {
+    padding: 14px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--text); transition: all 0.15s;
+  }
+  .related-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .related-card .name { font-weight: 600; font-size: 14px; }
+  .related-card .desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;&rsaquo;&nbsp;
+    <a href="/seo-meta-generator/">SEO Meta Generator</a> &nbsp;&rsaquo;&nbsp;
+    OG Tags for Threads, Bluesky, Mastodon 2026
+  </div>
+
+  <h1>Open Graph Tags for Threads, Bluesky, and Mastodon in 2026 — The Complete Federated Link Preview Guide</h1>
+  <div class="meta">May 17, 2026 &middot; 9 min read &middot; By TinyTools</div>
+
+  <p>For ten years the link-preview conversation had two columns: Facebook and Twitter. In 2026 it has at least five &mdash; and three of them (Threads, Bluesky, and the entire Mastodon federation) read Open Graph slightly differently, cache it on different schedules, and silently drop your preview card for reasons that never show up in a validator. If your share rate dropped after you stopped chasing Twitter&rsquo;s API and started posting where the conversation actually is, this is probably why.</p>
+
+  <p>This is a working field guide to what each platform&rsquo;s fetcher does in 2026, the five quirks that kill preview cards, and a single copy-paste meta block that renders correctly on all three without per-platform branching.</p>
+
+  <h2>What changed in 2026: the fediverse is now most of your reach</h2>
+
+  <p>Threads cleared 320 million monthly actives this spring and turned on full ActivityPub federation by default. Bluesky crossed 50 million accounts after the December onboarding wave and is the de-facto replacement for tech Twitter. Mastodon&rsquo;s top 200 instances now host roughly 12 million active accounts, and ActivityPub bridges mean a post from any of them can land in a feed on the others.</p>
+
+  <p>Practically: the same blog post URL is now being fetched by three preview services with three different fetcher behaviors, and the worst-case rendering is the one your audience sees. Optimize for the strictest fetcher and the rest take care of themselves.</p>
+
+  <h2>How each platform fetches and renders previews</h2>
+
+  <p>The underlying protocol is the same on all three &mdash; an HTTP GET that parses the HTML <code>&lt;head&gt;</code> for Open Graph and Twitter Card meta tags &mdash; but the way that GET is made differs in ways that matter:</p>
+
+  <table>
+    <thead><tr><th>Platform</th><th>Fetcher timeout</th><th>JS executed?</th><th>User-Agent</th><th>Cache lifetime</th></tr></thead>
+    <tbody>
+      <tr><td>Threads</td><td>~5s</td><td>No</td><td><code>meta-externalagent</code></td><td>~7 days (per-edge)</td></tr>
+      <tr><td>Bluesky</td><td>~3s</td><td>No</td><td><code>Bluesky Cardyb/1.0</code></td><td>~24 hours</td></tr>
+      <tr><td>Mastodon</td><td>~10s</td><td>No</td><td><code>Mastodon/x.y.z</code> (per instance)</td><td>~14 days (per instance)</td></tr>
+    </tbody>
+  </table>
+
+  <p>None of them execute JavaScript. Every meta tag you care about has to be in the static HTML response, before any client-side hydration runs. This is the single most common failure mode in 2026: pages that work fine on Twitter (which never executed JS either) and on Slack (which has a much longer fetcher window) silently render as bare URLs on Bluesky because the 3-second budget expired before the framework finished serializing the head.</p>
+
+  <h2>The minimum-viable meta block that works everywhere</h2>
+
+  <p>Drop this in your HTML <code>&lt;head&gt;</code> and you cover all three platforms plus the Twitter, Facebook, Slack, Discord, iMessage, and LinkedIn fetchers as a bonus. Inline-replace the four <code>{...}</code> values per page:</p>
+
+  <pre><code>&lt;!-- Open Graph (Threads, Bluesky, Mastodon, FB, LinkedIn, Slack, Discord) --&gt;
+&lt;meta property="og:title" content="{Page title, &lt;= 60 chars}" /&gt;
+&lt;meta property="og:description" content="{Summary, &lt;= 155 chars}" /&gt;
+&lt;meta property="og:image" content="https://example.com/og/{page}.png" /&gt;
+&lt;meta property="og:image:width" content="1200" /&gt;
+&lt;meta property="og:image:height" content="630" /&gt;
+&lt;meta property="og:image:alt" content="{Describe the image, &lt;= 100 chars}" /&gt;
+&lt;meta property="og:url" content="https://example.com/{canonical-path}/" /&gt;
+&lt;meta property="og:type" content="article" /&gt;
+&lt;meta property="og:site_name" content="{Brand name}" /&gt;
+
+&lt;!-- Twitter Card (used as fallback by Threads on iOS) --&gt;
+&lt;meta name="twitter:card" content="summary_large_image" /&gt;
+&lt;meta name="twitter:title" content="{Page title, &lt;= 60 chars}" /&gt;
+&lt;meta name="twitter:description" content="{Summary, &lt;= 155 chars}" /&gt;
+&lt;meta name="twitter:image" content="https://example.com/og/{page}.png" /&gt;</code></pre>
+
+  <p>Three things in that block are non-obvious and matter a lot in 2026. First, <code>og:image:width</code> and <code>og:image:height</code> are how Bluesky decides between the small and large card layouts &mdash; omit them and you get the small card every time, which has roughly half the click-through. Second, <code>og:image:alt</code> is the only one of these tags that affects accessibility on Mastodon and is read aloud by screen readers in feeds. Third, <code>og:site_name</code> shows up as the byline on Threads but as the source-attribution chip on Bluesky &mdash; both worth claiming.</p>
+
+  <div class="cta-box">
+    <h3>Generate the full meta block in 30 seconds</h3>
+    <p>Paste your URL, title, and description &mdash; get a clean, validator-passing meta block with OG, Twitter Card, JSON-LD, and canonical tags ready to drop into <code>&lt;head&gt;</code>. Runs entirely in your browser.</p>
+    <a class="cta-btn" href="/seo-meta-generator/">Try the SEO Meta Generator free &rarr;</a>
+  </div>
+
+  <h2>The five silent failures (and how to spot them)</h2>
+
+  <h3>1. Client-rendered meta tags</h3>
+  <p>If your framework injects <code>og:*</code> tags after hydration (React Helmet without SSR, Vue Meta in SPA mode, Next.js with <code>'use client'</code> at the top of the page), Bluesky will time out and Mastodon will fetch only the bare HTML shell. The fix is server-side rendering or static export of the head &mdash; not just the body. <a href="https://developers.facebook.com/tools/debug/" rel="noopener" target="_blank">Facebook&rsquo;s sharing debugger</a> still shows the same response Bluesky and Threads see, so use it to verify.</p>
+
+  <h3>2. Large or slow-loading og:image</h3>
+  <p>An <code>og:image</code> over about 5 MB will be dropped by Bluesky and downsampled to a placeholder by Threads. Cap to under 1 MB, encode as JPEG or compressed PNG, and serve from a CDN. If your OG images render dynamically (Next.js <code>@vercel/og</code>, Cloudflare workers), pre-cache the response so the first fetcher does not hit a 4-second cold start.</p>
+
+  <h3>3. Stale Mastodon cache</h3>
+  <p>Each Mastodon instance caches preview cards independently for up to 14 days. If you republish a post and the image looks wrong, do not assume your tags are broken &mdash; append <code>?v=2</code> (or any tracking param) to the URL when sharing. Each instance treats it as a new resource and refetches.</p>
+
+  <h3>4. Bluesky&rsquo;s 1.91:1 hard crop</h3>
+  <p>Bluesky crops <code>og:image</code> to a 1.91:1 aspect ratio in feed regardless of what you declare. A 1200&times;630 image (already 1.91:1) renders identically. A 1200&times;1200 square gets its top and bottom 23 percent sliced off. Keep critical text and faces in the centered 1200&times;630 safe zone &mdash; the same zone used for Twitter Cards and Threads, so this is a one-template-fits-all problem.</p>
+
+  <h3>5. Mixed-protocol canonical mismatch</h3>
+  <p>If <code>og:url</code> uses HTTPS and an inbound share link uses HTTP (or has a trailing slash difference), Threads sometimes shows the bare link instead of the card. Always include a self-referencing <code>&lt;link rel="canonical"&gt;</code> matching <code>og:url</code> exactly, and redirect HTTP &rarr; HTTPS at the edge before the fetcher reaches the page.</p>
+
+  <h2>Validation: a 60-second check across all three platforms</h2>
+
+  <ol>
+    <li>Run the URL through <a href="https://www.opengraph.xyz/" rel="noopener" target="_blank">OpenGraph.xyz</a> &mdash; it simulates the bare-HTML fetch all three fetchers use.</li>
+    <li>For Bluesky specifically, paste the URL into the compose box on web (without posting) and confirm the card renders within 3 seconds. If it does not, your TTFB is the problem.</li>
+    <li>For Mastodon, paste the URL into a draft on <a href="https://mastodon.social/" rel="noopener" target="_blank">mastodon.social</a> or your home instance and watch the card render. If it shows on one instance but not another, you have a cache or fetcher issue, not a meta tag issue.</li>
+    <li>For Threads, the in-app composer renders previews live as you type the URL &mdash; the fastest of the three to verify visually.</li>
+  </ol>
+
+  <h2>The ActivityPub-specific tags worth adding (optional)</h2>
+
+  <p>None of these are required for link previews, but they unlock other federated-social behaviors:</p>
+
+  <ul>
+    <li><code>&lt;link rel="me" href="https://mastodon.social/@you" /&gt;</code> &mdash; lets you put a verified green checkmark next to your URL in your Mastodon profile.</li>
+    <li><code>&lt;link rel="webfinger" href="..." /&gt;</code> &mdash; lets your domain be used as a fediverse handle (<code>@you@example.com</code>).</li>
+    <li><code>&lt;meta name="fediverse:creator" content="@you@mastodon.social" /&gt;</code> &mdash; emerging tag that some Mastodon instances now surface as a byline on shared links. Not universally supported but harmless.</li>
+  </ul>
+
+  <h2>What about Threads&rsquo; new "context cards"?</h2>
+
+  <p>Threads is testing an extended card format that pulls additional structured data &mdash; author, published date, reading time &mdash; from a page&rsquo;s JSON-LD <code>Article</code> schema. It is not live for every account yet, but pages that already have valid JSON-LD inherit the richer card automatically when rollout hits. This is the second-cheapest 2026 social win after fixing your OG tags: most CMSs ship valid Article schema, and the same JSON-LD also feeds Google AI Overviews and Bing&rsquo;s generative answers.</p>
+
+  <h2>A reasonable copy-paste workflow</h2>
+
+  <p>For most blogs and SaaS landing pages in 2026, the entire problem reduces to: render Open Graph and Twitter Card tags server-side, point to a 1200&times;630 image under 1 MB, set <code>og:image:width</code> and <code>og:image:height</code> so Bluesky picks the large card, and add <code>og:image:alt</code> for Mastodon&rsquo;s screen readers. Everything else (instance caching, fetcher timeouts, ActivityPub niceties) is optimization. Get that base right and your link previews will work on Threads, Bluesky, Mastodon, and every legacy platform that still bothers fetching them.</p>
+
+  <p>If you would rather not hand-write the block, the <a href="/seo-meta-generator/">SEO Meta Generator</a> outputs the exact template above with your fields plugged in, including the JSON-LD Article schema that unlocks Threads&rsquo; context cards. Paste your URL, title, description, and image URL &mdash; copy the result into <code>&lt;head&gt;</code> &mdash; you are done.</p>
+
+  <div class="cta-box">
+    <h3>Get a clean OG + Twitter Card + JSON-LD block in 30 seconds</h3>
+    <p>Browser-only. No upload. Outputs the exact meta block above, validator-clean, ready to paste into your HTML <code>&lt;head&gt;</code>.</p>
+    <a class="cta-btn" href="/seo-meta-generator/">Try the SEO Meta Generator free &rarr;</a>
+  </div>
+
+  <div class="related">
+    <h3>Related tools</h3>
+    <div class="related-grid">
+      <a class="related-card" href="/og-image-generator/">
+        <div class="name">OG Image Generator</div>
+        <div class="desc">Make the 1200&times;630 PNG referenced above</div>
+      </a>
+      <a class="related-card" href="/favicon-generator/">
+        <div class="name">Favicon Generator</div>
+        <div class="desc">Match favicon and OG image branding</div>
+      </a>
+      <a class="related-card" href="/domain-generator/">
+        <div class="name">Domain Generator</div>
+        <div class="desc">Find a domain that previews well</div>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> &middot; free, fast, browser-only tools for indie builders.
+  </footer>
+</div>
+</body>
+</html>
