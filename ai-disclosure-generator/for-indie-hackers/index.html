@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Disclosure Generator for Indie Hackers &mdash; Label MVP Landing Pages, Launch Posts, Programmatic SEO &amp; AI Features Before the EU AI Act Hits (2026)</title>
+<meta name="description" content="Drop-in EU AI Act disclosure labels for indie hackers and solo SaaS founders. Banners, JSON-LD schema, and chatbot opening lines for AI-drafted MVP landing copy, Product Hunt launch posts, programmatic SEO pages, AI features, and GPT support bots. Free, no signup. Avoid &euro;15M fines.">
+<meta name="keywords" content="ai disclosure for indie hackers, eu ai act solo founder, ai mvp landing page disclosure, programmatic seo ai label, product hunt ai disclosure, ai feature output label, indie saas ai compliance, json-ld ai creativework, gpt chatbot disclosure indie">
+<meta property="og:title" content="AI Disclosure Generator for Indie Hackers &mdash; EU AI Act Labels for MVPs, Launches, Programmatic SEO &amp; AI Features">
+<meta property="og:description" content="HTML banners, JSON-LD schema, README badges, and chatbot opening lines for AI-drafted MVP copy, launch posts, programmatic SEO pages, and AI features in your SaaS. Compliant with the August 2026 deadline. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-indie-hackers/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-indie-hackers/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Disclosure Generator for Indie Hackers",
+  "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-indie-hackers/",
+  "applicationCategory": "BusinessApplication",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Indie Hackers, Solo SaaS Founders, Bootstrappers, Build-in-Public Makers, Product Hunt Launchers, Micro-SaaS Operators"
+  },
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Generates EU AI Act-compliant disclosure labels for indie-hacker SaaS surfaces: AI-drafted MVP landing pages, Product Hunt and Hacker News launch posts, programmatic SEO pages, in-product AI features (summaries, generations, recommendations), AI-written onboarding emails, and GPT-powered support chatbots. Outputs HTML banners, footer blocks, README badges, JSON-LD schema, and chatbot opening lines."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does a solo indie hacker selling a $19/mo SaaS really need to comply with the EU AI Act?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes if any of your visitors or customers are in the EU and any of your public output is AI-generated. Article 50 has no employee-count threshold, no revenue floor, and no &apos;just a side project&apos; exemption. The geographic gate is whether EU users can access the surface &mdash; for any public site indexed by Google or any Stripe Checkout flow that accepts EU cards, the answer is yes. The headline fine is &euro;15 million or 3% of global turnover, which obviously won&apos;t bankrupt a solo founder before it bankrupts OpenAI &mdash; but Stripe, Paddle, Lemon Squeezy, and Polar have all signaled AI-attestation prompts during 2026, hosting providers are adding their own checks, and the first compliance complaints will be cheap PR wins for activist regulators. The cheapest insurance is shipping a per-surface disclosure on the AI parts that actually exist. That is what this generator does."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which indie-hacker surfaces actually need a disclosure and which don&apos;t?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In scope: AI-drafted landing copy, AI-written blog posts and programmatic SEO pages, in-product AI features whose output users see (summaries, generations, recommendations), AI-generated images and OG cards, GPT or Claude support chatbots, AI-written onboarding emails, and AI-generated changelog or release notes. Out of scope: Copilot or Cursor code in your backend, AI used purely to write internal Notion docs, AI used to draft pitch decks shared with investors, and AI used to write your own tweets unless you operate at scale as a publisher. The generator&apos;s presets map one-to-one to the in-scope list."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I&apos;m building 200 programmatic SEO pages with Claude. Do all 200 need a label?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and the smart play is to put the label into the page template once rather than retrofit later. Programmatic SEO is the highest-volume in-scope surface for most indie hackers &mdash; hundreds or thousands of pages drafted by a model from a CSV of inputs. The generator&apos;s &apos;programmatic SEO&apos; preset emits a small header badge, a footer block, and a JSON-LD CreativeWork entry parameterized by the page title and AI tool, all designed to drop into the Next.js, Astro, or 11ty template you generate the pages from. One template change, every page compliant."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about the AI features inside the SaaS &mdash; the summaries, generations, recommendations users actually pay for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Highest-stakes case for an indie SaaS, because it&apos;s both the value prop and the in-scope surface. Article 50 requires that AI-generated content shown to users is marked as such. The generator&apos;s &apos;in-product AI output&apos; preset emits three artifacts: a small &apos;Generated by AI&apos; tag for the UI component, a JSON-LD entry that travels with shared links, and a copy-paste block for your terms-of-service AI section. Works for AI summaries (think Otter, Granola), AI generations (Copy.ai, Jasper), AI recommendations (Glasp, Readwise), and AI extraction (Mendable, Dust)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to disclose AI on a Product Hunt launch, Hacker News Show HN, or Indie Hackers post?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If the post itself is AI-drafted, the community norm is now explicit disclosure even though Article 50 doesn&apos;t pattern-match user-generated posts on third-party platforms. Product Hunt&apos;s own makers&apos; guide encourages it, Hacker News commenters reliably catch and downvote undisclosed AI prose, and the Indie Hackers community has converged on a simple &apos;AI-drafted, edited by me&apos; line at the top of the post. The generator emits a one-line attribution snippet you can paste at the top of any launch copy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will adding an AI disclosure hurt conversion on my landing page?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The published data so far says no for SaaS landing pages with a small honest tag, and a small positive lift in some categories. The 2025 Nielsen Norman Group write-up on AI labeling and the 2026 Baymard Institute commerce study both found that a small AI-drafted tag at the top of a page paired with a &apos;reviewed by the team&apos; clarifier moved trust metrics up, not down &mdash; especially for technical buyers who already assume some AI is in the loop and reward honesty. The pattern that hurts conversion is the dishonest one: AI-generated copy without disclosure, caught later by visitors who pattern-match the tells."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #fbbf24; --accent-glow: #fbbf2440;
+    --green: #10b981; --red: #ef4444; --amber: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #ef444440 0%, transparent 50%);
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 20px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; }
+  .breadcrumb a { color: var(--text-dim); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+
+  header { text-align: center; padding: 24px 0 24px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 999px; font-size: 13px;
+    color: #fca5a5; margin-bottom: 18px; font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(28px, 4.2vw, 42px); font-weight: 800; line-height: 1.12; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fde68a 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 720px; margin: 0 auto 24px; }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 8px 0 24px; }
+  .cta {
+    display: inline-block; padding: 13px 26px; border-radius: 10px;
+    font-weight: 600; text-decoration: none; transition: all 0.15s; font-size: 15px;
+  }
+  .cta-primary { background: var(--accent); color: #1f1300; }
+  .cta-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px var(--accent-glow); }
+  .cta-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+  .cta-secondary:hover { border-color: var(--accent); }
+
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-top: 24px; }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .browser-mock {
+    max-width: 520px; margin: 0 auto;
+    background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden; font-family: -apple-system, sans-serif;
+  }
+  .browser-mock .url-bar {
+    padding: 9px 14px; background: #11111a; border-bottom: 1px solid var(--border);
+    font-size: 12px; color: var(--text-dim);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .browser-mock .dots { display: flex; gap: 5px; }
+  .browser-mock .dots span { width: 9px; height: 9px; border-radius: 50%; background: #3b3b4a; }
+  .browser-mock .url { flex: 1; font-family: 'SF Mono', Menlo, monospace; font-size: 11px; }
+  .browser-mock .ai-tag {
+    margin: 14px 14px 0; padding: 7px 12px; background: #fef3c7;
+    color: #78350f; border: 1px solid #fbbf24; border-radius: 8px;
+    font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .browser-mock .page-body { padding: 14px; }
+  .browser-mock .page-body h3 { font-size: 16px; color: var(--text); margin-bottom: 6px; }
+  .browser-mock .page-body p { font-size: 13px; color: var(--text-dim); }
+  .browser-mock .page-foot {
+    padding: 10px 14px; background: #11111a; border-top: 1px solid var(--border);
+    font-size: 11px; color: var(--text-dim);
+  }
+  .chat-mock {
+    margin-top: 16px; padding: 12px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px;
+    font-size: 13px; color: var(--text); max-width: 520px;
+    margin-left: auto; margin-right: auto;
+  }
+  .chat-mock .bot-tag {
+    display: inline-block; font-size: 11px; padding: 2px 8px;
+    background: rgba(251, 191, 36, 0.15); color: var(--accent);
+    border: 1px solid rgba(251, 191, 36, 0.35); border-radius: 999px;
+    margin-bottom: 8px; font-weight: 600;
+  }
+  .chat-mock .bot-line { color: var(--text-dim); font-size: 13px; line-height: 1.5; }
+
+  .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 14px; }
+  .use-case { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .use-case .icon { font-size: 22px; margin-bottom: 8px; }
+  .use-case h3 { font-size: 15px; margin-bottom: 6px; color: var(--text); }
+  .use-case p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+  .content { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; color: var(--text); letter-spacing: -0.01em; }
+  .content h3 { font-size: 18px; margin: 24px 0 8px; color: var(--text); }
+  .content p { color: var(--text-dim); margin-bottom: 12px; font-size: 15px; }
+  .content ul { margin: 8px 0 16px 24px; color: var(--text-dim); }
+  .content ul li { margin-bottom: 6px; font-size: 15px; }
+  .content a { color: var(--accent); text-decoration: none; }
+  .content a:hover { text-decoration: underline; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Menlo, monospace; font-size: 13px; color: var(--accent); }
+  .content blockquote { border-left: 3px solid var(--accent); padding: 6px 16px; margin: 16px 0; color: var(--text-dim); font-style: italic; }
+
+  .compare { width: 100%; border-collapse: collapse; margin: 14px 0 8px; font-size: 14px; }
+  .compare th, .compare td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+  .compare th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .compare td { color: var(--text-dim); }
+  .compare td.good { color: var(--green); }
+  .compare td.bad { color: var(--red); }
+  .compare td.warn { color: var(--amber); }
+
+  .faq-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: 0; }
+  .faq-item h3 { font-size: 16px; margin-bottom: 6px; color: var(--text); }
+  .faq-item p { color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+
+  .final-cta { text-align: center; padding: 36px 24px; margin-top: 40px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
+  .final-cta h2 { font-size: 22px; margin-bottom: 10px; color: var(--text); }
+  .final-cta p { color: var(--text-dim); margin-bottom: 18px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">Home</a> &nbsp;&rsaquo;&nbsp;
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> &nbsp;&rsaquo;&nbsp;
+    For Indie Hackers
+  </div>
+
+  <header>
+    <div class="badge">&#9888;&#65039; EU AI Act &middot; August 2, 2026 deadline &middot; Free</div>
+    <h1>AI Disclosure Generator for Indie Hackers</h1>
+    <p class="subtitle">Per-surface disclosure labels for the AI parts of a solo SaaS &mdash; AI-drafted MVP landing copy, programmatic SEO pages, in-product AI features, GPT support bots, and Product Hunt launches &mdash; engineered so a one-person team can stay compliant with the EU AI Act in fifteen minutes and forget about it.</p>
+    <div class="cta-row">
+      <a href="/ai-disclosure-generator/" class="cta cta-primary">Open the Generator &rarr;</a>
+      <a href="#example" class="cta cta-secondary">See an indie-SaaS example</a>
+    </div>
+  </header>
+
+  <div class="panel" id="example">
+    <h2>What a compliant indie-SaaS landing page &amp; AI feature look like</h2>
+    <div class="browser-mock">
+      <div class="url-bar">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <span class="url">tinysaas.io/launch</span>
+      </div>
+      <div class="ai-tag">&#129302; AI-drafted launch copy &middot; Reviewed by the founder</div>
+      <div class="page-body">
+        <h3>Ship your micro-SaaS in a weekend, not a quarter</h3>
+        <p>The boilerplate that handles auth, billing, and AI features so you can stay in the fun part of the stack.</p>
+      </div>
+      <div class="page-foot">&copy; TinySaaS &middot; Marketing copy drafted with Claude 3.5 Sonnet, reviewed by the founder. AI features disclosed per-component. <a href="#" style="color: inherit;">AI disclosure &rarr;</a></div>
+    </div>
+    <div class="chat-mock">
+      <span class="bot-tag">&#129302; AI assistant</span>
+      <div class="bot-line">&ldquo;Hey &mdash; I&apos;m the TinySaaS docs assistant. I&apos;m an AI (Claude 3.5 Sonnet), not a person, and my answers can be wrong. Ask me anything about setup, billing, or the API.&rdquo;</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Where AI shows up in a typical indie-SaaS build</h2>
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="icon">&#128640;</div>
+        <h3>AI-drafted MVP landing &amp; launch copy</h3>
+        <p>Headline, hero subhead, feature blurbs, pricing copy, FAQ, Product Hunt body, and Show HN post drafted by Claude or GPT against a one-pager. Clearly &quot;public output&quot; under Article 50. The generator emits an above-the-fold tag, a footer line, and JSON-LD <code>CreativeWork</code> with the AI tool as <code>creator</code> and you as <code>reviewer</code>.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#128221;</div>
+        <h3>Programmatic SEO pages</h3>
+        <p>Hundreds or thousands of long-tail pages generated from a CSV. The highest-volume in-scope surface for indie SaaS. The &quot;programmatic SEO&quot; preset emits a small header badge, a footer block, and JSON-LD parameterized by page title and tool &mdash; one template change covers every page.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#10024;</div>
+        <h3>In-product AI features users pay for</h3>
+        <p>The summaries, generations, recommendations, and extractions that <em>are</em> your value prop. Article 50 wants users to know AI made it. The &quot;in-product AI output&quot; preset emits a UI tag for the React/Svelte component, a JSON-LD entry that travels with shared links, and a copy-paste ToS section.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#9993;&#65039;</div>
+        <h3>AI-written onboarding &amp; lifecycle email</h3>
+        <p>Day-0 welcome, day-3 nudge, day-7 reactivation, churn save &mdash; the whole lifecycle drafted by AI and run through Loops, Resend, Customer.io, or Postmark. Counts as public AI-generated text. The generator emits a one-line attribution for the email footer.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#129302;</div>
+        <h3>GPT or Claude support chatbot</h3>
+        <p>Intercom Fin, Crisp MagicReply, Pylon, or a custom OpenAI Assistant embedded in your docs or in-app. Highest-disclosure case &mdash; its own Article 50 clause. The generator outputs the opening message, persistent UI footer, and JSON-LD <code>ChatAction</code>.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">&#128247;</div>
+        <h3>AI-generated images, OG cards &amp; screenshots</h3>
+        <p>Midjourney, DALL&middot;E, Flux, or Imagen output used as hero illustrations, OG cards, blog headers, or generated user-facing previews. Article 50 covers synthetic images. The generator emits a corner overlay, an <code>alt</code>-text attribution pattern, and a JSON-LD <code>ImageObject</code> with the model identifier.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>The indie-hacker case for AI disclosure</h2>
+    <p>The reflex from a lot of solo founders has been: &quot;The EU AI Act is for OpenAI and Meta, not for me building a $19/mo micro-SaaS out of my apartment.&quot; Article 50 doesn&apos;t pattern-match on company size, revenue, or whether the project is full-time. It applies to <em>providers and deployers</em> of AI systems whose output is &quot;made available to the public&quot; &mdash; which catches an AI-drafted MVP landing page, a Product Hunt launch body written by GPT, programmatic SEO pages spun up from a Claude prompt, AI features whose output users see in your app, and a GPT-powered support chatbot. No employee-count threshold, no revenue floor, no &quot;just a side project&quot; carve-out. The geographic gate is whether any EU user can reach the surface, which for any public site indexed by Google or any Stripe Checkout that accepts European cards is almost always yes.</p>
+
+    <p>The headline penalty is &euro;15 million or 3% of global turnover. Obviously that won&apos;t bankrupt a solo founder before it bankrupts OpenAI &mdash; but the practical exposure arrives much earlier than the regulator does. Stripe, Paddle, Lemon Squeezy, and Polar have all signaled AI-attestation prompts through 2026. Hosting providers (Vercel, Netlify, Cloudflare) are rolling out their own attestation flows. The first compliance complaints are going to be easy PR wins for activist regulators looking for a small-but-visible test case &mdash; the same dynamic that drove early GDPR enforcement against small EU-facing US SaaS. The cheapest insurance for an indie hacker is a per-surface disclosure on the AI parts that actually exist, shipped in fifteen minutes from a generator, then forgotten. That is exactly what this tool does.</p>
+
+    <h2>The six AI surfaces a typical indie SaaS actually has</h2>
+    <p>You don&apos;t need to label everything. The presets map to the six real cases:</p>
+    <ul>
+      <li><strong>AI-drafted MVP landing &amp; launch copy.</strong> The clearest in-scope case. AI-written hero, features, pricing, FAQ, Product Hunt body, Show HN post. Emits a header tag, footer line, and JSON-LD <code>CreativeWork</code> entry where the AI is <code>creator</code> and you are <code>reviewer</code>.</li>
+      <li><strong>Programmatic SEO pages.</strong> The highest-volume in-scope surface. Hundreds or thousands of long-tail pages generated from a CSV of inputs against a Claude or GPT prompt. The preset emits header, footer, and parameterized JSON-LD designed to drop into the Next.js, Astro, or 11ty template you generate the pages from. One template change, every page compliant.</li>
+      <li><strong>In-product AI features.</strong> The summaries, generations, recommendations, and extractions that users pay for. Article 50 wants this marked. Emits a UI tag for the component, a JSON-LD entry that travels with shared links, and a ToS section.</li>
+      <li><strong>AI-written onboarding &amp; lifecycle email.</strong> Day-0 welcome, day-3 nudge, churn save. Emits a one-line attribution for the email footer that Loops, Resend, Customer.io, and Postmark all render correctly.</li>
+      <li><strong>Support &amp; docs chatbot.</strong> Highest-disclosure case &mdash; its own Article 50 clause for &quot;systems that interact with natural persons.&quot; Emits the opening message, persistent footer line, and JSON-LD <code>ChatAction</code>.</li>
+      <li><strong>AI-generated images, OG cards, and user-facing generations.</strong> Article 50 covers synthetic images. Emits a corner overlay snippet, an <code>alt</code>-text attribution pattern, and a JSON-LD <code>ImageObject</code> with the model identifier in <code>identifier</code>.</li>
+    </ul>
+
+    <h2>Programmatic SEO is the surface most indie hackers underestimate</h2>
+    <p>The pattern is familiar: take a list of inputs (cities, job titles, comparison pairs, integration combinations), pipe each row through a Claude or GPT prompt, and ship 200+ long-tail pages over a weekend. The conversion math is excellent, the SEO upside is real, and the compliance exposure is also real &mdash; every one of those pages is &quot;AI-generated text made available to the public.&quot; The right move is to put the disclosure into the page template once and parameterize it with the page title and AI tool, rather than retrofitting after the regulator complaint. The generator emits a template-shaped output for exactly this case: a small header badge, a footer block, and a JSON-LD <code>CreativeWork</code> entry where the <code>name</code> field interpolates the page title.</p>
+
+    <h2>Where to place the disclosure in a Next.js, Astro, or Remix MVP</h2>
+    <p>The legal text says &quot;clearly and distinguishably perceptible at the latest at the time of the first interaction or exposure.&quot; For an indie-SaaS build, that translates to three placements:</p>
+    <ul>
+      <li><strong>Visible header badge above the first AI-generated block.</strong> Not in the footer. A small tag plus &quot;AI-drafted, reviewed by [you]&quot; in plain text. The placement that satisfies regulators reading the page in a screenshot.</li>
+      <li><strong>JSON-LD schema in <code>&lt;head&gt;</code>.</strong> Drop into <code>next/head</code>, Astro&apos;s <code>&lt;Head&gt;</code>, Remix&apos;s <code>meta</code> export, or your custom layout. The page becomes machine-readable as AI-generated, which the EU AI Office and modern attestation tooling can parse.</li>
+      <li><strong>Per-component tag on every in-product AI feature.</strong> An &lt;AIBadge tool=&quot;Claude 3.5 Sonnet&quot;/&gt; component you import wherever AI output appears in the UI &mdash; AI summaries, generations, recommendations.</li>
+    </ul>
+
+    <h2>What this is not: terms of service, privacy policy, GDPR consent, or a SOC 2 attestation</h2>
+    <blockquote>An AI disclosure tells the user that an asset was AI-generated. A terms of service tells them what they can do with your product. A privacy policy tells them how their data is processed. GDPR consent collects their permission. A SOC 2 report tells an enterprise buyer about your security posture. Five different documents.</blockquote>
+    <p>Indie hackers regularly try to roll these into one fine-print line or assume a Stripe checkout&apos;s ToS click covers it. Regulators have been explicit that this doesn&apos;t satisfy any of them. The <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" rel="nofollow noopener">European Commission&apos;s AI Office</a>, the <a href="https://www.indiehackers.com/" rel="nofollow noopener">Indie Hackers community discussion</a> on the topic, and the <a href="https://c2pa.org/" rel="nofollow noopener">C2PA Content Credentials</a> standard all treat AI labeling as a distinct surface artifact that should ship alongside the legal docs, not replace them. AI label on the AI surface. ToS in your <code>/terms</code>. Privacy in <code>/privacy</code>. The generator does the first only &mdash; and does it well.</p>
+
+    <h2>Compliance vs. theatre: what bad disclosure looks like on an indie SaaS</h2>
+    <table class="compare">
+      <thead>
+        <tr><th>Pattern</th><th>What it does</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>&quot;Made with AI&quot; in the <code>&lt;meta name=&quot;generator&quot;&gt;</code> tag only</td><td>Invisible to the user; perceptible only to crawlers</td><td class="bad">Non-compliant</td></tr>
+        <tr><td>One line buried in the ToS at /terms</td><td>User has to click through; not at first exposure</td><td class="bad">Non-compliant</td></tr>
+        <tr><td>Footer-only badge with no above-the-fold tag</td><td>Lost in screenshots, social previews, and AMP-style summaries</td><td class="warn">Borderline</td></tr>
+        <tr><td>Chatbot disclosure on the landing page only, none in the bot itself</td><td>Doesn&apos;t satisfy the per-conversation rule for chat surfaces</td><td class="bad">Aggravated risk</td></tr>
+        <tr><td>Header tag + JSON-LD in head</td><td>Visitor and crawler both see it at first exposure</td><td class="good">Compliant</td></tr>
+        <tr><td>Header tag + JSON-LD + per-feature UI badge + chatbot opening line</td><td>Visitor, crawler, paying user, and auditor all see it</td><td class="good">Best practice</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Workflow for a solo founder shipping fast</h2>
+    <p>You don&apos;t want to revisit the generator on every commit. Template it once. Open the generator, build your four standard variants &mdash; &quot;AI-drafted marketing copy,&quot; &quot;programmatic SEO page,&quot; &quot;in-product AI feature,&quot; &quot;AI support chatbot&quot; &mdash; and check the outputs into the repo as a <code>&lt;AIDisclosure /&gt;</code> React/Svelte/Astro component, a JSON-LD partial in <code>/lib/seo</code>, and a one-line snippet in your email footer template. On every new page or feature you import the component and pass the AI-tool prop. CI can lint that any route flagged <code>aiAssisted: true</code> in your route manifest also imports it. Total wiring time is roughly fifteen minutes for a Next.js or Astro project, then near-zero per page after that. The result is that AI disclosure becomes part of your shipping checklist alongside the Stripe webhook and the favicon, instead of a yak-shave you keep deferring.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <h3>Does a solo indie hacker selling a $19/mo SaaS really need to comply?</h3>
+      <p>Yes if any visitors or customers are in the EU and any public output is AI-generated. No employee-count threshold, no revenue floor, no side-project exemption. Headline fine is &euro;15M or 3% of turnover &mdash; but Stripe, Paddle, Polar, and the hosting providers are all rolling out AI-attestation prompts, and the first complaints will be easy PR wins for activist regulators. Cheapest insurance is shipping a per-surface disclosure.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Which surfaces need a disclosure and which don&apos;t?</h3>
+      <p>In: AI-drafted landing copy, AI blog/SEO pages, in-product AI features users see, AI images/OG cards, GPT chatbots, AI onboarding emails, AI changelogs. Out: Copilot code in your backend, AI used for internal Notion docs, AI pitch-deck drafts, AI used for your own tweets. The generator&apos;s presets map one-to-one to the in-scope list.</p>
+    </div>
+    <div class="faq-item">
+      <h3>I&apos;m shipping 200 programmatic SEO pages with Claude. Do all 200 need a label?</h3>
+      <p>Yes, and the smart move is to put the label into the page template once rather than retrofit. Programmatic SEO is the highest-volume in-scope surface for most indie hackers. The generator&apos;s preset emits a small header badge, a footer block, and a parameterized JSON-LD entry designed to drop into your Next.js, Astro, or 11ty template. One template change, every page compliant.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What about the in-product AI features users pay for?</h3>
+      <p>Highest-stakes case because the AI is both the value prop and the in-scope surface. Article 50 requires that AI-generated content shown to users is marked as such. The preset emits a UI tag for the component, a JSON-LD entry that travels with shared links, and a ToS section. Works for AI summaries, generations, recommendations, and extractions.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do I need to disclose AI on a Product Hunt or Show HN launch?</h3>
+      <p>The community norm is now explicit disclosure even though Article 50 doesn&apos;t pattern-match user posts on third-party platforms. Hacker News commenters reliably catch and downvote undisclosed AI prose, and Indie Hackers has converged on a simple &quot;AI-drafted, edited by me&quot; line. The generator emits a one-line snippet you can paste at the top of any launch copy.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Will adding an AI disclosure hurt my landing-page conversion?</h3>
+      <p>Published data so far says no for SaaS landing pages with a small honest tag &mdash; and a small positive lift for technical-buyer categories. The pattern that hurts conversion is the dishonest one: undisclosed AI copy caught later by visitors who pattern-match the tells.</p>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    <h2>Ship the disclosure once, forget about it</h2>
+    <p>Open the generator, pick your AI surfaces, copy four snippets into your Next.js or Astro project. Fifteen minutes from non-compliant to shipped.</p>
+    <a href="/ai-disclosure-generator/" class="cta cta-primary">Try the AI Disclosure Generator &rarr;</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> &middot; A growing collection of free, no-signup utilities for indie hackers and small teams. &middot;
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> &middot;
+    <a href="/seo-meta-generator/">SEO Meta Generator</a> &middot;
+    <a href="/og-image-generator/">OG Image Generator</a>
+  </footer>
+</div>
+</body>
+</html>
