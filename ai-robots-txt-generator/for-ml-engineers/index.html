@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Robots.txt Generator for ML Engineers — Protect Demos, Papers &amp; Inference Endpoints (2026)</title>
+<meta name="description" content="A robots.txt built for machine learning engineers. Block GPTBot, ClaudeBot and Google-Extended from training on your model demos, technical blog and arXiv mirrors — while keeping Googlebot, Hugging Face and live-citation crawlers allowed. Free, no signup.">
+<meta name="keywords" content="ai robots.txt for ml engineers, robots.txt for machine learning portfolio, block GPTBot model demo, block ClaudeBot research site, opt out AI training researcher, Google-Extended arxiv mirror, llms.txt for ml engineer, robots.txt huggingface space">
+<meta property="og:title" content="AI Robots.txt for ML Engineers — Protect Demos &amp; Research Pages">
+<meta property="og:description" content="Stop AI labs from training on your model demos, papers and technical write-ups. Free generator built for ML engineers and researchers.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-ml-engineers/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-ml-engineers/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Robots.txt Generator for ML Engineers",
+  "url": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-ml-engineers/",
+  "applicationCategory": "DeveloperApplication",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Machine Learning Engineers, AI Researchers, Applied Scientists"
+  },
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Generate a robots.txt that protects ML engineer portfolios, model demo sites, research pages and inference endpoints from being silently absorbed into competing foundation models — while keeping search engines and live-citation crawlers fully allowed."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Should an ML engineer block AI crawlers from their portfolio site?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the surface. Recruiters and hiring managers reach you through Google, Bing and increasingly through ChatGPT search and Perplexity, so live-citation crawlers (OAI-SearchBot, PerplexityBot, ChatGPT-User) are usually worth allowing. Training-only crawlers like GPTBot, ClaudeBot, Google-Extended and Bytespider give you nothing back — they ingest your write-ups and ship them inside a competing model. Most ML engineers block training crawlers and allow citation crawlers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does blocking Google-Extended hurt my visibility in Gemini?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google-Extended controls whether your content is used to train Gemini, not whether Gemini can read it for grounded answers. Disallowing Google-Extended keeps your articles out of training corpora; Gemini's grounding layer still surfaces your content the same way Google Search does. It also has zero effect on Googlebot — your ranking in normal search is unchanged."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about my inference endpoint at /api/predict — should I block crawlers there?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Any URL that runs a model on request should be Disallowed for every crawler in robots.txt. Crawlers iterating through your endpoint will burn GPU minutes, blow your rate-limit budget, and pollute logs. Pair the robots.txt Disallow with rate-limiting and an API key — robots.txt alone will not stop bad actors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does llms.txt help my ML portfolio get cited by Claude or ChatGPT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. llms.txt is a structured manifest that tells retrieval-time LLMs which sections of your site to surface and how to describe them. For an ML engineer, a good llms.txt highlights your papers, model cards, OSS repos and demos — so when a recruiter asks 'who has shipped retrieval models with under-100ms latency?' your name surfaces with a clickable citation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "If I build my own crawler, should I respect other people's robots.txt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, unambiguously. Honoring robots.txt is the baseline professional standard for any engineer running a crawler — for evaluation harnesses, dataset collection, RAG pipelines, anything. Use a published User-Agent string, fetch robots.txt before each origin, cache it for 24 hours, and respect Disallow rules. It is cheap, it protects your reputation, and several frontier labs treat robots.txt compliance as a hiring signal."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f97316; --accent-glow: #f9731640;
+    --green: #10b981; --red: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #ec489940 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  header { text-align: center; padding: 24px 0 8px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(28px, 4.2vw, 42px); font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fed7aa 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 640px; margin: 0 auto 24px; }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 8px 0 24px; }
+  .cta {
+    display: inline-block; padding: 14px 28px; border-radius: 10px;
+    font-weight: 600; text-decoration: none; transition: all 0.15s; font-size: 15px;
+  }
+  .cta-primary { background: var(--accent); color: #0a0a0f; }
+  .cta-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px var(--accent-glow); }
+  .cta-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+  .cta-secondary:hover { border-color: var(--accent); }
+
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-top: 24px; }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+
+  .preview { background: #000; padding: 18px; border-radius: 12px; border: 1px solid var(--border); }
+  .preview pre { margin: 0; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: #e0e0ff; white-space: pre-wrap; }
+  .preview .comment { color: #6b7280; }
+  .preview .ua { color: #f97316; }
+  .preview .allow { color: #10b981; }
+  .preview .disallow { color: #ef4444; }
+
+  .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 14px; }
+  .use-case { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .use-case .icon { font-size: 22px; margin-bottom: 8px; }
+  .use-case h3 { font-size: 15px; margin-bottom: 6px; color: var(--text); }
+  .use-case p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+  .content { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; color: var(--text); letter-spacing: -0.01em; }
+  .content h3 { font-size: 18px; margin: 24px 0 8px; color: var(--text); }
+  .content p { color: var(--text-dim); margin-bottom: 12px; font-size: 15px; }
+  .content ul { margin: 8px 0 16px 24px; color: var(--text-dim); }
+  .content ul li { margin-bottom: 6px; font-size: 15px; }
+  .content a { color: var(--accent); text-decoration: none; }
+  .content a:hover { text-decoration: underline; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', monospace; font-size: 13px; color: var(--accent); }
+  .content blockquote { border-left: 3px solid var(--accent); padding: 4px 16px; margin: 16px 0; color: var(--text-dim); font-style: italic; }
+
+  .faq-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: 0; }
+  .faq-item h3 { font-size: 16px; margin-bottom: 6px; color: var(--text); }
+  .faq-item p { color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+
+  .final-cta { text-align: center; padding: 36px 24px; margin-top: 40px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
+  .final-cta h2 { font-size: 22px; margin-bottom: 10px; color: var(--text); }
+  .final-cta p { color: var(--text-dim); margin-bottom: 18px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">Home</a> &nbsp;›&nbsp;
+    <a href="/ai-robots-txt-generator/">AI Robots.txt Generator</a> &nbsp;›&nbsp;
+    For ML Engineers
+  </div>
+
+  <header>
+    <div class="badge">🧠 Built for ML engineers · 25+ AI crawlers · Free</div>
+    <h1>AI Robots.txt Generator for ML Engineers</h1>
+    <p class="subtitle">Your model demos, technical write-ups and inference endpoints don't belong inside a competitor's training corpus. Generate a robots.txt tuned for ML portfolios, paper mirrors and Hugging Face Spaces — in under a minute.</p>
+    <div class="cta-row">
+      <a href="/ai-robots-txt-generator/" class="cta cta-primary">Open the Generator →</a>
+      <a href="#example" class="cta cta-secondary">See an ML engineer example</a>
+    </div>
+  </header>
+
+  <div class="panel" id="example">
+    <h2>What an ML engineer's robots.txt looks like</h2>
+    <div class="preview">
+<pre><span class="comment"># robots.txt for an ML engineer / researcher
+# Goal: protect model demos &amp; research, keep search + AI citations</span>
+
+<span class="comment"># --- Search engines: fully allowed ---</span>
+<span class="ua">User-agent: Googlebot</span>
+<span class="allow">Allow: /</span>
+
+<span class="ua">User-agent: Bingbot</span>
+<span class="allow">Allow: /</span>
+
+<span class="comment"># --- AI training crawlers: blocked ---</span>
+<span class="ua">User-agent: GPTBot</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: ClaudeBot</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: anthropic-ai</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: Google-Extended</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: Applebot-Extended</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: Bytespider</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: CCBot</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: Meta-ExternalAgent</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: cohere-ai</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="comment"># --- Live citation crawlers: allowed for recruiter discoverability ---</span>
+<span class="ua">User-agent: OAI-SearchBot</span>
+<span class="allow">Allow: /</span>
+
+<span class="ua">User-agent: PerplexityBot</span>
+<span class="allow">Allow: /</span>
+
+<span class="ua">User-agent: ChatGPT-User</span>
+<span class="allow">Allow: /</span>
+
+<span class="comment"># --- Inference endpoints: blocked for everyone ---</span>
+<span class="ua">User-agent: *</span>
+<span class="disallow">Disallow: /api/</span>
+<span class="disallow">Disallow: /predict/</span>
+<span class="disallow">Disallow: /infer/</span>
+
+<span class="ua">Sitemap: https://yourdomain.dev/sitemap.xml</span></pre>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Why ML engineers need this</h2>
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="icon">📓</div>
+        <h3>Protect novel write-ups</h3>
+        <p>You spent two months distilling a paper into a clear blog post. There is no reason to hand that distillation to a model that will reproduce it tomorrow with no link to you.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">🧪</div>
+        <h3>Stop endpoint scraping</h3>
+        <p>Crawlers iterating through <code>/predict</code> burn GPU minutes and rate limits. Disallowing <code>/api/</code> and <code>/infer/</code> stops the cheapest source of bill shock cold.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">🔍</div>
+        <h3>Stay findable by recruiters</h3>
+        <p>Block training crawlers, keep <code>OAI-SearchBot</code> and <code>PerplexityBot</code> allowed. When a hiring manager asks ChatGPT "who's shipped sub-100ms retrieval?" your portfolio still surfaces.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">📄</div>
+        <h3>Defend your arXiv mirror</h3>
+        <p>If you host preprints on your own domain, a clean robots.txt opt-out preserves your authorship signal before the next CommonCrawl snapshot vacuums it up.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">🛠️</div>
+        <h3>Set a professional standard</h3>
+        <p>If you also build crawlers for evals or RAG pipelines, publishing a clean robots.txt is the credibility signal that you understand both sides of the contract.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>The dual-sided problem for ML engineers</h2>
+    <p>Most niches face the AI training question from one direction only: how do I keep crawlers out? ML engineers sit on both sides of the table. You publish to the open web — demos, model cards, ablation notes, write-ups, retrospectives — and you also build crawlers, evaluation harnesses, retrieval pipelines and dataset collectors that fetch other people's content. The same <code>robots.txt</code> file that protects your own work is the contract you are expected to honor when you build the next one.</p>
+    <p>This page is about the first half — protecting your own surface area. The default for an ML engineer's personal site, blog, demo Space or research project page should be: <strong>training crawlers blocked, citation crawlers allowed, search engines untouched, inference endpoints disallowed for everyone.</strong> The generator on this site presets exactly that combination — toggle individual bots if you want to deviate.</p>
+
+    <h2>What goes on an ML engineer's domain (and why each surface matters)</h2>
+    <p>Most ML engineer personal sites contain four kinds of pages, and each one has a different relationship to AI crawlers:</p>
+    <ul>
+      <li><strong>Technical blog posts and notes.</strong> Original distillations of papers, reproduction reports, ablation studies. Highest training-data value, highest risk of being absorbed without attribution. Block training crawlers, allow citation crawlers.</li>
+      <li><strong>Model demos and inference endpoints.</strong> A Hugging Face Space embed, a self-hosted Gradio app, a <code>/predict</code> route on your domain. Crawlers fetching these cost real GPU money. Disallow under <code>User-agent: *</code> for every bot.</li>
+      <li><strong>Project pages and model cards.</strong> Public documentation of OSS work, often the page recruiters land on. You usually <em>want</em> these surfaced by AI citations — allow OAI-SearchBot, PerplexityBot and ChatGPT-User. Optionally allow training crawlers too if the page already mirrors a public README.</li>
+      <li><strong>Resume, contact, and recruiter pages.</strong> Highest-value pages for hiring. Search engines and citation crawlers, all allowed. Training crawlers, blocked — there is no upside to having your CV reproduced inside a model's output.</li>
+    </ul>
+
+    <h2>The Google-Extended question, for the people building Gemini</h2>
+    <p>Many ML engineers ask whether blocking <code>Google-Extended</code> is hypocritical when their day job involves training models on web data. It isn't. <code>Google-Extended</code> is an explicit opt-out signal that Google itself shipped specifically so site owners could express a preference. Honoring (or expressing) that preference is exactly how the protocol is supposed to work. Blocking it on your personal domain has no effect on Google Search rankings — <code>Googlebot</code> and <code>Google-Extended</code> are separate user agents — and it sets a coherent professional norm: if you build crawlers that obey robots.txt, you also write one that uses it.</p>
+
+    <h2>Inference endpoints: the silent budget killer</h2>
+    <p>The single most common preventable bill for an indie ML engineer in 2026 is a crawler iterating across a public <code>/api/predict</code> endpoint. CCBot, Bytespider and a long tail of unbranded scrapers will happily fire thousands of POST requests at any URL they discover, and serverless GPU bills do not forgive. Two lines of robots.txt prevents 90% of the well-behaved offenders:</p>
+    <ul>
+      <li><code>User-agent: *</code></li>
+      <li><code>Disallow: /api/</code> &nbsp;<code>Disallow: /predict/</code> &nbsp;<code>Disallow: /infer/</code></li>
+    </ul>
+    <p>For the badly-behaved scrapers, layer in a per-IP rate limit and require a header token. Robots.txt is the polite first line; the firewall is the enforcement.</p>
+
+    <h2>llms.txt for ML engineers: how to be cited correctly</h2>
+    <p>Once your robots.txt is in place, consider publishing an <a href="https://llmstxt.org/" rel="noopener" target="_blank">llms.txt</a> manifest. For an ML engineer this file functions as a structured "press kit" for retrieval-time LLMs: it points at your strongest papers, your shipped models, your benchmark numbers and the canonical URL for each. When a recruiter or PM asks an LLM "who has worked on long-context attention?", a well-formed llms.txt is the difference between being cited as the source versus being silently paraphrased.</p>
+
+    <h2>The broader landscape: what frontier labs are doing</h2>
+    <p>Practically every major lab now ships a documented training crawler and a separate live-retrieval crawler. The pattern, as of 2026: OpenAI ships <code>GPTBot</code> (training) and <code>OAI-SearchBot</code> + <code>ChatGPT-User</code> (retrieval). Anthropic ships <code>ClaudeBot</code> (training) and <code>Claude-Web</code> (retrieval). Google ships <code>Google-Extended</code> (training) separately from <code>Googlebot</code>. The <a href="https://www.cloudflare.com/learning/ai/what-is-an-ai-crawler/" rel="noopener" target="_blank">Cloudflare AI crawler reference</a> tracks the full list and updates it as new ones appear. The split is now standard practice — and it lets you allow citations without contributing training data, which is the right default for almost every ML engineer's public site.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <h3>Should an ML engineer block AI crawlers from their portfolio site?</h3>
+      <p>It depends on the surface. Recruiters reach you through search and increasingly through ChatGPT/Perplexity, so citation crawlers are usually worth allowing. Training-only crawlers like <code>GPTBot</code>, <code>ClaudeBot</code>, <code>Google-Extended</code> and <code>Bytespider</code> give you nothing back — they absorb your write-ups into a competing model. The standard playbook is block training, allow citations.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does blocking Google-Extended hurt my visibility in Gemini?</h3>
+      <p><code>Google-Extended</code> controls training inclusion, not retrieval. Disallowing it keeps your content out of Gemini training corpora but Gemini's grounding layer still surfaces your pages the same way Google Search does. It has zero effect on <code>Googlebot</code> — your rankings in normal search are unchanged.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What about my inference endpoint at <code>/api/predict</code>?</h3>
+      <p>Disallow it for every crawler. Iterative scrapers running a model on request will burn GPU minutes, blow your rate-limit budget and pollute logs. Pair the robots.txt rule with rate-limiting and a header token — robots.txt alone does not stop bad actors.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does llms.txt help my ML portfolio get cited?</h3>
+      <p>Yes. llms.txt is a structured manifest telling retrieval-time LLMs which sections of your site matter and how to describe them. For an ML engineer, a good llms.txt highlights papers, model cards, OSS repos and demos — so when a recruiter asks an LLM about your specialty, your name surfaces with a clickable citation.</p>
+    </div>
+    <div class="faq-item">
+      <h3>If I build my own crawler, should I respect other people's robots.txt?</h3>
+      <p>Yes, unambiguously. It is the baseline standard for any engineer running a crawler — evals, dataset collection, RAG, anything. Use a published User-Agent, fetch robots.txt before each origin, cache for 24 hours, respect Disallow. Several frontier labs treat robots.txt compliance as a hiring signal.</p>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    <h2>Generate your ML portfolio's robots.txt now</h2>
+    <p>Free, no signup. Pick your blocks, copy the file, drop it at the root of your domain. Done in under a minute.</p>
+    <a href="/ai-robots-txt-generator/" class="cta cta-primary">Open the AI Robots.txt Generator →</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> · Free indie tools for the AI era ·
+    See also: <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> ·
+    <a href="/ai-cost-calculator/">AI Cost Calculator</a> ·
+    <a href="/mcp-config-generator/">MCP Config Generator</a>
+  </footer>
+</div>
+</body>
+</html>
