@@ -16,3 +16,4 @@
 2026-05-15 10:30 | tool=favicon-generator | post=maskable-icons-android-launcher-cropped-2026 | sitemap=updated | drafts=4 | google_ping=404(deprecated) | status=OK
 2026-05-15 14:30 | tool=favicon-generator | post=how-to-convert-logo-to-favicon-2026 | sitemap=updated | drafts=4 | status=OK
 2026-05-16 01:36 | tool=color-palette | post=css-color-mix-dynamic-palettes-2026 | sitemap=updated | drafts=4 | google_ping=404(deprecated) | status=OK
+2026-05-17 12:00 | tool=seo-meta-generator | post=hreflang-tags-international-seo-2026 | sitemap=updated | drafts=4 | google_ping=404_deprecated | status=OK
