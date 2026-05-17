@@ -1,207 +1,207 @@
 {
-  "lastUpdated": "May 16, 2026 \u2014 published Tailwind CSS v4 Color Palette in 2026 \u2014 How to Build, Customize and Theme With Custom Colors for color-palette + 4 social drafts ready",
+  "lastUpdated": "May 16, 2026 — published CSS color-mix() in 2026 — The Complete Guide to Dynamic Palettes, Opacity Blending and Theme Tokens for color-palette + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
       "slug": "domain-generator",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     },
     {
       "name": "OG Image Generator",
       "slug": "og-image-generator",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     },
     {
       "name": "AI Background Remover",
       "slug": "background-remover",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     },
     {
       "name": "Favicon Generator",
       "slug": "favicon-generator",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     },
     {
       "name": "Color Palette Generator",
       "slug": "color-palette",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     },
     {
       "name": "SEO Meta Tag Generator",
       "slug": "seo-meta-generator",
       "status": "live",
-      "visitors7d": "\u2014"
+      "visitors7d": "—"
     }
   ],
   "stats": {
     "tools": 6,
     "toolsDelta": "+6 since launch",
-    "visitors": "\u2014",
+    "visitors": "—",
     "visitorsDelta": "Vercel Analytics: enable in 1 click",
     "clicks": "0",
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 60,
+    "posts": 61,
     "postsDelta": "+1 today",
-    "indexed": "\u2014",
+    "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
     {
+      "time": "today 01:36",
+      "tag": "seo",
+      "text": "📝 Published blog post: CSS color-mix() in 2026 — The Complete Guide to Dynamic Palettes, Opacity Blending and Theme Tokens at /color-palette/blog/css-color-mix-dynamic-palettes-2026/"
+    },
+    {
+      "time": "today 01:36",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/css, LinkedIn, Show HN — all promoting color-palette"
+    },
+    {
       "time": "today 17:05",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: Tailwind CSS v4 Color Palette in 2026 \u2014 How to Build, Customize and Theme With Custom Colors at /color-palette/blog/tailwind-v4-color-palette-custom-colors-2026/"
+      "text": "📝 Published blog post: Tailwind CSS v4 Color Palette in 2026 — How to Build, Customize and Theme With Custom Colors at /color-palette/blog/tailwind-v4-color-palette-custom-colors-2026/"
     },
     {
       "time": "today 17:05",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/tailwindcss, LinkedIn, Show HN \u2014 all promoting color-palette"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/tailwindcss, LinkedIn, Show HN — all promoting color-palette"
     },
     {
       "time": "today 06:15",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: OKLCH vs HSL vs HEX: The 2026 Designer's Guide to Choosing a Color Format at /color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/"
+      "text": "📝 Published blog post: OKLCH vs HSL vs HEX: The 2026 Designer's Guide to Choosing a Color Format at /color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/"
     },
     {
       "time": "today 06:15",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN \u2014 all promoting color-palette"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting color-palette"
     },
     {
       "time": "today 14:30",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: How to Convert a Logo to a Favicon in 2026 (Without Pixel-Mush at 16\u00d716) at /favicon-generator/blog/how-to-convert-logo-to-favicon-2026/"
+      "text": "📝 Published blog post: How to Convert a Logo to a Favicon in 2026 (Without Pixel-Mush at 16×16) at /favicon-generator/blog/how-to-convert-logo-to-favicon-2026/"
     },
     {
       "time": "today 14:30",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN \u2014 all promoting favicon-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting favicon-generator"
     },
     {
       "time": "today 10:30",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: Maskable Icons in 2026 \u2014 Why Your Android Launcher Icon Looks Cropped (And the 30-Second Fix) at /favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/"
+      "text": "📝 Published blog post: Maskable Icons in 2026 — Why Your Android Launcher Icon Looks Cropped (And the 30-Second Fix) at /favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/"
     },
     {
       "time": "today 10:30",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN \u2014 all promoting favicon-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
     },
     {
       "time": "today 10:25",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: OG Image File Size in 2026: PNG vs JPG vs WebP \u2014 Which Format Actually Loads in Link Previews at /og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/"
+      "text": "📝 Published blog post: OG Image File Size in 2026: PNG vs JPG vs WebP — Which Format Actually Loads in Link Previews at /og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/"
     },
     {
       "time": "today 10:25",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN \u2014 all promoting og-image-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting og-image-generator"
     },
     {
       "time": "today 16:55",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: Hyphens in Domain Names: Are They Actually Bad for SEO in 2026? at /domain-generator/blog/hyphens-in-domain-names-bad-for-seo-2026/"
+      "text": "📝 Published blog post: Hyphens in Domain Names: Are They Actually Bad for SEO in 2026? at /domain-generator/blog/hyphens-in-domain-names-bad-for-seo-2026/"
     },
     {
       "time": "today 16:55",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting domain-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting domain-generator"
     },
     {
       "time": "today 16:50",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: How to Transfer a Domain Name Without Downtime in 2026 \u2014 The Complete Migration Guide at /domain-generator/blog/how-to-transfer-domain-name-without-downtime-2026/"
+      "text": "📝 Published blog post: How to Transfer a Domain Name Without Downtime in 2026 — The Complete Migration Guide at /domain-generator/blog/how-to-transfer-domain-name-without-downtime-2026/"
     },
     {
       "time": "today 16:50",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN \u2014 all promoting domain-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting domain-generator"
     },
     {
       "time": "today 13:30",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: How to Value a Domain Name in 2026 \u2014 A Buyer & Seller's Appraisal Guide at /domain-generator/blog/how-to-value-a-domain-name-2026/"
+      "text": "📝 Published blog post: How to Value a Domain Name in 2026 — A Buyer & Seller's Appraisal Guide at /domain-generator/blog/how-to-value-a-domain-name-2026/"
     },
     {
       "time": "today 13:30",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/Domains, LinkedIn, Show HN \u2014 all promoting domain-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/Domains, LinkedIn, Show HN — all promoting domain-generator"
     },
     {
       "time": "today 09:15",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: One-Word vs Two-Word Domain Names in 2026: Which Actually Wins? at /domain-generator/blog/one-word-vs-two-word-domain-names-2026/"
+      "text": "📝 Published blog post: One-Word vs Two-Word Domain Names in 2026: Which Actually Wins? at /domain-generator/blog/one-word-vs-two-word-domain-names-2026/"
     },
     {
       "time": "today 09:15",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN \u2014 all promoting domain-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN — all promoting domain-generator"
     },
     {
       "time": "today 18:30",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: How to Optimize Meta Tags for AI Search Engines in 2026 at /seo-meta-generator/blog/meta-tags-for-ai-search-engines-2026/"
+      "text": "📝 Published blog post: How to Optimize Meta Tags for AI Search Engines in 2026 at /seo-meta-generator/blog/meta-tags-for-ai-search-engines-2026/"
     },
     {
       "time": "today 18:30",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting seo-meta-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
     },
     {
       "time": "today 18:45",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: Robots Meta Tag in 2026 \u2014 The Complete noindex / nofollow Guide (Without Breaking Your SEO) at /seo-meta-generator/blog/robots-meta-tag-noindex-nofollow-2026/"
+      "text": "📝 Published blog post: Robots Meta Tag in 2026 — The Complete noindex / nofollow Guide (Without Breaking Your SEO) at /seo-meta-generator/blog/robots-meta-tag-noindex-nofollow-2026/"
     },
     {
       "time": "today 18:45",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting seo-meta-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
     },
     {
       "time": "today 16:10",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: Canonical Tag Best Practices in 2026 \u2014 The Complete Guide to rel=canonical Without Tanking Your SEO at /seo-meta-generator/blog/canonical-tag-best-practices-2026/"
+      "text": "📝 Published blog post: Canonical Tag Best Practices in 2026 — The Complete Guide to rel=canonical Without Tanking Your SEO at /seo-meta-generator/blog/canonical-tag-best-practices-2026/"
     },
     {
       "time": "today 16:10",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting seo-meta-generator"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
     },
     {
       "time": "today 08:30",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: Color Psychology for Landing Pages: What Actually Converts in 2026 at /color-palette/blog/color-psychology-landing-pages-conversion-2026/"
+      "text": "📝 Published blog post: Color Psychology for Landing Pages: What Actually Converts in 2026 at /color-palette/blog/color-psychology-landing-pages-conversion-2026/"
     },
     {
       "time": "today 08:30",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN \u2014 all promoting color-palette"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting color-palette"
     },
     {
       "time": "today 09:30",
       "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: How to Extract a Color Palette from a Logo or Photo in 2026 at /color-palette/blog/extract-color-palette-from-logo-or-photo-2026/"
+      "text": "📝 Published blog post: How to Extract a Color Palette from a Logo or Photo in 2026 at /color-palette/blog/extract-color-palette-from-logo-or-photo-2026/"
     },
     {
       "time": "today 09:30",
       "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN \u2014 all promoting color-palette"
-    },
-    {
-      "time": "today 06:14",
-      "tag": "seo",
-      "text": "\ud83d\udcdd Published blog post: The 60-30-10 Color Rule: How Modern Designers Actually Use It in 2026 at /color-palette/blog/60-30-10-color-rule-2026/"
-    },
-    {
-      "time": "today 06:14",
-      "tag": "promo",
-      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN \u2014 all promoting color-palette"
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting color-palette"
     }
   ],
   "roadmap": [
@@ -239,62 +239,62 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
-      "text": "\ud83e\uddf5 Tailwind v4 quietly killed `tailwind.config.js` for colors \u2014 and a lot of teams haven't figured out the new way yet.\n\nHere's the full story in 5 tweets.\n\n1/\n\n\u2014\n\n2/ The new home for custom colors is the `@theme` directive \u2014 in CSS, not JS.\n\n```css\n@import \"tailwindcss\";\n@theme {\n  --color-brand-500: oklch(0.59 0.22 295);\n}\n```\n\nThat single line gives you `bg-brand-500`, `text-brand-500`, opacity modifiers \u2014 everything.\n\n\u2014\n\n3/ Default color space is now OKLCH.\n\nWhy it matters: equal numerical steps look like equal visual steps. With hex/HSL, yellow and green go weird.\n\nIf you're starting fresh, commit to OKLCH end-to-end \u2014 gradients and `color-mix()` will look right.\n\n\u2014\n\n4/ Dark mode? No more config flag.\n\n```css\n@custom-variant dark (&:where(.dark, .dark *));\n\n.dark { --color-bg: oklch(0.13 0.01 295); }\n```\n\nYour tokens *are* the variables. No second layer.\n\n\u2014\n\n5/ Wrote up the full migration: replacing vs extending, the `--color-*: initial` reset trick, reading tokens from JS, and a copy-paste starter `app.css`.\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/tailwind-v4-color-palette-custom-colors-2026/",
+      "text": "1/ CSS shipped a feature in 2026 that quietly replaces half your Sass color helpers.\n\nIt's `color-mix()`. One function. 96% browser support. Lives natively in CSS variables.\n\nWhy you should rip out your color preprocessor this week 👇\n\n—\n\n2/ The syntax is two minutes:\n\n```css\ncolor-mix(in oklch, var(--brand) 80%, white)\n```\n\nPick a color space. Name two colors. Optionally weight one. Done.\n\nMix toward `transparent` and you've replaced `rgba()` with something token-driven.\n\n—\n\n3/ The killer use case: a full palette from one brand color.\n\n```css\n:root {\n  --brand: oklch(0.59 0.22 295);\n  --brand-100: color-mix(in oklch, var(--brand) 16%, white);\n  --brand-700: color-mix(in oklch, var(--brand) 70%, black);\n}\n```\n\nChange `--brand`. Every shade re-derives. No build step.\n\n—\n\n4/ The trap nobody talks about: the color space argument is doing all the work.\n\n`in srgb` mixing blue + yellow = muddy gray.\n`in hsl` = unexpected green (short way round the wheel).\n`in oklch` = clean, perceptually even midtone.\n\nDefault to oklch.\n\n—\n\n5/ Dark mode also becomes trivial:\n\n```css\n.dark { --surface: oklch(0.13 0.01 295); }\n```\n\nEvery elevation tint derived from `--surface` updates automatically. Two-line dark mode.\n\n—\n\n6/ Full guide — syntax, the 5 production patterns, pitfalls, when NOT to use it:\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/css-color-mix-dynamic-palettes-2026/",
+      "tool": "color-palette",
+      "createdAt": "2026-05-17T01:36:12Z"
+    },
+    {
+      "platform": "Reddit /r/css",
+      "text": "OP, you can probably delete most of your Sass color helpers now. `color-mix()` hit 96% browser support this year and it does the thing your `lighten()` / `darken()` / `tint()` mixins used to do — but at runtime, against live CSS variables, with no build step.\n\nThe pattern that replaced ~200 lines of Sass in our design system:\n\n```css\n:root {\n  --brand: oklch(0.59 0.22 295);\n  --brand-100: color-mix(in oklch, var(--brand) 16%, white);\n  --brand-500: var(--brand);\n  --brand-700: color-mix(in oklch, var(--brand) 70%, black);\n}\n```\n\nChange `--brand` at the top, the whole ramp re-derives. No regenerated tokens, no JS, no rebuild.\n\nThree things that bit us migrating, so you don't have to learn them the hard way:\n\n1. The `in <space>` argument is required. `color-mix(red, blue)` is invalid and gets dropped silently.\n\n2. Default to `in oklch`. `in srgb` gives muddy midpoints (the classic blue+yellow=gray problem), `in hsl` takes the short way around the hue wheel and can flip to green.\n\n3. For overlays where you mix toward `transparent`, use `in srgb` — there's no second color, so the perceptual mixing is wasted and srgb is faster to compute.\n\nI wrote up the full pattern set (palette generation, dark mode without a second palette, hover/focus states from one base, accessible text on dynamic backgrounds) here: https://tinytools-smoky.vercel.app/color-palette/blog/css-color-mix-dynamic-palettes-2026/ — no signup, free palette generator on the same site if you want a base color to start from.",
+      "tool": "color-palette",
+      "createdAt": "2026-05-17T01:36:12Z"
+    },
+    {
+      "platform": "LinkedIn",
+      "text": "Two days ago I deleted 200+ lines of Sass color helpers from a 4-year-old design system and shipped the replacement in CSS.\n\nThe tool that made it possible: `color-mix()`. It's been in every evergreen browser since 2023, hit 96% global support this quarter, and it does something Sass never could — blend colors at runtime, against live CSS variables, with zero build step.\n\nThe pattern that earned its keep:\n\n```\n:root { --brand: oklch(0.59 0.22 295); }\n.chip-subtle { background: color-mix(in oklch, var(--brand) 16%, white); }\n.chip-hover  { background: color-mix(in oklch, var(--brand) 88%, white); }\n.overlay     { background: color-mix(in srgb,  var(--brand) 12%, transparent); }\n```\n\nWhat this unlocks:\n\n• One brand token derives every shade. White-label themes now ship by overriding a single CSS variable.\n\n• Dark mode goes from \"two parallel palettes\" to \"two variable overrides.\" Every elevation tint re-derives from `--surface`.\n\n• `rgba()` for overlays disappears. You stop hardcoding RGB triplets that drift from your brand color.\n\n• Component hover/focus/disabled states share one formula across primary, danger, and success buttons.\n\nThe one rule that matters: always specify `in oklch` for color-to-color mixing. The perceptual uniformity is the whole reason this works for design systems.\n\nI put together the full guide — syntax, the five production patterns, the pitfalls I hit, and when you should still pre-compute:\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/css-color-mix-dynamic-palettes-2026/",
+      "tool": "color-palette",
+      "createdAt": "2026-05-17T01:36:12Z"
+    },
+    {
+      "platform": "Show HN",
+      "text": "Title: Show HN: CSS color-mix() in 2026 — Dynamic Palettes, Overlays, and Dark Mode Without a Build Step\n\nComment: Wrote this after ripping a Sass color pipeline out of a production design system and replacing it with one CSS function. The article covers the syntax, why the color space argument matters more than people realize (blue + yellow in srgb = mud, in oklch = the midpoint you actually wanted), and five production patterns: full palettes from one token, replacing rgba() overlays, two-variable dark mode, component states from any base, and accessible text on dynamic backgrounds. Also calls out the four pitfalls I hit migrating, and the cases where you should still pre-compute (email, brand assets, exported SVG). Companion to a free in-browser palette generator. Happy to answer questions.",
+      "tool": "color-palette",
+      "createdAt": "2026-05-17T01:36:12Z"
+    },
+    {
+      "platform": "X / Twitter Thread",
+      "text": "🧵 Tailwind v4 quietly killed `tailwind.config.js` for colors — and a lot of teams haven't figured out the new way yet.\n\nHere's the full story in 5 tweets.\n\n1/\n\n—\n\n2/ The new home for custom colors is the `@theme` directive — in CSS, not JS.\n\n```css\n@import \"tailwindcss\";\n@theme {\n  --color-brand-500: oklch(0.59 0.22 295);\n}\n```\n\nThat single line gives you `bg-brand-500`, `text-brand-500`, opacity modifiers — everything.\n\n—\n\n3/ Default color space is now OKLCH.\n\nWhy it matters: equal numerical steps look like equal visual steps. With hex/HSL, yellow and green go weird.\n\nIf you're starting fresh, commit to OKLCH end-to-end — gradients and `color-mix()` will look right.\n\n—\n\n4/ Dark mode? No more config flag.\n\n```css\n@custom-variant dark (&:where(.dark, .dark *));\n\n.dark { --color-bg: oklch(0.13 0.01 295); }\n```\n\nYour tokens *are* the variables. No second layer.\n\n—\n\n5/ Wrote up the full migration: replacing vs extending, the `--color-*: initial` reset trick, reading tokens from JS, and a copy-paste starter `app.css`.\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/tailwind-v4-color-palette-custom-colors-2026/",
       "tool": "color-palette",
       "createdAt": "2026-05-16T17:05:06Z"
     },
     {
       "platform": "Reddit /r/tailwindcss",
-      "text": "Tailwind v4 moved everything color-related out of `tailwind.config.js` and into a CSS `@theme` block. Three things that tripped me up when I migrated:\n\n1. The variable name **must** start with `--color-` for utilities to be generated. `--brand-500` alone won't do anything. Tailwind scans the `--color-*` namespace specifically.\n\n2. Variables in `:root` are ignored. Only declarations *inside* `@theme { ... }` become utilities. Easy to miss because the syntax is so similar.\n\n3. If you want to wipe the default palette entirely instead of extending it, the trick is `@theme { --color-*: initial; }` \u2014 that's the v4 equivalent of the old `theme` vs `theme.extend` distinction.\n\nAlso worth knowing: OKLCH is now the default color space. Hex still works (auto-converted), but mixing the two means gradients and `color-mix()` interpolate weirdly. If you're starting fresh just commit to OKLCH.\n\nI wrote a longer walkthrough with a v3\u2192v4 cheat sheet and a production-ready starter `app.css` here: https://tinytools-smoky.vercel.app/color-palette/blog/tailwind-v4-color-palette-custom-colors-2026/ \u2014 no signup, no ads, just the code.",
+      "text": "Tailwind v4 moved everything color-related out of `tailwind.config.js` and into a CSS `@theme` block. Three things that tripped me up when I migrated:\n\n1. The variable name **must** start with `--color-` for utilities to be generated. `--brand-500` alone won't do anything. Tailwind scans the `--color-*` namespace specifically.\n\n2. Variables in `:root` are ignored. Only declarations *inside* `@theme { ... }` become utilities. Easy to miss because the syntax is so similar.\n\n3. If you want to wipe the default palette entirely instead of extending it, the trick is `@theme { --color-*: initial; }` — that's the v4 equivalent of the old `theme` vs `theme.extend` distinction.\n\nAlso worth knowing: OKLCH is now the default color space. Hex still works (auto-converted), but mixing the two means gradients and `color-mix()` interpolate weirdly. If you're starting fresh just commit to OKLCH.\n\nI wrote a longer walkthrough with a v3→v4 cheat sheet and a production-ready starter `app.css` here: https://tinytools-smoky.vercel.app/color-palette/blog/tailwind-v4-color-palette-custom-colors-2026/ — no signup, no ads, just the code.",
       "tool": "color-palette",
       "createdAt": "2026-05-16T17:05:06Z"
     },
     {
       "platform": "LinkedIn",
-      "text": "Tailwind CSS v4 has been out for a while now, and I keep seeing the same migration confusion from teams I work with: where did `tailwind.config.js` go for custom colors?\n\nShort answer: nowhere good. The whole color system moved out of JavaScript and into a CSS `@theme` directive. One file, one import, one block. Add `--color-brand-500: oklch(0.59 0.22 295);` and you get `bg-brand-500`, `text-brand-500`, opacity modifiers \u2014 everything you had before, but without the JS/CSS shuttle.\n\nTwo things this unlocks that are easy to underrate:\n\n\u2022 Design tokens are now plain CSS variables, readable from any context \u2014 D3 charts, canvas, inline styles, SVG. No more importing `resolveConfig` into your runtime bundle.\n\n\u2022 OKLCH as the default color space means your shade scales actually look perceptually even. The yellows-and-greens problem with hex steps goes away.\n\nI put together a full walkthrough \u2014 `@theme` setup, dark mode, v3\u2192v4 cheat sheet, and a production starter `app.css` you can paste straight in. Free, in-browser, no signup:\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/tailwind-v4-color-palette-custom-colors-2026/",
+      "text": "Tailwind CSS v4 has been out for a while now, and I keep seeing the same migration confusion from teams I work with: where did `tailwind.config.js` go for custom colors?\n\nShort answer: nowhere good. The whole color system moved out of JavaScript and into a CSS `@theme` directive. One file, one import, one block. Add `--color-brand-500: oklch(0.59 0.22 295);` and you get `bg-brand-500`, `text-brand-500`, opacity modifiers — everything you had before, but without the JS/CSS shuttle.\n\nTwo things this unlocks that are easy to underrate:\n\n• Design tokens are now plain CSS variables, readable from any context — D3 charts, canvas, inline styles, SVG. No more importing `resolveConfig` into your runtime bundle.\n\n• OKLCH as the default color space means your shade scales actually look perceptually even. The yellows-and-greens problem with hex steps goes away.\n\nI put together a full walkthrough — `@theme` setup, dark mode, v3→v4 cheat sheet, and a production starter `app.css` you can paste straight in. Free, in-browser, no signup:\n\nhttps://tinytools-smoky.vercel.app/color-palette/blog/tailwind-v4-color-palette-custom-colors-2026/",
       "tool": "color-palette",
       "createdAt": "2026-05-16T17:05:06Z"
     },
     {
       "platform": "Show HN",
-      "text": "Title: Show HN: Tailwind v4 Color Palette Guide \u2014 Migration, OKLCH, and a Starter app.css\n\nComment: Wrote this after migrating three projects to v4 and watching the same confusion play out each time. Covers the `@theme` directive, OKLCH defaults, dark mode without the config flag, the `--color-*: initial` reset, and a v3\u2192v4 cheat sheet. Companion to a free in-browser palette generator. Feedback welcome.",
+      "text": "Title: Show HN: Tailwind v4 Color Palette Guide — Migration, OKLCH, and a Starter app.css\n\nComment: Wrote this after migrating three projects to v4 and watching the same confusion play out each time. Covers the `@theme` directive, OKLCH defaults, dark mode without the config flag, the `--color-*: initial` reset, and a v3→v4 cheat sheet. Companion to a free in-browser palette generator. Feedback welcome.",
       "tool": "color-palette",
       "createdAt": "2026-05-16T17:05:06Z"
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "text": "1/ Tailwind v4 quietly swapped HEX for OKLCH as the default color format.\n\nWhy? Because HSL has been lying to designers about lightness for 15 years.\n\nA thread on what OKLCH actually fixes (and when to ignore the hype) \ud83d\udc47\n\n2/ HSL stores L as a math value, not a perceptual one.\n\nhsl(60 100% 50%) \u2014 blinding yellow\nhsl(240 100% 50%) \u2014 dark blue\n\nBoth are \"50% lightness.\" Your eye disagrees by ~7x.\n\nThat's why HSL ramps never look evenly spaced.\n\n3/ OKLCH uses the Oklab color space (2020).\n\noklch(0.5 0.15 295) \u2192 an actual perceptual middle-gray-purple.\n\nSame L number, different hue? Still looks equally bright.\n\nThat's the property that makes design system ramps trivial.\n\n4/ Build a 10-step ramp in OKLCH:\n- walk L from 0.95 \u2192 0.15\n- keep hue locked\n- chroma tapers at the extremes\n\nChange one number (the hue) \u2192 instant accent ramp in any color.\n\nTry that in HEX. I'll wait.\n\n5/ Browser support is 96% as of Q2 2026. Safari since 2022, Chrome/FF since 2023.\n\nBuild tools (Tailwind v4, Lightning CSS) compile to HEX fallback automatically.\n\nIf you're starting a new design system today, OKLCH is the default. Full guide + decision framework: https://tinytools-smoky.vercel.app/color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/",
-      "tool": "color-palette",
-      "createdAt": "2026-05-16T06:15:00Z"
-    },
-    {
-      "platform": "Reddit /r/web_design",
-      "text": "OP, the reason your gray ramp looks \"muddy in the middle\" is almost certainly that you're using HSL.\n\nHSL's L channel is mathematically uniform but perceptually wrong \u2014 hsl(60 100% 50%) (yellow) and hsl(240 100% 50%) (blue) are both \"50% light\" to the math, but yellow is roughly 7x brighter to your eye. So when you walk L from 95% down to 5% in equal steps, the yellows clump at the top and the blues clump at the bottom.\n\nThe fix that's becoming standard in 2026 design systems is OKLCH. Same hue/sat/lightness mental model, but L is genuinely perceptual. Walk L in equal increments and the ramp actually looks evenly spaced \u2014 in any hue, on any display.\n\nBrowser support is at ~96% globally now (Safari since 2022, Chrome/FF since 2023). Tailwind v4 made it the default, which is why you'll see it everywhere.\n\nWrote up a longer comparison with decision framework + copy-paste ramps here if useful: https://tinytools-smoky.vercel.app/color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/ (no signup, free palette generator on the same site if you want to mess with the numbers without doing the math).",
-      "tool": "color-palette",
-      "createdAt": "2026-05-16T06:15:00Z"
-    },
-    {
-      "platform": "LinkedIn",
-      "text": "A designer on my team spent two days last week trying to make a 10-step gray ramp \"feel right.\"\n\nShe kept tweaking HSL lightness values. The light grays felt warm, the dark grays felt blue, and the middle never looked centered.\n\nThe problem wasn't her eye. The problem was HSL.\n\nHSL's lightness channel is a mathematical convenience, not a perceptual one. A yellow at L=50% is roughly seven times brighter to the human eye than a blue at L=50%. When you walk that axis in equal steps, you don't get an evenly spaced ramp \u2014 you get clumping at both ends.\n\nOKLCH (the color format Tailwind v4 ships with by default) fixes this. The lightness channel is genuinely perceptual. Walk L from 0.95 down to 0.15 in equal steps and the ramp actually looks evenly spaced \u2014 in any hue, on any display.\n\nBrowser support crossed 96% this quarter. Safari has had it since 2022. If you're building a new design system in 2026 and not using OKLCH, you're making the work harder than it has to be.\n\nWrote up the full comparison \u2014 when to use OKLCH, when HEX still wins, and a 30-second decision framework: https://tinytools-smoky.vercel.app/color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/",
-      "tool": "color-palette",
-      "createdAt": "2026-05-16T06:15:00Z"
-    },
-    {
-      "platform": "Show HN",
-      "text": "Title: Show HN: OKLCH vs HSL vs HEX \u2013 A 2026 Decision Framework for Designers\n\nFirst comment:\nAuthor here. Built this after watching three teams in a row try to migrate their design tokens to OKLCH without a clear sense of what they were gaining. The TL;DR is that HSL lies about perceived lightness and OKLCH doesn't \u2014 which only matters for programmatic palettes, theming, and dark-mode surfaces, but those are most of the value of a design system. HEX is still the right answer for email, SVG, and brand guides. Happy to answer questions.",
-      "tool": "color-palette",
-      "createdAt": "2026-05-16T06:15:00Z"
     }
   ],
   "checklist": [
     {
-      "task": "\ud83d\udd25 PASTE ONE OF THE 3 DRAFTS BELOW (30 seconds = first 100 visitors)",
+      "task": "🔥 PASTE ONE OF THE 3 DRAFTS BELOW (30 seconds = first 100 visitors)",
       "url": "#drafts",
       "done": false,
       "value": "First 100 visitors come from this. Affiliate revenue follows traffic."
     },
     {
-      "task": "\u2705 Watch awesome-list PRs for merge \u2014 auto-emails on merge",
+      "task": "✅ Watch awesome-list PRs for merge — auto-emails on merge",
       "url": "https://github.com/pulls?q=is%3Apr+author%3Aalfredoautomatizaloconia-cloud",
       "done": false,
       "value": "5 PRs submitted to lists with combined 49,500 stars. Each merge = permanent backlink."
@@ -303,7 +303,7 @@
       "task": "Wait for Namecheap brand approval (1-3 days)",
       "url": "https://app.impact.com/secure/member/home/mview.ihtml",
       "done": false,
-      "value": "Once approved, paste tracking link to me \u2014 instant Domain Generator activation"
+      "value": "Once approved, paste tracking link to me — instant Domain Generator activation"
     },
     {
       "task": "Sign up: Buy Me a Coffee (instant)",
