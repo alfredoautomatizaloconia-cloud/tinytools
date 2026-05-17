@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X-Robots-Tag HTTP Header in 2026 — The 5 Cases Where Meta Robots Isn't Enough</title>
+<meta name="description" content="X-Robots-Tag is the HTTP header version of <meta name=robots>. In 2026 it controls how Google and AI search index PDFs, images, JSON APIs, and headless responses where you cannot inject a meta tag. Here is the complete 2026 guide — directives, syntax, server configs, and the five jobs only X-Robots-Tag can do.">
+<meta name="keywords" content="x-robots-tag 2026, x-robots-tag http header, x-robots-tag vs meta robots, noindex pdf seo, x-robots-tag nginx apache, x-robots-tag cloudflare, noindex headers 2026, x-robots-tag json, x-robots-tag images, x-robots-tag ai search">
+<meta property="og:title" content="X-Robots-Tag HTTP Header in 2026 — The 5 Cases Where Meta Robots Isn't Enough">
+<meta property="og:description" content="X-Robots-Tag is the only way to noindex PDFs, images, JSON, and headless responses. Here is the 2026 implementation guide for Nginx, Apache, Cloudflare and Vercel.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/seo-meta-generator/blog/x-robots-tag-http-header-2026/">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/seo-meta-generator/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="X-Robots-Tag HTTP Header in 2026 — The 5 Cases Where Meta Robots Isn't Enough">
+<meta name="twitter:description" content="The 2026 guide to noindexing PDFs, images, JSON, and headless responses with X-Robots-Tag — directives, configs, and the cases meta robots can never reach.">
+<meta name="twitter:image" content="https://tinytools-smoky.vercel.app/seo-meta-generator/og-default.png">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/seo-meta-generator/blog/x-robots-tag-http-header-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "X-Robots-Tag HTTP Header in 2026 — The 5 Cases Where Meta Robots Isn't Enough",
+  "description": "X-Robots-Tag is the HTTP header version of meta robots. In 2026 it is the only way to control how Google and AI search index PDFs, images, JSON APIs, and headless responses. Complete implementation guide with Nginx, Apache, Cloudflare and Vercel configs.",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
+  "datePublished": "2026-05-17",
+  "dateModified": "2026-05-17",
+  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/seo-meta-generator/blog/x-robots-tag-http-header-2026/",
+  "image": "https://tinytools-smoky.vercel.app/seo-meta-generator/og-default.png",
+  "keywords": "x-robots-tag 2026, x-robots-tag http header, x-robots-tag vs meta robots, noindex pdf seo, x-robots-tag nginx, x-robots-tag cloudflare"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between X-Robots-Tag and meta robots in 2026?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Both carry the same directives (noindex, nofollow, noarchive, nosnippet, etc.) and Google treats them identically for HTML pages. The difference is reach. The meta robots tag lives inside the <head> of an HTML document, which means it only exists on pages with a <head>. X-Robots-Tag lives in the HTTP response header and works on every kind of response — PDFs, images, JSON, plain text, video files, headless API output. In 2026 X-Robots-Tag is the only way to noindex any non-HTML resource." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use X-Robots-Tag to noindex a PDF?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, and it is the only correct way to do it. PDFs have no <head> element, so there is nowhere to inject a meta robots tag. The PDF body cannot carry an indexing directive that Google recognizes. The only Google-supported way to remove a PDF from the index is to serve it with an HTTP response header like X-Robots-Tag: noindex, follow. The PDF must still be crawlable — do not block it in robots.txt or Google will never see the header and never drop it from the index." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does X-Robots-Tag work on AI search crawlers like ClaudeBot and OAI-SearchBot?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes for the standard noindex, nofollow, noarchive and nosnippet directives, which the major AI crawlers respect as of 2026. For AI-specific opt-outs the relevant directives are noai and noimageai, which were proposed by the IETF and have been adopted by ClaudeBot, OAI-SearchBot, GPTBot, and PerplexityBot. Those directives work both as meta tags and as X-Robots-Tag values, and X-Robots-Tag is the only way to apply them to non-HTML resources like training-data candidate PDFs or images." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I add X-Robots-Tag to a specific file type in Nginx?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Use a location block keyed on the file extension. For PDFs the canonical 2026 config is `location ~* \\.pdf$ { add_header X-Robots-Tag \"noindex, follow\"; }` placed inside the relevant server block. The same pattern works for any extension. For images you can use a regex like `\\.(jpe?g|png|gif|webp|avif)$`. The Nginx add_header directive inherits down nested blocks, so if you set it at the server level every location below it picks up the header unless you override it." }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use X-Robots-Tag in robots.txt instead?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Those are different mechanisms with different semantics. robots.txt tells crawlers not to fetch a URL at all. X-Robots-Tag tells crawlers they can fetch the URL but must not index it. If you disallow a URL in robots.txt, Google may still list it in search results (without a snippet) because it knows the URL exists from external links but cannot fetch it to see the noindex header. The correct way to remove a URL from the index is to allow crawling and serve X-Robots-Tag: noindex. Once the URL has dropped, you can then disallow it." }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a;
+    --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #3b82f6; --accent-glow: #3b82f640;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 {
+    font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15;
+    margin: 16px 0 12px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 24px; font-weight: 700; margin: 36px 0 12px; color: var(--text); }
+  h3 { font-size: 19px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+  p, ul, ol { color: #d0d0e0; margin-bottom: 16px; font-size: 17px; }
+  ul, ol { margin-left: 24px; }
+  li { margin-bottom: 6px; }
+  strong { color: var(--text); font-weight: 600; }
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-size: 14px; color: #93c5fd; }
+  pre { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; padding: 16px; overflow-x: auto; margin: 16px 0; font-size: 13px; line-height: 1.5; }
+  pre code { background: none; padding: 0; color: #d0d0e0; }
+  a { color: var(--accent); }
+  blockquote {
+    border-left: 3px solid var(--accent); padding: 8px 16px; margin: 20px 0;
+    background: var(--bg-elevated); border-radius: 6px; font-style: italic; color: var(--text-dim);
+  }
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 15px;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); color: #d0d0e0; }
+  th { background: var(--bg-elevated); color: var(--text); font-weight: 600; font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  .cta-box {
+    margin: 36px 0; padding: 24px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; border-left: 4px solid var(--accent);
+  }
+  .cta-box h3 { margin: 0 0 6px; font-size: 18px; color: var(--text); }
+  .cta-box p { margin-bottom: 12px; font-size: 15px; }
+  .cta-btn {
+    display: inline-block; padding: 12px 24px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+  }
+  .related { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .related h3 { color: var(--text-dim); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card {
+    padding: 14px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--text); transition: all 0.15s;
+  }
+  .related-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .related-card .name { font-weight: 600; font-size: 14px; }
+  .related-card .desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;&rsaquo;&nbsp;
+    <a href="/seo-meta-generator/">SEO Meta Generator</a> &nbsp;&rsaquo;&nbsp;
+    X-Robots-Tag HTTP Header 2026
+  </div>
+
+  <h1>X-Robots-Tag HTTP Header in 2026 — The 5 Cases Where Meta Robots Isn't Enough</h1>
+  <div class="meta">May 17, 2026 &middot; 9 min read &middot; By TinyTools</div>
+
+  <p>Most SEO content lives in HTML pages with a <code>&lt;head&gt;</code>, so most SEO advice is about meta tags. But a serious fraction of what Google and AI crawlers index on your site is not HTML at all: case-study PDFs, product images, JSON endpoints exposed for OpenGraph fallbacks, downloadable assets, video files, plain-text README dumps. None of those have a <code>&lt;head&gt;</code>. None of them can carry a <code>&lt;meta name="robots"&gt;</code> tag. And in 2026 a single misindexed PDF can outrank the polished landing page you actually want users to land on.</p>
+
+  <p>The fix is the same fix it has been since 2007 &mdash; the <strong>X-Robots-Tag</strong> HTTP response header &mdash; and in 2026 it is one of the few SEO controls that has not changed. What has changed is the surface area: AI crawlers (ClaudeBot, OAI-SearchBot, PerplexityBot, GPTBot) all respect it, the <code>noai</code> and <code>noimageai</code> directives work in it, and headless APIs that return JSON for AI agents to summarize now need their own indexing policy. This is the 2026 guide to the header that quietly carries half your site's SEO posture.</p>
+
+  <h2>X-Robots-Tag vs meta robots: same directives, different reach</h2>
+
+  <p>Functionally, the two carry identical directives. Google, Bing, and the major AI crawlers treat both as authoritative. The difference is where they can live.</p>
+
+  <table>
+    <thead><tr><th>Mechanism</th><th>Lives in</th><th>Works on</th><th>Use when</th></tr></thead>
+    <tbody>
+      <tr><td><code>&lt;meta name="robots"&gt;</code></td><td>HTML <code>&lt;head&gt;</code></td><td>HTML pages only</td><td>Per-page, content-team-controlled, easy to edit in CMS</td></tr>
+      <tr><td><code>X-Robots-Tag</code> header</td><td>HTTP response header</td><td>Any response type</td><td>PDFs, images, JSON, plain text, video, batches by URL pattern, content you cannot edit per-file</td></tr>
+    </tbody>
+  </table>
+
+  <p>The two can also coexist. You can serve an HTML page with both a meta robots tag in the <code>&lt;head&gt;</code> and an X-Robots-Tag header, and Google will combine them using the most restrictive interpretation. <code>noindex</code> from either source wins. <code>nofollow</code> from either source wins. This is useful for staging environments where you set X-Robots-Tag: noindex at the load balancer for every response and stop worrying about whether each page template has the meta tag.</p>
+
+  <h2>The 5 jobs only X-Robots-Tag can do</h2>
+
+  <h3>1. Noindex a PDF</h3>
+
+  <p>PDFs are the single most common case. A whitepaper, a case study, a leaked internal doc that got into the public folder &mdash; PDFs have no <code>&lt;head&gt;</code>, so there is nowhere to inject a meta tag. The body of the PDF cannot carry a Google-recognized indexing directive. The only supported way to remove a PDF from the index is to serve it with:</p>
+
+  <pre><code>X-Robots-Tag: noindex, follow</code></pre>
+
+  <p>The <code>follow</code> matters: it tells Google to still crawl links inside the PDF so backlinks from your whitepaper to your product pages still pass authority. The PDF must remain crawlable &mdash; do not block it in <code>robots.txt</code> or Google will never fetch it, never see the header, and never drop it from the index. This trips up most teams the first time they try to clean up a leaked PDF: they robots.txt it, the URL stays in the index forever as a bare-URL listing.</p>
+
+  <h3>2. Noindex images and prevent image-search ranking</h3>
+
+  <p>Product photography sometimes leaks into Google Images and outranks the product page itself. The fix is per-image X-Robots-Tag on the image response, not a meta tag on the HTML page that embeds it. The directive most often wanted in 2026 is:</p>
+
+  <pre><code>X-Robots-Tag: noindex, noimageai</code></pre>
+
+  <p><code>noimageai</code> is the AI-training opt-out for images specifically, adopted by every major AI crawler that scrapes images for training corpora. Setting it on your hero photography prevents the image from being part of future image-generation training sets without removing it from your live page.</p>
+
+  <h3>3. Noindex JSON responses and OG fallback endpoints</h3>
+
+  <p>If your site exposes <code>/api/posts.json</code> or <code>/og/posts/123/preview.json</code> as an internal data feed, those URLs are often discoverable from your HTML and end up in Google's index as low-value text dumps. The fix is to send an X-Robots-Tag header from your JSON endpoint:</p>
+
+  <pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+X-Robots-Tag: noindex, nofollow
+
+{"posts": [...]}</code></pre>
+
+  <p>This is the single most common Vercel and Cloudflare Workers misconfiguration we see in audits. The fix is one line in a middleware.</p>
+
+  <h3>4. Bulk policy by URL pattern at the edge</h3>
+
+  <p>For sites with thousands of pages where touching every template is not feasible, the right control plane is the CDN. Cloudflare Transform Rules, Vercel Edge Config, and Fastly VCL all support adding response headers by URL pattern. Set <code>X-Robots-Tag: noindex</code> on every URL matching <code>/preview/*</code>, <code>/draft/*</code>, or <code>/staging/*</code> and you do not have to worry about whether the underlying template remembered to include the meta tag.</p>
+
+  <h3>5. Per-crawler directives</h3>
+
+  <p>The X-Robots-Tag value accepts an optional bot prefix, which lets you send different directives to different crawlers from a single response. This is how you tell Google to index a page but tell AI crawlers not to use it for training:</p>
+
+  <pre><code>X-Robots-Tag: googlebot: index, follow
+X-Robots-Tag: ClaudeBot: noai
+X-Robots-Tag: GPTBot: noindex, noai
+X-Robots-Tag: PerplexityBot: noai</code></pre>
+
+  <p>Each line is a separate header with its own bot scope. This is the 2026 pattern for sites that want to stay discoverable in classic search but opt out of being part of AI training data &mdash; common for paywalled publishers, legal documents, and content licensed under non-commercial terms.</p>
+
+  <div class="cta-box">
+    <h3>Audit your headers and meta tags in one shot</h3>
+    <p>Paste any URL into our <a href="/seo-meta-generator/">SEO Meta Tag Generator</a>. It fetches both the HTTP headers and the rendered <code>&lt;head&gt;</code>, flags conflicts between X-Robots-Tag and meta robots, and emits a copy-paste corrected configuration for Nginx, Apache, Cloudflare Workers, or Vercel.</p>
+    <a href="/seo-meta-generator/" class="cta-btn">Try it free &rarr;</a>
+  </div>
+
+  <h2>The directive reference for 2026</h2>
+
+  <p>Every directive that works in <code>&lt;meta name="robots"&gt;</code> also works in <code>X-Robots-Tag</code>. The full 2026 set:</p>
+
+  <table>
+    <thead><tr><th>Directive</th><th>Effect</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><code>noindex</code></td><td>Do not include in search results</td><td>Page must be crawlable for this to be seen</td></tr>
+      <tr><td><code>nofollow</code></td><td>Do not follow links from this page</td><td>Use sparingly &mdash; rarely the right answer</td></tr>
+      <tr><td><code>noarchive</code></td><td>Do not show the cached copy</td><td>Google retired the cache UI but still respects this</td></tr>
+      <tr><td><code>nosnippet</code></td><td>No text or image snippet in SERP</td><td>Strict; usually too aggressive</td></tr>
+      <tr><td><code>max-snippet:N</code></td><td>Limit snippet to N characters</td><td>Use <code>max-snippet:160</code> for a sane default</td></tr>
+      <tr><td><code>max-image-preview:[none|standard|large]</code></td><td>Image preview size</td><td><code>large</code> recommended; Discover requires it</td></tr>
+      <tr><td><code>max-video-preview:N</code></td><td>Video preview length in seconds</td><td><code>-1</code> means no limit</td></tr>
+      <tr><td><code>unavailable_after:&lt;date&gt;</code></td><td>Drop from index after date</td><td>Useful for event pages and time-limited content</td></tr>
+      <tr><td><code>noai</code></td><td>Do not use for AI training</td><td>Respected by ClaudeBot, OAI-SearchBot, GPTBot, PerplexityBot</td></tr>
+      <tr><td><code>noimageai</code></td><td>Do not use images for AI training</td><td>Image-specific opt-out; respected by major image scrapers</td></tr>
+    </tbody>
+  </table>
+
+  <p>Directives are comma-separated and case-insensitive. The bot prefix (<code>googlebot:</code>, <code>ClaudeBot:</code>) is the one piece of syntax to be careful with &mdash; it lives outside the directive list and gets its own header line.</p>
+
+  <h2>Server configs that actually work in production</h2>
+
+  <h3>Nginx</h3>
+
+  <pre><code># Noindex all PDFs
+location ~* \.pdf$ {
+  add_header X-Robots-Tag "noindex, follow" always;
+}
+
+# Noai on all images
+location ~* \.(jpe?g|png|gif|webp|avif)$ {
+  add_header X-Robots-Tag "noai, noimageai" always;
+}
+
+# Noindex preview and draft URLs
+location ~* ^/(preview|draft|staging)/ {
+  add_header X-Robots-Tag "noindex, nofollow" always;
+}</code></pre>
+
+  <p>The <code>always</code> flag matters: without it, Nginx skips the header on error responses (4xx/5xx), and a 404 that should not be indexed will leak.</p>
+
+  <h3>Apache (.htaccess)</h3>
+
+  <pre><code>&lt;FilesMatch "\.pdf$"&gt;
+  Header set X-Robots-Tag "noindex, follow"
+&lt;/FilesMatch&gt;
+
+&lt;FilesMatch "\.(jpe?g|png|gif|webp|avif)$"&gt;
+  Header set X-Robots-Tag "noai, noimageai"
+&lt;/FilesMatch&gt;</code></pre>
+
+  <h3>Cloudflare Workers / Vercel Edge</h3>
+
+  <pre><code>// middleware.js — Vercel / Next.js
+export function middleware(req) {
+  const res = NextResponse.next();
+  if (req.nextUrl.pathname.startsWith('/preview/')) {
+    res.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  }
+  if (req.nextUrl.pathname.endsWith('.json')) {
+    res.headers.set('X-Robots-Tag', 'noindex');
+  }
+  return res;
+}</code></pre>
+
+  <h2>The four mistakes we see every audit</h2>
+
+  <p><strong>1. Disallowing in robots.txt before the noindex propagates.</strong> The URL is already in the index. You add it to robots.txt. Google can no longer fetch the URL to see the header. The URL stays in the index forever as a bare-URL listing. Always allow crawling until the URL has dropped from the index, then disallow.</p>
+
+  <p><strong>2. Setting the header on the HTML page instead of the asset.</strong> An HTML page that embeds a PDF link is not the PDF. Setting X-Robots-Tag on the page does nothing for the PDF itself. The PDF URL must serve its own header.</p>
+
+  <p><strong>3. Forgetting the <code>always</code> flag in Nginx.</strong> 404 and 500 responses skip <code>add_header</code> unless you tell Nginx otherwise. Soft-404 pages then get indexed because the noindex header was never sent.</p>
+
+  <p><strong>4. Conflicting meta robots and X-Robots-Tag.</strong> If the meta tag says <code>index, follow</code> and the header says <code>noindex</code>, Google takes <code>noindex</code> (most restrictive wins). This is usually intentional &mdash; staging blanket-noindex via header &mdash; but if the page is supposed to be indexable, the header is the bug.</p>
+
+  <h2>The 60-second audit</h2>
+
+  <p>For any URL you suspect:</p>
+
+  <ol>
+    <li>Open DevTools &rarr; Network. Reload the URL.</li>
+    <li>Click the document request, then Response Headers.</li>
+    <li>Look for X-Robots-Tag. If absent, the page relies on meta robots only.</li>
+    <li>If present, compare to your meta robots. Restrictive wins.</li>
+    <li>For non-HTML assets (PDFs, images, JSON), confirm X-Robots-Tag is set; that is the only mechanism that applies.</li>
+  </ol>
+
+  <p>Or paste the URL into the <a href="/seo-meta-generator/">TinyTools SEO Meta Tag Generator</a> below, which does the full audit including conflict detection between header and meta. Suggested external references when you need to dig deeper: the <a href="https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag?ref=tinytools&aff=tt-001" rel="noopener">Google Search Central docs on robots meta and X-Robots-Tag</a>, the <a href="https://www.cloudflare.com/learning/seo/?ref=tinytools&aff=tt-002" rel="noopener">Cloudflare SEO learning hub</a> for edge config patterns, and the <a href="https://nginx.org/en/docs/http/ngx_http_headers_module.html?ref=tinytools&aff=tt-003" rel="noopener">Nginx headers module reference</a> for the <code>always</code> flag and inheritance rules.</p>
+
+  <h2>Bottom line for 2026</h2>
+
+  <p>Meta robots is the right tool for HTML pages your content team edits. X-Robots-Tag is the right tool for everything else &mdash; PDFs, images, JSON, bulk URL patterns, per-crawler directives. They carry identical directives and the major search and AI crawlers respect them equally. The single mistake that costs the most traffic is using <code>robots.txt</code> when you meant <code>X-Robots-Tag: noindex</code>; the rest of the audit is mechanical once you know where to look.</p>
+
+  <div class="cta-box">
+    <h3>Generate validator-clean meta tags in 60 seconds</h3>
+    <p>Free, no signup. Paste your URL, get correct title, description, canonical, OG, Twitter Card, and robots directives, plus an X-Robots-Tag suggestion for non-HTML assets.</p>
+    <a href="/seo-meta-generator/" class="cta-btn">Open SEO Meta Generator &rarr;</a>
+  </div>
+
+  <div class="related">
+    <h3>Related guides</h3>
+    <div class="related-grid">
+      <a class="related-card" href="/seo-meta-generator/blog/robots-meta-tag-noindex-nofollow-2026/">
+        <div class="name">Meta Robots in 2026</div>
+        <div class="desc">noindex, nofollow, and the directives that matter</div>
+      </a>
+      <a class="related-card" href="/seo-meta-generator/blog/canonical-tag-best-practices-2026/">
+        <div class="name">Canonical Tag Best Practices</div>
+        <div class="desc">The 2026 self-canonical playbook</div>
+      </a>
+      <a class="related-card" href="/seo-meta-generator/blog/meta-tags-for-ai-search-engines-2026/">
+        <div class="name">Meta Tags for AI Search</div>
+        <div class="desc">noai, noimageai, and AI crawler directives</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="related">
+    <h3>More TinyTools</h3>
+    <div class="related-grid">
+      <a class="related-card" href="/og-image-generator/">
+        <div class="name">OG Image Generator</div>
+        <div class="desc">1200&times;630 link previews in one click</div>
+      </a>
+      <a class="related-card" href="/favicon-generator/">
+        <div class="name">Favicon Generator</div>
+        <div class="desc">Every size every browser asks for</div>
+      </a>
+      <a class="related-card" href="/domain-generator/">
+        <div class="name">Domain Generator</div>
+        <div class="desc">Available domains in seconds</div>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 TinyTools &middot; <a href="/">All tools</a> &middot; <a href="/seo-meta-generator/">SEO Meta Generator</a>
+  </footer>
+</div>
+</body>
+</html>
