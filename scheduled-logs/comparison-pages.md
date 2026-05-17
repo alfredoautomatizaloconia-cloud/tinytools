@@ -24,3 +24,4 @@
 - Word count: ~1,250
 - Total comparison pages live: 28
 - Notes: All 20 competitors from the original rotation list are now covered; this is an expansion pick targeting Topaz brand-search traffic for the ai-image-upscaler tool. Page is honest about Topaz's quality lead on RAW/print/video and positions TinyTools for the casual-web-use case.
+- 2026-05-17 — vs/smallpdf — Smallpdf (PDF suite) — https://tinytools-smoky.vercel.app/vs/smallpdf/
