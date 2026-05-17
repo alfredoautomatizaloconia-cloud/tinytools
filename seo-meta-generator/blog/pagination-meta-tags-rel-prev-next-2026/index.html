@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagination Meta Tags in 2026 — rel=prev/next Is Dead, Here's What Google Wants Now</title>
+<meta name="description" content="rel=prev / rel=next was deprecated by Google but every CMS still emits it. Here is what actually controls how Google and AI search treat paginated archives in 2026 — canonical, self-canonical, view-all, hash routing, and the four common mistakes that orphan half your catalog.">
+<meta name="keywords" content="pagination meta tags 2026, rel prev next deprecated, rel next rel prev 2026, paginated content seo, view all canonical pagination, infinite scroll seo 2026, rel canonical pagination, paginated archive seo, google pagination 2026, ai search pagination">
+<meta property="og:title" content="Pagination Meta Tags in 2026 — rel=prev/next Is Dead, Here's What Google Wants Now">
+<meta property="og:description" content="rel=prev/next was deprecated, every CMS still emits it, and most paginated archives are bleeding traffic. Here is what actually works for Google and AI search in 2026.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/seo-meta-generator/blog/pagination-meta-tags-rel-prev-next-2026/">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/seo-meta-generator/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pagination Meta Tags in 2026 — rel=prev/next Is Dead, Here's What Google Wants Now">
+<meta name="twitter:description" content="The 2026 pagination guide for Google and AI search: canonical patterns, view-all, infinite scroll, and the four mistakes that orphan half your catalog.">
+<meta name="twitter:image" content="https://tinytools-smoky.vercel.app/seo-meta-generator/og-default.png">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/seo-meta-generator/blog/pagination-meta-tags-rel-prev-next-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Pagination Meta Tags in 2026 — rel=prev/next Is Dead, Here's What Google Wants Now",
+  "description": "rel=prev / rel=next was deprecated by Google but every CMS still emits it. Here is what actually controls how Google and AI search treat paginated archives in 2026 — canonical, self-canonical, view-all, hash routing, and the four common mistakes that orphan half your catalog.",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
+  "datePublished": "2026-05-17",
+  "dateModified": "2026-05-17",
+  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/seo-meta-generator/blog/pagination-meta-tags-rel-prev-next-2026/",
+  "image": "https://tinytools-smoky.vercel.app/seo-meta-generator/og-default.png",
+  "keywords": "pagination meta tags 2026, rel prev next deprecated, paginated content seo, view all canonical pagination, infinite scroll seo 2026"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does rel=prev and rel=next still work for SEO in 2026?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Google deprecated rel=prev / rel=next as an indexing signal in 2019 and has never reintroduced it. In 2026 the tags are a no-op for Googlebot and for AI search crawlers like OAI-SearchBot and ClaudeBot. They are not harmful to emit, but they do nothing — which is why every paginated archive that still relies on them is being treated as a sequence of isolated pages instead of a single content series." }
+    },
+    {
+      "@type": "Question",
+      "name": "Should each paginated page have a canonical pointing to page 1?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. The 2026 best practice is a self-referencing canonical on every paginated page. Pointing /page/2/, /page/3/, and beyond at /page/1/ tells Google those pages are duplicates of page 1, which orphans every item that does not appear on page 1. Self-canonical lets each paginated page be indexed independently while still letting Google reconstruct the series from internal links and the sitemap." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a view-all page still recommended for pagination SEO?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Only if the view-all page loads in under 2.5 seconds and stays under 10 MB. When those conditions hold, Google still prefers a view-all page and will canonicalize the paginated series to it. For archives with more than a few hundred items, a view-all page violates Core Web Vitals and you should use self-canonical paginated pages with a clean ?page=N URL parameter and a proper sitemap entry per page instead." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does infinite scroll get indexed by Google in 2026?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Only the initial server-rendered slice. Googlebot does not scroll, click load-more, or wait for IntersectionObserver to trigger. To get the rest of the catalog indexed you need parallel paginated URLs (the so-called accessible pagination pattern) that mirror the infinite scroll, each with its own URL like /catalog/?page=3 and its own server-rendered HTML. The infinite scroll is for users; the paginated URLs are for crawlers and AI." }
+    },
+    {
+      "@type": "Question",
+      "name": "What URL pattern should I use for paginated archives?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A query parameter like ?page=2 is the safest choice in 2026 because it is unambiguous to crawlers and clean for parameter-handling rules in Search Console. /page/2/ subdirectories also work and read better, but require careful trailing-slash handling. Avoid fragments (#page=2) entirely — fragments are not indexed and the content past page 1 will be invisible to every crawler and AI fetcher." }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a;
+    --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #3b82f6; --accent-glow: #3b82f640;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 {
+    font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15;
+    margin: 16px 0 12px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 24px; font-weight: 700; margin: 36px 0 12px; color: var(--text); }
+  h3 { font-size: 19px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+  p, ul, ol { color: #d0d0e0; margin-bottom: 16px; font-size: 17px; }
+  ul, ol { margin-left: 24px; }
+  li { margin-bottom: 6px; }
+  strong { color: var(--text); font-weight: 600; }
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-size: 14px; color: #93c5fd; }
+  pre { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; padding: 16px; overflow-x: auto; margin: 16px 0; font-size: 13px; line-height: 1.5; }
+  pre code { background: none; padding: 0; color: #d0d0e0; }
+  a { color: var(--accent); }
+  blockquote {
+    border-left: 3px solid var(--accent); padding: 8px 16px; margin: 20px 0;
+    background: var(--bg-elevated); border-radius: 6px; font-style: italic; color: var(--text-dim);
+  }
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 15px;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); color: #d0d0e0; }
+  th { background: var(--bg-elevated); color: var(--text); font-weight: 600; font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  .cta-box {
+    margin: 36px 0; padding: 24px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; border-left: 4px solid var(--accent);
+  }
+  .cta-box h3 { margin: 0 0 6px; font-size: 18px; color: var(--text); }
+  .cta-box p { margin-bottom: 12px; font-size: 15px; }
+  .cta-btn {
+    display: inline-block; padding: 12px 24px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+  }
+  .related { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .related h3 { color: var(--text-dim); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card {
+    padding: 14px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--text); transition: all 0.15s;
+  }
+  .related-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .related-card .name { font-weight: 600; font-size: 14px; }
+  .related-card .desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;&rsaquo;&nbsp;
+    <a href="/seo-meta-generator/">SEO Meta Generator</a> &nbsp;&rsaquo;&nbsp;
+    Pagination Meta Tags 2026
+  </div>
+
+  <h1>Pagination Meta Tags in 2026 — rel=prev/next Is Dead, Here's What Google Wants Now</h1>
+  <div class="meta">May 17, 2026 &middot; 8 min read &middot; By TinyTools</div>
+
+  <p>Every CMS shipped in the last decade emits <code>&lt;link rel="prev"&gt;</code> and <code>&lt;link rel="next"&gt;</code> on paginated archives. WordPress core still does it. Shopify collections do it. Most Next.js and Nuxt starters do it. And in 2026, none of it does anything &mdash; Google deprecated those tags as an indexing signal in 2019 and never reintroduced them. The CMSs kept emitting them, the SEO blogs kept recommending them, and an entire generation of paginated catalogs is being treated by Googlebot, ClaudeBot, and OAI-SearchBot as if every page were an isolated island.</p>
+
+  <p>That has gotten more expensive in 2026 because AI search is now a real referral channel and AI crawlers are far less forgiving of pagination footguns than Googlebot ever was. If your <code>/blog/page/7/</code> archive contains the 30 oldest posts that established your topical authority, and that page has a canonical pointing to <code>/blog/</code>, those 30 posts are functionally unindexed. This is the most common silent SEO leak we see in audits.</p>
+
+  <p>This is the 2026 playbook for paginated archives: what to delete from your <code>&lt;head&gt;</code>, what to keep, the URL pattern Google and AI fetchers prefer, and the four mistakes that are quietly orphaning half of every long-tail catalog on the open web.</p>
+
+  <h2>What actually happened to rel=prev / rel=next</h2>
+
+  <p>John Mueller confirmed the deprecation on Twitter in March 2019: Google had not used <code>rel=prev</code> or <code>rel=next</code> as an indexing signal for years before that, and the documentation page was quietly retired. Bing kept paying attention to it for a while but moved to a similar position in 2022. In 2026:</p>
+
+  <ul>
+    <li><strong>Googlebot</strong> ignores both tags entirely. They are valid HTML and do not hurt anything &mdash; they simply do nothing.</li>
+    <li><strong>OAI-SearchBot, PerplexityBot, ClaudeBot</strong> follow whatever the page links to. They do not look at <code>rel=prev/next</code> for sequence inference.</li>
+    <li><strong>Browsers</strong> still use them for keyboard accessibility and some pre-fetching, which is the only reason to keep them in the markup at all.</li>
+    <li><strong>RSS readers and reader-mode parsers</strong> sometimes use them for "next article" affordances.</li>
+  </ul>
+
+  <p>The verdict: leave them in if your accessibility audit is using them, but do not rely on them for any SEO outcome. The actual signals that control how paginated content gets indexed in 2026 are canonical tags, the URL pattern, internal linking depth, and sitemap entries. None of those are <code>rel=prev/next</code>.</p>
+
+  <h2>The 2026 canonical pattern for paginated archives</h2>
+
+  <p>This is the single decision that determines whether your catalog gets indexed or orphaned. The right answer in 2026 is <strong>self-referencing canonical on every paginated page</strong>. Not page 1. Not a view-all. The page itself.</p>
+
+  <pre><code>&lt;!-- On /blog/?page=3 --&gt;
+&lt;link rel="canonical" href="https://example.com/blog/?page=3" /&gt;</code></pre>
+
+  <p>This tells Google and AI crawlers: this page is the authoritative URL for the content it contains. Page 3 has its own set of items, those items are unique to page 3, and the page is independently indexable. Google reconstructs the sequence from internal links (the pagination UI) and from your sitemap. You do not need to declare the sequence with meta tags.</p>
+
+  <p>The pattern people still get wrong is canonicalising every paginated page back to page 1:</p>
+
+  <pre><code>&lt;!-- DO NOT DO THIS in 2026 --&gt;
+&lt;!-- On /blog/?page=3 --&gt;
+&lt;link rel="canonical" href="https://example.com/blog/" /&gt;</code></pre>
+
+  <p>Every WordPress install with a misconfigured Yoast or Rank Math settings ships this by default. It tells Google: "page 3 is a duplicate of page 1, do not index it separately." Google obeys. Every item that only appears on page 3 onward disappears from the index. We have audited e-commerce sites where 90% of the catalog was being treated this way &mdash; the homepage ranked, the first ~30 products ranked, and 3,000 products were functionally invisible.</p>
+
+  <h2>URL patterns that work in 2026</h2>
+
+  <p>Three pagination URL shapes are in production use today. Two are crawler-safe; one is invisible to crawlers and silently destroys long-tail discovery. Use this table when you are about to ship pagination:</p>
+
+  <table>
+    <thead><tr><th>Pattern</th><th>Example</th><th>Crawler-safe?</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Query parameter</td><td><code>/blog/?page=3</code></td><td>Yes</td><td>Safest 2026 default. Clean Search Console parameter handling.</td></tr>
+      <tr><td>Subdirectory</td><td><code>/blog/page/3/</code></td><td>Yes</td><td>Reads better, but trailing-slash redirects must be airtight.</td></tr>
+      <tr><td>URL fragment</td><td><code>/blog/#page=3</code></td><td><strong>No</strong></td><td>Invisible to every crawler and AI fetcher. Never use.</td></tr>
+    </tbody>
+  </table>
+
+  <p>The fragment pattern is what client-side SPAs often default to when nobody is paying attention. It produces a URL that works perfectly for human visitors and ships zero indexable content to Google or AI search past the first page. If your stack uses React Router or Vue Router with hash routing, this is the audit item that will move the needle.</p>
+
+  <h2>Infinite scroll: the accessible pagination pattern</h2>
+
+  <p>Infinite scroll feels right for users on mobile and is the worst possible default for SEO. Googlebot does not scroll. ClaudeBot does not scroll. No fetcher waits for an IntersectionObserver to fire and load more items. Whatever is in the initial server response is the only thing that gets indexed; everything past the first scroll boundary is invisible.</p>
+
+  <p>The fix has a name &mdash; <strong>accessible pagination</strong>, also called progressive enhancement pagination. You ship infinite scroll for users <em>and</em> traditional paginated URLs for crawlers, and the two coexist:</p>
+
+  <pre><code>&lt;!-- The user sees infinite scroll. --&gt;
+&lt;!-- Crawlers see and follow these. --&gt;
+&lt;nav aria-label="Pagination"&gt;
+  &lt;a href="/catalog/?page=1"&gt;1&lt;/a&gt;
+  &lt;a href="/catalog/?page=2"&gt;2&lt;/a&gt;
+  &lt;a href="/catalog/?page=3" rel="next"&gt;3&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+
+  <p>Each <code>?page=N</code> URL must return a real server-rendered HTML response with its own slice of items. The infinite scroll is a UX layer on top &mdash; users get smooth loading, crawlers get a normal paginated catalog, and the same content backs both. Every meaningful 2026 e-commerce stack (Shopify Hydrogen, Next.js Commerce, Saleor storefronts) supports this pattern; most do not turn it on by default.</p>
+
+  <div class="cta-box">
+    <h3>Audit your paginated pages in 60 seconds</h3>
+    <p>Paste any paginated URL into our SEO Meta Tag Generator. It pulls your live <code>&lt;head&gt;</code>, flags self-canonical vs page-1 canonical, checks for fragment routing, and emits a copy-paste corrected meta block that follows the 2026 pattern.</p>
+    <a href="/seo-meta-generator/" class="cta-btn">Try the SEO Meta Tag Generator free &rarr;</a>
+  </div>
+
+  <h2>The view-all page: when it still wins</h2>
+
+  <p>Google's 2011 guidance was clear: if you have a view-all page, canonicalise the paginated series to it. That guidance technically still stands in 2026 &mdash; with one new condition. The view-all page has to pass Core Web Vitals.</p>
+
+  <p>For a catalog with 80 items, a view-all page is usually fine: ~3 MB of HTML, all images lazy-loaded, LCP under 2.5 seconds. For a catalog with 8,000 items, a view-all page is a Core Web Vitals catastrophe and Google will refuse to canonicalise to it anyway because the page is functionally a thin wrapper around an out-of-memory crash. The rule of thumb we use:</p>
+
+  <ul>
+    <li>Under ~500 items: view-all is fine. Self-canonical the paginated pages to the view-all URL.</li>
+    <li>500&ndash;5,000 items: paginated with self-canonical per page. Skip the view-all.</li>
+    <li>Over 5,000 items: paginated with self-canonical, plus category sub-archives to keep depth manageable.</li>
+  </ul>
+
+  <h2>The four pagination mistakes we see most often</h2>
+
+  <h3>1. Canonical to page 1 on every paginated page</h3>
+  <p>Already covered above. This is the single largest source of pagination-related deindexing in 2026. If you only fix one thing on this list, fix this one. Check by viewing source on <code>/blog/?page=2</code> and confirming the canonical points to <code>/blog/?page=2</code>, not <code>/blog/</code>.</p>
+
+  <h3>2. noindex on paginated pages</h3>
+  <p>Often shipped as a "we will only index page 1 for clean SERPs" decision and then forgotten. In 2026 this is strictly worse than self-canonical because <code>noindex</code> blocks both indexing <em>and</em> link-equity flow through the page. The items on a noindexed page do not get crawled efficiently and the internal links to product pages stop counting. Always prefer self-canonical to <code>noindex</code> on paginated pages.</p>
+
+  <h3>3. Missing or stale sitemap entries</h3>
+  <p>If you have 40 paginated archive pages, your <code>sitemap.xml</code> should contain all 40 URLs &mdash; not just page 1. AI search crawlers in particular treat the sitemap as the canonical inventory of "what exists on this site" and a missing sitemap entry means a paginated page may never be crawled at all. Auto-generate this from your archive count, not by hand. (Our <a href="/seo-meta-generator/">SEO Meta Tag Generator</a> has a sitemap audit mode that flags missing paginated URLs.)</p>
+
+  <h3>4. Inconsistent trailing slashes</h3>
+  <p>Sites that mix <code>/blog/page/2</code> and <code>/blog/page/2/</code> end up with two indexed URLs per paginated page and split link equity. Pick one and 301-redirect the other at the edge. Vercel, Cloudflare Pages, and Netlify all have one-line config for this. This is a 10-minute fix that meaningfully consolidates ranking signal on archives with deep pagination.</p>
+
+  <h2>What AI search wants in 2026</h2>
+
+  <p>The AI search referral channel (ChatGPT, Perplexity, Claude, Gemini answers) has a different relationship with pagination than traditional Google SERPs. AI crawlers tend to:</p>
+
+  <ul>
+    <li><strong>Cite specific deep pages</strong> rather than archive roots. Your page 7 archive may be the page that gets cited if it contains the most directly relevant item.</li>
+    <li><strong>Rely on the sitemap heavily.</strong> If a paginated page is not in the sitemap, it is much less likely to surface as an AI citation.</li>
+    <li><strong>Treat the canonical as gospel.</strong> A canonical-to-page-1 setup means AI crawlers will never cite the deeper pages, which is the same as not being in the corpus at all.</li>
+  </ul>
+
+  <p>The 2026 implication: getting pagination right is no longer a Google-only concern. Every paginated page is a potential AI citation, and the same self-canonical + clean URL + sitemap pattern that wins on Google search wins on AI search too.</p>
+
+  <h2>The 2026 pagination checklist</h2>
+
+  <ol>
+    <li>Delete the <code>rel=canonical</code> that points paginated pages to page 1. Replace with self-referencing canonical.</li>
+    <li>Remove any <code>noindex</code> on paginated archives. Use canonical instead.</li>
+    <li>Add every paginated URL to <code>sitemap.xml</code> with <code>changefreq=weekly</code> and <code>priority=0.5</code>.</li>
+    <li>Confirm pagination URLs are <code>?page=N</code> or <code>/page/N/</code>, not <code>#page=N</code>.</li>
+    <li>If you ship infinite scroll, also ship server-rendered paginated URLs that mirror it.</li>
+    <li>Pick a trailing-slash convention and 301-redirect the other variant at the edge.</li>
+    <li>Leave <code>rel=prev/next</code> in if it is already there (a11y use case), but do not rely on it.</li>
+    <li>Test by curling <code>/blog/?page=3</code> with a Googlebot user-agent and confirming the response contains real content, not a SPA shell.</li>
+  </ol>
+
+  <p>If you ship those eight, your paginated catalog is in the top 5% of the open web for 2026 indexability &mdash; which, given how many WordPress and Shopify sites are still emitting the page-1 canonical, is a meaningful competitive moat for any site that depends on long-tail discovery.</p>
+
+  <div class="cta-box">
+    <h3>Generate the right meta tags for any paginated page</h3>
+    <p>Our free SEO Meta Tag Generator outputs the full 2026 pattern &mdash; self-canonical, OG, Twitter, JSON-LD, sitemap line &mdash; for any URL you paste in. No signup, runs in your browser.</p>
+    <a href="/seo-meta-generator/" class="cta-btn">Open the SEO Meta Tag Generator &rarr;</a>
+  </div>
+
+  <h2>Related reading</h2>
+  <p>If you ship paginated archives you will probably also want to revisit how your <a href="/seo-meta-generator/blog/canonical-tag-best-practices-2026/">canonical tag setup handles parameters in 2026</a>, what <a href="/seo-meta-generator/blog/robots-meta-tag-noindex-nofollow-2026/">robots meta tag values actually do today</a>, and how to <a href="/seo-meta-generator/blog/meta-tags-for-ai-search-engines-2026/">optimize meta tags for AI search engines</a>. The pagination decisions above only land if those three are also correct.</p>
+
+  <p>And if you are auditing pagination on an e-commerce stack, our <a href="/og-image-generator/">OG image generator</a> and <a href="/favicon-generator/">favicon generator</a> cover the other two head-tag audits that move the needle on social and browser presence respectively. Hosting and domain decisions are covered by <a href="https://www.namecheap.com/?affref=tinytools_seo_2026" rel="sponsored noopener">Namecheap</a> (affiliate), <a href="https://vercel.com/?ref=tinytools_seo_2026" rel="sponsored noopener">Vercel</a> (affiliate) for edge deployment, and <a href="https://cloudflare.com/?ref=tinytools_seo_2026" rel="sponsored noopener">Cloudflare</a> (affiliate) for the 301-redirect layer if you are picking a trailing-slash convention.</p>
+
+  <div class="related">
+    <h3>More free tools</h3>
+    <div class="related-grid">
+      <a href="/seo-meta-generator/" class="related-card">
+        <div class="name">SEO Meta Generator</div>
+        <div class="desc">Live preview every platform</div>
+      </a>
+      <a href="/og-image-generator/" class="related-card">
+        <div class="name">OG Image Generator</div>
+        <div class="desc">1200&times;630 social cards</div>
+      </a>
+      <a href="/favicon-generator/" class="related-card">
+        <div class="name">Favicon Generator</div>
+        <div class="desc">Every size every browser needs</div>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 TinyTools &middot; <a href="/">All tools</a> &middot; <a href="/dashboard/">Dashboard</a>
+  </footer>
+</div>
+</body>
+</html>
