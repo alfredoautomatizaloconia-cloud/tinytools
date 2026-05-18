@@ -19,3 +19,4 @@
 2026-05-17 12:00 | tool=seo-meta-generator | post=hreflang-tags-international-seo-2026 | sitemap=updated | drafts=4 | google_ping=404_deprecated | status=OK
 2026-05-17 20:30 | tool=seo-meta-generator | post=faq-schema-markup-rich-results-2026 | sitemap=updated | drafts=4 | google_ping=404_deprecated | status=OK
 2026-05-18 16:12 | tool=domain-generator | post=domain-name-radio-test-2026 | sitemap=updated | drafts=4 | google_ping=404 (endpoint deprecated) | status=OK
+2026-05-18 20:11 | tool=domain-generator | post=domain-registrar-comparison-namecheap-cloudflare-porkbun-godaddy-2026 | sitemap=updated | drafts=4 | google_ping=404_deprecated_endpoint | status=OK
