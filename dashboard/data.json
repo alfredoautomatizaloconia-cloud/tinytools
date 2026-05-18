@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 18, 2026 — published The Radio Test (Memorable Domain Names) for domain-generator + 4 new social drafts ready",
+  "lastUpdated": "May 18, 2026 — published Domain Registrar Comparison 2026 for domain-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 71,
+    "posts": 72,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 20:11",
+      "tag": "seo",
+      "text": "📝 Published blog post: Domain Registrar Comparison 2026: Namecheap vs Cloudflare vs Porkbun vs GoDaddy — Which Actually Saves Money at /domain-generator/blog/domain-registrar-comparison-namecheap-cloudflare-porkbun-godaddy-2026/"
+    },
+    {
+      "time": "today 20:11",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN — all promoting domain-generator"
+    },
     {
       "time": "today 16:11",
       "tag": "promo",
@@ -192,16 +202,6 @@
       "time": "today 14:30",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting favicon-generator"
-    },
-    {
-      "time": "today 10:30",
-      "tag": "seo",
-      "text": "📝 Published blog post: Maskable Icons in 2026 — Why Your Android Launcher Icon Looks Cropped (And the 30-Second Fix) at /favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/"
-    },
-    {
-      "time": "today 10:30",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "text": "1/ Everyone obsesses over the $14/year price gap between domain registrars.\n\nThe actual cost of picking the wrong one is a 24-hour outage you can't get support for, on a Saturday, before a launch.\n\nThe 2026 registrar comparison nobody publishes honestly 🧵\n\n2/ The price gap is real but tiny.\n\n5-year cost for one .com:\n• Cloudflare $52\n• Porkbun $55\n• Namecheap $71\n• GoDaddy $97+\n\nTotal spread: $45 over five years. Less than one founder-hour of work.\n\n3/ Cloudflare is at-cost (zero markup) but you can only register if your DNS is also on Cloudflare, support is forum-grade, and you can't sell/push the domain from the panel. Right answer if you live in the Cloudflare stack.\n\n4/ Porkbun is the best balance: at-cost-adjacent pricing, deepest TLD coverage (.ai, .io, .so, .dev), free WHOIS, DNSSEC one-click, and support that replies in hours. Best default for most founders in 2026.\n\n5/ Namecheap is the most \"normal\" — 24/7 live chat in 90 seconds, ecosystem (email, VPN), free WHOIS for life. You pay $4–5/year more per domain. Worth it if you ever need to call someone.\n\n6/ GoDaddy in 2026: only justified for buying premium domains from their aftermarket. Then transfer out after the 60-day ICANN lock. For a fresh .com, the price + dark patterns + WHOIS upsell + slow EPP code retrieval makes it the wrong default.\n\n7/ The criterion most founders weight too low: support response time during an outage. Saving $14/yr on a domain and losing $14k of MRR in one weekend outage is the trade you're actually making.\n\nFull breakdown + hidden costs + DNS speed math:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/domain-registrar-comparison-namecheap-cloudflare-porkbun-godaddy-2026/",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T20:11:08.308729+00:00"
+    },
+    {
+      "platform": "Reddit /r/SaaS",
+      "text": "The thing I wish someone had told me when picking my first registrar in 2022 is that the price difference between Namecheap, Cloudflare, Porkbun, and GoDaddy basically doesn't matter. Over 5 years on a single .com, the spread is $45. The decision is almost never about sticker price.\n\nWhat actually matters when you pick a registrar:\n\n1. Support response time during an outage. Every registrar eventually causes one (TXT record that didn't propagate, DKIM that broke deliverability, transfer locked to the wrong account). The question is how long you sit there with revenue stopped. Cloudflare = forum thread. Porkbun = hours. Namecheap = 90 seconds via live chat. GoDaddy = hours but you'll be upsold.\n\n2. EPP code retrieval speed for transfers out. Cloudflare/Porkbun/Namecheap show it in the panel in one click. GoDaddy still emails it and the email can take days. If you're transferring 20 domains in a portfolio cleanup, that's the difference between an afternoon and a month.\n\n3. DNS speed. Cloudflare and Porkbun are top-tier on DNSPerf. Namecheap is ~25ms behind. GoDaddy's default DNS is the slowest by a wide margin (40-60ms slower transcontinental). Affects TTFB on marketing sites before the CDN matters.\n\n4. Renewal billing transparency. Only Porkbun emails you in advance with the actual amount per domain. Everyone else just charges. If your card expires you find out via \"domain in redemption period, pay $80 to recover\" instead of a friendly reminder.\n\n5. WHOIS privacy as a default. Namecheap and Porkbun = free for life. Cloudflare = free. GoDaddy = often a separate ~$9.99/yr line item.\n\nMy 2026 default for a new .com is Porkbun or Namecheap. Cloudflare if you live in the Cloudflare stack. GoDaddy only when buying premium aftermarket inventory (then transfer out after the 60-day ICANN lock).\n\nDid a longer breakdown with the exact 2026 numbers per registrar: https://tinytools-smoky.vercel.app/domain-generator/blog/domain-registrar-comparison-namecheap-cloudflare-porkbun-godaddy-2026/",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T20:11:08.308729+00:00"
+    },
+    {
+      "platform": "LinkedIn",
+      "text": "A founder asked me last week which registrar to use. He had narrowed it to four: Namecheap, Cloudflare, Porkbun, GoDaddy.\n\nHe had been comparing them on price for two days.\n\nThe price spread between those four registrars over 5 years on a single .com is $45.\n\nForty-five dollars.\n\nHe spent more time researching the decision than the savings could ever return.\n\nThe real decision criteria nobody publishes:\n\n→ Support response time when something breaks at 11pm before a launch\n→ How fast you can retrieve your auth/EPP code if you need to transfer out\n→ DNS speed (affects TTFB before your CDN matters)\n→ Whether renewal billing is transparent or silent\n→ Whether WHOIS privacy is free or a per-year upsell\n\nSaving $14/year on a registrar and then losing $14k of MRR during one weekend outage because you can't reach support — that's the trade you're actually making.\n\nThe 2026 default for most founders: Porkbun or Namecheap. Cloudflare if you live in the Cloudflare stack. GoDaddy only for buying premium domains from their aftermarket (then transfer out after the 60-day ICANN lock).\n\nFull breakdown with the real 2026 renewal numbers, hidden fees, and DNS speed math ↓\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/domain-registrar-comparison-namecheap-cloudflare-porkbun-godaddy-2026/",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T20:11:08.308729+00:00"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "text": "Title: Show HN: A 2026 comparison of the four registrars founders actually pick between\n\nFirst comment:\nBuilt a free domain generator a few months back and the most-asked follow-up question is \"OK but where should I register it?\" The honest answer is that the price gap between Cloudflare, Porkbun, Namecheap, and GoDaddy is $45 over five years on a single .com — almost a rounding error. The real differences are EPP code retrieval speed, DNS performance, support response time during outages, and whether WHOIS privacy is free or a per-year upsell. Wrote up the 2026 numbers + the hidden costs. Curious what the HN registrar veterans disagree with.\n\nLink:\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/domain-registrar-comparison-namecheap-cloudflare-porkbun-godaddy-2026/",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T20:11:08.308729+00:00"
+    },
+    {
+      "platform": "X / Twitter Thread",
       "text": "1/ A domain is more often heard than typed in 2026.\n\nPodcasts, voice search, ChatGPT reading citations out loud, a 22-second TikTok where you say it once.\n\nIf your name doesn't survive being SPOKEN, it doesn't exist. So: the Radio Test 🎙️\n\n2/ Run 4 sub-tests on every candidate before you spend $12:\n\n• Spelling Test → at most 1 non-obvious letter\n• Echo Test → doesn't round to a bigger brand\n• Boundary Test → one obvious syllable split\n• Recall Test → still typeable 12 hours later\n\n3/ The cheapest .com is usually cheap for a reason.\n\nIt's a misspelling, or it rhymes with a competitor, or it's 4 Latin syllables long.\n\n\"Available\" is a constraint. \"Memorable\" is the goal. Don't swap them.\n\n4/ The fastest distinctiveness boost in 2026 = a concrete IMAGE.\n\nLoom > Synth.\nStripe > Quanta.\nAnvil > Nexus.\n\nBrains store images longer than concepts. Use this.\n\n5/ How to actually run the test (no focus group):\n\n• Record yourself saying it 3x\n• Send AUDIO ONLY to 5 strangers\n• Ask them to type back what they heard\n• Re-test the same 5 people 24h later — that's your true memorability rate\n\n6/ Full breakdown + the 4-test checklist + 5 names that score perfectly (and 1 that almost didn't): \n\n→ https://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-radio-test-2026/\n\nFree domain generator built into the post. No signup.",
       "tool": "domain-generator",
       "createdAt": "2026-05-18T16:11:11+00:00"
@@ -260,30 +284,6 @@
       "text": "Show HN: The Radio Test – a 60-second check for whether a domain name is memorable\n\nBuilt this because every founder I know tests their domain on people who already know about the company. That's cheating — those people have context. Real test is whether a stranger can reconstruct the name from sound alone, 12 hours later. Four sub-tests in the post, plus a 3-step procedure for actually running it without a focus group. Feedback welcome — especially on Test 3, where I'm still tightening the rule.",
       "tool": "domain-generator",
       "createdAt": "2026-05-18T16:11:11+00:00"
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "text": "1/ 80% of seed-stage startups pivot before Series A. Almost none of them factor that into their domain name.\n\nSo you end up with PDFSummarizer.ai when the company is now a RAG platform. Or InvoiceCop.io when you sell AP automation.\n\nThe 5-test framework for picking a pivot-proof domain in 2026 🧵\n\n2/ Test 1 — The category test.\n\nRemove your current product entirely. Describe your company in one sentence. Does the name still fit?\n\nStripe passes (any financial rails). InvoiceCop fails (only invoices). The category outlives the product. The name has to too.\n\n3/ Test 2 — The verb test.\n\n\"I Stripe'd the payment.\" \"I Figma'd the mockup.\" \"We Notion'd the doc.\"\n\nVerb-able names are short, distinctive, brandable — the exact profile that survives pivots best. Descriptive names almost never become verbs.\n\n4/ Test 3 — The cocktail-party test.\n\nSay the name to someone outside your space. The right reaction is \"what does that do?\" — not \"oh, you do X\" (and they're wrong).\n\nCuriosity opens the pitch. Assumption bakes a misconception into your front door forever.\n\n5/ Test 4 — The TLD-resale test.\n\n.ai or .io is fine today IF the matching .com is realistically buyable for a Series A budget. If the .com is owned by Apple, your brand has a ceiling. Pick a different name now, not after $40k of rebrand math.\n\n6/ Full breakdown — rebrand cost math, descriptive-name trap, worked example for a 2026 AI startup, and the 3 naming patterns that consistently win:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/pivot-proof-domain-names-2026/",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-18T12:12:11.783610+00:00"
-    },
-    {
-      "platform": "Reddit /r/startups",
-      "text": "The thing nobody tells first-time founders about descriptive domain names: they're great for the first 6 months and a tax on every sales call after that.\n\nThe math I usually walk founders through:\n\nCB Insights / YC put the seed-stage pivot rate around 80%. If you pick something like ColdEmailBot.com today, the odds are very real that 12 months from now your company sells a CRM and every demo starts with \"the name is from the old product, we actually do X now.\" Forever.\n\nThe 2026 rebrand cost for a 15-30 person SaaS runs $40k–$300k all-in once you add: acquiring the new .com, identity work, redirects + DNS + OAuth scope rebuild, 15-40% SEO loss for a few months, customer comms, and re-filing trademarks. That's real money, and it always happens at the worst time (right before a fundraise).\n\nThe pivot-proof patterns that keep working: real word with oblique meaning (Stripe, Notion, Linear), modified real word (Twilio, Heroku, Zapier), or two-syllable invented (Figma, Plaid, Replit). All three categories pass the verb test, the category test, and trademark cleanliness — and none of them tell you anything about the product, which is the point.\n\nWrote up the full 5-test framework here if it's useful: https://tinytools-smoky.vercel.app/domain-generator/blog/pivot-proof-domain-names-2026/",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-18T12:12:11.783610+00:00"
-    },
-    {
-      "platform": "LinkedIn",
-      "text": "80% of seed-stage startups pivot before Series A.\n\nAlmost none of them factor that into their domain choice.\n\nSo you get founders who pick PDFSummarizer.ai in week one — and by month nine, the company is a knowledge-base RAG platform and the domain is actively dragging down every sales call.\n\nA rebrand for a 15-30 person SaaS in 2026 runs $40k to $300k all-in: new .com acquisition, identity, redirects, DNS, OAuth scope rebuild, the 15-40% SEO drop, customer comms, trademark refiling. It always happens at the worst time.\n\nThe pivot-proof patterns that consistently win:\n\n→ Real word, oblique meaning (Stripe, Notion, Linear)\n→ Modified real word (Twilio, Heroku, Zapier)\n→ Two-syllable invented (Figma, Plaid, Replit)\n\nAll three categories pass the verb test (\"I Stripe'd the payment\"), the category test, and trademark cleanliness. None tell you what the product does. That's the point.\n\nThe cost of picking a pivot-proof name on day one is one afternoon of careful thinking. The cost of skipping it is a six-figure rebrand at the worst possible moment.\n\nFull 5-test framework + worked example for a 2026 AI startup ↓\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/pivot-proof-domain-names-2026/",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-18T12:12:11.783610+00:00"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "text": "Title: Show HN: A 5-test framework for picking pivot-proof startup domain names\n\nComment:\nMost founders pick a name that perfectly describes today's product (ColdEmailBot.com) and then pivot 9 months later. The same name that lowered CAC in month 1 becomes a tax on every sales call after that. Wrote up the 5 tests — category, verb, cocktail-party, TLD-resale, trademark — plus realistic 2026 rebrand cost math. Curious what HN naming-experts disagree with.\n\nLink:\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/pivot-proof-domain-names-2026/",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-18T12:12:11.783610+00:00"
     }
   ],
   "checklist": [
