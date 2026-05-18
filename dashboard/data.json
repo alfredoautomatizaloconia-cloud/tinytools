@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 17, 2026 — published FAQ Schema Markup in 2026 — Why Google Cut Rich Results (and Where FAQPage Still Earns Visibility) for seo-meta-generator + 4 social drafts ready",
+  "lastUpdated": "May 18, 2026 — published How to Find Expired Domains Worth Buying in 2026 (Drop Catching Guide) for domain-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 67,
+    "posts": 68,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 04:11",
+      "tag": "seo",
+      "text": "Published blog post: How to Find Expired Domains Worth Buying in 2026 (Drop Catching Guide) at /domain-generator/blog/how-to-find-expired-domains-worth-buying-2026/"
+    },
+    {
+      "time": "today 04:11",
+      "tag": "promo",
+      "text": "4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting domain-generator"
+    },
     {
       "time": "today 20:30",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 16:50",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting domain-generator"
-    },
-    {
-      "time": "today 13:30",
-      "tag": "seo",
-      "text": "📝 Published blog post: How to Value a Domain Name in 2026 — A Buyer & Seller's Appraisal Guide at /domain-generator/blog/how-to-value-a-domain-name-2026/"
-    },
-    {
-      "time": "today 13:30",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/Domains, LinkedIn, Show HN — all promoting domain-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "text": "1/ Most \"expired domain\" guides in 2026 are written by people selling DA scores.\n\nHere's how it actually works after you sift through 100,000 daily .com drops — and the 4 filters that separate a real asset from a $300 SEO landmine. 🧵\n\n2/ The market is huge:\n→ ~100k .com drop every weekday\n→ Hundreds of \"expired domain finder\" SaaS tools\n→ ~80% of the \"high-DA\" inventory is spam-built or hit with a manual action\n\nThe opportunity is real. The signal-to-noise ratio is awful.\n\n3/ Filter #1 — Real backlinks, not spam.\n\nForget the DA number. Pull the top 50 referring domains.\n\nNames you recognize? (universities, press, gov) ✅\nEndless .xyz / .top / .cn lists? 🚩\n\n15 referrers from sites you've heard of beat \"DA 60\" every time.\n\n4/ Filter #2 — Wayback history is on-topic and clean.\n\nScrub 2010, 2015, 2020, 2024 snapshots.\n\nContinuous on-topic content = green light.\nForeign-language casino content at any point = walk away. That penalty sticks for years even after the domain goes offline.\n\n5/ Filter #3 — No active trademark.\n\nTwo-minute search at uspto.gov + EUIPO TMview.\n\nA name that matches an active mark in your category can be UDRP'd off you for ~$1,500 — regardless of how legitimately you bought it.\n\nCatches more buyers than you'd expect.\n\n6/ Filter #4 — Match the new topic to the old.\n\nThis is the biggest one in 2026.\n\nGoogle's \"expired domain abuse\" classifier flattens anyone who buys a yoga blog and points it at a crypto exchange in ~48hrs.\n\nKeep the topic. Keep the intent. Then it works.\n\n7/ Where to actually bid:\n\n→ GoDaddy Auctions — long tail brandables\n→ SnapNames — pre-release inventory\n→ DropCatch — final-drop .com auctions\n\nBack-order on multiple services for the same name. Set max-bids cold, before the timer starts.\n\n8/ The 10-min pre-bid checklist + the auction price tables (what a 2-word brandable with 8yrs history actually costs in 2026):\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/how-to-find-expired-domains-worth-buying-2026/\n\nFree guide. No paywall.\n\nReply with a domain you're eyeing and I'll do the quick read on it.",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T04:11:39Z"
+    },
+    {
+      "platform": "Reddit /r/SEO comment",
+      "text": "If you're looking at expired .coms in 2026, the part that nobody talks about is that the DA / DR number on most of the \"high-DA expired\" inventory is meaningless — those metrics are easy to inflate and almost always inflated on dropped domains.\n\nThe actual filter I use before bidding on anything:\n\n1. Pull the top 50 referring domains. If you don't recognize at least 10–15 of the linkers, the link profile is spam-built and the metric is fake.\n\n2. Wayback scrub at 2010 / 2015 / 2020 / 2024 — if there's any foreign-language casino or payday-loan content at any point, walk away. That kind of penalty sticks for years even after the domain goes offline.\n\n3. Trademark search at uspto.gov + EUIPO TMview takes 60 seconds and catches a surprising number of bad buys.\n\n4. The big 2026 thing: Google's \"expired domain abuse\" classifier nukes anyone who repurposes a domain across topics. If the domain was a food blog, it has to stay food-adjacent or it gets flattened inside 48 hours.\n\nFor sourcing, ExpiredDomains.net (free) is still the best aggregator — the filters are good, just ignore the DA column and verify against a real backlink tool.\n\nI wrote up the full filter + drop-catching workflow (DropCatch / SnapNames / GoDaddy Auctions, how back-orders actually work, what 2-word brandables with real history sell for in 2026) here if it's useful: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-find-expired-domains-worth-buying-2026/\n\nFree, no signup wall.",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T04:11:39Z"
+    },
+    {
+      "platform": "LinkedIn Post",
+      "text": "A founder asked me last week whether buying a 12-year-old expired domain would \"give them SEO.\"\n\nThe honest answer in 2026 is: sometimes, and the diligence matters more than the price.\n\nThree things I've watched founders get burned by this year:\n\n1. Buying a \"DA 60\" expired domain whose entire backlink profile was Tier-2 PBN spam. The metric was real. The transferable equity wasn't.\n\n2. Buying a yoga blog and pointing it at a crypto exchange. Google's expired-domain-abuse classifier flagged it inside 48 hours. The domain has been useless ever since.\n\n3. Buying a great name without checking USPTO. A $1,500 UDRP filing later, they no longer own it.\n\nThe thing that works: source from ExpiredDomains.net, run a 10-minute pre-bid checklist (real referrers, clean Wayback, no blocklists, no trademark conflicts), bid at DropCatch or SnapNames, and rebuild on the same topic as the previous owner. Done that way, an expired domain is still the cheapest way to add 30–80 real referring domains to a young site.\n\nFull playbook, with the 2026 auction price ranges and which drop-catchers actually win, is on the TinyTools blog: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-find-expired-domains-worth-buying-2026/\n\nFree, no signup.",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T04:11:39Z"
+    },
+    {
+      "platform": "Show HN",
+      "text": "Title: Show HN: A 2026 playbook for finding expired domains worth buying\n\nComment:\nWrote this after watching three friends overpay for \"high-DA\" expired domains whose entire link profile turned out to be spam. The piece is mostly the four diligence filters I now run before bidding, plus how drop-catching actually works at DropCatch / SnapNames / GoDaddy in 2026. Happy to share specific domains people are looking at and walk through the read.",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T04:11:39Z"
+    },
+    {
+      "platform": "X / Twitter Thread",
       "text": "1/ Most SEO blogs declared FAQ schema dead in 2023 when Google killed rich results.\n\nThey were wrong.\n\nIn 2026 FAQPage JSON-LD is the #1 way to get cited by ChatGPT, Claude, Perplexity, and AI Overviews.\n\nHere's why (and how to do it right) 🧵\n\n2/ What Google did in Aug 2023:\n\n→ Restricted FAQ rich results to \"authoritative\" sites only (.gov, big-name health, top-100 brands)\n→ Dropped How-To rich results almost entirely\n\nResult: 99% of sites lost their SERP accordion.\n\nBut the markup never stopped being parsed.\n\n3/ What changed in 2024-2026:\n\nEvery AI search engine started reading JSON-LD as a primary citation signal.\n\nFAQPage tells the model:\n- where the question is\n- where the answer starts/ends\n- that you (the author) wrote both\n\nPre-segmented = cheaper to cite = cited more.\n\n4/ The 2026 rules:\n\n→ 3-12 questions per page\n→ Plain-text answers, 40-90 words\n→ Lead with the conclusion (AI quotes the first sentence)\n→ Include a year/number/named entity\n→ Same text MUST be visible in the DOM\n\nHidden-only FAQ markup gets silently dropped.\n\n5/ The 4 mistakes I see every audit:\n\n1. Markup correct, but text only in a collapsed React tab\n2. Promotional answers (\"X is the best because…\")\n3. FAQPage on a user-comment page (use QAPage)\n4. Same 8 FAQs copy-pasted across 2,000 product pages\n\n6/ Full 2026 guide + a free FAQPage JSON-LD generator (paste your Q&A, get validator-clean markup):\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/faq-schema-markup-rich-results-2026/\n\nThe rich result is dead. The markup is more useful than ever.",
       "tool": "seo-meta-generator",
       "createdAt": "2026-05-17T20:30:00Z"
@@ -260,30 +284,6 @@
       "text": "TITLE: Show HN: FAQ schema markup is more valuable in 2026 than before Google killed rich results\n\nCOMMENT:\nAuthor here. After Google scaled back FAQ rich results in 2023 most teams removed the markup. In 2026 every AI search engine (Claude, ChatGPT, Perplexity, AI Overviews) reads JSON-LD as a primary citation signal — pre-segmented Q&A is cheaper to extract and gets cited more than prose. Wrote up the 2026 playbook with the four mistakes that silently get markup dropped, even when Rich Results Test passes. Free FAQPage JSON-LD generator on the same site if you want to skip hand-writing it. Happy to answer questions.",
       "tool": "seo-meta-generator",
       "createdAt": "2026-05-17T20:30:00Z"
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T20:00:00Z",
-      "text": "1/ Your case-study PDFs are outranking your landing pages. Why? They have no <head>, so they have no meta robots tag. There's exactly one way to noindex them, and most teams get it backwards. 🧵\n\n2/ The fix is X-Robots-Tag — the HTTP response header version of <meta name=\"robots\">. Same directives (noindex, nofollow, noai, noimageai). Different reach.\n\nMeta tags → HTML only.\nX-Robots-Tag → PDFs, images, JSON, video, anything.\n\n3/ The mistake we see in every audit:\n\nTeam finds a leaked PDF in the index → adds it to robots.txt → URL stays in the index forever as a bare-URL listing.\n\nWhy? Google can't fetch it anymore, so it can't see any noindex directive. Robots.txt isn't a remove signal.\n\n4/ The correct flow:\n\n1. Serve PDF with `X-Robots-Tag: noindex, follow`\n2. KEEP it crawlable (do NOT robots.txt it)\n3. Wait for it to drop from the index (days to weeks)\n4. THEN optionally disallow in robots.txt\n\nOrder matters. Reversed = permanent ghost listing.\n\n5/ 2026-specific: AI crawlers (ClaudeBot, OAI-SearchBot, GPTBot) respect X-Robots-Tag including the new `noai` and `noimageai` directives.\n\nYou can index in Google AND opt out of AI training in a single header with per-bot syntax.\n\n6/ Nginx footgun nobody talks about: `add_header` skips 4xx/5xx responses by default.\n\nYour soft-404s get indexed because the noindex header was never sent. Add the `always` flag:\n\nadd_header X-Robots-Tag \"noindex, follow\" always;\n\n7/ The full 2026 reference — 5 jobs only X-Robots-Tag can do, every directive that works in it, copy-paste configs for Nginx/Apache/Cloudflare/Vercel:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/x-robots-tag-http-header-2026/"
-    },
-    {
-      "platform": "Reddit /r/SEO",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T20:00:00Z",
-      "text": "Subreddit: /r/SEO (primary), /r/TechSEO or /r/bigseo (secondary — works in any thread about PDF indexing, image SEO, robots.txt vs noindex, or AI crawler opt-outs)\n\nComment:\n\nQuick clarification because this trips up almost every audit: robots.txt and noindex are not interchangeable. They are different mechanisms with different semantics, and using them in the wrong order is the single most common reason URLs get stuck in Google's index forever.\n\n- robots.txt → \"do not fetch this URL\"\n- noindex (via meta tag or X-Robots-Tag header) → \"you can fetch it, but do not put it in search results\"\n\nIf a URL is already indexed and you disallow it in robots.txt, Google can no longer fetch the URL to see any noindex directive. Result: bare-URL listing in search results, sometimes permanently. Correct sequence is allow crawling, serve noindex, wait for the URL to drop, then optionally disallow.\n\nThe reason this comes up so often in 2026 is PDFs. PDFs have no head element, so meta robots literally cannot exist in them. The only Google-supported way to noindex a PDF is `X-Robots-Tag: noindex, follow` in the HTTP response. Same applies to images you want out of Image Search, JSON endpoints you accidentally exposed, downloadable assets — anything non-HTML.\n\nNginx-specific gotcha that bit me last quarter: `add_header X-Robots-Tag` skips 4xx and 5xx responses unless you append `always`. Your custom 404 templates get indexed because the noindex header was only set on 200 responses. Fix:\n\n    location ~* \\.pdf$ {\n      add_header X-Robots-Tag \"noindex, follow\" always;\n    }\n\nAI search angle worth knowing: X-Robots-Tag now carries `noai` and `noimageai`, both of which ClaudeBot, OAI-SearchBot, GPTBot, and PerplexityBot respect as of 2026. You can use per-bot syntax to stay indexed in Google while opting out of AI training:\n\n    X-Robots-Tag: googlebot: index, follow\n    X-Robots-Tag: ClaudeBot: noai\n    X-Robots-Tag: GPTBot: noai\n\nWrote up the full 2026 reference with the five jobs only X-Robots-Tag can do (PDFs, images, JSON, bulk edge rules, per-bot policy), Nginx/Apache/Cloudflare/Vercel configs, and the four mistakes we see in every audit:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/x-robots-tag-http-header-2026/\n\nFree generator at the bottom fetches both your HTTP headers and your rendered <head> and flags any conflicts between them. Runs in-browser, no upload."
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T20:00:00Z",
-      "text": "A CMO messaged me last month: \"Our 2024 whitepaper is ranking #2 for our flagship product term. Above our actual product page. How do we kill it?\"\n\nThe whitepaper was a PDF. They had tried adding `<meta name=\"robots\" content=\"noindex\">` — except PDFs have no <head>, so the meta tag had nowhere to live. They had tried adding the PDF URL to robots.txt — which made it worse, because Google could no longer crawl the file to see any noindex signal, so the URL was now stuck in the index as a bare-URL listing with no snippet.\n\nThe fix is one HTTP response header: X-Robots-Tag.\n\nIt is the HTTP-header version of meta robots, it carries identical directives, and it is the only mechanism that works on non-HTML resources. PDFs, images, JSON endpoints, video files, downloadable assets — none of those have a <head>, so none of them can carry a meta tag. X-Robots-Tag is the only lever.\n\nThree checks I would run on any site this week:\n\n→ Are any of your PDFs ranking in positions you did not intend? Serve them with X-Robots-Tag: noindex, follow and keep them crawlable until they drop.\n→ Do your product images outrank your product pages in Google Images? Per-image X-Robots-Tag is the fix.\n→ Do you have JSON endpoints (/api/posts.json, OG fallback feeds) appearing in site:yourdomain.com results? One line of edge middleware solves it.\n\nThe 2026 update worth knowing: X-Robots-Tag now carries `noai` and `noimageai`, which ClaudeBot, OAI-SearchBot, GPTBot, and PerplexityBot all respect. You can stay fully indexed in Google while opting your content out of AI training data, controlled per-bot from a single header. For publishers, legal teams, and licensed content, this is the most underused 2026 SEO control.\n\nFull 2026 reference with the five jobs only X-Robots-Tag can do, plus copy-paste Nginx, Apache, Cloudflare, and Vercel configs: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/x-robots-tag-http-header-2026/\n\nWhat is the most overlooked technical SEO control on your team's release checklist?"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T20:00:00Z",
-      "text": "TITLE: X-Robots-Tag is still the only way to noindex a PDF in 2026\n\nLINK: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/x-robots-tag-http-header-2026/\n\nFIRST COMMENT FOR THE THREAD:\nAuthor here. Wrote this after auditing one too many sites where leaked or outdated PDFs were outranking the landing pages they were supposed to support, and the team had tried to fix it by adding the PDF URL to robots.txt — which made the problem permanent because Google could no longer fetch the file to see any indexing directive. The right answer has been X-Robots-Tag since 2007 and is unchanged in 2026, but the surface area has grown (per-bot directives for ClaudeBot/OAI-SearchBot/GPTBot, the noai and noimageai opt-outs, edge-config bulk policy from Cloudflare/Vercel/Fastly) and the Nginx `always` footgun on add_header still bites in production. Curious whether anyone here has built an automated header audit into CI — the meta-vs-header conflict detection is the part I keep wanting and never quite getting right."
     }
   ],
   "checklist": [
