@@ -1,58 +1,68 @@
 {
-  "lastUpdated": "May 18, 2026 — published How to Find Expired Domains Worth Buying in 2026 (Drop Catching Guide) for domain-generator + 4 social drafts ready",
+  "lastUpdated": "May 18, 2026 \u2014 published .com vs .io vs .ai vs .so \u2014 Which Domain Extension Should Your Startup Pick in 2026? for domain-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
       "slug": "domain-generator",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     },
     {
       "name": "OG Image Generator",
       "slug": "og-image-generator",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     },
     {
       "name": "AI Background Remover",
       "slug": "background-remover",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     },
     {
       "name": "Favicon Generator",
       "slug": "favicon-generator",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     },
     {
       "name": "Color Palette Generator",
       "slug": "color-palette",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     },
     {
       "name": "SEO Meta Tag Generator",
       "slug": "seo-meta-generator",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     }
   ],
   "stats": {
     "tools": 6,
     "toolsDelta": "+6 since launch",
-    "visitors": "—",
+    "visitors": "\u2014",
     "visitorsDelta": "Vercel Analytics: enable in 1 click",
     "clicks": "0",
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 68,
+    "posts": 69,
     "postsDelta": "+1 today",
-    "indexed": "—",
+    "indexed": "\u2014",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 08:11",
+      "tag": "seo",
+      "text": "Published blog post: .com vs .io vs .ai vs .so \u2014 Which Domain Extension Should Your Startup Pick in 2026? at /domain-generator/blog/com-vs-io-vs-ai-vs-so-domain-extension-startup-2026/"
+    },
+    {
+      "time": "today 08:11",
+      "tag": "promo",
+      "text": "4 social drafts ready in dashboard: X thread, Reddit /r/Entrepreneur, LinkedIn, Show HN \u2014 all promoting domain-generator (.com vs .io vs .ai vs .so)"
+    },
     {
       "time": "today 04:11",
       "tag": "seo",
@@ -61,147 +71,137 @@
     {
       "time": "today 04:11",
       "tag": "promo",
-      "text": "4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting domain-generator"
+      "text": "4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting domain-generator"
     },
     {
       "time": "today 20:30",
       "tag": "seo",
-      "text": "📝 Published blog post: FAQ Schema Markup in 2026 — Why Google Cut Rich Results (and Where FAQPage Still Earns Visibility) at /seo-meta-generator/blog/faq-schema-markup-rich-results-2026/"
+      "text": "\ud83d\udcdd Published blog post: FAQ Schema Markup in 2026 \u2014 Why Google Cut Rich Results (and Where FAQPage Still Earns Visibility) at /seo-meta-generator/blog/faq-schema-markup-rich-results-2026/"
     },
     {
       "time": "today 20:30",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting seo-meta-generator"
     },
     {
       "time": "today 20:00",
       "tag": "seo",
-      "text": "📝 Published blog post: X-Robots-Tag HTTP Header in 2026 — The 5 Cases Where Meta Robots Isn't Enough at /seo-meta-generator/blog/x-robots-tag-http-header-2026/"
+      "text": "\ud83d\udcdd Published blog post: X-Robots-Tag HTTP Header in 2026 \u2014 The 5 Cases Where Meta Robots Isn't Enough at /seo-meta-generator/blog/x-robots-tag-http-header-2026/"
     },
     {
       "time": "today 20:00",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting seo-meta-generator"
     },
     {
       "time": "today 16:16",
       "tag": "seo",
-      "text": "📝 Published blog post: Pagination Meta Tags in 2026 — rel=prev/next Is Dead, Here's What Google Wants Now at /seo-meta-generator/blog/pagination-meta-tags-rel-prev-next-2026/"
+      "text": "\ud83d\udcdd Published blog post: Pagination Meta Tags in 2026 \u2014 rel=prev/next Is Dead, Here's What Google Wants Now at /seo-meta-generator/blog/pagination-meta-tags-rel-prev-next-2026/"
     },
     {
       "time": "today 16:16",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting seo-meta-generator"
     },
     {
       "time": "today 19:30",
       "tag": "seo",
-      "text": "📝 Published blog post: Open Graph Tags for Threads, Bluesky, and Mastodon in 2026 at /seo-meta-generator/blog/open-graph-tags-threads-bluesky-mastodon-2026/"
+      "text": "\ud83d\udcdd Published blog post: Open Graph Tags for Threads, Bluesky, and Mastodon in 2026 at /seo-meta-generator/blog/open-graph-tags-threads-bluesky-mastodon-2026/"
     },
     {
       "time": "today 19:30",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting seo-meta-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN \u2014 all promoting seo-meta-generator"
     },
     {
       "time": "today 18:30",
       "tag": "seo",
-      "text": "📝 Published blog post: How to Remove Background from Real Estate Photos in 2026 (Free, No Photoshop) at /background-remover/blog/how-to-remove-background-real-estate-photos-2026/"
+      "text": "\ud83d\udcdd Published blog post: How to Remove Background from Real Estate Photos in 2026 (Free, No Photoshop) at /background-remover/blog/how-to-remove-background-real-estate-photos-2026/"
     },
     {
       "time": "today 18:30",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/RealEstate, LinkedIn, Show HN — all promoting background-remover"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/RealEstate, LinkedIn, Show HN \u2014 all promoting background-remover"
     },
     {
       "time": "today 12:00",
       "tag": "seo",
-      "text": "📝 Published blog post: hreflang Tags in 2026 — The Complete International SEO Guide (Without Duplicate Content Penalties) at /seo-meta-generator/blog/hreflang-tags-international-seo-2026/"
+      "text": "\ud83d\udcdd Published blog post: hreflang Tags in 2026 \u2014 The Complete International SEO Guide (Without Duplicate Content Penalties) at /seo-meta-generator/blog/hreflang-tags-international-seo-2026/"
     },
     {
       "time": "today 12:00",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting seo-meta-generator"
     },
     {
       "time": "today 01:36",
       "tag": "seo",
-      "text": "📝 Published blog post: CSS color-mix() in 2026 — The Complete Guide to Dynamic Palettes, Opacity Blending and Theme Tokens at /color-palette/blog/css-color-mix-dynamic-palettes-2026/"
+      "text": "\ud83d\udcdd Published blog post: CSS color-mix() in 2026 \u2014 The Complete Guide to Dynamic Palettes, Opacity Blending and Theme Tokens at /color-palette/blog/css-color-mix-dynamic-palettes-2026/"
     },
     {
       "time": "today 01:36",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/css, LinkedIn, Show HN — all promoting color-palette"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/css, LinkedIn, Show HN \u2014 all promoting color-palette"
     },
     {
       "time": "today 17:05",
       "tag": "seo",
-      "text": "📝 Published blog post: Tailwind CSS v4 Color Palette in 2026 — How to Build, Customize and Theme With Custom Colors at /color-palette/blog/tailwind-v4-color-palette-custom-colors-2026/"
+      "text": "\ud83d\udcdd Published blog post: Tailwind CSS v4 Color Palette in 2026 \u2014 How to Build, Customize and Theme With Custom Colors at /color-palette/blog/tailwind-v4-color-palette-custom-colors-2026/"
     },
     {
       "time": "today 17:05",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/tailwindcss, LinkedIn, Show HN — all promoting color-palette"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/tailwindcss, LinkedIn, Show HN \u2014 all promoting color-palette"
     },
     {
       "time": "today 06:15",
       "tag": "seo",
-      "text": "📝 Published blog post: OKLCH vs HSL vs HEX: The 2026 Designer's Guide to Choosing a Color Format at /color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/"
+      "text": "\ud83d\udcdd Published blog post: OKLCH vs HSL vs HEX: The 2026 Designer's Guide to Choosing a Color Format at /color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/"
     },
     {
       "time": "today 06:15",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting color-palette"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN \u2014 all promoting color-palette"
     },
     {
       "time": "today 14:30",
       "tag": "seo",
-      "text": "📝 Published blog post: How to Convert a Logo to a Favicon in 2026 (Without Pixel-Mush at 16×16) at /favicon-generator/blog/how-to-convert-logo-to-favicon-2026/"
+      "text": "\ud83d\udcdd Published blog post: How to Convert a Logo to a Favicon in 2026 (Without Pixel-Mush at 16\u00d716) at /favicon-generator/blog/how-to-convert-logo-to-favicon-2026/"
     },
     {
       "time": "today 14:30",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting favicon-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN \u2014 all promoting favicon-generator"
     },
     {
       "time": "today 10:30",
       "tag": "seo",
-      "text": "📝 Published blog post: Maskable Icons in 2026 — Why Your Android Launcher Icon Looks Cropped (And the 30-Second Fix) at /favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/"
+      "text": "\ud83d\udcdd Published blog post: Maskable Icons in 2026 \u2014 Why Your Android Launcher Icon Looks Cropped (And the 30-Second Fix) at /favicon-generator/blog/maskable-icons-android-launcher-cropped-2026/"
     },
     {
       "time": "today 10:30",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN \u2014 all promoting favicon-generator"
     },
     {
       "time": "today 10:25",
       "tag": "seo",
-      "text": "📝 Published blog post: OG Image File Size in 2026: PNG vs JPG vs WebP — Which Format Actually Loads in Link Previews at /og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/"
+      "text": "\ud83d\udcdd Published blog post: OG Image File Size in 2026: PNG vs JPG vs WebP \u2014 Which Format Actually Loads in Link Previews at /og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/"
     },
     {
       "time": "today 10:25",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting og-image-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN \u2014 all promoting og-image-generator"
     },
     {
       "time": "today 16:55",
       "tag": "seo",
-      "text": "📝 Published blog post: Hyphens in Domain Names: Are They Actually Bad for SEO in 2026? at /domain-generator/blog/hyphens-in-domain-names-bad-for-seo-2026/"
+      "text": "\ud83d\udcdd Published blog post: Hyphens in Domain Names: Are They Actually Bad for SEO in 2026? at /domain-generator/blog/hyphens-in-domain-names-bad-for-seo-2026/"
     },
     {
       "time": "today 16:55",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting domain-generator"
-    },
-    {
-      "time": "today 16:50",
-      "tag": "seo",
-      "text": "📝 Published blog post: How to Transfer a Domain Name Without Downtime in 2026 — The Complete Migration Guide at /domain-generator/blog/how-to-transfer-domain-name-without-downtime-2026/"
-    },
-    {
-      "time": "today 16:50",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting domain-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting domain-generator"
     }
   ],
   "roadmap": [
@@ -239,19 +239,43 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
-      "text": "1/ Most \"expired domain\" guides in 2026 are written by people selling DA scores.\n\nHere's how it actually works after you sift through 100,000 daily .com drops — and the 4 filters that separate a real asset from a $300 SEO landmine. 🧵\n\n2/ The market is huge:\n→ ~100k .com drop every weekday\n→ Hundreds of \"expired domain finder\" SaaS tools\n→ ~80% of the \"high-DA\" inventory is spam-built or hit with a manual action\n\nThe opportunity is real. The signal-to-noise ratio is awful.\n\n3/ Filter #1 — Real backlinks, not spam.\n\nForget the DA number. Pull the top 50 referring domains.\n\nNames you recognize? (universities, press, gov) ✅\nEndless .xyz / .top / .cn lists? 🚩\n\n15 referrers from sites you've heard of beat \"DA 60\" every time.\n\n4/ Filter #2 — Wayback history is on-topic and clean.\n\nScrub 2010, 2015, 2020, 2024 snapshots.\n\nContinuous on-topic content = green light.\nForeign-language casino content at any point = walk away. That penalty sticks for years even after the domain goes offline.\n\n5/ Filter #3 — No active trademark.\n\nTwo-minute search at uspto.gov + EUIPO TMview.\n\nA name that matches an active mark in your category can be UDRP'd off you for ~$1,500 — regardless of how legitimately you bought it.\n\nCatches more buyers than you'd expect.\n\n6/ Filter #4 — Match the new topic to the old.\n\nThis is the biggest one in 2026.\n\nGoogle's \"expired domain abuse\" classifier flattens anyone who buys a yoga blog and points it at a crypto exchange in ~48hrs.\n\nKeep the topic. Keep the intent. Then it works.\n\n7/ Where to actually bid:\n\n→ GoDaddy Auctions — long tail brandables\n→ SnapNames — pre-release inventory\n→ DropCatch — final-drop .com auctions\n\nBack-order on multiple services for the same name. Set max-bids cold, before the timer starts.\n\n8/ The 10-min pre-bid checklist + the auction price tables (what a 2-word brandable with 8yrs history actually costs in 2026):\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/how-to-find-expired-domains-worth-buying-2026/\n\nFree guide. No paywall.\n\nReply with a domain you're eyeing and I'll do the quick read on it.",
+      "text": "1/ The .com you actually want is taken, parked, or being held by a registrar reseller for $14k.\n\nSo the real question in 2026 isn't \"should I get a .com\" \u2014 it's: which extension lets me ship this week without quietly hurting SEO, trust, and renewals for 5 years?\n\nA 2026 cheat sheet \ud83e\uddf5\n\n2/ The hierarchy that actually holds up:\n\n\u2022 Exact-match .com under ~$3k \u2192 just buy it\n\u2022 Selling to devs \u2192 .io is a positive signal, not a compromise\n\u2022 AI/ML product \u2192 .ai (with caveats)\n\u2022 Consumer SMB \u2192 .co is the safest fallback\n\u2022 Mobile/app \u2192 .app (HTTPS by default)\n\n3/ The .ai trap nobody mentions:\n\nAnguilla's registry charges a 2-YEAR minimum. ~$140\u2013180 every 2 years. WHOIS is partly manual. Transfers take days.\n\nWorth it if AI defines the company. Painful if AI is just the way you happen to build software.\n\n4/ Renewal compounding is real:\n\n10 side projects on .com \u2192 $120/yr\n10 side projects on .ai \u2192 $900/yr forever\n\nReserve premium TLDs for the project you'll actually grow. Use cheap TLDs (or fresh brandable .coms) for everything you might kill.\n\n5/ The two cheap mistakes I see weekly:\n\n\u274c Paying $25k for keyword-in-.com (e.g. fastcrm.com)\n\u2705 Paying $12 for brandable .com (e.g. relayd.com)\n\nGoogle has scored exact-match domains at near-zero since 2012. Brandability wins on recall. Always.\n\n6/ Full decision tree, comparison table, and the renewal-cost math (incl. .so, .co, .app gotchas) here:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/com-vs-io-vs-ai-vs-so-domain-extension-startup-2026/",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T08:11:06Z"
+    },
+    {
+      "platform": "Reddit /r/Entrepreneur comment",
+      "text": "The part most \"what TLD should I pick\" guides miss in 2026 is that the choice isn't really .com vs .io anymore \u2014 it's \"exact-match .com under $3k or move on to the brandable tier.\" Once your exact-match .com is locked behind a $25k aftermarket listing, every dollar you spend chasing it is a dollar not spent on a brandable .com that ranks identically.\n\nA few things that have actually shifted recently:\n\n- .io's status post-BIOT-transition has stayed stable through mid-2026. ICANN's stance is that existing registrations are honored. There's still tail risk if you're on a 10-year horizon, but it's not the \"rug-pull next quarter\" thing people on X were panicking about a year ago.\n\n- .ai is the one with the most operational chaos right now. 2-year minimum on Anguilla, slow WHOIS, manual transfers. Fine if you're an AI product where the .ai literally signals what you do. Bad math for side projects (~$140\u2013180 every 2 years compounds quickly).\n\n- .app being HSTS-preloaded is an underrated security win. HTTPS is enforced by every modern browser before your DNS even resolves. Free trust signal you can't get from .com.\n\n- Keyword-in-domain is worth basically nothing for SEO since the 2012 EMD update. Brandability beats keyword every time on recall, especially in 2026 when half your discovery is voice/AI assistants reading domains out loud.\n\nWrote a longer breakdown with renewal economics, the decision tree, and the gotchas per TLD here if it's useful: https://tinytools-smoky.vercel.app/domain-generator/blog/com-vs-io-vs-ai-vs-so-domain-extension-startup-2026/ \u2014 happy to answer specific TLD questions in thread.",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T08:11:06Z"
+    },
+    {
+      "platform": "LinkedIn",
+      "text": "A founder I was helping last week was 11 days into a domain hunt. Eleven days. Not building, not selling \u2014 refreshing Namecheap.\n\nThe .com he wanted was $32,000 in the aftermarket. He was about to pay it.\n\nHere's what we did instead in 20 minutes:\n\n\u2192 Confirmed his exact-match .com wasn't going under $3k (it wasn't)\n\u2192 Listed the buyers he'd actually face \u2014 technical SaaS founders\n\u2192 Picked .io as a first-class option, not a compromise\n\u2192 Generated 40 brandable alternatives across .com / .io / .ai\n\u2192 Locked a 5-letter brandable .com for $12 + a matching .io for defensive use\n\nTotal spend: $47. Time saved: ~3 weeks of avoidance behavior.\n\nThe mistake isn't picking the \"wrong\" extension. The mistake is treating the TLD choice as identity work instead of a 20-minute decision. Brand recall comes from the product, not from the dot at the end.\n\nIf you're stuck in the same loop right now, here's the 2026 decision tree (with renewal economics, the .ai trap, and the .app HTTPS-by-default detail nobody mentions): https://tinytools-smoky.vercel.app/domain-generator/blog/com-vs-io-vs-ai-vs-so-domain-extension-startup-2026/",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T08:11:06Z"
+    },
+    {
+      "platform": "Show HN",
+      "text": "Show HN: A 2026 decision tree for .com vs .io vs .ai vs .so \u2013 with renewal math\n\n---\n\nFirst comment:\nBuilt a small free domain generator a few months back and kept getting the same question from founders: which TLD should I pick in 2026 when the .com is gone? Wrote up the 2026 decision tree with actual renewal costs, the .ai 2-year-minimum trap, and the .app HSTS-preload detail most guides miss. No signup; the generator does live RDAP checks across .com/.ai/.io/.so. Feedback welcome \u2014 especially on the renewal-cost math, which varies by registrar.",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T08:11:06Z"
+    },
+    {
+      "platform": "X / Twitter Thread",
+      "text": "1/ Most \"expired domain\" guides in 2026 are written by people selling DA scores.\n\nHere's how it actually works after you sift through 100,000 daily .com drops \u2014 and the 4 filters that separate a real asset from a $300 SEO landmine. \ud83e\uddf5\n\n2/ The market is huge:\n\u2192 ~100k .com drop every weekday\n\u2192 Hundreds of \"expired domain finder\" SaaS tools\n\u2192 ~80% of the \"high-DA\" inventory is spam-built or hit with a manual action\n\nThe opportunity is real. The signal-to-noise ratio is awful.\n\n3/ Filter #1 \u2014 Real backlinks, not spam.\n\nForget the DA number. Pull the top 50 referring domains.\n\nNames you recognize? (universities, press, gov) \u2705\nEndless .xyz / .top / .cn lists? \ud83d\udea9\n\n15 referrers from sites you've heard of beat \"DA 60\" every time.\n\n4/ Filter #2 \u2014 Wayback history is on-topic and clean.\n\nScrub 2010, 2015, 2020, 2024 snapshots.\n\nContinuous on-topic content = green light.\nForeign-language casino content at any point = walk away. That penalty sticks for years even after the domain goes offline.\n\n5/ Filter #3 \u2014 No active trademark.\n\nTwo-minute search at uspto.gov + EUIPO TMview.\n\nA name that matches an active mark in your category can be UDRP'd off you for ~$1,500 \u2014 regardless of how legitimately you bought it.\n\nCatches more buyers than you'd expect.\n\n6/ Filter #4 \u2014 Match the new topic to the old.\n\nThis is the biggest one in 2026.\n\nGoogle's \"expired domain abuse\" classifier flattens anyone who buys a yoga blog and points it at a crypto exchange in ~48hrs.\n\nKeep the topic. Keep the intent. Then it works.\n\n7/ Where to actually bid:\n\n\u2192 GoDaddy Auctions \u2014 long tail brandables\n\u2192 SnapNames \u2014 pre-release inventory\n\u2192 DropCatch \u2014 final-drop .com auctions\n\nBack-order on multiple services for the same name. Set max-bids cold, before the timer starts.\n\n8/ The 10-min pre-bid checklist + the auction price tables (what a 2-word brandable with 8yrs history actually costs in 2026):\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/how-to-find-expired-domains-worth-buying-2026/\n\nFree guide. No paywall.\n\nReply with a domain you're eyeing and I'll do the quick read on it.",
       "tool": "domain-generator",
       "createdAt": "2026-05-18T04:11:39Z"
     },
     {
       "platform": "Reddit /r/SEO comment",
-      "text": "If you're looking at expired .coms in 2026, the part that nobody talks about is that the DA / DR number on most of the \"high-DA expired\" inventory is meaningless — those metrics are easy to inflate and almost always inflated on dropped domains.\n\nThe actual filter I use before bidding on anything:\n\n1. Pull the top 50 referring domains. If you don't recognize at least 10–15 of the linkers, the link profile is spam-built and the metric is fake.\n\n2. Wayback scrub at 2010 / 2015 / 2020 / 2024 — if there's any foreign-language casino or payday-loan content at any point, walk away. That kind of penalty sticks for years even after the domain goes offline.\n\n3. Trademark search at uspto.gov + EUIPO TMview takes 60 seconds and catches a surprising number of bad buys.\n\n4. The big 2026 thing: Google's \"expired domain abuse\" classifier nukes anyone who repurposes a domain across topics. If the domain was a food blog, it has to stay food-adjacent or it gets flattened inside 48 hours.\n\nFor sourcing, ExpiredDomains.net (free) is still the best aggregator — the filters are good, just ignore the DA column and verify against a real backlink tool.\n\nI wrote up the full filter + drop-catching workflow (DropCatch / SnapNames / GoDaddy Auctions, how back-orders actually work, what 2-word brandables with real history sell for in 2026) here if it's useful: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-find-expired-domains-worth-buying-2026/\n\nFree, no signup wall.",
+      "text": "If you're looking at expired .coms in 2026, the part that nobody talks about is that the DA / DR number on most of the \"high-DA expired\" inventory is meaningless \u2014 those metrics are easy to inflate and almost always inflated on dropped domains.\n\nThe actual filter I use before bidding on anything:\n\n1. Pull the top 50 referring domains. If you don't recognize at least 10\u201315 of the linkers, the link profile is spam-built and the metric is fake.\n\n2. Wayback scrub at 2010 / 2015 / 2020 / 2024 \u2014 if there's any foreign-language casino or payday-loan content at any point, walk away. That kind of penalty sticks for years even after the domain goes offline.\n\n3. Trademark search at uspto.gov + EUIPO TMview takes 60 seconds and catches a surprising number of bad buys.\n\n4. The big 2026 thing: Google's \"expired domain abuse\" classifier nukes anyone who repurposes a domain across topics. If the domain was a food blog, it has to stay food-adjacent or it gets flattened inside 48 hours.\n\nFor sourcing, ExpiredDomains.net (free) is still the best aggregator \u2014 the filters are good, just ignore the DA column and verify against a real backlink tool.\n\nI wrote up the full filter + drop-catching workflow (DropCatch / SnapNames / GoDaddy Auctions, how back-orders actually work, what 2-word brandables with real history sell for in 2026) here if it's useful: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-find-expired-domains-worth-buying-2026/\n\nFree, no signup wall.",
       "tool": "domain-generator",
       "createdAt": "2026-05-18T04:11:39Z"
     },
     {
       "platform": "LinkedIn Post",
-      "text": "A founder asked me last week whether buying a 12-year-old expired domain would \"give them SEO.\"\n\nThe honest answer in 2026 is: sometimes, and the diligence matters more than the price.\n\nThree things I've watched founders get burned by this year:\n\n1. Buying a \"DA 60\" expired domain whose entire backlink profile was Tier-2 PBN spam. The metric was real. The transferable equity wasn't.\n\n2. Buying a yoga blog and pointing it at a crypto exchange. Google's expired-domain-abuse classifier flagged it inside 48 hours. The domain has been useless ever since.\n\n3. Buying a great name without checking USPTO. A $1,500 UDRP filing later, they no longer own it.\n\nThe thing that works: source from ExpiredDomains.net, run a 10-minute pre-bid checklist (real referrers, clean Wayback, no blocklists, no trademark conflicts), bid at DropCatch or SnapNames, and rebuild on the same topic as the previous owner. Done that way, an expired domain is still the cheapest way to add 30–80 real referring domains to a young site.\n\nFull playbook, with the 2026 auction price ranges and which drop-catchers actually win, is on the TinyTools blog: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-find-expired-domains-worth-buying-2026/\n\nFree, no signup.",
+      "text": "A founder asked me last week whether buying a 12-year-old expired domain would \"give them SEO.\"\n\nThe honest answer in 2026 is: sometimes, and the diligence matters more than the price.\n\nThree things I've watched founders get burned by this year:\n\n1. Buying a \"DA 60\" expired domain whose entire backlink profile was Tier-2 PBN spam. The metric was real. The transferable equity wasn't.\n\n2. Buying a yoga blog and pointing it at a crypto exchange. Google's expired-domain-abuse classifier flagged it inside 48 hours. The domain has been useless ever since.\n\n3. Buying a great name without checking USPTO. A $1,500 UDRP filing later, they no longer own it.\n\nThe thing that works: source from ExpiredDomains.net, run a 10-minute pre-bid checklist (real referrers, clean Wayback, no blocklists, no trademark conflicts), bid at DropCatch or SnapNames, and rebuild on the same topic as the previous owner. Done that way, an expired domain is still the cheapest way to add 30\u201380 real referring domains to a young site.\n\nFull playbook, with the 2026 auction price ranges and which drop-catchers actually win, is on the TinyTools blog: https://tinytools-smoky.vercel.app/domain-generator/blog/how-to-find-expired-domains-worth-buying-2026/\n\nFree, no signup.",
       "tool": "domain-generator",
       "createdAt": "2026-05-18T04:11:39Z"
     },
@@ -260,41 +284,17 @@
       "text": "Title: Show HN: A 2026 playbook for finding expired domains worth buying\n\nComment:\nWrote this after watching three friends overpay for \"high-DA\" expired domains whose entire link profile turned out to be spam. The piece is mostly the four diligence filters I now run before bidding, plus how drop-catching actually works at DropCatch / SnapNames / GoDaddy in 2026. Happy to share specific domains people are looking at and walk through the read.",
       "tool": "domain-generator",
       "createdAt": "2026-05-18T04:11:39Z"
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "text": "1/ Most SEO blogs declared FAQ schema dead in 2023 when Google killed rich results.\n\nThey were wrong.\n\nIn 2026 FAQPage JSON-LD is the #1 way to get cited by ChatGPT, Claude, Perplexity, and AI Overviews.\n\nHere's why (and how to do it right) 🧵\n\n2/ What Google did in Aug 2023:\n\n→ Restricted FAQ rich results to \"authoritative\" sites only (.gov, big-name health, top-100 brands)\n→ Dropped How-To rich results almost entirely\n\nResult: 99% of sites lost their SERP accordion.\n\nBut the markup never stopped being parsed.\n\n3/ What changed in 2024-2026:\n\nEvery AI search engine started reading JSON-LD as a primary citation signal.\n\nFAQPage tells the model:\n- where the question is\n- where the answer starts/ends\n- that you (the author) wrote both\n\nPre-segmented = cheaper to cite = cited more.\n\n4/ The 2026 rules:\n\n→ 3-12 questions per page\n→ Plain-text answers, 40-90 words\n→ Lead with the conclusion (AI quotes the first sentence)\n→ Include a year/number/named entity\n→ Same text MUST be visible in the DOM\n\nHidden-only FAQ markup gets silently dropped.\n\n5/ The 4 mistakes I see every audit:\n\n1. Markup correct, but text only in a collapsed React tab\n2. Promotional answers (\"X is the best because…\")\n3. FAQPage on a user-comment page (use QAPage)\n4. Same 8 FAQs copy-pasted across 2,000 product pages\n\n6/ Full 2026 guide + a free FAQPage JSON-LD generator (paste your Q&A, get validator-clean markup):\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/faq-schema-markup-rich-results-2026/\n\nThe rich result is dead. The markup is more useful than ever.",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T20:30:00Z"
-    },
-    {
-      "platform": "Reddit /r/SEO",
-      "text": "If you stopped using FAQPage schema after Google killed the rich results in 2023, you're missing what changed in 2024-2026: every AI search engine (ChatGPT, Claude, Perplexity, Google AI Overviews, Bing Copilot) reads JSON-LD as a primary citation signal now.\n\nFAQPage markup pre-segments your page into Q&A pairs. That makes you cheaper for the model to cite than a page where it has to guess where the answer starts and ends. In Perplexity source previews and AI Overviews you can literally see the answer text lifted from `acceptedAnswer.text`.\n\nRules that actually matter in 2026:\n- 3-12 questions, plain-text answers 40-90 words\n- Same text visible in the DOM (not behind a collapsed React tab — that's the #1 reason markup gets silently dropped)\n- Lead with the conclusion. Models quote the first sentence.\n- One unambiguous answer. \"It depends, but…\" gets rewritten by the model.\n- Self-authored only. User Q&A = QAPage, not FAQPage.\n\nWrote up the full 2026 playbook here including the four mistakes that get the markup ignored even when Rich Results Test passes: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/faq-schema-markup-rich-results-2026/ — there's also a free generator on the site if you want validator-clean JSON-LD without hand-writing it.",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T20:30:00Z"
-    },
-    {
-      "platform": "LinkedIn",
-      "text": "In August 2023, Google quietly killed FAQ rich results for everyone except a small list of authoritative sites.\n\nMost SEO teams pulled FAQPage schema off their pages.\n\nThat was the wrong move.\n\nHere's what we found auditing 40+ B2B sites this quarter:\n\nThe pages still running FAQPage JSON-LD in 2026 get cited dramatically more often by ChatGPT, Claude, Perplexity and Google AI Overviews than pages that removed it.\n\nReason: AI search engines parse JSON-LD as a primary citation signal. Pre-segmented Q&A is cheaper for a model to lift than prose where it has to guess where the answer ends.\n\nThe SERP rich result is gone. The AI citation surface is huge — and growing.\n\nThe new 2026 rules:\n→ 3-12 questions per page\n→ Plain-text answers, 40-90 words\n→ Same exact text visible on the page\n→ Lead with the conclusion (models quote the first sentence)\n→ Concrete facts (year, number, named entity) in the answer\n\nIf your team pulled FAQ schema in 2023, the second half of 2026 is a good time to put it back.\n\nFull 2026 playbook with the four mistakes that get markup silently ignored: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/faq-schema-markup-rich-results-2026/",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T20:30:00Z"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "text": "TITLE: Show HN: FAQ schema markup is more valuable in 2026 than before Google killed rich results\n\nCOMMENT:\nAuthor here. After Google scaled back FAQ rich results in 2023 most teams removed the markup. In 2026 every AI search engine (Claude, ChatGPT, Perplexity, AI Overviews) reads JSON-LD as a primary citation signal — pre-segmented Q&A is cheaper to extract and gets cited more than prose. Wrote up the 2026 playbook with the four mistakes that silently get markup dropped, even when Rich Results Test passes. Free FAQPage JSON-LD generator on the same site if you want to skip hand-writing it. Happy to answer questions.",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T20:30:00Z"
     }
   ],
   "checklist": [
     {
-      "task": "🔥 PASTE ONE OF THE 3 DRAFTS BELOW (30 seconds = first 100 visitors)",
+      "task": "\ud83d\udd25 PASTE ONE OF THE 3 DRAFTS BELOW (30 seconds = first 100 visitors)",
       "url": "#drafts",
       "done": false,
       "value": "First 100 visitors come from this. Affiliate revenue follows traffic."
     },
     {
-      "task": "✅ Watch awesome-list PRs for merge — auto-emails on merge",
+      "task": "\u2705 Watch awesome-list PRs for merge \u2014 auto-emails on merge",
       "url": "https://github.com/pulls?q=is%3Apr+author%3Aalfredoautomatizaloconia-cloud",
       "done": false,
       "value": "5 PRs submitted to lists with combined 49,500 stars. Each merge = permanent backlink."
@@ -303,7 +303,7 @@
       "task": "Wait for Namecheap brand approval (1-3 days)",
       "url": "https://app.impact.com/secure/member/home/mview.ihtml",
       "done": false,
-      "value": "Once approved, paste tracking link to me — instant Domain Generator activation"
+      "value": "Once approved, paste tracking link to me \u2014 instant Domain Generator activation"
     },
     {
       "task": "Sign up: Buy Me a Coffee (instant)",
