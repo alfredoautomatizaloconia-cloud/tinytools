@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 18, 2026 — published Pivot-Proof Domain Names in 2026 for domain-generator + 4 social drafts ready",
+  "lastUpdated": "May 18, 2026 — published The Radio Test (Memorable Domain Names) for domain-generator + 4 new social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 70,
+    "posts": 71,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 16:11",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/startups, LinkedIn, Show HN — all promoting domain-generator (Radio Test)"
+    },
+    {
+      "time": "today 16:11",
+      "tag": "seo",
+      "text": "📝 Published blog post: The Radio Test — How to Tell if Your Domain Name Is Actually Memorable (2026 Guide) at /domain-generator/blog/domain-name-radio-test-2026/"
+    },
     {
       "time": "today 12:12",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 10:30",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting favicon-generator"
-    },
-    {
-      "time": "today 10:25",
-      "tag": "seo",
-      "text": "📝 Published blog post: OG Image File Size in 2026: PNG vs JPG vs WebP — Which Format Actually Loads in Link Previews at /og-image-generator/blog/og-image-png-vs-jpg-vs-webp-file-size-2026/"
-    },
-    {
-      "time": "today 10:25",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting og-image-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "text": "1/ A domain is more often heard than typed in 2026.\n\nPodcasts, voice search, ChatGPT reading citations out loud, a 22-second TikTok where you say it once.\n\nIf your name doesn't survive being SPOKEN, it doesn't exist. So: the Radio Test 🎙️\n\n2/ Run 4 sub-tests on every candidate before you spend $12:\n\n• Spelling Test → at most 1 non-obvious letter\n• Echo Test → doesn't round to a bigger brand\n• Boundary Test → one obvious syllable split\n• Recall Test → still typeable 12 hours later\n\n3/ The cheapest .com is usually cheap for a reason.\n\nIt's a misspelling, or it rhymes with a competitor, or it's 4 Latin syllables long.\n\n\"Available\" is a constraint. \"Memorable\" is the goal. Don't swap them.\n\n4/ The fastest distinctiveness boost in 2026 = a concrete IMAGE.\n\nLoom > Synth.\nStripe > Quanta.\nAnvil > Nexus.\n\nBrains store images longer than concepts. Use this.\n\n5/ How to actually run the test (no focus group):\n\n• Record yourself saying it 3x\n• Send AUDIO ONLY to 5 strangers\n• Ask them to type back what they heard\n• Re-test the same 5 people 24h later — that's your true memorability rate\n\n6/ Full breakdown + the 4-test checklist + 5 names that score perfectly (and 1 that almost didn't): \n\n→ https://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-radio-test-2026/\n\nFree domain generator built into the post. No signup.",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T16:11:11+00:00"
+    },
+    {
+      "platform": "Reddit /r/startups",
+      "text": "Most founders skip the one test that matters: can a stranger spell it after hearing it once.\n\nA few patterns I've seen kill otherwise-fine names:\n\n1. Dropped vowels feel \"tech\" but cost you ~30% of voice-mention traffic. Lyftr is not Lyft.\n\n2. \"Available .com\" is usually available because the name is *almost* something else. Listeners round to the more familiar word and end up on a competitor.\n\n3. Two-word compounds need one obvious syllable break. \"PenPath\" has it. \"Therapie\" does not.\n\n4. Names anchored to a concrete object (Loom, Stripe, Anvil) stick in 24-hour recall way more than abstract roots (Synth, Quanta, Nexus). Brain stores images longer than concepts.\n\nEasiest way to pressure-test: record yourself saying the name 3 times, send the audio (no text) to 5 strangers, ask them to type back what they heard. Re-test the same five 24 hours later. That's your real memorability rate, not your co-founder's.\n\nI wrote up the full 4-part Radio Test here if useful — https://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-radio-test-2026/ — but honestly the audio test above is 80% of the value. Don't overcomplicate it.",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T16:11:11+00:00"
+    },
+    {
+      "platform": "LinkedIn",
+      "text": "Your domain name lives more often as sound than as text in 2026.\n\nPodcasts. Voice search. ChatGPT reading your URL out loud as a citation. A 22-second TikTok where a founder says their site once.\n\nThe brutal version: if a stranger who heard your name once can't type it correctly 12 hours later, the entire awareness layer of your funnel is leaking.\n\nI call it the Radio Test. Four sub-tests, takes 60 seconds per candidate:\n\n1. Spelling — at most one non-obvious letter.\n2. Echo — doesn't round to a bigger brand on first hearing.\n3. Boundary — one unambiguous syllable break.\n4. Recall — still typeable 12 hours after hearing it once.\n\nThe cheapest unclaimed .com is usually cheap for a reason. \"Available\" is a constraint. \"Memorable\" is the goal. Don't optimize for the wrong one.\n\nFull framework + the 5 names that score a perfect 4/4 (and the one billion-dollar company that almost failed): https://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-radio-test-2026/\n\nWhat's the worst domain name you've ever tried to spell from a podcast?",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T16:11:11+00:00"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "text": "Show HN: The Radio Test – a 60-second check for whether a domain name is memorable\n\nBuilt this because every founder I know tests their domain on people who already know about the company. That's cheating — those people have context. Real test is whether a stranger can reconstruct the name from sound alone, 12 hours later. Four sub-tests in the post, plus a 3-step procedure for actually running it without a focus group. Feedback welcome — especially on Test 3, where I'm still tightening the rule.",
+      "tool": "domain-generator",
+      "createdAt": "2026-05-18T16:11:11+00:00"
+    },
+    {
+      "platform": "X / Twitter Thread",
       "text": "1/ 80% of seed-stage startups pivot before Series A. Almost none of them factor that into their domain name.\n\nSo you end up with PDFSummarizer.ai when the company is now a RAG platform. Or InvoiceCop.io when you sell AP automation.\n\nThe 5-test framework for picking a pivot-proof domain in 2026 🧵\n\n2/ Test 1 — The category test.\n\nRemove your current product entirely. Describe your company in one sentence. Does the name still fit?\n\nStripe passes (any financial rails). InvoiceCop fails (only invoices). The category outlives the product. The name has to too.\n\n3/ Test 2 — The verb test.\n\n\"I Stripe'd the payment.\" \"I Figma'd the mockup.\" \"We Notion'd the doc.\"\n\nVerb-able names are short, distinctive, brandable — the exact profile that survives pivots best. Descriptive names almost never become verbs.\n\n4/ Test 3 — The cocktail-party test.\n\nSay the name to someone outside your space. The right reaction is \"what does that do?\" — not \"oh, you do X\" (and they're wrong).\n\nCuriosity opens the pitch. Assumption bakes a misconception into your front door forever.\n\n5/ Test 4 — The TLD-resale test.\n\n.ai or .io is fine today IF the matching .com is realistically buyable for a Series A budget. If the .com is owned by Apple, your brand has a ceiling. Pick a different name now, not after $40k of rebrand math.\n\n6/ Full breakdown — rebrand cost math, descriptive-name trap, worked example for a 2026 AI startup, and the 3 naming patterns that consistently win:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/pivot-proof-domain-names-2026/",
       "tool": "domain-generator",
       "createdAt": "2026-05-18T12:12:11.783610+00:00"
@@ -260,30 +284,6 @@
       "text": "Title: Show HN: A 5-test framework for picking pivot-proof startup domain names\n\nComment:\nMost founders pick a name that perfectly describes today's product (ColdEmailBot.com) and then pivot 9 months later. The same name that lowered CAC in month 1 becomes a tax on every sales call after that. Wrote up the 5 tests — category, verb, cocktail-party, TLD-resale, trademark — plus realistic 2026 rebrand cost math. Curious what HN naming-experts disagree with.\n\nLink:\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/pivot-proof-domain-names-2026/",
       "tool": "domain-generator",
       "createdAt": "2026-05-18T12:12:11.783610+00:00"
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "text": "1/ The .com you actually want is taken, parked, or being held by a registrar reseller for $14k.\n\nSo the real question in 2026 isn't \"should I get a .com\" — it's: which extension lets me ship this week without quietly hurting SEO, trust, and renewals for 5 years?\n\nA 2026 cheat sheet 🧵\n\n2/ The hierarchy that actually holds up:\n\n• Exact-match .com under ~$3k → just buy it\n• Selling to devs → .io is a positive signal, not a compromise\n• AI/ML product → .ai (with caveats)\n• Consumer SMB → .co is the safest fallback\n• Mobile/app → .app (HTTPS by default)\n\n3/ The .ai trap nobody mentions:\n\nAnguilla's registry charges a 2-YEAR minimum. ~$140–180 every 2 years. WHOIS is partly manual. Transfers take days.\n\nWorth it if AI defines the company. Painful if AI is just the way you happen to build software.\n\n4/ Renewal compounding is real:\n\n10 side projects on .com → $120/yr\n10 side projects on .ai → $900/yr forever\n\nReserve premium TLDs for the project you'll actually grow. Use cheap TLDs (or fresh brandable .coms) for everything you might kill.\n\n5/ The two cheap mistakes I see weekly:\n\n❌ Paying $25k for keyword-in-.com (e.g. fastcrm.com)\n✅ Paying $12 for brandable .com (e.g. relayd.com)\n\nGoogle has scored exact-match domains at near-zero since 2012. Brandability wins on recall. Always.\n\n6/ Full decision tree, comparison table, and the renewal-cost math (incl. .so, .co, .app gotchas) here:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/com-vs-io-vs-ai-vs-so-domain-extension-startup-2026/",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-18T08:11:06Z"
-    },
-    {
-      "platform": "Reddit /r/Entrepreneur comment",
-      "text": "The part most \"what TLD should I pick\" guides miss in 2026 is that the choice isn't really .com vs .io anymore — it's \"exact-match .com under $3k or move on to the brandable tier.\" Once your exact-match .com is locked behind a $25k aftermarket listing, every dollar you spend chasing it is a dollar not spent on a brandable .com that ranks identically.\n\nA few things that have actually shifted recently:\n\n- .io's status post-BIOT-transition has stayed stable through mid-2026. ICANN's stance is that existing registrations are honored. There's still tail risk if you're on a 10-year horizon, but it's not the \"rug-pull next quarter\" thing people on X were panicking about a year ago.\n\n- .ai is the one with the most operational chaos right now. 2-year minimum on Anguilla, slow WHOIS, manual transfers. Fine if you're an AI product where the .ai literally signals what you do. Bad math for side projects (~$140–180 every 2 years compounds quickly).\n\n- .app being HSTS-preloaded is an underrated security win. HTTPS is enforced by every modern browser before your DNS even resolves. Free trust signal you can't get from .com.\n\n- Keyword-in-domain is worth basically nothing for SEO since the 2012 EMD update. Brandability beats keyword every time on recall, especially in 2026 when half your discovery is voice/AI assistants reading domains out loud.\n\nWrote a longer breakdown with renewal economics, the decision tree, and the gotchas per TLD here if it's useful: https://tinytools-smoky.vercel.app/domain-generator/blog/com-vs-io-vs-ai-vs-so-domain-extension-startup-2026/ — happy to answer specific TLD questions in thread.",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-18T08:11:06Z"
-    },
-    {
-      "platform": "LinkedIn",
-      "text": "A founder I was helping last week was 11 days into a domain hunt. Eleven days. Not building, not selling — refreshing Namecheap.\n\nThe .com he wanted was $32,000 in the aftermarket. He was about to pay it.\n\nHere's what we did instead in 20 minutes:\n\n→ Confirmed his exact-match .com wasn't going under $3k (it wasn't)\n→ Listed the buyers he'd actually face — technical SaaS founders\n→ Picked .io as a first-class option, not a compromise\n→ Generated 40 brandable alternatives across .com / .io / .ai\n→ Locked a 5-letter brandable .com for $12 + a matching .io for defensive use\n\nTotal spend: $47. Time saved: ~3 weeks of avoidance behavior.\n\nThe mistake isn't picking the \"wrong\" extension. The mistake is treating the TLD choice as identity work instead of a 20-minute decision. Brand recall comes from the product, not from the dot at the end.\n\nIf you're stuck in the same loop right now, here's the 2026 decision tree (with renewal economics, the .ai trap, and the .app HTTPS-by-default detail nobody mentions): https://tinytools-smoky.vercel.app/domain-generator/blog/com-vs-io-vs-ai-vs-so-domain-extension-startup-2026/",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-18T08:11:06Z"
-    },
-    {
-      "platform": "Show HN",
-      "text": "Show HN: A 2026 decision tree for .com vs .io vs .ai vs .so – with renewal math\n\n---\n\nFirst comment:\nBuilt a small free domain generator a few months back and kept getting the same question from founders: which TLD should I pick in 2026 when the .com is gone? Wrote up the 2026 decision tree with actual renewal costs, the .ai 2-year-minimum trap, and the .app HSTS-preload detail most guides miss. No signup; the generator does live RDAP checks across .com/.ai/.io/.so. Feedback welcome — especially on the renewal-cost math, which varies by registrar.",
-      "tool": "domain-generator",
-      "createdAt": "2026-05-18T08:11:06Z"
     }
   ],
   "checklist": [
