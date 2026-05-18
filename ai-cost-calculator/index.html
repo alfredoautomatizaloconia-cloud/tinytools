@@ -121,6 +121,33 @@
   .content p { color: var(--text-dim); margin-bottom: 10px; }
   .content ul { margin-left: 24px; color: var(--text-dim); }
 
+  
+  /* === VIRAL MECHANICS === */
+  .viral-actions {
+    margin-top: 16px; padding: 16px; background: var(--bg-elevated);
+    border-radius: 12px; border: 1px solid var(--border);
+  }
+  .viral-actions .label { font-size: 11px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 10px; font-weight: 600; }
+  .viral-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .viral-btn {
+    flex: 1; min-width: 120px; padding: 10px 14px; border-radius: 10px; font-weight: 600;
+    font-size: 13px; cursor: pointer; border: 1px solid var(--border);
+    background: var(--bg-card); color: var(--text); text-decoration: none; text-align: center;
+    transition: all 0.15s; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .viral-btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .viral-btn.primary { background: #1d9bf0; border-color: #1d9bf0; color: white; }
+  .viral-btn.primary:hover { background: #1a8cd8; }
+  .viral-embed { margin-top: 10px; }
+  .viral-embed pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px;
+    background: #000; padding: 10px; border-radius: 6px; color: #5eead4;
+    overflow-x: auto; white-space: pre-wrap; word-break: break-all;
+  }
+  .viral-badge-preview { margin: 8px 0; }
+  #cardCanvas { display: none; }
+
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
     text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
@@ -180,6 +207,23 @@
         <strong>Want one API for 100+ models with the best price routing?</strong>
         <a href="#" id="upsell-link" target="_blank" rel="noopener">OpenRouter</a> auto-routes your requests to the cheapest available model. Pay-as-you-go, no commitment. <em>(Affiliate link.)</em>
       </div>
+
+      <div class="viral-actions" id="viralActions">
+        <div class="label">🚀 Share your savings</div>
+        <div class="viral-row">
+          <a class="viral-btn primary" id="vShare" target="_blank" rel="noopener">𝕏 Tweet result</a>
+          <button class="viral-btn" id="vCopyLink" type="button">🔗 Copy deep-link</button>
+          <a class="viral-btn" id="vDownload" download="ai-cost-savings.png">💾 Download card (PNG)</a>
+        </div>
+        <div class="viral-badge-preview" id="vBadgePreview"></div>
+        <div class="viral-embed">
+          <div class="label" style="margin-bottom:6px;">Embed on your README / site</div>
+          <pre id="vEmbed"></pre>
+          <button class="viral-btn" id="vEmbedCopy" type="button" style="flex:0 0 auto; margin-top:8px;">Copy embed code</button>
+        </div>
+      </div>
+      <canvas id="cardCanvas" width="1200" height="630"></canvas>
+
     </div>
 
     <div>
@@ -372,7 +416,194 @@ document.querySelectorAll('.filter-tab').forEach(t =>
   })
 );
 
+
+// ============== VIRAL MECHANICS ==============
+const SITE_URL = 'https://tinytools-smoky.vercel.app/ai-cost-calculator/';
+
+function readHashParams() {
+  if (!location.hash || location.hash.length < 2) return null;
+  const params = new URLSearchParams(location.hash.slice(1));
+  return params;
+}
+
+function applyHashToInputs() {
+  const params = readHashParams();
+  if (!params) return false;
+  const map = { in: 'inTokens', out: 'outTokens', req: 'reqsPerDay', days: 'daysPerMonth' };
+  let touched = false;
+  for (const [k, id] of Object.entries(map)) {
+    const v = params.get(k);
+    if (v !== null && !isNaN(parseFloat(v))) {
+      document.getElementById(id).value = v;
+      touched = true;
+    }
+  }
+  const f = params.get('filter');
+  if (f) {
+    document.querySelectorAll('.filter-tab').forEach(x => x.classList.toggle('active', x.dataset.filter === f));
+    activeFilter = f;
+  }
+  return touched;
+}
+
+function buildHash() {
+  const inT = document.getElementById('inTokens').value;
+  const outT = document.getElementById('outTokens').value;
+  const reqs = document.getElementById('reqsPerDay').value;
+  const days = document.getElementById('daysPerMonth').value;
+  return `#in=${inT}&out=${outT}&req=${reqs}&days=${days}&filter=${activeFilter}`;
+}
+
+function shieldColor(savingsPct) {
+  if (savingsPct >= 95) return 'brightgreen';
+  if (savingsPct >= 80) return 'green';
+  if (savingsPct >= 50) return 'yellowgreen';
+  if (savingsPct >= 25) return 'yellow';
+  return 'orange';
+}
+
+function updateViralActions(cheapest, flagship) {
+  if (!cheapest || !flagship) return;
+  const savings = flagship.cost - cheapest.cost;
+  const savingsPct = flagship.cost > 0 ? (savings / flagship.cost * 100) : 0;
+  const hash = buildHash();
+  const shareUrl = SITE_URL + hash;
+
+  // Tweet
+  const tweetText = `I'd save $${savings.toFixed(2)}/mo (${savingsPct.toFixed(0)}%) switching from GPT-5 to ${cheapest.name} for my AI workload. Calculated with the free AI Cost Calculator → `;
+  document.getElementById('vShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(shareUrl)}`;
+
+  // Copy link
+  document.getElementById('vCopyLink').onclick = () => {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      const btn = document.getElementById('vCopyLink');
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => btn.textContent = orig, 1500);
+    });
+  };
+
+  // Embed badge
+  const sc = shieldColor(savingsPct);
+  const badgeLabel = encodeURIComponent('AI cost savings');
+  const badgeMsg = encodeURIComponent(`$${savings.toFixed(0)}/mo (${savingsPct.toFixed(0)}%)`);
+  const badgeUrl = `https://img.shields.io/badge/${badgeLabel}-${badgeMsg}-${sc}?style=for-the-badge&logo=openai&logoColor=white`;
+  const embedCode = `[![AI cost savings](${badgeUrl})](${shareUrl})`;
+  document.getElementById('vEmbed').textContent = embedCode;
+  document.getElementById('vBadgePreview').innerHTML = `<img src="${badgeUrl}" alt="AI cost savings badge">`;
+
+  document.getElementById('vEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode).then(() => {
+      const btn = document.getElementById('vEmbedCopy');
+      btn.textContent = '✓ Copied';
+      setTimeout(() => btn.textContent = 'Copy embed code', 1500);
+    });
+  };
+
+  // PNG download card (1200x630)
+  const canvas = document.getElementById('cardCanvas');
+  drawSavingsCard(canvas, cheapest, flagship, savings, savingsPct);
+  document.getElementById('vDownload').href = canvas.toDataURL('image/png');
+
+  // Sync URL hash silently for re-shareability without scrolling
+  if (history.replaceState) history.replaceState(null, '', hash);
+}
+
+function drawSavingsCard(canvas, cheapest, flagship, savings, savingsPct) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  // Background gradient
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#1f1f2e'); bg.addColorStop(1, '#0a0a0f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Top accent stripe
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#14b8a6'); stripe.addColorStop(1, '#06b6d4');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+  // Subtle radial glow
+  const glow = ctx.createRadialGradient(W * 0.25, H * 0.3, 0, W * 0.25, H * 0.3, 600);
+  glow.addColorStop(0, 'rgba(20, 184, 166, 0.18)'); glow.addColorStop(1, 'rgba(20, 184, 166, 0)');
+  ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+
+  // Eyebrow
+  ctx.fillStyle = '#14b8a6';
+  ctx.font = 'bold 26px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText('💸 AI COST CALCULATOR', 60, 80);
+
+  // Headline
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 64px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText("I'd save", 60, 180);
+
+  // Big savings number
+  ctx.fillStyle = '#5eead4';
+  ctx.font = 'bold 140px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText('$' + savings.toFixed(2), 60, 320);
+
+  // "/month"
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '36px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText('per month  (' + savingsPct.toFixed(0) + '% cheaper)', 60, 370);
+
+  // Switch line
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 30px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText('Switching: ', 60, 450);
+  ctx.fillStyle = '#fca5a5';
+  ctx.font = '30px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText(flagship.name, 230, 450);
+  ctx.fillStyle = '#a0a0b8';
+  ctx.fillText('  →  ', 230 + ctx.measureText(flagship.name).width, 450);
+  ctx.fillStyle = '#5eead4';
+  ctx.font = 'bold 30px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText(cheapest.name, 230 + ctx.measureText(flagship.name).width + 60, 450);
+
+  // Detail
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '22px -apple-system, BlinkMacSystemFont, sans-serif';
+  const inT = document.getElementById('inTokens').value;
+  const outT = document.getElementById('outTokens').value;
+  const reqs = document.getElementById('reqsPerDay').value;
+  const days = document.getElementById('daysPerMonth').value;
+  ctx.fillText(`${reqs} req/day · ${inT} in + ${outT} out tokens · ${days} days/mo`, 60, 500);
+
+  // Brand bottom-right
+  ctx.fillStyle = '#5eead4';
+  ctx.font = 'bold 22px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/ai-cost-calculator', W - 60, H - 35);
+  ctx.textAlign = 'left';
+}
+
+// Auto-load from URL hash before first calculate()
+applyHashToInputs();
+
+// Hook into calculate so viral actions update whenever inputs change
+const _origCalculate = calculate;
+calculate = function() {
+  _origCalculate();
+  // Recompute cheapest/flagship for viral actions
+  const inT = parseFloat(document.getElementById('inTokens').value) || 0;
+  const outT = parseFloat(document.getElementById('outTokens').value) || 0;
+  const reqs = parseFloat(document.getElementById('reqsPerDay').value) || 0;
+  const days = parseFloat(document.getElementById('daysPerMonth').value) || 30;
+  const monthlyIn = inT * reqs * days;
+  const monthlyOut = outT * reqs * days;
+  const costed = MODELS.map(m => ({ ...m, cost: (monthlyIn / 1e6) * m.in + (monthlyOut / 1e6) * m.out }))
+    .sort((a, b) => a.cost - b.cost);
+  const cheapest = costed[0];
+  const flagship = costed.find(m => m.name === 'GPT-5');
+  updateViralActions(cheapest, flagship);
+};
+
+// Listen for hashchange (back/forward navigation)
+window.addEventListener('hashchange', () => {
+  if (applyHashToInputs()) calculate();
+});
+
 calculate();
+
 </script>
 </body>
 </html>

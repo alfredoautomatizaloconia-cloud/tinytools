@@ -1,97 +1,102 @@
 {
-  "lastUpdated": "May 18, 2026 — published Domain Registrar Comparison 2026 for domain-generator + 4 social drafts ready",
+  "lastUpdated": "2026-05-18 22:49 UTC \u2014 viral-retrofit run: added viral mechanics to ai-cost-calculator (share/embed/PNG/deep-link). Visitor count: 1.",
   "tools": [
     {
       "name": "Domain Name Generator",
       "slug": "domain-generator",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     },
     {
       "name": "OG Image Generator",
       "slug": "og-image-generator",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     },
     {
       "name": "AI Background Remover",
       "slug": "background-remover",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     },
     {
       "name": "Favicon Generator",
       "slug": "favicon-generator",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     },
     {
       "name": "Color Palette Generator",
       "slug": "color-palette",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     },
     {
       "name": "SEO Meta Tag Generator",
       "slug": "seo-meta-generator",
       "status": "live",
-      "visitors7d": "—"
+      "visitors7d": "\u2014"
     }
   ],
   "stats": {
     "tools": 6,
     "toolsDelta": "+6 since launch",
-    "visitors": "—",
-    "visitorsDelta": "Vercel Analytics: enable in 1 click",
+    "visitors": "1",
+    "visitorsDelta": "abacus.jasoncameron.dev counter (root)",
     "clicks": "0",
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
     "posts": 72,
     "postsDelta": "+1 today",
-    "indexed": "—",
+    "indexed": "\u2014",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
     {
+      "time": "today 22:49",
+      "tag": "ship",
+      "text": "\ud83d\ude80 Viral retrofit: added share/tweet, deep-link, shields.io embed badge, PNG card download, and URL-hash auto-load to /ai-cost-calculator/"
+    },
+    {
       "time": "today 20:11",
       "tag": "seo",
-      "text": "📝 Published blog post: Domain Registrar Comparison 2026: Namecheap vs Cloudflare vs Porkbun vs GoDaddy — Which Actually Saves Money at /domain-generator/blog/domain-registrar-comparison-namecheap-cloudflare-porkbun-godaddy-2026/"
+      "text": "\ud83d\udcdd Published blog post: Domain Registrar Comparison 2026: Namecheap vs Cloudflare vs Porkbun vs GoDaddy \u2014 Which Actually Saves Money at /domain-generator/blog/domain-registrar-comparison-namecheap-cloudflare-porkbun-godaddy-2026/"
     },
     {
       "time": "today 20:11",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN — all promoting domain-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN \u2014 all promoting domain-generator"
     },
     {
       "time": "today 16:11",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/startups, LinkedIn, Show HN — all promoting domain-generator (Radio Test)"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/startups, LinkedIn, Show HN \u2014 all promoting domain-generator (Radio Test)"
     },
     {
       "time": "today 16:11",
       "tag": "seo",
-      "text": "📝 Published blog post: The Radio Test — How to Tell if Your Domain Name Is Actually Memorable (2026 Guide) at /domain-generator/blog/domain-name-radio-test-2026/"
+      "text": "\ud83d\udcdd Published blog post: The Radio Test \u2014 How to Tell if Your Domain Name Is Actually Memorable (2026 Guide) at /domain-generator/blog/domain-name-radio-test-2026/"
     },
     {
       "time": "today 12:12",
       "tag": "seo",
-      "text": "📝 Published blog post: How to Pick a Pivot-Proof Domain Name in 2026 — The Names That Survive When Your Startup Changes Direction at /domain-generator/blog/pivot-proof-domain-names-2026/"
+      "text": "\ud83d\udcdd Published blog post: How to Pick a Pivot-Proof Domain Name in 2026 \u2014 The Names That Survive When Your Startup Changes Direction at /domain-generator/blog/pivot-proof-domain-names-2026/"
     },
     {
       "time": "today 12:12",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/startups, LinkedIn, Show HN — all promoting domain-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/startups, LinkedIn, Show HN \u2014 all promoting domain-generator"
     },
     {
       "time": "today 08:11",
       "tag": "seo",
-      "text": "Published blog post: .com vs .io vs .ai vs .so — Which Domain Extension Should Your Startup Pick in 2026? at /domain-generator/blog/com-vs-io-vs-ai-vs-so-domain-extension-startup-2026/"
+      "text": "Published blog post: .com vs .io vs .ai vs .so \u2014 Which Domain Extension Should Your Startup Pick in 2026? at /domain-generator/blog/com-vs-io-vs-ai-vs-so-domain-extension-startup-2026/"
     },
     {
       "time": "today 08:11",
       "tag": "promo",
-      "text": "4 social drafts ready in dashboard: X thread, Reddit /r/Entrepreneur, LinkedIn, Show HN — all promoting domain-generator (.com vs .io vs .ai vs .so)"
+      "text": "4 social drafts ready in dashboard: X thread, Reddit /r/Entrepreneur, LinkedIn, Show HN \u2014 all promoting domain-generator (.com vs .io vs .ai vs .so)"
     },
     {
       "time": "today 04:11",
@@ -101,107 +106,107 @@
     {
       "time": "today 04:11",
       "tag": "promo",
-      "text": "4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting domain-generator"
+      "text": "4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting domain-generator"
     },
     {
       "time": "today 20:30",
       "tag": "seo",
-      "text": "📝 Published blog post: FAQ Schema Markup in 2026 — Why Google Cut Rich Results (and Where FAQPage Still Earns Visibility) at /seo-meta-generator/blog/faq-schema-markup-rich-results-2026/"
+      "text": "\ud83d\udcdd Published blog post: FAQ Schema Markup in 2026 \u2014 Why Google Cut Rich Results (and Where FAQPage Still Earns Visibility) at /seo-meta-generator/blog/faq-schema-markup-rich-results-2026/"
     },
     {
       "time": "today 20:30",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting seo-meta-generator"
     },
     {
       "time": "today 20:00",
       "tag": "seo",
-      "text": "📝 Published blog post: X-Robots-Tag HTTP Header in 2026 — The 5 Cases Where Meta Robots Isn't Enough at /seo-meta-generator/blog/x-robots-tag-http-header-2026/"
+      "text": "\ud83d\udcdd Published blog post: X-Robots-Tag HTTP Header in 2026 \u2014 The 5 Cases Where Meta Robots Isn't Enough at /seo-meta-generator/blog/x-robots-tag-http-header-2026/"
     },
     {
       "time": "today 20:00",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting seo-meta-generator"
     },
     {
       "time": "today 16:16",
       "tag": "seo",
-      "text": "📝 Published blog post: Pagination Meta Tags in 2026 — rel=prev/next Is Dead, Here's What Google Wants Now at /seo-meta-generator/blog/pagination-meta-tags-rel-prev-next-2026/"
+      "text": "\ud83d\udcdd Published blog post: Pagination Meta Tags in 2026 \u2014 rel=prev/next Is Dead, Here's What Google Wants Now at /seo-meta-generator/blog/pagination-meta-tags-rel-prev-next-2026/"
     },
     {
       "time": "today 16:16",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting seo-meta-generator"
     },
     {
       "time": "today 19:30",
       "tag": "seo",
-      "text": "📝 Published blog post: Open Graph Tags for Threads, Bluesky, and Mastodon in 2026 at /seo-meta-generator/blog/open-graph-tags-threads-bluesky-mastodon-2026/"
+      "text": "\ud83d\udcdd Published blog post: Open Graph Tags for Threads, Bluesky, and Mastodon in 2026 at /seo-meta-generator/blog/open-graph-tags-threads-bluesky-mastodon-2026/"
     },
     {
       "time": "today 19:30",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN — all promoting seo-meta-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/webdev, LinkedIn, Show HN \u2014 all promoting seo-meta-generator"
     },
     {
       "time": "today 18:30",
       "tag": "seo",
-      "text": "📝 Published blog post: How to Remove Background from Real Estate Photos in 2026 (Free, No Photoshop) at /background-remover/blog/how-to-remove-background-real-estate-photos-2026/"
+      "text": "\ud83d\udcdd Published blog post: How to Remove Background from Real Estate Photos in 2026 (Free, No Photoshop) at /background-remover/blog/how-to-remove-background-real-estate-photos-2026/"
     },
     {
       "time": "today 18:30",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/RealEstate, LinkedIn, Show HN — all promoting background-remover"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/RealEstate, LinkedIn, Show HN \u2014 all promoting background-remover"
     },
     {
       "time": "today 12:00",
       "tag": "seo",
-      "text": "📝 Published blog post: hreflang Tags in 2026 — The Complete International SEO Guide (Without Duplicate Content Penalties) at /seo-meta-generator/blog/hreflang-tags-international-seo-2026/"
+      "text": "\ud83d\udcdd Published blog post: hreflang Tags in 2026 \u2014 The Complete International SEO Guide (Without Duplicate Content Penalties) at /seo-meta-generator/blog/hreflang-tags-international-seo-2026/"
     },
     {
       "time": "today 12:00",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN \u2014 all promoting seo-meta-generator"
     },
     {
       "time": "today 01:36",
       "tag": "seo",
-      "text": "📝 Published blog post: CSS color-mix() in 2026 — The Complete Guide to Dynamic Palettes, Opacity Blending and Theme Tokens at /color-palette/blog/css-color-mix-dynamic-palettes-2026/"
+      "text": "\ud83d\udcdd Published blog post: CSS color-mix() in 2026 \u2014 The Complete Guide to Dynamic Palettes, Opacity Blending and Theme Tokens at /color-palette/blog/css-color-mix-dynamic-palettes-2026/"
     },
     {
       "time": "today 01:36",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/css, LinkedIn, Show HN — all promoting color-palette"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/css, LinkedIn, Show HN \u2014 all promoting color-palette"
     },
     {
       "time": "today 17:05",
       "tag": "seo",
-      "text": "📝 Published blog post: Tailwind CSS v4 Color Palette in 2026 — How to Build, Customize and Theme With Custom Colors at /color-palette/blog/tailwind-v4-color-palette-custom-colors-2026/"
+      "text": "\ud83d\udcdd Published blog post: Tailwind CSS v4 Color Palette in 2026 \u2014 How to Build, Customize and Theme With Custom Colors at /color-palette/blog/tailwind-v4-color-palette-custom-colors-2026/"
     },
     {
       "time": "today 17:05",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/tailwindcss, LinkedIn, Show HN — all promoting color-palette"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/tailwindcss, LinkedIn, Show HN \u2014 all promoting color-palette"
     },
     {
       "time": "today 06:15",
       "tag": "seo",
-      "text": "📝 Published blog post: OKLCH vs HSL vs HEX: The 2026 Designer's Guide to Choosing a Color Format at /color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/"
+      "text": "\ud83d\udcdd Published blog post: OKLCH vs HSL vs HEX: The 2026 Designer's Guide to Choosing a Color Format at /color-palette/blog/oklch-vs-hsl-vs-hex-color-formats-2026/"
     },
     {
       "time": "today 06:15",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting color-palette"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN \u2014 all promoting color-palette"
     },
     {
       "time": "today 14:30",
       "tag": "seo",
-      "text": "📝 Published blog post: How to Convert a Logo to a Favicon in 2026 (Without Pixel-Mush at 16×16) at /favicon-generator/blog/how-to-convert-logo-to-favicon-2026/"
+      "text": "\ud83d\udcdd Published blog post: How to Convert a Logo to a Favicon in 2026 (Without Pixel-Mush at 16\u00d716) at /favicon-generator/blog/how-to-convert-logo-to-favicon-2026/"
     },
     {
       "time": "today 14:30",
       "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN — all promoting favicon-generator"
+      "text": "\ud83d\udcac 4 social drafts ready in dashboard: X thread, Reddit /r/web_design, LinkedIn, Show HN \u2014 all promoting favicon-generator"
     }
   ],
   "roadmap": [
@@ -239,7 +244,7 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
-      "text": "1/ Everyone obsesses over the $14/year price gap between domain registrars.\n\nThe actual cost of picking the wrong one is a 24-hour outage you can't get support for, on a Saturday, before a launch.\n\nThe 2026 registrar comparison nobody publishes honestly 🧵\n\n2/ The price gap is real but tiny.\n\n5-year cost for one .com:\n• Cloudflare $52\n• Porkbun $55\n• Namecheap $71\n• GoDaddy $97+\n\nTotal spread: $45 over five years. Less than one founder-hour of work.\n\n3/ Cloudflare is at-cost (zero markup) but you can only register if your DNS is also on Cloudflare, support is forum-grade, and you can't sell/push the domain from the panel. Right answer if you live in the Cloudflare stack.\n\n4/ Porkbun is the best balance: at-cost-adjacent pricing, deepest TLD coverage (.ai, .io, .so, .dev), free WHOIS, DNSSEC one-click, and support that replies in hours. Best default for most founders in 2026.\n\n5/ Namecheap is the most \"normal\" — 24/7 live chat in 90 seconds, ecosystem (email, VPN), free WHOIS for life. You pay $4–5/year more per domain. Worth it if you ever need to call someone.\n\n6/ GoDaddy in 2026: only justified for buying premium domains from their aftermarket. Then transfer out after the 60-day ICANN lock. For a fresh .com, the price + dark patterns + WHOIS upsell + slow EPP code retrieval makes it the wrong default.\n\n7/ The criterion most founders weight too low: support response time during an outage. Saving $14/yr on a domain and losing $14k of MRR in one weekend outage is the trade you're actually making.\n\nFull breakdown + hidden costs + DNS speed math:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/domain-registrar-comparison-namecheap-cloudflare-porkbun-godaddy-2026/",
+      "text": "1/ Everyone obsesses over the $14/year price gap between domain registrars.\n\nThe actual cost of picking the wrong one is a 24-hour outage you can't get support for, on a Saturday, before a launch.\n\nThe 2026 registrar comparison nobody publishes honestly \ud83e\uddf5\n\n2/ The price gap is real but tiny.\n\n5-year cost for one .com:\n\u2022 Cloudflare $52\n\u2022 Porkbun $55\n\u2022 Namecheap $71\n\u2022 GoDaddy $97+\n\nTotal spread: $45 over five years. Less than one founder-hour of work.\n\n3/ Cloudflare is at-cost (zero markup) but you can only register if your DNS is also on Cloudflare, support is forum-grade, and you can't sell/push the domain from the panel. Right answer if you live in the Cloudflare stack.\n\n4/ Porkbun is the best balance: at-cost-adjacent pricing, deepest TLD coverage (.ai, .io, .so, .dev), free WHOIS, DNSSEC one-click, and support that replies in hours. Best default for most founders in 2026.\n\n5/ Namecheap is the most \"normal\" \u2014 24/7 live chat in 90 seconds, ecosystem (email, VPN), free WHOIS for life. You pay $4\u20135/year more per domain. Worth it if you ever need to call someone.\n\n6/ GoDaddy in 2026: only justified for buying premium domains from their aftermarket. Then transfer out after the 60-day ICANN lock. For a fresh .com, the price + dark patterns + WHOIS upsell + slow EPP code retrieval makes it the wrong default.\n\n7/ The criterion most founders weight too low: support response time during an outage. Saving $14/yr on a domain and losing $14k of MRR in one weekend outage is the trade you're actually making.\n\nFull breakdown + hidden costs + DNS speed math:\n\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/domain-registrar-comparison-namecheap-cloudflare-porkbun-godaddy-2026/",
       "tool": "domain-generator",
       "createdAt": "2026-05-18T20:11:08.308729+00:00"
     },
@@ -251,50 +256,50 @@
     },
     {
       "platform": "LinkedIn",
-      "text": "A founder asked me last week which registrar to use. He had narrowed it to four: Namecheap, Cloudflare, Porkbun, GoDaddy.\n\nHe had been comparing them on price for two days.\n\nThe price spread between those four registrars over 5 years on a single .com is $45.\n\nForty-five dollars.\n\nHe spent more time researching the decision than the savings could ever return.\n\nThe real decision criteria nobody publishes:\n\n→ Support response time when something breaks at 11pm before a launch\n→ How fast you can retrieve your auth/EPP code if you need to transfer out\n→ DNS speed (affects TTFB before your CDN matters)\n→ Whether renewal billing is transparent or silent\n→ Whether WHOIS privacy is free or a per-year upsell\n\nSaving $14/year on a registrar and then losing $14k of MRR during one weekend outage because you can't reach support — that's the trade you're actually making.\n\nThe 2026 default for most founders: Porkbun or Namecheap. Cloudflare if you live in the Cloudflare stack. GoDaddy only for buying premium domains from their aftermarket (then transfer out after the 60-day ICANN lock).\n\nFull breakdown with the real 2026 renewal numbers, hidden fees, and DNS speed math ↓\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/domain-registrar-comparison-namecheap-cloudflare-porkbun-godaddy-2026/",
+      "text": "A founder asked me last week which registrar to use. He had narrowed it to four: Namecheap, Cloudflare, Porkbun, GoDaddy.\n\nHe had been comparing them on price for two days.\n\nThe price spread between those four registrars over 5 years on a single .com is $45.\n\nForty-five dollars.\n\nHe spent more time researching the decision than the savings could ever return.\n\nThe real decision criteria nobody publishes:\n\n\u2192 Support response time when something breaks at 11pm before a launch\n\u2192 How fast you can retrieve your auth/EPP code if you need to transfer out\n\u2192 DNS speed (affects TTFB before your CDN matters)\n\u2192 Whether renewal billing is transparent or silent\n\u2192 Whether WHOIS privacy is free or a per-year upsell\n\nSaving $14/year on a registrar and then losing $14k of MRR during one weekend outage because you can't reach support \u2014 that's the trade you're actually making.\n\nThe 2026 default for most founders: Porkbun or Namecheap. Cloudflare if you live in the Cloudflare stack. GoDaddy only for buying premium domains from their aftermarket (then transfer out after the 60-day ICANN lock).\n\nFull breakdown with the real 2026 renewal numbers, hidden fees, and DNS speed math \u2193\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/domain-registrar-comparison-namecheap-cloudflare-porkbun-godaddy-2026/",
       "tool": "domain-generator",
       "createdAt": "2026-05-18T20:11:08.308729+00:00"
     },
     {
       "platform": "Hacker News (Show HN)",
-      "text": "Title: Show HN: A 2026 comparison of the four registrars founders actually pick between\n\nFirst comment:\nBuilt a free domain generator a few months back and the most-asked follow-up question is \"OK but where should I register it?\" The honest answer is that the price gap between Cloudflare, Porkbun, Namecheap, and GoDaddy is $45 over five years on a single .com — almost a rounding error. The real differences are EPP code retrieval speed, DNS performance, support response time during outages, and whether WHOIS privacy is free or a per-year upsell. Wrote up the 2026 numbers + the hidden costs. Curious what the HN registrar veterans disagree with.\n\nLink:\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/domain-registrar-comparison-namecheap-cloudflare-porkbun-godaddy-2026/",
+      "text": "Title: Show HN: A 2026 comparison of the four registrars founders actually pick between\n\nFirst comment:\nBuilt a free domain generator a few months back and the most-asked follow-up question is \"OK but where should I register it?\" The honest answer is that the price gap between Cloudflare, Porkbun, Namecheap, and GoDaddy is $45 over five years on a single .com \u2014 almost a rounding error. The real differences are EPP code retrieval speed, DNS performance, support response time during outages, and whether WHOIS privacy is free or a per-year upsell. Wrote up the 2026 numbers + the hidden costs. Curious what the HN registrar veterans disagree with.\n\nLink:\nhttps://tinytools-smoky.vercel.app/domain-generator/blog/domain-registrar-comparison-namecheap-cloudflare-porkbun-godaddy-2026/",
       "tool": "domain-generator",
       "createdAt": "2026-05-18T20:11:08.308729+00:00"
     },
     {
       "platform": "X / Twitter Thread",
-      "text": "1/ A domain is more often heard than typed in 2026.\n\nPodcasts, voice search, ChatGPT reading citations out loud, a 22-second TikTok where you say it once.\n\nIf your name doesn't survive being SPOKEN, it doesn't exist. So: the Radio Test 🎙️\n\n2/ Run 4 sub-tests on every candidate before you spend $12:\n\n• Spelling Test → at most 1 non-obvious letter\n• Echo Test → doesn't round to a bigger brand\n• Boundary Test → one obvious syllable split\n• Recall Test → still typeable 12 hours later\n\n3/ The cheapest .com is usually cheap for a reason.\n\nIt's a misspelling, or it rhymes with a competitor, or it's 4 Latin syllables long.\n\n\"Available\" is a constraint. \"Memorable\" is the goal. Don't swap them.\n\n4/ The fastest distinctiveness boost in 2026 = a concrete IMAGE.\n\nLoom > Synth.\nStripe > Quanta.\nAnvil > Nexus.\n\nBrains store images longer than concepts. Use this.\n\n5/ How to actually run the test (no focus group):\n\n• Record yourself saying it 3x\n• Send AUDIO ONLY to 5 strangers\n• Ask them to type back what they heard\n• Re-test the same 5 people 24h later — that's your true memorability rate\n\n6/ Full breakdown + the 4-test checklist + 5 names that score perfectly (and 1 that almost didn't): \n\n→ https://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-radio-test-2026/\n\nFree domain generator built into the post. No signup.",
+      "text": "1/ A domain is more often heard than typed in 2026.\n\nPodcasts, voice search, ChatGPT reading citations out loud, a 22-second TikTok where you say it once.\n\nIf your name doesn't survive being SPOKEN, it doesn't exist. So: the Radio Test \ud83c\udf99\ufe0f\n\n2/ Run 4 sub-tests on every candidate before you spend $12:\n\n\u2022 Spelling Test \u2192 at most 1 non-obvious letter\n\u2022 Echo Test \u2192 doesn't round to a bigger brand\n\u2022 Boundary Test \u2192 one obvious syllable split\n\u2022 Recall Test \u2192 still typeable 12 hours later\n\n3/ The cheapest .com is usually cheap for a reason.\n\nIt's a misspelling, or it rhymes with a competitor, or it's 4 Latin syllables long.\n\n\"Available\" is a constraint. \"Memorable\" is the goal. Don't swap them.\n\n4/ The fastest distinctiveness boost in 2026 = a concrete IMAGE.\n\nLoom > Synth.\nStripe > Quanta.\nAnvil > Nexus.\n\nBrains store images longer than concepts. Use this.\n\n5/ How to actually run the test (no focus group):\n\n\u2022 Record yourself saying it 3x\n\u2022 Send AUDIO ONLY to 5 strangers\n\u2022 Ask them to type back what they heard\n\u2022 Re-test the same 5 people 24h later \u2014 that's your true memorability rate\n\n6/ Full breakdown + the 4-test checklist + 5 names that score perfectly (and 1 that almost didn't): \n\n\u2192 https://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-radio-test-2026/\n\nFree domain generator built into the post. No signup.",
       "tool": "domain-generator",
       "createdAt": "2026-05-18T16:11:11+00:00"
     },
     {
       "platform": "Reddit /r/startups",
-      "text": "Most founders skip the one test that matters: can a stranger spell it after hearing it once.\n\nA few patterns I've seen kill otherwise-fine names:\n\n1. Dropped vowels feel \"tech\" but cost you ~30% of voice-mention traffic. Lyftr is not Lyft.\n\n2. \"Available .com\" is usually available because the name is *almost* something else. Listeners round to the more familiar word and end up on a competitor.\n\n3. Two-word compounds need one obvious syllable break. \"PenPath\" has it. \"Therapie\" does not.\n\n4. Names anchored to a concrete object (Loom, Stripe, Anvil) stick in 24-hour recall way more than abstract roots (Synth, Quanta, Nexus). Brain stores images longer than concepts.\n\nEasiest way to pressure-test: record yourself saying the name 3 times, send the audio (no text) to 5 strangers, ask them to type back what they heard. Re-test the same five 24 hours later. That's your real memorability rate, not your co-founder's.\n\nI wrote up the full 4-part Radio Test here if useful — https://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-radio-test-2026/ — but honestly the audio test above is 80% of the value. Don't overcomplicate it.",
+      "text": "Most founders skip the one test that matters: can a stranger spell it after hearing it once.\n\nA few patterns I've seen kill otherwise-fine names:\n\n1. Dropped vowels feel \"tech\" but cost you ~30% of voice-mention traffic. Lyftr is not Lyft.\n\n2. \"Available .com\" is usually available because the name is *almost* something else. Listeners round to the more familiar word and end up on a competitor.\n\n3. Two-word compounds need one obvious syllable break. \"PenPath\" has it. \"Therapie\" does not.\n\n4. Names anchored to a concrete object (Loom, Stripe, Anvil) stick in 24-hour recall way more than abstract roots (Synth, Quanta, Nexus). Brain stores images longer than concepts.\n\nEasiest way to pressure-test: record yourself saying the name 3 times, send the audio (no text) to 5 strangers, ask them to type back what they heard. Re-test the same five 24 hours later. That's your real memorability rate, not your co-founder's.\n\nI wrote up the full 4-part Radio Test here if useful \u2014 https://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-radio-test-2026/ \u2014 but honestly the audio test above is 80% of the value. Don't overcomplicate it.",
       "tool": "domain-generator",
       "createdAt": "2026-05-18T16:11:11+00:00"
     },
     {
       "platform": "LinkedIn",
-      "text": "Your domain name lives more often as sound than as text in 2026.\n\nPodcasts. Voice search. ChatGPT reading your URL out loud as a citation. A 22-second TikTok where a founder says their site once.\n\nThe brutal version: if a stranger who heard your name once can't type it correctly 12 hours later, the entire awareness layer of your funnel is leaking.\n\nI call it the Radio Test. Four sub-tests, takes 60 seconds per candidate:\n\n1. Spelling — at most one non-obvious letter.\n2. Echo — doesn't round to a bigger brand on first hearing.\n3. Boundary — one unambiguous syllable break.\n4. Recall — still typeable 12 hours after hearing it once.\n\nThe cheapest unclaimed .com is usually cheap for a reason. \"Available\" is a constraint. \"Memorable\" is the goal. Don't optimize for the wrong one.\n\nFull framework + the 5 names that score a perfect 4/4 (and the one billion-dollar company that almost failed): https://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-radio-test-2026/\n\nWhat's the worst domain name you've ever tried to spell from a podcast?",
+      "text": "Your domain name lives more often as sound than as text in 2026.\n\nPodcasts. Voice search. ChatGPT reading your URL out loud as a citation. A 22-second TikTok where a founder says their site once.\n\nThe brutal version: if a stranger who heard your name once can't type it correctly 12 hours later, the entire awareness layer of your funnel is leaking.\n\nI call it the Radio Test. Four sub-tests, takes 60 seconds per candidate:\n\n1. Spelling \u2014 at most one non-obvious letter.\n2. Echo \u2014 doesn't round to a bigger brand on first hearing.\n3. Boundary \u2014 one unambiguous syllable break.\n4. Recall \u2014 still typeable 12 hours after hearing it once.\n\nThe cheapest unclaimed .com is usually cheap for a reason. \"Available\" is a constraint. \"Memorable\" is the goal. Don't optimize for the wrong one.\n\nFull framework + the 5 names that score a perfect 4/4 (and the one billion-dollar company that almost failed): https://tinytools-smoky.vercel.app/domain-generator/blog/domain-name-radio-test-2026/\n\nWhat's the worst domain name you've ever tried to spell from a podcast?",
       "tool": "domain-generator",
       "createdAt": "2026-05-18T16:11:11+00:00"
     },
     {
       "platform": "Hacker News (Show HN)",
-      "text": "Show HN: The Radio Test – a 60-second check for whether a domain name is memorable\n\nBuilt this because every founder I know tests their domain on people who already know about the company. That's cheating — those people have context. Real test is whether a stranger can reconstruct the name from sound alone, 12 hours later. Four sub-tests in the post, plus a 3-step procedure for actually running it without a focus group. Feedback welcome — especially on Test 3, where I'm still tightening the rule.",
+      "text": "Show HN: The Radio Test \u2013 a 60-second check for whether a domain name is memorable\n\nBuilt this because every founder I know tests their domain on people who already know about the company. That's cheating \u2014 those people have context. Real test is whether a stranger can reconstruct the name from sound alone, 12 hours later. Four sub-tests in the post, plus a 3-step procedure for actually running it without a focus group. Feedback welcome \u2014 especially on Test 3, where I'm still tightening the rule.",
       "tool": "domain-generator",
       "createdAt": "2026-05-18T16:11:11+00:00"
     }
   ],
   "checklist": [
     {
-      "task": "🔥 PASTE ONE OF THE 3 DRAFTS BELOW (30 seconds = first 100 visitors)",
+      "task": "\ud83d\udd25 PASTE ONE OF THE 3 DRAFTS BELOW (30 seconds = first 100 visitors)",
       "url": "#drafts",
       "done": false,
       "value": "First 100 visitors come from this. Affiliate revenue follows traffic."
     },
     {
-      "task": "✅ Watch awesome-list PRs for merge — auto-emails on merge",
+      "task": "\u2705 Watch awesome-list PRs for merge \u2014 auto-emails on merge",
       "url": "https://github.com/pulls?q=is%3Apr+author%3Aalfredoautomatizaloconia-cloud",
       "done": false,
       "value": "5 PRs submitted to lists with combined 49,500 stars. Each merge = permanent backlink."
@@ -303,7 +308,7 @@
       "task": "Wait for Namecheap brand approval (1-3 days)",
       "url": "https://app.impact.com/secure/member/home/mview.ihtml",
       "done": false,
-      "value": "Once approved, paste tracking link to me — instant Domain Generator activation"
+      "value": "Once approved, paste tracking link to me \u2014 instant Domain Generator activation"
     },
     {
       "task": "Sign up: Buy Me a Coffee (instant)",
