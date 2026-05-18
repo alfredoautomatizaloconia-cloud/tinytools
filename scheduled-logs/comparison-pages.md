@@ -33,3 +33,13 @@
 - Word count: ~1,300
 - Total comparison pages live: 30
 - Notes: This is a deliberately narrow overlap — TinyTools does not do merge/split/compress/sign/OCR and the page is upfront about that. Positions TinyTools as the AI-PDF complement to iLovePDF rather than a feature-equivalent alternative. Includes internal links to chat-with-pdf and pdf-to-markdown, plus a cross-link to the existing vs/smallpdf page for users looking for true feature-equivalent free alternatives. Honest about iLovePDF's strengths (OCR, conversion fidelity, mobile/desktop apps, signing) to avoid Google penalizing biased reviews.
+
+
+## 2026-05-18 — vs/jasper
+
+- Competitor: Jasper (formerly Jarvis.ai — enterprise AI writing/marketing platform)
+- URL: https://tinytools-smoky.vercel.app/vs/jasper/
+- Maps to TinyTools tools: /ai-text-humanizer/, /cover-letter-generator/, /resume-tailorer/, /seo-meta-generator/, /youtube-to-blog/, /og-image-generator/
+- Word count: ~1,513
+- Total comparison pages live: 31
+- Notes: Original SKILL.md competitor list is fully covered (20/20); this is a logical extension into the AI-writing-platform category alongside Grammarly/QuillBot/Writesonic-adjacent. Honest take: Jasper is a real enterprise platform (Brand Voice, Campaigns, Surfer SEO integration, multi-seat, SOC 2) and the page recommends it for marketing teams shipping branded content at scale. Positions TinyTools for solo creators, freelancers, and job seekers who balked at the $49-69/seat/month pricing or didn't want to hand over a credit card for the 7-day trial. Includes 6 internal links to relevant TinyTools tools and acknowledges Jarvis.ai rebrand history.
