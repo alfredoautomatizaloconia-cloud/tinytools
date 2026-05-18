@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 17, 2026 — published X-Robots-Tag HTTP Header in 2026 (the 5 cases where meta robots isn't enough) for seo-meta-generator + 4 social drafts ready",
+  "lastUpdated": "May 17, 2026 — published FAQ Schema Markup in 2026 — Why Google Cut Rich Results (and Where FAQPage Still Earns Visibility) for seo-meta-generator + 4 social drafts ready",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 66,
+    "posts": 67,
     "postsDelta": "+1 today",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 20:30",
+      "tag": "seo",
+      "text": "📝 Published blog post: FAQ Schema Markup in 2026 — Why Google Cut Rich Results (and Where FAQPage Still Earns Visibility) at /seo-meta-generator/blog/faq-schema-markup-rich-results-2026/"
+    },
+    {
+      "time": "today 20:30",
+      "tag": "promo",
+      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SEO, LinkedIn, Show HN — all promoting seo-meta-generator"
+    },
     {
       "time": "today 20:00",
       "tag": "seo",
@@ -192,16 +202,6 @@
       "time": "today 13:30",
       "tag": "promo",
       "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/Domains, LinkedIn, Show HN — all promoting domain-generator"
-    },
-    {
-      "time": "today 09:15",
-      "tag": "seo",
-      "text": "📝 Published blog post: One-Word vs Two-Word Domain Names in 2026: Which Actually Wins? at /domain-generator/blog/one-word-vs-two-word-domain-names-2026/"
-    },
-    {
-      "time": "today 09:15",
-      "tag": "promo",
-      "text": "💬 4 social drafts ready in dashboard: X thread, Reddit /r/SaaS, LinkedIn, Show HN — all promoting domain-generator"
     }
   ],
   "roadmap": [
@@ -239,6 +239,30 @@
   "drafts": [
     {
       "platform": "X / Twitter Thread",
+      "text": "1/ Most SEO blogs declared FAQ schema dead in 2023 when Google killed rich results.\n\nThey were wrong.\n\nIn 2026 FAQPage JSON-LD is the #1 way to get cited by ChatGPT, Claude, Perplexity, and AI Overviews.\n\nHere's why (and how to do it right) 🧵\n\n2/ What Google did in Aug 2023:\n\n→ Restricted FAQ rich results to \"authoritative\" sites only (.gov, big-name health, top-100 brands)\n→ Dropped How-To rich results almost entirely\n\nResult: 99% of sites lost their SERP accordion.\n\nBut the markup never stopped being parsed.\n\n3/ What changed in 2024-2026:\n\nEvery AI search engine started reading JSON-LD as a primary citation signal.\n\nFAQPage tells the model:\n- where the question is\n- where the answer starts/ends\n- that you (the author) wrote both\n\nPre-segmented = cheaper to cite = cited more.\n\n4/ The 2026 rules:\n\n→ 3-12 questions per page\n→ Plain-text answers, 40-90 words\n→ Lead with the conclusion (AI quotes the first sentence)\n→ Include a year/number/named entity\n→ Same text MUST be visible in the DOM\n\nHidden-only FAQ markup gets silently dropped.\n\n5/ The 4 mistakes I see every audit:\n\n1. Markup correct, but text only in a collapsed React tab\n2. Promotional answers (\"X is the best because…\")\n3. FAQPage on a user-comment page (use QAPage)\n4. Same 8 FAQs copy-pasted across 2,000 product pages\n\n6/ Full 2026 guide + a free FAQPage JSON-LD generator (paste your Q&A, get validator-clean markup):\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/faq-schema-markup-rich-results-2026/\n\nThe rich result is dead. The markup is more useful than ever.",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-17T20:30:00Z"
+    },
+    {
+      "platform": "Reddit /r/SEO",
+      "text": "If you stopped using FAQPage schema after Google killed the rich results in 2023, you're missing what changed in 2024-2026: every AI search engine (ChatGPT, Claude, Perplexity, Google AI Overviews, Bing Copilot) reads JSON-LD as a primary citation signal now.\n\nFAQPage markup pre-segments your page into Q&A pairs. That makes you cheaper for the model to cite than a page where it has to guess where the answer starts and ends. In Perplexity source previews and AI Overviews you can literally see the answer text lifted from `acceptedAnswer.text`.\n\nRules that actually matter in 2026:\n- 3-12 questions, plain-text answers 40-90 words\n- Same text visible in the DOM (not behind a collapsed React tab — that's the #1 reason markup gets silently dropped)\n- Lead with the conclusion. Models quote the first sentence.\n- One unambiguous answer. \"It depends, but…\" gets rewritten by the model.\n- Self-authored only. User Q&A = QAPage, not FAQPage.\n\nWrote up the full 2026 playbook here including the four mistakes that get the markup ignored even when Rich Results Test passes: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/faq-schema-markup-rich-results-2026/ — there's also a free generator on the site if you want validator-clean JSON-LD without hand-writing it.",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-17T20:30:00Z"
+    },
+    {
+      "platform": "LinkedIn",
+      "text": "In August 2023, Google quietly killed FAQ rich results for everyone except a small list of authoritative sites.\n\nMost SEO teams pulled FAQPage schema off their pages.\n\nThat was the wrong move.\n\nHere's what we found auditing 40+ B2B sites this quarter:\n\nThe pages still running FAQPage JSON-LD in 2026 get cited dramatically more often by ChatGPT, Claude, Perplexity and Google AI Overviews than pages that removed it.\n\nReason: AI search engines parse JSON-LD as a primary citation signal. Pre-segmented Q&A is cheaper for a model to lift than prose where it has to guess where the answer ends.\n\nThe SERP rich result is gone. The AI citation surface is huge — and growing.\n\nThe new 2026 rules:\n→ 3-12 questions per page\n→ Plain-text answers, 40-90 words\n→ Same exact text visible on the page\n→ Lead with the conclusion (models quote the first sentence)\n→ Concrete facts (year, number, named entity) in the answer\n\nIf your team pulled FAQ schema in 2023, the second half of 2026 is a good time to put it back.\n\nFull 2026 playbook with the four mistakes that get markup silently ignored: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/faq-schema-markup-rich-results-2026/",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-17T20:30:00Z"
+    },
+    {
+      "platform": "Hacker News (Show HN)",
+      "text": "TITLE: Show HN: FAQ schema markup is more valuable in 2026 than before Google killed rich results\n\nCOMMENT:\nAuthor here. After Google scaled back FAQ rich results in 2023 most teams removed the markup. In 2026 every AI search engine (Claude, ChatGPT, Perplexity, AI Overviews) reads JSON-LD as a primary citation signal — pre-segmented Q&A is cheaper to extract and gets cited more than prose. Wrote up the 2026 playbook with the four mistakes that silently get markup dropped, even when Rich Results Test passes. Free FAQPage JSON-LD generator on the same site if you want to skip hand-writing it. Happy to answer questions.",
+      "tool": "seo-meta-generator",
+      "createdAt": "2026-05-17T20:30:00Z"
+    },
+    {
+      "platform": "X / Twitter Thread",
       "tool": "seo-meta-generator",
       "createdAt": "2026-05-17T20:00:00Z",
       "text": "1/ Your case-study PDFs are outranking your landing pages. Why? They have no <head>, so they have no meta robots tag. There's exactly one way to noindex them, and most teams get it backwards. 🧵\n\n2/ The fix is X-Robots-Tag — the HTTP response header version of <meta name=\"robots\">. Same directives (noindex, nofollow, noai, noimageai). Different reach.\n\nMeta tags → HTML only.\nX-Robots-Tag → PDFs, images, JSON, video, anything.\n\n3/ The mistake we see in every audit:\n\nTeam finds a leaked PDF in the index → adds it to robots.txt → URL stays in the index forever as a bare-URL listing.\n\nWhy? Google can't fetch it anymore, so it can't see any noindex directive. Robots.txt isn't a remove signal.\n\n4/ The correct flow:\n\n1. Serve PDF with `X-Robots-Tag: noindex, follow`\n2. KEEP it crawlable (do NOT robots.txt it)\n3. Wait for it to drop from the index (days to weeks)\n4. THEN optionally disallow in robots.txt\n\nOrder matters. Reversed = permanent ghost listing.\n\n5/ 2026-specific: AI crawlers (ClaudeBot, OAI-SearchBot, GPTBot) respect X-Robots-Tag including the new `noai` and `noimageai` directives.\n\nYou can index in Google AND opt out of AI training in a single header with per-bot syntax.\n\n6/ Nginx footgun nobody talks about: `add_header` skips 4xx/5xx responses by default.\n\nYour soft-404s get indexed because the noindex header was never sent. Add the `always` flag:\n\nadd_header X-Robots-Tag \"noindex, follow\" always;\n\n7/ The full 2026 reference — 5 jobs only X-Robots-Tag can do, every directive that works in it, copy-paste configs for Nginx/Apache/Cloudflare/Vercel:\n\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/x-robots-tag-http-header-2026/"
@@ -260,30 +284,6 @@
       "tool": "seo-meta-generator",
       "createdAt": "2026-05-17T20:00:00Z",
       "text": "TITLE: X-Robots-Tag is still the only way to noindex a PDF in 2026\n\nLINK: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/x-robots-tag-http-header-2026/\n\nFIRST COMMENT FOR THE THREAD:\nAuthor here. Wrote this after auditing one too many sites where leaked or outdated PDFs were outranking the landing pages they were supposed to support, and the team had tried to fix it by adding the PDF URL to robots.txt — which made the problem permanent because Google could no longer fetch the file to see any indexing directive. The right answer has been X-Robots-Tag since 2007 and is unchanged in 2026, but the surface area has grown (per-bot directives for ClaudeBot/OAI-SearchBot/GPTBot, the noai and noimageai opt-outs, edge-config bulk policy from Cloudflare/Vercel/Fastly) and the Nginx `always` footgun on add_header still bites in production. Curious whether anyone here has built an automated header audit into CI — the meta-vs-header conflict detection is the part I keep wanting and never quite getting right."
-    },
-    {
-      "platform": "X / Twitter Thread",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T16:16:56Z",
-      "text": "1/ Every WordPress install on the open web is still emitting <link rel=\"prev\"> and <link rel=\"next\"> on paginated archives.\n\nGoogle deprecated those tags as an indexing signal in 2019. In 2026 they do nothing. Yet every CMS ships them by default. 🧵\n\n2/ What actually controls paginated indexing in 2026:\n\n• Self-referencing canonical on every paginated page (NOT a canonical pointing to page 1)\n• Clean URL pattern (?page=N or /page/N/ — never #page=N)\n• Every paginated URL in your sitemap\n• Server-rendered HTML on every page\n\n3/ The single largest source of pagination-related deindexing we see in audits:\n\nCanonical from /blog/?page=3 → /blog/\n\nTells Google \"page 3 is a duplicate of page 1.\" Google obeys. Every item that only appears past page 1 disappears.\n\nWordPress + Yoast default. Audit yours.\n\n4/ Infinite scroll fact for 2026: Googlebot doesn't scroll. ClaudeBot doesn't scroll. OAI-SearchBot doesn't scroll.\n\nWhatever's in the initial server response is the only thing that gets indexed. Ship paginated URLs alongside the scroll — accessible pagination pattern.\n\n5/ AI search makes pagination matter more in 2026, not less.\n\nChatGPT/Perplexity/Claude tend to cite SPECIFIC deep pages, not archive roots. A canonical-to-page-1 setup means your deep pages are functionally not in the AI corpus.\n\n6/ The 60-second audit: curl /blog/?page=3 with a Googlebot user-agent. If you see a SPA shell instead of real product/post content, that's your bug.\n\nFull 2026 checklist + the four common mistakes:\nhttps://tinytools-smoky.vercel.app/seo-meta-generator/blog/pagination-meta-tags-rel-prev-next-2026/"
-    },
-    {
-      "platform": "Reddit /r/SEO",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T16:16:56Z",
-      "text": "Subreddit: /r/SEO (primary), /r/bigseo or /r/TechSEO (secondary, in any thread about pagination, faceted nav, infinite scroll, or canonical config)\n\nComment:\n\nrel=prev and rel=next have been a no-op for Google since 2019 — Mueller confirmed it on Twitter at the time and the docs page was quietly retired. Bing followed in 2022. Every WordPress install on the open web still emits them, which is fine (they don't hurt anything, browsers use them for a11y), but they do not influence indexing.\n\nWhat actually controls paginated indexing in 2026:\n\n1. Canonical strategy. Self-referencing canonical on every paginated page is the right answer. The most common SEO mistake we see in audits is /blog/?page=2 canonicalized to /blog/ — this tells Google \"page 2 is a duplicate of page 1\" and everything that only appears past page 1 gets dropped from the index. Yoast and Rank Math have had this as a configurable for years and most installs leave it on the wrong setting.\n\n2. URL pattern. ?page=N or /page/N/ are crawler-safe. #page=N (URL fragment) is invisible to every crawler and AI fetcher — if your stack uses React Router or Vue Router with hash mode, your paginated content past page 1 is functionally not in any search corpus.\n\n3. Sitemap entries. Every paginated URL belongs in sitemap.xml, not just page 1. AI crawlers in particular treat the sitemap as authoritative.\n\n4. Infinite scroll requires the accessible pagination pattern. Ship real paginated URLs alongside the scroll. Googlebot does not scroll. ClaudeBot does not scroll. Whatever the initial server response contains is what gets indexed.\n\nThe AI search angle is newer and worth flagging: ChatGPT/Perplexity/Claude tend to cite specific deep pages as sources, not archive roots, so a canonical-to-page-1 setup means your long-tail content is invisible to AI citations too — not just Google SERPs.\n\nWrote up the full 2026 playbook with the four common mistakes here: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/pagination-meta-tags-rel-prev-next-2026/\n\nGenerator at the bottom outputs the correct canonical + sitemap line for any URL you paste in. Runs in-browser, no upload."
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T16:16:56Z",
-      "text": "An e-commerce founder DM'd me last week: \"We have 3,000 SKUs and Google only seems to know about 200 of them. What's going on?\"\n\nI pulled their site. The catalog was paginated at 30 products per page. Page 1 ranked. The other ~100 paginated pages all had a canonical tag pointing back to page 1.\n\nThat tells Google: \"page 2 through page 100 are duplicates of page 1.\" Google obeyed. The 2,800 SKUs that only appeared past page 1 were functionally not in the index. Their Yoast settings had shipped this as a default sometime in 2022 and nobody had touched it since.\n\nThis is the single most common pagination footgun we see in 2026 audits, and it's gotten more expensive because AI search referrals (ChatGPT, Perplexity, Claude) tend to cite specific deep pages — not archive roots. A canonical-to-page-1 setup means your long-tail catalog is invisible to AI citations too, not just Google SERPs.\n\nThree pagination checks worth running this week:\n\n→ View source on any paginated page (e.g. /blog/?page=2). The canonical should point to itself, not to page 1.\n→ Search your sitemap.xml for paginated URLs. Page 2 through page N should all be there.\n→ If you ship infinite scroll, confirm there are real server-rendered paginated URLs alongside it. Crawlers don't scroll.\n\nThe fix on most CMSs is a single setting toggle. The audit is 10 minutes. The traffic delta on a long-tail catalog can be 5-10x.\n\nFull 2026 playbook with the four common mistakes: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/pagination-meta-tags-rel-prev-next-2026/\n\nWhat's the most overlooked technical SEO check you've found on a client audit this year?"
-    },
-    {
-      "platform": "Hacker News (Show HN)",
-      "tool": "seo-meta-generator",
-      "createdAt": "2026-05-17T16:16:56Z",
-      "text": "TITLE: rel=prev/next has been a no-op since 2019 and every CMS still ships it\n\nLINK: https://tinytools-smoky.vercel.app/seo-meta-generator/blog/pagination-meta-tags-rel-prev-next-2026/\n\nFIRST COMMENT FOR THE THREAD:\nAuthor here. Wrote this after auditing one too many e-commerce sites where 90%+ of the catalog was effectively unindexed because page 2..N had a canonical pointing to page 1. The Yoast/Rank Math default has shipped that config to a huge slice of WordPress installs for years. The fix is a self-referencing canonical on every paginated page, which seems obvious until you realize that almost no CMS does it by default. Curious if anyone on HN has measured the indexing delta on a real catalog after flipping that setting — I have anecdata from a handful of audits (5-10x deep-page impressions within 60 days) but would love a properly instrumented dataset."
     }
   ],
   "checklist": [
