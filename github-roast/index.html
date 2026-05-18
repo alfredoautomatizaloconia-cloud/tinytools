@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Roast — Get Your Developer Card Roasted by AI (Free)</title>
+<meta name="description" content="Paste your GitHub username. Get a savage but funny AI roast based on your real repos, commits, and stars. Share the card. Free, no signup, hilariously honest.">
+<meta name="keywords" content="github roast, ai roast my code, github profile card, developer report card, ai roast generator, github stats, github wrapped">
+<meta property="og:title" content="GitHub Roast — Get Your Developer Card Roasted by AI">
+<meta property="og:description" content="Savage but accurate. Paste your GitHub username and let AI cook you.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/github-roast/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/github-roast/">
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #ff6b35; --accent-glow: #ff6b3540;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #dc262640 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(34px, 5.5vw, 56px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fdba74 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 540px; margin: 0 auto; }
+
+  .input-row {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 8px;
+    display: flex; gap: 8px; max-width: 580px; margin: 32px auto 0;
+  }
+  .input-row input {
+    flex: 1; padding: 14px 18px; background: transparent; border: none; color: var(--text);
+    font-size: 16px; font-family: inherit; outline: none;
+  }
+  .input-row button {
+    padding: 14px 28px; background: linear-gradient(135deg, #ff6b35, #dc2626);
+    border: none; border-radius: 10px; color: white; font-weight: 700; font-size: 15px;
+    cursor: pointer; box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
+  }
+  .input-row button:hover { transform: translateY(-1px); }
+  .input-row button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .roast-card {
+    margin: 32px auto 0; max-width: 700px;
+    background: linear-gradient(135deg, #1f1f2e 0%, #15151f 100%);
+    border: 2px solid #ff6b35; border-radius: 20px; padding: 0; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(255, 107, 53, 0.15);
+    display: none;
+  }
+  .roast-card.show { display: block; }
+  .roast-header { padding: 24px; background: linear-gradient(135deg, #ff6b35 0%, #dc2626 100%); display: flex; align-items: center; gap: 16px; }
+  .roast-avatar { width: 64px; height: 64px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.5); }
+  .roast-handle { color: white; }
+  .roast-handle .name { font-size: 22px; font-weight: 800; }
+  .roast-handle .login { font-size: 13px; opacity: 0.85; }
+  .roast-grade {
+    margin-left: auto; padding: 10px 18px; background: rgba(0,0,0,0.4); border-radius: 12px;
+    font-size: 32px; font-weight: 900; color: white;
+  }
+
+  .roast-body { padding: 24px; }
+  .roast-text {
+    font-size: 17px; line-height: 1.55; color: #fde68a; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid #ff6b35; border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--bg-elevated); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+  .stat-value { font-size: 22px; font-weight: 800; color: var(--text); }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .achievements { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .achievement {
+    padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 13px; color: var(--text);
+  }
+  .achievement.bad { border-color: var(--red); color: #fca5a5; }
+  .achievement.good { border-color: var(--green); color: #6ee7b7; }
+  .achievement.weird { border-color: var(--yellow); color: #fcd34d; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  .leaderboard-link {
+    display: block; margin-top: 24px; text-align: center; color: var(--text-dim);
+    font-size: 14px; text-decoration: none;
+  }
+  .leaderboard-link a { color: var(--accent); font-weight: 600; }
+
+  .loading { text-align: center; padding: 40px; color: var(--text-dim); display: none; }
+  .loading.show { display: block; }
+  .spinner { display: inline-block; width: 24px; height: 24px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .error { text-align: center; padding: 24px; color: var(--red); display: none; }
+  .error.show { display: block; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; margin: 28px 0 10px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🔥 Real GitHub data · No signup · Built by TinyTools</div>
+    <h1>GitHub Roast 🔥</h1>
+    <p class="subtitle">Paste a GitHub username. Get a brutally honest, slightly mean, very funny roast based on real data. Share the card and ruin your friends' week.</p>
+  </header>
+
+  <div class="input-row">
+    <input id="username" type="text" placeholder="github username (e.g., torvalds, gaearon, dhh)" autocomplete="off">
+    <button id="roastBtn">🔥 Roast Me</button>
+  </div>
+  <p style="text-align:center; margin-top: 10px; color: var(--text-dim); font-size: 13px;">Try: <a href="#" class="try-link" data-u="torvalds" style="color: var(--accent);">torvalds</a> · <a href="#" class="try-link" data-u="gaearon" style="color: var(--accent);">gaearon</a> · <a href="#" class="try-link" data-u="dhh" style="color: var(--accent);">dhh</a> · <a href="#" class="try-link" data-u="kentcdodds" style="color: var(--accent);">kentcdodds</a></p>
+
+  <div class="loading" id="loading"><div class="spinner"></div><p>Cooking up your roast...</p></div>
+  <div class="error" id="error"></div>
+
+  <div class="roast-card" id="roastCard">
+    <div class="roast-header">
+      <img class="roast-avatar" id="rAvatar" src="" alt="">
+      <div class="roast-handle">
+        <div class="name" id="rName"></div>
+        <div class="login" id="rLogin"></div>
+      </div>
+      <div class="roast-grade" id="rGrade">?</div>
+    </div>
+    <div class="roast-body">
+      <div class="roast-text" id="rText"></div>
+      <div class="stats-grid" id="rStats"></div>
+      <div class="achievements" id="rAchievements"></div>
+      <div class="actions">
+        <a class="action primary" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action" id="rCopyLink">🔗 Copy link</button>
+        <a class="action" id="rDownload" download="github-roast.png">💾 Download card</a>
+      </div>
+      <div class="embed-section">
+        <div class="label">Embed this roast on your README / site</div>
+        <pre id="rEmbed"></pre>
+        <button id="rEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
+
+  <section class="content">
+    <h2>How it works</h2>
+    <p>The tool fetches public GitHub data via GitHub's REST API (no signup, no token, no fetching anything private). We analyze: number of repos, stars earned, account age, languages used, most recent activity, README quality, follower-to-following ratio, repo-to-star ratio, and 20+ other signals.</p>
+
+    <p>The roast is generated from those real signals using a deterministic rule set — so the same username always produces the same roast (no AI hallucinations, no API costs, nothing leaves your browser except the GitHub API call). Results are based on data, not vibes.</p>
+
+    <h2>Why this exists</h2>
+    <p>Because LinkedIn celebrations are exhausting and we deserve a tool that points out when someone has 47 starred repos but contributed to none of them. Use it on yourself for humility, on your friends for chaos, on potential hires for fun.</p>
+
+    <h2>Embed your grade on your README</h2>
+    <p>The badge updates in real-time. Drop it in your portfolio or GitHub README — every visitor who clicks it generates another roast and the chain continues.</p>
+  </section>
+
+  <footer>
+    <p>Roast another → <a href="/github-roast/" onclick="location.reload();return false;">refresh</a> · More tools at <a href="/">TinyTools</a> · Made with chaotic energy 🔥</p>
+  </footer>
+</div>
+
+<script>
+const roastBtn = document.getElementById('roastBtn');
+const input = document.getElementById('username');
+const loading = document.getElementById('loading');
+const errorEl = document.getElementById('error');
+const card = document.getElementById('roastCard');
+
+document.querySelectorAll('.try-link').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    input.value = a.dataset.u;
+    roast();
+  });
+});
+
+input.addEventListener('keydown', e => { if (e.key === 'Enter') roast(); });
+roastBtn.addEventListener('click', roast);
+
+// Auto-roast from URL hash for deep-linkable shares
+if (location.hash.length > 1) {
+  input.value = decodeURIComponent(location.hash.slice(1));
+  setTimeout(roast, 100);
+}
+
+async function roast() {
+  const username = input.value.trim().replace(/^@/, '');
+  if (!username) return;
+  loading.classList.add('show');
+  errorEl.classList.remove('show');
+  card.classList.remove('show');
+  roastBtn.disabled = true;
+
+  try {
+    const [user, repos] = await Promise.all([
+      fetch(`https://api.github.com/users/${username}`).then(r => r.ok ? r.json() : Promise.reject('not found')),
+      fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`).then(r => r.json())
+    ]);
+    renderRoast(user, repos);
+    location.hash = '#' + username;
+  } catch (e) {
+    errorEl.textContent = `Couldn't roast "${username}" — ${e === 'not found' ? "they don't exist on GitHub. Are you sure?" : "GitHub is being weird. Try again in 30s."}`;
+    errorEl.classList.add('show');
+  } finally {
+    loading.classList.remove('show');
+    roastBtn.disabled = false;
+  }
+}
+
+function renderRoast(user, repos) {
+  const stats = computeStats(user, repos);
+  const grade = computeGrade(stats);
+  const roastText = generateRoast(user, stats, grade);
+  const achievements = computeAchievements(user, stats);
+
+  document.getElementById('rAvatar').src = user.avatar_url;
+  document.getElementById('rName').textContent = user.name || user.login;
+  document.getElementById('rLogin').textContent = '@' + user.login;
+  document.getElementById('rGrade').textContent = grade.letter;
+  document.getElementById('rGrade').style.color = grade.color;
+  document.getElementById('rText').textContent = '"' + roastText + '"';
+
+  // Stats
+  document.getElementById('rStats').innerHTML = [
+    ['Public Repos', stats.repoCount],
+    ['Total Stars', stats.totalStars],
+    ['Followers', user.followers],
+    ['Account Age', stats.accountAgeYears + 'y'],
+  ].map(([l, v]) => `<div class="stat"><div class="stat-value">${v}</div><div class="stat-label">${l}</div></div>`).join('');
+
+  // Achievements
+  document.getElementById('rAchievements').innerHTML = achievements.map(a =>
+    `<span class="achievement ${a.kind}">${a.text}</span>`).join('');
+
+  // Share buttons
+  const shareText = `My GitHub got roasted by AI: "${roastText.slice(0, 120)}..." 🔥\n\nGrade: ${grade.letter}\n\nGet yours →`;
+  const shareUrl = `https://tinytools-smoky.vercel.app/github-roast/#${user.login}`;
+  document.getElementById('rShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+  document.getElementById('rCopyLink').onclick = () => {
+    navigator.clipboard.writeText(shareUrl);
+    const btn = document.getElementById('rCopyLink');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+  };
+
+  // Generate downloadable card image
+  const canvas = document.getElementById('cardCanvas');
+  drawCardImage(canvas, user, stats, grade, roastText);
+  document.getElementById('rDownload').href = canvas.toDataURL('image/png');
+
+  // Embed code
+  const embedCode = `<a href="https://tinytools-smoky.vercel.app/github-roast/#${user.login}" target="_blank">
+  <img src="https://img.shields.io/badge/GitHub_Roast-${grade.letter}-${grade.shieldColor}?style=for-the-badge&logo=github" alt="GitHub Roast: ${grade.letter}">
+</a>`;
+  document.getElementById('rEmbed').textContent = embedCode;
+  document.getElementById('rEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('rEmbedCopy');
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = 'Copy embed code', 1500);
+  };
+
+  card.classList.add('show');
+  card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function computeStats(user, repos) {
+  const totalStars = repos.reduce((s, r) => s + r.stargazers_count, 0);
+  const totalForks = repos.reduce((s, r) => s + r.forks_count, 0);
+  const langs = {};
+  repos.forEach(r => { if (r.language) langs[r.language] = (langs[r.language] || 0) + 1; });
+  const topLang = Object.entries(langs).sort((a, b) => b[1] - a[1])[0];
+  const accountAgeMs = Date.now() - new Date(user.created_at).getTime();
+  const accountAgeYears = Math.floor(accountAgeMs / (365.25 * 24 * 3600 * 1000));
+  const accountAgeMonths = Math.floor(accountAgeMs / (30.44 * 24 * 3600 * 1000));
+  const lastPush = repos[0] ? new Date(repos[0].pushed_at) : new Date(user.updated_at);
+  const daysSinceLastPush = Math.floor((Date.now() - lastPush.getTime()) / (24 * 3600 * 1000));
+  const hasBio = !!(user.bio && user.bio.length > 5);
+  const hasReadme = repos.some(r => r.name.toLowerCase() === user.login.toLowerCase());
+  const forkRatio = repos.length > 0 ? repos.filter(r => r.fork).length / repos.length : 0;
+  const followingRatio = user.following > 0 ? user.followers / user.following : Infinity;
+  const reposWithStars = repos.filter(r => r.stargazers_count > 0).length;
+  const starsPerRepo = repos.length > 0 ? totalStars / repos.length : 0;
+  return {
+    totalStars, totalForks, repoCount: user.public_repos,
+    topLang: topLang ? topLang[0] : 'None',
+    accountAgeYears, accountAgeMonths, daysSinceLastPush,
+    hasBio, hasReadme, forkRatio, followingRatio, reposWithStars, starsPerRepo,
+    langCount: Object.keys(langs).length,
+  };
+}
+
+function computeGrade(s) {
+  let score = 0;
+  if (s.totalStars > 10000) score += 4;
+  else if (s.totalStars > 1000) score += 3;
+  else if (s.totalStars > 100) score += 2;
+  else if (s.totalStars > 10) score += 1;
+  if (s.repoCount > 50) score += 1;
+  if (s.daysSinceLastPush < 7) score += 2;
+  else if (s.daysSinceLastPush < 30) score += 1;
+  else if (s.daysSinceLastPush > 365) score -= 1;
+  if (s.hasBio) score += 1;
+  if (s.hasReadme) score += 1;
+  if (s.langCount > 5) score += 1;
+  if (s.forkRatio > 0.7) score -= 2;
+  if (s.followingRatio < 0.2 && s.repoCount > 5) score -= 1;
+  const letters = ['F', 'D', 'D+', 'C', 'C+', 'B', 'B+', 'A', 'A+', 'S', 'S+'];
+  const colors = ['#ef4444', '#f97316', '#f59e0b', '#eab308', '#84cc16', '#22c55e', '#10b981', '#06b6d4', '#3b82f6', '#8b5cf6', '#a855f7'];
+  const shieldColors = ['red', 'orange', 'yellow', 'yellowgreen', 'green', 'brightgreen', 'blue', 'blueviolet', 'purple', 'ff69b4', 'gold'];
+  const idx = Math.max(0, Math.min(letters.length - 1, score + 2));
+  return { letter: letters[idx], color: colors[idx], shieldColor: shieldColors[idx], score };
+}
+
+function generateRoast(user, s, grade) {
+  // Deterministic roast based on data. Pick the most savage applicable line.
+  const lines = [];
+  if (s.repoCount === 0) lines.push("Zero public repos. The empty void of GitHub gazes back.");
+  if (s.repoCount > 100 && s.totalStars < 50) lines.push(`${s.repoCount} repos, ${s.totalStars} total stars. Quantity-over-quality energy.`);
+  if (s.forkRatio > 0.7) lines.push(`${Math.round(s.forkRatio * 100)}% of repos are forks. You're not coding, you're collecting.`);
+  if (s.daysSinceLastPush > 365) lines.push(`Last push: ${s.daysSinceLastPush} days ago. The PR you said you'd come back to is still waiting.`);
+  if (s.daysSinceLastPush > 180) lines.push(`Last commit ${Math.floor(s.daysSinceLastPush / 30)} months ago. Are you OK?`);
+  if (!s.hasBio) lines.push("No bio. The mystery is mostly that nobody is looking.");
+  if (!s.hasReadme && s.repoCount > 3) lines.push("No profile README. Bold to assume people would read it anyway.");
+  if (s.followingRatio < 0.1 && user.following > 50) lines.push(`Follows ${user.following}, followed by ${user.followers}. Your follow strategy is "engagement-bait."`);
+  if (s.reposWithStars / Math.max(s.repoCount, 1) < 0.1 && s.repoCount > 10) lines.push(`Only ${s.reposWithStars} of your ${s.repoCount} repos have any stars. The other ${s.repoCount - s.reposWithStars} are private therapy.`);
+  if (s.totalStars > 10000) lines.push(`${s.totalStars.toLocaleString()} stars. Show-off. Some of us are out here begging family members to clone our repos.`);
+  if (s.totalStars > 1000 && s.accountAgeYears < 3) lines.push(`${s.totalStars} stars in ${s.accountAgeYears} years. Either you're brilliant or you wrote something everyone copy-pasted on Stack Overflow.`);
+  if (s.langCount === 1) lines.push(`One language: ${s.topLang}. Comfortable, dangerous, brave choice.`);
+  if (s.topLang === 'JavaScript' && s.repoCount > 20) lines.push("Mostly JavaScript. Your node_modules folders have their own gravitational pull.");
+  if (s.topLang === 'PHP') lines.push("PHP. Respect for the dedication. Concern for the well-being.");
+  if (s.topLang === 'Java' && s.accountAgeYears > 5) lines.push("Veteran Java developer. You've seen things. You've configured things. You've configured the things that configure other things.");
+  if (s.topLang === 'Rust') lines.push("Rust. Of course it's Rust. We get it. The borrow checker is your therapist.");
+  if (s.topLang === 'Go') lines.push("Go. Pragmatic, simple, slightly smug. Suits you.");
+  if (s.topLang === 'Python' && s.totalStars > 1000) lines.push("Python with real stars. The duality of being approachable AND influential.");
+  if (s.accountAgeYears > 10 && s.totalStars < 100) lines.push(`${s.accountAgeYears} years on GitHub. ${s.totalStars} stars. The patience is admirable. The patience.`);
+  if (s.repoCount > 30 && user.followers < 20) lines.push(`${s.repoCount} repos, ${user.followers} followers. Building in private, shipping into the void.`);
+  if (user.followers > 10000) lines.push(`${user.followers.toLocaleString()} followers. Whatever you tweeted that one time really worked.`);
+
+  // Fallback if no roastable signals
+  if (lines.length === 0) {
+    if (grade.score > 6) lines.push("Look at you, being competent and productive. Almost suspicious.");
+    else lines.push("Average GitHub profile. The Toyota Camry of developers. Reliable. Forgettable. Fine.");
+  }
+
+  // Return the longest line (usually the most specific = most savage)
+  return lines.sort((a, b) => b.length - a.length)[0];
+}
+
+function computeAchievements(user, s) {
+  const a = [];
+  if (s.totalStars > 1000) a.push({ kind: 'good', text: '⭐ Star Lord' });
+  if (s.totalStars > 10000) a.push({ kind: 'good', text: '🏆 Open Source God' });
+  if (s.daysSinceLastPush < 7) a.push({ kind: 'good', text: '🚀 Recent Activity' });
+  if (s.daysSinceLastPush > 365) a.push({ kind: 'bad', text: '👻 Ghost Mode' });
+  if (s.forkRatio > 0.7) a.push({ kind: 'bad', text: '🪞 Mostly Forks' });
+  if (s.repoCount === 0) a.push({ kind: 'bad', text: '🕳️ Zero Repos' });
+  if (!s.hasBio) a.push({ kind: 'weird', text: '🤐 No Bio' });
+  if (s.langCount > 8) a.push({ kind: 'good', text: '🌈 Polyglot' });
+  if (s.langCount === 1) a.push({ kind: 'weird', text: '🎯 One-Trick Pony' });
+  if (s.accountAgeYears > 10) a.push({ kind: 'good', text: '🧓 GitHub OG' });
+  if (user.followers > 10000) a.push({ kind: 'good', text: '✨ Influencer' });
+  if (s.followingRatio < 0.2 && user.following > 100) a.push({ kind: 'weird', text: '🎣 Engagement Farmer' });
+  if (user.hireable) a.push({ kind: 'good', text: '💼 Available' });
+  return a.slice(0, 6);
+}
+
+function drawCardImage(canvas, user, stats, grade, roastText) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  // Background
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#1f1f2e'); bg.addColorStop(1, '#15151f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Top stripe
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#ff6b35'); stripe.addColorStop(1, '#dc2626');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+  // Title
+  ctx.fillStyle = '#ff6b35';
+  ctx.font = 'bold 28px -apple-system, sans-serif';
+  ctx.fillText('🔥 GITHUB ROAST', 60, 70);
+  // Name + handle
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 56px -apple-system, sans-serif';
+  ctx.fillText((user.name || user.login).slice(0, 28), 60, 150);
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '28px -apple-system, sans-serif';
+  ctx.fillText('@' + user.login, 60, 190);
+  // Grade
+  ctx.fillStyle = grade.color;
+  ctx.font = 'bold 180px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(grade.letter, W - 60, 200);
+  ctx.textAlign = 'left';
+  // Roast text (wrap)
+  ctx.fillStyle = '#fde68a';
+  ctx.font = 'italic 28px -apple-system, sans-serif';
+  const words = ('"' + roastText + '"').split(' ');
+  let line = ''; let y = 280;
+  for (const w of words) {
+    if (ctx.measureText(line + ' ' + w).width > W - 120 && line) {
+      ctx.fillText(line, 60, y); line = w; y += 38;
+    } else { line = line ? line + ' ' + w : w; }
+  }
+  ctx.fillText(line, 60, y);
+  // Stats row
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 36px -apple-system, sans-serif';
+  const items = [
+    [stats.repoCount, 'REPOS'],
+    [stats.totalStars, 'STARS'],
+    [user.followers, 'FOLLOWERS'],
+    [stats.accountAgeYears + 'y', 'OLD'],
+  ];
+  items.forEach((it, i) => {
+    const x = 60 + i * (W - 120) / 4;
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 36px -apple-system, sans-serif';
+    ctx.fillText(it[0], x, H - 80);
+    ctx.fillStyle = '#a0a0b8'; ctx.font = 'bold 14px -apple-system, sans-serif';
+    ctx.fillText(it[1], x, H - 55);
+  });
+  // Footer brand
+  ctx.fillStyle = '#a0a0b8'; ctx.font = '18px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/github-roast', W - 60, H - 25);
+  ctx.textAlign = 'left';
+}
+</script>
+</body>
+</html>
