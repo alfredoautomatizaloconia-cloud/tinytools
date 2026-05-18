@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Favicon Generator for SaaS Founders — Branded Browser Tabs in 60 Seconds (2026)</title>
+<meta name="description" content="The fastest favicon generator for SaaS founders. Create a complete favicon set (ICO, PNG, Apple touch, manifest.json) that looks crisp in pinned tabs, PWA installs, and dashboard switchers. Free, no signup, no watermark.">
+<meta name="keywords" content="favicon generator for saas, saas favicon, app favicon, pwa icons saas, manifest.json saas, founder favicon, startup favicon">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/favicon-generator/for-saas-founders/">
+<meta property="og:title" content="Free Favicon Generator for SaaS Founders (2026)">
+<meta property="og:description" content="Branded favicons that survive pinned tabs, dashboard switchers, and PWA installs. Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/favicon-generator/for-saas-founders/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Favicon Generator for SaaS Founders">
+<meta name="twitter:description" content="Branded favicons that survive pinned tabs and PWA installs. Free.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Favicon Generator for SaaS Founders",
+  "url": "https://tinytools-smoky.vercel.app/favicon-generator/for-saas-founders/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Generate a complete favicon set tailored for SaaS products — ICO, PNG, Apple touch icon, and manifest.json — free, no signup.",
+  "audience": { "@type": "Audience", "audienceType": "SaaS founders" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why do SaaS founders need a dedicated favicon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SaaS users keep your product open in pinned tabs alongside Gmail, Notion, Linear, and Slack. A distinctive favicon is the difference between a user finding your tab in 0.5 seconds versus losing it for ten. It is the most-seen surface of your brand, displayed at the smallest possible size."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What favicon sizes do I actually need to ship?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ship at minimum favicon.ico (16, 32, 48), favicon-192.png and favicon-512.png for PWA installs, apple-touch-icon-180.png for iOS home screens, and a maskable 512x512 PNG for Android adaptive icons. Our generator bundles all of these in one ZIP."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should the favicon match my logo exactly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. At 16x16 pixels a full wordmark becomes mush. Use a single letterform, glyph, or geometric mark derived from your logo. Many leading SaaS brands (Linear, Notion, Stripe) use a simplified glyph in their favicon and reserve the full wordmark for the marketing site header."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a maskable icon for my SaaS PWA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes if you want a clean install on Android. Android applies a system-defined shape mask (circle, squircle, rounded square) to PWA icons. Without a maskable version with safe-zone padding, your icon will get clipped. The generator outputs a maskable 512x512 alongside the standard set."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does favicon design affect SaaS retention?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Indirectly, yes. Users who can spot your tab among 30 others context-switch back to your product faster. For tools positioned as 'always open' (dashboards, inboxes, project trackers) this is a real activation surface. Treat it as packaging design at micro scale."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f59e0b; --accent-glow: #f59e0b40;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #06b6d440 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 22px 80px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 12px;
+    color: var(--text-dim); margin-bottom: 18px; letter-spacing: 0.04em;
+  }
+  h1 {
+    font-size: clamp(30px, 4.6vw, 46px); font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.02em; margin-bottom: 14px;
+    background: linear-gradient(135deg, #fff 0%, #fbbf24 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .lede { font-size: 19px; color: var(--text-dim); max-width: 680px; margin-bottom: 28px; }
+
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+  .btn {
+    padding: 13px 22px; border-radius: 10px; font-weight: 600; font-size: 15px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated);
+    color: var(--text); text-decoration: none; transition: all 0.15s; display: inline-block;
+  }
+  .btn:hover { transform: translateY(-1px); border-color: var(--accent); }
+  .btn.primary {
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    border: none; color: white; box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+  }
+  .btn.primary:hover { box-shadow: 0 6px 24px rgba(245, 158, 11, 0.45); }
+
+  h2 {
+    font-size: clamp(22px, 3vw, 28px); font-weight: 700; margin: 44px 0 14px;
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-size: 17px; font-weight: 650; margin: 22px 0 8px; color: var(--accent);
+  }
+  p { margin-bottom: 14px; color: var(--text); }
+  p.muted { color: var(--text-dim); }
+  a { color: var(--accent); }
+  a:hover { color: #fbbf24; }
+
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 22px 24px; margin: 24px 0;
+  }
+  .use-case {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 18px 20px; margin-bottom: 12px;
+  }
+  .use-case h3 { margin-top: 0; }
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    padding: 8px 0 8px 28px; position: relative; color: var(--text);
+  }
+  .checklist li::before {
+    content: "✓"; position: absolute; left: 0; top: 8px;
+    color: var(--accent); font-weight: 700;
+  }
+  .faq-item { border-bottom: 1px solid var(--border); padding: 16px 0; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { font-weight: 650; color: var(--text); margin-bottom: 6px; font-size: 16px; }
+  .faq-a { color: var(--text-dim); }
+
+  .links { font-size: 14px; color: var(--text-dim); margin-top: 12px; }
+  .links a { margin-right: 14px; }
+
+  footer {
+    margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border);
+    color: var(--text-dim); font-size: 13px; text-align: center;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;/&nbsp;
+    <a href="/favicon-generator/">Favicon Generator</a> &nbsp;/&nbsp;
+    For SaaS Founders
+  </div>
+
+  <span class="badge">For SaaS Founders &nbsp;•&nbsp; Free Forever</span>
+  <h1>Favicon Generator for SaaS Founders</h1>
+  <p class="lede">
+    Branded browser tabs in 60 seconds. A complete favicon set — ICO, PNG, Apple touch,
+    maskable PWA icon, and <code>manifest.json</code> — engineered to survive pinned tabs,
+    dashboard switchers, and home-screen installs.
+  </p>
+
+  <div class="cta-row">
+    <a href="/favicon-generator/" class="btn primary">Try the Favicon Generator →</a>
+    <a href="#use-cases" class="btn">See SaaS use cases</a>
+  </div>
+
+  <div class="panel">
+    <p><strong>The 16-pixel problem.</strong> Your SaaS competes for tab attention against Gmail,
+    Slack, Notion, Linear, and twelve other open tabs. The favicon is the smallest surface of your
+    brand — and the one your active users see most often. A weak favicon costs you re-engagement
+    every single context switch.</p>
+  </div>
+
+  <h2>Why SaaS founders need a purpose-built favicon</h2>
+  <p>
+    Marketing teams obsess over the hero section. Founders obsess over onboarding flows.
+    Almost no one thinks about the 16×16 pixel grid that defines your product inside a
+    browser tab — even though it is, statistically, the most-rendered piece of your
+    brand identity. For a SaaS product that users keep pinned for eight hours a day,
+    the favicon is shown more often than your logo, your hero, and your dashboard combined.
+  </p>
+  <p>
+    Default Vercel, Next.js, and Vite favicons are immediate trust killers. They tell
+    a power user that the founder shipped fast — and forgot. A custom favicon is the
+    cheapest piece of polish you can deliver in your first 100 days. This page generates
+    one in under a minute, in every size browsers and operating systems actually require
+    in 2026.
+  </p>
+
+  <h2 id="use-cases">Five high-leverage uses for SaaS founders</h2>
+
+  <div class="use-case">
+    <h3>1. Pinned-tab discoverability for power users</h3>
+    <p>
+      Your most valuable users — the ones who churn least and refer most — pin your product.
+      A pinned tab is rendered at 16×16, often without text. If your favicon is a generic
+      blue square or a barely-visible "T", you are training your best users to lose you.
+      Use a single bold glyph in your accent color; test legibility at 16px on both light
+      and dark browser chrome (Chrome and Arc render pinned tabs differently).
+    </p>
+  </div>
+
+  <div class="use-case">
+    <h3>2. Install-friendly PWA on Android & iOS</h3>
+    <p>
+      If your SaaS has even a sliver of mobile usage — dashboards, notifications, status pages —
+      installability matters. Android applies a maskable shape (circle, squircle, rounded square)
+      defined by the user's launcher. Without a maskable 512×512 with safe-zone padding, the OS
+      crops your icon. iOS uses the apple-touch-icon-180.png; if absent, Safari screenshots your
+      page, which is rarely flattering. Our bundle ships both, ready to drop into <code>/public</code>.
+    </p>
+  </div>
+
+  <div class="use-case">
+    <h3>3. Branded notifications and the OS task switcher</h3>
+    <p>
+      When a user installs your PWA, the OS uses the manifest icon for push notifications,
+      the macOS/Windows app switcher, and the Linux dock. Browsers also pull the favicon for
+      desktop notifications generated via the Web Notifications API. A consistent icon at
+      every size is a coherence signal — and a free brand-recall multiplier.
+    </p>
+  </div>
+
+  <div class="use-case">
+    <h3>4. Status pages, transactional emails, and admin tools</h3>
+    <p>
+      Status pages (status.yoursaas.com), admin panels, and customer-facing transactional
+      surfaces are often deployed under separate Vercel projects. Each gets its own favicon
+      slot. Use the same icon across every subdomain — a single SVG-style mark that survives
+      both the green-checkmark and red-incident header colors of your status page.
+    </p>
+  </div>
+
+  <div class="use-case">
+    <h3>5. AI agent surfaces (Linear MCP, Claude Code, ChatGPT)</h3>
+    <p>
+      In 2026, AI tools increasingly render product favicons in agent UIs — connected apps in
+      ChatGPT, MCP server lists in Claude Code, and integration cards across Linear, Notion,
+      and Zapier. A favicon that reads at 32×32 inside a list of 200 connectors is the new
+      App Store icon. This is a non-obvious surface, and a free lift in agent-mediated discovery.
+    </p>
+  </div>
+
+  <h2>What the generator outputs</h2>
+  <ul class="checklist">
+    <li><strong>favicon.ico</strong> — 16, 32, 48 in a single multi-resolution ICO</li>
+    <li><strong>favicon-192.png</strong>, <strong>favicon-512.png</strong> — PWA standard</li>
+    <li><strong>apple-touch-icon-180.png</strong> — iOS home screen</li>
+    <li><strong>maskable-512.png</strong> — Android adaptive icon with safe-zone padding</li>
+    <li><strong>manifest.json</strong> — drop-in PWA manifest with icon references wired up</li>
+    <li><strong>html-snippet.txt</strong> — the exact <code>&lt;link&gt;</code> tags to paste into your <code>&lt;head&gt;</code></li>
+  </ul>
+
+  <h2>SaaS-specific design tips</h2>
+  <p>
+    <strong>Use a glyph, not a wordmark.</strong> At 16×16 even a 2-letter wordmark turns
+    illegible. Linear uses an "L" angle bracket, Notion uses a stacked-card mark, Vercel
+    uses a triangle. Pick a single primitive from your logo and let it carry the icon.
+  </p>
+  <p>
+    <strong>Pick contrast over palette accuracy.</strong> A muted brand teal at 16px against
+    a dark browser chrome will disappear. Push saturation and contrast in the favicon; this
+    is one of the few places where pixel-fitting outweighs brand-guideline literalism.
+  </p>
+  <p>
+    <strong>Avoid thin strokes and small details.</strong> Anything under 2px stroke at 16×16
+    will alias to a smudge. Test at 16px first, scale up later. Our generator previews every
+    size against the real Chrome and Safari tab chrome so you catch issues before deploying.
+  </p>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item">
+    <div class="faq-q">Why do SaaS founders need a dedicated favicon?</div>
+    <div class="faq-a">
+      SaaS users keep your product open in pinned tabs alongside Gmail, Notion, Linear, and
+      Slack. A distinctive favicon is the difference between a user finding your tab in 0.5
+      seconds versus losing it for ten. It is the most-seen surface of your brand, displayed
+      at the smallest possible size.
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What favicon sizes do I actually need to ship?</div>
+    <div class="faq-a">
+      At minimum: <code>favicon.ico</code> (16, 32, 48), <code>favicon-192.png</code> and
+      <code>favicon-512.png</code> for PWA installs, <code>apple-touch-icon-180.png</code>
+      for iOS home screens, and a maskable 512×512 PNG for Android adaptive icons. The
+      generator bundles all of these.
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Should the favicon match my logo exactly?</div>
+    <div class="faq-a">
+      No. At 16×16 a full wordmark becomes mush. Use a single letterform, glyph, or
+      geometric mark derived from your logo. Most leading SaaS brands reserve the wordmark
+      for the marketing-site header and use a simplified glyph in the favicon.
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Do I need a maskable icon for my PWA?</div>
+    <div class="faq-a">
+      Yes if you want a clean install on Android. Android applies a system-defined shape
+      mask (circle, squircle, rounded square) to PWA icons. Without a maskable version with
+      safe-zone padding, your icon gets clipped.
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Does favicon design actually affect SaaS retention?</div>
+    <div class="faq-a">
+      Indirectly. Users who can spot your tab among 30 others context-switch back to your
+      product faster. For tools positioned as "always open" (dashboards, inboxes, project
+      trackers) this is a real activation surface. Treat it as packaging design at micro scale.
+    </div>
+  </div>
+
+  <h2>Ship a better favicon this afternoon</h2>
+  <p>
+    No signup, no watermark, no upsell to a "Pro" tier. Generate your favicon set, drop
+    the files into <code>/public</code> (or <code>/static</code>), paste the HTML snippet
+    into your root layout, and ship. Your pinned-tab discoverability will be measurably
+    better by the end of the day.
+  </p>
+
+  <div class="cta-row">
+    <a href="/favicon-generator/" class="btn primary">Try the Favicon Generator →</a>
+    <a href="/" class="btn">Browse all TinyTools</a>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-top:0;">Further reading for SaaS founders</h3>
+    <div class="links">
+      <a href="https://web.dev/articles/maskable-icon" target="_blank" rel="noopener">web.dev: Maskable icons</a>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/Manifest/icons" target="_blank" rel="noopener">MDN: Manifest icons</a>
+      <a href="https://developer.apple.com/design/human-interface-guidelines/app-icons" target="_blank" rel="noopener">Apple HIG: App icons</a>
+    </div>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> — free, no-signup web utilities for builders.
+    <br>Page built with the <a href="/favicon-generator/">Favicon Generator</a>.
+  </footer>
+</div>
+</body>
+</html>
