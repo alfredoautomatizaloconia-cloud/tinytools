@@ -18,3 +18,4 @@
 2026-05-16 01:36 | tool=color-palette | post=css-color-mix-dynamic-palettes-2026 | sitemap=updated | drafts=4 | google_ping=404(deprecated) | status=OK
 2026-05-17 12:00 | tool=seo-meta-generator | post=hreflang-tags-international-seo-2026 | sitemap=updated | drafts=4 | google_ping=404_deprecated | status=OK
 2026-05-17 20:30 | tool=seo-meta-generator | post=faq-schema-markup-rich-results-2026 | sitemap=updated | drafts=4 | google_ping=404_deprecated | status=OK
+2026-05-18 16:12 | tool=domain-generator | post=domain-name-radio-test-2026 | sitemap=updated | drafts=4 | google_ping=404 (endpoint deprecated) | status=OK
