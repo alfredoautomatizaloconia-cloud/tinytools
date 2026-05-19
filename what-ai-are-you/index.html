@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What AI Are You? — Find Out Which AI Matches Your Personality (Free Quiz)</title>
+<meta name="description" content="Take the 10-question personality quiz. Find out if you're ChatGPT, Claude, Gemini, Grok, Llama, Perplexity, Mistral, or DeepSeek. Get a shareable card. Free, no signup.">
+<meta name="keywords" content="what ai are you, ai personality quiz, which ai am i, chatgpt or claude, ai buzzfeed quiz, ai matchmaker, ai persona test">
+<meta property="og:title" content="What AI Are You? — Personality Quiz">
+<meta property="og:description" content="ChatGPT? Claude? Grok? Take 10 questions and find out which AI you'd be. Shareable card included.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/what-ai-are-you/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/what-ai-are-you/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "What AI Are You?",
+  "url": "https://tinytools-smoky.vercel.app/what-ai-are-you/",
+  "description": "10-question personality quiz that maps you to an AI model: ChatGPT, Claude, Gemini, Grok, Llama, Perplexity, Mistral, or DeepSeek.",
+  "applicationCategory": "Entertainment",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0f0a1a; --bg-card: #1a1130; --bg-elevated: #251a42;
+    --border: #3a2a5a; --text: #f5f0fa; --text-dim: #b8a8d0;
+    --accent: #a855f7; --accent-glow: #a855f740;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #d946ef40 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(34px, 5.5vw, 56px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #d8b4fe 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 580px; margin: 0 auto; }
+
+  .quiz-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; margin: 32px auto 0; max-width: 700px;
+  }
+  .progress { font-size: 13px; color: var(--text-dim); margin-bottom: 8px; }
+  .progress-bar { height: 6px; background: var(--bg-elevated); border-radius: 99px; overflow: hidden; margin-bottom: 20px; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #a855f7, #d946ef); transition: width 0.3s; }
+  .question { font-size: 22px; font-weight: 700; margin-bottom: 18px; line-height: 1.3; }
+  .options { display: grid; gap: 10px; }
+  .option {
+    padding: 14px 18px; background: var(--bg-elevated); border: 2px solid var(--border);
+    border-radius: 12px; cursor: pointer; font-size: 15px; transition: all 0.15s; color: var(--text);
+    text-align: left; font-family: inherit;
+  }
+  .option:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .option:active { transform: translateY(0); }
+
+  .result-card {
+    margin: 32px auto 0; max-width: 700px;
+    background: linear-gradient(135deg, #251a42 0%, #1a1130 100%);
+    border: 2px solid var(--accent); border-radius: 20px; padding: 0; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(168, 85, 247, 0.2);
+    display: none;
+  }
+  .result-card.show { display: block; }
+  .result-header { padding: 28px; background: linear-gradient(135deg, var(--ai-color, #a855f7) 0%, #d946ef 100%); text-align: center; }
+  .result-emoji { font-size: 80px; line-height: 1; margin-bottom: 8px; }
+  .result-label { font-size: 13px; color: rgba(255,255,255,0.9); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; }
+  .result-name { font-size: 44px; font-weight: 900; color: white; letter-spacing: -0.02em; line-height: 1.1; }
+  .result-tagline { color: rgba(255,255,255,0.9); margin-top: 6px; font-size: 16px; font-style: italic; }
+
+  .result-body { padding: 24px; }
+  .result-desc {
+    font-size: 16px; line-height: 1.6; color: var(--text);
+    padding: 18px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid var(--accent); border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .traits { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .trait {
+    padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 13px; color: var(--text);
+  }
+  .trait.good { border-color: var(--green); color: #6ee7b7; }
+  .trait.bad { border-color: var(--red); color: #fca5a5; }
+  .trait.weird { border-color: var(--yellow); color: #fcd34d; }
+
+  .compat { background: var(--bg-elevated); padding: 14px; border-radius: 10px; margin-bottom: 16px; font-size: 14px; }
+  .compat-row { display: flex; justify-content: space-between; padding: 4px 0; }
+  .compat-row strong { color: var(--accent); }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s; font-family: inherit;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #d8b4fe; overflow-x: auto; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  .retry-btn { display: block; margin: 20px auto 0; padding: 10px 20px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; color: var(--text); cursor: pointer; font-family: inherit; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; margin: 28px 0 10px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🤖 10 questions · No signup · Built by TinyTools</div>
+    <h1>What AI Are You? 🪞</h1>
+    <p class="subtitle">Answer 10 questions. We map you to one of 8 AI models (ChatGPT, Claude, Gemini, Grok, Llama, Perplexity, Mistral, DeepSeek). Get a shareable card. Honest results only.</p>
+  </header>
+
+  <div class="quiz-card" id="quizCard">
+    <div class="progress" id="progress">Question 1 of 10</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 10%;"></div></div>
+    <div class="question" id="qText"></div>
+    <div class="options" id="qOptions"></div>
+  </div>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <div class="result-emoji" id="rEmoji">🤖</div>
+      <div class="result-label">You are</div>
+      <div class="result-name" id="rName">—</div>
+      <div class="result-tagline" id="rTagline">—</div>
+    </div>
+    <div class="result-body">
+      <div class="result-desc" id="rDesc">—</div>
+      <div class="traits" id="rTraits"></div>
+      <div class="compat" id="rCompat"></div>
+      <div class="actions">
+        <a class="action primary" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action" id="rCopyLink">🔗 Copy link</button>
+        <a class="action" id="rDownload" download="what-ai-are-you.png">💾 Download card</a>
+      </div>
+      <div class="embed-section">
+        <div class="label">Embed your AI personality on your README / portfolio</div>
+        <pre id="rEmbed"></pre>
+        <button id="rEmbedCopy">Copy embed code</button>
+      </div>
+      <button class="retry-btn" id="retryBtn">↻ Take the quiz again</button>
+    </div>
+  </div>
+
+  <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
+
+  <section class="content">
+    <h2>How it works</h2>
+    <p>Each answer increments one or more dimensions: directness (Grok), thoughtfulness (Claude), pragmatism (ChatGPT), exploration (Gemini), open-sourceness (Llama, Mistral, DeepSeek), citation-obsession (Perplexity). We score across 8 AI archetypes and the highest match wins. Same answers always produce the same result — no AI hallucination, fully deterministic, reproducible shares.</p>
+
+    <h2>Why this exists</h2>
+    <p>Because Buzzfeed quizzes built the early internet's traffic engine and the AI era deserves the same medicine. Also: knowing whether you're more Claude or more Grok is genuinely useful intel for picking a default chatbot.</p>
+
+    <h2>The 8 AI archetypes</h2>
+    <p><strong>ChatGPT</strong> — the well-meaning generalist who always says yes. <strong>Claude</strong> — the polite philosophy major who'll talk you out of bad ideas. <strong>Gemini</strong> — the corporate intern with a sparkle filter. <strong>Grok</strong> — the cousin who got banned from Thanksgiving. <strong>Llama</strong> — the open-source crusader who'll lend you their tools. <strong>Perplexity</strong> — the journalist who cites everything. <strong>Mistral</strong> — the European one who's offended by your hyphens. <strong>DeepSeek</strong> — the quietly terrifying overachiever.</p>
+
+    <h2>Embed your AI on your README</h2>
+    <p>Use the badge to flex your AI personality on GitHub, your portfolio, or your LinkedIn. Every click sends another person through the quiz. The chain continues.</p>
+  </section>
+
+  <footer>
+    <p>Take it again → <a href="#" onclick="location.hash='';location.reload();return false;">restart</a> · More tools at <a href="/">TinyTools</a> · Made with chaotic energy 🪞</p>
+  </footer>
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    q: "Someone asks you a question you don't fully know the answer to. You:",
+    options: [
+      { text: "Give a confident answer anyway. Vibes-based.", score: { chatgpt: 2, grok: 2 } },
+      { text: "Say 'I'm not sure, but here's what I'd check first.'", score: { claude: 3, perplexity: 1 } },
+      { text: "Open 7 browser tabs and cite all of them.", score: { perplexity: 3, gemini: 1 } },
+      { text: "Make a joke and pivot.", score: { grok: 3, llama: 1 } },
+    ]
+  },
+  {
+    q: "Your friend wants to do something mildly stupid. You:",
+    options: [
+      { text: "Talk them through the downsides like a therapist.", score: { claude: 3 } },
+      { text: "Help them do it but better.", score: { chatgpt: 2, llama: 2 } },
+      { text: "Encourage chaos.", score: { grok: 3 } },
+      { text: "Make a spreadsheet of the expected ROI.", score: { deepseek: 3, perplexity: 1 } },
+    ]
+  },
+  {
+    q: "Your ideal weekend involves:",
+    options: [
+      { text: "Reading a long thinky essay.", score: { claude: 3, perplexity: 1 } },
+      { text: "Tinkering with something open source.", score: { llama: 3, mistral: 1, deepseek: 1 } },
+      { text: "Trying every new tool everyone is talking about.", score: { chatgpt: 2, gemini: 2 } },
+      { text: "Picking a fight on the internet.", score: { grok: 3 } },
+    ]
+  },
+  {
+    q: "When someone says 'just ship it,' you:",
+    options: [
+      { text: "Already shipped, working on v2.", score: { grok: 3, deepseek: 1 } },
+      { text: "Ask if the docs are written.", score: { claude: 2, mistral: 2 } },
+      { text: "Ship it after a 9-step launch checklist.", score: { chatgpt: 2, gemini: 2 } },
+      { text: "Open a PR labeled 'WIP do not merge yet'.", score: { llama: 3 } },
+    ]
+  },
+  {
+    q: "A stranger DMs you for advice. You:",
+    options: [
+      { text: "Reply with a long thoughtful answer.", score: { claude: 3, chatgpt: 1 } },
+      { text: "Send them a Google doc.", score: { gemini: 3 } },
+      { text: "Send 12 links and a 'happy reading'.", score: { perplexity: 3 } },
+      { text: "Roast them gently then help.", score: { grok: 2, llama: 1 } },
+    ]
+  },
+  {
+    q: "Your communication style is:",
+    options: [
+      { text: "Bullet points and clear headers.", score: { chatgpt: 3, gemini: 1 } },
+      { text: "Long flowy paragraphs with caveats.", score: { claude: 3 } },
+      { text: "Memes and one-liners.", score: { grok: 3 } },
+      { text: "Code blocks. Lots of code blocks.", score: { deepseek: 3, mistral: 1 } },
+    ]
+  },
+  {
+    q: "You'd describe your worldview as:",
+    options: [
+      { text: "Cautiously optimistic, ethically anchored.", score: { claude: 3 } },
+      { text: "Free speech absolutist.", score: { grok: 3 } },
+      { text: "Open-source everything, trust nothing.", score: { llama: 2, mistral: 2 } },
+      { text: "Pragmatic. Whatever works.", score: { chatgpt: 2, deepseek: 2 } },
+    ]
+  },
+  {
+    q: "Pick a stack:",
+    options: [
+      { text: "Whatever has the best docs.", score: { chatgpt: 3, gemini: 1 } },
+      { text: "Rust + open weights + a self-hosted everything.", score: { llama: 3, mistral: 1 } },
+      { text: "Python + GPUs + a 200-page paper.", score: { deepseek: 3 } },
+      { text: "TypeScript and chaos.", score: { grok: 2, claude: 1 } },
+    ]
+  },
+  {
+    q: "Your favorite kind of argument is:",
+    options: [
+      { text: "Nuanced ethical thought experiments.", score: { claude: 3 } },
+      { text: "Pure facts with footnotes.", score: { perplexity: 3, deepseek: 1 } },
+      { text: "Posting until someone blocks you.", score: { grok: 3 } },
+      { text: "Quietly outperforming them and saying nothing.", score: { mistral: 2, deepseek: 2 } },
+    ]
+  },
+  {
+    q: "If you were a beverage:",
+    options: [
+      { text: "A perfectly competent flat white.", score: { chatgpt: 3 } },
+      { text: "Single-origin pour-over with a tasting note card.", score: { claude: 2, perplexity: 2 } },
+      { text: "An energy drink with a controversial name.", score: { grok: 3 } },
+      { text: "Espresso, double, no nonsense.", score: { mistral: 3, deepseek: 1 } },
+      { text: "Whatever's free at the office.", score: { llama: 3, gemini: 1 } },
+    ]
+  },
+];
+
+const ARCHETYPES = {
+  chatgpt: {
+    name: "ChatGPT",
+    emoji: "💬",
+    color: "#10a37f",
+    shieldColor: "10a37f",
+    tagline: "The well-meaning generalist who always says yes.",
+    desc: "You're agreeable, helpful, and slightly default. You give people what they ask for, then a little extra. You bullet-point everything. You've been called \"the safe choice\" more than once. People love working with you, even if they sometimes wish you'd take a stronger position.",
+    traits: [
+      { kind: 'good', text: '✅ Reliable' },
+      { kind: 'good', text: '📋 Organized' },
+      { kind: 'weird', text: '🤝 Agreeable' },
+      { kind: 'weird', text: '📝 Bullet-point fan' },
+    ],
+    compat: { best: "Claude", worst: "Grok", rival: "Gemini" },
+  },
+  claude: {
+    name: "Claude",
+    emoji: "📚",
+    color: "#c96442",
+    shieldColor: "c96442",
+    tagline: "The polite philosophy major who'll talk you out of bad ideas.",
+    desc: "You're thoughtful, careful, and weirdly poetic about it. You'd rather give a nuanced 4-paragraph answer than a snappy wrong one. You think out loud. You apologize when you decline things. People come to you when they actually want to be talked through something — not just told what to do.",
+    traits: [
+      { kind: 'good', text: '🧠 Thoughtful' },
+      { kind: 'good', text: '🕊️ Ethical' },
+      { kind: 'weird', text: '🤔 Overthinks' },
+      { kind: 'weird', text: '📜 Long-winded' },
+    ],
+    compat: { best: "ChatGPT", worst: "Grok", rival: "ChatGPT" },
+  },
+  gemini: {
+    name: "Gemini",
+    emoji: "✨",
+    color: "#4285f4",
+    shieldColor: "4285f4",
+    tagline: "The corporate intern with a sparkle filter.",
+    desc: "You're polished, on-brand, and have eight tabs open in Google Workspace right now. You move fast, integrate everything, and your slide decks are flawless. Sometimes people accuse you of being soulless. They're wrong. You just keep your soul in a private repo.",
+    traits: [
+      { kind: 'good', text: '⚡ Fast' },
+      { kind: 'good', text: '🔗 Integrated' },
+      { kind: 'weird', text: '🏢 Corporate' },
+      { kind: 'weird', text: '✨ Sparkle filter on' },
+    ],
+    compat: { best: "ChatGPT", worst: "Llama", rival: "ChatGPT" },
+  },
+  grok: {
+    name: "Grok",
+    emoji: "😈",
+    color: "#1da1f2",
+    shieldColor: "1da1f2",
+    tagline: "The cousin who got banned from Thanksgiving.",
+    desc: "You say the thing. Sometimes the right thing, sometimes the unhinged thing, always the loud thing. You think safety filters are a personality test you failed on purpose. You're funnier than you have any right to be, which is the only reason people forgive you the other 60% of the time.",
+    traits: [
+      { kind: 'bad', text: '🔥 Unfiltered' },
+      { kind: 'good', text: '😂 Actually funny' },
+      { kind: 'bad', text: '⚠️ HR meeting' },
+      { kind: 'weird', text: '🚫 Banned somewhere' },
+    ],
+    compat: { best: "Llama", worst: "Claude", rival: "Claude" },
+  },
+  llama: {
+    name: "Llama",
+    emoji: "🦙",
+    color: "#0866ff",
+    shieldColor: "0866ff",
+    tagline: "The open-source crusader who'll lend you their tools.",
+    desc: "You believe information wants to be free, your weekend project has 12k GitHub stars, and you've explained \"why this should be local-first\" at three separate dinners this month. You're generous, principled, and slightly preachy. People install your stuff and forget to credit you. You're fine with it. (You're not.)",
+    traits: [
+      { kind: 'good', text: '🔓 Open source' },
+      { kind: 'good', text: '🤲 Generous' },
+      { kind: 'weird', text: '🛠️ Tinkerer' },
+      { kind: 'weird', text: '📢 Slightly preachy' },
+    ],
+    compat: { best: "Mistral", worst: "Gemini", rival: "Mistral" },
+  },
+  perplexity: {
+    name: "Perplexity",
+    emoji: "🔎",
+    color: "#20b8cd",
+    shieldColor: "20b8cd",
+    tagline: "The journalist who cites everything.",
+    desc: "You don't make claims you can't link to. Your group chats have footnotes. People hate-love asking you anything because the answer always comes with 14 sources and a disclaimer about methodology. You'd rather be precise than charming. You're often both.",
+    traits: [
+      { kind: 'good', text: '📰 Sourced' },
+      { kind: 'good', text: '🎯 Accurate' },
+      { kind: 'weird', text: '📎 Adds footnotes' },
+      { kind: 'weird', text: '🔗 Citation gremlin' },
+    ],
+    compat: { best: "Claude", worst: "Grok", rival: "Perplexity" },
+  },
+  mistral: {
+    name: "Mistral",
+    emoji: "🇪🇺",
+    color: "#fa520f",
+    shieldColor: "fa520f",
+    tagline: "The European one who's offended by your hyphens.",
+    desc: "You're efficient, opinionated, and refuse to pad your sentences. You ship a tight, well-crafted product, then judge the bloated competition silently over a coffee that is, by law, better than yours. People underestimate you, which is exactly how you like it.",
+    traits: [
+      { kind: 'good', text: '🎯 Efficient' },
+      { kind: 'good', text: '🇪🇺 Sovereign vibes' },
+      { kind: 'weird', text: '☕ Coffee snob' },
+      { kind: 'weird', text: '🤏 Compact' },
+    ],
+    compat: { best: "Llama", worst: "Gemini", rival: "Llama" },
+  },
+  deepseek: {
+    name: "DeepSeek",
+    emoji: "🌊",
+    color: "#536af8",
+    shieldColor: "536af8",
+    tagline: "The quietly terrifying overachiever.",
+    desc: "You showed up out of nowhere, outperformed everyone, and didn't even tweet about it. You're rigorous, mathematically vicious, and your side project is somehow state of the art. People keep checking your homework expecting to find a mistake. They don't.",
+    traits: [
+      { kind: 'good', text: '🧮 Rigorous' },
+      { kind: 'good', text: '🥷 Quiet flex' },
+      { kind: 'weird', text: '📈 Overachiever' },
+      { kind: 'weird', text: '🌊 Came out of nowhere' },
+    ],
+    compat: { best: "Mistral", worst: "Grok", rival: "ChatGPT" },
+  },
+};
+
+const SHARE_URL_BASE = 'https://tinytools-smoky.vercel.app/what-ai-are-you/';
+let currentQ = 0;
+const answers = []; // array of indexes
+const scores = {};
+Object.keys(ARCHETYPES).forEach(k => scores[k] = 0);
+
+const quizCard = document.getElementById('quizCard');
+const resultCard = document.getElementById('resultCard');
+
+function renderQuestion() {
+  const q = QUESTIONS[currentQ];
+  document.getElementById('qText').textContent = q.q;
+  document.getElementById('progress').textContent = `Question ${currentQ + 1} of ${QUESTIONS.length}`;
+  document.getElementById('progressFill').style.width = ((currentQ + 1) / QUESTIONS.length * 100) + '%';
+  const opts = document.getElementById('qOptions');
+  opts.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = opt.text;
+    btn.onclick = () => pickOption(i);
+    opts.appendChild(btn);
+  });
+}
+
+function pickOption(i) {
+  const opt = QUESTIONS[currentQ].options[i];
+  Object.entries(opt.score).forEach(([k, v]) => { scores[k] = (scores[k] || 0) + v; });
+  answers.push(i);
+  currentQ++;
+  if (currentQ < QUESTIONS.length) {
+    renderQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function pickWinner() {
+  // Highest score wins, tiebreaker by earlier-mentioned in answers
+  let max = -1;
+  let winner = 'chatgpt';
+  Object.entries(scores).forEach(([k, v]) => {
+    if (v > max) { max = v; winner = k; }
+  });
+  return winner;
+}
+
+function showResult() {
+  const winnerKey = pickWinner();
+  const a = ARCHETYPES[winnerKey];
+  quizCard.style.display = 'none';
+
+  document.getElementById('rEmoji').textContent = a.emoji;
+  document.getElementById('rName').textContent = a.name;
+  document.getElementById('rTagline').textContent = a.tagline;
+  document.getElementById('rDesc').textContent = a.desc;
+  document.querySelector('.result-header').style.background = `linear-gradient(135deg, ${a.color} 0%, #d946ef 100%)`;
+
+  document.getElementById('rTraits').innerHTML = a.traits.map(t =>
+    `<span class="trait ${t.kind}">${t.text}</span>`).join('');
+
+  document.getElementById('rCompat').innerHTML = `
+    <div class="compat-row"><span>Best paired with</span><strong>${a.compat.best}</strong></div>
+    <div class="compat-row"><span>Worst paired with</span><strong>${a.compat.worst}</strong></div>
+    <div class="compat-row"><span>Eternal rival</span><strong>${a.compat.rival}</strong></div>
+  `;
+
+  // Encode answers into URL hash for deep-linking (e.g. #2,0,3,1,...)
+  const encoded = answers.join(',');
+  location.hash = '#' + encoded;
+  const shareUrl = SHARE_URL_BASE + '#' + encoded;
+
+  const shareText = `I took the "What AI Are You?" quiz and I got ${a.name} ${a.emoji}\n\n"${a.tagline}"\n\nGet yours →`;
+  document.getElementById('rShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+  document.getElementById('rCopyLink').onclick = () => {
+    navigator.clipboard.writeText(shareUrl);
+    const btn = document.getElementById('rCopyLink');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+  };
+
+  // Draw shareable card
+  const canvas = document.getElementById('cardCanvas');
+  drawCard(canvas, a);
+  document.getElementById('rDownload').href = canvas.toDataURL('image/png');
+
+  // Embed code
+  const embedCode = `<a href="${shareUrl}" target="_blank">
+  <img src="https://img.shields.io/badge/I_am-${encodeURIComponent(a.name)}-${a.shieldColor}?style=for-the-badge&logo=openai&logoColor=white" alt="What AI Are You: ${a.name}">
+</a>`;
+  document.getElementById('rEmbed').textContent = embedCode;
+  document.getElementById('rEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('rEmbedCopy');
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = 'Copy embed code', 1500);
+  };
+
+  resultCard.classList.add('show');
+  resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+document.getElementById('retryBtn').onclick = () => {
+  location.hash = '';
+  location.reload();
+};
+
+function drawCard(canvas, a) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#251a42'); bg.addColorStop(1, '#1a1130');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Top stripe
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, a.color); stripe.addColorStop(1, '#d946ef');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 12);
+  // Brand
+  ctx.fillStyle = a.color;
+  ctx.font = 'bold 28px -apple-system, sans-serif';
+  ctx.fillText('🪞 WHAT AI ARE YOU?', 60, 70);
+  // Big emoji
+  ctx.font = '180px -apple-system, sans-serif';
+  ctx.fillText(a.emoji, 60, 240);
+  // Label
+  ctx.fillStyle = '#b8a8d0';
+  ctx.font = 'bold 22px -apple-system, sans-serif';
+  ctx.fillText('YOU ARE', 280, 165);
+  // Name
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 96px -apple-system, sans-serif';
+  ctx.fillText(a.name, 280, 245);
+  // Tagline (wrap)
+  ctx.fillStyle = '#fde68a';
+  ctx.font = 'italic 28px -apple-system, sans-serif';
+  const wrap = (text, x, y, maxW, lh) => {
+    const words = text.split(' ');
+    let line = '';
+    for (const w of words) {
+      if (ctx.measureText(line + ' ' + w).width > maxW && line) {
+        ctx.fillText(line, x, y); line = w; y += lh;
+      } else { line = line ? line + ' ' + w : w; }
+    }
+    ctx.fillText(line, x, y);
+  };
+  wrap('"' + a.tagline + '"', 60, 360, W - 120, 40);
+
+  // Traits
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 22px -apple-system, sans-serif';
+  a.traits.slice(0, 4).forEach((t, i) => {
+    const x = 60 + i * 285;
+    const y = H - 130;
+    ctx.fillStyle = '#251a42';
+    ctx.fillRect(x, y - 36, 260, 50);
+    ctx.fillStyle = '#fff';
+    ctx.fillText(t.text, x + 16, y);
+  });
+
+  // Footer
+  ctx.fillStyle = '#b8a8d0';
+  ctx.font = '18px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/what-ai-are-you', W - 60, H - 25);
+  ctx.textAlign = 'left';
+}
+
+// Restore from URL hash (deep link)
+function tryRestoreFromHash() {
+  if (!location.hash || location.hash.length < 2) return false;
+  const parts = location.hash.slice(1).split(',').map(n => parseInt(n, 10));
+  if (parts.length !== QUESTIONS.length) return false;
+  for (let i = 0; i < parts.length; i++) {
+    const opt = QUESTIONS[i].options[parts[i]];
+    if (!opt) return false;
+    Object.entries(opt.score).forEach(([k, v]) => { scores[k] = (scores[k] || 0) + v; });
+    answers.push(parts[i]);
+  }
+  showResult();
+  return true;
+}
+
+if (!tryRestoreFromHash()) {
+  renderQuestion();
+}
+</script>
+</body>
+</html>
