@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade My Prompt — Get a Savage A–F Grade on Your AI Prompt (Free)</title>
+<meta name="description" content="Paste any AI prompt. Get a deterministic A–F grade based on 22 quality signals + a savage one-liner roast. Share the card. Free, no signup, no LLM cost.">
+<meta name="keywords" content="grade my prompt, prompt grader, prompt scorecard, prompt engineering, roast my prompt, prompt audit, ai prompt grade">
+<meta property="og:title" content="Grade My Prompt — Savage A–F Grading by TinyTools">
+<meta property="og:description" content="Paste your prompt. Get an A–F grade. The roast is included.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/prompt-grade/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/prompt-grade/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Grade My Prompt",
+  "url": "https://tinytools-smoky.vercel.app/prompt-grade/",
+  "description": "Paste an AI prompt and get a deterministic A–F grade with savage feedback across 22 signals (role, context, constraints, format, examples, persona, edge cases).",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a14; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #8b5cf6; --accent-glow: #8b5cf640;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #a855f740 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(34px, 5.5vw, 56px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #c4b5fd 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 580px; margin: 0 auto; }
+
+  .input-wrap {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 14px;
+    max-width: 720px; margin: 32px auto 0;
+  }
+  textarea {
+    width: 100%; min-height: 160px; background: transparent; border: none; color: var(--text);
+    font-size: 15px; font-family: ui-monospace, 'SF Mono', Menlo, monospace; outline: none; resize: vertical;
+    line-height: 1.5;
+  }
+  .input-actions { display: flex; gap: 10px; justify-content: space-between; align-items: center; margin-top: 8px; }
+  .input-actions .meta { font-size: 12px; color: var(--text-dim); }
+  .grade-btn {
+    padding: 12px 28px; background: linear-gradient(135deg, #8b5cf6, #a855f7);
+    border: none; border-radius: 10px; color: white; font-weight: 700; font-size: 15px;
+    cursor: pointer; box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3); font-family: inherit;
+  }
+  .grade-btn:hover { transform: translateY(-1px); }
+  .grade-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .try-row { text-align: center; margin-top: 10px; color: var(--text-dim); font-size: 13px; }
+  .try-row a { color: var(--accent); margin: 0 4px; }
+
+  .result-card {
+    margin: 32px auto 0; max-width: 720px;
+    background: linear-gradient(135deg, #1f1f2e 0%, #15151f 100%);
+    border: 2px solid var(--accent); border-radius: 20px; padding: 0; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15);
+    display: none;
+  }
+  .result-card.show { display: block; }
+  .result-header {
+    padding: 24px; background: linear-gradient(135deg, var(--grade-color, #8b5cf6) 0%, #a855f7 100%);
+    display: flex; align-items: center; gap: 20px;
+  }
+  .grade-letter { font-size: 88px; font-weight: 900; color: white; line-height: 1; padding: 8px 20px; background: rgba(0,0,0,0.25); border-radius: 16px; }
+  .grade-info { flex: 1; }
+  .grade-info .label { font-size: 12px; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+  .grade-info .verdict { font-size: 26px; font-weight: 800; color: white; line-height: 1.15; margin-top: 4px; }
+  .grade-info .meta { font-size: 13px; color: rgba(255,255,255,0.85); margin-top: 4px; }
+
+  .result-body { padding: 24px; }
+  .roast-text {
+    font-size: 17px; line-height: 1.55; color: #fde68a; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid var(--accent); border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  .score-bar {
+    height: 8px; background: var(--bg-elevated); border-radius: 99px; overflow: hidden; margin-bottom: 18px;
+    border: 1px solid var(--border);
+  }
+  .score-fill { height: 100%; background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981); transition: width 0.6s; }
+
+  .signals { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 18px; }
+  @media (max-width: 560px) { .signals { grid-template-columns: 1fr; } }
+  .signal {
+    display: flex; align-items: center; gap: 8px; padding: 10px 12px;
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px;
+    font-size: 13px;
+  }
+  .signal .mark { width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; border-radius: 6px; font-weight: 800; font-size: 12px; }
+  .signal.ok .mark { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; }
+  .signal.bad .mark { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+  .signal.warn .mark { background: rgba(245, 158, 11, 0.2); color: #fcd34d; }
+
+  .achievements { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .achievement {
+    padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 13px; color: var(--text);
+  }
+  .achievement.bad { border-color: var(--red); color: #fca5a5; }
+  .achievement.good { border-color: var(--green); color: #6ee7b7; }
+  .achievement.weird { border-color: var(--yellow); color: #fcd34d; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s; font-family: inherit;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; margin: 28px 0 10px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+  .content ul { margin: 10px 0 16px 24px; color: var(--text-dim); font-size: 15px; }
+  .content li { margin-bottom: 4px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">📝 22 quality signals · No signup · Built by TinyTools</div>
+    <h1>Grade My Prompt 📝</h1>
+    <p class="subtitle">Paste any AI prompt. Get a deterministic A–F grade across 22 signals — role, context, constraints, format, examples, edge cases. Includes a savage one-line roast.</p>
+  </header>
+
+  <div class="input-wrap">
+    <textarea id="promptInput" placeholder="Paste your prompt here. E.g. 'You are a helpful assistant. Summarize the article below in 3 bullet points...'"></textarea>
+    <div class="input-actions">
+      <div class="meta"><span id="charCount">0</span> chars · <span id="wordCount">0</span> words</div>
+      <button class="grade-btn" id="gradeBtn">📝 Grade It</button>
+    </div>
+  </div>
+  <div class="try-row">
+    Try:
+    <a href="#" class="try-link" data-p="Write a poem.">"Write a poem."</a>·
+    <a href="#" class="try-link" data-p="You are a senior security engineer. Review the Python function below for SQL injection, XSS, command injection, and SSRF risks. Output a JSON object with keys: critical, high, medium, low. Each value is an array of {line, issue, fix} objects. Only include real findings. Do not invent issues. If none found, return empty arrays. Here is the function: ```python\ndef get_user(id):\n    cursor.execute('SELECT * FROM users WHERE id = ' + id)\n    return cursor.fetchone()\n```">good prompt</a>
+  </div>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <div class="grade-letter" id="rGrade">?</div>
+      <div class="grade-info">
+        <div class="label">Prompt Grade</div>
+        <div class="verdict" id="rVerdict">—</div>
+        <div class="meta" id="rMeta">—</div>
+      </div>
+    </div>
+    <div class="result-body">
+      <div class="roast-text" id="rRoast">—</div>
+      <div class="score-bar"><div class="score-fill" id="rScoreFill" style="width: 0%;"></div></div>
+      <div class="signals" id="rSignals"></div>
+      <div class="achievements" id="rAchievements"></div>
+      <div class="actions">
+        <a class="action primary" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action" id="rCopyLink">🔗 Copy link</button>
+        <a class="action" id="rDownload" download="prompt-grade.png">💾 Download card</a>
+      </div>
+      <div class="embed-section">
+        <div class="label">Embed your grade on your README / portfolio</div>
+        <pre id="rEmbed"></pre>
+        <button id="rEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
+
+  <section class="content">
+    <h2>How it works</h2>
+    <p>We score 22 deterministic signals from your prompt text. No model call. Same prompt always returns the same grade — perfectly reproducible shares, zero hallucination, zero API cost. Signals include:</p>
+    <ul>
+      <li><strong>Role / persona</strong> — does it set a "You are..." identity?</li>
+      <li><strong>Task verb</strong> — clear single action verb (summarize, classify, generate)?</li>
+      <li><strong>Context</strong> — relevant background pasted in?</li>
+      <li><strong>Output format</strong> — JSON / bullets / markdown specified?</li>
+      <li><strong>Examples</strong> — at least one few-shot example?</li>
+      <li><strong>Constraints</strong> — word count, tone, dos and don'ts?</li>
+      <li><strong>Anti-hallucination</strong> — "do not invent / if unsure say X"?</li>
+      <li><strong>Edge cases</strong> — empty input, ambiguity, refusal path?</li>
+      <li><strong>Length sanity</strong> — not 3 words, not 3000 words of fluff?</li>
+      <li>...and 13 more quality signals.</li>
+    </ul>
+
+    <h2>Why this exists</h2>
+    <p>Because "be more specific" is the laziest prompt-engineering advice ever given, and most prompts in the wild are objectively below a C. This tool tells you exactly which of the 22 things your prompt is missing — no fluff, no AI fortune cookies.</p>
+
+    <h2>What an A+ prompt looks like</h2>
+    <p>Role + clear task + relevant context + structured output format + 1–2 worked examples + explicit constraints + anti-hallucination clause + edge-case handling + reasonable length (50–600 words for most workflows). If you've got all of those, you're already in the top 5%.</p>
+
+    <h2>Embed your grade</h2>
+    <p>Drop the badge in your README to flex how seriously you take prompt engineering. The same prompt always returns the same grade, so it's a real signal.</p>
+  </section>
+
+  <footer>
+    <p>Grade another → <a href="#" onclick="location.hash='';location.reload();return false;">reset</a> · More tools at <a href="/">TinyTools</a> · Made with chaotic energy 📝</p>
+  </footer>
+</div>
+
+<script>
+const SHARE_URL_BASE = 'https://tinytools-smoky.vercel.app/prompt-grade/';
+const promptInput = document.getElementById('promptInput');
+const gradeBtn = document.getElementById('gradeBtn');
+const resultCard = document.getElementById('resultCard');
+
+document.querySelectorAll('.try-link').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    promptInput.value = a.dataset.p;
+    updateCounts();
+    grade();
+  });
+});
+
+promptInput.addEventListener('input', updateCounts);
+function updateCounts() {
+  const t = promptInput.value;
+  document.getElementById('charCount').textContent = t.length;
+  document.getElementById('wordCount').textContent = t.trim() ? t.trim().split(/\s+/).length : 0;
+}
+
+gradeBtn.addEventListener('click', grade);
+
+// Deep link: hash is base64 of prompt
+function tryRestoreFromHash() {
+  if (!location.hash || location.hash.length < 2) return false;
+  try {
+    const decoded = atob(decodeURIComponent(location.hash.slice(1)));
+    if (decoded) {
+      promptInput.value = decoded;
+      updateCounts();
+      grade();
+      return true;
+    }
+  } catch (e) { /* ignore */ }
+  return false;
+}
+
+// Deterministic hash for stable IDs
+function djb2(str) {
+  let h = 5381;
+  for (let i = 0; i < str.length; i++) h = ((h << 5) + h) + str.charCodeAt(i);
+  return Math.abs(h);
+}
+
+const SIGNALS = [
+  // [name, regex test or function(text) -> bool, weight, blurbWhenMissing]
+  { id: 'role', name: 'Role / persona', test: t => /\b(you are|act as|you'?re an?|pretend you|imagine you)\b/i.test(t), weight: 6, miss: "No role set. The model has no idea who it's supposed to be." },
+  { id: 'task', name: 'Clear task verb', test: t => /\b(summari[sz]e|classif|extract|generate|write|translate|analyz|review|compare|rewrit|convert|explain|list|rank|score|grade|critique|debug|refactor|design)\b/i.test(t), weight: 6, miss: "No clear task verb. \"Help me\" is not a task." },
+  { id: 'context', name: 'Context provided', test: t => t.length > 200, weight: 4, miss: "Almost no context. The model is filling in blanks with vibes." },
+  { id: 'format', name: 'Output format specified', test: t => /\b(json|yaml|xml|markdown|bullet|table|csv|tsv|numbered list|format|schema|object with keys|fields)\b/i.test(t), weight: 6, miss: "No output format. Expect prose where you wanted JSON." },
+  { id: 'examples', name: 'Example(s) included', test: t => /\b(example|for instance|e\.g\.|like this|sample|few[- ]shot)\b/i.test(t) || /```/.test(t), weight: 5, miss: "No examples. The single biggest win in prompt engineering is one example." },
+  { id: 'constraints', name: 'Constraints / limits', test: t => /\b(do not|don'?t|never|avoid|only|must|should|in \d+ (words|sentences|bullets|points)|under \d+|max\b|at most|exactly)\b/i.test(t), weight: 5, miss: "No constraints. \"Be concise\" is not a constraint." },
+  { id: 'antihal', name: 'Anti-hallucination clause', test: t => /\b(don'?t invent|do not (invent|make up|guess|hallucinate|fabricate)|if (unsure|you don'?t know)|say "?(i don'?t know|unknown)"?|stick to|only include|only use|cite|source)\b/i.test(t), weight: 5, miss: "No anti-hallucination guardrail. The model will confidently make things up." },
+  { id: 'edgecase', name: 'Edge cases addressed', test: t => /\b(if (the )?(input is empty|no .{0,20} found|missing|unclear|ambiguous|none|nothing)|empty (input|array|list)|fallback|otherwise|else)\b/i.test(t), weight: 4, miss: "No edge cases. Empty input will produce \"Sure! Here's an empty result: …\"" },
+  { id: 'audience', name: 'Audience defined', test: t => /\b(for (a |an )?(beginner|expert|developer|kid|5[- ]year[- ]old|child|engineer|manager|ceo|designer|investor|recruiter|teacher|student|non-?technical)|aimed at|target audience)\b/i.test(t), weight: 3, miss: "No audience. Tone is going to be average-internet." },
+  { id: 'tone', name: 'Tone specified', test: t => /\b(tone|voice|style|formal|informal|casual|professional|friendly|sarcasti|playful|technical|conversational|witty|dry|brutal|savage|empath)/i.test(t), weight: 3, miss: "No tone direction. Default-LLM voice it is." },
+  { id: 'length', name: 'Length / size hint', test: t => /\b(\d+\s*(words?|sentences?|paragraphs?|bullets?|tokens?|chars?|characters?|lines?)|brief|short|long|detailed|concise|tweet[- ]length)\b/i.test(t), weight: 3, miss: "No length hint. Output will be either 1 line or 1500 words." },
+  { id: 'cot', name: 'Reasoning / chain-of-thought cue', test: t => /\b(step by step|step-by-step|think (out loud|carefully|step|through)|reason|explain your reasoning|chain of thought|first[, ].+then|before answering|plan)\b/i.test(t), weight: 3, miss: "No reasoning cue. Model jumps to an answer, not a derivation." },
+  { id: 'delimiter', name: 'Delimiters / structure', test: t => /(```|---|<\w+>|\$\$|\[INPUT\]|<<<|>>>|"""|=== )/.test(t), weight: 4, miss: "No delimiters. Where does your prompt end and the input begin?" },
+  { id: 'noyou', name: 'No "please" politeness padding', test: t => !/\bplease (kindly )?(help|provide|write|generate|do|give|tell)\b/i.test(t), weight: 1, miss: "Politeness padding (\"please kindly help me…\"). Costs tokens, buys nothing." },
+  { id: 'specific', name: 'Specific over generic', test: t => /\b(specifically|exactly|precisely|in particular|with|including|where|whose|that has)\b/i.test(t), weight: 2, miss: "Phrased generically. \"Make it good\" is not specific." },
+  { id: 'singletask', name: 'Single task (not 5 in one)', test: t => {
+      const verbs = (t.match(/\b(summari[sz]e|classify|extract|generate|write|translate|analyz|review|compare|rewrit|convert|explain|list|rank|score|grade|critique|debug|refactor|design)/gi) || []);
+      return verbs.length <= 4;
+    }, weight: 3, miss: "Six tasks bolted into one prompt. Split them." },
+  { id: 'noambig', name: 'No vague qualifiers', test: t => !/\b(some|any|stuff|things|nice|good|bad|something|various|several|appropriate|relevant)\b/i.test(t) || t.length > 400, weight: 2, miss: "Vague qualifiers (\"some stuff,\" \"things\"). Replace with concrete nouns." },
+  { id: 'lengthsane', name: 'Reasonable length', test: t => t.length >= 40 && t.length <= 4000, weight: 4, miss: "Prompt length is suspicious — either too short to specify anything, or padded to the moon." },
+  { id: 'noallcaps', name: 'No SHOUTING / emoji spam', test: t => {
+      const caps = (t.match(/[A-Z]/g) || []).length;
+      const letters = (t.match(/[a-zA-Z]/g) || []).length;
+      const emojis = (t.match(/[\u{1F300}-\u{1FAFF}]/gu) || []).length;
+      return (caps / Math.max(letters, 1)) < 0.35 && emojis < 6;
+    }, weight: 2, miss: "Shouting and/or emoji-spam. The model doesn't get more obedient." },
+  { id: 'noconflict', name: 'No contradictions', test: t => !(/\bshort\b/i.test(t) && /\bdetailed\b/i.test(t)) && !(/\bformal\b/i.test(t) && /\binformal\b/i.test(t)), weight: 2, miss: "Contradictory constraints (e.g. \"short and detailed\"). Pick one." },
+  { id: 'iorole', name: 'Input clearly marked', test: t => /\b(input|article|text|code|paragraph|document|file|data)\s*:\s*$/im.test(t) || /\b(here is|here'?s|below is)\b/i.test(t) || /```/.test(t), weight: 3, miss: "No clear input marker. The model is guessing where the question ends and the data starts." },
+  { id: 'outcome', name: 'Success criteria stated', test: t => /\b(success|done when|complete when|good answer|ideal|correct|valid|the goal is|objective)\b/i.test(t), weight: 2, miss: "No success criteria. How will you know if it did a good job?" },
+];
+
+function gradePrompt(t) {
+  const results = SIGNALS.map(s => ({ ...s, passed: s.test(t) }));
+  const earned = results.filter(r => r.passed).reduce((s, r) => s + r.weight, 0);
+  const total = SIGNALS.reduce((s, r) => s + r.weight, 0);
+  const pct = earned / total;
+  const score = Math.round(pct * 100);
+
+  let letter, color, shieldColor, verdict;
+  if (score >= 92)      { letter = 'S';  color = '#a855f7'; shieldColor = 'gold';        verdict = "Elite. Prompt engineer detected."; }
+  else if (score >= 85) { letter = 'A+'; color = '#22c55e'; shieldColor = 'brightgreen'; verdict = "Excellent. Ship this."; }
+  else if (score >= 78) { letter = 'A';  color = '#10b981'; shieldColor = 'green';       verdict = "Strong prompt. Minor polish only."; }
+  else if (score >= 70) { letter = 'B+'; color = '#06b6d4'; shieldColor = 'blue';        verdict = "Solid. Fix the misses below."; }
+  else if (score >= 62) { letter = 'B';  color = '#0ea5e9'; shieldColor = 'blue';        verdict = "Above average. Half the work is done."; }
+  else if (score >= 54) { letter = 'C+'; color = '#eab308'; shieldColor = 'yellow';      verdict = "Mediocre. The model is guessing too much."; }
+  else if (score >= 45) { letter = 'C';  color = '#f59e0b'; shieldColor = 'yellow';      verdict = "Weak. You're paying tokens for vibes."; }
+  else if (score >= 35) { letter = 'D';  color = '#f97316'; shieldColor = 'orange';      verdict = "Bad. This prompt does not respect itself."; }
+  else if (score >= 20) { letter = 'F';  color = '#ef4444'; shieldColor = 'red';         verdict = "Failing. You asked a language model to read your mind."; }
+  else                  { letter = 'F-'; color = '#b91c1c'; shieldColor = 'red';         verdict = "Catastrophic. Even ChatGPT pitied you."; }
+
+  // Roast: pick the most savage missing signal (heaviest weight) + a length quip
+  const missed = results.filter(r => !r.passed).sort((a, b) => b.weight - a.weight);
+  let roast;
+  if (t.trim().length < 10) {
+    roast = `${t.trim().length} characters. The prompt equivalent of staring at someone until they guess what you want.`;
+  } else if (t.length > 4000) {
+    roast = `${t.length} characters. You wrote a novella. The model will read the first paragraph and the last sentence, like a CEO.`;
+  } else if (missed.length === 0) {
+    roast = "Genuinely well-engineered. Nothing to roast. Concerning.";
+  } else if (score < 30) {
+    roast = `Missing ${missed.length} of ${SIGNALS.length} signals. You typed a wish, not a prompt.`;
+  } else if (score < 60) {
+    roast = missed[0].miss + ` (${missed.length - 1} other issues queued behind it.)`;
+  } else if (score < 80) {
+    roast = missed[0].miss + " You're close to a real prompt — just close to it.";
+  } else {
+    roast = missed[0].miss + " That's the only meaningful issue. Fix it and you're done.";
+  }
+
+  const achievements = [];
+  if (score >= 90) achievements.push({ kind: 'good', text: '🏆 Top 5% prompt' });
+  if (score >= 75) achievements.push({ kind: 'good', text: '✨ Well-structured' });
+  if (results.find(r => r.id === 'examples').passed) achievements.push({ kind: 'good', text: '📚 Has examples' });
+  if (results.find(r => r.id === 'antihal').passed) achievements.push({ kind: 'good', text: '🛡️ Anti-hallucination' });
+  if (results.find(r => r.id === 'format').passed) achievements.push({ kind: 'good', text: '📐 Format specified' });
+  if (!results.find(r => r.id === 'role').passed) achievements.push({ kind: 'bad', text: '🪪 No role set' });
+  if (!results.find(r => r.id === 'lengthsane').passed) {
+    achievements.push({ kind: 'weird', text: t.length < 40 ? '🤏 Too short' : '📜 Too long' });
+  }
+  if (!results.find(r => r.id === 'noyou').passed) achievements.push({ kind: 'weird', text: '🙇 Excessive "please"' });
+  if (!results.find(r => r.id === 'noallcaps').passed) achievements.push({ kind: 'weird', text: '🗯️ Shouting' });
+  if (!results.find(r => r.id === 'noconflict').passed) achievements.push({ kind: 'bad', text: '🔀 Contradictions' });
+  if (!results.find(r => r.id === 'singletask').passed) achievements.push({ kind: 'bad', text: '🧶 Too many tasks' });
+
+  return { score, letter, color, shieldColor, verdict, roast, results, achievements: achievements.slice(0, 6) };
+}
+
+function grade() {
+  const t = promptInput.value;
+  if (!t.trim()) {
+    promptInput.focus();
+    return;
+  }
+  const r = gradePrompt(t);
+
+  document.getElementById('rGrade').textContent = r.letter;
+  document.querySelector('.result-header').style.background = `linear-gradient(135deg, ${r.color} 0%, #a855f7 100%)`;
+  document.getElementById('rVerdict').textContent = r.verdict;
+  document.getElementById('rMeta').textContent = `Score: ${r.score}/100 · ${t.trim().split(/\s+/).length} words · ${t.length} chars`;
+  document.getElementById('rRoast').textContent = '"' + r.roast + '"';
+  document.getElementById('rScoreFill').style.width = r.score + '%';
+
+  document.getElementById('rSignals').innerHTML = r.results.map(s =>
+    `<div class="signal ${s.passed ? 'ok' : (s.weight >= 5 ? 'bad' : 'warn')}">
+      <span class="mark">${s.passed ? '✓' : '✗'}</span>
+      <span>${s.name}</span>
+    </div>`).join('');
+
+  document.getElementById('rAchievements').innerHTML = r.achievements.map(a =>
+    `<span class="achievement ${a.kind}">${a.text}</span>`).join('');
+
+  // Deep link: base64 of prompt in hash
+  const hashEncoded = encodeURIComponent(btoa(unescape(encodeURIComponent(t))));
+  location.hash = '#' + hashEncoded;
+  const shareUrl = SHARE_URL_BASE + '#' + hashEncoded;
+
+  const shareText = `My AI prompt got graded: ${r.letter} (${r.score}/100) 📝\n\n"${r.roast.slice(0, 140)}"\n\nGrade yours →`;
+  document.getElementById('rShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+  document.getElementById('rCopyLink').onclick = () => {
+    navigator.clipboard.writeText(shareUrl);
+    const btn = document.getElementById('rCopyLink');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+  };
+
+  const canvas = document.getElementById('cardCanvas');
+  drawCard(canvas, r, t);
+  document.getElementById('rDownload').href = canvas.toDataURL('image/png');
+
+  const embedCode = `<a href="${shareUrl}" target="_blank">
+  <img src="https://img.shields.io/badge/Prompt_Grade-${encodeURIComponent(r.letter)}-${r.shieldColor}?style=for-the-badge&logo=openai&logoColor=white" alt="Prompt Grade: ${r.letter}">
+</a>`;
+  document.getElementById('rEmbed').textContent = embedCode;
+  document.getElementById('rEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('rEmbedCopy');
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = 'Copy embed code', 1500);
+  };
+
+  resultCard.classList.add('show');
+  resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function drawCard(canvas, r, promptText) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#1f1f2e'); bg.addColorStop(1, '#15151f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, r.color); stripe.addColorStop(1, '#a855f7');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 10);
+  // Brand
+  ctx.fillStyle = r.color;
+  ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText('📝 GRADE MY PROMPT', 60, 70);
+
+  // Grade
+  ctx.fillStyle = r.color;
+  ctx.font = 'bold 200px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(r.letter, W - 60, 220);
+  ctx.textAlign = 'left';
+
+  // Score
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = 'bold 22px -apple-system, sans-serif';
+  ctx.fillText('SCORE', 60, 130);
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 64px -apple-system, sans-serif';
+  ctx.fillText(`${r.score}/100`, 60, 200);
+
+  // Verdict
+  ctx.fillStyle = '#c4b5fd';
+  ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText(r.verdict.slice(0, 50), 60, 260);
+
+  // Roast
+  ctx.fillStyle = '#fde68a';
+  ctx.font = 'italic 26px -apple-system, sans-serif';
+  const wrap = (text, x, y, maxW, lh, maxLines) => {
+    const words = text.split(' ');
+    let line = ''; let lines = 0;
+    for (const w of words) {
+      if (ctx.measureText(line + ' ' + w).width > maxW && line) {
+        ctx.fillText(line, x, y); line = w; y += lh; lines++;
+        if (maxLines && lines >= maxLines) { line = ''; break; }
+      } else { line = line ? line + ' ' + w : w; }
+    }
+    if (line) ctx.fillText(line, x, y);
+  };
+  wrap('"' + r.roast + '"', 60, 320, W - 120, 36, 4);
+
+  // Signals passed
+  const passed = r.results.filter(x => x.passed).length;
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 28px -apple-system, sans-serif';
+  ctx.fillText(`${passed}/${SIGNALS.length} quality signals passed`, 60, H - 80);
+
+  // Footer
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '18px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/prompt-grade', W - 60, H - 25);
+  ctx.textAlign = 'left';
+}
+
+if (!tryRestoreFromHash()) {
+  // Empty initial state — wait for input
+}
+</script>
+</body>
+</html>
