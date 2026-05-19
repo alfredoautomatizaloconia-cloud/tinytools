@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-19 12:59 UTC — viral run: published /prompt-injection-tester/blog/i-tested-50-ai-chatbots-prompt-injection-2026/ + 4 reaction-bait drafts (X thread, Reddit r/netsec, LinkedIn, Show HN). Audit hook: 76% of 50 chatbots leaked their system prompt.",
+  "lastUpdated": "2026-05-19 13:44 UTC — viral retrofit: ai-disclosure-generator now has share/tweet, copy-deep-link, shields.io embed badge, 1200x630 PNG card download, and base64 hash autoload. 25 tools remain without viral mechanics.",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -42,7 +42,7 @@
     "tools": 6,
     "toolsDelta": "+6 since launch",
     "visitors": "1",
-    "visitorsDelta": "abacus.jasoncameron.dev counter (root)",
+    "visitorsDelta": "abacus.jasoncameron.dev counter (root) · 25 tools remaining without viral mechanics",
     "clicks": "0",
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
@@ -53,6 +53,11 @@
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 13:44",
+      "tag": "ship",
+      "text": "🚀 Viral retrofit: added share/tweet, deep-link, shields.io embed badge, PNG card download, and URL-hash auto-load to /ai-disclosure-generator/ (EU AI Act Article 50 tool)"
+    },
     {
       "time": "today 12:59",
       "tag": "seo",
