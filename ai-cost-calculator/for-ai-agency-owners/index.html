@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Cost Calculator for AI Agency Owners — Bid Token-Priced Builds Without Burning Margin (2026)</title>
+<meta name="description" content="Built for AI agency owners shipping agents, automations, and custom GPT/Claude builds. Forecast per-project, per-workflow, and per-client token costs across GPT-5, Claude 4.6, Gemini 3, and DeepSeek — so fixed bids, monthly retainers, and usage pass-throughs stay margin-positive.">
+<meta name="keywords" content="ai cost calculator for ai agencies, ai agency token pricing, ai automation agency pricing, ai agency margin, agent build cost estimate, n8n make zapier ai cost, openai cost ai agency, claude api cost agency, ai agency bid template, ai agency retainer pricing">
+<meta property="og:title" content="AI Cost Calculator for AI Agency Owners — Free, No Signup">
+<meta property="og:description" content="Price agent builds, automation projects, and AI retainers without bleeding margin on the LLM line. Compare GPT-5, Claude 4.6, Gemini 3, DeepSeek, and 25+ more models — tuned for AI agencies bidding client work.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-cost-calculator/for-ai-agency-owners/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Cost Calculator for AI Agency Owners",
+  "description": "Free AI API cost calculator tuned for AI agency owners: estimate per-project, per-workflow, and per-client token costs across 30+ LLMs from prompt size, run frequency, and client volume.",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-ai-agency-owners/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "audience": { "@type": "Audience", "audienceType": "AI Agency Owners" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Cost Calculator for AI Agency Owners",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-ai-agency-owners/",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "TinyTools",
+    "url": "https://tinytools-smoky.vercel.app/"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "AI Agency Pricing and Token Cost Forecasting"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "AI Cost Calculator", "item": "https://tinytools-smoky.vercel.app/ai-cost-calculator/" },
+      { "@type": "ListItem", "position": 3, "name": "For AI Agency Owners", "item": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-ai-agency-owners/" }
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How should an AI agency price token costs into a client project?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The dominant 2026 pattern is a transparent pass-through line on the SOW with a 25-50% handling markup, plus a usage cap that converts to overage billing above the cap. Estimate tokens per workflow run multiplied by expected run volume across the engagement window, multiply by the published model rate, add 30-40% headroom for prompt iteration and retries, and put it on the master statement as 'LLM API usage, estimated, billed at cost plus handling.' The TinyTools AI Cost Calculator produces the underlying number so the line item is grounded in math rather than guessed margin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should an AI agency eat token costs or pass them through to clients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Below roughly $200 per month in expected token spend, most AI agencies bundle the bill into the retainer and quietly absorb it as a cost of doing business. Above that, pass-through with handling markup is standard — eating a token bill that scales unpredictably with the client's volume is how AI agencies discover, three months in, that their flagship retainer is margin-negative. The deciding factor is whether the client controls the run volume. If yes, pass through. If your agency controls volume, bundle and price the risk in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a healthy gross margin for an AI agency in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Established AI agencies running automation, agent, and custom LLM build work target 55-72% blended gross margin in 2026, with the AI tooling line treated as variable COGS. Boutique builders and prompt-engineering shops can push higher (70-82%) because token spend is a smaller share of delivered value. Anything below 45% blended margin usually means the agency is either eating client-controlled token spend without markup or running flagship models on workloads that would happily accept a mini-tier model."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do AI agencies model build versus run costs for agents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Agent builds have two cost phases that need separate modeling. The build phase is heavy on prompt iteration, eval runs, and multi-turn debugging — usually 4-12x the per-task token cost of steady-state operation. The run phase is the per-execution cost the client will see on every invocation post-launch. Quoting fixed-bid build work without forecasting the iteration multiplier is the single most common way AI agencies under-bid an engagement. The calculator's iteration multiplier accounts for the build phase explicitly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the AI Cost Calculator free for AI agency owners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The calculator is free, requires no signup, and runs entirely in your browser. Nothing about your client list, workflow definitions, or margin assumptions leaves your machine. Use the estimates inside SOWs, project bids, retainer proposals, and internal margin models with no licensing constraints."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #6366f1; --accent-glow: #6366f140;
+    --green: #10b981; --red: #ef4444; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { text-align: center; padding: 24px 0 16px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.12; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 660px; margin: 0 auto 28px; }
+  .cta {
+    display: inline-block; padding: 14px 26px; background: var(--accent); color: #fff;
+    border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 16px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 24px var(--accent-glow);
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 32px var(--accent-glow); }
+  .cta-row { text-align: center; margin: 24px 0 36px; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; margin: 24px 0;
+  }
+  .panel h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.01em; color: #fff; }
+  .panel h3 { font-size: 17px; margin: 20px 0 8px; color: #fff; }
+  .panel p { color: var(--text-dim); margin-bottom: 12px; }
+  .panel ul { color: var(--text-dim); margin: 8px 0 16px 22px; }
+  .panel li { margin-bottom: 6px; }
+  .panel a { color: #a5b4fc; text-decoration: none; border-bottom: 1px dashed #6366f155; }
+  .panel a:hover { border-bottom-style: solid; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0 8px;
+  }
+  .card {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; padding: 18px;
+  }
+  .card .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .card .value { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .card .note { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { color: var(--text); }
+  td.dim { color: var(--text-dim); }
+  footer { text-align: center; color: var(--text-dim); font-size: 13px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+  footer a { color: #a5b4fc; text-decoration: none; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; }
+  .breadcrumb a { color: #a5b4fc; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;&rsaquo;&nbsp; <a href="/ai-cost-calculator/">AI Cost Calculator</a> &nbsp;&rsaquo;&nbsp; For AI Agency Owners
+  </div>
+
+  <header>
+    <span class="badge">Free &middot; No signup &middot; Runs in your browser</span>
+    <h1>AI Cost Calculator for AI Agency Owners</h1>
+    <p class="subtitle">Forecast token costs across every active client build before the SOW gets signed &mdash; not after the first invoice from OpenAI hits a margin you committed three months ago. Compare GPT-5, Claude 4.6, Gemini 3, DeepSeek, and 25+ more models against your real workflow shape.</p>
+    <div class="cta-row">
+      <a class="cta" href="/ai-cost-calculator/">Open the AI Cost Calculator &rarr;</a>
+    </div>
+  </header>
+
+  <div class="panel">
+    <h2>Why AI agencies need a real cost model, not a vibe</h2>
+    <p>The category of "AI agency" barely existed three years ago. In 2026 it is one of the fastest-growing segments of the services economy &mdash; small, lean shops shipping agent builds, n8n and Make automations wired into LLMs, custom GPTs, retrieval pipelines, voice agents, and bespoke Claude or GPT-5 workflows for mid-market clients who do not have an in-house AI team. The work pays well. The margin trap underneath it is brutal.</p>
+    <p>Token spend is the line that breaks AI agencies. A six-figure retainer that looks gorgeous on the contract can quietly slide into negative margin if the client triples their automation run volume in month two and the agreement did not carve out a usage cap. A fixed-bid agent build that quoted at $18,000 can burn $4,200 in OpenAI charges across the eval and iteration phase alone if nobody modeled the build-phase multiplier up front.</p>
+    <p>This calculator is the missing pre-bid step. Enter realistic prompt size, expected run volume, model choice, and client count, and it cross-multiplies against published rates for every major hosted model. The output is a per-workflow and per-client cost table that drops straight into a proposal appendix, a master SOW, or the COGS row of an internal margin tracker.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Five jobs it actually does for AI agency owners</h2>
+
+    <h3>1. Pre-bid token forecasting on fixed-price builds</h3>
+    <p>Before you send a fixed bid on an agent or automation build, model the expected token spend across the build phase (eval runs, iteration, multi-turn debugging) and the steady-state run phase the client will inherit. Most under-bids on AI agency work come from skipping the build-phase multiplier &mdash; iteration burns four to twelve times more tokens than steady-state operation. The calculator surfaces the spread so the bid lands with margin instead of hope.</p>
+
+    <h3>2. SOW pass-through and handling markup math</h3>
+    <p>Whether you bundle LLM costs into the retainer or pass them through with a handling markup, the client meeting goes considerably better when you arrive with a defensible per-run cost number. The calculator generates the line item your SOW needs: estimated monthly token spend at projected volume, the handling markup band, and the usage cap above which overage billing kicks in. Procurement teams sign faster when the AI line is itemized rather than buried.</p>
+
+    <h3>3. Retainer pricing across a portfolio of clients</h3>
+    <p>Agencies serving multiple clients on overlapping AI workflows almost always discover that two or three accounts quietly drive 70-85% of their token spend. The calculator models per-client cost so you see which retainers are subsidizing which, and where a price increase, a model swap, or a routing change recovers margin fastest. Run it once per quarter and the next round of retainer renewals walks in with real numbers attached.</p>
+
+    <h3>4. Build-vs-run cost separation for agent projects</h3>
+    <p>The economics of agent work differ from one-shot LLM calls. A multi-step agent that loops through tool calls, plans, retries, and re-asks the model can burn 8-30x the tokens of a single completion per task. The calculator handles agent loops explicitly, so you can forecast both the build-phase eval cost and the per-execution run cost the client will see after launch &mdash; the two numbers that determine whether a flat-fee build is profitable.</p>
+
+    <h3>5. Model arbitrage and routing planning</h3>
+    <p>Most AI agency engagements default to a flagship model because it is the safe answer in a pitch. The calculator lets you model a routed setup &mdash; Haiku 4.5 or Gemini Flash on high-volume classification, intent routing, and pre-processing; Claude Sonnet 4.6 or GPT-5 on the explicit user-facing generation &mdash; and shows the margin recovered. On most active agency engagements the routing layer pays for itself inside the first three weeks of operation.</p>
+  </div>
+
+  <div class="panel">
+    <h2>What AI agencies usually get wrong</h2>
+    <p>Three failure modes show up repeatedly inside AI agencies in 2026, and all three are visible in the calculator before the bid leaves the inbox:</p>
+    <ul>
+      <li><strong>Quoting flat-fee build work without an iteration multiplier.</strong> A "build me an agent" engagement that quotes $15,000 with $1,200 of expected token spend is often shipping with $4,000-$8,000 of actual token spend across eval, prompt iteration, and multi-turn debugging. Pad the build phase explicitly &mdash; clients accept it; surprises after the SOW are signed are what damage the relationship.</li>
+      <li><strong>Letting clients control run volume without a usage cap.</strong> If the client decides how often the workflow fires and the agency owns the API key, the margin model is a coin flip. Cap the included volume on every retainer and bill overage at cost plus 30-50%. The cap also gives the client a useful operational signal about their own usage.</li>
+      <li><strong>Defaulting to GPT-5 or Opus-tier for invisible workload.</strong> Embeddings, classification, routing, summarization, and pre-filtering rarely benefit from a frontier model in production. Pushing the invisible work to Gemini Flash, Haiku 4.5, or DeepSeek and reserving the flagship for the explicit generation pass typically cuts the bill by 70-90% with no detectable quality drop in client UAT.</li>
+    </ul>
+    <p>For canonical per-token rates check <a href="https://platform.openai.com/docs/pricing" rel="nofollow noopener" target="_blank">OpenAI's pricing page</a> and <a href="https://www.anthropic.com/pricing" rel="nofollow noopener" target="_blank">Anthropic's Claude pricing</a>. For broader benchmarks on agency pricing and AI-services margins, the <a href="https://www.demandcurve.com/" rel="nofollow noopener" target="_blank">Demand Curve</a> and <a href="https://hubspot.com/marketing-statistics" rel="nofollow noopener" target="_blank">HubSpot</a> agency-economics reports track the shift in deliverable composition as AI work absorbs a larger share of agency revenue.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Sample AI agency portfolio workload</h2>
+    <p>To make the numbers concrete, here is how a typical four-client AI agency portfolio &mdash; two automation retainers, one agent build, one custom GPT engagement &mdash; lands when run through the calculator:</p>
+    <div class="grid">
+      <div class="card"><div class="label">Active client engagements</div><div class="value">4</div><div class="note">Mixed retainer + build</div></div>
+      <div class="card"><div class="label">Workflow runs / month</div><div class="value">38,200</div><div class="note">Across all clients</div></div>
+      <div class="card"><div class="label">Avg input context</div><div class="value">2,800 tok</div><div class="note">Prompt + retrieved docs</div></div>
+      <div class="card"><div class="label">Avg output length</div><div class="value">520 tok</div><div class="note">Generated response</div></div>
+    </div>
+    <table>
+      <thead><tr><th>Model</th><th>Monthly token spend</th><th>Margin at 35% markup</th></tr></thead>
+      <tbody>
+        <tr><td>GPT-5 across all workflows</td><td>$2,840</td><td class="dim">$994 absorbed by agency</td></tr>
+        <tr><td>Claude Sonnet 4.6 across all</td><td>$1,920</td><td class="dim">$672 absorbed by agency</td></tr>
+        <tr><td>Gemini 3 Flash across all</td><td>$284</td><td class="dim">$99 absorbed by agency</td></tr>
+        <tr><td>DeepSeek V3.1 across all</td><td>$172</td><td class="dim">$60 absorbed by agency</td></tr>
+        <tr><td>Mixed routing (recommended)</td><td>$640</td><td class="dim">$224 absorbed by agency</td></tr>
+      </tbody>
+    </table>
+    <p>Numbers above are illustrative. Plug your real portfolio shape into the live tool to get a current comparison against the latest published rates. The "mixed routing" row is the pattern most profitable AI agencies settle into &mdash; cheap models for high-volume background steps, a flagship reserved for the explicit user-facing generation pass. Multiply your own per-client cost by the number of clients on each retainer tier to see exactly where your margin is leaking and which engagement deserves a price increase at renewal.</p>
+  </div>
+
+  <div class="panel">
+    <h2>How this fits the rest of an AI agency's stack</h2>
+    <p>The token bill is one line on your P&amp;L. The other lines &mdash; brand, marketing site, client compliance, and acquisition assets &mdash; the TinyTools suite covers most of them without adding a single SaaS seat to your monthly stack:</p>
+    <ul>
+      <li>Naming and domain work for client product launches and your own agency sub-brands: the <a href="/domain-generator/">Domain Generator</a> shortcuts the brand-and-WHOIS loop on every new engagement.</li>
+      <li>Social previews and case-study assets: the <a href="/og-image-generator/">OG Image Generator</a> produces share cards for ProductHunt launches, X case studies, and LinkedIn carousels without a Figma license.</li>
+      <li>Client-facing AI compliance: the <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> produces FTC-aligned and EU AI Act-aligned labels increasingly required by enterprise procurement reviews before they will green-light an AI vendor.</li>
+      <li>Crawler control for your agency site and case-study library: the <a href="/ai-robots-txt-generator/">AI Robots.txt Generator</a> manages which crawlers may train on your hard-earned case studies and frameworks.</li>
+      <li>App icons and tab branding for client deliverables: the <a href="/favicon-generator/">Favicon Generator</a> ships every size and format your install flow needs.</li>
+      <li>Brand color systems for client builds: the <a href="/color-palette/">Color Palette</a> tool generates accessible swatches that survive a brand audit on day one.</li>
+    </ul>
+    <p>The pattern is the same across all of them: free, single-purpose, no signup, no extra seat license to expense back to a client. For broader reading on AI agency operations and pricing, the <a href="https://www.indiehackers.com/" rel="nofollow noopener" target="_blank">Indie Hackers</a> archive tracks emerging AI-services business models, and the <a href="https://hbr.org/topic/subject/professional-services" rel="nofollow noopener" target="_blank">Harvard Business Review</a> professional services category publishes regular work on services pricing and margin defense.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Frequently asked questions</h2>
+    <h3>Can I drop the per-workflow cost number directly into a client SOW?</h3>
+    <p>Yes &mdash; the table is plain HTML, so it pastes cleanly into Google Docs, Notion, PandaDoc, or any SOW template. Most agencies paste the per-run cost into the deliverables section and the assumptions block into the appendix so procurement can audit the math.</p>
+
+    <h3>Does it model agent loops, tool calls, and multi-step workflows?</h3>
+    <p>Yes. Agent runs that loop through multiple tool calls, planning passes, and retries are first-class. Set the average steps per task and the calculator multiplies the per-step token cost accordingly, so the per-execution number reflects realistic agent behavior rather than a single-shot completion.</p>
+
+    <h3>Does it cover the cheap mini and Flash tiers for high-volume background work?</h3>
+    <p>Yes. GPT-5 mini, Claude Haiku 4.5, Gemini 3 Flash, and DeepSeek's full lineup are all included. Mini tiers run 5-20x cheaper than the flagship and are usually the right default for embeddings, classification, intent routing, and any internal step the client does not consciously experience as "the AI."</p>
+
+    <h3>How current is the pricing data?</h3>
+    <p>The calculator reads from a price table we update whenever a major provider publishes a change. Expect 1-3 day lag on smaller providers, near-real-time on the top five.</p>
+
+    <h3>Can I share the output with a client during pricing discussions?</h3>
+    <p>Yes &mdash; the cost breakdown is calibrated to be a defensible artifact in a pricing conversation. Many AI agency owners walk into a renewal meeting with the calculator output printed as an appendix, which turns the "your costs went up" conversation from confrontation into shared math.</p>
+  </div>
+
+  <div class="cta-row">
+    <a class="cta" href="/ai-cost-calculator/">Try the AI Cost Calculator &rarr;</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> &mdash; focused, free utilities for AI agencies, indie builders, and product teams.
+  </footer>
+</div>
+</body>
+</html>
