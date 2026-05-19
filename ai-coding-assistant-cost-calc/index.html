@@ -155,6 +155,34 @@
   footer a { color: var(--accent); text-decoration: none; }
 
   .price-detail { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+
+  /* Viral share block */
+  .share-block { margin-top: 20px; padding: 18px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 14px; }
+  .share-block .share-label { font-size: 12px; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; font-weight: 600; }
+  .share-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .share-action {
+    flex: 1; min-width: 130px; padding: 10px 14px; border-radius: 10px;
+    background: var(--bg-elevated); border: 1px solid var(--border); color: var(--text);
+    font-size: 13px; font-weight: 600; cursor: pointer; text-align: center;
+    text-decoration: none; transition: all 0.15s; display: inline-block;
+  }
+  .share-action:hover { border-color: var(--accent); }
+  .share-action.primary { background: #1d9bf0; border-color: #1d9bf0; color: white; }
+  .share-action.primary:hover { background: #1a8cd8; }
+  .embed-row { margin-top: 14px; padding: 12px; background: var(--bg-elevated);
+    border-radius: 10px; }
+  .embed-row .label { font-size: 11px; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600; }
+  .embed-row pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px;
+    background: #000; padding: 10px; border-radius: 6px; color: #93c5fd;
+    overflow-x: auto; white-space: pre-wrap; word-break: break-all; margin: 0;
+  }
+  .embed-row button { margin-top: 8px; padding: 6px 12px; background: var(--accent);
+    border: none; border-radius: 6px; color: white; font-size: 11px; font-weight: 600;
+    cursor: pointer; }
 </style>
 </head>
 <body>
@@ -213,6 +241,20 @@
           <div class="label">Annual swing</div>
           <div class="value" id="annualSwing">—</div>
           <div class="sub">savings cheap vs expensive</div>
+        </div>
+      </div>
+
+      <div class="share-block" id="shareBlock">
+        <div class="share-label">Share your results</div>
+        <div class="share-actions">
+          <a class="share-action primary" id="vmShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+          <button class="share-action" id="vmCopyLink" type="button">🔗 Copy link</button>
+          <a class="share-action" id="vmDownload" download="ai-coding-cost.png">💾 Download card</a>
+        </div>
+        <div class="embed-row">
+          <div class="label">Embed your team's savings badge</div>
+          <pre id="vmEmbed"></pre>
+          <button id="vmEmbedCopy" type="button">Copy embed code</button>
         </div>
       </div>
 
@@ -279,6 +321,8 @@
     <p>Pricing data updated April 2026. We may earn a small commission from links to OpenRouter — never affects the comparison.</p>
     <p style="margin-top: 8px;"><a href="/" >← All TinyTools</a> · <a href="https://github.com/alfredoautomatizaloconia-cloud/tinytools" target="_blank" rel="noopener">Source on GitHub</a> · <a href="#">Tip jar ☕</a></p>
   </footer>
+
+  <canvas id="vmCardCanvas" width="1200" height="630" style="display:none;"></canvas>
 </div>
 
 <script>
@@ -483,6 +527,183 @@ function render() {
   $('expensiveModel').textContent = mostExp.name + ' ' + mostExp.plan;
   const swing = (mostExp.total - cheapest.total) * 12;
   $('annualSwing').textContent = fmt(swing) + '/yr';
+
+  // Update viral mechanics with latest result
+  updateShare(cheapest, mostExp, seats, swing);
+}
+
+/* -------------------- Viral mechanics -------------------- */
+
+function getState() {
+  return {
+    seats: parseInt($('seats').value) || 10,
+    billing,
+    usage: $('usage').value,
+    flags: [
+      $('reqAgent').checked ? 1 : 0,
+      $('reqLocal').checked ? 1 : 0,
+      $('reqByok').checked ? 1 : 0,
+      $('reqSso').checked ? 1 : 0,
+      $('reqAudit').checked ? 1 : 0,
+      $('reqPrivacy').checked ? 1 : 0,
+    ].join(''),
+    filter: activeFilter,
+  };
+}
+
+function encodeHash(s) {
+  // Compact deep-link: seats|billing|usage|flags|filter
+  return [s.seats, s.billing, s.usage, s.flags, s.filter].join('|');
+}
+
+function applyHashIfPresent() {
+  if (location.hash.length < 2) return false;
+  const raw = decodeURIComponent(location.hash.slice(1));
+  const parts = raw.split('|');
+  if (parts.length < 5) return false;
+  const [seats, bill, usage, flags, filter] = parts;
+  if (seats && /^\d+$/.test(seats)) $('seats').value = seats;
+  if (bill === 'annual' || bill === 'monthly') {
+    billing = bill;
+    document.querySelectorAll('.toggle-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.billing === bill);
+    });
+  }
+  if (usage && $('usage').querySelector(`option[value="${usage}"]`)) {
+    $('usage').value = usage;
+  }
+  if (/^[01]{6}$/.test(flags || '')) {
+    ['reqAgent','reqLocal','reqByok','reqSso','reqAudit','reqPrivacy']
+      .forEach((id, i) => { $(id).checked = flags[i] === '1'; });
+  }
+  if (filter) {
+    activeFilter = filter;
+    document.querySelectorAll('.filter-tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.filter === filter);
+    });
+  }
+  return true;
+}
+
+function updateShare(cheapest, mostExp, seats, swing) {
+  const state = getState();
+  // Update hash without scrolling
+  const newHash = '#' + encodeHash(state);
+  if (location.hash !== newHash) {
+    history.replaceState(null, '', newHash);
+  }
+  const shareUrl = `${location.origin}${location.pathname}${newHash}`;
+
+  const cheapName = cheapest.name + ' ' + cheapest.plan;
+  const savingsYr = Math.round(swing);
+  const cheapMo = Math.round(cheapest.total);
+  const shareText =
+    `I priced ${seats} dev seats across 14 AI coding assistants — cheapest is ${cheapName} at ${fmt(cheapest.total)}/mo. Annual swing vs worst pick: ${fmt(swing)}.\n\nCompare yours →`;
+
+  $('vmShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+  $('vmCopyLink').onclick = () => {
+    navigator.clipboard.writeText(shareUrl).catch(() => {});
+    const b = $('vmCopyLink');
+    const orig = b.textContent;
+    b.textContent = '✓ Copied!';
+    setTimeout(() => b.textContent = orig, 1500);
+  };
+
+  // PNG card
+  const canvas = $('vmCardCanvas');
+  drawCard(canvas, { cheapest, mostExp, seats, swing, billing });
+  try { $('vmDownload').href = canvas.toDataURL('image/png'); } catch(e) {}
+
+  // Embed badge (shields.io)
+  const badgeLabel = encodeURIComponent('AI coding cost');
+  const badgeMsg = encodeURIComponent(`save ${fmt(swing)}/yr`);
+  const badgeColor = swing > 5000 ? 'brightgreen' : (swing > 1000 ? 'green' : 'blue');
+  const embedCode =
+`<a href="${shareUrl}" target="_blank">
+  <img src="https://img.shields.io/badge/${badgeLabel}-${badgeMsg}-${badgeColor}?style=for-the-badge&logo=visualstudiocode" alt="AI coding cost: save ${fmt(swing)}/yr">
+</a>`;
+  $('vmEmbed').textContent = embedCode;
+  $('vmEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode).catch(() => {});
+    const b = $('vmEmbedCopy');
+    const orig = b.textContent;
+    b.textContent = '✓ Copied';
+    setTimeout(() => b.textContent = orig, 1500);
+  };
+}
+
+function drawCard(canvas, data) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  // Background
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#15151f');
+  bg.addColorStop(1, '#0a0a0f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Accent radial glow
+  const glow = ctx.createRadialGradient(W * 0.85, H * 0.15, 10, W * 0.85, H * 0.15, 600);
+  glow.addColorStop(0, 'rgba(59,130,246,0.35)');
+  glow.addColorStop(1, 'rgba(59,130,246,0)');
+  ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+  // Top stripe
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#3b82f6'); stripe.addColorStop(1, '#06b6d4');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+  // Eyebrow
+  ctx.fillStyle = '#06b6d4';
+  ctx.font = 'bold 24px -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif';
+  ctx.fillText('⚡ AI CODING ASSISTANT COST CALCULATOR', 60, 70);
+  // Headline
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 56px -apple-system, sans-serif';
+  ctx.fillText(`Team of ${data.seats}: ${fmt(data.cheapest.total)}/mo`, 60, 150);
+  // Subhead
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '24px -apple-system, sans-serif';
+  ctx.fillText(`Cheapest match: ${data.cheapest.name} ${data.cheapest.plan}`, 60, 195);
+  // Savings highlight box
+  ctx.fillStyle = 'rgba(16,185,129,0.15)';
+  roundRect(ctx, 60, 240, W - 120, 150, 18); ctx.fill();
+  ctx.strokeStyle = 'rgba(16,185,129,0.6)'; ctx.lineWidth = 2;
+  roundRect(ctx, 60, 240, W - 120, 150, 18); ctx.stroke();
+
+  ctx.fillStyle = '#a0a0b8'; ctx.font = 'bold 18px -apple-system, sans-serif';
+  ctx.fillText('ANNUAL SWING vs MOST EXPENSIVE PICK', 90, 280);
+  ctx.fillStyle = '#10b981'; ctx.font = 'bold 84px -apple-system, sans-serif';
+  ctx.fillText(fmt(data.swing) + '/yr', 90, 360);
+
+  // Comparison row
+  ctx.fillStyle = '#a0a0b8'; ctx.font = '20px -apple-system, sans-serif';
+  ctx.fillText('Most expensive:', 60, 450);
+  ctx.fillStyle = '#ef4444'; ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText(`${data.mostExp.name} ${data.mostExp.plan} — ${fmt(data.mostExp.total)}/mo`, 230, 450);
+
+  ctx.fillStyle = '#a0a0b8'; ctx.font = '20px -apple-system, sans-serif';
+  ctx.fillText('Billing:', 60, 490);
+  ctx.fillStyle = '#fff'; ctx.font = 'bold 22px -apple-system, sans-serif';
+  ctx.fillText(data.billing === 'annual' ? 'Annual (with discount)' : 'Monthly', 230, 490);
+
+  // CTA
+  ctx.fillStyle = '#fff'; ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText('Compare 14 tools — Cursor, Copilot, Claude Code, Windsurf…', 60, 555);
+
+  // Brand bottom-right
+  ctx.fillStyle = '#06b6d4'; ctx.font = 'bold 18px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app', W - 60, H - 30);
+  ctx.textAlign = 'left';
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y,     x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x,     y + h, r);
+  ctx.arcTo(x,     y + h, x,     y,     r);
+  ctx.arcTo(x,     y,     x + w, y,     r);
+  ctx.closePath();
 }
 
 document.querySelectorAll('.toggle-btn').forEach(btn => {
@@ -506,7 +727,14 @@ document.querySelectorAll('.filter-tab').forEach(tab => {
 ['seats','usage','reqAgent','reqLocal','reqByok','reqSso','reqAudit','reqPrivacy']
   .forEach(id => $(id).addEventListener('input', render));
 
+// Auto-load state from URL hash so deep-links work
+applyHashIfPresent();
 render();
+
+// Re-render if user navigates with hash (back/forward)
+window.addEventListener('hashchange', () => {
+  if (applyHashIfPresent()) render();
+});
 </script>
 </body>
 </html>
