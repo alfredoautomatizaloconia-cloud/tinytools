@@ -139,6 +139,24 @@
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
     text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
+
+  .viral-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+  .viral-btn {
+    flex: 1 1 auto; min-width: 140px; padding: 11px 16px; border-radius: 10px;
+    border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none;
+    text-align: center; transition: all 0.15s; display: inline-flex; align-items: center;
+    justify-content: center; gap: 6px;
+  }
+  .viral-btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .viral-btn.primary { background: var(--accent); color: #1a1a00; border-color: var(--accent); }
+  .viral-btn.primary:hover { background: #fcd34d; }
+  .embed-section { margin-top: 14px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; letter-spacing: 0.05em; }
+  .embed-section pre { font-family: 'SF Mono', Monaco, monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word; margin: 0; }
+  .embed-section button { margin-top: 8px; padding: 6px 12px; background: var(--accent); border: none; border-radius: 6px; color: #1a1a00; font-size: 12px; font-weight: 600; cursor: pointer; }
+  .embed-preview { display: inline-block; margin-top: 8px; }
+
 </style>
 </head>
 <body>
@@ -244,6 +262,25 @@
           <pre id="textOutput"></pre>
         </div>
       </div>
+
+      <div class="panel" style="margin-top: 16px;">
+        <h2>Share / embed your disclosure</h2>
+        <p style="font-size: 13px; color: var(--text-dim); margin-bottom: 12px;">Help others stay EU AI Act compliant — share the exact disclosure config you just generated.</p>
+        <div class="viral-actions">
+          <a class="viral-btn primary" id="vShare" target="_blank" rel="noopener">Share on X</a>
+          <button class="viral-btn" id="vCopyLink">Copy deep-link</button>
+          <a class="viral-btn" id="vDownload" download="ai-disclosure-card.png">Download card (PNG)</a>
+        </div>
+        <div class="embed-section">
+          <div class="label">Embed compliance badge on your site / README</div>
+          <div id="vBadgePreview" class="embed-preview"></div>
+          <pre id="vEmbed"></pre>
+          <button id="vEmbedCopy">Copy embed code</button>
+        </div>
+      </div>
+
+      <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
+
     </div>
   </div>
 
@@ -402,6 +439,180 @@ document.querySelectorAll('.copy-btn').forEach(btn => {
     setTimeout(() => btn.textContent = original, 1500);
   });
 });
+
+
+// ============================================================
+// VIRAL MECHANICS - share / embed / deep-link / PNG card
+// ============================================================
+const BASE_URL = 'https://tinytools-smoky.vercel.app/ai-disclosure-generator/';
+
+const TYPE_LABEL = {
+  text: 'AI Text', image: 'AI Image', 'image-edited': 'AI-Edited Image',
+  audio: 'AI Voice', video: 'AI Video', deepfake: 'Deepfake'
+};
+const STYLE_HEX = {
+  warning: { bg: '#fef3c7', fg: '#78350f', border: '#fbbf24' },
+  info:    { bg: '#dbeafe', fg: '#1e3a8a', border: '#3b82f6' },
+  dark:    { bg: '#1f2937', fg: '#f9fafb', border: '#374151' },
+  minimal: { bg: '#ffffff', fg: '#6b7280', border: '#d1d5db' }
+};
+
+function encodeState() {
+  const state = {
+    t: activeType,
+    s: document.getElementById('style').value,
+    l: document.getElementById('lang').value,
+    a: document.getElementById('aiTool').value.trim(),
+    d: document.getElementById('dateCreated').value.trim()
+  };
+  try {
+    return btoa(unescape(encodeURIComponent(JSON.stringify(state))))
+      .replace(/=+$/, '').replace(/\+/g, '-').replace(/\//g, '_');
+  } catch (e) { return ''; }
+}
+
+function decodeState(hash) {
+  try {
+    const padded = hash.replace(/-/g, '+').replace(/_/g, '/');
+    const pad = padded.length % 4 ? '='.repeat(4 - padded.length % 4) : '';
+    return JSON.parse(decodeURIComponent(escape(atob(padded + pad))));
+  } catch (e) { return null; }
+}
+
+function deepLink() { return BASE_URL + '#' + encodeState(); }
+
+function updateViralMechanics() {
+  const style = document.getElementById('style').value;
+  const lang = document.getElementById('lang').value;
+  const aiTool = document.getElementById('aiTool').value.trim();
+  const text = TEXT_PER_TYPE[activeType][lang];
+  const icon = ICON_PER_TYPE[activeType];
+  const url = deepLink();
+  const typeLabel = TYPE_LABEL[activeType] || activeType;
+
+  const shareText =
+    'I just generated an EU AI Act-compliant disclosure for my ' + typeLabel.toLowerCase() +
+    ' with TinyTools. Free, no signup, avoid 15M EUR fines. Get yours ->';
+  document.getElementById('vShare').href =
+    'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) +
+    '&url=' + encodeURIComponent(url);
+
+  document.getElementById('vCopyLink').onclick = () => {
+    navigator.clipboard.writeText(url);
+    const btn = document.getElementById('vCopyLink');
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = orig, 1500);
+  };
+
+  const shieldLabel = encodeURIComponent('AI Act');
+  const shieldMsg = encodeURIComponent(typeLabel + ' disclosure');
+  const shieldColor = activeType === 'deepfake' ? 'red' :
+                      activeType.indexOf('image') === 0 ? 'blueviolet' :
+                      activeType === 'audio' ? 'orange' :
+                      activeType === 'video' ? 'ec4899' : 'fbbf24';
+  const badgeUrl = 'https://img.shields.io/badge/' + shieldLabel + '-' + shieldMsg + '-' + shieldColor + '?style=for-the-badge';
+  document.getElementById('vBadgePreview').innerHTML =
+    '<a href="' + url + '" target="_blank" rel="noopener"><img src="' + badgeUrl + '" alt="AI Act ' + typeLabel + ' disclosure" loading="lazy"></a>';
+
+  const embedCode =
+    '<!-- EU AI Act disclosure badge - links to generator config -->\n' +
+    '<a href="' + url + '" target="_blank" rel="noopener">\n' +
+    '  <img src="' + badgeUrl + '" alt="AI Act ' + typeLabel + ' disclosure" />\n' +
+    '</a>';
+  document.getElementById('vEmbed').textContent = embedCode;
+  document.getElementById('vEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('vEmbedCopy');
+    const orig = btn.textContent;
+    btn.textContent = 'Copied';
+    setTimeout(() => btn.textContent = orig, 1500);
+  };
+
+  const canvas = document.getElementById('cardCanvas');
+  drawDisclosureCard(canvas, { typeLabel: typeLabel, text: text, icon: icon, style: style, aiTool: aiTool });
+  try {
+    document.getElementById('vDownload').href = canvas.toDataURL('image/png');
+  } catch (e) { /* canvas tainted */ }
+}
+
+function drawDisclosureCard(canvas, opts) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#15151f'); bg.addColorStop(1, '#0a0a0f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#fbbf24'); stripe.addColorStop(1, '#ef4444');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+  ctx.fillStyle = '#fbbf24';
+  ctx.font = 'bold 24px -apple-system, Inter, sans-serif';
+  ctx.fillText('EU AI ACT  -  ARTICLE 50 COMPLIANT', 60, 72);
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 64px -apple-system, Inter, sans-serif';
+  ctx.fillText('AI Content Disclosure', 60, 160);
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '28px -apple-system, Inter, sans-serif';
+  ctx.fillText('Type: ' + opts.typeLabel + (opts.aiTool ? '  -  ' + opts.aiTool : ''), 60, 210);
+  const c = STYLE_HEX[opts.style] || STYLE_HEX.warning;
+  const boxW = 900, boxH = 140, boxX = (W - boxW) / 2, boxY = 280;
+  ctx.fillStyle = c.bg;
+  roundRect(ctx, boxX, boxY, boxW, boxH, 18); ctx.fill();
+  ctx.lineWidth = 4; ctx.strokeStyle = c.border; ctx.stroke();
+  ctx.fillStyle = c.fg;
+  ctx.font = 'bold 48px -apple-system, Inter, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(opts.icon + '   ' + opts.text, W / 2, boxY + 90);
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#fca5a5';
+  ctx.font = 'bold 22px -apple-system, Inter, sans-serif';
+  ctx.fillText('Penalty for non-compliance: up to 15M EUR or 3% global turnover', 60, 480);
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '20px -apple-system, Inter, sans-serif';
+  ctx.fillText('Generated free at', 60, 580);
+  ctx.fillStyle = '#fbbf24';
+  ctx.font = 'bold 20px -apple-system, Inter, sans-serif';
+  ctx.fillText('tinytools-smoky.vercel.app/ai-disclosure-generator', 235, 580);
+  ctx.fillStyle = '#fbbf24';
+  ctx.font = 'bold 140px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(opts.icon, W - 60, 200);
+  ctx.textAlign = 'left';
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+
+const __originalRender = render;
+render = function() {
+  __originalRender.apply(this, arguments);
+  updateViralMechanics();
+  try { history.replaceState(null, '', '#' + encodeState()); } catch (e) {}
+};
+
+(function loadFromHash() {
+  if (location.hash.length > 1) {
+    const state = decodeState(location.hash.slice(1));
+    if (state) {
+      if (state.t && TEXT_PER_TYPE[state.t]) {
+        activeType = state.t;
+        document.querySelectorAll('.type-btn').forEach(b =>
+          b.classList.toggle('active', b.dataset.type === state.t));
+      }
+      if (state.s) document.getElementById('style').value = state.s;
+      if (state.l) document.getElementById('lang').value = state.l;
+      if (state.a) document.getElementById('aiTool').value = state.a;
+      if (state.d) document.getElementById('dateCreated').value = state.d;
+    }
+  }
+})();
 
 render();
 </script>
