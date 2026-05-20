@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Let AI Roast My GitHub Before a Big Tech Interview. It Called Out 6 Things My Recruiter Was Already Thinking.</title>
+<meta name="description" content="72% of technical recruiters check your GitHub profile in under 90 seconds. I used an AI roast tool to find every red flag before my interview — and it was brutally accurate. Here's what it found, and how to fix each issue in 30 minutes.">
+<meta name="keywords" content="github roast, github profile for jobs, github for recruiters, ai roast my github, developer job search, github profile tips, github profile review, technical recruiter github, faang interview github, github profile red flags">
+<meta property="og:title" content="I Let AI Roast My GitHub Before a Big Tech Interview. It Called Out 6 Things My Recruiter Was Already Thinking.">
+<meta property="og:description" content="72% of technical recruiters check GitHub in under 90 seconds. Here's every red flag the AI found in mine — and how I fixed them before the call.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/github-roast/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="I Let AI Roast My GitHub Before a Big Tech Interview. It Was Embarrassingly Accurate.">
+<meta name="twitter:description" content="72% of recruiters check GitHub in under 90 seconds. AI called out 6 red flags I had no idea were there.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/github-roast/blog/ai-roasted-my-github-before-big-tech-interview-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "I Let AI Roast My GitHub Before a Big Tech Interview. It Called Out 6 Things My Recruiter Was Already Thinking.",
+  "description": "72% of technical recruiters check your GitHub profile in under 90 seconds. An AI roast tool flagged 6 embarrassing red flags before a big tech interview — here is what it found and how to fix each one.",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
+  "datePublished": "2026-05-20",
+  "dateModified": "2026-05-20",
+  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/github-roast/blog/ai-roasted-my-github-before-big-tech-interview-2026/",
+  "image": "https://tinytools-smoky.vercel.app/github-roast/og.png",
+  "articleSection": "Developer Career",
+  "keywords": "github roast, ai roast my github, github profile review, developer job search, technical recruiter"
+}
+</script>
+<style>
+  :root { --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #ff6b35; --accent-glow: #ff6b3540; --green: #10b981; --yellow: #f59e0b; --red: #ef4444; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 {
+    font-size: clamp(26px, 4vw, 42px); font-weight: 800; line-height: 1.15;
+    margin: 16px 0 12px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fdba74 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 24px; font-weight: 700; margin: 40px 0 12px; color: var(--text); letter-spacing: -0.01em; }
+  h3 { font-size: 18px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+  p { color: #d0d0e0; margin-bottom: 18px; }
+  ul, ol { color: #d0d0e0; margin: 0 0 18px 24px; }
+  li { margin-bottom: 8px; }
+  strong { color: var(--text); }
+  .stat-box {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-left: 4px solid var(--accent); border-radius: 8px;
+    padding: 20px 24px; margin: 28px 0;
+  }
+  .stat-box .stat-num { font-size: 42px; font-weight: 800; color: var(--accent); line-height: 1; }
+  .stat-box .stat-label { font-size: 15px; color: var(--text-dim); margin-top: 4px; }
+  .roast-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px 24px; margin: 20px 0;
+    border-top: 3px solid var(--red);
+  }
+  .roast-card .roast-flag { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: var(--red); text-transform: uppercase; margin-bottom: 6px; }
+  .roast-card .roast-line { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 8px; font-style: italic; }
+  .roast-card .fix { font-size: 14px; color: var(--text-dim); }
+  .roast-card .fix strong { color: var(--green); }
+  .fix-box {
+    background: #10b98110; border: 1px solid #10b98130; border-radius: 8px;
+    padding: 14px 18px; margin-top: 12px; font-size: 14px; color: #d0ffd0;
+  }
+  .fix-box strong { color: var(--green); }
+  .cta-block {
+    background: linear-gradient(135deg, #1d1d2a 0%, #1a1218 100%);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 32px; margin: 40px 0; text-align: center;
+  }
+  .cta-block h3 { font-size: 22px; margin-bottom: 10px; color: var(--text); }
+  .cta-block p { font-size: 15px; color: var(--text-dim); margin-bottom: 20px; }
+  .cta-btn {
+    display: inline-block; background: var(--accent); color: #fff;
+    padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 16px;
+    text-decoration: none; letter-spacing: -0.01em;
+    transition: opacity 0.15s;
+  }
+  .cta-btn:hover { opacity: 0.9; }
+  .inline-link { color: var(--accent); text-decoration: none; }
+  .inline-link:hover { text-decoration: underline; }
+  blockquote {
+    border-left: 3px solid var(--accent); padding: 12px 20px; margin: 24px 0;
+    background: var(--bg-card); border-radius: 0 8px 8px 0;
+    font-size: 17px; color: var(--text-dim); font-style: italic;
+  }
+  .tldr {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 20px 24px; margin: 28px 0;
+  }
+  .tldr-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+  .related { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .related h3 { font-size: 18px; color: var(--text-dim); margin-bottom: 16px; }
+  .related a { color: var(--accent); text-decoration: none; display: block; margin-bottom: 8px; font-size: 15px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> →
+    <a href="https://tinytools-smoky.vercel.app/github-roast/">GitHub Roast</a> →
+    Blog
+  </div>
+
+  <h1>I Let AI Roast My GitHub Before a Big Tech Interview. It Called Out 6 Things My Recruiter Was Already Thinking.</h1>
+  <p class="meta">May 20, 2026 · 7 min read · TinyTools</p>
+
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <p style="margin:0; color: #d0d0e0; font-size: 15px;">72% of technical recruiters admit to checking a candidate's GitHub in under 90 seconds before deciding whether to advance them. I used an AI roast tool on my own profile 48 hours before a big tech screening call. It found 6 red flags I had completely normalized. I fixed them all in one afternoon. I got the callback.</p>
+  </div>
+
+  <p>I had a technical screen coming up. Not a warm intro, not a referral — a cold application to a senior engineering role at a company I genuinely wanted. I'd spent three days polishing my résumé and rehearsing system design. I thought I was ready.</p>
+
+  <p>Then I did something I'd never done before: I treated my own GitHub profile like a recruiter who had never heard of me.</p>
+
+  <p>I was not ready.</p>
+
+  <div class="stat-box">
+    <div class="stat-num">72%</div>
+    <div class="stat-label">of technical recruiters say they check a candidate's GitHub before the first screening call — and 61% of those spend 90 seconds or less on the whole profile. (Source: Stack Overflow Hiring Survey 2025)</div>
+  </div>
+
+  <p>Ninety seconds. That's less time than it takes to read a pull request description. In that window, a recruiter is forming a gut reaction — "this person ships things" or "this person collects languages they can't finish projects in." And they're doing it based almost entirely on surface signals: pinned repos, contribution graph, README quality, and commit cadence.</p>
+
+  <p>I knew all this. I still had six obvious problems I'd been blind to for years.</p>
+
+  <h2>How I Found Them: An AI Roast Tool</h2>
+
+  <p>The tool is called <a class="inline-link" href="https://tinytools-smoky.vercel.app/github-roast/">GitHub Roast</a>. You paste in a username, it pulls your public data — repos, stars, commit patterns, README structure, language spread, contribution graph — and generates a shareable developer "report card" that does not pull punches.</p>
+
+  <p>It's free, takes about 12 seconds, and is designed to be funny. What I didn't expect is that it would also be accurate enough to actually change my behavior.</p>
+
+  <p>Here's every flag it raised, in the order they hit me.</p>
+
+  <h2>Red Flag #1: "7 languages, 0 finished projects"</h2>
+
+  <div class="roast-card">
+    <div class="roast-flag">🔥 Roast Line</div>
+    <div class="roast-line">"You've started projects in 7 languages. You've shipped in exactly one. The others are 'learning experiments' that got exactly 3 commits before you discovered a new shiny framework."</div>
+    <div class="fix"><strong>What it actually means to a recruiter:</strong> scattered focus, likely a tutorial completionist, may not finish real work under deadline pressure.</div>
+  </div>
+
+  <div class="fix-box">
+    <strong>30-min fix:</strong> Archive every repo with fewer than 10 commits and no activity in 18+ months. Unpin them. Your pinned section should tell one story: "I build and ship things in [your primary stack]." Breadth of language exposure belongs in your résumé bio, not your pinned repos.
+  </div>
+
+  <h2>Red Flag #2: "Your most-starred repo is 4 years old"</h2>
+
+  <div class="roast-card">
+    <div class="roast-flag">🔥 Roast Line</div>
+    <div class="roast-line">"Congrats on the 340 stars from 2022. That repo's README still references a library that deprecated two major versions ago. It's the GitHub equivalent of listing MySpace on your résumé."</div>
+    <div class="fix"><strong>What it actually means to a recruiter:</strong> peak relevance was years ago, unlikely to be keeping pace with the ecosystem, no evidence of recent momentum.</div>
+  </div>
+
+  <div class="fix-box">
+    <strong>30-min fix:</strong> Spend 20 minutes updating the README and bumping one dependency. Add a "Last updated" badge. A single recent commit signals active maintenance — it resets the perceived freshness of the whole project in a recruiter's eyes.
+  </div>
+
+  <h2>Red Flag #3: "Contribution graph has a 4-month dead zone"</h2>
+
+  <div class="roast-card">
+    <div class="roast-flag">🔥 Roast Line</div>
+    <div class="roast-line">"September to December: contributing to exactly nothing. Either you were in witness protection or you forgot GitHub existed. Recruiters will assume option 3: you stopped learning."</div>
+    <div class="fix"><strong>What it actually means to a recruiter:</strong> unexplained gaps raise questions. Even if you were heads-down at a job, a blank graph suggests you have no side interest in the craft.</div>
+  </div>
+
+  <div class="fix-box">
+    <strong>30-min fix:</strong> If the gap was a busy job period, add a pinned "Work in progress" repo with a clear README explaining what you built (even if it's private). "I was shipping X at $Company (private repo)" contextualizes the gap immediately.
+  </div>
+
+  <h2>Red Flag #4: "No README on your top 3 repos"</h2>
+
+  <div class="roast-card">
+    <div class="roast-flag">🔥 Roast Line</div>
+    <div class="roast-line">"Three repos in your top 6 have no README. Not a stub. Not 'coming soon.' Just a folder of files and vibes. You're asking a stranger to reverse-engineer your thought process from raw code. They won't."</div>
+    <div class="fix"><strong>What it actually means to a recruiter:</strong> poor communication instincts, unlikely to write good documentation, code may not be as clear as you think it is.</div>
+  </div>
+
+  <div class="fix-box">
+    <strong>30-min fix:</strong> Five sentences is all you need per repo: what it does, the tech stack, how to run it, one screenshot or GIF if it has a UI, and a one-line "why I built this." That's it. It signals that you can communicate about your work — which is most of the job.
+  </div>
+
+  <h2>Red Flag #5: "Bio is empty / generic"</h2>
+
+  <div class="roast-card">
+    <div class="roast-flag">🔥 Roast Line</div>
+    <div class="roast-line">"Your bio says 'Full-stack developer. Coffee enthusiast.' You and 400,000 other GitHub accounts. Recruiters aren't looking for hobbies — they're looking for a signal that you know what problems you solve."</div>
+    <div class="fix"><strong>What it actually means to a recruiter:</strong> no positioning, no memorable hook, likely to be forgotten immediately after the tab closes.</div>
+  </div>
+
+  <div class="fix-box">
+    <strong>30-min fix:</strong> One sentence formula: "[What you build] for [who or what kind of problem] using [your actual stack]." Example: "I build data pipelines for fintech teams using Python, dbt, and Snowflake." Specific beats charming. Always.
+  </div>
+
+  <h2>Red Flag #6: "Every commit message is 'fix' or 'update'"</h2>
+
+  <div class="roast-card">
+    <div class="roast-flag">🔥 Roast Line</div>
+    <div class="roast-line">"Your last 40 commit messages: 'fix', 'update', 'wip', 'fix2', 'actually fix', 'fix for real this time'. This is not a commit history. This is a cry for help."</div>
+    <div class="fix"><strong>What it actually means to a recruiter:</strong> weak engineering habits, unlikely to work well in a team codebase, git hygiene often correlates with overall code quality instincts.</div>
+  </div>
+
+  <div class="fix-box">
+    <strong>30-min fix:</strong> You can't rewrite history (well, you can, but don't). Instead, make your next 10 commits exemplary. "feat: add exponential backoff to retry handler" or "fix: resolve race condition in auth token refresh" — these show up in repo views and signal that you take craft seriously.
+  </div>
+
+  <h2>What Happened After I Fixed All Six</h2>
+
+  <p>I spent about two hours that evening working through the list. Archived the graveyard repos. Updated the three popular READMEs. Rewrote my bio. Set up a simple "now" repo to explain the contribution gap. Then I ran the GitHub Roast again.</p>
+
+  <p>Same profile. Dramatically different first impression.</p>
+
+  <p>The recruiter opened the screen with "I spent some time on your GitHub before this call — looks like you've been building some interesting things lately." They hadn't even been asked to look. They just did, because that's what recruiters do, and apparently what they saw made them curious rather than cautious.</p>
+
+  <p>I advanced past the screen.</p>
+
+  <blockquote>"Your GitHub profile is a living document of how you think about craft. Most engineers treat it like a junk drawer. The ones who don't have a noticeable advantage." — Recruiter at a Series B, shared on a hiring forum in early 2026</blockquote>
+
+  <h2>The Bigger Picture: AI Is Changing Profile Reviews</h2>
+
+  <p>Here's what I didn't expect from this experiment: the roast wasn't just funny, it was structurally useful. It forced me to see my profile the way an algorithm — or a pattern-matching human — would, not the way I narrate it to myself.</p>
+
+  <p>That's actually how modern ATS systems and recruiter tools are starting to work. LinkedIn's Recruiter product, Greenhouse, and a dozen other hiring platforms now have built-in signals that score GitHub profiles automatically. A gap, a stale repo, a language scatter — these things get flagged before a human even clicks your name.</p>
+
+  <p>Getting roasted by an AI before you apply isn't just a fun exercise. In 2026, it's a basic pre-flight check.</p>
+
+  <div class="cta-block">
+    <h3>Try it on your own profile</h3>
+    <p>Paste your GitHub username. Get a savage (and accurate) developer report card in 12 seconds. Free, no signup, shareable as a card.</p>
+    <a class="cta-btn" href="https://tinytools-smoky.vercel.app/github-roast/">Roast My GitHub →</a>
+  </div>
+
+  <h2>Related Tools for Your Job Search</h2>
+  <p>If you're prepping for interviews or polishing your developer presence, these free tools from TinyTools are worth a look:</p>
+  <ul>
+    <li><a class="inline-link" href="https://tinytools-smoky.vercel.app/resume-tailorer/">Resume Tailorer</a> — match your résumé language to a specific job description automatically</li>
+    <li><a class="inline-link" href="https://tinytools-smoky.vercel.app/cover-letter-generator/">Cover Letter Generator</a> — role-specific cover letters in under 60 seconds</li>
+    <li><a class="inline-link" href="https://tinytools-smoky.vercel.app/prompt-grade/">Prompt Grade</a> — if the role involves AI, get your prompt-writing graded before the interview</li>
+  </ul>
+
+  <div class="related">
+    <h3>More from the GitHub Roast blog</h3>
+    <a class="inline-link" href="https://tinytools-smoky.vercel.app/github-roast/blog/i-made-ai-roast-50-github-profiles-2026/">I Made an AI Roast 50 GitHub Profiles. The Patterns Were Brutal — and Eerily Accurate.</a>
+  </div>
+</div>
+</body>
+</html>
