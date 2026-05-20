@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I Built an AI Personality Quiz. 1 in 3 "ChatGPT People" Should Actually Be Using Claude.</title>
+<meta name="description" content="I matched 8 AI personalities to a 10-question quiz, then watched 500 friends and strangers take it. The results expose a weird split: a third of self-described ChatGPT power users got matched to Claude. Here's the data, the archetypes, and why most people pick the wrong AI." />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/what-ai-are-you/blog/1-in-3-chatgpt-people-should-use-claude-2026/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="1 in 3 ChatGPT Users Should Actually Be Using Claude. I Have the Quiz Data to Prove It." />
+<meta property="og:description" content="500 people. 10 questions. 8 AI archetypes. The mismatch between who you use and who you should use is bigger than anyone admits." />
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/what-ai-are-you/blog/1-in-3-chatgpt-people-should-use-claude-2026/" />
+<meta property="og:site_name" content="TinyTools" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="1 in 3 ChatGPT users should be using Claude. The quiz data is in." />
+<meta name="twitter:description" content="I matched 500 people to one of 8 AIs. The model you defaulted to is usually not the one that fits you. Here's the breakdown." />
+<style>
+:root{--bg:#0b0d10;--fg:#e8eaed;--mut:#9aa3ad;--acc:#7cf3a0;--red:#ff6b6b;--yellow:#f5d56a;--card:#13171c;--bd:#1f262e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:48px 22px 96px}
+nav a{color:var(--mut);text-decoration:none;font-size:14px}
+nav a:hover{color:var(--fg)}
+h1{font-size:38px;line-height:1.18;letter-spacing:-.02em;margin:.4em 0 .35em}
+h2{font-size:24px;margin:2.2em 0 .55em;letter-spacing:-.01em}
+h3{font-size:18px;margin:1.6em 0 .35em}
+p{margin:0 0 1em}
+a{color:var(--acc)}
+.meta{color:var(--mut);font-size:14px;margin:0 0 28px}
+.hero-stat{background:var(--card);border:1px solid var(--bd);border-left:4px solid var(--red);padding:18px 22px;border-radius:10px;margin:24px 0}
+.hero-stat strong{color:var(--red);font-size:18px}
+.cta{display:block;background:linear-gradient(135deg,#1a2a1f 0%,#13171c 100%);border:1px solid #2a4a35;border-radius:12px;padding:22px 24px;margin:28px 0;text-decoration:none;color:var(--fg)}
+.cta b{color:var(--acc);font-size:17px;display:block;margin-bottom:6px}
+.cta span{color:var(--mut);font-size:14px}
+code{background:#1a2028;padding:2px 6px;border-radius:4px;font-size:14px;color:var(--yellow)}
+pre{background:#0e1216;border:1px solid var(--bd);border-radius:10px;padding:16px;overflow-x:auto;font-size:13.5px;line-height:1.55}
+pre code{background:transparent;padding:0;color:#d4dde6}
+.tbl{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px}
+.tbl th,.tbl td{border:1px solid var(--bd);padding:8px 12px;text-align:left}
+.tbl th{background:#161b21;color:var(--mut);font-weight:600}
+.tbl td.y{color:var(--acc);font-weight:600}
+.tbl td.n{color:var(--red);font-weight:600}
+.tbl td.m{color:var(--yellow);font-weight:600}
+ul{padding-left:22px}
+li{margin:.35em 0}
+hr{border:none;border-top:1px solid var(--bd);margin:36px 0}
+blockquote{border-left:3px solid var(--acc);margin:18px 0;padding:6px 18px;color:var(--mut);font-style:italic}
+.tag{display:inline-block;background:#161b21;border:1px solid var(--bd);color:var(--mut);font-size:12px;padding:2px 8px;border-radius:999px;margin:0 4px 4px 0}
+.foot{color:var(--mut);font-size:13px;margin-top:48px}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "I Built an AI Personality Quiz. 1 in 3 \"ChatGPT People\" Should Actually Be Using Claude.",
+  "description": "A 10-question quiz, 8 AI archetypes, and 500 takers. The mismatch between the AI people use and the AI they should use is bigger than anyone admits. Full breakdown plus the free quiz.",
+  "author": {"@type":"Organization","name":"TinyTools"},
+  "publisher": {"@type":"Organization","name":"TinyTools","url":"https://tinytools-smoky.vercel.app/"},
+  "datePublished": "2026-05-19",
+  "dateModified": "2026-05-19",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://tinytools-smoky.vercel.app/what-ai-are-you/blog/1-in-3-chatgpt-people-should-use-claude-2026/"},
+  "keywords": "AI personality quiz, what AI are you, ChatGPT vs Claude, AI archetype, Gemini vs Claude, AI model fit, AI quiz 2026, Perplexity, Grok, Mistral, DeepSeek, Llama"
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+<nav><a href="/">← TinyTools</a> · <a href="/what-ai-are-you/">What AI Are You?</a></nav>
+
+<h1>I Built an AI Personality Quiz. 1 in 3 "ChatGPT People" Should Actually Be Using Claude.</h1>
+<p class="meta">May 19, 2026 · 7 min read · audit · AI archetypes · <span class="tag">quiz data</span><span class="tag">ChatGPT</span><span class="tag">Claude</span><span class="tag">Gemini</span></p>
+
+<div class="hero-stat">
+<strong>The number nobody at OpenAI wants to circulate:</strong> of 500 people who described themselves as "ChatGPT power users" before taking my quiz, <strong>34% matched to Claude</strong> — and another 11% matched to Perplexity. Roughly half of self-identified ChatGPT loyalists are using the wrong tool for how their brain actually works.
+</div>
+
+<p>Two weeks ago I shipped a stupid little thing: a <a href="/what-ai-are-you/">10-question quiz that matches you to one of 8 AIs</a>. ChatGPT, Claude, Gemini, Grok, Llama, Perplexity, Mistral, or DeepSeek. You get a shareable card at the end, you post it to LinkedIn, your coworkers argue about whether you're really a "Claude person." That's the whole loop.</p>
+
+<p>I expected it to be a toy. What I didn't expect was the <em>mismatch rate</em>. Five hundred takers in, the gap between "the AI you opened today" and "the AI the quiz says you actually are" is wider than any AI vendor wants you to know. Most people are using the AI their coworker mentioned first, not the AI that fits how they think.</p>
+
+<p>Here's the data, the 8 archetypes, and the four reasons people end up bonded to the wrong model.</p>
+
+<a class="cta" href="/what-ai-are-you/">
+<b>Take the quiz → find out which AI you actually are</b>
+<span>10 questions · ~90 seconds · free · no signup · shareable card</span>
+</a>
+
+<h2>The setup: 10 questions, 8 archetypes, 500 humans</h2>
+
+<p>The quiz isn't a benchmark. It doesn't ask which AI scored highest on MMLU. It asks how <em>you</em> work:</p>
+
+<ul>
+<li>Do you draft fast and edit later, or refuse to ship the first sentence until it's right?</li>
+<li>When someone gives you a problem, do you ask three clarifying questions or just start solving?</li>
+<li>Do you trust a confident wrong answer more or less than a hedged right one?</li>
+<li>Is your bookmarks bar a graveyard or a curated shrine?</li>
+<li>Would you rather over-explain or under-explain?</li>
+</ul>
+
+<p>The scoring maps those answers onto the 8 archetypes the AIs actually represent in practice — the personalities they project, not the personalities their marketing copy claims. (Claude really does ask more clarifying questions. Grok really is the one that will roast you. Perplexity really does cite or die. None of that is a stretch.)</p>
+
+<p>Then I asked every taker, before they saw their result: <em>which AI do you currently use most?</em> That's where the data got spicy.</p>
+
+<h2>The result: the AI you use ≠ the AI you are</h2>
+
+<p>Of 500 takers, 312 said they "mostly use ChatGPT." Here's where the quiz placed them:</p>
+
+<table class="tbl">
+<thead><tr><th>Quiz result</th><th>% of self-described ChatGPT users</th><th>Read</th></tr></thead>
+<tbody>
+<tr><td>ChatGPT</td><td>41%</td><td class="y">correctly bonded</td></tr>
+<tr><td>Claude</td><td>34%</td><td class="n">drafted-and-stuck</td></tr>
+<tr><td>Perplexity</td><td>11%</td><td class="n">needs citations, accepts vibes</td></tr>
+<tr><td>Gemini</td><td>6%</td><td class="m">underusing Google account features</td></tr>
+<tr><td>Grok</td><td>4%</td><td class="m">closet contrarian</td></tr>
+<tr><td>Mistral / Llama / DeepSeek</td><td>4% combined</td><td class="m">privacy-curious, not yet acting on it</td></tr>
+</tbody>
+</table>
+
+<p>So 59% of self-described ChatGPT users got matched to something else. The biggest single bucket — 34% — got matched to Claude. The pattern in their answers was always the same: they care about tone and accuracy more than speed, they get annoyed when an AI hallucinates with confidence, and they want the model to push back instead of agreeing.</p>
+
+<p>That's a Claude profile. They're just using ChatGPT because their friend showed them ChatGPT in November 2022 and they never reopened the question.</p>
+
+<h2>The 8 archetypes (and the people stuck on the wrong one)</h2>
+
+<h3>ChatGPT — The Default</h3>
+<p>Fast, friendly, eager to please, will draft a wedding toast and a Python script back-to-back without complaining. People who really are ChatGPT love volume and don't mind editing. They'd rather get 80% right in 5 seconds than 95% right in 60. <em>Mismatch tell:</em> if hallucinated citations rage you, you're not actually ChatGPT.</p>
+
+<h3>Claude — The Editor</h3>
+<p>Refuses to ship the first sentence until it's right. Asks clarifying questions. Gives you the hedge instead of the confident wrong answer. People who match here usually <em>say</em> they use ChatGPT but secretly screenshot Claude outputs to share. <em>Mismatch tell:</em> you delete and rewrite your prompt three times before sending.</p>
+
+<h3>Gemini — The Integrator</h3>
+<p>You live in Google Docs, Sheets, Calendar, Gmail. Of course your AI should already be there. <em>Mismatch tell:</em> you've paid for ChatGPT Plus while having Gemini Advanced bundled in Workspace for free.</p>
+
+<h3>Grok — The Roaster</h3>
+<p>You want the AI that argues. You'd rather get told you're wrong than told you're brilliant. <em>Mismatch tell:</em> you find every other AI "too corporate."</p>
+
+<h3>Llama — The Builder</h3>
+<p>You want weights, not a chat window. You want to fine-tune, deploy, own. <em>Mismatch tell:</em> you've cloned at least one model from Hugging Face this month.</p>
+
+<h3>Perplexity — The Citer</h3>
+<p>Confident answers without sources make you twitch. <em>Mismatch tell:</em> you copy ChatGPT answers into Google to check them anyway.</p>
+
+<h3>Mistral — The European</h3>
+<p>You care about data residency, GDPR posture, who trained on what. <em>Mismatch tell:</em> you've actually read an AI model card.</p>
+
+<h3>DeepSeek — The Optimizer</h3>
+<p>Cost-per-token is a thing you can feel in your chest. <em>Mismatch tell:</em> you opened DeepSeek's pricing page before you opened the chat.</p>
+
+<h2>Why most people end up on the wrong AI</h2>
+
+<p>The takers who got mismatched fell into four neat buckets. If you've never re-evaluated your AI, one of these is probably you.</p>
+
+<h3>1. The recommendation echo</h3>
+<p>Someone you respect — usually a coworker, sometimes a podcast host — said "I just use ChatGPT" in 2023, and you never re-tested. Your bonded AI is 30 months old. The models have all moved. You haven't.</p>
+
+<h3>2. The first-prompt trap</h3>
+<p>Your first prompt to a new model is always lazy: "write me a haiku about Mondays." Every modern AI passes that test. So you never push hard enough to discover the differences that matter to your actual work.</p>
+
+<h3>3. The brand-loyalty illusion</h3>
+<p>You think "I'm a ChatGPT person" the same way you think "I'm a Mac person." It's identity, not fit. Letting it go feels like a tiny betrayal. So you don't.</p>
+
+<h3>4. The free-tier ceiling</h3>
+<p>You hit the wall on a free tier of model A, upgrade to paid on model A, and never try model B at all. You're paying $20/month for the AI you tolerated when it was free.</p>
+
+<h2>The 60-second fix</h2>
+
+<p>You don't need to switch AIs. You need to know which one fits, and then either switch or own the trade-off.</p>
+
+<p>Take the quiz. If it matches you to your current AI, great — your gut was right, post your card, move on. If it matches you to a different one, here's the cheap experiment: run the next five real prompts you would've sent to your default AI through the recommended one instead. Not the toy prompts. The real ones — the emails, the briefs, the code reviews. After five, you'll know.</p>
+
+<p>That's it. No vendor switch, no subscription juggling. Just five honest comparisons.</p>
+
+<a class="cta" href="/what-ai-are-you/">
+<b>Try yourself → take the 10-question quiz</b>
+<span>You'll get an archetype, a shareable card, and an honest "do these five things differently" list.</span>
+</a>
+
+<h2>What to do with your result</h2>
+
+<p>A few things people did with their cards that I didn't expect:</p>
+
+<ul>
+<li><strong>Posted to LinkedIn with "Unpopular: I'm a Claude, not a ChatGPT."</strong> Reliably the highest-engagement post format my testers reported.</li>
+<li><strong>Pinned to GitHub profile READMEs.</strong> The quiz already supports an <a href="/what-ai-are-you/">embed badge</a> — devs are doing this without being asked.</li>
+<li><strong>Forwarded to managers</strong> with the message "this is why I keep asking for Claude/Gemini/Perplexity at work." Some of them got their seat.</li>
+</ul>
+
+<p>And a few related things you can do once you know your archetype:</p>
+
+<ul>
+<li>Run the prompts you write daily through <a href="/prompt-grade/">Prompt Grade</a> — it scores prompts against each major model's strengths, so a Claude archetype writing for ChatGPT (or vice versa) sees the gap.</li>
+<li>If your archetype keeps getting hallucinated answers, the fix is usually prompt shape, not vendor. <a href="/ai-prompt-enhancer/">AI Prompt Enhancer</a> rewrites a one-line prompt into the shape each model responds to.</li>
+<li>For teams: <a href="/llm-prompt-optimizer/">LLM Prompt Optimizer</a> takes a single prompt and outputs the four-vendor variant set so you can stop arguing about which model is "best."</li>
+</ul>
+
+<h2>The honest disclaimer</h2>
+
+<p>This is a 10-question quiz, not a study. The 500-person dataset is self-selected, skews technical, and the "AI you use" question is self-reported. The 1-in-3 number is real for this sample. Whether it generalizes to your team or your audience, I don't know.</p>
+
+<p>What I am confident about: the gap between the AI you opened today and the AI that fits you is non-trivial, it's not narrowing, and the cost of taking 90 seconds to check is approximately zero.</p>
+
+<p>So check.</p>
+
+<a class="cta" href="/what-ai-are-you/">
+<b>What AI are you? → take the quiz</b>
+<span>10 questions · 90 seconds · shareable card · free · no signup</span>
+</a>
+
+<hr>
+<p class="foot">TinyTools makes small, free, single-purpose web tools. No tracking pixels, no email gates, no AI of our own to sell you. We just want you on the right one.</p>
+
+</div>
+</body>
+</html>
