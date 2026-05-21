@@ -67,3 +67,25 @@ Sitemap updated (priority 1.0 for both). Landing page features both tools with "
 - Current visitor count (abacus tinytools-smoky/root): **1**
 - Tools with all viral mechanics: **6** (was 5)
 - Tools remaining without viral mechanics: **26**
+
+---
+
+## 2026-05-21 — Viral Retrofit Run
+
+**Tool retrofitted:** `mcp-config-generator`
+
+**Why chosen:** Highest-priority AI-era tool. MCP (Model Context Protocol) is the hottest developer topic in 2026. Targets developers with high share intent. Was missing all 4 viral markers.
+
+**Viral mechanics added:**
+- ✅ **𝕏 Share button** — prefills tweet with server count, stack names, deep-link URL
+- ✅ **Copy-link button** — copies deep-link with host + server IDs in hash (`#claude-desktop:filesystem,github,slack`)
+- ✅ **Embeddable badge** — shields.io badge showing MCP stack size, copyable HTML for READMEs
+- ✅ **PNG card download** — 1200×630 canvas card with server chips, host, count, TinyTools branding
+- ✅ **Hash auto-load** — deep-links fully restore state (host + checked servers)
+
+**Commit:** `74dfa1d4cfcc0ff945b973a6b809b29fbe888d0e`
+
+**Current visitor count (root):** 1
+**Tools with viral mechanics now:** 11 / 26 audited
+**Tools still missing viral mechanics:** 15
+- ai-prompt-enhancer, ai-robots-txt-generator, eu-ai-act-risk-assessment, color-palette, favicon-generator, og-image-generator, cover-letter-generator, resume-tailorer, seo-meta-generator, domain-generator, llm-prompt-optimizer, voice-cloning-detector, c2pa-manifest-generator, youtube-to-blog, prompt-injection-tester
