@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EU AI Act Risk Assessment for RAG Engineers | TinyTools</title>
+  <meta name="description" content="Assess your RAG pipeline's EU AI Act risk tier in 2 minutes. Free tool for RAG engineers building retrieval-augmented generation systems that touch EU users — avoid Article 6 pitfalls before August 2026." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-rag-engineers/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="EU AI Act Risk Assessment for RAG Engineers" />
+  <meta property="og:description" content="Is your RAG pipeline high-risk under the EU AI Act? Find out in 2 minutes — free, no login." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-rag-engineers/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EU AI Act Risk Assessment for RAG Engineers" />
+  <meta name="twitter:description" content="Is your RAG pipeline high-risk under the EU AI Act? Free 2-minute assessment for retrieval-augmented generation builders." />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "EU AI Act Risk Assessment for RAG Engineers",
+    "url": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-rag-engineers/",
+    "description": "Free EU AI Act risk tier assessment tool built specifically for RAG engineers. Determine whether your retrieval-augmented generation pipeline falls under high-risk, limited-risk, or minimal-risk classification before the August 2026 enforcement deadline.",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "TinyTools",
+      "url": "https://tinytools-smoky.vercel.app/"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "EU AI Act Risk Assessment", "item": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" },
+        { "@type": "ListItem", "position": 3, "name": "For RAG Engineers", "item": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-rag-engineers/" }
+      ]
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0f14;
+      --surface: #151820;
+      --surface2: #1e2230;
+      --border: #2a2f42;
+      --accent: #6366f1;
+      --accent2: #818cf8;
+      --green: #22d3a5;
+      --red: #f87171;
+      --yellow: #fbbf24;
+      --text: #e2e8f0;
+      --muted: #8892aa;
+      --radius: 12px;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.7; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; gap: 12px; height: 52px; }
+    .nav-brand { font-weight: 700; font-size: 15px; color: var(--text); letter-spacing: -.3px; }
+    .nav-brand span { color: var(--accent); }
+    .nav-sep { color: var(--border); }
+    .nav-crumb { font-size: 13px; color: var(--muted); }
+
+    /* HERO */
+    .hero { max-width: 860px; margin: 0 auto; padding: 64px 24px 48px; text-align: center; }
+    .hero-badge { display: inline-block; background: rgba(99,102,241,.15); border: 1px solid rgba(99,102,241,.3); color: var(--accent2); font-size: 12px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-bottom: 20px; }
+    h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 800; line-height: 1.15; letter-spacing: -.5px; margin-bottom: 16px; }
+    h1 em { font-style: normal; color: var(--accent2); }
+    .hero-sub { font-size: 18px; color: var(--muted); max-width: 600px; margin: 0 auto 32px; }
+    .hero-cta-group { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .btn-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 15px; padding: 13px 28px; border-radius: 8px; transition: background .15s; }
+    .btn-primary:hover { background: #4f52d6; text-decoration: none; }
+    .btn-ghost { display: inline-block; border: 1px solid var(--border); color: var(--text); font-size: 14px; padding: 12px 22px; border-radius: 8px; }
+    .deadline-pill { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; background: rgba(251,191,36,.08); border: 1px solid rgba(251,191,36,.25); color: var(--yellow); font-size: 13px; padding: 6px 14px; border-radius: 100px; }
+
+    /* SECTIONS */
+    .section { max-width: 860px; margin: 0 auto; padding: 48px 24px; }
+    h2 { font-size: 26px; font-weight: 700; margin-bottom: 24px; letter-spacing: -.3px; }
+    h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+    p { color: #c8d0e0; margin-bottom: 14px; }
+
+    /* RISK EXPLAINER */
+    .risk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 8px; }
+    .risk-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .risk-card .risk-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+    .risk-card.high .risk-label { color: var(--red); }
+    .risk-card.limited .risk-label { color: var(--yellow); }
+    .risk-card.minimal .risk-label { color: var(--green); }
+    .risk-card h3 { font-size: 15px; }
+    .risk-card p { font-size: 13px; color: var(--muted); margin-bottom: 0; }
+
+    /* USE CASES */
+    .use-case-list { display: flex; flex-direction: column; gap: 20px; }
+    .use-case { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 20px 22px; }
+    .use-case .tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--accent2); margin-bottom: 6px; }
+    .use-case h3 { font-size: 16px; margin-bottom: 6px; }
+    .use-case p { font-size: 14px; color: var(--muted); margin-bottom: 0; }
+
+    /* PAIN → SOLUTION */
+    .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .pain-grid .col-header { background: var(--surface2); padding: 12px 20px; font-size: 12px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; }
+    .pain-grid .col-header.pain { color: var(--red); border-right: 1px solid var(--border); }
+    .pain-grid .col-header.solution { color: var(--green); }
+    .pain-row { display: contents; }
+    .pain-cell, .sol-cell { padding: 14px 20px; font-size: 14px; border-top: 1px solid var(--border); }
+    .pain-cell { color: #b0b8cc; border-right: 1px solid var(--border); }
+    .sol-cell { color: #c8d0e0; }
+
+    /* PRICING */
+    .pricing-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .pricing-table th { text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .pricing-table td { padding: 13px 14px; border-bottom: 1px solid var(--border); color: #c8d0e0; vertical-align: top; }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table tr.highlight td { background: rgba(99,102,241,.07); }
+    .price-chip { display: inline-block; font-weight: 700; font-size: 15px; }
+    .price-chip.free { color: var(--green); }
+    .price-chip.paid { color: var(--yellow); }
+    .check { color: var(--green); }
+    .cross { color: var(--red); }
+
+    /* TOOL EMBED BOX */
+    .embed-box { background: var(--surface); border: 2px solid var(--accent); border-radius: var(--radius); padding: 28px; text-align: center; }
+    .embed-box p { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+
+    /* DIVIDER */
+    hr { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* INTERNAL LINKS */
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    .related-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; transition: border-color .15s; }
+    .related-card:hover { border-color: var(--accent); text-decoration: none; }
+    .related-card .r-label { font-size: 11px; text-transform: uppercase; letter-spacing: .8px; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+    .related-card h3 { font-size: 14px; color: var(--text); }
+    .related-card p { font-size: 13px; color: var(--muted); margin: 4px 0 0; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 16px; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+    .faq-item h3 { font-size: 15px; margin-bottom: 8px; }
+    .faq-item p { font-size: 14px; color: var(--muted); margin-bottom: 0; }
+
+    /* FOOTER */
+    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 13px; color: var(--muted); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .pain-grid { grid-template-columns: 1fr; }
+      .pain-grid .col-header.pain { border-right: none; border-bottom: 1px solid var(--border); }
+      .pain-cell { border-right: none; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://tinytools-smoky.vercel.app/" class="nav-brand">Tiny<span>Tools</span></a>
+  <span class="nav-sep">›</span>
+  <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="nav-crumb">EU AI Act Risk Assessment</a>
+  <span class="nav-sep">›</span>
+  <span class="nav-crumb">For RAG Engineers</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">EU AI Act · RAG Pipelines</div>
+  <h1>EU AI Act Risk Assessment<br>for <em>RAG Engineers</em></h1>
+  <p class="hero-sub">Your vector database, retrieval layer, and LLM chain may trigger EU AI Act obligations. Find your risk tier in 2 minutes — before the August 2026 enforcement deadline hits.</p>
+  <div class="hero-cta-group">
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="btn-primary">Assess My RAG Pipeline →</a>
+    <a href="#use-cases" class="btn-ghost">See RAG Use Cases</a>
+  </div>
+  <div class="deadline-pill">
+    ⚠️ GPAI model rules enforceable from August 2026 — assess now
+  </div>
+</section>
+
+<hr />
+
+<!-- WHY RAG ENGINEERS NEED THIS -->
+<section class="section">
+  <h2>Why RAG Pipelines Aren't Exempt from the EU AI Act</h2>
+  <p>Most RAG engineers assume the EU AI Act only applies to frontier model providers — OpenAI, Anthropic, Google. That assumption is expensive. If you <strong>deploy</strong> a RAG system that serves EU users, you are the <em>deployer</em> under Article 3(4) — and deployers carry real obligations regardless of whose model you call underneath.</p>
+  <p>The risk tier depends on what your retrieval layer surfaces, which domain it operates in, and whether your answers influence decisions about people. A customer support RAG bot is probably minimal risk. A RAG system that retrieves employee performance records to help managers make promotion decisions may be high-risk under Annex III. The line matters: high-risk means mandatory conformity assessments, technical documentation, and audit trails. Non-compliance penalties reach €15 million or 3% of global annual turnover.</p>
+  <p>The tool below walks you through the eight high-risk categories in plain language, flags GPAI transparency obligations if you're exposing a general-purpose model, and generates a shareable risk report you can use in your technical documentation.</p>
+
+  <div class="risk-grid" style="margin-top: 32px;">
+    <div class="risk-card high">
+      <div class="risk-label">🔴 High Risk</div>
+      <h3>Annex III Categories</h3>
+      <p>RAG over HR data, medical records, credit histories, legal case files, or law enforcement inputs. Requires conformity assessment + ongoing monitoring.</p>
+    </div>
+    <div class="risk-card limited">
+      <div class="risk-label">🟡 Limited Risk</div>
+      <h3>GPAI Transparency Duty</h3>
+      <p>Chatbot-style RAG that could be mistaken for a human. Must disclose AI nature to users under Article 50.</p>
+    </div>
+    <div class="risk-card minimal">
+      <div class="risk-label">🟢 Minimal Risk</div>
+      <h3>Most RAG Use Cases</h3>
+      <p>Internal knowledge bases, developer docs, public FAQ bots. No mandatory obligations — but disclosure is best practice.</p>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- USE CASES -->
+<section class="section" id="use-cases">
+  <h2>5 RAG Use Cases &amp; Their EU AI Act Exposure</h2>
+  <div class="use-case-list">
+
+    <div class="use-case">
+      <div class="tag">Use Case 1</div>
+      <h3>HR Knowledge RAG — "Ask Our Policies" Bot</h3>
+      <p>A RAG system that retrieves employee handbook chunks to answer HR questions is probably minimal risk on its own. But the moment it also retrieves individual performance scores, attendance records, or disciplinary notes to generate manager recommendations, it crosses into Annex III (employment and workers management). Run the full assessment to see exactly where your data scope pushes the risk tier.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 2</div>
+      <h3>Medical Document RAG — Clinical Note Retrieval</h3>
+      <p>Building a RAG system over patient records, clinical notes, or diagnostic reports for clinicians triggers the Annex III health category. Even if the LLM only summarizes retrieved chunks and a doctor makes the final call, you're still deploying an AI system that <em>assists</em> in a medical professional context. High-risk classification means you need a technical file, quality management system, and post-market monitoring — before you go live in any EU member state.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 3</div>
+      <h3>Legal Case RAG — Contract &amp; Precedent Search</h3>
+      <p>LegalTech RAG that retrieves contracts, regulations, or case law to draft legal summaries for attorneys sits in a gray zone. If it assists in decisions that directly affect someone's legal rights (e.g. whether to file a claim, which clauses to enforce), the administration of justice category in Annex III may apply. The assessment tool scores this against the exact regulatory text so you know whether you need a conformity assessment or just solid documentation.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 4</div>
+      <h3>Customer Support RAG — Chatbot Over Product Docs</h3>
+      <p>A RAG chatbot that retrieves public documentation to answer product questions is the textbook minimal-risk scenario — but you still have an Article 50 transparency obligation: users must know they're talking to AI. The assessment generates the compliant disclosure language your team needs to drop into the chat UI. Skipping it is the most common EU AI Act mistake at minimal-risk companies.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 5</div>
+      <h3>Financial RAG — Portfolio &amp; Credit Data Retrieval</h3>
+      <p>RAG pipelines that retrieve transaction histories, credit reports, or investment records to generate summaries used in lending or investment decisions fall squarely under Annex III's access to financial services category. This is high-risk regardless of whether a human reviews the output. You need explainability hooks, audit logging, and a right-to-human-review mechanism — the assessment maps each requirement to your specific pipeline architecture.</p>
+    </div>
+
+  </div>
+</section>
+
+<hr />
+
+<!-- PAIN → SOLUTION -->
+<section class="section">
+  <h2>RAG Engineer Pain Points → What This Tool Solves</h2>
+  <div class="pain-grid">
+    <div class="col-header pain">The Pain</div>
+    <div class="col-header solution">The Solution</div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"I don't know if my RAG system counts as an AI system under Article 3 — we're just calling an API."</div>
+      <div class="sol-cell">The assessment walks you through the Article 3 definition. Spoiler: if you control the prompt, the retrieval scope, and the output, you're almost certainly a deployer with obligations.</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"My retrieval layer touches PII but only to personalize context — does that make it high-risk?"</div>
+      <div class="sol-cell">Risk is determined by the <em>purpose</em> of the output, not just the data touched. The tool maps your use case against all 8 Annex III categories to give a definitive answer.</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"We're using GPT-4 via Azure — does Microsoft's compliance cover us, or do we still need our own assessment?"</div>
+      <div class="sol-cell">Provider compliance only covers the model. As a deployer, your RAG architecture — the retrieval logic, the prompt construction, the use case — requires its own conformity assessment if high-risk.</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"My team is three engineers. We don't have a compliance budget. What's the minimum viable path?"</div>
+      <div class="sol-cell">The tool outputs a tiered action list: must-do (legal obligation), should-do (best practice), nice-to-do (future-proofing). Filter to what's legally required and nothing more.</div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- TOOL EMBED -->
+<section class="section">
+  <div class="embed-box">
+    <h2 style="margin-bottom: 8px;">Run Your Free EU AI Act Assessment</h2>
+    <p>Takes 2 minutes. No sign-up. Get a shareable PDF-ready risk report.</p>
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="btn-primary" style="font-size: 16px; padding: 15px 36px;">
+      Assess My RAG Pipeline →
+    </a>
+    <p style="margin-top: 16px; font-size: 12px;">Covers all 8 Annex III high-risk categories · GPAI transparency rules · Article 50 chatbot obligations</p>
+  </div>
+</section>
+
+<hr />
+
+<!-- PRICING COMPARISON -->
+<section class="section">
+  <h2>Pricing vs. Paid EU AI Act Compliance Tools</h2>
+  <p>Specialist EU AI Act compliance platforms charge enterprise prices for features RAG engineers rarely need — multi-stakeholder workflows, ISO certification prep, regulatory lobbying alerts. Here's how TinyTools compares for the core assessment use case:</p>
+  <div style="overflow-x: auto;">
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Price</th>
+          <th>RAG-Specific Guidance</th>
+          <th>Instant Report</th>
+          <th>No Login Required</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td><strong>TinyTools EU AI Act Assessment</strong></td>
+          <td><span class="price-chip free">Free</span></td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="check">✓</span> Yes</td>
+        </tr>
+        <tr>
+          <td>Securiti AI Governance</td>
+          <td><span class="price-chip paid">~$30k/yr</span></td>
+          <td><span class="cross">✗</span> Generic</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="cross">✗</span> No</td>
+        </tr>
+        <tr>
+          <td>OneTrust AI Governance</td>
+          <td><span class="price-chip paid">~$25k+/yr</span></td>
+          <td><span class="cross">✗</span> Generic</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="cross">✗</span> No</td>
+        </tr>
+        <tr>
+          <td>TrustArc AI Risk Manager</td>
+          <td><span class="price-chip paid">~$15k/yr</span></td>
+          <td><span class="cross">✗</span> Generic</td>
+          <td><span class="cross">✗</span> Delayed</td>
+          <td><span class="cross">✗</span> No</td>
+        </tr>
+        <tr>
+          <td>Lumenova AI Compliance</td>
+          <td><span class="price-chip paid">~$10k/yr</span></td>
+          <td><span class="cross">✗</span> Generic</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="cross">✗</span> No</td>
+        </tr>
+        <tr>
+          <td>DIY (reading EUR-Lex)</td>
+          <td><span class="price-chip free">Free</span></td>
+          <td><span class="cross">✗</span> Manual</td>
+          <td><span class="cross">✗</span> No</td>
+          <td><span class="check">✓</span> Yes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top: 16px; font-size: 13px; color: var(--muted);">Enterprise pricing estimates based on publicly available tiers and analyst sources as of 2026. TinyTools is free and browser-side — no data leaves your device.</p>
+</section>
+
+<hr />
+
+<!-- FAQ -->
+<section class="section">
+  <h2>FAQ: EU AI Act for RAG Engineers</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h3>Does the EU AI Act apply to me if my company is based outside the EU?</h3>
+      <p>Yes. The Act applies wherever the output of your AI system affects persons located in the EU — the same extraterritorial logic as GDPR. If EU users interact with your RAG pipeline, the Act applies to you.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Our RAG system is an internal tool used only by employees. Do we still need to comply?</h3>
+      <p>Potentially. If your RAG system is used in HR, performance evaluation, or any Annex III-adjacent process, the employees it affects still have rights under the Act. Internal deployment doesn't exempt you from high-risk obligations.</p>
+    </div>
+    <div class="faq-item">
+      <h3>We use LangChain + OpenAI embeddings + Pinecone. Which layer is assessed?</h3>
+      <p>All three together constitute your "AI system" as a deployer. The assessment covers the full pipeline — the orchestration layer (LangChain), the vector store (Pinecone), and the generative model (OpenAI) — as a single deployment.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What's the penalty for non-compliance as a deployer?</h3>
+      <p>For violations related to high-risk systems: up to €15 million or 3% of global annual turnover, whichever is higher. For supplying incorrect information to authorities: up to €7.5 million or 1% of global turnover.</p>
+    </div>
+    <div class="faq-item">
+      <h3>When do GPAI model obligations kick in?</h3>
+      <p>GPAI model rules (Title VIII) were enforceable from August 2025. High-risk system obligations (Annex III) are enforceable from August 2026. The assessment generates action items tagged by deadline so you can prioritize.</p>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- RELATED TOOLS -->
+<section class="section">
+  <h2>Related Tools for RAG Engineers</h2>
+  <div class="related-grid">
+    <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/" class="related-card">
+      <div class="r-label">Crawl Control</div>
+      <h3>AI Robots.txt Generator</h3>
+      <p>Control which scrapers and AI crawlers can index the data your RAG pipeline runs on.</p>
+    </a>
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/" class="related-card">
+      <div class="r-label">Article 50 Compliance</div>
+      <h3>AI Disclosure Generator</h3>
+      <p>Generate the compliant UI disclosure text your RAG chatbot must show EU users under Article 50.</p>
+    </a>
+    <a href="https://tinytools-smoky.vercel.app/ai-cost-calculator/" class="related-card">
+      <div class="r-label">Budget Planning</div>
+      <h3>AI Cost Calculator</h3>
+      <p>Model the token costs of your RAG pipeline across OpenAI, Anthropic, Gemini, and open-source alternatives.</p>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section" style="padding-top: 0;">
+  <div class="embed-box">
+    <h2 style="font-size: 22px; margin-bottom: 8px;">Don't guess your compliance status — know it.</h2>
+    <p>Free, instant, no login. Get a shareable risk report for your RAG pipeline in 2 minutes.</p>
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="btn-primary">
+      Start Free Assessment →
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> ·
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> ·
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-ai-app-builders/">For AI App Builders</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a>
+  </p>
+  <p style="margin-top: 8px;">© 2026 TinyTools · Free browser-side tools for builders · Not legal advice</p>
+</footer>
+
+</body>
+</html>
