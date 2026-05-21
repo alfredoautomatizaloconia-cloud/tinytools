@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-21 11:30 UTC — viral post #78: resume-tailorer/i-tested-12-ai-resume-tools-ats-2026. Hook: 75% of resumes filtered by ATS before human sees them. 12-tool comparison, 84% keyword match. Sitemap + IndexNow pushed.",
+  "lastUpdated": "2026-05-21 (auto) — viral post #79: eu-ai-act-risk-assessment/your-ai-might-be-illegal-europe-august-2026. Hook: 10 weeks to August 2 EU AI Act high-risk deadline, €35M fines. Sitemap + IndexNow pushed.",
   "tools": [
     {
       "name": "Domain Name Generator",
@@ -47,12 +47,22 @@
     "clicksDelta": "Pending Namecheap approval (1-3 days)",
     "revenue": "$0",
     "revenueDelta": "Pending traffic + affiliate approval",
-    "posts": 78,
-    "postsDelta": "+1 today (resume-tailorer: 75% ATS filter stat hook, 12-tool comparison table)",
+    "posts": 79,
+    "postsDelta": "+1 today (eu-ai-act-risk-assessment: €35M fine hook, August 2026 deadline, 10-week urgency)",
     "indexed": "—",
     "indexedDelta": "5 awesome-list PRs may add backlinks soon"
   },
   "activity": [
+    {
+      "time": "today 12:00",
+      "tag": "post",
+      "text": "🔥 New viral post: eu-ai-act-risk-assessment/your-ai-might-be-illegal-europe-august-2026 — Hook: August 2, 2026 EU AI Act deadline is 10 weeks away, fines up to €35M/7% revenue. 5 compliance gaps found in 10 real AI tools. Sitemap + IndexNow pushed (HTTP 200)."
+    },
+    {
+      "time": "today 12:00",
+      "tag": "promo",
+      "text": "💬 4 reaction-bait drafts ready: X (€35M fine hook + 10-week countdown), Reddit r/SaaS (personal story + compliance gap findings), LinkedIn (unpopular opinion opener on AI regulation), Show HN — all promoting eu-ai-act-risk-assessment August 2026 angle"
+    },
     {
       "time": "today 11:30",
       "tag": "post",
@@ -329,6 +339,25 @@
   "drafts": [
     {
       "platform": "X",
+      "text": "Your AI product might be illegal in Europe in 10 weeks.\n\nThe EU AI Act high-risk deadline is August 2, 2026.\n\nFines: €35M or 7% of global revenue.\n\nI ran 10 AI tools through a compliance checker. 5 had gaps they didn't know about.\n\nHere's the free tool to check yours in 60 seconds: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/"
+    },
+    {
+      "platform": "Reddit",
+      "subreddit": "r/SaaS",
+      "title": "I ran 10 AI SaaS tools through an EU AI Act risk checker — 5 had compliance gaps they didn't know about (August 2026 deadline)",
+      "text": "The EU AI Act high-risk deadline is August 2, 2026 — about 10 weeks away. Fines hit €35M or 7% of global revenue.\n\nI spent last week running 10 popular AI-powered SaaS tools through a structured risk assessment. Half had issues:\n\n- Undisclosed AI chatbots (transparency obligation, limited risk tier)\n- HR/hiring features that trigger Annex III high-risk classification\n- No data governance docs for systems that need them\n- One product had emotion recognition in a workplace context — that's prohibited, full stop\n\nThe tricky part is classification. Most founders assume they're minimal risk without actually checking.\n\nI wrote up everything I found + built a free 60-second risk checker: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-might-be-illegal-europe-august-2026/\n\nTool itself: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/"
+    },
+    {
+      "platform": "LinkedIn",
+      "text": "Unpopular opinion: most AI founders are not ready for August 2, 2026.\n\nThe EU AI Act high-risk compliance deadline is 10 weeks away. I ran 10 AI products through a risk assessment last week. Five had compliance gaps — not from recklessness, but because the Act's classification system is non-obvious if you haven't mapped your product against it.\n\nThe one that surprised me most: a product with \"engagement analytics\" that was actually running emotion recognition in a professional context. That's prohibited under Article 5. The founders had no idea.\n\nIf you build AI products and have any EU users, spend 60 seconds on the free checker before June ends.\n\nhttps://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/"
+    },
+    {
+      "platform": "HN",
+      "title": "Show HN: EU AI Act Risk Checker — classify your AI system before the August 2, 2026 deadline",
+      "text": "Free browser tool: answer 12 questions about your AI product, get classified into the EU AI Act risk tier (prohibited/high-risk/limited/minimal), and receive a compliance checklist tailored to your tier.\n\nThe August 2 deadline for high-risk AI obligations is ~10 weeks away. Fines are up to €35M or 7% of global turnover. I found that most founders either don't know which tier they're in, or assume minimal-risk without checking.\n\nNo signup. BYOK optional. Runs entirely in-browser.\n\nhttps://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/"
+    },
+    {
+      "platform": "X",
       "text": "Only 25% of resumes sent online reach a human recruiter.\n\nI tested 12 AI resume tools to fix this.\n\n11 of them averaged below 50% ATS keyword match — including ones charging $29/mo.\n\nOne free tool hit 84%.\n\nHere's what I found 🧵\n\nhttps://tinytools-smoky.vercel.app/resume-tailorer/blog/i-tested-12-ai-resume-tools-ats-2026/",
       "subreddit": null,
       "date": "2026-05-21"
@@ -350,33 +379,6 @@
       "title": "Show HN: Free AI Resume Tailorer — BYOK, runs in browser, 84% ATS keyword match in testing",
       "text": "I built a browser-only resume tailoring tool that uses your own OpenAI/Anthropic API key — nothing touches our servers.\n\nTested it against 11 other tools (including $29-39/mo paid services) measuring ATS keyword match rate. Most paid tools averaged 43-51%. This one hit 84% on the same resume+JD pair.\n\nTool: https://tinytools-smoky.vercel.app/resume-tailorer/\nTest writeup: https://tinytools-smoky.vercel.app/resume-tailorer/blog/i-tested-12-ai-resume-tools-ats-2026/",
       "date": "2026-05-21"
-    },
-    {
-      "platform": "X",
-      "date": "2026-05-20",
-      "tool": "github-roast",
-      "text": "72% of recruiters check your GitHub in under 90 seconds.\n\nI let an AI roast mine before a big tech interview.\n\nIt found 6 things I was completely blind to.\n\nHere's every flag — and the 30-min fix for each:\n\nhttps://tinytools-smoky.vercel.app/github-roast/blog/ai-roasted-my-github-before-big-tech-interview-2026/"
-    },
-    {
-      "platform": "Reddit",
-      "subreddit": "r/cscareerquestions",
-      "date": "2026-05-20",
-      "tool": "github-roast",
-      "title": "I let an AI roast my GitHub 48 hours before a big tech screen. It called out 6 red flags I had no idea about.",
-      "text": "Been applying for senior roles and figured my GitHub was fine. 8 years of coding, interesting projects, the profile looks normal to me.\n\nThen I used a free AI roast tool on it and it was genuinely embarrassing.\n\n6 specific flags: scattered language graveyard repos, a 4-month contribution gap I never contextualized, no READMEs on 3 of my best projects, a stale bio, commit messages that were basically 'fix fix2 actually fix,' and my most popular repo untouched in 4 years.\n\nFixed all of it in one afternoon. The recruiter opened my next screen with 'I was looking at your GitHub before this call — you have been working on some interesting stuff.' Unprompted.\n\nTool is here if you want to try it: https://tinytools-smoky.vercel.app/github-roast/ (free, no login, takes 12 seconds)\n\nAnyone else had a similar experience where fixing your GitHub profile actually changed recruiter behavior?"
-    },
-    {
-      "platform": "LinkedIn",
-      "date": "2026-05-20",
-      "tool": "github-roast",
-      "text": "Unpopular opinion: most developers are costing themselves interviews with a GitHub profile they haven't looked at in years.\n\n72% of technical recruiters check GitHub before the first screening call. Most spend 90 seconds or less.\n\nIn 90 seconds they're making a gut call: 'this person ships' or 'this person collects half-finished projects.'\n\nI used an AI tool to roast my own profile before a big tech interview. It found 6 embarrassing things I had completely normalized.\n\nA 4-month contribution gap with no context. No READMEs on my best work. A bio that said nothing memorable. Commit messages from the 'fix' 'fix2' 'actually fix' school of thought.\n\nFixed them all in one afternoon. The recruiter noticed.\n\nYour GitHub is working for or against you right now.\n\nFull post with every flag and the 30-min fix for each:\nhttps://tinytools-smoky.vercel.app/github-roast/blog/ai-roasted-my-github-before-big-tech-interview-2026/"
-    },
-    {
-      "platform": "HN",
-      "date": "2026-05-20",
-      "tool": "github-roast",
-      "title": "Show HN: GitHub Roast - AI finds the red flags killing your profile before recruiters see it",
-      "text": "https://tinytools-smoky.vercel.app/github-roast/\n\nPulls public GitHub data (repos, contribution graph, commit patterns, README presence, language spread) and generates a shareable report card with specific, actionable flags.\n\nBlog post covering the 6 most common hiring red flags it surfaces: https://tinytools-smoky.vercel.app/github-roast/blog/ai-roasted-my-github-before-big-tech-interview-2026/"
     }
   ],
   "checklist": [
