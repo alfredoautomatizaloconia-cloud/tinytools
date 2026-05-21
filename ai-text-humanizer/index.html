@@ -168,6 +168,22 @@
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
     text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
+
+  /* === Viral mechanics === */
+  .viral-section { margin-top: 18px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; display: none; }
+  .viral-title { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 10px; font-weight: 600; letter-spacing: .06em; }
+  .viral-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .viral-btn { padding: 7px 14px; border: none; border-radius: 8px; font-size: 13px; cursor: pointer; font-weight: 600; text-decoration: none; display: inline-block; }
+  .viral-btn.share { background: #000; color: #fff; border: 1px solid #333; }
+  .viral-btn.share:hover { background: #111; }
+  .viral-btn.copy-link { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+  .viral-btn.copy-link:hover { border-color: var(--accent); }
+  .viral-btn.download-card { background: var(--accent); color: #fff; }
+  .viral-btn.download-card:hover { opacity: .9; }
+  .embed-section2 { margin-top: 0; }
+  .embed-section2 .embed-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section2 pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .embed-section2 button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -289,6 +305,22 @@ Tip: 200–800 words is the sweet spot. Above 1500, run paragraphs separately fo
     </div>
 
     <div class="findings" id="findings"></div>
+
+    
+    <div class="viral-section" id="viralSection">
+      <div class="viral-title">📣 Share your result</div>
+      <div class="viral-actions">
+        <a class="viral-btn share" id="vShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="viral-btn copy-link" id="vCopyLink">🔗 Copy link</button>
+        <a class="viral-btn download-card" id="vDownload" download="humanized-score.png">💾 Download card</a>
+      </div>
+      <div class="embed-section2">
+        <div class="embed-label">Embeddable badge</div>
+        <pre id="vEmbed"></pre>
+        <button id="vEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
+    <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
 
     <div class="upsell">
       <strong>Need to run AI detection first?</strong>
@@ -769,6 +801,7 @@ $('goBtn').addEventListener('click', async function(){
     const drop = origScores.overall - lastScores.overall;
     const msg = 'Done. Overall AI score went from ' + origScores.overall + ' → ' + lastScores.overall + ' (' + (drop >= 0 ? '−' + drop : '+' + (-drop)) + ').';
     setStatus(msg, drop > 0 ? 'success' : 'error');
+    showViralSection(origScores.overall, lastScores.overall);
   } catch(e){
     setStatus(e.message || String(e), 'error');
   } finally {
@@ -791,6 +824,143 @@ $('downloadBtn').addEventListener('click', function(){
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
   setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
 });
+
+// === Viral mechanics ===
+
+// Auto-load from URL hash: #from=85&to=12
+(function(){
+  if (location.hash.length > 1) {
+    try {
+      var params = {};
+      location.hash.slice(1).split('&').forEach(function(p){
+        var kv = p.split('='); params[kv[0]] = decodeURIComponent(kv[1] || '');
+      });
+      if (params.from && params.to) {
+        var fromS = parseInt(params.from, 10);
+        var toS   = parseInt(params.to, 10);
+        if (!isNaN(fromS) && !isNaN(toS)) {
+          showViralSection(fromS, toS);
+        }
+      }
+    } catch(e){}
+  }
+})();
+
+function showViralSection(fromScore, toScore) {
+  var drop = fromScore - toScore;
+  var section = document.getElementById('viralSection');
+  section.style.display = 'block';
+
+  // — deep-link
+  var base = location.origin + location.pathname;
+  var shareUrl = base + '#from=' + fromScore + '&to=' + toScore;
+
+  // — tweet text
+  var shareText = 'I just dropped my AI score from ' + fromScore + ' → ' + toScore +
+    ' (−' + drop + ' pts) using Free AI Text Humanizer. Try yours →';
+  document.getElementById('vShare').href =
+    'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) +
+    '&url=' + encodeURIComponent(shareUrl);
+
+  // — copy link button
+  document.getElementById('vCopyLink').onclick = function() {
+    navigator.clipboard.writeText(shareUrl);
+    var btn = document.getElementById('vCopyLink');
+    btn.textContent = 'Copied!';
+    setTimeout(function(){ btn.textContent = '🔗 Copy link'; }, 1500);
+  };
+
+  // — shields.io badge color
+  var badgeColor = drop >= 40 ? 'brightgreen' : drop >= 20 ? 'yellowgreen' : drop >= 10 ? 'yellow' : 'orange';
+  var badgeLabel = 'AI+Score+Drop';
+  var badgeMsg   = encodeURIComponent('−' + drop + '+pts');
+  var badgeUrl   = 'https://img.shields.io/badge/' + badgeLabel + '-' + badgeMsg + '-' + badgeColor + '?style=for-the-badge';
+  var embedCode  = '<a href="' + shareUrl + '" target="_blank">\n' +
+    '  <img src="' + badgeUrl + '" alt="AI Score Drop: −' + drop + ' pts">\n</a>';
+  document.getElementById('vEmbed').textContent = embedCode;
+  document.getElementById('vEmbedCopy').onclick = function() {
+    navigator.clipboard.writeText(embedCode);
+    var btn = document.getElementById('vEmbedCopy');
+    btn.textContent = 'Copied!';
+    setTimeout(function(){ btn.textContent = 'Copy embed code'; }, 1500);
+  };
+
+  // — canvas card download
+  var canvas = document.getElementById('cardCanvas');
+  drawHumanizerCard(canvas, fromScore, toScore, drop);
+  document.getElementById('vDownload').href = canvas.toDataURL('image/png');
+}
+
+function drawHumanizerCard(canvas, fromScore, toScore, drop) {
+  var ctx = canvas.getContext('2d');
+  var W = 1200, H = 630;
+
+  // Background gradient
+  var bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#0a0a0f');
+  bg.addColorStop(1, '#15151f');
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  // Accent glow
+  var glow = ctx.createRadialGradient(300, 0, 0, 300, 0, 500);
+  glow.addColorStop(0, 'rgba(249,115,22,0.25)');
+  glow.addColorStop(1, 'transparent');
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, W, H);
+
+  // Tool name
+  ctx.fillStyle = '#f97316';
+  ctx.font = 'bold 28px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.fillText('AI Text Humanizer · tinytools-smoky.vercel.app', 70, 80);
+
+  // Headline
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 88px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.fillText('AI Score Reduced', 70, 210);
+
+  // Before/after row
+  ctx.font = 'bold 120px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+
+  // "FROM" score in red-ish
+  ctx.fillStyle = '#ef4444';
+  ctx.fillText(fromScore, 70, 380);
+
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = 'bold 80px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.fillText('→', 320, 375);
+
+  ctx.fillStyle = '#4ade80';
+  ctx.font = 'bold 120px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.fillText(toScore, 440, 380);
+
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '36px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.fillText('/ 100 AI score', 620, 365);
+
+  // Drop badge
+  var badgeColor = drop >= 40 ? '#22c55e' : drop >= 20 ? '#84cc16' : drop >= 10 ? '#eab308' : '#f97316';
+  ctx.fillStyle = badgeColor;
+  ctx.beginPath();
+  ctx.roundRect(70, 420, 280, 70, 12);
+  ctx.fill();
+  ctx.fillStyle = '#000';
+  ctx.font = 'bold 38px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.fillText('−' + drop + ' points', 100, 466);
+
+  // Sub-label
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '28px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.fillText('Free · Browser-only · No signup', 70, 540);
+
+  // Branding (bottom-right)
+  ctx.fillStyle = '#f97316';
+  ctx.font = 'bold 24px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools.dev', W - 60, H - 40);
+  ctx.textAlign = 'left';
+}
+
 </script>
 </body>
 </html>
