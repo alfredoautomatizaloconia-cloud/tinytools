@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Text Detector for Prompt Engineers — Test Your Prompts' Detectability Free (2026)</title>
+<meta name="description" content="Free AI text detector built for prompt engineers. Test whether your prompt outputs score as human or AI across 9 linguistic heuristics — em-dash density, sentence variance, perplexity proxy, and more. No signup, runs in your browser.">
+<meta name="keywords" content="ai text detector for prompt engineers, prompt engineering ai detection, test prompt output detectability, ai detection prompt testing, gpt detector prompt engineer, chatgpt detection testing, claude output detector, prompt naturalness checker">
+<meta property="og:title" content="AI Text Detector for Prompt Engineers — Free Detectability Testing">
+<meta property="og:description" content="Stop guessing whether your prompt outputs will get flagged. Run them through 9 linguistic heuristics in your browser — free, private, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-text-detector/for-prompt-engineers/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Text Detector for Prompt Engineers — Free">
+<meta name="twitter:description" content="Test your prompt outputs against 9 AI-detection heuristics. Free, browser-only.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-text-detector/for-prompt-engineers/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Text Detector for Prompt Engineers",
+  "url": "https://tinytools-smoky.vercel.app/ai-text-detector/for-prompt-engineers/",
+  "description": "Free AI text detection tool tailored for prompt engineers. Test whether ChatGPT, Claude, Gemini, or GPT-5 outputs from your prompts will be flagged as AI-generated, using 9 in-browser linguistic heuristics.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "TinyTools",
+    "url": "https://tinytools-smoky.vercel.app/"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "AI Text Detection for Prompt Engineers"
+  },
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Prompt Engineers"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "AI Text Detector", "item": "https://tinytools-smoky.vercel.app/ai-text-detector/" },
+      { "@type": "ListItem", "position": 3, "name": "For Prompt Engineers", "item": "https://tinytools-smoky.vercel.app/ai-text-detector/for-prompt-engineers/" }
+    ]
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How can I use an AI text detector to improve my prompts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Run the output of each prompt variation through the detector and compare heuristic scores. Pay attention to which signals score highest — usually sentence-length variance and em-dash density for modern LLMs. Then modify your prompt to instruct the model to vary sentence length more aggressively, avoid em-dashes, and prefer colloquial vocabulary over formal transitions like 'furthermore' and 'in conclusion'. Iterate until the heuristic score drops below 30%. This gives you a data-driven feedback loop instead of guessing which prompts produce more natural-sounding text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI models produce the most detectable outputs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Based on the 9 heuristics used in this detector, GPT-4 and Claude 3 outputs tend to score higher (more detectable) than GPT-4o and Claude 3.5/3.7 Sonnet outputs. The latest models have more varied sentence patterns and reduced reliance on formulaic transition phrases. However, model version alone is less important than the prompt instructions — a well-crafted prompt on an older model often produces less detectable output than a bare, instruction-free prompt on a newer one. Fine-tuned models trained on human writing datasets can also significantly reduce detectability scores."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the AI text detector accurate enough to use for prompt iteration?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, for prompt engineering purposes — not for forensic certainty. This tool uses the same class of heuristics that commercial detectors like GPTZero and Originality.ai use under the hood. It is excellent for relative comparisons: prompt A scores 72% vs prompt B scores 38%, so prompt B produces less detectable output. What it does not give you is a binary verdict you should rely on for academic integrity or legal disputes — no detector can. For the use case of iterating toward lower-detection outputs, it is both accurate and free."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to sign up or pay to use the AI Text Detector?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The detector runs entirely in your browser using JavaScript — no server, no account, no credits. You can paste as much text as you want without any rate limits or paywalls. The nine heuristics (em-dash density, sentence-length variance, vocabulary diversity, AI-tell phrase frequency, perplexity proxy, filler-phrase density, punctuation patterns, n-gram repetition, and transition-phrase density) all run locally on your device."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-card: #15151f;
+    --bg-elevated: #1d1d2a;
+    --border: #2a2a3a;
+    --text: #f5f5fa;
+    --text-dim: #a0a0b8;
+    --accent: #a855f7;
+    --accent-dim: rgba(168,85,247,0.15);
+    --accent-border: rgba(168,85,247,0.4);
+    --green: #10b981;
+    --yellow: #fbbf24;
+    --red: #ef4444;
+    --blue: #3b82f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    background-image:
+      radial-gradient(circle at 20% 0%, rgba(168,85,247,0.25) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(59,130,246,0.15) 0%, transparent 50%);
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  /* NAV */
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--border); max-width: 1100px; margin: 0 auto; }
+  .nav-logo { font-weight: 800; font-size: 18px; color: var(--text); text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-link { color: var(--text-dim); text-decoration: none; font-size: 14px; }
+  .nav-link:hover { color: var(--text); }
+
+  /* BREADCRUMB */
+  .breadcrumb { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text-dim); margin-bottom: 32px; margin-top: 28px; flex-wrap: wrap; }
+  .breadcrumb a { color: var(--text-dim); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb span { opacity: 0.4; }
+
+  /* HERO */
+  .badge {
+    display: inline-block; padding: 5px 14px;
+    background: var(--accent-dim); border: 1px solid var(--accent-border);
+    border-radius: 999px; font-size: 12px; color: #d8b4fe;
+    margin-bottom: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  h1 {
+    font-size: clamp(28px, 4.5vw, 50px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 18px;
+    background: linear-gradient(135deg, #fff 0%, #d8b4fe 60%, #93c5fd 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-sub {
+    font-size: 18px; color: var(--text-dim); max-width: 680px;
+    margin-bottom: 32px; line-height: 1.6;
+  }
+  .hero-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff;
+    padding: 14px 28px; border-radius: 10px;
+    font-weight: 700; font-size: 16px; text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--bg-card); color: var(--text);
+    border: 1px solid var(--border);
+    padding: 14px 28px; border-radius: 10px;
+    font-weight: 600; font-size: 16px; text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); }
+
+  /* STAT ROW */
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 60px; }
+  .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; text-align: center; }
+  .stat-number { font-size: 32px; font-weight: 800; color: var(--accent); }
+  .stat-label { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+  /* SECTIONS */
+  h2 {
+    font-size: clamp(22px, 3vw, 32px); font-weight: 800;
+    letter-spacing: -0.02em; margin-bottom: 12px;
+  }
+  .section { margin-bottom: 64px; }
+  .section-lead { font-size: 17px; color: var(--text-dim); margin-bottom: 28px; max-width: 760px; }
+
+  /* USE CASE CARDS */
+  .usecase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .usecase-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px;
+    transition: border-color 0.2s;
+  }
+  .usecase-card:hover { border-color: rgba(168,85,247,0.5); }
+  .usecase-icon { font-size: 28px; margin-bottom: 12px; }
+  .usecase-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .usecase-card p { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+
+  /* PAIN → SOLUTION */
+  .pain-table { width: 100%; border-collapse: collapse; }
+  .pain-table th {
+    text-align: left; font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--text-dim);
+    border-bottom: 1px solid var(--border); padding: 10px 16px;
+  }
+  .pain-table td { padding: 16px; font-size: 15px; vertical-align: top; border-bottom: 1px solid var(--border); }
+  .pain-table tr:last-child td { border-bottom: none; }
+  .pain-col { color: #f87171; width: 50%; }
+  .solution-col { color: #34d399; width: 50%; }
+  .pain-table-wrap {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+  }
+
+  /* PRICING TABLE */
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .pricing-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px;
+  }
+  .pricing-card.featured {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, rgba(168,85,247,0.1) 0%, var(--bg-card) 100%);
+  }
+  .pricing-tool { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .pricing-price { font-size: 26px; font-weight: 800; color: var(--accent); }
+  .pricing-price span { font-size: 14px; color: var(--text-dim); font-weight: 400; }
+  .pricing-limit { font-size: 13px; color: var(--text-dim); margin-top: 6px; }
+  .pricing-pill {
+    display: inline-block; margin-top: 10px;
+    padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
+  }
+  .pill-green { background: rgba(16,185,129,0.15); color: #34d399; }
+  .pill-yellow { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .pill-red { background: rgba(239,68,68,0.12); color: #f87171; }
+
+  /* HEURISTICS */
+  .heuristic-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .heuristic-item {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .heuristic-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); margin-top: 5px; flex-shrink: 0;
+  }
+  .heuristic-item p { font-size: 14px; color: var(--text-dim); margin-top: 3px; }
+  .heuristic-item strong { font-size: 15px; display: block; }
+
+  /* CTA */
+  .cta-box {
+    background: linear-gradient(135deg, rgba(168,85,247,0.15) 0%, rgba(59,130,246,0.1) 100%);
+    border: 1px solid var(--accent-border);
+    border-radius: 20px; padding: 48px 40px; text-align: center;
+  }
+  .cta-box h2 { font-size: clamp(22px, 3vw, 36px); margin-bottom: 14px; }
+  .cta-box p { font-size: 17px; color: var(--text-dim); margin-bottom: 28px; max-width: 540px; margin-left: auto; margin-right: auto; }
+
+  /* RELATED */
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .related-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px; text-decoration: none; color: var(--text);
+    transition: border-color 0.2s;
+    display: block;
+  }
+  .related-card:hover { border-color: rgba(168,85,247,0.5); }
+  .related-card .rtool { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+  .related-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .related-card p { font-size: 13px; color: var(--text-dim); }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 32px 20px; text-align: center; max-width: 1100px; margin: 0 auto; }
+  footer p { font-size: 13px; color: var(--text-dim); }
+  footer a { color: var(--text-dim); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .cta-box { padding: 32px 20px; }
+    .hero-cta-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://tinytools-smoky.vercel.app/" class="nav-logo">Tiny<span>Tools</span></a>
+  <a href="https://tinytools-smoky.vercel.app/ai-text-detector/" class="nav-link">← AI Text Detector</a>
+</nav>
+
+<div class="container">
+
+  <div class="breadcrumb">
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a>
+    <span>/</span>
+    <a href="https://tinytools-smoky.vercel.app/ai-text-detector/">AI Text Detector</a>
+    <span>/</span>
+    <span style="color:var(--text)">For Prompt Engineers</span>
+  </div>
+
+  <!-- HERO -->
+  <section>
+    <div class="badge">Free · Browser-Only · No Signup</div>
+    <h1>AI Text Detector for<br>Prompt Engineers</h1>
+    <p class="hero-sub">
+      Your prompts produce text — but will it get flagged? Test any LLM output against 9 linguistic heuristics in your browser. Iterate faster, ship more natural-sounding results, and stop paying $15/month for the same analysis you can run free.
+    </p>
+    <div class="hero-cta-row">
+      <a href="https://tinytools-smoky.vercel.app/ai-text-detector/" class="btn-primary">
+        ⚡ Run the Detector Free
+      </a>
+      <a href="#use-cases" class="btn-secondary">See Use Cases</a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-number">9</div>
+      <div class="stat-label">Linguistic heuristics analyzed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">$0</div>
+      <div class="stat-label">Forever free, no credits</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">∞</div>
+      <div class="stat-label">Prompts you can test</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Words sent to any server</div>
+    </div>
+  </div>
+
+  <!-- USE CASES -->
+  <section class="section" id="use-cases">
+    <h2>Why Prompt Engineers Use the AI Text Detector</h2>
+    <p class="section-lead">
+      Generic users paste text to find out if it's AI. Prompt engineers use the heuristic breakdown as a feedback signal — a map of exactly what to fix in their next prompt iteration.
+    </p>
+    <div class="usecase-grid">
+      <div class="usecase-card">
+        <div class="usecase-icon">🔄</div>
+        <h3>A/B Test Prompt Naturalness</h3>
+        <p>Run two prompt variants through the detector and compare heuristic scores side-by-side. "Prompt A scores 71% AI on em-dash density. Prompt B scores 34% after adding 'avoid dashes and formal transition phrases.'" Data-driven iteration instead of gut feel.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">🔍</div>
+        <h3>Identify Exactly Which Signals Trigger Detection</h3>
+        <p>The per-heuristic breakdown tells you whether the problem is sentence-length uniformity, overuse of "furthermore / in conclusion," or a perplexity proxy score that reads like a textbook. You know exactly which instruction to add to your system prompt next.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">📦</div>
+        <h3>QA Deliverables Before Handing Off to Clients</h3>
+        <p>If you're a prompt engineer delivering AI-written content — blog posts, product descriptions, email sequences — a quick detector run before submission catches anything that might embarrass a client whose editor or publisher uses GPTZero or Originality.ai.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">🧪</div>
+        <h3>Benchmark Model Outputs Head-to-Head</h3>
+        <p>Curious whether GPT-4o outputs are more detectable than Claude 3.7 Sonnet for the same prompt? Run both through the detector. The scores give you a reproducible, heuristic-based comparison that goes beyond vibes. Useful when advising clients on model selection.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">🏋️</div>
+        <h3>Curate Cleaner Training Data</h3>
+        <p>If you're producing training datasets or fine-tuning datasets for LLMs, batch-test samples through the detector to flag AI-contaminated entries before they pollute your dataset. Lower-detection-score samples tend to be higher-quality human-like writing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN → SOLUTION -->
+  <section class="section">
+    <h2>Prompt Engineer Pain Points → How the Detector Solves Them</h2>
+    <p class="section-lead">Every problem below is one heuristic score away from a fix.</p>
+    <div class="pain-table-wrap">
+      <table class="pain-table">
+        <thead>
+          <tr>
+            <th>😩 The Pain</th>
+            <th>✅ What the Detector Gives You</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="pain-col">"My output passed my eye test but the client's editor rejected it as AI-generated."</td>
+            <td class="solution-col">Run it before submitting. If sentence-length variance flags high, add "use a mix of short punchy sentences and longer ones" to your system prompt.</td>
+          </tr>
+          <tr>
+            <td class="pain-col">"I don't know which part of my output sounds robotic — I just know it does."</td>
+            <td class="solution-col">The per-heuristic breakdown pins it: vocabulary diversity low, em-dash density high, AI-tell phrases present. Now you have a target.</td>
+          </tr>
+          <tr>
+            <td class="pain-col">"I'm paying $15/month for GPTZero just to test my own prompts while iterating."</td>
+            <td class="solution-col">Same class of heuristics, zero cost, unlimited runs, nothing sent to a server. Cancel the subscription.</td>
+          </tr>
+          <tr>
+            <td class="pain-col">"I switched to a newer model but I'm not sure it actually outputs less-detectable text."</td>
+            <td class="solution-col">Paste three outputs from the old model and three from the new one. Compare average heuristic scores. Quantify the improvement instead of assuming it.</td>
+          </tr>
+          <tr>
+            <td class="pain-col">"My fine-tuned model produces outputs that still trigger AI detectors on certain topics."</td>
+            <td class="solution-col">Identify which heuristics spike on those topics (often perplexity proxy or n-gram repetition) and add domain-specific training examples that score lower.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- HEURISTICS -->
+  <section class="section">
+    <h2>The 9 Heuristics — What You're Actually Measuring</h2>
+    <p class="section-lead">
+      Understanding what the tool measures turns it from a yes/no answer into an actionable prompt engineering signal.
+    </p>
+    <div class="heuristic-list">
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>Em-Dash Density</strong>
+          <p>LLMs overuse em-dashes (—) relative to human writers. High density is one of the strongest AI signals in 2025-26.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>Sentence-Length Variance</strong>
+          <p>Human writers naturally mix very short and very long sentences. AI tends toward uniform medium-length sentences.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>Vocabulary Diversity (TTR)</strong>
+          <p>Type-token ratio: AI often repeats vocabulary in predictable patterns. Low TTR flags text that cycles the same words.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>AI-Tell Phrases</strong>
+          <p>"In conclusion," "It's important to note," "Furthermore," "Delve into" — LLMs overuse these at statistically anomalous rates.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>Perplexity Proxy</strong>
+          <p>AI favors high-probability, predictable word choices. This heuristic estimates how "safe" the vocabulary choices are.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>N-Gram Repetition</strong>
+          <p>Repeated 3- and 4-word phrases across a document signal AI generation, especially in longer outputs.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>Transition-Phrase Density</strong>
+          <p>Density of formal academic transitions. High counts suggest a model following essay-writing training data.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>Punctuation Pattern Score</strong>
+          <p>AI uses punctuation — especially commas and colons — in patterns that differ subtly from human writers.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>Filler-Phrase Density</strong>
+          <p>"It is worth noting," "This is particularly relevant," and similar hedging fillers that LLMs insert far more than humans do.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING COMPARISON -->
+  <section class="section">
+    <h2>Free vs. Paid AI Text Detectors — The Honest Comparison</h2>
+    <p class="section-lead">
+      For prompt engineering iteration, you need unlimited runs at zero marginal cost — not a credit-metered subscription designed for HR departments and professors.
+    </p>
+    <div class="pricing-grid">
+      <div class="pricing-card featured">
+        <div class="pricing-tool">🟣 TinyTools AI Text Detector</div>
+        <div class="pricing-price">$0 <span>/ forever</span></div>
+        <div class="pricing-limit">Unlimited checks · Browser-only · 9 heuristics · No account</div>
+        <div class="pricing-pill pill-green">Best for prompt iteration</div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tool">GPTZero</div>
+        <div class="pricing-price">$15 <span>/ month</span></div>
+        <div class="pricing-limit">50k words/month on Essentials · API access on higher tiers</div>
+        <div class="pricing-pill pill-yellow">Good for production audits</div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tool">Originality.ai</div>
+        <div class="pricing-price">$14.95 <span>/ month</span></div>
+        <div class="pricing-limit">2,000 credits/month · Strong plagiarism combo</div>
+        <div class="pricing-pill pill-yellow">Good for publishers</div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tool">Winston AI</div>
+        <div class="pricing-price">$18 <span>/ month</span></div>
+        <div class="pricing-limit">80,000 words/month · OCR PDF support</div>
+        <div class="pricing-pill pill-red">Overkill for prompt testing</div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tool">Copyleaks</div>
+        <div class="pricing-price">$10.99 <span>/ month</span></div>
+        <div class="pricing-limit">1,200 pages/month · LMS integrations</div>
+        <div class="pricing-pill pill-red">Built for educators, not builders</div>
+      </div>
+    </div>
+    <p style="margin-top:20px;font-size:14px;color:var(--text-dim);">
+      <strong style="color:var(--text)">Bottom line for prompt engineers:</strong> Paid tools make sense when you need forensic certainty, audit trails, or API integration. For iterative prompt testing where you need unlimited runs and immediate feedback, a free browser-based tool is the right tool for the job. Save the subscription budget for tools that produce revenue.
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>Start Testing Your Prompts Now</h2>
+    <p>Paste your next LLM output and see which of the 9 heuristics it triggers. Free, instant, private — no account, no upload, no credit card.</p>
+    <a href="https://tinytools-smoky.vercel.app/ai-text-detector/" class="btn-primary" style="font-size:17px;padding:16px 36px;">
+      ⚡ Open AI Text Detector →
+    </a>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <section class="section" style="margin-top:64px;">
+    <h2>Related Tools for Prompt Engineers</h2>
+    <p class="section-lead">Other free TinyTools that belong in your prompt engineering workflow.</p>
+    <div class="related-grid">
+      <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/" class="related-card">
+        <div class="rtool">AI Disclosure Generator</div>
+        <h3>Generate AI Transparency Disclosures</h3>
+        <p>When you hand off AI-assisted content to clients or publish it yourself, generate a legally appropriate disclosure in seconds. Covers FTC, EU AI Act, and platform-specific requirements.</p>
+      </a>
+      <a href="https://tinytools-smoky.vercel.app/ai-cost-calculator/" class="related-card">
+        <div class="rtool">AI Cost Calculator</div>
+        <h3>Calculate Your LLM API Spend</h3>
+        <p>Estimate exactly how much that prompt sequence costs per run across GPT-4o, Claude, Gemini, and 12+ other models. Useful when optimizing prompts for cost-per-output alongside quality.</p>
+      </a>
+      <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="related-card">
+        <div class="rtool">EU AI Act Risk Assessment</div>
+        <h3>Classify Your AI Product's Risk Tier</h3>
+        <p>If your prompt engineering work powers an AI product sold in Europe, classify it under the EU AI Act in 90 seconds. Know whether you're prohibited, high-risk, limited-risk, or minimal-risk.</p>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-text-detector/">AI Text Detector</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-cost-calculator/">AI Cost Calculator</a>
+  </p>
+  <p style="margin-top:10px;">© 2026 TinyTools · Free browser tools for AI-era builders</p>
+</footer>
+
+</body>
+</html>
