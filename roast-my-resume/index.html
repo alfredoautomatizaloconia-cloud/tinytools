@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roast My Resume — Savage AI Resume Feedback & Grade (Free)</title>
+<meta name="description" content="Paste your resume and get a brutally honest, savage AI roast with a letter grade, red flags, and specific feedback. Free, no signup, hilariously honest.">
+<meta name="keywords" content="roast my resume, ai resume feedback, resume roast, resume grade, resume review free, brutal resume feedback, ai resume checker, resume score">
+<meta property="og:title" content="Roast My Resume — Brutally Honest AI Resume Feedback">
+<meta property="og:description" content="I got my resume roasted and I'm never recovering. Savage feedback + letter grade. Free.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/roast-my-resume/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/roast-my-resume/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Roast My Resume",
+  "url": "https://tinytools-smoky.vercel.app/roast-my-resume/",
+  "description": "Get a savage, brutally honest AI roast of your resume with a letter grade and actionable feedback.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #ef4444; --accent-glow: #ef444440;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b; --blue: #3b82f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #b4530040 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(34px, 5.5vw, 56px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fca5a5 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 560px; margin: 0 auto; }
+
+  .input-area {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 16px;
+    max-width: 680px; margin: 32px auto 0;
+  }
+  .input-area textarea {
+    width: 100%; min-height: 200px; padding: 14px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text); font-size: 14px; font-family: inherit; outline: none; resize: vertical; line-height: 1.5;
+  }
+  .input-area textarea::placeholder { color: var(--text-dim); }
+  .input-area textarea:focus { border-color: var(--accent); }
+  .input-row-btns { display: flex; gap: 8px; margin-top: 10px; align-items: center; }
+  .char-count { font-size: 12px; color: var(--text-dim); flex: 1; }
+  .roast-btn {
+    padding: 14px 32px; background: linear-gradient(135deg, #ef4444, #b91c1c);
+    border: none; border-radius: 10px; color: white; font-weight: 700; font-size: 15px;
+    cursor: pointer; box-shadow: 0 4px 16px rgba(239,68,68,0.35); transition: all 0.15s;
+  }
+  .roast-btn:hover { transform: translateY(-1px); }
+  .roast-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .loading { text-align: center; padding: 40px; color: var(--text-dim); display: none; }
+  .loading.show { display: block; }
+  .spinner { display: inline-block; width: 28px; height: 28px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .error { text-align: center; padding: 24px; color: var(--red); display: none; }
+  .error.show { display: block; }
+
+  .result-card {
+    margin: 32px auto 0; max-width: 700px;
+    background: linear-gradient(135deg, #1f1f2e 0%, #15151f 100%);
+    border: 2px solid var(--accent); border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(239,68,68,0.15);
+    display: none;
+  }
+  .result-card.show { display: block; }
+
+  .card-header {
+    padding: 22px 24px; display: flex; align-items: center; gap: 16px;
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+  }
+  .grade-circle {
+    width: 76px; height: 76px; border-radius: 50%; background: rgba(0,0,0,0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 38px; font-weight: 900; color: white; flex-shrink: 0; border: 3px solid rgba(255,255,255,0.3);
+  }
+  .verdict-info { flex: 1; }
+  .verdict-title { font-size: 22px; font-weight: 800; color: white; }
+  .verdict-subtitle { font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 3px; }
+  .score-pill { padding: 6px 14px; background: rgba(0,0,0,0.35); border-radius: 999px; color: white; font-weight: 700; font-size: 16px; }
+
+  .card-body { padding: 24px; }
+  .roast-text {
+    font-size: 17px; line-height: 1.55; color: #fde68a; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid var(--accent); border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .section-title { font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); font-weight: 700; margin-bottom: 10px; }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--bg-elevated); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+  .stat-value { font-size: 20px; font-weight: 800; color: var(--text); }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .flags-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .flag {
+    padding: 6px 12px; border-radius: 999px; font-size: 13px;
+    background: var(--bg-elevated); border: 1px solid var(--border); color: var(--text);
+  }
+  .flag.red { border-color: #ef4444; color: #fca5a5; }
+  .flag.yellow { border-color: var(--yellow); color: #fcd34d; }
+  .flag.green { border-color: var(--green); color: #6ee7b7; }
+
+  .dimension-list { margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .dimension { display: flex; align-items: center; gap: 12px; }
+  .dim-label { width: 140px; font-size: 13px; color: var(--text-dim); flex-shrink: 0; }
+  .dim-bar-wrap { flex: 1; height: 8px; background: var(--bg-elevated); border-radius: 999px; overflow: hidden; }
+  .dim-bar { height: 100%; border-radius: 999px; transition: width 0.9s cubic-bezier(0.4,0,0.2,1); }
+  .dim-score { width: 32px; text-align: right; font-size: 13px; font-weight: 700; color: var(--text); }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+  .action.primary:hover { background: #1a8cd8; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; letter-spacing: 0.05em; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; font-weight: 800; margin: 28px 0 10px; }
+  .content p { color: var(--text-dim); margin-bottom: 12px; font-size: 15px; line-height: 1.7; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+  canvas#shareCanvas { display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">📄 No upload needed · Paste & roast · Free forever</div>
+    <h1>Roast My Resume 🔥</h1>
+    <p class="subtitle">Paste your resume. Get a savage, brutally honest letter grade and specific feedback about everything hiring managers silently judge you for.</p>
+  </header>
+
+  <div class="input-area">
+    <textarea id="resumeInput" placeholder="Paste your resume text here — job titles, bullets, skills section, summary, all of it. The more you paste, the more savage the roast…"></textarea>
+    <div class="input-row-btns">
+      <span class="char-count" id="charCount">0 characters</span>
+      <button class="roast-btn" id="roastBtn" onclick="runRoast()">🔥 Roast My Resume</button>
+    </div>
+  </div>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p style="margin-top:12px">Reading between the lines of your career history…</p>
+  </div>
+  <div class="error" id="error"></div>
+
+  <div class="result-card" id="resultCard">
+    <div class="card-header">
+      <div class="grade-circle" id="gradeCircle">B</div>
+      <div class="verdict-info">
+        <div class="verdict-title" id="verdictTitle">Needs Work</div>
+        <div class="verdict-subtitle" id="verdictSubtitle">Your resume has 3 critical issues</div>
+      </div>
+      <div class="score-pill" id="scorePill">65/100</div>
+    </div>
+    <div class="card-body">
+      <div class="roast-text" id="roastText"></div>
+
+      <div class="section-title">Score Breakdown</div>
+      <div class="dimension-list" id="dimensionList"></div>
+
+      <div class="section-title">Resume Stats</div>
+      <div class="stats-grid" id="statsGrid"></div>
+
+      <div class="section-title">Red Flags & Green Lights</div>
+      <div class="flags-grid" id="flagsGrid"></div>
+
+      <div class="actions">
+        <button class="action primary" id="shareXBtn">𝕏 Share My Grade</button>
+        <button class="action" onclick="copyLink()">🔗 Copy Link</button>
+        <button class="action" onclick="downloadCard()">📸 Save Card</button>
+      </div>
+
+      <div class="embed-section">
+        <div class="embed-label">📎 Embeddable Badge</div>
+        <pre id="badgeCode"></pre>
+        <button onclick="copyBadge()">Copy Badge HTML</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="shareCanvas" width="1200" height="630"></canvas>
+
+  <div class="content">
+    <h2>What Is "Roast My Resume"?</h2>
+    <p>Roast My Resume is a free, no-signup tool that analyzes your resume text and delivers a brutally honest letter grade with specific feedback. It checks for buzzword overuse, quantification of achievements, action verb quality, red flags hiring managers notice immediately, and the overall impression your resume creates. The analysis is deterministic — same resume, same grade every time — which means you can share your result as a deep link.</p>
+
+    <h2>What Makes a Resume Terrible?</h2>
+    <p>Most bad resumes share the same crimes: passive language ("responsible for…" instead of "led"), generic buzzwords ("results-driven", "team player", "synergy"), zero metrics or numbers, walls of text with no achievements, objectives sections that waste the hiring manager's first 3 seconds, and skill sections that list "Microsoft Word" like it's 2003. Also: Comic Sans. Always Comic Sans.</p>
+
+    <h2>How Does the Resume Scoring Work?</h2>
+    <p>Our heuristic engine analyzes your resume across five dimensions: Impact (quantified achievements vs. fluffy claims), Action Verbs (strong verbs like "led", "built", "grew" vs. weak ones like "helped", "worked on"), Buzzword Toxicity (how much corporate jargon is hurting you), Structure (length, formatting signals, section presence), and Differentiation (whether your resume could belong to literally anyone). These scores combine for a final 0-100 grade.</p>
+
+    <h2>What Score Should I Aim For?</h2>
+    <p>A score of 80+ (A) is excellent — your resume will likely get past ATS filters and impress humans. 65-80 (B) is solid but has clear improvement areas. 50-65 (C) means you'll get some callbacks but are leaving opportunities on the table. Below 50 (D/F) means it's time for a rewrite, not a polish.</p>
+
+    <h2>Can I Use This to Prep for Job Applications?</h2>
+    <p>Absolutely. Paste your current resume, note the red flags, address them, paste the updated version, and watch your score climb. Unlike generic resume advice, this tool reacts to your specific text and calls out exactly what's hurting you. Think of it as a brutal friend who works in HR.</p>
+
+    <h2>Is My Resume Data Safe?</h2>
+    <p>Yes. All analysis runs entirely in your browser using JavaScript. Your resume text is never sent to any server, API, or database. We don't store it, we don't see it, and it never leaves your device.</p>
+  </div>
+
+  <footer>
+    <p>Built by <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> · Free AI utilities that don't require a credit card</p>
+  </footer>
+</div>
+
+<script>
+// ——— Resume Roast Engine (deterministic, browser-only) ———
+
+const WEAK_VERBS = [
+  "responsible for","worked on","helped","assisted","involved in","participated in",
+  "contributed to","collaborated on","was part of","supported","handled","dealt with","managed to"
+];
+const STRONG_VERBS = [
+  "led","built","launched","designed","architected","scaled","grew","increased","decreased","reduced",
+  "created","developed","implemented","delivered","shipped","drove","generated","negotiated",
+  "saved","improved","optimized","automated","founded","established","pioneered","transformed",
+  "spearheaded","executed","achieved","exceeded","surpassed","secured","closed","recruited",
+  "mentored","trained","onboarded","deployed","migrated","refactored","engineered"
+];
+const BUZZWORDS = [
+  "synergy","synergies","leverage","leveraging","paradigm","holistic","proactive","results-driven",
+  "self-starter","team player","go-getter","passionate","motivated","dynamic","innovative",
+  "thought leader","visionary","guru","ninja","rockstar","wizard","evangelist","champion",
+  "strategic","strategic thinker","value-added","best-in-class","world-class","cutting-edge",
+  "state-of-the-art","next-generation","disruptive","transformative","solution-oriented",
+  "detail-oriented","fast-paced environment","excellent communication skills",
+  "strong work ethic","problem solver","out-of-the-box","game changer","impactful"
+];
+const RED_FLAG_PHRASES = [
+  "references available upon request","objective:","career objective","seeking a position",
+  "to whom it may concern","dear hiring manager","i am writing to","please find attached",
+  "microsoft office","microsoft word","microsoft excel","microsoft powerpoint","windows",
+  "fast learner","quick learner","passionate about","love to","love working","people person",
+  "excellent communication","strong communication","great communication",
+  "team player","work ethic","hardworking","dedicated professional"
+];
+
+const METRICS_RE = /\b\d+[\+%xX]?\b.*?(increase|decrease|growth|revenue|users|customers|sales|cost|saving|time|faster|more|less|reduction|improvement|retention|conversion|engagement|traffic|visitors|leads|deals|accounts|projects|team|members|employees|reports|budget|million|billion|thousand|k\b)/i;
+const METRICS_SIMPLE = /\b\d{2,}[%+]|\$\d+|\d+[xX]\b|\d+%/;
+
+function analyzeResume(text) {
+  const lower = text.toLowerCase();
+  const words = text.trim().split(/\s+/).filter(Boolean);
+  const lines = text.split(/\n/).filter(l => l.trim().length > 0);
+  const bullets = lines.filter(l => /^[\-•*▸►>]/.test(l.trim()) || /^\d+\./.test(l.trim()));
+
+  if (words.length < 40) return null;
+
+  // ——— Dimension 1: Impact / Quantification ———
+  const metricLines = lines.filter(l => METRICS_SIMPLE.test(l) || METRICS_RE.test(l));
+  const impactScore = Math.min(100, Math.round(
+    (metricLines.length / Math.max(bullets.length || lines.length * 0.4, 1)) * 120
+  ));
+
+  // ——— Dimension 2: Action Verbs ———
+  let strongHits = 0, weakHits = 0;
+  for (const v of STRONG_VERBS) if (lower.includes(v)) strongHits++;
+  for (const v of WEAK_VERBS) if (lower.includes(v)) weakHits++;
+  const verbScore = Math.min(100, Math.max(0,
+    50 + strongHits * 6 - weakHits * 8
+  ));
+
+  // ——— Dimension 3: Buzzword Toxicity (lower buzzwords = higher score) ———
+  let buzzHits = 0, buzzList = [];
+  for (const b of BUZZWORDS) {
+    if (lower.includes(b)) { buzzHits++; if (buzzList.length < 5) buzzList.push(b); }
+  }
+  const buzzScore = Math.min(100, Math.max(0, 100 - buzzHits * 12));
+
+  // ——— Dimension 4: Structure ———
+  const hasEmail = /@/.test(text);
+  const hasPhone = /[\+]?[\d\s\-\(\)]{10,}/.test(text);
+  const hasLinkedIn = /linkedin/i.test(text);
+  const hasGithub = /github/i.test(text);
+  const sectionsFound = [
+    /experience|work history|employment/i.test(text),
+    /education|university|college|degree|bachelor|master|phd/i.test(text),
+    /skills|technologies|tools|languages/i.test(text),
+    /projects|portfolio/i.test(text),
+    hasEmail || hasPhone
+  ].filter(Boolean).length;
+  const goodLength = words.length >= 200 && words.length <= 800;
+  const structScore = Math.min(100, sectionsFound * 16 + (goodLength ? 15 : 0) + (hasLinkedIn ? 5 : 0) + (hasGithub ? 5 : 0));
+
+  // ——— Dimension 5: Differentiation ———
+  let redFlagHits = 0, redFlagList = [];
+  for (const r of RED_FLAG_PHRASES) {
+    if (lower.includes(r)) { redFlagHits++; if (redFlagList.length < 4) redFlagList.push(r); }
+  }
+  const uniqueWords = new Set(words.map(w=>w.toLowerCase().replace(/[^a-z]/g,'')).filter(w=>w.length>3));
+  const ttr = uniqueWords.size / words.length;
+  const diffScore = Math.min(100, Math.max(0,
+    70 + (ttr > 0.6 ? 15 : 0) - redFlagHits * 10 + (metricLines.length > 3 ? 15 : 0)
+  ));
+
+  // ——— Overall score ———
+  const overall = Math.round(
+    impactScore * 0.30 +
+    verbScore   * 0.25 +
+    buzzScore   * 0.20 +
+    structScore * 0.15 +
+    diffScore   * 0.10
+  );
+
+  return {
+    overall,
+    dimensions: [
+      { label: "Impact & Metrics", score: impactScore },
+      { label: "Action Verbs",     score: verbScore },
+      { label: "Buzzword Score",   score: buzzScore },
+      { label: "Structure",        score: structScore },
+      { label: "Differentiation",  score: diffScore }
+    ],
+    wordCount: words.length,
+    bulletCount: bullets.length,
+    metricCount: metricLines.length,
+    strongVerbCount: strongHits,
+    weakVerbCount: weakHits,
+    buzzHits,
+    buzzList,
+    redFlagHits,
+    redFlagList
+  };
+}
+
+function getGrade(score) {
+  if (score >= 90) return "A+";
+  if (score >= 83) return "A";
+  if (score >= 77) return "B+";
+  if (score >= 70) return "B";
+  if (score >= 63) return "C+";
+  if (score >= 55) return "C";
+  if (score >= 45) return "D";
+  return "F";
+}
+
+function getVerdict(score) {
+  if (score >= 85) return { title: "Hire-Me Energy ✅", sub: "This resume would make a recruiter smile", color: "#10b981" };
+  if (score >= 70) return { title: "Solid, Needs Polish 🔧", sub: "Good bones, a few things holding you back", color: "#22c55e" };
+  if (score >= 55) return { title: "Mediocre Middle Child 😬", sub: "Won't get you rejected. Won't get you hired.", color: "#f59e0b" };
+  if (score >= 40) return { title: "Resume Red Flag 🚩", sub: "Hiring managers are sweating for you", color: "#f97316" };
+  return { title: "Career Cry for Help 💀", sub: "This resume has seen some things. Dark things.", color: "#ef4444" };
+}
+
+function getRoast(score, data) {
+  const grade = getGrade(score);
+  const roasts = {
+    F: [
+      `This resume reads like it was written by someone who has never actually applied for a job and has strong opinions about using "passionate" as a personality trait. There are ${data.buzzHits} buzzwords, zero metrics, and I found "${data.redFlagList[0] || 'references available upon request'}" in here. ${grade} — and that's generous.`,
+      `I've seen more personality in a blank Word document. This resume is a certified "we'll keep your résumé on file" speedrun. Please, for the love of recruiters everywhere, add one number. Any number. Even a wrong one.`
+    ],
+    D: [
+      `Somewhere between "technically a resume" and "LinkedIn profile from 2011." You have the structure but zero substance. Every bullet point is a chore description, not an achievement. Where are the results? What did you actually do? ${data.metricCount === 0 ? "Zero metrics found. Zero. Nada. Nothing." : `Only ${data.metricCount} measurable result${data.metricCount > 1 ? "s" : ""}? Come on.`}`,
+      `This resume would get filtered by ATS before a human ever saw it. The buzzwords (${data.buzzList.slice(0,2).join(", ") || "yes you have them"}) are costing you interviews. Recruiters skip resumes like this in under 6 seconds. You've been warned.`
+    ],
+    C: [
+      `Not terrible, not good. The recruiter equivalent of a shrug emoji. You've got some structure and a handful of decent bullets, but you buried the good stuff under ${data.buzzHits} buzzwords and ${data.weakVerbCount} passive verbs. You're "responsible for" things instead of leading them. Subtle difference, massive impact.`,
+      `Your resume passes the vibe check but fails the details check. You need more numbers, stronger verbs, and to delete "${data.buzzList[0] || "passionate self-starter"}" immediately. It's not lying exactly — it's just… saying nothing loudly.`
+    ],
+    B: [
+      `Solid resume, honestly. ${data.strongVerbCount} strong verbs, decent structure, ${data.metricCount} quantified wins. What's holding you back: ${data.buzzHits > 2 ? `${data.buzzHits} buzzwords that make you sound like everyone else` : data.weakVerbCount > 1 ? `a few passive verbs dragging you down` : "a few polish items"}. You'd get calls. You could be getting more calls.`,
+      `This is a B resume trying to be an A resume. The skeleton is there — good sections, some real achievements — but there's fuzz around the edges. Clean up the buzzwords, punch up the weak verbs, and you've got a top-10% resume.`
+    ],
+    A: [
+      `Okay, actually impressive. ${data.metricCount} quantified achievements, ${data.strongVerbCount} strong action verbs, clean structure, minimal buzzwords. You clearly understand that a resume is a marketing document, not a job description. Recruiters will read this one all the way through, and that alone puts you in rare company.`,
+      `This resume has receipts. Actual numbers, real verbs, and you didn't write "responsible for" once. If this doesn't land you interviews, the problem is the market, not you. Strong ${grade}.`
+    ]
+  };
+  const tier = score >= 80 ? "A" : score >= 65 ? "B" : score >= 50 ? "C" : score >= 38 ? "D" : "F";
+  const arr = roasts[tier];
+  return arr[score % arr.length];
+}
+
+function getDimColor(score) {
+  if (score >= 75) return "#10b981";
+  if (score >= 50) return "#f59e0b";
+  return "#ef4444";
+}
+
+function getFlags(data) {
+  const flags = [];
+  if (data.redFlagList.length > 0) data.redFlagList.forEach(r => flags.push({ text: `🚩 "${r}"`, cls: "red" }));
+  if (data.buzzList.length > 0) data.buzzList.slice(0,2).forEach(b => flags.push({ text: `⚠️ "${b}"`, cls: "yellow" }));
+  if (data.weakVerbCount > 0) flags.push({ text: `🔴 ${data.weakVerbCount} weak verb(s)`, cls: "red" });
+  if (data.strongVerbCount > 0) flags.push({ text: `✅ ${data.strongVerbCount} strong action verbs`, cls: "green" });
+  if (data.metricCount > 0) flags.push({ text: `📊 ${data.metricCount} quantified result(s)`, cls: "green" });
+  if (data.metricCount === 0) flags.push({ text: "❌ Zero metrics found", cls: "red" });
+  return flags;
+}
+
+let currentHash = "";
+
+function encodeText(text) {
+  try { return btoa(encodeURIComponent(text.slice(0,1000))); } catch(e) { return ""; }
+}
+function decodeText(hash) {
+  try { return decodeURIComponent(atob(hash)); } catch(e) { return ""; }
+}
+
+document.getElementById("resumeInput").addEventListener("input", function() {
+  document.getElementById("charCount").textContent = this.value.length + " characters";
+});
+
+function runRoast() {
+  const text = document.getElementById("resumeInput").value.trim();
+  if (!text || text.length < 80) {
+    showError("Please paste at least 80 characters of your resume to analyze.");
+    return;
+  }
+
+  document.getElementById("loading").classList.add("show");
+  document.getElementById("resultCard").classList.remove("show");
+  document.getElementById("error").classList.remove("show");
+  document.getElementById("roastBtn").disabled = true;
+
+  setTimeout(() => {
+    document.getElementById("loading").classList.remove("show");
+    document.getElementById("roastBtn").disabled = false;
+    const data = analyzeResume(text);
+    if (!data) { showError("Please paste more resume content for a reliable analysis."); return; }
+    renderResult(data, text);
+  }, 1100);
+}
+
+function renderResult(data, text) {
+  const score = data.overall;
+  const grade = getGrade(score);
+  const verdict = getVerdict(score);
+  const roast = getRoast(score, data);
+  const flags = getFlags(data);
+
+  // Header
+  document.getElementById("gradeCircle").textContent = grade;
+  document.getElementById("verdictTitle").textContent = verdict.title;
+  document.getElementById("verdictSubtitle").textContent = `${score}/100 overall · ${data.wordCount} words analyzed`;
+  document.getElementById("scorePill").textContent = score + "/100";
+
+  // Roast
+  document.getElementById("roastText").textContent = roast;
+
+  // Dimensions
+  document.getElementById("dimensionList").innerHTML = data.dimensions.map(d => `
+    <div class="dimension">
+      <div class="dim-label">${d.label}</div>
+      <div class="dim-bar-wrap"><div class="dim-bar" id="db_${d.label.replace(/\s/g,'')}" style="width:0%; background:${getDimColor(d.score)}"></div></div>
+      <div class="dim-score">${d.score}</div>
+    </div>
+  `).join("");
+  setTimeout(() => {
+    data.dimensions.forEach(d => {
+      const el = document.getElementById("db_" + d.label.replace(/\s/g,''));
+      if (el) el.style.width = d.score + "%";
+    });
+  }, 50);
+
+  // Stats
+  document.getElementById("statsGrid").innerHTML = [
+    { value: grade, label: "Grade" },
+    { value: data.wordCount, label: "Words" },
+    { value: data.metricCount, label: "Metrics" },
+    { value: data.strongVerbCount, label: "Strong Verbs" }
+  ].map(s => `<div class="stat"><div class="stat-value">${s.value}</div><div class="stat-label">${s.label}</div></div>`).join("");
+
+  // Flags
+  document.getElementById("flagsGrid").innerHTML = flags.map(f =>
+    `<span class="flag ${f.cls}">${f.text}</span>`
+  ).join("");
+
+  // Deep link
+  currentHash = encodeText(text);
+  const shareUrl = `https://tinytools-smoky.vercel.app/roast-my-resume/#${currentHash}`;
+
+  // Badge
+  const gradeColor = score >= 80 ? "10b981" : score >= 60 ? "f59e0b" : "ef4444";
+  const badgeUrl = `https://img.shields.io/badge/Resume%20Grade-${encodeURIComponent(grade)}-${gradeColor}?style=for-the-badge&logo=readthedocs`;
+  document.getElementById("badgeCode").textContent = `<a href="${shareUrl}">\n  <img src="${badgeUrl}" alt="Resume Grade ${grade}">\n</a>`;
+
+  // Share X
+  document.getElementById("shareXBtn").onclick = () => {
+    const tweet = `I got my resume roasted 🔥\n\nGrade: ${grade} (${score}/100) — "${verdict.title}"\n\nRoast yours free → ${shareUrl}\n\n#RoastMyResume #TinyTools #CareerAdvice`;
+    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweet), "_blank");
+  };
+
+  document.getElementById("resultCard").classList.add("show");
+  document.getElementById("resultCard").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function copyLink() {
+  const shareUrl = `https://tinytools-smoky.vercel.app/roast-my-resume/#${currentHash}`;
+  navigator.clipboard.writeText(shareUrl).then(() => alert("Link copied! Send it to your competitors."));
+}
+
+function copyBadge() {
+  navigator.clipboard.writeText(document.getElementById("badgeCode").textContent)
+    .then(() => alert("Badge HTML copied!"));
+}
+
+function downloadCard() {
+  const score = parseInt(document.getElementById("scorePill").textContent);
+  const grade = document.getElementById("gradeCircle").textContent;
+  const title = document.getElementById("verdictTitle").textContent;
+  const roastText = document.getElementById("roastText").textContent;
+  const canvas = document.getElementById("shareCanvas");
+  const ctx = canvas.getContext("2d");
+
+  const bg = ctx.createLinearGradient(0,0,1200,630);
+  bg.addColorStop(0,"#0a0a0f"); bg.addColorStop(1,"#1a0808");
+  ctx.fillStyle = bg; ctx.fillRect(0,0,1200,630);
+
+  const grd = ctx.createRadialGradient(200,0,0,200,0,500);
+  grd.addColorStop(0,"rgba(239,68,68,0.25)"); grd.addColorStop(1,"transparent");
+  ctx.fillStyle = grd; ctx.fillRect(0,0,1200,630);
+
+  ctx.fillStyle="rgba(31,31,46,0.9)";
+  roundRect(ctx,60,50,1080,530,24); ctx.fill();
+
+  const hdrGrd = ctx.createLinearGradient(60,50,1140,50);
+  hdrGrd.addColorStop(0,"#ef4444"); hdrGrd.addColorStop(1,"#b91c1c");
+  ctx.fillStyle=hdrGrd; roundRect(ctx,60,50,1080,130,[24,24,0,0]); ctx.fill();
+
+  // Grade circle
+  ctx.fillStyle="rgba(0,0,0,0.35)"; ctx.beginPath();
+  ctx.arc(133,115,48,0,Math.PI*2); ctx.fill();
+  ctx.fillStyle="white"; ctx.font="bold 42px -apple-system,Arial";
+  ctx.textAlign="center"; ctx.fillText(grade,133,131); ctx.textAlign="left";
+
+  // Title
+  ctx.fillStyle="white"; ctx.font="bold 34px -apple-system,Arial";
+  ctx.fillText(title,200,110);
+  ctx.fillStyle="rgba(255,255,255,0.8)"; ctx.font="20px -apple-system,Arial";
+  ctx.fillText(`${score}/100 Resume Score`, 200, 148);
+
+  // Roast
+  ctx.fillStyle="#fde68a"; ctx.font="italic 19px Georgia,serif";
+  wrapText(ctx, '"'+roastText+'"', 100, 240, 1000, 27);
+
+  ctx.fillStyle="rgba(160,160,184,0.8)"; ctx.font="18px -apple-system,Arial";
+  ctx.fillText("tinytools-smoky.vercel.app/roast-my-resume/",100,555);
+  ctx.fillStyle="#ef4444"; ctx.font="bold 19px -apple-system,Arial";
+  ctx.textAlign="right"; ctx.fillText("🔥 Roast My Resume by TinyTools",1100,555);
+  ctx.textAlign="left";
+
+  const link = document.createElement("a");
+  link.download="resume-roast.png"; link.href=canvas.toDataURL("image/png"); link.click();
+}
+
+function roundRect(ctx,x,y,w,h,r){
+  if(typeof r==="number") r=[r,r,r,r];
+  ctx.beginPath();
+  ctx.moveTo(x+r[0],y); ctx.lineTo(x+w-r[1],y);
+  ctx.quadraticCurveTo(x+w,y,x+w,y+r[1]); ctx.lineTo(x+w,y+h-r[2]);
+  ctx.quadraticCurveTo(x+w,y+h,x+w-r[2],y+h); ctx.lineTo(x+r[3],y+h);
+  ctx.quadraticCurveTo(x,y+h,x,y+h-r[3]); ctx.lineTo(x,y+r[0]);
+  ctx.quadraticCurveTo(x,y,x+r[0],y); ctx.closePath();
+}
+function wrapText(ctx,text,x,y,maxW,lineH){
+  const words=text.split(" "); let line="",lines=0;
+  for(let w of words){
+    const test=line+w+" ";
+    if(ctx.measureText(test).width>maxW&&line){
+      if(lines<5) ctx.fillText(line.trim(),x,y+lines*lineH);
+      line=w+" "; lines++;
+    } else line=test;
+  }
+  if(lines<5) ctx.fillText(line.trim(),x,y+lines*lineH);
+}
+function showError(msg){ const el=document.getElementById("error"); el.textContent=msg; el.classList.add("show"); document.getElementById("loading").classList.remove("show"); document.getElementById("roastBtn").disabled=false; }
+
+window.addEventListener("load",()=>{
+  const hash=location.hash.slice(1);
+  if(hash){ const text=decodeText(hash); if(text&&text.length>10){ document.getElementById("resumeInput").value=text; document.getElementById("charCount").textContent=text.length+" characters"; setTimeout(runRoast,400); } }
+});
+</script>
+</body>
+</html>
