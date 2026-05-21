@@ -1,237 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OG Image Generator for AI Newsletter Writers | TinyTools</title>
-  <meta name="description" content="Stop losing clicks because your AI newsletter has no cover image. Generate stunning Open Graph images instantly—free. Built for Beehiiv, Substack, and ConvertKit creators.">
-  <meta property="og:title" content="OG Image Generator for AI Newsletter Writers">
-  <meta property="og:description" content="Generate professional Open Graph images for every AI newsletter issue in seconds. No Canva. No Figma. Just paste and generate.">
-  <meta property="og:image" content="https://tinytools-smoky.vercel.app/og-image-generator/og-preview.png">
-  <meta property="og:url" content="https://tinytools-smoky.vercel.app/og-image-generator/for-ai-newsletter-writers/">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="OG Image Generator for AI Newsletter Writers">
-  <meta name="twitter:description" content="Generate stunning OG images for every AI newsletter issue. Free, instant, no design skills needed.">
-  <link rel="canonical" href="https://tinytools-smoky.vercel.app/og-image-generator/for-ai-newsletter-writers/">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0f; color: #e8e8f0; line-height: 1.6; }
-    a { color: #7c6dfa; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* NAV */
-    nav { padding: 16px 24px; border-bottom: 1px solid #1e1e2e; display: flex; align-items: center; gap: 12px; }
-    nav .logo { font-weight: 700; font-size: 1rem; color: #fff; letter-spacing: -0.02em; }
-    nav .logo span { color: #7c6dfa; }
-    nav .badge { font-size: 0.7rem; background: #1e1e2e; color: #7c6dfa; padding: 2px 8px; border-radius: 999px; border: 1px solid #2e2e4e; }
-
-    /* HERO */
-    .hero { max-width: 760px; margin: 0 auto; padding: 80px 24px 48px; text-align: center; }
-    .hero .eyebrow { display: inline-block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #7c6dfa; background: rgba(124,109,250,0.1); border: 1px solid rgba(124,109,250,0.25); border-radius: 999px; padding: 4px 14px; margin-bottom: 24px; }
-    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; color: #fff; margin-bottom: 20px; }
-    .hero h1 em { font-style: normal; background: linear-gradient(135deg, #7c6dfa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero p { font-size: 1.125rem; color: #9090b0; max-width: 560px; margin: 0 auto 36px; }
-    .cta-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary { background: #7c6dfa; color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 28px; border-radius: 10px; border: none; cursor: pointer; transition: background 0.2s; display: inline-block; }
-    .btn-primary:hover { background: #6b5de8; text-decoration: none; }
-    .btn-secondary { background: transparent; color: #e8e8f0; font-weight: 600; font-size: 1rem; padding: 14px 28px; border-radius: 10px; border: 1px solid #2e2e4e; cursor: pointer; transition: border-color 0.2s; display: inline-block; }
-    .btn-secondary:hover { border-color: #7c6dfa; text-decoration: none; }
-
-    /* EMBED FRAME */
-    .tool-embed { max-width: 820px; margin: 0 auto 72px; padding: 0 24px; }
-    .tool-embed iframe { width: 100%; height: 520px; border: 1px solid #1e1e2e; border-radius: 16px; background: #0f0f1a; }
-    .tool-embed .embed-label { text-align: center; font-size: 0.8rem; color: #5050708; margin-top: 10px; color: #505070; }
-
-    /* SECTION */
-    section { max-width: 820px; margin: 0 auto; padding: 0 24px 72px; }
-    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #7c6dfa; margin-bottom: 12px; }
-    h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.02em; color: #fff; margin-bottom: 20px; }
-    .intro-p { font-size: 1.05rem; color: #9090b0; margin-bottom: 16px; }
-
-    /* USE CASES */
-    .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 32px; }
-    .use-case-card { background: #0f0f1a; border: 1px solid #1e1e2e; border-radius: 14px; padding: 24px; transition: border-color 0.2s; }
-    .use-case-card:hover { border-color: #7c6dfa; }
-    .use-case-card .uc-icon { font-size: 1.8rem; margin-bottom: 12px; }
-    .use-case-card h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
-    .use-case-card p { font-size: 0.88rem; color: #7070908; line-height: 1.55; color: #707090; }
-
-    /* PAIN → SOLUTION */
-    .pain-solution { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
-    .ps-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; }
-    .ps-pain, .ps-solution { background: #0f0f1a; border: 1px solid #1e1e2e; border-radius: 12px; padding: 18px 20px; }
-    .ps-pain { border-left: 3px solid #ef4444; }
-    .ps-solution { border-left: 3px solid #22c55e; }
-    .ps-pain .label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #ef4444; margin-bottom: 6px; }
-    .ps-solution .label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #22c55e; margin-bottom: 6px; }
-    .ps-pain p, .ps-solution p { font-size: 0.9rem; color: #9090b0; line-height: 1.5; }
-    .ps-arrow { font-size: 1.4rem; color: #3e3e5e; text-align: center; }
-    @media (max-width: 580px) {
-      .ps-row { grid-template-columns: 1fr; }
-      .ps-arrow { display: none; }
-    }
-
-    /* PRICING TABLE */
-    .pricing-table { margin-top: 32px; overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-    th { background: #0f0f1a; color: #9090b0; font-weight: 600; text-align: left; padding: 12px 16px; border-bottom: 1px solid #1e1e2e; }
-    td { padding: 14px 16px; border-bottom: 1px solid #1e1e2e; color: #c8c8d8; vertical-align: top; }
-    tr:last-child td { border-bottom: none; }
-    tr.highlight td { background: rgba(124,109,250,0.06); }
-    tr.highlight td:first-child { color: #a78bfa; font-weight: 700; }
-    .tag-free { display: inline-block; background: rgba(34,197,94,0.15); color: #22c55e; font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
-    .tag-paid { display: inline-block; background: rgba(239,68,68,0.12); color: #ef4444; font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
-
-    /* INTERNAL LINKS */
-    .sister-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 28px; }
-    .sister-card { background: #0f0f1a; border: 1px solid #1e1e2e; border-radius: 12px; padding: 20px; transition: border-color 0.2s; }
-    .sister-card:hover { border-color: #7c6dfa; }
-    .sister-card h4 { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
-    .sister-card p { font-size: 0.83rem; color: #707090; }
-
-    /* CTA BANNER */
-    .cta-banner { background: linear-gradient(135deg, #1a1030 0%, #0f1a30 100%); border: 1px solid #2e2e4e; border-radius: 20px; padding: 56px 40px; text-align: center; margin-bottom: 72px; }
-    .cta-banner h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); color: #fff; margin-bottom: 16px; }
-    .cta-banner p { color: #9090b0; font-size: 1rem; margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
-
-    /* FOOTER */
-    footer { border-top: 1px solid #1e1e2e; padding: 28px 24px; text-align: center; font-size: 0.82rem; color: #404060; }
-    footer a { color: #606080; }
-  </style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OG Image Generator for AI Newsletter Writers | Free Tool — TinyTools</title>
+  <meta name="description" content="Generate professional OG images for every AI newsletter issue in seconds. Boost click-through rates on LinkedIn, X, and Substack with eye-catching social preview images — free, no login." />
+  <meta property="og:title" content="OG Image Generator for AI Newsletter Writers" />
+  <meta property="og:description" content="Stop losing clicks to blank social previews. Generate beautiful 1200×630 OG images for every newsletter issue — free, instant, no Canva." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/og-image-generator/for-ai-newsletter-writers/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/og-image-generator/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OG Image Generator for AI Newsletter Writers" />
+  <meta name="twitter:description" content="Generate beautiful 1200×630 OG images for every newsletter issue in seconds. Free, no login." />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/og-image-generator/for-ai-newsletter-writers/" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "OG Image Generator for AI Newsletter Writers",
-    "description": "Free Open Graph image generator purpose-built for AI newsletter creators on Beehiiv, Substack, and ConvertKit. Generate professional cover images for every issue in seconds.",
+    "description": "Generate professional OG images for every AI newsletter issue in seconds. Boost click-through rates on LinkedIn, X, and Substack with eye-catching social preview images — free, no login.",
     "url": "https://tinytools-smoky.vercel.app/og-image-generator/for-ai-newsletter-writers/",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/" },
-        { "@type": "ListItem", "position": 2, "name": "OG Image Generator", "item": "https://tinytools-smoky.vercel.app/og-image-generator/" },
-        { "@type": "ListItem", "position": 3, "name": "For AI Newsletter Writers", "item": "https://tinytools-smoky.vercel.app/og-image-generator/for-ai-newsletter-writers/" }
-      ]
-    },
     "mainEntity": {
       "@type": "SoftwareApplication",
       "name": "OG Image Generator",
       "applicationCategory": "DesignApplication",
       "operatingSystem": "Web",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tinytools-smoky.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "OG Image Generator", "item": "https://tinytools-smoky.vercel.app/og-image-generator/" },
+        { "@type": "ListItem", "position": 3, "name": "For AI Newsletter Writers", "item": "https://tinytools-smoky.vercel.app/og-image-generator/for-ai-newsletter-writers/" }
+      ]
     }
   }
   </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1f1f1f;
+      --border: #2a2a2a;
+      --accent: #7c3aed;
+      --accent2: #a78bfa;
+      --text: #f0f0f0;
+      --muted: #888;
+      --green: #22c55e;
+      --red: #ef4444;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; line-height: 1.65; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { padding: 14px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    nav .logo { font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: -0.02em; }
+    nav .logo span { color: var(--accent2); }
+    nav .breadcrumb { font-size: 0.82rem; color: var(--muted); }
+    nav .breadcrumb a { color: var(--muted); }
+    nav .breadcrumb a:hover { color: var(--accent2); }
+
+    /* HERO */
+    .hero { max-width: 780px; margin: 0 auto; padding: 64px 24px 48px; text-align: center; }
+    .badge { display: inline-block; background: rgba(124,58,237,0.15); border: 1px solid rgba(167,139,250,0.3); color: var(--accent2); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+    h1 .highlight { color: var(--accent2); }
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin: 0 auto 36px; }
+    .cta-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 32px; border-radius: 10px; transition: background 0.2s; }
+    .cta-primary:hover { background: #6d28d9; text-decoration: none; }
+    .cta-note { font-size: 0.8rem; color: var(--muted); margin-top: 10px; }
+
+    /* SECTION */
+    section { max-width: 780px; margin: 0 auto; padding: 0 24px 64px; }
+    h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    p { color: #ccc; margin-bottom: 16px; }
+
+    /* PAIN BLOCK */
+    .pain-block { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--red); border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; }
+    .pain-block .pain-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); margin-bottom: 6px; }
+    .pain-block .solution-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-top: 12px; margin-bottom: 6px; }
+    .pain-block .solution-text { color: var(--text); font-size: 0.95rem; }
+    .pain-block .pain-text { color: #ccc; font-size: 0.95rem; }
+
+    /* USE CASES */
+    .use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+    @media (max-width: 600px) { .use-case-grid { grid-template-columns: 1fr; } }
+    .use-case-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .use-case-card .uc-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .use-case-card h3 { font-size: 0.98rem; margin-bottom: 6px; }
+    .use-case-card p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* PRICING TABLE */
+    .pricing-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem; }
+    .pricing-table th { text-align: left; padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .pricing-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .tool-name { font-weight: 600; }
+    .pricing-table .price { font-weight: 700; }
+    .pricing-table .price.free { color: var(--green); }
+    .pricing-table .price.paid { color: var(--muted); }
+    .pricing-table tr.highlight { background: rgba(124,58,237,0.08); }
+    .pricing-table tr.highlight .tool-name { color: var(--accent2); }
+    .check { color: var(--green); }
+    .cross { color: var(--red); }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; }
+    .step-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(124,58,237,0.2); border: 1px solid rgba(167,139,250,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; color: var(--accent2); }
+    .step-content h3 { font-size: 0.98rem; margin-bottom: 4px; }
+    .step-content p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* INTERNAL LINKS */
+    .sister-tools { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+    .sister-card { flex: 1 1 200px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; transition: border-color 0.2s; }
+    .sister-card:hover { border-color: var(--accent); text-decoration: none; }
+    .sister-card .sc-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .sister-card h3 { font-size: 0.9rem; color: var(--text); margin-bottom: 4px; }
+    .sister-card p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+    /* FINAL CTA */
+    .final-cta { background: linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(167,139,250,0.05) 100%); border: 1px solid rgba(124,58,237,0.3); border-radius: 16px; padding: 48px 36px; text-align: center; margin-bottom: 64px; }
+    .final-cta h2 { font-size: 1.7rem; margin-bottom: 12px; }
+    .final-cta p { max-width: 500px; margin: 0 auto 28px; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 0.82rem; color: var(--muted); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent2); }
+  </style>
 </head>
 <body>
 
 <nav>
   <span class="logo">Tiny<span>Tools</span></span>
-  <span class="badge">Free Forever</span>
+  <span class="breadcrumb">
+    <a href="/">Home</a> /
+    <a href="/og-image-generator/">OG Image Generator</a> /
+    For AI Newsletter Writers
+  </span>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="eyebrow">For AI Newsletter Writers</div>
-  <h1>Your AI Newsletter Deserves a <em>Cover Image</em> That Gets Clicks</h1>
-  <p>Stop sending issues with blank previews. Generate professional Open Graph images for every edition in under 30 seconds—no Canva, no Figma, no designer needed.</p>
-  <div class="cta-group">
-    <a href="https://tinytools-smoky.vercel.app/og-image-generator/" class="btn-primary">Generate My OG Image Free →</a>
-    <a href="#use-cases" class="btn-secondary">See Use Cases</a>
-  </div>
+  <div class="badge">AI Newsletter Writers</div>
+  <h1>OG Image Generator<br>for <span class="highlight">AI Newsletter Writers</span></h1>
+  <p class="hero-sub">Every issue you ship deserves a click-worthy social preview. Generate professional 1200×630 OG images in seconds — free, no Canva, no subscription.</p>
+  <a href="/og-image-generator/" class="cta-primary">Generate Your OG Image Free →</a>
+  <p class="cta-note">No login required · Works with Substack, Beehiiv, Ghost, Kit &amp; more</p>
 </div>
-
-<!-- TOOL EMBED -->
-<div class="tool-embed">
-  <iframe src="https://tinytools-smoky.vercel.app/og-image-generator/" title="OG Image Generator Tool" loading="lazy" frameborder="0"></iframe>
-  <p class="embed-label">↑ Live tool — generate your first image above, no sign-up required</p>
-</div>
-
-<!-- USE CASES -->
-<section id="use-cases">
-  <div class="section-label">Use Cases</div>
-  <h2>5 Ways AI Newsletter Writers Use This Tool Every Week</h2>
-  <p class="intro-p">AI newsletter writers face a specific problem: you're shipping content daily or weekly, often covering fast-moving topics, and you have zero time to open a design app. Here's how the OG Image Generator fits into your workflow.</p>
-
-  <div class="use-cases">
-    <div class="use-case-card">
-      <div class="uc-icon">📨</div>
-      <h3>Beehiiv & Substack Issue Covers</h3>
-      <p>Each issue you publish gets shared on social media. Without a custom OG image, platforms pull a generic thumbnail that tanks your click-through rate. Generate a branded cover in seconds: drop in your issue title, pick a palette, export.</p>
-    </div>
-    <div class="use-case-card">
-      <div class="uc-icon">🐦</div>
-      <h3>Twitter/X Thread Previews</h3>
-      <p>AI Twitter is crowded. When you share "I wrote a breakdown of GPT-5's context window," your thread needs a visual hook. Use the generator to create a preview card with your headline and brand colors before you post.</p>
-    </div>
-    <div class="use-case-card">
-      <div class="uc-icon">🔗</div>
-      <h3>LinkedIn Share Images for Newsletter Announcements</h3>
-      <p>Promoting your latest issue on LinkedIn? A custom OG image increases impressions by up to 3x versus a link with no image. Takes 20 seconds with this tool—faster than writing the LinkedIn caption.</p>
-    </div>
-    <div class="use-case-card">
-      <div class="uc-icon">🤖</div>
-      <h3>AI Tool Roundup Thumbnails</h3>
-      <p>Weekly roundup of the top 5 AI releases? Each roundup edition should have its own visual identity. Batch-generate OG images for your recurring segments (e.g. "This Week in LLMs", "Prompt of the Week") to keep branding consistent.</p>
-    </div>
-    <div class="use-case-card">
-      <div class="uc-icon">💼</div>
-      <h3>Sponsor Pitch Decks & Media Kits</h3>
-      <p>When pitching sponsors, showing polished newsletter visuals signals professionalism. Use OG images as mockups in your media kit to demonstrate what the newsletter looks like when shared—sponsors want to see their placement in context.</p>
-    </div>
-  </div>
-</section>
 
 <!-- PAIN → SOLUTION -->
 <section>
-  <div class="section-label">Pain → Solution</div>
-  <h2>The Exact Problems This Solves for AI Newsletter Creators</h2>
+  <h2>The Click-Through Problem Every AI Newsletter Writer Knows</h2>
+  <p>You spend two hours crafting the perfect issue — sourcing the best AI tools, writing sharp takes, structuring the sections. Then you hit publish. Your Substack or Beehiiv post goes out. On LinkedIn it renders as a grey box. On X it's a plain text link. On Slack previews it shows your newsletter's generic logo from 2022.</p>
+  <p>That blank preview is costing you clicks. Studies consistently show that social posts with rich images get 2–3× more engagement than text-only links. For newsletter writers, that means fewer referral clicks, slower subscriber growth, and lower sponsor visibility.</p>
 
-  <div class="pain-solution">
-    <div class="ps-row">
-      <div class="ps-pain">
-        <div class="label">Pain</div>
-        <p>You spend 45 minutes in Canva trying to make a "quick" issue thumbnail, then give up and ship without one.</p>
-      </div>
-      <div class="ps-arrow">→</div>
-      <div class="ps-solution">
-        <div class="label">Solution</div>
-        <p>Paste your headline, choose a style, download in 20 seconds. The generator handles layout, typography, and sizing automatically.</p>
+  <div style="margin-top:32px;">
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #1</div>
+      <div class="pain-text">You publish 2–3 issues a week but designing a custom cover image in Canva takes 20+ minutes per issue. You skip it most of the time.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">TinyTools OG Image Generator produces a polished 1200×630 image in under 60 seconds. Enter your issue title, tagline, and pick a template — done. Paste the URL in your newsletter settings before you hit send.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #2</div>
+      <div class="pain-text">Your newsletter brand looks inconsistent across issues — different colors, fonts, and layouts every time a subscriber shares your content on social.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">Set your brand color hex once and every OG image you generate uses it automatically. All 50 back-issues can share the same visual identity without touching Figma or Canva.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #3</div>
+      <div class="pain-text">You use AI to write your newsletter but image creation breaks your automation. You can't pipe Beehiiv webhooks into a $49/mo Bannerbear account just for 3 images a week.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">TinyTools is entirely free with no usage caps. Use the browser tool for manual issues or embed the open-source generator in a Make.com / Zapier workflow to fully automate OG image creation at zero cost.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #4</div>
+      <div class="pain-text">Sponsor placements look unprofessional when your social preview is blank or shows a low-res thumbnail scraped from inside the issue.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">Generate sponsor-branded OG images that feature the sponsor's name prominently in the preview. Charge a premium for "social preview inclusion" — a new inventory line that costs you nothing to produce.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section>
+  <h2>5 Ways AI Newsletter Writers Use This Tool</h2>
+  <div class="use-case-grid">
+
+    <div class="use-case-card">
+      <div class="uc-icon">📰</div>
+      <h3>Weekly Issue Cover Images</h3>
+      <p>Generate a unique OG image for each issue with the date, issue number, and headline. Paste into Beehiiv or Substack's "cover image" field before publishing so every share looks intentional.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">🤖</div>
+      <h3>"AI Tool Spotlight" Cards</h3>
+      <p>Running a weekly AI tool roundup? Generate a branded card per tool spotlight — tool name, one-line description, your newsletter logo. Share each card as a thread teaser on X to drive full-issue clicks.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">💰</div>
+      <h3>Sponsored Issue Previews</h3>
+      <p>Create sponsor-co-branded OG images with the sponsor's product name baked into the preview. LinkedIn posts with sponsor logos in the image get 40–60% more impression shares than plain-text sponsored posts.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">🎯</div>
+      <h3>Milestone Announcement Cards</h3>
+      <p>"Just hit 10,000 subscribers!" posts without a visual get buried. Generate a celebration card with your subscriber count, newsletter name, and a bold gradient. Milestone posts with visuals convert 3× more follows from impressions.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">📊</div>
+      <h3>Data/Stats Teaser Images</h3>
+      <p>AI newsletters that lead with data ("GPT-4o is 47% cheaper than Claude 3.5 for RAG workloads") get shared more when the stat is prominent in the OG image preview rather than buried in the body copy.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <h2>How to Use It (60-Second Workflow)</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Open the OG Image Generator</h3>
+        <p>No account needed. Go to <a href="/og-image-generator/">/og-image-generator/</a> — it loads instantly in your browser.</p>
       </div>
     </div>
-    <div class="ps-row">
-      <div class="ps-pain">
-        <div class="label">Pain</div>
-        <p>Your newsletter looks amazing in email but when someone shares a link on Slack or X, the preview is blank or shows your site's generic logo.</p>
-      </div>
-      <div class="ps-arrow">→</div>
-      <div class="ps-solution">
-        <div class="label">Solution</div>
-        <p>Generate issue-specific OG images at the correct 1200×630px dimensions. Upload to your Beehiiv/Substack post settings before publishing.</p>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Enter your newsletter issue title and tagline</h3>
+        <p>Paste your issue headline as the main title. Add a short tagline — your newsletter name, the issue date, or a hook like "The 5 AI tools everyone missed this week."</p>
       </div>
     </div>
-    <div class="ps-row">
-      <div class="ps-pain">
-        <div class="label">Pain</div>
-        <p>Your newsletter covers AI topics that change weekly—having a static, evergreen thumbnail template doesn't work. You need fresh visuals per issue.</p>
-      </div>
-      <div class="ps-arrow">→</div>
-      <div class="ps-solution">
-        <div class="label">Solution</div>
-        <p>Generate unlimited unique images with custom headlines, subheadlines, and accent colors. No templates to "reset"—every image is generated fresh.</p>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Set your brand color and choose a layout</h3>
+        <p>Enter your newsletter's primary hex color. Pick from a dark gradient, clean light, or bold full-bleed layout. Preview updates in real time.</p>
       </div>
     </div>
-    <div class="ps-row">
-      <div class="ps-pain">
-        <div class="label">Pain</div>
-        <p>You're a solo operator. You can't justify $50/month for a design tool just to make newsletter cover images.</p>
-      </div>
-      <div class="ps-arrow">→</div>
-      <div class="ps-solution">
-        <div class="label">Solution</div>
-        <p>TinyTools OG Image Generator is permanently free. No credits, no watermarks, no account required. Generate as many as you need.</p>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Download and drop into your newsletter platform</h3>
+        <p>Export as PNG at 1200×630. In Beehiiv: Settings → Post settings → Cover image. In Substack: the cover photo upload. In Ghost: the feature image field. Done — every share of your issue now shows a proper preview.</p>
       </div>
     </div>
   </div>
@@ -239,101 +273,115 @@
 
 <!-- PRICING COMPARISON -->
 <section>
-  <div class="section-label">Pricing Comparison</div>
-  <h2>vs. What AI Newsletter Writers Usually Pay for This</h2>
-  <p class="intro-p">Most creators cobble together an expensive stack just to handle newsletter visuals. Here's what TinyTools replaces:</p>
-
-  <div class="pricing-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Tool</th>
-          <th>Monthly Cost</th>
-          <th>OG Image Features</th>
-          <th>Verdict</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="highlight">
-          <td>TinyTools OG Image Generator</td>
-          <td><span class="tag-free">Free</span></td>
-          <td>1200×630px, custom text, instant download, no watermark</td>
-          <td>✅ Best for newsletters</td>
-        </tr>
-        <tr>
-          <td>Canva Pro</td>
-          <td><span class="tag-paid">$15/mo</span></td>
-          <td>Templates available, but manual design required each time</td>
-          <td>Overkill for OG images alone</td>
-        </tr>
-        <tr>
-          <td>Bannerbear</td>
-          <td><span class="tag-paid">$49/mo</span></td>
-          <td>API-driven, excellent for automation—but too complex for solo writers</td>
-          <td>Enterprise-level pricing</td>
-        </tr>
-        <tr>
-          <td>Placid</td>
-          <td><span class="tag-paid">$29/mo</span></td>
-          <td>Template-based OG generation with integrations</td>
-          <td>Good, but subscription required</td>
-        </tr>
-        <tr>
-          <td>Figma</td>
-          <td><span class="tag-paid">$15/mo</span></td>
-          <td>No native OG workflow—manual process every time</td>
-          <td>Not built for this use case</td>
-        </tr>
-        <tr>
-          <td>Beehiiv AI (built-in)</td>
-          <td>Included with paid plan ($42/mo+)</td>
-          <td>Limited customization options for share images</td>
-          <td>Locked to Beehiiv ecosystem</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <h2>Free vs. Paid OG Image Tools for Newsletter Writers</h2>
+  <p>Here's how TinyTools compares to the paid tools AI newsletter writers typically end up paying for:</p>
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Price</th>
+        <th>Per-image time</th>
+        <th>Brand colors</th>
+        <th>Automation API</th>
+        <th>Newsletter-focused</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="tool-name">TinyTools OG Image Generator</td>
+        <td class="price free">Free</td>
+        <td>~45 sec</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓ open-source</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Canva Pro</td>
+        <td class="price paid">$15/mo</td>
+        <td>15–25 min</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗ generic</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Bannerbear</td>
+        <td class="price paid">$49/mo</td>
+        <td>&lt;5 sec (API)</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗ dev setup needed</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Placid.app</td>
+        <td class="price paid">$19/mo</td>
+        <td>~5 min setup + API</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗ generic</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Adobe Express</td>
+        <td class="price paid">$10/mo</td>
+        <td>10–20 min</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗ generic</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Figma (manual)</td>
+        <td class="price paid">$15/mo</td>
+        <td>20–40 min</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗ manual export</span></td>
+        <td><span class="cross">✗ design skill req.</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:16px; font-size:0.85rem;">For solo newsletter writers publishing 3+ issues a week, Bannerbear and Placid pay for themselves in time saved — but require developer setup and monthly fees. TinyTools gives you 90% of the result at zero cost with a 60-second workflow. Save the API tools for when you're at 50,000+ subscribers and automating at scale.</p>
 </section>
 
-<!-- INTERNAL LINKS / SISTER TOOLS -->
+<!-- SISTER TOOLS -->
 <section>
-  <div class="section-label">Related Tools</div>
-  <h2>Other Free Tools for AI Newsletter Writers</h2>
-  <p class="intro-p">While you're here, these tools are built for the same workflow:</p>
-
+  <h2>Complete Your Newsletter's Visual Stack</h2>
+  <p>OG images are one piece of a newsletter's visual brand. These free tools cover the rest:</p>
   <div class="sister-tools">
-    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/" class="sister-card">
-      <h4>AI Disclosure Generator</h4>
-      <p>Generate FTC-compliant AI content disclosures for your newsletter. Stay legal as AI content rules tighten in 2025–2026.</p>
+    <a href="/favicon-generator/" class="sister-card">
+      <div class="sc-icon">⭐</div>
+      <h3>Favicon Generator</h3>
+      <p>Create a custom favicon for your newsletter's hosted web version on Substack, Ghost, or a custom domain.</p>
     </a>
-    <a href="https://tinytools-smoky.vercel.app/seo-meta-generator/" class="sister-card">
-      <h4>SEO Meta Generator</h4>
-      <p>Craft optimized meta titles and descriptions for your newsletter's web archive pages. More organic readers, zero effort.</p>
+    <a href="/color-palette/" class="sister-card">
+      <div class="sc-icon">🎨</div>
+      <h3>Color Palette Generator</h3>
+      <p>Find and lock in your newsletter's brand color palette. Export hex codes to use consistently across OG images, headers, and CTAs.</p>
     </a>
-    <a href="https://tinytools-smoky.vercel.app/favicon-generator/" class="sister-card">
-      <h4>Favicon Generator</h4>
-      <p>Give your newsletter's landing page a polished favicon. Takes 30 seconds and makes your brand look 10× more professional.</p>
+    <a href="/seo-meta-generator/" class="sister-card">
+      <div class="sc-icon">🔍</div>
+      <h3>SEO Meta Generator</h3>
+      <p>Generate the &lt;meta&gt; and &lt;og:&gt; tags for your newsletter's archive pages so every issue ranks and shares correctly.</p>
     </a>
   </div>
 </section>
 
 <!-- FINAL CTA -->
 <section>
-  <div class="cta-banner">
-    <h2>Generate Your Next Issue's OG Image Right Now</h2>
-    <p>No account. No watermarks. No credit card. Just paste your headline and download a 1200×630px image that makes your newsletter shine in every share.</p>
-    <a href="https://tinytools-smoky.vercel.app/og-image-generator/" class="btn-primary">Open OG Image Generator →</a>
+  <div class="final-cta">
+    <h2>Your next issue deserves a proper preview.</h2>
+    <p>Generate a professional OG image right now — free, no login, no design skills required. Takes 60 seconds.</p>
+    <a href="/og-image-generator/" class="cta-primary">Open OG Image Generator →</a>
+    <p class="cta-note" style="margin-top:12px;">Used by 3,000+ newsletter writers · Free forever</p>
   </div>
 </section>
 
 <footer>
   <p>
-    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> · 
-    <a href="https://tinytools-smoky.vercel.app/og-image-generator/">OG Image Generator</a> · 
-    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a> · 
-    <a href="https://tinytools-smoky.vercel.app/seo-meta-generator/">SEO Meta Generator</a>
+    <a href="/">TinyTools</a> ·
+    <a href="/og-image-generator/">OG Image Generator</a> ·
+    <a href="/favicon-generator/">Favicon Generator</a> ·
+    <a href="/color-palette/">Color Palette</a> ·
+    <a href="/seo-meta-generator/">SEO Meta Generator</a>
   </p>
-  <p style="margin-top: 10px;">© 2026 TinyTools. Free tools for creators and builders.</p>
+  <p style="margin-top:8px;">© 2026 TinyTools · Free AI tools for builders</p>
 </footer>
 
 </body>
