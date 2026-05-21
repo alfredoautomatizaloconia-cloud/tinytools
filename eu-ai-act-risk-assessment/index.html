@@ -25,6 +25,160 @@
   "operatingSystem": "All",
   "offers": { "@type": "Offer", "price": "0" }
 }
+
+// ── Viral mechanics ──────────────────────────────────────────────────────────
+const TIER_SHIELD_COLORS = {
+  'prohibited': 'critical',
+  'high-risk': 'important',
+  'limited': 'yellow',
+  'limited-or-minimal-via-carveout': 'yellow',
+  'minimal': 'brightgreen'
+};
+const TIER_DISPLAY_NAMES = {
+  'prohibited': 'Prohibited',
+  'high-risk': 'High--Risk',
+  'limited': 'Limited--Risk',
+  'limited-or-minimal-via-carveout': 'Annex--III--Carveout',
+  'minimal': 'Minimal--Risk'
+};
+
+function encodeAssessmentState() {
+  try {
+    const state = {
+      a: answers,
+      h: history.map(h => ({ qid: h.qid, value: h.value, label: h.label, q: h.q })),
+      t: terminalResult,
+      r: terminalReason
+    };
+    return btoa(unescape(encodeURIComponent(JSON.stringify(state)))).replace(/=/g, '');
+  } catch(e) { return ''; }
+}
+
+function decodeAssessmentState(hash) {
+  try {
+    const json = decodeURIComponent(escape(atob(hash)));
+    const s = JSON.parse(json);
+    return { answers: s.a, history: s.h, terminal: s.t, reason: s.r };
+  } catch(e) { return null; }
+}
+
+function setupViralSection(tier) {
+  const r = RESULTS[tier] || RESULTS.minimal;
+  const shieldColor = TIER_SHIELD_COLORS[tier] || 'blue';
+  const tierDisplay = TIER_DISPLAY_NAMES[tier] || 'Unknown';
+  const baseUrl = 'https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/';
+  const stateHash = encodeAssessmentState();
+  const deepLink = stateHash ? baseUrl + '#' + stateHash : baseUrl;
+
+  // ① Tweet button
+  const tweetText = 'I just classified my AI system as "' + r.title + '" under the EU AI Act. Get your free classification (↓ no signup) →';
+  document.getElementById('tweetBtn').href =
+    'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweetText) +
+    '&url=' + encodeURIComponent(deepLink);
+
+  // ② Copy deep-link
+  document.getElementById('copyLinkBtn').onclick = function() {
+    navigator.clipboard.writeText(deepLink);
+    this.textContent = '✓ Copied!';
+    const self = this;
+    setTimeout(function() { self.textContent = '🔗 Copy deep link'; }, 1500);
+  };
+
+  // ③ Embeddable badge
+  const badgeUrl = 'https://img.shields.io/badge/EU%20AI%20Act-' + tierDisplay + '-' + shieldColor + '?style=for-the-badge';
+  const embedCode = '[![EU AI Act: ' + r.title + '](' + badgeUrl + ')](' + deepLink + ')';
+  document.getElementById('embedCode').textContent = embedCode;
+  document.getElementById('copyEmbedBtn').onclick = function() {
+    navigator.clipboard.writeText(embedCode);
+    this.textContent = '✓ Copied';
+    const self = this;
+    setTimeout(function() { self.textContent = 'Copy embed code'; }, 1500);
+  };
+
+  // ④ PNG download card
+  drawResultCard(tier, r);
+
+  document.getElementById('viralSection').style.display = 'block';
+}
+
+function drawResultCard(tier, r) {
+  const canvas = document.getElementById('resultCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+
+  ctx.fillStyle = '#0a0a0f';
+  ctx.fillRect(0, 0, W, H);
+
+  const TIER_GRAD = {
+    'prohibited':   '#991b1b',
+    'high-risk':    '#9a3412',
+    'limited':      '#854d0e',
+    'limited-or-minimal-via-carveout': '#854d0e',
+    'minimal':      '#065f46'
+  };
+  const c1 = TIER_GRAD[tier] || '#065f46';
+  const grd = ctx.createRadialGradient(240, 0, 60, 240, 0, 750);
+  grd.addColorStop(0, c1 + 'cc');
+  grd.addColorStop(1, '#0a0a0f00');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0, 0, W, H);
+
+  // Grid lines
+  ctx.strokeStyle = 'rgba(255,255,255,0.03)';
+  ctx.lineWidth = 1;
+  for (let x = 0; x < W; x += 80) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+  for (let y = 0; y < H; y += 80) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+
+  ctx.font = '90px serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#ffffff';
+  ctx.fillText(r.emoji, 600, 145);
+
+  ctx.font = '600 20px Arial,sans-serif'; ctx.fillStyle = 'rgba(255,255,255,0.55)';
+  ctx.fillText(r.tier.toUpperCase(), 600, 195);
+
+  ctx.font = 'bold 58px Arial,sans-serif'; ctx.fillStyle = '#ffffff';
+  ctx.fillText(r.title, 600, 285);
+
+  ctx.font = '24px Arial,sans-serif'; ctx.fillStyle = 'rgba(255,255,255,0.75)';
+  const words = r.tagline.split(' ');
+  let line = '', lineY = 350;
+  for (let i = 0; i < words.length; i++) {
+    const test = line ? line + ' ' + words[i] : words[i];
+    if (ctx.measureText(test).width > 960 && line) {
+      ctx.fillText(line, 600, lineY); line = words[i]; lineY += 36;
+      if (lineY > 455) { ctx.fillText(line + '…', 600, lineY); line = ''; break; }
+    } else { line = test; }
+  }
+  if (line) ctx.fillText(line, 600, lineY);
+
+  ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(80, 495); ctx.lineTo(W-80, 495); ctx.stroke();
+
+  ctx.font = '18px Arial,sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(255,255,255,0.3)';
+  ctx.fillText('tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/', 80, 535);
+
+  ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(239,68,68,0.75)';
+  ctx.font = 'bold 18px Arial,sans-serif';
+  ctx.fillText('TinyTools', W-80, 535);
+
+  document.getElementById('downloadCardBtn').href = canvas.toDataURL('image/png');
+}
+
+// ⑤ Auto-load from URL hash (deep-links)
+(function() {
+  if (location.hash && location.hash.length > 1) {
+    const state = decodeAssessmentState(location.hash.slice(1));
+    if (state && state.history && state.answers) {
+      answers = state.answers;
+      history = state.history.map(function(h) {
+        return { qid: h.qid, value: h.value, label: h.label, q: h.q };
+      });
+      terminalResult = state.terminal || null;
+      terminalReason = state.reason || null;
+      showResult();
+    }
+  }
+})();
+
 </script>
 <style>
   :root {
@@ -140,6 +294,20 @@
 
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
+
+  /* Viral mechanics */
+  .viral-section { margin-top: 24px; }
+  .viral-title { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; font-weight: 600; }
+  .viral-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+  .viral-btn { flex: 1; min-width: 140px; padding: 10px 14px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; color: var(--text); cursor: pointer; font-size: 13px; font-weight: 600; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; font-family: inherit; }
+  .viral-btn:hover { border-color: var(--accent); }
+  .viral-btn.twitter-btn { background: rgba(29,155,240,0.15); border-color: rgba(29,155,240,0.4); color: #60a5fa; }
+  .viral-btn.twitter-btn:hover { background: rgba(29,155,240,0.25); }
+  .embed-section { margin-top: 14px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .embed-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .embed-section .embed-copy-btn { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; font-family: inherit; }
+
 </style>
 </head>
 <body>
@@ -185,6 +353,23 @@
       <button class="action-btn" id="printBtn">🖨️ Print / Save PDF</button>
       <button class="action-btn" id="restartFromResultBtn">↻ Re-assess</button>
     </div>
+
+    
+    <!-- Viral mechanics: share, deep-link, badge, card download -->
+    <div class="viral-section" id="viralSection" style="display:none;">
+      <div class="viral-title">🔗 Share your risk classification</div>
+      <div class="viral-row">
+        <a class="viral-btn twitter-btn" id="tweetBtn" href="#" target="_blank" rel="noopener">🐦 Share on X</a>
+        <button class="viral-btn" id="copyLinkBtn">🔗 Copy deep link</button>
+        <a class="viral-btn" id="downloadCardBtn" download="eu-ai-act-result.png" href="#">⬇️ Download card</a>
+      </div>
+      <div class="embed-section">
+        <div class="embed-label">Embeddable badge (Markdown)</div>
+        <pre id="embedCode"></pre>
+        <button class="embed-copy-btn" id="copyEmbedBtn">Copy embed code</button>
+      </div>
+    </div>
+    <canvas id="resultCanvas" width="1200" height="630" style="display:none;"></canvas>
 
     <div class="upsell">
       <h3>Need a compliant AI disclosure label too?</h3>
@@ -577,6 +762,8 @@ function showResult() {
   });
   html += '</tbody>';
   tbl.innerHTML = html;
+
+  setupViralSection(tier);
 }
 
 function escapeHtml(s) { return (s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
