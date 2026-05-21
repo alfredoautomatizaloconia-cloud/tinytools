@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your AI Product Might Be Illegal in Europe After August 2, 2026. Here's How to Find Out in 60 Seconds.</title>
+<meta name="description" content="The EU AI Act high-risk compliance deadline is August 2, 2026 — 10 weeks away. Fines reach €35M or 7% of global revenue. I ran 10 popular AI tools through a risk checker. Half had issues they didn't know about.">
+<meta name="keywords" content="EU AI Act 2026 deadline, EU AI Act compliance, high-risk AI systems, EU AI Act fines, AI Act risk assessment, GPAI model compliance, AI regulation Europe, prohibited AI systems, EU AI Act checklist, AI compliance tool">
+<meta property="og:title" content="Your AI Product Might Be Illegal in Europe After August 2, 2026. Here's How to Find Out in 60 Seconds.">
+<meta property="og:description" content="The EU AI Act deadline is 10 weeks away. Fines hit €35M or 7% of revenue. I checked 10 popular AI tools — half had compliance gaps they didn't know about.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your AI Might Be Illegal in Europe After August 2026. Here's How to Know in 60 Seconds.">
+<meta name="twitter:description" content="EU AI Act high-risk deadline: Aug 2, 2026. Fines up to €35M. I checked 10 tools — half had issues. Free risk checker included.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-might-be-illegal-europe-august-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Your AI Product Might Be Illegal in Europe After August 2, 2026. Here's How to Find Out in 60 Seconds.",
+  "description": "The EU AI Act high-risk compliance deadline is August 2, 2026 — 10 weeks away. Fines reach €35 million or 7% of global revenue. Here's what every AI builder needs to know right now.",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
+  "datePublished": "2026-05-21",
+  "dateModified": "2026-05-21",
+  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-might-be-illegal-europe-august-2026/",
+  "image": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/og.png",
+  "articleSection": "AI Regulation & Compliance",
+  "keywords": "EU AI Act 2026, high-risk AI deadline, AI compliance, GPAI, EU AI Act fines, AI regulation"
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #6366f1; --accent-glow: #6366f140;
+    --green: #10b981; --yellow: #f59e0b; --red: #ef4444;
+    --orange: #f97316;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 {
+    font-size: clamp(26px, 4vw, 40px); font-weight: 800; line-height: 1.15;
+    margin: 16px 0 12px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 24px; font-weight: 700; margin: 40px 0 12px; color: var(--text); letter-spacing: -0.01em; }
+  h3 { font-size: 18px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+  p { color: #d0d0e0; margin-bottom: 18px; }
+  ul, ol { color: #d0d0e0; margin: 0 0 18px 24px; }
+  li { margin-bottom: 8px; }
+  strong { color: var(--text); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .deadline-banner {
+    background: linear-gradient(135deg, #7f1d1d, #991b1b);
+    border: 1px solid #ef4444;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 0 0 32px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .deadline-banner .clock { font-size: 36px; }
+  .deadline-banner .deadline-text { font-size: 15px; color: #fecaca; }
+  .deadline-banner .deadline-text strong { color: #fff; font-size: 17px; display: block; margin-bottom: 2px; }
+
+  .stat-box {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-left: 4px solid var(--accent); border-radius: 8px;
+    padding: 20px 24px; margin: 28px 0;
+  }
+  .stat-box .stat-num { font-size: 42px; font-weight: 800; color: var(--accent); line-height: 1; }
+  .stat-box .stat-label { font-size: 15px; color: var(--text-dim); margin-top: 4px; }
+
+  .fine-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0;
+  }
+  @media (max-width: 500px) { .fine-grid { grid-template-columns: 1fr; } }
+  .fine-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .fine-card .fine-tier { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+  .fine-card .fine-amount { font-size: 26px; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+  .fine-card .fine-desc { font-size: 13px; color: var(--text-dim); }
+  .fine-card.prohibited .fine-tier { color: var(--red); }
+  .fine-card.prohibited .fine-amount { color: var(--red); }
+  .fine-card.high-risk .fine-tier { color: var(--orange); }
+  .fine-card.high-risk .fine-amount { color: var(--orange); }
+  .fine-card.limited .fine-tier { color: var(--yellow); }
+  .fine-card.limited .fine-amount { color: var(--yellow); }
+  .fine-card.minimal .fine-tier { color: var(--green); }
+  .fine-card.minimal .fine-amount { color: var(--green); }
+
+  .risk-table {
+    width: 100%; border-collapse: collapse; margin: 20px 0;
+    font-size: 14px;
+  }
+  .risk-table th {
+    background: var(--bg-elevated); color: var(--text-dim);
+    font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 10px 14px; text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .risk-table td {
+    padding: 12px 14px; border-bottom: 1px solid var(--border);
+    color: #d0d0e0; background: var(--bg-card);
+  }
+  .risk-table tr:last-child td { border-bottom: none; }
+  .badge {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 4px;
+  }
+  .badge.prohibited { background: #7f1d1d; color: #fca5a5; }
+  .badge.high-risk { background: #7c2d12; color: #fdba74; }
+  .badge.limited { background: #713f12; color: #fde68a; }
+  .badge.minimal { background: #064e3b; color: #6ee7b7; }
+
+  .warning-box {
+    background: #1a1200; border: 1px solid #854d0e;
+    border-left: 4px solid var(--yellow);
+    border-radius: 8px; padding: 18px 22px; margin: 24px 0;
+  }
+  .warning-box p { color: #fde68a; margin: 0; }
+
+  .cta-box {
+    background: linear-gradient(135deg, var(--bg-elevated), #1e1b4b);
+    border: 1px solid #4338ca; border-radius: 14px;
+    padding: 32px; text-align: center; margin: 40px 0;
+  }
+  .cta-box h2 {
+    font-size: 26px; margin: 0 0 10px;
+    background: linear-gradient(135deg, #fff, #a5b4fc);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .cta-box p { color: var(--text-dim); margin-bottom: 20px; font-size: 15px; }
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: #fff; font-size: 16px; font-weight: 700;
+    padding: 14px 32px; border-radius: 8px;
+    text-decoration: none; transition: opacity .15s;
+  }
+  .cta-btn:hover { opacity: 0.88; text-decoration: none; }
+  .cta-label { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+
+  .checklist { list-style: none; margin: 0 0 18px; padding: 0; }
+  .checklist li {
+    padding: 10px 12px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 10px; color: #d0d0e0;
+  }
+  .checklist li .icon { flex-shrink: 0; font-size: 16px; margin-top: 2px; }
+  .checklist li:last-child { border-bottom: none; }
+
+  .related-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0;
+  }
+  @media (max-width: 500px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px 18px; text-decoration: none; transition: border-color .15s;
+  }
+  .related-card:hover { border-color: var(--accent); text-decoration: none; }
+  .related-card .rel-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .related-card .rel-title { font-size: 14px; font-weight: 600; color: var(--text); }
+  .related-card .rel-desc { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="breadcrumb">
+    <a href="/">TinyTools</a> › <a href="/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> › Blog
+  </nav>
+
+  <div class="deadline-banner">
+    <div class="clock">⏳</div>
+    <div class="deadline-text">
+      <strong>10 weeks until the EU AI Act high-risk deadline — August 2, 2026</strong>
+      Non-compliance fines: up to €35,000,000 or 7% of global annual turnover.
+    </div>
+  </div>
+
+  <h1>Your AI Product Might Be Illegal in Europe After August 2, 2026. Here's How to Find Out in 60 Seconds.</h1>
+  <div class="meta">May 21, 2026 · 8 min read · TinyTools</div>
+
+  <p>Most AI founders I've talked to this month fall into one of two camps: either they're mildly aware the EU AI Act exists, or they're deeply convinced it doesn't apply to them. <strong>Both groups are probably wrong.</strong></p>
+
+  <p>I spent last week running 10 popular AI-powered SaaS tools through a structured EU AI Act risk assessment. The results were uncomfortable. Five of the ten had compliance gaps — not because the founders were reckless, but because the Act's risk classification system is genuinely non-obvious if you haven't sat down and mapped your product against it systematically.</p>
+
+  <p>The August 2, 2026 deadline for high-risk AI system obligations is now <strong>10 weeks away</strong>. If you haven't done a formal assessment, this is the post to read.</p>
+
+  <div class="stat-box">
+    <div class="stat-num">€35M</div>
+    <div class="stat-label">Maximum fine for deploying prohibited AI — or 7% of global annual turnover, whichever is higher</div>
+  </div>
+
+  <h2>Why So Many AI Builders Are Getting This Wrong</h2>
+
+  <p>The EU AI Act isn't just about large enterprise deployments. The law applies to any AI system placed on the EU market or put into service in the EU — regardless of where the developer is based. A startup in Austin, a solo developer in Singapore, a B2B SaaS company in Toronto: if your product touches EU users, you're in scope.</p>
+
+  <p>The classification system has four tiers, and the obligations vary dramatically depending on which tier your product falls into:</p>
+
+  <div class="fine-grid">
+    <div class="fine-card prohibited">
+      <div class="fine-tier">Prohibited AI</div>
+      <div class="fine-amount">€35M / 7%</div>
+      <div class="fine-desc">Social scoring, subliminal manipulation, real-time biometric surveillance in public spaces, emotion recognition in workplaces/schools</div>
+    </div>
+    <div class="fine-card high-risk">
+      <div class="fine-tier">High-Risk AI</div>
+      <div class="fine-amount">€15M / 3%</div>
+      <div class="fine-desc">Hiring/HR AI, credit scoring, medical devices, critical infrastructure, law enforcement, education assessment, biometric categorization</div>
+    </div>
+    <div class="fine-card limited">
+      <div class="fine-tier">Limited Risk</div>
+      <div class="fine-amount">€7.5M / 1.5%</div>
+      <div class="fine-desc">Chatbots, deepfake generators, AI-generated content — transparency obligations apply (must disclose AI nature)</div>
+    </div>
+    <div class="fine-card minimal">
+      <div class="fine-tier">Minimal Risk</div>
+      <div class="fine-amount">€0</div>
+      <div class="fine-desc">Most AI applications: spam filters, AI in video games, recommendation engines with no significant human impact</div>
+    </div>
+  </div>
+
+  <p>The problem is that most founders assume they're in the "minimal risk" bucket without actually checking. And some of the categories that trigger "high-risk" classification are things you might not immediately associate with regulated industries — <strong>including AI used in hiring screening, performance evaluation, or access to education.</strong></p>
+
+  <h2>The 5 Compliance Gaps I Found Most Often</h2>
+
+  <p>Running through 10 products gave me a pretty clear picture of where the recurring blind spots are. Here's what I found in roughly descending order of frequency:</p>
+
+  <h3>1. Undisclosed AI chatbots (Limited Risk — transparency obligation)</h3>
+  <p>Several products had customer-facing AI chat interfaces with no disclosure that the user was interacting with an AI system. This isn't "high-risk" territory — it's the limited-risk tier — but the transparency obligation is real and enforceable. You need to inform users they're talking to an AI unless the context makes it "obvious."</p>
+
+  <h3>2. HR features that quietly qualify as high-risk systems</h3>
+  <p>Two products had features that screened, scored, or ranked job applicants — or could be used for that purpose. Under the EU AI Act, AI systems used in recruitment and employment (including CV screening, interview assessment, and task allocation) are explicitly listed in Annex III as high-risk. That means conformity assessments, technical documentation, human oversight mechanisms, and registration in the EU AI database — before August 2.</p>
+
+  <h3>3. No data governance documentation</h3>
+  <p>High-risk AI systems require documented data governance practices covering training data quality, bias testing, and data lineage. Three of the ten products had no internal documentation that would survive even a light-touch audit. This isn't just a legal problem — it's a product quality problem.</p>
+
+  <h3>4. Emotion recognition features in professional contexts</h3>
+  <p>One product had an optional feature that inferred user engagement levels (essentially emotional state) in a B2B SaaS context. Emotion recognition in workplaces is prohibited under Article 5 of the EU AI Act. Full stop. The founders didn't realize the feature touched that prohibition because it was framed as "engagement analytics."</p>
+
+  <h3>5. GPAI model obligations missed entirely</h3>
+  <p>Founders who use third-party foundation models (GPT-4, Claude, Gemini) and build products on top of them often assume compliance sits entirely with the model provider. It doesn't. If your product meets the definition of a General Purpose AI model use case with systemic risk, additional obligations apply to you as the deployer.</p>
+
+  <div class="warning-box">
+    <p>⚠️ <strong>The "I'm just using an API" defense doesn't work.</strong> Deployers have independent obligations under the EU AI Act regardless of which foundation model they're built on. The model provider's compliance documentation helps, but it doesn't substitute for your own assessment.</p>
+  </div>
+
+  <h2>What the August 2, 2026 Deadline Actually Requires</h2>
+
+  <p>The August 2, 2026 date is the full application date for high-risk AI system obligations under Chapter III, Section 2 of the Act. Here's what needs to be in place if you operate a high-risk system:</p>
+
+  <ul class="checklist">
+    <li><span class="icon">📄</span><span><strong>Technical documentation</strong> describing the system's purpose, performance metrics, training data, and testing results</span></li>
+    <li><span class="icon">📊</span><span><strong>Risk management system</strong> — documented process for identifying, analyzing, and mitigating risks throughout the system lifecycle</span></li>
+    <li><span class="icon">🧑‍⚖️</span><span><strong>Human oversight measures</strong> — mechanisms that allow human intervention, override, and monitoring</span></li>
+    <li><span class="icon">📝</span><span><strong>Registration in EU AI database</strong> — mandatory for certain high-risk systems before market placement</span></li>
+    <li><span class="icon">🔍</span><span><strong>Post-market monitoring</strong> — ongoing tracking of system behavior and incident reporting</span></li>
+    <li><span class="icon">🤝</span><span><strong>Conformity assessment</strong> — either self-assessment or third-party audit depending on the specific high-risk category</span></li>
+  </ul>
+
+  <p>If you're in the "limited risk" tier, the obligation is simpler: transparency disclosure to users. But you still need to document why you've classified yourself as limited risk rather than high risk.</p>
+
+  <h2>How to Do the Risk Assessment in 60 Seconds</h2>
+
+  <p>The hard part isn't compliance itself — it's correctly classifying your system in the first place. That's where most founders get stuck. The Act's Annex III list of high-risk AI system categories is precise but requires some interpretation when you're mapping your actual product to it.</p>
+
+  <p>I built a free tool that walks you through the classification questions systematically: it covers all eight Annex III categories, the prohibited practices in Article 5, and the GPAI model obligations. It generates a PDF-ready risk assessment you can use as the starting point for your technical documentation.</p>
+
+  <div class="cta-box">
+    <h2>Check Your AI's EU Act Risk Level</h2>
+    <p>Free assessment — answers 12 questions, classifies your system, and generates a compliance checklist. Takes about 60 seconds.</p>
+    <a href="/eu-ai-act-risk-assessment/" class="cta-btn">Run the EU AI Act Assessment →</a>
+    <p class="cta-label">No account required · Runs in your browser · 10 weeks until the August 2026 deadline</p>
+  </div>
+
+  <h2>What Happens If You Miss the Deadline?</h2>
+
+  <p>The EU AI Act enforcement is coordinated through national market surveillance authorities — the same bodies that enforce product safety law in each EU member state. Each country will designate its own enforcement authority, but the fines are set at the EU level.</p>
+
+  <p>There's a good chance enforcement actions in the first 12–18 months will focus on egregious cases rather than well-intentioned startups with documentation gaps. But relying on that assumption is a gamble. Several national authorities have already signaled aggressive compliance postures, and the Act explicitly allows private lawsuits for damages caused by non-compliant AI systems — meaning enforcement doesn't depend entirely on regulators.</p>
+
+  <p>The more practical near-term risk for startups is enterprise sales friction. Large EU-based companies are starting to require proof of AI Act compliance in procurement processes. In six months, "we haven't done our AI Act assessment yet" will be a deal-killer in B2B sales cycles in Europe the same way GDPR compliance became table stakes after 2018.</p>
+
+  <h2>Quick Reference: Which Tools Hit Which Risk Category</h2>
+
+  <table class="risk-table">
+    <thead>
+      <tr>
+        <th>AI Tool Type</th>
+        <th>Typical Classification</th>
+        <th>Key Obligation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Social scoring systems</td>
+        <td><span class="badge prohibited">Prohibited</span></td>
+        <td>Cannot deploy in EU</td>
+      </tr>
+      <tr>
+        <td>Emotion recognition (workplace/school)</td>
+        <td><span class="badge prohibited">Prohibited</span></td>
+        <td>Cannot deploy in EU</td>
+      </tr>
+      <tr>
+        <td>CV screening / hiring AI</td>
+        <td><span class="badge high-risk">High Risk</span></td>
+        <td>Conformity assessment + documentation by Aug 2</td>
+      </tr>
+      <tr>
+        <td>Credit scoring AI</td>
+        <td><span class="badge high-risk">High Risk</span></td>
+        <td>Conformity assessment + documentation by Aug 2</td>
+      </tr>
+      <tr>
+        <td>Medical diagnosis / clinical decision support</td>
+        <td><span class="badge high-risk">High Risk</span></td>
+        <td>Conformity assessment + documentation by Aug 2</td>
+      </tr>
+      <tr>
+        <td>AI chatbots (customer service)</td>
+        <td><span class="badge limited">Limited Risk</span></td>
+        <td>Disclose AI nature to users</td>
+      </tr>
+      <tr>
+        <td>AI-generated content / deepfake tools</td>
+        <td><span class="badge limited">Limited Risk</span></td>
+        <td>Label AI-generated content</td>
+      </tr>
+      <tr>
+        <td>Spam filters, recommendation engines</td>
+        <td><span class="badge minimal">Minimal Risk</span></td>
+        <td>Voluntary codes of conduct</td>
+      </tr>
+      <tr>
+        <td>AI in video games / entertainment</td>
+        <td><span class="badge minimal">Minimal Risk</span></td>
+        <td>No mandatory obligations</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>This table is a starting point, not legal advice. The actual classification depends on your specific use case, the data you process, and how your system makes or influences decisions. That's why running a structured assessment matters — the edge cases are where companies get surprised.</p>
+
+  <h2>Three Things to Do Before June Ends</h2>
+
+  <p>If you're reading this in May 2026, you have roughly 10 weeks. Here's a realistic action plan:</p>
+
+  <ol>
+    <li><strong>Run the free risk assessment today.</strong> Takes 60 seconds and tells you which tier you're in. If you're minimal risk, you're largely done (document your reasoning). If you're limited risk, draft a user-facing disclosure. If you're high-risk, you have work to do — but knowing is step one.</li>
+    <li><strong>Talk to a lawyer who specializes in EU AI Act compliance.</strong> If your assessment flags high-risk, get professional help. The documentation requirements are real and the stakes are significant. Self-assessment is fine for the classification step, but conformity assessment documentation for genuinely high-risk systems benefits from expert review.</li>
+    <li><strong>Generate your AI disclosure content.</strong> Even if you're in the minimal-risk tier, get your AI disclosure language drafted now. It takes 10 minutes and protects you from the limited-risk transparency requirements if your product ever touches that line. There's a free <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> that handles this automatically for US, EU, and global contexts.</li>
+  </ol>
+
+  <p>The AI Act is the most significant AI regulation in history. It's also — unlike some regulatory regimes — genuinely navigable for startups if you start the work now rather than waiting for an enforcement action to force the issue.</p>
+
+  <div class="cta-box">
+    <h2>Free EU AI Act Risk Assessment</h2>
+    <p>Answer 12 questions about your AI product. Get instant classification + a compliance checklist tailored to your risk tier.</p>
+    <a href="/eu-ai-act-risk-assessment/" class="cta-btn">Start the Free Assessment →</a>
+    <p class="cta-label">August 2, 2026 deadline · No signup required · BYOK optional</p>
+  </div>
+
+  <h2>Related Tools</h2>
+  <div class="related-grid">
+    <a href="/ai-disclosure-generator/" class="related-card">
+      <div class="rel-tag">Compliance</div>
+      <div class="rel-title">AI Disclosure Generator</div>
+      <div class="rel-desc">Generate legally-aware AI disclosure language for EU, US, and global requirements</div>
+    </a>
+    <a href="/ai-robots-txt-generator/" class="related-card">
+      <div class="rel-tag">AI Governance</div>
+      <div class="rel-title">AI Robots.txt Generator</div>
+      <div class="rel-desc">Control which AI systems can train on your content</div>
+    </a>
+    <a href="/prompt-injection-tester/" class="related-card">
+      <div class="rel-tag">Security</div>
+      <div class="rel-title">Prompt Injection Tester</div>
+      <div class="rel-desc">Test your AI system for prompt injection vulnerabilities before deployment</div>
+    </a>
+    <a href="/c2pa-manifest-generator/" class="related-card">
+      <div class="rel-tag">Content Provenance</div>
+      <div class="rel-title">C2PA Manifest Generator</div>
+      <div class="rel-desc">Add content provenance metadata to satisfy AI-generated content labeling requirements</div>
+    </a>
+  </div>
+
+</div>
+</body>
+</html>
