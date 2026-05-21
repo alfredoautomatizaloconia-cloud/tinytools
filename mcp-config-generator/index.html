@@ -161,6 +161,28 @@
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
     text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
+
+  /* === VIRAL MECHANICS === */
+  .viral-section { margin-top: 20px; padding: 18px; background: var(--bg-elevated);
+    border-radius: 12px; border: 1px solid var(--border); }
+  .viral-section h3 { font-size: 12px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+  .viral-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+  .viral-btn { padding: 9px 16px; border: none; border-radius: 8px; font-size: 13px;
+    font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block;
+    transition: opacity 0.15s; }
+  .viral-btn:hover { opacity: 0.85; }
+  .viral-btn.x-btn { background: #000; color: #fff; border: 1px solid #333; }
+  .viral-btn.link-btn { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+  .viral-btn.dl-btn { background: var(--blue); color: white; }
+  .embed-section { margin-top: 14px; }
+  .embed-section .embed-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.04em; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; background: #07070d;
+    padding: 10px; border-radius: 6px; color: #86efac; overflow-x: auto;
+    white-space: pre-wrap; word-break: break-all; }
+  .embed-copy-btn { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none;
+    border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -222,6 +244,20 @@
         <div class="upsell">
           <strong>Worried any of these MCP servers might be malicious?</strong>
           Run them through our <a href="/mcp-server-inspector/">MCP Server Inspector</a> first — it scans the source for SSRF patterns, command injection, missing auth, and abandonment signals. Free, browser-only.
+        </div>
+
+        <div class="viral-section" id="viralSection" style="display:none;">
+          <h3>📣 Share your stack</h3>
+          <div class="viral-actions">
+            <a class="viral-btn x-btn" id="shareBtn" target="_blank" rel="noopener">𝕏 Tweet my stack</a>
+            <button class="viral-btn link-btn" id="copyLinkBtn">🔗 Copy link</button>
+            <button class="viral-btn dl-btn" id="downloadBtn">⬇ Download card</button>
+          </div>
+          <div class="embed-section">
+            <div class="embed-label">Embed badge (README / portfolio)</div>
+            <pre id="embedCode"></pre>
+            <button class="embed-copy-btn" id="embedCopyBtn">Copy embed code</button>
+          </div>
         </div>
       </div>
     </div>
@@ -680,7 +716,196 @@ $('copyBtn').addEventListener('click', () => {
 });
 
 renderServers();
-renderOutput();
+
+// === HASH AUTO-LOAD (runs after viral mechanics are wired up below) ===
+function initFromHash() {
+  if (!location.hash || location.hash.length < 2) { renderOutput(); return; }
+  const raw = decodeURIComponent(location.hash.slice(1));
+  const colonIdx = raw.indexOf(':');
+  if (colonIdx === -1) { renderOutput(); return; }
+  const hostSlug = raw.slice(0, colonIdx);
+  const serverSlugs = raw.slice(colonIdx + 1).split(',').filter(Boolean);
+  if (hosts[hostSlug]) {
+    host = hostSlug;
+    document.querySelectorAll('.host-tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.host === host);
+    });
+  }
+  serverSlugs.forEach(id => {
+    if (servers.find(s => s.id === id)) selected.add(id);
+  });
+  $('selCount').textContent = selected.size;
+  renderOutput();
+}
+
+// === VIRAL MECHANICS ===
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function drawMCPCard(canvas, hostLabel, sel) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+
+  // Background
+  ctx.fillStyle = '#0a0a0f';
+  ctx.fillRect(0, 0, W, H);
+
+  // Glow gradient
+  const grad = ctx.createRadialGradient(200, 0, 0, 200, 0, 600);
+  grad.addColorStop(0, 'rgba(20,184,166,0.22)');
+  grad.addColorStop(1, 'transparent');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  const grad2 = ctx.createRadialGradient(1000, 630, 0, 1000, 630, 500);
+  grad2.addColorStop(0, 'rgba(59,130,246,0.15)');
+  grad2.addColorStop(1, 'transparent');
+  ctx.fillStyle = grad2;
+  ctx.fillRect(0, 0, W, H);
+
+  // Border
+  ctx.strokeStyle = '#2a2a3a';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(1, 1, W - 2, H - 2);
+
+  // Title
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 56px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+  ctx.fillText('My MCP Config', 60, 105);
+
+  // Host subtitle
+  ctx.fillStyle = '#14b8a6';
+  ctx.font = '30px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+  ctx.fillText('for ' + hostLabel, 60, 155);
+
+  // Server chips
+  const chipColors = ['#14b8a6', '#3b82f6', '#8b5cf6', '#f59e0b', '#10b981', '#ef4444', '#06b6d4', '#a78bfa'];
+  let cx = 60, cy = 240;
+  const chipH = 46, chipPad = 18, lineH = 62;
+  ctx.font = 'bold 20px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+
+  sel.slice(0, 14).forEach((s, i) => {
+    const tw = ctx.measureText(s.name).width;
+    const chipW = tw + chipPad * 2;
+    if (cx + chipW > W - 60) { cx = 60; cy += lineH; }
+    if (cy > 480) return;
+    const color = chipColors[i % chipColors.length];
+
+    ctx.fillStyle = color + '25';
+    roundRect(ctx, cx, cy - chipH + 8, chipW, chipH, 10);
+    ctx.fill();
+
+    ctx.strokeStyle = color + '99';
+    ctx.lineWidth = 1.5;
+    roundRect(ctx, cx, cy - chipH + 8, chipW, chipH, 10);
+    ctx.stroke();
+
+    ctx.fillStyle = color;
+    ctx.fillText(s.name, cx + chipPad, cy);
+    cx += chipW + 10;
+  });
+
+  if (sel.length > 14) {
+    ctx.fillStyle = '#a0a0b8';
+    ctx.font = '18px -apple-system, sans-serif';
+    ctx.fillText('+' + (sel.length - 14) + ' more', cx + 10, cy);
+  }
+
+  // Count line
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '22px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+  ctx.fillText(sel.length + ' server' + (sel.length !== 1 ? 's' : '') + ' configured', 60, 558);
+
+  // Branding bottom-right
+  ctx.fillStyle = '#14b8a6';
+  ctx.font = 'bold 20px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+  const brand = 'TinyTools';
+  const bw = ctx.measureText(brand).width;
+  ctx.fillText(brand, W - bw - 40, H - 28);
+
+  ctx.fillStyle = '#3a3a4a';
+  ctx.font = '15px -apple-system, sans-serif';
+  const domain = 'tinytools-smoky.vercel.app';
+  const dw = ctx.measureText(domain).width;
+  ctx.fillText(domain, W - dw - 40, H - 52);
+}
+
+function updateViralSection() {
+  const sel = servers.filter(s => selected.has(s.id));
+  const section = $('viralSection');
+  if (sel.length === 0) { section.style.display = 'none'; return; }
+  section.style.display = 'block';
+
+  const h = hosts[host];
+  const deepUrl = 'https://tinytools-smoky.vercel.app/mcp-config-generator/#' +
+    encodeURIComponent(host) + ':' + sel.map(s => s.id).join(',');
+
+  // Tweet
+  const stackNames = sel.slice(0, 4).map(s => s.name).join(', ') + (sel.length > 4 ? ` +${sel.length - 4} more` : '');
+  const shareText = `Just configured ${sel.length} MCP server${sel.length !== 1 ? 's' : ''} for ${h.label} 🤖\nMy stack: ${stackNames}\nGenerate yours free →`;
+  $('shareBtn').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(deepUrl)}`;
+
+  // Update location hash silently
+  history.replaceState(null, '', '#' + encodeURIComponent(host) + ':' + sel.map(s => s.id).join(','));
+
+  // Copy link
+  $('copyLinkBtn').onclick = () => {
+    navigator.clipboard.writeText(deepUrl).then(() => {
+      $('copyLinkBtn').textContent = '✓ Copied!';
+      setTimeout(() => { $('copyLinkBtn').textContent = '🔗 Copy link'; }, 1500);
+    });
+  };
+
+  // Badge + embed
+  const badgeServers = encodeURIComponent(sel.length + '_MCP_server' + (sel.length !== 1 ? 's' : ''));
+  const badgeHost = encodeURIComponent(h.label.replace(/ /g, '_'));
+  const badgeUrl = `https://img.shields.io/badge/${badgeHost}-${badgeServers}-14b8a6?style=for-the-badge`;
+  const embedCode = `<a href="${deepUrl}" target="_blank">\n  <img src="${badgeUrl}" alt="My MCP Stack: ${sel.length} servers on ${h.label}">\n</a>`;
+  $('embedCode').textContent = embedCode;
+
+  $('embedCopyBtn').onclick = () => {
+    navigator.clipboard.writeText(embedCode).then(() => {
+      $('embedCopyBtn').textContent = '✓ Copied!';
+      setTimeout(() => { $('embedCopyBtn').textContent = 'Copy embed code'; }, 1500);
+    });
+  };
+
+  // Draw PNG card
+  const canvas = $('cardCanvas');
+  drawMCPCard(canvas, h.label, sel);
+
+  // Download button
+  $('downloadBtn').onclick = () => {
+    const link = document.createElement('a');
+    link.download = `mcp-config-${host}-${sel.length}-servers.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  };
+}
+
+// Patch renderOutput to also update viral section
+const _origRenderOutput = renderOutput;
+renderOutput = function() {
+  _origRenderOutput();
+  updateViralSection();
+};
+
+// Now safe to init from hash (viral mechanics are wired)
+initFromHash();
 </script>
+
+<canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
 </body>
 </html>
+
