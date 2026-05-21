@@ -146,6 +146,34 @@
 
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
+
+  /* ── Viral mechanics ── */
+  .viral-section {
+    margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border);
+    display: none;
+  }
+  .viral-section.show { display: block; }
+  .viral-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .viral-btn {
+    display: inline-flex; align-items: center; gap: 6px; padding: 9px 14px;
+    border-radius: 9px; font-size: 13px; font-weight: 600; cursor: pointer;
+    font-family: inherit; border: none; text-decoration: none; transition: opacity .15s;
+  }
+  .viral-btn:hover { opacity: 0.85; }
+  .viral-btn.share  { background: #000; color: #fff; }
+  .viral-btn.copy   { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+  .viral-btn.dl     { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+  .embed-section { margin-top: 10px; }
+  .embed-section .label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px;
+    padding: 10px 12px; font-size: 12px; font-family: 'SF Mono', Monaco, monospace;
+    color: #93c5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all;
+    margin: 0; cursor: pointer;
+  }
+  .embed-section pre:hover { border-color: var(--accent); }
+  .embed-copy-hint { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+  canvas#cardCanvas { display: none; }
 </style>
 </head>
 <body>
@@ -182,6 +210,18 @@
           <div class="icon">📝</div>
           Paste text on the left and hit <strong>Analyze</strong> to see the breakdown.
         </div>
+      </div>
+    </div>
+    <div class="viral-section" id="viralSection">
+      <div class="viral-actions">
+        <a class="viral-btn share" id="vShare" href="#" target="_blank" rel="noopener">𝕏 Share result</a>
+        <button class="viral-btn copy" id="vCopyLink">🔗 Copy link</button>
+        <a class="viral-btn dl" id="vDownload" download="ai-detection-result.png">💾 Download card</a>
+      </div>
+      <div class="embed-section">
+        <div class="label">Embed badge on your site / README</div>
+        <pre id="vEmbed" title="Click to copy"></pre>
+        <div class="embed-copy-hint" id="vEmbedHint">Click badge code to copy</div>
       </div>
     </div>
   </div>
@@ -500,6 +540,12 @@ $('analyzeBtn').onclick = () => {
   }
   const result = analyze(text);
   render(result, text);
+  if (result) {
+    const pct = result.pct;
+    const label = pct >= 65 ? 'Likely AI-generated' : pct >= 40 ? 'Mixed signals' : 'Likely human-written';
+    const tagline = pct >= 65 ? 'Multiple strong AI signals detected.' : pct >= 40 ? 'Could be AI with light editing, or formal human writing.' : 'AI signals are weak or absent.';
+    activateViral(pct, label, tagline);
+  }
 };
 
 $('clearBtn').onclick = () => {
@@ -519,6 +565,149 @@ Additionally, it is worth noting that the integration of AI into business workfl
 };
 
 updateMeta();
+
+
+// ── Viral mechanics ──
+function colorForPct(pct) {
+  return pct >= 65 ? 'red' : pct >= 40 ? 'yellow' : 'brightgreen';
+}
+function labelForPct(pct) {
+  return pct >= 65 ? 'Likely AI' : pct >= 40 ? 'Mixed signals' : 'Likely human';
+}
+
+function drawCard(canvas, pct, label, tagline) {
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  // Background gradient
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#0a0a0f');
+  bg.addColorStop(1, '#15151f');
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  // Accent glow
+  const glow = ctx.createRadialGradient(200, 0, 0, 200, 0, 500);
+  glow.addColorStop(0, 'rgba(168,85,247,0.25)');
+  glow.addColorStop(1, 'transparent');
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, W, H);
+
+  // Border
+  ctx.strokeStyle = '#2a2a3a';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(24, 24, W - 48, H - 48);
+
+  // Tool name badge
+  ctx.fillStyle = 'rgba(168,85,247,0.2)';
+  ctx.beginPath(); ctx.roundRect(60, 56, 240, 38, 20); ctx.fill();
+  ctx.fillStyle = '#d8b4fe';
+  ctx.font = 'bold 16px -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif';
+  ctx.fillText('🔍 AI TEXT DETECTOR', 80, 81);
+
+  // Big percentage
+  const color = pct >= 65 ? '#ef4444' : pct >= 40 ? '#fbbf24' : '#10b981';
+  ctx.font = 'bold 180px -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif';
+  ctx.fillStyle = color;
+  ctx.textAlign = 'center';
+  ctx.fillText(pct + '%', W / 2, 360);
+
+  // "AI probability" label
+  ctx.font = '28px -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.fillText('AI PROBABILITY', W / 2, 410);
+
+  // Verdict label
+  ctx.font = 'bold 44px -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.fillText(label, W / 2, 490);
+
+  // Tagline
+  ctx.font = '24px -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.45)';
+  ctx.fillText(tagline, W / 2, 535);
+
+  // Branding bottom-right
+  ctx.font = 'bold 18px -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif';
+  ctx.fillStyle = '#a855f7';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app', W - 60, H - 50);
+  ctx.textAlign = 'left';
+}
+
+function activateViral(pct, label, tagline) {
+  const section = document.getElementById('viralSection');
+  section.classList.add('show');
+
+  // Deep-link hash  
+  const shareUrl = 'https://tinytools-smoky.vercel.app/ai-text-detector/#score=' + pct + '&verdict=' + encodeURIComponent(label);
+  location.hash = 'score=' + pct + '&verdict=' + encodeURIComponent(label);
+
+  // Tweet
+  const tweet = 'I just ran this text through an AI detector: ' + pct + '% AI probability — "' + label + '". Check yours free →';
+  document.getElementById('vShare').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweet) + '&url=' + encodeURIComponent(shareUrl);
+
+  // Copy link
+  document.getElementById('vCopyLink').onclick = () => {
+    navigator.clipboard.writeText(shareUrl);
+    const btn = document.getElementById('vCopyLink');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+  };
+
+  // Canvas card
+  const canvas = document.getElementById('cardCanvas');
+  drawCard(canvas, pct, label, tagline);
+  document.getElementById('vDownload').href = canvas.toDataURL('image/png');
+
+  // Embed badge
+  const shieldColor = colorForPct(pct);
+  const badgeLabel = encodeURIComponent('AI Probability');
+  const badgeValue = encodeURIComponent(pct + '% — ' + label);
+  const embedCode = '<a href="' + shareUrl + '" target="_blank">\n' +
+    '  <img src="https://img.shields.io/badge/' + badgeLabel + '-' + badgeValue + '-' + shieldColor + '?style=for-the-badge" alt="AI Detection: ' + pct + '%">\n' +
+    '</a>';
+  const embedEl = document.getElementById('vEmbed');
+  embedEl.textContent = embedCode;
+  embedEl.onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    document.getElementById('vEmbedHint').textContent = '✓ Copied to clipboard!';
+    setTimeout(() => document.getElementById('vEmbedHint').textContent = 'Click badge code to copy', 1500);
+  };
+}
+
+// Auto-load shared result from URL hash
+(function initFromHash() {
+  if (!location.hash || location.hash.length < 2) return;
+  const params = new URLSearchParams(location.hash.slice(1));
+  const score = parseInt(params.get('score'), 10);
+  const verdict = params.get('verdict');
+  if (!isNaN(score) && verdict) {
+    // Render a stub result from the shared link
+    const tagline = score >= 65
+      ? 'Multiple strong AI signals detected.'
+      : score >= 40
+        ? 'Could be AI with light editing, or formal human writing.'
+        : 'AI signals are weak or absent.';
+    const klass = score >= 65 ? 'likely-ai' : score >= 40 ? 'maybe' : 'likely-human';
+    const color = score >= 65 ? 'red' : score >= 40 ? 'yellow' : 'green';
+    document.getElementById('verdictArea').innerHTML = `
+      <div style="font-size:12px;color:var(--text-dim);background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.3);padding:8px 12px;border-radius:8px;margin-bottom:10px;">
+        📤 Shared result — paste your own text to run a new check
+      </div>
+      <div class="verdict-card ${klass}">
+        <div class="verdict-label">AI probability (shared result)</div>
+        <div class="verdict-percent ${color}">${score}<span class="pct">%</span></div>
+        <div class="verdict-text">${verdict}</div>
+        <div class="verdict-tagline">${tagline}</div>
+      </div>`;
+    activateViral(score, verdict, tagline);
+  }
+})();
+
 </script>
+<canvas id="cardCanvas" width="1200" height="630"></canvas>
 </body>
 </html>
+
