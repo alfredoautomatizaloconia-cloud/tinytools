@@ -1,4 +1,21 @@
 
+## 2026-05-21 — Daily Ship
+
+### Tool 1: ai-text-roast
+- **Tier**: 0 (Viral)
+- **URL**: https://tinytools-smoky.vercel.app/ai-text-roast/
+- **HTTP**: 200 ✅
+- **Viral mechanics**: ✅ Personal AI % score · ✅ Shareable 1200×630 PNG card · ✅ X share button prefilled · ✅ Deep-linkable URL hash · ✅ Embeddable shields.io badge
+- **Engine**: Deterministic heuristic (AI phrase dict, lexical diversity, burstiness, sentence variance) — no API, fully browser-side
+
+### Tool 2: roast-my-resume
+- **Tier**: 0 (Viral)
+- **URL**: https://tinytools-smoky.vercel.app/roast-my-resume/
+- **HTTP**: 200 ✅
+- **Viral mechanics**: ✅ Letter grade A+–F · ✅ Shareable 1200×630 PNG card · ✅ X share prefilled with grade · ✅ Deep-linkable URL hash · ✅ Embeddable shields.io badge
+- **Engine**: 5-dimension deterministic scorer (Impact, Action Verbs, Buzzword Toxicity, Structure, Differentiation) — no API, fully browser-side
+
+
 ## 2026-05-19 — Daily ship (viral mechanics)
 - **what-ai-are-you** — Tier 0 viral. Buzzfeed-style 10-question personality quiz mapping users to one of 8 AI models (ChatGPT/Claude/Gemini/Grok/Llama/Perplexity/Mistral/DeepSeek). Deep-linkable via answer-index hash, shareable PNG card, X share, shields.io embed badge, JSON-LD schema. HTTP 200.
 - **prompt-grade** — Tier 0 viral. Paste an AI prompt → deterministic A–F grade across 22 quality signals (role, task verb, context, format, examples, constraints, anti-hallucination, edge cases, audience, tone, length, CoT, delimiters, etc.) + savage one-line roast. Deep-linkable via base64 hash, shareable PNG card, X share, shields.io embed badge, JSON-LD schema. HTTP 200.
