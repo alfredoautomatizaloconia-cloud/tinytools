@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Text Roast — Was This Written by AI? Savage Detector & Roast</title>
+<meta name="description" content="Paste any text and get a savage, brutally honest AI detection roast. Find out if you, your boss, or that LinkedIn influencer is faking it with ChatGPT. Free, no signup.">
+<meta name="keywords" content="ai text detector, was this written by ai, ai writing detector, chatgpt detector, ai content roast, ai text roaster, detect ai writing">
+<meta property="og:title" content="AI Text Roast — Was This Written by AI?">
+<meta property="og:description" content="Paste text. Get a savage roast about how robotic your writing is. Share the verdict.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/ai-text-roast/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-text-roast/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Text Roast",
+  "url": "https://tinytools-smoky.vercel.app/ai-text-roast/",
+  "description": "Paste any text and get a savage AI detection roast. Find out if your writing sounds like ChatGPT wrote it.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f43f5e; --accent-glow: #f43f5e40;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b; --purple: #a855f7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #7c3aed40 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(34px, 5.5vw, 56px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fb7185 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 560px; margin: 0 auto; }
+
+  .input-area {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 16px;
+    max-width: 680px; margin: 32px auto 0;
+  }
+  .input-area textarea {
+    width: 100%; min-height: 140px; padding: 14px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text); font-size: 15px; font-family: inherit; outline: none; resize: vertical; line-height: 1.5;
+  }
+  .input-area textarea::placeholder { color: var(--text-dim); }
+  .input-area textarea:focus { border-color: var(--accent); }
+  .input-row-btns { display: flex; gap: 8px; margin-top: 10px; align-items: center; }
+  .char-count { font-size: 12px; color: var(--text-dim); flex: 1; }
+  .roast-btn {
+    padding: 14px 32px; background: linear-gradient(135deg, #f43f5e, #dc2626);
+    border: none; border-radius: 10px; color: white; font-weight: 700; font-size: 15px;
+    cursor: pointer; box-shadow: 0 4px 16px rgba(244, 63, 94, 0.3); transition: all 0.15s;
+  }
+  .roast-btn:hover { transform: translateY(-1px); }
+  .roast-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .loading { text-align: center; padding: 40px; color: var(--text-dim); display: none; }
+  .loading.show { display: block; }
+  .spinner { display: inline-block; width: 28px; height: 28px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .error { text-align: center; padding: 24px; color: var(--red); display: none; }
+  .error.show { display: block; }
+
+  .result-card {
+    margin: 32px auto 0; max-width: 700px;
+    background: linear-gradient(135deg, #1f1f2e 0%, #15151f 100%);
+    border: 2px solid var(--accent); border-radius: 20px; padding: 0; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(244, 63, 94, 0.15);
+    display: none;
+  }
+  .result-card.show { display: block; }
+
+  .card-header {
+    padding: 20px 24px; display: flex; align-items: center; gap: 16px;
+  }
+  .verdict-emoji { font-size: 40px; line-height: 1; }
+  .verdict-info { flex: 1; }
+  .verdict-title { font-size: 20px; font-weight: 800; color: white; }
+  .verdict-subtitle { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 2px; }
+  .score-badge {
+    padding: 10px 18px; border-radius: 12px; font-size: 30px; font-weight: 900;
+    min-width: 72px; text-align: center; background: rgba(0,0,0,0.35); color: white;
+  }
+
+  .card-body { padding: 24px; }
+  .roast-text {
+    font-size: 17px; line-height: 1.55; color: #fde68a; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid var(--accent); border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .meter-row { margin-bottom: 20px; }
+  .meter-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; display: flex; justify-content: space-between; }
+  .meter-bar { height: 8px; background: var(--bg-elevated); border-radius: 999px; overflow: hidden; }
+  .meter-fill { height: 100%; border-radius: 999px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--bg-elevated); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+  .stat-value { font-size: 20px; font-weight: 800; color: var(--text); }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .tells { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .tell {
+    padding: 6px 12px; border-radius: 999px; font-size: 13px;
+    background: var(--bg-elevated); border: 1px solid var(--border); color: var(--text);
+  }
+  .tell.red { border-color: #f43f5e; color: #fda4af; }
+  .tell.yellow { border-color: var(--yellow); color: #fcd34d; }
+  .tell.green { border-color: var(--green); color: #6ee7b7; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+  .action.primary:hover { background: #1a8cd8; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; letter-spacing: 0.05em; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; font-weight: 800; margin: 28px 0 10px; color: var(--text); }
+  .content p { color: var(--text-dim); margin-bottom: 12px; font-size: 15px; line-height: 1.7; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  canvas#shareCanvas { display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🤖 No signup · Free · 100% deterministic</div>
+    <h1>AI Text Roast 🤖🔥</h1>
+    <p class="subtitle">Paste any text and get a savage, brutally honest verdict on how robotic it sounds. Your LinkedIn posts have never been more exposed.</p>
+  </header>
+
+  <div class="input-area">
+    <textarea id="textInput" placeholder="Paste text here — an email, LinkedIn post, cover letter, essay, blog post, or anything suspicious…"></textarea>
+    <div class="input-row-btns">
+      <span class="char-count" id="charCount">0 characters</span>
+      <button class="roast-btn" id="roastBtn" onclick="runRoast()">🔥 Roast It</button>
+    </div>
+  </div>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p style="margin-top:12px">Analyzing robotic energy…</p>
+  </div>
+  <div class="error" id="error"></div>
+
+  <div class="result-card" id="resultCard">
+    <div class="card-header" id="cardHeader">
+      <div class="verdict-emoji" id="verdictEmoji">🤖</div>
+      <div class="verdict-info">
+        <div class="verdict-title" id="verdictTitle">Definitely AI</div>
+        <div class="verdict-subtitle" id="verdictSubtitle">Your text screams ChatGPT</div>
+      </div>
+      <div class="score-badge" id="scoreBadge">99%</div>
+    </div>
+    <div class="card-body">
+      <div class="roast-text" id="roastText"></div>
+
+      <div class="meter-row">
+        <div class="meter-label"><span>AI Probability</span><span id="meterPct">0%</span></div>
+        <div class="meter-bar"><div class="meter-fill" id="meterFill" style="width:0%"></div></div>
+      </div>
+
+      <div class="stats-grid" id="statsGrid"></div>
+      <div class="tells" id="tellsGrid"></div>
+
+      <div class="actions">
+        <button class="action primary" id="shareXBtn" onclick="shareToX()">𝕏 Share My Roast</button>
+        <button class="action" onclick="copyLink()">🔗 Copy Link</button>
+        <button class="action" onclick="downloadCard()">📸 Save Card</button>
+      </div>
+
+      <div class="embed-section">
+        <div class="embed-label">📎 Embeddable Badge</div>
+        <pre id="badgeCode"></pre>
+        <button onclick="copyBadge()">Copy Badge HTML</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="shareCanvas" width="1200" height="630"></canvas>
+
+  <div class="content">
+    <h2>What Is AI Text Roast?</h2>
+    <p>AI Text Roast is a free tool that analyzes any piece of writing and tells you — with ruthless honesty — how much it sounds like it was generated by an AI like ChatGPT, Claude, or Gemini. We look at sentence structure, vocabulary patterns, hedge phrases, transition words, and dozens of other signals that separate robot prose from human writing.</p>
+
+    <h2>How Does the AI Detection Work?</h2>
+    <p>We use a deterministic heuristic engine (no API calls, runs entirely in your browser) that scores text across multiple dimensions: lexical diversity, burstiness (variance in sentence length), filler phrases, hedge words, transition overuse, and the dreaded "delve into / it's important to note" combo that haunts every AI essay. The result is reproducible — the same text always gets the same score, which means your link is truly shareable.</p>
+
+    <h2>Why Does AI Writing Sound Robotic?</h2>
+    <p>AI language models like GPT-4 are trained to produce statistically "average" text. That means they avoid extremes: sentences are medium length, vocabulary is corporate-safe, transitions are overused, and everything sounds like it was written by a very confident intern who just read a lot of LinkedIn posts. The result is technically correct but weirdly smooth — no personality, no stumbles, no voice.</p>
+
+    <h2>Common AI Writing Tells</h2>
+    <p>The most common giveaways include: phrases like "it's worth noting", "in today's fast-paced world", "let's dive in", "furthermore", "in conclusion", and "delve". Also: perfect paragraph structure, zero typos, uniform sentence length, and the absence of any actual opinions or humor.</p>
+
+    <h2>Can I Use This to Check My Own Writing?</h2>
+    <p>Absolutely. Paste your LinkedIn posts, emails, blog articles, or cover letters to see how human you sound. Use the score to make your writing more personality-driven, less polished-to-the-point-of-boring. Your goal: below 40%. A bit of chaos is good.</p>
+
+    <h2>Is This Tool Free?</h2>
+    <p>Yes. No signup, no limits, no API keys needed. The analysis runs entirely in your browser using a deterministic rule engine. Your text never leaves your device.</p>
+  </div>
+
+  <footer>
+    <p>Built by <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> · Free AI utilities that don't require a credit card</p>
+  </footer>
+</div>
+
+<script>
+// ——— Analysis Engine (deterministic, browser-only) ———
+const AI_PHRASES = [
+  "it's worth noting","it is worth noting","it's important to note","it is important to note",
+  "in today's","in the realm of","let's dive into","let us dive","delve into","delves into",
+  "in conclusion","to summarize","in summary","furthermore","moreover","additionally",
+  "it goes without saying","needless to say","rest assured","dive deeper","at the end of the day",
+  "game-changer","game changer","leverage","leveraging","utilize","utilizing","paradigm",
+  "synergy","synergies","holistic","actionable","takeaway","takeaways","streamline",
+  "seamlessly","cutting-edge","state-of-the-art","thought leader","robust","scalable",
+  "innovative","innovation","transformative","empower","empowering","facilitate",
+  "landscape","ecosystem","journey","navigate","evolving","dynamic","proactive",
+  "in this article","in this blog post","in this post","by the end of this",
+  "i hope this helps","happy to help","as an ai","as a language model",
+  "certainly","absolutely! here","of course! here","great question","i'd be happy to",
+  "firstly","secondly","thirdly","lastly","in addition","on the other hand",
+  "this is a complex topic","there are several","there are many","a variety of",
+  "it should be noted","it can be argued","one could argue","some might say",
+  "in order to","in terms of","with regard to","with respect to",
+  "plays a crucial role","plays an important role","plays a key role",
+  "shed light on","sheds light on","in the context of","from a","perspective"
+];
+
+const HUMAN_SIGNALS = [
+  "lol","lmao","omg","wtf","honestly","tbh","ngl","imo","imho","literally",
+  "kinda","sorta","gonna","wanna","gotta","yeah","yep","nope","ugh","oof",
+  "wait","actually","ok so","so basically","anyway","whatever","right?","right.",
+  "i mean","you know what","the thing is","here's the thing","not gonna lie",
+  "super","pretty","really really","so so","way too","legit","vibes","vibe",
+  "been there","trust me","spoiler:","plot twist","unpopular opinion"
+];
+
+function analyzeText(text) {
+  const lower = text.toLowerCase();
+  const words = text.trim().split(/\s+/).filter(Boolean);
+  const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+
+  if (words.length < 20) return null;
+
+  // 1. AI phrase hits
+  let aiHits = 0, aiHitList = [];
+  for (const phrase of AI_PHRASES) {
+    if (lower.includes(phrase)) {
+      aiHits++;
+      if (aiHitList.length < 6) aiHitList.push(phrase);
+    }
+  }
+
+  // 2. Human signal hits
+  let humanHits = 0;
+  for (const sig of HUMAN_SIGNALS) {
+    if (lower.includes(sig)) humanHits++;
+  }
+
+  // 3. Lexical diversity (type-token ratio)
+  const uniqueWords = new Set(words.map(w => w.toLowerCase().replace(/[^a-z]/g,'')));
+  const ttr = uniqueWords.size / words.length; // higher = more diverse = more human
+
+  // 4. Sentence length burstiness (variance)
+  const sentLengths = sentences.map(s => s.trim().split(/\s+/).length);
+  const avgLen = sentLengths.reduce((a,b)=>a+b,0) / sentLengths.length;
+  const variance = sentLengths.reduce((a,b)=>a+Math.pow(b-avgLen,2),0) / sentLengths.length;
+  const burstiness = Math.sqrt(variance) / (avgLen || 1); // coefficient of variation
+
+  // 5. Punctuation personality (! ? ... em-dashes)
+  const exclamations = (text.match(/!/g)||[]).length;
+  const questions = (text.match(/\?/g)||[]).length;
+  const ellipsis = (text.match(/\.\.\./g)||[]).length;
+  const emDash = (text.match(/—|--|–/g)||[]).length;
+
+  // 6. Paragraph uniformity (AI loves uniform paragraphs)
+  const paragraphs = text.split(/\n\n+/).filter(p=>p.trim().length>0);
+  let paraLenVar = 0;
+  if (paragraphs.length > 1) {
+    const paraLens = paragraphs.map(p=>p.length);
+    const pavg = paraLens.reduce((a,b)=>a+b,0)/paraLens.length;
+    paraLenVar = Math.sqrt(paraLens.reduce((a,b)=>a+Math.pow(b-pavg,2),0)/paraLens.length) / (pavg||1);
+  }
+
+  // ——— Score computation (0-100, higher = more AI) ———
+  let score = 50; // start neutral
+
+  // AI phrases: each hit adds points (diminishing)
+  score += Math.min(aiHits * 5, 35);
+
+  // Human signals: subtract
+  score -= Math.min(humanHits * 6, 30);
+
+  // Low lexical diversity (< 0.5) → more AI
+  if (ttr < 0.4) score += 12;
+  else if (ttr < 0.55) score += 5;
+  else if (ttr > 0.75) score -= 10;
+
+  // Low burstiness → more AI (AI writes same-length sentences)
+  if (burstiness < 0.25) score += 12;
+  else if (burstiness < 0.4) score += 6;
+  else if (burstiness > 0.7) score -= 8;
+
+  // No personality punctuation → more AI
+  const personalityPunct = exclamations + questions + ellipsis + emDash;
+  if (personalityPunct === 0 && words.length > 80) score += 8;
+  else if (personalityPunct > 5) score -= 6;
+
+  // Uniform paragraphs → more AI
+  if (paraLenVar < 0.15 && paragraphs.length > 2) score += 7;
+
+  // Short text bias toward middle
+  if (words.length < 60) score = score * 0.8 + 50 * 0.2;
+
+  score = Math.max(1, Math.min(99, Math.round(score)));
+
+  return {
+    score,
+    aiHitCount: aiHits,
+    aiHitList,
+    humanHits,
+    wordCount: words.length,
+    sentenceCount: sentences.length,
+    uniqueWords: uniqueWords.size,
+    ttr: Math.round(ttr * 100),
+    burstiness: Math.round(burstiness * 100),
+    avgSentLen: Math.round(avgLen)
+  };
+}
+
+function getVerdict(score) {
+  if (score >= 85) return { emoji:"🤖", label:"DEFINITELY AI", color:"#f43f5e", hdr:"linear-gradient(135deg,#f43f5e,#dc2626)" };
+  if (score >= 70) return { emoji:"🧐", label:"PROBABLY AI", color:"#f97316", hdr:"linear-gradient(135deg,#f97316,#dc2626)" };
+  if (score >= 55) return { emoji:"🤔", label:"SUSPICIOUS", color:"#f59e0b", hdr:"linear-gradient(135deg,#f59e0b,#d97706)" };
+  if (score >= 40) return { emoji:"🙂", label:"PROBABLY HUMAN", color:"#22c55e", hdr:"linear-gradient(135deg,#22c55e,#16a34a)" };
+  return { emoji:"✍️", label:"DEFINITELY HUMAN", color:"#10b981", hdr:"linear-gradient(135deg,#10b981,#059669)" };
+}
+
+function getRoast(score, data) {
+  const roasts = {
+    high: [
+      `Congratulations! Your text has the personality of a PowerPoint presentation made at 2am by someone who's never had fun. I've seen warmer prose in a terms-of-service agreement. ChatGPT called — it wants credit.`,
+      `This reads like you asked an AI to write something and then asked it to make it sound "more professional." It obliged. Ruthlessly. Your text has zero typos, zero opinions, and somehow zero soul. Impressive, in a haunting way.`,
+      `"Furthermore, in today's rapidly evolving landscape…" I stopped reading. Your text is so AI it's basically a robots.txt file pretending to have feelings. The good news: it's perfectly formatted! The bad news: so is a tax return.`,
+      `If this text were a person, it would arrive 10 minutes early to every meeting and describe itself as a "passionate self-starter." It says everything and nothing simultaneously. Chef's kiss of corporate nothing-speak.`
+    ],
+    mid: [
+      `It's giving "I copied from ChatGPT then edited a little." There are human fingerprints here, but also the unmistakable scent of a language model trying to sound casual. You're not fooling anyone, but you're trying, and that's… something.`,
+      `This text is in a legal grey zone — AI-curious but not AI-confirmed. It has some personality, buried under three layers of "it's worth noting" and "plays a crucial role." The human inside is screaming to get out.`,
+      `Plausibly deniable AI content. Like, you definitely could have written this yourself. But also you definitely could have typed a prompt and hit enter. We're watching you.`
+    ],
+    low: [
+      `Solid human energy. There are actual opinions in here, some sentences that break the rules on purpose, and at least one spot where you clearly just went off. Keep being weird. It's working.`,
+      `Very human. You write like someone who learned from reading actual things, not from optimizing for SEO keyword density. This text has opinions, variance, and at least the implication of a personality.`,
+      `You're safe. This is unmistakably human — imperfect, opinionated, and refreshingly free of the phrase "let's dive into." Your writing coach would be proud. ChatGPT would be confused.`
+    ]
+  };
+  const arr = score >= 70 ? roasts.high : score >= 45 ? roasts.mid : roasts.low;
+  // Deterministic pick based on score
+  return arr[score % arr.length];
+}
+
+function getTells(score, data) {
+  const tells = [];
+  if (data.aiHitList.length > 0) {
+    data.aiHitList.slice(0,3).forEach(p => tells.push({ text: `🚨 "${p}"`, cls: "red" }));
+  }
+  if (data.ttr < 50) tells.push({ text: "📉 Low vocab diversity", cls: "red" });
+  else if (data.ttr > 70) tells.push({ text: "📈 Rich vocabulary", cls: "green" });
+  if (data.burstiness < 25) tells.push({ text: "📐 Robotic sentence rhythm", cls: "red" });
+  else if (data.burstiness > 55) tells.push({ text: "🌊 Natural sentence flow", cls: "green" });
+  if (data.humanHits > 0) tells.push({ text: `✅ ${data.humanHits} human phrase(s)`, cls: "green" });
+  if (data.aiHitCount > 5) tells.push({ text: `⚠️ ${data.aiHitCount} AI phrases found`, cls: "red" });
+  if (data.avgSentLen > 22) tells.push({ text: "📏 Long avg. sentence length", cls: "yellow" });
+  if (tells.length < 3) tells.push({ text: `📝 ${data.wordCount} words analyzed`, cls: "yellow" });
+  return tells;
+}
+
+// ——— State ———
+let currentHash = "";
+
+function encodeText(text) {
+  try { return btoa(encodeURIComponent(text.slice(0,800))); } catch(e) { return ""; }
+}
+function decodeText(hash) {
+  try { return decodeURIComponent(atob(hash)); } catch(e) { return ""; }
+}
+
+document.getElementById("textInput").addEventListener("input", function() {
+  document.getElementById("charCount").textContent = this.value.length + " characters";
+});
+
+function runRoast() {
+  const text = document.getElementById("textInput").value.trim();
+  if (!text || text.length < 50) {
+    showError("Please paste at least 50 characters of text to analyze.");
+    return;
+  }
+
+  document.getElementById("loading").classList.add("show");
+  document.getElementById("resultCard").classList.remove("show");
+  document.getElementById("error").classList.remove("show");
+  document.getElementById("roastBtn").disabled = true;
+
+  setTimeout(() => {
+    const data = analyzeText(text);
+    document.getElementById("loading").classList.remove("show");
+    document.getElementById("roastBtn").disabled = false;
+    if (!data) { showError("Please paste at least 50 characters for a reliable analysis."); return; }
+    renderResult(data, text);
+  }, 900);
+}
+
+function renderResult(data, text) {
+  const score = data.score;
+  const verdict = getVerdict(score);
+  const roast = getRoast(score, data);
+  const tells = getTells(score, data);
+
+  // Header
+  const hdr = document.getElementById("cardHeader");
+  hdr.style.background = verdict.hdr;
+  document.getElementById("verdictEmoji").textContent = verdict.emoji;
+  document.getElementById("verdictTitle").textContent = verdict.label;
+  document.getElementById("verdictSubtitle").textContent = `${score}% AI probability · ${data.wordCount} words`;
+  document.getElementById("scoreBadge").textContent = score + "%";
+
+  // Roast
+  document.getElementById("roastText").textContent = roast;
+
+  // Meter
+  document.getElementById("meterPct").textContent = score + "%";
+  const fill = document.getElementById("meterFill");
+  fill.style.background = `linear-gradient(90deg, ${verdict.color}, #dc2626)`;
+  setTimeout(() => fill.style.width = score + "%", 50);
+
+  // Stats
+  const statsData = [
+    { value: score + "%", label: "AI Score" },
+    { value: data.wordCount, label: "Words" },
+    { value: data.ttr + "%", label: "Vocab Diversity" },
+    { value: data.aiHitCount, label: "AI Phrases" }
+  ];
+  document.getElementById("statsGrid").innerHTML = statsData.map(s =>
+    `<div class="stat"><div class="stat-value">${s.value}</div><div class="stat-label">${s.label}</div></div>`
+  ).join("");
+
+  // Tells
+  document.getElementById("tellsGrid").innerHTML = tells.map(t =>
+    `<span class="tell ${t.cls}">${t.text}</span>`
+  ).join("");
+
+  // Deep link
+  currentHash = encodeText(text);
+  const shareUrl = `https://tinytools-smoky.vercel.app/ai-text-roast/#${currentHash}`;
+
+  // Badge
+  const badgeLabel = encodeURIComponent(verdict.label);
+  const badgeColor = verdict.color.replace("#","");
+  const badgeUrl = `https://img.shields.io/badge/AI%20Score-${score}%25-${badgeColor}?style=for-the-badge&logo=openai`;
+  document.getElementById("badgeCode").textContent = `<a href="${shareUrl}">\n  <img src="${badgeUrl}" alt="AI Text Roast">\n</a>`;
+
+  // Share X
+  document.getElementById("shareXBtn").onclick = () => shareToX(score, verdict.label, shareUrl);
+
+  document.getElementById("resultCard").classList.add("show");
+  document.getElementById("resultCard").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function shareToX(score, label, shareUrl) {
+  const tweet = `I just got my text roasted 🤖🔥 Result: ${label} (${score}% AI)\n\nCheck yours → ${shareUrl}\n\n#AITextRoast #TinyTools`;
+  window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweet), "_blank");
+}
+
+function copyLink() {
+  const shareUrl = `https://tinytools-smoky.vercel.app/ai-text-roast/#${currentHash}`;
+  navigator.clipboard.writeText(shareUrl).then(() => alert("Link copied! Share it anywhere."));
+}
+
+function copyBadge() {
+  const code = document.getElementById("badgeCode").textContent;
+  navigator.clipboard.writeText(code).then(() => alert("Badge HTML copied!"));
+}
+
+function downloadCard() {
+  const score = parseInt(document.getElementById("scoreBadge").textContent);
+  const verdict = document.getElementById("verdictTitle").textContent;
+  const roastText = document.getElementById("roastText").textContent;
+  const canvas = document.getElementById("shareCanvas");
+  const ctx = canvas.getContext("2d");
+
+  // Background
+  const bg = ctx.createLinearGradient(0,0,1200,630);
+  bg.addColorStop(0, "#0a0a0f");
+  bg.addColorStop(1, "#1a0a1a");
+  ctx.fillStyle = bg;
+  ctx.fillRect(0,0,1200,630);
+
+  // Accent gradient overlay
+  const grd = ctx.createRadialGradient(200, 0, 0, 200, 0, 500);
+  grd.addColorStop(0, "rgba(244,63,94,0.25)");
+  grd.addColorStop(1, "transparent");
+  ctx.fillStyle = grd;
+  ctx.fillRect(0,0,1200,630);
+
+  // Card BG
+  ctx.fillStyle = "rgba(31,31,46,0.9)";
+  roundRect(ctx, 60, 50, 1080, 530, 24);
+  ctx.fill();
+
+  // Header band
+  const hdrGrd = ctx.createLinearGradient(60,50,1140,50);
+  hdrGrd.addColorStop(0, "#f43f5e");
+  hdrGrd.addColorStop(1, "#dc2626");
+  ctx.fillStyle = hdrGrd;
+  roundRect(ctx, 60, 50, 1080, 120, [24,24,0,0]);
+  ctx.fill();
+
+  // Emoji
+  ctx.font = "bold 60px serif";
+  ctx.fillText(score >= 70 ? "🤖" : score >= 45 ? "🤔" : "✍️", 100, 145);
+
+  // Verdict
+  ctx.fillStyle = "white";
+  ctx.font = "bold 38px -apple-system, Arial";
+  ctx.fillText(verdict, 180, 120);
+  ctx.fillStyle = "rgba(255,255,255,0.8)";
+  ctx.font = "22px -apple-system, Arial";
+  ctx.fillText(`${score}% AI Probability`, 180, 155);
+
+  // Score badge
+  ctx.fillStyle = "rgba(0,0,0,0.4)";
+  roundRect(ctx, 1010, 70, 110, 76, 14);
+  ctx.fill();
+  ctx.fillStyle = "white";
+  ctx.font = "bold 44px -apple-system, Arial";
+  ctx.textAlign = "center";
+  ctx.fillText(score + "%", 1065, 125);
+  ctx.textAlign = "left";
+
+  // Roast text
+  ctx.fillStyle = "#fde68a";
+  ctx.font = "italic 20px Georgia, serif";
+  const lines = wrapText(ctx, '"' + roastText + '"', 100, 240, 1000, 28);
+
+  // URL
+  ctx.fillStyle = "rgba(160,160,184,0.8)";
+  ctx.font = "18px -apple-system, Arial";
+  ctx.fillText("tinytools-smoky.vercel.app/ai-text-roast/", 100, 555);
+
+  // Branding
+  ctx.fillStyle = "#f43f5e";
+  ctx.font = "bold 20px -apple-system, Arial";
+  ctx.textAlign = "right";
+  ctx.fillText("🔥 AI Text Roast by TinyTools", 1100, 555);
+  ctx.textAlign = "left";
+
+  const link = document.createElement("a");
+  link.download = "ai-text-roast.png";
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  if (typeof r === "number") r = [r,r,r,r];
+  ctx.beginPath();
+  ctx.moveTo(x + r[0], y);
+  ctx.lineTo(x + w - r[1], y);
+  ctx.quadraticCurveTo(x+w, y, x+w, y+r[1]);
+  ctx.lineTo(x+w, y+h-r[2]);
+  ctx.quadraticCurveTo(x+w, y+h, x+w-r[2], y+h);
+  ctx.lineTo(x+r[3], y+h);
+  ctx.quadraticCurveTo(x, y+h, x, y+h-r[3]);
+  ctx.lineTo(x, y+r[0]);
+  ctx.quadraticCurveTo(x, y, x+r[0], y);
+  ctx.closePath();
+}
+
+function wrapText(ctx, text, x, y, maxW, lineH) {
+  const words = text.split(" ");
+  let line = "";
+  let lines = 0;
+  for (let w of words) {
+    const test = line + w + " ";
+    if (ctx.measureText(test).width > maxW && line) {
+      if (lines < 5) ctx.fillText(line.trim(), x, y + lines * lineH);
+      line = w + " ";
+      lines++;
+    } else { line = test; }
+  }
+  if (lines < 5) ctx.fillText(line.trim(), x, y + lines * lineH);
+}
+
+function showError(msg) {
+  const el = document.getElementById("error");
+  el.textContent = msg;
+  el.classList.add("show");
+  document.getElementById("loading").classList.remove("show");
+  document.getElementById("roastBtn").disabled = false;
+}
+
+// Auto-fill from URL hash
+window.addEventListener("load", () => {
+  const hash = location.hash.slice(1);
+  if (hash) {
+    const text = decodeText(hash);
+    if (text && text.length > 10) {
+      document.getElementById("textInput").value = text;
+      document.getElementById("charCount").textContent = text.length + " characters";
+      setTimeout(runRoast, 400);
+    }
+  }
+});
+</script>
+</body>
+</html>
