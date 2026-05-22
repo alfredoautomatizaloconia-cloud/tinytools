@@ -1,1 +1,46 @@
-
+{
+  "lastUpdated": "2026-05-22",
+  "stats": {
+    "posts": 1,
+    "tools": 0,
+    "visitors": 0
+  },
+  "activity": [
+    {
+      "date": "2026-05-22",
+      "type": "blog_post",
+      "tool": "chat-with-pdf",
+      "title": "I Fed My Employment Contract to an AI. It Found 3 Clauses HR Doesn't Want You to Notice.",
+      "url": "https://tinytools-smoky.vercel.app/chat-with-pdf/blog/i-fed-my-employment-contract-to-ai-3-clauses-hr-doesnt-want-you-to-see/"
+    }
+  ],
+  "drafts": [
+    {
+      "platform": "x",
+      "date": "2026-05-22",
+      "tool": "chat-with-pdf",
+      "text": "Your employment contract has landmines HR hopes you never find.\n\nI fed mine to an AI. In 12 minutes it surfaced:\n\u2022 A non-compete covering \"anticipated\" competitors\n\u2022 An IP clause that could've claimed my side project\n\u2022 A PTO forfeiture buried in Appendix B\n\nThe tool keeps your PDF private (nothing uploaded).\n\nhttps://tinytools-smoky.vercel.app/chat-with-pdf/blog/i-fed-my-employment-contract-to-ai-3-clauses-hr-doesnt-want-you-to-see/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-05-22",
+      "tool": "chat-with-pdf",
+      "subreddit": "r/personalfinance",
+      "title": "I used AI to read my employment contract after 6 years. Found 3 clauses I never noticed that could've cost me serious money.",
+      "text": "Not going to name the company, but I recently got a new offer and finally sat down to understand my exit terms. Used a private PDF chat tool (nothing uploaded) and spent about 12 minutes asking it targeted questions. Found: broad non-compete, IP clause covering side projects, PTO forfeiture in appendix. Full walkthrough + prompts: https://tinytools-smoky.vercel.app/chat-with-pdf/blog/i-fed-my-employment-contract-to-ai-3-clauses-hr-doesnt-want-you-to-see/"
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-05-22",
+      "tool": "chat-with-pdf",
+      "text": "Unpopular opinion: the most important 12 minutes of your career might be asking an AI to read your employment contract.\n\nI spent 6 years assuming mine was standard. It wasn't. Full walkthrough: https://tinytools-smoky.vercel.app/chat-with-pdf/blog/i-fed-my-employment-contract-to-ai-3-clauses-hr-doesnt-want-you-to-see/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-05-22",
+      "tool": "chat-with-pdf",
+      "title": "Show HN: Chat with PDF (private, BYOK) \u2013 I used it to audit my employment contract",
+      "text": "Writeup on using TinyTools private PDF chat to audit a standard employment contract. Found 3 common hidden clauses with exact prompts. Tool: https://tinytools-smoky.vercel.app/chat-with-pdf/ Post: https://tinytools-smoky.vercel.app/chat-with-pdf/blog/i-fed-my-employment-contract-to-ai-3-clauses-hr-doesnt-want-you-to-see/"
+    }
+  ]
+}
