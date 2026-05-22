@@ -829,4 +829,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/mcp-config-generator/blog/your-mcp-config-is-broken-and-you-dont-know-it-2026/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
