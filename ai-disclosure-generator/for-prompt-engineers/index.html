@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Disclosure Generator for Prompt Engineers — EU AI Act Compliant Labels</title>
+<meta name="description" content="Prompt engineers publishing outputs, demos, or prompt packs online face EU AI Act disclosure obligations. Generate compliant HTML labels and JSON-LD schema in seconds. Free, no signup.">
+<meta name="keywords" content="AI disclosure generator prompt engineers, EU AI Act prompt engineering compliance, AI output disclosure label, prompt engineer content labeling, AI Act Article 50 prompt developers">
+<meta property="og:title" content="AI Disclosure Generator for Prompt Engineers — EU AI Act Compliant">
+<meta property="og:description" content="Every demo output, benchmark result, and shared prompt pack needs an EU AI Act-compliant disclosure. Generate yours free in 10 seconds.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-prompt-engineers/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-prompt-engineers/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Disclosure Generator for Prompt Engineers",
+  "description": "Prompt engineers publishing AI outputs, demos, and prompt packs need EU AI Act-compliant disclosure labels. Generate HTML badges, JSON-LD schema, and plain-text disclosures in seconds.",
+  "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-prompt-engineers/",
+  "dateModified": "2026-05-22",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/"},
+      {"@type": "ListItem", "position": 2, "name": "AI Disclosure Generator", "item": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/"},
+      {"@type": "ListItem", "position": 3, "name": "For Prompt Engineers", "item": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-prompt-engineers/"}
+    ]
+  },
+  "mainEntity": {
+    "@type": "WebApplication",
+    "name": "AI Content Disclosure Generator",
+    "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {"@type": "Offer", "price": "0"}
+  }
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #fbbf24; --accent-glow: #fbbf2440;
+    --green: #10b981; --red: #ef4444; --purple: #a78bfa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #a78bfa30 0%, transparent 50%);
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* Breadcrumb */
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 32px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span { margin: 0 6px; }
+
+  /* Hero */
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .badge {
+    display: inline-block; padding: 5px 12px;
+    border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+  }
+  .badge-red { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color: #fca5a5; }
+  .badge-purple { background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.4); color: #c4b5fd; }
+  .badge-yellow { background: rgba(251,191,36,0.15); border: 1px solid rgba(251,191,36,0.4); color: #fde68a; }
+
+  h1 {
+    font-size: clamp(28px, 4vw, 44px); font-weight: 800; line-height: 1.15;
+    margin-bottom: 18px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fde68a 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-sub { font-size: 18px; color: var(--text-dim); margin-bottom: 28px; max-width: 660px; }
+
+  /* CTA block */
+  .cta-block {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px 32px; margin-bottom: 56px;
+    display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
+    border-left: 4px solid var(--accent);
+  }
+  .cta-block .cta-text { flex: 1 1 300px; }
+  .cta-block .cta-text p { color: var(--text-dim); font-size: 15px; margin-top: 6px; }
+  .cta-block strong { font-size: 17px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px; background: var(--accent); color: #1a1200;
+    font-weight: 700; font-size: 15px; border-radius: 10px;
+    text-decoration: none; white-space: nowrap; transition: background 0.15s;
+  }
+  .btn-primary:hover { background: #fcd34d; }
+
+  /* Body content */
+  h2 { font-size: 26px; font-weight: 700; margin: 48px 0 16px; letter-spacing: -0.01em; }
+  h3 { font-size: 18px; font-weight: 700; margin: 28px 0 10px; color: var(--accent); }
+  p { color: var(--text-dim); margin-bottom: 14px; font-size: 16px; }
+  strong { color: var(--text); }
+
+  /* Use case cards */
+  .use-cases { display: grid; gap: 16px; margin: 24px 0 40px; }
+  .use-case-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px 24px;
+    display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start;
+  }
+  .use-case-card .icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--accent-glow); border: 1px solid rgba(251,191,36,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; flex-shrink: 0;
+  }
+  .use-case-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .use-case-card p { font-size: 14px; margin: 0; }
+
+  /* Pain → solution table */
+  .pain-table { width: 100%; border-collapse: collapse; margin: 24px 0 40px; font-size: 15px; }
+  .pain-table thead th {
+    background: var(--bg-elevated); padding: 12px 16px; text-align: left;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-dim); font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  .pain-table thead th:first-child { border-radius: 10px 0 0 0; }
+  .pain-table thead th:last-child { border-radius: 0 10px 0 0; }
+  .pain-table tbody tr { border-bottom: 1px solid var(--border); }
+  .pain-table tbody tr:last-child { border-bottom: none; }
+  .pain-table td { padding: 14px 16px; background: var(--bg-card); vertical-align: top; }
+  .pain-table td:first-child { color: #fca5a5; border-right: 1px solid var(--border); }
+  .pain-table td:last-child { color: var(--green); }
+
+  /* Pricing table */
+  .pricing-table { width: 100%; border-collapse: collapse; margin: 24px 0 40px; font-size: 14px; }
+  .pricing-table thead th {
+    background: var(--bg-elevated); padding: 11px 14px; text-align: left;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-dim); font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  .pricing-table thead th:first-child { border-radius: 10px 0 0 0; }
+  .pricing-table thead th:last-child { border-radius: 0 10px 0 0; }
+  .pricing-table tbody tr { border-bottom: 1px solid var(--border); }
+  .pricing-table tbody tr:last-child { border-bottom: none; }
+  .pricing-table td { padding: 12px 14px; background: var(--bg-card); vertical-align: middle; }
+  .pricing-table td.tool-name { font-weight: 700; color: var(--text); }
+  .pricing-table tr.highlight td { background: rgba(251,191,36,0.07); }
+  .pricing-table .tick { color: var(--green); font-weight: 700; }
+  .pricing-table .cross { color: var(--red); }
+  .price-tag { font-weight: 700; }
+  .price-free { color: var(--green); }
+  .price-paid { color: #fca5a5; }
+
+  /* Sister tools */
+  .sister-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 24px 0 40px; }
+  .sister-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 20px; text-decoration: none; color: var(--text);
+    transition: border-color 0.15s, transform 0.15s; display: block;
+  }
+  .sister-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .sister-card .st-label { font-size: 12px; color: var(--text-dim); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .sister-card strong { font-size: 15px; display: block; margin-bottom: 4px; }
+  .sister-card span { font-size: 13px; color: var(--text-dim); }
+
+  /* CTA bottom */
+  .cta-bottom {
+    margin-top: 56px; padding: 40px 36px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 20px; text-align: center;
+    border-top: 4px solid var(--accent);
+  }
+  .cta-bottom h2 { margin-top: 0; font-size: 28px; }
+  .cta-bottom p { max-width: 540px; margin: 0 auto 24px; }
+
+  footer { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .cta-block { flex-direction: column; }
+    .pain-table, .pricing-table { display: block; overflow-x: auto; }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="breadcrumb">
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a>
+    <span>›</span>
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a>
+    <span>›</span>
+    <span>For Prompt Engineers</span>
+  </nav>
+
+  <div class="badge-row">
+    <span class="badge badge-red">⚠️ EU AI Act enforcement: August 2, 2026</span>
+    <span class="badge badge-purple">🧠 For Prompt Engineers</span>
+    <span class="badge badge-yellow">✓ Free, no signup</span>
+  </div>
+
+  <h1>AI Disclosure Generator<br>for Prompt Engineers</h1>
+
+  <p class="hero-sub">You work <em>with</em> AI every day — which means you publish more AI-generated content than almost anyone online. Every demo output, shared benchmark, prompt pack sample, and tutorial screenshot may require an EU AI Act disclosure starting August 2, 2026. Generate compliant labels in 10 seconds.</p>
+
+  <div class="cta-block">
+    <div class="cta-text">
+      <strong>Free AI Disclosure Generator — EU AI Act Article 50 Ready</strong>
+      <p>Generate HTML badges, JSON-LD schema, and plain-text disclosures for every content type: text outputs, AI images, voice demos, and video. Copy-paste into your site, README, or newsletter.</p>
+    </div>
+    <a class="btn-primary" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">
+      Generate My Disclosure →
+    </a>
+  </div>
+
+  <!-- USE CASES -->
+  <h2>5 Disclosure Scenarios Specific to Prompt Engineers</h2>
+  <p>Generic disclosure guides talk about blog posts and social media. Prompt engineers face a different set of obligations — here's where you actually need labels.</p>
+
+  <div class="use-cases">
+
+    <div class="use-case-card">
+      <div class="icon">📦</div>
+      <div>
+        <h4>Prompt Packs and Marketplaces</h4>
+        <p>Selling or distributing a prompt library on Gumroad, PromptBase, or your own site? Sample outputs generated to demonstrate quality are AI-generated content under EU AI Act Article 50. Each demo output in your listing needs a disclosure label — especially if it's a photorealistic image, realistic voice clip, or article-length text that reads as human-written.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">🧪</div>
+      <div>
+        <h4>Benchmark and Evaluation Reports</h4>
+        <p>Publishing a head-to-head comparison of GPT-4o vs Claude 3.5 vs Gemini on your prompt? The outputs you screenshot and share are AI-generated. If you post those to X, a newsletter, a GitHub README, or a blog, and a reader could mistake them for human writing, they need a disclosure. This applies even in highly technical contexts — the law doesn't carve out a "developer" exemption.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">🎓</div>
+      <div>
+        <h4>Tutorials and Course Content</h4>
+        <p>Teaching prompt engineering through written guides, YouTube scripts, or course modules where the example outputs are generated by AI? Any text output you present as a "here's what this prompt produces" example is disclosable. The EU AI Act's concern is audiences being misled about authenticity — and students reading polished AI text as a worked example is exactly that context.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">📰</div>
+      <div>
+        <h4>Newsletters and LinkedIn Posts About AI Capabilities</h4>
+        <p>Prompt engineers are often the ones sharing "look what I got GPT to do" posts that go viral. If the impressive output you're showcasing is AI-generated text, a generated image, or an AI voice sample, you need a disclosure before that post reaches EU readers — which it will, if it goes viral. The label needs to be machine-readable too, not just a "(generated with AI)" throwaway at the end.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">🛠️</div>
+      <div>
+        <h4>Demo Apps and Sandboxes</h4>
+        <p>Many prompt engineers build thin demo apps — a Streamlit app, a Vercel-deployed playground, a Hugging Face Space — to let others try their prompts. Any output those apps surface to EU users requires an automated disclosure mechanism baked into the UI. The generator produces both the HTML inline badge and the JSON-LD schema block so you can drop them into your app's output template once and stay compliant by default.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAIN / SOLUTION -->
+  <h2>Your Disclosure Pain Points — Solved</h2>
+  <p>Prompt engineering workflows move fast. Disclosure can't be an afterthought you bolt on manually each time. Here's how the generator maps to the friction you actually face:</p>
+
+  <table class="pain-table">
+    <thead>
+      <tr>
+        <th style="width:50%">The Pain</th>
+        <th>What the Generator Does</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>You share demo outputs in 4 different places (X, LinkedIn, newsletter, GitHub) and each needs a slightly different format</td>
+        <td>Outputs HTML badge, JSON-LD schema, and plain-text disclosure in one click — use whichever fits the surface</td>
+      </tr>
+      <tr>
+        <td>You're unsure whether a heavily-edited AI output still needs labeling (it usually does)</td>
+        <td>The tool covers AI Text, AI-Edited content, AI Image, AI Voice, AI Video, and Deepfake — including the edited-but-AI-originated cases</td>
+      </tr>
+      <tr>
+        <td>You have EU readers but you're based in the US and don't know if this applies to you</td>
+        <td>Generates disclosures that satisfy EU AI Act Article 50 regardless of your jurisdiction — extraterritorial reach is real</td>
+      </tr>
+      <tr>
+        <td>Your demo app generates outputs dynamically — you can't label each one manually</td>
+        <td>Generate the HTML template once, drop it into your output rendering function, done. Works server-side or client-side</td>
+      </tr>
+      <tr>
+        <td>You need disclosures in multiple languages for international prompt pack buyers</td>
+        <td>Supports 8 languages including DE, FR, ES, IT, PT, NL, PL — switch in one click</td>
+      </tr>
+      <tr>
+        <td>You want to credit the specific model (e.g., "Claude 3.7 Sonnet") in the disclosure</td>
+        <td>Optional AI tool field: enter the model name and it's embedded in both the visible label and JSON-LD metadata</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- PRICING -->
+  <h2>Pricing vs. Paid Alternatives</h2>
+  <p>Most tools that offer any disclosure functionality bundle it into broader (and expensive) compliance suites aimed at enterprise legal teams. Here's how the options compare for a solo prompt engineer or small team:</p>
+
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Price</th>
+        <th>HTML Badge</th>
+        <th>JSON-LD Schema</th>
+        <th>Multi-language</th>
+        <th>Model Attribution</th>
+        <th>Free Tier</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="tool-name">✨ TinyTools AI Disclosure Generator</td>
+        <td><span class="price-tag price-free">$0</span></td>
+        <td class="tick">✓</td>
+        <td class="tick">✓</td>
+        <td class="tick">✓ 8 languages</td>
+        <td class="tick">✓</td>
+        <td class="tick">Always free</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Jasper (AI writing suite)</td>
+        <td><span class="price-tag price-paid">$49/mo</span></td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">7-day trial only</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Originality.ai</td>
+        <td><span class="price-tag price-paid">$14.95/mo</span></td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">No</td>
+      </tr>
+      <tr>
+        <td class="tool-name">DIY manual labeling</td>
+        <td><span class="price-tag">~2-5 min/label</span></td>
+        <td class="cross">Manual</td>
+        <td class="cross">✗ Usually skipped</td>
+        <td class="cross">Manual</td>
+        <td class="cross">Manual</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Enterprise compliance suite (e.g., OneTrust AI)</td>
+        <td><span class="price-tag price-paid">$1,200+/yr</span></td>
+        <td class="tick">✓</td>
+        <td class="tick">✓</td>
+        <td class="tick">✓</td>
+        <td class="tick">✓</td>
+        <td class="cross">No</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>For an individual prompt engineer or a small team, enterprise compliance suites are overkill. The TinyTools generator gives you everything Article 50 needs — including the often-skipped machine-readable JSON-LD schema — for free, with no account required.</p>
+
+  <!-- SISTER TOOLS -->
+  <h2>Related Tools for Prompt Engineers</h2>
+  <p>Disclosure is one piece of the compliance and quality picture. These sister tools round out the workflow:</p>
+
+  <div class="sister-tools">
+    <a class="sister-card" href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">
+      <div class="st-label">Compliance</div>
+      <strong>EU AI Act Risk Assessment</strong>
+      <span>Find out which risk tier your AI application or prompt-powered product falls into before August 2026.</span>
+    </a>
+    <a class="sister-card" href="https://tinytools-smoky.vercel.app/ai-text-detector/">
+      <div class="st-label">Verification</div>
+      <strong>AI Text Detector</strong>
+      <span>Check whether your own or others' AI outputs are likely to be flagged — useful for fine-tuning prompt naturalness.</span>
+    </a>
+    <a class="sister-card" href="https://tinytools-smoky.vercel.app/ai-cost-calculator/">
+      <div class="st-label">Cost</div>
+      <strong>AI Cost Calculator</strong>
+      <span>Model out the token costs for your prompt workflows across GPT-4o, Claude, and Gemini before you ship.</span>
+    </a>
+  </div>
+
+  <!-- FAQ -->
+  <h2>Common Questions from Prompt Engineers</h2>
+
+  <h3>Do I need to label outputs from every model, or just the "big" ones?</h3>
+  <p>The EU AI Act doesn't distinguish by model or provider. Any content generated by an AI system — whether it's GPT-5, Claude 3.5, Mistral, or a locally-run Llama — requires disclosure if it could be mistaken for human-created content. The criterion is the output, not the model.</p>
+
+  <h3>I'm building a prompt engineering tutorial with lots of screenshots. Does every screenshot need a label?</h3>
+  <p>Screenshots of AI outputs that appear as images don't need an inline HTML badge inside the image (you can't inject HTML into a JPEG), but the surrounding text should contain a clear disclosure, and the page-level JSON-LD schema should reflect that the page contains AI-generated content examples. The generator's plain-text output is designed exactly for this: drop it in a caption or note under each screenshot.</p>
+
+  <h3>What about prompts themselves — do system prompts need disclosure?</h3>
+  <p>Prompts you write are not AI-generated content (assuming you wrote them). The disclosure obligation applies to <em>outputs</em> from AI systems, not to the prompts that drive them. If you used an AI to help draft a system prompt, and you're publishing that system prompt verbatim, that's an edge case — the safe move is to add a brief note, but the strict legal trigger is the consumer-facing output, not the prompt itself.</p>
+
+  <h3>Does the EU AI Act apply if my prompt pack is sold only to developers in the US?</h3>
+  <p>Possibly not for the original transaction, but if the AI outputs those prompts generate are then published or shared by your customers in the EU, the downstream disclosure obligation falls on them. To protect your reputation and reduce risk, including disclosure guidance in your prompt pack documentation is good practice regardless. And if any of your own demo pages have EU visitors — which they likely do — the obligation applies directly to you.</p>
+
+  <h3>I post AI output comparisons to X. Does every tweet need a label?</h3>
+  <p>Yes, if the AI-generated text or image in your post could be mistaken for human-generated content. For social media, the EU AI Act expects the disclosure to be visible in the post itself — not buried in a reply or a linked page. The generator's plain-text output ("✨ Generated with AI · GPT-4o") is designed to be the first line of your caption.</p>
+
+  <!-- BOTTOM CTA -->
+  <div class="cta-bottom">
+    <h2>Generate Your Disclosure Label Now</h2>
+    <p>Free, no account, no credit card. Pick your content type, pick your style, and copy the compliant HTML + JSON-LD in under 10 seconds.</p>
+    <a class="btn-primary" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/" style="display: inline-flex; font-size: 16px; padding: 16px 36px;">
+      Open AI Disclosure Generator →
+    </a>
+    <p style="margin-top: 16px; font-size: 13px; color: var(--text-dim);">EU AI Act Article 50 compliant · HTML, JSON-LD, plain text · 8 languages · Free forever</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>
+    Free tool by <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a> ·
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-text-detector/">AI Text Detector</a>
+    <br>
+    Informational only — not legal advice. Consult a qualified attorney for compliance decisions.
+  </p>
+</footer>
+
+</body>
+</html>
