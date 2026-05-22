@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Disclosure Generator for AI Voice Creators — EU AI Act Synthetic Audio Labels</title>
+<meta name="description" content="AI voice creators using ElevenLabs, Murf, or Play.ht face strict EU AI Act synthetic audio disclosure rules. Generate compliant HTML labels and JSON-LD schema in seconds. Free, no signup.">
+<meta name="keywords" content="AI disclosure generator voice creators, EU AI Act synthetic audio disclosure, AI voice clone label, ElevenLabs disclosure compliance, AI Act Article 50 voice content, synthetic audio disclosure generator">
+<meta property="og:title" content="AI Disclosure Generator for AI Voice Creators — EU AI Act Compliant">
+<meta property="og:description" content="Synthetic voice content faces the strictest EU AI Act disclosure rules. Generate compliant labels for AI-dubbed videos, AI podcasts, and voice-clone audio in 10 seconds.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-ai-voice-creators/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-ai-voice-creators/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Disclosure Generator for AI Voice Creators",
+  "description": "AI voice creators publishing synthetic audio, AI-dubbed videos, voice-clone podcasts, and AI-narrated audiobooks need EU AI Act Article 50 compliant disclosure labels. Generate HTML badges, JSON-LD schema, and plain-text disclosures in seconds.",
+  "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-ai-voice-creators/",
+  "dateModified": "2026-05-22",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/"},
+      {"@type": "ListItem", "position": 2, "name": "AI Disclosure Generator", "item": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/"},
+      {"@type": "ListItem", "position": 3, "name": "For AI Voice Creators", "item": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-ai-voice-creators/"}
+    ]
+  },
+  "mainEntity": {
+    "@type": "WebApplication",
+    "name": "AI Content Disclosure Generator",
+    "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {"@type": "Offer", "price": "0"}
+  }
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #fbbf24; --accent-glow: #fbbf2440;
+    --green: #10b981; --red: #ef4444; --purple: #a78bfa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #a78bfa30 0%, transparent 50%);
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* Breadcrumb */
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 32px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span { margin: 0 6px; }
+
+  /* Hero */
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .badge {
+    display: inline-block; padding: 5px 12px;
+    border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+  }
+  .badge-red { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color: #fca5a5; }
+  .badge-purple { background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.4); color: #c4b5fd; }
+  .badge-yellow { background: rgba(251,191,36,0.15); border: 1px solid rgba(251,191,36,0.4); color: #fde68a; }
+
+  h1 {
+    font-size: clamp(28px, 4vw, 44px); font-weight: 800; line-height: 1.15;
+    margin-bottom: 18px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fde68a 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-sub { font-size: 18px; color: var(--text-dim); margin-bottom: 28px; max-width: 660px; }
+
+  /* CTA block */
+  .cta-block {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px 32px; margin-bottom: 56px;
+    display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
+    border-left: 4px solid var(--accent);
+  }
+  .cta-block .cta-text { flex: 1 1 300px; }
+  .cta-block .cta-text p { color: var(--text-dim); font-size: 15px; margin-top: 6px; }
+  .cta-block strong { font-size: 17px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px; background: var(--accent); color: #1a1200;
+    font-weight: 700; font-size: 15px; border-radius: 10px;
+    text-decoration: none; white-space: nowrap; transition: background 0.15s;
+  }
+  .btn-primary:hover { background: #fcd34d; }
+
+  /* Body content */
+  h2 { font-size: 26px; font-weight: 700; margin: 48px 0 16px; letter-spacing: -0.01em; }
+  h3 { font-size: 18px; font-weight: 700; margin: 28px 0 10px; color: var(--accent); }
+  p { color: var(--text-dim); margin-bottom: 14px; font-size: 16px; }
+  strong { color: var(--text); }
+
+  /* Use case cards */
+  .use-cases { display: grid; gap: 16px; margin: 24px 0 40px; }
+  .use-case-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px 24px;
+    display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start;
+  }
+  .use-case-card .icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--accent-glow); border: 1px solid rgba(251,191,36,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; flex-shrink: 0;
+  }
+  .use-case-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .use-case-card p { font-size: 14px; margin: 0; }
+
+  /* Pain → solution table */
+  .pain-table { width: 100%; border-collapse: collapse; margin: 24px 0 40px; font-size: 15px; }
+  .pain-table thead th {
+    background: var(--bg-elevated); padding: 12px 16px; text-align: left;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-dim); font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  .pain-table thead th:first-child { border-radius: 10px 0 0 0; }
+  .pain-table thead th:last-child { border-radius: 0 10px 0 0; }
+  .pain-table tbody tr { border-bottom: 1px solid var(--border); }
+  .pain-table tbody tr:last-child { border-bottom: none; }
+  .pain-table td { padding: 14px 16px; background: var(--bg-card); vertical-align: top; }
+  .pain-table td:first-child { color: #fca5a5; border-right: 1px solid var(--border); }
+  .pain-table td:last-child { color: var(--green); }
+
+  /* Pricing table */
+  .pricing-table { width: 100%; border-collapse: collapse; margin: 24px 0 40px; font-size: 14px; }
+  .pricing-table thead th {
+    background: var(--bg-elevated); padding: 11px 14px; text-align: left;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-dim); font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  .pricing-table thead th:first-child { border-radius: 10px 0 0 0; }
+  .pricing-table thead th:last-child { border-radius: 0 10px 0 0; }
+  .pricing-table tbody tr { border-bottom: 1px solid var(--border); }
+  .pricing-table tbody tr:last-child { border-bottom: none; }
+  .pricing-table td { padding: 12px 14px; background: var(--bg-card); vertical-align: middle; }
+  .pricing-table td.tool-name { font-weight: 700; color: var(--text); }
+  .pricing-table tr.highlight td { background: rgba(251,191,36,0.07); }
+  .pricing-table .tick { color: var(--green); font-weight: 700; }
+  .pricing-table .cross { color: var(--red); }
+  .price-tag { font-weight: 700; }
+  .price-free { color: var(--green); }
+  .price-paid { color: #fca5a5; }
+
+  /* Sister tools */
+  .sister-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 24px 0 40px; }
+  .sister-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 20px; text-decoration: none; color: var(--text);
+    transition: border-color 0.15s, transform 0.15s; display: block;
+  }
+  .sister-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .sister-card .st-label { font-size: 12px; color: var(--text-dim); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .sister-card strong { font-size: 15px; display: block; margin-bottom: 4px; }
+  .sister-card span { font-size: 13px; color: var(--text-dim); }
+
+  /* CTA bottom */
+  .cta-bottom {
+    margin-top: 56px; padding: 40px 36px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 20px; text-align: center;
+    border-top: 4px solid var(--accent);
+  }
+  .cta-bottom h2 { margin-top: 0; font-size: 28px; }
+  .cta-bottom p { max-width: 540px; margin: 0 auto 24px; }
+
+  footer { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .cta-block { flex-direction: column; }
+    .pain-table, .pricing-table { display: block; overflow-x: auto; }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="breadcrumb">
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a>
+    <span>›</span>
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a>
+    <span>›</span>
+    <span>For AI Voice Creators</span>
+  </nav>
+
+  <div class="badge-row">
+    <span class="badge badge-red">⚠️ Synthetic audio: highest-risk EU AI Act category</span>
+    <span class="badge badge-purple">🎙️ For AI Voice Creators</span>
+    <span class="badge badge-yellow">✓ Free, no signup</span>
+  </div>
+
+  <h1>AI Disclosure Generator<br>for AI Voice Creators</h1>
+
+  <p class="hero-sub">Synthetic audio and AI voice clones sit at the top of the EU AI Act's disclosure priority list. Whether you're dubbing YouTube videos with ElevenLabs, narrating audiobooks with Murf, or publishing AI-generated podcasts, Article 50 requires machine-readable disclosures by August 2, 2026. Generate compliant labels in 10 seconds — free.</p>
+
+  <div class="cta-block">
+    <div class="cta-text">
+      <strong>Free AI Disclosure Generator — Synthetic Audio Ready</strong>
+      <p>Generate HTML badges, JSON-LD schema, and plain-text disclosures specifically built for AI voice content: AI Voice, AI Audio, AI Dubbing, and Voice Clone types. Copy-paste into your video descriptions, podcast show notes, or website.</p>
+    </div>
+    <a class="btn-primary" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">
+      Generate My Disclosure →
+    </a>
+  </div>
+
+  <!-- USE CASES -->
+  <h2>5 Disclosure Scenarios Specific to AI Voice Creators</h2>
+  <p>Generic compliance guides focus on text and images. AI voice creators face a distinct set of disclosure obligations — because synthetic audio is the EU AI Act's highest-priority content type. Here's where the rules actually hit you.</p>
+
+  <div class="use-cases">
+
+    <div class="use-case-card">
+      <div class="icon">🌐</div>
+      <div>
+        <h4>AI-Dubbed Videos in Multiple Languages</h4>
+        <p>Tools like ElevenLabs Dubbing, HeyGen, and Captions let you clone your own voice and publish in Spanish, German, French, and Portuguese simultaneously. Under EU AI Act Article 50, each language version of a video with an AI-synthesized voiceover needs a disclosure in that language — not just in the original English. If you're publishing to EU audiences in any language, the disclosure must be visible to them. The generator produces disclosures in 8 languages with one click, including the JSON-LD schema that platforms and search engines can read automatically.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">🎙️</div>
+      <div>
+        <h4>AI-Generated Podcast Episodes</h4>
+        <p>Fully synthetic podcasts — where a cloned host voice reads an AI-written script — are squarely in scope for disclosure. Platforms like Spotify have already started mandating AI content flags for podcasts distributed in the EU. But their platform-level flag doesn't satisfy the JSON-LD machine-readable requirement in Article 50. You need both: the platform toggle and a structured data disclosure in your show notes page or podcast website. The generator covers both the human-readable badge and the schema block your RSS-connected site needs.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">📚</div>
+      <div>
+        <h4>AI-Narrated Audiobooks and Courses</h4>
+        <p>Publishers and course creators using Murf, Play.ht, or Speechify's voice synthesis to narrate long-form content are producing what the EU AI Act categorizes as synthetic audio with significant reach. Audiobooks distributed through Audible, Spotify, or your own site and accessible in the EU require disclosure on the product page and in any embedded audio player. The regulation specifically flags content that "appreciably resembles existing persons" — which voice clone narration using your own cloned voice always does. The generator's "AI Voice" content type is purpose-built for this scenario.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">📱</div>
+      <div>
+        <h4>Short-Form Video Voiceovers (Reels, TikToks, Shorts)</h4>
+        <p>Faceless content channels that use AI voice narration over B-roll or stock footage have exploded. If your Reels or Shorts reach EU audiences — and algorithm distribution makes that near-certain — Article 50 applies to each video. For short-form platforms, the disclosure needs to be in the video description or the overlay. Social platforms are beginning to enforce their own AI labels, but those don't replace the structured-data requirement for content you also publish on your own website or link hub. The generator's plain-text format ("🎙️ Narration: AI-generated · ElevenLabs") is designed to drop cleanly into any description field.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">🧬</div>
+      <div>
+        <h4>Voice Clones Offered as Products or APIs</h4>
+        <p>If you've trained a voice clone of a real person — yourself, a spokesperson, or a fictional character — and you're licensing it, selling voice packs, or exposing it via an API, the downstream disclosure obligation transfers in part to you. Any sample audio demonstrating the clone, any demo embed on your sales page, and any output delivered to EU customers needs a disclosure. This is a higher-stakes scenario: voice clones of real people are one of the specific examples the EU AI Act cites in recitals. Getting the disclosure right from the start protects you from both regulatory risk and reputational exposure.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAIN / SOLUTION -->
+  <h2>AI Voice Creator Pain Points — Solved</h2>
+  <p>Voice content workflows are high-volume and fast-moving. Manually labeling every video, episode, and audio file isn't realistic. Here's how the generator maps to friction points you actually face:</p>
+
+  <table class="pain-table">
+    <thead>
+      <tr>
+        <th style="width:50%">The Pain</th>
+        <th>What the Generator Does</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>You publish in 5 languages and need disclosures that match each locale's requirements</td>
+        <td>Generates disclosures in 8 languages (EN, DE, FR, ES, IT, PT, NL, PL) — switch in one click, all formats included</td>
+      </tr>
+      <tr>
+        <td>You use a cloned version of your own voice — is that really "AI voice" for disclosure purposes?</td>
+        <td>Yes. The generator's "Voice Clone" content type specifically covers self-cloned and third-party-cloned voices, with disclosure text that satisfies the "resembles existing persons" clause</td>
+      </tr>
+      <tr>
+        <td>Your dubbing tool (ElevenLabs / HeyGen) says it's compliant — do you still need your own disclosure?</td>
+        <td>Platform compliance ≠ your disclosure obligation. The generator produces the JSON-LD schema block your own website or link-in-bio page still needs, separate from what the platform does</td>
+      </tr>
+      <tr>
+        <td>You're batch-producing 30 voiceover videos a week and can't label each manually</td>
+        <td>Generate the disclosure template once per content type. The HTML badge and JSON-LD are designed to be dropped into your CMS or video description template so every new piece inherits compliance automatically</td>
+      </tr>
+      <tr>
+        <td>You want to include the specific AI voice tool (e.g., "ElevenLabs v3") in the disclosure</td>
+        <td>Optional AI tool attribution field: enter the tool name and it appears in both the visible label and the JSON-LD metadata — useful for transparency-forward creators who want to go beyond the minimum</td>
+      </tr>
+      <tr>
+        <td>Podcast platforms ask for an AI flag but it doesn't match what your website shows</td>
+        <td>The plain-text output matches what you'd enter in a platform's AI content field; the HTML badge and JSON-LD cover your website. One generation, all surfaces covered</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- PRICING -->
+  <h2>Pricing vs. Paid Alternatives</h2>
+  <p>AI voice creation tools are focused on output quality — none of them solve the disclosure compliance problem for you. Third-party compliance tools either ignore audio entirely or lock disclosure features behind enterprise pricing. Here's how the options compare:</p>
+
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Price</th>
+        <th>Audio Disclosure</th>
+        <th>JSON-LD Schema</th>
+        <th>Multi-language</th>
+        <th>Voice Clone Type</th>
+        <th>Free Tier</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="tool-name">✨ TinyTools AI Disclosure Generator</td>
+        <td><span class="price-tag price-free">$0</span></td>
+        <td class="tick">✓ AI Voice + Clone</td>
+        <td class="tick">✓</td>
+        <td class="tick">✓ 8 languages</td>
+        <td class="tick">✓</td>
+        <td class="tick">Always free</td>
+      </tr>
+      <tr>
+        <td class="tool-name">ElevenLabs</td>
+        <td><span class="price-tag price-paid">$5–$99/mo</span></td>
+        <td class="cross">✗ Platform only</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">No disclosure tools</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Murf.ai</td>
+        <td><span class="price-tag price-paid">$19–$99/mo</span></td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">No disclosure tools</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Play.ht</td>
+        <td><span class="price-tag price-paid">$31–$99/mo</span></td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">No disclosure tools</td>
+      </tr>
+      <tr>
+        <td class="tool-name">OneTrust AI Governance</td>
+        <td><span class="price-tag price-paid">$1,500+/yr</span></td>
+        <td class="tick">✓</td>
+        <td class="tick">✓</td>
+        <td class="tick">✓</td>
+        <td class="tick">✓</td>
+        <td class="cross">No</td>
+      </tr>
+      <tr>
+        <td class="tool-name">DIY manual labeling</td>
+        <td><span class="price-tag">~5 min/video</span></td>
+        <td class="cross">Manual</td>
+        <td class="cross">✗ Usually skipped</td>
+        <td class="cross">Manual</td>
+        <td class="cross">Manual</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>No major AI voice platform currently generates Article 50-compliant disclosures for you. That gap — between what ElevenLabs produces and what the EU requires on your own page — is exactly what the TinyTools generator fills, without a subscription or account.</p>
+
+  <!-- SISTER TOOLS -->
+  <h2>Related Tools for AI Voice Creators</h2>
+  <p>Disclosure is one piece of the compliance picture for synthetic audio. These tools cover the rest of the workflow:</p>
+
+  <div class="sister-tools">
+    <a class="sister-card" href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">
+      <div class="st-label">Compliance</div>
+      <strong>EU AI Act Risk Assessment</strong>
+      <span>Voice clones of real people often fall into high-risk categories. Find out your risk tier before August 2026.</span>
+    </a>
+    <a class="sister-card" href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/">
+      <div class="st-label">Crawl Control</div>
+      <strong>AI Robots.txt Generator</strong>
+      <span>Protect your voice content from being scraped to train competing AI voice models — without blocking human visitors.</span>
+    </a>
+    <a class="sister-card" href="https://tinytools-smoky.vercel.app/og-image-generator/">
+      <div class="st-label">Distribution</div>
+      <strong>OG Image Generator</strong>
+      <span>Create podcast cover art and social preview images optimized for every platform where you share your voice content.</span>
+    </a>
+  </div>
+
+  <!-- FAQ -->
+  <h2>Common Questions from AI Voice Creators</h2>
+
+  <h3>Does the EU AI Act treat AI voice differently from AI text or images?</h3>
+  <p>Yes — and more strictly. The EU AI Act's recitals specifically call out synthetic audio that "appreciably resembles existing natural persons" as a priority disclosure case. This covers voice clones modeled on real people, AI dubbing that preserves a speaker's vocal signature, and any synthetic narration that sounds like a specific human voice. While text and image disclosures share the same Article 50 legal basis, regulators and platforms are moving faster on audio enforcement because voice deepfakes carry higher fraud and manipulation risk.</p>
+
+  <h3>I add "(AI voiceover)" in my video description. Is that enough?</h3>
+  <p>For human readers, probably yes. For regulatory compliance, no. Article 50 requires the disclosure to be <strong>machine-readable</strong> — meaning a structured data format like JSON-LD that automated auditing systems can parse. A plain-text note in your description satisfies the human-visibility requirement but misses the machine-readable layer. The generator produces both simultaneously: a visible badge or text label plus a JSON-LD block that goes into your website's <code>&lt;head&gt;</code> or the page surrounding the embedded video.</p>
+
+  <h3>What if I'm using my own cloned voice — not someone else's?</h3>
+  <p>The obligation still applies. The EU AI Act's disclosure requirement is about the nature of the output (synthetic, AI-generated) not about whose likeness was used. A clone of your own voice is still an AI-synthesized voice for legal purposes. Self-cloned voices are actually common in the regulation's examples because they're the primary mechanism behind AI-generated podcast hosts and course narrators. The generator's "Voice Clone" content type covers this scenario explicitly.</p>
+
+  <h3>My podcast is hosted on Spotify. They have an AI content flag — does that satisfy Article 50?</h3>
+  <p>Spotify's AI content flag satisfies Spotify's own policy, which is a platform requirement, not a legal one. It does not generate the JSON-LD schema disclosure that Article 50 expects on your own website or show notes page. If your podcast has a dedicated site — even a simple one — that site needs the structured-data disclosure. The generator's JSON-LD block is a direct drop-in to your site's page template, and it takes about 30 seconds to implement once.</p>
+
+  <h3>I produce content in English for a global audience. Do I have to disclose in other languages?</h3>
+  <p>For content primarily in English targeting an English-speaking audience, an English disclosure is the minimum. However, if you publish in multiple languages — which AI dubbing makes trivially easy — the disclosure should match the language of each version. The generator lets you switch the disclosure language in one click, so generating a localized disclosure for your Spanish-dubbed video takes the same 10 seconds as the English original.</p>
+
+  <h3>What happens if I don't add disclosures?</h3>
+  <p>EU member states are responsible for enforcement, and penalties vary by country — but Article 50 violations can result in fines up to €15 million or 3% of global annual turnover (whichever is higher) for systemic non-compliance. Individual creators are far less likely to be targeted than platforms, but as enforcement matures and competing creators report violations, solo operators are not immune. Beyond the legal risk, audience trust is the more immediate cost: undisclosed AI voice content, when discovered, consistently damages creator credibility more than disclosed AI content ever does.</p>
+
+  <!-- BOTTOM CTA -->
+  <div class="cta-bottom">
+    <h2>Generate Your Synthetic Audio Disclosure Now</h2>
+    <p>Free, no account, no credit card. Pick "AI Voice" or "Voice Clone" as your content type, choose your output format, and copy the compliant HTML badge + JSON-LD in under 10 seconds.</p>
+    <a class="btn-primary" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/" style="display: inline-flex; font-size: 16px; padding: 16px 36px;">
+      Open AI Disclosure Generator →
+    </a>
+    <p style="margin-top: 16px; font-size: 13px; color: var(--text-dim);">EU AI Act Article 50 compliant · AI Voice + Voice Clone types · HTML, JSON-LD, plain text · 8 languages · Free forever</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>
+    Free tool by <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a> ·
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> ·
+    <a href="https://tinytools-smoky.vercel.app/og-image-generator/">OG Image Generator</a>
+    <br>
+    Informational only — not legal advice. Consult a qualified attorney for compliance decisions.
+  </p>
+</footer>
+
+</body>
+</html>
