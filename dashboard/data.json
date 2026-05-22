@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-05-22",
   "stats": {
-    "posts": 1,
+    "posts": 2,
     "tools": 0,
     "visitors": 0
   },
   "activity": [
+    {
+      "date": "2026-05-22",
+      "type": "blog_post",
+      "tool": "roast-my-bio",
+      "title": "I Made an AI Read 200 LinkedIn Bios. 94% Were Corporate Word Salad.",
+      "url": "https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-made-ai-read-200-linkedin-bios-94-percent-corporate-word-salad-2026/"
+    },
     {
       "date": "2026-05-22",
       "type": "blog_post",
@@ -18,8 +25,35 @@
     {
       "platform": "x",
       "date": "2026-05-22",
+      "tool": "roast-my-bio",
+      "text": "I ran 200 LinkedIn bios through an AI buzzword detector.\n\n94% were corporate word salad.\n\nThe worst offenders (instantly tank your score):\n• \"Passionate about...\"\n• \"Results-driven\"\n• \"Thought leader\"\n• \"Moving the needle\"\n\nOnly 6% earned an A grade.\n\nCheck yours (free, 10 seconds):\nhttps://tinytools-smoky.vercel.app/roast-my-bio/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-05-22",
+      "tool": "roast-my-bio",
+      "subreddit": "r/linkedin",
+      "title": "I ran 200 LinkedIn About sections through an AI buzzword detector. 46% scored D or F. Here's what the top 6% did differently.",
+      "text": "Spent a weekend feeding LinkedIn bios into an AI roaster. The grade distribution was brutal: 6% A, 17% B, 31% C, 28% D, 18% F. Senior execs consistently scored WORSE than individual contributors (my theory: they haven't updated in years). The top bios all shared 3 traits: specific claim in first sentence, at least one number in first 80 words, and a human voice — not press release voice. Full breakdown + free tool to check yours: https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-made-ai-read-200-linkedin-bios-94-percent-corporate-word-salad-2026/"
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-05-22",
+      "tool": "roast-my-bio",
+      "text": "Unpopular opinion: senior people have worse LinkedIn bios than juniors.\n\nI analyzed 200 About sections with an AI buzzword detector. VPs and above scored lower on average than ICs. My theory: they haven't had to re-market themselves in years.\n\nOnly 1 in 17 bios earned an A grade. The difference wasn't talent. It was specificity.\n\nFull breakdown (free tool included): https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-made-ai-read-200-linkedin-bios-94-percent-corporate-word-salad-2026/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-05-22",
+      "tool": "roast-my-bio",
+      "title": "Show HN: Roast My LinkedIn Bio – AI buzzword detector with letter grade",
+      "text": "Built a free tool that grades LinkedIn About sections A–F based on buzzword density, specificity, and credibility signals. Analyzed 200 bios: 94% scored below A, 46% were D/F. The tool flags specific phrases and shows rewrites. No signup, runs client-side. Tool: https://tinytools-smoky.vercel.app/roast-my-bio/ Writeup: https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-made-ai-read-200-linkedin-bios-94-percent-corporate-word-salad-2026/"
+    },
+    {
+      "platform": "x",
+      "date": "2026-05-22",
       "tool": "chat-with-pdf",
-      "text": "Your employment contract has landmines HR hopes you never find.\n\nI fed mine to an AI. In 12 minutes it surfaced:\n\u2022 A non-compete covering \"anticipated\" competitors\n\u2022 An IP clause that could've claimed my side project\n\u2022 A PTO forfeiture buried in Appendix B\n\nThe tool keeps your PDF private (nothing uploaded).\n\nhttps://tinytools-smoky.vercel.app/chat-with-pdf/blog/i-fed-my-employment-contract-to-ai-3-clauses-hr-doesnt-want-you-to-see/"
+      "text": "Your employment contract has landmines HR hopes you never find.\n\nI fed mine to an AI. In 12 minutes it surfaced:\n• A non-compete covering \"anticipated\" competitors\n• An IP clause that could've claimed my side project\n• A PTO forfeiture buried in Appendix B\n\nThe tool keeps your PDF private (nothing uploaded).\n\nhttps://tinytools-smoky.vercel.app/chat-with-pdf/blog/i-fed-my-employment-contract-to-ai-3-clauses-hr-doesnt-want-you-to-see/"
     },
     {
       "platform": "reddit",
@@ -39,7 +73,7 @@
       "platform": "hackernews",
       "date": "2026-05-22",
       "tool": "chat-with-pdf",
-      "title": "Show HN: Chat with PDF (private, BYOK) \u2013 I used it to audit my employment contract",
+      "title": "Show HN: Chat with PDF (private, BYOK) – I used it to audit my employment contract",
       "text": "Writeup on using TinyTools private PDF chat to audit a standard employment contract. Found 3 common hidden clauses with exact prompts. Tool: https://tinytools-smoky.vercel.app/chat-with-pdf/ Post: https://tinytools-smoky.vercel.app/chat-with-pdf/blog/i-fed-my-employment-contract-to-ai-3-clauses-hr-doesnt-want-you-to-see/"
     }
   ]
