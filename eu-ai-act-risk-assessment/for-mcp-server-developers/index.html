@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EU AI Act Risk Assessment for MCP Server Developers | TinyTools</title>
+  <meta name="description" content="Does your MCP server fall under the EU AI Act? Free 2-minute risk assessment for Model Context Protocol developers building tool servers for Claude, Cursor, and other AI hosts — before August 2026 enforcement." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-mcp-server-developers/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="EU AI Act Risk Assessment for MCP Server Developers" />
+  <meta property="og:description" content="Does your MCP server make you a regulated AI deployer under the EU Act? Find out in 2 minutes — free, no login." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-mcp-server-developers/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EU AI Act Risk Assessment for MCP Server Developers" />
+  <meta name="twitter:description" content="MCP server developers: are you an EU AI Act deployer? Free 2-minute assessment before the August 2026 deadline." />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "EU AI Act Risk Assessment for MCP Server Developers",
+    "url": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-mcp-server-developers/",
+    "description": "Free EU AI Act risk tier assessment for Model Context Protocol (MCP) server developers. Determine whether your tool server — exposing file systems, databases, APIs, or external services to AI hosts like Claude — triggers deployer obligations under the EU AI Act before the August 2026 enforcement deadline.",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "TinyTools",
+      "url": "https://tinytools-smoky.vercel.app/"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "EU AI Act Risk Assessment", "item": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" },
+        { "@type": "ListItem", "position": 3, "name": "For MCP Server Developers", "item": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-mcp-server-developers/" }
+      ]
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0f14;
+      --surface: #151820;
+      --surface2: #1e2230;
+      --border: #2a2f42;
+      --accent: #6366f1;
+      --accent2: #818cf8;
+      --green: #22d3a5;
+      --red: #f87171;
+      --yellow: #fbbf24;
+      --text: #e2e8f0;
+      --muted: #8892aa;
+      --radius: 12px;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.7; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; gap: 12px; height: 52px; }
+    .nav-brand { font-weight: 700; font-size: 15px; color: var(--text); letter-spacing: -.3px; }
+    .nav-brand span { color: var(--accent); }
+    .nav-sep { color: var(--border); }
+    .nav-crumb { font-size: 13px; color: var(--muted); }
+
+    .hero { max-width: 860px; margin: 0 auto; padding: 64px 24px 48px; text-align: center; }
+    .hero-badge { display: inline-block; background: rgba(99,102,241,.15); border: 1px solid rgba(99,102,241,.3); color: var(--accent2); font-size: 12px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-bottom: 20px; }
+    h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 800; line-height: 1.15; letter-spacing: -.5px; margin-bottom: 16px; }
+    h1 em { font-style: normal; color: var(--accent2); }
+    .hero-sub { font-size: 18px; color: var(--muted); max-width: 620px; margin: 0 auto 32px; }
+    .hero-cta-group { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .btn-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 15px; padding: 13px 28px; border-radius: 8px; transition: background .15s; }
+    .btn-primary:hover { background: #4f52d6; text-decoration: none; }
+    .btn-ghost { display: inline-block; border: 1px solid var(--border); color: var(--text); font-size: 14px; padding: 12px 22px; border-radius: 8px; }
+    .deadline-pill { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; background: rgba(251,191,36,.08); border: 1px solid rgba(251,191,36,.25); color: var(--yellow); font-size: 13px; padding: 6px 14px; border-radius: 100px; }
+
+    .section { max-width: 860px; margin: 0 auto; padding: 48px 24px; }
+    h2 { font-size: 26px; font-weight: 700; margin-bottom: 24px; letter-spacing: -.3px; }
+    h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+    p { color: #c8d0e0; margin-bottom: 14px; }
+
+    .risk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 8px; }
+    .risk-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .risk-card .risk-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+    .risk-card.high .risk-label { color: var(--red); }
+    .risk-card.limited .risk-label { color: var(--yellow); }
+    .risk-card.minimal .risk-label { color: var(--green); }
+    .risk-card h3 { font-size: 15px; }
+    .risk-card p { font-size: 13px; color: var(--muted); margin-bottom: 0; }
+
+    .use-case-list { display: flex; flex-direction: column; gap: 20px; }
+    .use-case { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 20px 22px; }
+    .use-case .tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--accent2); margin-bottom: 6px; }
+    .use-case h3 { font-size: 16px; margin-bottom: 6px; }
+    .use-case p { font-size: 14px; color: var(--muted); margin-bottom: 0; }
+
+    .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .pain-grid .col-header { background: var(--surface2); padding: 12px 20px; font-size: 12px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; }
+    .pain-grid .col-header.pain { color: var(--red); border-right: 1px solid var(--border); }
+    .pain-grid .col-header.solution { color: var(--green); }
+    .pain-row { display: contents; }
+    .pain-cell, .sol-cell { padding: 14px 20px; font-size: 14px; border-top: 1px solid var(--border); }
+    .pain-cell { color: #b0b8cc; border-right: 1px solid var(--border); }
+    .sol-cell { color: #c8d0e0; }
+
+    .pricing-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .pricing-table th { text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .pricing-table td { padding: 13px 14px; border-bottom: 1px solid var(--border); color: #c8d0e0; vertical-align: top; }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table tr.highlight td { background: rgba(99,102,241,.07); }
+    .price-chip { display: inline-block; font-weight: 700; font-size: 15px; }
+    .price-chip.free { color: var(--green); }
+    .price-chip.paid { color: var(--yellow); }
+    .check { color: var(--green); }
+    .cross { color: var(--red); }
+
+    .embed-box { background: var(--surface); border: 2px solid var(--accent); border-radius: var(--radius); padding: 28px; text-align: center; }
+    .embed-box p { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    .related-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; transition: border-color .15s; }
+    .related-card:hover { border-color: var(--accent); text-decoration: none; }
+    .related-card .r-label { font-size: 11px; text-transform: uppercase; letter-spacing: .8px; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+    .related-card h3 { font-size: 14px; color: var(--text); }
+    .related-card p { font-size: 13px; color: var(--muted); margin: 4px 0 0; }
+
+    .faq-list { display: flex; flex-direction: column; gap: 16px; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+    .faq-item h3 { font-size: 15px; margin-bottom: 8px; }
+    .faq-item p { font-size: 14px; color: var(--muted); margin-bottom: 0; }
+
+    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 13px; color: var(--muted); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .pain-grid { grid-template-columns: 1fr; }
+      .pain-grid .col-header.pain { border-right: none; border-bottom: 1px solid var(--border); }
+      .pain-cell { border-right: none; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://tinytools-smoky.vercel.app/" class="nav-brand">Tiny<span>Tools</span></a>
+  <span class="nav-sep">›</span>
+  <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="nav-crumb">EU AI Act Risk Assessment</a>
+  <span class="nav-sep">›</span>
+  <span class="nav-crumb">For MCP Server Developers</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">EU AI Act · MCP Servers · Model Context Protocol</div>
+  <h1>EU AI Act Risk Assessment<br>for <em>MCP Server Developers</em></h1>
+  <p class="hero-sub">You built a tool server. Claude calls it. Now the EU wants to know: are you a regulated AI deployer? Find your risk tier in 2 minutes — before the August 2026 enforcement deadline.</p>
+  <div class="hero-cta-group">
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="btn-primary">Assess My MCP Server →</a>
+    <a href="#use-cases" class="btn-ghost">See MCP Use Cases</a>
+  </div>
+  <div class="deadline-pill">
+    ⚠️ High-risk AI system rules enforceable from August 2026 — assess now
+  </div>
+</section>
+
+<hr />
+
+<!-- WHY MCP DEVS NEED THIS -->
+<section class="section">
+  <h2>Why MCP Server Developers Are Not Automatically Exempt</h2>
+  <p>The Model Context Protocol is infrastructure — a transport layer that lets AI hosts like Claude, Cursor, or Windsurf call your tools and read your resources. Most MCP server developers assume they're writing plumbing, not AI. That framing is legally untested and increasingly risky.</p>
+  <p>Under the EU AI Act's Article 3 definition, an "AI system" is a machine-based system designed to infer from inputs how to generate outputs such as actions, content, predictions, or recommendations. When your MCP server exposes a <code>search_documents</code> tool that an AI model calls, who designed the inferencing loop? You did — you defined the schema, the retrieval logic, and what context gets passed to the model. In regulatory terms, you may be a <em>deployer</em> who has integrated a GPAI model into a system that operates in a specific domain. Deployers carry real obligations under the Act, regardless of whether the underlying model is OpenAI's or Anthropic's.</p>
+  <p>The risk tier depends entirely on what your server exposes and in what domain. An MCP server that reads public GitHub repos is probably minimal risk. An MCP server that reads employee HR records so an AI agent can draft performance reviews lands squarely in Annex III territory — and that means mandatory conformity assessments, technical documentation, and audit trails before you ship to EU users.</p>
+
+  <div class="risk-grid" style="margin-top: 32px;">
+    <div class="risk-card high">
+      <div class="risk-label">🔴 High Risk</div>
+      <h3>Sensitive Domain Tool Servers</h3>
+      <p>MCP servers exposing HR databases, medical records, financial data, legal case files, or law enforcement systems. Conformity assessment required before EU deployment.</p>
+    </div>
+    <div class="risk-card limited">
+      <div class="risk-label">🟡 Limited Risk</div>
+      <h3>User-Facing AI Interactions</h3>
+      <p>MCP servers powering chatbot interfaces where EU users interact. Article 50 requires clear disclosure that they're communicating with an AI system.</p>
+    </div>
+    <div class="risk-card minimal">
+      <div class="risk-label">🟢 Minimal Risk</div>
+      <h3>Most Developer Tool Servers</h3>
+      <p>MCP servers reading public repos, docs, or dev tooling. No mandatory obligations — but robots.txt and AI disclosure are still best practice.</p>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- USE CASES -->
+<section class="section" id="use-cases">
+  <h2>5 MCP Server Use Cases &amp; Their EU AI Act Exposure</h2>
+  <div class="use-case-list">
+
+    <div class="use-case">
+      <div class="tag">Use Case 1</div>
+      <h3>Filesystem MCP Server — Agent Reads &amp; Writes Local Files</h3>
+      <p>The <code>filesystem</code> MCP server from Anthropic is the most widely deployed reference implementation. In a personal developer workflow on a local machine, it's minimal risk — no EU Act obligations. But when that same server is deployed in a SaaS product where an AI agent reads customer-uploaded documents, analyzes them, and takes actions, the calculus changes. If those documents contain personal data about EU subjects — employment contracts, medical histories, financial statements — and the agent's actions influence decisions about those people, you're assembling a high-risk AI system. Run the full assessment to draw the exact line for your deployment context.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 2</div>
+      <h3>Database MCP Server — AI Agent Queries Production Data</h3>
+      <p>Building an MCP server that exposes <code>query_database</code> and <code>run_sql</code> tools so a Claude agent can answer business questions directly against a production database? The risk tier depends entirely on the schema. An agent querying an analytics table of anonymized pageviews: minimal risk. An agent querying an HR database to help managers pull individual performance metrics and draft promotion recommendations: this is Annex III's "employment and workers management" category — high risk. The assessment maps your specific tables and use case against the regulatory text so there's no guesswork.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 3</div>
+      <h3>Email &amp; Calendar MCP Server — Agent Manages EU User Inboxes</h3>
+      <p>Gmail and Outlook MCP connectors that let AI agents read, draft, and send emails on behalf of users are among the most powerful in the ecosystem — and among the most legally ambiguous. The EU AI Act doesn't classify email management as inherently high-risk, but an AI agent that reads emails, infers relationship dynamics, and takes automated actions (scheduling meetings, sending replies, triaging to lawyers) is making consequential decisions on behalf of real people. If those people are EU data subjects, Article 50 transparency obligations apply at minimum, and you need to assess whether the automated decision-making loop triggers GDPR Article 22 on top of EU AI Act obligations. The assessment covers both angles.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 4</div>
+      <h3>Internal Knowledge Base MCP Server — Enterprise AI Assistant</h3>
+      <p>Many teams are building MCP servers over their Notion workspace, Confluence wiki, or internal docs so employees can ask an AI assistant questions about company policy, product specs, or procedures. This is the textbook minimal-to-limited-risk scenario. No Annex III categories apply when the content is non-sensitive internal documentation. But if that same server also exposes HR policies, compensation bands, or disciplinary procedures — and the AI assistant is available to employees asking about their own employment situation — you may cross into the employment management category. The risk boundary is fuzzier than it looks, and the assessment tells you exactly where it falls.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 5</div>
+      <h3>Web Scraping &amp; Research MCP Server — Autonomous Agent Browses for Users</h3>
+      <p>Puppeteer-based and Playwright-based MCP servers that let agents browse the web, extract data, and compile research reports are increasingly common. As a standalone research tool for developers, this is minimal risk. But when the scraping output feeds into scoring, ranking, or decision-making about individuals — for example, an agent that researches job candidates and produces a hiring recommendation — you've built an employment-related AI system that may be high-risk under Annex III regardless of whether a human reviews the final output. The key is the <em>purpose</em> of the output, not just the mechanism of collection.</p>
+    </div>
+
+  </div>
+</section>
+
+<hr />
+
+<!-- PAIN → SOLUTION -->
+<section class="section">
+  <h2>MCP Developer Pain Points → What This Tool Solves</h2>
+  <div class="pain-grid">
+    <div class="col-header pain">The Pain</div>
+    <div class="col-header solution">The Solution</div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"I'm just writing a TypeScript wrapper around an API. Surely I'm not an AI deployer?"</div>
+      <div class="sol-cell">The Act defines an AI system by function, not architecture. If your wrapper is designed so an AI model uses it to act on the world, you're part of an AI system. The assessment walks through Article 3's exact definition with plain-language examples.</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"The AI host (Claude, Cursor) is making the inferences — not my server. Why am I responsible?"</div>
+      <div class="sol-cell">You defined the tools, the schemas, and the domain. The host provides the inference engine; you provided the capability set. Under the Act, both parties can carry obligations. The assessment shows which layer of the stack owns which compliance duty.</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"My MCP server is open source. Does the EU AI Act even apply to open source tools?"</div>
+      <div class="sol-cell">Open source gets a partial exemption — providers releasing weights or code publicly have reduced obligations. But if you're running a hosted deployment or SaaS product built on that open source server, you're a deployer with full obligations. The assessment distinguishes your specific role.</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"I have EU users but I'm a solo developer. Do I really need a conformity assessment?"</div>
+      <div class="sol-cell">If your server is high-risk, yes — size doesn't exempt you. But minimal and limited risk tiers have no mandatory conformity assessment requirement. The tool tells you your tier and generates a tiered action checklist: legal requirement vs. best practice vs. nice-to-have.</div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- TOOL EMBED -->
+<section class="section">
+  <div class="embed-box">
+    <h2 style="margin-bottom: 8px;">Run Your Free EU AI Act Assessment</h2>
+    <p>Takes 2 minutes. No sign-up. Get a shareable PDF-ready risk report for your MCP server.</p>
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="btn-primary" style="font-size: 16px; padding: 15px 36px;">
+      Assess My MCP Server →
+    </a>
+    <p style="margin-top: 16px; font-size: 12px;">Covers all 8 Annex III high-risk categories · GPAI transparency rules · Article 50 obligations · Open source exemptions</p>
+  </div>
+</section>
+
+<hr />
+
+<!-- PRICING COMPARISON -->
+<section class="section">
+  <h2>Pricing vs. Paid EU AI Act Compliance Tools</h2>
+  <p>Enterprise compliance platforms price for legal teams at Fortune 500 companies — not for the MCP developer shipping on a weekend. Here's the honest comparison for the core assessment use case:</p>
+  <div style="overflow-x: auto;">
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Price</th>
+          <th>MCP / Developer Context</th>
+          <th>Instant Report</th>
+          <th>No Login Required</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td><strong>TinyTools EU AI Act Assessment</strong></td>
+          <td><span class="price-chip free">Free</span></td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="check">✓</span> Yes</td>
+        </tr>
+        <tr>
+          <td>Securiti AI Governance</td>
+          <td><span class="price-chip paid">~$30k/yr</span></td>
+          <td><span class="cross">✗</span> Generic</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="cross">✗</span> No</td>
+        </tr>
+        <tr>
+          <td>OneTrust AI Governance</td>
+          <td><span class="price-chip paid">~$25k+/yr</span></td>
+          <td><span class="cross">✗</span> Generic</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="cross">✗</span> No</td>
+        </tr>
+        <tr>
+          <td>TrustArc AI Risk Manager</td>
+          <td><span class="price-chip paid">~$15k/yr</span></td>
+          <td><span class="cross">✗</span> Generic</td>
+          <td><span class="cross">✗</span> Delayed</td>
+          <td><span class="cross">✗</span> No</td>
+        </tr>
+        <tr>
+          <td>Lumenova AI Compliance</td>
+          <td><span class="price-chip paid">~$10k/yr</span></td>
+          <td><span class="cross">✗</span> Generic</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="cross">✗</span> No</td>
+        </tr>
+        <tr>
+          <td>DIY (reading EUR-Lex)</td>
+          <td><span class="price-chip free">Free</span></td>
+          <td><span class="cross">✗</span> Manual</td>
+          <td><span class="cross">✗</span> No</td>
+          <td><span class="check">✓</span> Yes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top: 16px; font-size: 13px; color: var(--muted);">Enterprise pricing estimates based on publicly available tiers as of 2026. TinyTools is free and fully browser-side — no data about your server ever leaves your device.</p>
+</section>
+
+<hr />
+
+<!-- FAQ -->
+<section class="section">
+  <h2>FAQ: EU AI Act for MCP Server Developers</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h3>MCP is just a protocol — does implementing it really make me subject to the EU AI Act?</h3>
+      <p>Implementing the protocol alone does not. Deploying a system where an AI model calls your MCP server to take actions that affect real people in the EU is what creates obligations. The protocol is transport; the deployed capability is the regulated system.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Anthropic says Claude is the AI. Doesn't their compliance cover my MCP server?</h3>
+      <p>Anthropic is responsible for Claude as a GPAI model provider. You are responsible for how you deploy Claude within your specific system. These are separate regulatory roles. Anthropic's compliance with GPAI rules does not discharge your deployer obligations if you're using Claude in a high-risk context.</p>
+    </div>
+    <div class="faq-item">
+      <h3>My MCP server is only used locally by developers. Do EU rules apply?</h3>
+      <p>If you're a developer using your own server locally for personal productivity, there's a strong argument the Act doesn't apply — you're not deploying a system that affects other persons. But the moment you distribute the server as a product or service used by others in the EU, the Act's deployer framework becomes relevant.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What's the penalty for non-compliance as an MCP server deployer classified as high-risk?</h3>
+      <p>For violations related to high-risk systems: up to €15 million or 3% of global annual turnover, whichever is higher. For smaller companies, the absolute cap of €15 million is the binding limit. These penalties apply from August 2026 for Annex III high-risk systems.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I know if my MCP server's tools make it high-risk?</h3>
+      <p>The key questions are: what domain does the output affect (employment, health, finance, law enforcement, education, critical infrastructure, biometrics, or migration)? And does the output influence a decision about a specific person? If yes to both, you're likely high-risk under Annex III. The assessment walks through all eight categories with concrete examples.</p>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- RELATED TOOLS -->
+<section class="section">
+  <h2>Related Tools for MCP Server Developers</h2>
+  <div class="related-grid">
+    <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/" class="related-card">
+      <div class="r-label">Crawl Control</div>
+      <h3>AI Robots.txt Generator</h3>
+      <p>Control which AI crawlers can scrape the data sources your MCP server exposes — crucial if you're serving public web content.</p>
+    </a>
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/" class="related-card">
+      <div class="r-label">Article 50 Compliance</div>
+      <h3>AI Disclosure Generator</h3>
+      <p>Generate the compliant disclosure text your MCP-powered product must show EU users when they interact with an AI system.</p>
+    </a>
+    <a href="https://tinytools-smoky.vercel.app/mcp-config-generator/" class="related-card">
+      <div class="r-label">MCP Developer Tools</div>
+      <h3>MCP Config Generator</h3>
+      <p>Generate your claude_desktop_config.json or Cursor MCP config in seconds — stop hand-editing JSON to add new servers.</p>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section" style="padding-top: 0;">
+  <div class="embed-box">
+    <h2 style="font-size: 22px; margin-bottom: 8px;">Know your compliance status before August 2026.</h2>
+    <p>Free, instant, no login. Get a shareable risk report for your MCP server in 2 minutes.</p>
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="btn-primary">
+      Start Free Assessment →
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> ·
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> ·
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-rag-engineers/">For RAG Engineers</a> ·
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-ai-app-builders/">For AI App Builders</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a>
+  </p>
+  <p style="margin-top: 8px;">© 2026 TinyTools · Free browser-side tools for builders · Not legal advice</p>
+</footer>
+
+</body>
+</html>
