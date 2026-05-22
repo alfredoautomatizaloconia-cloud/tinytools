@@ -75,6 +75,30 @@
 
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
+
+  /* ── Viral mechanics ── */
+  .viral-section {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 24px; margin-top: 16px;
+  }
+  .viral-section .label {
+    font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em;
+    font-weight: 600; margin-bottom: 12px;
+  }
+  .viral-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+  .viral-btn {
+    display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px;
+    border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer;
+    border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; transition: all 0.15s;
+  }
+  .viral-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .viral-btn.primary { background: linear-gradient(135deg, #f97316, #ef4444); border-color: transparent; color: #fff; }
+  .viral-btn.primary:hover { opacity: 0.9; color: #fff; }
+  .embed-box { background: #000; border: 1px solid var(--border); border-radius: 10px; padding: 14px; position: relative; }
+  .embed-box pre { font-family: 'SF Mono', Monaco, monospace; font-size: 12px; color: #e0e0ff; white-space: pre-wrap; margin: 0; }
+  .embed-copy-btn { margin-top: 10px; padding: 6px 14px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 12px; cursor: pointer; }
+  .embed-copy-btn:hover { border-color: var(--accent); }
 </style>
 </head>
 <body>
@@ -116,6 +140,24 @@
       Place this at <code style="background:var(--bg-elevated); padding: 2px 6px; border-radius: 4px;">https://yoursite.com/robots.txt</code> — most static hosts (Vercel, Netlify, Cloudflare Pages) serve it automatically from the project root.
     </p>
   </div>
+
+  <!-- Viral mechanics -->
+  <div class="viral-section" id="viralSection">
+    <div class="label">📣 Share your AI crawler config</div>
+    <div class="viral-actions">
+      <a class="viral-btn primary" id="shareBtn" href="#" target="_blank" rel="noopener">𝕏 Share on X</a>
+      <button class="viral-btn" id="copyLinkBtn">🔗 Copy link</button>
+      <a class="viral-btn" id="downloadBtn" href="#" download="ai-robots-config.png">💾 Download card</a>
+    </div>
+    <div class="label">Embed badge on your README / site</div>
+    <div class="embed-box">
+      <pre id="embedCode"></pre>
+    </div>
+    <button class="embed-copy-btn" id="embedCopyBtn">Copy embed code</button>
+  </div>
+
+  <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
+
 
   <section class="content">
     <h2>What changed in 2024–2026 with AI crawlers</h2>
@@ -237,6 +279,17 @@ function generate() {
   output += '\n# Sitemap\nSitemap: https://yoursite.com/sitemap.xml\n';
 
   document.getElementById('output').textContent = output;
+
+  // Update URL hash with selected bots for deep-linking
+  const checkedIdxs = [];
+  document.querySelectorAll('#botList input').forEach((input, i) => {
+    if (input.checked) checkedIdxs.push(i);
+  });
+  const hashStr = checkedIdxs.join(',');
+  history.replaceState(null, '', '#' + hashStr);
+
+  // Update viral section
+  updateViralSection(blocked, hashStr);
 }
 
 document.querySelectorAll('.preset-btn').forEach(btn => {
@@ -259,8 +312,117 @@ document.getElementById('copyBtn').addEventListener('click', () => {
   setTimeout(() => btn.textContent = 'Copy', 1500);
 });
 
+
+function drawConfigCard(canvas, blockedCount, totalCount, blockedNames) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  // Background
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#0f0f1a'); bg.addColorStop(1, '#0a0a0f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Top stripe
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#f97316'); stripe.addColorStop(1, '#ef4444');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+  // Badge
+  ctx.fillStyle = '#f9731620';
+  ctx.beginPath(); ctx.roundRect(60, 40, 260, 36, 18); ctx.fill();
+  ctx.fillStyle = '#f97316';
+  ctx.font = 'bold 15px -apple-system, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('🛡️ AI ROBOTS.TXT CONFIG', 76, 62);
+  // Big number
+  ctx.fillStyle = blockedCount > 0 ? '#ef4444' : '#10b981';
+  ctx.font = 'bold 160px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(blockedCount, W - 60, 220);
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '28px -apple-system, sans-serif';
+  ctx.fillText('AI crawlers blocked', W - 60, 258);
+  // Title
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 52px -apple-system, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('My robots.txt blocks', 60, 150);
+  // Bot names (up to 5)
+  const display = blockedNames.slice(0, 5);
+  ctx.font = '26px -apple-system, sans-serif';
+  ctx.fillStyle = '#fed7aa';
+  display.forEach((name, i) => {
+    ctx.fillText('• ' + name, 60, 310 + i * 38);
+  });
+  if (blockedNames.length > 5) {
+    ctx.fillStyle = '#a0a0b8';
+    ctx.fillText('+ ' + (blockedNames.length - 5) + ' more crawlers…', 60, 310 + 5 * 38);
+  }
+  // Footer bar
+  ctx.fillStyle = '#1d1d2a';
+  ctx.fillRect(0, H - 64, W, 64);
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '22px -apple-system, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('Generated with TinyTools', 60, H - 28);
+  ctx.fillStyle = '#f97316';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/ai-robots-txt-generator/', W - 60, H - 28);
+}
+
+function updateViralSection(blocked, hashStr) {
+  const url = 'https://tinytools-smoky.vercel.app/ai-robots-txt-generator/#' + hashStr;
+  const blockedCount = blocked.length;
+  const botNames = blocked.map(b => b.name);
+
+  // Tweet text
+  const tweetText = blockedCount === 0
+    ? `I allow all AI crawlers on my site — configured with the free AI robots.txt generator.`
+    : `I just blocked ${blockedCount} AI crawlers (${botNames.slice(0,3).join(', ')}${botNames.length > 3 ? '…' : ''}) from training on my content.`;
+  document.getElementById('shareBtn').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(url)}`;
+
+  // Copy-link button
+  document.getElementById('copyLinkBtn').onclick = () => {
+    navigator.clipboard.writeText(url);
+    const btn = document.getElementById('copyLinkBtn');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+  };
+
+  // Draw card and set download link
+  const canvas = document.getElementById('cardCanvas');
+  drawConfigCard(canvas, blockedCount, BOTS.length, botNames);
+  document.getElementById('downloadBtn').href = canvas.toDataURL('image/png');
+
+  // Embed badge
+  const badgeLabel = blockedCount === 0 ? 'AI-Open' : `Blocks-${blockedCount}-AI-Bots`;
+  const badgeColor = blockedCount === 0 ? '10b981' : 'ef4444';
+  const embedCode = `<a href="${url}" target="_blank">
+  <img src="https://img.shields.io/badge/robots.txt-${encodeURIComponent(badgeLabel)}-${badgeColor}?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgMThjLTQuNDIgMC04LTMuNTgtOC04czMuNTgtOCA4LTggOCAzLjU4IDggOC0zLjU4IDgtOCA4em0xLTEzSDExdjZoMlY3em0wIDhIMTF2MmgydC0yLTJ6IiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==" alt="AI Robots.txt: ${badgeLabel}">
+</a>`;
+  document.getElementById('embedCode').textContent = embedCode;
+
+  document.getElementById('embedCopyBtn').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('embedCopyBtn');
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = 'Copy embed code', 1500);
+  };
+}
+
+// Auto-load from URL hash
+function loadFromHash() {
+  const hash = location.hash.slice(1);
+  if (!hash) return;
+  const idxs = new Set(hash.split(',').map(Number).filter(n => !isNaN(n) && n >= 0 && n < BOTS.length));
+  if (idxs.size === 0) return;
+  document.querySelectorAll('#botList input').forEach((input, i) => {
+    input.checked = idxs.has(i);
+  });
+  generate();
+}
+
 renderBots();
 generate();
+loadFromHash();
 </script>
 </body>
 </html>
