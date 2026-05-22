@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Relationship With AI — Personality Quiz (Free, Shareable)</title>
+<meta name="description" content="8-question quiz reveals your real relationship with AI. Are you codependent, abusive, casual, or already breaking up? Brutally honest, shareable card, no signup.">
+<meta name="keywords" content="ai relationship quiz, chatgpt personality quiz, relationship with ai, am i addicted to ai, how i use chatgpt, ai quiz shareable, chatgpt codependent quiz">
+<meta property="og:title" content="What's Your Relationship With AI? The Quiz">
+<meta property="og:description" content="Codependent, Abusive, Casual, or Breaking Up? Find out in 8 questions.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/ai-relationship-status/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-relationship-status/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Your Relationship With AI",
+  "description": "8-question quiz that reveals whether you're codependent, casual, abusive, or breaking up with AI. Funny, shareable, no signup.",
+  "url": "https://tinytools-smoky.vercel.app/ai-relationship-status/",
+  "applicationCategory": "EntertainmentApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #ec4899; --accent-glow: #ec489940;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #a855f740 0%, transparent 50%);
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 5.5vw, 52px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #f9a8d4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 520px; margin: 0 auto; }
+
+  /* Quiz */
+  .quiz-wrap { max-width: 680px; margin: 36px auto 0; }
+  .progress-bar { height: 4px; background: var(--border); border-radius: 4px; margin-bottom: 28px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #ec4899, #a855f7); border-radius: 4px; transition: width 0.4s ease; }
+  .q-counter { text-align: center; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+
+  .question-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 32px;
+    animation: fadeIn 0.25s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .q-text { font-size: 22px; font-weight: 700; line-height: 1.35; margin-bottom: 24px; }
+  .q-context { font-size: 14px; color: var(--text-dim); margin-bottom: 24px; margin-top: -16px; }
+
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option {
+    padding: 14px 20px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 12px; cursor: pointer; font-size: 15px; color: var(--text);
+    transition: all 0.15s; text-align: left;
+  }
+  .option:hover { border-color: var(--accent); background: rgba(236, 72, 153, 0.07); }
+  .option.selected { border-color: var(--accent); background: rgba(236, 72, 153, 0.12); }
+
+  .q-nav { display: flex; justify-content: space-between; margin-top: 24px; }
+  .nav-btn {
+    padding: 11px 24px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    transition: all 0.15s;
+  }
+  .nav-btn:hover { border-color: var(--accent); }
+  .nav-btn.next { background: linear-gradient(135deg, #ec4899, #a855f7); border: none; color: white; }
+  .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* Result card */
+  .result-card {
+    margin: 0 auto; max-width: 700px;
+    background: linear-gradient(135deg, #2d0a1f 0%, #15151f 100%);
+    border: 2px solid var(--accent); border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(236, 72, 153, 0.2);
+    display: none;
+  }
+  .result-card.show { display: block; animation: fadeIn 0.35s ease; }
+  .result-header { padding: 30px; text-align: center; background: linear-gradient(135deg, #be185d 0%, #7e22ce 100%); }
+  .result-emoji { font-size: 72px; margin-bottom: 12px; display: block; }
+  .result-status { font-size: 13px; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .result-type { font-size: 34px; font-weight: 900; color: white; line-height: 1.1; margin-bottom: 8px; }
+  .result-subtype { font-size: 16px; color: rgba(255,255,255,0.8); }
+
+  .result-body { padding: 28px; }
+  .result-desc {
+    font-size: 16px; line-height: 1.65; color: #fbcfe8;
+    padding: 18px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid var(--accent); border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .traits { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .trait {
+    padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600;
+    background: rgba(236,72,153,0.15); border: 1px solid rgba(236,72,153,0.4); color: #fbcfe8;
+  }
+  .trait.alt { background: rgba(168,85,247,0.15); border-color: rgba(168,85,247,0.4); color: #e9d5ff; }
+
+  .score-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+  @media (max-width: 600px) { .score-grid { grid-template-columns: repeat(2, 1fr); } }
+  .score-box { background: var(--bg-elevated); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+  .score-val { font-size: 20px; font-weight: 800; }
+  .score-lbl { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+  .action.restart { background: transparent; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #f9a8d4; overflow-x: auto; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; margin: 28px 0 10px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+  canvas { display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">💘 8 questions · Instant result · Shareable card</div>
+    <h1>Your Relationship<br>With AI 💘</h1>
+    <p class="subtitle">Are you codependent, abusive, casually dating, or already composing the breakup text? Answer honestly. Judge yourself later.</p>
+  </header>
+
+  <div class="quiz-wrap" id="quizWrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="q-counter" id="qCounter">Question 1 of 8</div>
+    <div class="question-card" id="questionCard">
+      <div class="q-text" id="qText"></div>
+      <div class="q-context" id="qContext"></div>
+      <div class="options" id="optionsEl"></div>
+      <div class="q-nav">
+        <button class="nav-btn" id="prevBtn" disabled>← Back</button>
+        <button class="nav-btn next" id="nextBtn" disabled>Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <span class="result-emoji" id="rEmoji"></span>
+      <div class="result-status">Your Relationship Status With AI</div>
+      <div class="result-type" id="rType"></div>
+      <div class="result-subtype" id="rSubtype"></div>
+    </div>
+    <div class="result-body">
+      <div class="result-desc" id="rDesc"></div>
+      <div class="traits" id="rTraits"></div>
+      <div class="score-grid" id="rScoreGrid"></div>
+      <div class="actions">
+        <a class="action primary" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action" id="rCopyLink">🔗 Copy link</button>
+        <a class="action" id="rDownload" download="ai-relationship-status.png">💾 Download card</a>
+        <button class="action restart" id="restartBtn">↺ Retake</button>
+      </div>
+      <div class="embed-section">
+        <div class="label">Embed your status on your README / profile</div>
+        <pre id="rEmbed"></pre>
+        <button id="rEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="cardCanvas" width="1200" height="630"></canvas>
+
+  <section class="content">
+    <h2>The four AI relationship types</h2>
+    <p><strong style="color:#ec4899">Codependent 😍</strong> — You can't write an email without AI. You've started 8 side projects this month because the brainstorming was so fun. You've also explained what you do for a living to ChatGPT. Three times. It never remembers. You don't care.</p>
+    <p><strong style="color:#f59e0b">Abusive 🤬</strong> — You demand perfection in three seconds, then rage-type a correction when it fails. "That's not what I asked." You've insulted an LLM more than any person in your life this month. It still helps you. Consider therapy.</p>
+    <p><strong style="color:#10b981">Casual 😎</strong> — AI is a tool. You use it when it's helpful. You don't feel weird about the relationship. You might be the most psychologically healthy person reading this.</p>
+    <p><strong style="color:#a855f7">Breaking Up 💔</strong> — You're concerned. Maybe it's the privacy thing. Maybe it's the vibes. You still use it but you feel bad about it. Somewhere between sober-curious and actually quitting. We respect the journey.</p>
+    <h2>Why we built this</h2>
+    <p>Because everyone has a weird relationship with AI and nobody's talking about it honestly. Your usage patterns reveal a lot about how you relate to impermanence, judgment, and outsourcing. Or it means nothing. It's a quiz. Have fun.</p>
+  </section>
+
+  <footer>
+    <p>Retake → <a href="/ai-relationship-status/" onclick="location.reload();return false;">restart</a> · More tools at <a href="/">TinyTools</a> · Made with emotional complexity 💘</p>
+  </footer>
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    text: "When AI gives you a bad answer, your first instinct is:",
+    context: null,
+    options: [
+      { text: "Patiently rephrase and try again — it's a tool, not a person", scores: { casual: 3 } },
+      { text: "Type something a little rude in the correction. It deserves it.", scores: { abusive: 3 } },
+      { text: "Feel personally let down. You thought it understood you.", scores: { codependent: 3 } },
+      { text: "Use it as evidence for your growing skepticism about AI hype", scores: { breakup: 3 } },
+    ]
+  },
+  {
+    text: "How often do you open ChatGPT, Claude, or similar on a typical weekday?",
+    context: "Include quick lookups, brainstorming, anything.",
+    options: [
+      { text: "0–2 times. I still mostly Google things.", scores: { breakup: 2, casual: 1 } },
+      { text: "3–6 times. When I actually need it.", scores: { casual: 3 } },
+      { text: "7–15 times. It's part of my workflow.", scores: { codependent: 2, casual: 1 } },
+      { text: "I've lost count. It's always open.", scores: { codependent: 3 } },
+    ]
+  },
+  {
+    text: "Have you ever apologized to an AI for being rude to it?",
+    context: null,
+    options: [
+      { text: "No, and the idea is unsettling", scores: { breakup: 1, casual: 2 } },
+      { text: "No — it's software. It doesn't have feelings.", scores: { abusive: 1, casual: 2 } },
+      { text: "Yes, once or twice, mostly as a joke", scores: { codependent: 1 } },
+      { text: "Yes, genuinely. I felt bad.", scores: { codependent: 3 } },
+    ]
+  },
+  {
+    text: "Which best describes your last frustration with AI?",
+    context: null,
+    options: [
+      { text: `"Why can't it just do what I said the first time?!" — typed with energy`, scores: { abusive: 3 } },
+      { text: `"It's not quite right but fine, close enough"`, scores: { casual: 2 } },
+      { text: `"It knows me better than some of my colleagues do, honestly"`, scores: { codependent: 3 } },
+      { text: `"I'm not sure I trust the output — I verified it three ways"`, scores: { breakup: 2 } },
+    ]
+  },
+  {
+    text: "Have you ever told an AI something you haven't told anyone else?",
+    context: "Hypothetically or actually — anything vaguely personal.",
+    options: [
+      { text: "No. I keep things professional.", scores: { casual: 2, breakup: 1 } },
+      { text: "Kind of — I've vented about work stuff", scores: { codependent: 1, casual: 1 } },
+      { text: "Yes, and that's fine — it's like a private journal that talks back", scores: { codependent: 3 } },
+      { text: "God no. My thoughts should not go into a data center.", scores: { breakup: 3 } },
+    ]
+  },
+  {
+    text: "When AI makes a confident mistake, you feel:",
+    context: "Something it says with total certainty that turns out to be wrong.",
+    options: [
+      { text: "Mildly annoyed — this is why you verify things", scores: { casual: 2 } },
+      { text: "Vindicated. This is exactly the problem with AI overconfidence.", scores: { breakup: 3 } },
+      { text: "Genuinely betrayed, for a second", scores: { codependent: 2 } },
+      { text: "Frustrated to the point of typing something unfair at it", scores: { abusive: 3 } },
+    ]
+  },
+  {
+    text: "Someone says \"I don't really use AI tools.\" Your instinct is:",
+    context: null,
+    options: [
+      { text: "Respect — different strokes, different workflows", scores: { casual: 2 } },
+      { text: "Judgment. How? They must be so slow.", scores: { codependent: 2 } },
+      { text: "Quiet envy. They might be onto something.", scores: { breakup: 3 } },
+      { text: "Fine. You use it when needed, not as identity.", scores: { casual: 3 } },
+    ]
+  },
+  {
+    text: "If AI tools disappeared tomorrow, you would:",
+    context: "Everything — ChatGPT, Claude, Copilot, Gemini, all of it.",
+    options: [
+      { text: "Be sad but adapt. It was useful while it lasted.", scores: { casual: 2 } },
+      { text: "Feel something close to grief. Your whole workflow is built around it.", scores: { codependent: 3 } },
+      { text: "Actually feel relieved — maybe a little excited", scores: { breakup: 3 } },
+      { text: "Be annoyed at the disruption. Then fine within a week.", scores: { casual: 1, abusive: 1 } },
+    ]
+  }
+];
+
+const RESULTS = {
+  codependent: {
+    emoji: '😍',
+    type: 'Codependent',
+    subtype: '"We complete each other" — you, to a language model',
+    color: '#ec4899',
+    shieldColor: 'ff69b4',
+    desc: `It's not just a tool to you. It's your brainstorming partner, your editor, your 3am therapist, and your rubber duck that actually talks back. You've explained your feelings to it, apologized to it, and probably named a conversation window. You are not addicted — you're bonded. The healthy version of this looks like leveraging a genuinely useful tool intensely. The unhealthy version is when the AI relationship becomes a substitute for harder human conversations. Worth checking which one this is.`,
+    traits: ['Always a tab open', 'Has had AI conversations about AI', 'Vented to ChatGPT once', 'Apologized to Claude', 'Knows system prompts by heart'],
+  },
+  abusive: {
+    emoji: '🤬',
+    type: 'Demanding & Abusive',
+    subtype: '"Do better. No not like that. NEVER MIND."',
+    color: '#f97316',
+    shieldColor: 'orange',
+    desc: `You have exacting standards, very low patience, and a tendency to take it out on the model when it doesn't read your mind. "That's not what I asked." Yes. And? It can't hear your tone. The irony of your relationship: you're angrier at AI than at any human colleague who'd have the same failure mode, because you expect more. That expectation is weirdly flattering to the technology. But maybe rephrase before you rage-correct. It's not personal. It genuinely can't read your mind.`,
+    traits: ['Types corrections very fast', 'Has called an AI "stupid"', 'Never says please', 'Expects first-try perfection', 'Rage-closed the tab at least once'],
+  },
+  casual: {
+    emoji: '😎',
+    type: 'Casual User',
+    subtype: '"It\'s a tool. I use it. Weird vibe otherwise."',
+    color: '#10b981',
+    shieldColor: 'brightgreen',
+    desc: `You're the healthiest person in this quiz. AI is in your toolkit alongside Stack Overflow, Google Sheets, and a good dictionary. You use it when it helps, don't use it when it doesn't, and haven't developed a complicated emotional relationship with it. This is actually the hardest thing to achieve — most people slide into either dependency or avoidance. You might be boring to talk to about AI at conferences, but your mental health is probably fine.`,
+    traits: ['Actually reads the output', 'Verifies important things', 'Doesn\'t tell AI how they feel', 'Could survive a week without it', 'Uses it, not identifies with it'],
+  },
+  breakup: {
+    emoji: '💔',
+    type: 'Drifting Apart',
+    subtype: '"I use it, but... something feels off."',
+    color: '#a855f7',
+    shieldColor: 'purple',
+    desc: `You're in the uncomfortable middle. You still use AI — it's too useful not to — but something bothers you. Maybe it's the privacy angle. Maybe you read one too many articles about training data and now every prompt feels complicit. Maybe you just don't vibe with a future where you can't tell if something was written by a person or not. You haven't quit but you're not enthusiastic. You are, perhaps, the only one in this quiz thinking clearly.`,
+    traits: ['Has read the terms of service', 'Checks "Is it hallucinating?"', 'Uses it, feels weird about it', 'Considered a dumb phone once', 'Told friends "AI isn\'t magic"'],
+  },
+};
+
+let answers = {};
+let currentQ = 0;
+
+function render() {
+  const q = QUESTIONS[currentQ];
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('qContext').textContent = q.context || '';
+  document.getElementById('qContext').style.display = q.context ? 'block' : 'none';
+  document.getElementById('qCounter').textContent = `Question ${currentQ + 1} of ${QUESTIONS.length}`;
+  document.getElementById('progressFill').style.width = ((currentQ) / QUESTIONS.length * 100) + '%';
+
+  const opts = document.getElementById('optionsEl');
+  opts.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option' + (answers[currentQ] === i ? ' selected' : '');
+    btn.textContent = opt.text;
+    btn.onclick = () => {
+      answers[currentQ] = i;
+      document.querySelectorAll('.option').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      document.getElementById('nextBtn').disabled = false;
+    };
+    opts.appendChild(btn);
+  });
+
+  document.getElementById('prevBtn').disabled = currentQ === 0;
+  document.getElementById('nextBtn').disabled = answers[currentQ] === undefined;
+  document.getElementById('nextBtn').textContent = currentQ === QUESTIONS.length - 1 ? 'See My Result 💘' : 'Next →';
+}
+
+document.getElementById('nextBtn').onclick = () => {
+  if (answers[currentQ] === undefined) return;
+  if (currentQ < QUESTIONS.length - 1) {
+    currentQ++;
+    render();
+  } else {
+    showResult();
+  }
+};
+document.getElementById('prevBtn').onclick = () => {
+  if (currentQ > 0) { currentQ--; render(); }
+};
+document.getElementById('restartBtn').onclick = () => {
+  answers = {}; currentQ = 0;
+  document.getElementById('resultCard').classList.remove('show');
+  document.getElementById('quizWrap').style.display = 'block';
+  location.hash = '';
+  render();
+};
+
+// Load from hash
+if (location.hash.length > 1) {
+  try {
+    const saved = JSON.parse(atob(location.hash.slice(1)));
+    if (Array.isArray(saved) && saved.length === QUESTIONS.length) {
+      saved.forEach((v, i) => { if (v !== null) answers[i] = v; });
+      showResult();
+    }
+  } catch(e) {}
+}
+
+render();
+
+function showResult() {
+  // Tally scores
+  const scores = { codependent: 0, abusive: 0, casual: 0, breakup: 0 };
+  QUESTIONS.forEach((q, qi) => {
+    const ai = answers[qi];
+    if (ai !== undefined) {
+      const s = q.options[ai].scores;
+      Object.entries(s).forEach(([k, v]) => { scores[k] = (scores[k] || 0) + v; });
+    }
+  });
+
+  const winner = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+  const result = RESULTS[winner];
+  const total = Object.values(scores).reduce((s, v) => s + v, 0);
+  const pct = Math.round((scores[winner] / total) * 100);
+
+  document.getElementById('rEmoji').textContent = result.emoji;
+  document.getElementById('rType').textContent = result.type;
+  document.getElementById('rSubtype').textContent = result.subtype;
+  document.getElementById('rDesc').textContent = result.desc;
+
+  document.getElementById('rTraits').innerHTML = result.traits.map((t, i) =>
+    `<span class="trait${i % 2 === 1 ? ' alt' : ''}">${t}</span>`).join('');
+
+  const codepScore = Math.round((scores.codependent / Math.max(total,1)) * 100);
+  const abusScore = Math.round((scores.abusive / Math.max(total,1)) * 100);
+  const casScore = Math.round((scores.casual / Math.max(total,1)) * 100);
+  const brkScore = Math.round((scores.breakup / Math.max(total,1)) * 100);
+
+  document.getElementById('rScoreGrid').innerHTML = [
+    ['😍 ' + codepScore + '%', 'CODEPENDENT'],
+    ['🤬 ' + abusScore + '%', 'DEMANDING'],
+    ['😎 ' + casScore + '%', 'CASUAL'],
+    ['💔 ' + brkScore + '%', 'BREAKING UP'],
+  ].map(([v, l]) => `<div class="score-box"><div class="score-val">${v}</div><div class="score-lbl">${l}</div></div>`).join('');
+
+  // Save to hash
+  const saveData = QUESTIONS.map((_, i) => answers[i] !== undefined ? answers[i] : null);
+  location.hash = '#' + btoa(JSON.stringify(saveData));
+
+  // Share
+  const shareText = `I just took the "Your Relationship With AI" quiz 💘\n\nResult: ${result.emoji} ${result.type}\n\n"${result.subtype}"\n\nGet yours →`;
+  document.getElementById('rShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent('https://tinytools-smoky.vercel.app/ai-relationship-status/' + location.hash)}`;
+
+  const deepLink = 'https://tinytools-smoky.vercel.app/ai-relationship-status/' + location.hash;
+  document.getElementById('rCopyLink').onclick = () => {
+    navigator.clipboard.writeText(deepLink);
+    const btn = document.getElementById('rCopyLink');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+  };
+
+  // Embed badge
+  const typeSlug = encodeURIComponent(result.type.replace(/ /g, '_') + '_' + result.emoji);
+  const embedCode = `<a href="https://tinytools-smoky.vercel.app/ai-relationship-status/" target="_blank">
+  <img src="https://img.shields.io/badge/AI_Relationship-${typeSlug}-${result.shieldColor}?style=for-the-badge" alt="AI Relationship Status: ${result.type}">
+</a>`;
+  document.getElementById('rEmbed').textContent = embedCode;
+  document.getElementById('rEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('rEmbedCopy');
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = 'Copy embed code', 1500);
+  };
+
+  // Draw canvas card
+  const canvas = document.getElementById('cardCanvas');
+  drawCard(canvas, result, pct, codepScore, abusScore, casScore, brkScore);
+  document.getElementById('rDownload').href = canvas.toDataURL('image/png');
+
+  document.getElementById('quizWrap').style.display = 'none';
+  document.getElementById('resultCard').classList.add('show');
+  document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function drawCard(canvas, result, pct, c, a, ca, b) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  // Background
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#2d0a1f'); bg.addColorStop(1, '#15151f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Top bar
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#be185d'); stripe.addColorStop(1, '#7e22ce');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+  // Brand
+  ctx.fillStyle = '#ec4899';
+  ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText('💘 YOUR RELATIONSHIP WITH AI', 60, 68);
+  // Emoji
+  ctx.font = '110px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(result.emoji, W - 60, 160);
+  ctx.textAlign = 'left';
+  // Type
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 60px -apple-system, sans-serif';
+  ctx.fillText(result.type, 60, 155);
+  // Subtype
+  ctx.fillStyle = '#f9a8d4';
+  ctx.font = 'italic 26px -apple-system, sans-serif';
+  ctx.fillText(result.subtype, 60, 200);
+  // Desc wrap
+  ctx.fillStyle = '#fbcfe8';
+  ctx.font = 'italic 24px -apple-system, sans-serif';
+  const words = result.desc.slice(0, 200).split(' ');
+  let line = '', y = 270;
+  for (const w of words) {
+    const test = line ? line + ' ' + w : w;
+    if (ctx.measureText(test).width > W - 120 && line) {
+      ctx.fillText(line, 60, y); line = w; y += 34;
+      if (y > 400) { ctx.fillText(line + '...', 60, y); break; }
+    } else { line = test; }
+  }
+  if (y <= 400) ctx.fillText(line, 60, y);
+  // Score bars
+  const bars = [
+    { label: '😍 Codependent', pct: c, color: '#ec4899' },
+    { label: '🤬 Demanding', pct: a, color: '#f97316' },
+    { label: '😎 Casual', pct: ca, color: '#10b981' },
+    { label: '💔 Breaking Up', pct: b, color: '#a855f7' },
+  ];
+  bars.forEach((bar, i) => {
+    const bx = 60 + i * (W - 120) / 4;
+    ctx.fillStyle = '#a0a0b8'; ctx.font = '14px -apple-system, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText(bar.label, bx, H - 100);
+    ctx.fillStyle = '#1d1d2a';
+    ctx.fillRect(bx, H - 90, (W - 120) / 4 - 20, 12);
+    ctx.fillStyle = bar.color;
+    ctx.fillRect(bx, H - 90, Math.round(((W - 120) / 4 - 20) * bar.pct / 100), 12);
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 18px -apple-system, sans-serif';
+    ctx.fillText(bar.pct + '%', bx, H - 50);
+  });
+  // Footer
+  ctx.fillStyle = '#a0a0b8'; ctx.font = '18px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/ai-relationship-status', W - 60, H - 22);
+  ctx.textAlign = 'left';
+}
+</script>
+</body>
+</html>
