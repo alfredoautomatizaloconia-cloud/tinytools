@@ -1,3 +1,28 @@
+## 2026-05-22
+
+### ✅ roast-my-bio
+- **URL**: https://tinytools-smoky.vercel.app/roast-my-bio/
+- **Tier**: 0 (viral)
+- **Description**: Roast My LinkedIn Bio — paste your LinkedIn About section, get A–F grade + savage roast of buzzwords/clichés
+- **Viral mechanics**: ✅ Personal result | ✅ Shareable PNG card (1200×630) | ✅ Share to X with prefilled tweet | ✅ Deep-linkable URL (base64 hash) | ✅ shields.io embed badge | ✅ Reaction-bait copy
+- **Accent color**: blue #3b82f6
+- **Buzzword DB**: 80+ patterns (severe + mild)
+- **HTTP 200**: ✅
+
+### ✅ ai-relationship-status
+- **URL**: https://tinytools-smoky.vercel.app/ai-relationship-status/
+- **Tier**: 0 (viral)
+- **Description**: Your Relationship With AI — 8-question quiz maps to Codependent/Demanding/Casual/Breaking Up
+- **Viral mechanics**: ✅ Personal result | ✅ Shareable PNG card (1200×630) | ✅ Share to X with prefilled tweet | ✅ Deep-linkable URL (quiz answers in base64 hash) | ✅ shields.io embed badge | ✅ Reaction-bait copy
+- **Accent color**: pink #ec4899
+- **Result types**: 4 (Codependent 😍, Demanding/Abusive 🤬, Casual 😎, Breaking Up 💔)
+- **HTTP 200**: ✅
+
+**Landing page updated**: 37 → 39 tools
+**Sitemap updated**: both tools at priority 1.0
+
+---
+
 
 ## 2026-05-21 — Daily Ship
 
