@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roast My LinkedIn Bio — AI Buzzword Detector & Savage Feedback (Free)</title>
+<meta name="description" content="Paste your LinkedIn About section. Get a savage, brutally honest roast of every buzzword, cliché, and empty phrase you used. Grade A–F. Share the card. Free, no signup.">
+<meta name="keywords" content="linkedin bio roast, linkedin buzzword detector, roast my linkedin, ai linkedin roast, linkedin profile feedback, linkedin about section, buzzword bingo, corporate jargon detector">
+<meta property="og:title" content="Roast My LinkedIn Bio — AI Buzzword Detector">
+<meta property="og:description" content="Passionate thought leader or corporate word salad? Find out.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/roast-my-bio/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/roast-my-bio/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Roast My LinkedIn Bio",
+  "description": "Paste your LinkedIn bio and get a savage AI roast of your buzzwords, clichés, and corporate jargon. Shareable card with letter grade.",
+  "url": "https://tinytools-smoky.vercel.app/roast-my-bio/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #3b82f6; --accent-glow: #3b82f640;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(32px, 5.5vw, 54px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 560px; margin: 0 auto; }
+
+  .input-box {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 16px;
+    max-width: 680px; margin: 32px auto 0;
+  }
+  .input-box textarea {
+    width: 100%; padding: 14px 18px; background: transparent; border: none; color: var(--text);
+    font-size: 15px; font-family: inherit; outline: none; resize: vertical; min-height: 140px;
+    line-height: 1.55;
+  }
+  .input-box textarea::placeholder { color: var(--text-dim); }
+  .input-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 8px; border-top: 1px solid var(--border); }
+  .char-count { font-size: 12px; color: var(--text-dim); }
+  .roast-btn {
+    padding: 12px 28px; background: linear-gradient(135deg, #3b82f6, #6366f1);
+    border: none; border-radius: 10px; color: white; font-weight: 700; font-size: 15px;
+    cursor: pointer; box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+    transition: transform 0.15s;
+  }
+  .roast-btn:hover { transform: translateY(-1px); }
+  .roast-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .examples { text-align: center; margin-top: 12px; font-size: 13px; color: var(--text-dim); }
+  .examples a { color: var(--accent); cursor: pointer; text-decoration: none; }
+  .examples a:hover { text-decoration: underline; }
+
+  /* Result card */
+  .roast-card {
+    margin: 32px auto 0; max-width: 700px;
+    background: linear-gradient(135deg, #1a1f35 0%, #15151f 100%);
+    border: 2px solid #3b82f6; border-radius: 20px; padding: 0; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);
+    display: none;
+  }
+  .roast-card.show { display: block; }
+  .roast-header {
+    padding: 22px 24px; background: linear-gradient(135deg, #1d4ed8 0%, #6366f1 100%);
+    display: flex; align-items: center; gap: 16px;
+  }
+  .roast-icon { font-size: 48px; }
+  .roast-title-wrap { flex: 1; }
+  .roast-title-wrap .title { font-size: 20px; font-weight: 800; color: white; }
+  .roast-title-wrap .sub { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 2px; }
+  .roast-grade {
+    padding: 10px 18px; background: rgba(0,0,0,0.4); border-radius: 12px;
+    font-size: 32px; font-weight: 900; color: white; letter-spacing: -0.02em;
+  }
+
+  .roast-body { padding: 24px; }
+  .roast-text {
+    font-size: 16px; line-height: 1.6; color: #bfdbfe; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid #3b82f6; border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .buzzwords-found { margin-bottom: 20px; }
+  .buzzwords-found .label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-bottom: 10px; }
+  .buzzword-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .buzz-tag {
+    padding: 5px 12px; border-radius: 999px; font-size: 13px; font-weight: 600;
+    background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239,68,68,0.4); color: #fca5a5;
+  }
+  .buzz-tag.mild {
+    background: rgba(245, 158, 11, 0.15); border-color: rgba(245,158,11,0.4); color: #fcd34d;
+  }
+  .buzz-tag.good {
+    background: rgba(16, 185, 129, 0.15); border-color: rgba(16,185,129,0.4); color: #6ee7b7;
+  }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--bg-elevated); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+  .stat-value { font-size: 20px; font-weight: 800; color: var(--text); }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .achievements { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .achievement { padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text); }
+  .achievement.bad { border-color: var(--red); color: #fca5a5; }
+  .achievement.good { border-color: var(--green); color: #6ee7b7; }
+  .achievement.weird { border-color: var(--yellow); color: #fcd34d; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #93c5fd; overflow-x: auto; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  .loading { text-align: center; padding: 40px; color: var(--text-dim); display: none; }
+  .loading.show { display: block; }
+  .spinner { display: inline-block; width: 24px; height: 24px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; margin: 28px 0 10px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">💼 No signup · Paste & roast · Built by TinyTools</div>
+    <h1>Roast My LinkedIn Bio 🔥</h1>
+    <p class="subtitle">Paste your LinkedIn About section. Get a savage, honest grade on your buzzwords, empty phrases, and corporate jargon. Share the card and humble your network.</p>
+  </header>
+
+  <div class="input-box">
+    <textarea id="bioInput" placeholder="Paste your LinkedIn About / bio here...&#10;&#10;Example: &quot;Passionate results-driven thought leader with a proven track record of leveraging synergistic solutions to drive scalable growth in fast-paced environments...&quot;"></textarea>
+    <div class="input-footer">
+      <span class="char-count" id="charCount">0 characters</span>
+      <button class="roast-btn" id="roastBtn">🔥 Roast My Bio</button>
+    </div>
+  </div>
+  <p class="examples">Try: <a onclick="loadExample(0)">The Buzzword King</a> · <a onclick="loadExample(1)">The Humble Humblebrag</a> · <a onclick="loadExample(2)">The Actually Good One</a></p>
+
+  <div class="loading" id="loading"><div class="spinner"></div><p>Analysing your buzzword density...</p></div>
+
+  <div class="roast-card" id="roastCard">
+    <div class="roast-header">
+      <div class="roast-icon">💼</div>
+      <div class="roast-title-wrap">
+        <div class="title">LinkedIn Bio Roast</div>
+        <div class="sub" id="rSub"></div>
+      </div>
+      <div class="roast-grade" id="rGrade">?</div>
+    </div>
+    <div class="roast-body">
+      <div class="roast-text" id="rText"></div>
+      <div class="buzzwords-found" id="buzzwordsSection">
+        <div class="label">🚩 Buzzwords Caught</div>
+        <div class="buzzword-list" id="buzzwordList"></div>
+      </div>
+      <div class="stats-grid" id="rStats"></div>
+      <div class="achievements" id="rAchievements"></div>
+      <div class="actions">
+        <a class="action primary" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action" id="rCopyLink">🔗 Copy link</button>
+        <a class="action" id="rDownload" download="linkedin-bio-roast.png">💾 Download card</a>
+      </div>
+      <div class="embed-section">
+        <div class="label">Embed this on your LinkedIn / portfolio</div>
+        <pre id="rEmbed"></pre>
+        <button id="rEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
+
+  <section class="content">
+    <h2>How it works</h2>
+    <p>We scan your bio against a database of 80+ LinkedIn buzzwords, clichés, and empty phrases — "passionate", "results-driven", "thought leader", "synergy", "leverage", "game-changer", and many more. Each hit adds to your Buzzword Density Score (BDS).</p>
+    <p>The grade is calculated from BDS, overall word count, sentence complexity, authenticity signals, and pattern matching for common LinkedIn templates. The same bio always gives the same result — no AI, no server calls, fully deterministic.</p>
+    <h2>Why LinkedIn bios are a disaster</h2>
+    <p>LinkedIn has optimized for a writing style that's technically correct but says nothing. "Passionate professional with a proven track record" appears on 14+ million profiles. You're not differentiating — you're blending in. The irony of using "unique" to describe yourself when 2 million others use the same word.</p>
+    <h2>What a great LinkedIn bio actually looks like</h2>
+    <p>Specifics beat adjectives. "I reduced churn by 34% at Acme" beats "results-driven." "I help B2B SaaS companies close enterprise deals in 60 days" beats "thought leader." Numbers, categories, concrete outcomes. That's it.</p>
+    <h2>Embed your grade on your LinkedIn, portfolio, or README</h2>
+    <p>Drop the badge on your personal site and let visitors roast their own bios. Every click generates a share and spreads the word.</p>
+  </section>
+
+  <footer>
+    <p>Roast another → <a href="/roast-my-bio/" onclick="location.reload();return false;">refresh</a> · More tools at <a href="/">TinyTools</a> · Made with chaotic professionalism 💼</p>
+  </footer>
+</div>
+
+<script>
+const EXAMPLES = [
+  `Results-driven thought leader and passionate innovator with 10+ years of experience leveraging synergistic solutions to drive scalable growth in fast-paced, dynamic environments. I have a proven track record of disrupting traditional paradigms while maintaining a holistic, data-driven approach to strategic stakeholder engagement. My core competency lies in moving the needle through proactive cross-functional collaboration and ecosystem development. Let's connect and explore synergies!`,
+  `I help founders navigate the messy middle of building something. 3x founder (2 exits, 1 spectacular failure). Currently building in stealth. Hot takes: most "thought leaders" haven't done the thing they're thought-leading about. Also I'm passionate about innovation and excited to leverage my proven track record to disrupt the ecosystem. DMs open.`,
+  `Senior engineer at Acme Corp. I work on distributed systems — mostly consensus algorithms and database internals. I've reduced p99 latency by 60% at two companies and once survived a 14-hour on-call incident that took down 40% of US internet. I write occasionally at myblog.dev. I am not passionate about anything at 9am.`
+];
+
+const BUZZWORDS_SEVERE = [
+  'thought leader','synergy','synergies','synergistic','leverage','leveraging','leveraged',
+  'disrupt','disrupting','disruptive','disruption','paradigm shift','paradigm','game-changer',
+  'game changer','move the needle','boil the ocean','blue sky','holistic','ecosystem',
+  'stakeholder','circle back','bandwidth','deep dive','low-hanging fruit','value-add',
+  'value add','core competency','30,000 foot','30000 foot','move fast','fail fast',
+  'ninja','rockstar','guru','wizard','evangelist','maven','visionary','futurist',
+  'results-driven','results driven','passionate','passionate about','passionate professional'
+];
+const BUZZWORDS_MILD = [
+  'innovative','innovation','dynamic','scalable','strategic','proactive','self-starter',
+  'go-getter','team player','fast-paced','fast paced','proven track record','track record',
+  'cutting-edge','cutting edge','best-in-class','best in class','world-class','world class',
+  'thought-provoking','forward-thinking','forward thinking','out-of-the-box','outside the box',
+  'collaborate','collaboration','cross-functional','actionable','impactful','impact-driven',
+  'data-driven','data driven','driven','solution-oriented','client-focused','customer-centric',
+  'deliverable','milestone','synergize','empower','empowering','empowerment',
+  'leverage synergies','transformative','transformation','transforming','accelerate',
+  'accelerating','unlock','unlocking','scaling','scalability','growth hacking',
+  'hustler','excited to announce','thrilled to share','humbled','honored',
+  'blessed','grateful','connect','let\'s connect','reach out','pivoting'
+];
+
+const roastBtn = document.getElementById('roastBtn');
+const bioInput = document.getElementById('bioInput');
+const loading = document.getElementById('loading');
+const card = document.getElementById('roastCard');
+const charCount = document.getElementById('charCount');
+
+bioInput.addEventListener('input', () => {
+  charCount.textContent = bioInput.value.length + ' characters';
+});
+bioInput.addEventListener('keydown', e => { if (e.ctrlKey && e.key === 'Enter') roast(); });
+roastBtn.addEventListener('click', roast);
+
+// Deep-link: decode bio from hash
+if (location.hash.length > 1) {
+  try {
+    const decoded = decodeURIComponent(atob(location.hash.slice(1)));
+    bioInput.value = decoded;
+    charCount.textContent = decoded.length + ' characters';
+    setTimeout(roast, 100);
+  } catch(e) {}
+}
+
+function loadExample(i) {
+  bioInput.value = EXAMPLES[i];
+  charCount.textContent = EXAMPLES[i].length + ' characters';
+  bioInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function roast() {
+  const bio = bioInput.value.trim();
+  if (bio.length < 20) { alert('Bio too short! Paste at least a sentence.'); return; }
+
+  roastBtn.disabled = true;
+  loading.classList.add('show');
+  card.classList.remove('show');
+
+  setTimeout(() => {
+    try {
+      const result = analyzeBio(bio);
+      renderCard(bio, result);
+      const encoded = btoa(encodeURIComponent(bio.slice(0, 800)));
+      location.hash = '#' + encoded;
+    } catch(e) {
+      console.error(e);
+    } finally {
+      loading.classList.remove('show');
+      roastBtn.disabled = false;
+    }
+  }, 600);
+}
+
+function analyzeBio(bio) {
+  const bioLower = bio.toLowerCase();
+  const words = bio.split(/\s+/).filter(w => w.length > 0);
+  const wordCount = words.length;
+  const sentences = bio.split(/[.!?]+/).filter(s => s.trim().length > 3);
+  const sentenceCount = sentences.length;
+
+  // Find buzzwords
+  const foundSevere = [];
+  const foundMild = [];
+
+  BUZZWORDS_SEVERE.forEach(bw => {
+    if (bioLower.includes(bw) && !foundSevere.includes(bw)) foundSevere.push(bw);
+  });
+  BUZZWORDS_MILD.forEach(bw => {
+    if (bioLower.includes(bw) && !foundMild.includes(bw)) foundMild.push(bw);
+  });
+
+  // Count exclamation marks (LinkedIn enthusiasm)
+  const exclCount = (bio.match(/!/g) || []).length;
+  // Count first-person ("I")
+  const iCount = (bio.match(/\bI\b/g) || []).length;
+  // Check for numbers/metrics (good signal)
+  const hasNumbers = /\d+[%+]|\$\d+|\d+x|\d+ years|\d+ million|\d+\+/.test(bio);
+  // Check for "Let's connect"
+  const hasCTA = /let'?s connect|reach out|dms open|dm me/i.test(bio);
+  // Check for self-referential "passionate about"
+  const hasPassionate = /passionate/i.test(bio);
+  // Check for emojis
+  const emojiCount = (bio.match(/[\u{1F300}-\u{1F9FF}]/gu) || []).length;
+
+  // Score calculation (lower = more buzzwords = worse grade)
+  let score = 100;
+  score -= foundSevere.length * 12;
+  score -= foundMild.length * 5;
+  score -= exclCount * 8;
+  score -= hasCTA ? 5 : 0;
+  score -= emojiCount > 5 ? 15 : emojiCount > 2 ? 5 : 0;
+  score += hasNumbers ? 15 : -10;
+  score += sentenceCount > 2 && hasNumbers ? 10 : 0;
+  // Short bios are usually better
+  if (wordCount < 50) score += 10;
+  if (wordCount > 200) score -= 10;
+  score = Math.max(0, Math.min(100, score));
+
+  // Grade
+  let grade, gradeColor, shieldColor;
+  if (score >= 85) { grade = 'A+'; gradeColor = '#10b981'; shieldColor = 'brightgreen'; }
+  else if (score >= 70) { grade = 'A'; gradeColor = '#22c55e'; shieldColor = 'green'; }
+  else if (score >= 58) { grade = 'B'; gradeColor = '#84cc16'; shieldColor = 'yellowgreen'; }
+  else if (score >= 45) { grade = 'C'; gradeColor = '#eab308'; shieldColor = 'yellow'; }
+  else if (score >= 30) { grade = 'D'; gradeColor = '#f97316'; shieldColor = 'orange'; }
+  else { grade = 'F'; gradeColor = '#ef4444'; shieldColor = 'red'; }
+
+  // Buzzword density %
+  const bwDensity = Math.round(((foundSevere.length * 2 + foundMild.length) / Math.max(wordCount, 1)) * 100 * 10);
+
+  const roastText = generateRoast(foundSevere, foundMild, grade, wordCount, hasNumbers, exclCount, hasCTA, hasPassionate, emojiCount);
+  const subtitle = generateSubtitle(grade, foundSevere.length, foundMild.length);
+  const achievements = generateAchievements(foundSevere, foundMild, hasNumbers, hasCTA, wordCount, exclCount, emojiCount, grade);
+
+  return {
+    grade, gradeColor, shieldColor, score, roastText, subtitle,
+    foundSevere, foundMild, wordCount, hasNumbers, bwDensity,
+    achievements, sentenceCount
+  };
+}
+
+function generateSubtitle(grade, severeCount, mildCount) {
+  const total = severeCount + mildCount;
+  if (grade === 'A+') return 'Surprisingly human. Did you even LinkedIn?';
+  if (grade === 'A') return 'A few buzzwords but basically tolerable.';
+  if (grade === 'B') return total + ' buzzwords. Getting warm in here.';
+  if (grade === 'C') return total + ' buzzwords. You love your jargon.';
+  if (grade === 'D') return total + ' buzzwords. Corporate word salad detected.';
+  return total + ' buzzwords. Bingo complete. Send help.';
+}
+
+function generateRoast(severe, mild, grade, wordCount, hasNumbers, excl, hasCTA, hasPassionate, emojiCount) {
+  // Pick most savage applicable roast — deterministic based on signals
+  const roasts = [];
+
+  if (severe.includes('thought leader'))
+    roasts.push(`"Thought leader." The most borrowed phrase on LinkedIn. There are 27 million thought leaders on this platform. They can't all be leading thoughts — someone is just following.`);
+  if (severe.includes('synergy') || severe.includes('synergies'))
+    roasts.push(`You used "synergy." The word that sounds like something but means nothing. Synergy is what consultants say when they want to seem profound but haven't actually had an idea.`);
+  if (severe.includes('passionate') || hasPassionate)
+    roasts.push(`"Passionate." You and 9 million other LinkedIn users are passionate about your work. It's the adjective that did the bare minimum and asked for a promotion.`);
+  if (severe.includes('leverage') || severe.includes('leveraging'))
+    roasts.push(`You "leveraged" something. In normal English, this means you used it. But in LinkedIn, using words people understand is a missed branding opportunity.`);
+  if (severe.includes('disrupt') || severe.includes('disrupting') || severe.includes('disruptive'))
+    roasts.push(`"Disruptive." You know what's really disruptive? A bio that doesn't use the word disruptive. You had the chance. You did not take it.`);
+  if (severe.includes('paradigm shift') || severe.includes('paradigm'))
+    roasts.push(`"Paradigm shift." The last actual paradigm shift was the iPhone. Your SaaS email tool was probably not it.`);
+  if (severe.includes('ecosystem'))
+    roasts.push(`You called something an "ecosystem." LinkedIn bios have made this word meaningless. A Slack workspace is not an ecosystem. Your partner network is not an ecosystem. Please stop.`);
+  if (severe.some(w => ['ninja','rockstar','guru','wizard','evangelist','maven'].includes(w)))
+    roasts.push(`You used one of the forbidden job title words. Ninja, rockstar, guru, wizard — the four horsemen of the LinkedIn apocalypse. You're a professional. Act like one.`);
+  if (severe.includes('move the needle'))
+    roasts.push(`"Move the needle." Which needle? To where? By how much? This phrase exists so you can claim impact without measuring any.`);
+  if (severe.includes('holistic'))
+    roasts.push(`"Holistic approach." This word comes from wellness marketing and it shows. Nothing about B2B pipeline conversion is holistic. Please be specific.`);
+  if (hasCTA)
+    roasts.push(`You ended with "Let's connect!" The LinkedIn equivalent of a used car lot's "Come on in!" Nobody is racing to their DMs over that CTA.`);
+  if (excl > 1)
+    roasts.push(`${excl} exclamation marks. LinkedIn enthusiasm in its final form. Nothing says "I'm definitely fine" like punctuating every achievement with a screaming vowel.`);
+  if (!hasNumbers && wordCount > 60)
+    roasts.push(`${wordCount} words and not a single number. No percentages, no outcomes, no amounts. Adjectives are free — that's why everyone uses them. Numbers cost something. Authenticity costs something.`);
+  if (emojiCount > 5)
+    roasts.push(`${emojiCount} emojis in a professional bio. You're writing a LinkedIn profile, not a Substack newsletter sidebar. Pick three and commit.`);
+  if (wordCount > 200 && severe.length > 3)
+    roasts.push(`${wordCount} words, ${severe.length} power buzzwords, and I still have no idea what you actually do or who you specifically help. That's a literary achievement in its own right.`);
+
+  if (grade === 'A' || grade === 'A+')
+    roasts.push(`This is genuinely one of the less painful LinkedIn bios I've read. Either you have taste, or you wrote this at 2am too tired to be corporate. Either way: respect.`);
+
+  if (roasts.length === 0)
+    roasts.push(`A solid effort at being inoffensive. You have (${mild.length}) mild buzzwords but avoided the real crimes. Your LinkedIn profile is the Toyota Camry of bios — reliable, unobjectionable, and destined to be scrolled past.`);
+
+  // Return longest / most specific
+  return roasts.sort((a, b) => b.length - a.length)[0];
+}
+
+function generateAchievements(severe, mild, hasNumbers, hasCTA, wordCount, excl, emojiCount, grade) {
+  const a = [];
+  if (severe.length >= 5) a.push({ kind: 'bad', text: '🏆 Buzzword Royalty' });
+  if (severe.length >= 2) a.push({ kind: 'bad', text: '🚩 Jargon Heavy' });
+  if (mild.length >= 4) a.push({ kind: 'weird', text: '💬 Corporate Vocabulary' });
+  if (!hasNumbers) a.push({ kind: 'bad', text: '📊 Zero Metrics' });
+  if (hasNumbers) a.push({ kind: 'good', text: '✅ Actual Numbers' });
+  if (hasCTA) a.push({ kind: 'weird', text: `🤝 Let's Connect Energy` });
+  if (excl > 2) a.push({ kind: 'weird', text: '❗ Excessive Enthusiasm' });
+  if (excl === 0) a.push({ kind: 'good', text: '😤 No Exclamation Marks' });
+  if (wordCount < 50) a.push({ kind: 'good', text: '✂️ Refreshingly Concise' });
+  if (wordCount > 200) a.push({ kind: 'bad', text: '📜 Wall of Text' });
+  if (emojiCount > 5) a.push({ kind: 'weird', text: '🎨 Emoji Enthusiast' });
+  if (grade === 'A+') a.push({ kind: 'good', text: '🌟 Rare: Actually Good' });
+  if (grade === 'F') a.push({ kind: 'bad', text: '🔴 Needs Intervention' });
+  if (severe.some(w => ['ninja','rockstar','guru','wizard'].includes(w))) a.push({ kind: 'bad', text: '🥷 LinkedIn Ninja' });
+  return a.slice(0, 6);
+}
+
+function renderCard(bio, r) {
+  document.getElementById('rGrade').textContent = r.grade;
+  document.getElementById('rGrade').style.color = r.gradeColor;
+  document.getElementById('rSub').textContent = r.subtitle;
+  document.getElementById('rText').textContent = '"' + r.roastText + '"';
+
+  // Buzzwords list
+  const bwList = document.getElementById('buzzwordList');
+  if (r.foundSevere.length + r.foundMild.length === 0) {
+    bwList.innerHTML = '<span class="buzz-tag good">✅ None found — impressive</span>';
+  } else {
+    bwList.innerHTML =
+      r.foundSevere.map(bw => `<span class="buzz-tag">${bw}</span>`).join('') +
+      r.foundMild.map(bw => `<span class="buzz-tag mild">${bw}</span>`).join('');
+  }
+
+  // Stats
+  document.getElementById('rStats').innerHTML = [
+    ['Buzzwords', r.foundSevere.length + r.foundMild.length],
+    ['Word Count', r.wordCount],
+    ['BDS Score', r.bwDensity + '%'],
+    ['Auth. Score', r.score + '/100'],
+  ].map(([l, v]) => `<div class="stat"><div class="stat-value">${v}</div><div class="stat-label">${l}</div></div>`).join('');
+
+  // Achievements
+  document.getElementById('rAchievements').innerHTML = r.achievements.map(a =>
+    `<span class="achievement ${a.kind}">${a.text}</span>`).join('');
+
+  // Share
+  const preview = bio.slice(0, 60).replace(/\n/g, ' ');
+  const shareText = `I just had my LinkedIn bio roasted by AI 🔥\n\nGrade: ${r.grade} | ${r.foundSevere.length + r.foundMild.length} buzzwords caught\n\n"${r.roastText.slice(0,100)}..."\n\nRoast yours →`;
+  const deepLink = 'https://tinytools-smoky.vercel.app/roast-my-bio/' + location.hash;
+  document.getElementById('rShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent('https://tinytools-smoky.vercel.app/roast-my-bio/')}`;
+
+  document.getElementById('rCopyLink').onclick = () => {
+    navigator.clipboard.writeText(deepLink);
+    const btn = document.getElementById('rCopyLink');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+  };
+
+  // Canvas card
+  const canvas = document.getElementById('cardCanvas');
+  drawCard(canvas, r, preview);
+  document.getElementById('rDownload').href = canvas.toDataURL('image/png');
+
+  // Embed
+  const embedCode = `<a href="https://tinytools-smoky.vercel.app/roast-my-bio/" target="_blank">
+  <img src="https://img.shields.io/badge/LinkedIn_Bio_Roast-${encodeURIComponent(r.grade)}_${encodeURIComponent(r.foundSevere.length + r.foundMild.length + ' buzzwords')}-${r.shieldColor}?style=for-the-badge&logo=linkedin" alt="LinkedIn Bio Grade: ${r.grade}">
+</a>`;
+  document.getElementById('rEmbed').textContent = embedCode;
+  document.getElementById('rEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('rEmbedCopy');
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = 'Copy embed code', 1500);
+  };
+
+  card.classList.add('show');
+  card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function drawCard(canvas, r, preview) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  // Background
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#1a1f35'); bg.addColorStop(1, '#15151f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Top stripe
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#1d4ed8'); stripe.addColorStop(1, '#6366f1');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+  // Brand
+  ctx.fillStyle = '#3b82f6';
+  ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText('💼 ROAST MY LINKEDIN BIO', 60, 68);
+  // Grade
+  ctx.fillStyle = r.gradeColor;
+  ctx.font = 'bold 180px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(r.grade, W - 60, 200);
+  ctx.textAlign = 'left';
+  // Subtitle
+  ctx.fillStyle = '#93c5fd';
+  ctx.font = 'bold 30px -apple-system, sans-serif';
+  ctx.fillText(r.subtitle, 60, 120);
+  // Bio preview
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = 'italic 22px -apple-system, sans-serif';
+  ctx.fillText('"' + preview + '..."', 60, 165);
+  // Roast
+  ctx.fillStyle = '#bfdbfe';
+  ctx.font = 'italic 26px -apple-system, sans-serif';
+  const words = ('"' + r.roastText + '"').split(' ');
+  let line = '', y = 280;
+  for (const w of words) {
+    const test = line ? line + ' ' + w : w;
+    if (ctx.measureText(test).width > W - 120 && line) {
+      ctx.fillText(line, 60, y); line = w; y += 36;
+      if (y > 430) { ctx.fillText(line + '...', 60, y); break; }
+    } else { line = test; }
+  }
+  if (y <= 430) ctx.fillText(line, 60, y);
+  // Stats
+  const items = [
+    [r.foundSevere.length + r.foundMild.length, 'BUZZWORDS'],
+    [r.wordCount, 'WORDS'],
+    [r.bwDensity + '%', 'BDS'],
+    [r.score + '/100', 'AUTH SCORE'],
+  ];
+  items.forEach((it, i) => {
+    const x = 60 + i * (W - 120) / 4;
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 36px -apple-system, sans-serif';
+    ctx.textAlign = 'left'; ctx.fillText(it[0], x, H - 80);
+    ctx.fillStyle = '#a0a0b8'; ctx.font = 'bold 14px -apple-system, sans-serif';
+    ctx.fillText(it[1], x, H - 55);
+  });
+  // Footer
+  ctx.fillStyle = '#a0a0b8'; ctx.font = '18px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/roast-my-bio', W - 60, H - 25);
+  ctx.textAlign = 'left';
+}
+</script>
+</body>
+</html>
