@@ -144,6 +144,20 @@
     margin-top: 14px; font-size: 12px; color: var(--text-dim); text-align: center;
     background: var(--bg-elevated); border-radius: 8px; padding: 8px;
   }
+
+  /* ── Viral share panel ── */
+  .share-panel { display: none; margin-top: 20px; padding: 18px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; }
+  .share-panel.show { display: block; }
+  .share-panel-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .07em; font-weight: 700; margin-bottom: 10px; }
+  .share-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .share-btn { flex: 1; min-width: 130px; padding: 10px 14px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; border: 1px solid var(--border); background: var(--bg); color: var(--text); text-align: center; transition: all .15s; font-family: inherit; text-decoration: none; display: inline-block; }
+  .share-btn:hover { border-color: var(--accent); }
+  .share-btn.primary { background: #1d9bf0; border-color: #1d9bf0; color: white; }
+  .share-btn.primary:hover { background: #1a8cd8; }
+  .embed-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .07em; font-weight: 700; margin-bottom: 6px; }
+  .embed-section pre { font-family: 'SF Mono', Monaco, monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #67e8f9; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .embed-section .copy-badge-btn { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: #002432; font-size: 11px; cursor: pointer; font-family: inherit; font-weight: 700; }
+  canvas#shareCard { display: none; }
 </style>
 </head>
 <body>
@@ -189,8 +203,25 @@
       </div>
 
       <div class="signal-list" id="signals"></div>
+
+      <!-- Viral share panel -->
+      <div class="share-panel" id="sharePanel">
+        <div class="share-panel-label">📣 Share your result</div>
+        <div class="share-actions">
+          <button class="share-btn primary" id="shareTweetBtn">𝕏 Share on X</button>
+          <button class="share-btn" id="shareCopyBtn">🔗 Copy link</button>
+          <a class="share-btn" id="shareDownloadBtn" download="voice-cloning-result.png">💾 Download card</a>
+        </div>
+        <div class="embed-section">
+          <div class="embed-label">📎 Embeddable badge</div>
+          <pre id="badgeCode"></pre>
+          <button class="copy-badge-btn" onclick="copyBadge()">Copy badge HTML</button>
+        </div>
+      </div>
     </div>
   </div>
+
+  <canvas id="shareCard" width="1200" height="630"></canvas>
 
   <div class="upsell">
     <h3>Pair this with our other AI-content tools</h3>
@@ -605,6 +636,8 @@ function renderResults(res) {
       <div class="why">${s.why}</div>
     </div>`;
   }).join('');
+
+  initViral(pct, cls, label);
 }
 
 function toast(t) {
@@ -613,6 +646,142 @@ function toast(t) {
   el.classList.add('show');
   setTimeout(()=>el.classList.remove('show'), 1800);
 }
+
+// ── VIRAL RETROFIT ──
+function initViral(pct, cls, label) {
+  // Encode result into URL hash (no audio — only result state is shareable)
+  const hashData = encodeURIComponent(`${pct}:${cls}`);
+  history.replaceState(null, '', '#' + hashData);
+  const shareUrl = `https://tinytools-smoky.vercel.app/voice-cloning-detector/#${hashData}`;
+
+  // Tweet share
+  const emoji = cls === 'likely-ai' ? '🤖' : cls === 'likely-real' ? '✅' : '🤔';
+  const tweetText = `I just analyzed audio with Voice Cloning Detector ${emoji}\n\nVerdict: ${label} (${pct}% AI signal)\n\nCheck yours → ${shareUrl}\n\n#VoiceCloningDetector #AIDetection #TinyTools`;
+  document.getElementById('shareTweetBtn').onclick = () =>
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`, '_blank');
+
+  // Copy link
+  const copyBtn = document.getElementById('shareCopyBtn');
+  copyBtn.onclick = () => {
+    navigator.clipboard.writeText(shareUrl);
+    copyBtn.textContent = '✓ Copied!';
+    setTimeout(() => copyBtn.textContent = '🔗 Copy link', 1500);
+  };
+
+  // Embeddable badge
+  const badgeColor = cls === 'likely-ai' ? 'ef4444' : cls === 'likely-real' ? '10b981' : 'f59e0b';
+  const badgeLabel = encodeURIComponent(label.replace(/ /g, '_'));
+  const badgeUrl = `https://img.shields.io/badge/Voice_Clone-${badgeLabel}-${badgeColor}?style=for-the-badge&logo=soundcloud`;
+  const embedHtml = `<a href="${shareUrl}">\n  <img src="${badgeUrl}" alt="Voice Clone: ${label}">\n</a>`;
+  document.getElementById('badgeCode').textContent = embedHtml;
+
+  // Draw 1200×630 card and wire download
+  const canvas = document.getElementById('shareCard');
+  drawShareCard(canvas, pct, cls, label);
+  const dlBtn = document.getElementById('shareDownloadBtn');
+  dlBtn.href = canvas.toDataURL('image/png');
+
+  // Show panel
+  document.getElementById('sharePanel').classList.add('show');
+}
+
+function copyBadge() {
+  navigator.clipboard.writeText(document.getElementById('badgeCode').textContent);
+  toast('Badge HTML copied!');
+}
+
+function drawShareCard(canvas, pct, cls, label) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  // Background
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#020b10'); bg.addColorStop(1, '#0a1520');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Tinted glow
+  const accentHex = cls === 'likely-ai' ? '#ef4444' : cls === 'likely-real' ? '#10b981' : '#f59e0b';
+  const grd = ctx.createRadialGradient(0, 0, 0, 0, 0, 700);
+  grd.addColorStop(0, accentHex + '38'); grd.addColorStop(1, 'transparent');
+  ctx.fillStyle = grd; ctx.fillRect(0, 0, W, H);
+  // Top gradient stripe
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#06b6d4'); stripe.addColorStop(1, '#6366f1');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+  // Tool title
+  ctx.fillStyle = '#06b6d4';
+  ctx.font = 'bold 26px -apple-system, Arial, sans-serif';
+  ctx.fillText('🎙️ VOICE CLONING DETECTOR', 60, 72);
+  // Verdict label
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '22px -apple-system, Arial, sans-serif';
+  ctx.fillText('AI Signal Verdict', 60, 132);
+  // Label (big)
+  ctx.fillStyle = accentHex;
+  ctx.font = 'bold 68px -apple-system, Arial, sans-serif';
+  ctx.fillText(label, 60, 230);
+  // Percentage (large, right-aligned)
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 148px -apple-system, Arial, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(pct + '%', W - 60, 295);
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '20px -apple-system, Arial, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('AI signal across 12 heuristics', W - 60, 330);
+  ctx.textAlign = 'left';
+  // Description quote
+  const desc = cls === 'likely-ai'
+    ? 'High probability of synthetic voice. Treat as suspect.'
+    : cls === 'likely-real'
+    ? 'Low AI signal. Looks like a genuine human recording.'
+    : 'Mixed evidence — could be a studio recording or a weak clone.';
+  ctx.fillStyle = '#fde68a';
+  ctx.font = 'italic 24px Georgia, serif';
+  ctx.fillText('"' + desc + '"', 60, 390);
+  // Bottom separator line
+  ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(60, H - 60); ctx.lineTo(W - 60, H - 60); ctx.stroke();
+  // Footer URL
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '17px -apple-system, Arial, sans-serif';
+  ctx.fillText('tinytools-smoky.vercel.app/voice-cloning-detector', 60, H - 28);
+  // Footer brand (right-aligned)
+  ctx.fillStyle = '#06b6d4';
+  ctx.font = 'bold 17px -apple-system, Arial, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('TinyTools', W - 60, H - 28);
+  ctx.textAlign = 'left';
+}
+
+// Auto-load result from URL hash (shared deep-links)
+window.addEventListener('load', () => {
+  const raw = location.hash.slice(1);
+  if (!raw) return;
+  try {
+    const decoded = decodeURIComponent(raw);
+    const parts = decoded.split(':');
+    if (parts.length < 2) return;
+    const pctNum = parseInt(parts[0]);
+    const cls = parts[1];
+    if (isNaN(pctNum) || pctNum < 0 || pctNum > 100) return;
+    if (!['likely-ai','likely-real','uncertain'].includes(cls)) return;
+    const label = cls === 'likely-ai' ? 'Likely AI-generated'
+                : cls === 'likely-real' ? 'Likely human' : 'Uncertain';
+    const desc = cls === 'likely-ai'
+      ? `${pctNum}% AI signal across 12 heuristics. Treat as suspect; verify with a second tool.`
+      : cls === 'likely-real'
+      ? `${pctNum}% AI signal. Looks like a real recording.`
+      : `${pctNum}% AI signal. Mixed evidence — could be a clean studio recording or weak clone.`;
+    verdict.className = 'verdict ' + cls;
+    verdict.innerHTML = `<div class="label">${label}</div><div class="score">${pctNum}%</div>` +
+      `<div class="desc">${desc} <em style="opacity:.6">(Shared result — upload audio to run your own analysis.)</em></div>`;
+    signalsEl.innerHTML = `<div style="text-align:center;padding:18px 0;color:var(--text-dim);font-size:13px;">
+      ↑ Shared result. Upload an audio file above and click Analyze to detect your own clip.
+    </div>`;
+    initViral(pctNum, cls, label);
+  } catch(e) { /* ignore bad hash */ }
+});
 </script>
 </body>
 </html>
