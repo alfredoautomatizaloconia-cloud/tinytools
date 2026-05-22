@@ -137,6 +137,24 @@
   }
   .alert strong { color: white; }
 
+  /* ── Viral share section ── */
+  .viral-section { display: none; margin-top: 16px; }
+  .viral-section.show { display: block; }
+  .viral-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+  .viral-actions a, .viral-actions button {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
+    cursor: pointer; text-decoration: none; border: 1px solid var(--border);
+    transition: all 0.18s; background: var(--bg-elevated); color: var(--text);
+  }
+  .viral-actions a.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .viral-actions a:hover, .viral-actions button:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .embed-block { background: #000; border: 1px solid var(--border); border-radius: 8px; padding: 12px; position: relative; }
+  .embed-block label { display: block; font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+  .embed-block pre { font-size: 11px; color: #e0e0ff; white-space: pre-wrap; word-break: break-all; font-family: 'SF Mono', Monaco, monospace; margin: 0; }
+  .embed-copy-btn { margin-top: 8px; padding: 5px 12px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 11px; cursor: pointer; }
+  .embed-copy-btn:hover { border-color: var(--accent); }
+
   .upsell {
     background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(99, 102, 241, 0.08));
     border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-top: 24px;
@@ -300,6 +318,20 @@
         <p>Track prompt versions, A/B test variants, log outputs across GPT-5/Claude/Gemini. Most teams use Promptfoo or PromptLayer.</p>
         <a href="#aff-promptfoo" id="upsellLink">Compare prompt-ops tools →</a>
       </div>
+      <!-- ── Viral share section ── -->
+      <div class="viral-section" id="viralSection">
+        <div class="viral-actions">
+          <a class="primary" id="viralShare" href="#" target="_blank" rel="noopener">&#x1D54F; Share result</a>
+          <button id="viralCopyLink">&#x1F517; Copy link</button>
+          <a id="viralDownload" href="#" download="optimized-prompt-card.png">&#x1F4BE; Download card</a>
+        </div>
+        <div class="embed-block">
+          <label>Embed badge on your README or site</label>
+          <pre id="viralEmbed"></pre>
+          <button class="embed-copy-btn" id="viralEmbedCopy">Copy embed code</button>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -711,7 +743,117 @@ document.getElementById('optimize').addEventListener('click', async () => {
   document.getElementById('annotations').innerHTML = items.map(i =>
     `<div class="annotation ${i.kind}">${i.text}</div>`
   ).join('');
+
+  // Activate viral mechanics after result is generated
+  activateViralSection(raw, optimized, score(optimized));
 });
+
+  // ── Viral mechanics ──
+
+  // Auto-load from URL hash (deep-link)
+  (function() {
+    if (location.hash && location.hash.length > 1) {
+      try {
+        var saved = JSON.parse(decodeURIComponent(location.hash.slice(1)));
+        if (saved.p) {
+          var rawEl = document.getElementById('rawPrompt');
+          if (rawEl) rawEl.value = saved.p;
+        }
+      } catch(e) { /* ignore malformed hash */ }
+    }
+  })();
+
+  function drawPromptCard(canvas, rawText, optimizedText, scoreVal) {
+    var ctx = canvas.getContext('2d');
+    var W = 1200, H = 630;
+    var bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0, '#1f1f2e'); bg.addColorStop(1, '#0a0a0f');
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+    var stripe = ctx.createLinearGradient(0, 0, W, 0);
+    stripe.addColorStop(0, '#ec4899'); stripe.addColorStop(1, '#8b5cf6');
+    ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+    ctx.fillStyle = '#ec4899';
+    ctx.font = 'bold 26px -apple-system, sans-serif';
+    ctx.fillText('\u26a1 LLM Prompt Optimizer', 60, 65);
+    ctx.textAlign = 'right';
+    ctx.fillStyle = '#ec4899';
+    ctx.font = 'bold 110px -apple-system, sans-serif';
+    ctx.fillText(scoreVal, W - 60, 145);
+    ctx.fillStyle = '#a0a0b8';
+    ctx.font = '20px -apple-system, sans-serif';
+    ctx.fillText('/ 100 quality score', W - 60, 175);
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#a0a0b8';
+    ctx.font = 'bold 13px -apple-system, sans-serif';
+    ctx.fillText('ORIGINAL PROMPT', 60, 205);
+    ctx.fillStyle = '#fff';
+    ctx.font = '19px -apple-system, sans-serif';
+    var origPreview = String(rawText || '').slice(0, 140);
+    ctx.fillText(origPreview.slice(0, 90), 60, 230);
+    if (origPreview.length > 90) ctx.fillText(origPreview.slice(90, 180), 60, 258);
+    ctx.fillStyle = '#ec4899';
+    ctx.font = 'bold 22px -apple-system, sans-serif';
+    ctx.fillText('\u2193  OPTIMIZED', 60, 310);
+    ctx.fillStyle = '#e0e0ff';
+    ctx.font = '17px -apple-system, sans-serif';
+    var optPreview = String(optimizedText || '').replace(/\n/g, ' ').slice(0, 320);
+    var words = optPreview.split(' ');
+    var line = ''; var y = 345;
+    for (var i = 0; i < words.length; i++) {
+      var w = words[i];
+      if (ctx.measureText(line + ' ' + w).width > W - 120 && line) {
+        ctx.fillText(line, 60, y); line = w; y += 28;
+        if (y > 550) { ctx.fillText(line + '\u2026', 60, y); line = null; break; }
+      } else { line = line ? line + ' ' + w : w; }
+    }
+    if (line) ctx.fillText(line, 60, y);
+    ctx.fillStyle = '#a0a0b8';
+    ctx.font = '15px -apple-system, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText('tinytools-smoky.vercel.app/llm-prompt-optimizer', W - 60, H - 20);
+    ctx.textAlign = 'left';
+  }
+
+  function activateViralSection(rawText, optimizedText, scoreVal) {
+    var toolUrl = 'https://tinytools-smoky.vercel.app/llm-prompt-optimizer/';
+    var hashPayload = encodeURIComponent(JSON.stringify({ p: String(rawText).slice(0, 400) }));
+    var deepLink = toolUrl + '#' + hashPayload;
+
+    history.replaceState(null, '', '#' + hashPayload);
+
+    var shareText = 'I just optimized my AI prompt \u2014 quality score: ' + scoreVal + '/100 \u26a1\n\nTry yours \u2192';
+    document.getElementById('viralShare').href =
+      'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(toolUrl);
+
+    document.getElementById('viralCopyLink').onclick = function() {
+      navigator.clipboard.writeText(deepLink);
+      var btn = document.getElementById('viralCopyLink');
+      btn.textContent = '\u2713 Copied!';
+      setTimeout(function() { btn.textContent = '\uD83D\uDD17 Copy link'; }, 1500);
+    };
+
+    var canvas = document.getElementById('viralCanvas');
+    drawPromptCard(canvas, rawText, optimizedText, scoreVal);
+    var dlLink = document.getElementById('viralDownload');
+    dlLink.href = canvas.toDataURL('image/png');
+
+    var scoreNum = parseInt(scoreVal) || 0;
+    var color = scoreNum >= 80 ? 'brightgreen' : scoreNum >= 60 ? 'yellow' : 'red';
+    var badgeLabel = 'Prompt%20Quality';
+    var badgeVal = encodeURIComponent(scoreVal + '/100');
+    var embedCode = '<a href="' + toolUrl + '" target="_blank">\n  <img src="https://img.shields.io/badge/' + badgeLabel + '-' + badgeVal + '-' + color + '?style=for-the-badge" alt="Prompt Quality: ' + scoreVal + '/100">\n</a>';
+    document.getElementById('viralEmbed').textContent = embedCode;
+    document.getElementById('viralEmbedCopy').onclick = function() {
+      navigator.clipboard.writeText(embedCode);
+      var btn = document.getElementById('viralEmbedCopy');
+      btn.textContent = '\u2713 Copied';
+      setTimeout(function() { btn.textContent = 'Copy embed code'; }, 1500);
+    };
+
+    document.getElementById('viralSection').classList.add('show');
+    document.getElementById('viralSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
 </script>
+  <canvas id="viralCanvas" width="1200" height="630" style="display:none;"></canvas>
 </body>
 </html>
