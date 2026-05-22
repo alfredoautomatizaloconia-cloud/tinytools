@@ -171,6 +171,33 @@
 
   .key-toggle { font-size: 12px; color: var(--text-dim); cursor: pointer; }
   .key-toggle:hover { color: var(--accent); }
+
+  /* ── Viral share section ── */
+  .share-section { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border); display: none; }
+  .share-section.show { display: block; }
+  .share-section h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 12px; font-weight: 600; }
+  .actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .action {
+    display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px;
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); font-size: 13px; font-weight: 600; cursor: pointer;
+    text-decoration: none; transition: all 0.15s; font-family: inherit;
+  }
+  .action:hover { border-color: var(--accent); color: var(--accent); }
+  .action.primary { background: #1d9bf0; border-color: #1d9bf0; color: white; }
+  .action.primary:hover { filter: brightness(1.1); color: white; }
+  .embed-section { margin-top: 4px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
+  .embed-section pre {
+    background: #000; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border);
+    font-size: 11.5px; color: #fbdcff; white-space: pre-wrap; word-break: break-all;
+    font-family: 'SF Mono', Monaco, monospace; margin-bottom: 6px; }
+  #embedCopyBtn {
+    padding: 6px 14px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 6px; color: var(--text-dim); font-size: 12px; cursor: pointer; font-family: inherit; }
+  #embedCopyBtn:hover { border-color: var(--accent); color: var(--accent); }
+  canvas#cardCanvas { display: none; }
 </style>
 </head>
 <body>
@@ -289,6 +316,23 @@
       <a href="#" id="upsell-openai" target="_blank" rel="noopener">OpenAI</a> for DALL-E credits.
       <em>(Affiliate links — no extra cost to you.)</em>
     </div>
+
+    <canvas id="cardCanvas" width="1200" height="630"></canvas>
+
+    <div class="share-section" id="shareSection">
+      <h2>Share your enhanced prompt</h2>
+      <div class="actions">
+        <a class="action primary" id="shareBtn" target="_blank" rel="noopener">&#120143; Share on X</a>
+        <button class="action" id="copyLinkBtn">&#128279; Copy link</button>
+        <a class="action" id="downloadBtn" download="ai-prompt-enhanced.png">&#128190; Download card</a>
+      </div>
+      <div class="embed-section">
+        <div class="label">Embed this badge on your README / site</div>
+        <pre id="embedCode"></pre>
+        <button id="embedCopyBtn">Copy embed code</button>
+      </div>
+    </div>
+
   </div>
 
   <section class="content">
@@ -552,6 +596,8 @@ function render(variants, opts) {
   const outAvg = Math.round(variants.reduce(function(s,v){ return s + v.prompt.split(/\s+/).filter(Boolean).length; }, 0) / Math.max(1, variants.length));
   $('metaOut').textContent = outAvg;
   $('metaVariants').textContent = variants.length;
+  // Populate viral share section
+  updateShareSection(variants, opts);
 }
 
 async function go() {
@@ -596,6 +642,132 @@ $('clearBtn').addEventListener('click', function(){
   $('meta').style.display = 'none';
   clearStatus();
 });
+
+
+// ── Viral mechanics ──────────────────────────────────────────────
+
+function drawPromptCard(canvas, idea, modelLabel, prompt) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  // Background
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#0a0a0f'); bg.addColorStop(1, '#1a0f2e');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Top accent stripe
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#d946ef'); stripe.addColorStop(1, '#7c3aed');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+  // Glow circle
+  const glow = ctx.createRadialGradient(200, 0, 0, 200, 0, 400);
+  glow.addColorStop(0, 'rgba(217,70,239,0.15)'); glow.addColorStop(1, 'transparent');
+  ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+  // Title label
+  ctx.fillStyle = '#d946ef';
+  ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText('✨ AI PROMPT ENHANCER', 60, 70);
+  // Model badge
+  ctx.fillStyle = '#1d1d2a';
+  ctx.beginPath(); ctx.roundRect(60, 90, modelLabel.length * 13 + 28, 36, 8); ctx.fill();
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.roundRect(60, 90, modelLabel.length * 13 + 28, 36, 8); ctx.stroke();
+  ctx.fillStyle = '#f0abfc';
+  ctx.font = 'bold 18px -apple-system, sans-serif';
+  ctx.fillText('→ ' + modelLabel, 76, 114);
+  // Idea (input)
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '22px -apple-system, sans-serif';
+  const ideaShort = idea.length > 70 ? idea.slice(0, 70) + '…' : idea;
+  ctx.fillText('"' + ideaShort + '"', 60, 170);
+  // Enhanced prompt (wrapped)
+  ctx.fillStyle = '#fff';
+  ctx.font = '28px -apple-system, sans-serif';
+  const words = prompt.split(' ');
+  let line = ''; let y = 240; const maxW = W - 120; const lineH = 42;
+  for (const w of words) {
+    const test = line ? line + ' ' + w : w;
+    if (ctx.measureText(test).width > maxW && line) {
+      ctx.fillText(line, 60, y);
+      line = w; y += lineH;
+      if (y > H - 120) { ctx.fillText(line + ' …', 60, y); line = null; break; }
+    } else { line = test; }
+  }
+  if (line) ctx.fillText(line, 60, y);
+  // Bottom brand
+  ctx.fillStyle = 'rgba(160,160,184,0.6)';
+  ctx.font = '18px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/ai-prompt-enhancer', W - 60, H - 28);
+  ctx.textAlign = 'left';
+}
+
+function updateShareSection(variants, opts) {
+  if (!variants || !variants.length) return;
+  const first = variants[0];
+  const idea = $('basic').value.trim();
+  const modelLabel = opts.modelLabel || opts.model;
+
+  // Deep-link: encode idea in URL hash
+  const hashVal = encodeURIComponent(btoa(unescape(encodeURIComponent(
+    JSON.stringify({ idea, model: opts.model, ar: opts.ar })
+  ))));
+  const shareUrl = 'https://tinytools-smoky.vercel.app/ai-prompt-enhancer/#' + hashVal;
+
+  // Share button
+  const tweetText = '✨ Enhanced my AI prompt for ' + modelLabel + ' with TinyTools — try yours \u2192';
+  $('shareBtn').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweetText) + '&url=' + encodeURIComponent(shareUrl);
+
+  // Copy link button
+  $('copyLinkBtn').onclick = function() {
+    navigator.clipboard.writeText(shareUrl);
+    $('copyLinkBtn').textContent = '✓ Copied!';
+    setTimeout(function() { $('copyLinkBtn').innerHTML = '&#128279; Copy link'; }, 1500);
+  };
+
+  // Badge colour matches accent
+  const badgeLabel = modelLabel.replace(/[^A-Za-z0-9 ]/g, '').replace(/ /g, '_').slice(0, 20);
+  const promptSnippet = first.prompt.slice(0, 40).replace(/[^A-Za-z0-9 .,]/g, '').replace(/ /g, '_');
+  const embedCode = '<a href="' + shareUrl + '" target="_blank">\n' +
+    '  <img src="https://img.shields.io/badge/AI_Prompt-Enhanced_for_' + encodeURIComponent(badgeLabel) + '-d946ef?style=for-the-badge&logo=sparkles" alt="AI Prompt Enhanced for ' + modelLabel + '">\n</a>';
+  $('embedCode').textContent = embedCode;
+  $('embedCopyBtn').onclick = function() {
+    navigator.clipboard.writeText(embedCode);
+    $('embedCopyBtn').textContent = '✓ Copied';
+    setTimeout(function() { $('embedCopyBtn').textContent = 'Copy embed code'; }, 1500);
+  };
+
+  // Canvas card
+  const canvas = $('cardCanvas');
+  drawPromptCard(canvas, idea, modelLabel, first.prompt);
+  $('downloadBtn').href = canvas.toDataURL('image/png');
+
+  // Show the section
+  $('shareSection').classList.add('show');
+  
+  // Update URL hash silently (deep-link support)
+  try { history.replaceState(null, '', '#' + hashVal); } catch(e) {}
+}
+
+// Auto-load from URL hash on page load
+(function() {
+  if (location.hash.length > 1) {
+    try {
+      const raw = decodeURIComponent(escape(atob(decodeURIComponent(location.hash.slice(1)))));
+      const parsed = JSON.parse(raw);
+      if (parsed.idea) {
+        $('basic').value = parsed.idea;
+        if (parsed.model) $('model').value = parsed.model;
+        if (parsed.ar) $('ar').value = parsed.ar;
+        setTimeout(go, 200);
+      }
+    } catch(e) {
+      // Legacy plain-text hash fallback
+      const plain = decodeURIComponent(location.hash.slice(1));
+      if (plain.length > 1) { $('basic').value = plain; setTimeout(go, 200); }
+    }
+  }
+})();
+
 </script>
 </body>
 </html>
+
