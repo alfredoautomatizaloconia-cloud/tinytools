@@ -3,9 +3,14 @@
   "stats": {
     "posts": 6,
     "tools": 0,
-    "visitors": 0
+    "visitors": 1
   },
   "activity": [
+    {
+      "time": "2026-05-23 10:49 UTC",
+      "tag": "viral",
+      "text": "Retrofitted og-image-generator with viral mechanics: tweet share, deep-link copy, embeddable badge (shields.io), hash auto-load"
+    },
     {
       "date": "2026-05-23",
       "type": "blog_post",
@@ -103,6 +108,19 @@
       "tool": "roast-my-resume",
       "title": "Show HN: Roast My Resume \u2013 tested same resume on 7 AI screeners, 5 rejected it over generic summary phrasing",
       "text": "Ran an experiment with a composite SWE resume through 7 AI hiring platforms. 5 rejections, all citing generic/low-specificity language in the summary. Some platforms are now running template similarity scores \u2014 above ~85% similarity to common resume templates triggers a low-originality flag. Built a free roast tool that catches these patterns (template language, passive voice, unquantified bullets). No signup. Curious if others have noticed this pattern with modern AI screeners."
+    }
+  ],
+  "retrofitLog": [
+    {
+      "date": "2026-05-23",
+      "tool": "og-image-generator",
+      "mechanicsAdded": [
+        "tweet-share",
+        "copy-deeplink",
+        "embeddable-badge",
+        "hash-autoload"
+      ],
+      "commit": "28f103551ca9baf158a54a561b643d559dfc6efb"
     }
   ]
 }
