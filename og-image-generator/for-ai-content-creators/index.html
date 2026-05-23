@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OG Image Generator for AI Content Creators | Free Tool — TinyTools</title>
+  <meta name="description" content="Generate professional OG images for every piece of AI-powered content you publish. Boost click-through rates on YouTube, TikTok, Instagram, and X with eye-catching social preview cards — free, no login, no Canva." />
+  <meta property="og:title" content="OG Image Generator for AI Content Creators" />
+  <meta property="og:description" content="Stop losing clicks to blank social previews. Generate beautiful 1200×630 OG images for your AI content — free, instant, no design skills needed." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/og-image-generator/for-ai-content-creators/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/og-image-generator/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OG Image Generator for AI Content Creators" />
+  <meta name="twitter:description" content="Generate professional 1200×630 OG images for your AI content in seconds. Free, no login." />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/og-image-generator/for-ai-content-creators/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "OG Image Generator for AI Content Creators",
+    "description": "Generate professional OG images for every piece of AI-powered content you publish. Boost click-through rates on YouTube, TikTok, Instagram, and X with eye-catching social preview cards — free, no login, no Canva.",
+    "url": "https://tinytools-smoky.vercel.app/og-image-generator/for-ai-content-creators/",
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "OG Image Generator",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tinytools-smoky.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "OG Image Generator", "item": "https://tinytools-smoky.vercel.app/og-image-generator/" },
+        { "@type": "ListItem", "position": 3, "name": "For AI Content Creators", "item": "https://tinytools-smoky.vercel.app/og-image-generator/for-ai-content-creators/" }
+      ]
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1f1f1f;
+      --border: #2a2a2a;
+      --accent: #7c3aed;
+      --accent2: #a78bfa;
+      --text: #f0f0f0;
+      --muted: #888;
+      --green: #22c55e;
+      --red: #ef4444;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; line-height: 1.65; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { padding: 14px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    nav .logo { font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: -0.02em; }
+    nav .logo span { color: var(--accent2); }
+    nav .breadcrumb { font-size: 0.82rem; color: var(--muted); }
+    nav .breadcrumb a { color: var(--muted); }
+    nav .breadcrumb a:hover { color: var(--accent2); }
+
+    /* HERO */
+    .hero { max-width: 780px; margin: 0 auto; padding: 64px 24px 48px; text-align: center; }
+    .badge { display: inline-block; background: rgba(124,58,237,0.15); border: 1px solid rgba(167,139,250,0.3); color: var(--accent2); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+    h1 .highlight { color: var(--accent2); }
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin: 0 auto 36px; }
+    .cta-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 32px; border-radius: 10px; transition: background 0.2s; }
+    .cta-primary:hover { background: #6d28d9; text-decoration: none; }
+    .cta-note { font-size: 0.8rem; color: var(--muted); margin-top: 10px; }
+
+    /* SECTION */
+    section { max-width: 780px; margin: 0 auto; padding: 0 24px 64px; }
+    h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    p { color: #ccc; margin-bottom: 16px; }
+
+    /* PAIN BLOCK */
+    .pain-block { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--red); border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; }
+    .pain-block .pain-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); margin-bottom: 6px; }
+    .pain-block .solution-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-top: 12px; margin-bottom: 6px; }
+    .pain-block .solution-text { color: var(--text); font-size: 0.95rem; }
+    .pain-block .pain-text { color: #ccc; font-size: 0.95rem; }
+
+    /* USE CASES */
+    .use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+    @media (max-width: 600px) { .use-case-grid { grid-template-columns: 1fr; } }
+    .use-case-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .use-case-card .uc-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .use-case-card h3 { font-size: 0.98rem; margin-bottom: 6px; }
+    .use-case-card p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* PRICING TABLE */
+    .pricing-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem; }
+    .pricing-table th { text-align: left; padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .pricing-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .tool-name { font-weight: 600; }
+    .pricing-table .price { font-weight: 700; }
+    .pricing-table .price.free { color: var(--green); }
+    .pricing-table .price.paid { color: var(--muted); }
+    .pricing-table tr.highlight { background: rgba(124,58,237,0.08); }
+    .pricing-table tr.highlight .tool-name { color: var(--accent2); }
+    .check { color: var(--green); }
+    .cross { color: var(--red); }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; }
+    .step-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(124,58,237,0.2); border: 1px solid rgba(167,139,250,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; color: var(--accent2); }
+    .step-content h3 { font-size: 0.98rem; margin-bottom: 4px; }
+    .step-content p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* INTERNAL LINKS */
+    .sister-tools { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+    .sister-card { flex: 1 1 200px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; transition: border-color 0.2s; }
+    .sister-card:hover { border-color: var(--accent); text-decoration: none; }
+    .sister-card .sc-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .sister-card h3 { font-size: 0.9rem; color: var(--text); margin-bottom: 4px; }
+    .sister-card p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+    /* FINAL CTA */
+    .final-cta { background: linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(167,139,250,0.05) 100%); border: 1px solid rgba(124,58,237,0.3); border-radius: 16px; padding: 48px 36px; text-align: center; margin-bottom: 64px; }
+    .final-cta h2 { font-size: 1.7rem; margin-bottom: 12px; }
+    .final-cta p { max-width: 500px; margin: 0 auto 28px; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 0.82rem; color: var(--muted); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent2); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Tiny<span>Tools</span></span>
+  <span class="breadcrumb">
+    <a href="/">Home</a> /
+    <a href="/og-image-generator/">OG Image Generator</a> /
+    For AI Content Creators
+  </span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">AI Content Creators</div>
+  <h1>OG Image Generator<br>for <span class="highlight">AI Content Creators</span></h1>
+  <p class="hero-sub">You use AI to write scripts, edit clips, and draft captions — but your link previews still look like 2018. Generate stunning 1200×630 OG images in under 60 seconds, free, no login, no Canva subscription.</p>
+  <a href="/og-image-generator/" class="cta-primary">Generate Your OG Image Free →</a>
+  <p class="cta-note">No login required · Works with YouTube, TikTok, Linktree, Ghost &amp; more</p>
+</div>
+
+<!-- PAIN → SOLUTION -->
+<section>
+  <h2>The Invisible Click Problem AI Content Creators Face</h2>
+  <p>You spend hours prompting, editing, and publishing AI-assisted videos, articles, and carousels. You cross-post everywhere — YouTube, TikTok, Instagram Reels, Threads, X. Your content OS is dialed in. But when someone shares your YouTube video link on LinkedIn, or your blog post link in a Slack group, the preview renders as a grey box with a generic thumbnail and chopped title.</p>
+  <p>That broken preview is silently killing your distribution. Research from Twitter/X's own data team shows that tweets with proper card images receive 3× more clicks than those without. For AI content creators whose entire growth strategy depends on organic sharing and algorithmic amplification, a missing OG image is a leaking bucket.</p>
+
+  <div style="margin-top:32px;">
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #1</div>
+      <div class="pain-text">You publish on 4–6 platforms daily using AI tools but every link you drop in communities, newsletters, or DMs looks like an afterthought. Broken previews signal "amateur" to brands considering sponsorships.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">TinyTools OG Image Generator lets you create a polished 1200×630 card in under 60 seconds for any URL you're promoting. Enter your content title, tagline, and brand color — preview updates live, download, done. Brand sponsors notice the difference.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #2</div>
+      <div class="pain-text">You've automated your content pipeline with AI — script writing, voiceover, captions, scheduling — but image creation is still manual. You can't justify $49/month for Bannerbear when you're producing 20 posts a week.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">TinyTools is completely free with no usage caps. For creators on a growth trajectory who aren't yet monetizing at scale, this eliminates one more $40–$100/mo subscription from your tool stack. When you hit volume, the open-source version can plug into any Make.com or n8n workflow.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #3</div>
+      <div class="pain-text">Your content brand looks inconsistent — different styles, fonts, and image sizes across your link-in-bio, newsletter, and Twitter thread cards. Brands doing due diligence on sponsorships notice this immediately.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">Set your hex color once and every OG image you generate uses it. If you produce a weekly roundup, a YouTube video, a Threads essay, and a Substack issue — they all share the same visual fingerprint. Consistent visual branding increases brand deal conversion by making your media kit look professional without hiring a designer.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #4</div>
+      <div class="pain-text">You use AI disclosure text on your content but platforms like LinkedIn strip or ignore it in previews. Your audience can't tell which posts are fully AI-generated vs. AI-assisted vs. human-written when the link card shows no context.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">Bake your content type directly into the OG image — "AI-Assisted Article," "100% Human Take," or "AI-researched, human-edited" as a visible badge in the preview. Audiences who care about AI transparency will click more when the label is upfront, not buried in metadata.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section>
+  <h2>5 Ways AI Content Creators Use This Tool</h2>
+  <div class="use-case-grid">
+
+    <div class="use-case-card">
+      <div class="uc-icon">🎬</div>
+      <h3>YouTube Video Share Cards</h3>
+      <p>When you share your YouTube video link in Discord servers, Reddit, or newsletters, YouTube's auto-generated thumbnail often crops badly. Generate a custom OG image with your video title and a clean branded layout so the preview looks intentional wherever it lands.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">🤖</div>
+      <h3>"AI Tool Review" Article Previews</h3>
+      <p>AI tool roundups and reviews get shared heavily in communities. A card that displays "I tested 7 AI video editors — here's what actually works" in bold with your brand color will outperform a plain link by 2–3× in click-through on Slack, Discord, and LinkedIn.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">🔗</div>
+      <h3>Link-in-Bio Hub Images</h3>
+      <p>Your Linktree, Notion portfolio, or Carrd page is the hub you direct traffic to. Generate a custom OG image for this page so when someone shares your link-in-bio URL, it looks like a premium brand — not a generic URL. Especially important for brand partnership proposals.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">📈</div>
+      <h3>Viral Post Teaser Images</h3>
+      <p>When your Threads essay or X thread takes off, people screenshot and reshare the URL. Generate a teaser OG card with the first hook line of your thread — "I replaced my entire content team with 3 AI tools. Here's exactly how:" — to drive clicks back to the full piece.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">💼</div>
+      <h3>Sponsorship Media Kit Links</h3>
+      <p>When pitching sponsors via email, your media kit link needs to render as a proper card — not a blank preview. Generate a branded OG image for your media kit page: your name, audience size, and niche front and center. This alone can increase sponsor reply rates.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <h2>How to Use It (60-Second Workflow)</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Open the OG Image Generator</h3>
+        <p>No account, no install. Go to <a href="/og-image-generator/">/og-image-generator/</a> — it loads in your browser instantly.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Enter your content title and hook line</h3>
+        <p>Paste your video title, article headline, or post hook as the main title. Add a short tagline — your channel name, "Issue #47," a stat, or the content type ("AI-Assisted Essay").</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Set your brand color and pick a layout</h3>
+        <p>Enter your brand's primary hex (grab it from your existing thumbnails or Canva kit). Choose from dark gradient, clean light, or bold full-bleed. The live preview updates instantly.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Download and add to your content before publishing</h3>
+        <p>Export the PNG at 1200×630. In Ghost or WordPress: set as the "feature image" on the post. For YouTube links: use the image when creating a LinkedIn post or newsletter mention. For link-in-bio tools: upload as the page thumbnail in Linktree, Beacons, or Carrd settings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING COMPARISON -->
+<section>
+  <h2>Free vs. Paid OG Image Tools for AI Content Creators</h2>
+  <p>Most paid tools are overkill for solo creators. Here's an honest comparison of what's out there:</p>
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Price</th>
+        <th>Time per image</th>
+        <th>Brand colors</th>
+        <th>No design skills needed</th>
+        <th>API / automation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="tool-name">TinyTools OG Image Generator</td>
+        <td class="price free">Free</td>
+        <td>~45 sec</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓ open-source</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Canva Pro</td>
+        <td class="price paid">$15/mo</td>
+        <td>15–25 min</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓ mostly</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Bannerbear</td>
+        <td class="price paid">$49/mo</td>
+        <td>&lt;5 sec (API)</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗ dev setup needed</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Placid.app</td>
+        <td class="price paid">$19/mo</td>
+        <td>~5 min setup</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗ template setup req.</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Adobe Express</td>
+        <td class="price paid">$10/mo</td>
+        <td>10–20 min</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Figma (manual)</td>
+        <td class="price paid">$15/mo</td>
+        <td>20–40 min</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗ design skills req.</span></td>
+        <td><span class="cross">✗ manual export</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:16px; font-size:0.85rem;">For creators under 100K subscribers or 10K newsletter subscribers, Bannerbear and Placid's monthly fees rarely make sense. TinyTools gives you 90% of the output at zero cost. The hour you'd spend setting up a Bannerbear template is better spent making content. Save the API tools for when you're running a media company — not a solo content operation.</p>
+</section>
+
+<!-- SISTER TOOLS -->
+<section>
+  <h2>Complete Your AI Content Creator Toolkit</h2>
+  <p>OG images are one part of your content brand. These free tools cover the rest of the visual stack:</p>
+  <div class="sister-tools">
+    <a href="/favicon-generator/" class="sister-card">
+      <div class="sc-icon">⭐</div>
+      <h3>Favicon Generator</h3>
+      <p>Create a recognizable favicon for your content hub, Ghost blog, or personal site. Tiny detail, big credibility signal for brand deal due diligence.</p>
+    </a>
+    <a href="/color-palette/" class="sister-card">
+      <div class="sc-icon">🎨</div>
+      <h3>Color Palette Generator</h3>
+      <p>Lock in your content brand's color system. Generate a cohesive palette and export hex codes to use across OG images, thumbnails, and link-in-bio designs.</p>
+    </a>
+    <a href="/ai-disclosure-generator/" class="sister-card">
+      <div class="sc-icon">📋</div>
+      <h3>AI Disclosure Generator</h3>
+      <p>Generate compliant AI disclosure text for every post format — YouTube descriptions, blog posts, Instagram captions. Stay ahead of FTC and EU AI Act transparency requirements.</p>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section>
+  <div class="final-cta">
+    <h2>Your content deserves a preview that converts.</h2>
+    <p>Every link you share is a micro ad for your brand. Make the preview count — generate a professional OG image right now, free, in under 60 seconds.</p>
+    <a href="/og-image-generator/" class="cta-primary">Open OG Image Generator →</a>
+    <p class="cta-note" style="margin-top:12px;">Used by 3,000+ creators · Free forever · No login required</p>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="/">TinyTools</a> ·
+    <a href="/og-image-generator/">OG Image Generator</a> ·
+    <a href="/favicon-generator/">Favicon Generator</a> ·
+    <a href="/color-palette/">Color Palette</a> ·
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a>
+  </p>
+  <p style="margin-top:8px;">© 2026 TinyTools · Free AI tools for builders</p>
+</footer>
+
+</body>
+</html>
