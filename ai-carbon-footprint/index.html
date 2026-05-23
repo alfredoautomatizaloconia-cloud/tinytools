@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your AI Carbon Footprint — How Much CO₂ Does Your AI Habit Cost the Planet?</title>
+<meta name="description" content="Calculate the real CO₂ footprint of your monthly AI usage — ChatGPT, Claude, image generators, coding assistants. Get your planetary impact score + shareable card.">
+<meta name="keywords" content="ai carbon footprint, chatgpt emissions, ai environmental impact, llm co2 calculator, ai electricity usage, claude carbon footprint, ai sustainability">
+<meta property="og:title" content="Your AI Carbon Footprint — How Much CO₂ Are You Burning?">
+<meta property="og:description" content="Enter your AI usage. Get the brutal truth about your monthly CO₂ output. Shareable card included.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/ai-carbon-footprint/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-carbon-footprint/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Carbon Footprint Calculator",
+  "url": "https://tinytools-smoky.vercel.app/ai-carbon-footprint/",
+  "description": "Calculate the CO2 footprint of your monthly AI usage across ChatGPT, Claude, image generators, and coding assistants.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0f0a; --bg-card: #0f1a0f; --bg-elevated: #162116;
+    --border: #1e3520; --text: #f0faf0; --text-dim: #8ab08a;
+    --accent: #22c55e; --accent-glow: #22c55e30;
+    --red: #ef4444; --green: #22c55e; --yellow: #f59e0b; --orange: #f97316;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #16a34a20 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 5vw, 52px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #86efac 60%, #22c55e 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 560px; margin: 0 auto; }
+
+  .form-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; max-width: 680px; margin: 32px auto 0;
+  }
+  .form-title { font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--text); }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 13px; color: var(--text-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  .field-icon { font-size: 18px; margin-right: 6px; }
+  .field input[type="number"] {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 14px; color: var(--text); font-size: 16px; font-family: inherit; outline: none; width: 100%;
+    transition: border-color 0.2s;
+  }
+  .field input[type="number"]:focus { border-color: var(--accent); }
+  .field .hint { font-size: 11px; color: var(--text-dim); opacity: 0.7; }
+  .calc-btn {
+    width: 100%; margin-top: 20px; padding: 16px; font-size: 16px; font-weight: 700;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border: none; border-radius: 12px; color: white; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3); transition: transform 0.15s;
+  }
+  .calc-btn:hover { transform: translateY(-1px); }
+
+  /* Result card */
+  .result-card {
+    margin: 32px auto 0; max-width: 700px;
+    background: linear-gradient(135deg, #0f1a0f 0%, #0a0f0a 100%);
+    border: 2px solid var(--accent); border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(34, 197, 94, 0.15);
+    display: none;
+  }
+  .result-card.show { display: block; }
+  .result-header {
+    padding: 24px 24px 20px; background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    display: flex; align-items: center; gap: 16px;
+  }
+  .result-emoji { font-size: 48px; }
+  .result-title-area { flex: 1; }
+  .result-title-area .grade-label { font-size: 13px; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.08em; }
+  .result-title-area .grade { font-size: 40px; font-weight: 900; color: white; line-height: 1; }
+  .result-title-area .grade-name { font-size: 17px; font-weight: 700; color: rgba(255,255,255,0.95); }
+  .result-co2 { text-align: right; }
+  .result-co2 .co2-value { font-size: 32px; font-weight: 900; color: white; }
+  .result-co2 .co2-label { font-size: 13px; color: rgba(255,255,255,0.8); }
+
+  .result-body { padding: 24px; }
+  .result-verdict {
+    font-size: 16px; line-height: 1.55; color: #86efac; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid var(--accent); border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--bg-elevated); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+  .stat-value { font-size: 20px; font-weight: 800; color: var(--text); }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .badge-pill {
+    padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 13px; color: var(--text);
+  }
+  .badge-pill.warn { border-color: var(--orange); color: #fdba74; }
+  .badge-pill.ok { border-color: var(--green); color: #86efac; }
+  .badge-pill.bad { border-color: var(--red); color: #fca5a5; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s; font-family: inherit;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border-color: #1d9bf0; color: white; }
+  .action.primary:hover { background: #1a8cd8; }
+  .action.dl { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 800; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #86efac; overflow-x: auto; white-space: pre-wrap; }
+  .embed-copy-btn { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: #000; font-size: 11px; cursor: pointer; font-weight: 700; }
+
+  canvas#shareCanvas { display: none; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; font-weight: 800; margin: 28px 0 10px; color: var(--text); }
+  .content h3 { font-size: 17px; font-weight: 700; margin: 20px 0 8px; color: var(--text); }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+  .content ul { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; padding-left: 20px; }
+  .content ul li { margin-bottom: 6px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🌍 Free · No signup · Instant results</div>
+    <h1>Your AI Carbon Footprint 🌍🔥</h1>
+    <p class="subtitle">Enter your monthly AI usage. Get the brutally honest CO₂ cost of your habit — and a shareable card to make your friends feel guilty too.</p>
+  </header>
+
+  <div class="form-card">
+    <div class="form-title">📊 How much AI do you actually use per month?</div>
+    <div class="form-grid">
+      <div class="field">
+        <label><span class="field-icon">🤖</span>ChatGPT queries/day</label>
+        <input type="number" id="chatgpt" placeholder="e.g. 20" min="0" max="9999" value="">
+        <span class="hint">Include GPT-4o, GPT-4, all tiers</span>
+      </div>
+      <div class="field">
+        <label><span class="field-icon">🧠</span>Claude queries/day</label>
+        <input type="number" id="claude" placeholder="e.g. 15" min="0" max="9999" value="">
+        <span class="hint">Opus, Sonnet, Haiku</span>
+      </div>
+      <div class="field">
+        <label><span class="field-icon">🎨</span>AI image generations/day</label>
+        <input type="number" id="images" placeholder="e.g. 5" min="0" max="9999" value="">
+        <span class="hint">DALL-E, Midjourney, Stable Diffusion</span>
+      </div>
+      <div class="field">
+        <label><span class="field-icon">💻</span>AI code completions/day</label>
+        <input type="number" id="code" placeholder="e.g. 50" min="0" max="9999" value="">
+        <span class="hint">GitHub Copilot, Cursor, Codeium</span>
+      </div>
+      <div class="field">
+        <label><span class="field-icon">🎙️</span>Voice AI minutes/day</label>
+        <input type="number" id="voice" placeholder="e.g. 10" min="0" max="9999" value="">
+        <span class="hint">ChatGPT Voice, Siri AI, Alexa</span>
+      </div>
+      <div class="field">
+        <label><span class="field-icon">🔍</span>AI search queries/day</label>
+        <input type="number" id="search" placeholder="e.g. 30" min="0" max="9999" value="">
+        <span class="hint">Perplexity, Copilot Search, You.com</span>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">🌍 Calculate My AI Carbon Footprint</button>
+  </div>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <div class="result-emoji" id="resultEmoji">🌿</div>
+      <div class="result-title-area">
+        <div class="grade-label">Your Climate Grade</div>
+        <div class="grade" id="gradeDisplay">B+</div>
+        <div class="grade-name" id="gradeName">Conscious User</div>
+      </div>
+      <div class="result-co2">
+        <div class="co2-value" id="co2Display">0.0</div>
+        <div class="co2-label">kg CO₂/month</div>
+      </div>
+    </div>
+    <div class="result-body">
+      <div class="result-verdict" id="verdictText"></div>
+
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-value" id="statKwh">0</div>
+          <div class="stat-label">kWh/month</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="statMiles">0</div>
+          <div class="stat-label">Miles driven equiv.</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="statPhones">0</div>
+          <div class="stat-label">Phone charges</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="statTrees">0</div>
+          <div class="stat-label">Trees to offset</div>
+        </div>
+      </div>
+
+      <div class="badges" id="achievementBadges"></div>
+
+      <div class="actions">
+        <button class="action primary" id="shareXBtn" onclick="shareToX()">𝕏 Share My Footprint</button>
+        <button class="action dl" onclick="downloadCard()">⬇️ Download Card</button>
+        <button class="action" onclick="copyLink()">🔗 Copy Link</button>
+      </div>
+
+      <div class="embed-section">
+        <div class="embed-label">📌 Embed badge in your README / portfolio</div>
+        <pre id="embedCode"></pre>
+        <button class="embed-copy-btn" onclick="copyEmbed()">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="shareCanvas" width="1200" height="630"></canvas>
+
+  <!-- SEO Content -->
+  <div class="content">
+    <h2>How Much CO₂ Does AI Actually Use?</h2>
+    <p>Most people think AI is just software — weightless, effortless, clean. They're wrong. Training and running large language models consumes enormous amounts of electricity, most of which still comes from fossil fuels. Your daily ChatGPT habit, Midjourney sessions, and Copilot suggestions all have a measurable carbon cost.</p>
+
+    <h3>The Numbers Behind the Calculator</h3>
+    <p>Our estimates are based on published research and energy audits from AI labs:</p>
+    <ul>
+      <li><strong>GPT-4 query:</strong> ~0.001–0.01 kWh per query (10–100× more than Google search)</li>
+      <li><strong>AI image generation:</strong> ~0.002–0.006 kWh per image (Stable Diffusion) to 0.015+ kWh (Midjourney, DALL-E 3)</li>
+      <li><strong>Code completion:</strong> ~0.0001–0.0005 kWh per suggestion (smaller models, high volume)</li>
+      <li><strong>Voice AI per minute:</strong> ~0.0003 kWh (inference only, not training)</li>
+      <li><strong>AI-powered search:</strong> ~0.003 kWh per query (vs 0.0003 kWh for traditional search)</li>
+    </ul>
+    <p>We apply the global average electricity carbon intensity of ~0.45 kg CO₂ per kWh (IEA, 2024) to convert kWh to CO₂ equivalents.</p>
+
+    <h3>Why This Matters More Than Your Lightbulbs</h3>
+    <p>A single GPT-4 query uses roughly 10× the energy of a Google search. Someone sending 100 AI queries per day generates roughly the same monthly footprint as leaving a 60W lightbulb on 24/7. At scale — billions of queries per day — AI data centers are a major and growing source of emissions. Microsoft, Google, and OpenAI have all disclosed growing energy and water usage tied to AI workloads.</p>
+
+    <h3>How to Reduce Your AI Carbon Footprint</h3>
+    <ul>
+      <li>Use smaller models when you don't need frontier intelligence (Claude Haiku vs Opus, GPT-3.5 vs GPT-4)</li>
+      <li>Batch requests instead of sending many short queries</li>
+      <li>Use AI-generated images sparingly — they're among the most energy-intensive operations</li>
+      <li>Choose providers committed to renewable energy (Anthropic, Google DeepMind have strong commitments)</li>
+      <li>Offset via verified carbon credits (Gold Standard, Verra)</li>
+    </ul>
+
+    <h3>Frequently Asked Questions</h3>
+    <h3>Is this calculator accurate?</h3>
+    <p>It's a best-estimate model based on publicly available research. Exact figures vary by model, data center location, and time of day. We use conservative mid-range estimates. Think of it as directionally accurate rather than precisely measured.</p>
+
+    <h3>What about AI training emissions?</h3>
+    <p>This calculator covers inference (running AI) only. Training a frontier model like GPT-4 reportedly used hundreds of GWh — a one-time cost spread across billions of queries. Including training amortization would slightly increase each query's footprint.</p>
+
+    <h3>Does it matter where the data center is?</h3>
+    <p>Yes, enormously. A server running on Norwegian hydropower has near-zero carbon intensity; one running on coal in parts of Asia has 10× the emissions. We use global averages, but your actual footprint depends on which region processes your request.</p>
+  </div>
+</div>
+
+<footer>
+  <p>Built by <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> · Free AI tools · <a href="https://tinytools-smoky.vercel.app/">Browse all tools →</a></p>
+</footer>
+
+<script>
+// Energy constants (kWh per unit)
+const ENERGY = {
+  chatgpt: 0.003,      // per query (GPT-4 class)
+  claude:  0.002,      // per query (similar class)
+  images:  0.006,      // per image generation
+  code:    0.00025,    // per code completion
+  voice:   0.0003,     // per minute
+  search:  0.003       // per AI search query
+};
+const DAYS_PER_MONTH = 30;
+const KG_CO2_PER_KWH = 0.45;
+const KG_CO2_PER_MILE = 0.000404 * 1.60934; // kg per km driven, converted
+const KWH_PER_PHONE_CHARGE = 0.015;
+const KG_CO2_ABSORBED_PER_TREE_PER_YEAR = 21.77 / 12; // per month
+
+const grades = [
+  { max: 0.5,   grade: 'A+', name: 'Climate Saint',    emoji: '🌿', color: '#16a34a' },
+  { max: 1.5,   grade: 'A',  name: 'Eco Warrior',      emoji: '🌱', color: '#22c55e' },
+  { max: 3,     grade: 'B+', name: 'Conscious User',   emoji: '♻️', color: '#4ade80' },
+  { max: 6,     grade: 'B',  name: 'Average Offender', emoji: '🌍', color: '#facc15' },
+  { max: 12,    grade: 'C',  name: 'Heavy Consumer',   emoji: '⚡', color: '#f97316' },
+  { max: 25,    grade: 'D',  name: 'Carbon Greedy',    emoji: '🏭', color: '#ef4444' },
+  { max: Infinity, grade: 'F', name: 'Planet Destroyer', emoji: '💀', color: '#dc2626' }
+];
+
+const verdicts = {
+  'A+': "Practically carbon-neutral. Your AI usage is so light, a single birthday candle might have a bigger footprint. You're either very disciplined or don't actually use AI that much. Either way, the planet approves.",
+  'A':  "Solid eco credentials. You're using AI thoughtfully — not the problem, maybe even part of the solution. Your footprint is below the average AI user by a comfortable margin.",
+  'B+': "Respectable. You're in the sweet spot — using AI meaningfully without going overboard. Your monthly footprint is roughly equivalent to streaming a few hours of HD video. Not alarming.",
+  'B':  "You're average, and average is becoming a problem. Your AI habit generates roughly the same CO₂ as driving 30–50 miles per month. It adds up. Consider batching queries or using lighter models.",
+  'C':  "Okay, we need to talk. Your AI usage is starting to leave a real mark. That's equivalent to dozens of miles driven — just from queries. You might want to think twice before hitting enter next time.",
+  'D':  "You're powering a small server farm with your AI addiction. Your monthly footprint is the equivalent of a short domestic flight. The data centers processing your requests are not enjoying this.",
+  'F':  "Congratulations, you have discovered how to personally threaten the Paris Agreement with your query volume. You are the coal plant of AI users. Somewhere, a polar bear is looking directly at you."
+};
+
+function getAchievements(vals, kwh, co2) {
+  const badges = [];
+  if (vals.images > 50) badges.push({ text: '🎨 Image Addict', cls: 'bad' });
+  if (vals.chatgpt > 100) badges.push({ text: '🤖 ChatGPT Dependent', cls: 'bad' });
+  if (vals.code > 200) badges.push({ text: '💻 Copilot Obsessed', cls: 'warn' });
+  if (vals.voice > 30) badges.push({ text: '🎙️ Voice AI Fan', cls: 'warn' });
+  if (vals.search > 100) badges.push({ text: '🔍 Perplexity Addict', cls: 'warn' });
+  if (co2 > 20) badges.push({ text: '🏭 1-Person Data Center', cls: 'bad' });
+  if (co2 < 1) badges.push({ text: '🌿 Practically Green', cls: 'ok' });
+  if (vals.chatgpt === 0 && vals.claude === 0) badges.push({ text: '🧘 AI Minimalist', cls: 'ok' });
+  const total = Object.values(vals).reduce((a, b) => a + b, 0);
+  if (total > 500) badges.push({ text: '⚡ Power User', cls: 'bad' });
+  if (total < 10) badges.push({ text: '🐌 Casual Dabbler', cls: 'ok' });
+  if (vals.images > vals.chatgpt && vals.images > vals.claude) badges.push({ text: '🖼️ Visual AI Primary', cls: 'warn' });
+  if (badges.length === 0) badges.push({ text: '📊 Balanced User', cls: 'ok' });
+  return badges;
+}
+
+function fmt(n) {
+  if (n >= 1000) return (n/1000).toFixed(1) + 'k';
+  if (n >= 10) return Math.round(n).toString();
+  return n.toFixed(1);
+}
+
+let lastResult = null;
+
+function calculate() {
+  const vals = {
+    chatgpt: parseFloat(document.getElementById('chatgpt').value) || 0,
+    claude:  parseFloat(document.getElementById('claude').value)  || 0,
+    images:  parseFloat(document.getElementById('images').value)  || 0,
+    code:    parseFloat(document.getElementById('code').value)    || 0,
+    voice:   parseFloat(document.getElementById('voice').value)   || 0,
+    search:  parseFloat(document.getElementById('search').value)  || 0,
+  };
+
+  let kwh = 0;
+  for (const [k, v] of Object.entries(vals)) {
+    kwh += v * ENERGY[k] * DAYS_PER_MONTH;
+  }
+  const co2 = kwh * KG_CO2_PER_KWH;
+  const miles = co2 / (KG_CO2_PER_MILE * 1.60934);
+  const phones = kwh / KWH_PER_PHONE_CHARGE;
+  const trees = co2 / KG_CO2_ABSORBED_PER_TREE_PER_YEAR;
+
+  const gradeObj = grades.find(g => co2 <= g.max);
+
+  document.getElementById('gradeDisplay').textContent = gradeObj.grade;
+  document.getElementById('gradeName').textContent = gradeObj.name;
+  document.getElementById('resultEmoji').textContent = gradeObj.emoji;
+  document.getElementById('co2Display').textContent = co2.toFixed(1);
+  document.getElementById('statKwh').textContent = fmt(kwh);
+  document.getElementById('statMiles').textContent = fmt(miles);
+  document.getElementById('statPhones').textContent = fmt(phones);
+  document.getElementById('statTrees').textContent = Math.ceil(trees);
+  document.getElementById('verdictText').textContent = verdicts[gradeObj.grade];
+
+  const badgeContainer = document.getElementById('achievementBadges');
+  badgeContainer.innerHTML = '';
+  getAchievements(vals, kwh, co2).forEach(b => {
+    const el = document.createElement('span');
+    el.className = 'badge-pill ' + b.cls;
+    el.textContent = b.text;
+    badgeContainer.appendChild(el);
+  });
+
+  const header = document.querySelector('.result-header');
+  header.style.background = `linear-gradient(135deg, ${gradeObj.color} 0%, ${gradeObj.color}aa 100%)`;
+
+  // Embed badge
+  const badgeUrl = `https://img.shields.io/badge/AI_Carbon-${encodeURIComponent(co2.toFixed(1)+'kg CO₂')}-${gradeObj.color.replace('#','')}?style=flat-square&logo=leaflet`;
+  document.getElementById('embedCode').textContent = `<a href="https://tinytools-smoky.vercel.app/ai-carbon-footprint/#${encodeURIComponent(JSON.stringify(vals))}"><img src="${badgeUrl}" alt="My AI Carbon Footprint: ${co2.toFixed(1)}kg CO₂/month"></a>`;
+
+  lastResult = { vals, kwh, co2, miles, phones, trees, gradeObj };
+
+  document.getElementById('resultCard').classList.add('show');
+  document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  // Update URL hash
+  window.location.hash = encodeURIComponent(JSON.stringify(vals));
+}
+
+function shareToX() {
+  if (!lastResult) return;
+  const { co2, gradeObj } = lastResult;
+  const text = `My AI Carbon Footprint is ${co2.toFixed(1)}kg CO₂/month — Grade ${gradeObj.grade} (${gradeObj.name}) 🌍\n\nWhat's yours? Calculate your AI impact:\n${window.location.href}`;
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const btn = document.querySelector('.action:not(.primary):not(.dl)');
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy Link', 2000);
+  });
+}
+
+function copyEmbed() {
+  const code = document.getElementById('embedCode').textContent;
+  navigator.clipboard.writeText(code).then(() => {
+    const btn = document.querySelector('.embed-copy-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy embed code', 2000);
+  });
+}
+
+function downloadCard() {
+  if (!lastResult) return;
+  const { co2, kwh, miles, phones, trees, gradeObj, vals } = lastResult;
+  const canvas = document.getElementById('shareCanvas');
+  canvas.style.display = 'block';
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+
+  // Background
+  ctx.fillStyle = '#0a0f0a';
+  ctx.fillRect(0, 0, W, H);
+
+  // Gradient overlay
+  const grad = ctx.createRadialGradient(300, 0, 0, 300, 0, 600);
+  grad.addColorStop(0, gradeObj.color + '33');
+  grad.addColorStop(1, 'transparent');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Left panel: grade
+  ctx.fillStyle = gradeObj.color;
+  ctx.fillRect(0, 0, 360, H);
+
+  ctx.fillStyle = 'rgba(0,0,0,0.3)';
+  ctx.fillRect(0, 0, 360, H);
+
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 130px -apple-system, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(gradeObj.grade, 180, 220);
+
+  ctx.font = '32px -apple-system, sans-serif';
+  ctx.fillText(gradeObj.emoji + ' ' + gradeObj.name, 180, 275);
+
+  ctx.font = 'bold 22px -apple-system, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.8)';
+  ctx.fillText('CLIMATE GRADE', 180, 180);
+
+  // CO2 big number
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 28px -apple-system, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.75)';
+  ctx.fillText('kg CO₂ / month', 180, 340);
+
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 62px -apple-system, sans-serif';
+  ctx.fillText(co2.toFixed(1), 180, 420);
+
+  // Right panel
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#f0faf0';
+  ctx.font = 'bold 52px -apple-system, sans-serif';
+  ctx.fillText('My AI Carbon Footprint', 400, 90);
+
+  ctx.fillStyle = gradeObj.color;
+  ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText('tinytools-smoky.vercel.app/ai-carbon-footprint/', 400, 135);
+
+  // Stats boxes
+  const stats = [
+    [fmt(kwh) + ' kWh', 'Energy/month'],
+    [fmt(miles) + ' mi', 'Driving equiv.'],
+    [fmt(phones), 'Phone charges'],
+    [Math.ceil(trees) + ' trees', 'To offset']
+  ];
+  stats.forEach(([val, label], i) => {
+    const x = 400 + (i % 2) * 370;
+    const y = 190 + Math.floor(i / 2) * 130;
+    ctx.fillStyle = '#162116';
+    roundRect(ctx, x, y, 340, 110, 14);
+    ctx.fill();
+    ctx.strokeStyle = gradeObj.color + '80';
+    ctx.lineWidth = 2;
+    roundRect(ctx, x, y, 340, 110, 14);
+    ctx.stroke();
+
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 36px -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(val, x + 170, y + 52);
+    ctx.fillStyle = '#8ab08a';
+    ctx.font = '18px -apple-system, sans-serif';
+    ctx.fillText(label, x + 170, y + 82);
+    ctx.textAlign = 'left';
+  });
+
+  // Verdict snippet
+  const verdict = verdicts[gradeObj.grade];
+  ctx.fillStyle = '#8ab08a';
+  ctx.font = 'italic 18px -apple-system, sans-serif';
+  const words = verdict.split(' ');
+  let line = '', y2 = 490, maxW = 760;
+  for (const w of words) {
+    const test = line + w + ' ';
+    if (ctx.measureText(test).width > maxW && line) {
+      ctx.fillText(line, 400, y2); y2 += 26; line = w + ' ';
+      if (y2 > 570) break;
+    } else line = test;
+  }
+  if (y2 <= 570) ctx.fillText(line, 400, y2);
+
+  // Footer
+  ctx.fillStyle = '#4ade80';
+  ctx.font = 'bold 20px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('TinyTools · Free AI tools', W - 30, H - 20);
+
+  canvas.style.display = 'block';
+  const link = document.createElement('a');
+  link.download = 'ai-carbon-footprint.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+  canvas.style.display = 'none';
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+// Load from hash
+window.addEventListener('load', () => {
+  if (window.location.hash) {
+    try {
+      const vals = JSON.parse(decodeURIComponent(window.location.hash.slice(1)));
+      ['chatgpt','claude','images','code','voice','search'].forEach(k => {
+        if (vals[k] !== undefined) document.getElementById(k).value = vals[k];
+      });
+      calculate();
+    } catch(e) {}
+  }
+});
+</script>
+</body>
+</html>
