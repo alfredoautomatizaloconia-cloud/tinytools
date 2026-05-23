@@ -160,3 +160,25 @@ Sitemap updated (priority 1.0 for both). Landing page features both tools with "
 - https://tinytools-smoky.vercel.app/ai-carbon-footprint/
 - https://tinytools-smoky.vercel.app/founder-personality/
 
+---
+
+## 2026-05-23 22:51 UTC — tinytools-viral-loop
+
+**Tool retrofitted:** `ai-bill-of-materials`
+
+**Viral mechanics added:**
+- Tweet share button (prefills system name, model/dataset counts, format)
+- Copy deep-link button (URL hash encodes system config)
+- Embeddable shields.io badge (model/dataset count)
+- PNG card download (1200×630 canvas, TinyTools branding)
+- Auto-load from URL hash (restores state from shared links)
+
+**Visitor count (root abacus):** 1
+
+**Tools remaining without viral mechanics:** 14
+(ai-watermark-adder, ai-image-upscaler, color-palette, favicon-generator,
+c2pa-manifest-generator, background-remover, chat-with-pdf, cover-letter-generator,
+domain-generator, mcp-server-inspector, pdf-to-markdown, resume-tailorer,
+seo-meta-generator, youtube-to-blog)
+
+**Commit:** https://github.com/alfredoautomatizaloconia-cloud/tinytools/blob/main/ai-bill-of-materials/index.html
