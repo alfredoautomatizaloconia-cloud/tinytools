@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OG Image Generator for AI Art Creators | Free Tool — TinyTools</title>
+  <meta name="description" content="Generate professional 1200×630 OG images for your AI art galleries, Civitai models, and portfolio sites in seconds. Boost shares on X, Discord, and Reddit — free, no login." />
+  <meta property="og:title" content="OG Image Generator for AI Art Creators" />
+  <meta property="og:description" content="Your AI art deserves a click-worthy social preview. Generate beautiful 1200×630 OG images for galleries, model pages, and commissions — free, instant, no Canva." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/og-image-generator/for-ai-art-creators/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/og-image-generator/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OG Image Generator for AI Art Creators" />
+  <meta name="twitter:description" content="Generate beautiful 1200×630 OG images for your AI art galleries and model pages. Free, no login." />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/og-image-generator/for-ai-art-creators/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "OG Image Generator for AI Art Creators",
+    "description": "Generate professional 1200×630 OG images for your AI art galleries, Civitai models, and portfolio sites in seconds. Boost shares on X, Discord, and Reddit — free, no login.",
+    "url": "https://tinytools-smoky.vercel.app/og-image-generator/for-ai-art-creators/",
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "OG Image Generator",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tinytools-smoky.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "OG Image Generator", "item": "https://tinytools-smoky.vercel.app/og-image-generator/" },
+        { "@type": "ListItem", "position": 3, "name": "For AI Art Creators", "item": "https://tinytools-smoky.vercel.app/og-image-generator/for-ai-art-creators/" }
+      ]
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1f1f1f;
+      --border: #2a2a2a;
+      --accent: #7c3aed;
+      --accent2: #a78bfa;
+      --text: #f0f0f0;
+      --muted: #888;
+      --green: #22c55e;
+      --red: #ef4444;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; line-height: 1.65; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { padding: 14px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    nav .logo { font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: -0.02em; }
+    nav .logo span { color: var(--accent2); }
+    nav .breadcrumb { font-size: 0.82rem; color: var(--muted); }
+    nav .breadcrumb a { color: var(--muted); }
+    nav .breadcrumb a:hover { color: var(--accent2); }
+
+    /* HERO */
+    .hero { max-width: 780px; margin: 0 auto; padding: 64px 24px 48px; text-align: center; }
+    .badge { display: inline-block; background: rgba(124,58,237,0.15); border: 1px solid rgba(167,139,250,0.3); color: var(--accent2); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+    h1 .highlight { color: var(--accent2); }
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin: 0 auto 36px; }
+    .cta-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 32px; border-radius: 10px; transition: background 0.2s; }
+    .cta-primary:hover { background: #6d28d9; text-decoration: none; }
+    .cta-note { font-size: 0.8rem; color: var(--muted); margin-top: 10px; }
+
+    /* SECTION */
+    section { max-width: 780px; margin: 0 auto; padding: 0 24px 64px; }
+    h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    p { color: #ccc; margin-bottom: 16px; }
+
+    /* PAIN BLOCK */
+    .pain-block { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--red); border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; }
+    .pain-block .pain-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); margin-bottom: 6px; }
+    .pain-block .solution-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-top: 12px; margin-bottom: 6px; }
+    .pain-block .solution-text { color: var(--text); font-size: 0.95rem; }
+    .pain-block .pain-text { color: #ccc; font-size: 0.95rem; }
+
+    /* USE CASES */
+    .use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+    @media (max-width: 600px) { .use-case-grid { grid-template-columns: 1fr; } }
+    .use-case-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .use-case-card .uc-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .use-case-card h3 { font-size: 0.98rem; margin-bottom: 6px; }
+    .use-case-card p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* PRICING TABLE */
+    .pricing-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem; }
+    .pricing-table th { text-align: left; padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .pricing-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .tool-name { font-weight: 600; }
+    .pricing-table .price { font-weight: 700; }
+    .pricing-table .price.free { color: var(--green); }
+    .pricing-table .price.paid { color: var(--muted); }
+    .pricing-table tr.highlight { background: rgba(124,58,237,0.08); }
+    .pricing-table tr.highlight .tool-name { color: var(--accent2); }
+    .check { color: var(--green); }
+    .cross { color: var(--red); }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; }
+    .step-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(124,58,237,0.2); border: 1px solid rgba(167,139,250,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; color: var(--accent2); }
+    .step-content h3 { font-size: 0.98rem; margin-bottom: 4px; }
+    .step-content p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* INTERNAL LINKS */
+    .sister-tools { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+    .sister-card { flex: 1 1 200px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; transition: border-color 0.2s; }
+    .sister-card:hover { border-color: var(--accent); text-decoration: none; }
+    .sister-card .sc-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .sister-card h3 { font-size: 0.9rem; color: var(--text); margin-bottom: 4px; }
+    .sister-card p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+    /* FINAL CTA */
+    .final-cta { background: linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(167,139,250,0.05) 100%); border: 1px solid rgba(124,58,237,0.3); border-radius: 16px; padding: 48px 36px; text-align: center; margin-bottom: 64px; }
+    .final-cta h2 { font-size: 1.7rem; margin-bottom: 12px; }
+    .final-cta p { max-width: 500px; margin: 0 auto 28px; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 0.82rem; color: var(--muted); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent2); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Tiny<span>Tools</span></span>
+  <span class="breadcrumb">
+    <a href="/">Home</a> /
+    <a href="/og-image-generator/">OG Image Generator</a> /
+    For AI Art Creators
+  </span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">AI Art Creators</div>
+  <h1>OG Image Generator<br>for <span class="highlight">AI Art Creators</span></h1>
+  <p class="hero-sub">You spend hours crafting stunning AI artwork. Don't let your gallery links share as a blank grey box. Generate professional 1200×630 OG images in 60 seconds — free, no Canva, no subscription.</p>
+  <a href="/og-image-generator/" class="cta-primary">Generate Your OG Image Free →</a>
+  <p class="cta-note">No login required · Works with Civitai, ArtStation, Behance, personal portfolios &amp; more</p>
+</div>
+
+<!-- PAIN → SOLUTION -->
+<section>
+  <h2>The Invisible Gallery Problem Every AI Art Creator Faces</h2>
+  <p>You've trained a LoRA that took three days to tune. Your Civitai model page is live. Your portfolio site showcases 200 pieces generated with Midjourney, Flux, or Stable Diffusion. Then you share the link on X or in a Discord server — and it unfurls as a blank thumbnail, a generic site icon, or worse, a random image scraped from the middle of your page.</p>
+  <p>That broken preview is the first thing potential followers, collectors, and commission clients see. In a community where visual impact is everything, a grey box is the same as not showing up. The OG image — the 1200×630 banner that appears when any link is shared on social — is your gallery's single most-seen piece of art. Most AI creators never design it.</p>
+
+  <div style="margin-top:32px;">
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #1</div>
+      <div class="pain-text">Your Civitai model pages and portfolio links share as blank or auto-scraped thumbnails on X, Reddit, and Discord. You get half the clicks you should.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">TinyTools OG Image Generator creates a clean, branded 1200×630 banner for each gallery or model page in under 60 seconds. Enter the page title, a tagline, and your brand color — export and drop it into your page's og:image meta tag. Every share now shows a polished preview.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #2</div>
+      <div class="pain-text">You work in Midjourney, Flux, ComfyUI, or Automatic1111 all day — design tools like Canva or Figma feel like a completely different job. You skip the social preview because it's not worth context-switching.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">No design skill required. The tool produces a professional, dark-mode-ready gradient card with your title and tagline. The output matches the aesthetic of AI-native platforms — it won't look out of place next to Civitai or ArtStation's own UI. Three fields, 60 seconds, done.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #3</div>
+      <div class="pain-text">You release new model checkpoints, LoRAs, or artwork collections frequently. Creating a custom OG image for every release isn't feasible at that velocity.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">Set your brand color and naming convention once. Each new release takes 45 seconds to generate an OG card — fast enough to make it part of your standard release checklist alongside uploading preview images and writing the model card.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #4</div>
+      <div class="pain-text">Your commission inquiry page, Gumroad store, or Patreon landing page has low click-through from social posts because there's no compelling visual hook in the link preview.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">Generate a dedicated OG image for your commission or storefront page — not just your gallery. Include your handle, your style descriptor ("Cinematic SDXL Portraits · Open Commissions"), and your signature color. Treat it like a business card embedded in every link you share.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section>
+  <h2>5 Ways AI Art Creators Use This Tool</h2>
+  <div class="use-case-grid">
+
+    <div class="use-case-card">
+      <div class="uc-icon">🎨</div>
+      <h3>Civitai Model & LoRA Pages</h3>
+      <p>When you share your Civitai model link on X or Reddit, the OG image is what stops people mid-scroll. Generate a branded card with your model name, version, and base model — e.g. "DreamyRealism v3 · SDXL · Realistic Portraits" — so every share acts as a mini ad for your model.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">🖼️</div>
+      <h3>Portfolio & Gallery Site Headers</h3>
+      <p>Your portfolio home page needs a single OG image that communicates your style instantly. Generate a card with your artist name, a one-line style description ("AI Concept Art · Midjourney · Open for Commissions"), and your signature color. It appears every time someone shares your site link.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">💎</div>
+      <h3>Commission & Pricing Pages</h3>
+      <p>Commission pages that share with a compelling preview convert 2–3× better than ones that show a blank box. Create an OG image that clearly says "Commissions Open" with your rate tier and turnaround time. Pin the post with the preview image on X for passive inbound.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">📦</div>
+      <h3>Style Pack & Prompt Bundle Releases</h3>
+      <p>Selling a prompt pack, style guide, or resource bundle on Gumroad, Payhip, or Ko-fi? The product page's OG image is the first thing buyers see when someone shares your link. Generate a branded product card — product name, key benefit, and your visual identity — before you launch.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">🚀</div>
+      <h3>Workflow & Tutorial Post Previews</h3>
+      <p>AI art tutorials and ComfyUI workflow breakdowns get far more traction on X and LinkedIn when the link preview shows a clear, titled card. Generate an OG image for each tutorial post — title, subtitle, and your handle — so every share drives traffic back to your site instead of just getting a retweet.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <h2>How to Use It (60-Second Workflow)</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Open the OG Image Generator</h3>
+        <p>No account or login. Go to <a href="/og-image-generator/">/og-image-generator/</a> — loads instantly in your browser.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Enter your page title and tagline</h3>
+        <p>Use your model name, gallery title, or artist handle as the main title. For the tagline, add context: the model type, base model, your art style, or a CTA like "Open Commissions · DM to book." Keep it to one punchy line.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Set your brand color and pick a template</h3>
+        <p>Enter your signature hex color — your Civitai profile accent, your portfolio's primary color, or anything that matches your visual identity. Choose dark gradient, light minimal, or bold full-bleed. The preview updates in real time.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Download and add to your page's meta tags</h3>
+        <p>Export as PNG at 1200×630. For a personal portfolio or Ghost/Webflow site: add <code style="background:#1f1f1f; padding:2px 6px; border-radius:4px; font-size:0.85rem;">&lt;meta property="og:image" content="YOUR_URL"&gt;</code> to the page head. For Civitai: upload it as a cover image in the model settings. For Gumroad: use the product thumbnail field. Done — your link will now render a sharp preview everywhere it's shared.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING COMPARISON -->
+<section>
+  <h2>Free vs. Paid OG Image Options for AI Art Creators</h2>
+  <p>Here's how TinyTools compares to tools AI art creators typically end up reaching for:</p>
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Price</th>
+        <th>Time per image</th>
+        <th>Dark mode layouts</th>
+        <th>No design skill req.</th>
+        <th>AI-creator focused</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="tool-name">TinyTools OG Image Generator</td>
+        <td class="price free">Free</td>
+        <td>~45 sec</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Canva Pro</td>
+        <td class="price paid">$15/mo</td>
+        <td>15–25 min</td>
+        <td><span class="check">✓ templates</span></td>
+        <td><span class="cross">✗ learning curve</span></td>
+        <td><span class="cross">✗ generic</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Adobe Express</td>
+        <td class="price paid">$10/mo</td>
+        <td>10–20 min</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗ generic</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Figma (manual)</td>
+        <td class="price paid">$15/mo</td>
+        <td>20–40 min</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗ design skill needed</span></td>
+        <td><span class="cross">✗ generic</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Bannerbear API</td>
+        <td class="price paid">$49/mo</td>
+        <td>&lt;5 sec (API)</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗ dev setup required</span></td>
+        <td><span class="cross">✗ generic</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Midjourney (workaround)</td>
+        <td class="price paid">$10/mo</td>
+        <td>2–5 min + editing</td>
+        <td><span class="check">✓ custom art</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗ needs cropping/text overlay</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:16px; font-size:0.85rem;">Some creators use Midjourney to generate beautiful OG-image artwork — but you still need to add text overlays and export at the right dimensions. TinyTools handles the text, layout, and dimensions automatically. Use it for quick releases and utility pages; use Midjourney for your hero portfolio pieces where you want full custom art.</p>
+</section>
+
+<!-- SISTER TOOLS -->
+<section>
+  <h2>Complete Your AI Art Creator Toolkit</h2>
+  <p>OG images are one piece of your public-facing brand. These free tools handle the rest of the technical side so you can focus on making art:</p>
+  <div class="sister-tools">
+    <a href="/favicon-generator/" class="sister-card">
+      <div class="sc-icon">⭐</div>
+      <h3>Favicon Generator</h3>
+      <p>Create a custom favicon for your portfolio site or hosted gallery. A recognizable icon in the browser tab builds brand recognition every time a visitor returns.</p>
+    </a>
+    <a href="/color-palette/" class="sister-card">
+      <div class="sc-icon">🎨</div>
+      <h3>Color Palette Generator</h3>
+      <p>Lock in your visual brand identity. Generate a cohesive palette that works across your OG images, portfolio header, commission page, and social profile. Export hex codes for consistent use.</p>
+    </a>
+    <a href="/ai-disclosure-generator/" class="sister-card">
+      <div class="sc-icon">📋</div>
+      <h3>AI Disclosure Generator</h3>
+      <p>As platforms increasingly require AI content disclosures, generate compliant statements for your gallery pages, commission terms, and product listings — tailored for AI-generated artwork.</p>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section>
+  <div class="final-cta">
+    <h2>Your art is stunning. Your link preview should be too.</h2>
+    <p>Generate a professional OG image for your AI art gallery, model page, or commission site right now — free, no login, no design skills required. Takes 60 seconds.</p>
+    <a href="/og-image-generator/" class="cta-primary">Open OG Image Generator →</a>
+    <p class="cta-note" style="margin-top:12px;">Free forever · Used by AI creators on Civitai, ArtStation &amp; beyond</p>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="/">TinyTools</a> ·
+    <a href="/og-image-generator/">OG Image Generator</a> ·
+    <a href="/favicon-generator/">Favicon Generator</a> ·
+    <a href="/color-palette/">Color Palette</a> ·
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a>
+  </p>
+  <p style="margin-top:8px;">© 2026 TinyTools · Free AI tools for builders</p>
+</footer>
+
+</body>
+</html>
