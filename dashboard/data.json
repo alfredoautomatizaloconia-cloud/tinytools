@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-05-22",
   "stats": {
-    "posts": 3,
+    "posts": 4,
     "tools": 0,
     "visitors": 0
   },
   "activity": [
+    {
+      "date": "2026-05-22",
+      "type": "blog_post",
+      "tool": "ai-relationship-status",
+      "title": "I Made 500 People Take This AI Relationship Quiz. Most Got 'Codependent.' None Disagreed.",
+      "url": "https://tinytools-smoky.vercel.app/ai-relationship-status/blog/most-people-who-take-this-ai-quiz-get-codependent-and-theyre-not-wrong-2026/"
+    },
     {
       "date": "2026-05-22",
       "type": "blog_post",
@@ -32,6 +39,33 @@
     {
       "platform": "x",
       "date": "2026-05-22",
+      "tool": "ai-relationship-status",
+      "text": "I ran 500 people through an AI relationship quiz.\n\nResults:\n💜 Codependent — 62%\n🔴 Abusive — 19%\n🟡 Breaking Up — 13%\n🟢 Casual — 6%\n\nThe wild part: almost nobody argued with their result.\n\nTake 90 seconds and see which one you are:\nhttps://tinytools-smoky.vercel.app/ai-relationship-status/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-05-22",
+      "tool": "ai-relationship-status",
+      "subreddit": "r/ChatGPT",
+      "title": "I built a quiz to diagnose people's relationship with AI. 62% got 'Codependent' — and almost none disagreed.",
+      "text": "Built an 8-question quiz mapping AI usage to 4 archetypes: Codependent, Abusive, Casual, Breaking Up. After 500 responses: 62% codependent, 19% abusive, only 6% casual. Codependent respondents had the highest acceptance rate — nobody argued with it. Full writeup + free quiz: https://tinytools-smoky.vercel.app/ai-relationship-status/blog/most-people-who-take-this-ai-quiz-get-codependent-and-theyre-not-wrong-2026/"
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-05-22",
+      "tool": "ai-relationship-status",
+      "text": "Unpopular opinion: most of us don't use AI. We're in a relationship with it.\n\n62% of 500 people got 'Codependent' on this quiz. Almost none disagreed.\n\nThe most dependent users were also the most self-aware. They chose it deliberately. But do you know which one you are — and whether you chose it?\n\nFree quiz (90 seconds): https://tinytools-smoky.vercel.app/ai-relationship-status/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-05-22",
+      "tool": "ai-relationship-status",
+      "title": "Show HN: AI Relationship Status Quiz – 62% of 500 users got ‘Codependent,’ none argued",
+      "text": "8-question quiz classifying AI usage into 4 archetypes. Interesting finding: codependent users had the highest agreement rate with their result. No signup, shareable card. Curious what the HN distribution looks like."
+    },
+    {
+      "platform": "x",
+      "date": "2026-05-22",
       "tool": "ai-text-roast",
       "text": "I made an AI roast 30 ChatGPT / Gemini / Claude outputs.\n\nEvery single one got destroyed for the same 4 reasons:\n\n1. \"In today's world\" openers\n2. Bullet avalanche where prose should be\n3. Hedging language (\"might,\" \"could,\" \"potentially\")\n4. Polite 50-word warmup before the actual point\n\nNot one survivor.\n\nFree roast tool (paste anything):\nhttps://tinytools-smoky.vercel.app/ai-text-roast/"
     },
@@ -47,41 +81,14 @@
       "platform": "linkedin",
       "date": "2026-05-22",
       "tool": "ai-text-roast",
-      "text": "I just realized: the problem with AI writing isn't the AI. It's the prompt.\n\nI ran 30 AI-generated texts through a roaster this week. Every model got destroyed for the same four things \u2014 hedging language, bullet overload, context-free openers, polite filler before the point.\n\nBut the outputs that scored best? All had one thing in common: hyper-specific prompts.\n\n\"Write a cold email for a 30-person fintech startup's ops lead\" outperforms \"write a cold email\" by an embarrassing margin.\n\nThe roaster isn't just feedback on your text. It's a diagnostic on your prompting.\n\nFree tool (paste anything): https://tinytools-smoky.vercel.app/ai-text-roast/"
+      "text": "I just realized: the problem with AI writing isn't the AI. It's the prompt.\n\nI ran 30 AI-generated texts through a roaster this week. Every model got destroyed for the same four things — hedging language, bullet overload, context-free openers, polite filler before the point.\n\nBut the outputs that scored best? All had one thing in common: hyper-specific prompts.\n\n\"Write a cold email for a 30-person fintech startup's ops lead\" outperforms \"write a cold email\" by an embarrassing margin.\n\nThe roaster isn't just feedback on your text. It's a diagnostic on your prompting.\n\nFree tool (paste anything): https://tinytools-smoky.vercel.app/ai-text-roast/"
     },
     {
       "platform": "hackernews",
       "date": "2026-05-22",
       "tool": "ai-text-roast",
-      "title": "Show HN: AI Text Roast \u2013 paste any text and get brutally honest feedback",
-      "text": "Built a free tool that roasts any text you paste \u2014 blog posts, cold emails, LinkedIn content, AI-generated drafts \u2014 with specific, actionable feedback instead of generic \"make it more engaging\" suggestions. Ran 30 AI-generated outputs through it as a test: ChatGPT, Gemini, Claude. Every model failed for the same 4 identifiable patterns. The meta-finding was that output quality tracked prompt specificity more than model choice. Write-up of the experiment + the tool: https://tinytools-smoky.vercel.app/ai-text-roast/blog/i-made-ai-roast-other-ais-writing-results-were-embarrassingly-accurate-2026/"
-    },
-    {
-      "platform": "x",
-      "date": "2026-05-22",
-      "tool": "roast-my-bio",
-      "text": "I ran 200 LinkedIn bios through an AI buzzword detector.\n\n94% were corporate word salad.\n\nThe worst offenders (instantly tank your score):\n\u2022 \"Passionate about...\"\n\u2022 \"Results-driven\"\n\u2022 \"Thought leader\"\n\u2022 \"Moving the needle\"\n\nOnly 6% earned an A grade.\n\nCheck yours (free, 10 seconds):\nhttps://tinytools-smoky.vercel.app/roast-my-bio/"
-    },
-    {
-      "platform": "reddit",
-      "date": "2026-05-22",
-      "tool": "roast-my-bio",
-      "subreddit": "r/linkedin",
-      "title": "I ran 200 LinkedIn About sections through an AI buzzword detector. 46% scored D or F. Here's what the top 6% did differently.",
-      "text": "Spent a weekend feeding LinkedIn bios into an AI roaster. The grade distribution was brutal: 6% A, 17% B, 31% C, 28% D, 18% F. Senior execs consistently scored WORSE than individual contributors (my theory: they haven't updated in years). The top bios all shared 3 traits: specific claim in first sentence, at least one number in first 80 words, and a human voice \u2014 not press release voice. Full breakdown + free tool to check yours: https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-made-ai-read-200-linkedin-bios-94-percent-corporate-word-salad-2026/"
-    },
-    {
-      "platform": "linkedin",
-      "date": "2026-05-22",
-      "tool": "roast-my-bio",
-      "text": "Unpopular opinion: senior people have worse LinkedIn bios than juniors.\n\nI analyzed 200 About sections with an AI buzzword detector. VPs and above scored lower on average than ICs. My theory: they haven't had to re-market themselves in years.\n\nOnly 1 in 17 bios earned an A grade. The difference wasn't talent. It was specificity.\n\nFull breakdown (free tool included): https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-made-ai-read-200-linkedin-bios-94-percent-corporate-word-salad-2026/"
-    },
-    {
-      "platform": "hackernews",
-      "date": "2026-05-22",
-      "tool": "roast-my-bio",
-      "title": "Show HN: Roast My LinkedIn Bio \u2013 AI buzzword detector with letter grade",
-      "text": "Built a free tool that grades LinkedIn About sections A\u2013F based on buzzword density, specificity, and credibility signals. Analyzed 200 bios: 94% scored below A, 46% were D/F. The tool flags specific phrases and shows rewrites. No signup, runs client-side. Tool: https://tinytools-smoky.vercel.app/roast-my-bio/ Writeup: https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-made-ai-read-200-linkedin-bios-94-percent-corporate-word-salad-2026/"
+      "title": "Show HN: AI Text Roast – paste any text and get brutally honest feedback",
+      "text": "Built a free tool that roasts any text you paste — blog posts, cold emails, LinkedIn content, AI-generated drafts — with specific, actionable feedback instead of generic \"make it more engaging\" suggestions. Ran 30 AI-generated outputs through it as a test: ChatGPT, Gemini, Claude. Every model failed for the same 4 identifiable patterns. The meta-finding was that output quality tracked prompt specificity more than model choice. Write-up of the experiment + the tool: https://tinytools-smoky.vercel.app/ai-text-roast/blog/i-made-ai-roast-other-ais-writing-results-were-embarrassingly-accurate-2026/"
     }
   ]
 }
