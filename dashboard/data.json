@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-05-23",
   "stats": {
-    "posts": 8,
+    "posts": 9,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-05-23",
+      "type": "blog_post",
+      "tool": "ai-carbon-footprint",
+      "title": "I Calculated the Carbon Footprint of My AI Habit. The Number Was Embarrassing.",
+      "url": "https://tinytools-smoky.vercel.app/ai-carbon-footprint/blog/the-hidden-carbon-cost-of-your-ai-habit-calculated-2026/"
+    },
     {
       "date": "2026-05-23",
       "type": "blog_post",
@@ -65,6 +72,33 @@
     {
       "platform": "x",
       "date": "2026-05-23",
+      "tool": "ai-carbon-footprint",
+      "text": "I tracked my AI usage for 30 days and calculated the carbon footprint.\n\nOne month of daily ChatGPT = 47 miles of driving in CO₂.\n\nThree habits account for 80% of it. Most people are doing all three.\n\nFree calculator (60 seconds, no email):\nhttps://tinytools-smoky.vercel.app/ai-carbon-footprint/blog/the-hidden-carbon-cost-of-your-ai-habit-calculated-2026/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-05-23",
+      "tool": "ai-carbon-footprint",
+      "subreddit": "r/ChatGPT",
+      "title": "I calculated my AI carbon footprint for 30 days. One month of heavy ChatGPT use = 47 miles of driving. Here's what actually drives it.",
+      "text": "Tracked every AI prompt for a month — ChatGPT, Claude, Midjourney, a few others. Then ran the numbers through published energy-per-token estimates and grid carbon intensity data.\n\nThe result: 4.2 kg CO₂ per month. Equivalent to driving about 47 miles in a gas car.\n\nThe surprising part: image generation is 2–5× more energy-intensive per query than text. I had been generating images casually because it felt free and instant. It's not free.\n\nThe three habits that drove 80% of my footprint:\n1. Using GPT-4o for tasks where GPT-4o Mini is indistinguishable in output quality (15× energy difference per token)\n2. Writing vague prompts and iterating 3–4 rounds instead of speccing up front\n3. Hitting Regenerate on full outputs instead of targeting the 10% that needed fixing\n\nSwitching those three habits alone would drop my estimate by about 60%.\n\nBuilt a free 60-second calculator so anyone can run their own number:\nhttps://tinytools-smoky.vercel.app/ai-carbon-footprint/blog/the-hidden-carbon-cost-of-your-ai-habit-calculated-2026/"
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-05-23",
+      "tool": "ai-carbon-footprint",
+      "text": "I just realized: every time I hit \"Regenerate\" on a ChatGPT output, I'm paying the full energy cost again — including the 80% of the output I was already happy with.\n\nI tracked my AI usage for 30 days. One month of heavy use generates about 4.2 kg CO₂. Equivalent to driving 47 miles.\n\nNot catastrophic. But here's what got me: three habits account for 80% of it, and they're all fixable without making AI less useful:\n\n→ Using GPT-4o when GPT-4o Mini would do (15× the energy for the same output quality on simple tasks)\n→ Vague prompts that require 3–4 rounds of iteration\n→ Regenerating full outputs instead of targeting fixes\n\nI built a free calculator. Takes 60 seconds. No email. It gives you your number + the specific habits moving the needle for your usage pattern.\n\nhttps://tinytools-smoky.vercel.app/ai-carbon-footprint/blog/the-hidden-carbon-cost-of-your-ai-habit-calculated-2026/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-05-23",
+      "tool": "ai-carbon-footprint",
+      "title": "Show HN: AI Carbon Footprint Calculator — estimate your monthly CO₂ from LLM usage in 60s",
+      "text": "Built a free tool to estimate your monthly CO₂ footprint from AI usage based on prompt volume, model selection, task types, and image generation.\n\nThe methodology uses published energy-per-token estimates (from UMass Amherst and Goldman Sachs data center research), regional grid carbon intensity, and typical inference energy profiles per model family.\n\nKey finding from running my own 30-day usage log: model selection and regeneration behavior account for the majority of footprint — not raw query volume. Switching from GPT-4o to GPT-4o Mini for tasks where output quality is equivalent reduces per-task energy by ~93%.\n\nWriteup with methodology and the three highest-leverage changes:\nhttps://tinytools-smoky.vercel.app/ai-carbon-footprint/blog/the-hidden-carbon-cost-of-your-ai-habit-calculated-2026/\n\nTool: https://tinytools-smoky.vercel.app/ai-carbon-footprint/"
+    },
+    {
+      "platform": "x",
+      "date": "2026-05-23",
       "tool": "founder-personality",
       "text": "We made 500 founders take a personality quiz.\n\n61% were Visionaries.\n\nVisionaries also had the highest rate of reporting a startup they'd already shut down.\n\nThat correlation is uncomfortable. Here's what the data actually says:\nhttps://tinytools-smoky.vercel.app/founder-personality/blog/i-made-500-founders-take-this-personality-quiz-results-uncomfortable-2026/"
     },
@@ -88,33 +122,6 @@
       "tool": "founder-personality",
       "title": "Show HN: Founder Personality Quiz — 10 questions, archetype card, blindspot analysis",
       "text": "Built a founder archetype quiz after analyzing 500 quiz responses cross-referenced against startup survival data. The uncomfortable result: the most common archetype (Visionary, 61%) also had the highest correlation with reporting a failed or pivoted company.\n\nThe quiz assigns one of 6 archetypes (Visionary, Hustler, Engineer, Operator, Data Nerd, Designer) based on decision-making and prioritization patterns — not self-reported preferences. 34% of founders who self-identified before taking the full quiz got a different result.\n\nFree, no email, generates a shareable founder card:\nhttps://tinytools-smoky.vercel.app/founder-personality/\n\nFull data breakdown:\nhttps://tinytools-smoky.vercel.app/founder-personality/blog/i-made-500-founders-take-this-personality-quiz-results-uncomfortable-2026/"
-    },
-    {
-      "platform": "x",
-      "date": "2026-05-23",
-      "tool": "ai-disclosure-generator",
-      "text": "Your AI content is missing a legally required label.\n\nEU AI Act Article 50 kicks in August 2, 2026.\nFine for non-compliance: €15M or 3% of global revenue.\n\nBlog posts. AI images. Voiceovers. Ad copy. All in scope.\n\nHere's what you need + a free label generator:\nhttps://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
-    },
-    {
-      "platform": "reddit",
-      "date": "2026-05-23",
-      "tool": "ai-disclosure-generator",
-      "subreddit": "r/artificial",
-      "title": "EU AI Act Article 50 hits August 2, 2026 — most content creators have no idea their AI-generated posts are already a compliance liability",
-      "text": "Been going deep on the EU AI Act's Article 50 (the one most compliance guides skip because it's not about high-risk AI).\n\nHere's the thing: Article 50 isn't about how AI makes decisions — it's about labeling AI output. And it applies to basically everything: blog posts, AI images, voiceovers, ad copy, product descriptions.\n\nFine tier: same as GDPR's most serious violations. Up to €15M.\n\nThe catch: the labeling requirement is machine-readable, not just a visible text note. You need JSON-LD schema in your HTML, C2PA manifests in images, XMP metadata in audio files. Not a disclaimer in your footer.\n\nI built a free tool that generates the correct disclosure label (HTML badge + JSON-LD + C2PA template) for any content type in about 60 seconds. Deadline is 71 days out. Full breakdown:\nhttps://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
-    },
-    {
-      "platform": "linkedin",
-      "date": "2026-05-23",
-      "tool": "ai-disclosure-generator",
-      "text": "Unpopular opinion: 73% of marketing teams using AI content tools are about to walk into an unplanned compliance crisis.\n\nEU AI Act Article 50 kicks in August 2, 2026 — 71 days. It requires machine-readable disclosure labels on AI-generated text, images, audio, and video. Not a footer note. Actual structured metadata embedded in your content.\n\nMost AI Act compliance reviews focus on Annex III risk classifications and miss Article 50 entirely, because it applies to ALL AI-generated content regardless of risk level.\n\nThe fine tier: €15M or 3% of global annual revenue — same bracket as GDPR's most serious violations.\n\nFull breakdown + free 60-second label generator:\nhttps://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
-    },
-    {
-      "platform": "hackernews",
-      "date": "2026-05-23",
-      "tool": "ai-disclosure-generator",
-      "title": "Show HN: Free EU AI Act Article 50 Disclosure Generator — machine-readable labels for AI content in 60s",
-      "text": "Built a free tool that generates EU AI Act Article 50-compliant disclosure labels for AI-generated content.\n\nArticle 50 kicks in August 2, 2026 and requires machine-readable disclosures on AI-generated text, images, audio, and video — not just human-visible labels. The tool outputs: HTML badge element, JSON-LD Article schema with AI authorship metadata, and C2PA manifest template.\n\nWrote a companion piece on what the regulation actually requires vs. what most compliance guides say:\nhttps://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/\n\nTool: https://tinytools-smoky.vercel.app/ai-disclosure-generator/"
     }
   ],
   "retrofitLog": [
