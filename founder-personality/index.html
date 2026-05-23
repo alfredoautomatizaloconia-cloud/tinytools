@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Kind Of Founder Are You? — Startup Personality Quiz</title>
+<meta name="description" content="10-question quiz reveals your true founder archetype — The Visionary, Hustler, Engineer, Designer, Data Nerd, or Operator. Get your shareable founder card.">
+<meta name="keywords" content="founder personality quiz, startup founder type, entrepreneur quiz, what kind of founder am i, startup archetype, founder type test">
+<meta property="og:title" content="What Kind Of Founder Are You? Take the Quiz">
+<meta property="og:description" content="10 questions. Your true startup founder archetype revealed. Brutally accurate. Shareable card.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/founder-personality/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/founder-personality/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "What Kind Of Founder Are You?",
+  "url": "https://tinytools-smoky.vercel.app/founder-personality/",
+  "description": "Startup founder personality quiz that maps you to one of six founder archetypes based on 10 scenario questions.",
+  "applicationCategory": "EntertainmentApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --bg: #09090f; --bg-card: #12121e; --bg-elevated: #1a1a2e;
+    --border: #252538; --text: #f0f0fa; --text-dim: #9090b8;
+    --accent: #6366f1; --accent-glow: #6366f130;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 30% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 70% 80%, #a855f720 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(28px, 5vw, 50px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #c4b5fd 50%, #6366f1 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 560px; margin: 0 auto; }
+
+  /* Quiz */
+  .quiz-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; max-width: 720px; margin: 32px auto 0;
+  }
+  .progress-bar { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 24px; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), #a855f7); border-radius: 2px; transition: width 0.4s ease; }
+  .q-number { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 8px; font-weight: 600; }
+  .q-text { font-size: 20px; font-weight: 700; margin-bottom: 20px; line-height: 1.35; color: var(--text); }
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option {
+    padding: 14px 18px; background: var(--bg-elevated); border: 2px solid var(--border);
+    border-radius: 12px; cursor: pointer; color: var(--text); font-size: 15px; line-height: 1.4;
+    transition: all 0.15s; text-align: left; font-family: inherit;
+  }
+  .option:hover { border-color: var(--accent); background: #1e1e35; }
+  .option.selected { border-color: var(--accent); background: #1e1e40; }
+
+  /* Result */
+  .result-card {
+    margin: 32px auto 0; max-width: 700px;
+    background: linear-gradient(135deg, #12121e 0%, #09090f 100%);
+    border: 2px solid var(--accent); border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+    display: none;
+  }
+  .result-card.show { display: block; }
+  .result-header {
+    padding: 28px 24px; display: flex; align-items: center; gap: 20px;
+  }
+  .founder-emoji { font-size: 64px; }
+  .founder-info { flex: 1; }
+  .founder-info .archetype-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.7); }
+  .founder-info .archetype-name { font-size: 32px; font-weight: 900; color: white; line-height: 1.1; }
+  .founder-info .archetype-sub { font-size: 16px; color: rgba(255,255,255,0.8); margin-top: 4px; }
+  .match-pct { text-align: right; }
+  .match-pct .pct { font-size: 44px; font-weight: 900; color: white; }
+  .match-pct .pct-label { font-size: 12px; color: rgba(255,255,255,0.7); }
+
+  .result-body { padding: 24px; border-top: 1px solid var(--border); }
+  .result-desc {
+    font-size: 16px; line-height: 1.6; color: #c4b5fd; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid var(--accent); border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .traits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .traits-grid { grid-template-columns: repeat(2, 1fr); } }
+  .trait { background: var(--bg-elevated); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+  .trait-icon { font-size: 22px; }
+  .trait-name { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
+
+  .breakdown { margin-bottom: 16px; }
+  .breakdown-title { font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); font-weight: 600; margin-bottom: 10px; }
+  .breakdown-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .breakdown-bar .bl { font-size: 13px; color: var(--text-dim); width: 110px; flex-shrink: 0; }
+  .breakdown-bar .bg { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .breakdown-bar .bf { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+  .breakdown-bar .bv { font-size: 12px; color: var(--text-dim); width: 32px; text-align: right; }
+
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .badge-pill {
+    padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 13px; color: var(--text);
+  }
+  .badge-pill.purple { border-color: var(--accent); color: #c4b5fd; }
+  .badge-pill.warn { border-color: var(--yellow); color: #fcd34d; }
+  .badge-pill.ok { border-color: var(--green); color: #6ee7b7; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s; font-family: inherit;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border-color: #1d9bf0; color: white; }
+  .action.dl { background: var(--accent); border-color: var(--accent); color: white; font-weight: 800; }
+  .action.retry { border-color: #a855f7; color: #c4b5fd; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; }
+  .embed-copy-btn { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; font-weight: 700; }
+
+  canvas#shareCanvas { display: none; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; font-weight: 800; margin: 28px 0 10px; }
+  .content h3 { font-size: 17px; font-weight: 700; margin: 20px 0 8px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+  .content ul { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; padding-left: 20px; }
+  .content ul li { margin-bottom: 6px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🚀 10 questions · Instant results · No signup</div>
+    <h1>What Kind Of Founder Are You? 🚀</h1>
+    <p class="subtitle">10 scenarios. Your true startup archetype revealed — Visionary, Hustler, Engineer, Designer, Data Nerd, or Operator. Share your card and tag your co-founder.</p>
+  </header>
+
+  <div class="quiz-card" id="quizCard">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="q-number" id="qNumber">Question 1 of 10</div>
+    <div class="q-text" id="qText"></div>
+    <div class="options" id="options"></div>
+  </div>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-header" id="resultHeader">
+      <div class="founder-emoji" id="founderEmoji">🚀</div>
+      <div class="founder-info">
+        <div class="archetype-label">Your Founder Archetype</div>
+        <div class="archetype-name" id="archetypeName">The Visionary</div>
+        <div class="archetype-sub" id="archetypeSub">Big ideas, bigger risks</div>
+      </div>
+      <div class="match-pct">
+        <div class="pct" id="matchPct">70%</div>
+        <div class="pct-label">match</div>
+      </div>
+    </div>
+    <div class="result-body">
+      <div class="result-desc" id="archetypeDesc"></div>
+
+      <div class="traits-grid" id="traitsGrid"></div>
+
+      <div class="breakdown">
+        <div class="breakdown-title">Your Founder DNA Breakdown</div>
+        <div id="breakdownBars"></div>
+      </div>
+
+      <div class="badges" id="achievementBadges"></div>
+
+      <div class="actions">
+        <button class="action primary" onclick="shareToX()">𝕏 Share My Type</button>
+        <button class="action dl" onclick="downloadCard()">⬇️ Download Card</button>
+        <button class="action" onclick="copyLink()">🔗 Copy Link</button>
+        <button class="action retry" onclick="restartQuiz()">🔄 Retake Quiz</button>
+      </div>
+
+      <div class="embed-section">
+        <div class="embed-label">📌 Embed your founder badge</div>
+        <pre id="embedCode"></pre>
+        <button class="embed-copy-btn" onclick="copyEmbed()">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="shareCanvas" width="1200" height="630"></canvas>
+
+  <div class="content">
+    <h2>The 6 Startup Founder Archetypes Explained</h2>
+    <p>After analyzing patterns across thousands of founders — from YC alumni to serial entrepreneurs — we identified six distinct archetypes that explain how founders think, make decisions, and scale companies. No archetype is objectively better; each has different superpowers and blindspots.</p>
+
+    <h3>The Visionary</h3>
+    <p>Visionaries like Elon Musk and Steve Jobs lead with a compelling picture of the future. They're magnetic storytellers who attract talent and capital through sheer force of conviction. Their blindspot: they can fall in love with the idea and ignore contrary data. They need strong operators by their side.</p>
+
+    <h3>The Hustler</h3>
+    <p>Hustlers are obsessed with momentum. They move fast, sell first and build later, and thrive in chaos. Think early-stage Gary Vaynerchuk or Ryan Breslow. They're dangerous when paired with technical people who build things that actually work. Their risk: burning out the team and cutting corners on product quality.</p>
+
+    <h3>The Engineer</h3>
+    <p>Engineers build first and sell later — sometimes much later. They're methodical, detail-oriented, and produce technically excellent products. Think Jeff Dean or Demis Hassabis. The blindspot is market timing and distribution: they assume a great product will sell itself.</p>
+
+    <h3>The Designer</h3>
+    <p>Designers treat every product touchpoint as craft. They're obsessed with the user experience in ways that drive engineers crazy. Think Brian Chesky or Tony Fadell. They produce stickiness and brand loyalty but can over-index on polish at the expense of shipping speed.</p>
+
+    <h3>The Data Nerd</h3>
+    <p>Data Nerds optimize everything. They run experiments before building, let metrics guide every decision, and build moats through compounding marginal gains. Think Sam Altman or Keith Rabois. They can suffer from analysis paralysis and struggle to make conviction-driven bets.</p>
+
+    <h3>The Operator</h3>
+    <p>Operators scale what Visionaries build. They care about process, people, and repeatability. Think Sheryl Sandberg or Claire Hughes Johnson. They're often the unsung heroes of billion-dollar companies, turning brilliant chaos into a machine. They struggle to generate the initial spark of an idea.</p>
+
+    <h3>Can You Be Multiple Types?</h3>
+    <p>Yes — and the best founders often are. The quiz measures your dominant mode. Your breakdown shows how your secondary traits contribute. A Visionary with strong Data Nerd tendencies is a particularly powerful combination. An Engineer with Hustler traits closes the classic "build vs. sell" gap that kills technical startups.</p>
+
+    <h3>How to Use Your Founder Type</h3>
+    <ul>
+      <li>Hire your blindspots — if you're a Visionary, hire a world-class Operator early</li>
+      <li>Know when to listen vs. when to trust your gut — your archetype predicts which you over-rely on</li>
+      <li>Choose investors whose style matches your type — Data Nerds need data-first investors</li>
+      <li>Find a co-founder who complements, not mirrors, your type</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <p>Built by <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> · Free AI tools · <a href="https://tinytools-smoky.vercel.app/">Browse all tools →</a></p>
+</footer>
+
+<script>
+const ARCHETYPES = {
+  visionary: {
+    name: 'The Visionary',
+    sub: 'Big ideas, bigger risks',
+    emoji: '🔮',
+    color: '#6366f1',
+    desc: "You see things others don't — yet. You're wired to paint compelling futures and drag people into them through sheer conviction. Your ideas are the fuel; you need operators to be the engine. Famous co-types: Elon Musk, Steve Jobs, Brian Armstrong. Your superpower is making people believe the impossible is inevitable. Your kryptonite: you can fall so in love with the vision that you ignore the burning building around you.",
+    traits: [
+      { icon: '🔮', name: 'Big Picture' },
+      { icon: '🗣️', name: 'Storyteller' },
+      { icon: '⚡', name: 'Conviction' },
+      { icon: '🎯', name: 'Magnetic' }
+    ],
+    badges: [
+      { text: '🔮 Sees the Future', cls: 'purple' },
+      { text: '🗣️ Born Fundraiser', cls: 'purple' },
+      { text: '⚡ High Energy', cls: 'warn' },
+      { text: '🚀 Idea Machine', cls: 'ok' }
+    ],
+    tweet: "I'm The Visionary 🔮 — I don't build what exists, I build what should. Found out my founder type:"
+  },
+  hustler: {
+    name: 'The Hustler',
+    sub: 'Move fast, sell everything',
+    emoji: '💪',
+    color: '#f97316',
+    desc: "Revenue is your love language. You sell before you build, ship before you're ready, and treat 'no' as a starting position in a negotiation. You're the founder who gets deals done at 11pm on a Tuesday over text. Famous co-types: Gary Vaynerchuk, Ryan Breslow, Sam Parr. Your superpower: turning nothing into traction through sheer force of will. Your blindspot: velocity can mask cracks in the product foundation until they become crises.",
+    traits: [
+      { icon: '💪', name: 'High Output' },
+      { icon: '📞', name: 'Sales First' },
+      { icon: '🏃', name: 'Fast Mover' },
+      { icon: '🔥', name: 'Relentless' }
+    ],
+    badges: [
+      { text: '💪 Closers Close', cls: 'ok' },
+      { text: '📞 Always Be Selling', cls: 'ok' },
+      { text: '🔥 Energy Unlimited', cls: 'warn' },
+      { text: '⚠️ Ships Fast = Breaks Things', cls: 'warn' }
+    ],
+    tweet: "I'm The Hustler 💪 — I sell before I build. Found out my startup founder type:"
+  },
+  engineer: {
+    name: 'The Engineer',
+    sub: 'Build it right, then sell it',
+    emoji: '⚙️',
+    color: '#10b981',
+    desc: "You believe that exceptional products sell themselves — and sometimes you're right, but you're not always right on time. You'd rather spend three extra weeks getting the architecture perfect than ship something that scales poorly. Famous co-types: Linus Torvalds, Demis Hassabis, Patrick Collison. Your superpower is technical depth and building things that actually work. Your blindspot: distribution is a feature, not an afterthought.",
+    traits: [
+      { icon: '⚙️', name: 'Systems Thinker' },
+      { icon: '🔍', name: 'Detail Obsessed' },
+      { icon: '🏗️', name: 'Builder First' },
+      { icon: '📐', name: 'Precise' }
+    ],
+    badges: [
+      { text: '⚙️ Overengineers Lovingly', cls: 'ok' },
+      { text: '🏗️ Product Quality God', cls: 'ok' },
+      { text: '🐌 Ships When Perfect', cls: 'warn' },
+      { text: '🎯 Technical Moat', cls: 'purple' }
+    ],
+    tweet: "I'm The Engineer ⚙️ — I build it right before I sell it. Found out my founder type:"
+  },
+  designer: {
+    name: 'The Designer',
+    sub: 'Craft over everything',
+    emoji: '🎨',
+    color: '#ec4899',
+    desc: "You feel it when something is off by two pixels. You've argued for 45 minutes about the exact shade of a button color and you'd do it again. But here's the thing: users feel what you feel, even if they can't articulate it. That obsession with craft creates the stickiness that moats can't replicate. Famous co-types: Brian Chesky, Tobias Lütke, Tony Fadell. Your blindspot: perfect can be the enemy of shipped.",
+    traits: [
+      { icon: '🎨', name: 'Craft Focused' },
+      { icon: '👁️', name: 'Visual Thinker' },
+      { icon: '💡', name: 'User Empathy' },
+      { icon: '✨', name: 'Polish First' }
+    ],
+    badges: [
+      { text: '🎨 Taste Is a Moat', cls: 'purple' },
+      { text: '👁️ Sees Bad UX Instantly', cls: 'ok' },
+      { text: '✨ Pixel Perfect', cls: 'ok' },
+      { text: '⚠️ Ships When Beautiful', cls: 'warn' }
+    ],
+    tweet: "I'm The Designer 🎨 — I care about craft more than most people think is healthy. Found my founder type:"
+  },
+  datanerd: {
+    name: 'The Data Nerd',
+    sub: 'If it can\'t be measured, it doesn\'t exist',
+    emoji: '📊',
+    color: '#f59e0b',
+    desc: "You run an A/B test before naming your cat. Every decision has a hypothesis, every hypothesis has a metric, every metric has a weekly review. You've probably built more internal dashboards than products. Famous co-types: Sam Altman, Keith Rabois, Andrew Chen. Your superpower: compounding marginal gains and avoiding catastrophic decisions. Your blindspot: sometimes the most important things can't be quantified, and conviction requires ignoring the data.",
+    traits: [
+      { icon: '📊', name: 'Metric Driven' },
+      { icon: '🔬', name: 'Hypothesis First' },
+      { icon: '📈', name: 'Growth Loops' },
+      { icon: '🧮', name: 'Analytical' }
+    ],
+    badges: [
+      { text: '📊 Built 3 Dashboards Today', cls: 'ok' },
+      { text: '🔬 A/B Tests Everything', cls: 'ok' },
+      { text: '🧠 Avoids Dumb Decisions', cls: 'ok' },
+      { text: '🤔 Analysis Paralysis Risk', cls: 'warn' }
+    ],
+    tweet: "I'm The Data Nerd 📊 — I measure everything and trust nothing untested. Found my founder type:"
+  },
+  operator: {
+    name: 'The Operator',
+    sub: 'Turn chaos into a machine',
+    emoji: '⚡',
+    color: '#8b5cf6',
+    desc: "You're the founder who turns brilliant mess into repeatable excellence. You care about org design, process, hiring bars, and unit economics. While others are chasing the next idea, you're making the current one actually work. Famous co-types: Sheryl Sandberg, Claire Hughes Johnson, Tobi Lütke (later stage). Your superpower: you build things that scale without you. Your blindspot: you can optimize the wrong thing very efficiently.",
+    traits: [
+      { icon: '⚡', name: 'Execution Focus' },
+      { icon: '🏛️', name: 'Systems Builder' },
+      { icon: '👥', name: 'Team Builder' },
+      { icon: '🎯', name: 'Goal Oriented' }
+    ],
+    badges: [
+      { text: '⚡ Ships Consistently', cls: 'ok' },
+      { text: '👥 Scales Teams Well', cls: 'ok' },
+      { text: '🏛️ Process Architect', cls: 'purple' },
+      { text: '⚠️ Needs Vision Partner', cls: 'warn' }
+    ],
+    tweet: "I'm The Operator ⚡ — I turn brilliant chaos into repeatable machines. Found my founder type:"
+  }
+};
+
+const QUESTIONS = [
+  {
+    text: "Your MVP breaks at 2am before the big demo. You...",
+    opts: [
+      { text: "Stay up all night fixing it — but use the failure story in future pitches", type: 'visionary' },
+      { text: "Call everyone you know until someone fixes it, then sleep 3 hours", type: 'hustler' },
+      { text: "Roll back to the stable version in 8 minutes flat, you had a plan", type: 'engineer' },
+      { text: "Redesign the onboarding so this failure actually improves the experience", type: 'designer' },
+      { text: "Check the error logs, identify root cause, document the postmortem", type: 'datanerd' },
+      { text: "Wake your CTO, delegate clearly, then prep the stakeholder message", type: 'operator' }
+    ]
+  },
+  {
+    text: "You need to convince a skeptical investor. Your pitch is...",
+    opts: [
+      { text: "A vivid picture of the world in 10 years if this doesn't exist", type: 'visionary' },
+      { text: "Revenue traction and a pipeline that closes itself", type: 'hustler' },
+      { text: "A 40-slide technical deep-dive on why the architecture is defensible", type: 'engineer' },
+      { text: "The product demo — let them feel what users feel", type: 'designer' },
+      { text: "Cohort analysis, retention curves, and unit economics that tell the story", type: 'datanerd' },
+      { text: "A clear path to $10M ARR with every assumption listed and validated", type: 'operator' }
+    ]
+  },
+  {
+    text: "Your co-founder wants to pivot. You...",
+    opts: [
+      { text: "Get excited — pivots are just evolution toward the bigger idea", type: 'visionary' },
+      { text: "Ask which direction closes deals faster right now", type: 'hustler' },
+      { text: "Need to see data proving the current architecture can support the pivot", type: 'engineer' },
+      { text: "Worry about how the brand and UX will transition for existing users", type: 'designer' },
+      { text: "Run the numbers on both directions before you talk again tomorrow", type: 'datanerd' },
+      { text: "Write a structured doc — decision criteria, timeline, resources required", type: 'operator' }
+    ]
+  },
+  {
+    text: "Your biggest competitor just shipped a feature you planned. You...",
+    opts: [
+      { text: "Publicly announce a much bigger vision that makes their feature irrelevant", type: 'visionary' },
+      { text: "Call 10 of their customers today to poach them while they're distracted", type: 'hustler' },
+      { text: "Reverse-engineer their implementation to understand their architecture", type: 'engineer' },
+      { text: "Obsess over how your version can be 3x more delightful", type: 'designer' },
+      { text: "Analyze their feature adoption and user reviews to find what they got wrong", type: 'datanerd' },
+      { text: "Update the roadmap, re-prioritize the sprint, brief the team by noon", type: 'operator' }
+    ]
+  },
+  {
+    text: "Your first key hire is leaving. You...",
+    opts: [
+      { text: "Have a 2-hour conversation about the mission and why they can't leave this chapter", type: 'visionary' },
+      { text: "Counter-offer on the spot, negotiate hard, shake hands", type: 'hustler' },
+      { text: "Document everything they know immediately, then figure out the gap", type: 'engineer' },
+      { text: "Take it personally — they believed in what you were building together", type: 'designer' },
+      { text: "Analyze what went wrong structurally so this doesn't happen again", type: 'datanerd' },
+      { text: "Start the back-fill process the same day — process doesn't wait for grief", type: 'operator' }
+    ]
+  },
+  {
+    text: "You get $1M seed funding. First call goes to...",
+    opts: [
+      { text: "PR firm — get the narrative out while the energy is high", type: 'visionary' },
+      { text: "Your top sales prospect — now you can close that deal", type: 'hustler' },
+      { text: "The best infrastructure engineer you know", type: 'engineer' },
+      { text: "A world-class product designer to elevate the whole experience", type: 'designer' },
+      { text: "Your data analyst — need better instrumentation before you scale", type: 'datanerd' },
+      { text: "Your lawyer and accountant — get the foundation right first", type: 'operator' }
+    ]
+  },
+  {
+    text: "How do you make your biggest product decisions?",
+    opts: [
+      { text: "Feel for what the future inevitably needs — then work backwards", type: 'visionary' },
+      { text: "What's the fastest path to the next revenue milestone?", type: 'hustler' },
+      { text: "What can we actually build well with the team we have?", type: 'engineer' },
+      { text: "What experience would make users genuinely delighted?", type: 'designer' },
+      { text: "What does the data say? I need 3 experiments before committing", type: 'datanerd' },
+      { text: "What aligns with the annual plan and our stated OKRs?", type: 'operator' }
+    ]
+  },
+  {
+    text: "Users are churning. Your gut reaction is...",
+    opts: [
+      { text: "The product is too small — we need to expand the vision to keep them", type: 'visionary' },
+      { text: "Get on calls with the churned users TODAY and sell them back", type: 'hustler' },
+      { text: "Something is technically broken — find the bug in the experience", type: 'engineer' },
+      { text: "The experience has friction somewhere — do a full UX audit", type: 'designer' },
+      { text: "Pull the cohort analysis, segment by acquisition source, find the pattern", type: 'datanerd' },
+      { text: "Create a churn response playbook — this cannot be ad hoc", type: 'operator' }
+    ]
+  },
+  {
+    text: "Your dream company culture is...",
+    opts: [
+      { text: "A place where people believe they're changing the world — and they are", type: 'visionary' },
+      { text: "Hungry, competitive, fast — a meritocracy that rewards output", type: 'hustler' },
+      { text: "High craft standards, technical excellence, no shortcuts", type: 'engineer' },
+      { text: "Beautiful, taste-forward, user-obsessed — design is everyone's job", type: 'designer' },
+      { text: "Transparent, metric-driven, learning-oriented — data over politics", type: 'datanerd' },
+      { text: "Reliable, accountable, process-driven — the machine runs without me", type: 'operator' }
+    ]
+  },
+  {
+    text: "What does success look like to you?",
+    opts: [
+      { text: "Being remembered for changing an entire category or industry", type: 'visionary' },
+      { text: "Building a massive company from literally nothing through sheer will", type: 'hustler' },
+      { text: "Creating something technically elegant that lasts for decades", type: 'engineer' },
+      { text: "Building something people love so deeply they can't imagine life without it", type: 'designer' },
+      { text: "A model that works predictably at any scale with provable unit economics", type: 'datanerd' },
+      { text: "A company that runs excellently with or without me at the helm", type: 'operator' }
+    ]
+  }
+];
+
+let answers = [];
+let currentQ = 0;
+
+function renderQuestion() {
+  const q = QUESTIONS[currentQ];
+  document.getElementById('qNumber').textContent = `Question ${currentQ + 1} of ${QUESTIONS.length}`;
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('progressFill').style.width = (currentQ / QUESTIONS.length * 100) + '%';
+
+  const optsEl = document.getElementById('options');
+  optsEl.innerHTML = '';
+  // Shuffle options deterministically per question
+  const shuffled = [...q.opts];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = (currentQ * 7 + i * 3) % (i + 1);
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  shuffled.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = opt.text;
+    btn.onclick = () => selectOption(opt.type, btn);
+    optsEl.appendChild(btn);
+  });
+}
+
+function selectOption(type, btn) {
+  document.querySelectorAll('.option').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  setTimeout(() => {
+    answers.push(type);
+    currentQ++;
+    if (currentQ >= QUESTIONS.length) showResult();
+    else renderQuestion();
+  }, 300);
+}
+
+function showResult() {
+  // Count scores
+  const scores = {};
+  for (const k of Object.keys(ARCHETYPES)) scores[k] = 0;
+  answers.forEach(a => scores[a]++);
+
+  const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  const [topType, topScore] = sorted[0];
+  const archetype = ARCHETYPES[topType];
+  const matchPct = Math.round((topScore / QUESTIONS.length) * 100);
+
+  document.getElementById('archetypeName').textContent = archetype.name;
+  document.getElementById('archetypeSub').textContent = archetype.sub;
+  document.getElementById('founderEmoji').textContent = archetype.emoji;
+  document.getElementById('matchPct').textContent = matchPct + '%';
+  document.getElementById('archetypeDesc').textContent = archetype.desc;
+
+  const header = document.getElementById('resultHeader');
+  header.style.background = `linear-gradient(135deg, ${archetype.color}30 0%, transparent 100%)`;
+  header.style.borderBottom = `1px solid ${archetype.color}40`;
+
+  // Traits
+  const traitsGrid = document.getElementById('traitsGrid');
+  traitsGrid.innerHTML = '';
+  archetype.traits.forEach(t => {
+    const el = document.createElement('div');
+    el.className = 'trait';
+    el.innerHTML = `<div class="trait-icon">${t.icon}</div><div class="trait-name">${t.name}</div>`;
+    traitsGrid.appendChild(el);
+  });
+
+  // Breakdown bars
+  const colors = { visionary:'#6366f1', hustler:'#f97316', engineer:'#10b981', designer:'#ec4899', datanerd:'#f59e0b', operator:'#8b5cf6' };
+  const labels = { visionary:'Visionary', hustler:'Hustler', engineer:'Engineer', designer:'Designer', datanerd:'Data Nerd', operator:'Operator' };
+  const barsEl = document.getElementById('breakdownBars');
+  barsEl.innerHTML = '';
+  sorted.forEach(([type, score]) => {
+    const pct = Math.round((score / QUESTIONS.length) * 100);
+    const div = document.createElement('div');
+    div.className = 'breakdown-bar';
+    div.innerHTML = `<span class="bl">${labels[type]}</span><span class="bg"><span class="bf" style="width:${pct}%;background:${colors[type]}"></span></span><span class="bv">${pct}%</span>`;
+    barsEl.appendChild(div);
+  });
+
+  // Badges
+  const badgeContainer = document.getElementById('achievementBadges');
+  badgeContainer.innerHTML = '';
+  archetype.badges.forEach(b => {
+    const el = document.createElement('span');
+    el.className = 'badge-pill ' + b.cls;
+    el.textContent = b.text;
+    badgeContainer.appendChild(el);
+  });
+
+  // Embed
+  const slug = encodeURIComponent(topType);
+  const badgeUrl = `https://img.shields.io/badge/Founder_Type-${encodeURIComponent(archetype.name.replace('The ',''))}-${archetype.color.replace('#','')}?style=flat-square`;
+  document.getElementById('embedCode').textContent = `<a href="https://tinytools-smoky.vercel.app/founder-personality/#${slug}"><img src="${badgeUrl}" alt="${archetype.name}"></a>`;
+
+  // Hash
+  window.location.hash = slug;
+
+  document.getElementById('quizCard').style.display = 'none';
+  document.getElementById('resultCard').classList.add('show');
+  document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  window._lastResult = { topType, topScore, matchPct, archetype, scores, sorted };
+}
+
+function shareToX() {
+  if (!window._lastResult) return;
+  const { archetype, matchPct } = window._lastResult;
+  const text = `I'm ${archetype.name} ${archetype.emoji} — ${matchPct}% match\n\n"${archetype.sub}"\n\nWhat kind of founder are you? Take the 10-question quiz:\n${window.location.href}`;
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const btns = document.querySelectorAll('.action');
+    const btn = [...btns].find(b => b.textContent.includes('Copy Link'));
+    if (btn) { btn.textContent = '✅ Copied!'; setTimeout(() => btn.textContent = '🔗 Copy Link', 2000); }
+  });
+}
+
+function copyEmbed() {
+  navigator.clipboard.writeText(document.getElementById('embedCode').textContent).then(() => {
+    const btn = document.querySelector('.embed-copy-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy embed code', 2000);
+  });
+}
+
+function restartQuiz() {
+  answers = []; currentQ = 0;
+  document.getElementById('resultCard').classList.remove('show');
+  document.getElementById('quizCard').style.display = 'block';
+  window.location.hash = '';
+  renderQuestion();
+  document.getElementById('quizCard').scrollIntoView({ behavior: 'smooth' });
+}
+
+function downloadCard() {
+  if (!window._lastResult) return;
+  const { archetype, matchPct, sorted, scores } = window._lastResult;
+  const canvas = document.getElementById('shareCanvas');
+  canvas.style.display = 'block';
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+
+  ctx.fillStyle = '#09090f';
+  ctx.fillRect(0, 0, W, H);
+
+  const grad = ctx.createRadialGradient(0, 0, 0, 200, 200, 500);
+  grad.addColorStop(0, archetype.color + '40');
+  grad.addColorStop(1, 'transparent');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Left accent bar
+  ctx.fillStyle = archetype.color;
+  ctx.fillRect(0, 0, 8, H);
+
+  // Big emoji
+  ctx.font = '120px serif';
+  ctx.textAlign = 'left';
+  ctx.fillText(archetype.emoji, 40, 180);
+
+  // Archetype name
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 58px -apple-system, sans-serif';
+  ctx.fillText(archetype.name, 40, 270);
+
+  ctx.fillStyle = archetype.color;
+  ctx.font = 'bold 28px -apple-system, sans-serif';
+  ctx.fillText(archetype.sub, 40, 315);
+
+  // Match pct badge
+  ctx.fillStyle = archetype.color + '30';
+  roundRect(ctx, 40, 340, 200, 90, 16);
+  ctx.fill();
+  ctx.strokeStyle = archetype.color;
+  ctx.lineWidth = 2;
+  roundRect(ctx, 40, 340, 200, 90, 16);
+  ctx.stroke();
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 48px -apple-system, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(matchPct + '%', 140, 398);
+  ctx.fillStyle = '#9090b8';
+  ctx.font = '18px -apple-system, sans-serif';
+  ctx.fillText('match', 140, 420);
+  ctx.textAlign = 'left';
+
+  // Description snippet
+  const shortDesc = archetype.desc.substring(0, 220) + '...';
+  ctx.fillStyle = '#c4b5fd';
+  ctx.font = 'italic 19px -apple-system, sans-serif';
+  const words = shortDesc.split(' ');
+  let line = '', y2 = 470;
+  for (const w of words) {
+    const test = line + w + ' ';
+    if (ctx.measureText(test).width > 680 && line) {
+      ctx.fillText(line, 40, y2); y2 += 28; line = w + ' ';
+      if (y2 > 590) break;
+    } else line = test;
+  }
+  if (y2 <= 590) ctx.fillText(line, 40, y2);
+
+  // Right: breakdown bars
+  const labels = { visionary:'Visionary', hustler:'Hustler', engineer:'Engineer', designer:'Designer', datanerd:'Data Nerd', operator:'Operator' };
+  const colors2 = { visionary:'#6366f1', hustler:'#f97316', engineer:'#10b981', designer:'#ec4899', datanerd:'#f59e0b', operator:'#8b5cf6' };
+  ctx.fillStyle = '#f0f0fa';
+  ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('Your Founder DNA', 760, 80);
+
+  sorted.forEach(([type, score], i) => {
+    const pct = Math.round((score / QUESTIONS.length) * 100);
+    const y = 110 + i * 76;
+    ctx.fillStyle = '#9090b8';
+    ctx.font = '18px -apple-system, sans-serif';
+    ctx.fillText(labels[type], 760, y);
+    ctx.fillStyle = '#1a1a2e';
+    roundRect(ctx, 760, y + 10, 360, 18, 6);
+    ctx.fill();
+    ctx.fillStyle = colors2[type];
+    roundRect(ctx, 760, y + 10, Math.max(360 * pct / 100, 6), 18, 6);
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 16px -apple-system, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText(pct + '%', 1140, y + 24);
+    ctx.textAlign = 'left';
+  });
+
+  ctx.fillStyle = archetype.color;
+  ctx.font = 'bold 20px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/founder-personality/', W - 20, H - 20);
+
+  const link = document.createElement('a');
+  link.download = 'founder-personality.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+  canvas.style.display = 'none';
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+// Load from hash (deep link to result)
+window.addEventListener('load', () => {
+  const hash = window.location.hash.slice(1);
+  if (hash && ARCHETYPES[decodeURIComponent(hash)]) {
+    // Show result directly without quiz
+    const topType = decodeURIComponent(hash);
+    answers = new Array(10).fill(topType); // simulate all answers
+    // Give partial answers for breakdown variety
+    const others = Object.keys(ARCHETYPES).filter(k => k !== topType);
+    answers[3] = others[0]; answers[6] = others[1];
+    showResult();
+  } else {
+    renderQuestion();
+  }
+});
+</script>
+</body>
+</html>
