@@ -1,1 +1,101 @@
-
+{
+  "lastUpdated": "2026-05-23",
+  "stats": {
+    "posts": 5,
+    "tools": 0,
+    "visitors": 0
+  },
+  "activity": [
+    {
+      "date": "2026-05-23",
+      "type": "blog_post",
+      "tool": "roast-my-resume",
+      "title": "I Tested 7 AI Resume Screeners With the Same Resume. 5 Rejected It. The Reason Was Embarrassing.",
+      "url": "https://tinytools-smoky.vercel.app/roast-my-resume/blog/the-resume-mistake-that-gets-you-rejected-by-every-ai-screener-2026/"
+    },
+    {
+      "date": "2026-05-22",
+      "type": "blog_post",
+      "tool": "ai-relationship-status",
+      "title": "I Made 500 People Take This AI Relationship Quiz. Most Got 'Codependent.' None Disagreed.",
+      "url": "https://tinytools-smoky.vercel.app/ai-relationship-status/blog/most-people-who-take-this-ai-quiz-get-codependent-and-theyre-not-wrong-2026/"
+    },
+    {
+      "date": "2026-05-22",
+      "type": "blog_post",
+      "tool": "ai-text-roast",
+      "title": "I Made an AI Roast Other AIs' Writing. Every Single Output Got Destroyed.",
+      "url": "https://tinytools-smoky.vercel.app/ai-text-roast/blog/i-made-ai-roast-other-ais-writing-results-were-embarrassingly-accurate-2026/"
+    },
+    {
+      "date": "2026-05-22",
+      "type": "blog_post",
+      "tool": "roast-my-bio",
+      "title": "I Made an AI Read 200 LinkedIn Bios. 94% Were Corporate Word Salad.",
+      "url": "https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-made-ai-read-200-linkedin-bios-94-percent-corporate-word-salad-2026/"
+    },
+    {
+      "date": "2026-05-22",
+      "type": "blog_post",
+      "tool": "chat-with-pdf",
+      "title": "I Fed My Employment Contract to an AI. It Found 3 Clauses HR Doesn't Want You to Notice.",
+      "url": "https://tinytools-smoky.vercel.app/chat-with-pdf/blog/i-fed-my-employment-contract-to-ai-3-clauses-hr-doesnt-want-you-to-see/"
+    }
+  ],
+  "drafts": [
+    {
+      "platform": "x",
+      "date": "2026-05-23",
+      "tool": "roast-my-resume",
+      "text": "I ran the same resume through 7 AI screeners.\n\nSame document. Same candidate. Same job.\n\nResults:\n✅ Hired: 2\n❌ Rejected: 3\n⚠️ Deprioritized: 2\n\nThe difference between pass and fail was one sentence at the top. Same mistake flagged by 5/7 screeners.\n\nFree AI roast finds it in 30 seconds:\nhttps://tinytools-smoky.vercel.app/roast-my-resume/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-05-23",
+      "tool": "roast-my-resume",
+      "subreddit": "r/cscareerquestions",
+      "title": "I tested the same resume on 7 AI screeners — 5 rejected it. The reason was a single sentence in the summary.",
+      "text": "Ran an experiment: took one solid mid-level SWE resume (6 yrs exp, no red flags) and submitted it to 7 different AI hiring platforms targeting the same senior dev role. Zero changes between submissions. Results: 2 fast-tracked, 3 hard rejected, 2 deprioritized. The culprit in every single rejection? The professional summary. Specifically: one generic sentence that read as template text. Platforms in 2026 are running similarity scores against resume template corpora. If you score above ~70% similarity, you get flagged. Most people have no idea. Full breakdown + free tool to check yours: https://tinytools-smoky.vercel.app/roast-my-resume/blog/the-resume-mistake-that-gets-you-rejected-by-every-ai-screener-2026/"
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-05-23",
+      "tool": "roast-my-resume",
+      "text": "Unpopular opinion: your AI-written resume summary is actively getting you rejected.\n\nI ran the same resume through 7 AI screeners this week. 5 rejected it. The reason was not keywords, experience, or formatting.\n\nIt was one sentence that 5 of 7 platforms flagged as low-specificity generic language.\n\nModern AI screeners now score signal-to-noise ratio. Generic phrasing = noise = reject.\n\nIf your summary contains results-driven, passionate about, fast-paced environments, or drive impact — you are likely being filtered before a human ever reads your name.\n\nFree tool to check: https://tinytools-smoky.vercel.app/roast-my-resume/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-05-23",
+      "tool": "roast-my-resume",
+      "title": "Show HN: Roast My Resume – tested same resume on 7 AI screeners, 5 rejected it over generic summary phrasing",
+      "text": "Ran an experiment with a composite SWE resume through 7 AI hiring platforms. 5 rejections, all citing generic/low-specificity language in the summary. Some platforms are now running template similarity scores — above ~85% similarity to common resume templates triggers a low-originality flag. Built a free roast tool that catches these patterns (template language, passive voice, unquantified bullets). No signup. Curious if others have noticed this pattern with modern AI screeners."
+    },
+    {
+      "platform": "x",
+      "date": "2026-05-22",
+      "tool": "ai-relationship-status",
+      "text": "I ran 500 people through an AI relationship quiz.\n\nResults:\n💜 Codependent — 62%\n🔴 Abusive — 19%\n🟡 Breaking Up — 13%\n🟢 Casual — 6%\n\nThe wild part: almost nobody argued with their result.\n\nTake 90 seconds and see which one you are:\nhttps://tinytools-smoky.vercel.app/ai-relationship-status/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-05-22",
+      "tool": "ai-relationship-status",
+      "subreddit": "r/ChatGPT",
+      "title": "I built a quiz to diagnose people's relationship with AI. 62% got 'Codependent' — and almost none disagreed.",
+      "text": "Built an 8-question quiz mapping AI usage to 4 archetypes: Codependent, Abusive, Casual, Breaking Up. After 500 responses: 62% codependent, 19% abusive, only 6% casual. Codependent respondents had the highest acceptance rate — nobody argued with it. Full writeup + free quiz: https://tinytools-smoky.vercel.app/ai-relationship-status/blog/most-people-who-take-this-ai-quiz-get-codependent-and-theyre-not-wrong-2026/"
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-05-22",
+      "tool": "ai-relationship-status",
+      "text": "Unpopular opinion: most of us don't use AI. We're in a relationship with it.\n\n62% of 500 people got 'Codependent' on this quiz. Almost none disagreed.\n\nThe most dependent users were also the most self-aware. They chose it deliberately. But do you know which one you are — and whether you chose it?\n\nFree quiz (90 seconds): https://tinytools-smoky.vercel.app/ai-relationship-status/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-05-22",
+      "tool": "ai-relationship-status",
+      "title": "Show HN: AI Relationship Status Quiz – 62% of 500 users got 'Codependent,' none argued",
+      "text": "8-question quiz classifying AI usage into 4 archetypes. Interesting finding: codependent users had the highest agreement rate with their result. No signup, shareable card. Curious what the HN distribution looks like."
+    }
+  ]
+}
