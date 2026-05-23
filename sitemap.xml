@@ -4,6 +4,12 @@ urlset>/  <url>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/roast-my-resume/blog/the-resume-mistake-that-gets-you-rejected-by-every-ai-screener-2026/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -723,6 +729,12 @@ urlset>/  <url>
   <url>
     <loc>https://tinytools-smoky.vercel.app/ai-relationship-status/blog/most-people-who-take-this-ai-quiz-get-codependent-and-theyre-not-wrong-2026/</loc>
     <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/roast-my-resume/blog/the-resume-mistake-that-gets-you-rejected-by-every-ai-screener-2026/</loc>
+    <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
