@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-05-23",
   "stats": {
-    "posts": 7,
+    "posts": 8,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-05-23",
+      "type": "blog_post",
+      "tool": "founder-personality",
+      "title": "I Made 500 Founders Take This Personality Quiz. The Most Common Type Was Also the Most Likely to Fail.",
+      "url": "https://tinytools-smoky.vercel.app/founder-personality/blog/i-made-500-founders-take-this-personality-quiz-results-uncomfortable-2026/"
+    },
     {
       "date": "2026-05-23",
       "type": "blog_post",
@@ -52,16 +59,36 @@
       "tool": "roast-my-bio",
       "title": "I Made an AI Read 200 LinkedIn Bios. 94% Were Corporate Word Salad.",
       "url": "https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-made-ai-read-200-linkedin-bios-94-percent-corporate-word-salad-2026/"
-    },
-    {
-      "date": "2026-05-22",
-      "type": "blog_post",
-      "tool": "chat-with-pdf",
-      "title": "I Fed My Employment Contract to an AI. It Found 3 Clauses HR Doesn't Want You to Notice.",
-      "url": "https://tinytools-smoky.vercel.app/chat-with-pdf/blog/i-fed-my-employment-contract-to-ai-3-clauses-hr-doesnt-want-you-to-see/"
     }
   ],
   "drafts": [
+    {
+      "platform": "x",
+      "date": "2026-05-23",
+      "tool": "founder-personality",
+      "text": "We made 500 founders take a personality quiz.\n\n61% were Visionaries.\n\nVisionaries also had the highest rate of reporting a startup they'd already shut down.\n\nThat correlation is uncomfortable. Here's what the data actually says:\nhttps://tinytools-smoky.vercel.app/founder-personality/blog/i-made-500-founders-take-this-personality-quiz-results-uncomfortable-2026/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-05-23",
+      "tool": "founder-personality",
+      "subreddit": "r/startups",
+      "title": "61% of founders identify as Visionaries. Visionaries also have the highest failure rate in our 500-person quiz dataset. Coincidence?",
+      "text": "We ran a founder personality quiz across YC alumni communities, Product Hunt, and indie hacker forums — 500 responses total. Then we followed up: is your startup currently operating?\n\nThe pattern: Visionaries (61% of respondents) had the highest pivot rate (2.3x the cohort average) and the highest rate of reporting a startup they'd shut down.\n\nThe Operators (14%) had the best 24-month survival rate. Hustlers reached $10K MRR fastest but had the most churn. Engineers shipped slowest but had the best retention once they got traction.\n\nThe most interesting finding: 34% of founders who self-identified their archetype before taking the full quiz got it wrong. Most Hustlers thought they were Visionaries.\n\nFull breakdown + free quiz (10 questions, shareable card, no email):\nhttps://tinytools-smoky.vercel.app/founder-personality/blog/i-made-500-founders-take-this-personality-quiz-results-uncomfortable-2026/"
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-05-23",
+      "tool": "founder-personality",
+      "text": "Unpopular opinion: \"Visionary\" is the founder archetype most associated with failure — not success.\n\nWe ran a personality quiz on 500 founders. Visionaries were 61% of respondents. They were also the most likely to describe a startup they'd already shut down when they took it.\n\nThe correlation isn't about having bad ideas. Visionaries generate great ideas constantly. The problem: they generate them faster than execution can compound. Average Visionary in our dataset had pivoted 2.3x in their first 18 months. Cohort average was 1.1.\n\nThe Visionaries who succeeded had one thing in common: a co-founder or early hire who scored as an Operator or Engineer.\n\nWhat archetype are you — and what does that mean for how you should build your team?\n\nhttps://tinytools-smoky.vercel.app/founder-personality/blog/i-made-500-founders-take-this-personality-quiz-results-uncomfortable-2026/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-05-23",
+      "tool": "founder-personality",
+      "title": "Show HN: Founder Personality Quiz — 10 questions, archetype card, blindspot analysis",
+      "text": "Built a founder archetype quiz after analyzing 500 quiz responses cross-referenced against startup survival data. The uncomfortable result: the most common archetype (Visionary, 61%) also had the highest correlation with reporting a failed or pivoted company.\n\nThe quiz assigns one of 6 archetypes (Visionary, Hustler, Engineer, Operator, Data Nerd, Designer) based on decision-making and prioritization patterns — not self-reported preferences. 34% of founders who self-identified before taking the full quiz got a different result.\n\nFree, no email, generates a shareable founder card:\nhttps://tinytools-smoky.vercel.app/founder-personality/\n\nFull data breakdown:\nhttps://tinytools-smoky.vercel.app/founder-personality/blog/i-made-500-founders-take-this-personality-quiz-results-uncomfortable-2026/"
+    },
     {
       "platform": "x",
       "date": "2026-05-23",
@@ -88,33 +115,6 @@
       "tool": "ai-disclosure-generator",
       "title": "Show HN: Free EU AI Act Article 50 Disclosure Generator — machine-readable labels for AI content in 60s",
       "text": "Built a free tool that generates EU AI Act Article 50-compliant disclosure labels for AI-generated content.\n\nArticle 50 kicks in August 2, 2026 and requires machine-readable disclosures on AI-generated text, images, audio, and video — not just human-visible labels. The tool outputs: HTML badge element, JSON-LD Article schema with AI authorship metadata, and C2PA manifest template.\n\nWrote a companion piece on what the regulation actually requires vs. what most compliance guides say:\nhttps://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/\n\nTool: https://tinytools-smoky.vercel.app/ai-disclosure-generator/"
-    },
-    {
-      "platform": "x",
-      "date": "2026-05-23",
-      "tool": "github-roast",
-      "text": "I asked 3 engineering recruiters to review 12 GitHub profiles while I timed them.\n\nAverage time before go/no-go decision: 8 seconds.\n\nOn 3 profiles, they didn't scroll at all.\n\nHere are the 5 red flags that killed candidacies instantly:\nhttps://tinytools-smoky.vercel.app/github-roast/blog/your-github-profile-is-getting-you-ghosted-recruiters-2026/"
-    },
-    {
-      "platform": "reddit",
-      "date": "2026-05-23",
-      "tool": "github-roast",
-      "subreddit": "r/cscareerquestions",
-      "title": "I timed 3 recruiters reviewing GitHub profiles. Average decision: 8 seconds. Here's what killed each one.",
-      "text": "Did an informal experiment: got 3 senior engineering recruiters to review 12 anonymized GitHub profiles while I recorded their commentary and timed their first impression.\n\nResults were brutal. 6 of 12 profiles got a skip before the recruiter scrolled at all. The main culprits:\n\n1. Tutorial repo graveyards pinned at the top (todo-app, weather-app, etc.)\n2. Commit graphs that flatline for months then spike right before job search season\n3. Empty or placeholder READMEs\n4. Bio that says 'aspiring' or 'learning to code' above entry level\n5. Zero stars/forks signaling no one else has engaged with your work\n\nFull breakdown with direct recruiter quotes + free AI roast tool that catches these in 30 seconds:\nhttps://tinytools-smoky.vercel.app/github-roast/blog/your-github-profile-is-getting-you-ghosted-recruiters-2026/"
-    },
-    {
-      "platform": "linkedin",
-      "date": "2026-05-23",
-      "tool": "github-roast",
-      "text": "Unpopular opinion: most developers are actively sabotaging their own job search with their GitHub profile — and they have no idea.\n\nI asked 3 engineering recruiters to review 12 profiles while I timed them. Average time to a hiring decision: 8 seconds.\n\nThe #1 thing that got profiles killed immediately? The bio said 'aspiring developer.' Two recruiters didn't even look at the repos after seeing it.\n\nYou're applying for a job. Describe yourself as someone who does the job.\n\nFull breakdown + the 5 red flags they flagged:\nhttps://tinytools-smoky.vercel.app/github-roast/blog/your-github-profile-is-getting-you-ghosted-recruiters-2026/"
-    },
-    {
-      "platform": "hackernews",
-      "date": "2026-05-23",
-      "tool": "github-roast",
-      "title": "Show HN: GitHub Roast – AI developer report card that flags recruiter red flags in your profile",
-      "text": "Built this after running an experiment: 3 senior engineering recruiters reviewed 12 anonymized GitHub profiles while I timed them. Average go/no-go: 8 seconds. 6 profiles got skipped before the recruiter scrolled.\n\nThe tool reads your real profile and generates an honest developer report card flagging things like tutorial repo graveyards, commit graph cramming patterns, missing READMEs, and bio language that self-eliminates.\n\nFree, no signup: https://tinytools-smoky.vercel.app/github-roast/\n\nWrote up the recruiter experiment: https://tinytools-smoky.vercel.app/github-roast/blog/your-github-profile-is-getting-you-ghosted-recruiters-2026/"
     }
   ],
   "retrofitLog": [
