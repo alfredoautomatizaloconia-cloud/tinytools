@@ -138,6 +138,28 @@
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
 
+
+  /* ── Viral share card ─────────────────────────────── */
+  .viral-section {
+    margin-top: 22px; padding: 18px; background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(59,130,246,0.1));
+    border: 1px solid rgba(16,185,129,0.35); border-radius: 14px;
+  }
+  .viral-section h3 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; font-weight: 600; }
+  .viral-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .viral-btn {
+    display: inline-flex; align-items: center; gap: 6px; padding: 9px 14px;
+    border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer;
+    border: none; font-family: inherit; text-decoration: none; transition: opacity .15s;
+  }
+  .viral-btn:hover { opacity: 0.85; }
+  .viral-btn-tweet { background: #1d9bf0; color: white; }
+  .viral-btn-copy  { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+  .viral-btn-dl    { background: var(--accent); color: #002418; }
+  .embed-block { background: var(--bg-elevated); border-radius: 10px; padding: 12px; }
+  .embed-block .label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; font-weight: 600; }
+  .embed-block pre  { font-family: 'SF Mono', Monaco, monospace; font-size: 11px; color: #c4b5fd; white-space: pre-wrap; word-break: break-all; margin-bottom: 6px; }
+  .embed-block button { padding: 4px 10px; background: var(--accent); border: none; border-radius: 6px; color: #002418; font-size: 11px; cursor: pointer; font-weight: 700; }
+  canvas#aibomCard { display: none; }
   .copied-toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #002418; padding: 9px 18px; border-radius: 999px; font-size: 13px; font-weight: 700; z-index: 50; opacity: 0; transition: opacity .2s; }
   .copied-toast.show { opacity: 1; }
 </style>
@@ -209,6 +231,25 @@
       <div class="compliance-grid" id="compliance"></div>
     </div>
   </div>
+
+  <!-- Viral share section (added by tinytools-viral-loop) -->
+  <canvas id="aibomCard" width="1200" height="630"></canvas>
+  <div class="viral-section" id="viralSection" style="display:none;">
+    <h3>📢 Share your AIBOM</h3>
+    <div class="viral-actions">
+      <a id="tweetBtn" class="viral-btn viral-btn-tweet" href="#" target="_blank" rel="noopener">
+        𝕏 Share on X
+      </a>
+      <button id="copyLinkBtn" class="viral-btn viral-btn-copy">🔗 Copy link</button>
+      <a id="downloadCardBtn" class="viral-btn viral-btn-dl" href="#" download="aibom-card.png">⬇ Download card</a>
+    </div>
+    <div class="embed-block">
+      <div class="label">Embed badge</div>
+      <pre id="embedCode"></pre>
+      <button id="copyEmbedBtn">Copy embed code</button>
+    </div>
+  </div>
+
 
   <div class="upsell">
     <h3>Pair this with the rest of your compliance stack</h3>
@@ -694,6 +735,149 @@ function toast(msg) { const t = document.getElementById('toast'); t.textContent 
 addModel({ name: 'Foundation model', type: 'foundation', modality: 'text', license: 'Apache-2.0' });
 addDataset({ name: 'Training corpus', purpose: 'training', modality: 'text', license: 'CC-BY-4.0' });
 build();
+// ── Viral mechanics ─────────────────────────────────────────────────────────
+
+function getSystemSummary() {
+  const sysName  = document.getElementById('sys-name').value || 'AI System';
+  const modelCnt = models.length;
+  const dsCnt    = datasets.length;
+  const fmtLabel = format === 'spdx' ? 'SPDX 3.0' : 'CycloneDX 1.6';
+  return { sysName, modelCnt, dsCnt, fmtLabel };
+}
+
+function updateViralSection() {
+  const { sysName, modelCnt, dsCnt, fmtLabel } = getSystemSummary();
+  if (modelCnt === 0 && dsCnt === 0) {
+    document.getElementById('viralSection').style.display = 'none';
+    return;
+  }
+  document.getElementById('viralSection').style.display = '';
+
+  // ── Deep-link URL ────────────────────────────────────────────────────────
+  const encoded = encodeURIComponent(JSON.stringify({ n: sysName, m: modelCnt, d: dsCnt, f: format }));
+  const shareUrl = `https://tinytools-smoky.vercel.app/ai-bill-of-materials/#${encoded}`;
+
+  // ── Tweet ────────────────────────────────────────────────────────────────
+  const tweetText = `I just generated an AI Bill of Materials (AIBOM) for "${sysName}" — ${modelCnt} model${modelCnt !== 1 ? 's' : ''}, ${dsCnt} dataset${dsCnt !== 1 ? 's' : ''}, ${fmtLabel} format. Free & browser-only. Try yours →`;
+  document.getElementById('tweetBtn').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(shareUrl)}`;
+
+  // ── Copy link ────────────────────────────────────────────────────────────
+  document.getElementById('copyLinkBtn').onclick = () => {
+    navigator.clipboard.writeText(shareUrl);
+    const btn = document.getElementById('copyLinkBtn');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+  };
+
+  // ── Embeddable badge ─────────────────────────────────────────────────────
+  const badgeLabel  = 'AIBOM';
+  const badgeMsg    = `${modelCnt}%20model${modelCnt !== 1 ? 's' : ''}%20%7C%20${dsCnt}%20dataset${dsCnt !== 1 ? 's' : ''}`;
+  const badgeColor  = '10b981';
+  const embedCode   = `<a href="${shareUrl}" target="_blank">
+  <img src="https://img.shields.io/badge/${encodeURIComponent(badgeLabel)}-${badgeMsg}-${badgeColor}?style=for-the-badge" alt="AIBOM: ${sysName}">
+</a>`;
+  document.getElementById('embedCode').textContent = embedCode;
+  document.getElementById('copyEmbedBtn').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('copyEmbedBtn');
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = 'Copy embed code', 1500);
+  };
+
+  // ── Canvas card (1200×630) ────────────────────────────────────────────────
+  const canvas = document.getElementById('aibomCard');
+  const ctx    = canvas.getContext('2d');
+  canvas.width = 1200; canvas.height = 630;
+
+  // Background
+  const bg = ctx.createLinearGradient(0, 0, 1200, 630);
+  bg.addColorStop(0, '#0a0a0f'); bg.addColorStop(1, '#0f1f18');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, 1200, 630);
+
+  // Accent glow
+  const glow = ctx.createRadialGradient(200, 0, 0, 200, 0, 500);
+  glow.addColorStop(0, 'rgba(16,185,129,0.25)'); glow.addColorStop(1, 'transparent');
+  ctx.fillStyle = glow; ctx.fillRect(0, 0, 1200, 630);
+
+  // Green left bar
+  ctx.fillStyle = '#10b981'; ctx.fillRect(0, 0, 8, 630);
+
+  // System name
+  ctx.font = 'bold 54px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.fillStyle = '#f5f5fa';
+  const maxW = 900;
+  let displayName = sysName;
+  while (ctx.measureText(displayName).width > maxW && displayName.length > 10) {
+    displayName = displayName.slice(0, -1);
+  }
+  if (displayName !== sysName) displayName += '…';
+  ctx.fillText(displayName, 60, 140);
+
+  // Label
+  ctx.font = '28px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.fillStyle = '#6ee7b7';
+  ctx.fillText('AI Bill of Materials', 60, 80);
+
+  // Format badge
+  ctx.fillStyle = 'rgba(16,185,129,0.2)';
+  ctx.beginPath(); ctx.roundRect(60, 175, 280, 52, 10); ctx.fill();
+  ctx.strokeStyle = 'rgba(16,185,129,0.5)'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.font = 'bold 22px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.fillStyle = '#6ee7b7';
+  ctx.fillText(fmtLabel + ' format', 80, 209);
+
+  // Stats row
+  const stats = [
+    { label: 'Models',   value: String(modelCnt) },
+    { label: 'Datasets', value: String(dsCnt) },
+    { label: 'Standard', value: fmtLabel },
+  ];
+  stats.forEach((s, i) => {
+    const x = 60 + i * 340;
+    ctx.fillStyle = 'rgba(255,255,255,0.06)';
+    ctx.beginPath(); ctx.roundRect(x, 300, 300, 150, 14); ctx.fill();
+    ctx.font = 'bold 64px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+    ctx.fillStyle = '#10b981';
+    ctx.fillText(s.value, x + 20, 388);
+    ctx.font = '22px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+    ctx.fillStyle = '#a0a0b8';
+    ctx.fillText(s.label, x + 20, 424);
+  });
+
+  // Bottom brand
+  ctx.font = 'bold 20px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.fillStyle = '#a0a0b8';
+  ctx.fillText('tinytools-smoky.vercel.app/ai-bill-of-materials', 60, 590);
+  ctx.fillStyle = '#10b981';
+  ctx.fillText('TinyTools', 1090, 590);
+
+  document.getElementById('downloadCardBtn').href = canvas.toDataURL('image/png');
+}
+
+// Hook build() to also refresh viral section
+const _origBuild = build;
+window.build = function() { _origBuild(); updateViralSection(); };
+// Also hook the reset
+document.getElementById('resetBtn').addEventListener('click', updateViralSection, true);
+
+// ── Auto-load from URL hash ─────────────────────────────────────────────────
+function tryLoadFromHash() {
+  const hash = location.hash.slice(1);
+  if (!hash) return;
+  try {
+    const params = JSON.parse(decodeURIComponent(hash));
+    if (params.n) document.getElementById('sys-name').value = params.n;
+    if (params.f && params.f === 'cyclonedx') {
+      format = 'cyclonedx';
+      document.getElementById('fmt-spdx').classList.remove('active');
+      document.getElementById('fmt-cyclonedx').classList.add('active');
+    }
+    build();
+  } catch (e) { /* invalid hash, ignore */ }
+}
+tryLoadFromHash();
+
 </script>
 </body>
 </html>
