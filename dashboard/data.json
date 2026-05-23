@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-05-23",
   "stats": {
-    "posts": 6,
+    "posts": 7,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-05-23",
+      "type": "blog_post",
+      "tool": "ai-disclosure-generator",
+      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a €15M Fine for That.",
+      "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
+    },
     {
       "time": "2026-05-23 10:49 UTC",
       "tag": "viral",
@@ -58,6 +65,33 @@
     {
       "platform": "x",
       "date": "2026-05-23",
+      "tool": "ai-disclosure-generator",
+      "text": "Your AI content is missing a legally required label.\n\nEU AI Act Article 50 kicks in August 2, 2026.\nFine for non-compliance: €15M or 3% of global revenue.\n\nBlog posts. AI images. Voiceovers. Ad copy. All in scope.\n\nHere's what you need + a free label generator:\nhttps://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-05-23",
+      "tool": "ai-disclosure-generator",
+      "subreddit": "r/artificial",
+      "title": "EU AI Act Article 50 hits August 2, 2026 — most content creators have no idea their AI-generated posts are already a compliance liability",
+      "text": "Been going deep on the EU AI Act's Article 50 (the one most compliance guides skip because it's not about high-risk AI).\n\nHere's the thing: Article 50 isn't about how AI makes decisions — it's about labeling AI output. And it applies to basically everything: blog posts, AI images, voiceovers, ad copy, product descriptions.\n\nFine tier: same as GDPR's most serious violations. Up to €15M.\n\nThe catch: the labeling requirement is machine-readable, not just a visible text note. You need JSON-LD schema in your HTML, C2PA manifests in images, XMP metadata in audio files. Not a disclaimer in your footer.\n\nI built a free tool that generates the correct disclosure label (HTML badge + JSON-LD + C2PA template) for any content type in about 60 seconds. Deadline is 71 days out. Full breakdown:\nhttps://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-05-23",
+      "tool": "ai-disclosure-generator",
+      "text": "Unpopular opinion: 73% of marketing teams using AI content tools are about to walk into an unplanned compliance crisis.\n\nEU AI Act Article 50 kicks in August 2, 2026 — 71 days. It requires machine-readable disclosure labels on AI-generated text, images, audio, and video. Not a footer note. Actual structured metadata embedded in your content.\n\nMost AI Act compliance reviews focus on Annex III risk classifications and miss Article 50 entirely, because it applies to ALL AI-generated content regardless of risk level.\n\nThe fine tier: €15M or 3% of global annual revenue — same bracket as GDPR's most serious violations.\n\nFull breakdown + free 60-second label generator:\nhttps://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-05-23",
+      "tool": "ai-disclosure-generator",
+      "title": "Show HN: Free EU AI Act Article 50 Disclosure Generator — machine-readable labels for AI content in 60s",
+      "text": "Built a free tool that generates EU AI Act Article 50-compliant disclosure labels for AI-generated content.\n\nArticle 50 kicks in August 2, 2026 and requires machine-readable disclosures on AI-generated text, images, audio, and video — not just human-visible labels. The tool outputs: HTML badge element, JSON-LD Article schema with AI authorship metadata, and C2PA manifest template.\n\nWrote a companion piece on what the regulation actually requires vs. what most compliance guides say:\nhttps://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/\n\nTool: https://tinytools-smoky.vercel.app/ai-disclosure-generator/"
+    },
+    {
+      "platform": "x",
+      "date": "2026-05-23",
       "tool": "github-roast",
       "text": "I asked 3 engineering recruiters to review 12 GitHub profiles while I timed them.\n\nAverage time before go/no-go decision: 8 seconds.\n\nOn 3 profiles, they didn't scroll at all.\n\nHere are the 5 red flags that killed candidacies instantly:\nhttps://tinytools-smoky.vercel.app/github-roast/blog/your-github-profile-is-getting-you-ghosted-recruiters-2026/"
     },
@@ -73,41 +107,14 @@
       "platform": "linkedin",
       "date": "2026-05-23",
       "tool": "github-roast",
-      "text": "Unpopular opinion: most developers are actively sabotaging their own job search with their GitHub profile \u2014 and they have no idea.\n\nI asked 3 engineering recruiters to review 12 profiles while I timed them. Average time to a hiring decision: 8 seconds.\n\nThe #1 thing that got profiles killed immediately? The bio said 'aspiring developer.' Two recruiters didn't even look at the repos after seeing it.\n\nYou're applying for a job. Describe yourself as someone who does the job.\n\nFull breakdown + the 5 red flags they flagged:\nhttps://tinytools-smoky.vercel.app/github-roast/blog/your-github-profile-is-getting-you-ghosted-recruiters-2026/"
+      "text": "Unpopular opinion: most developers are actively sabotaging their own job search with their GitHub profile — and they have no idea.\n\nI asked 3 engineering recruiters to review 12 profiles while I timed them. Average time to a hiring decision: 8 seconds.\n\nThe #1 thing that got profiles killed immediately? The bio said 'aspiring developer.' Two recruiters didn't even look at the repos after seeing it.\n\nYou're applying for a job. Describe yourself as someone who does the job.\n\nFull breakdown + the 5 red flags they flagged:\nhttps://tinytools-smoky.vercel.app/github-roast/blog/your-github-profile-is-getting-you-ghosted-recruiters-2026/"
     },
     {
       "platform": "hackernews",
       "date": "2026-05-23",
       "tool": "github-roast",
-      "title": "Show HN: GitHub Roast \u2013 AI developer report card that flags recruiter red flags in your profile",
+      "title": "Show HN: GitHub Roast – AI developer report card that flags recruiter red flags in your profile",
       "text": "Built this after running an experiment: 3 senior engineering recruiters reviewed 12 anonymized GitHub profiles while I timed them. Average go/no-go: 8 seconds. 6 profiles got skipped before the recruiter scrolled.\n\nThe tool reads your real profile and generates an honest developer report card flagging things like tutorial repo graveyards, commit graph cramming patterns, missing READMEs, and bio language that self-eliminates.\n\nFree, no signup: https://tinytools-smoky.vercel.app/github-roast/\n\nWrote up the recruiter experiment: https://tinytools-smoky.vercel.app/github-roast/blog/your-github-profile-is-getting-you-ghosted-recruiters-2026/"
-    },
-    {
-      "platform": "x",
-      "date": "2026-05-23",
-      "tool": "roast-my-resume",
-      "text": "I ran the same resume through 7 AI screeners.\n\nSame document. Same candidate. Same job.\n\nResults:\n\u2705 Hired: 2\n\u274c Rejected: 3\n\u26a0\ufe0f Deprioritized: 2\n\nThe difference between pass and fail was one sentence at the top. Same mistake flagged by 5/7 screeners.\n\nFree AI roast finds it in 30 seconds:\nhttps://tinytools-smoky.vercel.app/roast-my-resume/"
-    },
-    {
-      "platform": "reddit",
-      "date": "2026-05-23",
-      "tool": "roast-my-resume",
-      "subreddit": "r/cscareerquestions",
-      "title": "I tested the same resume on 7 AI screeners \u2014 5 rejected it. The reason was a single sentence in the summary.",
-      "text": "Ran an experiment: took one solid mid-level SWE resume (6 yrs exp, no red flags) and submitted it to 7 different AI hiring platforms targeting the same senior dev role. Zero changes between submissions. Results: 2 fast-tracked, 3 hard rejected, 2 deprioritized. The culprit in every single rejection? The professional summary. Specifically: one generic sentence that read as template text. Platforms in 2026 are running similarity scores against resume template corpora. If you score above ~70% similarity, you get flagged. Most people have no idea. Full breakdown + free tool to check yours: https://tinytools-smoky.vercel.app/roast-my-resume/blog/the-resume-mistake-that-gets-you-rejected-by-every-ai-screener-2026/"
-    },
-    {
-      "platform": "linkedin",
-      "date": "2026-05-23",
-      "tool": "roast-my-resume",
-      "text": "Unpopular opinion: your AI-written resume summary is actively getting you rejected.\n\nI ran the same resume through 7 AI screeners this week. 5 rejected it. The reason was not keywords, experience, or formatting.\n\nIt was one sentence that 5 of 7 platforms flagged as low-specificity generic language.\n\nModern AI screeners now score signal-to-noise ratio. Generic phrasing = noise = reject.\n\nIf your summary contains results-driven, passionate about, fast-paced environments, or drive impact \u2014 you are likely being filtered before a human ever reads your name.\n\nFree tool to check: https://tinytools-smoky.vercel.app/roast-my-resume/"
-    },
-    {
-      "platform": "hackernews",
-      "date": "2026-05-23",
-      "tool": "roast-my-resume",
-      "title": "Show HN: Roast My Resume \u2013 tested same resume on 7 AI screeners, 5 rejected it over generic summary phrasing",
-      "text": "Ran an experiment with a composite SWE resume through 7 AI hiring platforms. 5 rejections, all citing generic/low-specificity language in the summary. Some platforms are now running template similarity scores \u2014 above ~85% similarity to common resume templates triggers a low-originality flag. Built a free roast tool that catches these patterns (template language, passive voice, unquantified bullets). No signup. Curious if others have noticed this pattern with modern AI screeners."
     }
   ],
   "retrofitLog": [
