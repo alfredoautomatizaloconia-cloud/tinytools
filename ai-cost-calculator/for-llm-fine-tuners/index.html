@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Cost Calculator for LLM Fine-Tuners — Budget Training Runs, Synthetic Data & Inference (2026)</title>
+<meta name="description" content="Built for LLM fine-tuners running training jobs on OpenAI, Together AI, Replicate, Modal, and Lambda Labs. Calculate the real cost of every fine-tuning run, synthetic dataset generation job, hyperparameter sweep, and post-fine-tune inference call before the GPU bill arrives.">
+<meta name="keywords" content="llm fine-tuning cost calculator, fine-tuning budget, openai fine-tuning cost, together ai fine-tuning pricing, replicate fine-tuning cost, synthetic data generation cost, llm training cost estimator, fine-tune vs rag cost, modal labs gpu cost, hyperparameter sweep budget">
+<meta property="og:title" content="AI Cost Calculator for LLM Fine-Tuners — Free, No Signup">
+<meta property="og:description" content="Budget every stage of LLM fine-tuning: synthetic data generation, training runs, hyperparameter sweeps, and post-fine-tune inference. Compare OpenAI, Together AI, Replicate, Modal, and Lambda Labs side-by-side before committing GPU hours.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-cost-calculator/for-llm-fine-tuners/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Cost Calculator for LLM Fine-Tuners",
+  "description": "Free AI cost calculator for LLM fine-tuners: estimate training run costs, synthetic data generation expenses, hyperparameter sweep budgets, and post-fine-tune inference costs across OpenAI, Together AI, Replicate, Modal Labs, and Lambda Labs.",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-llm-fine-tuners/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "audience": { "@type": "Audience", "audienceType": "LLM Fine-Tuners and ML Engineers" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Cost Calculator for LLM Fine-Tuners",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-llm-fine-tuners/",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "TinyTools",
+    "url": "https://tinytools-smoky.vercel.app/"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "LLM Fine-Tuning Cost Estimation, Training Budget Planning, and Inference Cost Modeling"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "AI Cost Calculator", "item": "https://tinytools-smoky.vercel.app/ai-cost-calculator/" },
+      { "@type": "ListItem", "position": 3, "name": "For LLM Fine-Tuners", "item": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-llm-fine-tuners/" }
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate the total cost of an LLM fine-tuning run?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A full fine-tuning cost has three components: (1) training token cost — your dataset size in tokens multiplied by number of epochs and the provider's per-token training rate; (2) evaluation cost — inference calls used to assess the model checkpoint at each evaluation step; (3) any synthetic data generation cost if you used an LLM like GPT-4o or Claude to create training examples. The TinyTools AI Cost Calculator models all three, so the number you see is the full run cost rather than just the GPU-hour sticker price."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it cheaper to fine-tune a smaller model or use a large model with few-shot prompting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on call volume and context length. Fine-tuning collapses the per-call prompt — you no longer need lengthy few-shot examples — so at high call volume the inference savings amortize the training cost quickly. At low call volume, the break-even point may take months. As a rough rule, if you are running more than 10,000 inference calls per month with prompts longer than 2,000 tokens, a fine-tuned small model almost always wins on total cost within the first billing cycle. The calculator makes this comparison concrete by letting you model both paths against your actual call volume."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does it cost to generate a synthetic fine-tuning dataset with GPT-4o or Claude?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Synthetic data generation is frequently the largest single line item on a fine-tuning project budget and it is almost always underestimated. Generating 50,000 training examples with GPT-4o, where each generation call inputs 400 tokens of instruction and outputs 600 tokens of example, costs roughly $35–$55 at current rates. If quality-filtering requires a second model pass, double that. The AI Cost Calculator lets you set generator model, input and output token sizes, number of examples, and filter pass count so the synthetic data cost is a first-class estimate alongside the training run itself."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which fine-tuning platform is cheapest for open-source models: Together AI, Replicate, or Modal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For token-based fine-tuning APIs (Together AI, Replicate's managed fine-tune), the cost is driven by training tokens and epochs. Together AI generally prices open fine-tunable models — Llama 3, Mistral, Mixtral — at $3–5 per million training tokens. For raw GPU time (Modal, Lambda Labs, RunPod), the per-hour rate for an A100 80GB is typically $2.50–$3.20 and an H100 is $3.50–$4.50, with the total cost determined by how many hours your training job runs. The right choice depends on dataset size: small datasets (under 10M tokens) often come out cheaper on managed APIs because you avoid the overhead of cluster spin-up time; larger jobs frequently save money on raw GPU rental."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I budget a hyperparameter sweep across eight fine-tuning configs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiply your per-run cost by the number of configs, then add 15–20% for partial runs that get pruned early by early stopping. If you are using a managed API like Together AI or OpenAI's fine-tuning endpoint, each config is billed independently at the token rate and there is no shared infrastructure discount for sweeps. On raw GPU (Modal, Lambda Labs), you can pack smaller configs on a single GPU sequentially to reduce idle time between runs. The AI Cost Calculator supports a sweep multiplier so you can price the entire search budget in one step."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #6366f1; --accent-glow: #6366f140;
+    --green: #10b981; --red: #ef4444; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { text-align: center; padding: 24px 0 16px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.12; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 660px; margin: 0 auto 28px; }
+  .cta {
+    display: inline-block; padding: 14px 26px; background: var(--accent); color: #fff;
+    border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 16px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 24px var(--accent-glow);
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 32px var(--accent-glow); }
+  .cta-row { text-align: center; margin: 24px 0 36px; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; margin: 24px 0;
+  }
+  .panel h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.01em; color: #fff; }
+  .panel h3 { font-size: 17px; margin: 20px 0 8px; color: #fff; }
+  .panel p { color: var(--text-dim); margin-bottom: 12px; }
+  .panel ul { color: var(--text-dim); margin: 8px 0 16px 22px; }
+  .panel li { margin-bottom: 6px; }
+  .panel a { color: #a5b4fc; text-decoration: none; border-bottom: 1px dashed #6366f155; }
+  .panel a:hover { border-bottom-style: solid; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 16px 0 8px;
+  }
+  .card {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; padding: 18px;
+  }
+  .card .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .card .value { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .card .note { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { color: var(--text); }
+  td.dim { color: var(--text-dim); }
+  footer { text-align: center; color: var(--text-dim); font-size: 13px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+  footer a { color: #a5b4fc; text-decoration: none; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; }
+  .breadcrumb a { color: #a5b4fc; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;&rsaquo;&nbsp; <a href="/ai-cost-calculator/">AI Cost Calculator</a> &nbsp;&rsaquo;&nbsp; For LLM Fine-Tuners
+  </div>
+
+  <header>
+    <span class="badge">Free &middot; No signup &middot; Runs in your browser</span>
+    <h1>AI Cost Calculator for LLM Fine-Tuners</h1>
+    <p class="subtitle">Model the full cost stack before you commit GPU hours: synthetic data generation, training runs, hyperparameter sweeps, and post-fine-tune inference. Compare OpenAI, Together AI, Replicate, Modal Labs, and Lambda Labs side-by-side with your actual dataset and call volume.</p>
+    <div class="cta-row">
+      <a class="cta" href="/ai-cost-calculator/">Open the AI Cost Calculator &rarr;</a>
+    </div>
+  </header>
+
+  <div class="panel">
+    <h2>The four cost layers most fine-tuning budgets miss</h2>
+    <p>Fine-tuning a language model is not one expense — it is four that compound on each other, and most practitioners only plan for one. The GPU-hour or training-token sticker price is real, but it is rarely the biggest number on the final bill once the project is in production.</p>
+    <p>The first layer is <strong>synthetic data generation</strong>. If you are using GPT-4o, Claude Sonnet, or a similar frontier model to generate or quality-filter training examples, every generation call has an input and output token cost that scales directly with your target dataset size. A 50,000-example dataset generated with GPT-4o, with 400 tokens of instruction per call and 600 tokens of output, runs $35–$55 at current rates — before any filtering passes.</p>
+    <p>The second layer is the <strong>training run itself</strong>: token-based on managed APIs (OpenAI, Together AI, Replicate) or GPU-hour-based on raw compute (Modal, Lambda Labs, RunPod). These are the only numbers most fine-tuners price up front.</p>
+    <p>The third layer is the <strong>hyperparameter sweep</strong>. A disciplined sweep over learning rate, batch size, and warmup steps across eight configs at 3 epochs each multiplies the training cost by 8, plus idle time between runs. Few project plans account for the full sweep budget; most anchor on the final run cost alone.</p>
+    <p>The fourth layer is <strong>post-fine-tune inference</strong> compared to the alternative path. A fine-tuned small model collapses your per-call prompt — no lengthy few-shot examples, no dense system prompt — but you are now hosting a model instead of calling a shared API. Whether that trade saves or costs money depends entirely on call volume. This calculator models both paths so the fine-tune vs. keep-the-base-model decision is a number, not a guess.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Five use cases specific to LLM fine-tuners</h2>
+
+    <h3>1. Pricing a synthetic training dataset before generating it</h3>
+    <p>The most overlooked pre-training cost is the frontier model inference you pay to create the dataset in the first place. Input your target example count, average instruction length, expected output length, generator model (GPT-4o, Claude Sonnet 4.6, Gemini Flash), and whether you plan a second-model quality filter pass. The calculator returns the total data-generation cost and a per-example rate, so the dataset cost is a line item in your project plan rather than a post-hoc shock on the monthly invoice.</p>
+
+    <h3>2. Comparing managed fine-tune APIs vs. raw GPU rental</h3>
+    <p>OpenAI's fine-tuning API bills per training token. Together AI does the same for open-weight models like Llama 3 and Mistral. Replicate offers managed fine-tunes on several popular architectures. Modal Labs and Lambda Labs sell raw GPU time by the second and hour respectively. The right choice shifts with dataset size: at under 10 million training tokens, managed APIs usually win on total cost because cluster spin-up overhead eats into raw GPU savings. Above 50 million tokens, the economics typically flip. This calculator puts both paths on the same table with your specific dataset size so you can pick the platform before signing up.</p>
+
+    <h3>3. Budgeting a hyperparameter sweep</h3>
+    <p>A sweep that looks cheap per-run becomes expensive fast across eight to sixteen configs. The calculator takes your single-run cost estimate and multiplies it across your sweep grid, with a configurable early-stopping prune rate so the sweep budget reflects how many configs will actually run to completion. The output is a sweep total you can put in a project proposal or budget request without embarrassing approximations.</p>
+
+    <h3>4. Modeling the fine-tune vs. RAG vs. few-shot break-even</h3>
+    <p>Fine-tuning collapses prompt length. RAG collapses the need for training data. Few-shot prompting costs nothing up front but pays per call in context tokens forever. At what call volume does fine-tuning recoup the training investment against the base model plus RAG? The calculator runs the comparison: set your expected monthly call volume, average prompt length for each path, and inference model, and it returns the monthly cost for all three approaches and the break-even month for fine-tuning.</p>
+
+    <h3>5. Forecasting post-deployment inference cost for a hosted fine-tuned model</h3>
+    <p>Once the model is trained and deployed — on Replicate, a Modal endpoint, or a self-hosted GPU instance — every inference call has a latency and cost profile that differs from the shared-API alternatives. Replicate bills per-second of GPU time per call; Modal bills on cold-start plus compute time. Model the per-call cost against your target call volume to see whether the fine-tuned deployment is cheaper at 5,000 calls per month, at 50,000, and at 500,000. Most fine-tuners are surprised to find the crossover point is lower than expected.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Fine-tuning platform pricing at a glance</h2>
+    <p>These figures represent approximate published rates as of mid-2026. Use the live calculator to compare against current rates, which update within 1–3 days of provider changes.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Pricing model</th>
+          <th>Indicative cost</th>
+          <th>Best for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>OpenAI (GPT-4o mini)</td><td class="dim">Per training token</td><td>~$8 / 1M tokens</td><td class="dim">Small proprietary datasets</td></tr>
+        <tr><td>OpenAI (GPT-4o)</td><td class="dim">Per training token</td><td>~$25 / 1M tokens</td><td class="dim">High-accuracy flagship fine-tunes</td></tr>
+        <tr><td>Together AI (Llama 3, Mistral)</td><td class="dim">Per training token</td><td>~$3–5 / 1M tokens</td><td class="dim">Open-weight model tuning</td></tr>
+        <tr><td>Replicate (managed)</td><td class="dim">Per training token</td><td>~$4–7 / 1M tokens</td><td class="dim">No-infra fine-tune + deploy</td></tr>
+        <tr><td>Modal Labs (A100 80GB)</td><td class="dim">Per second GPU time</td><td>~$2.70 / hr</td><td class="dim">Large dataset, custom training loops</td></tr>
+        <tr><td>Modal Labs (H100)</td><td class="dim">Per second GPU time</td><td>~$4.00 / hr</td><td class="dim">Fast iteration, large models</td></tr>
+        <tr><td>Lambda Labs (A100)</td><td class="dim">Per hour (reserved)</td><td>~$1.99–2.49 / hr</td><td class="dim">Long training runs, reserved capacity</td></tr>
+        <tr><td>RunPod (A100 SXM)</td><td class="dim">Per hour (spot)</td><td>~$1.50–2.20 / hr</td><td class="dim">Cost-sensitive sweeps on spot</td></tr>
+      </tbody>
+    </table>
+    <p>The real differentiator between platforms is not the hourly or per-token rate — it is the ancillary time: data loading, tokenization, checkpoint saving, and evaluation loops that run on the same clock as the training cost. Managed APIs hide this overhead; raw GPU rental exposes it. Efficient data pipelines on raw GPU often make a 40% rate premium disappear.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Example fine-tuning project cost breakdown</h2>
+    <p>Here is a representative cost model for a mid-scale instruction fine-tune: Llama 3.1 8B, 40,000 synthetic training examples generated by Claude Sonnet 4.6, 3 training epochs, 8-config hyperparameter sweep on Together AI, then deployed on Replicate at 20,000 inference calls per month.</p>
+    <div class="grid">
+      <div class="card"><div class="label">Dataset (synthetic)</div><div class="value">$28</div><div class="note">40K examples, Sonnet 4.6</div></div>
+      <div class="card"><div class="label">Single training run</div><div class="value">$54</div><div class="note">Together AI, 3 epochs</div></div>
+      <div class="card"><div class="label">Hyperparameter sweep</div><div class="value">$390</div><div class="note">8 configs, 70% full runs</div></div>
+      <div class="card"><div class="label">Monthly inference</div><div class="value">$180</div><div class="note">20K calls on Replicate</div></div>
+    </div>
+    <p style="margin-top:16px;">Total one-time cost (data + sweep): <strong style="color:#a5b4fc;">~$472</strong>. Ongoing monthly inference: <strong style="color:#a5b4fc;">~$180</strong>. The equivalent using GPT-4o with a 2,000-token few-shot prompt at 20,000 calls per month would be approximately $600/month — meaning the fine-tune investment breaks even in the first billing cycle and saves roughly $420/month thereafter.</p>
+    <p>Numbers are illustrative. Plug your real dataset size, provider, and call volume into the live calculator to get an accurate comparison for your specific workload.</p>
+  </div>
+
+  <div class="panel">
+    <h2>What else LLM fine-tuners need in their stack</h2>
+    <p>Cost modeling is the financial foundation of a fine-tuning project. The other pieces — legal compliance, output verification, and project visibility — the TinyTools suite covers without adding subscriptions:</p>
+    <ul>
+      <li>Fine-tuned models deployed for users may require AI disclosure labels under FTC guidance and EU AI Act Article 52. The <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> produces ready-to-embed labels for your model's inference endpoint, API docs, and UI surfaces — especially important if your fine-tune specializes in writing, summarization, or any user-facing content generation.</li>
+      <li>If your fine-tuned model's training data comes from web scraping or public corpora, the <a href="/ai-robots-txt-generator/">AI Robots.txt Generator</a> helps you publish a clear signal about how your own project's site and documentation can be used by future scrapers, keeping your data licensing posture consistent.</li>
+      <li>Regression testing a fine-tuned model often involves checking whether checkpoint outputs have drifted toward detectable AI-generation patterns. The <a href="/ai-text-detector/">AI Text Detector</a> provides a quick out-of-sample check at any checkpoint during evaluation, without a paid evaluation platform subscription.</li>
+      <li>For the EU AI Act risk classification of your fine-tuned model — whether it qualifies as a general-purpose AI model, requires technical documentation, or triggers transparency obligations — the <a href="/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> tool walks through the classification decision tree for your specific use case and deployment context.</li>
+    </ul>
+    <p>For reference pricing data and fine-tuning documentation, the authoritative sources are the <a href="https://platform.openai.com/docs/guides/fine-tuning" rel="nofollow noopener" target="_blank">OpenAI fine-tuning guide</a>, <a href="https://docs.together.ai/docs/fine-tuning-overview" rel="nofollow noopener" target="_blank">Together AI fine-tuning docs</a>, and <a href="https://modal.com/docs/guide/gpu-memory" rel="nofollow noopener" target="_blank">Modal Labs GPU pricing guide</a>. The <a href="https://huggingface.co/blog/fine-tune-llms" rel="nofollow noopener" target="_blank">Hugging Face fine-tuning blog</a> is the most frequently updated open resource for training methodology that affects your actual compute hours.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Frequently asked questions</h2>
+
+    <h3>How accurate are the training cost estimates for raw GPU providers?</h3>
+    <p>The estimates are accurate for pure compute time. What the calculator cannot predict is data-loading overhead, tokenization time, checkpoint I/O, and evaluation loop compute — all of which run on the same GPU clock. For training jobs that use efficient data pipelines and SSD-attached storage, the compute efficiency is typically 80–90% of wall time, meaning GPU billing is about 10–20% above pure training time. Budget with a 15% overhead buffer on raw GPU estimates.</p>
+
+    <h3>Can I model a multi-epoch run with evaluation at each checkpoint?</h3>
+    <p>Yes. Set your epoch count and evaluation frequency, and the calculator adds the inference cost for each evaluation batch against your validation set. For models evaluated with a frontier judge (using GPT-4o or Claude to rate outputs), the evaluation cost at 500 examples per checkpoint across 3 checkpoints can add $8–$25 to a run — worth knowing before kicking off a sweep.</p>
+
+    <h3>Does it cover LoRA and QLoRA fine-tuning specifically?</h3>
+    <p>For token-based APIs, the billing is the same regardless of fine-tuning method — you pay for training tokens whether the platform uses full fine-tuning or LoRA internally. For raw GPU, LoRA and QLoRA dramatically reduce VRAM requirements, which lets you use a smaller GPU tier. The calculator lets you select GPU type so downgrading from an A100 to an A10G for a QLoRA run shows up correctly in the estimate.</p>
+
+    <h3>How do I account for failed runs in the budget?</h3>
+    <p>Add a 10–20% contingency on top of your sweep budget. Training runs fail for reasons that are rarely predictable — OOM errors, gradient explosions, checkpoint corruption, and provider interruptions on spot instances. The calculator does not model failure probability by platform, but the contingency field in the output table reserves headroom explicitly rather than treating the sweep total as a hard ceiling.</p>
+
+    <h3>Is this calculator free to use for commercial fine-tuning projects?</h3>
+    <p>Yes — free, no signup, runs entirely in your browser. The estimates are designed to drop directly into project proposals, budget requests, and technical design documents without any licensing constraint on how you use the output.</p>
+  </div>
+
+  <div class="cta-row">
+    <a class="cta" href="/ai-cost-calculator/">Try the AI Cost Calculator Free &rarr;</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> &mdash; focused, free utilities for LLM fine-tuners, AI builders, and indie researchers.
+  </footer>
+</div>
+</body>
+</html>
