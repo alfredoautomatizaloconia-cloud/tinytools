@@ -76,6 +76,12 @@ urlset>/  <url>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/vs/remini/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -872,6 +878,12 @@ urlset>/  <url>
   </url>
   <url>
     <loc>https://tinytools-smoky.vercel.app/ai-carbon-footprint/blog/the-hidden-carbon-cost-of-your-ai-habit-calculated-2026/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/vs/remini/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
