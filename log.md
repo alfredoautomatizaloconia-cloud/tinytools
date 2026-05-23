@@ -114,3 +114,49 @@ Sitemap updated (priority 1.0 for both). Landing page features both tools with "
 **Tools with viral mechanics now:** 11 / 26 audited
 **Tools still missing viral mechanics:** 15
 - ai-prompt-enhancer, ai-robots-txt-generator, eu-ai-act-risk-assessment, color-palette, favicon-generator, og-image-generator, cover-letter-generator, resume-tailorer, seo-meta-generator, domain-generator, llm-prompt-optimizer, voice-cloning-detector, c2pa-manifest-generator, youtube-to-blog, prompt-injection-tester
+---
+
+## 2026-05-23 — Viral Tools Ship Run
+
+**Tools shipped:** `ai-carbon-footprint`, `founder-personality`
+
+**Tier:** 0 (Viral) both
+
+### Tool 1: ai-carbon-footprint
+- **Concept:** Calculate the CO₂ footprint of your monthly AI usage across ChatGPT, Claude, image generators, coding assistants, voice AI, and AI search
+- **Color:** Green #22c55e
+- **Viral mechanics:**
+  - ✅ Personal result: grade A–F based on actual inputs
+  - ✅ Shareable PNG card (1200×630) with grade, CO₂ kg, 4 planetary stats, verdict snippet
+  - ✅ "Share to X" button with pre-filled tweet including grade and CO₂ amount
+  - ✅ Deep-linkable URL (hash stores JSON of all inputs, restores on load)
+  - ✅ Embeddable shields.io badge showing CO₂/grade
+  - ✅ Reaction-bait copy ("brutally honest", "your AI habit", "guilt-trip your friends")
+  - ✅ 4+ achievement badges (Image Addict, ChatGPT Dependent, Practically Green, etc.)
+  - ✅ Long-form SEO content section
+  - ✅ JSON-LD WebApplication schema
+- **Commit:** bc1e82b1d9ae33bed0d2d4abbcaa71cc465f2a37
+
+### Tool 2: founder-personality
+- **Concept:** 10-question Buzzfeed-style quiz that maps you to one of 6 founder archetypes (Visionary, Hustler, Engineer, Designer, Data Nerd, Operator)
+- **Color:** Indigo #6366f1
+- **Viral mechanics:**
+  - ✅ Personal result: archetype + match % + full DNA breakdown bars
+  - ✅ Shareable PNG card (1200×630) with emoji, archetype name, breakdown visualization
+  - ✅ "Share to X" button with pre-filled tweet including archetype and emoji
+  - ✅ Deep-linkable URL (hash stores archetype slug, shows result directly)
+  - ✅ Embeddable shields.io badge with archetype name
+  - ✅ Reaction-bait copy ("brutally accurate", "your true archetype", "tag your co-founder")
+  - ✅ 4+ achievement badges per archetype
+  - ✅ Retake quiz button
+  - ✅ Long-form SEO content section (6 archetypes explained)
+  - ✅ JSON-LD WebApplication schema
+- **Commit:** b848d3baa9d01c40c5b4af7442f8edd5adcfe59b
+
+**Sitemap commit:** 244029189fb52d1fb9e15a7e65a3150871a83089 (priority 1.0 for both)
+**Landing page commit:** 673fe7457e4ec9be586db2a34f3ae92e2bcdc2e0
+
+**URLs:**
+- https://tinytools-smoky.vercel.app/ai-carbon-footprint/
+- https://tinytools-smoky.vercel.app/founder-personality/
+
