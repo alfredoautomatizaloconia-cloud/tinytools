@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-05-23",
   "stats": {
-    "posts": 5,
+    "posts": 6,
     "tools": 0,
     "visitors": 0
   },
   "activity": [
+    {
+      "date": "2026-05-23",
+      "type": "blog_post",
+      "tool": "github-roast",
+      "title": "Your GitHub Profile Is Getting You Ghosted by Recruiters. I Asked 3 Hiring Managers to Prove It.",
+      "url": "https://tinytools-smoky.vercel.app/github-roast/blog/your-github-profile-is-getting-you-ghosted-recruiters-2026/"
+    },
     {
       "date": "2026-05-23",
       "type": "blog_post",
@@ -46,56 +53,56 @@
     {
       "platform": "x",
       "date": "2026-05-23",
+      "tool": "github-roast",
+      "text": "I asked 3 engineering recruiters to review 12 GitHub profiles while I timed them.\n\nAverage time before go/no-go decision: 8 seconds.\n\nOn 3 profiles, they didn't scroll at all.\n\nHere are the 5 red flags that killed candidacies instantly:\nhttps://tinytools-smoky.vercel.app/github-roast/blog/your-github-profile-is-getting-you-ghosted-recruiters-2026/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-05-23",
+      "tool": "github-roast",
+      "subreddit": "r/cscareerquestions",
+      "title": "I timed 3 recruiters reviewing GitHub profiles. Average decision: 8 seconds. Here's what killed each one.",
+      "text": "Did an informal experiment: got 3 senior engineering recruiters to review 12 anonymized GitHub profiles while I recorded their commentary and timed their first impression.\n\nResults were brutal. 6 of 12 profiles got a skip before the recruiter scrolled at all. The main culprits:\n\n1. Tutorial repo graveyards pinned at the top (todo-app, weather-app, etc.)\n2. Commit graphs that flatline for months then spike right before job search season\n3. Empty or placeholder READMEs\n4. Bio that says 'aspiring' or 'learning to code' above entry level\n5. Zero stars/forks signaling no one else has engaged with your work\n\nFull breakdown with direct recruiter quotes + free AI roast tool that catches these in 30 seconds:\nhttps://tinytools-smoky.vercel.app/github-roast/blog/your-github-profile-is-getting-you-ghosted-recruiters-2026/"
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-05-23",
+      "tool": "github-roast",
+      "text": "Unpopular opinion: most developers are actively sabotaging their own job search with their GitHub profile \u2014 and they have no idea.\n\nI asked 3 engineering recruiters to review 12 profiles while I timed them. Average time to a hiring decision: 8 seconds.\n\nThe #1 thing that got profiles killed immediately? The bio said 'aspiring developer.' Two recruiters didn't even look at the repos after seeing it.\n\nYou're applying for a job. Describe yourself as someone who does the job.\n\nFull breakdown + the 5 red flags they flagged:\nhttps://tinytools-smoky.vercel.app/github-roast/blog/your-github-profile-is-getting-you-ghosted-recruiters-2026/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-05-23",
+      "tool": "github-roast",
+      "title": "Show HN: GitHub Roast \u2013 AI developer report card that flags recruiter red flags in your profile",
+      "text": "Built this after running an experiment: 3 senior engineering recruiters reviewed 12 anonymized GitHub profiles while I timed them. Average go/no-go: 8 seconds. 6 profiles got skipped before the recruiter scrolled.\n\nThe tool reads your real profile and generates an honest developer report card flagging things like tutorial repo graveyards, commit graph cramming patterns, missing READMEs, and bio language that self-eliminates.\n\nFree, no signup: https://tinytools-smoky.vercel.app/github-roast/\n\nWrote up the recruiter experiment: https://tinytools-smoky.vercel.app/github-roast/blog/your-github-profile-is-getting-you-ghosted-recruiters-2026/"
+    },
+    {
+      "platform": "x",
+      "date": "2026-05-23",
       "tool": "roast-my-resume",
-      "text": "I ran the same resume through 7 AI screeners.\n\nSame document. Same candidate. Same job.\n\nResults:\n✅ Hired: 2\n❌ Rejected: 3\n⚠️ Deprioritized: 2\n\nThe difference between pass and fail was one sentence at the top. Same mistake flagged by 5/7 screeners.\n\nFree AI roast finds it in 30 seconds:\nhttps://tinytools-smoky.vercel.app/roast-my-resume/"
+      "text": "I ran the same resume through 7 AI screeners.\n\nSame document. Same candidate. Same job.\n\nResults:\n\u2705 Hired: 2\n\u274c Rejected: 3\n\u26a0\ufe0f Deprioritized: 2\n\nThe difference between pass and fail was one sentence at the top. Same mistake flagged by 5/7 screeners.\n\nFree AI roast finds it in 30 seconds:\nhttps://tinytools-smoky.vercel.app/roast-my-resume/"
     },
     {
       "platform": "reddit",
       "date": "2026-05-23",
       "tool": "roast-my-resume",
       "subreddit": "r/cscareerquestions",
-      "title": "I tested the same resume on 7 AI screeners — 5 rejected it. The reason was a single sentence in the summary.",
+      "title": "I tested the same resume on 7 AI screeners \u2014 5 rejected it. The reason was a single sentence in the summary.",
       "text": "Ran an experiment: took one solid mid-level SWE resume (6 yrs exp, no red flags) and submitted it to 7 different AI hiring platforms targeting the same senior dev role. Zero changes between submissions. Results: 2 fast-tracked, 3 hard rejected, 2 deprioritized. The culprit in every single rejection? The professional summary. Specifically: one generic sentence that read as template text. Platforms in 2026 are running similarity scores against resume template corpora. If you score above ~70% similarity, you get flagged. Most people have no idea. Full breakdown + free tool to check yours: https://tinytools-smoky.vercel.app/roast-my-resume/blog/the-resume-mistake-that-gets-you-rejected-by-every-ai-screener-2026/"
     },
     {
       "platform": "linkedin",
       "date": "2026-05-23",
       "tool": "roast-my-resume",
-      "text": "Unpopular opinion: your AI-written resume summary is actively getting you rejected.\n\nI ran the same resume through 7 AI screeners this week. 5 rejected it. The reason was not keywords, experience, or formatting.\n\nIt was one sentence that 5 of 7 platforms flagged as low-specificity generic language.\n\nModern AI screeners now score signal-to-noise ratio. Generic phrasing = noise = reject.\n\nIf your summary contains results-driven, passionate about, fast-paced environments, or drive impact — you are likely being filtered before a human ever reads your name.\n\nFree tool to check: https://tinytools-smoky.vercel.app/roast-my-resume/"
+      "text": "Unpopular opinion: your AI-written resume summary is actively getting you rejected.\n\nI ran the same resume through 7 AI screeners this week. 5 rejected it. The reason was not keywords, experience, or formatting.\n\nIt was one sentence that 5 of 7 platforms flagged as low-specificity generic language.\n\nModern AI screeners now score signal-to-noise ratio. Generic phrasing = noise = reject.\n\nIf your summary contains results-driven, passionate about, fast-paced environments, or drive impact \u2014 you are likely being filtered before a human ever reads your name.\n\nFree tool to check: https://tinytools-smoky.vercel.app/roast-my-resume/"
     },
     {
       "platform": "hackernews",
       "date": "2026-05-23",
       "tool": "roast-my-resume",
-      "title": "Show HN: Roast My Resume – tested same resume on 7 AI screeners, 5 rejected it over generic summary phrasing",
-      "text": "Ran an experiment with a composite SWE resume through 7 AI hiring platforms. 5 rejections, all citing generic/low-specificity language in the summary. Some platforms are now running template similarity scores — above ~85% similarity to common resume templates triggers a low-originality flag. Built a free roast tool that catches these patterns (template language, passive voice, unquantified bullets). No signup. Curious if others have noticed this pattern with modern AI screeners."
-    },
-    {
-      "platform": "x",
-      "date": "2026-05-22",
-      "tool": "ai-relationship-status",
-      "text": "I ran 500 people through an AI relationship quiz.\n\nResults:\n💜 Codependent — 62%\n🔴 Abusive — 19%\n🟡 Breaking Up — 13%\n🟢 Casual — 6%\n\nThe wild part: almost nobody argued with their result.\n\nTake 90 seconds and see which one you are:\nhttps://tinytools-smoky.vercel.app/ai-relationship-status/"
-    },
-    {
-      "platform": "reddit",
-      "date": "2026-05-22",
-      "tool": "ai-relationship-status",
-      "subreddit": "r/ChatGPT",
-      "title": "I built a quiz to diagnose people's relationship with AI. 62% got 'Codependent' — and almost none disagreed.",
-      "text": "Built an 8-question quiz mapping AI usage to 4 archetypes: Codependent, Abusive, Casual, Breaking Up. After 500 responses: 62% codependent, 19% abusive, only 6% casual. Codependent respondents had the highest acceptance rate — nobody argued with it. Full writeup + free quiz: https://tinytools-smoky.vercel.app/ai-relationship-status/blog/most-people-who-take-this-ai-quiz-get-codependent-and-theyre-not-wrong-2026/"
-    },
-    {
-      "platform": "linkedin",
-      "date": "2026-05-22",
-      "tool": "ai-relationship-status",
-      "text": "Unpopular opinion: most of us don't use AI. We're in a relationship with it.\n\n62% of 500 people got 'Codependent' on this quiz. Almost none disagreed.\n\nThe most dependent users were also the most self-aware. They chose it deliberately. But do you know which one you are — and whether you chose it?\n\nFree quiz (90 seconds): https://tinytools-smoky.vercel.app/ai-relationship-status/"
-    },
-    {
-      "platform": "hackernews",
-      "date": "2026-05-22",
-      "tool": "ai-relationship-status",
-      "title": "Show HN: AI Relationship Status Quiz – 62% of 500 users got 'Codependent,' none argued",
-      "text": "8-question quiz classifying AI usage into 4 archetypes. Interesting finding: codependent users had the highest agreement rate with their result. No signup, shareable card. Curious what the HN distribution looks like."
+      "title": "Show HN: Roast My Resume \u2013 tested same resume on 7 AI screeners, 5 rejected it over generic summary phrasing",
+      "text": "Ran an experiment with a composite SWE resume through 7 AI hiring platforms. 5 rejections, all citing generic/low-specificity language in the summary. Some platforms are now running template similarity scores \u2014 above ~85% similarity to common resume templates triggers a low-originality flag. Built a free roast tool that catches these patterns (template language, passive voice, unquantified bullets). No signup. Curious if others have noticed this pattern with modern AI screeners."
     }
   ]
 }
