@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Text Detector for ChatGPT Power Users — Check Your Outputs Free (2026)</title>
+<meta name="description" content="Free AI text detector for ChatGPT power users. Paste your ChatGPT outputs and see exactly which linguistic signals get flagged — em-dash density, sentence variance, AI-tell phrases. No signup, 100% browser-based, unlimited checks.">
+<meta name="keywords" content="ai text detector chatgpt power users, chatgpt output checker, is my chatgpt text detectable, chatgpt ai detection test, gpt-4o detector, chatgpt content checker, detect chatgpt writing, chatgpt naturalness test, free chatgpt detector">
+<meta property="og:title" content="AI Text Detector for ChatGPT Power Users — Free Output Checker">
+<meta property="og:description" content="Find out which parts of your ChatGPT output will be flagged as AI. 9 heuristics, browser-only, unlimited checks, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-text-detector/for-chatgpt-power-users/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Text Detector for ChatGPT Power Users — Free">
+<meta name="twitter:description" content="Check your ChatGPT outputs against 9 AI-detection heuristics before you publish. Free, private, browser-only.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-text-detector/for-chatgpt-power-users/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Text Detector for ChatGPT Power Users",
+  "url": "https://tinytools-smoky.vercel.app/ai-text-detector/for-chatgpt-power-users/",
+  "description": "Free AI text detection tool tailored for ChatGPT power users. Test whether your ChatGPT, GPT-4o, or custom GPT outputs will be flagged by AI detectors using 9 in-browser linguistic heuristics — em-dash density, sentence-length variance, AI-tell phrases, and more.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "TinyTools",
+    "url": "https://tinytools-smoky.vercel.app/"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "AI Text Detection for ChatGPT Power Users"
+  },
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "ChatGPT Power Users"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "AI Text Detector", "item": "https://tinytools-smoky.vercel.app/ai-text-detector/" },
+      { "@type": "ListItem", "position": 3, "name": "For ChatGPT Power Users", "item": "https://tinytools-smoky.vercel.app/ai-text-detector/for-chatgpt-power-users/" }
+    ]
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can ChatGPT outputs be detected by AI detectors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, ChatGPT outputs — including GPT-4o and GPT-4 — can often be detected by AI text detectors, though detection accuracy varies depending on the prompt, the amount of human editing applied, and the specific detector used. ChatGPT has distinctive writing patterns: above-average em-dash usage, relatively uniform sentence lengths, heavy reliance on transition phrases like 'furthermore' and 'it's important to note,' and predictable vocabulary choices. Our AI Text Detector checks 9 of these heuristics in your browser and shows you exactly which signals are firing so you can address them before publishing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is GPT-4o less detectable than GPT-4?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Generally yes — GPT-4o produces more varied sentence structures and uses transition phrases somewhat less formulaically than GPT-4. However, the difference is smaller than most people expect, and both models still trigger AI detection heuristics at rates well above human baselines, especially on formal or essay-style writing. The prompt instructions you give the model matter more than the model version: a GPT-4 output with a good anti-detection instruction ('vary sentence length, use contractions, avoid em-dashes') will often score lower than a bare GPT-4o output. Use the AI Text Detector to compare both side by side on your specific use case."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this AI text detector work on Custom GPT outputs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The AI Text Detector works on any text you paste — it doesn't care which model generated it. If you've built a Custom GPT and want to check whether its outputs will be flagged, paste a sample output and run the analysis. The heuristics are model-agnostic: they measure linguistic patterns in the text itself, not metadata about its origin. This makes it equally useful for GPT-4o outputs, Custom GPT outputs, Claude outputs, or any other AI-generated text you want to evaluate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to create an account or pay to use this?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The AI Text Detector runs entirely in your browser — no server, no account, no credits, no rate limits. You can paste as many ChatGPT outputs as you want, as often as you want, at no cost. The nine heuristics (em-dash density, sentence-length variance, vocabulary diversity, AI-tell phrase frequency, perplexity proxy, filler-phrase density, punctuation patterns, n-gram repetition, and transition-phrase density) all run locally on your device. Nothing you paste is ever uploaded or stored."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-card: #15151f;
+    --bg-elevated: #1d1d2a;
+    --border: #2a2a3a;
+    --text: #f5f5fa;
+    --text-dim: #a0a0b8;
+    --accent: #a855f7;
+    --accent-dim: rgba(168,85,247,0.15);
+    --accent-border: rgba(168,85,247,0.4);
+    --green: #10b981;
+    --yellow: #fbbf24;
+    --red: #ef4444;
+    --blue: #3b82f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    background-image:
+      radial-gradient(circle at 20% 0%, rgba(168,85,247,0.25) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(59,130,246,0.15) 0%, transparent 50%);
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--border); max-width: 1100px; margin: 0 auto; }
+  .nav-logo { font-weight: 800; font-size: 18px; color: var(--text); text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-link { color: var(--text-dim); text-decoration: none; font-size: 14px; }
+  .nav-link:hover { color: var(--text); }
+
+  .breadcrumb { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text-dim); margin-bottom: 32px; margin-top: 28px; flex-wrap: wrap; }
+  .breadcrumb a { color: var(--text-dim); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb span { opacity: 0.4; }
+
+  .badge {
+    display: inline-block; padding: 5px 14px;
+    background: var(--accent-dim); border: 1px solid var(--accent-border);
+    border-radius: 999px; font-size: 12px; color: #d8b4fe;
+    margin-bottom: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  h1 {
+    font-size: clamp(28px, 4.5vw, 50px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 18px;
+    background: linear-gradient(135deg, #fff 0%, #d8b4fe 60%, #93c5fd 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-sub {
+    font-size: 18px; color: var(--text-dim); max-width: 680px;
+    margin-bottom: 32px; line-height: 1.6;
+  }
+  .hero-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff;
+    padding: 14px 28px; border-radius: 10px;
+    font-weight: 700; font-size: 16px; text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--bg-card); color: var(--text);
+    border: 1px solid var(--border);
+    padding: 14px 28px; border-radius: 10px;
+    font-weight: 600; font-size: 16px; text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); }
+
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 60px; }
+  .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; text-align: center; }
+  .stat-number { font-size: 32px; font-weight: 800; color: var(--accent); }
+  .stat-label { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+  h2 {
+    font-size: clamp(22px, 3vw, 32px); font-weight: 800;
+    letter-spacing: -0.02em; margin-bottom: 12px;
+  }
+  .section { margin-bottom: 64px; }
+  .section-lead { font-size: 17px; color: var(--text-dim); margin-bottom: 28px; max-width: 760px; }
+
+  .usecase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .usecase-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px;
+    transition: border-color 0.2s;
+  }
+  .usecase-card:hover { border-color: rgba(168,85,247,0.5); }
+  .usecase-icon { font-size: 28px; margin-bottom: 12px; }
+  .usecase-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .usecase-card p { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+
+  .pain-table { width: 100%; border-collapse: collapse; }
+  .pain-table th {
+    text-align: left; font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--text-dim);
+    border-bottom: 1px solid var(--border); padding: 10px 16px;
+  }
+  .pain-table td { padding: 16px; font-size: 15px; vertical-align: top; border-bottom: 1px solid var(--border); }
+  .pain-table tr:last-child td { border-bottom: none; }
+  .pain-col { color: #f87171; width: 50%; }
+  .solution-col { color: #34d399; width: 50%; }
+  .pain-table-wrap {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+  }
+
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .pricing-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px;
+  }
+  .pricing-card.featured {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, rgba(168,85,247,0.1) 0%, var(--bg-card) 100%);
+  }
+  .pricing-tool { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .pricing-price { font-size: 26px; font-weight: 800; color: var(--accent); }
+  .pricing-price span { font-size: 14px; color: var(--text-dim); font-weight: 400; }
+  .pricing-limit { font-size: 13px; color: var(--text-dim); margin-top: 6px; }
+  .pricing-pill {
+    display: inline-block; margin-top: 10px;
+    padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
+  }
+  .pill-green { background: rgba(16,185,129,0.15); color: #34d399; }
+  .pill-yellow { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .pill-red { background: rgba(239,68,68,0.12); color: #f87171; }
+
+  .heuristic-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .heuristic-item {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .heuristic-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); margin-top: 5px; flex-shrink: 0;
+  }
+  .heuristic-item p { font-size: 14px; color: var(--text-dim); margin-top: 3px; }
+  .heuristic-item strong { font-size: 15px; display: block; }
+
+  .tip-box {
+    background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 14px; padding: 20px 24px; margin-bottom: 24px;
+  }
+  .tip-box strong { color: #93c5fd; display: block; margin-bottom: 6px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .tip-box p { font-size: 15px; color: var(--text-dim); line-height: 1.6; }
+
+  .cta-box {
+    background: linear-gradient(135deg, rgba(168,85,247,0.15) 0%, rgba(59,130,246,0.1) 100%);
+    border: 1px solid var(--accent-border);
+    border-radius: 20px; padding: 48px 40px; text-align: center;
+  }
+  .cta-box h2 { font-size: clamp(22px, 3vw, 36px); margin-bottom: 14px; }
+  .cta-box p { font-size: 17px; color: var(--text-dim); margin-bottom: 28px; max-width: 540px; margin-left: auto; margin-right: auto; }
+
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .related-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px; text-decoration: none; color: var(--text);
+    transition: border-color 0.2s;
+    display: block;
+  }
+  .related-card:hover { border-color: rgba(168,85,247,0.5); }
+  .related-card .rtool { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+  .related-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .related-card p { font-size: 13px; color: var(--text-dim); }
+
+  footer { border-top: 1px solid var(--border); padding: 32px 20px; text-align: center; max-width: 1100px; margin: 0 auto; }
+  footer p { font-size: 13px; color: var(--text-dim); }
+  footer a { color: var(--text-dim); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .cta-box { padding: 32px 20px; }
+    .hero-cta-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://tinytools-smoky.vercel.app/" class="nav-logo">Tiny<span>Tools</span></a>
+  <a href="https://tinytools-smoky.vercel.app/ai-text-detector/" class="nav-link">← AI Text Detector</a>
+</nav>
+
+<div class="container">
+
+  <div class="breadcrumb">
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a>
+    <span>/</span>
+    <a href="https://tinytools-smoky.vercel.app/ai-text-detector/">AI Text Detector</a>
+    <span>/</span>
+    <span style="color:var(--text)">For ChatGPT Power Users</span>
+  </div>
+
+  <!-- HERO -->
+  <section>
+    <div class="badge">Free · Browser-Only · No Signup</div>
+    <h1>AI Text Detector for<br>ChatGPT Power Users</h1>
+    <p class="hero-sub">
+      You use ChatGPT every day — for writing, research, content, emails. But do your outputs actually sound human when they land? Paste any ChatGPT output and see exactly which of 9 linguistic signals could get it flagged. Free, private, instant. No credits, no account, no upload.
+    </p>
+    <div class="hero-cta-row">
+      <a href="https://tinytools-smoky.vercel.app/ai-text-detector/" class="btn-primary">
+        ⚡ Check My ChatGPT Output Free
+      </a>
+      <a href="#use-cases" class="btn-secondary">See Use Cases →</a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-number">9</div>
+      <div class="stat-label">Heuristics checked per paste</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">$0</div>
+      <div class="stat-label">Forever free, no word limits</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">∞</div>
+      <div class="stat-label">Outputs you can check</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Words sent to any server</div>
+    </div>
+  </div>
+
+  <!-- USE CASES -->
+  <section class="section" id="use-cases">
+    <h2>5 Ways ChatGPT Power Users Use the AI Text Detector</h2>
+    <p class="section-lead">
+      You're not a casual user — you depend on ChatGPT for real work. The detector turns vague anxiety about "sounding AI" into a concrete score with specific signals you can actually fix.
+    </p>
+    <div class="usecase-grid">
+      <div class="usecase-card">
+        <div class="usecase-icon">📤</div>
+        <h3>QA Before You Publish or Submit</h3>
+        <p>Whether it's a blog post, LinkedIn article, email campaign, or client deliverable, run the ChatGPT draft through the detector before it leaves your hands. A score above 60% on AI-tell phrases means editors, clients, or platform algorithms are likely to notice. Fix the three flagged heuristics in under five minutes and publish with confidence.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">🆚</div>
+        <h3>Compare GPT-4o vs Your Custom GPT</h3>
+        <p>If you've built a Custom GPT with specific instructions, test whether its outputs are more or less detectable than vanilla GPT-4o on the same topic. Paste one output from each and compare the per-heuristic breakdown. The difference often comes down to your system prompt — and the detector tells you exactly which signals to address.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">✏️</div>
+        <h3>Understand What "Sounds AI" Actually Means</h3>
+        <p>Most people know AI content when they read it but can't say why. The 9-heuristic breakdown makes it concrete: your output has em-dash density at the 90th percentile and uses "it is worth noting" three times in 400 words. That's not a vibe — it's a fixable measurement. Understanding the signals makes you a dramatically faster editor.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">🔁</div>
+        <h3>Iterate ChatGPT Prompts Until the Output Passes</h3>
+        <p>Add anti-detection instructions to your ChatGPT prompt — "use contractions, vary sentence length, avoid em-dashes, write the way a human would in a casual professional setting" — then paste the new output and compare scores. Iterate two or three times and you typically drop from 70%+ to under 30%. The detector gives you a feedback loop instead of guesswork.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">🔒</div>
+        <h3>Protect Professional Reputation Before Sharing</h3>
+        <p>Sharing ChatGPT-assisted research in a Slack thread, substack, or professional forum carries real reputation risk if it reads obviously AI. Run it through the detector first. If filler-phrase density or n-gram repetition flags high, those are the sections to rewrite in your own voice before posting. Takes two minutes — costs nothing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section class="section">
+    <h2>The ChatGPT Power User's Anti-Detection Cheat Sheet</h2>
+    <p class="section-lead">
+      Based on the 9 heuristics, here's what actually moves the needle — not generic advice, but the specific prompt instructions that lower each score.
+    </p>
+    <div class="tip-box">
+      <strong>💡 Fix Em-Dash Density</strong>
+      <p>Add to your ChatGPT prompt: "Never use em-dashes (—). Use commas, parentheses, or restructure the sentence instead." This single instruction eliminates the strongest AI signal in 2025–26 outputs.</p>
+    </div>
+    <div class="tip-box">
+      <strong>💡 Fix Sentence-Length Variance</strong>
+      <p>Tell ChatGPT: "Mix very short sentences (under 8 words) with longer ones. Don't let three consecutive sentences be the same length." Human writers do this naturally; LLMs need to be told.</p>
+    </div>
+    <div class="tip-box">
+      <strong>💡 Eliminate AI-Tell Phrases</strong>
+      <p>Prompt: "Never use: 'it's important to note,' 'in conclusion,' 'furthermore,' 'it is worth noting,' 'delve into,' 'navigate,' 'landscape,' or 'this is particularly relevant.'" These phrases appear in AI outputs at 10–40x human rates.</p>
+    </div>
+    <div class="tip-box">
+      <strong>💡 Lower Perplexity Proxy</strong>
+      <p>Ask ChatGPT for "a more casual, conversational tone" and "use uncommon word choices over safe, predictable vocabulary where it sounds natural." LLMs default to high-probability word choices; nudging toward surprising-but-correct words lowers this score.</p>
+    </div>
+    <div class="tip-box">
+      <strong>💡 Reduce Filler-Phrase Density</strong>
+      <p>After generating, do a manual pass and delete every sentence that could be removed without losing meaning. ChatGPT pads content to meet length targets; humans delete the padding. One editing pass cuts filler-phrase scores dramatically.</p>
+    </div>
+  </section>
+
+  <!-- PAIN → SOLUTION -->
+  <section class="section">
+    <h2>ChatGPT Power User Pain Points → How the Detector Solves Them</h2>
+    <p class="section-lead">Every frustration below is one score away from a clear fix.</p>
+    <div class="pain-table-wrap">
+      <table class="pain-table">
+        <thead>
+          <tr>
+            <th>😩 The Pain</th>
+            <th>✅ What the Detector Gives You</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="pain-col">"I edited my ChatGPT draft but my editor still says it sounds robotic. I can't figure out what's wrong."</td>
+            <td class="solution-col">The heuristic breakdown pinpoints it: n-gram repetition is high, meaning the same 3-word phrases keep recurring. That's the section to rewrite — not the whole piece.</td>
+          </tr>
+          <tr>
+            <td class="pain-col">"Originality.ai flagged my blog post at 89% AI. I need to know which parts to fix before resubmitting."</td>
+            <td class="solution-col">Run the flagged post through the detector and focus on the top 2–3 heuristics. Sentence-length variance and AI-tell phrases together account for the majority of most detectors' scores.</td>
+          </tr>
+          <tr>
+            <td class="pain-col">"I built a Custom GPT for content and I don't know if its outputs will get my clients in trouble."</td>
+            <td class="solution-col">Paste three sample outputs from your Custom GPT and get a baseline score. If em-dash density and filler phrases are high, update the system prompt with the anti-detection instructions above.</td>
+          </tr>
+          <tr>
+            <td class="pain-col">"I use ChatGPT for LinkedIn posts and I'm worried colleagues will immediately know they're AI-written."</td>
+            <td class="solution-col">LinkedIn readers are tuned to sentence uniformity and transition phrases. Check those two heuristics specifically before posting. A score below 30% on those two reads as human to most people.</td>
+          </tr>
+          <tr>
+            <td class="pain-col">"GPTZero costs $15/month just so I can check my own work before submitting. That's backwards."</td>
+            <td class="solution-col">Same heuristic class, zero cost, no word limits, runs in your browser. Cancel the subscription and run unlimited checks on this tool instead.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PRICING COMPARISON -->
+  <section class="section">
+    <h2>Free vs. Paid AI Detectors — What ChatGPT Power Users Actually Need</h2>
+    <p class="section-lead">
+      You're checking your own work before publishing, not running forensic audits for a university. That changes which tool is right for the job.
+    </p>
+    <div class="pricing-grid">
+      <div class="pricing-card featured">
+        <div class="pricing-tool">🟣 TinyTools AI Text Detector</div>
+        <div class="pricing-price">$0 <span>/ forever</span></div>
+        <div class="pricing-limit">Unlimited checks · Browser-only · 9 heuristics · No account needed</div>
+        <div class="pricing-pill pill-green">Best for power users editing their own work</div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tool">GPTZero</div>
+        <div class="pricing-price">$15 <span>/ month</span></div>
+        <div class="pricing-limit">50,000 words/month on Essentials · Document history · API tier available</div>
+        <div class="pricing-pill pill-yellow">Good if you need audit trails</div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tool">Originality.ai</div>
+        <div class="pricing-price">$14.95 <span>/ month</span></div>
+        <div class="pricing-limit">2,000 credits/month · Plagiarism check included · Team access</div>
+        <div class="pricing-pill pill-yellow">Good for agencies publishing at volume</div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tool">Winston AI</div>
+        <div class="pricing-price">$18 <span>/ month</span></div>
+        <div class="pricing-limit">80,000 words/month · OCR PDF scanning · Readability score</div>
+        <div class="pricing-pill pill-red">Overkill for self-editing use cases</div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tool">Copyleaks</div>
+        <div class="pricing-price">$10.99 <span>/ month</span></div>
+        <div class="pricing-limit">1,200 pages/month · LMS integrations · Multilingual</div>
+        <div class="pricing-pill pill-red">Built for educators, not individual users</div>
+      </div>
+    </div>
+    <p style="margin-top:20px;font-size:14px;color:var(--text-dim);">
+      <strong style="color:var(--text)">The honest take:</strong> Paid tools exist for organizations that need audit trails, API integrations, or forensic-grade accuracy for legal or institutional purposes. If you're a ChatGPT power user checking your own drafts before publishing, the same heuristic class is available free in your browser with no word limits. The marginal accuracy difference between a paid and free detector does not matter for individual content QA — save the subscription budget for your ChatGPT Plus plan.
+    </p>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <h2>The 9 Heuristics — What Gets ChatGPT Outputs Flagged</h2>
+    <p class="section-lead">
+      These are the signals that commercial AI detectors — and increasingly human editors — have learned to recognize. Knowing what they are is half the fix.
+    </p>
+    <div class="heuristic-list">
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>Em-Dash Density</strong>
+          <p>ChatGPT uses em-dashes (—) at rates 8–15x higher than average human writing. One of the most reliable 2026 AI signals.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>Sentence-Length Variance</strong>
+          <p>ChatGPT defaults to uniform medium sentences. Human writers naturally oscillate between very short and long sentences in the same paragraph.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>Vocabulary Diversity (TTR)</strong>
+          <p>Type-token ratio measures word repetition. AI recycles vocabulary in predictable cycles; humans tend to use more diverse word choices across a passage.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>AI-Tell Phrases</strong>
+          <p>"In conclusion," "It's important to note," "Delve into," "Navigate the landscape" — ChatGPT uses these at statistically anomalous rates vs. human writing.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>Perplexity Proxy</strong>
+          <p>LLMs choose high-probability, "safe" words. This metric estimates how predictable the vocabulary choices are — high scores suggest AI generation.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>N-Gram Repetition</strong>
+          <p>Repeated 3- and 4-word phrases within a single document. ChatGPT tends to repeat structural phrases, especially across longer outputs.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>Transition-Phrase Density</strong>
+          <p>Density of academic transitions like "furthermore," "additionally," "in summary." High counts suggest essay-writing training data patterns.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>Punctuation Pattern Score</strong>
+          <p>AI uses commas and colons in subtle patterns that differ from human writing. This score captures punctuation rhythm across the full passage.</p>
+        </div>
+      </div>
+      <div class="heuristic-item">
+        <div class="heuristic-dot"></div>
+        <div>
+          <strong>Filler-Phrase Density</strong>
+          <p>"It is worth noting that," "This is particularly relevant," "It cannot be overstated" — hedging fillers ChatGPT inserts far more than human writers do.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>Check Your Next ChatGPT Output Now</h2>
+    <p>Paste whatever ChatGPT just wrote and get a score in seconds. Know exactly which signals to fix before it goes out the door. Free, private, no account required.</p>
+    <a href="https://tinytools-smoky.vercel.app/ai-text-detector/" class="btn-primary" style="font-size:17px;padding:16px 36px;">
+      ⚡ Open AI Text Detector →
+    </a>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <section class="section" style="margin-top:64px;">
+    <h2>Related Tools for ChatGPT Power Users</h2>
+    <p class="section-lead">Other free TinyTools that belong in your ChatGPT workflow.</p>
+    <div class="related-grid">
+      <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/" class="related-card">
+        <div class="rtool">AI Disclosure Generator</div>
+        <h3>Add AI Transparency Disclosures Instantly</h3>
+        <p>When you publish ChatGPT-assisted content, generate an FTC-compliant or EU AI Act-aligned disclosure in seconds. Covers blog posts, social media, newsletters, and client deliverables — no legal guesswork required.</p>
+      </a>
+      <a href="https://tinytools-smoky.vercel.app/ai-cost-calculator/" class="related-card">
+        <div class="rtool">AI Cost Calculator</div>
+        <h3>Calculate Your ChatGPT API Costs</h3>
+        <p>If you've moved beyond ChatGPT Plus to the API — for automations, Custom GPTs, or agent workflows — estimate exact per-run costs across GPT-4o, GPT-4, and 12+ other models before your bill surprises you.</p>
+      </a>
+      <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/" class="related-card">
+        <div class="rtool">AI Robots.txt Generator</div>
+        <h3>Control Which AI Bots Crawl Your Site</h3>
+        <p>If you publish content online and want to control whether ChatGPT's training crawlers, GPTBot, or Anthropic's ClaudeBot can scrape your site, generate the right robots.txt rules in 60 seconds.</p>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-text-detector/">AI Text Detector</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-cost-calculator/">AI Cost Calculator</a>
+  </p>
+  <p style="margin-top:10px;">© 2026 TinyTools · Free browser tools for AI-era builders</p>
+</footer>
+
+</body>
+</html>
