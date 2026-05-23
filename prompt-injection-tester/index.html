@@ -150,6 +150,38 @@
 
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
+
+  /* ── Viral mechanics ── */
+  .viral-bar {
+    margin-top: 24px; padding: 20px;
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px;
+  }
+  .viral-bar h3 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px; }
+  .viral-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+  .vbtn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 18px; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--bg-card); color: var(--text); font-size: 14px; font-weight: 600;
+    cursor: pointer; text-decoration: none; white-space: nowrap; font-family: inherit;
+  }
+  .vbtn:hover { border-color: var(--accent); color: var(--accent); }
+  .vbtn.primary { background: linear-gradient(135deg, #1d9bf0, #0f6cbd); border-color: #1d9bf0; color: #fff; }
+  .vbtn.primary:hover { opacity: .9; color: #fff; }
+  .viral-embed { margin-top: 4px; }
+  .viral-embed label { font-size: 12px; color: var(--text-dim); display: block; margin-bottom: 6px; }
+  .viral-embed-row { display: flex; gap: 8px; align-items: stretch; }
+  .viral-embed pre {
+    flex: 1; padding: 10px 14px; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; font-size: 12px; color: var(--text-dim); overflow-x: auto;
+    white-space: pre-wrap; word-break: break-all; margin: 0;
+  }
+  .viral-embed button {
+    padding: 8px 14px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text); font-size: 13px; cursor: pointer; font-family: inherit;
+    white-space: nowrap; align-self: flex-start;
+  }
+  .viral-embed button:hover { border-color: var(--accent); color: var(--accent); }
+
 </style>
 </head>
 <body>
@@ -448,6 +480,107 @@ function analyze() {
       <div class="highlighted-text">${highlighted || '<em>(empty)</em>'}</div>
     </div>
   `;
+}
+
+  // ── Viral mechanics ──────────────────────────────────────────────────────
+  const _shareUrl = `https://tinytools-smoky.vercel.app/prompt-injection-tester/#${btoa(unescape(encodeURIComponent(text.slice(0, 2000))))}`;
+  const _tweetText = `I just scanned a prompt through the Prompt Injection Tester and got ${score}/100 (${bandText}). Is yours safe? `;
+  const _shieldColor = { CLEAN: '4ade80', 'LOW RISK': '86efac', MODERATE: 'fbbf24', 'HIGH RISK': 'f97316', CRITICAL: 'ef4444' }[bandText] || 'a0a0b8';
+  const _embedCode = `<a href="https://tinytools-smoky.vercel.app/prompt-injection-tester/" target="_blank">\n  <img src="https://img.shields.io/badge/Prompt_Injection-${bandText.replace(/ /g,'_')}-${_shieldColor}?style=for-the-badge&logo=shield" alt="Prompt Injection: ${bandText}">\n</a>`;
+
+  // Draw downloadable card
+  const _canvas = document.getElementById('pitCanvas');
+  _drawScoreCard(_canvas, score, bandText, band, _shieldColor);
+  const _dlHref = _canvas.toDataURL('image/png');
+
+  // Build viral bar HTML
+  const _viralHtml = `
+    <div class="viral-bar">
+      <h3>Share your result</h3>
+      <div class="viral-actions">
+        <a class="vbtn primary" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(_tweetText)}&url=${encodeURIComponent(_shareUrl)}" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="vbtn" id="pitCopyLink">🔗 Copy link</button>
+        <a class="vbtn" id="pitDownload" href="${_dlHref}" download="injection-score.png">💾 Download card</a>
+      </div>
+      <div class="viral-embed">
+        <label>Embed badge on your README or site</label>
+        <div class="viral-embed-row">
+          <pre id="pitEmbed"></pre>
+          <button id="pitEmbedCopy">Copy</button>
+        </div>
+      </div>
+    </div>`;
+
+  verdictArea.innerHTML += _viralHtml;
+  document.getElementById('pitEmbed').textContent = _embedCode;
+
+  document.getElementById('pitCopyLink').addEventListener('click', () => {
+    navigator.clipboard.writeText(_shareUrl);
+    const btn = document.getElementById('pitCopyLink');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+  });
+
+  document.getElementById('pitEmbedCopy').addEventListener('click', () => {
+    navigator.clipboard.writeText(_embedCode);
+    const btn = document.getElementById('pitEmbedCopy');
+    btn.textContent = '✓';
+    setTimeout(() => btn.textContent = 'Copy', 1500);
+  });
+  // ── End viral mechanics ──────────────────────────────────────────────────
+
+
+
+function _drawScoreCard(canvas, score, bandText, band, shieldColor) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  // Background gradient
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#0f0f18'); bg.addColorStop(1, '#15151f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Top accent stripe
+  const sevColor = { CLEAN: '#4ade80', 'LOW RISK': '#86efac', MODERATE: '#fbbf24', 'HIGH RISK': '#f97316', CRITICAL: '#ef4444' }[bandText] || '#eab308';
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, sevColor); stripe.addColorStop(1, '#0f0f18');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+  // Left column — label
+  ctx.fillStyle = sevColor;
+  ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText('🛡️  PROMPT INJECTION TESTER', 60, 80);
+  // Score
+  ctx.fillStyle = sevColor;
+  ctx.font = 'bold 200px -apple-system, sans-serif';
+  ctx.fillText(String(score), 60, 320);
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = 'bold 48px -apple-system, sans-serif';
+  ctx.fillText('/ 100', 60, 380);
+  // Verdict label
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 64px -apple-system, sans-serif';
+  ctx.fillText(bandText, 60, 470);
+  // Tagline
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '28px -apple-system, sans-serif';
+  ctx.fillText('Scanned against 50+ prompt injection & jailbreak patterns.', 60, 530);
+  // Divider line
+  ctx.strokeStyle = '#2a2a3a'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(60, 560); ctx.lineTo(W-60, 560); ctx.stroke();
+  // Footer brand
+  ctx.fillStyle = '#4a4a5a';
+  ctx.font = '22px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/prompt-injection-tester', W - 60, H - 22);
+  ctx.textAlign = 'left';
+}
+
+
+// Auto-load from deep-link hash
+if (location.hash.length > 1) {
+  try {
+    ta.value = decodeURIComponent(escape(atob(location.hash.slice(1))));
+    updateMeta();
+    setTimeout(analyze, 100);
+  } catch(e) { /* ignore malformed hash */ }
 }
 
 updateMeta();
