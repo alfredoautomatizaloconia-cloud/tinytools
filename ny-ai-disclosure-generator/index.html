@@ -152,6 +152,43 @@
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
     text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
+
+  /* ── Viral mechanics ─────────────────────────────────────────────── */
+  .viral-section {
+    margin-top: 16px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 20px; padding: 20px;
+  }
+  .viral-section h2 {
+    font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600;
+  }
+  .viral-actions {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;
+  }
+  .viral-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 9px 16px; border-radius: 10px; font-size: 13px; font-weight: 600;
+    cursor: pointer; text-decoration: none; border: 1px solid var(--border);
+    background: var(--bg-elevated); color: var(--text); transition: all 0.15s;
+  }
+  .viral-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .viral-btn.primary {
+    background: #000; color: #fff; border-color: #333;
+  }
+  .viral-btn.primary:hover { background: #1a1a1a; border-color: #555; }
+  .viral-embed { margin-top: 10px; }
+  .viral-embed .label { font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
+  .viral-embed pre {
+    background: #000; padding: 12px; border-radius: 8px; border: 1px solid var(--border);
+    font-family: 'SF Mono', Monaco, monospace; font-size: 11px; color: #e0e0ff;
+    white-space: pre-wrap; word-break: break-all; margin: 0;
+  }
+  .viral-embed button {
+    margin-top: 6px; padding: 5px 12px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 6px; color: var(--text);
+    font-size: 11px; cursor: pointer;
+  }
+  .viral-embed button:hover { border-color: var(--accent); }
 </style>
 </head>
 <body>
@@ -252,8 +289,25 @@
         <p id="upsellDesc">An independent AEDT bias audit is required before you use this notice. We've collected the auditors with the fastest turnaround.</p>
         <a href="#aff-aedt-auditors" id="upsellLink">Compare AEDT auditors →</a>
       </div>
+
+      <!-- Viral mechanics -->
+      <div class="viral-section">
+        <h2>Share &amp; Embed</h2>
+        <div class="viral-actions">
+          <a class="viral-btn primary" id="vShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+          <button class="viral-btn" id="vCopyLink">🔗 Copy link</button>
+          <a class="viral-btn" id="vDownload" download="ny-ai-disclosure.png">💾 Download card</a>
+        </div>
+        <div class="viral-embed">
+          <div class="label">Embed a compliance badge on your site or README</div>
+          <pre id="vEmbed"></pre>
+          <button id="vEmbedCopy">Copy embed code</button>
+        </div>
+      </div>
     </div>
   </div>
+
+  <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
 
   <section class="content">
     <h2>What New York requires for AI disclosures in 2026</h2>
@@ -720,6 +774,8 @@ function render() {
   document.getElementById('schemaOutput').textContent =
     '<script type="application/ld+json">\n' + JSON.stringify(buildSchema(), null, 2) + '\n<' + '/script>';
   document.getElementById('checklist').innerHTML = buildChecklist();
+  // Update viral mechanics after every render
+  if (typeof updateViralMechanics === 'function') updateViralMechanics();
 }
 
 document.querySelectorAll('.scenario-btn').forEach(btn => {
@@ -745,6 +801,184 @@ document.addEventListener('click', e => {
 
 renderFields();
 render();
+
+// ── Viral mechanics ──────────────────────────────────────────────────
+
+const BASE_URL = 'https://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/';
+
+const SCENARIO_LABELS = {
+  'aedt-hiring': { short: 'NYC LL 144 AEDT notice', color: 'f43f5e', shieldLabel: 'NY_AEDT_Notice' },
+  'ad-synthetic': { short: 'NY AI Ad Disclosure', color: '6366f1', shieldLabel: 'NY_AI_Ad_Disclosure' },
+  'political':    { short: 'NY Political Deepfake Disclaimer', color: 'f59e0b', shieldLabel: 'NY_Political_Disclaimer' },
+  'content':      { short: 'NY AI Editorial Disclosure', color: '10b981', shieldLabel: 'NY_Editorial_Disclosure' }
+};
+
+function getShareName() {
+  switch (activeScenario) {
+    case 'aedt-hiring': return v('employer') || v('jobTitle') || 'my company';
+    case 'ad-synthetic': return v('advertiser') || 'my brand';
+    case 'political': return v('sponsor') || 'my campaign';
+    case 'content': return v('publisher') || 'my publication';
+  }
+  return 'my project';
+}
+
+function buildDeepLink() {
+  const sc = SCENARIOS[activeScenario];
+  const params = {};
+  sc.fields.forEach(f => {
+    const val = v(f.id);
+    if (val) params[f.id] = val;
+  });
+  const encoded = encodeURIComponent(JSON.stringify({ s: activeScenario, ...params }));
+  return BASE_URL + '#' + encoded;
+}
+
+function updateViralMechanics() {
+  const sc_info = SCENARIO_LABELS[activeScenario];
+  const name = getShareName();
+  const deepLink = buildDeepLink();
+
+  // Tweet
+  const tweetText = `I just generated a ${sc_info.short} for ${name} in 30 seconds — no lawyer needed. NY AI compliance is now free ✅`;
+  document.getElementById('vShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(deepLink)}`;
+
+  // Copy link
+  document.getElementById('vCopyLink').onclick = () => {
+    navigator.clipboard.writeText(deepLink);
+    const btn = document.getElementById('vCopyLink');
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = orig, 1500);
+  };
+
+  // Embed badge
+  const badgeLabel = sc_info.shieldLabel.replace(/_/g, '%20');
+  const embedCode =
+`<a href="${deepLink}" target="_blank">
+  <img src="https://img.shields.io/badge/${badgeLabel}-Compliant-${sc_info.color}?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyek0xMCAxN2wtNS01IDEuNDEtMS40MUwxMCAxNC4xN2w3LjU5LTcuNTlMMTkgOGwtOSA5eiIvPjwvc3ZnPg==" alt="${sc_info.short} Compliant">
+</a>`;
+  document.getElementById('vEmbed').textContent = embedCode;
+
+  document.getElementById('vEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('vEmbedCopy');
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = orig, 1500);
+  };
+
+  // Canvas card
+  const canvas = document.getElementById('cardCanvas');
+  const out = BUILDERS[activeScenario](v('style') || 'full');
+  drawDisclosureCard(canvas, activeScenario, name, out.title, out.text);
+  document.getElementById('vDownload').href = canvas.toDataURL('image/png');
+}
+
+function drawDisclosureCard(canvas, scenario, name, title, bodyText) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+
+  const sc_info = SCENARIO_LABELS[scenario];
+  const accentHex = '#' + sc_info.color;
+
+  // Background
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#0a0a1a'); bg.addColorStop(1, '#0f0f1e');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  // Accent top stripe
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, accentHex);
+  stripe.addColorStop(1, '#6366f1');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+
+  // Subtle grid pattern
+  ctx.strokeStyle = 'rgba(255,255,255,0.03)';
+  ctx.lineWidth = 1;
+  for (let x = 0; x < W; x += 60) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+  for (let y = 0; y < H; y += 60) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+
+  // Tool label
+  ctx.fillStyle = accentHex;
+  ctx.font = 'bold 22px -apple-system, "Helvetica Neue", sans-serif';
+  ctx.fillText('🗽 NY AI DISCLOSURE GENERATOR', 60, 72);
+
+  // Company / entity name
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 64px -apple-system, "Helvetica Neue", sans-serif';
+  const nameCapped = name.length > 26 ? name.slice(0, 26) + '…' : name;
+  ctx.fillText(nameCapped, 60, 160);
+
+  // Disclosure type pill
+  ctx.fillStyle = accentHex + '33';
+  ctx.beginPath();
+  ctx.roundRect(60, 180, ctx.measureText(sc_info.short).width + 28, 36, 8);
+  ctx.fill();
+  ctx.fillStyle = accentHex;
+  ctx.font = 'bold 18px -apple-system, "Helvetica Neue", sans-serif';
+  ctx.fillText(sc_info.short, 74, 204);
+
+  // Body text (wrapped excerpt)
+  ctx.fillStyle = '#c0c0d8';
+  ctx.font = '22px -apple-system, "Helvetica Neue", sans-serif';
+  const excerpt = bodyText.replace(/\n+/g, ' ').trim();
+  const words = excerpt.split(' ');
+  let line = '', y = 270, linesDrawn = 0;
+  for (const word of words) {
+    const test = line ? line + ' ' + word : word;
+    if (ctx.measureText(test).width > W - 130 && line) {
+      ctx.fillText(line, 60, y);
+      line = word; y += 34; linesDrawn++;
+      if (linesDrawn >= 7) { ctx.fillText(line + ' …', 60, y); break; }
+    } else { line = test; }
+  }
+  if (linesDrawn < 7) ctx.fillText(line, 60, y);
+
+  // "Compliant ✓" badge (bottom left)
+  ctx.fillStyle = '#10b981' + '22';
+  ctx.beginPath();
+  ctx.roundRect(60, H - 80, 200, 44, 10);
+  ctx.fill();
+  ctx.fillStyle = '#10b981';
+  ctx.font = 'bold 20px -apple-system, "Helvetica Neue", sans-serif';
+  ctx.fillText('✓ NY Compliant', 80, H - 50);
+
+  // Footer brand (bottom right)
+  ctx.fillStyle = '#60607a';
+  ctx.font = '16px -apple-system, "Helvetica Neue", sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/ny-ai-disclosure-generator', W - 60, H - 25);
+  ctx.textAlign = 'left';
+}
+
+// ── Auto-load from URL hash (deep-links) ──────────────────────────────
+(function loadFromHash() {
+  if (location.hash.length < 2) return;
+  try {
+    const raw = decodeURIComponent(location.hash.slice(1));
+    const data = JSON.parse(raw);
+    if (!data.s || !SCENARIOS[data.s]) return;
+
+    // Switch scenario
+    activeScenario = data.s;
+    document.querySelectorAll('.scenario-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.key === data.s);
+    });
+    renderFields();
+
+    // Populate fields
+    const sc = SCENARIOS[data.s];
+    sc.fields.forEach(f => {
+      const el = document.getElementById(f.id);
+      if (el && data[f.id] !== undefined) el.value = data[f.id];
+    });
+
+    render();
+  } catch(e) { /* invalid hash — ignore */ }
+})();
 </script>
 </body>
 </html>
+
