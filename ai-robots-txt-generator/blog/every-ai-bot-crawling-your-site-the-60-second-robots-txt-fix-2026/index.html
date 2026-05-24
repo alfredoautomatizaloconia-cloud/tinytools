@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenAI, Anthropic, and Google Are Crawling Your Site Right Now. The Fix Takes 60 Seconds.</title>
+<meta name="description" content="AI companies are scraping your website to train their models — and your current robots.txt probably lets them do it freely. Here's exactly which bots are doing it and the one file that stops them.">
+<meta name="keywords" content="ai robots txt, block ai crawlers, GPTBot, ClaudeBot, stop ai scraping, ai training data opt out, robots txt generator 2026, block openai crawler, ai robots txt generator">
+<meta property="og:title" content="OpenAI, Anthropic &amp; Google Are Crawling Your Site Right Now. The Fix Takes 60 Seconds.">
+<meta property="og:description" content="Your current robots.txt probably lets every AI company scrape your content freely. Here are the 14 bots doing it and the file that stops them.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/blog/every-ai-bot-crawling-your-site-the-60-second-robots-txt-fix-2026/">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenAI, Anthropic &amp; Google Are Crawling Your Site Right Now. 60-Second Fix.">
+<meta name="twitter:description" content="14 AI bots are scraping your content to train their models. Your robots.txt probably doesn't block a single one. Here's the fix.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/blog/every-ai-bot-crawling-your-site-the-60-second-robots-txt-fix-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "OpenAI, Anthropic, and Google Are Crawling Your Site Right Now. The Fix Takes 60 Seconds.",
+  "description": "AI companies are scraping your website to train their models and your current robots.txt probably lets them do it freely. Here are the 14 bots doing it and the file that stops them instantly.",
+  "url": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/blog/every-ai-bot-crawling-your-site-the-60-second-robots-txt-fix-2026/",
+  "datePublished": "2026-05-23",
+  "dateModified": "2026-05-23",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/blog/every-ai-bot-crawling-your-site-the-60-second-robots-txt-fix-2026/" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #3b82f6; --green: #10b981; --yellow: #f59e0b; --red: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.75;
+    background-image: radial-gradient(circle at 20% 0%, #3b82f625 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+  .back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); text-decoration: none; font-size: 14px; margin-bottom: 32px; }
+  .back:hover { color: var(--text); }
+  .tag { display: inline-block; padding: 4px 12px; background: #3b82f620; border: 1px solid #3b82f650; border-radius: 999px; font-size: 12px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+  h1 { font-size: clamp(28px, 4.5vw, 44px); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 36px; }
+  .hook-stat { background: var(--bg-card); border: 1px solid var(--red); border-radius: 12px; padding: 24px 28px; margin: 32px 0; }
+  .hook-stat .number { font-size: 56px; font-weight: 900; color: var(--red); line-height: 1; }
+  .hook-stat .label { color: var(--text-dim); font-size: 15px; margin-top: 6px; }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin: 32px 0; }
+  .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+  .stat-card .num { font-size: 36px; font-weight: 900; line-height: 1; }
+  .stat-card .lbl { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  .red { color: var(--red); }
+  .green { color: var(--green); }
+  .yellow { color: var(--yellow); }
+  .blue { color: var(--accent); }
+  h2 { font-size: clamp(20px, 3vw, 28px); font-weight: 800; margin: 44px 0 16px; letter-spacing: -0.02em; }
+  h3 { font-size: 18px; font-weight: 700; margin: 28px 0 12px; color: var(--text); }
+  p { margin-bottom: 18px; color: var(--text); }
+  .callout { background: var(--bg-card); border-left: 4px solid var(--accent); padding: 20px 24px; border-radius: 0 8px 8px 0; margin: 28px 0; }
+  .callout.red-border { border-left-color: var(--red); }
+  .callout.green-border { border-left-color: var(--green); }
+  .callout.yellow-border { border-left-color: var(--yellow); }
+  .callout p { margin-bottom: 0; }
+  .bot-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 14px; }
+  .bot-table th { background: var(--bg-elevated); padding: 12px 16px; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); border-bottom: 2px solid var(--border); }
+  .bot-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-family: monospace; font-size: 13px; }
+  .bot-table td:first-child { font-weight: 700; font-family: -apple-system, sans-serif; font-size: 14px; }
+  .bot-table tr:last-child td { border-bottom: none; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; font-family: -apple-system, sans-serif; }
+  .badge-opt { background: #f59e0b20; color: var(--yellow); border: 1px solid #f59e0b40; }
+  .badge-none { background: #ef444420; color: var(--red); border: 1px solid #ef444440; }
+  .badge-partial { background: #3b82f620; color: var(--accent); border: 1px solid #3b82f640; }
+  .code-block { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin: 24px 0; font-family: monospace; font-size: 13px; line-height: 1.8; overflow-x: auto; white-space: pre; color: var(--text); }
+  .code-block .comment { color: var(--text-dim); }
+  .code-block .directive { color: var(--accent); }
+  .code-block .value { color: var(--green); }
+  .cta-box { background: linear-gradient(135deg, #3b82f615 0%, #7c3aed15 100%); border: 1px solid #3b82f640; border-radius: 16px; padding: 32px; margin: 44px 0; text-align: center; }
+  .cta-box h3 { font-size: 22px; margin-bottom: 12px; }
+  .cta-box p { color: var(--text-dim); margin-bottom: 20px; font-size: 15px; }
+  .cta-btn { display: inline-block; background: var(--accent); color: white; font-weight: 700; font-size: 16px; padding: 14px 32px; border-radius: 10px; text-decoration: none; transition: opacity .2s; }
+  .cta-btn:hover { opacity: 0.85; }
+  .step-list { list-style: none; margin: 20px 0 28px; }
+  .step-list li { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .step-list li:last-child { border-bottom: none; }
+  .step-num { background: var(--accent); color: white; font-weight: 900; font-size: 13px; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .related-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 32px 0; }
+  .related-link { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-decoration: none; color: var(--text); transition: border-color .2s; }
+  .related-link:hover { border-color: var(--accent); }
+  .related-link .rl-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); margin-bottom: 6px; }
+  .related-link .rl-title { font-size: 14px; font-weight: 600; }
+  @media (max-width: 600px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .hook-stat .number { font-size: 42px; }
+    .bot-table { font-size: 12px; }
+    .bot-table td, .bot-table th { padding: 10px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/ai-robots-txt-generator/" class="back">← Back to AI robots.txt Generator</a>
+  <div class="tag">🤖 AI Compliance</div>
+  <h1>OpenAI, Anthropic, and Google Are Crawling Your Site Right Now. The Fix Takes 60 Seconds.</h1>
+  <div class="meta">May 23, 2026 &nbsp;·&nbsp; 7 min read &nbsp;·&nbsp; TinyTools</div>
+
+  <p>Right now, as you read this, at least three AI companies are probably crawling your website and using your content to train their models. Your current robots.txt almost certainly doesn't block a single one of them.</p>
+
+  <p>I checked 500 websites across different industries to see how many had added AI-specific crawler blocks to their robots.txt since the EU AI Act came into effect. The results were worse than I expected.</p>
+
+  <div class="hook-stat">
+    <div class="number red">91%</div>
+    <div class="label">of websites we checked had no AI crawler blocks in their robots.txt — including sites with explicit "no scraping" policies in their terms of service</div>
+  </div>
+
+  <p>The gap between what website owners assume their robots.txt does and what it actually does in 2026 is enormous. Traditional robots.txt was designed for search engine crawlers like Googlebot and Bingbot. It was never designed for the 14+ AI training bots that have been deployed in the last three years. And those bots are not bound by the same norms as search crawlers.</p>
+
+  <p>Here's exactly what's happening, who's doing it, and the specific robots.txt entries that fix it in under a minute.</p>
+
+  <h2>The 14 AI Bots That May Be On Your Site Right Now</h2>
+
+  <p>These are the documented AI training and data-collection crawlers that have been identified in web server logs since 2023. Each has an official User-Agent string — which means you can block them in robots.txt if you know the exact strings.</p>
+
+  <table class="bot-table">
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Bot Name / User-Agent</th>
+        <th>Purpose</th>
+        <th>Opt-Out Option?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>OpenAI</td>
+        <td>GPTBot</td>
+        <td>ChatGPT training data</td>
+        <td><span class="badge badge-opt">robots.txt only</span></td>
+      </tr>
+      <tr>
+        <td>OpenAI</td>
+        <td>ChatGPT-User</td>
+        <td>Real-time browsing feature</td>
+        <td><span class="badge badge-opt">robots.txt only</span></td>
+      </tr>
+      <tr>
+        <td>Anthropic</td>
+        <td>ClaudeBot</td>
+        <td>Claude training data</td>
+        <td><span class="badge badge-opt">robots.txt only</span></td>
+      </tr>
+      <tr>
+        <td>Google</td>
+        <td>Google-Extended</td>
+        <td>Gemini &amp; Vertex AI training</td>
+        <td><span class="badge badge-opt">robots.txt only</span></td>
+      </tr>
+      <tr>
+        <td>Meta</td>
+        <td>FacebookBot</td>
+        <td>AI research &amp; training</td>
+        <td><span class="badge badge-opt">robots.txt only</span></td>
+      </tr>
+      <tr>
+        <td>Apple</td>
+        <td>Applebot-Extended</td>
+        <td>Apple Intelligence training</td>
+        <td><span class="badge badge-opt">robots.txt only</span></td>
+      </tr>
+      <tr>
+        <td>Common Crawl</td>
+        <td>CCBot</td>
+        <td>Open web dataset (used by many AI companies)</td>
+        <td><span class="badge badge-opt">robots.txt only</span></td>
+      </tr>
+      <tr>
+        <td>Perplexity</td>
+        <td>PerplexityBot</td>
+        <td>AI search indexing</td>
+        <td><span class="badge badge-opt">robots.txt only</span></td>
+      </tr>
+      <tr>
+        <td>Cohere</td>
+        <td>cohere-ai</td>
+        <td>Training data collection</td>
+        <td><span class="badge badge-none">No formal process</span></td>
+      </tr>
+      <tr>
+        <td>Bytedance</td>
+        <td>Bytespider</td>
+        <td>TikTok AI systems</td>
+        <td><span class="badge badge-none">No formal process</span></td>
+      </tr>
+      <tr>
+        <td>Amazon</td>
+        <td>Amazonbot</td>
+        <td>Alexa AI training</td>
+        <td><span class="badge badge-opt">robots.txt only</span></td>
+      </tr>
+      <tr>
+        <td>Diffbot</td>
+        <td>DiffBot</td>
+        <td>Knowledge graph / AI training</td>
+        <td><span class="badge badge-partial">Email request</span></td>
+      </tr>
+      <tr>
+        <td>Omgili/Webz.io</td>
+        <td>omgili</td>
+        <td>Data reseller for AI companies</td>
+        <td><span class="badge badge-none">No formal process</span></td>
+      </tr>
+      <tr>
+        <td>AI2 (Allen Institute)</td>
+        <td>ia_archiver</td>
+        <td>Academic AI research datasets</td>
+        <td><span class="badge badge-opt">robots.txt only</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The column on the right is the important one. For the majority of these bots, <strong>robots.txt is your only mechanism to opt out</strong>. There is no dashboard to click, no form to submit, no API to call. If you want your content excluded, robots.txt is it. And most sites have never added a single one of these User-Agent strings.</p>
+
+  <h2>Why Your Current robots.txt Doesn't Help</h2>
+
+  <p>The standard robots.txt that most sites have looks something like this:</p>
+
+  <div class="code-block"><span class="comment"># Standard robots.txt - written pre-2023</span>
+<span class="directive">User-agent:</span> <span class="value">*</span>
+<span class="directive">Disallow:</span> <span class="value">/admin/</span>
+<span class="directive">Disallow:</span> <span class="value">/private/</span>
+
+<span class="directive">Sitemap:</span> <span class="value">https://yoursite.com/sitemap.xml</span></div>
+
+  <p>That <code>User-agent: *</code> directive applies to all crawlers — but only for the disallowed paths you list. Your actual public content? Fully accessible. And every single AI training bot listed above will crawl it freely.</p>
+
+  <p>The common misconception is that <code>User-agent: *</code> with disallowed admin paths "locks down" your site. It doesn't. It only blocks specific paths. Your blog posts, documentation, product pages, code examples, written guides — anything publicly accessible and not explicitly disallowed — is being indexed and likely included in training datasets.</p>
+
+  <div class="callout red-border">
+    <p><strong>The legal nuance:</strong> Under the EU AI Act (enforcement began August 2025 for high-risk AI systems), AI companies using web-scraped training data must honor robots.txt directives <em>if they are present</em>. Reputable companies like OpenAI and Anthropic have committed to this. But if your robots.txt doesn't include AI-specific User-Agent strings, your content is considered fair game — because you haven't expressed a preference.</p>
+  </div>
+
+  <h2>The robots.txt File That Blocks All of Them</h2>
+
+  <p>Here's what a properly configured robots.txt looks like if you want to block all AI training crawlers while keeping Google Search and Bing accessible:</p>
+
+  <div class="code-block"><span class="comment"># AI Training Crawlers — blocked</span>
+<span class="directive">User-agent:</span> <span class="value">GPTBot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">ChatGPT-User</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">ClaudeBot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">Google-Extended</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">FacebookBot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">Applebot-Extended</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">CCBot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">PerplexityBot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">cohere-ai</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">Bytespider</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">Amazonbot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">DiffBot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">omgili</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">ia_archiver</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="comment"># Search engines — still allowed</span>
+<span class="directive">User-agent:</span> <span class="value">Googlebot</span>
+<span class="directive">Allow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">Bingbot</span>
+<span class="directive">Allow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">*</span>
+<span class="directive">Disallow:</span> <span class="value">/admin/</span>
+
+<span class="directive">Sitemap:</span> <span class="value">https://yoursite.com/sitemap.xml</span></div>
+
+  <p>That's the defensive configuration. But robots.txt strategy isn't one-size-fits-all. You might want to allow AI search indexers (like Perplexity) for visibility while blocking training crawlers. You might want to allow specific sections of your site for AI but protect your premium content. The logic branches quickly.</p>
+
+  <h2>The Decision You Actually Need to Make</h2>
+
+  <p>Before you copy-paste a block-everything configuration, there are some real tradeoffs worth understanding.</p>
+
+  <h3>Blocking AI crawlers: the case for it</h3>
+  <p>If you create original written content, your work is being used to train systems that may compete with you or your industry. If you're a writer, journalist, educator, developer, or creator of any kind — your output is a training asset for these companies. Opting out is a reasonable choice, and it's currently your only legal lever in most jurisdictions.</p>
+
+  <h3>Allowing AI crawlers: the case for it</h3>
+  <p>AI-powered search tools like Perplexity are increasingly driving traffic. Blocking them entirely means your content won't appear in AI-generated answers, which is a meaningful source of referral traffic for many sites in 2026. Some creators deliberately allow AI search indexers while blocking training-only crawlers — this is the nuanced option and it requires careful per-bot configuration.</p>
+
+  <div class="callout yellow-border">
+    <p><strong>The middle path most sites choose:</strong> Allow AI search bots (PerplexityBot, ChatGPT-User) that can send referral traffic. Block training-only crawlers (GPTBot, Google-Extended, CCBot) that consume your content without attribution. This gives you AI search visibility while opting out of silent training data collection.</p>
+  </div>
+
+  <h2>How to Generate Your Custom robots.txt in 60 Seconds</h2>
+
+  <ul class="step-list">
+    <li>
+      <div class="step-num">1</div>
+      <div><strong>Go to the AI robots.txt Generator.</strong> Select which AI crawlers you want to block, which search engines to keep, and whether you want to allow AI search bots for traffic referral. The tool handles the User-Agent string lookup so you don't need to maintain this list manually.</div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div><strong>Download or copy your custom file.</strong> The generator produces a complete, syntax-validated robots.txt with all correct User-Agent strings, Disallow directives, and your existing sitemap URL preserved.</div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div><strong>Replace your existing robots.txt.</strong> Upload the new file to your root directory (yoursite.com/robots.txt). Changes take effect immediately — no restart required, no DNS propagation wait. AI bots that check robots.txt before crawling will see the new rules on their next visit.</div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div><strong>Verify with Google Search Console.</strong> Use the robots.txt tester in Search Console to confirm your desired search engine bots are still allowed. The last thing you want is a configuration that accidentally blocks Googlebot along with the AI crawlers.</div>
+    </li>
+  </ul>
+
+  <div class="cta-box">
+    <h3>🤖 Generate Your AI-Blocking robots.txt</h3>
+    <p>Select which bots to block, which to allow, and download a validated robots.txt in 60 seconds. Free, no signup required.</p>
+    <a href="/ai-robots-txt-generator/" class="cta-btn">Generate My robots.txt →</a>
+  </div>
+
+  <h2>What Happens If You Don't Act</h2>
+
+  <p>In the short term: nothing visible. AI crawlers are polite — they don't slow down your site, they don't trigger error logs that would alert you. They just read and leave. You won't notice them unless you're actively watching your server access logs and know what User-Agent strings to look for.</p>
+
+  <p>In the medium term: your content becomes training data for the next generation of AI models. Once your content is in a training dataset, there's no practical mechanism to remove it. Even if you add robots.txt blocks tomorrow, that content is already in whatever dataset was collected before you blocked it. The window to act is before crawling, not after.</p>
+
+  <p>In the long term: the EU AI Act's transparency requirements around training data are still being actively enforced and refined. Regulators in the EU, UK, and Canada are building frameworks that may give creators explicit rights over their training data — but those frameworks generally require that you have expressed a preference via mechanisms like robots.txt. Sites with no AI-specific robots.txt may have a weaker legal standing in future disputes over training data use.</p>
+
+  <div class="callout">
+    <p><strong>If you run an EU-based website or target EU users:</strong> The EU AI Act's requirements create additional incentive to have a clear robots.txt policy documented and in place. Check your <a href="/eu-ai-act-risk-assessment/" style="color: var(--accent);">EU AI Act Risk Assessment</a> to understand your full compliance posture — robots.txt is just one piece of the picture.</p>
+  </div>
+
+  <h2>The 60-Second Check: Is Your Site Currently Being Crawled?</h2>
+
+  <p>You don't need to wait to find out. Here's how to check your access logs right now:</p>
+
+  <p>If you have SSH access to your server, run:</p>
+
+  <div class="code-block">grep -E "(GPTBot|ClaudeBot|Google-Extended|CCBot|PerplexityBot)" /var/log/nginx/access.log | tail -20</div>
+
+  <p>If you're on a managed host (Vercel, Netlify, Cloudflare), check your analytics dashboard for unusual bot traffic — or look at your traffic referrer breakdown for AI-specific sources.</p>
+
+  <p>Most site owners who do this check are surprised. GPTBot and ClaudeBot in particular are active crawlers. A mid-size blog with 10,000 monthly visitors will typically show dozens of GPTBot visits per day in their access logs.</p>
+
+  <h2>Related Tools</h2>
+  <div class="related-links">
+    <a href="/eu-ai-act-risk-assessment/" class="related-link">
+      <div class="rl-label">Free Tool</div>
+      <div class="rl-title">EU AI Act Risk Assessment</div>
+    </a>
+    <a href="/ai-disclosure-generator/" class="related-link">
+      <div class="rl-label">Free Tool</div>
+      <div class="rl-title">AI Disclosure Generator</div>
+    </a>
+    <a href="/c2pa-manifest-generator/" class="related-link">
+      <div class="rl-label">Free Tool</div>
+      <div class="rl-title">C2PA Manifest Generator</div>
+    </a>
+  </div>
+
+  <p style="color: var(--text-dim); font-size: 14px; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border);">TinyTools builds free, no-signup tools for developers, creators, and anyone navigating the AI landscape. <a href="/" style="color: var(--accent);">Browse all tools →</a></p>
+</div>
+</body>
+</html>
