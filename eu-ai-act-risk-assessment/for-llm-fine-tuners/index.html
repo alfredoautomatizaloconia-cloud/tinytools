@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EU AI Act Risk Assessment for LLM Fine-Tuners (2026) — Free Compliance Classifier</title>
+<meta name="description" content="Fine-tuning an LLM? Find out instantly if your fine-tuned model is high-risk, limited-risk, or minimal under the EU AI Act. Free 9-question classifier with Article 6 guidance. No signup.">
+<meta name="keywords" content="EU AI Act LLM fine-tuning, fine-tuned model compliance, EU AI Act risk assessment, LLM fine-tuners EU regulation, LoRA compliance EU AI Act, QLoRA EU regulation, OpenPipe EU compliance, Hugging Face EU AI Act">
+<meta property="og:title" content="EU AI Act Risk Assessment for LLM Fine-Tuners — Free Classifier">
+<meta property="og:description" content="Fine-tuning on Modal, Hugging Face, or OpenPipe? Classify your fine-tuned model under the EU AI Act in 60 seconds. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-llm-fine-tuners/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EU AI Act Risk Assessment for LLM Fine-Tuners">
+<meta name="twitter:description" content="Does your fine-tuned model create new EU AI Act obligations? Find out free in 60 seconds.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-llm-fine-tuners/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "EU AI Act Risk Assessment for LLM Fine-Tuners",
+  "description": "Interactive EU AI Act compliance classifier tailored for LLM fine-tuners — covers provider vs deployer status, Annex III triggers, GPAI model rules, and Article 50 transparency obligations.",
+  "url": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-llm-fine-tuners/",
+  "isPartOf": {
+    "@type": "WebApplication",
+    "name": "EU AI Act Risk Assessment",
+    "url": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "EU AI Act Risk Assessment", "item": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" },
+      { "@type": "ListItem", "position": 3, "name": "For LLM Fine-Tuners", "item": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-llm-fine-tuners/" }
+    ]
+  }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #ef4444; --accent-glow: #ef444440;
+    --green: #10b981; --yellow: #fbbf24; --orange: #f97316;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #f9731640 0%, transparent 50%);
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 40px 20px 80px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 32px; }
+  .breadcrumb a { color: var(--text-dim); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb span { margin: 0 6px; }
+
+  .badge {
+    display: inline-block; padding: 6px 14px; background: rgba(239,68,68,0.15);
+    border: 1px solid rgba(239,68,68,0.4); border-radius: 999px; font-size: 13px;
+    color: #fca5a5; margin-bottom: 20px; font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(28px, 4vw, 44px); font-weight: 800; line-height: 1.1;
+    margin-bottom: 16px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fca5a5 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); margin-bottom: 32px; max-width: 680px; }
+
+  .hero-cta {
+    display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 48px; align-items: center;
+  }
+  .btn-primary {
+    display: inline-block; padding: 14px 28px; background: var(--accent); color: #fff;
+    font-size: 16px; font-weight: 700; border-radius: 10px; text-decoration: none;
+    transition: opacity 0.15s; white-space: nowrap;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-secondary {
+    display: inline-block; padding: 13px 22px; background: var(--bg-card); color: var(--text);
+    font-size: 15px; font-weight: 600; border-radius: 10px; text-decoration: none;
+    border: 1px solid var(--border); transition: border-color 0.15s; white-space: nowrap;
+  }
+  .btn-secondary:hover { border-color: var(--accent); }
+  .cta-note { font-size: 13px; color: var(--text-dim); }
+
+  .tool-embed {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; margin-bottom: 56px; text-align: center;
+  }
+  .tool-embed p { color: var(--text-dim); font-size: 15px; margin-bottom: 16px; }
+  .tool-embed-badge {
+    display: inline-block; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 8px; padding: 10px 18px; font-size: 14px; color: #fca5a5; font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  h2 { font-size: 24px; font-weight: 800; margin: 48px 0 16px; letter-spacing: -0.01em; }
+  h3 { font-size: 18px; font-weight: 700; margin: 28px 0 10px; }
+  p { color: var(--text-dim); margin-bottom: 12px; }
+  strong { color: var(--text); }
+
+  .use-cases { display: flex; flex-direction: column; gap: 16px; margin: 24px 0 48px; }
+  .use-case {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 22px 24px;
+  }
+  .use-case-header { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 10px; }
+  .use-case-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+  .use-case-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .use-case-tag {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+    padding: 2px 8px; border-radius: 999px; margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .tag-high { background: rgba(249,115,22,0.15); color: var(--orange); border: 1px solid rgba(249,115,22,0.3); }
+  .tag-limited { background: rgba(251,191,36,0.15); color: var(--yellow); border: 1px solid rgba(251,191,36,0.3); }
+  .tag-minimal { background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+  .use-case-body { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+  .use-case-body strong { color: var(--text); }
+
+  .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0 48px; }
+  @media (max-width: 600px) { .pain-grid { grid-template-columns: 1fr; } }
+  .pain-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 18px;
+  }
+  .pain-card .pain-q { font-size: 14px; font-weight: 600; color: var(--text-dim); margin-bottom: 8px; font-style: italic; }
+  .pain-card .pain-a { font-size: 14px; color: var(--text); }
+  .pain-card .pain-a strong { color: var(--accent); }
+
+  .price-table { width: 100%; border-collapse: collapse; margin: 20px 0 48px; font-size: 14px; }
+  .price-table th { text-align: left; padding: 10px 14px; color: var(--text-dim); border-bottom: 2px solid var(--border); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .price-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); color: var(--text-dim); }
+  .price-table tr:last-child td { border-bottom: none; }
+  .price-table td:first-child { color: var(--text); font-weight: 600; }
+  .price-table .highlight td { background: rgba(16,185,129,0.05); }
+  .price-table .highlight td:first-child { color: var(--green); }
+  .price-free { color: var(--green); font-weight: 700; }
+
+  .sister-tools { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0 48px; }
+  .sister-card {
+    flex: 1; min-width: 200px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 18px; text-decoration: none; color: var(--text);
+    transition: border-color 0.15s;
+  }
+  .sister-card:hover { border-color: var(--accent); }
+  .sister-card .st-icon { font-size: 22px; margin-bottom: 6px; }
+  .sister-card .st-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .sister-card .st-desc { font-size: 12px; color: var(--text-dim); }
+
+  .final-cta {
+    margin-top: 56px; padding: 36px; background: linear-gradient(135deg, rgba(239,68,68,0.12), rgba(249,115,22,0.12));
+    border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; text-align: center;
+  }
+  .final-cta h2 { margin-top: 0; color: var(--text); font-size: 26px; }
+  .final-cta p { color: var(--text-dim); margin: 10px auto 24px; max-width: 520px; }
+
+  footer { margin-top: 72px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 12px; color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a><span>›</span>
+    <a href="/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a><span>›</span>
+    For LLM Fine-Tuners
+  </div>
+
+  <div class="badge">⚠️ EU AI Act high-risk obligations — August 2, 2026</div>
+  <h1>EU AI Act Risk Assessment for LLM Fine-Tuners</h1>
+  <p class="subtitle">
+    Fine-tuning changes more than model weights — it may change your legal status. Find out whether your fine-tuned model is prohibited, high-risk, limited-risk, or minimal under the EU AI Act. Free, 9 questions, no signup.
+  </p>
+
+  <div class="hero-cta">
+    <a class="btn-primary" href="/eu-ai-act-risk-assessment/">Run Your Free Assessment →</a>
+    <span class="cta-note">No account needed · Results in 60 seconds · Shareable PDF report</span>
+  </div>
+
+  <div class="tool-embed">
+    <div class="tool-embed-badge">🔍 EU AI Act Classifier</div>
+    <p>The EU AI Act Risk Assessment walks you through Article 5, Article 6, and Annex III classification logic — the same decision tree a Notified Body uses — and outputs your risk tier, your specific obligations, and a copyable compliance report.</p>
+    <a class="btn-primary" href="/eu-ai-act-risk-assessment/">Open the Risk Assessment Tool →</a>
+  </div>
+
+  <!-- USE CASES -->
+  <h2>5 Fine-Tuning Scenarios — and What the EU AI Act Says About Each</h2>
+
+  <div class="use-cases">
+
+    <div class="use-case">
+      <div class="use-case-header">
+        <div class="use-case-icon">🏥</div>
+        <div>
+          <div class="use-case-tag tag-high">⚠️ Likely High-Risk</div>
+          <div class="use-case-title">Fine-tuning Llama 3 on clinical notes for patient-facing Q&amp;A</div>
+        </div>
+      </div>
+      <div class="use-case-body">
+        Healthcare AI that provides information that influences clinical decisions is an <strong>Annex III area 5 system</strong> (access to essential services / health). Even if a human doctor is in the loop, the model performing medical triage or advising patients directly triggers high-risk obligations: conformity assessment, EU AI database registration, human oversight design, and a full technical documentation file under Annex IV. Fine-tuning on your own clinical dataset makes you the <strong>provider</strong> — not just a deployer — which means every obligation lands on you, not the base model vendor.
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-header">
+        <div class="use-case-icon">📋</div>
+        <div>
+          <div class="use-case-tag tag-high">⚠️ Likely High-Risk</div>
+          <div class="use-case-title">Fine-tuning for automated résumé screening or candidate ranking</div>
+        </div>
+      </div>
+      <div class="use-case-body">
+        Employment and HR AI — including systems that filter, rank, or score job applicants — sits directly in <strong>Annex III area 4</strong>. It doesn't matter whether the model generates a final decision or just a shortlist. If the AI's output materially influences who gets hired, the model is high-risk. You'll need to assess protected-attribute bias in your fine-tuning data, implement human override controls, and ensure auditable logging for each candidate scoring event. Fine-tuning on proprietary hiring data using LoRA or QLoRA does not reduce this burden — it creates it.
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-header">
+        <div class="use-case-icon">💬</div>
+        <div>
+          <div class="use-case-tag tag-limited">💬 Limited-Risk (Article 50)</div>
+          <div class="use-case-title">Fine-tuning a customer-service chatbot for returns and billing</div>
+        </div>
+      </div>
+      <div class="use-case-body">
+        A fine-tuned model that handles order returns and answers billing questions for an e-commerce store typically falls outside Annex III — no credit scoring, no employment decisions, no critical infrastructure. But <strong>Article 50 transparency obligations still apply</strong>: users must be clearly told they are interacting with an AI, not a human agent. The disclosure must be made at the start of the interaction, not buried in a FAQ. Fine-tuning doesn't exempt you from this; it just means you're the provider who has to implement it.
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-header">
+        <div class="use-case-icon">⚖️</div>
+        <div>
+          <div class="use-case-tag tag-high">⚠️ Potentially High-Risk</div>
+          <div class="use-case-title">Fine-tuning for legal contract analysis and risk flagging</div>
+        </div>
+      </div>
+      <div class="use-case-body">
+        Legal AI touches <strong>Annex III area 8</strong> (administration of justice) only when it influences actual judicial decisions. Contract analysis for private businesses typically doesn't — if your fine-tuned model summarizes contracts for in-house counsel, that's a preparatory task and the <strong>Article 6(3) carve-out may apply</strong>. But the moment your model is used by courts, arbitrators, or regulatory authorities to assess evidence or apply law, you're high-risk. Always run the assessment tool to confirm your specific context; the line between legal research assistant and justice-system AI is thinner than it looks.
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-header">
+        <div class="use-case-icon">🎓</div>
+        <div>
+          <div class="use-case-tag tag-high">⚠️ High-Risk if Evaluative</div>
+          <div class="use-case-title">Fine-tuning an LLM for automated essay scoring or exam proctoring</div>
+        </div>
+      </div>
+      <div class="use-case-body">
+        Education AI — systems that determine or influence access to educational opportunities, track students, or evaluate their performance — is explicitly in <strong>Annex III area 3</strong>. A fine-tuned essay-grading model that produces the final grade (or heavily shapes it) is high-risk regardless of the institution type. Importantly, fine-tuning on your school's own essay corpus doesn't shrink the obligation — it makes your institution the provider rather than just a deployer of someone else's tool, which is a significantly heavier compliance role with full Annex IV documentation requirements.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAIN POINTS -->
+  <h2>The Questions Every LLM Fine-Tuner Asks About the EU AI Act</h2>
+
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-q">"I fine-tuned a base model on my company data. Am I now the 'provider' under the Act?"</div>
+      <div class="pain-a">Almost certainly yes. <strong>Article 3(3) defines "provider"</strong> as anyone who develops an AI system and places it on the market or puts it into service. Fine-tuning a foundation model — even via LoRA with 10M parameters — creates a new AI system. That makes you the provider with full obligations, and the original model vendor is only a downstream component supplier.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-q">"I'm publishing my fine-tuned weights on Hugging Face. Does that count as 'placing on the market'?"</div>
+      <div class="pain-a">Publishing weights publicly <strong>is placing on the market</strong> under Article 3(9). Open-source GPAI models get a partial documentation carve-out (Article 53(2)), but only if you don't exceed the 10^25 FLOP training compute threshold for systemic risk. Most LoRA fine-tunes are well under that — but the base pre-training compute of the model you adapted may already be above it.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-q">"My fine-tuned model generates text responses. Do I need Article 50 disclosure labels?"</div>
+      <div class="pain-a">Yes, if EU users interact with it. <strong>Article 50(2)</strong> requires that AI-generated text be marked as artificially generated in a machine-readable format. This applies even to minimal-risk systems — the disclosure obligation is separate from the risk tier. If you're shipping a chat interface on top of your fine-tuned model, both obligations stack.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-q">"Does fine-tuning via OpenPipe or Modal make the platform the provider?"</div>
+      <div class="pain-a">No. Platforms that supply compute and tooling for fine-tuning are <strong>not the provider</strong> of your resulting model — you are. Under Article 25, if you substantially modify a model, the obligations shift to you. Hosting-as-a-service doesn't transfer provider status; training-and-deployment does. Your MSPE agreement with the platform won't protect you from the AI Act.</div>
+    </div>
+  </div>
+
+  <!-- PRICING COMPARISON -->
+  <h2>Cost of EU AI Act Compliance: Fine-Tuner Edition</h2>
+  <p>Figuring out your risk tier is just the start — but it's the step that determines whether you're looking at hours or months of compliance work. Here's what clarifying your classification costs across options:</p>
+
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>What You Get</th>
+        <th>Cost</th>
+        <th>Time to Answer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>EU AI Act compliance consultant</td>
+        <td>Full legal opinion, written classification, audit support</td>
+        <td>€5,000–€50,000</td>
+        <td>2–6 weeks</td>
+      </tr>
+      <tr>
+        <td>Big-4 AI compliance audit (KPMG, Deloitte, etc.)</td>
+        <td>Formal conformity assessment preparation, documentation review</td>
+        <td>€15,000–€120,000</td>
+        <td>4–12 weeks</td>
+      </tr>
+      <tr>
+        <td>AI compliance SaaS (Privado, DataGuard, Comply.ai)</td>
+        <td>Ongoing monitoring, policy generation, risk register</td>
+        <td>€500–€5,000/month</td>
+        <td>1–2 weeks onboarding</td>
+      </tr>
+      <tr>
+        <td>Notified Body conformity assessment (if required)</td>
+        <td>Official CE-marking certification for high-risk systems</td>
+        <td>€20,000–€200,000</td>
+        <td>3–18 months</td>
+      </tr>
+      <tr class="highlight">
+        <td>TinyTools EU AI Act Risk Assessment</td>
+        <td>Article 5/6/Annex III classification, obligation checklist, shareable PDF report</td>
+        <td class="price-free">Free</td>
+        <td>60 seconds</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The TinyTools classifier won't replace a Notified Body assessment for confirmed high-risk systems — nothing does. But it tells you which of those expensive options you actually need before you spend a euro finding out.</p>
+
+  <!-- INTERNAL LINKS -->
+  <h2>Related Tools for LLM Fine-Tuners</h2>
+
+  <div class="sister-tools">
+    <a class="sister-card" href="/ai-disclosure-generator/">
+      <div class="st-icon">📝</div>
+      <div class="st-name">AI Disclosure Generator</div>
+      <div class="st-desc">Generate Article 50-compliant disclosure labels for your fine-tuned model's outputs. HTML snippet, JSON-LD, and image overlay included.</div>
+    </a>
+    <a class="sister-card" href="/ai-cost-calculator/">
+      <div class="st-icon">💰</div>
+      <div class="st-name">AI Cost Calculator</div>
+      <div class="st-desc">Compare inference costs across OpenAI, Anthropic, Mistral, and self-hosted fine-tuned models. Calculate your monthly API spend before you ship.</div>
+    </a>
+    <a class="sister-card" href="/ai-robots-txt-generator/">
+      <div class="st-icon">🤖</div>
+      <div class="st-name">AI Robots.txt Generator</div>
+      <div class="st-desc">Control which AI crawlers can access your model's documentation and dataset pages. One-click robots.txt for 40+ AI bots.</div>
+    </a>
+  </div>
+
+  <!-- LONG-FORM SEO CONTENT -->
+  <h2>EU AI Act and LLM Fine-Tuning: What You Need to Know in 2026</h2>
+
+  <h3>Why fine-tuning creates new legal obligations</h3>
+  <p>When you fine-tune a foundation model, the EU AI Act treats the resulting model as a new AI system — not a variant of the base model. This is the core compliance trap for LLM fine-tuners: you may believe you're just a user of GPT-4, Mistral, or Llama, but once you run supervised fine-tuning (SFT), reinforcement learning from human feedback (RLHF), or even a lightweight LoRA adapter on your own dataset, you become the <strong>provider</strong> under Article 3(3). The base model vendor's compliance infrastructure does not pass through to you.</p>
+
+  <h3>The provider vs deployer distinction matters enormously</h3>
+  <p>Under Article 25, if you substantially modify an AI system, the provider obligations transfer to you. This is not a gray area for most fine-tuning workflows. Training a new adapter, updating weights with your domain data, or changing the model's output behavior all constitute modification. As provider, you are responsible for the full Article 9 risk management system, Article 10 data governance, Article 11 technical documentation, and Article 12 logging — not your cloud GPU provider, not Hugging Face, not the base model creator.</p>
+
+  <h3>GPAI rules for fine-tuners publishing weights</h3>
+  <p>If you release your fine-tuned model publicly — on Hugging Face, GitHub, or any registry — you may trigger GPAI (General-Purpose AI) rules under Articles 51–55. Standard GPAI obligations apply to any model that is both general-purpose and publicly available: technical documentation, a copyright policy, and a public training data summary. The heavier systemic-risk tier (Article 55) applies when total training compute exceeds 10^25 FLOPs. Most fine-tuning runs are far below this, but the base model's pre-training compute is relevant if you're republishing a derivative.</p>
+
+  <h3>Training data and Article 10 data governance</h3>
+  <p>If your fine-tuned model is classified as high-risk, Article 10 requires that your training, validation, and test datasets be "relevant, representative, and to the best extent possible, free of errors and complete." For LLM fine-tuners, this means documenting where your instruction dataset came from, what filtering or deduplication was applied, and whether any protected-attribute bias was assessed. If you scraped data from the web, your Article 10 documentation needs to address that. If you used synthetic data generated by another LLM, you need to disclose that in your technical documentation.</p>
+
+  <h3>Enforcement timeline for fine-tuners</h3>
+  <p>The EU AI Act's prohibition rules (Article 5) were enforceable from February 2, 2025. GPAI model rules (Articles 51–55) apply from August 2, 2025. The full high-risk obligations — conformity assessment, EU database registration, post-market monitoring — apply from August 2, 2026. If your fine-tuned model is deployed commercially in the EU and falls in an Annex III area, you have until August 2026 to complete your conformity assessment. That timeline is shorter than it looks when a Notified Body queue is 12+ months.</p>
+
+  <h3>Practical first steps for LLM fine-tuners</h3>
+  <p>Start with the free risk assessment above to understand your tier. If you land in high-risk, your immediate actions are: appoint an EU representative (Article 22) if you're a non-EU company, begin drafting your Annex IV technical documentation file, establish a logging system for inference events, and engage a conformity assessment body early — Notified Body capacity is already constrained in 2026. If you land in limited-risk, implement your Article 50 disclosure labels and register the carve-out in the EU AI database. If you land in minimal-risk, document why, then move on.</p>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <h2>Get Your Fine-Tuned Model's EU AI Act Classification</h2>
+    <p>9 questions. 60 seconds. A shareable obligation checklist you can hand to legal, attach to your conformity assessment file, or use as your starting brief for a compliance consultant.</p>
+    <a class="btn-primary" href="/eu-ai-act-risk-assessment/">Run the Free Assessment →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div style="max-width: 860px; margin: 0 auto; padding: 0 20px;">
+    Informational only — not legal advice · <a href="/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> · <a href="/">All TinyTools</a>
+  </div>
+</footer>
+
+</body>
+</html>
