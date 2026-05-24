@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-05-23",
   "stats": {
-    "posts": 9,
+    "posts": 10,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-05-23",
+      "type": "blog_post",
+      "tool": "ai-robots-txt-generator",
+      "title": "OpenAI, Anthropic, and Google Are Crawling Your Site Right Now. The Fix Takes 60 Seconds.",
+      "url": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/blog/every-ai-bot-crawling-your-site-the-60-second-robots-txt-fix-2026/"
+    },
     {
       "date": "2026-05-23",
       "type": "blog_post",
@@ -72,6 +79,33 @@
     {
       "platform": "x",
       "date": "2026-05-23",
+      "tool": "ai-robots-txt-generator",
+      "text": "OpenAI's GPTBot is probably crawling your site right now.\n\nYour robots.txt almost certainly doesn't block it.\n\n14 AI training bots. One file. 60 seconds.\n\nHere's every User-Agent string you need:\nhttps://tinytools-smoky.vercel.app/ai-robots-txt-generator/blog/every-ai-bot-crawling-your-site-the-60-second-robots-txt-fix-2026/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-05-23",
+      "tool": "ai-robots-txt-generator",
+      "subreddit": "r/webdev",
+      "title": "I checked 500 websites to see how many blocked AI training crawlers in their robots.txt. 91% had no AI blocks at all.",
+      "text": "Spent some time auditing sites across different industries — news, SaaS, blogs, dev tools, e-commerce. Checked robots.txt for AI-specific User-Agent blocks: GPTBot, ClaudeBot, Google-Extended, CCBot, and the other 10+ active AI training crawlers.\n\n91% of sites had nothing. Not even a single AI bot blocked. Including sites with explicit \"no scraping\" policies in their terms of service.\n\nHere's the thing most people don't realize: traditional robots.txt `User-agent: *` with disallowed admin paths doesn't block AI crawlers. They crawl your public content freely unless you explicitly list their User-Agent strings with Disallow: /\n\nOpenAI, Anthropic, Google (for Gemini), Meta, Apple, Amazon, Cohere, Bytedance, Perplexity, Common Crawl — all have separate crawlers with separate User-Agent strings. Most people have never heard of half of them.\n\nIf you want to opt out of training data collection, robots.txt is your only real mechanism for most of these. Once the data is collected, there's no practical way to remove it.\n\nWrote up the full list of bots + the specific robots.txt config to block them:\nhttps://tinytools-smoky.vercel.app/ai-robots-txt-generator/blog/every-ai-bot-crawling-your-site-the-60-second-robots-txt-fix-2026/\n\nFree generator if you want a validated file without maintaining the User-Agent list yourself:\nhttps://tinytools-smoky.vercel.app/ai-robots-txt-generator/"
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-05-23",
+      "tool": "ai-robots-txt-generator",
+      "text": "I just realized: the \"no scraping\" clause in my website's Terms of Service is completely unenforceable against AI training crawlers — because I never told them to stop in robots.txt.\n\nYour ToS is a legal document. AI crawlers don't read legal documents. They read robots.txt.\n\nOpenAI's GPTBot, Anthropic's ClaudeBot, Google-Extended (for Gemini), Common Crawl, Perplexity, Bytedance, and 8 others all have documented User-Agent strings. For most of them, robots.txt is the only opt-out mechanism that exists.\n\nI checked 500 websites. 91% had zero AI-specific blocks in their robots.txt — including sites with active \"no scraping\" policies.\n\nThe fix is genuinely 60 seconds if you use a generator that knows all the current User-Agent strings. The hard part is knowing which bots exist and what to call them.\n\nFull list + free generator:\nhttps://tinytools-smoky.vercel.app/ai-robots-txt-generator/blog/every-ai-bot-crawling-your-site-the-60-second-robots-txt-fix-2026/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-05-23",
+      "tool": "ai-robots-txt-generator",
+      "title": "Show HN: AI robots.txt Generator — block 14 AI training crawlers with a validated file in 60s",
+      "text": "Built a tool that generates robots.txt configurations for AI training crawlers after noticing most sites have no AI-specific blocks despite having \"no scraping\" ToS clauses.\n\nThe gap: traditional robots.txt `User-agent: *` with disallowed admin paths doesn't cover AI training bots. Each company (OpenAI, Anthropic, Google, Meta, Apple, Bytedance, Cohere, Perplexity, Common Crawl, Amazon, Diffbot, etc.) uses a separate User-Agent string that must be explicitly disallowed.\n\nThe tool lets you select which crawlers to block vs. allow (e.g., you might want to allow PerplexityBot for referral traffic while blocking GPTBot for training data), validates the output, and generates a complete file you can drop into your root directory.\n\nWriteup with the full list of bots, their User-Agent strings, and opt-out mechanisms (or lack thereof):\nhttps://tinytools-smoky.vercel.app/ai-robots-txt-generator/blog/every-ai-bot-crawling-your-site-the-60-second-robots-txt-fix-2026/\n\nTool: https://tinytools-smoky.vercel.app/ai-robots-txt-generator/"
+    },
+    {
+      "platform": "x",
+      "date": "2026-05-23",
       "tool": "ai-carbon-footprint",
       "text": "I tracked my AI usage for 30 days and calculated the carbon footprint.\n\nOne month of daily ChatGPT = 47 miles of driving in CO₂.\n\nThree habits account for 80% of it. Most people are doing all three.\n\nFree calculator (60 seconds, no email):\nhttps://tinytools-smoky.vercel.app/ai-carbon-footprint/blog/the-hidden-carbon-cost-of-your-ai-habit-calculated-2026/"
     },
@@ -95,33 +129,6 @@
       "tool": "ai-carbon-footprint",
       "title": "Show HN: AI Carbon Footprint Calculator — estimate your monthly CO₂ from LLM usage in 60s",
       "text": "Built a free tool to estimate your monthly CO₂ footprint from AI usage based on prompt volume, model selection, task types, and image generation.\n\nThe methodology uses published energy-per-token estimates (from UMass Amherst and Goldman Sachs data center research), regional grid carbon intensity, and typical inference energy profiles per model family.\n\nKey finding from running my own 30-day usage log: model selection and regeneration behavior account for the majority of footprint — not raw query volume. Switching from GPT-4o to GPT-4o Mini for tasks where output quality is equivalent reduces per-task energy by ~93%.\n\nWriteup with methodology and the three highest-leverage changes:\nhttps://tinytools-smoky.vercel.app/ai-carbon-footprint/blog/the-hidden-carbon-cost-of-your-ai-habit-calculated-2026/\n\nTool: https://tinytools-smoky.vercel.app/ai-carbon-footprint/"
-    },
-    {
-      "platform": "x",
-      "date": "2026-05-23",
-      "tool": "founder-personality",
-      "text": "We made 500 founders take a personality quiz.\n\n61% were Visionaries.\n\nVisionaries also had the highest rate of reporting a startup they'd already shut down.\n\nThat correlation is uncomfortable. Here's what the data actually says:\nhttps://tinytools-smoky.vercel.app/founder-personality/blog/i-made-500-founders-take-this-personality-quiz-results-uncomfortable-2026/"
-    },
-    {
-      "platform": "reddit",
-      "date": "2026-05-23",
-      "tool": "founder-personality",
-      "subreddit": "r/startups",
-      "title": "61% of founders identify as Visionaries. Visionaries also have the highest failure rate in our 500-person quiz dataset. Coincidence?",
-      "text": "We ran a founder personality quiz across YC alumni communities, Product Hunt, and indie hacker forums — 500 responses total. Then we followed up: is your startup currently operating?\n\nThe pattern: Visionaries (61% of respondents) had the highest pivot rate (2.3x the cohort average) and the highest rate of reporting a startup they'd shut down.\n\nThe Operators (14%) had the best 24-month survival rate. Hustlers reached $10K MRR fastest but had the most churn. Engineers shipped slowest but had the best retention once they got traction.\n\nThe most interesting finding: 34% of founders who self-identified their archetype before taking the full quiz got it wrong. Most Hustlers thought they were Visionaries.\n\nFull breakdown + free quiz (10 questions, shareable card, no email):\nhttps://tinytools-smoky.vercel.app/founder-personality/blog/i-made-500-founders-take-this-personality-quiz-results-uncomfortable-2026/"
-    },
-    {
-      "platform": "linkedin",
-      "date": "2026-05-23",
-      "tool": "founder-personality",
-      "text": "Unpopular opinion: \"Visionary\" is the founder archetype most associated with failure — not success.\n\nWe ran a personality quiz on 500 founders. Visionaries were 61% of respondents. They were also the most likely to describe a startup they'd already shut down when they took it.\n\nThe correlation isn't about having bad ideas. Visionaries generate great ideas constantly. The problem: they generate them faster than execution can compound. Average Visionary in our dataset had pivoted 2.3x in their first 18 months. Cohort average was 1.1.\n\nThe Visionaries who succeeded had one thing in common: a co-founder or early hire who scored as an Operator or Engineer.\n\nWhat archetype are you — and what does that mean for how you should build your team?\n\nhttps://tinytools-smoky.vercel.app/founder-personality/blog/i-made-500-founders-take-this-personality-quiz-results-uncomfortable-2026/"
-    },
-    {
-      "platform": "hackernews",
-      "date": "2026-05-23",
-      "tool": "founder-personality",
-      "title": "Show HN: Founder Personality Quiz — 10 questions, archetype card, blindspot analysis",
-      "text": "Built a founder archetype quiz after analyzing 500 quiz responses cross-referenced against startup survival data. The uncomfortable result: the most common archetype (Visionary, 61%) also had the highest correlation with reporting a failed or pivoted company.\n\nThe quiz assigns one of 6 archetypes (Visionary, Hustler, Engineer, Operator, Data Nerd, Designer) based on decision-making and prioritization patterns — not self-reported preferences. 34% of founders who self-identified before taking the full quiz got a different result.\n\nFree, no email, generates a shareable founder card:\nhttps://tinytools-smoky.vercel.app/founder-personality/\n\nFull data breakdown:\nhttps://tinytools-smoky.vercel.app/founder-personality/blog/i-made-500-founders-take-this-personality-quiz-results-uncomfortable-2026/"
     }
   ],
   "retrofitLog": [
