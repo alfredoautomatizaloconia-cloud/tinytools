@@ -182,3 +182,24 @@ domain-generator, mcp-server-inspector, pdf-to-markdown, resume-tailorer,
 seo-meta-generator, youtube-to-blog)
 
 **Commit:** https://github.com/alfredoautomatizaloconia-cloud/tinytools/blob/main/ai-bill-of-materials/index.html
+
+---
+## Viral Retrofit Log — 2026-05-28 06:06 UTC
+
+**Tool retrofitted:** ai-watermark-adder
+
+**Viral mechanics added:**
+- ✅ 𝕏/Twitter share button (tweet text: "Just EU AI Act-compliant watermarked my AI image in seconds 🏷️")
+- ✅ Copy deep-link (encodes badge text, style, color, position in URL hash)
+- ✅ Embeddable shields.io badge code block
+- ✅ Share card (1200×630 PNG canvas with watermarked image + branding)
+- ✅ Auto-load from URL hash (restores all settings on deep-link visit)
+
+**Current visitor count:** 1
+
+**Tools without viral mechanics after this run (7 remaining):**
+ai-image-upscaler, color-palette, favicon-generator, cover-letter-generator,
+resume-tailorer, seo-meta-generator, domain-generator
+
+**Commit:** https://github.com/alfredoautomatizaloconia-cloud/tinytools/commit/8dc0f46c9eab74404d05b84b092b3ad6e0fb6d98
+
