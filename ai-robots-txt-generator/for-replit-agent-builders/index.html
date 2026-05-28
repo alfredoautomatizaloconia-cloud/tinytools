@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Robots.txt Generator for Replit Agent Builders — Protect Your Deployed Apps (2026)</title>
+<meta name="description" content="Ship robots.txt with every Replit Agent app you deploy. Block GPTBot, ClaudeBot, and Bytespider from training on your app's landing pages, feature docs, and API routes — while keeping live-citation bots that drive new users. Free, no signup.">
+<meta name="keywords" content="robots.txt for replit, replit agent robots.txt, block ai bots replit, replit app ai crawlers, GPTBot block replit, ai training opt out replit, replit deployment robots.txt, protect replit app from ai, replit agent builder tools 2026">
+<meta property="og:title" content="AI Robots.txt Generator for Replit Agent Builders — Protect Your Apps">
+<meta property="og:description" content="Every app you ship with Replit Agent is instantly crawlable. Block AI training bots from harvesting your landing pages, prompts, and feature descriptions — while keeping ChatGPT search and Perplexity pointing users your way. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-replit-agent-builders/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-replit-agent-builders/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Robots.txt Generator for Replit Agent Builders",
+  "url": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-replit-agent-builders/",
+  "description": "Generate a robots.txt that blocks AI training crawlers (GPTBot, ClaudeBot, Google-Extended, Bytespider) on Replit-deployed apps — while preserving live-citation and search bots that drive new users.",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Replit Agent Builders, Vibe Coders, No-Code AI App Developers, Full-Stack Builders"
+  },
+  "mainEntity": {
+    "@type": "SoftwareApplication",
+    "name": "AI Robots.txt Generator",
+    "url": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do Replit-deployed apps get crawled by AI training bots?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Any app deployed on a public .replit.app subdomain or a custom domain attached to Replit is reachable by every major AI training crawler — GPTBot, ClaudeBot, Google-Extended, Bytespider, CCBot, and more. By default, if you don't ship a robots.txt, all of them are implicitly allowed to crawl and harvest your landing page, feature descriptions, and any public-facing content. Adding a robots.txt to your Replit project takes under five minutes and opts you out of training while keeping search and live-citation bots active."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I add a robots.txt to a Replit Agent app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For Express / Node.js apps, create a robots.txt file in your project's public or static folder and serve it with express.static. For Python Flask or FastAPI, place robots.txt in your static directory and make sure it's served at /robots.txt. For full-stack frameworks like Next.js or SvelteKit running on Replit, drop the file in the /public directory — it will be served automatically. After deploy, verify by visiting https://your-app.replit.app/robots.txt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will blocking AI crawlers hurt my Replit app's discoverability?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — as long as you keep Googlebot, Bingbot, OAI-SearchBot, and PerplexityBot allowed. The key distinction is training crawlers vs live-citation crawlers. Training crawlers (GPTBot, ClaudeBot, Google-Extended, Bytespider) harvest your content to train future models — they send zero traffic back. Live-citation crawlers (OAI-SearchBot, PerplexityBot, Bingbot) fetch your page on demand when a user asks an AI a question, and the AI links to your app with a clickable URL. Blocking the first group, allowing the second, means you still show up in ChatGPT search, Perplexity, and Bing Copilot — all traffic sources for Replit-deployed apps in 2026."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I block AI bots from my Replit app's API routes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You should use a blanket User-agent: * Disallow: /api/ directive as a precaution, but the real protection for API routes is authentication — require an API key or session cookie, and unauthenticated crawlers can't reach the data anyway. The robots.txt disallow for /api/ and /admin/ is cheap belt-and-suspenders insurance, not a substitute for proper auth on sensitive routes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I'm a Replit Agent builder — why would AI companies want to train on my app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI training crawlers don't discriminate by app size. They crawl every public URL they can reach. For a Replit builder, the content they're after includes your landing page copy (which describes what problem you solve and how), your feature descriptions, any public docs or help text, and your system prompt hints if they're exposed in any visible UI. If you've built something genuinely novel with Replit Agent, the system design captured in your public-facing pages is exactly the kind of content the next generation of foundation models will be trained on — unless you opt out."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f97316; --accent-glow: #f9731640;
+    --green: #10b981; --red: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #ec489940 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  header { text-align: center; padding: 24px 0 8px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(28px, 4.2vw, 42px); font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fed7aa 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 640px; margin: 0 auto 24px; }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 8px 0 24px; }
+  .cta {
+    display: inline-block; padding: 14px 28px; border-radius: 10px;
+    font-weight: 600; text-decoration: none; transition: all 0.15s; font-size: 15px;
+  }
+  .cta-primary { background: var(--accent); color: #0a0a0f; }
+  .cta-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px var(--accent-glow); }
+  .cta-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+  .cta-secondary:hover { border-color: var(--accent); }
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-top: 24px; }
+  .panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+  .preview { background: #000; padding: 18px; border-radius: 12px; border: 1px solid var(--border); }
+  .preview pre { margin: 0; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: #e0e0ff; white-space: pre-wrap; }
+  .preview .comment { color: #6b7280; }
+  .preview .ua { color: #f97316; }
+  .preview .allow { color: #10b981; }
+  .preview .disallow { color: #ef4444; }
+  .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 14px; }
+  .use-case { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .use-case .icon { font-size: 22px; margin-bottom: 8px; }
+  .use-case h3 { font-size: 15px; margin-bottom: 6px; color: var(--text); }
+  .use-case p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+  .content { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 24px; margin: 32px 0 12px; color: var(--text); letter-spacing: -0.01em; }
+  .content h3 { font-size: 18px; margin: 24px 0 8px; color: var(--text); }
+  .content p { color: var(--text-dim); margin-bottom: 12px; font-size: 15px; }
+  .content ul { margin: 8px 0 16px 24px; color: var(--text-dim); }
+  .content ul li { margin-bottom: 6px; font-size: 15px; }
+  .content a { color: var(--accent); text-decoration: none; }
+  .content a:hover { text-decoration: underline; }
+  .content code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', monospace; font-size: 13px; color: var(--accent); }
+  .pricing-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14px; }
+  .pricing-table th { text-align: left; padding: 10px 14px; background: var(--bg-elevated); color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .pricing-table td { padding: 10px 14px; border-top: 1px solid var(--border); color: var(--text-dim); vertical-align: top; }
+  .pricing-table tr:hover td { background: var(--bg-elevated); }
+  .pricing-table .highlight td { color: var(--text); }
+  .pricing-table .free-badge { display: inline-block; padding: 2px 8px; background: #10b98120; color: var(--green); border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .pricing-table .paid-badge { display: inline-block; padding: 2px 8px; background: #f9731620; color: var(--accent); border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .faq-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: 0; }
+  .faq-item h3 { font-size: 16px; margin-bottom: 6px; color: var(--text); }
+  .faq-item p { color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+  .final-cta { text-align: center; padding: 36px 24px; margin-top: 40px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
+  .final-cta h2 { font-size: 22px; margin-bottom: 10px; color: var(--text); }
+  .final-cta p { color: var(--text-dim); margin-bottom: 18px; }
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">Home</a> &nbsp;›&nbsp;
+    <a href="/ai-robots-txt-generator/">AI Robots.txt Generator</a> &nbsp;›&nbsp;
+    For Replit Agent Builders
+  </div>
+
+  <header>
+    <div class="badge">🤖 Built for Replit Agent · vibe coders · full-stack AI apps · Free</div>
+    <h1>AI Robots.txt Generator for Replit Agent Builders</h1>
+    <p class="subtitle">You ship apps fast with Replit Agent. But every public .replit.app URL is crawled by GPTBot, ClaudeBot, and Bytespider the moment it goes live. Block AI training bots in under 5 minutes — without losing ChatGPT search or Perplexity traffic. Free.</p>
+    <div class="cta-row">
+      <a href="/ai-robots-txt-generator/" class="cta cta-primary">Generate My robots.txt →</a>
+      <a href="#example" class="cta cta-secondary">See Replit example</a>
+    </div>
+  </header>
+
+  <div class="panel" id="example">
+    <h2>Robots.txt starter for a Replit-deployed app</h2>
+    <div class="preview">
+<pre><span class="comment"># robots.txt for a Replit Agent app
+# Goal: block AI training, keep search + AI citation traffic</span>
+
+<span class="comment"># --- Search engines: always allowed ---</span>
+<span class="ua">User-agent: Googlebot</span>
+<span class="allow">Allow: /</span>
+
+<span class="ua">User-agent: Bingbot</span>
+<span class="allow">Allow: /</span>
+
+<span class="comment"># --- Live-citation bots: keep allowed (they send users to your app) ---</span>
+<span class="ua">User-agent: OAI-SearchBot</span>
+<span class="allow">Allow: /</span>
+
+<span class="ua">User-agent: PerplexityBot</span>
+<span class="allow">Allow: /</span>
+
+<span class="comment"># --- AI training crawlers: blocked ---</span>
+<span class="ua">User-agent: GPTBot</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: ClaudeBot</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: anthropic-ai</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: Google-Extended</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: Bytespider</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="ua">User-agent: CCBot</span>
+<span class="disallow">Disallow: /</span>
+
+<span class="comment"># --- API and admin routes: belt-and-suspenders protection ---</span>
+<span class="ua">User-agent: *</span>
+<span class="disallow">Disallow: /api/</span>
+<span class="disallow">Disallow: /admin/</span>
+<span class="disallow">Disallow: /dashboard/</span>
+
+<span class="ua">Sitemap: https://your-app.replit.app/sitemap.xml</span></pre>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Why Replit Agent builders need this in 2026</h2>
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="icon">🚀</div>
+        <h3>Your landing page goes live instantly — and so do the bots</h3>
+        <p>Replit Agent spins up a deployed app in minutes. That .replit.app URL is public the moment it's live, and GPTBot and CCBot start crawling within hours. Your product description, feature list, and value proposition are training data by default unless you opt out.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">🧠</div>
+        <h3>Protect your system prompt leakage points</h3>
+        <p>Many Replit Agent apps surface hints about their underlying prompts in the UI, help text, or placeholder copy. That content shouldn't be in next year's foundation model. A targeted Disallow on UI pages with prompt-adjacent copy keeps your architecture out of the training pipeline.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">🔁</div>
+        <h3>Ship a new version every week — robots.txt persists</h3>
+        <p>You redeploy constantly. Robots.txt lives at the root and applies automatically to every page you add. Write it once when you first go live and it covers every feature you ship next month. Zero maintenance overhead.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">📈</div>
+        <h3>Still get discovered by ChatGPT search and Perplexity</h3>
+        <p>Blocking training bots doesn't mean disappearing from AI answers. <code>OAI-SearchBot</code> and <code>PerplexityBot</code> are live-citation crawlers — they fetch your page on demand when a user asks a relevant question and link back to your app. Keep them allowed and your Replit app becomes an AI-search discovery channel.</p>
+      </div>
+      <div class="use-case">
+        <div class="icon">⚖️</div>
+        <h3>Start building an opt-out paper trail</h3>
+        <p>Robots.txt is the machine-readable standard recognized under the EU AI Act and referenced in US AI policy proposals. If you're building something worth protecting, a timestamped robots.txt in your repo is the first line of documentation that you did not consent to AI training use of your content.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>The problem Replit Agent builders face with AI crawlers</h2>
+    <p>Replit Agent has made shipping full-stack apps faster than ever. You describe what you want, the agent builds it, you click Deploy — and your app is live on a public subdomain in under an hour. This is genuinely powerful. But it also means the content of that app — your landing page copy, feature descriptions, help tooltips, onboarding flows — is immediately reachable by every AI training crawler on the internet.</p>
+    <p>The major AI labs all run named training crawlers: OpenAI's <code>GPTBot</code>, Anthropic's <code>ClaudeBot</code>, Google's <code>Google-Extended</code>, ByteDance's <code>Bytespider</code>, and Common Crawl's <code>CCBot</code> (which feeds most open-weight models). By default — that is, with no robots.txt at all — all of these are permitted to index your app. Within weeks of going live, your product positioning, feature set, and UX patterns could be part of a foundation model training run. You'll never know which one, and you'll never be notified.</p>
+    <p>This matters more for Replit builders than for large SaaS companies for a specific reason: <strong>novelty</strong>. If you built something genuinely new with Replit Agent, the interesting IP lives almost entirely in public-facing content. A big enterprise SaaS has moats in code, data, and customer relationships. A Replit builder's moat, at launch, is often just the insight captured in the landing page and the UI. That's exactly what training crawlers are looking for.</p>
+
+    <h2>How to add robots.txt to a Replit Agent app</h2>
+    <p>The exact method depends on what Replit Agent built for you. Here are the four most common setups:</p>
+
+    <h3>Express / Node.js apps</h3>
+    <p>Create a <code>public/</code> folder at the root of your project if one doesn't exist. Add <code>robots.txt</code> inside it, then make sure your Express app serves it:</p>
+    <p><code>app.use(express.static('public'));</code></p>
+    <p>After deploy, confirm it's live at <code>https://your-app.replit.app/robots.txt</code>.</p>
+
+    <h3>Python Flask apps</h3>
+    <p>Add <code>robots.txt</code> to your <code>static/</code> folder, then add a simple route:</p>
+    <p><code>@app.route('/robots.txt')<br>def robots(): return send_from_directory('static', 'robots.txt')</code></p>
+
+    <h3>FastAPI apps</h3>
+    <p>Mount a static files directory and place <code>robots.txt</code> there:</p>
+    <p><code>app.mount("/static", StaticFiles(directory="static"), name="static")</code></p>
+    <p>Then add a route that serves it at <code>/robots.txt</code> directly.</p>
+
+    <h3>Next.js / SvelteKit / Astro apps</h3>
+    <p>Drop <code>robots.txt</code> into the <code>/public</code> folder at the project root. These frameworks automatically serve everything in <code>/public</code> at the domain root. No code change needed — just drop the file and redeploy.</p>
+
+    <h2>What to block vs what to allow</h2>
+
+    <h3>Block: training-only crawlers</h3>
+    <p>These crawlers exist solely to harvest content for model training. They send zero traffic back to your app. Blocking them is pure upside for a Replit builder:</p>
+    <ul>
+      <li><code>GPTBot</code> — OpenAI training crawler</li>
+      <li><code>ClaudeBot</code> and <code>anthropic-ai</code> — Anthropic training</li>
+      <li><code>Google-Extended</code> — Gemini model training (separate from Googlebot search)</li>
+      <li><code>Bytespider</code> — ByteDance / TikTok / Doubao training</li>
+      <li><code>CCBot</code> — Common Crawl, backbone of most open-weight model training datasets</li>
+      <li><code>Applebot-Extended</code> — Apple Intelligence training</li>
+      <li><code>Meta-ExternalAgent</code>, <code>cohere-ai</code>, <code>Diffbot</code> — smaller training crawlers</li>
+    </ul>
+
+    <h3>Allow: live-citation and search crawlers</h3>
+    <p>These crawlers fetch pages on demand to answer user questions and link back to your app. They are new top-of-funnel traffic for indie apps in 2026:</p>
+    <ul>
+      <li><code>Googlebot</code> — Google Search rankings</li>
+      <li><code>Bingbot</code> — Bing search and Microsoft Copilot grounding</li>
+      <li><code>OAI-SearchBot</code> — ChatGPT search (live answers with links)</li>
+      <li><code>ChatGPT-User</code> — when a ChatGPT user triggers a live web fetch</li>
+      <li><code>PerplexityBot</code> and <code>Perplexity-User</code> — Perplexity answer engine</li>
+    </ul>
+
+    <h2>Pricing: free vs paid robots.txt tools</h2>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Price</th>
+          <th>AI bots covered</th>
+          <th>Replit-specific guidance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td><strong>TinyTools AI Robots.txt Generator</strong></td>
+          <td><span class="free-badge">FREE</span></td>
+          <td>25+ named AI crawlers, auto-updated</td>
+          <td>Yes — framework-specific deploy instructions</td>
+        </tr>
+        <tr>
+          <td>Manual robots.txt (write it yourself)</td>
+          <td><span class="free-badge">FREE</span></td>
+          <td>Only what you know to include</td>
+          <td>No — easy to miss new crawlers</td>
+        </tr>
+        <tr>
+          <td>Cloudflare "Block AI Bots" WAF rule</td>
+          <td><span class="free-badge">FREE</span></td>
+          <td>~20 known bots via firewall rule</td>
+          <td>Only if app is behind Cloudflare proxy</td>
+        </tr>
+        <tr>
+          <td>Vercel AI bot blocking (Pro)</td>
+          <td><span class="paid-badge">$20/mo</span></td>
+          <td>Managed list, WAF-level</td>
+          <td>Vercel only — not native to Replit</td>
+        </tr>
+        <tr>
+          <td>RobotsTxt.dev (premium tier)</td>
+          <td><span class="paid-badge">$9/mo</span></td>
+          <td>Managed list with dashboard</td>
+          <td>Generic — no Replit deploy guide</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px;">For a Replit builder shipping a new app every week, the right answer is the free generator — generate once, drop it in, forget it. The paid WAF-level solutions make sense at scale once you have real traffic to protect, but for an app going from zero to live, robots.txt is the correct first move.</p>
+
+    <h2>The bigger picture: an AI policy checklist for Replit builders</h2>
+    <p>Robots.txt is the fastest first step, but the full picture for a serious Replit-built app includes a few more pieces:</p>
+    <ul>
+      <li><strong>robots.txt</strong> — block training crawlers at the root. Ship this the same day you go live.</li>
+      <li><strong>AI Disclosure</strong> — if your app uses AI in any user-facing way, several US states and the EU require a disclosure. TinyTools has a free <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> that covers the major jurisdictions in under two minutes.</li>
+      <li><strong>EU AI Act risk tier</strong> — if your app could be used in a regulated sector (health, finance, education), understanding your EU AI Act risk classification early saves work later. See the free <a href="/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a>.</li>
+      <li><strong>AI cost awareness</strong> — Replit Agent apps often have ongoing LLM API costs baked in. Model the ongoing cost before you start scaling. The free <a href="/ai-cost-calculator/">AI Cost Calculator</a> lets you estimate OpenAI, Anthropic, and Gemini costs per request and per user.</li>
+      <li><strong>Terms of Service clause</strong> — add an explicit "no training use" clause to your ToS. Robots.txt is the technical signal; a ToS clause is the legal one. Both matter for any future enforcement.</li>
+    </ul>
+    <p>The total time to check all of these off for a new Replit app is under 30 minutes. Do it once on launch day and you have a defensible AI policy from day one.</p>
+  </div>
+
+  <div class="panel">
+    <h2>FAQ</h2>
+    <div class="faq-item">
+      <h3>Do Replit-deployed apps get crawled by AI training bots?</h3>
+      <p>Yes. Any app on a public .replit.app subdomain or a custom domain is reachable by all major AI training crawlers. Without a robots.txt, they are implicitly allowed. Adding one opts you out of training while keeping search and live-citation bots active.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I add robots.txt to a Replit Agent app?</h3>
+      <p>For Node.js/Express, place it in your <code>public/</code> folder and serve with <code>express.static</code>. For Flask/FastAPI, place it in <code>static/</code> and add a route. For Next.js, SvelteKit, or Astro, drop it in <code>/public</code> — no code change needed.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Will blocking AI crawlers hurt my app's discoverability?</h3>
+      <p>No — block training crawlers (GPTBot, ClaudeBot, Google-Extended, Bytespider), keep live-citation crawlers (OAI-SearchBot, PerplexityBot, Bingbot) and search crawlers (Googlebot). Your app still appears in Google, ChatGPT search, and Perplexity results.</p>
+    </div>
+    <div class="faq-item">
+      <h3>I ship a new version of my app every week. Does robots.txt need to be updated?</h3>
+      <p>No. Robots.txt applies site-wide and covers every path on your domain, including pages you haven't shipped yet. Write it once on launch day, and it protects every page you add going forward.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should I also block AI bots from my API routes?</h3>
+      <p>Add a <code>User-agent: * Disallow: /api/</code> as belt-and-suspenders protection, but the real protection is authentication — require API keys or session cookies on sensitive routes. Robots.txt is for public pages; auth is for data.</p>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    <h2>Ship your robots.txt before your next deploy</h2>
+    <p>Generate a complete robots.txt for your Replit app in under 60 seconds. Copy, paste, deploy. Block 25+ AI training crawlers and keep every source of real traffic.</p>
+    <a href="/ai-robots-txt-generator/" class="cta cta-primary">Try the AI Robots.txt Generator →</a>
+  </div>
+
+  <footer>
+    <p>Free for Replit builders, indie hackers, vibe coders, and anyone shipping on the open web. Built by <a href="/">TinyTools</a>.</p>
+  </footer>
+</div>
+</body>
+</html>
