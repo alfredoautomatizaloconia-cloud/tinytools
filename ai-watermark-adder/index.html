@@ -148,6 +148,45 @@
     margin-top: 14px; font-size: 12px; color: var(--text-dim); text-align: center;
     background: var(--bg-elevated); border-radius: 8px; padding: 8px;
   }
+
+  /* viral share section */
+  .viral-share {
+    display: none; margin-top: 18px;
+    background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(99,102,241,0.08));
+    border: 1px solid rgba(245,158,11,0.25); border-radius: 12px; padding: 14px;
+  }
+  .viral-share.visible { display: block; }
+  .viral-share h3 { font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; color: var(--text-dim); margin-bottom: 10px; }
+  .viral-btns { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 10px; }
+  .viral-btns a, .viral-btns button {
+    padding: 8px 13px; border-radius: 8px; font-size: 12px; font-weight: 700;
+    cursor: pointer; border: none; text-decoration: none; font-family: inherit;
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .vbtn-x { background: #000; color: #fff; }
+  .vbtn-x:hover { background: #333; }
+  .vbtn-link { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+  .vbtn-link:hover { border-color: var(--accent); color: var(--accent); }
+  .vbtn-card { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+  .vbtn-card:hover { border-color: var(--accent); color: var(--accent); }
+  .embed-block { margin-top: 8px; }
+  .embed-block label { font-size: 11px; color: var(--text-dim); display: block; margin-bottom: 4px; }
+  .embed-block-row { display: flex; gap: 6px; align-items: stretch; }
+  .embed-block pre {
+    flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 7px;
+    padding: 8px 10px; font-family: 'SF Mono', Monaco, monospace; font-size: 11px;
+    color: #fde68a; overflow: auto; white-space: pre; margin: 0;
+    max-height: 68px;
+  }
+  .embed-block button {
+    padding: 6px 11px; font-size: 11px; font-weight: 700; background: var(--bg-elevated);
+    border: 1px solid var(--border); color: var(--text-dim); border-radius: 7px; cursor: pointer;
+    font-family: inherit; flex-shrink: 0;
+  }
+  .embed-block button:hover { border-color: var(--accent); color: var(--accent); }
+  canvas#shareCard { display: none; }
+
 </style>
 </head>
 <body>
@@ -262,6 +301,24 @@
         <button class="btn btn-secondary" id="downloadBtn" disabled>⬇ Download</button>
         <button class="btn btn-secondary" id="resetBtn">↺ Reset</button>
       </div>
+
+      
+      <div class="viral-share" id="viralShare">
+        <h3>🚀 Share your watermarked image</h3>
+        <div class="viral-btns">
+          <a class="vbtn-x" id="vShareX" href="#" target="_blank" rel="noopener">𝕏 Share on X</a>
+          <button class="vbtn-link" id="vCopyLink">🔗 Copy link</button>
+          <a class="vbtn-card" id="vDownloadCard" href="#" download="ai-watermark-card.png">🃏 Share card</a>
+        </div>
+        <div class="embed-block">
+          <label>Embed badge (shields.io) — paste in README or blog</label>
+          <div class="embed-block-row">
+            <pre id="vEmbedCode"></pre>
+            <button id="vCopyEmbed">Copy</button>
+          </div>
+        </div>
+      </div>
+      <canvas id="shareCard" width="1200" height="630"></canvas>
 
       <div class="privacy-note">🔒 Image processed in your browser via Canvas. No upload, no server.</div>
     </div>
@@ -698,6 +755,189 @@ function toast(t) {
   el.classList.add('show');
   setTimeout(()=>el.classList.remove('show'), 1800);
 }
+
+// ── Viral mechanics ─────────────────────────────────────────────────────────
+
+// Hash encode/decode settings so deep links work
+function settingsToHash() {
+  const p = new URLSearchParams({
+    text: $('bText').value || 'AI-generated',
+    style: $('bStyle').value || 'badge',
+    size: $('bSize').value || 'medium',
+    color: $('bColor').value || '#f59e0b',
+    pos: pos || 'br',
+    op: $('bOpacity').value || '0.92',
+    gen: $('mGen').value || '',
+    author: $('mAuthor').value || '',
+  });
+  return '#' + p.toString();
+}
+
+function loadFromHash() {
+  const hash = location.hash.slice(1);
+  if (!hash) return;
+  try {
+    const p = new URLSearchParams(hash);
+    if (p.get('text')) $('bText').value = p.get('text');
+    if (p.get('style')) $('bStyle').value = p.get('style');
+    if (p.get('size')) $('bSize').value = p.get('size');
+    if (p.get('color')) $('bColor').value = p.get('color');
+    if (p.get('op')) $('bOpacity').value = p.get('op');
+    if (p.get('gen')) $('mGen').value = p.get('gen');
+    if (p.get('author')) $('mAuthor').value = p.get('author');
+    if (p.get('pos')) {
+      pos = p.get('pos');
+      document.querySelectorAll('.corner-grid button').forEach(b =>
+        b.classList.toggle('active', b.dataset.pos === pos));
+    }
+  } catch(e) {}
+}
+
+loadFromHash();
+
+// Draw 1200×630 share card on hidden canvas
+function drawShareCard() {
+  const sc = $('shareCard');
+  const sctx = sc.getContext('2d');
+  const W = 1200, H = 630;
+  sctx.clearRect(0, 0, W, H);
+
+  // Background
+  sctx.fillStyle = '#0a0a0f';
+  sctx.fillRect(0, 0, W, H);
+
+  // Gradient overlay
+  const g = sctx.createLinearGradient(0, 0, W, H);
+  g.addColorStop(0, 'rgba(245,158,11,0.15)');
+  g.addColorStop(1, 'rgba(99,102,241,0.12)');
+  sctx.fillStyle = g;
+  sctx.fillRect(0, 0, W, H);
+
+  // Title
+  sctx.fillStyle = '#fcd34d';
+  sctx.font = '700 52px -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif';
+  sctx.textBaseline = 'top';
+  sctx.fillText('AI Watermark Adder', 64, 72);
+
+  // Subtitle
+  sctx.fillStyle = '#a0a0b8';
+  sctx.font = '400 24px -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif';
+  sctx.fillText('EU AI Act Article 50-compliant labeling · Browser-only · Free', 64, 144);
+
+  // Watermark badge preview
+  const badgeText = $('bText').value || 'AI-generated';
+  const badgeColor = $('bColor').value || '#f59e0b';
+  const boxW = 260, boxH = 56;
+  const bx = 64, by = 210;
+  sctx.fillStyle = badgeColor;
+  roundRect(sctx, bx, by, boxW, boxH, boxH/2);
+  sctx.fill();
+  sctx.fillStyle = contrastColor(badgeColor);
+  sctx.font = '700 22px -apple-system, sans-serif';
+  sctx.textBaseline = 'middle';
+  sctx.fillText(badgeText, bx + 24, by + boxH/2);
+
+  // Feature bullets
+  const features = ['✓ Visible AI badge', '✓ C2PA-style manifest', '✓ LSB steganographic mark'];
+  sctx.fillStyle = '#f5f5fa';
+  sctx.font = '500 20px -apple-system, sans-serif';
+  features.forEach((f, i) => {
+    sctx.fillText(f, 64, 310 + i * 46);
+  });
+
+  // QR-like CTA box
+  sctx.fillStyle = 'rgba(245,158,11,0.12)';
+  roundRect(sctx, 64, 500, 520, 70, 12);
+  sctx.fill();
+  sctx.fillStyle = '#fcd34d';
+  sctx.font = '600 18px -apple-system, sans-serif';
+  sctx.textBaseline = 'middle';
+  sctx.fillText('tinytools-smoky.vercel.app/ai-watermark-adder/', 88, 535);
+
+  // Brand watermark
+  sctx.fillStyle = 'rgba(160,160,184,0.4)';
+  sctx.font = '500 15px -apple-system, sans-serif';
+  sctx.textBaseline = 'bottom';
+  sctx.textAlign = 'right';
+  sctx.fillText('TinyTools', W - 32, H - 22);
+  sctx.textAlign = 'left';
+
+  // If there's a watermarked image, composite it on right side
+  if (img && canvas.style.display !== 'none') {
+    const maxW = 480, maxH = 430;
+    const iw = img.naturalWidth, ih = img.naturalHeight;
+    const scale = Math.min(maxW/iw, maxH/ih, 1);
+    const dw = iw * scale, dh = ih * scale;
+    const dx = W - dw - 60, dy = (H - dh) / 2;
+    try {
+      sctx.save();
+      sctx.shadowColor = 'rgba(0,0,0,0.5)';
+      sctx.shadowBlur = 24;
+      sctx.drawImage(canvas, dx, dy, dw, dh);
+      sctx.restore();
+    } catch(e) {}
+  }
+}
+
+// Show viral section after apply
+function showViralShare() {
+  const vs = $('viralShare');
+  if (!vs) return;
+  vs.classList.add('visible');
+
+  const toolUrl = 'https://tinytools-smoky.vercel.app/ai-watermark-adder/';
+  const deepLink = toolUrl + settingsToHash();
+  const badge = $('bText').value || 'AI-generated';
+  const tweetText = 'Just EU AI Act-compliant watermarked my AI image in seconds 🏷️ Adds visible badge + C2PA metadata + steganographic mark — all in the browser, no upload needed.';
+
+  // X/Twitter share
+  $('vShareX').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweetText) + '&url=' + encodeURIComponent(toolUrl);
+
+  // Copy link
+  $('vCopyLink').onclick = () => {
+    navigator.clipboard.writeText(deepLink).then(() => {
+      location.hash = settingsToHash().slice(1);
+      const btn = $('vCopyLink');
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy link', 1800);
+    });
+  };
+
+  // Embed badge
+  const badgeLabel = encodeURIComponent(badge.replace(/-/g, '--').replace(/ /g, '_'));
+  const badgeColor = ($('bColor').value || '#f59e0b').replace('#', '');
+  const embedCode = `[![${badge}](https://img.shields.io/badge/${badgeLabel}-${badgeColor}?style=flat-square)](${toolUrl})`;
+  $('vEmbedCode').textContent = embedCode;
+
+  $('vCopyEmbed').onclick = () => {
+    navigator.clipboard.writeText(embedCode).then(() => {
+      const btn = $('vCopyEmbed');
+      btn.textContent = '✓ Done';
+      setTimeout(() => btn.textContent = 'Copy', 1800);
+    });
+  };
+
+  // Share card download
+  drawShareCard();
+  $('vDownloadCard').href = $('shareCard').toDataURL('image/png');
+}
+
+// Patch renderPreview to show viral share when result is ready
+const _origRenderPreview = renderPreview;
+// Override: wrap original
+const _applyBtnOrig = applyBtn;
+applyBtn.addEventListener('click', () => {
+  // showViralShare is called after renderPreview completes
+  setTimeout(showViralShare, 100);
+});
+// Also show when image first loads
+const _origLoadImage = loadImage;
+// show after first auto-render
+const _fileInputOrig = fileInput;
+fileInput.addEventListener('change', () => { setTimeout(showViralShare, 400); });
+drop.addEventListener('drop', () => { setTimeout(showViralShare, 400); });
+
 </script>
 </body>
 </html>
+
