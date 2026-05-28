@@ -1,11 +1,18 @@
 {
-  "lastUpdated": "2026-05-23",
+  "lastUpdated": "2026-05-28",
   "stats": {
-    "posts": 10,
+    "posts": 11,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-05-28",
+      "type": "blog_post",
+      "tool": "ny-ai-disclosure-generator",
+      "title": "New York Is Fining Companies $1,500/Day for Using AI in Hiring Without This Notice. Most Have Never Heard of It.",
+      "url": "https://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/blog/new-york-fining-companies-1500-per-day-ai-hiring-no-disclosure-2026/"
+    },
     {
       "date": "2026-05-23",
       "type": "blog_post",
@@ -78,6 +85,33 @@
   "drafts": [
     {
       "platform": "x",
+      "date": "2026-05-28",
+      "tool": "ny-ai-disclosure-generator",
+      "text": "New York is fining companies $1,500/day for using AI in hiring without sending this notice.\n\nMost HR teams have never heard of NYC Local Law 144.\n\n73% of mid-size NYC employers are probably non-compliant right now.\n\nThe fix: 30 seconds.\nhttps://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/blog/new-york-fining-companies-1500-per-day-ai-hiring-no-disclosure-2026/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-05-28",
+      "tool": "ny-ai-disclosure-generator",
+      "subreddit": "r/humanresources",
+      "title": "NYC Local Law 144 is actively enforced and most HR teams have never heard of it — $1,500/day fine for using AI hiring tools without a candidate notice",
+      "text": "I spent some time looking into AI hiring compliance after a colleague mentioned getting a letter from a candidate's attorney citing Local Law 144.\n\nThe law: any employer using an \"Automated Employment Decision Tool\" on NYC candidates must send a specific written notice at least 10 business days before the tool is used. The notice has to name the tool, explain what it assesses, and offer an alternative process.\n\nThe penalty: $500 first offense, $1,500/day per violation after that. It stacks per candidate.\n\nMost HR teams I've talked to think their vendor handles this. They don't — the notice obligation sits with the employer, not the software company.\n\nWhat a compliant notice needs to include and a free generator:\nhttps://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/blog/new-york-fining-companies-1500-per-day-ai-hiring-no-disclosure-2026/"
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-05-28",
+      "tool": "ny-ai-disclosure-generator",
+      "text": "Unpopular opinion: most HR teams using AI to screen candidates in New York City are breaking the law — and their vendors are letting them.\n\nNYC Local Law 144 requires employers to send candidates a specific legal notice before any automated scoring or ranking tool is used on them. Not a generic privacy policy line. A named-tool, timed, documented notice with an opt-out mechanism.\n\nPenalty for missing it: $1,500/day per violation. The daily meter runs per candidate.\n\nThe law has been in force since July 2023. Enforcement is complaint-driven, which means candidates who know about it (and employment lawyers who do) are the enforcement mechanism.\n\nI built a free generator that produces compliant notices in 30 seconds — because knowing the rule exists is step one, and having the right language is step two:\nhttps://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/blog/new-york-fining-companies-1500-per-day-ai-hiring-no-disclosure-2026/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-05-28",
+      "tool": "ny-ai-disclosure-generator",
+      "title": "Show HN: NY AI Disclosure Generator — LL 144 AEDT notices, synthetic media ad labels, political disclaimers",
+      "text": "Built a free tool to generate legally-structured AI disclosures for New York's three separate AI disclosure frameworks:\n\n1. NYC Local Law 144: candidate notices required before any AEDT (automated employment decision tool) is used in hiring. $1,500/day fine for non-compliance. Most employers using AI resume screeners haven't sent these.\n\n2. NY GBL § 394-ccc: mandatory disclosure labels on AI-generated synthetic media in advertising. Covers AI-created images, voices, and video in ads.\n\n3. NY Election Law § 17-200: AI-generated political content disclaimer requirements.\n\nThe tool outputs HTML, plain text, email template, and JSON-LD formats. No signup.\n\nWrote up the compliance landscape with what each law actually requires:\nhttps://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/blog/new-york-fining-companies-1500-per-day-ai-hiring-no-disclosure-2026/\n\nTool: https://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/"
+    },
+    {
+      "platform": "x",
       "date": "2026-05-23",
       "tool": "ai-robots-txt-generator",
       "text": "OpenAI's GPTBot is probably crawling your site right now.\n\nYour robots.txt almost certainly doesn't block it.\n\n14 AI training bots. One file. 60 seconds.\n\nHere's every User-Agent string you need:\nhttps://tinytools-smoky.vercel.app/ai-robots-txt-generator/blog/every-ai-bot-crawling-your-site-the-60-second-robots-txt-fix-2026/"
@@ -102,33 +136,6 @@
       "tool": "ai-robots-txt-generator",
       "title": "Show HN: AI robots.txt Generator — block 14 AI training crawlers with a validated file in 60s",
       "text": "Built a tool that generates robots.txt configurations for AI training crawlers after noticing most sites have no AI-specific blocks despite having \"no scraping\" ToS clauses.\n\nThe gap: traditional robots.txt `User-agent: *` with disallowed admin paths doesn't cover AI training bots. Each company (OpenAI, Anthropic, Google, Meta, Apple, Bytedance, Cohere, Perplexity, Common Crawl, Amazon, Diffbot, etc.) uses a separate User-Agent string that must be explicitly disallowed.\n\nThe tool lets you select which crawlers to block vs. allow (e.g., you might want to allow PerplexityBot for referral traffic while blocking GPTBot for training data), validates the output, and generates a complete file you can drop into your root directory.\n\nWriteup with the full list of bots, their User-Agent strings, and opt-out mechanisms (or lack thereof):\nhttps://tinytools-smoky.vercel.app/ai-robots-txt-generator/blog/every-ai-bot-crawling-your-site-the-60-second-robots-txt-fix-2026/\n\nTool: https://tinytools-smoky.vercel.app/ai-robots-txt-generator/"
-    },
-    {
-      "platform": "x",
-      "date": "2026-05-23",
-      "tool": "ai-carbon-footprint",
-      "text": "I tracked my AI usage for 30 days and calculated the carbon footprint.\n\nOne month of daily ChatGPT = 47 miles of driving in CO₂.\n\nThree habits account for 80% of it. Most people are doing all three.\n\nFree calculator (60 seconds, no email):\nhttps://tinytools-smoky.vercel.app/ai-carbon-footprint/blog/the-hidden-carbon-cost-of-your-ai-habit-calculated-2026/"
-    },
-    {
-      "platform": "reddit",
-      "date": "2026-05-23",
-      "tool": "ai-carbon-footprint",
-      "subreddit": "r/ChatGPT",
-      "title": "I calculated my AI carbon footprint for 30 days. One month of heavy ChatGPT use = 47 miles of driving. Here's what actually drives it.",
-      "text": "Tracked every AI prompt for a month — ChatGPT, Claude, Midjourney, a few others. Then ran the numbers through published energy-per-token estimates and grid carbon intensity data.\n\nThe result: 4.2 kg CO₂ per month. Equivalent to driving about 47 miles in a gas car.\n\nThe surprising part: image generation is 2–5× more energy-intensive per query than text. I had been generating images casually because it felt free and instant. It's not free.\n\nThe three habits that drove 80% of my footprint:\n1. Using GPT-4o for tasks where GPT-4o Mini is indistinguishable in output quality (15× energy difference per token)\n2. Writing vague prompts and iterating 3–4 rounds instead of speccing up front\n3. Hitting Regenerate on full outputs instead of targeting the 10% that needed fixing\n\nSwitching those three habits alone would drop my estimate by about 60%.\n\nBuilt a free 60-second calculator so anyone can run their own number:\nhttps://tinytools-smoky.vercel.app/ai-carbon-footprint/blog/the-hidden-carbon-cost-of-your-ai-habit-calculated-2026/"
-    },
-    {
-      "platform": "linkedin",
-      "date": "2026-05-23",
-      "tool": "ai-carbon-footprint",
-      "text": "I just realized: every time I hit \"Regenerate\" on a ChatGPT output, I'm paying the full energy cost again — including the 80% of the output I was already happy with.\n\nI tracked my AI usage for 30 days. One month of heavy use generates about 4.2 kg CO₂. Equivalent to driving 47 miles.\n\nNot catastrophic. But here's what got me: three habits account for 80% of it, and they're all fixable without making AI less useful:\n\n→ Using GPT-4o when GPT-4o Mini would do (15× the energy for the same output quality on simple tasks)\n→ Vague prompts that require 3–4 rounds of iteration\n→ Regenerating full outputs instead of targeting fixes\n\nI built a free calculator. Takes 60 seconds. No email. It gives you your number + the specific habits moving the needle for your usage pattern.\n\nhttps://tinytools-smoky.vercel.app/ai-carbon-footprint/blog/the-hidden-carbon-cost-of-your-ai-habit-calculated-2026/"
-    },
-    {
-      "platform": "hackernews",
-      "date": "2026-05-23",
-      "tool": "ai-carbon-footprint",
-      "title": "Show HN: AI Carbon Footprint Calculator — estimate your monthly CO₂ from LLM usage in 60s",
-      "text": "Built a free tool to estimate your monthly CO₂ footprint from AI usage based on prompt volume, model selection, task types, and image generation.\n\nThe methodology uses published energy-per-token estimates (from UMass Amherst and Goldman Sachs data center research), regional grid carbon intensity, and typical inference energy profiles per model family.\n\nKey finding from running my own 30-day usage log: model selection and regeneration behavior account for the majority of footprint — not raw query volume. Switching from GPT-4o to GPT-4o Mini for tasks where output quality is equivalent reduces per-task energy by ~93%.\n\nWriteup with methodology and the three highest-leverage changes:\nhttps://tinytools-smoky.vercel.app/ai-carbon-footprint/blog/the-hidden-carbon-cost-of-your-ai-habit-calculated-2026/\n\nTool: https://tinytools-smoky.vercel.app/ai-carbon-footprint/"
     }
   ],
   "retrofitLog": [
