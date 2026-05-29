@@ -42,3 +42,15 @@
 
 **Sitemap:** Both added with priority 1.0, changefreq weekly
 **Landing page:** Both cards added to index.html in viral tools section (top)
+
+---
+
+## 2026-05-29 — vs/claude-pro-pricing comparison page
+
+**Task:** tinytools-comparison-pages (scheduled)
+**Page:** https://tinytools-smoky.vercel.app/vs/claude-pro-pricing/
+**Competitor:** Claude Pro ($20/month — Anthropic AI assistant)
+**HTTP status:** 200 ✅
+**Total /vs/ pages:** 45
+**Sitemap:** Added at priority 0.7, changefreq monthly
+**Notes:** First unshipped competitor from rotation list (items 1–18 already shipped). Page covers LLM pricing comparison angle with internal links to llm-prompt-optimizer, ai-spend-calculator, ai-cost-calculator, ai-text-detector, prompt-grade, ai-prompt-enhancer, and prompt-injection-tester.
