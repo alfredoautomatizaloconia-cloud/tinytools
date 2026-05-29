@@ -193,6 +193,22 @@
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
     text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
+
+  /* === Viral mechanics === */
+  #viralPanel { margin-top: 16px; }
+  .viral-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .viral-btns a, .viral-btns button {
+    padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
+    cursor: pointer; font-family: inherit; text-decoration: none; border: none;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .v-tweet { background: #1d9bf0; color: white !important; }
+  .v-copy  { background: var(--bg-elevated); border: 1px solid var(--border) !important; color: var(--text); }
+  .v-card  { background: var(--accent); color: white; }
+  .viral-embed-section { margin-top: 12px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; border: 1px solid var(--border); }
+  .viral-embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .viral-embed-section pre { font-family: 'SF Mono', Monaco, monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; margin: 0; }
+  .viral-embed-section button { margin-top: 8px; padding: 5px 12px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -327,6 +343,21 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+
+  <div class="panel" id="viralPanel" style="display:none;">
+    <h2>Share your result</h2>
+    <div class="viral-btns">
+      <a class="v-tweet" id="vTweet" href="#" target="_blank" rel="noopener">𝕏 Share on X</a>
+      <button class="v-copy" id="vCopyLink">🔗 Copy link</button>
+      <button class="v-card" id="vDownloadCard">📥 Download card</button>
+    </div>
+    <div class="viral-embed-section">
+      <div class="label">Embed badge on your README or blog</div>
+      <pre id="vEmbed"><!-- run an upscale to generate your badge --></pre>
+      <button id="vEmbedCopy">Copy embed code</button>
     </div>
   </div>
 
@@ -769,6 +800,7 @@ $('goBtn').addEventListener('click', async function(){
 
     $('downloadBtn').disabled = false;
     setStatus('Done. Output ' + dw + ' × ' + dh + ' · ' + (blob.size/1024).toFixed(0) + ' KB. Click Download.', 'success');
+    showViralSection(dw, dh, f);
   } catch(e){
     setStatus(e.message || String(e), 'error');
   } finally {
@@ -817,6 +849,7 @@ $('resetBtn').addEventListener('click', function(){
   $('phOrig').style.display = ''; $('phOut').style.display = '';
   $('metaWrap').style.display = 'none';
   $('compareWrap').style.display = 'none';
+  $('viralPanel').style.display = 'none';
   $('goBtn').disabled = true; $('downloadBtn').disabled = true;
   $('fileIn').value = '';
   resetStages();
@@ -867,6 +900,135 @@ function setupCompare(orig, up){
 
 // Re-render meta on algorithm change
 $('algo').addEventListener('change', updateMeta);
+
+// ============================================================
+// Viral mechanics
+// ============================================================
+
+var VIRAL_SITE = 'https://tinytools-smoky.vercel.app/ai-image-upscaler/';
+
+function showViralSection(dw, dh, factor) {
+  var factorStr = (factor % 1 === 0) ? factor + 'x' : factor + 'x';
+  var hashVal = factorStr;
+  history.replaceState(null, '', '#' + encodeURIComponent(hashVal));
+
+  var shareUrl = VIRAL_SITE + '#' + encodeURIComponent(hashVal);
+  var shareText = 'Just upscaled an image ' + factorStr + ' (' + dw + '\xd7' + dh + ') for free — runs entirely in the browser, nothing uploaded. Try it:';
+
+  // Tweet button
+  $('vTweet').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(shareUrl);
+
+  // Copy link button
+  $('vCopyLink').onclick = function() {
+    navigator.clipboard.writeText(shareUrl).catch(function(){});
+    var btn = $('vCopyLink');
+    btn.textContent = '✓ Copied!';
+    setTimeout(function(){ btn.textContent = '🔗 Copy link'; }, 1500);
+  };
+
+  // Embed badge
+  var shieldLabel = 'AI_Upscaled';
+  var shieldColor = 'f43f5e';
+  var shieldFactor = factorStr.replace('x', '%C3%97');
+  var embedCode = '<a href="' + shareUrl + '" target="_blank">\n  <img src="https://img.shields.io/badge/' + shieldLabel + '-' + shieldFactor + '-' + shieldColor + '?style=for-the-badge" alt="AI Upscaled ' + factorStr + '">\n</a>';
+  $('vEmbed').textContent = embedCode;
+
+  // Embed copy button
+  $('vEmbedCopy').onclick = function() {
+    navigator.clipboard.writeText(embedCode).catch(function(){});
+    var btn = $('vEmbedCopy');
+    btn.textContent = '✓ Copied!';
+    setTimeout(function(){ btn.textContent = 'Copy embed code'; }, 1500);
+  };
+
+  // Card download
+  $('vDownloadCard').onclick = function() { generateShareCard(dw, dh, factor, factorStr); };
+
+  $('viralPanel').style.display = '';
+}
+
+function generateShareCard(dw, dh, factor, factorStr) {
+  var cardW = 1200, cardH = 630;
+  var card = document.createElement('canvas');
+  card.width = cardW; card.height = cardH;
+  var ctx = card.getContext('2d');
+
+  // Background gradient
+  var grad = ctx.createLinearGradient(0, 0, cardW, cardH);
+  grad.addColorStop(0, '#0a0a0f');
+  grad.addColorStop(1, '#1a0810');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, cardW, cardH);
+
+  // Accent glow
+  var radGrad = ctx.createRadialGradient(200, 80, 0, 200, 80, 500);
+  radGrad.addColorStop(0, 'rgba(244,63,94,0.3)');
+  radGrad.addColorStop(1, 'rgba(244,63,94,0)');
+  ctx.fillStyle = radGrad;
+  ctx.fillRect(0, 0, cardW, cardH);
+
+  // Big factor text
+  ctx.fillStyle = '#f43f5e';
+  ctx.font = '800 200px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+  ctx.textBaseline = 'top';
+  ctx.textAlign = 'left';
+  ctx.fillText(factorStr, 80, 60);
+
+  // Title
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '700 54px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+  ctx.fillText('AI Image Upscaled', 80, 310);
+
+  // Subtitle
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '34px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+  ctx.fillText('Output: ' + dw + ' \xd7 ' + dh + ' px', 80, 390);
+
+  // Privacy line
+  ctx.fillStyle = '#686880';
+  ctx.font = '26px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+  ctx.fillText('Processed locally \xb7 No upload \xb7 Free forever', 80, 448);
+
+  // Brand bottom-right
+  ctx.fillStyle = '#f43f5e';
+  ctx.font = '700 26px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText('tinytools.dev/ai-image-upscaler', cardW - 40, cardH - 36);
+
+  var a = document.createElement('a');
+  a.href = card.toDataURL('image/png');
+  a.download = 'ai-upscaled-' + factorStr + '-card.png';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+
+// Auto-load upscale factor from URL hash (#2x, #4x, etc.)
+(function() {
+  if (location.hash && location.hash.length > 1) {
+    var val = decodeURIComponent(location.hash.slice(1));
+    var match = val.match(/^(\d+(?:\.\d+)?)x?$/i);
+    if (match) {
+      var f = parseFloat(match[1]);
+      if (f >= 1.1 && f <= 8) {
+        var btns = document.querySelectorAll('#factorPick button');
+        var found = false;
+        btns.forEach(function(b) {
+          if (b.dataset.f && parseFloat(b.dataset.f) === f) {
+            b.click(); found = true;
+          }
+        });
+        if (!found) {
+          btns.forEach(function(b) { if (b.dataset.f === 'custom') b.click(); });
+          $('customFactor').value = f;
+          state.factor = f;
+          updateMeta();
+        }
+      }
+    }
+  }
+})();
+
 </script>
 </body>
 </html>
+
