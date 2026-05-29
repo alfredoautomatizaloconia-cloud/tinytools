@@ -135,6 +135,17 @@
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
     text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
+
+  /* ── Viral mechanics ── */
+  .viral-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .viral-section .vlabel { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px; font-weight: 600; letter-spacing: 0.05em; }
+  .viral-section pre { font-family: 'SF Mono', Monaco, Consolas, monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; margin-bottom: 6px; }
+  .vactions { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .vbtn { padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); text-decoration: none; transition: all 0.15s; display: inline-block; }
+  .vbtn:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .vbtn.tweet { background: #000; border-color: #333; color: #fff; }
+  .vbtn.tweet:hover { background: #111; }
+  .badge-row { margin-top: 12px; }
 </style>
 </head>
 <body>
@@ -227,6 +238,20 @@
       <div class="actions">
         <button class="btn primary" id="downloadBtn">Download Favicon ZIP</button>
         <button class="btn" id="copyHtmlBtn">Copy &lt;link&gt; tags</button>
+      </div>
+
+      <div class="viral-section" id="viralSection" style="display:none">
+        <div class="vlabel">📤 Share your favicon</div>
+        <div class="vactions">
+          <a class="vbtn tweet" id="vShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+          <button class="vbtn" id="vCopyLink">🔗 Copy link</button>
+          <button class="vbtn" id="vDownloadCard">💾 Download card</button>
+        </div>
+        <div class="badge-row">
+          <div class="vlabel" style="margin-top:12px">🏷️ Embed badge (README / portfolio)</div>
+          <pre id="vBadgeCode"></pre>
+          <button class="vbtn" id="vCopyBadge">Copy badge code</button>
+        </div>
       </div>
     </div>
   </div>
@@ -452,6 +477,163 @@ document.getElementById('copyHtmlBtn').addEventListener('click', () => {
 });
 
 render();
+
+// ── Viral mechanics ────────────────────────────────────────────────────────
+
+const BASE_URL = 'https://tinytools-smoky.vercel.app/favicon-generator/';
+
+function getViralParams() {
+  return {
+    tab: activeTab,
+    text: document.getElementById('text').value,
+    bg: document.getElementById('bgColor').value,
+    fg: document.getElementById('textColor').value,
+    emoji: document.getElementById('emoji').value,
+    emojiBg: document.getElementById('emojiBg').value,
+    shape: activeShape,
+    weight: document.getElementById('fontWeight').value
+  };
+}
+
+function encodeHash(p) {
+  return encodeURIComponent(JSON.stringify(p));
+}
+
+function updateViralUI() {
+  const p = getViralParams();
+  const deepLink = BASE_URL + '#' + encodeHash(p);
+
+  // Build display label
+  let label;
+  if (p.tab === 'emoji') label = p.emoji ? p.emoji + ' favicon' : 'emoji favicon';
+  else if (p.tab === 'text') label = p.text ? `"${p.text}" favicon` : 'text favicon';
+  else label = 'favicon';
+
+  const shareText = `Just generated my ${label} with TinyTools — free, no signup, runs in your browser. Make yours →`;
+  document.getElementById('vShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(deepLink)}`;
+
+  // Badge
+  const rawLabel = (p.tab === 'emoji' ? (p.emoji || 'favicon') : (p.text || 'favicon')).slice(0, 20);
+  const badgeLabel = encodeURIComponent(rawLabel).replace(/-/g, '--').replace(/_/g, '__');
+  const badgeColor = (p.bg || '#f59e0b').replace('#', '');
+  const badgeCode = `<a href="${deepLink}" target="_blank">\n  <img src="https://img.shields.io/badge/favicon-${badgeLabel}-${badgeColor}?style=for-the-badge" alt="My Favicon">\n</a>`;
+  document.getElementById('vBadgeCode').textContent = badgeCode;
+
+  // Show the viral section once we have something rendered
+  document.getElementById('viralSection').style.display = 'block';
+  // Update hash for deep-linking
+  history.replaceState(null, '', '#' + encodeHash(p));
+}
+
+// Auto-load from URL hash (deep-link support)
+(function loadFromHash() {
+  if (!location.hash || location.hash.length <= 1) return;
+  try {
+    const p = JSON.parse(decodeURIComponent(location.hash.slice(1)));
+    if (p.tab) {
+      activeTab = p.tab;
+      document.querySelectorAll('.tab').forEach(t =>
+        t.classList.toggle('active', t.dataset.tab === activeTab));
+      document.querySelectorAll('.tab-content').forEach(c =>
+        c.style.display = c.id === 'tab-' + activeTab ? 'block' : 'none');
+    }
+    if (p.text !== undefined) document.getElementById('text').value = p.text;
+    if (p.bg)      document.getElementById('bgColor').value = p.bg;
+    if (p.fg)      document.getElementById('textColor').value = p.fg;
+    if (p.emoji !== undefined) document.getElementById('emoji').value = p.emoji;
+    if (p.emojiBg) document.getElementById('emojiBg').value = p.emojiBg;
+    if (p.shape) {
+      activeShape = p.shape;
+      document.querySelectorAll('.shape-btn').forEach(s =>
+        s.classList.toggle('active', s.dataset.shape === activeShape));
+    }
+    if (p.weight)  document.getElementById('fontWeight').value = p.weight;
+    render();
+  } catch(e) {}
+})();
+
+// Hook all input/click events to also update viral UI
+['text', 'emoji', 'bgColor', 'textColor', 'emojiBg', 'fontWeight'].forEach(id => {
+  document.getElementById(id).addEventListener('input', updateViralUI);
+});
+document.querySelectorAll('.tab').forEach(t =>
+  t.addEventListener('click', () => setTimeout(updateViralUI, 0)));
+document.querySelectorAll('.shape-btn').forEach(s =>
+  s.addEventListener('click', () => setTimeout(updateViralUI, 0)));
+document.getElementById('imageFile').addEventListener('change', () => setTimeout(updateViralUI, 200));
+
+// Copy link
+document.getElementById('vCopyLink').addEventListener('click', function() {
+  const url = BASE_URL + '#' + encodeHash(getViralParams());
+  navigator.clipboard.writeText(url);
+  this.textContent = '✅ Copied!';
+  setTimeout(() => this.textContent = '🔗 Copy link', 1500);
+});
+
+// Copy badge
+document.getElementById('vCopyBadge').addEventListener('click', function() {
+  navigator.clipboard.writeText(document.getElementById('vBadgeCode').textContent);
+  this.textContent = '✅ Copied!';
+  setTimeout(() => this.textContent = 'Copy badge code', 1500);
+});
+
+// Download 1200×630 share card
+document.getElementById('vDownloadCard').addEventListener('click', function() {
+  const W = 1200, H = 630;
+  const card = document.createElement('canvas');
+  card.width = W; card.height = H;
+  const ctx = card.getContext('2d');
+
+  // Dark bg
+  ctx.fillStyle = '#0a0a0f';
+  ctx.fillRect(0, 0, W, H);
+
+  // Amber glow top-left
+  const grad = ctx.createRadialGradient(W * 0.15, 0, 0, W * 0.15, 0, W * 0.55);
+  grad.addColorStop(0, 'rgba(245,158,11,0.22)');
+  grad.addColorStop(1, 'transparent');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Title
+  ctx.fillStyle = '#f5f5fa';
+  ctx.font = 'bold 56px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('My Favicon', W / 2, 148);
+
+  // Subtitle
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '26px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText('Generated with TinyTools · Free · No signup', W / 2, 198);
+
+  // Render the favicon at 256×256 and center it
+  const previewSize = 256;
+  const fc = document.createElement('canvas');
+  fc.width = previewSize; fc.height = previewSize;
+  drawFavicon(fc, previewSize);
+  const fx = (W - previewSize) / 2;
+  const fy = 230;
+  ctx.shadowColor = 'rgba(245,158,11,0.45)';
+  ctx.shadowBlur = 48;
+  ctx.drawImage(fc, fx, fy, previewSize, previewSize);
+  ctx.shadowBlur = 0;
+
+  // Brand watermark bottom-right
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '20px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/favicon-generator', W - 40, H - 28);
+
+  // Download
+  const a = document.createElement('a');
+  a.href = card.toDataURL('image/png');
+  a.download = 'favicon-share-card.png';
+  a.click();
+});
+
+// Init viral UI after first render
+updateViralUI();
 </script>
 </body>
 </html>
