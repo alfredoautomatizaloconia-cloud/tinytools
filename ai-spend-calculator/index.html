@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Much Do You Spend on AI? — AI Subscription Cost Calculator + Percentile (Free)</title>
+<meta name="description" content="Find out exactly how much you spend on AI tools per year. Enter your subscriptions — ChatGPT, Claude, Cursor, Copilot, Midjourney — and see where you rank.">
+<meta name="keywords" content="ai spend calculator, ai subscription cost, chatgpt cost, claude subscription, cursor price, ai tools budget, ai spending tracker">
+<meta property="og:title" content="How Much Do You Spend on AI? Calculate + See Your Percentile">
+<meta property="og:description" content="Quiz totals your yearly AI tool spend and ranks you. Are you a casual user or a full-blown AI addict?">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/ai-spend-calculator/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-spend-calculator/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Spend Calculator",
+  "url": "https://tinytools-smoky.vercel.app/ai-spend-calculator/",
+  "description": "Free calculator that totals your monthly and yearly AI tool subscriptions and ranks you vs average users.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #10b981; --accent-glow: #10b98120;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #a855f720 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 5vw, 52px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #6ee7b7 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 560px; margin: 0 auto; }
+
+  /* Tool form */
+  .tool-form { margin: 36px auto; max-width: 680px; }
+  .tool-section { margin-bottom: 28px; }
+  .section-title { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 14px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .tool-row {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 14px 16px; margin-bottom: 8px; transition: border-color 0.15s;
+  }
+  .tool-row:hover { border-color: var(--accent); }
+  .tool-row.selected { border-color: var(--accent); background: #0f2d25; }
+  .tool-emoji { font-size: 22px; flex-shrink: 0; width: 28px; text-align: center; }
+  .tool-info { flex: 1; }
+  .tool-name { font-size: 15px; font-weight: 600; }
+  .tool-price { font-size: 13px; color: var(--text-dim); }
+  .tool-check { flex-shrink: 0; }
+  .tool-check input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; accent-color: var(--accent); }
+  .tier-select { flex-shrink: 0; padding: 6px 10px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 13px; outline: none; cursor: pointer; display: none; }
+  .tool-row.selected .tier-select { display: block; }
+  .tool-row.selected .tier-select:hover { border-color: var(--accent); }
+
+  .api-input-row { display: flex; align-items: center; gap: 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 8px; }
+  .api-input-row label { flex: 1; font-size: 15px; font-weight: 600; }
+  .api-input-row span { font-size: 13px; color: var(--text-dim); }
+  .api-input-row input { width: 90px; padding: 6px 10px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; outline: none; text-align: right; }
+  .api-input-row input:focus { border-color: var(--accent); }
+
+  .calc-btn {
+    display: block; width: 100%; padding: 16px; margin-top: 12px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    border: none; border-radius: 14px; color: white; font-weight: 800; font-size: 17px;
+    cursor: pointer; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3); transition: transform 0.15s;
+  }
+  .calc-btn:hover { transform: translateY(-2px); }
+
+  /* Result card */
+  .roast-card {
+    margin: 32px auto 0; max-width: 740px;
+    background: linear-gradient(135deg, #0f2d25 0%, #15151f 100%);
+    border: 2px solid #10b981; border-radius: 20px; padding: 0; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(16, 185, 129, 0.15); display: none;
+  }
+  .roast-card.show { display: block; }
+  .roast-header {
+    padding: 22px 28px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  }
+  .roast-header-info { color: white; flex: 1; }
+  .roast-header-info .label { font-size: 13px; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.06em; }
+  .roast-header-info .amount { font-size: 42px; font-weight: 900; line-height: 1.1; }
+  .roast-header-info .period { font-size: 15px; opacity: 0.85; }
+  .roast-rank-badge { padding: 12px 20px; background: rgba(0,0,0,0.35); border-radius: 14px; text-align: center; color: white; flex-shrink: 0; }
+  .roast-rank-badge .rank-pct { font-size: 32px; font-weight: 900; line-height: 1; }
+  .roast-rank-badge .rank-label { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+
+  .roast-body { padding: 24px; }
+  .roast-text {
+    font-size: 17px; line-height: 1.55; color: #6ee7b7; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid #10b981; border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--bg-elevated); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+  .stat-value { font-size: 22px; font-weight: 800; color: var(--text); }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .tool-breakdown { margin-bottom: 20px; }
+  .breakdown-row { display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .breakdown-row:last-child { border-bottom: none; }
+  .breakdown-name { display: flex; align-items: center; gap: 8px; }
+  .breakdown-amount { font-weight: 700; color: var(--accent); }
+  .breakdown-bar-wrap { height: 4px; background: var(--border); border-radius: 2px; width: 60px; display: inline-block; margin-left: 10px; vertical-align: middle; }
+  .breakdown-bar { height: 4px; background: var(--accent); border-radius: 2px; }
+
+  .achievements { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .achievement { padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text); }
+  .achievement.bad { border-color: var(--red); color: #fca5a5; }
+  .achievement.good { border-color: var(--green); color: #6ee7b7; }
+  .achievement.weird { border-color: var(--yellow); color: #fcd34d; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action { flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px; cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text); text-decoration: none; text-align: center; transition: all 0.15s; }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; margin: 28px 0 10px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">💸 100% private · No data stored · See your percentile</div>
+    <h1>How Much Do You Spend on AI?</h1>
+    <p class="subtitle">Check every AI tool you use, pick your tier, and see your total — plus where you rank vs other AI users. Shareable card included.</p>
+  </header>
+
+  <form class="tool-form" id="toolForm" autocomplete="off">
+
+    <div class="tool-section">
+      <div class="section-title">🤖 AI Assistants &amp; Chatbots</div>
+      <div class="tool-row" id="row-chatgpt">
+        <div class="tool-emoji">🟢</div>
+        <div class="tool-info">
+          <div class="tool-name">ChatGPT</div>
+          <div class="tool-price">Plus $20 · Pro $200 · Team $25/user</div>
+        </div>
+        <select class="tier-select" id="tier-chatgpt">
+          <option value="20">Plus — $20/mo</option>
+          <option value="200">Pro — $200/mo</option>
+          <option value="25">Team — $25/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-chatgpt"></div>
+      </div>
+      <div class="tool-row" id="row-claude">
+        <div class="tool-emoji">🟣</div>
+        <div class="tool-info">
+          <div class="tool-name">Claude</div>
+          <div class="tool-price">Pro $20 · Max $100 · Team $30/user</div>
+        </div>
+        <select class="tier-select" id="tier-claude">
+          <option value="20">Pro — $20/mo</option>
+          <option value="100">Max — $100/mo</option>
+          <option value="30">Team — $30/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-claude"></div>
+      </div>
+      <div class="tool-row" id="row-gemini">
+        <div class="tool-emoji">🔵</div>
+        <div class="tool-info">
+          <div class="tool-name">Gemini Advanced / Google One AI</div>
+          <div class="tool-price">$20/mo · Business $24/user</div>
+        </div>
+        <select class="tier-select" id="tier-gemini">
+          <option value="20">Advanced — $20/mo</option>
+          <option value="24">Business — $24/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-gemini"></div>
+      </div>
+      <div class="tool-row" id="row-grok">
+        <div class="tool-emoji">🔲</div>
+        <div class="tool-info">
+          <div class="tool-name">Grok / X Premium+</div>
+          <div class="tool-price">$30/mo</div>
+        </div>
+        <select class="tier-select" id="tier-grok">
+          <option value="30">Premium+ — $30/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-grok"></div>
+      </div>
+      <div class="tool-row" id="row-perplexity">
+        <div class="tool-emoji">🔍</div>
+        <div class="tool-info">
+          <div class="tool-name">Perplexity Pro</div>
+          <div class="tool-price">$20/mo · Enterprise $40/mo</div>
+        </div>
+        <select class="tier-select" id="tier-perplexity">
+          <option value="20">Pro — $20/mo</option>
+          <option value="40">Enterprise — $40/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-perplexity"></div>
+      </div>
+    </div>
+
+    <div class="tool-section">
+      <div class="section-title">💻 AI Coding Tools</div>
+      <div class="tool-row" id="row-cursor">
+        <div class="tool-emoji">📐</div>
+        <div class="tool-info">
+          <div class="tool-name">Cursor</div>
+          <div class="tool-price">Pro $20/mo · Business $40/mo</div>
+        </div>
+        <select class="tier-select" id="tier-cursor">
+          <option value="20">Pro — $20/mo</option>
+          <option value="40">Business — $40/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-cursor"></div>
+      </div>
+      <div class="tool-row" id="row-copilot">
+        <div class="tool-emoji">👾</div>
+        <div class="tool-info">
+          <div class="tool-name">GitHub Copilot</div>
+          <div class="tool-price">Individual $10/mo · Business $19/mo</div>
+        </div>
+        <select class="tier-select" id="tier-copilot">
+          <option value="10">Individual — $10/mo</option>
+          <option value="19">Business — $19/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-copilot"></div>
+      </div>
+      <div class="tool-row" id="row-windsurf">
+        <div class="tool-emoji">🏄</div>
+        <div class="tool-info">
+          <div class="tool-name">Windsurf / Codeium</div>
+          <div class="tool-price">Pro $15/mo · Teams $35/mo</div>
+        </div>
+        <select class="tier-select" id="tier-windsurf">
+          <option value="15">Pro — $15/mo</option>
+          <option value="35">Teams — $35/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-windsurf"></div>
+      </div>
+      <div class="tool-row" id="row-devin">
+        <div class="tool-emoji">🤖</div>
+        <div class="tool-info">
+          <div class="tool-name">Devin / Cognition AI</div>
+          <div class="tool-price">$500/mo (Core)</div>
+        </div>
+        <select class="tier-select" id="tier-devin">
+          <option value="500">Core — $500/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-devin"></div>
+      </div>
+    </div>
+
+    <div class="tool-section">
+      <div class="section-title">🎨 AI Image &amp; Video Generation</div>
+      <div class="tool-row" id="row-midjourney">
+        <div class="tool-emoji">🎨</div>
+        <div class="tool-info">
+          <div class="tool-name">Midjourney</div>
+          <div class="tool-price">Basic $10 · Standard $30 · Pro $60/mo</div>
+        </div>
+        <select class="tier-select" id="tier-midjourney">
+          <option value="10">Basic — $10/mo</option>
+          <option value="30">Standard — $30/mo</option>
+          <option value="60">Pro — $60/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-midjourney"></div>
+      </div>
+      <div class="tool-row" id="row-runway">
+        <div class="tool-emoji">🎬</div>
+        <div class="tool-info">
+          <div class="tool-name">Runway</div>
+          <div class="tool-price">Standard $15 · Pro $35 · Unlimited $95/mo</div>
+        </div>
+        <select class="tier-select" id="tier-runway">
+          <option value="15">Standard — $15/mo</option>
+          <option value="35">Pro — $35/mo</option>
+          <option value="95">Unlimited — $95/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-runway"></div>
+      </div>
+      <div class="tool-row" id="row-sora">
+        <div class="tool-emoji">🎥</div>
+        <div class="tool-info">
+          <div class="tool-name">Sora (OpenAI)</div>
+          <div class="tool-price">ChatGPT Plus $20 · Pro $200/mo (included)</div>
+        </div>
+        <select class="tier-select" id="tier-sora">
+          <option value="0">Included with ChatGPT Pro</option>
+          <option value="20">Via ChatGPT Plus — $20/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-sora"></div>
+      </div>
+    </div>
+
+    <div class="tool-section">
+      <div class="section-title">🎙️ AI Voice, Audio &amp; Other</div>
+      <div class="tool-row" id="row-elevenlabs">
+        <div class="tool-emoji">🔊</div>
+        <div class="tool-info">
+          <div class="tool-name">ElevenLabs</div>
+          <div class="tool-price">Starter $5 · Creator $22 · Pro $99/mo</div>
+        </div>
+        <select class="tier-select" id="tier-elevenlabs">
+          <option value="5">Starter — $5/mo</option>
+          <option value="22">Creator — $22/mo</option>
+          <option value="99">Pro — $99/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-elevenlabs"></div>
+      </div>
+      <div class="tool-row" id="row-notionai">
+        <div class="tool-emoji">📝</div>
+        <div class="tool-info">
+          <div class="tool-name">Notion AI</div>
+          <div class="tool-price">$8/mo per member (add-on)</div>
+        </div>
+        <select class="tier-select" id="tier-notionai">
+          <option value="8">Add-on — $8/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-notionai"></div>
+      </div>
+      <div class="tool-row" id="row-grammarly">
+        <div class="tool-emoji">✏️</div>
+        <div class="tool-info">
+          <div class="tool-name">Grammarly Premium/Business</div>
+          <div class="tool-price">Pro $12 · Business $15/mo</div>
+        </div>
+        <select class="tier-select" id="tier-grammarly">
+          <option value="12">Pro — $12/mo</option>
+          <option value="15">Business — $15/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-grammarly"></div>
+      </div>
+      <div class="tool-row" id="row-canvaai">
+        <div class="tool-emoji">🖼️</div>
+        <div class="tool-info">
+          <div class="tool-name">Canva Pro (w/ AI features)</div>
+          <div class="tool-price">$15/mo</div>
+        </div>
+        <select class="tier-select" id="tier-canvaai">
+          <option value="15">Pro — $15/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-canvaai"></div>
+      </div>
+      <div class="tool-row" id="row-otter">
+        <div class="tool-emoji">📋</div>
+        <div class="tool-info">
+          <div class="tool-name">Otter.ai / Fireflies / Granola</div>
+          <div class="tool-price">$17–$19/mo (Pro tier)</div>
+        </div>
+        <select class="tier-select" id="tier-otter">
+          <option value="17">Pro — $17/mo</option>
+        </select>
+        <div class="tool-check"><input type="checkbox" id="cb-otter"></div>
+      </div>
+    </div>
+
+    <div class="tool-section">
+      <div class="section-title">⚙️ API / Raw Access</div>
+      <div class="api-input-row">
+        <label>OpenAI API</label>
+        <span>avg $/mo</span>
+        <input type="number" id="api-openai" min="0" max="10000" step="1" placeholder="0">
+      </div>
+      <div class="api-input-row">
+        <label>Anthropic API</label>
+        <span>avg $/mo</span>
+        <input type="number" id="api-anthropic" min="0" max="10000" step="1" placeholder="0">
+      </div>
+      <div class="api-input-row">
+        <label>Other AI APIs / infra</label>
+        <span>avg $/mo</span>
+        <input type="number" id="api-other" min="0" max="10000" step="1" placeholder="0">
+      </div>
+    </div>
+
+    <button type="button" class="calc-btn" id="calcBtn">💸 Calculate My AI Spend</button>
+  </form>
+
+  <div class="roast-card" id="roastCard">
+    <div class="roast-header">
+      <div class="roast-header-info">
+        <div class="label">YOUR YEARLY AI SPEND</div>
+        <div class="amount" id="rYearly">$0</div>
+        <div class="period" id="rMonthly"></div>
+      </div>
+      <div class="roast-rank-badge">
+        <div class="rank-pct" id="rRankPct">—</div>
+        <div class="rank-label">Percentile</div>
+      </div>
+    </div>
+    <div class="roast-body">
+      <div class="roast-text" id="rText"></div>
+      <div class="stats-grid" id="rStats"></div>
+      <div class="tool-breakdown" id="rBreakdown"></div>
+      <div class="achievements" id="rAchievements"></div>
+      <div class="actions">
+        <a class="action primary" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action" id="rCopyLink">🔗 Copy link</button>
+        <a class="action" id="rDownload" download="ai-spend.png">💾 Download card</a>
+      </div>
+      <div class="embed-section">
+        <div class="label">Embed your AI spender badge</div>
+        <pre id="rEmbed"></pre>
+        <button id="rEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
+
+  <section class="content">
+    <h2>How the percentile works</h2>
+    <p>Based on aggregate data from AI usage surveys, the median professional AI user spends around $30–50/month on subscriptions. Power users (top 25%) typically spend $80–150/month. Developers and builders who also consume API credits often reach $200–500/month. Anyone spending over $500/month on AI tooling is in rarified territory — roughly the top 2%.</p>
+    <p>These estimates are based on 2025–2026 pricing for the most popular tools. API costs vary wildly — some developers consume thousands per month on inference alone.</p>
+    <h2>Which AI tools are worth the money?</h2>
+    <p>ChatGPT Plus and Claude Pro are the two highest-value subscriptions for most knowledge workers at $20/month each. Cursor and GitHub Copilot are the clear winners for developers — each saves hours weekly. Midjourney Standard ($30/month) is the best value for image generation if you use it regularly. ElevenLabs Creator ($22/month) is the clear voice AI choice for content creators. Runway is expensive for casual use but essential for video teams.</p>
+    <h2>The AI subscription trap</h2>
+    <p>The average person who takes this quiz subscribes to more AI tools than they actively use. Subscription fatigue is real: you signed up for that $10/month "game-changing" AI writing tool in January, used it twice, and forgot to cancel. Run through this list honestly — you might find $40–80/month you're paying for nothing.</p>
+  </section>
+
+  <footer>
+    <p>Calculate again → <a href="/ai-spend-calculator/" onclick="location.reload();return false;">reset</a> · More tools at <a href="/">TinyTools</a> · AI is expensive and we all have a problem 💸</p>
+  </footer>
+</div>
+
+<script>
+const TOOLS = [
+  { id: 'chatgpt', name: 'ChatGPT', emoji: '🟢' },
+  { id: 'claude', name: 'Claude', emoji: '🟣' },
+  { id: 'gemini', name: 'Gemini', emoji: '🔵' },
+  { id: 'grok', name: 'Grok', emoji: '🔲' },
+  { id: 'perplexity', name: 'Perplexity', emoji: '🔍' },
+  { id: 'cursor', name: 'Cursor', emoji: '📐' },
+  { id: 'copilot', name: 'Copilot', emoji: '👾' },
+  { id: 'windsurf', name: 'Windsurf', emoji: '🏄' },
+  { id: 'devin', name: 'Devin', emoji: '🤖' },
+  { id: 'midjourney', name: 'Midjourney', emoji: '🎨' },
+  { id: 'runway', name: 'Runway', emoji: '🎬' },
+  { id: 'sora', name: 'Sora', emoji: '🎥' },
+  { id: 'elevenlabs', name: 'ElevenLabs', emoji: '🔊' },
+  { id: 'notionai', name: 'Notion AI', emoji: '📝' },
+  { id: 'grammarly', name: 'Grammarly', emoji: '✏️' },
+  { id: 'canvaai', name: 'Canva Pro', emoji: '🖼️' },
+  { id: 'otter', name: 'Otter.ai', emoji: '📋' },
+];
+
+// Wire up checkboxes to row styling
+TOOLS.forEach(t => {
+  const cb = document.getElementById('cb-' + t.id);
+  const row = document.getElementById('row-' + t.id);
+  if (cb && row) {
+    cb.addEventListener('change', () => {
+      row.classList.toggle('selected', cb.checked);
+    });
+  }
+});
+
+document.getElementById('calcBtn').addEventListener('click', calculate);
+
+// Deep-link support: encode as base64 of selected IDs + API amounts
+if (location.hash.length > 2) {
+  try {
+    const data = JSON.parse(atob(location.hash.slice(1)));
+    (data.tools || []).forEach(({ id, tier }) => {
+      const cb = document.getElementById('cb-' + id);
+      const row = document.getElementById('row-' + id);
+      const sel = document.getElementById('tier-' + id);
+      if (cb) { cb.checked = true; row.classList.add('selected'); }
+      if (sel && tier) sel.value = String(tier);
+    });
+    if (data.apis) {
+      ['openai', 'anthropic', 'other'].forEach(k => {
+        const el = document.getElementById('api-' + k);
+        if (el && data.apis[k]) el.value = data.apis[k];
+      });
+    }
+    setTimeout(calculate, 200);
+  } catch(e) {}
+}
+
+function calculate() {
+  const selected = [];
+  let monthly = 0;
+
+  TOOLS.forEach(t => {
+    const cb = document.getElementById('cb-' + t.id);
+    const sel = document.getElementById('tier-' + t.id);
+    if (cb && cb.checked) {
+      const price = sel ? parseFloat(sel.value) : 0;
+      monthly += price;
+      selected.push({ ...t, price });
+    }
+  });
+
+  const apiOpenai = parseFloat(document.getElementById('api-openai').value) || 0;
+  const apiAnthropic = parseFloat(document.getElementById('api-anthropic').value) || 0;
+  const apiOther = parseFloat(document.getElementById('api-other').value) || 0;
+  const apiTotal = apiOpenai + apiAnthropic + apiOther;
+  monthly += apiTotal;
+  if (apiTotal > 0) selected.push({ id: 'api', name: 'API Usage', emoji: '⚙️', price: apiTotal });
+
+  const yearly = monthly * 12;
+  const toolCount = selected.length;
+  const percentile = calcPercentile(monthly);
+  const grade = calcGrade(monthly);
+  const roastText = generateRoast(monthly, yearly, toolCount, percentile, grade, selected);
+  const achievements = computeAchievements(monthly, toolCount, selected);
+
+  // Render
+  document.getElementById('rYearly').textContent = '$' + Math.round(yearly).toLocaleString();
+  document.getElementById('rMonthly').textContent = '$' + Math.round(monthly).toLocaleString() + '/month · ' + toolCount + ' tool' + (toolCount !== 1 ? 's' : '');
+  document.getElementById('rRankPct').textContent = 'Top ' + percentile + '%';
+
+  document.getElementById('rText').textContent = '"' + roastText + '"';
+
+  document.getElementById('rStats').innerHTML = [
+    ['Monthly', '$' + Math.round(monthly).toLocaleString()],
+    ['Yearly', '$' + Math.round(yearly).toLocaleString()],
+    ['Tools', toolCount],
+    ['Rank', 'Top ' + percentile + '%'],
+  ].map(([l, v]) => `<div class="stat"><div class="stat-value">${v}</div><div class="stat-label">${l}</div></div>`).join('');
+
+  // Breakdown
+  const maxPrice = Math.max(...selected.map(t => t.price), 1);
+  document.getElementById('rBreakdown').innerHTML = selected.length > 0 ? selected.sort((a, b) => b.price - a.price).map(t =>
+    `<div class="breakdown-row">
+      <div class="breakdown-name">${t.emoji} <span>${t.name}</span></div>
+      <div>
+        <span class="breakdown-amount">$${Math.round(t.price)}/mo</span>
+        <span class="breakdown-bar-wrap"><span class="breakdown-bar" style="width:${Math.round(t.price / maxPrice * 100)}%"></span></span>
+      </div>
+    </div>`).join('') : '<div style="color:var(--text-dim);text-align:center;padding:16px;font-size:14px;">No paid tools selected — check some boxes!</div>';
+
+  document.getElementById('rAchievements').innerHTML = achievements.map(a =>
+    `<span class="achievement ${a.kind}">${a.text}</span>`).join('');
+
+  // Deep link
+  const hashData = btoa(JSON.stringify({
+    tools: selected.filter(t => t.id !== 'api').map(t => ({ id: t.id, tier: t.price })),
+    apis: { openai: apiOpenai, anthropic: apiAnthropic, other: apiOther }
+  }));
+  location.hash = '#' + hashData;
+
+  const shareUrl = 'https://tinytools-smoky.vercel.app/ai-spend-calculator/#' + hashData;
+  const shareText = `I spend $${Math.round(yearly).toLocaleString()}/year on AI tools — top ${percentile}% of AI users 💸\n\n"${roastText.slice(0,100)}…"\n\nCalculate yours →`;
+  document.getElementById('rShare').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+  document.getElementById('rCopyLink').onclick = () => {
+    navigator.clipboard.writeText(shareUrl);
+    const btn = document.getElementById('rCopyLink');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+  };
+
+  const canvas = document.getElementById('cardCanvas');
+  drawCard(canvas, monthly, yearly, toolCount, percentile, grade, roastText);
+  document.getElementById('rDownload').href = canvas.toDataURL('image/png');
+
+  const gradeLabel = grade.label.replace(/\s+/g, '_');
+  const embedCode = `<a href="${shareUrl}" target="_blank"><img src="https://img.shields.io/badge/AI_Spender-${gradeLabel}_${encodeURIComponent('$')}${Math.round(yearly)}%2Fyr-${grade.shieldColor}?style=for-the-badge" alt="AI Spend: $${Math.round(yearly)}/yr"></a>`;
+  document.getElementById('rEmbed').textContent = embedCode;
+  document.getElementById('rEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('rEmbedCopy');
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = 'Copy embed code', 1500);
+  };
+
+  const roastCard = document.getElementById('roastCard');
+  roastCard.classList.add('show');
+  roastCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function calcPercentile(monthly) {
+  // Rough distribution: most users spend <$30, power users $80-200, heavy $200+
+  if (monthly === 0) return 100; // free tier — majority
+  if (monthly < 20) return 75;
+  if (monthly < 40) return 55;
+  if (monthly < 80) return 35;
+  if (monthly < 150) return 20;
+  if (monthly < 300) return 10;
+  if (monthly < 600) return 5;
+  if (monthly < 1000) return 2;
+  return 1;
+}
+
+function calcGrade(monthly) {
+  if (monthly === 0) return { label: 'Free Rider', shieldColor: 'lightgrey', color: '#a0a0b8' };
+  if (monthly < 20) return { label: 'Dabbler', shieldColor: '94a3b8', color: '#94a3b8' };
+  if (monthly < 50) return { label: 'Casual User', shieldColor: '22c55e', color: '#22c55e' };
+  if (monthly < 100) return { label: 'Power User', shieldColor: '10b981', color: '#10b981' };
+  if (monthly < 300) return { label: 'AI Addict', shieldColor: 'f59e0b', color: '#f59e0b' };
+  if (monthly < 600) return { label: 'AI Baller', shieldColor: 'f97316', color: '#f97316' };
+  return { label: 'AI Maximalist', shieldColor: 'ef4444', color: '#ef4444' };
+}
+
+function generateRoast(monthly, yearly, toolCount, percentile, grade, selected) {
+  const lines = [];
+  if (monthly === 0) lines.push("$0/month on AI tools. You're using free tiers and getting exactly what you paid for.");
+  if (monthly > 0 && monthly < 20) lines.push(`$${Math.round(monthly)}/month. One AI subscription. You've dipped a toe in. The revolution is happening without you.`);
+  if (monthly >= 500 && monthly < 1000) lines.push(`$${Math.round(yearly).toLocaleString()}/year on AI. That's a used car. You bought a used car in software form and it keeps getting smarter.`);
+  if (monthly >= 1000) lines.push(`$${Math.round(monthly).toLocaleString()}/month on AI. You're not using AI tools — AI tools are using your paycheck.`);
+  if (toolCount >= 8) lines.push(`${toolCount} AI tools. You have more AI subscriptions than most people have streaming services, and that's saying something.`);
+  if (toolCount === 1) lines.push(`One AI tool. Loyal, understated, probably fine. Or you just haven't discovered the rabbit hole yet.`);
+  const hasDevin = selected.some(t => t.id === 'devin');
+  if (hasDevin) lines.push('You pay for Devin. Either you run a company or you have trust issues with your own code.');
+  const hasBothChatAndClaude = selected.some(t => t.id === 'chatgpt') && selected.some(t => t.id === 'claude');
+  if (hasBothChatAndClaude) lines.push('Both ChatGPT and Claude. The AI polyamory lifestyle. We respect it.');
+  const hasCodingTools = selected.filter(t => ['cursor', 'copilot', 'windsurf', 'devin'].includes(t.id)).length >= 2;
+  if (hasCodingTools) lines.push('Multiple AI coding tools. Your future self is either 10x more productive or deeply confused about which one to open.');
+  const hasImages = selected.some(t => ['midjourney', 'runway', 'sora'].includes(t.id));
+  if (hasImages && monthly > 200) lines.push(`$${Math.round(yearly).toLocaleString()}/year. The AI is generating images faster than you can generate revenue.`);
+  if (monthly >= 100 && monthly < 300 && toolCount >= 4) lines.push(`$${Math.round(monthly)}/month across ${toolCount} tools. You've crossed the line from "using AI" to "collecting AI."`);
+  if (lines.length === 0 && monthly > 30) lines.push(`$${Math.round(yearly).toLocaleString()}/year on AI — ${toolCount} tool${toolCount !== 1 ? 's' : ''}. ${grade.label} energy. You know what you're doing.`);
+  if (lines.length === 0) lines.push(`$${Math.round(yearly).toLocaleString()}/year. Top ${percentile}% of AI spenders. Whether that's good or bad depends on your MRR.`);
+  return lines.sort((a, b) => b.length - a.length)[0];
+}
+
+function computeAchievements(monthly, toolCount, selected) {
+  const a = [];
+  if (monthly === 0) a.push({ kind: 'weird', text: '🆓 Free Rider' });
+  if (monthly >= 500) a.push({ kind: 'bad', text: '🔥 $500+/mo Club' });
+  if (monthly >= 1000) a.push({ kind: 'bad', text: '💸 Four Figures/Mo' });
+  if (toolCount >= 8) a.push({ kind: 'bad', text: '📦 Subscription Hoarder' });
+  if (toolCount >= 3) a.push({ kind: 'good', text: '🧰 AI Power Stack' });
+  if (selected.some(t => t.id === 'devin')) a.push({ kind: 'weird', text: '🤖 Devin Truther' });
+  const hasBothChatAndClaude = selected.some(t => t.id === 'chatgpt') && selected.some(t => t.id === 'claude');
+  if (hasBothChatAndClaude) a.push({ kind: 'good', text: '💜🟢 Chatbot Polygamist' });
+  if (selected.some(t => t.id === 'cursor') && selected.some(t => t.id === 'copilot')) a.push({ kind: 'weird', text: '⌨️ Dual Code AI' });
+  if (selected.filter(t => ['midjourney','runway','sora'].includes(t.id)).length >= 2) a.push({ kind: 'good', text: '🎨 Image AI Stack' });
+  if (selected.some(t => ['api'].includes(t.id))) a.push({ kind: 'good', text: '⚙️ API Consumer' });
+  if (monthly > 0 && monthly < 25 && toolCount >= 1) a.push({ kind: 'good', text: '💰 Budget Conscious' });
+  return a.slice(0, 6);
+}
+
+function drawCard(canvas, monthly, yearly, toolCount, percentile, grade, roastText) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#0f2d25'); bg.addColorStop(1, '#15151f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#10b981'); stripe.addColorStop(1, '#059669');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+
+  ctx.fillStyle = '#10b981'; ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText('💸 MY AI SPEND REPORT', 60, 68);
+
+  ctx.fillStyle = '#fff'; ctx.font = 'bold 72px -apple-system, sans-serif';
+  ctx.fillText('$' + Math.round(yearly).toLocaleString() + '/yr', 60, 158);
+
+  ctx.fillStyle = '#6ee7b7'; ctx.font = '26px -apple-system, sans-serif';
+  ctx.fillText('$' + Math.round(monthly).toLocaleString() + '/month · ' + toolCount + ' tools', 60, 196);
+
+  ctx.fillStyle = grade.color; ctx.font = 'bold 36px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('Top ' + percentile + '%', W - 60, 110);
+  ctx.font = '20px -apple-system, sans-serif';
+  ctx.fillStyle = '#a0a0b8';
+  ctx.fillText(grade.label, W - 60, 140);
+  ctx.textAlign = 'left';
+
+  // Roast text (wrap)
+  ctx.fillStyle = '#6ee7b7'; ctx.font = 'italic 26px -apple-system, sans-serif';
+  const words = ('"' + roastText + '"').split(' ');
+  let line = ''; let y = 270;
+  for (const w of words) {
+    const test = line ? line + ' ' + w : w;
+    if (ctx.measureText(test).width > W - 130 && line) { ctx.fillText(line, 60, y); line = w; y += 36; }
+    else line = test;
+    if (y > 430) { ctx.fillText(line + '…', 60, y); break; }
+  }
+  if (y <= 430) ctx.fillText(line, 60, y);
+
+  // Stats row
+  const items = [
+    ['$' + Math.round(monthly) + '/mo', 'Monthly'],
+    ['$' + Math.round(yearly).toLocaleString(), 'Yearly'],
+    [toolCount, 'Tools'],
+    ['Top ' + percentile + '%', 'Percentile'],
+  ];
+  items.forEach((it, i) => {
+    const x = 60 + i * (W - 120) / 4;
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 30px -apple-system, sans-serif';
+    ctx.fillText(it[0], x, H - 82);
+    ctx.fillStyle = '#a0a0b8'; ctx.font = 'bold 13px -apple-system, sans-serif';
+    ctx.fillText(it[1], x, H - 56);
+  });
+
+  ctx.fillStyle = '#a0a0b8'; ctx.font = '17px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/ai-spend-calculator', W - 60, H - 25);
+  ctx.textAlign = 'left';
+}
+</script>
+</body>
+</html>
