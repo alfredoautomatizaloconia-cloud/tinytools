@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tweet Roaster — AI Roasts Your Twitter Personality (Free, No Signup)</title>
+<meta name="description" content="Paste your recent tweets and get a savage, funny AI roast of your Twitter personality. Free. No signup. Shareable card. See your Tweet Grade and share the burn.">
+<meta name="keywords" content="tweet roaster, twitter roast, ai roast my tweets, twitter personality, tweet analyzer, roast my twitter, x roast, social media roast, twitter grade">
+<meta property="og:title" content="Tweet Roaster — AI Roasts Your Twitter Personality">
+<meta property="og:description" content="Paste your tweets. Get brutally roasted. Share the card. Free, instant, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/tweet-roaster/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/tweet-roaster/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Tweet Roaster",
+  "url": "https://tinytools-smoky.vercel.app/tweet-roaster/",
+  "description": "AI-powered Twitter personality roaster. Paste your tweets and get a savage, funny grade.",
+  "applicationCategory": "EntertainmentApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #0ea5e9; --accent-glow: #0ea5e940;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #7c3aed40 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(34px, 5.5vw, 56px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #7dd3fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 560px; margin: 0 auto; }
+
+  .input-box {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;
+    max-width: 640px; margin: 32px auto 0;
+  }
+  .input-box label { display: block; font-size: 13px; color: var(--text-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .handle-row { display: flex; gap: 8px; margin-bottom: 16px; }
+  .handle-row input {
+    flex: 1; padding: 12px 16px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text); font-size: 16px; font-family: inherit; outline: none;
+  }
+  .handle-row input:focus { border-color: var(--accent); }
+  .tweets-area {
+    width: 100%; min-height: 160px; padding: 14px 16px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font-size: 14px; font-family: inherit; outline: none; resize: vertical; line-height: 1.6;
+  }
+  .tweets-area:focus { border-color: var(--accent); }
+  .tweets-hint { font-size: 12px; color: var(--text-dim); margin-top: 8px; }
+  .roast-btn {
+    width: 100%; margin-top: 16px; padding: 16px; background: linear-gradient(135deg, #0ea5e9, #7c3aed);
+    border: none; border-radius: 12px; color: white; font-weight: 700; font-size: 16px;
+    cursor: pointer; box-shadow: 0 4px 16px rgba(14, 165, 233, 0.3); transition: all 0.15s;
+  }
+  .roast-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4); }
+  .roast-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .roast-card {
+    margin: 32px auto 0; max-width: 700px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #15151f 100%);
+    border: 2px solid var(--accent); border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(14, 165, 233, 0.15);
+    display: none;
+  }
+  .roast-card.show { display: block; }
+  .roast-header {
+    padding: 22px 24px; background: linear-gradient(135deg, #0ea5e9, #7c3aed);
+    display: flex; align-items: center; gap: 16px;
+  }
+  .roast-icon { font-size: 48px; }
+  .roast-handle { color: white; flex: 1; }
+  .roast-handle .name { font-size: 22px; font-weight: 800; }
+  .roast-handle .persona { font-size: 13px; opacity: 0.85; }
+  .roast-grade {
+    padding: 10px 18px; background: rgba(0,0,0,0.35); border-radius: 12px;
+    font-size: 32px; font-weight: 900; color: white; text-align: center; min-width: 70px;
+  }
+  .roast-grade .grade-label { font-size: 11px; opacity: 0.85; font-weight: 600; }
+
+  .roast-body { padding: 24px; }
+  .roast-text {
+    font-size: 17px; line-height: 1.55; color: #bae6fd; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid var(--accent); border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--bg-elevated); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+  .stat-value { font-size: 22px; font-weight: 800; color: var(--text); }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .achievements { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .achievement {
+    padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 13px; color: var(--text);
+  }
+  .achievement.bad { border-color: var(--red); color: #fca5a5; }
+  .achievement.good { border-color: var(--green); color: #6ee7b7; }
+  .achievement.weird { border-color: var(--yellow); color: #fcd34d; }
+  .achievement.sky { border-color: var(--accent); color: #7dd3fc; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #93c5fd; overflow-x: auto; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  .loading { text-align: center; padding: 40px; color: var(--text-dim); display: none; }
+  .loading.show { display: block; }
+  .spinner { display: inline-block; width: 24px; height: 24px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .error { text-align: center; padding: 24px; color: var(--red); display: none; background: var(--bg-card); border-radius: 12px; margin-top: 20px; }
+  .error.show { display: block; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; margin: 28px 0 10px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🐦 No API. No signup. Pure analysis. Built by TinyTools</div>
+    <h1>Tweet Roaster 🔥</h1>
+    <p class="subtitle">Paste your recent tweets. Get a savage, brutally honest roast of your Twitter personality. Share the card and end friendships.</p>
+  </header>
+
+  <div class="input-box">
+    <label for="handle">Your X / Twitter handle</label>
+    <div class="handle-row">
+      <input id="handle" type="text" placeholder="@yourusername" autocomplete="off">
+    </div>
+    <label for="tweets">Paste your 5 most recent tweets (one per paragraph)</label>
+    <textarea id="tweets" class="tweets-area" placeholder="Just launched my new SaaS tool that disrupts the B2B ecosystem 🚀🚀🚀 #founder #buildinpublic #startup
+
+Grateful and humbled to share that we hit 100 users. This journey has taught me so much. Thread incoming 🧵
+
+Hot take: most startups fail because they forget to be authentic. Authenticity is the real moat. Thoughts?
+
+New blog post dropping soon! Stay tuned 👇 #content #growth #mindset
+
+Can't believe what I just shipped. Sometimes you just have to trust the process and embrace the learnings 🙏 #hustle"></textarea>
+    <p class="tweets-hint">Tip: paste 5+ tweets for the most accurate roast. Separate them with a blank line.</p>
+    <button class="roast-btn" id="roastBtn">🔥 Roast My Tweets</button>
+  </div>
+
+  <div class="loading" id="loading"><div class="spinner"></div><p style="margin-top: 12px;">Analyzing your posting habits...</p></div>
+  <div class="error" id="error"></div>
+
+  <div class="roast-card" id="roastCard">
+    <div class="roast-header">
+      <div class="roast-icon" id="rIcon">🐦</div>
+      <div class="roast-handle">
+        <div class="name" id="rHandle">@handle</div>
+        <div class="persona" id="rPersona">Twitter Personality Type</div>
+      </div>
+      <div class="roast-grade">
+        <div id="rGrade">?</div>
+        <div class="grade-label">TWEET GRADE</div>
+      </div>
+    </div>
+    <div class="roast-body">
+      <div class="roast-text" id="rText"></div>
+      <div class="stats-grid" id="rStats"></div>
+      <div class="achievements" id="rAchievements"></div>
+      <div class="actions">
+        <a class="action primary" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action" id="rCopyLink">🔗 Copy link</button>
+        <a class="action" id="rDownload" download="tweet-roast.png">💾 Download card</a>
+      </div>
+      <div class="embed-section">
+        <div class="label">Embed your tweet grade on your bio / README</div>
+        <pre id="rEmbed"></pre>
+        <button id="rEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
+
+  <section class="content">
+    <h2>How the roast works</h2>
+    <p>This tool analyzes your actual tweet text — no API calls, no account access required. Everything happens in your browser. We score your tweets on 8 signals: hashtag density, emoji overload, self-promotion ratio, buzzword saturation, humblebragging, thread addiction, engagement-bait patterns, and average tweet length.</p>
+    <p>The roast is 100% deterministic — same tweets always produce the same grade. No AI costs, no randomness, no hallucinations. Just cold, hard pattern recognition pointing out what everyone already thought but was too polite to say.</p>
+    <h2>What does your Twitter grade mean?</h2>
+    <p>Grades range from S (rare gem — you actually add value to the timeline) down to F (chronically cringe, please seek help). Most people land somewhere in the C-B range, which means you're posting exactly like everyone else and nobody remembers you. Statistically, the most common personality type is "Thought Leader Cosplay."</p>
+    <h2>Embed your grade</h2>
+    <p>The badge code below lets you display your tweet grade on your website, GitHub README, or email signature. Every click on the badge links back to the tool, so your followers can get roasted too. Share the suffering.</p>
+    <h2>Why this tool exists</h2>
+    <p>Because someone needs to tell you that posting "grateful and humbled" every time something mildly good happens is a coping mechanism, not content strategy. Also because it's funny. Built by TinyTools — we make tiny tools that tell you the truth.</p>
+  </section>
+
+  <footer>
+    <p>Roast another account → <a href="/tweet-roaster/" onclick="resetForm();return false;">reset</a> · More tools at <a href="/">TinyTools</a> · No tweets stored. Ever. 🔒</p>
+  </footer>
+</div>
+
+<script>
+const roastBtn = document.getElementById('roastBtn');
+const handleInput = document.getElementById('handle');
+const tweetsInput = document.getElementById('tweets');
+const loading = document.getElementById('loading');
+const errorEl = document.getElementById('error');
+const card = document.getElementById('roastCard');
+
+roastBtn.addEventListener('click', doRoast);
+handleInput.addEventListener('keydown', e => { if (e.key === 'Enter') tweetsInput.focus(); });
+
+function resetForm() {
+  handleInput.value = '';
+  tweetsInput.value = '';
+  card.classList.remove('show');
+  errorEl.classList.remove('show');
+  location.hash = '';
+}
+
+// Auto-load from URL hash if it contains encoded data
+if (location.hash.length > 1) {
+  const hashVal = decodeURIComponent(location.hash.slice(1));
+  if (hashVal.includes('|')) {
+    const [handle, encoded] = hashVal.split('|');
+    handleInput.value = handle.startsWith('@') ? handle : '@' + handle;
+    try {
+      const stats = JSON.parse(atob(encoded));
+      setTimeout(() => renderFromStats(handle, stats), 100);
+    } catch(e) {}
+  } else {
+    handleInput.value = hashVal.startsWith('@') ? hashVal : '@' + hashVal;
+  }
+}
+
+function doRoast() {
+  const handle = handleInput.value.trim().replace(/^@+/, '') || 'anonymous';
+  const tweetsText = tweetsInput.value.trim();
+  if (!tweetsText || tweetsText.length < 20) {
+    errorEl.textContent = "Please paste at least one tweet to get roasted. Don't be shy.";
+    errorEl.classList.add('show');
+    return;
+  }
+  errorEl.classList.remove('show');
+  loading.classList.add('show');
+  card.classList.remove('show');
+  roastBtn.disabled = true;
+
+  setTimeout(() => {
+    try {
+      const stats = analyzeTweets(handle, tweetsText);
+      renderFromStats(handle, stats);
+      // Encode stats into URL hash for deep-linking
+      const encoded = btoa(JSON.stringify(stats));
+      location.hash = '#' + encodeURIComponent('@' + handle + '|' + encoded);
+    } catch(e) {
+      errorEl.textContent = 'Something went wrong analyzing your tweets. Try again.';
+      errorEl.classList.add('show');
+    } finally {
+      loading.classList.remove('show');
+      roastBtn.disabled = false;
+    }
+  }, 800);
+}
+
+function analyzeTweets(handle, text) {
+  const blocks = text.trim().split(/\n{2,}/).filter(b => b.trim().length > 5);
+  const tweets = blocks.length >= 2 ? blocks : text.split('\n').filter(l => l.trim().length > 10);
+  const tweetCount = Math.max(tweets.length, 1);
+
+  const countRe = (t, re) => (t.match(re) || []).length;
+  const avgLength = Math.round(tweets.reduce((s, t) => s + t.length, 0) / tweetCount);
+  const totalHashtags = tweets.reduce((s, t) => s + countRe(t, /#\w+/g), 0);
+  const hashtagsPerTweet = Math.round(totalHashtags / tweetCount * 10) / 10;
+  const emojiRe = /[\u{1F300}-\u{1FAFF}]|[\u{2600}-\u{27BF}]|🧵|🔥|💡|✨|👇|🚀|💪|🎯|📌|⚡|🙏|💯|👏/gu;
+  const totalEmojis = tweets.reduce((s, t) => s + countRe(t, emojiRe), 0);
+  const emojisPerTweet = Math.round(totalEmojis / tweetCount * 10) / 10;
+  const selfPromoRe = /just launch|announcing|excited to|thrilled to|honored|check out|my new|we built|i built|our new|introducing|available now|live now|just ship|dropped today|just dropped/gi;
+  const selfPromoTweets = tweets.filter(t => selfPromoRe.test(t)).length;
+  const selfPromoRatio = Math.round(selfPromoTweets / tweetCount * 100);
+  const buzzRe = /disrupting|disrupt|game.changing|paradigm|synergy|ecosystem|pivot|at scale|impactful|leverage|utilize|ideate|learnings|journey|bandwidth|circle back|move the needle|thought leader|industry veteran|passionate about|excited about|actionable|framework|unlock/gi;
+  const buzzwordScore = tweets.reduce((s, t) => s + countRe(t, buzzRe), 0);
+  const threadTweets = tweets.filter(t => /\(1\/|🧵|Thread:|thread\b/i.test(t)).length;
+  const humblebragRe = /humbled|grateful|blessed|honored to|privilege|so grateful|this journey|taught me|changed my|changed their/gi;
+  const humblebragScore = tweets.reduce((s, t) => s + countRe(t, humblebragRe), 0);
+  const questionTweets = tweets.filter(t => t.trim().endsWith('?')).length;
+  const questionRatio = Math.round(questionTweets / tweetCount * 100);
+  const linkTweets = tweets.filter(t => /https?:\/\//i.test(t)).length;
+  const capsPattern = /\b[A-Z]{3,}\b/g;
+  const capsTweets = tweets.filter(t => countRe(t, capsPattern) > 2).length;
+
+  return {
+    tweetCount,
+    avgLength,
+    hashtagsPerTweet,
+    emojisPerTweet,
+    selfPromoRatio,
+    buzzwordScore,
+    threadTweets,
+    humblebragScore,
+    questionRatio,
+    linkRatio: Math.round(linkTweets / tweetCount * 100),
+    capsTweets,
+  };
+}
+
+const PERSONAS = [
+  { min: 0, max: 1, letter: 'F', label: 'Cringe Singularity', icon: '💀', color: '#ef4444', shieldColor: 'red' },
+  { min: 2, max: 2, letter: 'F', label: 'Thought Leader Cosplay', icon: '🤡', color: '#ef4444', shieldColor: 'red' },
+  { min: 3, max: 3, letter: 'D', label: 'Hashtag Hoarder', icon: '🏷️', color: '#f97316', shieldColor: 'orange' },
+  { min: 4, max: 4, letter: 'D+', label: 'LinkedIn Refugee', icon: '👔', color: '#f59e0b', shieldColor: 'yellow' },
+  { min: 5, max: 5, letter: 'C', label: 'Average Poster', icon: '🐦', color: '#eab308', shieldColor: 'yellowgreen' },
+  { min: 6, max: 6, letter: 'C+', label: 'Decent Human Online', icon: '🙂', color: '#84cc16', shieldColor: 'green' },
+  { min: 7, max: 7, letter: 'B', label: 'Actually Good Poster', icon: '✨', color: '#22c55e', shieldColor: 'brightgreen' },
+  { min: 8, max: 8, letter: 'B+', label: 'Quality Poster', icon: '🌟', color: '#10b981', shieldColor: 'blue' },
+  { min: 9, max: 9, letter: 'A', label: 'Twitter Royalty', icon: '👑', color: '#06b6d4', shieldColor: 'blueviolet' },
+  { min: 10, max: 10, letter: 'S', label: 'Rare Timeline Gem', icon: '💎', color: '#8b5cf6', shieldColor: 'ff69b4' },
+];
+
+function computeScore(stats) {
+  let score = 5;
+  if (stats.hashtagsPerTweet > 5) score -= 2;
+  else if (stats.hashtagsPerTweet > 3) score -= 1;
+  else if (stats.hashtagsPerTweet === 0) score += 1;
+  if (stats.buzzwordScore > 5) score -= 2;
+  else if (stats.buzzwordScore > 2) score -= 1;
+  if (stats.selfPromoRatio > 70) score -= 2;
+  else if (stats.selfPromoRatio > 40) score -= 1;
+  if (stats.emojisPerTweet > 5) score -= 1;
+  if (stats.humblebragScore > 3) score -= 1;
+  else if (stats.humblebragScore > 1) score -= 0;
+  if (stats.avgLength > 60 && stats.avgLength < 220) score += 1;
+  if (stats.questionRatio > 30) score += 1;
+  if (stats.buzzwordScore === 0 && stats.hashtagsPerTweet < 2) score += 1;
+  return Math.max(0, Math.min(10, score));
+}
+
+function generateRoast(handle, stats, persona) {
+  const lines = [];
+  const h = '@' + handle.replace(/^@/, '');
+
+  if (stats.hashtagsPerTweet > 5) lines.push(`${h} averages ${stats.hashtagsPerTweet} hashtags per tweet. At this point the hashtags are the content.`);
+  if (stats.hashtagsPerTweet > 3) lines.push(`${h} hasn't met a hashtag they didn't immediately adopt. #growth #hustle #please #stop.`);
+  if (stats.buzzwordScore > 5) lines.push(`${stats.buzzwordScore} buzzwords detected. ${h} didn't write tweets — they generated a LinkedIn content calendar with autocomplete.`);
+  if (stats.buzzwordScore > 2) lines.push(`${h} is disrupting the paradigm of saying things that mean things.`);
+  if (stats.selfPromoRatio > 70) lines.push(`${stats.selfPromoRatio}% of tweets are announcements. ${h}'s followers didn't sign up for a press release subscription.`);
+  if (stats.selfPromoRatio > 40) lines.push(`Almost half of ${h}'s tweets are announcements. The other half are probably announcements about upcoming announcements.`);
+  if (stats.humblebragScore > 3) lines.push(`${stats.humblebragScore} humblebrags detected. ${h} is "grateful and humbled" so often it reads like a LinkedIn out-of-office.`);
+  if (stats.threadTweets > 0) lines.push(`${h} has started ${stats.threadTweets} thread(s). The ancient art of turning a single coherent thought into 37 tweets with a payoff at the end that doesn't pay off.`);
+  if (stats.emojisPerTweet > 5) lines.push(`${stats.emojisPerTweet} emojis per tweet. ${h}'s keyboard is 40% emoji, 30% hashtag, and 30% desperate.`);
+  if (stats.avgLength < 30) lines.push(`Average tweet: ${stats.avgLength} characters. ${h} posts like they're being charged per word. Or they have nothing to say and tweet anyway.`);
+  if (stats.avgLength > 250) lines.push(`${h} writes tweets like they're billing by the hour. ${stats.avgLength} average characters — Twitter didn't raise the limit for you personally.`);
+  if (stats.questionRatio > 60) lines.push(`${stats.questionRatio}% of tweets end with a question. ${h} is either deeply curious or deeply needs engagement. Reader decides.`);
+
+  if (lines.length === 0) {
+    if (persona.letter === 'S' || persona.letter === 'A') lines.push(`${h} somehow posts on Twitter without embarrassing themselves. This is statistically rare. We're as surprised as you are.`);
+    else lines.push(`${h} tweets like everyone else — which is to say, competently enough to exist but not enough to be remembered. The beige wall of the internet.`);
+  }
+
+  return lines.sort((a, b) => b.length - a.length)[0];
+}
+
+function computeAchievements(stats) {
+  const a = [];
+  if (stats.hashtagsPerTweet > 5) a.push({ kind: 'bad', text: '🏷️ Hashtag Hoarder' });
+  if (stats.hashtagsPerTweet === 0) a.push({ kind: 'good', text: '✨ Hashtag-Free' });
+  if (stats.buzzwordScore > 4) a.push({ kind: 'bad', text: '📊 Buzzword Baron' });
+  if (stats.buzzwordScore === 0) a.push({ kind: 'good', text: '🎯 Zero Buzzwords' });
+  if (stats.selfPromoRatio > 60) a.push({ kind: 'bad', text: '📣 Constant Announcer' });
+  if (stats.humblebragScore > 2) a.push({ kind: 'weird', text: '🙏 Perpetually Humbled' });
+  if (stats.threadTweets > 0) a.push({ kind: 'weird', text: '🧵 Thread Addict' });
+  if (stats.emojisPerTweet > 4) a.push({ kind: 'bad', text: '🔥🚀💯 Emoji Avalanche' });
+  if (stats.emojisPerTweet === 0) a.push({ kind: 'good', text: '📝 Emoji Purist' });
+  if (stats.tweetCount >= 5) a.push({ kind: 'sky', text: '📋 Full Sample' });
+  if (stats.questionRatio > 50) a.push({ kind: 'weird', text: '🤔 Eternal Questioner' });
+  if (stats.avgLength > 200) a.push({ kind: 'weird', text: '📜 Novel-Length Tweets' });
+  return a.slice(0, 6);
+}
+
+function renderFromStats(handle, stats) {
+  const score = computeScore(stats);
+  const persona = PERSONAS[score];
+  const roastText = generateRoast(handle, stats, persona);
+
+  document.getElementById('rIcon').textContent = persona.icon;
+  document.getElementById('rHandle').textContent = '@' + handle.replace(/^@/, '');
+  document.getElementById('rPersona').textContent = 'Twitter Personality: ' + persona.label;
+  document.getElementById('rGrade').childNodes[0].textContent = persona.letter;
+  document.getElementById('rGrade').style.color = persona.color;
+  document.getElementById('rText').textContent = '"' + roastText + '"';
+
+  document.getElementById('rStats').innerHTML = [
+    ['Tweets Analyzed', stats.tweetCount],
+    ['Hashtags/Tweet', stats.hashtagsPerTweet],
+    ['Buzzwords', stats.buzzwordScore],
+    ['Self-Promo %', stats.selfPromoRatio + '%'],
+  ].map(([l, v]) => `<div class="stat"><div class="stat-value">${v}</div><div class="stat-label">${l}</div></div>`).join('');
+
+  document.getElementById('rAchievements').innerHTML = computeAchievements(stats)
+    .map(a => `<span class="achievement ${a.kind}">${a.text}</span>`).join('');
+
+  const cleanHandle = handle.replace(/^@/, '');
+  const shareUrl = `https://tinytools-smoky.vercel.app/tweet-roaster/${location.hash}`;
+  const shareText = `My tweets just got roasted 🔥 I got a "${persona.letter}" (${persona.label})\n\n"${roastText.slice(0, 100)}..."\n\nGet yours →`;
+  document.getElementById('rShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent('https://tinytools-smoky.vercel.app/tweet-roaster/')}`;
+
+  document.getElementById('rCopyLink').onclick = () => {
+    navigator.clipboard.writeText('https://tinytools-smoky.vercel.app/tweet-roaster/' + location.hash);
+    const btn = document.getElementById('rCopyLink');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+  };
+
+  const canvas = document.getElementById('cardCanvas');
+  drawCard(canvas, cleanHandle, stats, persona, roastText);
+  document.getElementById('rDownload').href = canvas.toDataURL('image/png');
+
+  const embedCode = `<a href="https://tinytools-smoky.vercel.app/tweet-roaster/" target="_blank">
+  <img src="https://img.shields.io/badge/Tweet_Grade-${encodeURIComponent(persona.letter + ' ' + persona.label)}-${persona.shieldColor}?style=for-the-badge&logo=twitter" alt="Tweet Grade: ${persona.letter}">
+</a>`;
+  document.getElementById('rEmbed').textContent = embedCode;
+  document.getElementById('rEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('rEmbedCopy');
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = 'Copy embed code', 1500);
+  };
+
+  card.classList.add('show');
+  card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function drawCard(canvas, handle, stats, persona, roastText) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#1a1a2e'); bg.addColorStop(1, '#0f0f1a');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#0ea5e9'); stripe.addColorStop(1, '#7c3aed');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 10);
+
+  ctx.fillStyle = '#0ea5e9';
+  ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText('🔥 TWEET ROASTER', 60, 68);
+
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 52px -apple-system, sans-serif';
+  ctx.fillText(('@' + handle).slice(0, 26), 60, 148);
+
+  ctx.fillStyle = '#7dd3fc';
+  ctx.font = '24px -apple-system, sans-serif';
+  ctx.fillText('Twitter Personality: ' + persona.label, 60, 185);
+
+  ctx.fillStyle = persona.color;
+  ctx.font = 'bold 160px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(persona.letter, W - 60, 200);
+  ctx.textAlign = 'left';
+
+  ctx.fillStyle = '#bae6fd';
+  ctx.font = 'italic 26px -apple-system, sans-serif';
+  const words = ('"' + roastText + '"').split(' ');
+  let line = ''; let y = 270;
+  for (const w of words) {
+    const test = line ? line + ' ' + w : w;
+    if (ctx.measureText(test).width > W - 140 && line) {
+      ctx.fillText(line, 60, y); line = w; y += 36;
+      if (y > 430) { ctx.fillText(line + '...', 60, y); break; }
+    } else { line = test; }
+  }
+  if (y <= 430) ctx.fillText(line, 60, y);
+
+  ctx.fillStyle = '#fff';
+  const items = [
+    [stats.tweetCount, 'TWEETS'],
+    [stats.hashtagsPerTweet, 'HASHTAGS/TWEET'],
+    [stats.buzzwordScore, 'BUZZWORDS'],
+    [stats.selfPromoRatio + '%', 'SELF-PROMO'],
+  ];
+  items.forEach((it, i) => {
+    const x = 60 + i * (W - 120) / 4;
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 34px -apple-system, sans-serif';
+    ctx.fillText(it[0], x, H - 82);
+    ctx.fillStyle = '#7dd3fc'; ctx.font = 'bold 13px -apple-system, sans-serif';
+    ctx.fillText(it[1], x, H - 58);
+  });
+
+  ctx.fillStyle = '#6b7280'; ctx.font = '16px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/tweet-roaster', W - 60, H - 24);
+  ctx.textAlign = 'left';
+}
+</script>
+</body>
+</html>
