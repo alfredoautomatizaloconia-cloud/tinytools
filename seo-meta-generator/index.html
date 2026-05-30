@@ -128,6 +128,40 @@
   .upsell strong { color: var(--text); }
   .upsell a { color: var(--accent); text-decoration: none; font-weight: 600; }
 
+  /* ===== VIRAL MECHANICS ===== */
+  .viral-panel {
+    margin-top: 20px;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 24px;
+  }
+  .viral-panel h2 { font-size: 13px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600; }
+  .viral-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+  .action {
+    display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px;
+    border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer;
+    text-decoration: none; border: 1px solid var(--border); transition: all 0.15s;
+    background: var(--bg-elevated); color: var(--text);
+  }
+  .action:hover { border-color: var(--accent); background: var(--accent-glow); }
+  .action.primary { background: var(--accent); border-color: var(--accent); color: white; }
+  .action.primary:hover { background: #2563eb; border-color: #2563eb; }
+
+  .embed-section { margin-top: 16px; }
+  .embed-section .embed-label {
+    font-size: 13px; color: var(--text-dim); margin-bottom: 8px; font-weight: 500;
+  }
+  .embed-section pre {
+    background: #000; border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px; font-family: 'SF Mono', Monaco, monospace; font-size: 12px;
+    color: #e0e0ff; white-space: pre-wrap; word-wrap: break-word; margin: 0;
+  }
+  .embed-section button {
+    margin-top: 8px; padding: 7px 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 8px; color: var(--text-dim);
+    font-size: 12px; cursor: pointer;
+  }
+  .embed-section button:hover { border-color: var(--accent); color: var(--text); }
+
   .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
   .content h2 { font-size: 24px; margin: 32px 0 12px; }
   .content h3 { font-size: 17px; margin: 22px 0 8px; }
@@ -245,8 +279,26 @@
           <pre id="outputCode"></pre>
         </div>
       </div>
+
+      <!-- VIRAL MECHANICS PANEL -->
+      <div class="viral-panel">
+        <h2>Share your meta setup</h2>
+        <div class="viral-actions">
+          <a class="action primary" id="vShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+          <button class="action" id="vCopyLink">🔗 Copy deep link</button>
+          <a class="action" id="vDownload" download="seo-meta-card.png">💾 Download card</a>
+        </div>
+        <div class="embed-section">
+          <div class="embed-label">Drop this badge on your README or site — links back to your meta setup:</div>
+          <pre id="vEmbed"></pre>
+          <button id="vEmbedCopy">Copy embed code</button>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Hidden canvas for PNG export -->
+  <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
 
   <section class="content">
     <h2>How meta tags affect search rankings + click-through rates</h2>
@@ -309,6 +361,97 @@ function counter(el, len, max) {
   else if (len > max * 0.9) el.classList.add('warn');
 }
 
+// ===== VIRAL: hash encode/decode =====
+function encodeState(data) {
+  try { return btoa(unescape(encodeURIComponent(JSON.stringify(data)))); } catch { return ''; }
+}
+function decodeState(hash) {
+  try { return JSON.parse(decodeURIComponent(escape(atob(hash)))); } catch { return null; }
+}
+
+function getDeepLink() {
+  const state = {};
+  fields.forEach(id => { state[id] = document.getElementById(id).value; });
+  return `https://tinytools-smoky.vercel.app/seo-meta-generator/#${encodeState(state)}`;
+}
+
+// ===== VIRAL: PNG card =====
+function drawCard(canvas, title, desc, url, site, titleLen, descLen) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+
+  // Background
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#0d1526'); bg.addColorStop(1, '#0a0a0f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  // Top accent stripe
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#3b82f6'); stripe.addColorStop(1, '#06b6d4');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 7);
+
+  // Tool label
+  ctx.fillStyle = '#3b82f6';
+  ctx.font = 'bold 22px -apple-system, sans-serif';
+  ctx.fillText('📊 SEO META TAG GENERATOR', 60, 65);
+
+  // Page title (large)
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 48px -apple-system, sans-serif';
+  const displayTitle = (title || 'Untitled page').slice(0, 42);
+  ctx.fillText(displayTitle + (title.length > 42 ? '…' : ''), 60, 140);
+
+  // Domain
+  ctx.fillStyle = '#93c5fd';
+  ctx.font = '24px -apple-system, sans-serif';
+  const domain = getDomain(url);
+  ctx.fillText(domain, 60, 185);
+
+  // Description (wrapped)
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '22px -apple-system, sans-serif';
+  const words = (desc || 'No description set').split(' ');
+  let line = ''; let y = 240;
+  for (const w of words) {
+    const test = line ? line + ' ' + w : w;
+    if (ctx.measureText(test).width > W - 120 && line) {
+      ctx.fillText(line, 60, y); line = w; y += 32;
+      if (y > 360) { ctx.fillText(line + '…', 60, y); break; }
+    } else { line = test; }
+  }
+  if (y <= 360) ctx.fillText(line, 60, y);
+
+  // Divider
+  ctx.strokeStyle = '#2a2a3a'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(60, 420); ctx.lineTo(W - 60, 420); ctx.stroke();
+
+  // Stats row
+  const titleOk = titleLen > 0 && titleLen <= 60;
+  const descOk = descLen > 0 && descLen <= 160;
+  const stats = [
+    { label: 'TITLE', value: `${titleLen}/60`, ok: titleOk },
+    { label: 'DESCRIPTION', value: `${descLen}/160`, ok: descOk },
+    { label: 'GOOGLE', value: titleOk && descOk ? '✓ Ready' : '⚠ Check', ok: titleOk && descOk },
+    { label: 'SOCIAL', value: '✓ OG tags', ok: true },
+  ];
+  stats.forEach((s, i) => {
+    const x = 60 + i * (W - 120) / 4;
+    ctx.fillStyle = s.ok ? '#4ade80' : '#f59e0b';
+    ctx.font = 'bold 28px -apple-system, sans-serif';
+    ctx.fillText(s.value, x, 480);
+    ctx.fillStyle = '#6b7280';
+    ctx.font = 'bold 12px -apple-system, sans-serif';
+    ctx.fillText(s.label, x, 505);
+  });
+
+  // Branding
+  ctx.fillStyle = '#4b5563';
+  ctx.font = '16px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/seo-meta-generator', W - 60, H - 22);
+  ctx.textAlign = 'left';
+}
+
 function render() {
   const title = document.getElementById('title').value;
   const desc = document.getElementById('desc').value;
@@ -367,6 +510,51 @@ ${ogImage ? `<meta name="twitter:image" content="${escapeAttr(ogImage)}" />\n` :
 <meta name="twitter:creator" content="${escapeAttr(twitter)}" />\n` : ''}`;
 
   document.getElementById('outputCode').textContent = out;
+
+  // ===== VIRAL: update share + card =====
+  updateViral(title, desc, url, site, title.length, desc.length);
+}
+
+function updateViral(title, desc, url, site, titleLen, descLen) {
+  const deepLink = getDeepLink();
+
+  // Update hash silently (no page reload)
+  const state = {};
+  fields.forEach(id => { state[id] = document.getElementById(id).value; });
+  history.replaceState(null, '', '#' + encodeState(state));
+
+  // Share button
+  const shareText = `Just generated SEO meta tags for "${(title || 'my page').slice(0, 50)}" 📊\n\nTitle: ${titleLen}/60 chars · Desc: ${descLen}/160 chars\n\nBuild yours →`;
+  document.getElementById('vShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(deepLink)}`;
+
+  // Copy link button
+  document.getElementById('vCopyLink').onclick = () => {
+    navigator.clipboard.writeText(deepLink);
+    const btn = document.getElementById('vCopyLink');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy deep link', 1500);
+  };
+
+  // Canvas card
+  const canvas = document.getElementById('cardCanvas');
+  drawCard(canvas, title, desc, url, site, titleLen, descLen);
+  document.getElementById('vDownload').href = canvas.toDataURL('image/png');
+
+  // Embed badge
+  const titleSlug = (title || 'Page').slice(0, 30).replace(/[^a-zA-Z0-9 ]/g, '').trim().replace(/ /g, '_');
+  const badgeColor = (titleLen > 0 && titleLen <= 60 && descLen > 0 && descLen <= 160) ? 'brightgreen' : 'orange';
+  const badgeLabel = (titleLen > 0 && titleLen <= 60 && descLen > 0 && descLen <= 160) ? 'SEO_Ready' : 'SEO_Needs_Fix';
+  const embedCode = `<a href="${deepLink}" target="_blank">
+  <img src="https://img.shields.io/badge/${encodeURIComponent(titleSlug)}-${badgeLabel}-${badgeColor}?style=for-the-badge&logo=google" alt="SEO Meta: ${title || 'Page'}">
+</a>`;
+  document.getElementById('vEmbed').textContent = embedCode;
+  document.getElementById('vEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('vEmbedCopy');
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = 'Copy embed code', 1500);
+  };
 }
 
 document.querySelectorAll('.platform-tab').forEach(t => {
@@ -384,6 +572,16 @@ document.getElementById('copyOutput').addEventListener('click', () => {
   btn.textContent = 'Copied!';
   setTimeout(() => btn.textContent = 'Copy All', 1500);
 });
+
+// ===== VIRAL: auto-load from URL hash =====
+if (location.hash.length > 1) {
+  const state = decodeState(location.hash.slice(1));
+  if (state) {
+    fields.forEach(id => {
+      if (state[id] !== undefined) document.getElementById(id).value = state[id];
+    });
+  }
+}
 
 render();
 </script>
