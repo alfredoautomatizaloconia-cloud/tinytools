@@ -102,6 +102,38 @@
   }
   .copy-export:hover { border-color: var(--accent); }
 
+  /* ── VIRAL MECHANICS ── */
+  .viral-section {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 20px; margin-top: 24px;
+  }
+  .viral-section h2 {
+    font-size: 14px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 600;
+  }
+  .viral-actions {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px;
+  }
+  .action { display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 18px; border-radius: 10px; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all 0.15s; text-decoration: none; border: none;
+  }
+  .action.primary {
+    background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    color: white; box-shadow: 0 4px 16px rgba(168, 85, 247, 0.3);
+  }
+  .action.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(168, 85, 247, 0.45); }
+  .action.secondary {
+    background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border);
+  }
+  .action.secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; letter-spacing: 0.05em; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+  .viral-note { font-size: 13px; color: var(--text-dim); margin-top: 10px; }
+  /* ── END VIRAL ── */
+
   .upsell {
     margin-top: 24px; padding: 16px; background: var(--bg-elevated);
     border-radius: 10px; border-left: 3px solid var(--accent); font-size: 14px; color: var(--text-dim);
@@ -154,6 +186,24 @@
     </div>
     <pre id="exportCode"><button class="copy-export" id="copyExport">Copy</button><span id="exportText"></span></pre>
   </div>
+
+  <!-- VIRAL MECHANICS -->
+  <div class="viral-section">
+    <h2>Share your palette</h2>
+    <div class="viral-actions">
+      <a class="action primary" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+      <button class="action secondary" id="rCopyLink">🔗 Copy link</button>
+      <a class="action secondary" id="rDownload" download="color-palette.png">⬇ Download card</a>
+    </div>
+    <div class="embed-section">
+      <div class="label">Embed badge (README / portfolio)</div>
+      <pre id="rEmbed"></pre>
+      <button id="rEmbedCopy">Copy badge code</button>
+    </div>
+    <p class="viral-note">The badge links back to this palette. Drop it in a GitHub README — every click generates a new palette and the chain continues.</p>
+  </div>
+  <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
+  <!-- END VIRAL MECHANICS -->
 
   <div class="upsell">
     <strong>Designing in Figma or building in Webflow?</strong>
@@ -246,15 +296,122 @@ function isLight(hex) {
 }
 
 const PALETTES = {
-  analogous: { name: 'Analogous', desc: '3 colors evenly spaced 30° apart on the color wheel. Cohesive, calm.', generate: base => [shiftHue(base, -30), base, shiftHue(base, 30)] },
-  complementary: { name: 'Complementary', desc: 'Base color + its opposite (180° apart). High contrast, maximum energy.', generate: base => [base, shiftHue(base, 180)] },
-  triadic: { name: 'Triadic', desc: '3 colors evenly spaced 120° apart. Vibrant but balanced.', generate: base => [base, shiftHue(base, 120), shiftHue(base, 240)] },
-  monochromatic: { name: 'Monochromatic', desc: '5 tones of the same hue, dark to light. Professional, clean.', generate: base => [setLightness(base, 15), setLightness(base, 35), setLightness(base, 55), setLightness(base, 75), setLightness(base, 90)] }
+  analogous:      { name: 'Analogous',      desc: '3 colors evenly spaced 30° apart on the color wheel. Cohesive, calm.',        generate: base => [shiftHue(base, -30), base, shiftHue(base, 30)] },
+  complementary:  { name: 'Complementary',  desc: 'Base color + its opposite (180° apart). High contrast, maximum energy.',      generate: base => [base, shiftHue(base, 180)] },
+  triadic:        { name: 'Triadic',         desc: '3 colors evenly spaced 120° apart. Vibrant but balanced.',                    generate: base => [base, shiftHue(base, 120), shiftHue(base, 240)] },
+  monochromatic:  { name: 'Monochromatic',  desc: '5 tones of the same hue, dark to light. Professional, clean.',                generate: base => [setLightness(base, 15), setLightness(base, 35), setLightness(base, 55), setLightness(base, 75), setLightness(base, 90)] }
 };
 
 let currentBase = '#a855f7';
 let currentPalette = [];
 
+// ── VIRAL: draw PNG card ────────────────────────────────────────────────────
+function drawCard(canvas, base, allColors) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+
+  // Background
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#0a0a0f'); bg.addColorStop(1, '#15151f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  // Top accent stripe using base color
+  ctx.fillStyle = base; ctx.fillRect(0, 0, W, 8);
+
+  // Title
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = 'bold 22px -apple-system, sans-serif';
+  ctx.fillText('🎨 COLOR PALETTE', 60, 60);
+
+  // Base color swatch + hex
+  ctx.fillStyle = base;
+  ctx.beginPath(); ctx.roundRect(60, 80, 120, 120, 16); ctx.fill();
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 42px -apple-system, sans-serif';
+  ctx.fillText(base.toUpperCase(), 200, 130);
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '22px -apple-system, sans-serif';
+  ctx.fillText('base color', 200, 165);
+
+  // Draw palette types as rows of swatches
+  const sections = [
+    { label: 'ANALOGOUS', colors: allColors.analogous, y: 240 },
+    { label: 'COMPLEMENTARY', colors: allColors.complementary, y: 360 },
+    { label: 'TRIADIC', colors: allColors.triadic, y: 480 },
+  ];
+
+  sections.forEach(({ label, colors, y }) => {
+    ctx.fillStyle = '#a0a0b8';
+    ctx.font = 'bold 14px -apple-system, sans-serif';
+    ctx.fillText(label, 60, y - 10);
+    colors.forEach((c, i) => {
+      ctx.fillStyle = c;
+      ctx.beginPath(); ctx.roundRect(60 + i * 110, y, 100, 70, 10); ctx.fill();
+      ctx.fillStyle = isLight(c) ? '#000' : '#fff';
+      ctx.font = '12px SF Mono, monospace';
+      ctx.fillText(c.toUpperCase(), 60 + i * 110 + 8, y + 45);
+    });
+  });
+
+  // Brand watermark bottom-right
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '18px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/color-palette', W - 40, H - 30);
+  ctx.textAlign = 'left';
+}
+
+// ── VIRAL: update share mechanics after every render ────────────────────────
+function updateViralMechanics() {
+  const baseClean = currentBase.replace('#', '');
+  const pageUrl = `https://tinytools-smoky.vercel.app/color-palette/#${baseClean}`;
+  const shareText = `I generated a ${currentBase.toUpperCase()} color palette (analogous, complementary & triadic). Try yours →`;
+
+  // Tweet button
+  document.getElementById('rShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}`;
+
+  // Embed badge code
+  const badgeColor = baseClean;
+  const badgeLabel = encodeURIComponent('color palette');
+  const badgeMsg = encodeURIComponent(currentBase.toUpperCase());
+  const embedCode = `<a href="${pageUrl}" target="_blank">\n  <img src="https://img.shields.io/badge/${badgeLabel}-${badgeMsg}-${badgeColor}?style=for-the-badge" alt="Color Palette ${currentBase.toUpperCase()}">\n</a>`;
+  document.getElementById('rEmbed').textContent = embedCode;
+
+  // Draw canvas card
+  const canvas = document.getElementById('cardCanvas');
+  const allColors = {
+    analogous:     PALETTES.analogous.generate(currentBase),
+    complementary: PALETTES.complementary.generate(currentBase),
+    triadic:       PALETTES.triadic.generate(currentBase),
+  };
+  drawCard(canvas, currentBase, allColors);
+  document.getElementById('rDownload').href = canvas.toDataURL('image/png');
+  document.getElementById('rDownload').download = `color-palette-${baseClean}.png`;
+
+  // Update hash (deep-link)
+  history.replaceState(null, '', '#' + baseClean);
+}
+
+// ── VIRAL: copy link button ─────────────────────────────────────────────────
+document.getElementById('rCopyLink').addEventListener('click', () => {
+  const baseClean = currentBase.replace('#', '');
+  const url = `https://tinytools-smoky.vercel.app/color-palette/#${baseClean}`;
+  navigator.clipboard.writeText(url);
+  const btn = document.getElementById('rCopyLink');
+  btn.textContent = '✓ Copied!';
+  setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+});
+
+// ── VIRAL: copy badge code button ───────────────────────────────────────────
+document.getElementById('rEmbedCopy').addEventListener('click', () => {
+  navigator.clipboard.writeText(document.getElementById('rEmbed').textContent);
+  const btn = document.getElementById('rEmbedCopy');
+  btn.textContent = '✓ Copied!';
+  setTimeout(() => btn.textContent = 'Copy badge code', 1500);
+});
+
+// ── Core palette rendering ──────────────────────────────────────────────────
 function render() {
   const el = document.getElementById('palettes');
   el.innerHTML = '';
@@ -285,6 +442,7 @@ function render() {
     });
   });
   updateExport();
+  updateViralMechanics();
 }
 
 function updateExport() {
@@ -339,6 +497,16 @@ document.getElementById('shuffle').addEventListener('click', () => {
   document.getElementById('baseHex').value = currentBase;
   render();
 });
+
+// ── VIRAL: auto-load from URL hash on page load ─────────────────────────────
+if (location.hash.length > 1) {
+  let hashColor = location.hash.slice(1).replace('#', '');
+  if (/^[0-9a-f]{6}$/i.test(hashColor)) {
+    currentBase = '#' + hashColor;
+    document.getElementById('basePicker').value = currentBase;
+    document.getElementById('baseHex').value = currentBase;
+  }
+}
 
 render();
 </script>
