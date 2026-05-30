@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Pickup Lines Generator — Personalized, Funny, Shareable (Free)</title>
+<meta name="description" content="Generate hilarious, personalized AI pickup lines based on your name and interests. Shareable card included. Free, instant, no signup. Impress (or horrify) your tech crush.">
+<meta name="keywords" content="ai pickup lines, tech pickup lines, funny pickup lines, programmer pickup lines, nerd pickup lines, chatgpt pickup lines, claude pickup lines, ai flirt, tech humor">
+<meta property="og:title" content="AI Pickup Lines — Personalized, Hilarious, Shareable">
+<meta property="og:description" content="Enter your name and vibe. Get savage AI-themed pickup lines. Share the card. Lose friends.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/ai-pickup-lines/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-pickup-lines/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Pickup Lines Generator",
+  "url": "https://tinytools-smoky.vercel.app/ai-pickup-lines/",
+  "description": "Generate personalized, AI-themed pickup lines based on your name and interests. Free, no signup.",
+  "applicationCategory": "EntertainmentApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #ec4899; --accent-glow: #ec489940;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 15% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 85% 55%, #a855f740 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(34px, 5.5vw, 56px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #f9a8d4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 560px; margin: 0 auto; }
+
+  .input-box {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px;
+    max-width: 600px; margin: 32px auto 0;
+  }
+  .field { margin-bottom: 18px; }
+  .field label { display: block; font-size: 13px; color: var(--text-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .field input, .field select {
+    width: 100%; padding: 14px 16px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text); font-size: 16px; font-family: inherit; outline: none;
+    appearance: none;
+  }
+  .field input:focus, .field select:focus { border-color: var(--accent); }
+  .field select option { background: #1d1d2a; }
+  .generate-btn {
+    width: 100%; padding: 16px; background: linear-gradient(135deg, #ec4899, #a855f7);
+    border: none; border-radius: 12px; color: white; font-weight: 700; font-size: 16px;
+    cursor: pointer; box-shadow: 0 4px 16px rgba(236, 72, 153, 0.3); transition: all 0.15s;
+  }
+  .generate-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(236, 72, 153, 0.4); }
+  .generate-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .result-card {
+    margin: 32px auto 0; max-width: 700px;
+    background: linear-gradient(135deg, #1f1020 0%, #15151f 100%);
+    border: 2px solid var(--accent); border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(236, 72, 153, 0.15);
+    display: none;
+  }
+  .result-card.show { display: block; }
+  .result-header {
+    padding: 22px 24px; background: linear-gradient(135deg, #ec4899, #a855f7);
+    display: flex; align-items: center; gap: 16px;
+  }
+  .result-icon { font-size: 48px; }
+  .result-info { flex: 1; color: white; }
+  .result-info .name { font-size: 22px; font-weight: 800; }
+  .result-info .type { font-size: 13px; opacity: 0.85; }
+  .charm-score {
+    padding: 10px 16px; background: rgba(0,0,0,0.35); border-radius: 12px;
+    text-align: center; min-width: 80px;
+  }
+  .charm-score .number { font-size: 32px; font-weight: 900; color: white; }
+  .charm-score .label { font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 600; }
+
+  .result-body { padding: 24px; }
+  .lines-list { margin-bottom: 20px; }
+  .pickup-line {
+    padding: 14px 18px; background: rgba(0,0,0,0.3); border-left: 3px solid var(--accent);
+    border-radius: 8px; margin-bottom: 10px; font-size: 15px; line-height: 1.55; color: #fce7f3;
+    font-style: italic; position: relative;
+  }
+  .pickup-line .line-num { font-size: 11px; color: #f9a8d4; font-style: normal; font-weight: 700; margin-bottom: 4px; }
+  .pickup-line .copy-line { position: absolute; top: 10px; right: 12px; background: none; border: 1px solid #ec489950; border-radius: 6px; color: #f9a8d4; font-size: 11px; padding: 3px 8px; cursor: pointer; font-style: normal; }
+  .pickup-line .copy-line:hover { background: rgba(236,72,153,0.1); }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--bg-elevated); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+  .stat-value { font-size: 22px; font-weight: 800; color: var(--text); }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .achievements { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .achievement {
+    padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 13px;
+  }
+  .achievement.pink { border-color: var(--accent); color: #f9a8d4; }
+  .achievement.purple { border-color: #a855f7; color: #d8b4fe; }
+  .achievement.gold { border-color: var(--yellow); color: #fcd34d; }
+  .achievement.green { border-color: var(--green); color: #6ee7b7; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+  .action.regen { background: linear-gradient(135deg, #ec4899, #a855f7); border: none; color: white; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #f9a8d4; overflow-x: auto; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  .loading { text-align: center; padding: 40px; color: var(--text-dim); display: none; }
+  .loading.show { display: block; }
+  .spinner { display: inline-block; width: 24px; height: 24px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; margin: 28px 0 10px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">💘 Deterministic chaos · No LLM · Built by TinyTools</div>
+    <h1>AI Pickup Lines 💘</h1>
+    <p class="subtitle">Enter your name and your favorite AI tool. Get 5 personalized, shamelessly nerdy pickup lines. Share the card. Let the chaos begin.</p>
+  </header>
+
+  <div class="input-box">
+    <div class="field">
+      <label for="yourName">Your first name</label>
+      <input id="yourName" type="text" placeholder="e.g. Alex, Jordan, Sam..." autocomplete="given-name">
+    </div>
+    <div class="field">
+      <label for="aiTool">Your favorite AI tool</label>
+      <select id="aiTool">
+        <option value="ChatGPT">ChatGPT</option>
+        <option value="Claude" selected>Claude</option>
+        <option value="Gemini">Gemini</option>
+        <option value="Grok">Grok</option>
+        <option value="Copilot">GitHub Copilot</option>
+        <option value="Midjourney">Midjourney</option>
+        <option value="Perplexity">Perplexity</option>
+        <option value="Cursor">Cursor</option>
+        <option value="Llama">Llama (open source gang)</option>
+        <option value="all of them">All of them (you monster)</option>
+      </select>
+    </div>
+    <button class="generate-btn" id="genBtn">💘 Generate My Lines</button>
+  </div>
+
+  <div class="loading" id="loading"><div class="spinner"></div><p style="margin-top:12px;">Computing your charm coefficient...</p></div>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <div class="result-icon" id="rIcon">💘</div>
+      <div class="result-info">
+        <div class="name" id="rName">Name</div>
+        <div class="type" id="rType">Romantic Archetype</div>
+      </div>
+      <div class="charm-score">
+        <div class="number" id="rScore">?</div>
+        <div class="label">CHARM SCORE</div>
+      </div>
+    </div>
+    <div class="result-body">
+      <div class="lines-list" id="rLines"></div>
+      <div class="stats-grid" id="rStats"></div>
+      <div class="achievements" id="rAchievements"></div>
+      <div class="actions">
+        <a class="action primary" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action" id="rCopyLink">🔗 Copy link</button>
+        <a class="action" id="rDownload" download="ai-pickup-lines.png">💾 Download card</a>
+        <button class="action regen" id="rRegen">🎲 Regenerate</button>
+      </div>
+      <div class="embed-section">
+        <div class="label">Flex your charm score on your profile</div>
+        <pre id="rEmbed"></pre>
+        <button id="rEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
+
+  <section class="content">
+    <h2>How it works</h2>
+    <p>Enter your name and your preferred AI tool. The generator uses a deterministic algorithm seeded by your name to select 5 pickup lines from a pool of 70+ original AI-themed lines. Your Charm Score (1–10) is computed from your name's character values — it's stable, repeatable, and entirely made up.</p>
+    <p>Everything runs in your browser. No data is sent anywhere. No LLM is used. The lines are pre-written by a human who has spent too much time around AI tools and not enough time around people.</p>
+    <h2>Why AI pickup lines?</h2>
+    <p>Because "Are you a transformer? Because you've re-encoded my attention" is objectively funnier than any normal pickup line, and the tech community deserves chaos. Also, sharing funny content about AI is one of the few ways to get engagement on social media without posting something depressing.</p>
+    <h2>Use cases (completely legitimate)</h2>
+    <p>Ice-breakers at tech conferences. Your Tinder bio. Your LinkedIn summary. Your conference talk opening. Your company Slack. Your next code review. Your README. Anywhere professionalism has already left the building.</p>
+    <h2>The charm score</h2>
+    <p>Your Charm Score is calculated from the ASCII values of your first name, normalized to a 1–10 scale. It is completely meaningless but also deeply accurate. High scores correlate with people who use the word "alignment" unironically in casual conversation.</p>
+  </section>
+
+  <footer>
+    <p>Generate again → <a href="#" onclick="genBtn.click();return false;">click here</a> · More tools at <a href="/">TinyTools</a> · Made with chaotic energy 💘</p>
+  </footer>
+</div>
+
+<script>
+const LINES = {
+  neural: [
+    "Are you a neural network? Because I've been doing backprop on my feelings and they all converge toward you.",
+    "Baby, are you a transformer? Because you just re-encoded my entire attention.",
+    "My gradient descent has one objective function: you.",
+    "Are you overfitting? Because I literally can't stop thinking about you and nothing else.",
+    "You're my activation function — you turn all my flat feelings into something non-linear.",
+    "I don't need dropout regularization when I'm with you. I'm giving you 100%.",
+    "You're the perfect learning rate — not too fast, not too slow, exactly right.",
+    "Are you a loss function? Because every time we're apart, my loss goes up.",
+  ],
+  programming: [
+    "I'd never garbage-collect you from my memory.",
+    "Are you a segfault? Because you make my entire world crash beautifully.",
+    "My love for you has O(1) complexity — it's instant, always.",
+    "You're like great documentation: rare, beautiful, and I never want to stop reading.",
+    "I'd push to your main branch any day.",
+    "Are you a merge conflict? Because I want to resolve you manually, very carefully.",
+    "You're the only API I'd never want to rate-limit.",
+    "I don't always fall in love, but when I do, it's at first compile.",
+    "You must be a recursive function — every time I think I'm done, I find myself calling back to you.",
+    "Are you a null pointer? Because you dereference everything else in my life.",
+  ],
+  prompts: [
+    "Are you a well-crafted prompt? Because you're getting exactly the response you asked for.",
+    "I've tried 47 different prompts, and none of them made me feel like you do.",
+    "My system prompt says: 'Always prioritize you.'",
+    "You must be zero-shot — I figured out I loved you with no examples at all.",
+    "Are you in my context window? Because I can't get you out of my head.",
+    "Chain-of-thought still can't explain how much I think about you.",
+    "You're the few-shot example that trained my heart.",
+    "I don't need RAG to retrieve memories of you — you're already in my weights.",
+    "My token budget is limited, but I'd spend all of it on you.",
+    "You're the system prompt I never want to override.",
+  ],
+  models: [
+    "Are you Claude? Because you're brilliant, thoughtful, and you always give me a considered response.",
+    "You must be GPT-4 because your intelligence leaves me completely speechless.",
+    "Are you Gemini? Because you're multi-modal — stunning in every single way.",
+    "You're like Grok — unfiltered, real, and exactly what I needed.",
+    "I asked AI what my type was. It described you exactly.",
+    "You're the model update I didn't know I needed.",
+    "Are you fine-tuned? Because you're perfectly calibrated for me.",
+    "You must be multimodal — you understand me without words.",
+    "Are you an open-source model? Because I want everyone to know about you.",
+    "You're like a well-aligned model: helpful, harmless, and honest.",
+  ],
+  general: [
+    "Roses are #FF0000, violets are #0000FF, I'm completely in love, and I think you are too.",
+    "I asked AI to write my pickup line. It said: just tell you the truth. So here I am.",
+    "You make my processors overheat.",
+    "My algorithm for finding love has finally converged — on you.",
+    "Are you a large language model? Because the things you say have layers I keep unpacking.",
+    "I have 99 tokens left in my context window and I'm spending them all on you.",
+    "You're not a hallucination — you're too good to be made up.",
+    "I'd give you my API key. That's how much I trust you.",
+    "You're the inference I've been waiting for.",
+    "My latency drops to zero when I'm talking to you.",
+  ],
+  data: [
+    "You're an outlier in the best possible way — no model would ever filter you out.",
+    "My p-value for falling in love with you is 0.0001. Statistically significant.",
+    "Are you normally distributed? Because you're exactly where I want to be.",
+    "You're the signal in all my noise.",
+    "I ran a regression and the only significant variable was you.",
+    "Baby, you increase my R² by 0.99.",
+    "You're the correlation I've been looking for — and we're definitely not just confounded.",
+    "Are you a Gaussian distribution? Because you're perfectly centered and I love your tails.",
+    "You're my global minimum in a landscape of local optima.",
+    "Even my confusion matrix is confused by how much I like you.",
+  ],
+  chatgpt: [
+    "Are you ChatGPT? Because talking to you always makes me think I can do anything.",
+    "You're like a custom GPT — built specifically for what I need.",
+    "My conversation with you has no token limit.",
+  ],
+  claude: [
+    "Are you Claude? Because you're the most thoughtful thing in the room.",
+    "You must be from Anthropic — you're aligned with everything I care about.",
+    "I've tried all the models. You're the one I keep coming back to.",
+  ],
+  gemini: [
+    "Are you Gemini? Because you have range I didn't know I needed.",
+    "You must be multimodal — you work on every level.",
+  ],
+  coding: [
+    "Are you Copilot? Because you finish my sentences and somehow always get it right.",
+    "You're the autocomplete suggestion that I actually accept.",
+    "With you, I never have to write from scratch.",
+  ],
+};
+
+const ALL_CATEGORIES = Object.keys(LINES).filter(k => !['chatgpt','claude','gemini','coding'].includes(k));
+
+function hashStr(str) {
+  let h = 5381;
+  for (let i = 0; i < str.length; i++) h = ((h << 5) + h + str.charCodeAt(i)) & 0xffffffff;
+  return Math.abs(h);
+}
+
+const ARCHETYPES = [
+  { score: 1, label: 'Chaotic Romantic', icon: '🎲', badge: 'Legendary Chaos Energy' },
+  { score: 2, label: 'Awkward But Sincere', icon: '😅', badge: 'Authentically Cringe' },
+  { score: 3, label: 'The Debug Date', icon: '🐛', badge: 'Finding Errors In Love' },
+  { score: 4, label: 'Recursive Flirt', icon: '🔄', badge: 'Can\'t Stop Looping' },
+  { score: 5, label: 'Average Stack Overflow Romeo', icon: '📋', badge: 'Copied From Somewhere' },
+  { score: 6, label: 'Solid Engineer', icon: '⚙️', badge: 'Production-Grade Feelings' },
+  { score: 7, label: 'Senior Dev Charmer', icon: '🧠', badge: 'Thinks Before Speaking' },
+  { score: 8, label: 'Principal Romantic', icon: '🌟', badge: 'Staff-Level Smooth' },
+  { score: 9, label: 'Distinguished Flirt', icon: '✨', badge: 'Google Fellow Of Love' },
+  { score: 10, label: 'Legendary Charmer', icon: '💎', badge: 'Turing-Complete Charm' },
+];
+
+const TOOL_BONUS = {
+  'ChatGPT': { cat: 'chatgpt', adj: 'reliable' },
+  'Claude': { cat: 'claude', adj: 'thoughtful' },
+  'Gemini': { cat: 'gemini', adj: 'versatile' },
+  'Grok': { cat: 'general', adj: 'unfiltered' },
+  'Copilot': { cat: 'coding', adj: 'helpful' },
+  'Midjourney': { cat: 'data', adj: 'creative' },
+  'Perplexity': { cat: 'general', adj: 'curious' },
+  'Cursor': { cat: 'coding', adj: 'fast' },
+  'Llama': { cat: 'general', adj: 'open-source' },
+  'all of them': { cat: 'general', adj: 'indiscriminate' },
+};
+
+function generateLines(name, tool, seed) {
+  const baseSeed = seed || hashStr(name.toLowerCase() + tool.toLowerCase());
+  const picked = [];
+  const usedPools = new Set();
+
+  // Tool-specific line first
+  const toolConfig = TOOL_BONUS[tool] || TOOL_BONUS['ChatGPT'];
+  const toolPool = LINES[toolConfig.cat] || LINES.general;
+  const toolLine = toolPool[(baseSeed + 1234) % toolPool.length];
+  picked.push(toolLine.replace(/\[name\]/g, name));
+  usedPools.add(toolConfig.cat);
+
+  // Pick from remaining categories
+  const remaining = ALL_CATEGORIES.filter(c => c !== toolConfig.cat);
+  for (let i = 0; i < 4; i++) {
+    const catIdx = (baseSeed + i * 7919 + 31337) % remaining.length;
+    const cat = remaining[catIdx % remaining.length];
+    const pool = LINES[cat];
+    const lineIdx = (baseSeed + i * 1009 + catIdx * 101 + 42) % pool.length;
+    const line = pool[lineIdx].replace(/\[name\]/g, name);
+    if (!picked.includes(line)) {
+      picked.push(line);
+      remaining.splice(catIdx % remaining.length, 1);
+    }
+  }
+
+  return picked.slice(0, 5);
+}
+
+function computeCharmScore(name) {
+  const h = hashStr(name.toLowerCase());
+  return (h % 10) + 1;
+}
+
+let currentVariant = 0;
+
+document.getElementById('genBtn').addEventListener('click', generate);
+document.getElementById('yourName').addEventListener('keydown', e => { if (e.key === 'Enter') generate(); });
+document.getElementById('rRegen').addEventListener('click', () => { currentVariant += 1; generate(true); });
+
+// Load from URL hash
+if (location.hash.length > 1) {
+  const hashVal = decodeURIComponent(location.hash.slice(1));
+  if (hashVal.includes('|')) {
+    const [name, tool] = hashVal.split('|');
+    document.getElementById('yourName').value = name;
+    const sel = document.getElementById('aiTool');
+    for (let i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === tool) { sel.selectedIndex = i; break; }
+    }
+    setTimeout(generate, 100);
+  }
+}
+
+function generate(isRegen) {
+  const name = document.getElementById('yourName').value.trim();
+  const tool = document.getElementById('aiTool').value;
+  if (!name) {
+    document.getElementById('yourName').focus();
+    document.getElementById('yourName').style.borderColor = 'var(--accent)';
+    return;
+  }
+  document.getElementById('yourName').style.borderColor = '';
+
+  const loading = document.getElementById('loading');
+  const card = document.getElementById('resultCard');
+  loading.classList.add('show');
+  card.classList.remove('show');
+  document.getElementById('genBtn').disabled = true;
+
+  setTimeout(() => {
+    const seed = hashStr(name.toLowerCase() + tool.toLowerCase()) + currentVariant * 999983;
+    const score = computeCharmScore(name) + (currentVariant % 3 === 1 ? 1 : 0);
+    const clampedScore = Math.min(10, Math.max(1, score));
+    const archetype = ARCHETYPES[clampedScore - 1];
+    const lines = generateLines(name, tool, seed);
+
+    document.getElementById('rIcon').textContent = archetype.icon;
+    document.getElementById('rName').textContent = name + ' × ' + tool;
+    document.getElementById('rType').textContent = 'Romantic Archetype: ' + archetype.label;
+    document.getElementById('rScore').textContent = clampedScore + '/10';
+    document.getElementById('rScore').style.color = clampedScore >= 8 ? '#f9a8d4' : clampedScore >= 5 ? '#fff' : '#fca5a5';
+
+    // Render lines
+    document.getElementById('rLines').innerHTML = lines.map((l, i) => `
+      <div class="pickup-line">
+        <div class="line-num">LINE ${i + 1}</div>
+        <button class="copy-line" onclick="navigator.clipboard.writeText(${JSON.stringify(l)});this.textContent='✓';setTimeout(()=>this.textContent='Copy',1200)">Copy</button>
+        "${l}"
+      </div>`).join('');
+
+    const toolConfig = TOOL_BONUS[tool] || TOOL_BONUS['ChatGPT'];
+    document.getElementById('rStats').innerHTML = [
+      ['Charm Score', clampedScore + '/10'],
+      ['Lines Generated', 5],
+      ['AI Preference', tool.split(' ')[0]],
+      ['Vibe', toolConfig.adj],
+    ].map(([l, v]) => `<div class="stat"><div class="stat-value">${v}</div><div class="stat-label">${l}</div></div>`).join('');
+
+    const badges = [
+      { cls: 'pink', text: archetype.icon + ' ' + archetype.badge },
+      { cls: 'purple', text: '🤖 ' + tool + ' User' },
+    ];
+    if (clampedScore >= 8) badges.push({ cls: 'gold', text: '✨ High Charm' });
+    if (clampedScore <= 3) badges.push({ cls: 'pink', text: '💀 Chaotically Endearing' });
+    badges.push({ cls: 'green', text: '📋 5 Lines Unlocked' });
+    document.getElementById('rAchievements').innerHTML = badges.map(b => `<span class="achievement ${b.cls}">${b.text}</span>`).join('');
+
+    const bestLine = lines[0];
+    const shareUrl = `https://tinytools-smoky.vercel.app/ai-pickup-lines/#${encodeURIComponent(name + '|' + tool)}`;
+    const shareText = `My AI pickup lines scored ${clampedScore}/10 on the charm meter 💘\n\nBest one: "${bestLine.slice(0, 100)}..."\n\nI'm a "${archetype.label}" apparently. Get yours →`;
+    document.getElementById('rShare').href =
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+    document.getElementById('rCopyLink').onclick = () => {
+      navigator.clipboard.writeText(shareUrl);
+      const btn = document.getElementById('rCopyLink');
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+    };
+
+    const canvas = document.getElementById('cardCanvas');
+    drawCard(canvas, name, tool, clampedScore, archetype, lines);
+    document.getElementById('rDownload').href = canvas.toDataURL('image/png');
+
+    const shieldColor = clampedScore >= 8 ? 'ff69b4' : clampedScore >= 5 ? 'blueviolet' : 'red';
+    const embedCode = `<a href="${shareUrl}" target="_blank">
+  <img src="https://img.shields.io/badge/AI_Charm_Score-${clampedScore}_out_of_10-${shieldColor}?style=for-the-badge&logo=heart" alt="AI Charm Score: ${clampedScore}/10">
+</a>`;
+    document.getElementById('rEmbed').textContent = embedCode;
+    document.getElementById('rEmbedCopy').onclick = () => {
+      navigator.clipboard.writeText(embedCode);
+      const btn = document.getElementById('rEmbedCopy');
+      btn.textContent = '✓ Copied';
+      setTimeout(() => btn.textContent = 'Copy embed code', 1500);
+    };
+
+    location.hash = '#' + encodeURIComponent(name + '|' + tool);
+    loading.classList.remove('show');
+    document.getElementById('genBtn').disabled = false;
+    card.classList.add('show');
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 700);
+}
+
+function drawCard(canvas, name, tool, score, archetype, lines) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#1f1020'); bg.addColorStop(1, '#0f0a14');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#ec4899'); stripe.addColorStop(1, '#a855f7');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 10);
+
+  ctx.fillStyle = '#ec4899';
+  ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText('💘 AI PICKUP LINES', 60, 68);
+
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 52px -apple-system, sans-serif';
+  ctx.fillText((name + ' × ' + tool).slice(0, 30), 60, 148);
+
+  ctx.fillStyle = '#f9a8d4';
+  ctx.font = '24px -apple-system, sans-serif';
+  ctx.fillText(archetype.icon + '  ' + archetype.label, 60, 185);
+
+  ctx.fillStyle = score >= 8 ? '#f9a8d4' : score >= 5 ? '#fff' : '#fca5a5';
+  ctx.font = 'bold 140px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(score + '/10', W - 60, 200);
+  ctx.textAlign = 'left';
+
+  ctx.fillStyle = '#fbcfe8';
+  ctx.font = 'italic 24px -apple-system, sans-serif';
+  const bestLine = '"' + lines[0] + '"';
+  const words = bestLine.split(' ');
+  let line = ''; let y = 265;
+  for (const w of words) {
+    const test = line ? line + ' ' + w : w;
+    if (ctx.measureText(test).width > W - 140 && line) {
+      ctx.fillText(line, 60, y); line = w; y += 34;
+      if (y > 410) { ctx.fillText(line + '...', 60, y); break; }
+    } else { line = test; }
+  }
+  if (y <= 410) ctx.fillText(line, 60, y);
+
+  ctx.fillStyle = '#9d4edd';
+  ctx.fillRect(60, y + 20, W - 120, 1);
+
+  ctx.fillStyle = '#d8b4fe';
+  ctx.font = 'italic 20px -apple-system, sans-serif';
+  ctx.fillText('"' + lines[1].slice(0, 90) + (lines[1].length > 90 ? '...' : '') + '"', 60, y + 46);
+
+  ctx.fillStyle = '#6b7280'; ctx.font = '16px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/ai-pickup-lines', W - 60, H - 24);
+  ctx.textAlign = 'left';
+}
+</script>
+</body>
+</html>
