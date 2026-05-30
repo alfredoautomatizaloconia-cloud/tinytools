@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Cost Calculator for RAG Engineers — Embeddings, Vector DB, Retrieval & Generation (2026)</title>
+<meta name="description" content="Built for RAG engineers managing embedding pipelines, vector database storage, and LLM generation costs. Calculate the true per-query cost, model embedding bill for any corpus size, and compare Pinecone vs Weaviate vs Qdrant vs self-hosted before committing to a stack.">
+<meta name="keywords" content="rag cost calculator, retrieval augmented generation cost, embedding cost calculator, pinecone pricing calculator, vector database cost estimator, openai embedding cost, rag vs fine-tuning cost, llm rag pipeline cost, cohere reranker cost, qdrant weaviate pricing comparison">
+<meta property="og:title" content="AI Cost Calculator for RAG Engineers — Free, No Signup">
+<meta property="og:description" content="Model the full RAG cost stack: corpus embedding, vector DB storage, per-query retrieval, reranking, and LLM generation. Compare Pinecone, Weaviate, Qdrant, and self-hosted side-by-side before you scale.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-cost-calculator/for-rag-engineers/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Cost Calculator for RAG Engineers",
+  "description": "Free AI cost calculator for RAG engineers: estimate corpus embedding costs, vector database storage, per-query retrieval and reranking expenses, and LLM generation costs across OpenAI, Cohere, Pinecone, Weaviate, and Qdrant.",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-rag-engineers/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "audience": { "@type": "Audience", "audienceType": "RAG Engineers and AI Application Developers" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Cost Calculator for RAG Engineers",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-rag-engineers/",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "TinyTools",
+    "url": "https://tinytools-smoky.vercel.app/"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "RAG Pipeline Cost Estimation, Embedding Budget Planning, and Vector Database Cost Modeling"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "AI Cost Calculator", "item": "https://tinytools-smoky.vercel.app/ai-cost-calculator/" },
+      { "@type": "ListItem", "position": 3, "name": "For RAG Engineers", "item": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-rag-engineers/" }
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate the embedding cost for a large document corpus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Embedding cost is: (total tokens in corpus) × (embedding model price per token). For OpenAI text-embedding-3-small at $0.02 per million tokens, embedding a 1-million-document corpus where each document averages 500 tokens costs 500M tokens × $0.02/1M = $10. That is the one-time ingestion cost. You also need to re-embed documents when the model changes or when you update your chunking strategy — factor in a re-embedding budget of 10–20% of the original ingestion cost per quarter for active corpora. The TinyTools AI Cost Calculator models both the initial ingestion pass and incremental re-embedding separately so neither surprises you in production."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the per-query cost for a RAG pipeline at scale?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A single RAG query has three billable components: (1) embedding the user query — typically 20–60 tokens, negligible per query but material at millions of queries per month; (2) the vector database retrieval call, which on managed services like Pinecone Serverless is billed per read unit; (3) the LLM generation call, which ingests the query plus retrieved context chunks and outputs an answer. At 100,000 queries per month with 3 retrieved chunks of 400 tokens each and GPT-4o Mini as the generation model, the generation cost alone is roughly $60–$90/month. The embedding query cost adds roughly $0.04/month — trivial. The Pinecone read units for the same volume are roughly $5–$15/month depending on index size. Total: $65–$105/month for that query volume, before any caching layer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it cheaper to use a smaller embedding model with a reranker, or a large embedding model alone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Small embedding model + reranker is almost always cheaper at scale while matching or exceeding retrieval quality. The pattern: embed with text-embedding-3-small ($0.02/1M tokens), retrieve top-20 candidates, rerank with Cohere Rerank ($1.00 per 1,000 calls) to surface the top-3 for the LLM context. Compared to using text-embedding-3-large ($0.13/1M tokens) with no reranker and retrieving the top-3 directly, the small+reranker approach saves roughly 85% on embedding ingestion cost and typically improves answer relevance on longer documents. The calculator models both paths so you can see the crossover point at your specific query volume."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do Pinecone Serverless, Weaviate Cloud, and Qdrant Cloud compare on cost for a 10-million-vector index?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a 10-million-vector index with 1,536 dimensions (text-embedding-3-small), approximate monthly costs are: Pinecone Serverless charges for storage (roughly $0.033/GB/month, ~$5/month for 10M vectors) plus read unit consumption ($2/1M read units); Weaviate Cloud (Standard tier) prices by vector count — roughly $25–$45/month at 10M vectors; Qdrant Cloud (1.5 CPU cluster) is approximately $25–$35/month. Self-hosted Qdrant on a single VPS with 8GB RAM runs $10–$20/month in compute — cheapest at scale but adds operational overhead. The right choice depends on your read pattern: Pinecone Serverless is cheapest for low-QPS workloads with large indexes; Qdrant Cloud wins at high QPS with moderate index sizes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When does RAG become more expensive than fine-tuning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RAG costs scale with query volume because every query pays a retrieval and generation cost. Fine-tuning has a fixed upfront cost plus a reduced per-query cost (shorter prompts, no context chunks). The break-even point is usually between 50,000 and 200,000 monthly queries, depending on context chunk size and the generation model used. Above that volume, a fine-tuned model on a dedicated endpoint often delivers lower total cost per query. Below it, RAG is cheaper because you avoid the training investment and the fine-tuned model's hosting cost. The AI Cost Calculator runs this comparison with your specific query volume, context length, and model choices so the decision is a number, not a guess."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #6366f1; --accent-glow: #6366f140;
+    --green: #10b981; --red: #ef4444; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { text-align: center; padding: 24px 0 16px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.12; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 660px; margin: 0 auto 28px; }
+  .cta {
+    display: inline-block; padding: 14px 26px; background: var(--accent); color: #fff;
+    border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 16px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 24px var(--accent-glow);
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 32px var(--accent-glow); }
+  .cta-row { text-align: center; margin: 24px 0 36px; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; margin: 24px 0;
+  }
+  .panel h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.01em; color: #fff; }
+  .panel h3 { font-size: 17px; margin: 20px 0 8px; color: #fff; }
+  .panel p { color: var(--text-dim); margin-bottom: 12px; }
+  .panel ul { color: var(--text-dim); margin: 8px 0 16px 22px; }
+  .panel li { margin-bottom: 6px; }
+  .panel a { color: #a5b4fc; text-decoration: none; border-bottom: 1px dashed #6366f155; }
+  .panel a:hover { border-bottom-style: solid; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 16px 0 8px;
+  }
+  .card {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; padding: 18px;
+  }
+  .card .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .card .value { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .card .note { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { color: var(--text); }
+  td.dim { color: var(--text-dim); }
+  footer { text-align: center; color: var(--text-dim); font-size: 13px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+  footer a { color: #a5b4fc; text-decoration: none; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; }
+  .breadcrumb a { color: #a5b4fc; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;&rsaquo;&nbsp; <a href="/ai-cost-calculator/">AI Cost Calculator</a> &nbsp;&rsaquo;&nbsp; For RAG Engineers
+  </div>
+
+  <header>
+    <span class="badge">Free &middot; No signup &middot; Runs in your browser</span>
+    <h1>AI Cost Calculator for RAG Engineers</h1>
+    <p class="subtitle">Model your entire RAG cost stack before production: corpus embedding, vector database storage, per-query retrieval, reranker calls, and LLM generation. Compare Pinecone, Weaviate, Qdrant, and self-hosted side-by-side against your actual corpus size and query volume.</p>
+    <div class="cta-row">
+      <a class="cta" href="/ai-cost-calculator/">Open the AI Cost Calculator &rarr;</a>
+    </div>
+  </header>
+
+  <div class="panel">
+    <h2>The five cost layers every RAG pipeline hides from you</h2>
+    <p>RAG pipelines have a seductive unit economics problem: each individual cost looks negligible until you multiply it by corpus size or query volume. A RAG system that costs $8 at 1,000 queries per month costs $8,000 at 1,000,000 — and the cost composition shifts dramatically across that range. Engineers who design RAG systems without modeling all five cost layers routinely get surprised in production.</p>
+    <p>The first layer is <strong>initial corpus embedding</strong> — the one-time cost of chunking your documents and calling an embedding API or self-hosted model for every chunk. At $0.02 per million tokens (text-embedding-3-small), a 5-million-document corpus averaging 300 tokens per chunk costs about $30 to embed. At $0.13 per million tokens (text-embedding-3-large), the same corpus costs $195. Neither number is a surprise on its own, but most teams discover their corpus is three to five times larger than the working estimate once preprocessing is complete.</p>
+    <p>The second layer is <strong>incremental re-embedding</strong> — the ongoing cost of embedding new and updated documents as your knowledge base evolves. For a corpus that turns over 10% of its content monthly, re-embedding at text-embedding-3-small costs a predictable monthly line item that scales with content velocity, not query volume.</p>
+    <p>The third layer is <strong>vector database storage and operations</strong>. Managed vector DBs like Pinecone Serverless, Weaviate Cloud, and Qdrant Cloud charge for stored vectors and read operations separately. The storage cost is predictable from corpus size; the read operation cost scales with query volume and the number of top-k candidates you retrieve per query. Fetching top-20 candidates for reranking costs roughly 4× more in read units than fetching top-5 directly — a trade-off that is only visible when you model both options.</p>
+    <p>The fourth layer is <strong>reranker inference</strong>. If your pipeline uses a cross-encoder reranker like Cohere Rerank, Jina Reranker, or a self-hosted model to reorder retrieved candidates before passing them to the LLM, every query incurs a reranker call. Cohere Rerank bills at $1 per 1,000 calls; at 500,000 monthly queries that is $500/month — a significant cost center that most RAG architectures never budget for explicitly.</p>
+    <p>The fifth layer is <strong>LLM generation</strong> — the most variable cost, driven by context length. Each retrieved chunk you inject into the generation prompt is billable input tokens. Retrieving 5 chunks of 500 tokens each adds 2,500 tokens of context to every query. At GPT-4o rates, that context cost alone is $6.25 per million queries. At GPT-4o Mini it is $0.94 per million queries. Choosing the right generation model — and tuning how many context chunks you pass — is the single highest-leverage cost decision in a mature RAG pipeline.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Five use cases specific to RAG engineers</h2>
+
+    <h3>1. Estimating embedding cost for a new corpus before ingestion</h3>
+    <p>Before running an ingestion pipeline over a large document corpus — legal filings, support tickets, product documentation, internal wikis — you need a cost estimate for the embedding pass. The calculator takes your document count, average tokens per chunk, chunking overlap ratio (which inflates total token count), and embedding model to return the total ingestion cost and a per-document rate. For teams choosing between OpenAI, Cohere, and Voyage AI embedding models, the calculator shows each option side-by-side so the embedding model selection is a cost-informed decision rather than a default.</p>
+
+    <h3>2. Modeling per-query cost at your target QPS</h3>
+    <p>The per-query cost of a RAG pipeline compounds across four operations: query embedding, vector DB retrieval, optional reranking, and LLM generation. At 10 queries per day the total is essentially zero. At 1 million queries per month, each of those four components contributes meaningfully to a real monthly invoice. Input your query embedding model, average query token length, vector DB provider and top-k, reranker (if any), generation model, and average retrieved context length, and the calculator returns the all-in cost per query and the monthly total at your target volume.</p>
+
+    <h3>3. Comparing managed vector DB vs. self-hosted on total cost of ownership</h3>
+    <p>Pinecone Serverless, Weaviate Cloud, and Qdrant Cloud all eliminate operational overhead — no cluster management, no embedding index maintenance, no hardware provisioning. That convenience has a price premium over self-hosted. For a 10-million-vector index at 50,000 queries per month, managed options run $30–$60/month depending on provider. A self-hosted Qdrant instance on a $20/month VPS handles the same workload with better latency and zero per-read billing — but adds operational overhead. The calculator surfaces both the dollar cost and the rough ops-hours cost so the build vs. buy decision is quantified on both dimensions.</p>
+
+    <h3>4. Deciding between small-embedding-plus-reranker vs. large-embedding-alone</h3>
+    <p>A common architecture question in RAG is whether to use a large, high-fidelity embedding model and retrieve a small top-k directly, or use a cheap small embedding model, retrieve a large candidate set, and apply a cross-encoder reranker to get precision. The cost math strongly favors small-plus-reranker at scale: embedding ingestion is 6× cheaper with text-embedding-3-small versus text-embedding-3-large, and the reranker cost at typical query volumes is $5–$50/month — less than the savings on the embedding bill alone. The quality tradeoff is real but often favorable; the calculator makes the cost side concrete so the architecture decision is grounded in numbers.</p>
+
+    <h3>5. Forecasting RAG vs. fine-tune break-even at scale</h3>
+    <p>Every high-volume RAG pipeline eventually reaches a query volume where fine-tuning the generation model — and collapsing context length — becomes cheaper per month than continuing to inject retrieved context on every call. For a RAG pipeline that injects 3,000 tokens of context per query at GPT-4o pricing, fine-tuning a smaller model and reducing context to 500 tokens saves roughly $6 per thousand queries in generation cost alone. With a fine-tuning investment of $300–$500, the break-even is often 50,000–100,000 queries. The calculator models this transition point with your specific context length, generation model, and query volume so you know when to initiate the fine-tune project.</p>
+  </div>
+
+  <div class="panel">
+    <h2>RAG component pricing at a glance (mid-2026)</h2>
+    <p>These figures reflect approximate published rates. Use the live calculator to model current rates, which update within 1–3 days of provider changes.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Provider / Model</th>
+          <th>Indicative price</th>
+          <th>Best for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Embedding</td><td class="dim">OpenAI text-embedding-3-small</td><td>$0.02 / 1M tokens</td><td class="dim">Default choice, strong perf/cost</td></tr>
+        <tr><td>Embedding</td><td class="dim">OpenAI text-embedding-3-large</td><td>$0.13 / 1M tokens</td><td class="dim">High-precision retrieval, large corpora</td></tr>
+        <tr><td>Embedding</td><td class="dim">Cohere embed-v3</td><td>$0.10 / 1M tokens</td><td class="dim">Multilingual, compressed embeddings</td></tr>
+        <tr><td>Embedding</td><td class="dim">Voyage AI voyage-3</td><td>$0.06 / 1M tokens</td><td class="dim">Code and technical documents</td></tr>
+        <tr><td>Vector DB</td><td class="dim">Pinecone Serverless</td><td>~$0.033 / GB stored + reads</td><td class="dim">Low-QPS, large index, no infra</td></tr>
+        <tr><td>Vector DB</td><td class="dim">Weaviate Cloud (Standard)</td><td>~$25–$45 / mo @ 10M vecs</td><td class="dim">Multi-modal, hybrid search built-in</td></tr>
+        <tr><td>Vector DB</td><td class="dim">Qdrant Cloud</td><td>~$25–$35 / mo (1.5 CPU cluster)</td><td class="dim">High QPS, scalar quantization</td></tr>
+        <tr><td>Vector DB</td><td class="dim">Self-hosted Qdrant (VPS)</td><td>~$10–$20 / mo compute</td><td class="dim">Cost-sensitive, ops-capable teams</td></tr>
+        <tr><td>Reranker</td><td class="dim">Cohere Rerank 3</td><td>$1.00 / 1,000 calls</td><td class="dim">Production reranking, any embedding</td></tr>
+        <tr><td>Reranker</td><td class="dim">Jina Reranker v2</td><td>$0.00002 / token</td><td class="dim">Long document reranking</td></tr>
+        <tr><td>Generation</td><td class="dim">GPT-4o Mini</td><td>$0.15 / 1M in, $0.60 / 1M out</td><td class="dim">High-volume RAG generation</td></tr>
+        <tr><td>Generation</td><td class="dim">GPT-4o</td><td>$2.50 / 1M in, $10 / 1M out</td><td class="dim">Complex reasoning, low-volume QA</td></tr>
+        <tr><td>Generation</td><td class="dim">Claude Sonnet 4.6</td><td>$3.00 / 1M in, $15 / 1M out</td><td class="dim">Long context, nuanced synthesis</td></tr>
+        <tr><td>Generation</td><td class="dim">Llama 3.3 70B (Together AI)</td><td>$0.88 / 1M in+out</td><td class="dim">Open-weight, cost-sensitive scale</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h2>Example RAG pipeline cost breakdown</h2>
+    <p>A representative mid-scale enterprise RAG system: 500,000 documents (avg 400 tokens/chunk after overlap), embedded with text-embedding-3-small, stored in Qdrant Cloud, reranked with Cohere Rerank 3, generated with GPT-4o Mini. Query volume: 200,000/month, 4 chunks of 400 tokens injected per generation call.</p>
+    <div class="grid">
+      <div class="card"><div class="label">Initial embedding</div><div class="value">$4</div><div class="note">500K docs × 400 tokens</div></div>
+      <div class="card"><div class="label">Vector DB (monthly)</div><div class="value">$28</div><div class="note">Qdrant Cloud, ~2M vectors</div></div>
+      <div class="card"><div class="label">Reranker (monthly)</div><div class="value">$200</div><div class="note">200K calls, Cohere Rerank</div></div>
+      <div class="card"><div class="label">Generation (monthly)</div><div class="value">$156</div><div class="note">200K queries, 4×400 ctx + 300 out</div></div>
+    </div>
+    <p style="margin-top:16px;">Total monthly steady-state cost: <strong style="color:#a5b4fc;">~$384</strong>. Without a reranker (retrieving top-4 directly with text-embedding-3-large): monthly cost is approximately <strong style="color:#a5b4fc;">~$290</strong>, but re-embedding the 500K corpus costs $26 upfront vs $4 — and retrieval quality on long, heterogeneous documents is typically lower. At this scale, small-embedding-plus-reranker is slightly more expensive monthly but significantly cheaper to re-index when the corpus changes.</p>
+    <p>Plug your real document count, chunk strategy, and query volume into the live calculator to get accurate numbers for your stack.</p>
+  </div>
+
+  <div class="panel">
+    <h2>What else RAG engineers need in their production stack</h2>
+    <p>Cost modeling gives you the financial foundation for RAG architecture decisions. The remaining production concerns — compliance, content authenticity, and regulatory risk — the TinyTools suite addresses without adding subscriptions:</p>
+    <ul>
+      <li>RAG systems that surface AI-generated answers to end users are increasingly subject to AI transparency requirements under the EU AI Act (Article 52) and FTC guidance on deceptive AI outputs. The <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> produces ready-to-embed disclosure labels for your RAG endpoint's UI, API documentation, and user-facing interfaces — particularly important if your system answers questions in a conversational format that could be mistaken for human expertise.</li>
+      <li>If your RAG corpus is scraped from the web, the <a href="/ai-robots-txt-generator/">AI Robots.txt Generator</a> helps you publish a clear data-use policy for your own project's domain — keeping your data licensing posture consistent with the scraping practices you rely on for corpus construction.</li>
+      <li>Evaluating the quality of RAG-generated answers often involves checking whether the output sounds indistinguishably AI-generated, particularly in customer-facing or regulated contexts. The <a href="/ai-text-detector/">AI Text Detector</a> provides a quick spot-check on generated outputs during evaluation and regression testing, without a paid evaluation platform subscription.</li>
+      <li>If your RAG pipeline powers a product deployed in the EU — or ingests or generates content that EU users receive — the <a href="/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> tool walks through the classification decision tree for your specific use case, clarifying whether your system triggers transparency, documentation, or conformity assessment obligations under the 2026 enforcement timeline.</li>
+    </ul>
+    <p>For technical depth on RAG architecture and embedding model benchmarks, the authoritative sources are the <a href="https://platform.openai.com/docs/guides/embeddings" rel="nofollow noopener" target="_blank">OpenAI embeddings guide</a>, <a href="https://docs.cohere.com/docs/rerank-2" rel="nofollow noopener" target="_blank">Cohere Rerank documentation</a>, the <a href="https://qdrant.tech/documentation/concepts/filtering/" rel="nofollow noopener" target="_blank">Qdrant filtering and quantization docs</a>, and the <a href="https://huggingface.co/blog/mteb" rel="nofollow noopener" target="_blank">MTEB leaderboard on Hugging Face</a> for embedding model comparison at scale.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Frequently asked questions</h2>
+
+    <h3>How do I estimate the token count for my corpus before embedding?</h3>
+    <p>The fastest approximation is 1 token ≈ 4 characters of English text, or roughly 250–300 tokens per standard 200-word paragraph. For PDFs and HTML, extract plain text first — raw file size is a poor predictor of token count because markup and whitespace inflate byte count without adding tokens. Run a sample of 100–200 documents through your chunking pipeline and tokenizer to calibrate a per-document token average, then multiply by your total document count. Budget an additional 10–15% for chunk overlap, which creates duplicate token regions that count toward the embedding bill even though they represent the same content.</p>
+
+    <h3>Does vector database cost scale with embedding dimension?</h3>
+    <p>Yes — storage cost scales directly with dimension count because each vector requires dimension × 4 bytes (for float32) of storage. A 10-million-vector index at 1,536 dimensions (text-embedding-3-small or Ada-002 output) uses approximately 57 GB of raw vector data, plus overhead for the HNSW index structure (typically 20–40% additional). Switching from 1,536 to 3,072 dimensions (text-embedding-3-large) doubles storage cost. Scalar quantization — supported natively in Qdrant and available in Weaviate — compresses float32 to int8, reducing storage by roughly 4× at a small accuracy tradeoff that is often acceptable for semantic search use cases.</p>
+
+    <h3>How should I budget for hybrid search (BM25 + dense retrieval)?</h3>
+    <p>Hybrid search adds a keyword-based retrieval pass (BM25 or BM42) alongside dense vector retrieval, then fuses the results. The BM25 pass has no embedding cost but does require an inverted index, which some vector DBs (Weaviate, Qdrant) build automatically while others (Pinecone) handle through a separate sparse vector index. The incremental cost of enabling hybrid search is typically 10–30% additional storage (for the sparse index) and marginal additional latency. For RAG systems where query intent is ambiguous or domain terminology is distinctive, hybrid search materially improves recall with a small cost premium — budget it as a fixed per-month addition rather than a per-query surcharge.</p>
+
+    <h3>Is the calculator accurate for self-hosted embedding models?</h3>
+    <p>For self-hosted models running on your own GPU (sentence-transformers, BGE, E5, or quantized versions of larger models), the cost is GPU-hour × embedding throughput, not a per-token API charge. A single A10G GPU (roughly $0.75/hr on Lambda Labs or Vast.ai) can embed approximately 500,000–2,000,000 tokens per hour depending on the model and batch size. The calculator supports a custom GPU-hour cost mode where you enter your GPU cost and throughput benchmark to derive a per-token cost equivalent that drops directly into the comparison table alongside managed API options.</p>
+
+    <h3>What is the cheapest production-grade RAG stack for a bootstrapped team?</h3>
+    <p>For a team that wants production reliability without a large infrastructure budget: text-embedding-3-small for corpus embedding, self-hosted Qdrant on a $20–$30/month VPS, no managed reranker (use a lightweight cross-encoder via HuggingFace Inference Endpoints instead, roughly $0.02/call), and GPT-4o Mini or Llama 3.3 70B on Together AI for generation. At 50,000 queries per month, this stack runs approximately $40–$70/month all-in — compared to $150–$250/month for the fully managed equivalent. The trade-off is operational effort: Qdrant upgrades, vector index backups, and VPS monitoring are on your team rather than the provider's SLA.</p>
+  </div>
+
+  <div class="cta-row">
+    <a class="cta" href="/ai-cost-calculator/">Try the AI Cost Calculator Free &rarr;</a>
+  </div>
+
+  <footer>
+    Part of <a href="/">TinyTools</a> &mdash; focused, free utilities for RAG engineers, AI app builders, and production ML teams.
+  </footer>
+</div>
+</body>
+</html>
