@@ -112,3 +112,19 @@ platform-ready status) make the share tweet feel earned and data-driven.
 **Sitemap:** both added at priority 1.0
 
 **Tier 0 remaining (not yet shipped):** ai-cofounder-match, devops-disaster-score, saas-burn-roast
+
+### viral-retrofit — 2026-05-30 22:51 UTC
+
+**Tool retrofitted:** cover-letter-generator
+**Commit:** de1cc95c717e1a7e2da2ea0bc8afed76b1d8aa09
+
+**Viral mechanics added:**
+- 🐦 Share on X — tweet prefilled: "Just generated an AI cover letter for \"[job title]\" in ~30 sec. Free, no signup, BYOK →"
+- 🔗 Copy deep-link — encodes job title in URL hash
+- 💾 Download card — 1200×630 canvas PNG with letter preview + TinyTools brand
+- 🏷️ Embeddable badge — shields.io badge with job title slug
+- 🔗 Auto-load from URL hash — #job-title pre-populates job field placeholder for deep-link visits
+
+**Visitor count (tinytools-smoky/root):** 1
+**Tools remaining without viral mechanics:** 8 (background-remover, c2pa-manifest-generator, chat-with-pdf, domain-generator, mcp-server-inspector, pdf-to-markdown, resume-tailorer, youtube-to-blog)
+
