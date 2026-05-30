@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Disclosure Generator for HuggingFace Contributors — EU AI Act Compliance for Models & Spaces</title>
+<meta name="description" content="Publish models, datasets, or Spaces on HuggingFace? EU AI Act Article 50 requires disclosure labels on any AI-generated output shown to end users. Generate compliant labels free in seconds.">
+<meta name="keywords" content="AI disclosure generator HuggingFace, EU AI Act model card compliance, HuggingFace Spaces disclosure, Article 50 AI Act model hub, AI model disclosure label HuggingFace contributor">
+<meta property="og:title" content="AI Disclosure Generator for HuggingFace Contributors — EU AI Act Compliant">
+<meta property="og:description" content="Publish models or Spaces on HuggingFace? EU users accessing your Space need Article 50 disclosure labels. Generate yours free in 10 seconds.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-huggingface-contributors/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-huggingface-contributors/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Disclosure Generator for HuggingFace Contributors",
+  "description": "HuggingFace model publishers, dataset creators, and Space builders need EU AI Act-compliant disclosure labels whenever their models produce content visible to end users. Generate correct HTML badges, JSON-LD schema, and model card snippets in seconds — free.",
+  "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-huggingface-contributors/",
+  "dateModified": "2026-05-30",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/"},
+      {"@type": "ListItem", "position": 2, "name": "AI Disclosure Generator", "item": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/"},
+      {"@type": "ListItem", "position": 3, "name": "For HuggingFace Contributors", "item": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-huggingface-contributors/"}
+    ]
+  },
+  "mainEntity": {
+    "@type": "WebApplication",
+    "name": "AI Content Disclosure Generator",
+    "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {"@type": "Offer", "price": "0"}
+  }
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #fbbf24; --accent-glow: #fbbf2440;
+    --green: #10b981; --red: #ef4444; --purple: #a78bfa;
+    --hf-orange: #ff6b35;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #a78bfa30 0%, transparent 50%);
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 32px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span { margin: 0 6px; }
+
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .badge {
+    display: inline-block; padding: 5px 12px;
+    border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+  }
+  .badge-red { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color: #fca5a5; }
+  .badge-purple { background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.4); color: #c4b5fd; }
+  .badge-yellow { background: rgba(251,191,36,0.15); border: 1px solid rgba(251,191,36,0.4); color: #fde68a; }
+  .badge-orange { background: rgba(255,107,53,0.15); border: 1px solid rgba(255,107,53,0.4); color: #fdba8c; }
+
+  h1 {
+    font-size: clamp(28px, 4vw, 44px); font-weight: 800; line-height: 1.15;
+    margin-bottom: 18px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fde68a 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-sub { font-size: 18px; color: var(--text-dim); margin-bottom: 28px; max-width: 660px; }
+
+  .cta-block {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px 32px; margin-bottom: 56px;
+    display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
+    border-left: 4px solid var(--accent);
+  }
+  .cta-block .cta-text { flex: 1 1 300px; }
+  .cta-block .cta-text p { color: var(--text-dim); font-size: 15px; margin-top: 6px; }
+  .cta-block strong { font-size: 17px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px; background: var(--accent); color: #1a1200;
+    font-weight: 700; font-size: 15px; border-radius: 10px;
+    text-decoration: none; white-space: nowrap; transition: background 0.15s;
+  }
+  .btn-primary:hover { background: #fcd34d; }
+
+  h2 { font-size: 26px; font-weight: 700; margin: 48px 0 16px; letter-spacing: -0.01em; }
+  h3 { font-size: 18px; font-weight: 700; margin: 28px 0 10px; color: var(--accent); }
+  p { color: var(--text-dim); margin-bottom: 14px; font-size: 16px; }
+  strong { color: var(--text); }
+  a { color: var(--accent); }
+
+  .use-cases { display: grid; gap: 16px; margin: 24px 0 40px; }
+  .use-case-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px 24px;
+    display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start;
+  }
+  .use-case-card .icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--accent-glow); border: 1px solid rgba(251,191,36,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; flex-shrink: 0;
+  }
+  .use-case-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .use-case-card p { margin-bottom: 0; font-size: 15px; }
+
+  .pain-table {
+    width: 100%; border-collapse: collapse; margin: 24px 0 40px;
+    background: var(--bg-card); border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .pain-table th {
+    text-align: left; padding: 14px 20px; font-size: 13px; font-weight: 600;
+    color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--border); background: var(--bg-elevated);
+  }
+  .pain-table td {
+    padding: 14px 20px; font-size: 15px; border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .pain-table tr:last-child td { border-bottom: none; }
+  .pain-table td:first-child { color: var(--red); }
+  .pain-table td:last-child { color: var(--green); }
+
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0 40px; }
+  .pricing-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px 20px; text-align: center;
+  }
+  .pricing-card.featured {
+    border-color: var(--accent); background: var(--bg-elevated);
+  }
+  .pricing-card .price { font-size: 32px; font-weight: 800; color: var(--text); margin: 8px 0 4px; }
+  .pricing-card .price-label { font-size: 13px; color: var(--text-dim); }
+  .pricing-card .product-name { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+  .pricing-card ul { list-style: none; text-align: left; margin-top: 14px; }
+  .pricing-card ul li { font-size: 13px; color: var(--text-dim); padding: 4px 0; }
+  .pricing-card ul li::before { content: "✓ "; color: var(--green); }
+
+  .related-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 24px 0; }
+  .related-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 20px; text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .related-card:hover { border-color: var(--accent); background: var(--bg-elevated); }
+  .related-card .tool-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .related-card .tool-desc { font-size: 13px; color: var(--text-dim); }
+
+  .code-snippet {
+    background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 20px; margin: 16px 0 24px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 13px; color: #a5f3fc; overflow-x: auto; line-height: 1.6;
+  }
+
+  .final-cta {
+    background: linear-gradient(135deg, var(--bg-elevated) 0%, #1a1a2a 100%);
+    border: 1px solid var(--border); border-top: 3px solid var(--accent);
+    border-radius: 16px; padding: 40px 36px; margin-top: 56px; text-align: center;
+  }
+  .final-cta h2 { font-size: 28px; margin: 0 0 12px; }
+  .final-cta p { max-width: 520px; margin: 0 auto 24px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="breadcrumb">
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a>
+    <span>›</span>
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a>
+    <span>›</span>
+    For HuggingFace Contributors
+  </nav>
+
+  <div class="badge-row">
+    <span class="badge badge-red">EU AI Act Article 50</span>
+    <span class="badge badge-orange">Models · Datasets · Spaces</span>
+    <span class="badge badge-purple">Gradio · Streamlit · Transformers</span>
+    <span class="badge badge-yellow">Free · No Signup</span>
+  </div>
+
+  <h1>AI Disclosure Generator for HuggingFace Contributors</h1>
+  <p class="hero-sub">You publish models, datasets, or Spaces on the HuggingFace Hub. The moment EU users interact with your Space or a downstream app running your model, <strong>EU AI Act Article 50 requires a disclosure label</strong>. Generate the right one in 10 seconds — free, no lawyer needed.</p>
+
+  <div class="cta-block">
+    <div class="cta-text">
+      <strong>Generate your AI disclosure label now</strong>
+      <p>Get copy-paste HTML badges, JSON-LD schema, and model card markdown snippets ready to drop into your Space README or Gradio app.</p>
+    </div>
+    <a class="btn-primary" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">
+      ⚡ Generate Free Disclosure →
+    </a>
+  </div>
+
+  <h2>Why HuggingFace Contributors Need Disclosures</h2>
+  <p>The HuggingFace Hub hosts over one million models — and a significant portion of the Spaces and downstream applications built on them are actively shown to EU users. The EU AI Act's transparency obligations under <strong>Article 50</strong> came into full effect in 2025 and cover any AI system that generates text, images, audio, or video that a natural person could reasonably mistake for human-made content.</p>
+  <p>That means if your Gradio Space lets users generate text summaries, your diffusion model powers image generation in someone's app, or your fine-tuned LLM answers questions in a public chatbot — <strong>a disclosure label is legally required</strong> for EU-facing interactions. HuggingFace doesn't enforce this automatically; it's the model publisher's and Space developer's responsibility.</p>
+  <p>The good news: complying doesn't require a legal team or enterprise compliance tooling. For the vast majority of HuggingFace contributors, a correctly worded badge, a model card section, and a one-line Gradio footer are all you need.</p>
+
+  <h2>5 Use Cases Specific to HuggingFace Contributors</h2>
+  <div class="use-cases">
+    <div class="use-case-card">
+      <div class="icon">🤗</div>
+      <div>
+        <h4>HuggingFace Spaces with Public Demos</h4>
+        <p>Your Gradio or Streamlit Space is publicly accessible — which means EU citizens can reach it right now. Any Space where users submit a prompt and receive AI-generated output falls squarely under Article 50. Drop the generated HTML disclosure into your Gradio <code>gr.Markdown</code> header or Streamlit sidebar. Takes 60 seconds and keeps you compliant.</p>
+      </div>
+    </div>
+    <div class="use-case-card">
+      <div class="icon">📋</div>
+      <div>
+        <h4>Model Cards for Generative Models</h4>
+        <p>When you publish a text-generation, image-generation, or text-to-speech model, the model card is often the first touchpoint for anyone who will deploy it. Adding a <strong>Compliance</strong> section to your model card with the correct disclosure language — covering what the model generates and what disclosures downstream deployers must add — is emerging best practice and will soon be expected by regulators. The generator outputs a ready-to-paste markdown block.</p>
+      </div>
+    </div>
+    <div class="use-case-card">
+      <div class="icon">🗂️</div>
+      <div>
+        <h4>Synthetic Dataset Cards</h4>
+        <p>Built a dataset using GPT-4, Claude, or another foundation model? Synthetic datasets must be disclosed as AI-generated under Article 50, particularly when they're used to train models that will eventually produce user-facing output. Your dataset card needs a clear disclosure statement. Generate the correct wording in seconds — no legalese required.</p>
+      </div>
+    </div>
+    <div class="use-case-card">
+      <div class="icon">🔁</div>
+      <div>
+        <h4>Fine-Tuned Models Published for Others to Use</h4>
+        <p>You fine-tuned Llama, Mistral, or Stable Diffusion on a custom dataset and published the weights. Other developers will download and deploy your model in apps that reach EU users. Including a disclosure template in your model card — stating that any output from this model shown to EU users requires an Article 50 label — protects both you and the downstream developer. Generate the model card language now.</p>
+      </div>
+    </div>
+    <div class="use-case-card">
+      <div class="icon">🔌</div>
+      <div>
+        <h4>Inference API Integrations</h4>
+        <p>If you're using the HuggingFace Inference API to power a web app or API endpoint that serves EU users, the output is considered AI-generated content under Article 50. Your app needs a disclosure label on every response. Generate a reusable HTML badge and a JSON-LD schema block that you can add to your API response wrapper or frontend UI — it takes under a minute.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Pain Point → Tool Solution</h2>
+  <table class="pain-table">
+    <thead>
+      <tr>
+        <th>😩 The Pain</th>
+        <th>⚡ What the Tool Does</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>I don't know if my Space counts as a "high-risk" AI system under the EU AI Act</td>
+        <td>Generates an Article 50 disclosure label for any generative output — regardless of risk tier. Use the <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> tool to determine your risk tier separately</td>
+      </tr>
+      <tr>
+        <td>My Gradio Space has no footer — I have nowhere obvious to put a disclaimer</td>
+        <td>Outputs a compact one-line HTML snippet designed to fit inside a <code>gr.Markdown</code> component at the bottom of any Gradio interface</td>
+      </tr>
+      <tr>
+        <td>I want to add a Compliance section to my model card but don't know what to write</td>
+        <td>Generates a markdown-formatted disclosure block sized for HuggingFace model cards, including which downstream use cases require disclosure</td>
+      </tr>
+      <tr>
+        <td>My model is used by hundreds of downstream developers — I can't control their compliance</td>
+        <td>Generates a "downstream deployer notice" you paste in your model card, clearly stating that Article 50 obligations apply to anyone serving model outputs to EU users</td>
+      </tr>
+      <tr>
+        <td>I need both an HTML badge for my demo and JSON-LD schema for SEO/machine readability</td>
+        <td>Outputs both in a single run — HTML badge, plain-text disclosure, and <code>application/ld+json</code> schema block in one click</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>What a HuggingFace-Ready Disclosure Looks Like</h2>
+  <p>Here's an example of the kind of output the generator produces for a text-generation Space — ready to paste into a <code>gr.Markdown</code> component:</p>
+  <div class="code-snippet">
+&lt;!-- AI Disclosure — EU AI Act Article 50 --&gt;<br>
+&lt;p style="font-size:13px;color:#888;margin-top:16px;"&gt;<br>
+  &nbsp;&nbsp;⚠️ &lt;strong&gt;AI-Generated Content&lt;/strong&gt;: Outputs from this Space are produced by<br>
+  &nbsp;&nbsp;an artificial intelligence model and may not reflect factual accuracy.<br>
+  &nbsp;&nbsp;Compliant with EU AI Act Article 50 transparency requirements.<br>
+&lt;/p&gt;
+  </div>
+  <p>The tool also generates a markdown version for model cards and a JSON-LD schema block for structured data compliance. All free, all in one click.</p>
+
+  <h2>Pricing: TinyTools vs. Paid Compliance Alternatives</h2>
+  <p>A few AI compliance platforms have started targeting model publishers. Here's the honest comparison:</p>
+  <div class="pricing-grid">
+    <div class="pricing-card featured">
+      <div class="product-name">TinyTools — AI Disclosure Generator</div>
+      <div class="price">$0</div>
+      <div class="price-label">forever free</div>
+      <ul>
+        <li>Article 50 disclosure labels</li>
+        <li>HTML + Markdown + JSON-LD</li>
+        <li>Text, image, audio formats</li>
+        <li>Model card snippets</li>
+        <li>No account or sign-up</li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <div class="product-name">Enterprise AI Compliance SaaS</div>
+      <div class="price">$99+</div>
+      <div class="price-label">per month</div>
+      <ul>
+        <li>Full compliance audits</li>
+        <li>Legal review included</li>
+        <li>Multi-regulation tracking</li>
+        <li>Designed for enterprises</li>
+        <li>Massive overkill for OSS contributors</li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <div class="product-name">DIY (reading the Act)</div>
+      <div class="price">~4 hrs</div>
+      <div class="price-label">minimum</div>
+      <ul>
+        <li>Reading 100-page EU AI Act PDF</li>
+        <li>Interpreting Article 50 scope</li>
+        <li>Drafting your own disclosure text</li>
+        <li>High error risk without legal training</li>
+        <li>Time you could spend on your model</li>
+      </ul>
+    </div>
+  </div>
+  <p><strong>Bottom line:</strong> for open-source contributors, researchers, and independent Space builders, the TinyTools generator covers Article 50 disclosure obligations for the most common use cases at zero cost. For high-risk AI systems — medical AI, biometric models, credit scoring — consult a qualified legal professional and run the <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> first.</p>
+
+  <h2>How to Add Your Disclosure in 3 Steps</h2>
+  <p><strong>Step 1:</strong> Go to the <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a> and select the content type your model or Space produces — text, image, audio, or multimodal.</p>
+  <p><strong>Step 2:</strong> Enter your model or Space name and the foundation model powering it (e.g., "Llama 3.1 70B" or "Stable Diffusion XL"). The tool generates your label instantly.</p>
+  <p><strong>Step 3:</strong> Copy the output you need: HTML badge for your Gradio Space, markdown block for your model card, or JSON-LD schema for your Space's <code>&lt;head&gt;</code>. Paste and commit. Done.</p>
+
+  <h2>Related Tools for HuggingFace Contributors</h2>
+  <div class="related-tools">
+    <a class="related-card" href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">
+      <div class="tool-name">EU AI Act Risk Assessment</div>
+      <div class="tool-desc">Determine your model's risk classification under the EU AI Act before you publish. Unacceptable risk, high risk, or limited risk — know where you stand.</div>
+    </a>
+    <a class="related-card" href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/">
+      <div class="tool-name">AI Robots.txt Generator</div>
+      <div class="tool-desc">Control which AI crawlers can scrape your model outputs, dataset documentation, and Space demos. Protect your work from unauthorized training data collection.</div>
+    </a>
+    <a class="related-card" href="https://tinytools-smoky.vercel.app/ai-cost-calculator/">
+      <div class="tool-name">AI Cost Calculator</div>
+      <div class="tool-desc">Planning to monetize your model via the Inference API or a hosted Space? Estimate API costs across providers so you can set sustainable pricing from the start.</div>
+    </a>
+  </div>
+
+  <div class="final-cta">
+    <h2>Publish Responsibly. Publish Fast.</h2>
+    <p>You trained the model. You built the Space. Don't let a missing EU AI Act disclosure become the reason your work gets flagged. Generate your disclosure in 10 seconds — free, forever.</p>
+    <a class="btn-primary" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">
+      ⚡ Generate My AI Disclosure →
+    </a>
+  </div>
+
+</div>
+</body>
+</html>
