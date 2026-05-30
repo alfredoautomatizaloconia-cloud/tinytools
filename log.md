@@ -54,3 +54,28 @@
 **Total /vs/ pages:** 45
 **Sitemap:** Added at priority 0.7, changefreq monthly
 **Notes:** First unshipped competitor from rotation list (items 1–18 already shipped). Page covers LLM pricing comparison angle with internal links to llm-prompt-optimizer, ai-spend-calculator, ai-cost-calculator, ai-text-detector, prompt-grade, ai-prompt-enhancer, and prompt-injection-tester.
+
+---
+
+## 2026-05-30 04:52 UTC — viral-retrofit: seo-meta-generator
+
+**Task:** tinytools-viral-loop (scheduled, every 6h)
+**Tool retrofitted:** seo-meta-generator
+**Commit:** b6f00359ff0560f3c56637e3b4d125b97c23f350
+**URL:** https://tinytools-smoky.vercel.app/seo-meta-generator/
+
+**Viral mechanics added:**
+- ✅ 𝕏 Share button — prefilled tweet with page title + char counts (title/60, desc/160)
+- ✅ Copy deep link — full input state encoded as base64(JSON) in URL hash
+- ✅ Embeddable shields.io badge — green=SEO Ready, orange=Needs Fix (based on char counts)
+- ✅ 1200×630 PNG card download via canvas (title, domain, description, stats row, TinyTools brand)
+- ✅ Auto-load from URL hash on page load (all 8 input fields restored from deep link)
+
+**Current visitor count (abacus root):** 1
+**Tools remaining without full viral mechanics:** 8
+  (background-remover, color-palette, cover-letter-generator, domain-generator,
+   mcp-server-inspector, pdf-to-markdown, resume-tailorer, youtube-to-blog)
+
+**Selection rationale:** seo-meta-generator chosen over color-palette and cover-letter-generator
+because SEO tools have high organic search traffic and the quantifiable results (char counts,
+platform-ready status) make the share tweet feel earned and data-driven.
