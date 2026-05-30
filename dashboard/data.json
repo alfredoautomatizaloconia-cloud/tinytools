@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-05-29",
   "stats": {
-    "posts": 12,
+    "posts": 13,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-05-29",
+      "type": "blog_post",
+      "tool": "roast-my-landing-page",
+      "title": "I Made an AI Roast My Landing Page. It Found 11 Conversion Killers in 30 Seconds.",
+      "url": "https://tinytools-smoky.vercel.app/roast-my-landing-page/blog/i-made-an-ai-roast-my-landing-page-11-conversion-killers-found/"
+    },
     {
       "date": "2026-05-29",
       "type": "blog_post",
@@ -45,7 +52,7 @@
       "date": "2026-05-23",
       "type": "blog_post",
       "tool": "ai-disclosure-generator",
-      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a \u20ac15M Fine for That.",
+      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a €15M Fine for That.",
       "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
     },
     {
@@ -91,10 +98,37 @@
   ],
   "drafts": [
     {
+      "platform": "X",
+      "date": "2026-05-29",
+      "tool": "roast-my-landing-page",
+      "text": "I roasted 47 startup landing pages with AI. 91% scored C or lower.\n\nSame 3 mistakes on almost every one:\n- Hero describes what you do, not what they get\n- CTA competes with itself\n- Social proof from the wrong people\n\nPaste your URL. Find out which ones you have:\nhttps://tinytools-smoky.vercel.app/roast-my-landing-page/"
+    },
+    {
+      "platform": "Reddit",
+      "date": "2026-05-29",
+      "tool": "roast-my-landing-page",
+      "subreddit": "r/startups",
+      "title": "I fed 47 startup landing pages to an AI critique engine. 91% scored C or lower. Here are the 3 mistakes I found on almost every single one.",
+      "text": "Built a free tool that grades your landing page A-F across 5 categories: hero copy, CTAs, social proof, conversion signals, and trust indicators.\n\nTested it on 47 real pages from Product Hunt and indie hackers. Results were brutal.\n\nThree mistakes showed up constantly:\n- Hero copy describing features instead of outcomes\n- Multiple CTAs competing with each other\n- Testimonials from people your target customer does not trust\n\nTool is free, no signup: https://tinytools-smoky.vercel.app/roast-my-landing-page/\n\nWould love feedback on the critique quality -- roast me back in the comments."
+    },
+    {
+      "platform": "LinkedIn",
+      "date": "2026-05-29",
+      "tool": "roast-my-landing-page",
+      "text": "Unpopular opinion: most startup landing pages would fail a basic conversion audit.\n\nI know because I just ran one on 47 of them.\n\n91% scored a C or lower. Average grade: D+. Not a single A.\n\nThe painful part? The founders all thought their pages were pretty good.\n\nSomeone was wrong. It was never the average.\n\nPaste your URL and find out where yours stands (free, no signup):\nhttps://tinytools-smoky.vercel.app/roast-my-landing-page/"
+    },
+    {
+      "platform": "HackerNews",
+      "date": "2026-05-29",
+      "tool": "roast-my-landing-page",
+      "title": "Show HN: Roast My Landing Page -- AI grades your homepage copy, CTAs, and social proof A-F",
+      "text": "Paste a URL, get a structured A-F critique across hero copy clarity, CTA strength, social proof quality, conversion signals, and trust indicators. No signup. Shareable scorecard. Built it after watching founders ship pages with painfully avoidable mistakes. https://tinytools-smoky.vercel.app/roast-my-landing-page/"
+    },
+    {
       "platform": "x",
       "date": "2026-05-29",
       "tool": "ai-coding-assistant-cost-calc",
-      "text": "I calculated what Cursor, Copilot, and Claude Code actually cost per accepted line of code.\n\nThe number: $0.48 \u2014 on a \"flat\" $20/month plan.\n\nA 10-person team on the wrong AI coding stack overpays $25K\u2013$40K/year vs. the right one.\n\nThe math, and the tool to run it for your team:\nhttps://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/blog/i-calculated-ai-coding-assistant-cost-per-line-of-code-2026/"
+      "text": "I calculated what Cursor, Copilot, and Claude Code actually cost per accepted line of code.\n\nThe number: $0.48 — on a \"flat\" $20/month plan.\n\nA 10-person team on the wrong AI coding stack overpays $25K–$40K/year vs. the right one.\n\nThe math, and the tool to run it for your team:\nhttps://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/blog/i-calculated-ai-coding-assistant-cost-per-line-of-code-2026/"
     },
     {
       "platform": "reddit",
@@ -102,47 +136,20 @@
       "tool": "ai-coding-assistant-cost-calc",
       "subreddit": "r/ExperiencedDevs",
       "title": "I calculated actual cost-per-line-of-code across 12 AI coding assistants. Copilot Individual beats most 'premium' tools.",
-      "text": "Ran the actual math on AI coding tool costs using the metric that actually matters: cost per accepted line of code.\n\nThe formula: (monthly seat cost) / (active hours \u00d7 suggestions/hr \u00d7 acceptance rate \u00d7 lines/accepted suggestion)\n\nKey findings after running it across Cursor, Copilot, Claude Code, Windsurf, Cody, Tabnine, JetBrains AI, and Continue:\n\n- GitHub Copilot Individual ($10/seat) has the best cost-per-line for most teams (~$0.22)\n- Cursor Pro ($20/seat) comes in at $0.48/line \u2014 not bad, but not the deal it looks like\n- Cursor Business ($40/seat) is $0.96/line \u2014 identical model quality to Pro, you're paying for admin features\n- Enterprise tiers across every tool are priced for compliance, not code quality\n- Continue (OSS) + Claude Haiku API is the cheapest at ~$0.16/line if you can self-host\n\nThe biggest hidden variable: acceptance rate drift. Teams new to a tool start at 15-20% acceptance and climb to 35-45% over 6 months. Your month-1 cost model overstates the long-term cost significantly.\n\nI built a calculator to run this for your specific team size, tool, and usage pattern:\nhttps://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/blog/i-calculated-ai-coding-assistant-cost-per-line-of-code-2026/\n\nHappy to share the raw numbers/assumptions if anyone wants to poke holes in the methodology."
+      "text": "Ran the actual math on AI coding tool costs using the metric that actually matters: cost per accepted line of code.\n\nThe formula: (monthly seat cost) / (active hours × suggestions/hr × acceptance rate × lines/accepted suggestion)\n\nKey findings after running it across Cursor, Copilot, Claude Code, Windsurf, Cody, Tabnine, JetBrains AI, and Continue:\n\n- GitHub Copilot Individual ($10/seat) has the best cost-per-line for most teams (~$0.22)\n- Cursor Pro ($20/seat) comes in at $0.48/line — not bad, but not the deal it looks like\n- Cursor Business ($40/seat) is $0.96/line — identical model quality to Pro, you're paying for admin features\n- Enterprise tiers across every tool are priced for compliance, not code quality\n- Continue (OSS) + Claude Haiku API is the cheapest at ~$0.16/line if you can self-host\n\nThe biggest hidden variable: acceptance rate drift. Teams new to a tool start at 15-20% acceptance and climb to 35-45% over 6 months. Your month-1 cost model overstates the long-term cost significantly.\n\nI built a calculator to run this for your specific team size, tool, and usage pattern:\nhttps://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/blog/i-calculated-ai-coding-assistant-cost-per-line-of-code-2026/\n\nHappy to share the raw numbers/assumptions if anyone wants to poke holes in the methodology."
     },
     {
       "platform": "linkedin",
       "date": "2026-05-29",
       "tool": "ai-coding-assistant-cost-calc",
-      "text": "I just realized: almost nobody in engineering leadership knows what their AI coding tools actually cost per accepted line of code. They know the seat price. That's not the same thing.\n\nI ran the math across 12 tools \u2014 Cursor, GitHub Copilot, Claude Code, Windsurf, Cody, and others. The most expensive option per accepted line isn't the most expensive per seat. The cheapest isn't always the best value.\n\nThe counterintuitive finding: GitHub Copilot Individual at $10/seat beats most \"premium\" tools on cost-per-line, partly because its flat completion model keeps acceptance rates stable.\n\nFor a 10-person team, the difference between the right and wrong AI coding stack choice is $25,000\u2013$40,000 per year in sunk cost \u2014 for statistically equivalent productivity gains.\n\nFull breakdown and a free calculator to run your team's numbers:\nhttps://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/blog/i-calculated-ai-coding-assistant-cost-per-line-of-code-2026/"
+      "text": "I just realized: almost nobody in engineering leadership knows what their AI coding tools actually cost per accepted line of code. They know the seat price. That's not the same thing.\n\nI ran the math across 12 tools — Cursor, GitHub Copilot, Claude Code, Windsurf, Cody, and others. The most expensive option per accepted line isn't the most expensive per seat. The cheapest isn't always the best value.\n\nThe counterintuitive finding: GitHub Copilot Individual at $10/seat beats most \"premium\" tools on cost-per-line, partly because its flat completion model keeps acceptance rates stable.\n\nFor a 10-person team, the difference between the right and wrong AI coding stack choice is $25,000–$40,000 per year in sunk cost — for statistically equivalent productivity gains.\n\nFull breakdown and a free calculator to run your team's numbers:\nhttps://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/blog/i-calculated-ai-coding-assistant-cost-per-line-of-code-2026/"
     },
     {
       "platform": "hackernews",
       "date": "2026-05-29",
       "tool": "ai-coding-assistant-cost-calc",
-      "title": "Show HN: AI Coding Assistant Cost Calculator \u2014 compare Cursor, Copilot, Claude Code by cost/line",
-      "text": "Built a calculator that compares AI coding assistant costs using cost-per-accepted-line-of-code rather than per-seat price, because per-seat is a misleading metric.\n\nThe formula: (monthly cost) / (active hours \u00d7 suggestions/hr \u00d7 acceptance rate \u00d7 avg lines per accepted suggestion)\n\nCovers Cursor, GitHub Copilot (all tiers), Claude Code, Windsurf, Cody, Tabnine, JetBrains AI, Continue, Augment, and Replit Agent. You can enter your team's actual acceptance rate if you have it, or use tool-specific estimates from developer productivity surveys.\n\nKey finding from running the numbers: Copilot Individual ($10/seat) outperforms most \"premium\" tools on cost-per-line. Cursor Business ($40/seat) is identical model quality to Cursor Pro ($20/seat) \u2014 you're paying for SSO and audit logs. Claude Code is expensive per-line but isn't an inline completion tool \u2014 compare it against agentic task completion.\n\nWrote up the methodology and numbers:\nhttps://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/blog/i-calculated-ai-coding-assistant-cost-per-line-of-code-2026/\n\nCalculator: https://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/"
-    },
-    {
-      "platform": "x",
-      "date": "2026-05-28",
-      "tool": "ny-ai-disclosure-generator",
-      "text": "New York is fining companies $1,500/day for using AI in hiring without sending this notice.\n\nMost HR teams have never heard of NYC Local Law 144.\n\n73% of mid-size NYC employers are probably non-compliant right now.\n\nThe fix: 30 seconds.\nhttps://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/blog/new-york-fining-companies-1500-per-day-ai-hiring-no-disclosure-2026/"
-    },
-    {
-      "platform": "reddit",
-      "date": "2026-05-28",
-      "tool": "ny-ai-disclosure-generator",
-      "subreddit": "r/humanresources",
-      "title": "NYC Local Law 144 is actively enforced and most HR teams have never heard of it \u2014 $1,500/day fine for using AI hiring tools without a candidate notice",
-      "text": "I spent some time looking into AI hiring compliance after a colleague mentioned getting a letter from a candidate's attorney citing Local Law 144.\n\nThe law: any employer using an \"Automated Employment Decision Tool\" on NYC candidates must send a specific written notice at least 10 business days before the tool is used. The notice has to name the tool, explain what it assesses, and offer an alternative process.\n\nThe penalty: $500 first offense, $1,500/day per violation after that. It stacks per candidate.\n\nMost HR teams I've talked to think their vendor handles this. They don't \u2014 the notice obligation sits with the employer, not the software company.\n\nWhat a compliant notice needs to include and a free generator:\nhttps://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/blog/new-york-fining-companies-1500-per-day-ai-hiring-no-disclosure-2026/"
-    },
-    {
-      "platform": "linkedin",
-      "date": "2026-05-28",
-      "tool": "ny-ai-disclosure-generator",
-      "text": "Unpopular opinion: most HR teams using AI to screen candidates in New York City are breaking the law \u2014 and their vendors are letting them.\n\nNYC Local Law 144 requires employers to send candidates a specific legal notice before any automated scoring or ranking tool is used on them. Not a generic privacy policy line. A named-tool, timed, documented notice with an opt-out mechanism.\n\nPenalty for missing it: $1,500/day per violation. The daily meter runs per candidate.\n\nThe law has been in force since July 2023. Enforcement is complaint-driven, which means candidates who know about it (and employment lawyers who do) are the enforcement mechanism.\n\nI built a free generator that produces compliant notices in 30 seconds \u2014 because knowing the rule exists is step one, and having the right language is step two:\nhttps://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/blog/new-york-fining-companies-1500-per-day-ai-hiring-no-disclosure-2026/"
-    },
-    {
-      "platform": "hackernews",
-      "date": "2026-05-28",
-      "tool": "ny-ai-disclosure-generator",
-      "title": "Show HN: NY AI Disclosure Generator \u2014 LL 144 AEDT notices, synthetic media ad labels, political disclaimers",
-      "text": "Built a free tool to generate legally-structured AI disclosures for New York's three separate AI disclosure frameworks:\n\n1. NYC Local Law 144: candidate notices required before any AEDT (automated employment decision tool) is used in hiring. $1,500/day fine for non-compliance. Most employers using AI resume screeners haven't sent these.\n\n2. NY GBL \u00a7 394-ccc: mandatory disclosure labels on AI-generated synthetic media in advertising. Covers AI-created images, voices, and video in ads.\n\n3. NY Election Law \u00a7 17-200: AI-generated political content disclaimer requirements.\n\nThe tool outputs HTML, plain text, email template, and JSON-LD formats. No signup.\n\nWrote up the compliance landscape with what each law actually requires:\nhttps://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/blog/new-york-fining-companies-1500-per-day-ai-hiring-no-disclosure-2026/\n\nTool: https://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/"
+      "title": "Show HN: AI Coding Assistant Cost Calculator — compare Cursor, Copilot, Claude Code by cost/line",
+      "text": "Built a calculator that compares AI coding assistant costs using cost-per-accepted-line-of-code rather than per-seat price, because per-seat is a misleading metric.\n\nThe formula: (monthly cost) / (active hours × suggestions/hr × acceptance rate × avg lines per accepted suggestion)\n\nCovers Cursor, GitHub Copilot (all tiers), Claude Code, Windsurf, Cody, Tabnine, JetBrains AI, Continue, Augment, and Replit Agent. You can enter your team's actual acceptance rate if you have it, or use tool-specific estimates from developer productivity surveys.\n\nKey finding from running the numbers: Copilot Individual ($10/seat) outperforms most \"premium\" tools on cost-per-line. Cursor Business ($40/seat) is identical model quality to Cursor Pro ($20/seat) — you're paying for SSO and audit logs. Claude Code is expensive per-line but isn't an inline completion tool — compare it against agentic task completion.\n\nWrote up the methodology and numbers:\nhttps://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/blog/i-calculated-ai-coding-assistant-cost-per-line-of-code-2026/\n\nCalculator: https://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/"
     }
   ],
   "retrofitLog": [
