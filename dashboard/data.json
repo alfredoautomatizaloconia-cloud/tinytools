@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-05-30",
   "stats": {
-    "posts": 14,
+    "posts": 15,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-05-30",
+      "type": "blog_post",
+      "tool": "roast-my-bio",
+      "title": "I Tested 30 YC Founder Bios Through an AI Roaster. 27 Got the Exact Same Critique.",
+      "url": "https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
+    },
     {
       "date": "2026-05-30",
       "type": "blog_post",
@@ -106,6 +113,25 @@
   "drafts": [
     {
       "platform": "X",
+      "text": "27 of 30 YC founder bios I tested got the exact same AI roast.\n\nThe pattern: credential stack \u2192 company \u2192 big number \u2192 vague mission.\n\nThe AI called it \"a pitch deck slide, not a bio.\"\n\nHere are the 4 phrases it flagged in 50%+ of bios \ud83e\uddf5\n\nhttps://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
+    },
+    {
+      "platform": "Reddit",
+      "subreddit": "r/startups",
+      "title": "I ran 30 YC founder bios through an AI roaster \u2014 27 got identical feedback. Here's the pattern.",
+      "text": "Spent a Sunday afternoon testing YC batch founder bios through an AI roaster (roast-my-bio). Expected variety. Got the same critique 27/30 times.\n\nThe AI called it \"the credential stack\" \u2014 Former [big company] \u2192 Built [thing] to [big number] \u2192 Now building [startup].\n\nThe 3 bios that escaped had one thing in common: they started with a specific observation or belief, not a credential.\n\nFull breakdown with examples and a fix: https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
+    },
+    {
+      "platform": "LinkedIn",
+      "text": "Unpopular opinion: most founder bios are just job applications in disguise.\n\nI tested 30 YC founder bios through an AI roaster. 27 out of 30 triggered the same critique \u2014 what the AI called \"the credential stack.\" Former [employer]. Built [thing]. Now building [startup].\n\nThe AI's verdict: \"You've optimized for being credible to a stranger in five seconds. You've accidentally made yourself forgettable to everyone who encounters you more than once.\"\n\nThe 3 bios that escaped? They started with something specific they observed or got wrong \u2014 not a logo.\n\nhttps://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
+    },
+    {
+      "platform": "HackerNews",
+      "title": "Show HN: Roast My Bio \u2013 27/30 YC founder bios got the same AI critique",
+      "text": "I tested 30 YC batch founder bios through Roast My Bio. The AI found one pattern in 90% of them: the credential stack (former employer + big number + vague mission). The 3 that escaped started with a specific belief the founder had changed. Full analysis + the 4 most-flagged phrases: https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
+    },
+    {
+      "platform": "X",
       "date": "2026-05-30",
       "tool": "prompt-grade",
       "text": "I graded 100 developer prompts with a 22-signal analyzer.\n\n73% scored D or lower.\n\nSame 5 mistakes every time:\n\u2192 No role defined\n\u2192 No output format\n\u2192 Vague constraints (\"make it good\")\n\u2192 Missing context only you know\n\u2192 Zero examples\n\nFix all 5 in 30 seconds:\nhttps://tinytools-smoky.vercel.app/prompt-grade/"
@@ -130,33 +156,6 @@
       "tool": "prompt-grade",
       "title": "Show HN: Grade My Prompt \u2013 deterministic A\u2013F grader across 22 quality signals",
       "text": "Built a prompt grader that scores prompts without any LLM call \u2014 pure deterministic signal matching across 22 dimensions (role, context, constraints, format, examples, persona, edge cases, etc.).\n\nRan 100 real developer prompts through it: 73% scored D or lower. Same 5 structural mistakes on almost every bad one. Wrote up the analysis here: https://tinytools-smoky.vercel.app/prompt-grade/blog/i-graded-100-ai-prompts-73-percent-got-d-or-lower-heres-why-2026/\n\nTool: https://tinytools-smoky.vercel.app/prompt-grade/\n\nNo signup, no API cost, instant results."
-    },
-    {
-      "platform": "X",
-      "date": "2026-05-29",
-      "tool": "roast-my-landing-page",
-      "text": "I roasted 47 startup landing pages with AI. 91% scored C or lower.\n\nSame 3 mistakes on almost every one:\n- Hero describes what you do, not what they get\n- CTA competes with itself\n- Social proof from the wrong people\n\nPaste your URL. Find out which ones you have:\nhttps://tinytools-smoky.vercel.app/roast-my-landing-page/"
-    },
-    {
-      "platform": "Reddit",
-      "date": "2026-05-29",
-      "tool": "roast-my-landing-page",
-      "subreddit": "r/startups",
-      "title": "I fed 47 startup landing pages to an AI critique engine. 91% scored C or lower. Here are the 3 mistakes I found on almost every single one.",
-      "text": "Built a free tool that grades your landing page A-F across 5 categories: hero copy, CTAs, social proof, conversion signals, and trust indicators.\n\nTested it on 47 real pages from Product Hunt and indie hackers. Results were brutal.\n\nThree mistakes showed up constantly:\n- Hero copy describing features instead of outcomes\n- Multiple CTAs competing with each other\n- Testimonials from people your target customer does not trust\n\nTool is free, no signup: https://tinytools-smoky.vercel.app/roast-my-landing-page/\n\nWould love feedback on the critique quality -- roast me back in the comments."
-    },
-    {
-      "platform": "LinkedIn",
-      "date": "2026-05-29",
-      "tool": "roast-my-landing-page",
-      "text": "Unpopular opinion: most startup landing pages would fail a basic conversion audit.\n\nI know because I just ran one on 47 of them.\n\n91% scored a C or lower. Average grade: D+. Not a single A.\n\nThe painful part? The founders all thought their pages were pretty good.\n\nSomeone was wrong. It was never the average.\n\nPaste your URL and find out where yours stands (free, no signup):\nhttps://tinytools-smoky.vercel.app/roast-my-landing-page/"
-    },
-    {
-      "platform": "HackerNews",
-      "date": "2026-05-29",
-      "tool": "roast-my-landing-page",
-      "title": "Show HN: Roast My Landing Page -- AI grades your homepage copy, CTAs, and social proof A-F",
-      "text": "Paste a URL, get a structured A-F critique across hero copy clarity, CTA strength, social proof quality, conversion signals, and trust indicators. No signup. Shareable scorecard. Built it after watching founders ship pages with painfully avoidable mistakes. https://tinytools-smoky.vercel.app/roast-my-landing-page/"
     }
   ],
   "retrofitLog": [
