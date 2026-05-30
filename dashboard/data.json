@@ -1,11 +1,18 @@
 {
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-05-30",
   "stats": {
-    "posts": 13,
+    "posts": 14,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-05-30",
+      "type": "blog_post",
+      "tool": "prompt-grade",
+      "title": "I Graded 100 AI Prompts From Developers. 73% Got a D or Lower. Here's Why.",
+      "url": "https://tinytools-smoky.vercel.app/prompt-grade/blog/i-graded-100-ai-prompts-73-percent-got-d-or-lower-heres-why-2026/"
+    },
     {
       "date": "2026-05-29",
       "type": "blog_post",
@@ -52,7 +59,7 @@
       "date": "2026-05-23",
       "type": "blog_post",
       "tool": "ai-disclosure-generator",
-      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a €15M Fine for That.",
+      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a \u20ac15M Fine for That.",
       "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
     },
     {
@@ -99,6 +106,33 @@
   "drafts": [
     {
       "platform": "X",
+      "date": "2026-05-30",
+      "tool": "prompt-grade",
+      "text": "I graded 100 developer prompts with a 22-signal analyzer.\n\n73% scored D or lower.\n\nSame 5 mistakes every time:\n\u2192 No role defined\n\u2192 No output format\n\u2192 Vague constraints (\"make it good\")\n\u2192 Missing context only you know\n\u2192 Zero examples\n\nFix all 5 in 30 seconds:\nhttps://tinytools-smoky.vercel.app/prompt-grade/"
+    },
+    {
+      "platform": "Reddit",
+      "date": "2026-05-30",
+      "tool": "prompt-grade",
+      "subreddit": "r/programming",
+      "title": "I graded 100 real developer prompts across 22 quality signals. 73% scored D or lower. Here are the 5 mistakes on nearly every bad one.",
+      "text": "Built a prompt grader that scores prompts across 22 signals (role, context, constraints, format, examples, edge cases). Ran 100 prompts from devs of all experience levels through it.\n\nResults:\n- A: 4%\n- B: 9%\n- C: 14%\n- D: 38%\n- F: 35%\n\nSeniority didn't matter. The same 5 mistakes showed up regardless of whether you've been coding for 2 years or 20.\n\nWrote up what those mistakes are and how to fix each one: https://tinytools-smoky.vercel.app/prompt-grade/blog/i-graded-100-ai-prompts-73-percent-got-d-or-lower-heres-why-2026/\n\nTool is free: https://tinytools-smoky.vercel.app/prompt-grade/"
+    },
+    {
+      "platform": "LinkedIn",
+      "date": "2026-05-30",
+      "tool": "prompt-grade",
+      "text": "Unpopular opinion: most developers are really bad at writing AI prompts \u2014 and experience doesn't help.\n\nI ran 100 real prompts through a 22-signal grader. 73% scored D or lower. The pattern was identical across juniors and seniors.\n\nThe issue isn't intelligence. It's mental model. We learned to give instructions to computers (precise, literal, complete). Language models need something different: role, context, format, constraints, and examples.\n\nLeave out any two of those five and you're getting generic output you'll spend 10 minutes editing.\n\nArticle with all 5 mistakes + before/after examples in comments."
+    },
+    {
+      "platform": "HN",
+      "date": "2026-05-30",
+      "tool": "prompt-grade",
+      "title": "Show HN: Grade My Prompt \u2013 deterministic A\u2013F grader across 22 quality signals",
+      "text": "Built a prompt grader that scores prompts without any LLM call \u2014 pure deterministic signal matching across 22 dimensions (role, context, constraints, format, examples, persona, edge cases, etc.).\n\nRan 100 real developer prompts through it: 73% scored D or lower. Same 5 structural mistakes on almost every bad one. Wrote up the analysis here: https://tinytools-smoky.vercel.app/prompt-grade/blog/i-graded-100-ai-prompts-73-percent-got-d-or-lower-heres-why-2026/\n\nTool: https://tinytools-smoky.vercel.app/prompt-grade/\n\nNo signup, no API cost, instant results."
+    },
+    {
+      "platform": "X",
       "date": "2026-05-29",
       "tool": "roast-my-landing-page",
       "text": "I roasted 47 startup landing pages with AI. 91% scored C or lower.\n\nSame 3 mistakes on almost every one:\n- Hero describes what you do, not what they get\n- CTA competes with itself\n- Social proof from the wrong people\n\nPaste your URL. Find out which ones you have:\nhttps://tinytools-smoky.vercel.app/roast-my-landing-page/"
@@ -123,33 +157,6 @@
       "tool": "roast-my-landing-page",
       "title": "Show HN: Roast My Landing Page -- AI grades your homepage copy, CTAs, and social proof A-F",
       "text": "Paste a URL, get a structured A-F critique across hero copy clarity, CTA strength, social proof quality, conversion signals, and trust indicators. No signup. Shareable scorecard. Built it after watching founders ship pages with painfully avoidable mistakes. https://tinytools-smoky.vercel.app/roast-my-landing-page/"
-    },
-    {
-      "platform": "x",
-      "date": "2026-05-29",
-      "tool": "ai-coding-assistant-cost-calc",
-      "text": "I calculated what Cursor, Copilot, and Claude Code actually cost per accepted line of code.\n\nThe number: $0.48 — on a \"flat\" $20/month plan.\n\nA 10-person team on the wrong AI coding stack overpays $25K–$40K/year vs. the right one.\n\nThe math, and the tool to run it for your team:\nhttps://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/blog/i-calculated-ai-coding-assistant-cost-per-line-of-code-2026/"
-    },
-    {
-      "platform": "reddit",
-      "date": "2026-05-29",
-      "tool": "ai-coding-assistant-cost-calc",
-      "subreddit": "r/ExperiencedDevs",
-      "title": "I calculated actual cost-per-line-of-code across 12 AI coding assistants. Copilot Individual beats most 'premium' tools.",
-      "text": "Ran the actual math on AI coding tool costs using the metric that actually matters: cost per accepted line of code.\n\nThe formula: (monthly seat cost) / (active hours × suggestions/hr × acceptance rate × lines/accepted suggestion)\n\nKey findings after running it across Cursor, Copilot, Claude Code, Windsurf, Cody, Tabnine, JetBrains AI, and Continue:\n\n- GitHub Copilot Individual ($10/seat) has the best cost-per-line for most teams (~$0.22)\n- Cursor Pro ($20/seat) comes in at $0.48/line — not bad, but not the deal it looks like\n- Cursor Business ($40/seat) is $0.96/line — identical model quality to Pro, you're paying for admin features\n- Enterprise tiers across every tool are priced for compliance, not code quality\n- Continue (OSS) + Claude Haiku API is the cheapest at ~$0.16/line if you can self-host\n\nThe biggest hidden variable: acceptance rate drift. Teams new to a tool start at 15-20% acceptance and climb to 35-45% over 6 months. Your month-1 cost model overstates the long-term cost significantly.\n\nI built a calculator to run this for your specific team size, tool, and usage pattern:\nhttps://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/blog/i-calculated-ai-coding-assistant-cost-per-line-of-code-2026/\n\nHappy to share the raw numbers/assumptions if anyone wants to poke holes in the methodology."
-    },
-    {
-      "platform": "linkedin",
-      "date": "2026-05-29",
-      "tool": "ai-coding-assistant-cost-calc",
-      "text": "I just realized: almost nobody in engineering leadership knows what their AI coding tools actually cost per accepted line of code. They know the seat price. That's not the same thing.\n\nI ran the math across 12 tools — Cursor, GitHub Copilot, Claude Code, Windsurf, Cody, and others. The most expensive option per accepted line isn't the most expensive per seat. The cheapest isn't always the best value.\n\nThe counterintuitive finding: GitHub Copilot Individual at $10/seat beats most \"premium\" tools on cost-per-line, partly because its flat completion model keeps acceptance rates stable.\n\nFor a 10-person team, the difference between the right and wrong AI coding stack choice is $25,000–$40,000 per year in sunk cost — for statistically equivalent productivity gains.\n\nFull breakdown and a free calculator to run your team's numbers:\nhttps://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/blog/i-calculated-ai-coding-assistant-cost-per-line-of-code-2026/"
-    },
-    {
-      "platform": "hackernews",
-      "date": "2026-05-29",
-      "tool": "ai-coding-assistant-cost-calc",
-      "title": "Show HN: AI Coding Assistant Cost Calculator — compare Cursor, Copilot, Claude Code by cost/line",
-      "text": "Built a calculator that compares AI coding assistant costs using cost-per-accepted-line-of-code rather than per-seat price, because per-seat is a misleading metric.\n\nThe formula: (monthly cost) / (active hours × suggestions/hr × acceptance rate × avg lines per accepted suggestion)\n\nCovers Cursor, GitHub Copilot (all tiers), Claude Code, Windsurf, Cody, Tabnine, JetBrains AI, Continue, Augment, and Replit Agent. You can enter your team's actual acceptance rate if you have it, or use tool-specific estimates from developer productivity surveys.\n\nKey finding from running the numbers: Copilot Individual ($10/seat) outperforms most \"premium\" tools on cost-per-line. Cursor Business ($40/seat) is identical model quality to Cursor Pro ($20/seat) — you're paying for SSO and audit logs. Claude Code is expensive per-line but isn't an inline completion tool — compare it against agentic task completion.\n\nWrote up the methodology and numbers:\nhttps://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/blog/i-calculated-ai-coding-assistant-cost-per-line-of-code-2026/\n\nCalculator: https://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/"
     }
   ],
   "retrofitLog": [
