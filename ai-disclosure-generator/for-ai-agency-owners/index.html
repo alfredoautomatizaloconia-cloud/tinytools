@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Disclosure Generator for AI Agency Owners — EU AI Act Compliant Labels</title>
+<meta name="description" content="AI agency owners delivering AI-generated content to clients face EU AI Act disclosure obligations. Generate compliant HTML labels, JSON-LD schema, and client-ready disclosure language in seconds. Free, no signup.">
+<meta name="keywords" content="AI disclosure generator AI agency, EU AI Act agency compliance, AI content disclosure for agencies, AI deliverables labeling, agency AI transparency, EU AI Act Article 50 agency, AI agency client disclosure">
+<meta property="og:title" content="AI Disclosure Generator for AI Agency Owners — EU AI Act Compliant">
+<meta property="og:description" content="Every AI-generated deliverable you ship to a client may trigger EU AI Act Article 50. Generate compliant disclosure labels for text, images, video, and voice in 10 seconds. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-ai-agency-owners/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-ai-agency-owners/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Disclosure Generator for AI Agency Owners",
+  "description": "AI agency owners delivering AI-generated content to clients need EU AI Act-compliant disclosure labels. Generate HTML badges, JSON-LD schema, and client-ready plain-text disclosures in seconds. Free, no signup.",
+  "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-ai-agency-owners/",
+  "dateModified": "2026-05-30",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/"},
+      {"@type": "ListItem", "position": 2, "name": "AI Disclosure Generator", "item": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/"},
+      {"@type": "ListItem", "position": 3, "name": "For AI Agency Owners", "item": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-ai-agency-owners/"}
+    ]
+  },
+  "mainEntity": {
+    "@type": "WebApplication",
+    "name": "AI Content Disclosure Generator",
+    "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/",
+    "applicationCategory": "BusinessApplication",
+    "offers": {"@type": "Offer", "price": "0"}
+  }
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #fbbf24; --accent-glow: #fbbf2440;
+    --green: #10b981; --red: #ef4444; --purple: #a78bfa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #a78bfa30 0%, transparent 50%);
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* Breadcrumb */
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 32px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span { margin: 0 6px; }
+
+  /* Hero */
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .badge {
+    display: inline-block; padding: 5px 12px;
+    border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+  }
+  .badge-red { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color: #fca5a5; }
+  .badge-purple { background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.4); color: #c4b5fd; }
+  .badge-yellow { background: rgba(251,191,36,0.15); border: 1px solid rgba(251,191,36,0.4); color: #fde68a; }
+
+  h1 {
+    font-size: clamp(28px, 4vw, 44px); font-weight: 800; line-height: 1.15;
+    margin-bottom: 18px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fde68a 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-sub { font-size: 18px; color: var(--text-dim); margin-bottom: 28px; max-width: 660px; }
+
+  /* CTA block */
+  .cta-block {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px 32px; margin-bottom: 56px;
+    display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
+    border-left: 4px solid var(--accent);
+  }
+  .cta-block .cta-text { flex: 1 1 300px; }
+  .cta-block .cta-text p { color: var(--text-dim); font-size: 15px; margin-top: 6px; }
+  .cta-block strong { font-size: 17px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px; background: var(--accent); color: #1a1200;
+    font-weight: 700; font-size: 15px; border-radius: 10px;
+    text-decoration: none; white-space: nowrap; transition: background 0.15s;
+  }
+  .btn-primary:hover { background: #fcd34d; }
+
+  /* Body content */
+  h2 { font-size: 26px; font-weight: 700; margin: 48px 0 16px; letter-spacing: -0.01em; }
+  h3 { font-size: 18px; font-weight: 700; margin: 28px 0 10px; color: var(--accent); }
+  p { color: var(--text-dim); margin-bottom: 14px; font-size: 16px; }
+  strong { color: var(--text); }
+
+  /* Use case cards */
+  .use-cases { display: grid; gap: 16px; margin: 24px 0 40px; }
+  .use-case-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px 24px;
+    display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start;
+  }
+  .use-case-card .icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--accent-glow); border: 1px solid rgba(251,191,36,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; flex-shrink: 0;
+  }
+  .use-case-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .use-case-card p { font-size: 14px; margin: 0; }
+
+  /* Pain → solution table */
+  .pain-table { width: 100%; border-collapse: collapse; margin: 24px 0 40px; font-size: 15px; }
+  .pain-table thead th {
+    background: var(--bg-elevated); padding: 12px 16px; text-align: left;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-dim); font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  .pain-table thead th:first-child { border-radius: 10px 0 0 0; }
+  .pain-table thead th:last-child { border-radius: 0 10px 0 0; }
+  .pain-table tbody tr { border-bottom: 1px solid var(--border); }
+  .pain-table tbody tr:last-child { border-bottom: none; }
+  .pain-table td { padding: 14px 16px; background: var(--bg-card); vertical-align: top; }
+  .pain-table td:first-child { color: #fca5a5; border-right: 1px solid var(--border); }
+  .pain-table td:last-child { color: var(--green); }
+
+  /* Pricing table */
+  .pricing-table { width: 100%; border-collapse: collapse; margin: 24px 0 40px; font-size: 14px; }
+  .pricing-table thead th {
+    background: var(--bg-elevated); padding: 11px 14px; text-align: left;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-dim); font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  .pricing-table thead th:first-child { border-radius: 10px 0 0 0; }
+  .pricing-table thead th:last-child { border-radius: 0 10px 0 0; }
+  .pricing-table tbody tr { border-bottom: 1px solid var(--border); }
+  .pricing-table tbody tr:last-child { border-bottom: none; }
+  .pricing-table td { padding: 12px 14px; background: var(--bg-card); vertical-align: middle; }
+  .pricing-table td.tool-name { font-weight: 700; color: var(--text); }
+  .pricing-table tr.highlight td { background: rgba(251,191,36,0.07); }
+  .pricing-table .tick { color: var(--green); font-weight: 700; }
+  .pricing-table .cross { color: var(--red); }
+  .price-tag { font-weight: 700; }
+  .price-free { color: var(--green); }
+  .price-paid { color: #fca5a5; }
+
+  /* Sister tools */
+  .sister-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 24px 0 40px; }
+  .sister-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 20px; text-decoration: none; color: var(--text);
+    transition: border-color 0.15s, transform 0.15s; display: block;
+  }
+  .sister-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .sister-card .st-label { font-size: 12px; color: var(--text-dim); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .sister-card strong { font-size: 15px; display: block; margin-bottom: 4px; }
+  .sister-card span { font-size: 13px; color: var(--text-dim); }
+
+  /* CTA bottom */
+  .cta-bottom {
+    margin-top: 56px; padding: 40px 36px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 20px; text-align: center;
+    border-top: 4px solid var(--accent);
+  }
+  .cta-bottom h2 { margin-top: 0; font-size: 28px; }
+  .cta-bottom p { max-width: 540px; margin: 0 auto 24px; }
+
+  footer { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .cta-block { flex-direction: column; }
+    .pain-table, .pricing-table { display: block; overflow-x: auto; }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="breadcrumb">
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a>
+    <span>›</span>
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a>
+    <span>›</span>
+    <span>For AI Agency Owners</span>
+  </nav>
+
+  <div class="badge-row">
+    <span class="badge badge-red">⚠️ EU AI Act enforcement: August 2, 2026</span>
+    <span class="badge badge-purple">🏢 For AI Agency Owners</span>
+    <span class="badge badge-yellow">✓ Free, no signup</span>
+  </div>
+
+  <h1>AI Disclosure Generator<br>for AI Agency Owners</h1>
+
+  <p class="hero-sub">Your agency ships AI-generated content to clients every week — copy, images, videos, voice-overs. Starting August 2, 2026, EU AI Act Article 50 makes disclosure on all of it legally required whenever that content reaches EU audiences. Generate compliant labels for every deliverable type in under 10 seconds.</p>
+
+  <div class="cta-block">
+    <div class="cta-text">
+      <strong>Free AI Disclosure Generator — EU AI Act Article 50 Ready</strong>
+      <p>Generate HTML badges, JSON-LD schema, and plain-text disclosures for client deliverables — AI text, AI images, AI voice-overs, AI video, and deepfakes. Copy-paste into your deliverable docs, client portals, or published content.</p>
+    </div>
+    <a class="btn-primary" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">
+      Generate My Disclosure →
+    </a>
+  </div>
+
+  <!-- USE CASES -->
+  <h2>5 Disclosure Scenarios Every AI Agency Faces</h2>
+  <p>Generic compliance guides are written for enterprise legal teams, not agencies shipping deliverables daily. Here are the five situations where AI agency owners specifically need compliant disclosure labels.</p>
+
+  <div class="use-cases">
+
+    <div class="use-case-card">
+      <div class="icon">📋</div>
+      <div>
+        <h4>Client Deliverable Packages (Copy, Images, Video)</h4>
+        <p>When your agency hands off a content batch — blog posts, ad creatives, social media assets, product descriptions — to a client who will publish them to EU audiences, EU AI Act Article 50 creates an obligation along that entire chain. Your client is the publisher, but you're the one who generated the content. Including ready-made disclosure labels with each deliverable protects your clients from compliance exposure and positions your agency as a responsible AI partner — a genuine competitive differentiator as the August 2026 deadline approaches.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">🏷️</div>
+      <div>
+        <h4>White-Label AI Services and Reseller Agreements</h4>
+        <p>Many AI agencies resell AI-generated content under a client's brand, with no visible mention of AI. That's still AI-generated content under the EU AI Act — the white-label arrangement doesn't eliminate the disclosure requirement; it just shifts questions about <em>who</em> is responsible. Building disclosure language into your white-label SOWs and deliverable handoffs ensures the downstream publisher (your client) has what they need to comply, and that your contract clearly assigns that responsibility. The generator outputs both machine-readable JSON-LD and human-readable text suitable for contract attachments.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">📣</div>
+      <div>
+        <h4>Client-Facing Case Studies and Portfolio Samples</h4>
+        <p>Your agency website's portfolio is almost certainly full of AI-generated content presented as examples of your work. If those case studies include AI-generated text excerpts, AI-created images, or AI-produced video demos, every one of them is subject to Article 50 when viewed by EU visitors — and your site almost certainly has EU visitors. The generator creates page-level JSON-LD schema that you can drop into your portfolio templates once and have every case study page automatically compliant, without manual labeling on each individual asset.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">🎙️</div>
+      <div>
+        <h4>AI Voice-Overs and Video Production for Clients</h4>
+        <p>AI-generated voice and video content face the strictest disclosure requirements under the EU AI Act — these are treated as synthetic media with high potential for deception. If your agency produces explainer videos, podcast intros, YouTube ads, or social media video clips using AI voice or AI-generated visuals, every piece needs a disclosure both in the content metadata and visibly to the viewer. The generator handles AI Voice and AI Video as first-class content types, outputting disclosure labels that satisfy both the "visible to the user" and "machine-readable" requirements of Article 50.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">📢</div>
+      <div>
+        <h4>Agency's Own AI-Generated Marketing and Thought Leadership</h4>
+        <p>Your own blog posts, LinkedIn articles, newsletters, and X threads showcasing AI capabilities or agency insights — if they're written or significantly assisted by AI — need disclosure too. Many agency owners skip this because it feels awkward to label your own content. But the EU AI Act doesn't carve out an exemption for companies that build AI products; it applies to all AI-generated content reaching EU readers. Getting your own house in order is also the right way to demonstrate the transparency your clients should expect from you.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAIN / SOLUTION -->
+  <h2>Agency Pain Points → What the Generator Solves</h2>
+  <p>Running an AI agency means constantly context-switching between client needs. Compliance can't be a per-deliverable manual task. Here's how the generator maps to the real friction you face:</p>
+
+  <table class="pain-table">
+    <thead>
+      <tr>
+        <th style="width:50%">The Pain</th>
+        <th>What the Generator Does</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>You produce 10+ content types across clients — each needs a different disclosure format for its platform</td>
+        <td>Outputs HTML badge, JSON-LD schema, and plain-text in one click — pick the format that fits the surface (web, doc, social, video)</td>
+      </tr>
+      <tr>
+        <td>Your clients are US-based but publish to EU audiences, and they're asking you for compliance guidance</td>
+        <td>Generates Article 50-compliant labels regardless of where client or agency is located — EU reach triggers the law, not domicile</td>
+      </tr>
+      <tr>
+        <td>You want to bundle disclosure language into client contracts and SOWs but need legally-phrased boilerplate</td>
+        <td>Plain-text output is formatted for client-facing documentation — copy it into MSAs, SOW addenda, or handoff emails directly</td>
+      </tr>
+      <tr>
+        <td>Your agency uses 3-4 different AI tools (GPT-4o for copy, Midjourney for images, ElevenLabs for voice) per project</td>
+        <td>Supports all content types as separate label types — generate one label per content type per deliverable in seconds</td>
+      </tr>
+      <tr>
+        <td>A client asks for multi-language disclosures because they publish in German, French, and Spanish markets</td>
+        <td>Supports 8 languages (DE, FR, ES, IT, PT, NL, PL, EN) — switch with one click, copy for each market</td>
+      </tr>
+      <tr>
+        <td>You're not sure whether an AI-assisted human-edited piece still needs a label (it usually does)</td>
+        <td>Covers AI-Edited content as a specific type — content that started as AI and was refined by a human still requires disclosure under Article 50</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- PRICING -->
+  <h2>Pricing vs. Paid Alternatives for Agencies</h2>
+  <p>Compliance tooling for agencies either doesn't exist as a dedicated category, or it's buried inside expensive enterprise suites priced for Fortune 500 legal teams. Here's a realistic comparison for an agency owner managing disclosure across multiple client accounts:</p>
+
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Price</th>
+        <th>HTML Badge</th>
+        <th>JSON-LD Schema</th>
+        <th>Multi-language</th>
+        <th>All Content Types</th>
+        <th>Free Tier</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="tool-name">✨ TinyTools AI Disclosure Generator</td>
+        <td><span class="price-tag price-free">$0</span></td>
+        <td class="tick">✓</td>
+        <td class="tick">✓</td>
+        <td class="tick">✓ 8 languages</td>
+        <td class="tick">✓ 6 types</td>
+        <td class="tick">Always free</td>
+      </tr>
+      <tr>
+        <td class="tool-name">OneTrust AI Governance</td>
+        <td><span class="price-tag price-paid">$1,500+/yr</span></td>
+        <td class="tick">✓</td>
+        <td class="tick">✓</td>
+        <td class="tick">✓</td>
+        <td class="tick">✓</td>
+        <td class="cross">No</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Jasper (AI content platform)</td>
+        <td><span class="price-tag price-paid">$49–$125/mo</span></td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">7-day trial only</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Legal counsel review</td>
+        <td><span class="price-tag price-paid">$300–$500/hr</span></td>
+        <td class="cross">✗ Manual draft</td>
+        <td class="cross">✗</td>
+        <td class="cross">Manual</td>
+        <td class="cross">Manual</td>
+        <td class="cross">No</td>
+      </tr>
+      <tr>
+        <td class="tool-name">DIY manual labeling</td>
+        <td><span class="price-tag">~3–8 min/label</span></td>
+        <td class="cross">Manual</td>
+        <td class="cross">✗ Usually skipped</td>
+        <td class="cross">Manual</td>
+        <td class="cross">Manual</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>For an agency shipping dozens of AI deliverables a week, manual labeling adds hours of admin work per month. Enterprise compliance suites are designed for legal and compliance officers, not for agency operators who need fast, correct output they can drop into a deliverable doc. The TinyTools generator fills the gap: fast, free, and technically correct down to the JSON-LD schema block.</p>
+
+  <!-- SISTER TOOLS -->
+  <h2>Related Tools for AI Agency Owners</h2>
+  <p>Disclosure is the front-line obligation, but running a compliant and efficient AI agency involves more than labeling. These tools round out the workflow:</p>
+
+  <div class="sister-tools">
+    <a class="sister-card" href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">
+      <div class="st-label">Compliance</div>
+      <strong>EU AI Act Risk Assessment</strong>
+      <span>Identify which risk tier your client projects or internal AI tools fall into under the EU AI Act before enforcement hits.</span>
+    </a>
+    <a class="sister-card" href="https://tinytools-smoky.vercel.app/ai-cost-calculator/">
+      <div class="st-label">Cost</div>
+      <strong>AI Cost Calculator</strong>
+      <span>Model token and API costs across GPT-4o, Claude, and Gemini for client retainers — price your AI services accurately.</span>
+    </a>
+    <a class="sister-card" href="https://tinytools-smoky.vercel.app/ai-text-detector/">
+      <div class="st-label">Quality</div>
+      <strong>AI Text Detector</strong>
+      <span>Run client deliverables through an AI detector before handoff — know what your clients will see if they check themselves.</span>
+    </a>
+  </div>
+
+  <!-- FAQ -->
+  <h2>Common Questions from AI Agency Owners</h2>
+
+  <h3>My agency is US-based. Does the EU AI Act actually apply to us?</h3>
+  <p>Yes, if content you produce reaches EU users — which it almost certainly does if your clients publish to general audiences online. The EU AI Act has extraterritorial reach: it applies based on where the <em>output</em> is consumed, not where the agency is incorporated. If your client publishes AI-generated content to a website accessible in the EU, the disclosure obligation follows that content. The practical advice for most US agencies: assume Article 50 applies to any content that goes live on the web.</p>
+
+  <h3>My client contract says they're responsible for compliance. Does that protect me?</h3>
+  <p>Contract clauses allocating compliance responsibility between parties are valid and enforceable between you and your client, but they don't override your obligations to third parties or regulators under EU law. If your agency is the one generating the AI content, you may still face questions about your role in the supply chain. More practically: if your client gets fined and the investigation traces back to your deliverables, your contract language becomes a legal dispute rather than protection. Providing disclosure labels as part of your standard deliverable package is far cheaper than litigation.</p>
+
+  <h3>How do I include disclosures in a deliverable PDF or Google Doc?</h3>
+  <p>Use the plain-text output from the generator. Copy the disclosure line (e.g., "✨ AI-Generated Content · Created using Claude 3.7 Sonnet · EU AI Act Art. 50 Compliant") into a footer, header, or cover page note on each deliverable document. For web-delivered content, use the HTML badge and JSON-LD schema instead. The generator produces all three formats in the same interface — pick what fits the delivery medium.</p>
+
+  <h3>We use Midjourney for client images. Does image disclosure work differently?</h3>
+  <p>Under EU AI Act Article 50, AI-generated images require disclosure when there's a risk the viewer might believe the image is real or human-created — which applies to almost all photorealistic AI images. The disclosure can be a visible watermark, a caption, or an image metadata tag alongside a machine-readable JSON-LD schema on the page. The generator handles AI Image as a specific content type with output formatted for web use. For images embedded in documents or PDFs, use the plain-text caption format.</p>
+
+  <h3>Can I use the generated labels in client contracts and agency agreements?</h3>
+  <p>The plain-text output is designed to be portable — you can include it in an SOW addendum, a deliverable handoff checklist, or an agency MSA as boilerplate disclosure language. We always recommend having a qualified attorney review any language that goes into a binding contract, but as a starting point, the plain-text format is written to be clear, specific, and legally descriptive rather than technical jargon. It's not legal advice — it's a practical starting point for agencies that want to get ahead of the August 2026 deadline without spending hours on lawyer-drafted templates.</p>
+
+  <!-- BOTTOM CTA -->
+  <div class="cta-bottom">
+    <h2>Generate Your Client Disclosure Labels Now</h2>
+    <p>Free, no account, no credit card. Select your content type, enter the AI tool name, copy the compliant HTML + JSON-LD in under 10 seconds.</p>
+    <a class="btn-primary" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/" style="display: inline-flex; font-size: 16px; padding: 16px 36px;">
+      Open AI Disclosure Generator →
+    </a>
+    <p style="margin-top: 16px; font-size: 13px; color: var(--text-dim);">EU AI Act Article 50 compliant · HTML, JSON-LD, plain text · 8 languages · Free forever</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>
+    Free tool by <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a> ·
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-cost-calculator/">AI Cost Calculator</a>
+    <br>
+    Informational only — not legal advice. Consult a qualified attorney for compliance decisions.
+  </p>
+</footer>
+
+</body>
+</html>
