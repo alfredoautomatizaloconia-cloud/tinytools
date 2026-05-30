@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Disclosure Generator for AI Shopify Stores — FTC & EU AI Act Compliant</title>
+<meta name="description" content="Running an AI-powered Shopify store? Generate FTC-compliant and EU AI Act-compliant disclosure labels for AI product descriptions, chatbots, review replies, and marketing copy. Free, no signup required.">
+<meta name="keywords" content="AI disclosure generator Shopify, FTC AI disclosure ecommerce, EU AI Act Shopify compliance, AI product description disclosure, Shopify AI chatbot label, AI generated content ecommerce, Shopify AI Act compliance 2026">
+<meta property="og:title" content="AI Disclosure Generator for AI Shopify Stores — FTC & EU AI Act Compliant">
+<meta property="og:description" content="Every AI-generated product description, chatbot reply, and review response on your Shopify store may require a disclosure label. Generate compliant HTML badges, JSON-LD schema, and email footer language in 10 seconds. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-ai-shopify-stores/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-ai-shopify-stores/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Disclosure Generator for AI Shopify Stores",
+  "description": "AI-powered Shopify store owners using tools like Shopify Magic, Jasper, or Copy.ai need FTC and EU AI Act-compliant disclosure labels for product descriptions, chatbot conversations, and AI-generated marketing copy. Generate compliant HTML badges, JSON-LD schema, and email footer language in seconds. Free, no signup.",
+  "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-ai-shopify-stores/",
+  "dateModified": "2026-05-30",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/"},
+      {"@type": "ListItem", "position": 2, "name": "AI Disclosure Generator", "item": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/"},
+      {"@type": "ListItem", "position": 3, "name": "For AI Shopify Stores", "item": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-ai-shopify-stores/"}
+    ]
+  },
+  "mainEntity": {
+    "@type": "WebApplication",
+    "name": "AI Content Disclosure Generator",
+    "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/",
+    "applicationCategory": "BusinessApplication",
+    "offers": {"@type": "Offer", "price": "0"}
+  }
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #fbbf24; --accent-glow: #fbbf2440;
+    --green: #10b981; --red: #ef4444; --purple: #a78bfa;
+    --blue: #60a5fa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #10b98130 0%, transparent 50%);
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 32px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span { margin: 0 6px; }
+
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .badge {
+    display: inline-block; padding: 5px 12px;
+    border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+  }
+  .badge-red { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color: #fca5a5; }
+  .badge-green { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.4); color: #6ee7b7; }
+  .badge-yellow { background: rgba(251,191,36,0.15); border: 1px solid rgba(251,191,36,0.4); color: #fde68a; }
+  .badge-blue { background: rgba(96,165,250,0.15); border: 1px solid rgba(96,165,250,0.4); color: #bfdbfe; }
+
+  h1 {
+    font-size: clamp(28px, 4vw, 44px); font-weight: 800; line-height: 1.15;
+    margin-bottom: 18px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fde68a 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-sub { font-size: 18px; color: var(--text-dim); margin-bottom: 28px; max-width: 680px; }
+
+  .cta-block {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px 32px; margin-bottom: 56px;
+    display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
+    border-left: 4px solid var(--accent);
+  }
+  .cta-block .cta-text { flex: 1 1 300px; }
+  .cta-block .cta-text p { color: var(--text-dim); font-size: 15px; margin-top: 6px; }
+  .cta-block strong { font-size: 17px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px; background: var(--accent); color: #1a1200;
+    font-weight: 700; font-size: 15px; border-radius: 10px;
+    text-decoration: none; white-space: nowrap; transition: background 0.15s;
+  }
+  .btn-primary:hover { background: #fcd34d; }
+
+  h2 { font-size: 26px; font-weight: 700; margin: 48px 0 16px; letter-spacing: -0.01em; }
+  h3 { font-size: 18px; font-weight: 700; margin: 28px 0 10px; color: var(--accent); }
+  p { color: var(--text-dim); margin-bottom: 14px; font-size: 16px; }
+  strong { color: var(--text); }
+
+  .use-cases { display: grid; gap: 16px; margin: 24px 0 40px; }
+  .use-case-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px 24px;
+    display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start;
+  }
+  .use-case-card .icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--accent-glow); border: 1px solid rgba(251,191,36,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; flex-shrink: 0;
+  }
+  .use-case-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .use-case-card p { margin-bottom: 0; font-size: 14px; }
+
+  .pain-table {
+    width: 100%; border-collapse: collapse; margin: 24px 0 40px; font-size: 15px;
+  }
+  .pain-table th {
+    text-align: left; padding: 10px 16px; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim);
+    border-bottom: 1px solid var(--border); font-weight: 600;
+  }
+  .pain-table td {
+    padding: 14px 16px; border-bottom: 1px solid var(--border);
+    color: var(--text-dim); vertical-align: top;
+  }
+  .pain-table td:first-child { color: var(--text); font-weight: 500; }
+  .pain-table tr:last-child td { border-bottom: none; }
+
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0 40px; }
+  .pricing-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 20px; text-align: center;
+  }
+  .pricing-card.featured { border-color: var(--accent); background: rgba(251,191,36,0.06); }
+  .pricing-card .tool-name { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+  .pricing-card .price { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+  .pricing-card.featured .price { color: var(--accent); }
+  .pricing-card .price-note { font-size: 12px; color: var(--text-dim); }
+  .pricing-card ul { list-style: none; margin-top: 16px; text-align: left; }
+  .pricing-card li { font-size: 13px; color: var(--text-dim); padding: 4px 0; display: flex; gap: 8px; }
+  .pricing-card li::before { content: '✓'; color: var(--green); flex-shrink: 0; }
+  .pricing-card.featured li::before { color: var(--accent); }
+
+  .alert-box {
+    background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 12px; padding: 18px 22px; margin: 28px 0;
+  }
+  .alert-box .alert-title { font-weight: 700; color: #fca5a5; margin-bottom: 6px; font-size: 15px; }
+  .alert-box p { color: var(--text-dim); font-size: 14px; margin-bottom: 0; }
+
+  .related-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 24px 0 40px; }
+  .related-tool-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 20px; text-decoration: none;
+    transition: border-color 0.15s;
+    display: block;
+  }
+  .related-tool-card:hover { border-color: var(--accent); }
+  .related-tool-card .tool-icon { font-size: 26px; margin-bottom: 10px; }
+  .related-tool-card .tool-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .related-tool-card .tool-desc { font-size: 13px; color: var(--text-dim); }
+
+  .final-cta {
+    background: var(--bg-card); border: 1px solid var(--accent);
+    border-radius: 20px; padding: 40px 36px; text-align: center; margin-top: 56px;
+  }
+  .final-cta h2 { margin: 0 0 14px; font-size: 28px; }
+  .final-cta p { margin-bottom: 28px; }
+
+  footer { margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--border); text-align: center; }
+  footer p { font-size: 13px; color: var(--text-dim); margin-bottom: 0; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a>
+    <span>›</span>
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a>
+    <span>›</span>
+    For AI Shopify Stores
+  </nav>
+
+  <!-- Hero -->
+  <div class="badge-row">
+    <span class="badge badge-red">⚠️ FTC Required</span>
+    <span class="badge badge-red">EU AI Act 2026</span>
+    <span class="badge badge-green">Free Tool</span>
+    <span class="badge badge-blue">Shopify Stores</span>
+  </div>
+
+  <h1>AI Disclosure Generator for AI Shopify Stores</h1>
+
+  <p class="hero-sub">Your store runs on AI — Shopify Magic, Jasper, Copy.ai, chatbots, AI review replies. The FTC and EU AI Act now require disclosures on AI-generated content. Generate compliant labels for every touchpoint in under 10 seconds.</p>
+
+  <!-- Primary CTA -->
+  <div class="cta-block">
+    <div class="cta-text">
+      <strong>Generate your disclosure labels now</strong>
+      <p>HTML badge, JSON-LD schema, email footer copy, and chatbot disclosure — all for free. No account required.</p>
+    </div>
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/" class="btn-primary">
+      ⚡ Open Generator →
+    </a>
+  </div>
+
+  <!-- Alert -->
+  <div class="alert-box">
+    <div class="alert-title">⚠️ The FTC updated its AI guidance in 2024 — and is enforcing it in 2026</div>
+    <p>AI-generated product descriptions, chatbot interactions, and promotional emails that don't clearly identify AI authorship risk FTC enforcement action. In the EU, Article 50 of the AI Act takes full effect in August 2026. Shopify stores selling to EU customers must comply or face fines up to €15 million.</p>
+  </div>
+
+  <!-- Use Cases -->
+  <h2>5 Places Your AI Shopify Store Needs Disclosure Labels</h2>
+  <p>These aren't theoretical edge cases — they're the exact touchpoints where regulators are looking and where customer trust is won or lost.</p>
+
+  <div class="use-cases">
+
+    <div class="use-case-card">
+      <div class="icon">📝</div>
+      <div>
+        <h4>AI-Generated Product Descriptions</h4>
+        <p>Shopify Magic, Jasper, or any bulk AI writer produces your product copy. The FTC's updated Endorsement Guides (2023) and the EU AI Act both require a clear signal that the content was machine-authored — especially if it makes performance or benefit claims. Use the generator to create a small inline badge ("✦ Written with AI") that you can drop into your product template's Liquid code.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">🤖</div>
+      <div>
+        <h4>AI Customer Service Chatbot</h4>
+        <p>Whether you're using Tidio AI, Gorgias AI, or a custom GPT-powered chat widget, EU AI Act Article 52 requires that any AI system interacting with humans must identify itself as non-human at the start of the interaction. The generator outputs a compliant chatbot greeting disclosure you can paste directly into your chatbot's welcome message configuration.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">⭐</div>
+      <div>
+        <h4>AI-Drafted Review Response Templates</h4>
+        <p>Using Shopify's AI review reply tool or a third-party app to respond to customer reviews at scale? If those responses appear to be personal, human-written replies, you may be creating a misleading commercial practice under EU consumer protection law. A lightweight disclosure in your response template footer solves this instantly.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">📧</div>
+      <div>
+        <h4>AI-Written Marketing Emails (Klaviyo / Omnisend)</h4>
+        <p>Klaviyo's AI email generator and similar tools let you produce entire email campaigns from a prompt. As AI-generated commercial email scales up, regulators are treating undisclosed AI authorship the same as deceptive advertising. The generator produces a ready-to-use email footer line ("This email was drafted with the assistance of AI") formatted for plain text and HTML email clients.</p>
+      </div>
+    </div>
+
+    <div class="use-case-card">
+      <div class="icon">🖼️</div>
+      <div>
+        <h4>AI-Generated Product Photography & Lifestyle Images</h4>
+        <p>Selling with AI-generated product visuals — whether from Midjourney, DALL·E, or Shopify's upcoming AI image tools? The EU AI Act explicitly covers synthetic images used in commerce. Get an HTML image overlay label and a C2PA-compatible JSON-LD metadata block to embed provenance information directly in your product gallery markup.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Pain → Solution -->
+  <h2>Pain Point → Disclosure Fix</h2>
+  <p>Here's how AI Shopify store owners map their specific exposure to the correct disclosure format.</p>
+
+  <table class="pain-table">
+    <thead>
+      <tr>
+        <th>Your Situation</th>
+        <th>Regulation at Stake</th>
+        <th>What the Generator Produces</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bulk AI product descriptions via Shopify Magic</td>
+        <td>FTC Endorsement Guides / EU AI Act Art. 50</td>
+        <td>Inline HTML badge for Liquid product templates</td>
+      </tr>
+      <tr>
+        <td>AI chatbot on your store (Tidio, Gorgias, Intercom)</td>
+        <td>EU AI Act Art. 52 (chatbot identity disclosure)</td>
+        <td>Plain-text chatbot intro disclosure copy</td>
+      </tr>
+      <tr>
+        <td>Klaviyo AI / Omnisend AI email campaigns</td>
+        <td>FTC deceptive advertising rules</td>
+        <td>HTML + plain-text email footer disclosure</td>
+      </tr>
+      <tr>
+        <td>AI-generated lifestyle or product images</td>
+        <td>EU AI Act Art. 50 (synthetic media labeling)</td>
+        <td>Image overlay HTML + JSON-LD provenance block</td>
+      </tr>
+      <tr>
+        <td>AI review reply automation</td>
+        <td>EU Omnibus Directive (fake/misleading reviews)</td>
+        <td>Template footer disclosure for review responses</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pricing Comparison -->
+  <h2>Cost Comparison: Compliance Options for Shopify Store Owners</h2>
+  <p>Dedicated compliance platforms exist — but they're priced for enterprises, not DTC founders running lean Shopify operations.</p>
+
+  <div class="pricing-grid">
+
+    <div class="pricing-card">
+      <div class="tool-name">Shopify Compliance App (third-party)</div>
+      <div class="price">$49<span style="font-size:14px;font-weight:400;">/mo</span></div>
+      <div class="price-note">e.g. Termly, Enzuzo</div>
+      <ul>
+        <li>Privacy policy focus</li>
+        <li>Limited AI content coverage</li>
+        <li>Monthly subscription</li>
+      </ul>
+    </div>
+
+    <div class="pricing-card">
+      <div class="tool-name">Legal Counsel</div>
+      <div class="price">$300<span style="font-size:14px;font-weight:400;">+/hr</span></div>
+      <div class="price-note">For EU AI Act review</div>
+      <ul>
+        <li>Covers all use cases</li>
+        <li>Tailored advice</li>
+        <li>Very expensive</li>
+      </ul>
+    </div>
+
+    <div class="pricing-card">
+      <div class="tool-name">Jasper / Copy.ai</div>
+      <div class="price">$49<span style="font-size:14px;font-weight:400;">/mo</span></div>
+      <div class="price-note">Generates content, not disclosures</div>
+      <ul>
+        <li>Writes your AI copy</li>
+        <li>No disclosure output</li>
+        <li>You're still liable</li>
+      </ul>
+    </div>
+
+    <div class="pricing-card featured">
+      <div class="tool-name">TinyTools AI Disclosure Generator</div>
+      <div class="price">$0</div>
+      <div class="price-note">Always free, no signup</div>
+      <ul>
+        <li>HTML badges for templates</li>
+        <li>EU AI Act + FTC compliant</li>
+        <li>Chatbot disclosure copy</li>
+        <li>Image overlay & JSON-LD</li>
+        <li>Email footer language</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Internal Links -->
+  <h2>Related Tools for AI Shopify Store Owners</h2>
+  <p>Disclosure is just one layer of AI compliance. These tools cover the rest of your stack.</p>
+
+  <div class="related-tools">
+
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="related-tool-card">
+      <div class="tool-icon">🔍</div>
+      <div class="tool-title">EU AI Act Risk Assessment</div>
+      <div class="tool-desc">Classify your Shopify AI tools by risk level and generate a compliance checklist. Know your exact obligations before August 2026.</div>
+    </a>
+
+    <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/" class="related-tool-card">
+      <div class="tool-icon">🤖</div>
+      <div class="tool-title">AI Robots.txt Generator</div>
+      <div class="tool-desc">Stop AI scrapers from training on your product catalog, pricing data, and customer reviews without consent.</div>
+    </a>
+
+    <a href="https://tinytools-smoky.vercel.app/og-image-generator/" class="related-tool-card">
+      <div class="tool-icon">🖼️</div>
+      <div class="tool-title">OG Image Generator</div>
+      <div class="tool-desc">Create compliant Open Graph images for your Shopify store pages — with proper metadata for social sharing.</div>
+    </a>
+
+  </div>
+
+  <!-- Final CTA -->
+  <div class="final-cta">
+    <h2>Your store is already using AI. Make it compliant.</h2>
+    <p>The AI Disclosure Generator handles every content type your Shopify store produces — product copy, chat, email, images — and outputs production-ready disclosure code in seconds. Free forever.</p>
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/" class="btn-primary" style="font-size: 16px; padding: 16px 36px;">
+      ⚡ Generate Your Disclosures Free →
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> ·
+      <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a> ·
+      <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> ·
+      <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/">AI Robots.txt Generator</a>
+    </p>
+    <p style="margin-top: 10px;">Not legal advice. This tool generates disclosure language templates for informational purposes. Consult a qualified attorney for your specific compliance obligations.</p>
+  </footer>
+
+</div>
+</body>
+</html>
