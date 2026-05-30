@@ -79,3 +79,36 @@
 **Selection rationale:** seo-meta-generator chosen over color-palette and cover-letter-generator
 because SEO tools have high organic search traffic and the quantifiable results (char counts,
 platform-ready status) make the share tweet feel earned and data-driven.
+
+---
+
+## 2026-05-30 — Scheduled Ship
+
+**Tools shipped:** tweet-roaster, ai-pickup-lines
+**Tier:** 0 (viral)
+**Viral mechanics:** yes (both tools)
+
+### tweet-roaster
+- URL: https://tinytools-smoky.vercel.app/tweet-roaster/
+- HTTP: 200 ✅
+- Input: @handle + paste tweets textarea
+- Analysis: 11 signals (hashtag density, buzzwords, self-promo ratio, humblebrags, thread addiction, emoji count, avg length, question ratio, link ratio, caps tweets, tweet count)
+- Grade: F–S (10 tiers) with personality labels ("Thought Leader Cosplay", "Cringe Singularity", etc.)
+- Viral mechanics: personal result ✅, canvas PNG card 1200×630 ✅, Share to X ✅, deep-linkable hash (handle|base64stats) ✅, shields.io badge ✅, reaction-bait copy ✅
+- Color: sky #0ea5e9
+
+### ai-pickup-lines
+- URL: https://tinytools-smoky.vercel.app/ai-pickup-lines/
+- HTTP: 200 ✅
+- Input: name + AI tool dropdown (10 options)
+- Pool: 70+ pickup lines across 10 categories (neural, programming, prompts, models, general, data, tool-specific)
+- Charm score: deterministic 1–10 from name hash
+- Personality archetypes: 10 types ("Legendary Charmer", "Chaotic Romantic", etc.)
+- Regenerate button with variant seeds
+- Viral mechanics: personal result ✅, canvas PNG card 1200×630 ✅, Share to X ✅, deep-linkable hash (name|tool) ✅, shields.io badge ✅, reaction-bait copy ✅
+- Color: pink #ec4899
+
+**Landing page:** updated, live count 39→41
+**Sitemap:** both added at priority 1.0
+
+**Tier 0 remaining (not yet shipped):** ai-cofounder-match, devops-disaster-score, saas-burn-roast
