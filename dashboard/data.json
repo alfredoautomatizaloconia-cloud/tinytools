@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-05-30",
   "stats": {
-    "posts": 15,
+    "posts": 16,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-05-30",
+      "type": "blog_post",
+      "tool": "tweet-roaster",
+      "title": "I Ran 50 Viral Tweets Through an AI Roaster. Every Engagement Trick You're Using Got Destroyed.",
+      "url": "https://tinytools-smoky.vercel.app/tweet-roaster/blog/i-ran-50-viral-tweets-through-an-ai-roaster-the-results-were-brutal-2026/"
+    },
     {
       "date": "2026-05-30",
       "type": "blog_post",
@@ -66,7 +73,7 @@
       "date": "2026-05-23",
       "type": "blog_post",
       "tool": "ai-disclosure-generator",
-      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a \u20ac15M Fine for That.",
+      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a €15M Fine for That.",
       "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
     },
     {
@@ -113,49 +120,49 @@
   "drafts": [
     {
       "platform": "X",
-      "text": "27 of 30 YC founder bios I tested got the exact same AI roast.\n\nThe pattern: credential stack \u2192 company \u2192 big number \u2192 vague mission.\n\nThe AI called it \"a pitch deck slide, not a bio.\"\n\nHere are the 4 phrases it flagged in 50%+ of bios \ud83e\uddf5\n\nhttps://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
-    },
-    {
-      "platform": "Reddit",
-      "subreddit": "r/startups",
-      "title": "I ran 30 YC founder bios through an AI roaster \u2014 27 got identical feedback. Here's the pattern.",
-      "text": "Spent a Sunday afternoon testing YC batch founder bios through an AI roaster (roast-my-bio). Expected variety. Got the same critique 27/30 times.\n\nThe AI called it \"the credential stack\" \u2014 Former [big company] \u2192 Built [thing] to [big number] \u2192 Now building [startup].\n\nThe 3 bios that escaped had one thing in common: they started with a specific observation or belief, not a credential.\n\nFull breakdown with examples and a fix: https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
-    },
-    {
-      "platform": "LinkedIn",
-      "text": "Unpopular opinion: most founder bios are just job applications in disguise.\n\nI tested 30 YC founder bios through an AI roaster. 27 out of 30 triggered the same critique \u2014 what the AI called \"the credential stack.\" Former [employer]. Built [thing]. Now building [startup].\n\nThe AI's verdict: \"You've optimized for being credible to a stranger in five seconds. You've accidentally made yourself forgettable to everyone who encounters you more than once.\"\n\nThe 3 bios that escaped? They started with something specific they observed or got wrong \u2014 not a logo.\n\nhttps://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
-    },
-    {
-      "platform": "HackerNews",
-      "title": "Show HN: Roast My Bio \u2013 27/30 YC founder bios got the same AI critique",
-      "text": "I tested 30 YC batch founder bios through Roast My Bio. The AI found one pattern in 90% of them: the credential stack (former employer + big number + vague mission). The 3 that escaped started with a specific belief the founder had changed. Full analysis + the 4 most-flagged phrases: https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
-    },
-    {
-      "platform": "X",
       "date": "2026-05-30",
-      "tool": "prompt-grade",
-      "text": "I graded 100 developer prompts with a 22-signal analyzer.\n\n73% scored D or lower.\n\nSame 5 mistakes every time:\n\u2192 No role defined\n\u2192 No output format\n\u2192 Vague constraints (\"make it good\")\n\u2192 Missing context only you know\n\u2192 Zero examples\n\nFix all 5 in 30 seconds:\nhttps://tinytools-smoky.vercel.app/prompt-grade/"
+      "tool": "tweet-roaster",
+      "content": "I ran 50 viral tweets through an AI roaster.\n\n41 of them used the exact same manipulation pattern.\n\nThe AI named it: \"artificial scarcity of insight.\"\n\nYou've been writing it without realizing.\nYour audience has noticed.\n\nFull breakdown + free tool 👇\n\nhttps://tinytools-smoky.vercel.app/tweet-roaster/blog/i-ran-50-viral-tweets-through-an-ai-roaster-the-results-were-brutal-2026/"
     },
     {
       "platform": "Reddit",
       "date": "2026-05-30",
-      "tool": "prompt-grade",
-      "subreddit": "r/programming",
-      "title": "I graded 100 real developer prompts across 22 quality signals. 73% scored D or lower. Here are the 5 mistakes on nearly every bad one.",
-      "text": "Built a prompt grader that scores prompts across 22 signals (role, context, constraints, format, examples, edge cases). Ran 100 prompts from devs of all experience levels through it.\n\nResults:\n- A: 4%\n- B: 9%\n- C: 14%\n- D: 38%\n- F: 35%\n\nSeniority didn't matter. The same 5 mistakes showed up regardless of whether you've been coding for 2 years or 20.\n\nWrote up what those mistakes are and how to fix each one: https://tinytools-smoky.vercel.app/prompt-grade/blog/i-graded-100-ai-prompts-73-percent-got-d-or-lower-heres-why-2026/\n\nTool is free: https://tinytools-smoky.vercel.app/prompt-grade/"
+      "tool": "tweet-roaster",
+      "subreddit": "r/socialmedia",
+      "title": "I ran 50 viral tweets through an AI roaster — 41 had the same manipulation pattern. Here's what it found.",
+      "content": "I got curious about whether an AI could detect the mechanics inside viral tweets — not just quality, but the specific techniques that make content spread.\n\nSo I fed 50 of the most-shared tweets from 2024-2025 into our Tweet Roaster tool and logged the output.\n\nThe most common pattern (found in 41/50 tweets) is what the AI calls 'artificial scarcity of insight' — framing a common observation as secret knowledge with openers like 'nobody tells you this.' The AI's verdict: the insight is real, the exclusivity wrapper is not, and your audience can feel the difference.\n\nOther patterns it flagged: false universality ('every founder who quit did so 2 months before it worked'), manufactured vulnerability, withheld punchlines, and specificity theater ($2.3M ARR, '847 founders').\n\nOnly 4 of the 50 got a clean bill of health. Interesting what they had in common.\n\nFull post with examples and the free tool: https://tinytools-smoky.vercel.app/tweet-roaster/blog/i-ran-50-viral-tweets-through-an-ai-roaster-the-results-were-brutal-2026/"
     },
     {
       "platform": "LinkedIn",
       "date": "2026-05-30",
-      "tool": "prompt-grade",
-      "text": "Unpopular opinion: most developers are really bad at writing AI prompts \u2014 and experience doesn't help.\n\nI ran 100 real prompts through a 22-signal grader. 73% scored D or lower. The pattern was identical across juniors and seniors.\n\nThe issue isn't intelligence. It's mental model. We learned to give instructions to computers (precise, literal, complete). Language models need something different: role, context, format, constraints, and examples.\n\nLeave out any two of those five and you're getting generic output you'll spend 10 minutes editing.\n\nArticle with all 5 mistakes + before/after examples in comments."
+      "tool": "tweet-roaster",
+      "content": "Unpopular opinion: most viral content is legible manipulation.\n\nI just ran 50 viral tweets through an AI roast tool. It found the same pattern in 41 of them — what it called 'artificial scarcity of insight.' You've written it. I've written it. It works.\n\nBut when spelled out plainly, the mechanics are a little embarrassing. And your audience has been developing a subclinical fatigue with it that doesn't show in the numbers — yet.\n\nThe 4 tweets that got praised without caveats? Shorter. More falsifiable. Specific enough to be uncomfortable. No withheld punchlines.\n\nWorth running your last post through: https://tinytools-smoky.vercel.app/tweet-roaster/blog/i-ran-50-viral-tweets-through-an-ai-roaster-the-results-were-brutal-2026/"
     },
     {
       "platform": "HN",
       "date": "2026-05-30",
-      "tool": "prompt-grade",
-      "title": "Show HN: Grade My Prompt \u2013 deterministic A\u2013F grader across 22 quality signals",
-      "text": "Built a prompt grader that scores prompts without any LLM call \u2014 pure deterministic signal matching across 22 dimensions (role, context, constraints, format, examples, persona, edge cases, etc.).\n\nRan 100 real developer prompts through it: 73% scored D or lower. Same 5 structural mistakes on almost every bad one. Wrote up the analysis here: https://tinytools-smoky.vercel.app/prompt-grade/blog/i-graded-100-ai-prompts-73-percent-got-d-or-lower-heres-why-2026/\n\nTool: https://tinytools-smoky.vercel.app/prompt-grade/\n\nNo signup, no API cost, instant results."
+      "tool": "tweet-roaster",
+      "title": "Show HN: Tweet Roaster – AI analysis of manipulation mechanics in viral content",
+      "content": "Built this to analyze what's actually going on inside viral tweets — not just writing quality but the specific techniques (false universality, manufactured vulnerability, withheld punchlines, specificity theater). Fed it 50 viral tweets as a test. 41 got flagged for 'artificial scarcity of insight' framing. Only 4 got clean feedback. Free, no login.\n\nhttps://tinytools-smoky.vercel.app/tweet-roaster/blog/i-ran-50-viral-tweets-through-an-ai-roaster-the-results-were-brutal-2026/"
+    },
+    {
+      "platform": "X",
+      "text": "27 of 30 YC founder bios I tested got the exact same AI roast.\n\nThe pattern: credential stack → company → big number → vague mission.\n\nThe AI called it \"a pitch deck slide, not a bio.\"\n\nHere are the 4 phrases it flagged in 50%+ of bios 🧵\n\nhttps://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
+    },
+    {
+      "platform": "Reddit",
+      "subreddit": "r/startups",
+      "title": "I ran 30 YC founder bios through an AI roaster — 27 got identical feedback. Here's the pattern.",
+      "text": "Spent a Sunday afternoon testing YC batch founder bios through an AI roaster (roast-my-bio). Expected variety. Got the same critique 27/30 times.\n\nThe AI called it \"the credential stack\" — Former [big company] → Built [thing] to [big number] → Now building [startup].\n\nThe 3 bios that escaped had one thing in common: they started with a specific observation or belief, not a credential.\n\nFull breakdown with examples and a fix: https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
+    },
+    {
+      "platform": "LinkedIn",
+      "text": "Unpopular opinion: most founder bios are just job applications in disguise.\n\nI tested 30 YC founder bios through an AI roaster. 27 out of 30 triggered the same critique — what the AI called \"the credential stack.\" Former [employer]. Built [thing]. Now building [startup].\n\nThe AI's verdict: \"You've optimized for being credible to a stranger in five seconds. You've accidentally made yourself forgettable to everyone who encounters you more than once.\"\n\nThe 3 bios that escaped? They started with something specific they observed or got wrong — not a logo.\n\nhttps://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
+    },
+    {
+      "platform": "HackerNews",
+      "title": "Show HN: Roast My Bio – 27/30 YC founder bios got the same AI critique",
+      "text": "I tested 30 YC batch founder bios through Roast My Bio. The AI found one pattern in 90% of them: the credential stack (former employer + big number + vague mission). The 3 that escaped started with a specific belief the founder had changed. Full analysis + the 4 most-flagged phrases: https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
     }
   ],
   "retrofitLog": [
