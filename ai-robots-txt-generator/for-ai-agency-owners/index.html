@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Robots.txt Generator for AI Agency Owners — Protect Every Client Site in Minutes</title>
+  <meta name="description" content="AI agency owners: instantly generate robots.txt files that block GPTBot, ClaudeBot, and 40+ AI training crawlers for every client site. Add a premium AI content protection service to your agency's stack — free." />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-ai-agency-owners/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Robots.txt Generator for AI Agency Owners" />
+  <meta property="og:description" content="Generate production-ready robots.txt files that block AI training crawlers for all your clients. Free, instant, no signup." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-ai-agency-owners/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/og-image-generator/" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "AI Robots.txt Generator for AI Agency Owners",
+    "description": "Free AI robots.txt generator for AI agency owners who need to protect client content from AI training crawlers. Generate compliant robots.txt files covering GPTBot, ClaudeBot, Gemini-crawlers, CCBot, and 40+ more.",
+    "url": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-ai-agency-owners/",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/"},
+        {"@type": "ListItem", "position": 2, "name": "AI Robots.txt Generator", "item": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/"},
+        {"@type": "ListItem", "position": 3, "name": "For AI Agency Owners", "item": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-ai-agency-owners/"}
+      ]
+    },
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "AI Robots.txt Generator",
+      "applicationCategory": "UtilityApplication",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+      "url": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/"
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface2: #21262d;
+      --border: #30363d;
+      --accent: #7c3aed;
+      --accent-light: #a78bfa;
+      --accent-glow: rgba(124,58,237,0.18);
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --green: #3fb950;
+      --yellow: #d29922;
+      --red: #f85149;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: var(--accent-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+    .nav-brand { font-weight: 700; font-size: 15px; color: var(--text); }
+    .nav-brand span { color: var(--accent-light); }
+    .nav-links { margin-left: auto; display: flex; gap: 20px; font-size: 14px; }
+
+    /* HERO */
+    .hero { max-width: 760px; margin: 0 auto; padding: 72px 24px 48px; text-align: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-glow); border: 1px solid var(--accent); color: var(--accent-light); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 24px; letter-spacing: 0.04em; }
+    h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
+    h1 em { font-style: normal; color: var(--accent-light); }
+    .hero-sub { font-size: 18px; color: var(--text-muted); max-width: 580px; margin: 0 auto 36px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff; font-weight: 700; font-size: 16px; padding: 14px 32px; border-radius: 10px; transition: background 0.2s; }
+    .hero-cta:hover { background: #6d28d9; text-decoration: none; }
+    .hero-cta svg { width: 18px; height: 18px; }
+    .hero-meta { margin-top: 16px; font-size: 13px; color: var(--text-muted); }
+
+    /* MAIN CONTENT */
+    .content { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+
+    /* PROBLEM BANNER */
+    .problem-box { background: linear-gradient(135deg, rgba(248,81,73,0.08), rgba(248,81,73,0.04)); border: 1px solid rgba(248,81,73,0.3); border-radius: 12px; padding: 28px 32px; margin: 48px 0; }
+    .problem-box h2 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #ffa198; }
+    .problem-box p { color: var(--text-muted); font-size: 15px; }
+
+    h2.section-title { font-size: 26px; font-weight: 800; margin: 56px 0 8px; }
+    .section-intro { color: var(--text-muted); margin-bottom: 32px; font-size: 15px; }
+
+    /* USE CASES */
+    .use-cases { display: flex; flex-direction: column; gap: 20px; }
+    .use-case { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; display: grid; grid-template-columns: auto 1fr; gap: 16px; }
+    .use-case-icon { width: 40px; height: 40px; background: var(--accent-glow); border: 1px solid var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .use-case h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .use-case p { font-size: 14px; color: var(--text-muted); }
+    .use-case .tag { display: inline-block; background: var(--surface2); border: 1px solid var(--border); color: var(--accent-light); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-top: 8px; }
+
+    /* PAIN → SOLUTION */
+    .pain-solution { margin: 56px 0; }
+    .pain-solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .pain-solution-grid { grid-template-columns: 1fr; } }
+    .pain-card, .solution-card { border-radius: 10px; padding: 20px 22px; }
+    .pain-card { background: rgba(248,81,73,0.07); border: 1px solid rgba(248,81,73,0.25); }
+    .solution-card { background: rgba(63,185,80,0.07); border: 1px solid rgba(63,185,80,0.25); }
+    .card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 10px; }
+    .pain-card .card-label { color: var(--red); }
+    .solution-card .card-label { color: var(--green); }
+    .pain-card ul, .solution-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .pain-card li::before { content: "✗ "; color: var(--red); font-weight: 700; }
+    .solution-card li::before { content: "✓ "; color: var(--green); font-weight: 700; }
+    .pain-card li, .solution-card li { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+    /* PRICING TABLE */
+    .pricing { margin: 56px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead tr { background: var(--surface2); }
+    thead th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr.highlight { background: var(--accent-glow); }
+    tbody td { padding: 12px 16px; }
+    .tool-name { font-weight: 600; }
+    .free-badge { color: var(--green); font-weight: 700; font-size: 12px; }
+    .paid-badge { color: var(--yellow); font-size: 12px; }
+    .limit-badge { color: var(--text-muted); font-size: 12px; }
+    .checkmark { color: var(--green); }
+    .cross { color: var(--red); }
+
+    /* BOTTOM CTA */
+    .bottom-cta { background: linear-gradient(135deg, var(--accent-glow), transparent); border: 1px solid var(--accent); border-radius: 16px; padding: 48px 40px; text-align: center; margin: 56px 0 0; }
+    .bottom-cta h2 { font-size: 26px; font-weight: 800; margin-bottom: 12px; }
+    .bottom-cta p { color: var(--text-muted); margin-bottom: 28px; font-size: 15px; }
+    .bottom-cta-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff; font-weight: 700; font-size: 15px; padding: 14px 32px; border-radius: 10px; }
+    .bottom-cta-btn:hover { background: #6d28d9; text-decoration: none; }
+
+    /* INTERNAL LINKS */
+    .related { margin: 48px 0; }
+    .related h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .related-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+    .related-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .related-card p { font-size: 12px; color: var(--text-muted); }
+    .related-card a::after { content: " →"; }
+
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 13px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand"><span>Tiny</span>Tools</div>
+  <div class="nav-links">
+    <a href="https://tinytools-smoky.vercel.app/">All Tools</a>
+    <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/">AI Robots.txt Generator</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm.93 9.412-1 4.705c-.07.34-.45.514-.736.293L5 12.23l-1.993 1.18a.5.5 0 0 1-.746-.51l.46-2.164-1.527-1.36a.5.5 0 0 1 .274-.862l2.18-.316 1.003-2.034a.5.5 0 0 1 .895 0l1.003 2.034 2.18.316a.5.5 0 0 1 .274.862L9.65 10.65l.28 1.762z"/></svg>
+    For AI Agency Owners
+  </div>
+  <h1>AI Robots.txt Generator<br/><em>Built for AI Agency Owners</em></h1>
+  <p class="hero-sub">Your clients' content is being scraped to train AI models right now. Generate a production-ready robots.txt that blocks GPTBot, ClaudeBot, CCBot, and 40+ AI training crawlers — then ship it across your entire client portfolio in minutes.</p>
+  <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/" class="hero-cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+    Generate Robots.txt Free
+  </a>
+  <p class="hero-meta">100% browser-side · No signup · No API key · Unlimited generations</p>
+</section>
+
+<!-- MAIN -->
+<main class="content">
+
+  <!-- PROBLEM BOX -->
+  <div class="problem-box">
+    <h2>Your Clients' Content Is Becoming Someone Else's Training Data</h2>
+    <p>Every client site you manage — the SaaS docs, the e-commerce product descriptions, the media company's journalism archive — is being systematically crawled by AI training bots. OpenAI's GPTBot, Anthropic's ClaudeBot, Google's Gemini crawlers, and dozens more are pulling content around the clock. Unless robots.txt explicitly blocks them, they're free to take it. Clients are starting to ask hard questions. The agencies that have a ready answer — and a deliverable — will earn the trust and the retainer renewal. The ones who don't will be replaced by the ones who do.</p>
+  </div>
+
+  <!-- USE CASES -->
+  <h2 class="section-title">5 Ways AI Agency Owners Use This Tool</h2>
+  <p class="section-intro">These aren't hypothetical scenarios. These are the exact situations agency owners face when managing AI content protection for a multi-client book of business.</p>
+
+  <div class="use-cases">
+    <div class="use-case">
+      <div class="use-case-icon">🏗️</div>
+      <div>
+        <h3>New Client Onboarding Checklist Item</h3>
+        <p>The smartest agencies have already added "AI crawler protection" to their onboarding checklist, right alongside SSL setup and Google Analytics configuration. With this generator, you can produce a customized robots.txt for each client — tuned to their industry, content type, and tolerance for bot traffic — in under two minutes. Hand it to your dev team or push it directly to the site root. Charge for the audit; the generation is free.</p>
+        <span class="tag">Client onboarding</span>
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">📰</div>
+      <div>
+        <h3>Media and Publishing Client Protection</h3>
+        <p>Your media clients are especially exposed. Journalism, long-form editorial, and owned research are exactly what AI training datasets want. A single well-written investigative piece can be scraped, summarized, and regurgitated by a dozen AI tools — with zero attribution and zero payment. Use the generator to build a tiered robots.txt that blocks all AI training crawlers while keeping Google News, Bing, and standard SEO crawlers fully open. The distinction matters; one configuration ruins traffic, the other protects revenue.</p>
+        <span class="tag">Media clients</span>
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">🛒</div>
+      <div>
+        <h3>E-Commerce Competitive Data Protection</h3>
+        <p>AI tools are being used to scrape competitor pricing, product descriptions, and catalog structures at scale. Your e-commerce clients' painstakingly written product copy, their pricing logic, and their inventory data are competitive intelligence — and it's currently available to any AI that asks. Generate a robots.txt that blocks AI training crawlers from product and catalog directories while leaving structured data and schema markup crawlable for SEO and comparison shopping engines. Protect the moat, not the SEO signal.</p>
+        <span class="tag">E-commerce clients</span>
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">⚖️</div>
+      <div>
+        <h3>EU AI Act Compliance Posture for EU-Based Clients</h3>
+        <p>If you have clients in the EU, robots.txt is now a compliance signal, not just an SEO preference. The EU AI Act's data governance provisions and the emerging "opt-out" frameworks being built into licensing regimes mean that a documented, timestamped robots.txt blocking AI training crawlers can demonstrate intent to protect content. When a client's legal team asks "what have we done to prevent unauthorized AI training use of our content?", having a maintained robots.txt with a clear exclusion list is a first-line answer. Generate it, commit it to version control, and document it in your client compliance file.</p>
+        <span class="tag">EU compliance</span>
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">💼</div>
+      <div>
+        <h3>Packaging as a Billable "AI Content Audit" Service</h3>
+        <p>Savvy AI agencies are turning this into a recurring revenue line. The pitch: a quarterly "AI Content Exposure Audit" that reviews which crawlers are currently hitting the client's site (via server logs), which new bots have emerged since the last audit, and whether the existing robots.txt still covers the current threat landscape. New AI training bots appear every few months. The generator keeps pace. You bill for the analysis and the update; the generation takes two minutes. Clients pay $500–$2,500 per audit depending on site complexity. The cost to you is a tab in your browser.</p>
+        <span class="tag">Agency revenue</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAIN → SOLUTION -->
+  <div class="pain-solution">
+    <h2 class="section-title">Pain → Solution Map</h2>
+    <p class="section-intro">Every AI agency owner managing client content protection runs into the same friction points. Here's the direct fix for each one.</p>
+    <div class="pain-solution-grid">
+      <div class="pain-card">
+        <div class="card-label">THE PAIN</div>
+        <ul>
+          <li>Client asks "are we protected from AI scrapers?" and you don't have a ready answer</li>
+          <li>Manually writing robots.txt means researching which bots to block — a moving target</li>
+          <li>One robots.txt configuration doesn't fit all client types (media vs. SaaS vs. e-commerce)</li>
+          <li>No way to quickly audit 20+ client sites for AI crawler exposure</li>
+          <li>EU clients are asking about compliance posture and you need a documented artifact</li>
+        </ul>
+      </div>
+      <div class="solution-card">
+        <div class="card-label">THE FIX</div>
+        <ul>
+          <li>Generate a client-specific robots.txt in two minutes, deliverable same call</li>
+          <li>Pre-populated list of 40+ AI training bots updated as new crawlers emerge</li>
+          <li>Configurable by content type, industry, and bot granularity</li>
+          <li>Bulk-generate a base config then customize per client in your templating system</li>
+          <li>Downloadable, versionable file you can commit to client repos with timestamps</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING TABLE -->
+  <div class="pricing">
+    <h2 class="section-title">How It Compares to the Alternatives</h2>
+    <p class="section-intro">Most agencies either cobble this together manually, pay for enterprise WAF tools that massively overbuild, or just don't do it. Here's the honest comparison.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Cost</th>
+          <th>AI Bot Coverage</th>
+          <th>Per-Client Config</th>
+          <th>No Dev Required</th>
+          <th>Instant Output</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td class="tool-name">TinyTools AI Robots.txt Generator <span style="font-size:11px;color:var(--accent-light)">(this page)</span></td>
+          <td><span class="free-badge">FREE</span></td>
+          <td class="checkmark">✓ 40+ bots</td>
+          <td class="checkmark">✓</td>
+          <td class="checkmark">✓</td>
+          <td class="checkmark">✓</td>
+        </tr>
+        <tr>
+          <td class="tool-name">Cloudflare Bot Management</td>
+          <td><span class="paid-badge">$200+/mo per site</span></td>
+          <td class="checkmark">✓</td>
+          <td class="checkmark">✓</td>
+          <td class="cross">✗ <span class="limit-badge">requires setup</span></td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td class="tool-name">Manual research + writing</td>
+          <td><span class="paid-badge">2–4 hrs dev time</span></td>
+          <td class="cross">✗ <span class="limit-badge">misses new bots</span></td>
+          <td class="cross">✗ <span class="limit-badge">error-prone</span></td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td class="tool-name">ContentShield / similar SaaS</td>
+          <td><span class="paid-badge">$49–$299/mo</span></td>
+          <td class="checkmark">✓</td>
+          <td class="checkmark">✓</td>
+          <td class="checkmark">✓</td>
+          <td class="cross">✗ <span class="limit-badge">onboarding lag</span></td>
+        </tr>
+        <tr>
+          <td class="tool-name">Generic robots.txt generators</td>
+          <td><span class="free-badge">Free</span></td>
+          <td class="cross">✗ <span class="limit-badge">SEO-only, no AI bots</span></td>
+          <td class="cross">✗</td>
+          <td class="checkmark">✓</td>
+          <td class="checkmark">✓</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--text-muted);margin-top:12px;">Prices as of May 2026. TinyTools runs entirely in your browser — client content is never sent to a server.</p>
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div class="bottom-cta">
+    <h2>Generate Your First Client's Robots.txt Now</h2>
+    <p>Pick the crawlers to block, choose the directories to protect, and download a production-ready file in under two minutes. No account, no subscription, no API key. Start with one client site and work through your whole portfolio this afternoon.</p>
+    <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/" class="bottom-cta-btn">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      Open AI Robots.txt Generator — Free
+    </a>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="related">
+    <h2>Other Tools AI Agency Owners Rely On</h2>
+    <div class="related-grid">
+      <div class="related-card">
+        <h3><a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-ai-agency-owners/">AI Disclosure Generator</a></h3>
+        <p>Generate FTC- and EU-compliant AI use disclosures for every client deliverable your agency ships.</p>
+      </div>
+      <div class="related-card">
+        <h3><a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-ai-agency-owners/">EU AI Act Risk Assessment</a></h3>
+        <p>Score each client AI project against EU AI Act risk categories before you build — and document it.</p>
+      </div>
+      <div class="related-card">
+        <h3><a href="https://tinytools-smoky.vercel.app/ai-cost-calculator/for-ai-agency-owners/">AI Cost Calculator</a></h3>
+        <p>Model client AI infrastructure costs across GPT-4o, Claude, and Gemini before you write the proposal.</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> · Free micro-utilities for the AI era · <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/">AI Robots.txt Generator</a> · <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a></p>
+</footer>
+
+</body>
+</html>
