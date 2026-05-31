@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color Palette Generator for AI App Builders | Free Tool — TinyTools</title>
+  <meta name="description" content="Generate production-ready color palettes for Lovable, Bolt, and Cursor-built apps in seconds. Get Tailwind CSS variables, shadcn/ui tokens, and accessible hex codes — free, no login." />
+  <meta property="og:title" content="Color Palette Generator for AI App Builders" />
+  <meta property="og:description" content="Stop shipping apps with default purple. Generate a custom, accessible color palette with Tailwind CSS variables ready to paste into your AI-built app — free, instant." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/color-palette/for-ai-app-builders/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/color-palette/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Color Palette Generator for AI App Builders" />
+  <meta name="twitter:description" content="Generate Tailwind-ready color palettes for your Lovable, Bolt, or Cursor app in seconds. Free, no login." />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/color-palette/for-ai-app-builders/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Color Palette Generator for AI App Builders",
+    "description": "Generate production-ready color palettes for Lovable, Bolt, and Cursor-built apps in seconds. Get Tailwind CSS variables, shadcn/ui tokens, and accessible hex codes — free, no login.",
+    "url": "https://tinytools-smoky.vercel.app/color-palette/for-ai-app-builders/",
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "Color Palette Generator",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tinytools-smoky.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Color Palette Generator", "item": "https://tinytools-smoky.vercel.app/color-palette/" },
+        { "@type": "ListItem", "position": 3, "name": "For AI App Builders", "item": "https://tinytools-smoky.vercel.app/color-palette/for-ai-app-builders/" }
+      ]
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1f1f1f;
+      --border: #2a2a2a;
+      --accent: #7c3aed;
+      --accent2: #a78bfa;
+      --text: #f0f0f0;
+      --muted: #888;
+      --green: #22c55e;
+      --red: #ef4444;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; line-height: 1.65; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { padding: 14px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    nav .logo { font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: -0.02em; }
+    nav .logo span { color: var(--accent2); }
+    nav .breadcrumb { font-size: 0.82rem; color: var(--muted); }
+    nav .breadcrumb a { color: var(--muted); }
+    nav .breadcrumb a:hover { color: var(--accent2); }
+
+    /* HERO */
+    .hero { max-width: 780px; margin: 0 auto; padding: 64px 24px 48px; text-align: center; }
+    .badge { display: inline-block; background: rgba(124,58,237,0.15); border: 1px solid rgba(167,139,250,0.3); color: var(--accent2); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+    h1 .highlight { color: var(--accent2); }
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin: 0 auto 36px; }
+    .cta-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 32px; border-radius: 10px; transition: background 0.2s; }
+    .cta-primary:hover { background: #6d28d9; text-decoration: none; }
+    .cta-note { font-size: 0.8rem; color: var(--muted); margin-top: 10px; }
+
+    /* PALETTE PREVIEW */
+    .palette-preview { display: flex; gap: 0; border-radius: 12px; overflow: hidden; max-width: 520px; margin: 32px auto 0; height: 56px; }
+    .swatch { flex: 1; }
+
+    /* SECTION */
+    section { max-width: 780px; margin: 0 auto; padding: 0 24px 64px; }
+    h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    p { color: #ccc; margin-bottom: 16px; }
+
+    /* PAIN BLOCK */
+    .pain-block { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--red); border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; }
+    .pain-block .pain-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); margin-bottom: 6px; }
+    .pain-block .solution-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-top: 12px; margin-bottom: 6px; }
+    .pain-block .solution-text { color: var(--text); font-size: 0.95rem; }
+    .pain-block .pain-text { color: #ccc; font-size: 0.95rem; }
+
+    /* CODE BLOCK */
+    .code-block { background: #111; border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; color: #a78bfa; overflow-x: auto; margin-top: 12px; margin-bottom: 16px; }
+    .code-block .comment { color: var(--muted); }
+    .code-block .key { color: #93c5fd; }
+    .code-block .val { color: #86efac; }
+
+    /* USE CASES */
+    .use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+    @media (max-width: 600px) { .use-case-grid { grid-template-columns: 1fr; } }
+    .use-case-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .use-case-card .uc-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .use-case-card h3 { font-size: 0.98rem; margin-bottom: 6px; }
+    .use-case-card p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* PRICING TABLE */
+    .pricing-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem; }
+    .pricing-table th { text-align: left; padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .pricing-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .tool-name { font-weight: 600; }
+    .pricing-table .price { font-weight: 700; }
+    .pricing-table .price.free { color: var(--green); }
+    .pricing-table .price.paid { color: var(--muted); }
+    .pricing-table tr.highlight { background: rgba(124,58,237,0.08); }
+    .pricing-table tr.highlight .tool-name { color: var(--accent2); }
+    .check { color: var(--green); }
+    .cross { color: var(--red); }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; }
+    .step-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(124,58,237,0.2); border: 1px solid rgba(167,139,250,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; color: var(--accent2); }
+    .step-content h3 { font-size: 0.98rem; margin-bottom: 4px; }
+    .step-content p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* PROMPT BLOCK */
+    .prompt-block { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-top: 16px; }
+    .prompt-block .prompt-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent2); margin-bottom: 10px; }
+    .prompt-block p { font-size: 0.88rem; color: #ccc; margin: 0; font-family: 'SF Mono', 'Fira Code', monospace; }
+
+    /* INTERNAL LINKS */
+    .sister-tools { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+    .sister-card { flex: 1 1 200px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; transition: border-color 0.2s; }
+    .sister-card:hover { border-color: var(--accent); text-decoration: none; }
+    .sister-card .sc-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .sister-card h3 { font-size: 0.9rem; color: var(--text); margin-bottom: 4px; }
+    .sister-card p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+    /* FINAL CTA */
+    .final-cta { background: linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(167,139,250,0.05) 100%); border: 1px solid rgba(124,58,237,0.3); border-radius: 16px; padding: 48px 36px; text-align: center; margin-bottom: 64px; }
+    .final-cta h2 { font-size: 1.7rem; margin-bottom: 12px; }
+    .final-cta p { max-width: 500px; margin: 0 auto 28px; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 0.82rem; color: var(--muted); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent2); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Tiny<span>Tools</span></span>
+  <span class="breadcrumb">
+    <a href="/">Home</a> /
+    <a href="/color-palette/">Color Palette Generator</a> /
+    For AI App Builders
+  </span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Lovable · Bolt · Cursor · Replit</div>
+  <h1>Color Palette Generator<br>for <span class="highlight">AI App Builders</span></h1>
+  <p class="hero-sub">Your Lovable or Bolt app deserves more than default purple. Generate a branded, accessible color palette with Tailwind CSS variables ready to paste — free, no design tool required.</p>
+  <a href="/color-palette/" class="cta-primary">Generate Your Color Palette Free →</a>
+  <p class="cta-note">No login required · Exports Tailwind CSS variables, hex codes &amp; shadcn/ui tokens</p>
+
+  <!-- palette swatch preview -->
+  <div class="palette-preview" aria-hidden="true">
+    <div class="swatch" style="background:#1e1b4b;"></div>
+    <div class="swatch" style="background:#3730a3;"></div>
+    <div class="swatch" style="background:#6d28d9;"></div>
+    <div class="swatch" style="background:#a78bfa;"></div>
+    <div class="swatch" style="background:#ddd6fe;"></div>
+    <div class="swatch" style="background:#0f172a;"></div>
+    <div class="swatch" style="background:#1e293b;"></div>
+    <div class="swatch" style="background:#f1f5f9;"></div>
+    <div class="swatch" style="background:#22c55e;"></div>
+    <div class="swatch" style="background:#ef4444;"></div>
+  </div>
+</div>
+
+<!-- PAIN → SOLUTION -->
+<section>
+  <h2>Why Your AI-Built App Looks Like Everyone Else's</h2>
+  <p>Lovable, Bolt, and Cursor generate functional UIs in minutes. The problem: they all pull from the same Tailwind default tokens. Indigo-600 buttons. Slate-900 backgrounds. Gray-400 muted text. After a hundred AI-built apps launched in the same week, users can smell the template from a mile away.</p>
+  <p>A custom color palette is the fastest way to make your app feel intentional — not generated. And for AI app builders who move at 100 mph, spending 45 minutes in Figma picking accessible color combinations is time that doesn't exist.</p>
+
+  <div style="margin-top:32px;">
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #1</div>
+      <div class="pain-text">Your Lovable or Bolt app uses the default Tailwind indigo/slate theme. Every investor, user, and competitor can immediately tell it's an AI-generated template with no brand identity.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">Enter one brand color hex — your company color, a color you like, anything — and TinyTools generates a full 10-shade scale plus surface, text, and semantic colors. Copy the Tailwind CSS variable block and paste it into your app's <code>globals.css</code> in one shot.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #2</div>
+      <div class="pain-text">You're not a designer. Every time you try to pick a color palette by eye, something looks off — either the contrast is too low for accessibility or the accent color clashes with the background in dark mode.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">TinyTools automatically calculates WCAG AA contrast ratios for every foreground/background combination it outputs. No more failing the accessibility check at 2 AM before a ProductHunt launch. Every palette it generates is ready for production out of the box.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #3</div>
+      <div class="pain-text">You're prompting Lovable or Cursor to "make it look more professional" but the AI keeps generating arbitrary hex values that break your brand across components — buttons are one blue, links are another.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">Generate a structured palette once, then paste the CSS variable definitions at the top of your Lovable/Cursor prompt: "Use these CSS variables for all colors: --primary: #6d28d9, --primary-hover: #5b21b6…" The AI follows the system, not its own defaults. Every component stays on-brand.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #4</div>
+      <div class="pain-text">Your app needs both light and dark mode, and manually computing the dark-mode equivalents of your light-mode palette (adjusting lightness, saturation, and opacity layers) takes hours in HSL math.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">TinyTools generates paired light and dark variants for every color in the palette. You get a single CSS variable block with <code>[data-theme="dark"]</code> overrides ready to drop into your Tailwind config — no manual HSL arithmetic needed.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #5</div>
+      <div class="pain-text">You're using shadcn/ui components in your Cursor or Bolt app. The shadcn CSS token names don't match standard Tailwind names, and manually mapping your palette to <code>--background</code>, <code>--foreground</code>, <code>--card</code>, <code>--primary</code> etc. is tedious.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">TinyTools exports your palette in shadcn/ui token format directly — just paste the output into your project's <code>globals.css</code> to override the shadcn defaults. All your Button, Card, Input, and Badge components instantly adopt your brand colors.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section>
+  <h2>5 Ways AI App Builders Use the Color Palette Generator</h2>
+  <div class="use-case-grid">
+
+    <div class="use-case-card">
+      <div class="uc-icon">🚀</div>
+      <h3>Instant Rebrand Before ProductHunt</h3>
+      <p>You're launching tomorrow and your Lovable app still has the indigo defaults. Generate a fresh 10-shade brand palette in 60 seconds, copy the Tailwind CSS block into your prompt, and Lovable regenerates every component with your brand colors — done by midnight.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">🎨</div>
+      <h3>Client App White-Labeling</h3>
+      <p>Building a SaaS product for a client using Bolt or Cursor? Generate a palette seeded from the client's primary brand hex, export the shadcn token map, and paste it into the project. Each client app gets its own color system with one tool call — no Figma handoff needed.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">🌗</div>
+      <h3>Dark Mode + Light Mode in One Shot</h3>
+      <p>Most AI-built apps skip dark mode because designing both themes manually doubles the work. Generate a paired light/dark palette and drop the <code>:root</code> and <code>[data-theme="dark"]</code> blocks straight into your CSS. Add a theme toggle in Lovable with one prompt line — your app has dark mode in under 10 minutes.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">🤖</div>
+      <h3>Paste-Ready Color Prompts for AI Builders</h3>
+      <p>Use the generated palette as a color constraint block in your Cursor or Lovable prompt: "Use ONLY these Tailwind CSS variables, no hardcoded hex values." AI tools that receive a structured color system stop hallucinating arbitrary shades and stay consistent across the entire codebase.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">♿</div>
+      <h3>Accessibility Compliance at Launch</h3>
+      <p>If your AI app handles real users' data — especially in fintech, health, or enterprise — WCAG AA compliance isn't optional. Every palette TinyTools generates includes contrast ratio scores for primary text, secondary text, and interactive element states, so you can ship with confidence.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <h2>From Hex to Tailwind in 3 Steps</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Enter your brand's primary color</h3>
+        <p>Paste any hex code — your logo color, a color from your landing page, or just one you like. If you don't have one yet, use the palette explorer to pick a direction (warm, cool, neutral) and the tool suggests a starting point.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Review the generated palette &amp; accessibility scores</h3>
+        <p>TinyTools generates a 10-shade primary scale, neutral grays, and semantic colors (success, warning, error). Each pair shows its WCAG contrast ratio inline. Adjust the base hue or saturation with sliders until it looks exactly right.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Export and paste into your project</h3>
+        <p>Copy the output in your format of choice: Tailwind CSS variables, shadcn/ui token block, or plain hex codes. Paste into <code>globals.css</code> or your <code>tailwind.config.js</code> extend block. Or drop the variable list directly into your next Lovable or Cursor prompt as a color constraint.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="prompt-block" style="margin-top: 28px;">
+    <div class="prompt-label">📋 Example: Paste this into your Lovable / Cursor prompt</div>
+    <p>Use ONLY these CSS color variables — do not use hardcoded hex values or default Tailwind colors anywhere in the components:<br><br>
+    --primary: #7c3aed;<br>
+    --primary-hover: #6d28d9;<br>
+    --primary-foreground: #ffffff;<br>
+    --background: #0d0d0d;<br>
+    --surface: #161616;<br>
+    --border: #2a2a2a;<br>
+    --text: #f0f0f0;<br>
+    --muted: #888888;<br>
+    --success: #22c55e;<br>
+    --error: #ef4444;
+    </p>
+  </div>
+</section>
+
+<!-- PRICING COMPARISON -->
+<section>
+  <h2>Free vs. Paid Color Tools for AI App Builders</h2>
+  <p>Here's how TinyTools stacks up against the tools AI app builders typically reach for when they need a color system:</p>
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Price</th>
+        <th>Tailwind export</th>
+        <th>shadcn/ui tokens</th>
+        <th>Dark mode pairs</th>
+        <th>WCAG scores</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="tool-name">TinyTools Color Palette</td>
+        <td class="price free">Free</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Coolors.co Pro</td>
+        <td class="price paid">$4/mo</td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="check">✓ basic</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Figma (manual)</td>
+        <td class="price paid">$15/mo</td>
+        <td><span class="cross">✗ manual</span></td>
+        <td><span class="cross">✗ manual</span></td>
+        <td><span class="cross">✗ manual</span></td>
+        <td><span class="check">✓ plugin</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Radix Colors</td>
+        <td class="price free">Free</td>
+        <td><span class="check">✓ limited</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗ no custom hex</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">UI Colors (uicolors.app)</td>
+        <td class="price free">Free</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Dopely Colors</td>
+        <td class="price paid">$9/mo</td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:16px; font-size:0.85rem;">For solo AI app builders and early-stage teams, TinyTools covers 100% of what you need at launch — Tailwind variables, shadcn tokens, dark mode, and accessibility scores — for free. Figma is overkill until you have a dedicated designer; Radix Colors is great but locked to its own palette system rather than your custom brand hex.</p>
+</section>
+
+<!-- SISTER TOOLS -->
+<section>
+  <h2>Complete Your App's Visual Identity Stack</h2>
+  <p>Color is one piece of a brand system. These free tools cover what AI app builders typically need at launch:</p>
+  <div class="sister-tools">
+    <a href="/favicon-generator/" class="sister-card">
+      <div class="sc-icon">⭐</div>
+      <h3>Favicon Generator</h3>
+      <p>Generate a favicon from your brand color or logo in seconds. Covers all sizes — <code>16x16</code> to <code>512x512</code> — for browser tabs, PWA icons, and Apple Touch icons.</p>
+    </a>
+    <a href="/og-image-generator/" class="sister-card">
+      <div class="sc-icon">🖼️</div>
+      <h3>OG Image Generator</h3>
+      <p>Create 1200×630 social preview images for your app's landing page, blog posts, and launch announcements — using the same brand colors from your palette.</p>
+    </a>
+    <a href="/ai-disclosure-generator/" class="sister-card">
+      <div class="sc-icon">📋</div>
+      <h3>AI Disclosure Generator</h3>
+      <p>If your app uses AI-generated content or recommendations, generate the compliance disclosure text required by the EU AI Act and emerging US state laws.</p>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section>
+  <div class="final-cta">
+    <h2>Stop shipping apps with default purple.</h2>
+    <p>Generate a custom, accessible color palette with Tailwind CSS variables in under 60 seconds — free, no Figma, no design background required.</p>
+    <a href="/color-palette/" class="cta-primary">Generate Your Color Palette →</a>
+    <p class="cta-note" style="margin-top:12px;">Used by 5,000+ AI app builders · Free forever · No login</p>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="/">TinyTools</a> ·
+    <a href="/color-palette/">Color Palette Generator</a> ·
+    <a href="/favicon-generator/">Favicon Generator</a> ·
+    <a href="/og-image-generator/">OG Image Generator</a> ·
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a>
+  </p>
+  <p style="margin-top:8px;">© 2026 TinyTools · Free AI tools for builders</p>
+</footer>
+
+</body>
+</html>
