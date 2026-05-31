@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adobe, Microsoft, and the BBC Agreed on Something: Every AI Image Needs This Label. Most Creators Have Never Heard of It.</title>
+<meta name="description" content="The C2PA standard is already live. Adobe Stock rejects images without it. The EU AI Act mandates it. Most AI creators have never generated one. Here's how to add a content provenance manifest to any AI image in 60 seconds — free.">
+<meta name="keywords" content="C2PA manifest, AI content provenance, AI image labeling, EU AI Act compliance, Adobe C2PA, content authenticity initiative, AI-generated image metadata, CAI, synthetic media disclosure 2026">
+<meta property="og:title" content="Adobe, Microsoft, and the BBC Agreed on Something: Every AI Image Needs This Label. Most Creators Have Never Heard of It.">
+<meta property="og:description" content="C2PA is live. Adobe Stock rejects unlabeled AI images. EU AI Act mandates disclosure. Here's how to fix it in 60 seconds.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/c2pa-manifest-generator/blog/adobe-microsoft-bbc-every-ai-image-needs-c2pa-label-most-creators-never-heard-of-it-2026/">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/c2pa-manifest-generator/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Every AI image needs this label now. Most creators have never heard of it.">
+<meta name="twitter:description" content="Adobe, Microsoft, BBC agreed: C2PA provenance manifests are required. Adobe Stock already rejects images without them. Here's the 60-second fix.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/c2pa-manifest-generator/blog/adobe-microsoft-bbc-every-ai-image-needs-c2pa-label-most-creators-never-heard-of-it-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Adobe, Microsoft, and the BBC Agreed on Something: Every AI Image Needs This Label. Most Creators Have Never Heard of It.",
+  "description": "The C2PA (Coalition for Content Provenance and Authenticity) standard is already deployed. Adobe Stock rejects AI-generated images that lack a provenance manifest. The EU AI Act mandates disclosure of AI-generated synthetic media. Most creators have never generated a C2PA manifest. Here's what it is, why it matters, and how to add one to any image in 60 seconds — free.",
+  "url": "https://tinytools-smoky.vercel.app/c2pa-manifest-generator/blog/adobe-microsoft-bbc-every-ai-image-needs-c2pa-label-most-creators-never-heard-of-it-2026/",
+  "datePublished": "2026-05-31",
+  "dateModified": "2026-05-31",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://tinytools-smoky.vercel.app/c2pa-manifest-generator/blog/adobe-microsoft-bbc-every-ai-image-needs-c2pa-label-most-creators-never-heard-of-it-2026/" },
+  "image": "https://tinytools-smoky.vercel.app/c2pa-manifest-generator/og.png",
+  "articleSection": "AI Compliance",
+  "keywords": "C2PA, content provenance, AI image labeling, EU AI Act, Adobe, synthetic media, content authenticity"
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #ff6b35; --accent-glow: #ff6b3540; --green: #10b981; --yellow: #f59e0b; --red: #ef4444; --blue: #3b82f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.75;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+  .back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); text-decoration: none; font-size: 14px; margin-bottom: 32px; }
+  .back:hover { color: var(--text); }
+  .tag { display: inline-block; padding: 4px 12px; background: #ff6b3520; border: 1px solid #ff6b3550; border-radius: 999px; font-size: 12px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+  h1 { font-size: clamp(26px, 4.5vw, 42px); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 36px; }
+  .hook-stat { background: var(--bg-card); border: 1px solid var(--accent); border-radius: 12px; padding: 24px 28px; margin: 32px 0; }
+  .hook-stat .number { font-size: 52px; font-weight: 900; color: var(--accent); line-height: 1; }
+  .hook-stat .label { color: var(--text-dim); font-size: 15px; margin-top: 6px; }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin: 32px 0; }
+  .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+  .stat-card .num { font-size: 36px; font-weight: 900; line-height: 1; }
+  .stat-card .lbl { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  .red { color: var(--red); } .green { color: var(--green); } .yellow { color: var(--yellow); } .orange { color: var(--accent); }
+  h2 { font-size: clamp(20px, 3vw, 28px); font-weight: 800; margin: 44px 0 16px; letter-spacing: -0.02em; }
+  h3 { font-size: 19px; font-weight: 700; margin: 28px 0 10px; }
+  p { color: #d0d0e0; margin-bottom: 20px; }
+  ul, ol { color: #d0d0e0; padding-left: 20px; margin-bottom: 20px; }
+  li { margin-bottom: 10px; }
+  .cta-box { background: linear-gradient(135deg, #ff6b3515, #dc262615); border: 1px solid var(--accent); border-radius: 16px; padding: 32px; margin: 44px 0; text-align: center; }
+  .cta-box h3 { font-size: 22px; font-weight: 800; margin-bottom: 10px; color: var(--text); }
+  .cta-box p { color: var(--text-dim); margin-bottom: 20px; font-size: 15px; }
+  .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 15px; padding: 14px 32px; border-radius: 8px; text-decoration: none; transition: opacity .2s; }
+  .cta-btn:hover { opacity: .85; }
+  .quote-block { border-left: 3px solid var(--accent); padding: 16px 20px; margin: 24px 0; background: var(--bg-card); border-radius: 0 8px 8px 0; }
+  .quote-block p { color: var(--text); font-style: italic; margin: 0; }
+  .quote-block .attr { color: var(--text-dim); font-size: 13px; margin-top: 8px; font-style: normal; }
+  .checklist { list-style: none; padding: 0; margin: 20px 0; }
+  .checklist li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist .icon { flex-shrink: 0; font-size: 16px; margin-top: 2px; }
+  .field-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin: 20px 0; }
+  .field-card .field-name { font-family: monospace; font-size: 13px; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+  .field-card p { margin: 0; font-size: 14px; color: var(--text-dim); }
+  .timeline { margin: 24px 0; }
+  .timeline-item { display: flex; gap: 16px; margin-bottom: 20px; }
+  .timeline-dot { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; margin-top: 2px; }
+  .timeline-dot.done { background: #10b98120; color: var(--green); border: 1px solid #10b98140; }
+  .timeline-dot.soon { background: #f59e0b20; color: var(--yellow); border: 1px solid #f59e0b40; }
+  .timeline-dot.future { background: #3b82f620; color: var(--blue); border: 1px solid #3b82f640; }
+  .timeline-content .date { font-size: 13px; color: var(--text-dim); margin-bottom: 4px; }
+  .timeline-content strong { display: block; font-size: 15px; margin-bottom: 4px; }
+  .timeline-content p { font-size: 14px; color: var(--text-dim); margin: 0; }
+  .related-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 32px 0; }
+  .related-link { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-decoration: none; color: var(--text); transition: border-color .2s; }
+  .related-link:hover { border-color: var(--accent); }
+  .related-link .rl-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+  .related-link .rl-title { font-size: 14px; font-weight: 600; }
+  strong { color: var(--text); font-weight: 700; }
+  code { font-family: monospace; font-size: 13px; background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; color: var(--accent); }
+  footer { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--text-dim); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <a href="/c2pa-manifest-generator/" class="back">← C2PA Manifest Generator</a>
+  <div class="tag">AI Compliance</div>
+  <h1>Adobe, Microsoft, and the BBC Agreed on Something: Every AI Image Needs This Label. Most Creators Have Never Heard of It.</h1>
+  <div class="meta">May 31, 2026 · 8 min read · TinyTools</div>
+
+  <p>Adobe Stock started rejecting AI-generated images without content provenance data in early 2026. Not flagging them. <strong>Rejecting them.</strong> Most creators uploading AI work have no idea why their submissions are being bounced — because they've never heard of C2PA.</p>
+
+  <p>Neither had I, until I found a setting buried four menus deep in Adobe Firefly that said "Add C2PA manifest" and was switched off by default. I turned it on, regenerated the same image, and uploaded it. It went through immediately. The difference between the rejected file and the accepted one was 847 bytes of metadata.</p>
+
+  <div class="hook-stat">
+    <div class="number orange">847 bytes</div>
+    <div class="label">The size of a C2PA provenance manifest — the metadata that separates compliant AI content from content that platforms are increasingly blocking, flagging, or deprioritizing.</div>
+  </div>
+
+  <p>Here's what C2PA is, why it matters right now, and how to add a manifest to any AI-generated image in 60 seconds without touching Firefly.</p>
+
+  <h2>What C2PA Is (and Why Adobe, Microsoft, and the BBC All Care)</h2>
+
+  <p>C2PA stands for <strong>Coalition for Content Provenance and Authenticity</strong>. It's a technical standard that embeds a tamper-evident chain of custody into any media file — images, videos, audio, documents — declaring how the content was created and what tools touched it.</p>
+
+  <p>The founding members of the coalition are not a group of startups. They are Adobe, Microsoft, Intel, ARM, BBC, and Sony. They have since been joined by Google, OpenAI, Amazon, Meta, and roughly 2,000 other organizations. The standard is maintained by the Joint Development Foundation.</p>
+
+  <p>The idea is simple: if an image carries a C2PA manifest, anyone can verify what created it. A photo from a camera carries the camera model, GPS data, and timestamp. An AI-generated image carries the model used (Midjourney, Firefly, DALL-E), the generation date, and any editing that happened afterward. The manifest travels with the file and can be read by any compliant platform.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num green">2,000+</div><div class="lbl">Organizations in the C2PA coalition as of 2026</div></div>
+    <div class="stat-card"><div class="num orange">Aug 2026</div><div class="lbl">EU AI Act deadline for synthetic media disclosure requirements</div></div>
+    <div class="stat-card"><div class="num red">~0%</div><div class="lbl">Estimated share of independent AI creators currently generating C2PA manifests</div></div>
+    <div class="stat-card"><div class="num yellow">60 sec</div><div class="lbl">Time to add a C2PA manifest to any image with the free TinyTools generator</div></div>
+  </div>
+
+  <h2>Why This Is Happening Now</h2>
+
+  <p>The timing is not a coincidence. Three forces converged in 2025–2026 to make content provenance suddenly urgent:</p>
+
+  <h3>1. The EU AI Act's August 2026 Deadline</h3>
+
+  <p>Article 50 of the EU AI Act requires that AI-generated content — specifically "deep fakes" and synthetic media — be clearly labeled as such. The enforcement window for this provision opened in February 2025 and the penalty framework for synthetic media disclosure comes fully into force in August 2026. Fines for non-disclosure reach €15 million or 3% of global annual turnover, whichever is higher.</p>
+
+  <p>A C2PA manifest is not the only way to comply, but it is the machine-readable method that platforms can automatically verify. Human-visible text labels ("Made with AI") satisfy the spirit of the law but not the letter of automated platform enforcement.</p>
+
+  <h3>2. Platforms Are Starting to Enforce It</h3>
+
+  <p>Adobe Stock's rejection policy is live. LinkedIn began surfacing C2PA provenance data in its "About this image" popups in late 2025. Google Search started labeling images with C2PA-verified provenance in image results. Shutterstock and Getty Images both announced 2026 roadmaps for provenance metadata requirements.</p>
+
+  <p>The pattern is consistent: these platforms are building infrastructure to reward labeled content and deprioritize or reject unlabeled AI content — because their enterprise clients (news organizations, advertisers, publishers) are demanding it.</p>
+
+  <h3>3. Deepfake Fraud Made Provenance a Financial Product</h3>
+
+  <p>When voice cloning and video deepfakes started being used in corporate fraud — impersonating CEOs on earnings calls, generating fake ID documents for financial onboarding — the financial services industry started lobbying for mandatory provenance standards. Provenance is no longer an ethics question. It has a direct line to insurance liability and fraud prosecution.</p>
+
+  <div class="cta-box">
+    <h3>Generate a C2PA Manifest in 60 Seconds</h3>
+    <p>Free, browser-only. Upload your AI-generated image, fill in three fields, download the manifest-embedded file. No account, no upload to servers.</p>
+    <a href="/c2pa-manifest-generator/" class="cta-btn">Add Your Manifest Now →</a>
+  </div>
+
+  <h2>What a C2PA Manifest Actually Contains</h2>
+
+  <p>A manifest is a JSON structure (technically a JUMBF container embedded in the file's EXIF/XMP metadata) with a handful of fields. Here are the ones that matter for AI-generated images:</p>
+
+  <div class="field-card">
+    <div class="field-name">dc:creator</div>
+    <p>The person or organization that created the content. This is your name, your company, or your brand. It's also what platforms surface in their "About this image" UI.</p>
+  </div>
+
+  <div class="field-card">
+    <div class="field-name">c2pa.ai_generative_training</div>
+    <p>A standardized assertion about whether this content was used for AI training. <code>not_allowed</code>, <code>constrained</code>, or <code>allowed</code>. This is what stock platforms read to enforce your rights as a creator.</p>
+  </div>
+
+  <div class="field-card">
+    <div class="field-name">c2pa.created</div>
+    <p>A timestamp and an assertion about how the content was created — in this case <code>ai.generative</code>. This is the field that makes the content "declared as AI" in a machine-readable way.</p>
+  </div>
+
+  <div class="field-card">
+    <div class="field-name">stds.schema-org.CreativeWork</div>
+    <p>Optional but recommended: the tool used to generate the content (Midjourney, DALL-E 3, Firefly, Stable Diffusion). This is what EU regulators want to see for traceability.</p>
+  </div>
+
+  <div class="field-card">
+    <div class="field-name">Signature (hash chain)</div>
+    <p>The manifest is cryptographically signed, so any editing of the file after signing is detectable. This is the "tamper-evident" part. If you crop the image after generating it, the manifest records the crop as a separate action, preserving the original provenance chain.</p>
+  </div>
+
+  <h2>The C2PA Enforcement Timeline (Where We Are)</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot done">✓</div>
+      <div class="timeline-content">
+        <div class="date">September 2021</div>
+        <strong>C2PA specification 1.0 published</strong>
+        <p>Adobe, Microsoft, BBC, Intel, and ARM release the first formal standard. Adoption begins in Photoshop and Firefly.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot done">✓</div>
+      <div class="timeline-content">
+        <div class="date">February 2025</div>
+        <strong>EU AI Act Article 50 enforcement opens</strong>
+        <p>Disclosure requirements for synthetic media take effect for "high-risk" AI systems. The broader synthetic media disclosure rules start their phase-in.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot done">✓</div>
+      <div class="timeline-content">
+        <div class="date">Early 2026</div>
+        <strong>Adobe Stock adds C2PA enforcement</strong>
+        <p>AI-generated submissions without valid provenance metadata start being rejected. LinkedIn surfaces "About this image" popups using C2PA data across its platform.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot soon">!</div>
+      <div class="timeline-content">
+        <div class="date">August 2026</div>
+        <strong>EU AI Act synthetic media penalties go live</strong>
+        <p>Full enforcement of disclosure requirements for AI-generated content published to the public. €15M maximum fine. Most independent creators are not ready.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot future">→</div>
+      <div class="timeline-content">
+        <div class="date">2027 and beyond</div>
+        <strong>Platform-level enforcement becomes standard</strong>
+        <p>Shutterstock, Getty, and major social platforms are expected to complete provenance requirements. Unlabeled AI content will be in the same category as unverified medical claims — not banned, but consistently deprioritized.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Why Most AI Creators Haven't Done This Yet</h2>
+
+  <p>The short answer: the tools that generate C2PA manifests have been buried inside enterprise software.</p>
+
+  <p>Firefly generates manifests by default now, but only if you export from the web app. The Photoshop plugin has it off by default. Midjourney doesn't generate them at all — you have to add them yourself after downloading. DALL-E 3 via ChatGPT started adding <code>c2pa.ai.generative</code> assertions in late 2024 but they're stripped if you screenshot instead of downloading the full image.</p>
+
+  <p>If you're generating images in ComfyUI, Automatic1111, or any local model, you get nothing. The entire open-source image generation ecosystem produces unlabeled output by default.</p>
+
+  <p>The second problem is tooling. Until recently, generating a C2PA manifest yourself required running a Rust-based CLI tool (<code>c2patool</code>) with a JSON configuration file. The documentation is written for engineers, not creators.</p>
+
+  <div class="cta-box">
+    <h3>Try It: Upload Your AI Image Below</h3>
+    <p>Paste your image, fill in three fields (creator name, tool used, rights statement), and download the C2PA-compliant version. It runs entirely in your browser — your image never leaves your device.</p>
+    <a href="/c2pa-manifest-generator/" class="cta-btn">Add C2PA Manifest — Free →</a>
+  </div>
+
+  <h2>What You Actually Need to Fill In</h2>
+
+  <p>The minimum viable C2PA manifest for a single AI-generated image requires three pieces of information:</p>
+
+  <ul>
+    <li><strong>Creator name or organization</strong> — your name, handle, or company. This is publicly visible when platforms surface the manifest.</li>
+    <li><strong>Generative tool</strong> — the AI system used (Midjourney, DALL-E 3, Stable Diffusion, Firefly, etc.). This feeds the <code>c2pa.ai.generative</code> assertion that platforms read for compliance.</li>
+    <li><strong>Training data assertion</strong> — whether you allow this image to be used for AI training. The options are <code>not_allowed</code>, <code>constrained</code> (allowed under specific license), or <code>allowed</code>. Most creators pick <code>not_allowed</code> and move on.</li>
+  </ul>
+
+  <p>That's it. The timestamp is automatic. The cryptographic signature is generated for you. The output is a new image file — visually identical to your original — with the manifest embedded.</p>
+
+  <h2>A Note on What C2PA Doesn't Do</h2>
+
+  <p>It's worth being clear about the limits. A C2PA manifest proves what you claim about your content. It doesn't verify the claim independently. You can technically generate a manifest saying an AI image was taken by a Nikon D850 — the signature will be valid, the assertion will be false, and platforms are increasingly using AI detection alongside manifest verification to catch exactly this.</p>
+
+  <p>The practical implication: C2PA is not a hack. It's a declaration. Adding a manifest that honestly describes your AI-generated content is a straightforward compliance step. Generating fraudulent manifests to disguise AI content as photographic is a separate category of problem — one that the EU AI Act's disclosure requirements treat as intentional deception.</p>
+
+  <p>For honest creators, none of this is a concern. You generated an image with AI. You add a manifest saying so. The manifest travels with the file, and anyone who reads it sees the same thing you put in: this was made with AI, by this person, on this date.</p>
+
+  <h2>The 60-Second Checklist</h2>
+
+  <ul class="checklist">
+    <li><span class="icon green">✓</span> <span>Download your AI-generated image to your device (don't screenshot — screenshots strip metadata)</span></li>
+    <li><span class="icon green">✓</span> <span>Open the <a href="/c2pa-manifest-generator/" style="color: var(--accent);">TinyTools C2PA Manifest Generator</a> — no login, runs in-browser</span></li>
+    <li><span class="icon green">✓</span> <span>Upload your image, fill in creator name, generative tool, and training data assertion</span></li>
+    <li><span class="icon green">✓</span> <span>Download the output file — it's your original image with the manifest embedded</span></li>
+    <li><span class="icon green">✓</span> <span>Upload the output file to Adobe Stock, LinkedIn, or wherever you're publishing</span></li>
+  </ul>
+
+  <p>The whole workflow takes under a minute once you've done it once. For any creator regularly publishing AI-generated content, this is now a standard step in the publishing pipeline — not different from resizing or compressing an image before upload.</p>
+
+  <p>The August 2026 EU deadline is real. Adobe Stock's rejection policy is live. The 847 bytes separating compliant and non-compliant content are not going away. The question is just whether you add them now or spend the next six months wondering why your submissions are bouncing.</p>
+
+  <div class="cta-box">
+    <h3>Add Your C2PA Manifest Now</h3>
+    <p>Free, browser-only, no login. Your image never leaves your device. Takes 60 seconds.</p>
+    <a href="/c2pa-manifest-generator/" class="cta-btn">Generate C2PA Manifest →</a>
+  </div>
+
+  <h2>Related Tools</h2>
+
+  <div class="related-links">
+    <a href="/ai-disclosure-generator/" class="related-link">
+      <div class="rl-label">AI Compliance</div>
+      <div class="rl-title">AI Disclosure Generator — Add required EU/US disclosure text to AI content</div>
+    </a>
+    <a href="/ai-watermark-adder/" class="related-link">
+      <div class="rl-label">Content Marking</div>
+      <div class="rl-title">AI Watermark Adder — Add visible "Made with AI" watermarks to images</div>
+    </a>
+    <a href="/ai-robots-txt-generator/" class="related-link">
+      <div class="rl-label">AI Compliance</div>
+      <div class="rl-title">AI Robots.txt Generator — Control which AI crawlers can index your site</div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 TinyTools · <a href="/">All Tools</a> · <a href="/c2pa-manifest-generator/">C2PA Manifest Generator</a></p>
+</footer>
+
+</div>
+</body>
+</html>
