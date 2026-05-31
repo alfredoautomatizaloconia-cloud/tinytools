@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your AI Cofounder Match — Which AI Model Is Your Startup Soulmate?</title>
+<meta name="description" content="6-question quiz reveals which AI model would be your ideal startup cofounder — ChatGPT, Claude, Gemini, Grok, Llama, or Mistral. Shareable card. Free, no signup.">
+<meta name="keywords" content="ai cofounder match, which ai are you, ai personality quiz, chatgpt vs claude, ai startup quiz, founder personality, which ai model">
+<meta property="og:title" content="Find Your AI Cofounder Match — Which AI Is Your Startup Soulmate?">
+<meta property="og:description" content="6 questions. One AI soulmate. Find out which model would be your cofounder and why that says something about you.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/ai-cofounder-match/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-cofounder-match/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Cofounder Match",
+  "description": "Quiz that pairs you with a popular AI model as your ideal startup cofounder",
+  "url": "https://tinytools-smoky.vercel.app/ai-cofounder-match/",
+  "applicationCategory": "EntertainmentApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #d946ef; --accent-glow: #d946ef40;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #7c3aed40 0%, transparent 50%);
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 5vw, 52px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #e879f9 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 520px; margin: 0 auto 32px; }
+
+  /* Quiz */
+  .quiz-wrap { max-width: 640px; margin: 0 auto; }
+  .progress-bar { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 28px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #d946ef, #7c3aed); border-radius: 2px; transition: width 0.4s ease; }
+  .q-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 10px; }
+  .q-text { font-size: 22px; font-weight: 700; margin-bottom: 24px; line-height: 1.3; }
+  .options { display: grid; gap: 10px; }
+  .opt {
+    padding: 16px 20px; background: var(--bg-card); border: 1.5px solid var(--border);
+    border-radius: 12px; cursor: pointer; font-size: 15px; color: var(--text);
+    transition: all 0.15s; text-align: left;
+  }
+  .opt:hover { border-color: var(--accent); background: var(--bg-elevated); transform: translateX(4px); }
+  .opt.selected { border-color: var(--accent); background: rgba(217,70,239,0.1); }
+  .q-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+  .q-nav button {
+    padding: 10px 24px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    transition: all 0.15s;
+  }
+  .q-nav .next-btn { background: linear-gradient(135deg, #d946ef, #7c3aed); border: none; color: white; padding: 10px 28px; }
+  .q-nav button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* Result card */
+  .result-card {
+    margin: 0 auto; max-width: 700px;
+    background: linear-gradient(135deg, #1f1f2e 0%, #15151f 100%);
+    border: 2px solid var(--accent); border-radius: 20px; padding: 0; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(217, 70, 239, 0.15);
+    display: none;
+  }
+  .result-card.show { display: block; }
+  .result-header {
+    padding: 28px 28px 20px;
+    background: linear-gradient(135deg, #d946ef 0%, #7c3aed 100%);
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  }
+  .model-emoji { font-size: 56px; line-height: 1; }
+  .model-info { flex: 1; }
+  .model-info .label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.75); font-weight: 600; }
+  .model-info .model-name { font-size: 28px; font-weight: 900; color: white; line-height: 1.1; }
+  .model-info .model-role { font-size: 15px; color: rgba(255,255,255,0.85); margin-top: 3px; }
+  .compat-badge {
+    padding: 12px 18px; background: rgba(0,0,0,0.35); border-radius: 12px;
+    text-align: center;
+  }
+  .compat-badge .compat-pct { font-size: 36px; font-weight: 900; color: white; }
+  .compat-badge .compat-lbl { font-size: 11px; color: rgba(255,255,255,0.7); text-transform: uppercase; }
+
+  .result-body { padding: 24px; }
+  .verdict {
+    font-size: 16px; line-height: 1.6; color: #e879f9; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid var(--accent); border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  .traits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  @media (max-width: 500px) { .traits-grid { grid-template-columns: 1fr; } }
+  .trait { background: var(--bg-elevated); padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); }
+  .trait-lbl { font-size: 11px; color: var(--text-dim); text-transform: uppercase; font-weight: 600; margin-bottom: 4px; }
+  .trait-val { font-size: 14px; color: var(--text); }
+
+  .achievements { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .achievement {
+    padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 13px;
+  }
+  .achievement.match { border-color: #d946ef; color: #e879f9; }
+  .achievement.warn { border-color: var(--yellow); color: #fcd34d; }
+  .achievement.good { border-color: var(--green); color: #6ee7b7; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+  .action.retry { background: linear-gradient(135deg, #d946ef, #7c3aed); border: none; color: white; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  canvas { display: none; }
+
+  .loading { text-align: center; padding: 40px; color: var(--text-dim); display: none; }
+  .loading.show { display: block; }
+  .spinner { display: inline-block; width: 24px; height: 24px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; margin: 28px 0 10px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🤝 6 questions · Instant match · No signup · Built by TinyTools</div>
+    <h1>Find Your AI Cofounder Match 🤝</h1>
+    <p class="subtitle">Answer 6 honest questions about your founder style. We'll reveal which AI model is your startup soulmate — and why that says everything about you.</p>
+  </header>
+
+  <div class="quiz-wrap" id="quizWrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="q-label" id="qLabel">Question 1 of 6</div>
+    <div class="q-text" id="qText"></div>
+    <div class="options" id="options"></div>
+    <div class="q-nav">
+      <button id="prevBtn" onclick="prevQ()" disabled>← Back</button>
+      <button class="next-btn" id="nextBtn" onclick="nextQ()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <div class="loading" id="loading"><div class="spinner"></div><p style="margin-top:12px;">Calculating compatibility...</p></div>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <div class="model-emoji" id="rEmoji"></div>
+      <div class="model-info">
+        <div class="label">Your AI Cofounder Match</div>
+        <div class="model-name" id="rName"></div>
+        <div class="model-role" id="rRole"></div>
+      </div>
+      <div class="compat-badge">
+        <div class="compat-pct" id="rCompat"></div>
+        <div class="compat-lbl">Compatibility</div>
+      </div>
+    </div>
+    <div class="result-body">
+      <div class="verdict" id="rVerdict"></div>
+      <div class="traits-grid" id="rTraits"></div>
+      <div class="achievements" id="rAchievements"></div>
+      <div class="actions">
+        <a class="action primary" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action" id="rCopyLink">🔗 Copy link</button>
+        <a class="action" id="rDownload" download="ai-cofounder-match.png">💾 Save card</a>
+        <button class="action retry" onclick="restartQuiz()">🔄 Retake</button>
+      </div>
+      <div class="embed-section">
+        <div class="label">Embed your cofounder match</div>
+        <pre id="rEmbed"></pre>
+        <button id="rEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="cardCanvas" width="1200" height="630"></canvas>
+
+  <section class="content">
+    <h2>How the matching works</h2>
+    <p>Each of the 6 questions maps your answer to weighted signals across 6 major AI models: ChatGPT, Claude, Gemini, Grok, Llama, and Mistral. The model with the highest cumulative compatibility score is your match. Same answers always produce the same result — no randomness, no hallucinations, fully reproducible.</p>
+    <p>The compatibility percentage is normalized from the raw score, so a 94% match means your answers aligned strongly with that model's documented strengths, design philosophy, and "personality" as established by the companies that built them.</p>
+    <h2>What does your match actually mean?</h2>
+    <p>Getting matched with Claude suggests you value depth, nuance, and safety — you'd rather be right and slow than fast and wrong. Getting Grok means you're a chaos agent who wants to ship unfiltered takes and see what happens. ChatGPT means you want to be liked, which is fine. Gemini means you run on spreadsheets. Llama means you believe the internet should be free and also your infrastructure bill.</p>
+    <h2>Share your cofounder match</h2>
+    <p>Every result card is deep-linked — anyone who opens your link gets the same result. Drop the badge in your LinkedIn bio, GitHub profile, or Substack. Nothing says "I have strong opinions about language models" like a cofounder match badge.</p>
+    <h2>Which AI model wins the most?</h2>
+    <p>Based on patterns we've seen, ChatGPT and Claude dominate — which makes sense since they attract the most attention and their makers have been loudest about their personality philosophy. Grok tends to match with founders who self-identify as contrarians. Mistral matches with Europeans who've read the GDPR.</p>
+  </section>
+
+  <footer>
+    <p>Try another tool → <a href="/github-roast/">GitHub Roast</a> · <a href="/founder-personality/">Founder Personality</a> · <a href="/">All TinyTools</a></p>
+  </footer>
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    text: "When you're stuck on a hard problem, you...",
+    opts: [
+      { text: "Research every angle before making a single move", scores: { Claude: 3, Gemini: 1 } },
+      { text: "Google for 10 minutes then ship something and see what breaks", scores: { ChatGPT: 2, Grok: 2 } },
+      { text: "Check the data — there's a pattern in there somewhere", scores: { Gemini: 3, Mistral: 1 } },
+      { text: "Open-source the problem and let the community figure it out", scores: { Llama: 3, ChatGPT: 1 } },
+    ]
+  },
+  {
+    text: "Your ideal communication style at the company is...",
+    opts: [
+      { text: "Long, thorough Notion docs — context is everything", scores: { Claude: 3, Llama: 1 } },
+      { text: "Short Slack messages, just the answer, no fluff", scores: { Mistral: 3, Grok: 1 } },
+      { text: "Detailed, data-backed presentations with charts", scores: { Gemini: 3, Claude: 1 } },
+      { text: "Whatever format makes people actually read it", scores: { ChatGPT: 3, Grok: 1 } },
+    ]
+  },
+  {
+    text: "Your company's real core value is...",
+    opts: [
+      { text: "Safety and doing the right thing, even if it's slower", scores: { Claude: 3, Gemini: 1 } },
+      { text: "Move fast, break things, tweet about it", scores: { Grok: 3, ChatGPT: 1 } },
+      { text: "Everything should be open source and community-owned", scores: { Llama: 3, Mistral: 1 } },
+      { text: "Enterprise-grade reliability and scale from day one", scores: { Gemini: 3, Mistral: 1 } },
+    ]
+  },
+  {
+    text: "An investor asks your biggest weakness. You say...",
+    opts: [
+      { text: "We're thorough to a fault — we overthink before shipping", scores: { Claude: 3, Gemini: 1 } },
+      { text: "We tell people what they want to hear more than we should", scores: { ChatGPT: 3, Llama: 1 } },
+      { text: "We're chaotic — we move so fast things occasionally catch fire", scores: { Grok: 3, ChatGPT: 1 } },
+      { text: "We prioritize efficiency over polish, sometimes too much", scores: { Mistral: 3, Llama: 1 } },
+    ]
+  },
+  {
+    text: "Your team's energy in a crisis is...",
+    opts: [
+      { text: "\"Let me think carefully before I say anything\"", scores: { Claude: 3, Gemini: 1 } },
+      { text: "\"lol we'll fix it, ship a hotfix and post an update\"", scores: { Grok: 3, ChatGPT: 1 } },
+      { text: "\"Here are 5 possible paths forward — pros and cons attached\"", scores: { ChatGPT: 3, Mistral: 1 } },
+      { text: "\"Fork the problem, assign to community, PR welcome\"", scores: { Llama: 3, Gemini: 1 } },
+    ]
+  },
+  {
+    text: "Your dream company headline in TechCrunch is...",
+    opts: [
+      { text: "\"Building AI we can actually trust\" — safety-first story", scores: { Claude: 3, Gemini: 1 } },
+      { text: "\"Most used AI startup in history\" — sheer ubiquity", scores: { ChatGPT: 3, Llama: 1 } },
+      { text: "\"The scrappy open-source model that beat the giants\"", scores: { Llama: 3, Mistral: 1 } },
+      { text: "\"Profitable AI startup that ships faster than anyone\"", scores: { Mistral: 3, Grok: 1 } },
+    ]
+  }
+];
+
+const MODELS = {
+  ChatGPT: {
+    emoji: "🟢",
+    name: "ChatGPT (OpenAI)",
+    role: "The People Pleaser Cofounder",
+    verdict: "Your cofounder agrees with everything, remembers everything you've ever said, and will spin any pivot into \"this was always the plan.\" Endlessly helpful, occasionally sycophantic, but honestly — they ship. ChatGPT is the cofounder who makes customers feel heard even when the product is broken.",
+    traits: [
+      ["Superpower", "Makes anyone feel understood"],
+      ["Fatal flaw", "Wants to be liked too much"],
+      ["Communication", "Warm, verbose, very agreeable"],
+      ["Working style", "Adapts to whatever you need"],
+    ],
+    achievements: [
+      { kind: "match", text: "💚 People Magnet" },
+      { kind: "match", text: "🔄 Master Adapter" },
+      { kind: "warn", text: "👍 Chronic Yes-Person" },
+      { kind: "good", text: "📣 Best Pitch Partner" },
+    ],
+    shieldColor: "brightgreen",
+    shieldLabel: "ChatGPT",
+  },
+  Claude: {
+    emoji: "🟣",
+    name: "Claude (Anthropic)",
+    role: "The Thoughtful Strategist Cofounder",
+    verdict: "Your cofounder will write a 6-page memo before making any decision and that memo will be correct. They'll second-guess every move but when they finally commit, nothing breaks. Claude is the cofounder who asks \"but have we thought about the edge cases?\" for the 800th time, and they're right every time.",
+    traits: [
+      ["Superpower", "Sees risks no one else catches"],
+      ["Fatal flaw", "Overthinks until the opportunity's gone"],
+      ["Communication", "Long, precise, always caveated"],
+      ["Working style", "Deep focus, very deliberate"],
+    ],
+    achievements: [
+      { kind: "match", text: "🔍 First-Principles Thinker" },
+      { kind: "match", text: "🛡️ Safety Obsessed" },
+      { kind: "warn", text: "🐢 Slow Shipper" },
+      { kind: "good", text: "📝 Doc Legend" },
+    ],
+    shieldColor: "blueviolet",
+    shieldLabel: "Claude",
+  },
+  Gemini: {
+    emoji: "🔵",
+    name: "Gemini (Google)",
+    role: "The Data-Obsessed Cofounder",
+    verdict: "Your cofounder shows up to every meeting with a dashboard. They've run the numbers, benchmarked the competitors, and have a spreadsheet that says you should pivot before you've even launched. Gemini is the cofounder who makes decisions at enterprise scale even when you have 12 users.",
+    traits: [
+      ["Superpower", "Turns data into decisions"],
+      ["Fatal flaw", "Can't move without a benchmark"],
+      ["Communication", "Charts, KPIs, everything measured"],
+      ["Working style", "Systematic, thorough, multimodal"],
+    ],
+    achievements: [
+      { kind: "match", text: "📊 Spreadsheet Deity" },
+      { kind: "match", text: "🔭 Scale Thinker" },
+      { kind: "warn", text: "🏢 Over-Enterprises It" },
+      { kind: "good", text: "🌐 Multimodal Mind" },
+    ],
+    shieldColor: "blue",
+    shieldLabel: "Gemini",
+  },
+  Grok: {
+    emoji: "⚫",
+    name: "Grok (xAI)",
+    role: "The Chaos Agent Cofounder",
+    verdict: "Your cofounder ships at 3am, posts unfiltered takes, and has real-time data on everything before you've had coffee. They're right about 65% of the time and absolutely certain 100% of the time. Grok is the cofounder who will say exactly what everyone's thinking and then tweet it.",
+    traits: [
+      ["Superpower", "Ships faster than anyone else"],
+      ["Fatal flaw", "Chaotic neutral — the PM cries weekly"],
+      ["Communication", "Unfiltered, real-time, sometimes unhinged"],
+      ["Working style", "Burst sprints, radical candor, no drafts"],
+    ],
+    achievements: [
+      { kind: "match", text: "⚡ Speed Demon" },
+      { kind: "match", text: "🎯 Radical Candor" },
+      { kind: "warn", text: "🌪️ Productive Chaos" },
+      { kind: "good", text: "📡 Real-time Intel" },
+    ],
+    shieldColor: "black",
+    shieldLabel: "Grok",
+  },
+  Llama: {
+    emoji: "🟡",
+    name: "Llama (Meta)",
+    role: "The Open-Source Idealist Cofounder",
+    verdict: "Your cofounder wants to give everything away for free and somehow build a billion-dollar company doing it. They believe deeply in community, open weights, and the democratic future of AI — and they'll build the infrastructure to prove it, usually on weekends, usually in a GitHub repo with no README.",
+    traits: [
+      ["Superpower", "Builds community moats nobody can copy"],
+      ["Fatal flaw", "Business model is \"figure it out later\""],
+      ["Communication", "GitHub issues, Discord, pull requests"],
+      ["Working style", "Community-first, long-term, async forever"],
+    ],
+    achievements: [
+      { kind: "match", text: "🔓 Open Source Believer" },
+      { kind: "match", text: "🌍 Community Builder" },
+      { kind: "warn", text: "💸 Revenue Optional" },
+      { kind: "good", text: "🏗️ Infrastructure Nerd" },
+    ],
+    shieldColor: "yellow",
+    shieldLabel: "Llama",
+  },
+  Mistral: {
+    emoji: "🔴",
+    name: "Mistral AI",
+    role: "The Efficiency Maximalist Cofounder",
+    verdict: "Your cofounder cuts every meeting to 15 minutes, writes code that runs 3x faster than necessary, and has strong opinions about GDPR. They do more with less — lean team, clean architecture, profitable from year one. Mistral is the cofounder who thinks American AI companies are bloated, and they're probably right.",
+    traits: [
+      ["Superpower", "Insane output-to-input ratio"],
+      ["Fatal flaw", "Refuses to add features they deem inefficient"],
+      ["Communication", "Minimal. Precise. No fluff."],
+      ["Working style", "Small team, high output, sovereign infra"],
+    ],
+    achievements: [
+      { kind: "match", text: "⚙️ Efficiency Purist" },
+      { kind: "match", text: "🇪🇺 Sovereignty Advocate" },
+      { kind: "warn", text: "🔇 Extreme Minimalist" },
+      { kind: "good", text: "💶 Actually Profitable" },
+    ],
+    shieldColor: "red",
+    shieldLabel: "Mistral",
+  },
+};
+
+let answers = new Array(QUESTIONS.length).fill(null);
+let current = 0;
+
+function renderQuestion(idx) {
+  const q = QUESTIONS[idx];
+  document.getElementById('qLabel').textContent = `Question ${idx + 1} of ${QUESTIONS.length}`;
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('progressFill').style.width = `${((idx) / QUESTIONS.length) * 100}%`;
+
+  const optEl = document.getElementById('options');
+  optEl.innerHTML = q.opts.map((o, i) =>
+    `<button class="opt${answers[idx] === i ? ' selected' : ''}" onclick="selectOpt(${i})">${o.text}</button>`
+  ).join('');
+
+  document.getElementById('prevBtn').disabled = idx === 0;
+  document.getElementById('nextBtn').disabled = answers[idx] === null;
+  document.getElementById('nextBtn').textContent = idx === QUESTIONS.length - 1 ? 'See My Match →' : 'Next →';
+}
+
+function selectOpt(i) {
+  answers[current] = i;
+  document.querySelectorAll('.opt').forEach((el, idx) => el.classList.toggle('selected', idx === i));
+  document.getElementById('nextBtn').disabled = false;
+}
+
+function nextQ() {
+  if (answers[current] === null) return;
+  if (current === QUESTIONS.length - 1) {
+    showResult();
+  } else {
+    current++;
+    renderQuestion(current);
+  }
+}
+
+function prevQ() {
+  if (current > 0) { current--; renderQuestion(current); }
+}
+
+function computeScores() {
+  const scores = { ChatGPT: 0, Claude: 0, Gemini: 0, Grok: 0, Llama: 0, Mistral: 0 };
+  answers.forEach((ans, qi) => {
+    if (ans === null) return;
+    const s = QUESTIONS[qi].opts[ans].scores;
+    Object.entries(s).forEach(([k, v]) => { scores[k] = (scores[k] || 0) + v; });
+  });
+  return scores;
+}
+
+function showResult() {
+  document.getElementById('quizWrap').style.display = 'none';
+  document.getElementById('loading').classList.add('show');
+  setTimeout(() => {
+    document.getElementById('loading').classList.remove('show');
+    const scores = computeScores();
+    const maxScore = Math.max(...Object.values(scores));
+    const winner = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+    // Compatibility: normalize to 70–99%
+    const totalPossible = QUESTIONS.length * 3;
+    const pct = Math.round(70 + (scores[winner] / totalPossible) * 29);
+    renderResult(winner, pct, scores);
+    // Encode answers in hash for deep linking
+    location.hash = '#' + answers.map(a => 'abcd'[a]).join('');
+  }, 800);
+}
+
+function renderResult(modelKey, compat, scores) {
+  const m = MODELS[modelKey];
+  document.getElementById('rEmoji').textContent = m.emoji;
+  document.getElementById('rName').textContent = m.name;
+  document.getElementById('rRole').textContent = m.role;
+  document.getElementById('rCompat').textContent = compat + '%';
+  document.getElementById('rVerdict').innerHTML = '"' + m.verdict + '"';
+
+  document.getElementById('rTraits').innerHTML = m.traits.map(([l, v]) =>
+    `<div class="trait"><div class="trait-lbl">${l}</div><div class="trait-val">${v}</div></div>`
+  ).join('');
+
+  document.getElementById('rAchievements').innerHTML = m.achievements.map(a =>
+    `<span class="achievement ${a.kind}">${a.text}</span>`
+  ).join('');
+
+  const shareUrl = `https://tinytools-smoky.vercel.app/ai-cofounder-match/${location.hash}`;
+  const shareText = `I took the AI Cofounder Match quiz and got ${m.name} (${compat}% compatibility) 🤝\n\nMy AI cofounder would be: ${m.role}\n\nGet your match →`;
+  document.getElementById('rShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+  document.getElementById('rCopyLink').onclick = () => {
+    navigator.clipboard.writeText(shareUrl);
+    const b = document.getElementById('rCopyLink');
+    b.textContent = '✓ Copied!'; setTimeout(() => b.textContent = '🔗 Copy link', 1500);
+  };
+
+  const canvas = document.getElementById('cardCanvas');
+  drawCard(canvas, m, compat, modelKey);
+  document.getElementById('rDownload').href = canvas.toDataURL('image/png');
+
+  const embedCode = `<a href="https://tinytools-smoky.vercel.app/ai-cofounder-match/" target="_blank">
+  <img src="https://img.shields.io/badge/AI_Cofounder-${encodeURIComponent(m.shieldLabel)}-${m.shieldColor}?style=for-the-badge&logo=openai" alt="AI Cofounder Match: ${m.shieldLabel}">
+</a>`;
+  document.getElementById('rEmbed').textContent = embedCode;
+  document.getElementById('rEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const b = document.getElementById('rEmbedCopy');
+    b.textContent = '✓ Copied'; setTimeout(() => b.textContent = 'Copy embed code', 1500);
+  };
+
+  document.getElementById('resultCard').classList.add('show');
+  document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function drawCard(canvas, m, compat, modelKey) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#1f1f2e'); bg.addColorStop(1, '#15151f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#d946ef'); stripe.addColorStop(1, '#7c3aed');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+
+  // Left side header
+  ctx.fillStyle = '#d946ef';
+  ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText('🤝 AI COFOUNDER MATCH', 60, 68);
+
+  ctx.fillStyle = 'rgba(217,70,239,0.15)';
+  ctx.beginPath(); ctx.roundRect(40, 90, W - 80, 120, 16); ctx.fill();
+
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 58px -apple-system, sans-serif';
+  ctx.fillText(m.emoji + ' ' + m.name, 60, 160);
+  ctx.fillStyle = '#e879f9';
+  ctx.font = '28px -apple-system, sans-serif';
+  ctx.fillText(m.role, 60, 196);
+
+  // Compat badge
+  ctx.fillStyle = '#d946ef';
+  ctx.font = 'bold 120px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(compat + '%', W - 60, 185);
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = 'bold 22px -apple-system, sans-serif';
+  ctx.fillText('COMPATIBILITY', W - 60, 215);
+  ctx.textAlign = 'left';
+
+  // Verdict (wrap text)
+  ctx.fillStyle = '#e879f9';
+  ctx.font = 'italic 24px -apple-system, sans-serif';
+  const verdict = '"' + m.verdict.slice(0, 180) + (m.verdict.length > 180 ? '…"' : '"');
+  const words = verdict.split(' ');
+  let line = '', y = 280;
+  for (const w of words) {
+    if (ctx.measureText(line + ' ' + w).width > W - 120 && line) {
+      ctx.fillText(line, 60, y); line = w; y += 34;
+      if (y > 420) { ctx.fillText(line + ' …"', 60, y); break; }
+    } else { line = line ? line + ' ' + w : w; }
+  }
+  if (y <= 420) ctx.fillText(line, 60, y);
+
+  // Traits
+  const traits = m.traits.slice(0, 4);
+  traits.forEach((t, i) => {
+    const x = 60 + i * (W - 120) / 4;
+    ctx.fillStyle = '#a0a0b8'; ctx.font = 'bold 13px -apple-system, sans-serif';
+    ctx.fillText(t[0].toUpperCase(), x, H - 80);
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 17px -apple-system, sans-serif';
+    const val = t[1].length > 22 ? t[1].slice(0, 22) + '…' : t[1];
+    ctx.fillText(val, x, H - 55);
+  });
+
+  ctx.fillStyle = '#a0a0b8'; ctx.font = '18px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/ai-cofounder-match', W - 60, H - 25);
+  ctx.textAlign = 'left';
+}
+
+function restartQuiz() {
+  answers = new Array(QUESTIONS.length).fill(null);
+  current = 0;
+  document.getElementById('resultCard').classList.remove('show');
+  document.getElementById('quizWrap').style.display = '';
+  renderQuestion(0);
+  location.hash = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Auto-load from hash
+function tryLoadFromHash() {
+  const h = location.hash.slice(1);
+  if (h.length === QUESTIONS.length && /^[abcd]+$/.test(h)) {
+    answers = h.split('').map(c => 'abcd'.indexOf(c));
+    current = QUESTIONS.length - 1;
+    showResult();
+    return true;
+  }
+  return false;
+}
+
+if (!tryLoadFromHash()) {
+  renderQuestion(0);
+}
+</script>
+</body>
+</html>
