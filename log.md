@@ -1,4 +1,26 @@
 
+## 2026-05-31 — ai-cofounder-match, devops-disaster-score
+
+### Tools Shipped
+- **ai-cofounder-match** (Tier 0 — Viral)
+  - URL: https://tinytools-smoky.vercel.app/ai-cofounder-match/
+  - HTTP: 200 ✅
+  - Mechanic: 6-question quiz → AI cofounder match (ChatGPT / Claude / Gemini / Grok / Llama / Mistral)
+  - Viral features: shareable PNG card, Share to X, deep-linkable hash, embeddable badge, deterministic scoring
+  - Color: fuchsia #d946ef
+
+- **devops-disaster-score** (Tier 0 — Viral)
+  - URL: https://tinytools-smoky.vercel.app/devops-disaster-score/
+  - HTTP: 200 ✅
+  - Mechanic: paste GitHub repo URL → disaster score 0–100 from real GitHub API data
+  - Viral features: shareable PNG card, Share to X, deep-linkable hash, embeddable badge, deterministic scoring
+  - Color: red #dc2626
+
+### Updates
+- sitemap.xml: both added with priority 1.0
+- index.html: both cards added with NEW·VIRAL badge at top of grid
+
+
 
 ---
 
