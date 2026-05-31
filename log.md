@@ -179,4 +179,19 @@ platform-ready status) make the share tweet feel earned and data-driven.
 
 ---
 
+## 2026-05-31 — tinytools-viral-loop run
+
+**Tool retrofitted:** youtube-to-blog  
+**Viral mechanics added:**
+- 𝕏 Share on X — tweet prefilled: "I just turned a YouTube video into an SEO blog post in seconds with AI ✍️"
+- 🔗 Copy-link button — deep-link URL with video ID encoded in URL hash (#videoId)
+- 📛 Embeddable badge — shields.io badge (Blog_Post-Generated, red YouTube-logo)
+- 💾 PNG card download — 1200×630 canvas card via toDataURL with post title, excerpt, word count + TinyTools brand
+- 🔗 Auto-load from URL hash — decodes #videoId and pre-fills the YouTube URL field on page load
+
+**Commit:** 857572dc0ff5  
+**Current visitor count (tinytools-smoky/root):** 1  
+**Tools remaining without viral mechanics:** 5 (domain-generator, background-remover, c2pa-manifest-generator, chat-with-pdf, pdf-to-markdown)
+
+---
 
