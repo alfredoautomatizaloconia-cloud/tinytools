@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OG Image Generator for Automated Podcasters | Free Tool — TinyTools</title>
+  <meta name="description" content="Generate episode artwork, show notes OG images, and guest announcement cards for your AI-automated podcast — free, no login, no Canva. Works with Spotify, Apple Podcasts, and any RSS-based workflow." />
+  <meta property="og:title" content="OG Image Generator for Automated Podcasters" />
+  <meta property="og:description" content="Your pipeline generates episodes automatically. Your social previews shouldn't look empty. Create polished 1200×630 OG images for every episode in seconds — free, no subscription." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/og-image-generator/for-automated-podcasters/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/og-image-generator/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OG Image Generator for Automated Podcasters" />
+  <meta name="twitter:description" content="Generate episode OG images for your automated podcast pipeline. Free, no login, batch-friendly." />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/og-image-generator/for-automated-podcasters/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "OG Image Generator for Automated Podcasters",
+    "description": "Generate episode artwork, show notes OG images, and guest announcement cards for your AI-automated podcast — free, no login, no Canva.",
+    "url": "https://tinytools-smoky.vercel.app/og-image-generator/for-automated-podcasters/",
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "OG Image Generator",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tinytools-smoky.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "OG Image Generator", "item": "https://tinytools-smoky.vercel.app/og-image-generator/" },
+        { "@type": "ListItem", "position": 3, "name": "For Automated Podcasters", "item": "https://tinytools-smoky.vercel.app/og-image-generator/for-automated-podcasters/" }
+      ]
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1f1f1f;
+      --border: #2a2a2a;
+      --accent: #7c3aed;
+      --accent2: #a78bfa;
+      --text: #f0f0f0;
+      --muted: #888;
+      --green: #22c55e;
+      --red: #ef4444;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; line-height: 1.65; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { padding: 14px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    nav .logo { font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: -0.02em; }
+    nav .logo span { color: var(--accent2); }
+    nav .breadcrumb { font-size: 0.82rem; color: var(--muted); }
+    nav .breadcrumb a { color: var(--muted); }
+    nav .breadcrumb a:hover { color: var(--accent2); }
+
+    /* HERO */
+    .hero { max-width: 780px; margin: 0 auto; padding: 64px 24px 48px; text-align: center; }
+    .badge { display: inline-block; background: rgba(124,58,237,0.15); border: 1px solid rgba(167,139,250,0.3); color: var(--accent2); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+    h1 .highlight { color: var(--accent2); }
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin: 0 auto 36px; }
+    .cta-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 32px; border-radius: 10px; transition: background 0.2s; }
+    .cta-primary:hover { background: #6d28d9; text-decoration: none; }
+    .cta-note { font-size: 0.8rem; color: var(--muted); margin-top: 10px; }
+
+    /* SECTION */
+    section { max-width: 780px; margin: 0 auto; padding: 0 24px 64px; }
+    h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    p { color: #ccc; margin-bottom: 16px; }
+
+    /* PAIN BLOCK */
+    .pain-block { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--red); border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; }
+    .pain-block .pain-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); margin-bottom: 6px; }
+    .pain-block .solution-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-top: 12px; margin-bottom: 6px; }
+    .pain-block .solution-text { color: var(--text); font-size: 0.95rem; }
+    .pain-block .pain-text { color: #ccc; font-size: 0.95rem; }
+
+    /* USE CASES */
+    .use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+    @media (max-width: 600px) { .use-case-grid { grid-template-columns: 1fr; } }
+    .use-case-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .use-case-card .uc-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .use-case-card h3 { font-size: 0.98rem; margin-bottom: 6px; }
+    .use-case-card p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* PRICING TABLE */
+    .pricing-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem; }
+    .pricing-table th { text-align: left; padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .pricing-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .tool-name { font-weight: 600; }
+    .pricing-table .price { font-weight: 700; }
+    .pricing-table .price.free { color: var(--green); }
+    .pricing-table .price.paid { color: var(--muted); }
+    .pricing-table tr.highlight { background: rgba(124,58,237,0.08); }
+    .pricing-table tr.highlight .tool-name { color: var(--accent2); }
+    .check { color: var(--green); }
+    .cross { color: var(--red); }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; }
+    .step-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(124,58,237,0.2); border: 1px solid rgba(167,139,250,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; color: var(--accent2); }
+    .step-content h3 { font-size: 0.98rem; margin-bottom: 4px; }
+    .step-content p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* INTERNAL LINKS */
+    .sister-tools { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+    .sister-card { flex: 1 1 200px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; transition: border-color 0.2s; }
+    .sister-card:hover { border-color: var(--accent); text-decoration: none; }
+    .sister-card .sc-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .sister-card h3 { font-size: 0.9rem; color: var(--text); margin-bottom: 4px; }
+    .sister-card p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+    /* FINAL CTA */
+    .final-cta { background: linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(167,139,250,0.05) 100%); border: 1px solid rgba(124,58,237,0.3); border-radius: 16px; padding: 48px 36px; text-align: center; margin-bottom: 64px; }
+    .final-cta h2 { font-size: 1.7rem; margin-bottom: 12px; }
+    .final-cta p { max-width: 500px; margin: 0 auto 28px; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 0.82rem; color: var(--muted); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent2); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Tiny<span>Tools</span></span>
+  <span class="breadcrumb">
+    <a href="/">Home</a> /
+    <a href="/og-image-generator/">OG Image Generator</a> /
+    For Automated Podcasters
+  </span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Automated Podcasters</div>
+  <h1>OG Image Generator<br>for <span class="highlight">Automated Podcasters</span></h1>
+  <p class="hero-sub">Your AI pipeline already handles transcription, editing, and publishing. Now close the last gap: every episode gets a polished 1200×630 social preview image in under 60 seconds — free, no Canva, no subscription.</p>
+  <a href="/og-image-generator/" class="cta-primary">Generate Your Episode Image Free →</a>
+  <p class="cta-note">No login required · Works with Spotify, Apple Podcasts, Buzzsprout, RSS.com &amp; any RSS workflow</p>
+</div>
+
+<!-- PAIN → SOLUTION -->
+<section>
+  <h2>The Last Manual Step in Your Automated Podcast Pipeline</h2>
+  <p>You've automated the hard parts. ElevenLabs clones your voice. Whisper transcribes every episode. A Make.com or Zapier workflow uploads the MP3 to Buzzsprout, posts the show notes to your website, and tweets the clip at 9am. You've removed yourself from 90% of the production work.</p>
+  <p>But then someone clicks the link to your episode page on X or LinkedIn — and a grey box appears where the social preview should be. Or worse, it pulls a blurry podcast cover from your RSS feed that was designed two years ago on a phone. That blank preview is costing you plays before the listener even hits the 30-second mark.</p>
+
+  <div style="margin-top:32px;">
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #1</div>
+      <div class="pain-text">You publish 5–7 episodes a week through your automation stack, but generating a unique episode image breaks the no-touch workflow — you'd have to open Canva manually for each one.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">TinyTools OG Image Generator is browser-based and takes 45 seconds per image. Better yet, the underlying generator is open-source and API-compatible — drop a webhook call into your Make.com scenario and every new episode gets a branded 1200×630 card generated automatically without breaking your pipeline.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #2</div>
+      <div class="pain-text">Your 200-episode back catalog all shows the same static show artwork when shared on social. Each episode is a unique piece of content but looks identical to every other episode when linked.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">Generate a unique OG image per episode with the episode title, number, and guest name baked into the preview. Episode 47 with "The future of RAG pipelines" looks completely different from Episode 48 on "MCP server security" — at the link-preview level, before anyone clicks.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #3</div>
+      <div class="pain-text">You use AI-cloned guest voices or AI-generated dialogue. Your show notes page needs to look professional for sponsors and advertisers, but you don't have a designer on a bootstrapped budget.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">TinyTools produces clean, dark-themed social cards that look premium without hiring a designer. Consistent episode branding — episode number, topic, show name — signals to sponsors that your show has production standards, even when the production is entirely automated.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #4</div>
+      <div class="pain-text">You're sharing audiogram clips and transcript excerpts on LinkedIn and X to drive episode plays. Text-only posts get buried. Image posts with compelling visuals get 3–4× more impressions.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">Generate quote-card OG images with the best line from each transcript — your AI already identified the key soundbites during processing. A bold pull-quote on a branded background outperforms a plain audiogram link every time. Generate as many cards per episode as you want — it's free with no usage limits.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section>
+  <h2>5 Ways Automated Podcasters Use This Tool</h2>
+  <div class="use-case-grid">
+
+    <div class="use-case-card">
+      <div class="uc-icon">🎙️</div>
+      <h3>Episode Show Notes Pages</h3>
+      <p>Every episode's show notes URL needs a unique OG image so it previews correctly when shared. Generate a card with episode number, guest name or topic, and your show's color scheme — looks intentional, not auto-generated.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">🤖</div>
+      <h3>AI Guest Announcement Cards</h3>
+      <p>Running AI-simulated interviews or voice-cloned guest episodes? Generate a "Featured Guest" announcement card with the guest's name and topic. Works for real guests too — drop the card in your pre-launch social posts to build anticipation.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">💬</div>
+      <h3>Transcript Pull-Quote Cards</h3>
+      <p>Your transcription pipeline already extracts key moments. Turn the best 15-word quote from each episode into a branded image card. These drive 3–4× more engagement than audiogram links on LinkedIn and X threads.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">📊</div>
+      <h3>Milestone & Stats Announcements</h3>
+      <p>"Episode 100" or "500,000 total plays" milestones punch harder when the social post has a visual. Generate a branded milestone card and pin it — milestone posts with visuals convert 3× more follows from impressions than text-only posts.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">💰</div>
+      <h3>Sponsor Mention Cards</h3>
+      <p>Create co-branded episode cards that feature your sponsor's name alongside the episode title. Offer "social card inclusion" as a paid sponsorship add-on — an inventory line that costs you 45 seconds per episode to produce and zero per impression to serve.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <h2>How to Plug It Into Your Automation Stack</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Use the browser tool for immediate episodes</h3>
+        <p>Go to <a href="/og-image-generator/">/og-image-generator/</a> — no account needed. Enter your episode title, episode number, and show name. Set your show's hex color once and it sticks in your browser for the next session.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Wire it into Make.com or Zapier for full automation</h3>
+        <p>The generator is open-source. Drop a canvas-render step or HTTP module into your existing RSS/publish scenario. Trigger: new episode published → pass episode title and number → receive 1200×630 PNG → upload to your show notes page's featured image field.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Update your podcast RSS template once</h3>
+        <p>Most RSS-based hosts (Buzzsprout, Transistor, RSS.com) support a per-episode cover image field. Wire your generated PNG into that field via API. Every new episode in every podcast app — Spotify, Apple Podcasts, Pocket Casts — shows a unique episode image instead of your generic show cover.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Schedule social posts with the episode card attached</h3>
+        <p>Pass the generated PNG to your social scheduler — Buffer, Publer, or Zapier → Twitter API. Your episode promotion tweet goes out with the episode card already attached. Zero manual steps from record to tweet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING COMPARISON -->
+<section>
+  <h2>Free vs. Paid Episode Image Tools for Automated Podcasters</h2>
+  <p>Here's how TinyTools stacks up against the tools automated podcasters typically pay for:</p>
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Price</th>
+        <th>Per-image time</th>
+        <th>Automation API</th>
+        <th>Podcast-specific</th>
+        <th>Batch capable</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="tool-name">TinyTools OG Image Generator</td>
+        <td class="price free">Free</td>
+        <td>~45 sec</td>
+        <td><span class="check">✓ open-source</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓ unlimited</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Bannerbear</td>
+        <td class="price paid">$49/mo</td>
+        <td>&lt;5 sec (API)</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗ generic</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Placid.app</td>
+        <td class="price paid">$19/mo</td>
+        <td>~5 min setup + API</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗ generic</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Headliner (audiograms)</td>
+        <td class="price paid">$19/mo</td>
+        <td>10–20 min</td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="check">✓ podcast-specific</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Canva Pro</td>
+        <td class="price paid">$15/mo</td>
+        <td>15–25 min</td>
+        <td><span class="cross">✗ manual only</span></td>
+        <td><span class="cross">✗ generic</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Adobe Express</td>
+        <td class="price paid">$10/mo</td>
+        <td>10–20 min</td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗ generic</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:16px; font-size:0.85rem;">At low episode volumes (under 10/week), TinyTools' browser tool handles everything without paying $19–$49/mo for Bannerbear or Placid. Once you're automating 20+ episodes per week, the open-source API path makes more sense — still free, but wired into your existing workflow. Bannerbear earns its cost at true scale (100+ images/day) when setup time amortizes.</p>
+</section>
+
+<!-- SISTER TOOLS -->
+<section>
+  <h2>Complete Your Automated Podcast's Visual Stack</h2>
+  <p>Episode OG images are one piece of your podcast's brand presence. These free tools cover the rest:</p>
+  <div class="sister-tools">
+    <a href="/favicon-generator/" class="sister-card">
+      <div class="sc-icon">⭐</div>
+      <h3>Favicon Generator</h3>
+      <p>Create a favicon for your podcast's show notes website. A branded favicon in the browser tab makes your show look like a real media property.</p>
+    </a>
+    <a href="/color-palette/" class="sister-card">
+      <div class="sc-icon">🎨</div>
+      <h3>Color Palette Generator</h3>
+      <p>Lock in your show's brand colors. Use consistent hex codes across your OG images, website, and social headers so every episode share reinforces the same visual identity.</p>
+    </a>
+    <a href="/ai-disclosure-generator/" class="sister-card">
+      <div class="sc-icon">📋</div>
+      <h3>AI Disclosure Generator</h3>
+      <p>Required by FTC and EU AI Act for AI-produced podcast content. Generate proper disclosures for your show description, episode notes, and website — free, jurisdiction-aware.</p>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section>
+  <div class="final-cta">
+    <h2>Your pipeline is automated. Your episode previews should be too.</h2>
+    <p>Generate a professional OG image for your next episode right now — free, no login, no design skills required. Takes 60 seconds for the first one, zero seconds once it's wired into your stack.</p>
+    <a href="/og-image-generator/" class="cta-primary">Open OG Image Generator →</a>
+    <p class="cta-note" style="margin-top:12px;">No usage limits · Free forever · Open-source API</p>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="/">TinyTools</a> ·
+    <a href="/og-image-generator/">OG Image Generator</a> ·
+    <a href="/favicon-generator/">Favicon Generator</a> ·
+    <a href="/color-palette/">Color Palette</a> ·
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a>
+  </p>
+  <p style="margin-top:8px;">© 2026 TinyTools · Free AI tools for builders</p>
+</footer>
+
+</body>
+</html>
