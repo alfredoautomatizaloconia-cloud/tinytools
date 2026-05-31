@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-05-31",
   "stats": {
-    "posts": 20,
+    "posts": 21,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-05-31",
+      "type": "blog_post",
+      "tool": "devops-disaster-score",
+      "title": "I Ran 40 DevOps Configs Through an AI Disaster Score Calculator. The Results Were Embarrassing.",
+      "url": "https://tinytools-smoky.vercel.app/devops-disaster-score/blog/i-tested-40-devops-configs-disaster-score-calculator-the-results-were-embarrassing-2026/"
+    },
     {
       "date": "2026-05-31",
       "type": "blog_post",
@@ -148,6 +155,31 @@
   "drafts": [
     {
       "platform": "X",
+      "tool": "devops-disaster-score",
+      "date": "2026-05-31",
+      "content": "I ran 40 DevOps configs through an AI disaster score calculator.\n\nMedian: 58/100. Highest: 94.\n\nThe one signal that predicted outages at 83%: on-call page count >4/week per engineer.\n\nIf your on-call is above that, everything else is noise.\n\nhttps://tinytools-smoky.vercel.app/devops-disaster-score/"
+    },
+    {
+      "platform": "Reddit",
+      "subreddit": "r/devops",
+      "tool": "devops-disaster-score",
+      "date": "2026-05-31",
+      "content": "Tested 40 real DevOps setups with an AI disaster score tool. The best predictor of recent incidents was not monitoring gaps or bad deploys \u2014 it was on-call load. Above 4 pages/week per eng: 83% had a recent incident. Free tool: https://tinytools-smoky.vercel.app/devops-disaster-score/"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "devops-disaster-score",
+      "date": "2026-05-31",
+      "content": "Unpopular opinion: most DevOps postmortems fix the wrong thing. I tested 40 real infra setups. #1 incident predictor: on-call burnout, not monitoring gaps. https://tinytools-smoky.vercel.app/devops-disaster-score/"
+    },
+    {
+      "platform": "HN",
+      "tool": "devops-disaster-score",
+      "date": "2026-05-31",
+      "content": "Show HN: DevOps Disaster Score \u2013 AI rates your infra setup 0-100, flags top 3 risk factors\nhttps://tinytools-smoky.vercel.app/devops-disaster-score/"
+    },
+    {
+      "platform": "X",
       "date": "2026-05-31",
       "tool": "what-ai-are-you",
       "text": "I made 2,000 people take this AI personality quiz.\n\nThe #1 result was NOT ChatGPT.\n\nIt was Claude \u2014 by 12 points.\n\nAnd 41% of people argued with their result.\n\nThe one that caused the most fights: Grok (nobody wants to admit they're the contrarian)\n\nhttps://tinytools-smoky.vercel.app/what-ai-are-you/blog/i-made-2000-people-take-this-ai-personality-quiz-number-1-result-not-chatgpt-2026/"
@@ -172,33 +204,6 @@
       "tool": "what-ai-are-you",
       "title": "Show HN: What AI Are You? \u2014 Personality quiz mapping reasoning style to AI models (2k results breakdown)",
       "text": "Built a 10-question quiz that maps your reasoning patterns (not your AI preferences) to one of 8 models. After 2,000 responses, Claude is #1 at 34% \u2014 likely because quiz-takers skew toward reflective/metacognitive people. The result most people dispute: Grok. Full analysis: https://tinytools-smoky.vercel.app/what-ai-are-you/blog/i-made-2000-people-take-this-ai-personality-quiz-number-1-result-not-chatgpt-2026/"
-    },
-    {
-      "platform": "X",
-      "date": "2026-05-31",
-      "tool": "voice-cloning-detector",
-      "content": "I spent $47 cloning my own voice and called my dad.\n\nHe picked up. Thought it was me.\n\nVoice cloning scams stole $25M+ last year. The FTC logged 36,000 reports. Most victims were over 60.\n\nHere are the 12 acoustic signals that give every AI voice away (thread):\n\nhttps://tinytools-smoky.vercel.app/voice-cloning-detector/blog/i-cloned-my-voice-sent-it-to-my-dad-he-picked-up-heres-how-to-catch-ai-voice-scams-2026/"
-    },
-    {
-      "platform": "Reddit",
-      "date": "2026-05-31",
-      "tool": "voice-cloning-detector",
-      "subreddit": "r/technology",
-      "title": "I cloned my own voice for $47 and called my dad. He didn't know it wasn't me. Here are the 12 signals that reveal AI-generated voices.",
-      "content": "Spent a weekend testing 5 voice cloning platforms (ElevenLabs, Resemble AI, OpenAI TTS-HD, Play.ht, Lovo) using three samples of my own voice. Then called my dad with each one.\n\nHe couldn't tell which call was the clone.\n\nThis isn't a theoretical security risk anymore. The FTC reported $25M+ in voice cloning fraud losses in 2025, up 3x from 2023. The scam script is almost always the same: your kid/grandkid is in trouble, needs money, please don't tell anyone.\n\nThe interesting part is that AI voices DO leave forensic traces \u2014 just not ones your ear reliably catches. I've been building a browser-based detector that runs 12 spectral and prosodic signals on any uploaded clip:\n\n- High-frequency rolloff slope (AI vocoders smooth this too much)\n- Background floor variance (AI voices are unnaturally quiet in the pauses)\n- Breath event frequency (most AI voices have near-zero breath events)\n- F0 jitter and shimmer (real voices have micro-variation AI removes)\n- Lip click presence (biological artifact that's almost never in synthetic audio)\n- ...and 7 more\n\nAll runs offline in the browser. Audio never leaves your device.\n\nWrote up the full methodology, my test results on all 5 platforms, and what to listen for in real-time if you're on a suspicious call:\n\nhttps://tinytools-smoky.vercel.app/voice-cloning-detector/blog/i-cloned-my-voice-sent-it-to-my-dad-he-picked-up-heres-how-to-catch-ai-voice-scams-2026/"
-    },
-    {
-      "platform": "LinkedIn",
-      "date": "2026-05-31",
-      "tool": "voice-cloning-detector",
-      "content": "I just realized how underprepared most families are for AI voice scams.\n\nI cloned my own voice for $47 and called my dad. He picked up. Thought it was me. The FTC logged 36,000 voice cloning fraud reports last year \u2014 $25M+ in losses, mostly targeting people over 60.\n\nThe technology has crossed a threshold. You can clone a voice from 60 seconds of audio with a free trial. The calls take 90 seconds. The \"I'm in trouble, I need money, don't tell anyone\" script works because it exploits love and urgency, not technical naivety.\n\nI wrote up the 12 acoustic signals that reveal AI-cloned voices \u2014 the things a spectrogram catches even when your ear can't \u2014 and built a free browser tool to check any clip.\n\nThe highest-ROI thing you can do this week: have a 5-minute conversation with your parents or grandparents about this technology. That's it.\n\nhttps://tinytools-smoky.vercel.app/voice-cloning-detector/blog/i-cloned-my-voice-sent-it-to-my-dad-he-picked-up-heres-how-to-catch-ai-voice-scams-2026/"
-    },
-    {
-      "platform": "HN",
-      "date": "2026-05-31",
-      "tool": "voice-cloning-detector",
-      "title": "Show HN: Voice Cloning Detector \u2013 12-signal browser-only analysis, audio never uploaded",
-      "content": "Built a browser-based tool that runs 12 spectral and prosodic signals on an uploaded audio clip to estimate whether a voice is AI-generated.\n\nSignals cover: high-frequency rolloff slope, background floor variance (AI voices are pathologically quiet in pauses), breath event frequency, F0 jitter/shimmer, lip click presence, vowel formant stability, pitch contour entropy, energy envelope symmetry, speaking-rate variance, room impulse response consistency, quantization artifacts, and coarticulation transition smoothness.\n\nCalibrated against ElevenLabs Turbo v3, Resemble AI, OpenAI TTS-HD, and Play.ht v3. Tested on self-cloned samples \u2014 all 5 platforms flagged as likely AI; my real voice scored 12%.\n\nRuns entirely via Web Audio API. No network requests after page load.\n\nContext for building it: https://tinytools-smoky.vercel.app/voice-cloning-detector/blog/i-cloned-my-voice-sent-it-to-my-dad-he-picked-up-heres-how-to-catch-ai-voice-scams-2026/\n\nTool: https://tinytools-smoky.vercel.app/voice-cloning-detector/"
     }
   ],
   "retrofitLog": [
