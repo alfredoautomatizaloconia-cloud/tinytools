@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EU AI Act Risk Assessment for AI Agency Owners | TinyTools</title>
+  <meta name="description" content="AI agency owners who deploy AI tools for EU clients may be liable under the EU AI Act — not just the model providers. Free 2-minute risk assessment covers agency-specific scenarios: white-labeling, client deployments, and automated AI services." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-ai-agency-owners/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="EU AI Act Risk Assessment for AI Agency Owners" />
+  <meta property="og:description" content="Does your agency owe EU AI Act compliance obligations for the tools you deploy for clients? Find out in 2 minutes — free, no login." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-ai-agency-owners/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EU AI Act Risk Assessment for AI Agency Owners" />
+  <meta name="twitter:description" content="If you build and deploy AI tools for clients with EU users, you may be the regulated party — not just your model provider. Free 2-minute assessment." />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "EU AI Act Risk Assessment for AI Agency Owners",
+    "url": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-ai-agency-owners/",
+    "description": "Free EU AI Act risk tier assessment tool built specifically for AI agency owners. Determine whether the AI tools you build and deploy for clients fall under high-risk, limited-risk, or minimal-risk classification — and who is legally liable: you or your client.",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "TinyTools",
+      "url": "https://tinytools-smoky.vercel.app/"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "EU AI Act Risk Assessment", "item": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" },
+        { "@type": "ListItem", "position": 3, "name": "For AI Agency Owners", "item": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-ai-agency-owners/" }
+      ]
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0f14;
+      --surface: #151820;
+      --surface2: #1e2230;
+      --border: #2a2f42;
+      --accent: #6366f1;
+      --accent2: #818cf8;
+      --green: #22d3a5;
+      --red: #f87171;
+      --yellow: #fbbf24;
+      --text: #e2e8f0;
+      --muted: #8892aa;
+      --radius: 12px;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.7; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; gap: 12px; height: 52px; }
+    .nav-brand { font-weight: 700; font-size: 15px; color: var(--text); letter-spacing: -.3px; }
+    .nav-brand span { color: var(--accent); }
+    .nav-sep { color: var(--border); }
+    .nav-crumb { font-size: 13px; color: var(--muted); }
+
+    /* HERO */
+    .hero { max-width: 860px; margin: 0 auto; padding: 64px 24px 48px; text-align: center; }
+    .hero-badge { display: inline-block; background: rgba(99,102,241,.15); border: 1px solid rgba(99,102,241,.3); color: var(--accent2); font-size: 12px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-bottom: 20px; }
+    h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 800; line-height: 1.15; letter-spacing: -.5px; margin-bottom: 16px; }
+    h1 em { font-style: normal; color: var(--accent2); }
+    .hero-sub { font-size: 18px; color: var(--muted); max-width: 620px; margin: 0 auto 32px; }
+    .hero-cta-group { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .btn-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 15px; padding: 13px 28px; border-radius: 8px; transition: background .15s; }
+    .btn-primary:hover { background: #4f52d6; text-decoration: none; }
+    .btn-ghost { display: inline-block; border: 1px solid var(--border); color: var(--text); font-size: 14px; padding: 12px 22px; border-radius: 8px; }
+    .deadline-pill { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; background: rgba(251,191,36,.08); border: 1px solid rgba(251,191,36,.25); color: var(--yellow); font-size: 13px; padding: 6px 14px; border-radius: 100px; }
+
+    /* SECTIONS */
+    .section { max-width: 860px; margin: 0 auto; padding: 48px 24px; }
+    h2 { font-size: 26px; font-weight: 700; margin-bottom: 24px; letter-spacing: -.3px; }
+    h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+    p { color: #c8d0e0; margin-bottom: 14px; }
+
+    /* RISK EXPLAINER */
+    .risk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 8px; }
+    .risk-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .risk-card .risk-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+    .risk-card.high .risk-label { color: var(--red); }
+    .risk-card.limited .risk-label { color: var(--yellow); }
+    .risk-card.minimal .risk-label { color: var(--green); }
+    .risk-card h3 { font-size: 15px; }
+    .risk-card p { font-size: 13px; color: var(--muted); margin-bottom: 0; }
+
+    /* USE CASES */
+    .use-case-list { display: flex; flex-direction: column; gap: 20px; }
+    .use-case { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 20px 22px; }
+    .use-case .tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--accent2); margin-bottom: 6px; }
+    .use-case h3 { font-size: 16px; margin-bottom: 6px; }
+    .use-case p { font-size: 14px; color: var(--muted); margin-bottom: 0; }
+
+    /* PAIN → SOLUTION */
+    .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .pain-grid .col-header { background: var(--surface2); padding: 12px 20px; font-size: 12px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; }
+    .pain-grid .col-header.pain { color: var(--red); border-right: 1px solid var(--border); }
+    .pain-grid .col-header.solution { color: var(--green); }
+    .pain-row { display: contents; }
+    .pain-cell, .sol-cell { padding: 14px 20px; font-size: 14px; border-top: 1px solid var(--border); }
+    .pain-cell { color: #b0b8cc; border-right: 1px solid var(--border); }
+    .sol-cell { color: #c8d0e0; }
+
+    /* PRICING */
+    .pricing-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .pricing-table th { text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .pricing-table td { padding: 13px 14px; border-bottom: 1px solid var(--border); color: #c8d0e0; vertical-align: top; }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table tr.highlight td { background: rgba(99,102,241,.07); }
+    .price-chip { display: inline-block; font-weight: 700; font-size: 15px; }
+    .price-chip.free { color: var(--green); }
+    .price-chip.paid { color: var(--yellow); }
+    .check { color: var(--green); }
+    .cross { color: var(--red); }
+
+    /* TOOL EMBED BOX */
+    .embed-box { background: var(--surface); border: 2px solid var(--accent); border-radius: var(--radius); padding: 28px; text-align: center; }
+    .embed-box p { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+
+    /* DIVIDER */
+    hr { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* INTERNAL LINKS */
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    .related-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; transition: border-color .15s; }
+    .related-card:hover { border-color: var(--accent); text-decoration: none; }
+    .related-card .r-label { font-size: 11px; text-transform: uppercase; letter-spacing: .8px; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+    .related-card h3 { font-size: 14px; color: var(--text); }
+    .related-card p { font-size: 13px; color: var(--muted); margin: 4px 0 0; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 16px; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+    .faq-item h3 { font-size: 15px; margin-bottom: 8px; }
+    .faq-item p { font-size: 14px; color: var(--muted); margin-bottom: 0; }
+
+    /* FOOTER */
+    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 13px; color: var(--muted); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .pain-grid { grid-template-columns: 1fr; }
+      .pain-grid .col-header.pain { border-right: none; border-bottom: 1px solid var(--border); }
+      .pain-cell { border-right: none; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://tinytools-smoky.vercel.app/" class="nav-brand">Tiny<span>Tools</span></a>
+  <span class="nav-sep">›</span>
+  <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="nav-crumb">EU AI Act Risk Assessment</a>
+  <span class="nav-sep">›</span>
+  <span class="nav-crumb">For AI Agency Owners</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">EU AI Act · AI Agencies</div>
+  <h1>EU AI Act Risk Assessment<br>for <em>AI Agency Owners</em></h1>
+  <p class="hero-sub">You built it. You deployed it. Under the EU AI Act, that may make <em>you</em> the regulated party — not your model provider or your client. Find your agency's liability exposure in 2 minutes, free.</p>
+  <div class="hero-cta-group">
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="btn-primary">Assess My Agency's Risk →</a>
+    <a href="#use-cases" class="btn-ghost">See Agency Use Cases</a>
+  </div>
+  <div class="deadline-pill">
+    ⚠️ High-risk system obligations enforceable from August 2026
+  </div>
+</section>
+
+<hr />
+
+<!-- WHY AI AGENCIES NEED THIS -->
+<section class="section">
+  <h2>Why the EU AI Act Hits AI Agencies Differently</h2>
+  <p>The EU AI Act carves the AI supply chain into three roles: <strong>providers</strong> (who develop and place AI on the market), <strong>deployers</strong> (who use AI in a professional context), and <strong>importers/distributors</strong>. Most AI agency owners assume they're neither — that they're just a services business wrapping third-party APIs for clients. The regulation disagrees.</p>
+  <p>If your agency builds a custom AI tool and deploys it under your client's brand, you are almost certainly the <em>provider</em> for that system under Article 3(3). That's the most demanding role in the Act. If you operate an AI service on behalf of a client — say, running automated AI outreach, AI-powered screening, or content moderation — you may be the <em>deployer</em> under Article 3(4). Either way, you're holding obligations your contract with the client probably doesn't cover.</p>
+  <p>The risk tier determines what those obligations cost you. Minimal-risk means mostly nothing. Limited risk means an Article 50 transparency disclosure your team adds in an afternoon. High-risk — triggered by eight specific Annex III use cases including employment tools, credit tools, and anything touching critical infrastructure — means conformity assessments, technical documentation, human oversight mechanisms, and audit trails. Getting the tier wrong doesn't just create legal exposure: it creates contractual exposure the moment a client gets audited and traces the system back to your agency.</p>
+
+  <div class="risk-grid" style="margin-top: 32px;">
+    <div class="risk-card high">
+      <div class="risk-label">🔴 High Risk (Provider Role)</div>
+      <h3>Custom AI Tools You Build &amp; Deploy</h3>
+      <p>AI hiring screeners, credit-scoring automations, medical intake chatbots, or law enforcement-adjacent tools built for clients. You're the provider. Conformity assessment required.</p>
+    </div>
+    <div class="risk-card limited">
+      <div class="risk-label">🟡 Limited Risk (Deployer Role)</div>
+      <h3>AI Services You Operate for Clients</h3>
+      <p>Running an AI chatbot or automated outreach on behalf of a client. Article 50 transparency disclosure required — users must know they're interacting with AI.</p>
+    </div>
+    <div class="risk-card minimal">
+      <div class="risk-label">🟢 Minimal Risk</div>
+      <h3>Most Agency AI Work</h3>
+      <p>Content generation, internal productivity tools, marketing automation with no direct user-facing decision outputs. No mandatory obligations — but disclosure is best practice and a client differentiator.</p>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- USE CASES -->
+<section class="section" id="use-cases">
+  <h2>5 AI Agency Scenarios &amp; Their EU AI Act Exposure</h2>
+  <div class="use-case-list">
+
+    <div class="use-case">
+      <div class="tag">Use Case 1</div>
+      <h3>Building a White-Label AI Chatbot for an EU Retailer</h3>
+      <p>You built a GPT-4-powered customer support chatbot on behalf of a German e-commerce brand. The brand owns the domain; you built and maintain the backend. Under the EU AI Act, you are the <strong>provider</strong> — the party that placed this AI system on the EU market — because you developed it for commercial deployment. The retailer is the deployer. This is a limited-risk scenario under Article 50: the chatbot must disclose its AI nature to users. The assessment generates the compliant disclosure copy your client needs to display. Missing it exposes your client to enforcement and exposes you to breach-of-contract claims when they find out.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 2</div>
+      <h3>Running AI-Powered Recruitment Screening for an HR Client</h3>
+      <p>Your agency operates an automated AI screening pipeline — parsing CVs, scoring candidates, and surfacing shortlists — as a managed service for a UK-based company with EU job applicants. This is textbook Annex III: Article 6(2) and Annex III point 4 classify AI systems that evaluate persons for employment or promotion as high-risk. As the service operator, you are the deployer. Your obligations include maintaining an appropriate human oversight mechanism, keeping logs for a minimum period, and ensuring candidates have the right to explanation. The assessment maps exactly which obligations fall on you versus your client under the Act's deployer rules.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 3</div>
+      <h3>Delivering AI-Generated Marketing Content for a Financial Services Client</h3>
+      <p>You run a content agency that generates AI-written blog posts, email copy, and social ads for a regulated financial services firm targeting EU consumers. The AI itself is minimal-risk for content generation — but the moment that content influences financial decisions (investment recommendations, insurance comparisons, credit product promotions), the transparency and disclosure obligations of the Act may apply to how the AI output is labeled. If your agency's name is on the production pipeline and your client is audited, the assessment clarifies who is on the hook for what — and generates the disclosure language that protects both parties.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 4</div>
+      <h3>Building an AI Document Automation Tool for a Law Firm</h3>
+      <p>Your agency built and maintains a custom document drafting tool for a Paris-based law firm — it ingests case data and auto-generates contract clauses, GDPR notices, and litigation summaries used by associates. This falls under the Annex III administration of justice category if the AI output <em>assists</em> in decisions that affect legal rights. That's not the same as the lawyers making the final call — assistance is enough. High-risk classification means the law firm needs a conformity assessment, and your agency — as the party that designed the system architecture — may be required to hand over technical documentation that includes your model card, data governance practices, and accuracy metrics. The assessment tells you exactly what to prepare before a client relationship turns into a discovery request.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 5</div>
+      <h3>Operating an AI Social Media Moderation Service for EU Platforms</h3>
+      <p>You run a managed AI content moderation service for a network of EU media platforms — using classifiers to flag hate speech, misinformation, and policy violations at scale. Content moderation AI that influences what speech reaches users on platforms above a certain threshold is on the EU AI Act's radar, particularly for General Purpose AI transparency and the intersection with the Digital Services Act. The assessment evaluates your GPAI transparency obligations (if you're exposing a general-purpose model), any Annex III angles related to critical digital infrastructure, and the disclosure requirements your platform clients must surface to users about automated moderation decisions.</p>
+    </div>
+
+  </div>
+</section>
+
+<hr />
+
+<!-- PAIN → SOLUTION -->
+<section class="section">
+  <h2>Agency Owner Pain Points → What This Tool Solves</h2>
+  <div class="pain-grid">
+    <div class="col-header pain">The Pain</div>
+    <div class="col-header solution">The Solution</div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"My client is in the EU, but my agency is US-based. Does the EU AI Act even apply to us?"</div>
+      <div class="sol-cell">Yes, if the AI system's output affects EU users. The Act has the same extraterritorial reach as GDPR. The assessment identifies exactly which obligations apply to your agency given where you're incorporated versus where your clients deploy.</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"My contract says the client is responsible for compliance. Doesn't that cover us?"</div>
+      <div class="sol-cell">Contractual shifting of liability doesn't remove statutory obligations. If you designed the system and placed it on the EU market, you carry provider obligations regardless of what your SOW says. The assessment clarifies your statutory position so you can update contracts accordingly.</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"We're a 6-person agency. We can't afford a compliance consultant at €10k+ per engagement."</div>
+      <div class="sol-cell">The assessment is free, runs in your browser, and produces a tiered action list: legally required vs. best practice vs. future-proofing. You get the answer a compliance consultant would give for the 80% of cases that aren't genuinely ambiguous.</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"We use the same underlying stack — OpenAI + LangChain — for multiple clients. Does each deployment need its own assessment?"</div>
+      <div class="sol-cell">Yes. Risk is assessed per deployment, not per tech stack. A customer service chatbot and an HR screening tool built on identical infrastructure can sit in completely different risk tiers. The assessment is fast enough to run once per client engagement before scoping begins.</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"A prospective enterprise client is asking for our EU AI Act compliance posture as part of their vendor onboarding. What do we show them?"</div>
+      <div class="sol-cell">The assessment generates a shareable, PDF-ready risk report you can include in your vendor questionnaire response. It documents your methodology, the risk tier of each relevant system, and the obligations you have in place — exactly what enterprise procurement teams are looking for in 2026.</div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- TOOL EMBED -->
+<section class="section">
+  <div class="embed-box">
+    <h2 style="margin-bottom: 8px;">Run Your Free EU AI Act Assessment</h2>
+    <p>Takes 2 minutes. No sign-up. Get a shareable risk report for your agency's AI deployments.</p>
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="btn-primary" style="font-size: 16px; padding: 15px 36px;">
+      Assess My Agency's Risk →
+    </a>
+    <p style="margin-top: 16px; font-size: 12px;">Covers provider vs. deployer classification · All 8 Annex III categories · Article 50 transparency obligations · GPAI rules</p>
+  </div>
+</section>
+
+<hr />
+
+<!-- PRICING COMPARISON -->
+<section class="section">
+  <h2>Pricing vs. Paid EU AI Act Compliance Tools for Agencies</h2>
+  <p>Enterprise governance platforms price for enterprise buyers — legal teams at Fortune 500s, not 5-to-50-person AI agencies shipping client work weekly. Here's the honest comparison for the core assessment use case agencies actually need:</p>
+  <div style="overflow-x: auto;">
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Price</th>
+          <th>Agency / Multi-Client Use</th>
+          <th>Provider vs. Deployer Clarity</th>
+          <th>Instant Shareable Report</th>
+          <th>No Login Required</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td><strong>TinyTools EU AI Act Assessment</strong></td>
+          <td><span class="price-chip free">Free</span></td>
+          <td><span class="check">✓</span> Run per engagement</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="check">✓</span> Yes</td>
+        </tr>
+        <tr>
+          <td>OneTrust AI Governance</td>
+          <td><span class="price-chip paid">~$25k+/yr</span></td>
+          <td><span class="cross">✗</span> Single org focus</td>
+          <td><span class="cross">✗</span> Generic</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="cross">✗</span> No</td>
+        </tr>
+        <tr>
+          <td>Securiti AI Governance</td>
+          <td><span class="price-chip paid">~$30k/yr</span></td>
+          <td><span class="cross">✗</span> Single org focus</td>
+          <td><span class="cross">✗</span> Generic</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="cross">✗</span> No</td>
+        </tr>
+        <tr>
+          <td>Lumenova AI Compliance</td>
+          <td><span class="price-chip paid">~$10k/yr</span></td>
+          <td><span class="cross">✗</span> Single org focus</td>
+          <td><span class="cross">✗</span> Generic</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="cross">✗</span> No</td>
+        </tr>
+        <tr>
+          <td>EU AI Act Lawyer Consultation</td>
+          <td><span class="price-chip paid">€300–800/hr</span></td>
+          <td><span class="check">✓</span> Can cover multi-client</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="cross">✗</span> Manual</td>
+          <td><span class="check">✓</span> N/A</td>
+        </tr>
+        <tr>
+          <td>DIY (reading EUR-Lex)</td>
+          <td><span class="price-chip free">Free</span></td>
+          <td><span class="check">✓</span> Unlimited</td>
+          <td><span class="cross">✗</span> Manual interpretation</td>
+          <td><span class="cross">✗</span> No</td>
+          <td><span class="check">✓</span> Yes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top: 16px; font-size: 13px; color: var(--muted);">Enterprise pricing estimates based on publicly available tiers and analyst sources as of 2026. TinyTools is free, browser-side, and produces no server-side data retention — your client details stay on your device.</p>
+</section>
+
+<hr />
+
+<!-- FAQ -->
+<section class="section">
+  <h2>FAQ: EU AI Act for AI Agency Owners</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h3>What's the difference between being a "provider" and a "deployer" as an agency?</h3>
+      <p>A provider places an AI system on the market or puts it into service — this is typically the agency when it builds a custom tool for a client. A deployer uses an AI system in a professional context — this is typically the client, but also the agency when it <em>operates</em> an AI service on behalf of a client. The assessment asks the right questions to determine which role applies to each of your client engagements, because the obligations (and penalties) differ significantly.</p>
+    </div>
+    <div class="faq-item">
+      <h3>We use GPT-4 via the OpenAI API. Does OpenAI's compliance cover our agency?</h3>
+      <p>No. OpenAI bears provider obligations for the underlying model. When you wrap that model in a custom application, add your own system prompts, and deploy it in a specific use-case context, you become the provider or deployer of that application. Your obligations are separate from and in addition to OpenAI's. The API terms don't transfer regulatory liability.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I include EU AI Act compliance in my client proposals without scaring them off?</h3>
+      <p>Frame it as a built-in deliverable: "EU AI Act risk assessment and disclosure documentation included." The assessment generates a shareable report clients can keep in their regulatory files. It's a differentiator, not a blocker — most agencies aren't offering this yet, and enterprise procurement teams are starting to require it.</p>
+    </div>
+    <div class="faq-item">
+      <h3>One of our clients was just acquired by a company with EU operations. Does that retroactively change our obligations?</h3>
+      <p>Potentially yes. If the acquiring company deploys your tool to EU users, a system that was previously out of scope may now fall under the Act. It's worth re-running the assessment against the new deployment context — the tool takes 2 minutes and produces updated documentation you can share with the acquirer's compliance team.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What are the penalties if a tool we built for a client turns out to be high-risk and non-compliant?</h3>
+      <p>For violations related to prohibited AI practices: up to €35 million or 7% of global annual turnover. For non-compliance with high-risk obligations: up to €15 million or 3% of global annual turnover. Penalties apply to the provider and deployer — which may include your agency. Beyond fines, there's the contractual exposure: clients can seek indemnification if your deliverable caused their compliance failure.</p>
+    </div>
+    <div class="faq-item">
+      <h3>We're building an AI agent (not just a chatbot) that takes autonomous actions on behalf of clients. Is that different?</h3>
+      <p>Agentic AI systems — those that take actions, execute code, make API calls, or modify external systems autonomously — are under increasing EU AI Act scrutiny, particularly around the human oversight requirements in Article 14. The assessment covers autonomous action scenarios and surfaces the specific oversight mechanisms regulators expect, including the ability for operators to override, pause, or shut down the agent during operation.</p>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- RELATED TOOLS -->
+<section class="section">
+  <h2>Related Tools for AI Agency Owners</h2>
+  <div class="related-grid">
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/" class="related-card">
+      <div class="r-label">Article 50 Compliance</div>
+      <h3>AI Disclosure Generator</h3>
+      <p>Generate compliant EU AI Act disclosure copy for every client tool your agency ships. One per deployment, done in 30 seconds.</p>
+    </a>
+    <a href="https://tinytools-smoky.vercel.app/ai-cost-calculator/for-ai-agency-owners/" class="related-card">
+      <div class="r-label">Margin Protection</div>
+      <h3>AI Cost Calculator for Agencies</h3>
+      <p>Model token costs across GPT-4o, Claude, and Gemini before you quote a client. Avoid negative-margin retainers.</p>
+    </a>
+    <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/" class="related-card">
+      <div class="r-label">Data Control</div>
+      <h3>AI Robots.txt Generator</h3>
+      <p>Control which AI crawlers can scrape the client sites and training corpora your agency manages. Recommended for every client onboarding.</p>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section" style="padding-top: 0;">
+  <div class="embed-box">
+    <h2 style="font-size: 22px; margin-bottom: 8px;">Know your agency's EU AI Act liability before your client asks.</h2>
+    <p>Free, instant, no login. Run one assessment per client engagement and include the report in your deliverables.</p>
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="btn-primary">
+      Start Free Assessment →
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> ·
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> ·
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-ai-saas-founders/">For AI SaaS Founders</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a>
+  </p>
+  <p style="margin-top: 8px;">© 2026 TinyTools · Free browser-side tools for builders · Not legal advice</p>
+</footer>
+
+</body>
+</html>
