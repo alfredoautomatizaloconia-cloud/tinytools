@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Cost Calculator for AI App Builders — Forecast API Spend Before Lovable or Bolt Bills You (2026)</title>
+<meta name="description" content="Built for AI app builders shipping with Lovable, Bolt, v0, and Replit. Forecast per-feature, per-user, and per-session token costs across Claude 4.6, GPT-5, and Gemini 3 — before your no-code AI app quietly burns through your free tier and wrecks your unit economics.">
+<meta name="keywords" content="ai cost calculator for app builders, lovable api cost, bolt ai token cost, v0 vercel api pricing, ai app builder token spend, claude api cost calculator, openai cost per user, ai app economics, ai saas unit economics, no-code ai api cost">
+<meta property="og:title" content="AI Cost Calculator for AI App Builders — Free, No Signup">
+<meta property="og:description" content="Forecast token spend per feature, per user, and per session for apps built with Lovable, Bolt, v0, Replit, and similar platforms. Compare Claude 4.6, GPT-5, Gemini 3, and 25+ models before your unit economics break.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-cost-calculator/for-ai-app-builders/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Cost Calculator for AI App Builders",
+  "description": "Free AI API cost calculator for builders using Lovable, Bolt, v0, and Replit. Estimate per-user, per-session, and per-feature token costs across 30+ LLMs before shipping a product with broken unit economics.",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-ai-app-builders/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "audience": { "@type": "Audience", "audienceType": "AI App Builders" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Cost Calculator for AI App Builders",
+  "url": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-ai-app-builders/",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "TinyTools",
+    "url": "https://tinytools-smoky.vercel.app/"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "AI App Builder API Cost Estimation and Unit Economics"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "AI Cost Calculator", "item": "https://tinytools-smoky.vercel.app/ai-cost-calculator/" },
+      { "@type": "ListItem", "position": 3, "name": "For AI App Builders", "item": "https://tinytools-smoky.vercel.app/ai-cost-calculator/for-ai-app-builders/" }
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Lovable or Bolt include API costs in their subscription?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lovable, Bolt, and similar platforms typically include LLM access as part of their builder subscription — while you are building and prototyping. The moment you deploy a public-facing app where real users interact with AI features powered by Claude, GPT-5, or Gemini, those calls generally go against your own API key or a usage-based add-on tier. This is where most AI app builders get surprised: the platform hid the cost during development, and the first month of real traffic arrives with an unexpected invoice. The AI Cost Calculator helps you project that number before go-live."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a realistic token cost per active user for a typical AI app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a lightweight AI feature — a single-turn summarizer or a short Q&A — expect $0.002 to $0.015 per session with a mid-tier model like Claude Haiku or GPT-4o Mini. A feature that keeps a long conversation history or does multi-step reasoning can run $0.05 to $0.30 per session with a flagship model. At 1,000 active users doing two sessions per day, that is $100 to $6,000 per month on model costs alone — before hosting, storage, or platform fees. The exact number depends on your system prompt length, context window management strategy, and model choice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which model gives the best cost-to-quality ratio for AI apps in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Haiku 4.5, GPT-4o Mini, and Gemini 2.0 Flash consistently win cost-per-quality benchmarks for consumer-facing AI app features that do not require deep reasoning. For features that do require multi-step thinking — code generation, complex document analysis, agent workflows — Claude Sonnet 4.6 and GPT-4o offer the best trade-off. Flagship models (Claude Opus, GPT-5) are rarely justified for features that run on every user interaction; they are better reserved for async, high-value tasks. The calculator lets you compare all of these side by side against your expected usage volume."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I reduce AI API costs in my Lovable or Bolt app without degrading quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The three highest-leverage moves are: (1) trim your system prompt — every 500 tokens removed from a system prompt that fires on every user message saves tokens on every single call; (2) implement context pruning — instead of sending the full conversation history, summarize older turns and keep only the last 3-5 exchanges verbatim; (3) route by task complexity — send simple classification and short-answer tasks to a cheap small model and reserve the flagship for tasks that genuinely need it. A routing layer on top of your AI calls can cut monthly model spend by 40-70% with no visible quality drop for most app users."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #6366f1; --accent-glow: #6366f140;
+    --green: #10b981; --red: #ef4444; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #8b5cf640 0%, transparent 50%);
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { text-align: center; padding: 24px 0 16px; }
+  .badge {
+    display: inline-block; padding: 6px 14px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 999px; font-size: 13px;
+    color: var(--text-dim); margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.5vw, 44px); font-weight: 800; line-height: 1.12; margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 660px; margin: 0 auto 28px; }
+  .cta {
+    display: inline-block; padding: 14px 26px; background: var(--accent); color: #fff;
+    border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 16px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 24px var(--accent-glow);
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 32px var(--accent-glow); }
+  .cta-row { text-align: center; margin: 24px 0 36px; }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; margin: 24px 0;
+  }
+  .panel h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.01em; color: #fff; }
+  .panel h3 { font-size: 17px; margin: 20px 0 8px; color: #fff; }
+  .panel p { color: var(--text-dim); margin-bottom: 12px; }
+  .panel ul { color: var(--text-dim); margin: 8px 0 16px 22px; }
+  .panel li { margin-bottom: 6px; }
+  .panel a { color: #a5b4fc; text-decoration: none; border-bottom: 1px dashed #6366f155; }
+  .panel a:hover { border-bottom-style: solid; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0 8px;
+  }
+  .card {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 14px; padding: 18px;
+  }
+  .card .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .card .value { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .card .note { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { color: var(--text); }
+  td.dim { color: var(--text-dim); }
+  td.green { color: var(--green); font-weight: 600; }
+  td.yellow { color: var(--yellow); font-weight: 600; }
+  td.red { color: var(--red); font-weight: 600; }
+  footer { text-align: center; color: var(--text-dim); font-size: 13px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+  footer a { color: #a5b4fc; text-decoration: none; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; }
+  .breadcrumb a { color: #a5b4fc; text-decoration: none; }
+  .related-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 16px;
+  }
+  .related-card {
+    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px; text-decoration: none; display: block;
+    transition: border-color 0.15s;
+  }
+  .related-card:hover { border-color: var(--accent); }
+  .related-card .r-label { font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+  .related-card .r-title { font-size: 14px; font-weight: 600; color: var(--text); }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">TinyTools</a> &nbsp;&rsaquo;&nbsp; <a href="/ai-cost-calculator/">AI Cost Calculator</a> &nbsp;&rsaquo;&nbsp; For AI App Builders
+  </div>
+
+  <header>
+    <span class="badge">Free &middot; No signup &middot; Runs in your browser</span>
+    <h1>AI Cost Calculator for AI App Builders</h1>
+    <p class="subtitle">Forecast the real API spend behind every feature you ship with Lovable, Bolt, v0, or Replit &mdash; per user, per session, per month &mdash; before your unit economics quietly collapse at 500 active users.</p>
+    <div class="cta-row">
+      <a class="cta" href="/ai-cost-calculator/">Open the AI Cost Calculator &rarr;</a>
+    </div>
+  </header>
+
+  <div class="panel">
+    <h2>The unit economics problem nobody warns you about</h2>
+    <p>You built something in a weekend. Lovable wired up the Claude integration, Bolt handled the database calls, and the whole thing felt basically free while you were prototyping. Then you launched, tweeted it, got 600 users in three days, and woke up to a $430 API invoice.</p>
+    <p>This is the defining financial failure mode of the AI app builder generation. The platforms absorb API costs during development &mdash; and stop absorbing them the moment your app becomes real. Most AI app builders do not know what their feature actually costs per user until the first bill arrives, by which time they have already promised free access to a few hundred early adopters and written a pricing page that does not account for model costs at all.</p>
+    <p>The AI Cost Calculator was built for exactly this gap. It runs entirely in your browser, connects to no accounts, and produces a defensible cost model in under five minutes: per-session spend at your system prompt length, per-user monthly spend at your expected active-user rate, and a breakeven analysis against whatever pricing tier you are planning to charge.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Five use cases specific to AI app builders</h2>
+
+    <h3>1. Pre-launch model selection</h3>
+    <p>The biggest cost lever you have before shipping is which model you default to. Claude Haiku 4.5 and GPT-4o Mini cost 10&ndash;20× less per token than flagship models. For most app features &mdash; chat assistants, content summarizers, form auto-fill, smart search &mdash; the quality difference is invisible to end users. The calculator lets you input your expected interaction pattern and see the monthly cost delta between models at 100, 1,000, and 10,000 active users. For most AI apps built on Lovable or Bolt, switching from a flagship to a mid-tier model before launch is worth $2,000&ndash;$15,000 per month at scale.</p>
+
+    <h3>2. System prompt cost auditing</h3>
+    <p>System prompts are the silent budget item in every AI app. A 2,000-token system prompt that fires on every user message adds $0.006&ndash;$0.09 of pure overhead per session, depending on the model, before the user has typed a single character. At 1,000 daily active users with two sessions each, a bloated system prompt costs $120&ndash;$1,800 per month in input-token overhead alone. The calculator takes your system prompt token count as a direct input and isolates exactly what that fixed overhead costs at your usage volume &mdash; making the case for trimming it a dollar figure rather than a hunch.</p>
+
+    <h3>3. Context window management decisions</h3>
+    <p>Most AI apps built with Lovable or Bolt start by sending the full conversation history on every turn. That is fine for prototypes and catastrophic for production costs. A chat feature where users average 12 turns per session and each turn carries the accumulated history means the final message in a session costs 6&ndash;8× more than the first. The calculator models this rolling context growth explicitly. The output usually makes the case for implementing a sliding context window or summarization strategy before you scale, not after &mdash; which saves the rewrite that breaks half your app at 2 AM.</p>
+
+    <h3>4. Feature-level pricing design</h3>
+    <p>When you are designing your pricing tiers, you need to know what your most expensive features cost per seat. A document-analysis feature that processes 20-page PDFs costs differently than a short Q&amp;A assistant. An image description feature costs differently on GPT-4o (with vision) than on a text-only model with a prior OCR step. The calculator handles multi-modal inputs and lets you cost each feature type separately so your Pro tier actually covers the usage patterns of the people who are most likely to pay for it.</p>
+
+    <h3>5. Investor and co-founder cost modeling</h3>
+    <p>At some point someone asks: "What are your unit economics?" If your answer is "I'm not sure, the API is cheap," you lose credibility with anyone who has ever scaled a software product. The calculator outputs a clean cost table &mdash; cost per active user per month, gross margin at each pricing tier, breakeven active user count &mdash; that slots directly into a financial model or a pitch deck appendix. It is not a substitute for real data, but it is a defensible first-principles estimate based on your actual architecture.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Platform-specific cost patterns in 2026</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="label">Lovable / Bolt apps</div>
+        <div class="value">$0.003–$0.08</div>
+        <div class="note">Per user session (mid-tier model, 8-turn avg)</div>
+      </div>
+      <div class="card">
+        <div class="label">v0 / Next.js AI routes</div>
+        <div class="value">$0.001–$0.04</div>
+        <div class="note">Per API call (streaming, short context)</div>
+      </div>
+      <div class="card">
+        <div class="label">Replit agent apps</div>
+        <div class="value">$0.05–$0.40</div>
+        <div class="note">Per agent task (multi-step, tool use)</div>
+      </div>
+      <div class="card">
+        <div class="label">System prompt overhead</div>
+        <div class="value">15–35%</div>
+        <div class="note">Of total input cost for typical AI apps</div>
+      </div>
+    </div>
+    <p style="margin-top:16px;">These are illustrative ranges. Your actual numbers depend on model choice, system prompt length, conversation depth, and feature type. The calculator lets you dial in each variable precisely.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Model comparison: cost at 1,000 daily active users</h2>
+    <p>Assuming 2 sessions/user/day, 10-turn conversations, 1,500-token system prompt, 200-token avg user message, 400-token avg response:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Cost / Session</th>
+          <th>Monthly Total</th>
+          <th>vs. $15/user/mo pricing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Claude Haiku 4.5</td>
+          <td>$0.004</td>
+          <td>$240</td>
+          <td class="green">98.4% gross margin</td>
+        </tr>
+        <tr>
+          <td>GPT-4o Mini</td>
+          <td>$0.006</td>
+          <td>$360</td>
+          <td class="green">97.6% gross margin</td>
+        </tr>
+        <tr>
+          <td>Claude Sonnet 4.6</td>
+          <td>$0.038</td>
+          <td>$2,280</td>
+          <td class="yellow">84.8% gross margin</td>
+        </tr>
+        <tr>
+          <td>GPT-4o</td>
+          <td>$0.052</td>
+          <td>$3,120</td>
+          <td class="yellow">79.2% gross margin</td>
+        </tr>
+        <tr>
+          <td>Claude Opus 4.6</td>
+          <td>$0.19</td>
+          <td>$11,400</td>
+          <td class="red">24.0% gross margin</td>
+        </tr>
+        <tr>
+          <td>GPT-5</td>
+          <td>$0.22</td>
+          <td>$13,200</td>
+          <td class="red">12.0% gross margin</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Model choice is the single largest cost decision in an AI app. Use the calculator to run your own numbers with your actual parameters.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Pain points the calculator solves</h2>
+    <ul>
+      <li><strong>Surprise invoices:</strong> Forecast your monthly API bill before you launch, not after you've already given 300 users free access.</li>
+      <li><strong>Broken free tiers:</strong> Know exactly how many free users you can sustain on a given AI feature before you start subsidizing more than you earn.</li>
+      <li><strong>Pricing blindness:</strong> Set your Pro tier price based on real cost data rather than what feels reasonable compared to SaaS competitors who don't have per-interaction API costs.</li>
+      <li><strong>System prompt bloat:</strong> Quantify the dollar cost of trimming 500 tokens from your system prompt — it's usually worth more than any other single engineering optimization you can do in an afternoon.</li>
+      <li><strong>Model upgrade regret:</strong> Evaluate whether switching to a smarter model for better user retention actually improves your economics or just erodes your margins without measurable retention impact.</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <h2>Alternatives and why builders choose the free calculator</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>What it costs</th>
+          <th>What it misses</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>OpenAI Tokenizer (manual)</td>
+          <td class="dim">Free</td>
+          <td class="dim">Per-model, no volume math, no multi-model comparison</td>
+        </tr>
+        <tr>
+          <td>Helicone / LangSmith</td>
+          <td class="dim">$20–$200/mo</td>
+          <td class="dim">Requires instrumentation; shows actuals, not pre-launch projections</td>
+        </tr>
+        <tr>
+          <td>Custom spreadsheet</td>
+          <td class="dim">Free but manual</td>
+          <td class="dim">Outdated rates, no rolling context modeling, breaks when models change</td>
+        </tr>
+        <tr>
+          <td>Platform cost estimates</td>
+          <td class="dim">Varies</td>
+          <td class="dim">Vendor-optimistic; doesn't account for your system prompt or context patterns</td>
+        </tr>
+        <tr>
+          <td><strong>TinyTools AI Cost Calculator</strong></td>
+          <td class="green"><strong>Free, no account</strong></td>
+          <td class="dim">Best for projections; not a replacement for production observability</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h2>Related tools for AI app builders</h2>
+    <div class="related-grid">
+      <a class="related-card" href="/ai-disclosure-generator/for-ai-app-builders/">
+        <div class="r-label">Compliance</div>
+        <div class="r-title">AI Disclosure Generator for App Builders</div>
+      </a>
+      <a class="related-card" href="/eu-ai-act-risk-assessment/for-ai-app-builders/">
+        <div class="r-label">Regulation</div>
+        <div class="r-title">EU AI Act Risk Assessment for App Builders</div>
+      </a>
+      <a class="related-card" href="/favicon-generator/for-ai-app-builders/">
+        <div class="r-label">Branding</div>
+        <div class="r-title">Favicon Generator for AI Apps</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="cta-row">
+    <a class="cta" href="/ai-cost-calculator/">Calculate Your AI App Costs Now &rarr;</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 <a href="/">TinyTools</a> &mdash; Free micro-tools for the AI era &mdash; <a href="/ai-cost-calculator/">AI Cost Calculator</a> &middot; <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> &middot; <a href="/eu-ai-act-risk-assessment/">EU AI Act Assessment</a></p>
+  </footer>
+</div>
+</body>
+</html>
