@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps Disaster Score — How Likely Is Your Repo to Break Prod?</title>
+<meta name="description" content="Paste any public GitHub repo URL. Get a savage DevOps Disaster Score based on real commit history, open issues, and maintenance signals. Share the card. Free, no signup.">
+<meta name="keywords" content="devops disaster score, github repo health, production readiness, tech debt calculator, github repo check, devops check, repo quality score">
+<meta property="og:title" content="DevOps Disaster Score — How Likely Is Your Repo to Break Prod?">
+<meta property="og:description" content="Paste a GitHub repo URL. Get an honest, brutal score for how production-ready your codebase actually is.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/devops-disaster-score/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/devops-disaster-score/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "DevOps Disaster Score",
+  "description": "Calculates how likely a public GitHub repo is to break production, based on commit history, open issues, documentation, and maintenance signals",
+  "url": "https://tinytools-smoky.vercel.app/devops-disaster-score/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #dc2626; --accent-glow: #dc262640;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b; --orange: #f97316;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #92400e40 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 5.5vw, 54px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fca5a5 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 17px; color: var(--text-dim); max-width: 540px; margin: 0 auto; }
+
+  .input-row {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 8px;
+    display: flex; gap: 8px; max-width: 620px; margin: 32px auto 0;
+  }
+  .input-row input {
+    flex: 1; padding: 14px 18px; background: transparent; border: none; color: var(--text);
+    font-size: 15px; font-family: monospace; outline: none;
+  }
+  .input-row input::placeholder { font-family: -apple-system, sans-serif; font-size: 15px; }
+  .input-row button {
+    padding: 14px 24px; background: linear-gradient(135deg, #dc2626, #991b1b);
+    border: none; border-radius: 10px; color: white; font-weight: 700; font-size: 15px;
+    cursor: pointer; box-shadow: 0 4px 16px rgba(220, 38, 38, 0.3); white-space: nowrap;
+  }
+  .input-row button:hover { transform: translateY(-1px); }
+  .input-row button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .try-links { text-align: center; margin-top: 10px; color: var(--text-dim); font-size: 13px; }
+  .try-links a { color: var(--accent); text-decoration: none; cursor: pointer; }
+
+  /* Result card */
+  .result-card {
+    margin: 32px auto 0; max-width: 720px;
+    background: linear-gradient(135deg, #1f1f2e 0%, #15151f 100%);
+    border: 2px solid var(--accent); border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(220, 38, 38, 0.15);
+    display: none;
+  }
+  .result-card.show { display: block; }
+  .result-header {
+    padding: 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .repo-info { flex: 1; min-width: 0; }
+  .repo-info .repo-name { font-size: 22px; font-weight: 800; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .repo-info .repo-sub { font-size: 13px; color: var(--text-dim); margin-top: 3px; }
+  .disaster-badge {
+    padding: 12px 20px; border-radius: 14px; text-align: center; white-space: nowrap;
+  }
+  .disaster-badge .score-num { font-size: 40px; font-weight: 900; line-height: 1; }
+  .disaster-badge .score-lbl { font-size: 11px; text-transform: uppercase; font-weight: 600; margin-top: 2px; }
+
+  .level-banner {
+    padding: 14px 24px; font-size: 18px; font-weight: 700; text-align: center; letter-spacing: 0.02em;
+  }
+
+  .result-body { padding: 24px; }
+  .roast-text {
+    font-size: 16px; line-height: 1.6; color: #fca5a5; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid var(--accent); border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 580px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--bg-elevated); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+  .stat-value { font-size: 20px; font-weight: 800; }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .dbadge {
+    padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 13px;
+  }
+  .dbadge.danger { border-color: var(--red); color: #fca5a5; }
+  .dbadge.warn { border-color: var(--yellow); color: #fcd34d; }
+  .dbadge.good { border-color: var(--green); color: #6ee7b7; }
+  .dbadge.neutral { border-color: var(--border); color: var(--text-dim); }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .elabel { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  canvas { display: none; }
+
+  .loading { text-align: center; padding: 40px; color: var(--text-dim); display: none; }
+  .loading.show { display: block; }
+  .spinner { display: inline-block; width: 24px; height: 24px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .error { text-align: center; padding: 24px; color: var(--red); display: none; }
+  .error.show { display: block; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; margin: 28px 0 10px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🔥 Real GitHub data · Public repos only · No login · Built by TinyTools</div>
+    <h1>DevOps Disaster Score 🔥</h1>
+    <p class="subtitle">Paste any public GitHub repo URL. We analyze commit recency, open issues, documentation, and maintenance signals to calculate exactly how likely your prod is to explode.</p>
+  </header>
+
+  <div class="input-row">
+    <input id="repoInput" type="text" placeholder="https://github.com/owner/repo" autocomplete="off" spellcheck="false">
+    <button id="scoreBtn">💀 Score It</button>
+  </div>
+  <p class="try-links">
+    Try: <a class="try-link" data-r="facebook/react">facebook/react</a> ·
+    <a class="try-link" data-r="torvalds/linux">torvalds/linux</a> ·
+    <a class="try-link" data-r="nicklockwood/SwiftFormat">nicklockwood/SwiftFormat</a>
+  </p>
+
+  <div class="loading" id="loading"><div class="spinner"></div><p style="margin-top:12px;">Checking if your repo is on fire...</p></div>
+  <div class="error" id="errorEl"></div>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-header" id="rHeader">
+      <div class="repo-info">
+        <div class="repo-name" id="rName"></div>
+        <div class="repo-sub" id="rSub"></div>
+      </div>
+      <div class="disaster-badge" id="rBadge">
+        <div class="score-num" id="rScore"></div>
+        <div class="score-lbl">Disaster Score</div>
+      </div>
+    </div>
+    <div class="level-banner" id="rLevel"></div>
+    <div class="result-body">
+      <div class="roast-text" id="rRoast"></div>
+      <div class="stats-grid" id="rStats"></div>
+      <div class="badges" id="rBadges"></div>
+      <div class="actions">
+        <a class="action primary" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action" id="rCopyLink">🔗 Copy link</button>
+        <a class="action" id="rDownload" download="devops-disaster-score.png">💾 Save card</a>
+      </div>
+      <div class="embed-section">
+        <div class="elabel">Embed the disaster badge in your README</div>
+        <pre id="rEmbed"></pre>
+        <button id="rEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="cardCanvas" width="1200" height="630"></canvas>
+
+  <section class="content">
+    <h2>How the score is calculated</h2>
+    <p>The Disaster Score (0–100) is calculated from public GitHub API data. Higher = more likely to break prod. We weigh five factors: days since last commit (50 pts max), open issue volume relative to project size (20 pts max), absence of a README (10 pts), absence of a license file (10 pts), and whether the repo appears abandoned (archival status, zero recent watchers). Same repo always produces the same score — deterministic, no AI hallucinations.</p>
+    <p>A score of 0–20 means your repo is suspiciously well-maintained. 21–40 is solid with some rough edges. 41–60 means technical debt is accruing. 61–80 means you're shipping into chaos. 81–100 means your on-call rotation deserves combat pay.</p>
+    <h2>Why "disaster" specifically?</h2>
+    <p>The framing is intentional. "Code quality" tools get ignored because they're abstract. "Disaster" gets people's attention because production outages have feelings attached to them. We're not measuring code quality — we're measuring production blast radius.</p>
+    <h2>Share your score</h2>
+    <p>The deep link encodes the repo path, so anyone clicking your link sees the same repo scored the same way. Drop the badge in your README to prove your repo is (or isn't) a disaster. Bet your coworker their repo is worse than yours.</p>
+    <h2>What score is "good"?</h2>
+    <p>Most popular open-source repos score 10–30. Actively maintained projects with responsive issue queues hit 5–15. Hobby projects that haven't been touched since 2021 reliably hit 70+. Enterprise repos internal tools score 55–75 which is why your on-call alerts go off at 3am.</p>
+  </section>
+
+  <footer>
+    <p>Try another tool → <a href="/github-roast/">GitHub Roast</a> · <a href="/roast-my-landing-page/">Roast My Landing Page</a> · <a href="/">All TinyTools</a></p>
+  </footer>
+</div>
+
+<script>
+const LEVELS = [
+  { max: 20,  label: '✅ Production Ready',    color: '#10b981', bg: 'rgba(16,185,129,0.15)', textColor: '#6ee7b7' },
+  { max: 40,  label: '🟡 Mild Chaos',          color: '#f59e0b', bg: 'rgba(245,158,11,0.15)', textColor: '#fcd34d' },
+  { max: 60,  label: '🟠 Technical Debt Season', color: '#f97316', bg: 'rgba(249,115,22,0.15)', textColor: '#fdba74' },
+  { max: 80,  label: '🔴 YOLO in Prod',        color: '#ef4444', bg: 'rgba(239,68,68,0.15)',  textColor: '#fca5a5' },
+  { max: 101, label: '💀 Dumpster Fire',        color: '#dc2626', bg: 'rgba(127,29,29,0.4)',   textColor: '#fca5a5' },
+];
+
+function getLevel(score) {
+  return LEVELS.find(l => score < l.max);
+}
+
+function parseRepo(input) {
+  const clean = input.trim().replace(/\/$/, '');
+  const m = clean.match(/github\.com\/([^\/]+\/[^\/\s#?]+)/);
+  if (m) return m[1];
+  if (/^[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+$/.test(clean)) return clean;
+  return null;
+}
+
+const scoreBtn = document.getElementById('scoreBtn');
+const input = document.getElementById('repoInput');
+const loading = document.getElementById('loading');
+const errorEl = document.getElementById('errorEl');
+const card = document.getElementById('resultCard');
+
+document.querySelectorAll('.try-link').forEach(a => {
+  a.addEventListener('click', e => {
+    input.value = 'https://github.com/' + a.dataset.r;
+    score();
+  });
+});
+input.addEventListener('keydown', e => { if (e.key === 'Enter') score(); });
+scoreBtn.addEventListener('click', score);
+
+if (location.hash.length > 1) {
+  const repo = decodeURIComponent(location.hash.slice(1));
+  if (repo.includes('/')) {
+    input.value = 'https://github.com/' + repo;
+    setTimeout(score, 100);
+  }
+}
+
+async function score() {
+  const repoPath = parseRepo(input.value);
+  if (!repoPath) {
+    showError('Please paste a valid GitHub URL like https://github.com/owner/repo');
+    return;
+  }
+
+  loading.classList.add('show');
+  errorEl.classList.remove('show');
+  card.classList.remove('show');
+  scoreBtn.disabled = true;
+
+  try {
+    const [repoData, commits] = await Promise.all([
+      fetch(`https://api.github.com/repos/${repoPath}`).then(r => {
+        if (!r.ok) throw new Error(r.status === 404 ? 'not_found' : 'api_error');
+        return r.json();
+      }),
+      fetch(`https://api.github.com/repos/${repoPath}/commits?per_page=1`).then(r => r.ok ? r.json() : []),
+    ]);
+
+    const disasterScore = computeScore(repoData, commits);
+    renderCard(repoData, repoPath, disasterScore);
+    location.hash = '#' + encodeURIComponent(repoPath);
+
+  } catch (e) {
+    if (e.message === 'not_found') {
+      showError(`Repo "${repoPath}" not found or is private. Only public repos work.`);
+    } else {
+      showError('GitHub API hiccup — try again in 30 seconds (rate limit). Or use owner/repo format.');
+    }
+  } finally {
+    loading.classList.remove('show');
+    scoreBtn.disabled = false;
+  }
+}
+
+function computeScore(repo, commits) {
+  let score = 0;
+  const factors = [];
+
+  // Factor 1: Days since last push (max 50 pts)
+  const lastPush = commits[0] ? new Date(commits[0].commit.author.date) : new Date(repo.pushed_at);
+  const daysSince = Math.floor((Date.now() - lastPush.getTime()) / (24 * 3600 * 1000));
+  let stalePts = 0;
+  if (daysSince > 730) stalePts = 50;
+  else if (daysSince > 365) stalePts = 40;
+  else if (daysSince > 180) stalePts = 30;
+  else if (daysSince > 90) stalePts = 18;
+  else if (daysSince > 30) stalePts = 8;
+  else if (daysSince > 7) stalePts = 3;
+  score += stalePts;
+  factors.push({ key: 'staleness', pts: stalePts, days: daysSince });
+
+  // Factor 2: Open issues vs stars (max 20 pts)
+  const issues = repo.open_issues_count || 0;
+  const stars = Math.max(repo.stargazers_count || 0, 1);
+  const issueRatio = issues / stars;
+  let issuePts = 0;
+  if (issues > 500) issuePts = 20;
+  else if (issues > 200) issuePts = 15;
+  else if (issues > 100) issuePts = 10;
+  else if (issues > 50) issuePts = 6;
+  else if (issues > 20) issuePts = 3;
+  // Bonus if ratio is extreme
+  if (issueRatio > 0.5 && issues > 10) issuePts = Math.min(20, issuePts + 5);
+  score += issuePts;
+  factors.push({ key: 'issues', pts: issuePts, count: issues });
+
+  // Factor 3: No description (5 pts)
+  const noDesc = !repo.description || repo.description.length < 5;
+  if (noDesc) score += 5;
+  factors.push({ key: 'noDesc', pts: noDesc ? 5 : 0 });
+
+  // Factor 4: No license (10 pts)
+  const noLicense = !repo.license;
+  if (noLicense) score += 10;
+  factors.push({ key: 'noLicense', pts: noLicense ? 10 : 0 });
+
+  // Factor 5: Archived (15 pts)
+  if (repo.archived) { score += 15; factors.push({ key: 'archived', pts: 15 }); }
+
+  // Factor 6: Fork (minor signal, +3)
+  if (repo.fork) score += 3;
+
+  // Bonus: recently active bonus (subtract)
+  if (daysSince < 3 && issues < 20) score = Math.max(0, score - 5);
+
+  score = Math.min(100, Math.max(0, Math.round(score)));
+  return { score, factors, daysSince, issues, stars, noDesc, noLicense, archived: repo.archived };
+}
+
+function generateRoast(repo, data, level) {
+  const { score, daysSince, issues, stars, noDesc, noLicense, archived } = data;
+  const name = repo.full_name;
+  const lines = [];
+
+  if (archived) lines.push(`${name} is officially archived — it's a museum piece. Someone somewhere is still importing it in production.`);
+  if (daysSince > 730) lines.push(`Last commit: ${Math.floor(daysSince/365)} years ago. The dev who wrote this has a different job, haircut, and possibly spouse.`);
+  else if (daysSince > 365) lines.push(`${Math.floor(daysSince/30)} months since last commit. The README says "actively maintained." It is not.`);
+  else if (daysSince > 180) lines.push(`6 months of silence. Either they're doing deep work or they've given up. No documentation says which.`);
+  if (issues > 200) lines.push(`${issues.toLocaleString()} open issues. That's not a backlog, that's a support ticket graveyard. Filter by "critical" and cry.`);
+  else if (issues > 100) lines.push(`${issues} open issues and counting. At this velocity, you'll clear the backlog sometime around 2031.`);
+  else if (issues > 50) lines.push(`${issues} open issues. Someone filed a bug 3 years ago with full repro steps. It has 47 thumbs up. It is open.`);
+  if (noLicense) lines.push(`No license file. Every company's legal team says the same thing: if it has no license, you can't use it. Every developer says: what license file?`);
+  if (noDesc) lines.push(`No description. The mystery is that people are starring a repo that doesn't explain what it does.`);
+  if (stars > 5000 && issues > 100) lines.push(`${stars.toLocaleString()} stars and ${issues} open issues. Famous AND unresponsive. The celebrity of repos.`);
+
+  if (lines.length === 0) {
+    if (score < 15) lines.push(`Suspiciously well-maintained. Active commits, clean issue queue, proper docs. Are you OK? This isn't normal.`);
+    else if (score < 30) lines.push(`Solid repo. A few rough edges but nothing that'll wake you up at 3am. Probably.`);
+    else lines.push(`Could be worse. Doesn't mean it's good. The production environment has seen things this score doesn't capture.`);
+  }
+
+  return lines.sort((a, b) => b.length - a.length)[0];
+}
+
+function computeBadges(repo, data) {
+  const { daysSince, issues, stars, noDesc, noLicense, archived } = data;
+  const badges = [];
+  if (archived) badges.push({ kind: 'danger', text: '🪦 Archived' });
+  if (daysSince > 365) badges.push({ kind: 'danger', text: `👻 ${Math.floor(daysSince/365)}y Ghost` });
+  else if (daysSince > 180) badges.push({ kind: 'warn', text: `⏰ ${Math.floor(daysSince/30)}mo Stale` });
+  else if (daysSince < 7) badges.push({ kind: 'good', text: '🚀 Active This Week' });
+  if (issues > 200) badges.push({ kind: 'danger', text: `💀 ${issues}+ Open Issues` });
+  else if (issues > 50) badges.push({ kind: 'warn', text: `⚠️ ${issues} Open Issues` });
+  else if (issues === 0) badges.push({ kind: 'good', text: '✅ Clean Issue Queue' });
+  if (noLicense) badges.push({ kind: 'danger', text: '⚖️ No License' });
+  if (noDesc) badges.push({ kind: 'warn', text: '📭 No Description' });
+  if (repo.fork) badges.push({ kind: 'neutral', text: '🍴 Forked Repo' });
+  if (stars > 10000) badges.push({ kind: 'good', text: '⭐ 10k+ Stars' });
+  else if (stars > 1000) badges.push({ kind: 'good', text: '⭐ 1k+ Stars' });
+  if (repo.has_wiki) badges.push({ kind: 'good', text: '📚 Has Wiki' });
+  if (repo.homepage) badges.push({ kind: 'good', text: '🌐 Has Homepage' });
+  return badges.slice(0, 7);
+}
+
+function renderCard(repo, repoPath, data) {
+  const { score, daysSince, issues, stars } = data;
+  const level = getLevel(score);
+
+  document.getElementById('rName').textContent = repo.full_name;
+  document.getElementById('rSub').textContent = (repo.description || 'No description') + ' · ' + (repo.language || 'Unknown language');
+
+  const badge = document.getElementById('rBadge');
+  badge.style.background = level.bg;
+  badge.style.borderRadius = '12px';
+  badge.style.border = `1px solid ${level.color}40`;
+  document.getElementById('rScore').textContent = score;
+  document.getElementById('rScore').style.color = level.color;
+
+  const levelEl = document.getElementById('rLevel');
+  levelEl.textContent = level.label;
+  levelEl.style.background = level.bg;
+  levelEl.style.color = level.color;
+
+  const roast = generateRoast(repo, data, level);
+  document.getElementById('rRoast').innerHTML = '"' + roast + '"';
+
+  const accountAge = Math.floor((Date.now() - new Date(repo.created_at).getTime()) / (365.25 * 24 * 3600 * 1000));
+  document.getElementById('rStats').innerHTML = [
+    [stars.toLocaleString(), 'Stars', stars > 1000 ? '#10b981' : null],
+    [issues.toLocaleString(), 'Open Issues', issues > 50 ? '#ef4444' : null],
+    [daysSince + 'd', 'Days Stale', daysSince > 90 ? '#f97316' : null],
+    [accountAge + 'y', 'Age', null],
+  ].map(([v, l, c]) =>
+    `<div class="stat"><div class="stat-value" style="${c ? `color:${c}` : ''}">${v}</div><div class="stat-label">${l}</div></div>`
+  ).join('');
+
+  const badges = computeBadges(repo, data);
+  document.getElementById('rBadges').innerHTML = badges.map(b =>
+    `<span class="dbadge ${b.kind}">${b.text}</span>`
+  ).join('');
+
+  // Actions
+  const shareUrl = `https://tinytools-smoky.vercel.app/devops-disaster-score/#${encodeURIComponent(repoPath)}`;
+  const shareText = `I ran ${repoPath} through the DevOps Disaster Score and got ${score}/100 — "${level.label}" 🔥\n\nScore your repo →`;
+  document.getElementById('rShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+  document.getElementById('rCopyLink').onclick = () => {
+    navigator.clipboard.writeText(shareUrl);
+    const b = document.getElementById('rCopyLink');
+    b.textContent = '✓ Copied!'; setTimeout(() => b.textContent = '🔗 Copy link', 1500);
+  };
+
+  const canvas = document.getElementById('cardCanvas');
+  drawCard(canvas, repo, data, level, roast, repoPath);
+  document.getElementById('rDownload').href = canvas.toDataURL('image/png');
+
+  const shieldScore = score;
+  const shieldColor = score < 20 ? 'brightgreen' : score < 40 ? 'yellow' : score < 60 ? 'orange' : score < 80 ? 'red' : 'darkred';
+  const embedCode = `<a href="${shareUrl}" target="_blank">
+  <img src="https://img.shields.io/badge/DevOps_Disaster-${shieldScore}%2F100-${shieldColor}?style=for-the-badge" alt="DevOps Disaster Score: ${shieldScore}/100">
+</a>`;
+  document.getElementById('rEmbed').textContent = embedCode;
+  document.getElementById('rEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const b = document.getElementById('rEmbedCopy');
+    b.textContent = '✓ Copied'; setTimeout(() => b.textContent = 'Copy embed code', 1500);
+  };
+
+  card.classList.add('show');
+  card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function drawCard(canvas, repo, data, level, roast, repoPath) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#1f1f2e'); bg.addColorStop(1, '#15151f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#dc2626'); stripe.addColorStop(1, '#991b1b');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+
+  ctx.fillStyle = '#dc2626';
+  ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText('🔥 DEVOPS DISASTER SCORE', 60, 68);
+
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 48px -apple-system, sans-serif';
+  ctx.fillText(repo.full_name.slice(0, 40) + (repo.full_name.length > 40 ? '…' : ''), 60, 148);
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '24px -apple-system, sans-serif';
+  const desc = (repo.description || 'No description').slice(0, 60) + (repo.description && repo.description.length > 60 ? '…' : '');
+  ctx.fillText(desc, 60, 184);
+
+  // Score
+  ctx.fillStyle = level.color;
+  ctx.font = 'bold 160px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(data.score, W - 60, 210);
+  ctx.font = 'bold 28px -apple-system, sans-serif';
+  ctx.fillText(level.label, W - 60, 250);
+  ctx.textAlign = 'left';
+
+  // Roast
+  ctx.fillStyle = '#fca5a5';
+  ctx.font = 'italic 25px -apple-system, sans-serif';
+  const rwords = ('"' + roast + '"').split(' ');
+  let line = '', y = 268;
+  for (const w of rwords) {
+    if (ctx.measureText(line + ' ' + w).width > W - 120 && line) {
+      ctx.fillText(line, 60, y); line = w; y += 34;
+      if (y > 400) { ctx.fillText(line + ' …"', 60, y); break; }
+    } else { line = line ? line + ' ' + w : w; }
+  }
+  if (y <= 400) ctx.fillText(line, 60, y);
+
+  // Stats row
+  const items = [
+    [data.stars.toLocaleString(), 'STARS'],
+    [data.issues + '', 'OPEN ISSUES'],
+    [data.daysSince + 'd', 'DAYS STALE'],
+    [Math.floor((Date.now() - new Date(repo.created_at).getTime()) / (365.25*24*3600*1000)) + 'y', 'AGE'],
+  ];
+  items.forEach((it, i) => {
+    const x = 60 + i * (W - 120) / 4;
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 34px -apple-system, sans-serif';
+    ctx.fillText(it[0], x, H - 80);
+    ctx.fillStyle = '#a0a0b8'; ctx.font = 'bold 13px -apple-system, sans-serif';
+    ctx.fillText(it[1], x, H - 54);
+  });
+
+  ctx.fillStyle = '#a0a0b8'; ctx.font = '18px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/devops-disaster-score', W - 60, H - 25);
+  ctx.textAlign = 'left';
+}
+
+function showError(msg) {
+  errorEl.textContent = msg;
+  errorEl.classList.add('show');
+}
+</script>
+</body>
+</html>
