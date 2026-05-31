@@ -164,6 +164,20 @@
 
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
+
+  /* ---- Viral mechanics ---- */
+  .viral-section { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .viral-btn {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s; font-family: inherit;
+  }
+  .viral-btn:hover { border-color: var(--accent); }
+  .viral-btn.share { background: #1d9bf0; border: none; color: white; }
+  .viral-embed { margin-top: 14px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .viral-embed .vl { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; letter-spacing: 0.05em; }
+  .viral-embed pre { font-family: 'SF Mono', Monaco, monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #93c5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .viral-embed button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: #001828; font-size: 11px; cursor: pointer; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -268,6 +282,8 @@
   </footer>
 </div>
 
+<canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
+
 <script>
 const repoInput = document.getElementById('repoInput');
 const auditBtn = document.getElementById('auditBtn');
@@ -286,6 +302,13 @@ clearBtn.addEventListener('click', () => {
 
 auditBtn.addEventListener('click', audit);
 repoInput.addEventListener('keydown', e => { if (e.key === 'Enter') audit(); });
+
+// Auto-audit from URL hash — enables deep-linkable share URLs
+if (location.hash.length > 1) {
+  const hashed = decodeURIComponent(location.hash.slice(1));
+  repoInput.value = hashed.startsWith('http') ? hashed : 'https://github.com/' + hashed;
+  setTimeout(audit, 200);
+}
 
 function parseRepo(input) {
   const m = input.trim().match(/github\.com[\/:]([^\/]+)\/([^\/\s#?]+?)(?:\.git)?\/?(?:[\/?#]|$)/i);
@@ -547,8 +570,130 @@ async function audit() {
     <div class="info-banner">
       <strong>Note.</strong> Static-pattern scanning is a first filter, not a guarantee. For high-stakes installs, audit the source manually and run the server in a sandbox.
     </div>
+    <div class="viral-section">
+      <a class="viral-btn share" id="vShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+      <button class="viral-btn" id="vCopyLink">🔗 Copy link</button>
+      <a class="viral-btn" id="vDownload" download="mcp-audit.png">💾 Download card</a>
+    </div>
+    <div class="viral-embed">
+      <div class="vl">Embed this audit badge on your README / site</div>
+      <pre id="vEmbed"></pre>
+      <button id="vEmbedCopy">Copy embed code</button>
+    </div>
   `;
+
+  // ---- Wire up viral mechanics ----
+  const shareUrl = `https://tinytools-smoky.vercel.app/mcp-server-inspector/#${encodeURIComponent(parsed.owner + '/' + parsed.repo)}`;
+  const shareText = `I just audited ${parsed.owner}/${parsed.repo} with the free MCP Server Inspector:\n\nGrade: ${grade} · Score: ${score}/100 · ${bandText}\n\nCheck any MCP server →`;
+  document.getElementById('vShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+  document.getElementById('vCopyLink').addEventListener('click', () => {
+    navigator.clipboard.writeText(shareUrl);
+    const btn = document.getElementById('vCopyLink');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+  });
+
+  // Draw canvas card and attach to download link
+  const canvas = document.getElementById('cardCanvas');
+  drawAuditCard(canvas, parsed, meta, grade, gradeClass, score, bandText, bandTag, ageDays, findings);
+  document.getElementById('vDownload').href = canvas.toDataURL('image/png');
+
+  // Embed badge code
+  const badgeColor = { A: 'brightgreen', B: 'green', C: 'yellow', D: 'orange', F: 'red' }[grade] || 'lightgrey';
+  const embedCode = `<a href="${shareUrl}" target="_blank">\n  <img src="https://img.shields.io/badge/MCP_Audit-${encodeURIComponent(grade + ' (' + score + '/100)')}-${badgeColor}?style=for-the-badge&logo=shield" alt="MCP Audit: ${grade} (${score}/100)">\n</a>`;
+  document.getElementById('vEmbed').textContent = embedCode;
+  document.getElementById('vEmbedCopy').addEventListener('click', () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('vEmbedCopy');
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = 'Copy embed code', 1500);
+  });
+
+  // Update URL hash so the page is shareable / bookmarkable
+  history.replaceState(null, '', '#' + encodeURIComponent(parsed.owner + '/' + parsed.repo));
+}
+
+function drawAuditCard(canvas, parsed, meta, grade, gradeClass, score, bandText, bandTag, ageDays, findings) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+
+  // Background gradient
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#0d1117'); bg.addColorStop(1, '#0a0a0f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  // Top colour stripe
+  const gradeColors = { A: '#10b981', B: '#22c55e', C: '#fbbf24', D: '#f97316', F: '#ef4444' };
+  const col = gradeColors[grade] || '#0ea5e9';
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, col); stripe.addColorStop(1, '#0ea5e9');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+
+  // Tool label
+  ctx.fillStyle = '#7dd3fc';
+  ctx.font = 'bold 26px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText('🛡 MCP SERVER INSPECTOR', 60, 70);
+
+  // Repo name
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 46px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText((parsed.owner + '/' + parsed.repo).slice(0, 42), 60, 140);
+
+  // Description (dim)
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '22px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText((meta.description || '').slice(0, 80), 60, 178);
+
+  // Big grade letter (right-aligned)
+  ctx.fillStyle = col;
+  ctx.font = 'bold 200px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(grade, W - 60, 240);
+  ctx.textAlign = 'left';
+
+  // Score + band
+  ctx.fillStyle = col;
+  ctx.font = 'bold 34px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText(score + '/100 · ' + bandText, 60, 270);
+
+  // Tagline (word-wrapped)
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '22px -apple-system, BlinkMacSystemFont, sans-serif';
+  const tagWords = bandTag.split(' ');
+  let tagLine = ''; let ty = 314;
+  for (const w of tagWords) {
+    const probe = tagLine ? tagLine + ' ' + w : w;
+    if (ctx.measureText(probe).width > 680 && tagLine) { ctx.fillText(tagLine, 60, ty); tagLine = w; ty += 32; }
+    else tagLine = probe;
+  }
+  if (tagLine) ctx.fillText(tagLine, 60, ty);
+
+  // Stats row at bottom
+  const critCount = findings.filter(f => f.sev === 'crit').length;
+  const highCount = findings.filter(f => f.sev === 'high').length;
+  const statsItems = [
+    [findings.length, 'FINDINGS'],
+    [critCount + ' crit', 'CRITICAL'],
+    [highCount + ' high', 'HIGH'],
+    [Number(meta.stargazers_count || 0).toLocaleString(), 'STARS'],
+  ];
+  statsItems.forEach((it, i) => {
+    const x = 60 + i * (W - 120) / 4;
+    ctx.fillStyle = '#ffffff'; ctx.font = 'bold 36px -apple-system, sans-serif';
+    ctx.fillText(it[0], x, H - 80);
+    ctx.fillStyle = '#a0a0b8'; ctx.font = 'bold 14px -apple-system, sans-serif';
+    ctx.fillText(it[1], x, H - 54);
+  });
+
+  // Footer brand (bottom-right)
+  ctx.fillStyle = '#a0a0b8'; ctx.font = '18px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/mcp-server-inspector', W - 60, H - 26);
+  ctx.textAlign = 'left';
 }
 </script>
 </body>
 </html>
+
