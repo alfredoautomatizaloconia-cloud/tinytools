@@ -141,4 +141,20 @@ platform-ready status) make the share tweet feel earned and data-driven.
 **Current visitor count (root):** 1  
 **Tools remaining without viral mechanics:** ~7 (domain-generator, mcp-server-inspector, youtube-to-blog, background-remover, c2pa-manifest-generator, chat-with-pdf, pdf-to-markdown)
 
+---## 2026-05-31 10:51 UTC
+
+**Tool retrofitted:** mcp-server-inspector
+**Viral mechanics added:**
+- 𝕏 Share on X — tweet prefilled: "I just audited owner/repo with MCP Server Inspector: Grade X · Score Y/100 →"
+- 🔗 Copy-link button — deep-link URL with repo encoded in URL hash (#owner/repo)
+- 📛 Embeddable badge — shields.io badge with grade + score, colour-coded (green A → red F)
+- 💾 PNG card download — 1200×630 canvas card via toDataURL with findings stats + TinyTools brand
+- 🔗 Auto-load from URL hash — decodes hash and re-runs audit automatically for deep-link visits
+
+**Commit:** e25a5867f665795c109b3d49baac2dd93e6e67ed
+**Current visitor count (tinytools-smoky/root):** 1
+**Tools remaining without viral mechanics:** 7 (domain-generator, background-remover, c2pa-manifest-generator, chat-with-pdf, pdf-to-markdown, youtube-to-blog, vs)
+
 ---
+
+
