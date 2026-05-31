@@ -127,4 +127,18 @@ platform-ready status) make the share tweet feel earned and data-driven.
 
 **Visitor count (tinytools-smoky/root):** 1
 **Tools remaining without viral mechanics:** 8 (background-remover, c2pa-manifest-generator, chat-with-pdf, domain-generator, mcp-server-inspector, pdf-to-markdown, resume-tailorer, youtube-to-blog)
+## 2026-05-31 04:51 UTC
 
+**Tool retrofitted:** resume-tailorer  
+**Viral mechanics added:**
+- 𝕏 Share button — pre-filled tweet with job title + keyword count
+- 🔗 Copy-link button — deep-link URL with job description encoded in hash
+- 📛 Embeddable badge — shields.io ATS Optimized badge with keyword count
+- 💾 PNG card download — 1200×630 canvas card via toDataURL
+- Auto-load from URL hash — job description pre-fills on deep-link open
+
+**Commit:** a5de569f3d15216267de46c40dbc1d64e2ef4f6b  
+**Current visitor count (root):** 1  
+**Tools remaining without viral mechanics:** ~7 (domain-generator, mcp-server-inspector, youtube-to-blog, background-remover, c2pa-manifest-generator, chat-with-pdf, pdf-to-markdown)
+
+---
