@@ -122,6 +122,24 @@
   }
   .kw.matched { border-color: var(--accent); color: var(--accent); }
 
+  /* ── Viral mechanics ── */
+  .share-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .action-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
+    cursor: pointer; text-decoration: none; border: 1px solid var(--border);
+    background: var(--bg-elevated); color: var(--text); transition: all 0.15s;
+    font-family: inherit;
+  }
+  .action-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .action-btn.primary { background: #1d9bf0; border-color: #1d9bf0; color: white; }
+  .action-btn.primary:hover { background: #1a8cd8; border-color: #1a8cd8; color: white; }
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .embed-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px; font-weight: 600; letter-spacing: 0.04em; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .embed-section button { margin-top: 8px; padding: 6px 12px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 12px; cursor: pointer; font-family: inherit; }
+  .embed-section button:hover { filter: brightness(1.1); }
+
   .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
   .content h2 { font-size: 24px; margin: 32px 0 12px; }
   .content h3 { font-size: 17px; margin: 22px 0 8px; }
@@ -201,6 +219,20 @@
 Tip: paste a real, finished resume — not just a list of skills. The AI will preserve your facts and rewrite the framing.</pre>
     </div>
 
+    <!-- ── Viral section: shown after successful generation ── -->
+    <div id="viralSection" style="display:none;">
+      <div class="share-actions">
+        <a class="action-btn primary" id="shareBtn" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action-btn" id="copyLinkBtn">🔗 Copy link</button>
+        <a class="action-btn" id="downloadCard" download="ats-optimized-card.png">💾 Download card</a>
+      </div>
+      <div class="embed-section">
+        <div class="embed-label">Embed your ATS-optimization badge (README / portfolio)</div>
+        <pre id="embedCode"></pre>
+        <button id="embedCopyBtn">Copy embed code</button>
+      </div>
+    </div>
+
     <div class="upsell">
       <strong>Need a polished resume template too?</strong>
       <a href="#" id="upsell-teal" target="_blank" rel="noopener">Teal HQ</a> has the cleanest free resume builder in 2026, and
@@ -208,6 +240,8 @@ Tip: paste a real, finished resume — not just a list of skills. The AI will pr
       <em>(Affiliate links — no extra cost to you.)</em>
     </div>
   </div>
+
+  <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
 
   <section class="content">
     <h2>How an AI resume tailorer actually helps you land more interviews</h2>
@@ -249,6 +283,15 @@ document.getElementById('upsell-resumeio').href = AFFILIATE.resumeioUrl;
 document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
 
 const $ = (id) => document.getElementById(id);
+
+// ── Auto-load from URL hash (deep-link) ──
+if (location.hash.length > 1) {
+  try {
+    const data = JSON.parse(decodeURIComponent(location.hash.slice(1)));
+    if (data.job) $('job').value = data.job;
+    if (data.provider) $('provider').value = data.provider;
+  } catch(e) { /* ignore malformed hash */ }
+}
 
 try {
   const saved = sessionStorage.getItem('rt_apiKey'); if (saved) $('apiKey').value = saved;
@@ -361,6 +404,171 @@ function showKeywords(list, resumeText) {
   box.style.display = 'block';
 }
 
+// ── Extract job title from first non-empty line of job description ──
+function extractJobTitle(jobText) {
+  const lines = jobText.split('\n').map(s => s.trim()).filter(Boolean);
+  return lines[0] ? lines[0].slice(0, 80) : 'this role';
+}
+
+// ── Draw 1200×630 PNG card ──
+function drawCard(canvas, jobTitle, keywords, kwCount) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+
+  // Background
+  ctx.fillStyle = '#0a0a0f';
+  ctx.fillRect(0, 0, W, H);
+
+  // Accent glow top-left
+  const grd = ctx.createRadialGradient(240, 0, 0, 240, 0, 520);
+  grd.addColorStop(0, 'rgba(99,102,241,0.25)');
+  grd.addColorStop(1, 'rgba(99,102,241,0)');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0, 0, W, H);
+
+  // Accent glow bottom-right
+  const grd2 = ctx.createRadialGradient(960, 630, 0, 960, 630, 480);
+  grd2.addColorStop(0, 'rgba(6,182,212,0.18)');
+  grd2.addColorStop(1, 'rgba(6,182,212,0)');
+  ctx.fillStyle = grd2;
+  ctx.fillRect(0, 0, W, H);
+
+  // Top bar
+  ctx.fillStyle = '#6366f1';
+  ctx.fillRect(0, 0, W, 5);
+
+  // "ATS OPTIMIZED ✓" badge pill
+  const badgeX = 80, badgeY = 70;
+  ctx.fillStyle = '#1d1d2a';
+  roundRect(ctx, badgeX, badgeY, 220, 40, 20);
+  ctx.fillStyle = '#86efac';
+  ctx.font = 'bold 16px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText('ATS OPTIMIZED  ✓', badgeX + 18, badgeY + 26);
+
+  // Main headline
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 52px -apple-system, BlinkMacSystemFont, sans-serif';
+  const titleLine = jobTitle.length > 42 ? jobTitle.slice(0, 42) + '…' : jobTitle;
+  ctx.fillText('Tailored for:', 80, 175);
+  ctx.fillStyle = '#a5b4fc';
+  ctx.font = 'bold 46px -apple-system, BlinkMacSystemFont, sans-serif';
+  const titleLine2 = titleLine.length > 36 ? titleLine.slice(0, 36) + '…' : titleLine;
+  ctx.fillText(titleLine2, 80, 235);
+
+  // Keyword count badge
+  ctx.fillStyle = '#6366f1';
+  roundRect(ctx, 80, 275, 270, 56, 12);
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 28px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText(`${kwCount} keywords matched`, 106, 311);
+
+  // Keywords row
+  if (keywords.length > 0) {
+    const shown = keywords.slice(0, 6);
+    let x = 80, y = 370;
+    ctx.font = '15px -apple-system, BlinkMacSystemFont, sans-serif';
+    shown.forEach(function(kw) {
+      const tw = ctx.measureText(kw).width + 28;
+      if (x + tw > W - 80) { x = 80; y += 40; }
+      ctx.fillStyle = '#1d1d2a';
+      roundRect(ctx, x, y, tw, 30, 8);
+      ctx.fillStyle = '#a5b4fc';
+      ctx.fillText(kw, x + 14, y + 21);
+      x += tw + 10;
+    });
+  }
+
+  // Divider line
+  ctx.strokeStyle = '#2a2a3a';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(80, 460); ctx.lineTo(W - 80, 460); ctx.stroke();
+
+  // Footer
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '15px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText('Generated free at', 80, 500);
+  ctx.fillStyle = '#6366f1';
+  ctx.font = 'bold 15px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText('tinytools.dev/resume-tailorer', 80, 525);
+
+  // Brand watermark bottom-right
+  ctx.fillStyle = '#6366f1';
+  ctx.font = 'bold 22px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('TinyTools', W - 80, 560);
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '14px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText('tinytools.dev', W - 80, 580);
+  ctx.textAlign = 'left';
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// ── Populate viral mechanics after a successful tailoring run ──
+function populateViral(outputText, jobText) {
+  const jobTitle = extractJobTitle(jobText);
+
+  // Extract keywords from output
+  const m = outputText.match(/TOP KEYWORDS MATCHED:\s*(.+)/i);
+  const keywords = m ? m[1].split(',').map(s => s.trim()).filter(Boolean) : [];
+  const kwCount = keywords.length;
+
+  // Share URL encodes the job description (so recipients get the same context)
+  const shareData = { job: jobText.slice(0, 1200), provider: $('provider').value };
+  const shareUrl = 'https://tinytools-smoky.vercel.app/resume-tailorer/#' +
+    encodeURIComponent(JSON.stringify(shareData));
+
+  // Tweet text
+  const tweetText = kwCount > 0
+    ? `I tailored my resume for "${jobTitle}" with AI and matched ${kwCount} keywords. Beat the ATS for free →`
+    : `I just used an AI resume tailorer to match "${jobTitle}". Beat the ATS for free →`;
+  $('shareBtn').href = 'https://twitter.com/intent/tweet?text=' +
+    encodeURIComponent(tweetText) + '&url=' + encodeURIComponent(shareUrl);
+
+  // Update location hash (for deep-linking)
+  history.replaceState(null, '', '#' + encodeURIComponent(JSON.stringify(shareData)));
+
+  // Copy-link button
+  $('copyLinkBtn').onclick = function() {
+    navigator.clipboard.writeText(shareUrl);
+    const btn = $('copyLinkBtn');
+    btn.textContent = '✓ Copied!';
+    setTimeout(function() { btn.textContent = '🔗 Copy link'; }, 1500);
+  };
+
+  // Draw PNG card
+  const canvas = $('cardCanvas');
+  drawCard(canvas, jobTitle, keywords, kwCount);
+  $('downloadCard').href = canvas.toDataURL('image/png');
+
+  // Embed badge
+  const badgeLabel = kwCount > 0 ? `ATS_Optimized-${kwCount}_keywords-6366f1` : 'ATS_Optimized-brightgreen';
+  const embedCode = `<a href="${shareUrl}" target="_blank">\n  <img src="https://img.shields.io/badge/${badgeLabel}?style=for-the-badge&logo=files&logoColor=white" alt="ATS Optimized Resume">\n</a>`;
+  $('embedCode').textContent = embedCode;
+  $('embedCopyBtn').onclick = function() {
+    navigator.clipboard.writeText(embedCode);
+    const btn = $('embedCopyBtn');
+    btn.textContent = '✓ Copied';
+    setTimeout(function() { btn.textContent = 'Copy embed code'; }, 1500);
+  };
+
+  $('viralSection').style.display = 'block';
+  $('viralSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
 $('extractBtn').addEventListener('click', function() {
   const job = $('job').value.trim();
   const resume = $('resume').value.trim();
@@ -395,6 +603,9 @@ $('goBtn').addEventListener('click', async function() {
 
     const m = out.match(/TOP KEYWORDS MATCHED:\s*(.+)/i);
     if (m) showKeywords(m[1].split(',').map(function(s){return s.trim();}).filter(Boolean), resume + ' ' + out);
+
+    // Populate viral mechanics
+    populateViral(out, job);
   } catch (e) {
     setStatus('Error: ' + e.message, 'error');
   } finally {
