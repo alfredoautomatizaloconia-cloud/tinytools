@@ -126,6 +126,21 @@
   .preset-chip:hover { color: var(--text); border-color: var(--accent); }
   .copied-toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; padding: 9px 18px; border-radius: 999px; font-size: 13px; font-weight: 600; z-index: 50; opacity: 0; transition: opacity .2s; }
   .copied-toast.show { opacity: 1; }
+
+  /* === VIRAL MECHANICS === */
+  .viral-section { margin-top: 18px; }
+  .viral-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .viral-btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; font-family: inherit; text-decoration: none; }
+  .viral-btn.primary { background: #1d9bf0; color: #fff; }
+  .viral-btn.primary:hover { opacity: 0.88; }
+  .viral-btn.secondary { background: var(--bg-elevated); color: var(--text-dim); border: 1px solid var(--border); }
+  .viral-btn.secondary:hover { color: var(--text); border-color: var(--accent); }
+  .viral-btn.dl { background: var(--bg-elevated); color: var(--text-dim); border: 1px solid var(--border); }
+  .viral-btn.dl:hover { color: var(--text); border-color: var(--green); }
+  .embed-section { padding: 12px 14px; background: var(--bg-elevated); border-radius: 10px; border: 1px solid var(--border); }
+  .embed-section .embed-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: 'SF Mono', Monaco, monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .embed-section button { margin-top: 7px; padding: 5px 11px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; font-family: inherit; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -246,6 +261,20 @@
         <pre class="output" id="output"></pre>
       </div>
       <div id="validity" class="validity ok"></div>
+      <!-- VIRAL MECHANICS -->
+      <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
+      <div class="viral-section" id="viralSection" style="display:none;">
+        <div class="viral-actions">
+          <a class="viral-btn primary" id="vShare" target="_blank" rel="noopener">&#x1D54F; Share on X</a>
+          <button class="viral-btn secondary" id="vCopyLink">&#x1F517; Copy link</button>
+          <a class="viral-btn dl" id="vDownload" download="c2pa-manifest-card.png">&#x1F4BE; Download card</a>
+        </div>
+        <div class="embed-section">
+          <div class="embed-label">Embed compliance badge on your site / README</div>
+          <pre id="vEmbed"></pre>
+          <button id="vEmbedCopy">Copy embed code</button>
+        </div>
+      </div>
       <div id="cmdBox" style="display:none; margin-top:12px;">
         <h2 style="margin-top:6px;">c2patool command</h2>
         <pre class="output" id="cmdOutput" style="max-height:160px; color:#fcd34d;"></pre>
@@ -434,6 +463,7 @@ function build() {
     valEl.innerHTML = `⚠ ${v.issues.length} issue(s): ${v.issues.join(' · ')}`;
   }
   if ($('cmdBox').style.display === 'block') buildCmd();
+  if (typeof updateViralSection === 'function') updateViralSection();
 }
 
 function buildCmd() {
@@ -472,6 +502,189 @@ function toast(msg) {
 }
 
 build();
+
+/* ===== VIRAL MECHANICS ===== */
+
+// Deep-link: encode/decode full form state to/from URL hash (base64 JSON)
+function encodeState() {
+  const state = {
+    fn:  $('f-filename').value,  fmt: $('f-format').value,
+    t:   $('f-title').value,     tool:$('f-tool').value,
+    ver: $('f-tool-ver').value,  ai:  $('f-aigen').checked ? 1 : 0,
+    ed:  $('f-edited').checked ? 1 : 0, co: $('f-composite').checked ? 1 : 0,
+    m:   $('f-model').value,     p:   $('f-prompt').value,
+    tr:  $('f-train').value,     inf: $('f-infer').value,
+    au:  $('f-author').value,    aid: $('f-author-id').value
+  };
+  try { return btoa(unescape(encodeURIComponent(JSON.stringify(state)))); } catch(e) { return ''; }
+}
+
+function decodeState(hash) {
+  try {
+    const state = JSON.parse(decodeURIComponent(escape(atob(hash))));
+    if (state.fn  !== undefined) $('f-filename').value  = state.fn;
+    if (state.fmt !== undefined) $('f-format').value    = state.fmt;
+    if (state.t   !== undefined) $('f-title').value     = state.t;
+    if (state.tool!== undefined) $('f-tool').value      = state.tool;
+    if (state.ver !== undefined) $('f-tool-ver').value  = state.ver;
+    $('f-aigen').checked     = !!state.ai;
+    $('f-edited').checked    = !!state.ed;
+    $('f-composite').checked = !!state.co;
+    if (state.m   !== undefined) $('f-model').value     = state.m;
+    if (state.p   !== undefined) $('f-prompt').value    = state.p;
+    if (state.tr  !== undefined) $('f-train').value     = state.tr;
+    if (state.inf !== undefined) $('f-infer').value     = state.inf;
+    if (state.au  !== undefined) $('f-author').value    = state.au;
+    if (state.aid !== undefined) $('f-author-id').value = state.aid;
+    return true;
+  } catch(e) { return false; }
+}
+
+// Auto-load form state from URL hash on page load
+if (location.hash.length > 1) {
+  if (decodeState(location.hash.slice(1))) {
+    build();
+  }
+}
+
+function updateViralSection() {
+  const viralSection = $('viralSection');
+  viralSection.style.display = 'block';
+
+  // Update hash for deep-link
+  const hash = encodeState();
+  if (hash) history.replaceState(null, '', '#' + hash);
+
+  const tool     = $('f-tool').value.trim() || 'MyApp';
+  const filename = $('f-filename').value.trim() || 'asset';
+  const isAI     = $('f-aigen').checked;
+  const shareUrl = 'https://tinytools-smoky.vercel.app/c2pa-manifest-generator/#' + hash;
+
+  // Share button
+  const shareText = 'Just generated a C2PA Content Credentials manifest for "' + filename + '" with ' + tool + '. EU AI Act Art. 50-ready \u2705\n\nFree tool \u2192';
+  $('vShare').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(shareUrl);
+
+  // Copy link button
+  $('vCopyLink').onclick = () => {
+    navigator.clipboard.writeText(shareUrl).catch(() => {});
+    $('vCopyLink').textContent = '\u2713 Copied!';
+    setTimeout(() => $('vCopyLink').textContent = '\uD83D\uDD17 Copy link', 1500);
+  };
+
+  // Embeddable badge
+  const badgeColor = isAI ? '10b981' : '6366f1';
+  const badgeText  = isAI ? 'C2PA%3A_AI_Disclosed' : 'C2PA%3A_Compliant';
+  const badgeImgUrl = 'https://img.shields.io/badge/' + badgeText + '-' + badgeColor + '?style=for-the-badge&logo=adobe&logoColor=white';
+  const embedCode = '<a href="' + shareUrl + '" target="_blank">\n  <img src="' + badgeImgUrl + '" alt="C2PA Manifest">\n</a>';
+  $('vEmbed').textContent = embedCode;
+  $('vEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode.replace(/\\n/g, '\n')).catch(() => {});
+    $('vEmbedCopy').textContent = '\u2713 Copied';
+    setTimeout(() => $('vEmbedCopy').textContent = 'Copy embed code', 1500);
+  };
+
+  // PNG card download (1200x630)
+  drawManifestCard($('cardCanvas'), tool, filename, isAI);
+  $('vDownload').href = $('cardCanvas').toDataURL('image/png');
+}
+
+function drawManifestCard(canvas, tool, filename, isAI) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+
+  // Background gradient
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#0a0a0f');
+  bg.addColorStop(1, '#1a1a2e');
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  // Top accent stripe
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#6366f1');
+  stripe.addColorStop(1, '#a855f7');
+  ctx.fillStyle = stripe;
+  ctx.fillRect(0, 0, W, 8);
+
+  // Header label
+  ctx.fillStyle = '#818cf8';
+  ctx.font = 'bold 22px -apple-system, Helvetica Neue, sans-serif';
+  ctx.fillText('C2PA MANIFEST GENERATOR', 60, 70);
+
+  // Asset name (large)
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 64px -apple-system, Helvetica Neue, sans-serif';
+  const disp = filename.length > 32 ? filename.slice(0, 30) + '\u2026' : filename;
+  ctx.fillText(disp, 60, 162);
+
+  // Tool line
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '30px -apple-system, Helvetica Neue, sans-serif';
+  const toolDisp = tool.length > 45 ? tool.slice(0, 43) + '\u2026' : tool;
+  ctx.fillText('Generated with ' + toolDisp, 60, 210);
+
+  // Status badge
+  const statusText = isAI ? '\u2713  AI Disclosed' : '\u2713  Human-Authored';
+  const statusColor = isAI ? '#10b981' : '#6366f1';
+  roundRect(ctx, 60, 255, 270, 52, 10);
+  ctx.fillStyle = statusColor + '22'; ctx.fill();
+  ctx.strokeStyle = statusColor; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.fillStyle = statusColor;
+  ctx.font = 'bold 22px -apple-system, Helvetica Neue, sans-serif';
+  ctx.fillText(statusText, 78, 288);
+
+  // EU AI Act badge
+  roundRect(ctx, 350, 255, 310, 52, 10);
+  ctx.fillStyle = '#fbbf2422'; ctx.fill();
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.fillStyle = '#fbbf24';
+  ctx.font = 'bold 20px -apple-system, Helvetica Neue, sans-serif';
+  ctx.fillText('EU AI Act Art. 50 Ready', 368, 287);
+
+  // Assertions line
+  ctx.fillStyle = '#4b5563';
+  ctx.font = '20px -apple-system, Helvetica Neue, sans-serif';
+  ctx.fillText('c2pa.actions  \u00b7  c2pa.training-mining  \u00b7  stds.schema-org.CreativeWork', 60, 372);
+
+  // Divider
+  ctx.strokeStyle = '#2a2a3a'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(60, 410); ctx.lineTo(W - 60, 410); ctx.stroke();
+
+  // Spec badge line
+  ctx.fillStyle = '#6ee7b7';
+  ctx.font = 'bold 18px -apple-system, Helvetica Neue, sans-serif';
+  ctx.fillText('C2PA 2.x  \u00b7  ISO/IEC 22144:2025  \u00b7  Browser-only  \u00b7  Free', 60, 460);
+
+  // CTA
+  ctx.fillStyle = '#e2e8f0';
+  ctx.font = '22px -apple-system, Helvetica Neue, sans-serif';
+  ctx.fillText('Generate yours free \u2192', 60, 535);
+  ctx.fillStyle = '#818cf8';
+  ctx.font = 'bold 22px -apple-system, Helvetica Neue, sans-serif';
+  ctx.fillText('tinytools-smoky.vercel.app/c2pa-manifest-generator', 280, 535);
+
+  // Branding bottom-right
+  ctx.fillStyle = '#6366f1';
+  ctx.font = 'bold 20px -apple-system, Helvetica Neue, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('TinyTools', W - 60, H - 24);
+  ctx.textAlign = 'left';
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
 </script>
 </body>
 </html>
