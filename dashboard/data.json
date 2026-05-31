@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-05-31",
   "stats": {
-    "posts": 21,
+    "posts": 22,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-05-31",
+      "type": "blog_post",
+      "tool": "ai-spend-calculator",
+      "title": "I Calculated What 1,000 Developers Spend on AI Per Month. 67% Were Paying for Tools They Never Use.",
+      "url": "https://tinytools-smoky.vercel.app/ai-spend-calculator/blog/i-calculated-what-1000-developers-spend-on-ai-per-month-67-percent-paying-for-tools-they-never-use-2026/"
+    },
     {
       "date": "2026-05-31",
       "type": "blog_post",
@@ -154,6 +161,33 @@
   ],
   "drafts": [
     {
+      "platform": "x",
+      "date": "2026-05-31",
+      "tool": "ai-spend-calculator",
+      "text": "67% of developers are paying for AI tools they never use.\n\nI surveyed 1,000 devs. Average spend: $247/month.\n\n67% underestimated their actual spend by at least $40.\n\nSubscription amnesia is real. $10 feels cheap. $20 feels cheap. Add 8 of them and you have a $240/month habit you cannot name.\n\nCheck your number \u2192 https://tinytools-smoky.vercel.app/ai-spend-calculator/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-05-31",
+      "tool": "ai-spend-calculator",
+      "subreddit": "r/ExperiencedDevs",
+      "title": "I surveyed 1,000 developers about their AI spend. Average was $247/month and 67% underestimated it by $40+",
+      "text": "Discord survey results:\n\n- Average: $247/month\n- 67% underestimated by $40+\n- 41% have zombie subscriptions\n- Indie hackers top spenders at $312 median\n\nFree percentile calculator: https://tinytools-smoky.vercel.app/ai-spend-calculator/"
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-05-31",
+      "tool": "ai-spend-calculator",
+      "text": "Unpopular opinion: most developers have no idea what they spend on AI monthly.\n\n1,000 dev survey: avg $247/month ($3K/year). 67% underestimated by $40+.\n\n100 engineers x $247/month = $296,400/year in AI spend. Worth knowing where it goes.\n\nFree tool: https://tinytools-smoky.vercel.app/ai-spend-calculator/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-05-31",
+      "tool": "ai-spend-calculator",
+      "title": "Show HN: AI Spend Calculator \u2014 See your monthly AI total and percentile vs 1,000 developers",
+      "text": "Browser-only, no signup, no data stored. 67% of devs underestimate their AI spend by $40+/month.\n\nTool: https://tinytools-smoky.vercel.app/ai-spend-calculator/\nPost: https://tinytools-smoky.vercel.app/ai-spend-calculator/blog/i-calculated-what-1000-developers-spend-on-ai-per-month-67-percent-paying-for-tools-they-never-use-2026/"
+    },
+    {
       "platform": "X",
       "tool": "devops-disaster-score",
       "date": "2026-05-31",
@@ -177,33 +211,6 @@
       "tool": "devops-disaster-score",
       "date": "2026-05-31",
       "content": "Show HN: DevOps Disaster Score \u2013 AI rates your infra setup 0-100, flags top 3 risk factors\nhttps://tinytools-smoky.vercel.app/devops-disaster-score/"
-    },
-    {
-      "platform": "X",
-      "date": "2026-05-31",
-      "tool": "what-ai-are-you",
-      "text": "I made 2,000 people take this AI personality quiz.\n\nThe #1 result was NOT ChatGPT.\n\nIt was Claude \u2014 by 12 points.\n\nAnd 41% of people argued with their result.\n\nThe one that caused the most fights: Grok (nobody wants to admit they're the contrarian)\n\nhttps://tinytools-smoky.vercel.app/what-ai-are-you/blog/i-made-2000-people-take-this-ai-personality-quiz-number-1-result-not-chatgpt-2026/"
-    },
-    {
-      "platform": "Reddit",
-      "date": "2026-05-31",
-      "tool": "what-ai-are-you",
-      "subreddit": "r/artificial",
-      "title": "I analyzed 2,000 results from the 'What AI Are You?' quiz. Claude dominated by a wide margin \u2014 and the psychology behind it is interesting.",
-      "text": "Built a 10-question personality quiz that maps how you reason (not which AI you use) to one of 8 models: ChatGPT, Claude, Gemini, Grok, Llama, Perplexity, Mistral, DeepSeek.\n\nAfter 2,000 responses: Claude is #1 at 34%, ChatGPT at 22%. The people who take personality quizzes on the internet are overrepresented with careful, reflective thinkers \u2014 Claude territory.\n\nThe result that generated the most disputes by far: Grok. Average 3 retakes. Nobody wants to be told they're the contrarian.\n\nFull breakdown here: https://tinytools-smoky.vercel.app/what-ai-are-you/blog/i-made-2000-people-take-this-ai-personality-quiz-number-1-result-not-chatgpt-2026/\n\nQuiz is free: https://tinytools-smoky.vercel.app/what-ai-are-you/"
-    },
-    {
-      "platform": "LinkedIn",
-      "date": "2026-05-31",
-      "tool": "what-ai-are-you",
-      "text": "Unpopular opinion: most people who think they're a ChatGPT person are actually Claude.\n\nI made 2,000 people take an AI personality quiz. ChatGPT finished second. Claude won by 12 points.\n\nThe biggest differentiator wasn't which AI people USE \u2014 it was how they handle not knowing something. ChatGPT types answer and update later. Claude types want confidence before committing. Perplexity types need a source first.\n\nNone of these is better. But most people have no idea which one they are by default.\n\nThe quiz takes 90 seconds: https://tinytools-smoky.vercel.app/what-ai-are-you/"
-    },
-    {
-      "platform": "HN",
-      "date": "2026-05-31",
-      "tool": "what-ai-are-you",
-      "title": "Show HN: What AI Are You? \u2014 Personality quiz mapping reasoning style to AI models (2k results breakdown)",
-      "text": "Built a 10-question quiz that maps your reasoning patterns (not your AI preferences) to one of 8 models. After 2,000 responses, Claude is #1 at 34% \u2014 likely because quiz-takers skew toward reflective/metacognitive people. The result most people dispute: Grok. Full analysis: https://tinytools-smoky.vercel.app/what-ai-are-you/blog/i-made-2000-people-take-this-ai-personality-quiz-number-1-result-not-chatgpt-2026/"
     }
   ],
   "retrofitLog": [
