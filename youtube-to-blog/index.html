@@ -135,6 +135,36 @@
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
     text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
+
+  /* ── Viral mechanics ──────────────────────────────────── */
+  .viral-panel {
+    display: none; margin-top: 14px; padding: 16px;
+    background: var(--bg-elevated); border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  .viral-panel.show { display: block; }
+  .viral-panel .vp-label {
+    font-size: 11px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.07em; font-weight: 600; margin-bottom: 10px;
+  }
+  .viral-actions {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;
+  }
+  .v-btn {
+    padding: 8px 14px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text); font-size: 13px; font-weight: 600;
+    cursor: pointer; text-decoration: none; font-family: inherit;
+    transition: border-color 0.15s;
+  }
+  .v-btn:hover { border-color: var(--accent); }
+  .v-btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .v-btn.primary:hover { filter: brightness(1.1); }
+  .embed-box {
+    background: var(--bg); border-radius: 8px; border: 1px solid var(--border);
+    padding: 10px 12px; font-family: 'SF Mono', Monaco, monospace; font-size: 12px;
+    color: #a0a0b8; white-space: pre-wrap; word-break: break-all; margin-bottom: 8px;
+  }
+  .embed-copy { padding: 5px 12px; font-size: 12px; }
 </style>
 </head>
 <body>
@@ -220,7 +250,23 @@
       <a href="#" id="upsell-beehiiv" target="_blank" rel="noopener">Beehiiv</a> is the cleanest place to actually publish the newsletter.
       <em>(Affiliate links — no extra cost to you.)</em>
     </div>
+
+    <!-- ── Viral panel (shown after generation) ── -->
+    <div class="viral-panel" id="viralPanel">
+      <div class="vp-label">📢 Share your blog post</div>
+      <div class="viral-actions">
+        <a class="v-btn primary" id="vTweet" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="v-btn" id="vCopyLink">🔗 Copy link</button>
+        <a class="v-btn" id="vDownload" download="youtube-blog.png">💾 Download card</a>
+      </div>
+      <div class="vp-label" style="margin-top:10px;">Embed badge</div>
+      <div class="embed-box" id="vEmbedCode"></div>
+      <button class="v-btn embed-copy" id="vEmbedCopy">Copy embed code</button>
+    </div>
   </div>
+
+  <!-- Hidden canvas for PNG card generation -->
+  <canvas id="shareCanvas" width="1200" height="630" style="display:none;"></canvas>
 
   <section class="content">
     <h2>Why YouTube to blog post conversion is one of the highest-ROI moves a creator can make</h2>
@@ -264,6 +310,14 @@ document.getElementById('upsell-beehiiv').href = AFFILIATE.beehiivUrl;
 document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
 
 const $ = function(id){ return document.getElementById(id); };
+
+// ── Auto-load from URL hash for deep-linkable shares ──────────────
+(function() {
+  if (location.hash.length > 1) {
+    var vid = decodeURIComponent(location.hash.slice(1));
+    if (vid) { $('ytUrl').value = 'https://www.youtube.com/watch?v=' + vid; }
+  }
+})();
 
 try {
   const saved = sessionStorage.getItem('y2b_apiKey'); if (saved) $('apiKey').value = saved;
@@ -499,6 +553,41 @@ $('goBtn').addEventListener('click', async function(){
     setStage('rewrite','done');
     setStatus('Done. Switch tabs to see Markdown / HTML / raw transcript.', 'success');
     refreshOutput();
+
+    // ── Viral mechanics: update hash + show share panel ──────
+    location.hash = '#' + id;
+    const shareUrl = 'https://tinytools-smoky.vercel.app/youtube-to-blog/#' + id;
+
+    // Extract title from markdown (first H1)
+    var titleMatch = lastMarkdown.match(/^# (.+)$/m);
+    var postTitle = titleMatch ? titleMatch[1].trim().slice(0, 80) : 'YouTube Blog Post';
+
+    // Tweet
+    var tweetText = 'I just turned a YouTube video into an SEO blog post in seconds using AI ✍️\n\n"' + postTitle + '"\n\nFree tool →';
+    $('vTweet').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweetText) + '&url=' + encodeURIComponent(shareUrl);
+
+    // Copy link
+    $('vCopyLink').onclick = function() {
+      navigator.clipboard.writeText(shareUrl);
+      $('vCopyLink').textContent = '✓ Copied!';
+      setTimeout(function(){ $('vCopyLink').textContent = '🔗 Copy link'; }, 1500);
+    };
+
+    // Embed badge
+    var labelEncoded = encodeURIComponent(postTitle.replace(/-/g,'--').replace(/ /g,'_'));
+    var embedCode = '[![Blog Post Generated](https://img.shields.io/badge/Blog_Post-Generated-ef4444?style=for-the-badge&logo=youtube&logoColor=white)](' + shareUrl + ')';
+    $('vEmbedCode').textContent = embedCode;
+    $('vEmbedCopy').onclick = function() {
+      navigator.clipboard.writeText(embedCode);
+      $('vEmbedCopy').textContent = '✓ Copied';
+      setTimeout(function(){ $('vEmbedCopy').textContent = 'Copy embed code'; }, 1500);
+    };
+
+    // PNG card
+    drawBlogCard($('shareCanvas'), postTitle, lastMarkdown, id);
+    $('vDownload').href = $('shareCanvas').toDataURL('image/png');
+
+    $('viralPanel').classList.add('show');
   } catch(e) {
     setStatus(e.message, 'error');
   } finally {
@@ -513,6 +602,64 @@ $('copyBtn').addEventListener('click', function(){
   b.textContent = 'Copied!';
   setTimeout(function(){ b.textContent = 'Copy'; }, 1500);
 });
+
+// ── PNG card generation ───────────────────────────────────────────
+function drawBlogCard(canvas, title, markdown, videoId) {
+  var ctx = canvas.getContext('2d');
+  var W = 1200, H = 630;
+  // Background gradient
+  var bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#0a0a0f'); bg.addColorStop(1, '#1d1d2a');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Accent top bar
+  var stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#ef4444'); stripe.addColorStop(1, '#f97316');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+  // Icon + tool label
+  ctx.fillStyle = '#ef4444';
+  ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText('📺 YOUTUBE → BLOG', 60, 68);
+  // Title
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 52px -apple-system, sans-serif';
+  var wrappedTitle = title.slice(0, 60) + (title.length > 60 ? '…' : '');
+  // Word-wrap title over 2 lines max
+  var words = wrappedTitle.split(' '), line = '', y = 155;
+  for (var i = 0; i < words.length; i++) {
+    var test = line ? line + ' ' + words[i] : words[i];
+    if (ctx.measureText(test).width > W - 120 && line) {
+      ctx.fillText(line, 60, y); line = words[i]; y += 64;
+    } else { line = test; }
+  }
+  ctx.fillText(line, 60, y);
+  // Excerpt (first paragraph)
+  var excerptMatch = markdown.match(/^(?!#)[^\n]{60,}/m);
+  var excerpt = excerptMatch ? excerptMatch[0].slice(0, 160) + '…' : 'AI-generated, SEO-optimized blog post';
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '22px -apple-system, sans-serif';
+  // word-wrap excerpt
+  var eWords = excerpt.split(' '), eLine = '', eY = y + 80;
+  for (var j = 0; j < eWords.length && eY < 500; j++) {
+    var eTest = eLine ? eLine + ' ' + eWords[j] : eWords[j];
+    if (ctx.measureText(eTest).width > W - 120 && eLine) {
+      ctx.fillText(eLine, 60, eY); eLine = eWords[j]; eY += 32;
+    } else { eLine = eTest; }
+  }
+  if (eLine && eY < 510) ctx.fillText(eLine, 60, eY);
+  // Stats row
+  ctx.fillStyle = '#ef4444';
+  ctx.font = 'bold 20px -apple-system, sans-serif';
+  var wordCount = markdown.split(/\s+/).length;
+  ctx.fillText('~' + wordCount + ' words  ·  SEO-optimized  ·  Free, BYOK', 60, H - 70);
+  // Brand footer
+  ctx.fillStyle = '#555'; ctx.fillRect(0, H - 42, W, 1);
+  ctx.fillStyle = '#606070';
+  ctx.font = '18px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/youtube-to-blog', W - 60, H - 16);
+  ctx.textAlign = 'left';
+}
 </script>
 </body>
 </html>
+
