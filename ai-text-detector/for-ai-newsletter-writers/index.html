@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Text Detector for AI Newsletter Writers — Check Your Issues Before Hitting Send</title>
+  <meta name="description" content="AI newsletter writers: scan every issue for AI-detectable patterns before your subscribers notice. Free, instant, browser-based. No sign-up required." />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-text-detector/for-ai-newsletter-writers/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Text Detector for AI Newsletter Writers" />
+  <meta property="og:description" content="Paste your newsletter draft and get an instant AI-likelihood score section by section. Know when your writing sounds robotic before 10,000 subscribers do." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-text-detector/for-ai-newsletter-writers/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/og-image-generator/for-ai-newsletter-writers/" />
+
+  <!-- JSON-LD WebPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "AI Text Detector for AI Newsletter Writers",
+    "description": "Free AI text detection tool built for newsletter writers who use AI in their workflow. Catch robotic-sounding sections before your readers lose trust in your voice.",
+    "url": "https://tinytools-smoky.vercel.app/ai-text-detector/for-ai-newsletter-writers/",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/"},
+        {"@type": "ListItem", "position": 2, "name": "AI Text Detector", "item": "https://tinytools-smoky.vercel.app/ai-text-detector/"},
+        {"@type": "ListItem", "position": 3, "name": "For AI Newsletter Writers", "item": "https://tinytools-smoky.vercel.app/ai-text-detector/for-ai-newsletter-writers/"}
+      ]
+    },
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "AI Text Detector",
+      "applicationCategory": "UtilityApplication",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+      "url": "https://tinytools-smoky.vercel.app/ai-text-detector/"
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface2: #21262d;
+      --border: #30363d;
+      --accent: #7c3aed;
+      --accent-light: #a78bfa;
+      --accent-glow: rgba(124,58,237,0.18);
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --green: #3fb950;
+      --yellow: #d29922;
+      --red: #f85149;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: var(--accent-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+    .nav-brand { font-weight: 700; font-size: 15px; color: var(--text); }
+    .nav-brand span { color: var(--accent-light); }
+    .nav-links { margin-left: auto; display: flex; gap: 20px; font-size: 14px; }
+
+    /* HERO */
+    .hero { max-width: 760px; margin: 0 auto; padding: 72px 24px 48px; text-align: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-glow); border: 1px solid var(--accent); color: var(--accent-light); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 24px; letter-spacing: 0.04em; }
+    h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
+    h1 em { font-style: normal; color: var(--accent-light); }
+    .hero-sub { font-size: 18px; color: var(--text-muted); max-width: 580px; margin: 0 auto 36px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff; font-weight: 700; font-size: 16px; padding: 14px 32px; border-radius: 10px; transition: background 0.2s; }
+    .hero-cta:hover { background: #6d28d9; text-decoration: none; }
+    .hero-cta svg { width: 18px; height: 18px; }
+    .hero-meta { margin-top: 16px; font-size: 13px; color: var(--text-muted); }
+
+    /* MAIN CONTENT */
+    .content { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+
+    /* PROBLEM BANNER */
+    .problem-box { background: linear-gradient(135deg, rgba(248,81,73,0.08), rgba(248,81,73,0.04)); border: 1px solid rgba(248,81,73,0.3); border-radius: 12px; padding: 28px 32px; margin: 48px 0; }
+    .problem-box h2 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #ffa198; }
+    .problem-box p { color: var(--text-muted); font-size: 15px; line-height: 1.7; }
+
+    /* SECTION TITLES */
+    h2.section-title { font-size: 26px; font-weight: 800; margin: 56px 0 20px; }
+    h2.section-title span { color: var(--accent-light); }
+
+    /* USE CASE CARDS */
+    .use-cases { display: grid; gap: 16px; margin-top: 24px; }
+    .use-case { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; }
+    .use-case-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .use-case-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--accent-glow); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .use-case h3 { font-size: 16px; font-weight: 700; }
+    .use-case p { color: var(--text-muted); font-size: 14px; line-height: 1.65; }
+
+    /* PAIN → SOLUTION MAP */
+    .pain-map { display: grid; gap: 12px; margin-top: 24px; }
+    .pain-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; }
+    .pain-item { background: rgba(248,81,73,0.07); border: 1px solid rgba(248,81,73,0.2); border-radius: 10px; padding: 16px 20px; font-size: 14px; color: #ffa198; }
+    .pain-arrow { color: var(--text-muted); font-size: 18px; text-align: center; }
+    .solution-item { background: rgba(63,185,80,0.07); border: 1px solid rgba(63,185,80,0.2); border-radius: 10px; padding: 16px 20px; font-size: 14px; color: #7ee787; }
+
+    /* PRICING TABLE */
+    .pricing-table { width: 100%; border-collapse: collapse; margin-top: 24px; font-size: 14px; }
+    .pricing-table th { background: var(--surface2); border: 1px solid var(--border); padding: 12px 16px; text-align: left; font-weight: 600; }
+    .pricing-table td { border: 1px solid var(--border); padding: 12px 16px; color: var(--text-muted); vertical-align: top; }
+    .pricing-table tr:first-child td { background: rgba(124,58,237,0.06); }
+    .pricing-table .highlight { color: var(--accent-light); font-weight: 600; }
+    .pricing-table .bad { color: var(--red); }
+    .pricing-table .good { color: var(--green); }
+
+    /* INTERNAL LINKS */
+    .sister-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 24px; }
+    .sister-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; transition: border-color 0.2s; }
+    .sister-card:hover { border-color: var(--accent); text-decoration: none; }
+    .sister-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--accent-light); }
+    .sister-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    /* FINAL CTA */
+    .final-cta { background: linear-gradient(135deg, var(--accent-glow), rgba(124,58,237,0.04)); border: 1px solid var(--accent); border-radius: 16px; padding: 48px 40px; text-align: center; margin-top: 56px; }
+    .final-cta h2 { font-size: 28px; font-weight: 800; margin-bottom: 14px; }
+    .final-cta p { color: var(--text-muted); font-size: 16px; margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .final-cta a.btn { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff; font-weight: 700; font-size: 16px; padding: 14px 36px; border-radius: 10px; transition: background 0.2s; }
+    .final-cta a.btn:hover { background: #6d28d9; text-decoration: none; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 28px 24px; text-align: center; font-size: 13px; color: var(--text-muted); }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--accent-light); }
+
+    @media (max-width: 600px) {
+      .pain-row { grid-template-columns: 1fr; }
+      .pain-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://tinytools-smoky.vercel.app/" class="nav-brand">Tiny<span>Tools</span></a>
+  <div class="nav-links">
+    <a href="https://tinytools-smoky.vercel.app/ai-text-detector/">AI Text Detector</a>
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <svg viewBox="0 0 16 16" fill="currentColor" width="12" height="12"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 12.5A5.5 5.5 0 1 1 8 2.5a5.5 5.5 0 0 1 0 11zM7.25 5.75h1.5v4.5h-1.5zm0-2h1.5v1.5h-1.5z"/></svg>
+    For AI Newsletter Writers
+  </div>
+  <h1>AI Text Detector<br/>for <em>AI Newsletter Writers</em></h1>
+  <p class="hero-sub">Paste your draft. Find every paragraph that reads like a robot wrote it — before your subscribers do. Free, instant, no account needed.</p>
+  <a href="https://tinytools-smoky.vercel.app/ai-text-detector/" class="hero-cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 3l14 9-14 9V3z"/></svg>
+    Scan My Newsletter Now
+  </a>
+  <p class="hero-meta">No sign-up · No API key · Results in under 5 seconds</p>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="content">
+
+  <!-- PROBLEM -->
+  <div class="problem-box">
+    <h2>Your open rates are dropping — and you don't know why.</h2>
+    <p>
+      You started using Claude or ChatGPT to speed up your writing. The issues go out faster. But something subtle has shifted: replies are fewer, forward rates are down, and a reader left a comment that stung — <em>"feels like a bot wrote this."</em> AI assistance has crept into your voice in ways you can't quite see. Your subscribers can.
+    </p>
+  </div>
+
+  <!-- USE CASES -->
+  <h2 class="section-title">5 Ways AI Newsletter Writers Use This <span>Detector</span></h2>
+  <div class="use-cases">
+
+    <div class="use-case">
+      <div class="use-case-header">
+        <div class="use-case-icon">✉️</div>
+        <h3>Pre-Send Quality Gate</h3>
+      </div>
+      <p>Before every send, paste your full issue draft into the detector. Sections that score above 70% AI likelihood get flagged for manual rewriting. You've worked hard to build your subscriber list — don't let a single robotic issue train your readers to skim.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-header">
+        <div class="use-case-icon">🔬</div>
+        <h3>Isolate Which Sections Sound AI-Generated</h3>
+      </div>
+      <p>Not the entire issue — usually just two or three paragraphs that you bulk-drafted with AI and never properly edited. The detector pinpoints exactly which sections break your voice so you can surgically fix them rather than rewriting everything from scratch.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-header">
+        <div class="use-case-icon">🎙️</div>
+        <h3>Train Your AI Prompts to Match Your Voice</h3>
+      </div>
+      <p>Run AI-generated drafts through the detector, then rewrite the flagged bits in your own style. Compare the score before and after. Over time, this feedback loop tells you <em>exactly</em> which prompt structures produce output closest to your voice — and which ones always sound generic.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-header">
+        <div class="use-case-icon">🤝</div>
+        <h3>Vet Guest Contributor Submissions</h3>
+      </div>
+      <p>You accept guest posts or partnership content. A high AI-likelihood score doesn't mean automatic rejection — but it does mean asking the contributor to add personal anecdotes, contrarian takes, or real data points. Your newsletter's reputation depends on authentic, specific content.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-header">
+        <div class="use-case-icon">📊</div>
+        <h3>A/B Test AI-Assisted vs. Fully Hand-Written Sections</h3>
+      </div>
+      <p>Some newsletter operators track click-through rates by section. If your hand-written intros consistently outperform AI-drafted deep-dives, the detector's scores provide the data signal you need to decide where to invest your writing time versus AI delegation.</p>
+    </div>
+
+  </div>
+
+  <!-- PAIN → SOLUTION MAP -->
+  <h2 class="section-title">Pain Points &rarr; <span>Solutions</span></h2>
+  <div class="pain-map">
+
+    <div class="pain-row">
+      <div class="pain-item">Subscribers unsubscribe after noticing your "voice" changed post-AI adoption</div>
+      <div class="pain-arrow">→</div>
+      <div class="solution-item">Catch AI-patterned phrasing before sending; rewrite flagged sections in your own cadence</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-item">Spending hours rewriting every draft from scratch "just to be safe"</div>
+      <div class="pain-arrow">→</div>
+      <div class="solution-item">Scan first, rewrite only flagged sections — cut editing time by 60%</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-item">Unsure if your newsletter platform (Beehiiv, Substack) will throttle AI-heavy content</div>
+      <div class="pain-arrow">→</div>
+      <div class="solution-item">Keep scores low to stay safely below platform content-moderation thresholds</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-item">Worried about FTC transparency rules around AI-generated sponsored content</div>
+      <div class="pain-arrow">→</div>
+      <div class="solution-item">Use detection scores to know which sections need explicit AI disclosures</div>
+    </div>
+
+  </div>
+
+  <!-- PRICING COMPARISON -->
+  <h2 class="section-title">How It Compares to <span>Paid Alternatives</span></h2>
+  <p style="color:var(--text-muted);font-size:14px;margin-bottom:4px;">Pricing as of 2026. AI newsletter writers typically check 4-8 issues per month at 600-2,000 words each.</p>
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Price</th>
+        <th>Word Limit / Month</th>
+        <th>Newsletter-Specific Features</th>
+        <th>Verdict</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="highlight">TinyTools AI Text Detector</td>
+        <td class="good">Free</td>
+        <td class="good">Unlimited</td>
+        <td>Instant paste-and-scan, no account needed, works mid-draft</td>
+        <td class="good">Best for quick pre-send checks</td>
+      </tr>
+      <tr>
+        <td>Originality.ai</td>
+        <td class="bad">$14.95/mo</td>
+        <td>200 credits (~50,000 words)</td>
+        <td>Team sharing, plagiarism combo scan</td>
+        <td>Overkill for solo newsletter writers</td>
+      </tr>
+      <tr>
+        <td>GPTZero</td>
+        <td>$10/mo (Essential)</td>
+        <td>150,000 words</td>
+        <td>Batch upload, API access at higher tiers</td>
+        <td>Good, but premium locked behind paywall</td>
+      </tr>
+      <tr>
+        <td>Copyleaks</td>
+        <td>$10.99/mo</td>
+        <td>100 pages</td>
+        <td>LMS integration, multilingual</td>
+        <td>Built for academia, not newsletter cadence</td>
+      </tr>
+      <tr>
+        <td>Turnitin AI</td>
+        <td>Institutional only</td>
+        <td>Varies</td>
+        <td>None</td>
+        <td class="bad">Not accessible for independent writers</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SISTER TOOLS -->
+  <h2 class="section-title">Also Useful for AI Newsletter <span>Writers</span></h2>
+  <div class="sister-tools">
+
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/" class="sister-card">
+      <h3>AI Disclosure Generator →</h3>
+      <p>Once you know which sections are AI-heavy, generate a compliant disclosure statement for your newsletter footer. FTC and EU AI Act ready.</p>
+    </a>
+
+    <a href="https://tinytools-smoky.vercel.app/og-image-generator/for-ai-newsletter-writers/" class="sister-card">
+      <h3>OG Image Generator →</h3>
+      <p>Generate click-worthy Open Graph preview images for each issue. Drives higher open rates when shared on X or LinkedIn by your readers.</p>
+    </a>
+
+    <a href="https://tinytools-smoky.vercel.app/ai-cost-calculator/" class="sister-card">
+      <h3>AI Cost Calculator →</h3>
+      <p>Estimate your monthly Claude or GPT-4o spending across every issue. Know whether your AI workflow is actually ROI-positive vs. a subscription stack drain.</p>
+    </a>
+
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <h2>Don't Let a Robot Kill Your Open Rate</h2>
+    <p>You've built trust with your subscribers one issue at a time. Run every draft through the detector before hitting send — it takes 10 seconds and it's completely free.</p>
+    <a href="https://tinytools-smoky.vercel.app/ai-text-detector/" class="btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M5 3l14 9-14 9V3z"/></svg>
+      Open AI Text Detector — Free
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <p>
+    &copy; 2026 <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> &mdash;
+    <a href="https://tinytools-smoky.vercel.app/ai-text-detector/">AI Text Detector</a> &middot;
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a> &middot;
+    <a href="https://tinytools-smoky.vercel.app/ai-cost-calculator/">AI Cost Calculator</a>
+  </p>
+</footer>
+
+</body>
+</html>
