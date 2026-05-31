@@ -268,6 +268,12 @@ urlset>/  <url>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/vs/v0-vercel/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -1276,6 +1282,12 @@ urlset>/  <url>
     <loc>https://tinytools-smoky.vercel.app/what-ai-are-you/blog/i-made-2000-people-take-this-ai-personality-quiz-number-1-result-not-chatgpt-2026/</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/vs/v0-vercel/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 </urlset>
