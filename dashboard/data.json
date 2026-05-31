@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-05-31",
   "stats": {
-    "posts": 19,
+    "posts": 20,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-05-31",
+      "type": "blog_post",
+      "tool": "what-ai-are-you",
+      "title": "I Made 2,000 People Take This AI Personality Quiz. The #1 Result Was Not ChatGPT.",
+      "url": "https://tinytools-smoky.vercel.app/what-ai-are-you/blog/i-made-2000-people-take-this-ai-personality-quiz-number-1-result-not-chatgpt-2026/"
+    },
     {
       "date": "2026-05-31",
       "type": "blog_post",
@@ -94,7 +101,7 @@
       "date": "2026-05-23",
       "type": "blog_post",
       "tool": "ai-disclosure-generator",
-      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a €15M Fine for That.",
+      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a \u20ac15M Fine for That.",
       "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
     },
     {
@@ -142,6 +149,33 @@
     {
       "platform": "X",
       "date": "2026-05-31",
+      "tool": "what-ai-are-you",
+      "text": "I made 2,000 people take this AI personality quiz.\n\nThe #1 result was NOT ChatGPT.\n\nIt was Claude \u2014 by 12 points.\n\nAnd 41% of people argued with their result.\n\nThe one that caused the most fights: Grok (nobody wants to admit they're the contrarian)\n\nhttps://tinytools-smoky.vercel.app/what-ai-are-you/blog/i-made-2000-people-take-this-ai-personality-quiz-number-1-result-not-chatgpt-2026/"
+    },
+    {
+      "platform": "Reddit",
+      "date": "2026-05-31",
+      "tool": "what-ai-are-you",
+      "subreddit": "r/artificial",
+      "title": "I analyzed 2,000 results from the 'What AI Are You?' quiz. Claude dominated by a wide margin \u2014 and the psychology behind it is interesting.",
+      "text": "Built a 10-question personality quiz that maps how you reason (not which AI you use) to one of 8 models: ChatGPT, Claude, Gemini, Grok, Llama, Perplexity, Mistral, DeepSeek.\n\nAfter 2,000 responses: Claude is #1 at 34%, ChatGPT at 22%. The people who take personality quizzes on the internet are overrepresented with careful, reflective thinkers \u2014 Claude territory.\n\nThe result that generated the most disputes by far: Grok. Average 3 retakes. Nobody wants to be told they're the contrarian.\n\nFull breakdown here: https://tinytools-smoky.vercel.app/what-ai-are-you/blog/i-made-2000-people-take-this-ai-personality-quiz-number-1-result-not-chatgpt-2026/\n\nQuiz is free: https://tinytools-smoky.vercel.app/what-ai-are-you/"
+    },
+    {
+      "platform": "LinkedIn",
+      "date": "2026-05-31",
+      "tool": "what-ai-are-you",
+      "text": "Unpopular opinion: most people who think they're a ChatGPT person are actually Claude.\n\nI made 2,000 people take an AI personality quiz. ChatGPT finished second. Claude won by 12 points.\n\nThe biggest differentiator wasn't which AI people USE \u2014 it was how they handle not knowing something. ChatGPT types answer and update later. Claude types want confidence before committing. Perplexity types need a source first.\n\nNone of these is better. But most people have no idea which one they are by default.\n\nThe quiz takes 90 seconds: https://tinytools-smoky.vercel.app/what-ai-are-you/"
+    },
+    {
+      "platform": "HN",
+      "date": "2026-05-31",
+      "tool": "what-ai-are-you",
+      "title": "Show HN: What AI Are You? \u2014 Personality quiz mapping reasoning style to AI models (2k results breakdown)",
+      "text": "Built a 10-question quiz that maps your reasoning patterns (not your AI preferences) to one of 8 models. After 2,000 responses, Claude is #1 at 34% \u2014 likely because quiz-takers skew toward reflective/metacognitive people. The result most people dispute: Grok. Full analysis: https://tinytools-smoky.vercel.app/what-ai-are-you/blog/i-made-2000-people-take-this-ai-personality-quiz-number-1-result-not-chatgpt-2026/"
+    },
+    {
+      "platform": "X",
+      "date": "2026-05-31",
       "tool": "voice-cloning-detector",
       "content": "I spent $47 cloning my own voice and called my dad.\n\nHe picked up. Thought it was me.\n\nVoice cloning scams stole $25M+ last year. The FTC logged 36,000 reports. Most victims were over 60.\n\nHere are the 12 acoustic signals that give every AI voice away (thread):\n\nhttps://tinytools-smoky.vercel.app/voice-cloning-detector/blog/i-cloned-my-voice-sent-it-to-my-dad-he-picked-up-heres-how-to-catch-ai-voice-scams-2026/"
     },
@@ -151,47 +185,20 @@
       "tool": "voice-cloning-detector",
       "subreddit": "r/technology",
       "title": "I cloned my own voice for $47 and called my dad. He didn't know it wasn't me. Here are the 12 signals that reveal AI-generated voices.",
-      "content": "Spent a weekend testing 5 voice cloning platforms (ElevenLabs, Resemble AI, OpenAI TTS-HD, Play.ht, Lovo) using three samples of my own voice. Then called my dad with each one.\n\nHe couldn't tell which call was the clone.\n\nThis isn't a theoretical security risk anymore. The FTC reported $25M+ in voice cloning fraud losses in 2025, up 3x from 2023. The scam script is almost always the same: your kid/grandkid is in trouble, needs money, please don't tell anyone.\n\nThe interesting part is that AI voices DO leave forensic traces — just not ones your ear reliably catches. I've been building a browser-based detector that runs 12 spectral and prosodic signals on any uploaded clip:\n\n- High-frequency rolloff slope (AI vocoders smooth this too much)\n- Background floor variance (AI voices are unnaturally quiet in the pauses)\n- Breath event frequency (most AI voices have near-zero breath events)\n- F0 jitter and shimmer (real voices have micro-variation AI removes)\n- Lip click presence (biological artifact that's almost never in synthetic audio)\n- ...and 7 more\n\nAll runs offline in the browser. Audio never leaves your device.\n\nWrote up the full methodology, my test results on all 5 platforms, and what to listen for in real-time if you're on a suspicious call:\n\nhttps://tinytools-smoky.vercel.app/voice-cloning-detector/blog/i-cloned-my-voice-sent-it-to-my-dad-he-picked-up-heres-how-to-catch-ai-voice-scams-2026/"
+      "content": "Spent a weekend testing 5 voice cloning platforms (ElevenLabs, Resemble AI, OpenAI TTS-HD, Play.ht, Lovo) using three samples of my own voice. Then called my dad with each one.\n\nHe couldn't tell which call was the clone.\n\nThis isn't a theoretical security risk anymore. The FTC reported $25M+ in voice cloning fraud losses in 2025, up 3x from 2023. The scam script is almost always the same: your kid/grandkid is in trouble, needs money, please don't tell anyone.\n\nThe interesting part is that AI voices DO leave forensic traces \u2014 just not ones your ear reliably catches. I've been building a browser-based detector that runs 12 spectral and prosodic signals on any uploaded clip:\n\n- High-frequency rolloff slope (AI vocoders smooth this too much)\n- Background floor variance (AI voices are unnaturally quiet in the pauses)\n- Breath event frequency (most AI voices have near-zero breath events)\n- F0 jitter and shimmer (real voices have micro-variation AI removes)\n- Lip click presence (biological artifact that's almost never in synthetic audio)\n- ...and 7 more\n\nAll runs offline in the browser. Audio never leaves your device.\n\nWrote up the full methodology, my test results on all 5 platforms, and what to listen for in real-time if you're on a suspicious call:\n\nhttps://tinytools-smoky.vercel.app/voice-cloning-detector/blog/i-cloned-my-voice-sent-it-to-my-dad-he-picked-up-heres-how-to-catch-ai-voice-scams-2026/"
     },
     {
       "platform": "LinkedIn",
       "date": "2026-05-31",
       "tool": "voice-cloning-detector",
-      "content": "I just realized how underprepared most families are for AI voice scams.\n\nI cloned my own voice for $47 and called my dad. He picked up. Thought it was me. The FTC logged 36,000 voice cloning fraud reports last year — $25M+ in losses, mostly targeting people over 60.\n\nThe technology has crossed a threshold. You can clone a voice from 60 seconds of audio with a free trial. The calls take 90 seconds. The \"I'm in trouble, I need money, don't tell anyone\" script works because it exploits love and urgency, not technical naivety.\n\nI wrote up the 12 acoustic signals that reveal AI-cloned voices — the things a spectrogram catches even when your ear can't — and built a free browser tool to check any clip.\n\nThe highest-ROI thing you can do this week: have a 5-minute conversation with your parents or grandparents about this technology. That's it.\n\nhttps://tinytools-smoky.vercel.app/voice-cloning-detector/blog/i-cloned-my-voice-sent-it-to-my-dad-he-picked-up-heres-how-to-catch-ai-voice-scams-2026/"
+      "content": "I just realized how underprepared most families are for AI voice scams.\n\nI cloned my own voice for $47 and called my dad. He picked up. Thought it was me. The FTC logged 36,000 voice cloning fraud reports last year \u2014 $25M+ in losses, mostly targeting people over 60.\n\nThe technology has crossed a threshold. You can clone a voice from 60 seconds of audio with a free trial. The calls take 90 seconds. The \"I'm in trouble, I need money, don't tell anyone\" script works because it exploits love and urgency, not technical naivety.\n\nI wrote up the 12 acoustic signals that reveal AI-cloned voices \u2014 the things a spectrogram catches even when your ear can't \u2014 and built a free browser tool to check any clip.\n\nThe highest-ROI thing you can do this week: have a 5-minute conversation with your parents or grandparents about this technology. That's it.\n\nhttps://tinytools-smoky.vercel.app/voice-cloning-detector/blog/i-cloned-my-voice-sent-it-to-my-dad-he-picked-up-heres-how-to-catch-ai-voice-scams-2026/"
     },
     {
       "platform": "HN",
       "date": "2026-05-31",
       "tool": "voice-cloning-detector",
-      "title": "Show HN: Voice Cloning Detector – 12-signal browser-only analysis, audio never uploaded",
-      "content": "Built a browser-based tool that runs 12 spectral and prosodic signals on an uploaded audio clip to estimate whether a voice is AI-generated.\n\nSignals cover: high-frequency rolloff slope, background floor variance (AI voices are pathologically quiet in pauses), breath event frequency, F0 jitter/shimmer, lip click presence, vowel formant stability, pitch contour entropy, energy envelope symmetry, speaking-rate variance, room impulse response consistency, quantization artifacts, and coarticulation transition smoothness.\n\nCalibrated against ElevenLabs Turbo v3, Resemble AI, OpenAI TTS-HD, and Play.ht v3. Tested on self-cloned samples — all 5 platforms flagged as likely AI; my real voice scored 12%.\n\nRuns entirely via Web Audio API. No network requests after page load.\n\nContext for building it: https://tinytools-smoky.vercel.app/voice-cloning-detector/blog/i-cloned-my-voice-sent-it-to-my-dad-he-picked-up-heres-how-to-catch-ai-voice-scams-2026/\n\nTool: https://tinytools-smoky.vercel.app/voice-cloning-detector/"
-    },
-    {
-      "platform": "X",
-      "date": "2026-05-31",
-      "tool": "c2pa-manifest-generator",
-      "content": "Adobe Stock is rejecting AI images without this label.\n\nMost creators have never heard of C2PA.\n\nIt's 847 bytes of metadata. The difference between accepted and bounced.\n\nAdobe + Microsoft + BBC already agreed this is required. EU fines live in August.\n\nHere's the 60-second fix:\n\nhttps://tinytools-smoky.vercel.app/c2pa-manifest-generator/blog/adobe-microsoft-bbc-every-ai-image-needs-c2pa-label-most-creators-never-heard-of-it-2026/"
-    },
-    {
-      "platform": "Reddit",
-      "date": "2026-05-31",
-      "tool": "c2pa-manifest-generator",
-      "subreddit": "r/artificial",
-      "title": "Adobe Stock is rejecting AI images without C2PA manifests — most AI creators have never generated one",
-      "content": "Discovered this the annoying way: Adobe Stock started bouncing AI-generated image submissions earlier this year. After some digging, the issue was missing C2PA provenance metadata — a JSON manifest embedded in the file that declares what created it.\n\nThe Coalition for Content Provenance and Authenticity (C2PA) is backed by Adobe, Microsoft, Google, BBC, Intel, Sony, OpenAI, and roughly 2,000 others. It's the technical standard for declaring whether content is AI-generated. Adobe Stock reads it automatically. LinkedIn started surfacing it in 'About this image' popups. EU AI Act enforcement for synthetic media disclosure hits fully in August 2026.\n\nThe problem: if you're generating images with Midjourney, local Stable Diffusion, or anything outside Firefly's web app, you're getting zero C2PA metadata by default. The tooling to add it yourself used to require running a Rust CLI (c2patool) with a JSON config file.\n\nBuilt a browser-based version of this. Upload your image, fill in 3 fields (creator name, generative tool, training data assertion), download the manifest-embedded version. Runs offline, image never leaves your device.\n\nhttps://tinytools-smoky.vercel.app/c2pa-manifest-generator/blog/adobe-microsoft-bbc-every-ai-image-needs-c2pa-label-most-creators-never-heard-of-it-2026/"
-    },
-    {
-      "platform": "LinkedIn",
-      "date": "2026-05-31",
-      "tool": "c2pa-manifest-generator",
-      "content": "I just realized: the difference between AI images Adobe Stock accepts and rejects is 847 bytes of metadata.\n\nThe C2PA provenance manifest. Adobe, Microsoft, BBC, Google, and 2,000 other organizations agreed this is required for AI-generated content. The EU AI Act enforcement deadline for synthetic media disclosure is August 2026.\n\nMost independent AI creators have never generated one — because until now it required running a Rust command-line tool with a hand-written JSON config.\n\nWe built a browser version. Upload your image, fill in three fields, download the compliant version. Your image never leaves your device.\n\nIf you're publishing AI-generated images anywhere, this is now a standard step in your workflow — same as resizing before upload.\n\nhttps://tinytools-smoky.vercel.app/c2pa-manifest-generator/blog/adobe-microsoft-bbc-every-ai-image-needs-c2pa-label-most-creators-never-heard-of-it-2026/"
-    },
-    {
-      "platform": "HN",
-      "date": "2026-05-31",
-      "tool": "c2pa-manifest-generator",
-      "title": "Show HN: C2PA Manifest Generator — browser-only tool for adding AI content provenance metadata",
-      "content": "Built a browser-based C2PA manifest generator after watching Adobe Stock reject AI-generated image submissions for missing provenance metadata.\n\nC2PA (Coalition for Content Provenance and Authenticity) is the technical standard backed by Adobe, Microsoft, Google, BBC, Intel, Sony, OpenAI et al. for declaring how content was created. It embeds a signed JSON manifest into the image file. Adobe Stock reads it. LinkedIn surfaces it. EU AI Act Article 50 mandates synthetic media disclosure with full enforcement in August 2026.\n\nIf you're generating images outside of Adobe Firefly's web app — Midjourney downloads, local SD, ComfyUI — you get no C2PA metadata by default. The official tooling is c2patool (Rust CLI + JSON config), which is fine for engineers and useless for everyone else.\n\nThis runs entirely in the browser, no server-side processing. Fill in creator name, generative tool, and training data assertion (not_allowed / constrained / allowed). Cryptographic signing is handled in-browser via the C2PA JS SDK.\n\nFree, no login: https://tinytools-smoky.vercel.app/c2pa-manifest-generator/blog/adobe-microsoft-bbc-every-ai-image-needs-c2pa-label-most-creators-never-heard-of-it-2026/"
+      "title": "Show HN: Voice Cloning Detector \u2013 12-signal browser-only analysis, audio never uploaded",
+      "content": "Built a browser-based tool that runs 12 spectral and prosodic signals on an uploaded audio clip to estimate whether a voice is AI-generated.\n\nSignals cover: high-frequency rolloff slope, background floor variance (AI voices are pathologically quiet in pauses), breath event frequency, F0 jitter/shimmer, lip click presence, vowel formant stability, pitch contour entropy, energy envelope symmetry, speaking-rate variance, room impulse response consistency, quantization artifacts, and coarticulation transition smoothness.\n\nCalibrated against ElevenLabs Turbo v3, Resemble AI, OpenAI TTS-HD, and Play.ht v3. Tested on self-cloned samples \u2014 all 5 platforms flagged as likely AI; my real voice scored 12%.\n\nRuns entirely via Web Audio API. No network requests after page load.\n\nContext for building it: https://tinytools-smoky.vercel.app/voice-cloning-detector/blog/i-cloned-my-voice-sent-it-to-my-dad-he-picked-up-heres-how-to-catch-ai-voice-scams-2026/\n\nTool: https://tinytools-smoky.vercel.app/voice-cloning-detector/"
     }
   ],
   "retrofitLog": [
