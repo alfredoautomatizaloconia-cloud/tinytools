@@ -292,6 +292,12 @@ urlset>/  <url>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/devops-disaster-score/blog/i-tested-40-devops-configs-disaster-score-calculator-the-results-were-embarrassing-2026/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -1337,5 +1343,11 @@ urlset>/  <url>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/devops-disaster-score/blog/i-tested-40-devops-configs-disaster-score-calculator-the-results-were-embarrassing-2026/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
