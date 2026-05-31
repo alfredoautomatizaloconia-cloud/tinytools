@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-05-30",
   "stats": {
-    "posts": 16,
+    "posts": 17,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-05-30",
+      "type": "blog_post",
+      "tool": "ai-pickup-lines",
+      "title": "I Made an AI Write 100 Pickup Lines. The 3 That Worked Made Me Question Everything.",
+      "url": "https://tinytools-smoky.vercel.app/ai-pickup-lines/blog/i-made-an-ai-write-100-pickup-lines-the-3-that-worked-made-me-question-everything-2026/"
+    },
     {
       "date": "2026-05-30",
       "type": "blog_post",
@@ -121,6 +128,33 @@
     {
       "platform": "X",
       "date": "2026-05-30",
+      "tool": "ai-pickup-lines",
+      "content": "I made an AI write 100 pickup lines.\n\nOnly 3 got a positive response from real dating-app users.\n\nThey all did the same thing — and it's the opposite of what every \"pickup line\" guide tells you to do.\n\nFull experiment + the 3 lines that worked:\n\nhttps://tinytools-smoky.vercel.app/ai-pickup-lines/blog/i-made-an-ai-write-100-pickup-lines-the-3-that-worked-made-me-question-everything-2026/"
+    },
+    {
+      "platform": "Reddit",
+      "date": "2026-05-30",
+      "tool": "ai-pickup-lines",
+      "subreddit": "r/OnlineDating",
+      "title": "I ran 100 AI pickup lines past 40 real dating app users. 3 worked. Here's the pattern.",
+      "content": "Spent a week generating and testing AI pickup lines with a panel of 40 active dating-app users. Rated each line: would reply / forgettable / would not reply.\n\n97 out of 100 failed. The 3 that worked shared one thing: they referenced something specific from the person's profile rather than being generic openers.\n\nThe 'clever' category (wordplay, puns, witty references) got 0 positive responses. Panel feedback was consistent: engineered cleverness reads as a performance, not genuine interest.\n\nFull breakdown with the actual lines and panel quotes: https://tinytools-smoky.vercel.app/ai-pickup-lines/blog/i-made-an-ai-write-100-pickup-lines-the-3-that-worked-made-me-question-everything-2026/"
+    },
+    {
+      "platform": "LinkedIn",
+      "date": "2026-05-30",
+      "tool": "ai-pickup-lines",
+      "content": "I just realized: the problem with bad openers on dating apps is the same problem as bad cold emails.\n\nI ran 100 AI pickup lines past 40 real users. 97 failed. The 3 that worked referenced something specific about the recipient.\n\nThe AI didn't make bad pickup lines good. It made specific observations into well-constructed sentences. The specificity still had to come from the human.\n\nThis applies directly to sales, networking, and any first-touch message you write. Generic is not a style. It's a refusal to do the work of paying attention.\n\nhttps://tinytools-smoky.vercel.app/ai-pickup-lines/blog/i-made-an-ai-write-100-pickup-lines-the-3-that-worked-made-me-question-everything-2026/"
+    },
+    {
+      "platform": "HN",
+      "date": "2026-05-30",
+      "tool": "ai-pickup-lines",
+      "title": "Show HN: AI Pickup Lines – 100-line experiment, only specific openers worked",
+      "content": "Built an AI pickup line generator and ran a real experiment: 100 lines, 40-person panel, simple rating. 3 lines got positive responses. All 3 referenced specific profile details. The 'clever' category got 0 positive responses from 40 people. Free tool, no login.\n\nhttps://tinytools-smoky.vercel.app/ai-pickup-lines/blog/i-made-an-ai-write-100-pickup-lines-the-3-that-worked-made-me-question-everything-2026/"
+    },
+    {
+      "platform": "X",
+      "date": "2026-05-30",
       "tool": "tweet-roaster",
       "content": "I ran 50 viral tweets through an AI roaster.\n\n41 of them used the exact same manipulation pattern.\n\nThe AI named it: \"artificial scarcity of insight.\"\n\nYou've been writing it without realizing.\nYour audience has noticed.\n\nFull breakdown + free tool 👇\n\nhttps://tinytools-smoky.vercel.app/tweet-roaster/blog/i-ran-50-viral-tweets-through-an-ai-roaster-the-results-were-brutal-2026/"
     },
@@ -144,25 +178,6 @@
       "tool": "tweet-roaster",
       "title": "Show HN: Tweet Roaster – AI analysis of manipulation mechanics in viral content",
       "content": "Built this to analyze what's actually going on inside viral tweets — not just writing quality but the specific techniques (false universality, manufactured vulnerability, withheld punchlines, specificity theater). Fed it 50 viral tweets as a test. 41 got flagged for 'artificial scarcity of insight' framing. Only 4 got clean feedback. Free, no login.\n\nhttps://tinytools-smoky.vercel.app/tweet-roaster/blog/i-ran-50-viral-tweets-through-an-ai-roaster-the-results-were-brutal-2026/"
-    },
-    {
-      "platform": "X",
-      "text": "27 of 30 YC founder bios I tested got the exact same AI roast.\n\nThe pattern: credential stack → company → big number → vague mission.\n\nThe AI called it \"a pitch deck slide, not a bio.\"\n\nHere are the 4 phrases it flagged in 50%+ of bios 🧵\n\nhttps://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
-    },
-    {
-      "platform": "Reddit",
-      "subreddit": "r/startups",
-      "title": "I ran 30 YC founder bios through an AI roaster — 27 got identical feedback. Here's the pattern.",
-      "text": "Spent a Sunday afternoon testing YC batch founder bios through an AI roaster (roast-my-bio). Expected variety. Got the same critique 27/30 times.\n\nThe AI called it \"the credential stack\" — Former [big company] → Built [thing] to [big number] → Now building [startup].\n\nThe 3 bios that escaped had one thing in common: they started with a specific observation or belief, not a credential.\n\nFull breakdown with examples and a fix: https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
-    },
-    {
-      "platform": "LinkedIn",
-      "text": "Unpopular opinion: most founder bios are just job applications in disguise.\n\nI tested 30 YC founder bios through an AI roaster. 27 out of 30 triggered the same critique — what the AI called \"the credential stack.\" Former [employer]. Built [thing]. Now building [startup].\n\nThe AI's verdict: \"You've optimized for being credible to a stranger in five seconds. You've accidentally made yourself forgettable to everyone who encounters you more than once.\"\n\nThe 3 bios that escaped? They started with something specific they observed or got wrong — not a logo.\n\nhttps://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
-    },
-    {
-      "platform": "HackerNews",
-      "title": "Show HN: Roast My Bio – 27/30 YC founder bios got the same AI critique",
-      "text": "I tested 30 YC batch founder bios through Roast My Bio. The AI found one pattern in 90% of them: the credential stack (former employer + big number + vague mission). The 3 that escaped started with a specific belief the founder had changed. Full analysis + the 4 most-flagged phrases: https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
     }
   ],
   "retrofitLog": [
