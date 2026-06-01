@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-06-01",
   "stats": {
-    "posts": 27,
+    "posts": 28,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-06-01",
+      "type": "blog_post",
+      "tool": "roast-my-stack",
+      "title": "I Made an AI Roast My Tech Stack. It Called My Kubernetes Setup \"DevOps LARPing.\"",
+      "url": "https://tinytools-smoky.vercel.app/roast-my-stack/blog/i-made-ai-roast-my-tech-stack-called-kubernetes-devops-larping-2026/"
+    },
     {
       "date": "2026-06-01",
       "type": "blog_post",
@@ -196,6 +203,33 @@
   ],
   "drafts": [
     {
+      "platform": "X",
+      "tool": "roast-my-stack",
+      "date": "2026-06-01",
+      "content": "An AI looked at my tech stack and said \"this is DevOps LARPing.\"\n\nI had Kubernetes at 40 users. Kafka for a to-do app. 6 abstraction layers for a SELECT query.\n\nThe AI didn't name-call. It just did the math.\n\nFind out what yours says about you (free, 30 sec):\n\nhttps://tinytools-smoky.vercel.app/roast-my-stack/blog/i-made-ai-roast-my-tech-stack-called-kubernetes-devops-larping-2026/"
+    },
+    {
+      "platform": "Reddit",
+      "tool": "roast-my-stack",
+      "date": "2026-06-01",
+      "subreddit": "r/webdev",
+      "title": "I collected 80 dev stack descriptions and fed them to an AI roaster. 43% were running Kubernetes for <500 users.",
+      "content": "Spent the last few weeks gathering stack descriptions from Reddit and Discord and running them through an AI architecture roaster. The six patterns it kept flagging (distributed monolith, Kafka for tiny workloads, framework churn, etc.) were so consistent it was eerie.\n\nFull writeup with the AI's actual quotes:\n\nhttps://tinytools-smoky.vercel.app/roast-my-stack/blog/i-made-ai-roast-my-tech-stack-called-kubernetes-devops-larping-2026/\n\nTool itself is free: https://tinytools-smoky.vercel.app/roast-my-stack/"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "roast-my-stack",
+      "date": "2026-06-01",
+      "content": "Unpopular opinion: most \"microservices\" I've reviewed are distributed monoliths with 4x the operational complexity and 0x the benefits.\n\nI ran 80 stack descriptions through an AI roaster this month. 22 of the 31 \"microservices\" stacks shared a database or called each other synchronously on every request. That's not microservices \u2014 that's a monolith you can't deploy without a ceremony.\n\nThe hardest part of architecture isn't choosing the right tools. It's being honest about what stage you're actually at.\n\nFull breakdown of the 6 patterns (free tool included):\nhttps://tinytools-smoky.vercel.app/roast-my-stack/blog/i-made-ai-roast-my-tech-stack-called-kubernetes-devops-larping-2026/"
+    },
+    {
+      "platform": "HN",
+      "tool": "roast-my-stack",
+      "date": "2026-06-01",
+      "title": "Show HN: Roast My Stack \u2013 AI reviews your architecture choices against your actual scale",
+      "content": "Built a tool that takes your tech stack description and roasts your architecture decisions based on apparent team size and scale. It's most useful for catching the gap between the complexity you've added and the problem size you actually have.\n\nTool: https://tinytools-smoky.vercel.app/roast-my-stack/\n\nAfter collecting 80 submissions: 43% were running container orchestration at <500 users, 22/31 \"microservices\" stacks were actually distributed monoliths. Blog post with patterns:\nhttps://tinytools-smoky.vercel.app/roast-my-stack/blog/i-made-ai-roast-my-tech-stack-called-kubernetes-devops-larping-2026/"
+    },
+    {
       "platform": "x",
       "date": "2026-06-01",
       "tool": "saas-burn-roast",
@@ -221,33 +255,6 @@
       "tool": "saas-burn-roast",
       "title": "Show HN: Roast My SaaS Burn Rate \u2014 enter MRR + burn, get savage AI financial feedback",
       "text": "Built a small tool that takes MRR, monthly burn, and cash in bank, then outputs a plain-English roast of your financial position \u2014 burn multiple classification, default alive check, runway reality correction. No login, free, shareable card. My own burn multiple came back 2.4x and the tool called it \"burning with optimism and no plan B.\" Link: tinytools-smoky.vercel.app/saas-burn-roast/"
-    },
-    {
-      "platform": "x",
-      "date": "2026-06-01",
-      "tool": "eu-ai-act-risk-assessment",
-      "text": "73% of AI products I tested failed the EU AI Act on first try.\n\nAlready in force RIGHT NOW:\n\u2192 Chatbots with human names must disclose they're AI (Article 50)\n\u2192 Emotion inference in hiring is banned (Article 5)\n\u2192 Fines up to \u20ac35M or 7% of global revenue\n\nHigh-risk system deadline: August 2026 \u2014 60 days.\n\n60-second free check: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
-    },
-    {
-      "platform": "reddit",
-      "date": "2026-06-01",
-      "tool": "eu-ai-act-risk-assessment",
-      "subreddit": "r/startups",
-      "title": "I checked 30 AI products against the EU AI Act. 22 failed before I even reached the technical questions.",
-      "text": "Background: I've been running EU AI Act checks on AI products partly because I kept hearing founders say 'it doesn't apply to us.' Article 2 says otherwise.\n\nWhat I found across 30 products:\n- 18/30 had a chatbot with a human name that never disclosed it was AI (Article 50, in force Aug 2025)\n- 6/30 had emotion-inference features banned under Article 5 (in force Feb 2025)\n- 8/30 were in high-risk categories (hiring, education, credit) and self-classified as minimal risk\n\nHigh-risk deadline is August 2026 \u2014 60 days away. Conformity assessments take 3-6 months.\n\nFree 60-second check: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
-    },
-    {
-      "platform": "linkedin",
-      "date": "2026-06-01",
-      "tool": "eu-ai-act-risk-assessment",
-      "text": "Unpopular opinion: most AI founders I talk to are already non-compliant in Europe and have no idea.\n\nEU AI Act prohibited practices went live February 2025. Transparency obligations (chatbot disclosure) kicked in August 2025.\n\nI ran 30 products through a check. Most common failure:\n\n18/30 had a chatbot with a human name that never disclosed it was AI. One was called 'Maya, your personal account manager.' Article 50 violation. 20-minute fix.\n\nAugust 2026 high-risk deadline is 60 days away. If your product touches hiring, education, or credit scoring, you may be in Annex III. Conformity assessments take 3-6 months.\n\nFree 60-second check: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
-    },
-    {
-      "platform": "hackernews",
-      "date": "2026-06-01",
-      "tool": "eu-ai-act-risk-assessment",
-      "title": "Show HN: EU AI Act Risk Assessment \u2013 describe your AI product, get risk category + obligation checklist",
-      "text": "Built this after noticing most AI founders didn't know which EU AI Act category they fell into. Prohibited practices rules are in force (Feb 2025), transparency obligations too (Aug 2025), and high-risk requirements land August 2026 \u2014 60 days.\n\nTakes a plain-language description of your product and returns: risk category (prohibited/high-risk/limited/minimal), specific obligations, and most common failure modes for your product type.\n\nFree, no login: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
     }
   ],
   "retrofitLog": [
