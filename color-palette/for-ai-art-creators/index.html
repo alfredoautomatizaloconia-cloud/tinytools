@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color Palette Generator for AI Art Creators | Free Tool — TinyTools</title>
+  <meta name="description" content="Generate consistent color palettes for your Midjourney, DALL-E, and Stable Diffusion art. Lock in a visual style, write precise color prompts, and build cohesive collections — free, no login." />
+  <meta property="og:title" content="Color Palette Generator for AI Art Creators" />
+  <meta property="og:description" content="Stop getting random color vibes from Midjourney. Define your palette first, then write color-precise prompts that produce consistent, gallery-ready AI art." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/color-palette/for-ai-art-creators/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/color-palette/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Color Palette Generator for AI Art Creators" />
+  <meta name="twitter:description" content="Lock in your visual style before you prompt. Generate precise color palettes for Midjourney, DALL-E, and Stable Diffusion — free." />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/color-palette/for-ai-art-creators/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Color Palette Generator for AI Art Creators",
+    "description": "Generate consistent color palettes for Midjourney, DALL-E, and Stable Diffusion art. Lock in a visual style, write precise color prompts, and build cohesive AI art collections — free, no login.",
+    "url": "https://tinytools-smoky.vercel.app/color-palette/for-ai-art-creators/",
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "Color Palette Generator",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tinytools-smoky.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Color Palette Generator", "item": "https://tinytools-smoky.vercel.app/color-palette/" },
+        { "@type": "ListItem", "position": 3, "name": "For AI Art Creators", "item": "https://tinytools-smoky.vercel.app/color-palette/for-ai-art-creators/" }
+      ]
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1f1f1f;
+      --border: #2a2a2a;
+      --accent: #7c3aed;
+      --accent2: #a78bfa;
+      --text: #f0f0f0;
+      --muted: #888;
+      --green: #22c55e;
+      --red: #ef4444;
+      --pink: #ec4899;
+      --amber: #f59e0b;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; line-height: 1.65; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { padding: 14px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    nav .logo { font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: -0.02em; }
+    nav .logo span { color: var(--accent2); }
+    nav .breadcrumb { font-size: 0.82rem; color: var(--muted); }
+    nav .breadcrumb a { color: var(--muted); }
+    nav .breadcrumb a:hover { color: var(--accent2); }
+
+    /* HERO */
+    .hero { max-width: 780px; margin: 0 auto; padding: 64px 24px 48px; text-align: center; }
+    .badge { display: inline-block; background: rgba(236,72,153,0.12); border: 1px solid rgba(236,72,153,0.3); color: var(--pink); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+    h1 .highlight { color: var(--accent2); }
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin: 0 auto 36px; }
+    .cta-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 32px; border-radius: 10px; transition: background 0.2s; }
+    .cta-primary:hover { background: #6d28d9; text-decoration: none; }
+    .cta-note { font-size: 0.8rem; color: var(--muted); margin-top: 10px; }
+
+    /* PALETTE PREVIEW */
+    .palette-preview { display: flex; gap: 0; border-radius: 12px; overflow: hidden; max-width: 520px; margin: 32px auto 0; height: 56px; }
+    .swatch { flex: 1; }
+
+    /* SECTION */
+    section { max-width: 780px; margin: 0 auto; padding: 0 24px 64px; }
+    h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    p { color: #ccc; margin-bottom: 16px; }
+
+    /* PAIN BLOCK */
+    .pain-block { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--red); border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; }
+    .pain-block.solved { border-left-color: var(--green); }
+    .pain-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); margin-bottom: 6px; }
+    .pain-block.solved .pain-label { color: var(--green); }
+    .solution-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-top: 12px; margin-bottom: 6px; }
+    .solution-text { color: var(--text); font-size: 0.95rem; }
+    .pain-text { color: #ccc; font-size: 0.95rem; }
+
+    /* PROMPT BLOCK */
+    .prompt-block { background: #0a0a14; border: 1px solid #2a2a4a; border-radius: 10px; padding: 18px 20px; margin-bottom: 20px; font-size: 0.88rem; color: #c4b5fd; }
+    .prompt-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent2); margin-bottom: 10px; display: block; }
+    .prompt-block code { color: #f0abfc; font-family: 'SF Mono', 'Fira Code', monospace; }
+
+    /* USE CASE GRID */
+    .use-case-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 16px; }
+    .use-case-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .uc-icon { font-size: 1.6rem; margin-bottom: 10px; }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; gap: 16px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; }
+    .step-num { background: var(--accent); color: #fff; font-weight: 700; font-size: 0.9rem; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-content h3 { margin-bottom: 6px; }
+    .step-content p { margin-bottom: 0; }
+
+    /* PRICING TABLE */
+    .pricing-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 16px; }
+    .pricing-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--border); color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .pricing-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    .pricing-table tr.highlight td { background: rgba(124,58,237,0.08); }
+    .tool-name { font-weight: 600; color: var(--text); }
+    .price.free { color: var(--green); font-weight: 700; }
+    .price.paid { color: var(--amber); }
+    .check { color: var(--green); font-weight: 700; }
+    .cross { color: var(--muted); }
+
+    /* SISTER TOOLS */
+    .sister-tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+    .sister-card { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: border-color 0.2s; }
+    .sister-card:hover { border-color: var(--accent2); text-decoration: none; }
+    .sc-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .sister-card h3 { font-size: 0.95rem; margin-bottom: 6px; color: var(--text); }
+    .sister-card p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+    /* FINAL CTA */
+    .final-cta { background: linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(236,72,153,0.1) 100%); border: 1px solid rgba(167,139,250,0.25); border-radius: 16px; padding: 40px 32px; text-align: center; }
+    .final-cta h2 { font-size: 1.6rem; margin-bottom: 12px; }
+    .final-cta p { max-width: 520px; margin: 0 auto 24px; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; max-width: 780px; margin: 0 auto; }
+    footer p { font-size: 0.82rem; color: var(--muted); margin-bottom: 0; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent2); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Tiny<span>Tools</span></span>
+  <span class="breadcrumb">
+    <a href="/">Home</a> / <a href="/color-palette/">Color Palette Generator</a> / For AI Art Creators
+  </span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">🎨 For AI Art Creators</div>
+  <h1>Color Palette Generator<br>for <span class="highlight">AI Art Creators</span></h1>
+  <p class="hero-sub">Define your visual style before you prompt. Generate a precise, shareable color palette and turn vague "warm vibes" into exact hex codes your AI art tool actually understands.</p>
+  <a href="/color-palette/" class="cta-primary">Generate Your Palette — Free →</a>
+  <p class="cta-note">No login · No credit card · Works with Midjourney, DALL-E 3, Flux, Stable Diffusion</p>
+
+  <!-- Sample palette for AI art: moody violet + rose gold + charcoal -->
+  <div class="palette-preview">
+    <div class="swatch" style="background:#1a0a2e;"></div>
+    <div class="swatch" style="background:#2d1460;"></div>
+    <div class="swatch" style="background:#6b21a8;"></div>
+    <div class="swatch" style="background:#9d4edd;"></div>
+    <div class="swatch" style="background:#c77dff;"></div>
+    <div class="swatch" style="background:#e040fb;"></div>
+    <div class="swatch" style="background:#f4a261;"></div>
+    <div class="swatch" style="background:#e9c46a;"></div>
+    <div class="swatch" style="background:#264653;"></div>
+    <div class="swatch" style="background:#2a9d8f;"></div>
+  </div>
+</div>
+
+<!-- PAIN → SOLUTION -->
+<section>
+  <h2>The Color Problem Every AI Artist Knows</h2>
+
+  <div class="pain-block">
+    <div class="pain-label">⚡ Pain</div>
+    <p class="pain-text">You write "cinematic warm golden hour vibes" and Midjourney gives you a completely different warm tone in every single generation. Your collection looks like it was made by five different artists.</p>
+    <div class="solution-label">✓ Solution</div>
+    <p class="solution-text">Generate your exact golden hour palette — say, <code>#f4a261, #e76f51, #264653</code> — and lock every prompt to those hex values. Midjourney and DALL-E respond precisely to hex codes, not adjectives.</p>
+  </div>
+
+  <div class="pain-block">
+    <div class="pain-label">⚡ Pain</div>
+    <p class="pain-text">You want to sell a print series or drop an NFT collection, but your images don't feel cohesive. Collectors immediately sense the visual inconsistency even if they can't name it.</p>
+    <div class="solution-label">✓ Solution</div>
+    <p class="solution-text">Build a 5-color signature palette before generating any piece in the collection. Reference those same hex codes in every prompt. Your series becomes unmistakably yours — a visual fingerprint that increases perceived value.</p>
+  </div>
+
+  <div class="pain-block">
+    <div class="pain-label">⚡ Pain</div>
+    <p class="pain-text">Your Instagram or X feed looks like a random assortment. New followers can't tell you have a style — so they don't follow.</p>
+    <div class="solution-label">✓ Solution</div>
+    <p class="solution-text">Define one master palette for your social presence and reference it in every prompt. Consistent color across posts creates the "grid aesthetic" that attracts loyal audiences and brand collab inquiries.</p>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section>
+  <h2>5 Ways AI Art Creators Use the Color Palette Generator</h2>
+  <div class="use-case-grid">
+
+    <div class="use-case-card">
+      <div class="uc-icon">🖼️</div>
+      <h3>Lock Your Signature Style</h3>
+      <p>Great AI artists are recognized by their color palette as much as their subject matter. Generate a 6–10 color signature palette, export the hex codes, and paste them into every Midjourney or Flux prompt as a constraint block. Your style becomes reproducible and defensible — not an accident.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">🎲</div>
+      <h3>Precise Prompt Engineering for Color</h3>
+      <p>AI image models understand hex values far better than color adjectives. Instead of "deep teal and salmon," write <code>--color-palette #006d77, #e29578</code> or describe them as "hex #006d77 teal and #e29578 salmon coral." Generate complementary, triadic, or analogous palettes to find the exact combination before you burn your GPU credits.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">📦</div>
+      <h3>Cohesive NFT &amp; Print Collections</h3>
+      <p>Collections that sell have a defined visual language. Generate a collection palette — primary, secondary, accent, background, and highlight — and enforce it across all 10, 50, or 100 pieces. Buyers see a world, not a grab bag. That cohesion directly increases floor price and sell-through rate.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">🌙</div>
+      <h3>Series &amp; Theme Exploration</h3>
+      <p>Running a "Neon Noir" series? A "Solarpunk Future" series? Generate a distinct palette for each theme. Export the hex codes and store them as your series Bible. When you come back three months later, you can resume the exact color world without reverse-engineering your own old prompts.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">💼</div>
+      <h3>Client &amp; Commission Work</h3>
+      <p>When a client commissions a series — book covers, game assets, album art — they expect visual consistency across deliverables. Build a client-specific palette from their brand hex codes, share the palette URL, and use those same values in every prompt. Revisions drop dramatically when color is locked upfront.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <h2>From Vague Vibe to Precise Hex in 3 Steps</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Pick or paste your anchor color</h3>
+        <p>Start with the dominant color that defines your piece's mood — the deep indigo of your night scenes, the warm amber of your sunset series. Paste any hex, or use the color wheel to explore until you find the right anchor.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Generate complementary, analogous, or triadic palettes</h3>
+        <p>The tool generates multiple palette variations from your anchor: complementary (high contrast, dramatic), analogous (harmonious, painterly), and triadic (balanced, vibrant). Preview all three and pick the one that matches the emotional register of your art.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Copy hex codes into your AI art prompt</h3>
+        <p>Export your palette as a list of hex codes and paste them directly into your Midjourney, DALL-E 3, Flux, or Stable Diffusion prompt. Use the format your model responds to best — see the prompt block below for templates that work.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="prompt-block" style="margin-top: 28px;">
+    <span class="prompt-label">📋 Copy-paste prompt templates for each AI art tool</span>
+    <p style="color:#ccc; font-size:0.85rem; margin-bottom:12px;"><strong>Midjourney:</strong></p>
+    <code>cinematic portrait of a sorceress, color palette restricted to #1a0a2e #6b21a8 #c77dff #f4a261 #2a9d8f, deep violet shadows, golden accent lighting, moody atmosphere --ar 2:3 --style raw</code>
+    <p style="color:#ccc; font-size:0.85rem; margin: 12px 0 8px;"><strong>DALL-E 3 / ChatGPT:</strong></p>
+    <code>Create a digital painting using ONLY these colors: deep plum #1a0a2e, violet #6b21a8, lavender #c77dff, amber #f4a261, and teal #2a9d8f. Do not introduce any other hues. Style: dark fantasy, cinematic.</code>
+    <p style="color:#ccc; font-size:0.85rem; margin: 12px 0 8px;"><strong>Stable Diffusion / Flux prompt weight trick:</strong></p>
+    <code>(deep violet #6b21a8:1.3), (amber gold #f4a261:0.9), (teal shadow #2a9d8f:0.8), dark fantasy portrait, cinematic lighting</code>
+  </div>
+</section>
+
+<!-- PRICING COMPARISON -->
+<section>
+  <h2>Free vs. Paid Color Tools for AI Artists</h2>
+  <p>Most color tools are built for web designers, not AI art creators. Here's how they compare for your actual workflow:</p>
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Price</th>
+        <th>Prompt-ready hex export</th>
+        <th>Palette harmony modes</th>
+        <th>AI art focus</th>
+        <th>No login</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="tool-name">TinyTools Color Palette</td>
+        <td class="price free">Free</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓ 4 modes</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Coolors.co Pro</td>
+        <td class="price paid">$4/mo</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗ login</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Adobe Color</td>
+        <td class="price free">Free</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗ Adobe ID</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Palette.fm (AI palettes)</td>
+        <td class="price paid">$10/mo</td>
+        <td><span class="cross">✗ no hex list</span></td>
+        <td><span class="check">✓ AI-gen</span></td>
+        <td><span class="check">✓ partial</span></td>
+        <td><span class="cross">✗ login</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Khroma</td>
+        <td class="price free">Free</td>
+        <td><span class="cross">✗ no export</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗ needs training</span></td>
+        <td><span class="cross">✗ account</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Lospec Palette List</td>
+        <td class="price free">Free</td>
+        <td><span class="check">✓ limited</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="check">✓ pixel art</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.85rem;">TinyTools is the only free, no-login tool that generates harmony palettes <em>and</em> exports a clean list of hex codes ready to paste into a Midjourney or DALL-E prompt — with no Adobe account, no subscription, and no onboarding training run required.</p>
+</section>
+
+<!-- SISTER TOOLS -->
+<section>
+  <h2>Other Free Tools for AI Art Creators</h2>
+  <p>Color is your style foundation — these tools help you take your AI art from generation to publication:</p>
+  <div class="sister-tools">
+    <a href="/og-image-generator/" class="sister-card">
+      <div class="sc-icon">🖼️</div>
+      <h3>OG Image Generator</h3>
+      <p>Create 1200×630 social preview cards for your portfolio, print shop, or gallery page — styled with your signature palette colors.</p>
+    </a>
+    <a href="/ai-disclosure-generator/" class="sister-card">
+      <div class="sc-icon">📋</div>
+      <h3>AI Disclosure Generator</h3>
+      <p>Selling AI art prints or NFTs? Generate the AI-created disclosure text required by platforms like Etsy, stock sites, and emerging EU regulations.</p>
+    </a>
+    <a href="/favicon-generator/" class="sister-card">
+      <div class="sc-icon">⭐</div>
+      <h3>Favicon Generator</h3>
+      <p>Build your artist brand online. Generate a favicon from your palette's primary color for your portfolio site or Shopify print store.</p>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section>
+  <div class="final-cta">
+    <h2>Your art style starts with your palette.</h2>
+    <p>Stop leaving color up to chance. Generate a precise, prompt-ready color palette in 60 seconds and start producing AI art that looks intentional — free, no login required.</p>
+    <a href="/color-palette/" class="cta-primary">Generate Your Color Palette →</a>
+    <p class="cta-note" style="margin-top:12px;">Free forever · No account · Works with Midjourney, DALL-E, Flux, Stable Diffusion</p>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="/">TinyTools</a> ·
+    <a href="/color-palette/">Color Palette Generator</a> ·
+    <a href="/og-image-generator/">OG Image Generator</a> ·
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> ·
+    <a href="/favicon-generator/">Favicon Generator</a>
+  </p>
+  <p style="margin-top:8px;">© 2026 TinyTools · Free AI tools for creators</p>
+</footer>
+
+</body>
+</html>
