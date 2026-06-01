@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color Palette Generator for Cursor Developers | Free Tool — TinyTools</title>
+  <meta name="description" content="Generate VS Code theme color systems, app UI palettes, and Tailwind CSS variables — purpose-built for Cursor IDE developers. Free, no design skills needed, exports shadcn/ui tokens instantly." />
+  <meta property="og:title" content="Color Palette Generator for Cursor Developers" />
+  <meta property="og:description" content="Building with Cursor? Generate a custom color palette — VS Code theme tokens, Tailwind CSS variables, shadcn/ui token maps — in 60 seconds. Free, no login." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/color-palette/for-cursor-developers/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/color-palette/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Color Palette Generator for Cursor Developers" />
+  <meta name="twitter:description" content="Generate Tailwind-ready color palettes and VS Code theme tokens for your Cursor-built projects. Free, no login." />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/color-palette/for-cursor-developers/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Color Palette Generator for Cursor Developers",
+    "description": "Generate VS Code theme color systems, app UI palettes, and Tailwind CSS variables — purpose-built for Cursor IDE developers. Free, no design skills needed, exports shadcn/ui tokens instantly.",
+    "url": "https://tinytools-smoky.vercel.app/color-palette/for-cursor-developers/",
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "Color Palette Generator",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tinytools-smoky.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Color Palette Generator", "item": "https://tinytools-smoky.vercel.app/color-palette/" },
+        { "@type": "ListItem", "position": 3, "name": "For Cursor Developers", "item": "https://tinytools-smoky.vercel.app/color-palette/for-cursor-developers/" }
+      ]
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1f1f1f;
+      --border: #2a2a2a;
+      --accent: #7c3aed;
+      --accent2: #a78bfa;
+      --text: #f0f0f0;
+      --muted: #888;
+      --green: #22c55e;
+      --red: #ef4444;
+      --blue: #60a5fa;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; line-height: 1.65; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { padding: 14px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    nav .logo { font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: -0.02em; }
+    nav .logo span { color: var(--accent2); }
+    nav .breadcrumb { font-size: 0.82rem; color: var(--muted); }
+    nav .breadcrumb a { color: var(--muted); }
+    nav .breadcrumb a:hover { color: var(--accent2); }
+
+    /* HERO */
+    .hero { max-width: 780px; margin: 0 auto; padding: 64px 24px 48px; text-align: center; }
+    .badge { display: inline-block; background: rgba(124,58,237,0.15); border: 1px solid rgba(167,139,250,0.3); color: var(--accent2); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+    h1 .highlight { color: var(--accent2); }
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin: 0 auto 36px; }
+    .cta-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 32px; border-radius: 10px; transition: background 0.2s; }
+    .cta-primary:hover { background: #6d28d9; text-decoration: none; }
+    .cta-note { font-size: 0.8rem; color: var(--muted); margin-top: 10px; }
+
+    /* PALETTE PREVIEW */
+    .palette-preview { display: flex; gap: 0; border-radius: 12px; overflow: hidden; max-width: 520px; margin: 32px auto 0; height: 56px; }
+    .swatch { flex: 1; }
+
+    /* SECTION */
+    section { max-width: 780px; margin: 0 auto; padding: 0 24px 64px; }
+    h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    p { color: #ccc; margin-bottom: 16px; }
+
+    /* PAIN BLOCK */
+    .pain-block { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--red); border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; }
+    .pain-block .pain-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); margin-bottom: 6px; }
+    .pain-block .solution-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-top: 12px; margin-bottom: 6px; }
+    .pain-block .solution-text { color: var(--text); font-size: 0.95rem; }
+    .pain-block .pain-text { color: #ccc; font-size: 0.95rem; }
+
+    /* CODE BLOCK */
+    .code-block { background: #111; border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; color: #a78bfa; overflow-x: auto; margin-top: 12px; margin-bottom: 16px; }
+    .code-block .comment { color: var(--muted); }
+    .code-block .key { color: #93c5fd; }
+    .code-block .val { color: #86efac; }
+
+    /* USE CASES */
+    .use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+    @media (max-width: 600px) { .use-case-grid { grid-template-columns: 1fr; } }
+    .use-case-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .use-case-card .uc-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .use-case-card h3 { font-size: 0.98rem; margin-bottom: 6px; }
+    .use-case-card p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* PRICING TABLE */
+    .pricing-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem; }
+    .pricing-table th { text-align: left; padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .pricing-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .tool-name { font-weight: 600; }
+    .pricing-table .price { font-weight: 700; }
+    .pricing-table .price.free { color: var(--green); }
+    .pricing-table .price.paid { color: var(--muted); }
+    .pricing-table tr.highlight { background: rgba(124,58,237,0.08); }
+    .pricing-table tr.highlight .tool-name { color: var(--accent2); }
+    .check { color: var(--green); }
+    .cross { color: var(--red); }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; }
+    .step-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(124,58,237,0.2); border: 1px solid rgba(167,139,250,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; color: var(--accent2); }
+    .step-content h3 { font-size: 0.98rem; margin-bottom: 4px; }
+    .step-content p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* PROMPT BLOCK */
+    .prompt-block { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-top: 16px; }
+    .prompt-block .prompt-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent2); margin-bottom: 10px; }
+    .prompt-block p { font-size: 0.88rem; color: #ccc; margin: 0; font-family: 'SF Mono', 'Fira Code', monospace; }
+
+    /* INTERNAL LINKS */
+    .sister-tools { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+    .sister-card { flex: 1 1 200px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; transition: border-color 0.2s; }
+    .sister-card:hover { border-color: var(--accent); text-decoration: none; }
+    .sister-card .sc-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .sister-card h3 { font-size: 0.9rem; color: var(--text); margin-bottom: 4px; }
+    .sister-card p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+    /* FINAL CTA */
+    .final-cta { background: linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(167,139,250,0.05) 100%); border: 1px solid rgba(124,58,237,0.3); border-radius: 16px; padding: 48px 36px; text-align: center; margin-bottom: 64px; }
+    .final-cta h2 { font-size: 1.7rem; margin-bottom: 12px; }
+    .final-cta p { max-width: 500px; margin: 0 auto 28px; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 0.82rem; color: var(--muted); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent2); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Tiny<span>Tools</span></span>
+  <span class="breadcrumb">
+    <a href="/">Home</a> /
+    <a href="/color-palette/">Color Palette Generator</a> /
+    For Cursor Developers
+  </span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Cursor IDE · VS Code Themes · AI-Coded Apps</div>
+  <h1>Color Palette Generator<br>for <span class="highlight">Cursor Developers</span></h1>
+  <p class="hero-sub">Building with Cursor? Generate production-ready color palettes — VS Code theme tokens, Tailwind CSS variables, and shadcn/ui maps — in 60 seconds. Free, no design background needed.</p>
+  <a href="/color-palette/" class="cta-primary">Generate Your Color Palette Free →</a>
+  <p class="cta-note">No login required · Exports Tailwind CSS variables, VS Code theme tokens &amp; shadcn/ui token maps</p>
+
+  <!-- palette swatch preview -->
+  <div class="palette-preview" aria-hidden="true">
+    <div class="swatch" style="background:#0f0f23;"></div>
+    <div class="swatch" style="background:#1e1b4b;"></div>
+    <div class="swatch" style="background:#3730a3;"></div>
+    <div class="swatch" style="background:#6d28d9;"></div>
+    <div class="swatch" style="background:#a78bfa;"></div>
+    <div class="swatch" style="background:#ddd6fe;"></div>
+    <div class="swatch" style="background:#1e293b;"></div>
+    <div class="swatch" style="background:#334155;"></div>
+    <div class="swatch" style="background:#22c55e;"></div>
+    <div class="swatch" style="background:#60a5fa;"></div>
+  </div>
+</div>
+
+<!-- INTRO / PROBLEM FRAMING -->
+<section>
+  <h2>Why Cursor Developers Need a Real Color System</h2>
+  <p>Cursor's AI Composer can generate an entire Next.js app in an afternoon. The problem isn't the code — it's that every app shipped out of Cursor looks identical. Indigo-600 primary buttons. Slate-900 dark backgrounds. Gray-500 placeholder text. The default Tailwind palette is Cursor's fingerprint, and experienced users can spot it in under five seconds.</p>
+  <p>For developers building VS Code or Cursor themes, the stakes are even higher. A half-hearted syntax theme with mismatched token colors gets one-star reviews before it gets installs. A cohesive, intentional palette — with editor background, sidebar, activity bar, and status bar all working together — is what gets your theme to 10k installs on the marketplace.</p>
+  <p>TinyTools Color Palette Generator bridges the gap between "Cursor generated my app" and "this app looks like a real product." Enter one hex, get a production-ready color system in seconds.</p>
+</section>
+
+<!-- PAIN → SOLUTION -->
+<section>
+  <h2>5 Color Problems Cursor Developers Hit Every Sprint</h2>
+
+  <div style="margin-top:32px;">
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #1</div>
+      <div class="pain-text">You used Cursor Composer to build a SaaS app in a weekend. It works flawlessly — but the UI is unmistakably Tailwind default. The pitch deck screenshot looks like every other indie hacker's Lovable prototype. You need a branded look without spending two hours in Figma before your Monday demo.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">Paste your brand's primary hex into TinyTools, download the Tailwind CSS variable block, and drop it into your next Cursor Composer prompt: "Use only these CSS custom properties for all colors — no default Tailwind classes." Cursor will rebuild every component in your palette. App looks custom-built in one session, zero Figma time.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #2</div>
+      <div class="pain-text">You're publishing a VS Code or Cursor theme to the Extension Marketplace. You have a vibe in mind — dark, high-contrast, cyberpunk — but every time you try to pick colors manually for the 40+ token slots (<code>editor.background</code>, <code>editorLineNumber.foreground</code>, <code>activityBar.background</code>, etc.), the result looks inconsistent. Some token groups feel purple-ish, others blue-ish, and the semantic tokens clash.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">Generate a structured palette from a single seed color. TinyTools produces a full 10-shade scale with consistent hue across all lightness levels — so your editor background, gutter, line highlight, selection, and foreground all belong to the same color family. Use the shade steps as your VS Code theme token values for a visually unified result.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #3</div>
+      <div class="pain-text">Your Cursor-built app uses shadcn/ui components. You want to theme the components with custom brand colors, but shadcn's token system — <code>--background</code>, <code>--foreground</code>, <code>--card</code>, <code>--popover</code>, <code>--primary</code>, <code>--secondary</code>, <code>--muted</code>, <code>--accent</code>, <code>--destructive</code>, <code>--border</code>, <code>--ring</code> — doesn't map 1:1 to a standard Tailwind config. Doing it manually from scratch takes 45 minutes.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">TinyTools exports your generated palette in the exact shadcn/ui <code>globals.css</code> token format. Copy the output, paste it into your project's CSS, and every shadcn Button, Card, Input, Dialog, and Badge component instantly adopts your brand palette — including both light and dark mode <code>:root</code> blocks. Your app's components stop looking like the shadcn demo and start looking like your product.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #4</div>
+      <div class="pain-text">You're publishing a Cursor extension or npm package with a documentation site. The README and docs site look fine — but generic. The GitHub repository page, the npm package landing, and the docs site all have different color vibes. There's no brand cohesion between your extension's marketplace icon, the docs header, and the README badges. It undercuts the perceived quality of your work.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">Generate a consistent palette once and apply it everywhere. Use the hex values for your marketplace icon background, your docs site CSS variables, and your README badge color URL parameter. One palette, consistent visual identity across the entire distribution surface of your extension — GitHub, npm, VS Code Marketplace, and Cursor's extension index.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #5</div>
+      <div class="pain-text">Your app needs dark mode. Cursor's Composer can generate the dark mode CSS, but it tends to just invert or darken the light palette arbitrarily — resulting in washed-out text, overly bright surfaces, or an accent color that looks great in light mode but strains the eyes against a dark background. Manually computing dark-mode equivalents in HSL is tedious and error-prone.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">TinyTools generates matched light and dark palettes from a single seed color — calculating appropriate lightness and saturation adjustments for dark-mode surfaces, foreground text, and accent states. The output is a paired <code>:root</code> and <code>[data-theme="dark"]</code> CSS variable block that you can drop straight into your project. Pass it to Cursor Composer as context and it will implement dark mode correctly in a single pass.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section>
+  <h2>5 Ways Cursor Developers Use the Color Palette Generator</h2>
+  <div class="use-case-grid">
+
+    <div class="use-case-card">
+      <div class="uc-icon">🎨</div>
+      <h3>VS Code / Cursor Theme Creation</h3>
+      <p>Building a custom editor theme for the Cursor or VS Code marketplace? Generate a 10-shade scale from your theme's vibe color and map it to the 40+ syntax and UI token slots in <code>package.json</code>. Consistent hue, professionally graded contrast — no more "some tokens look blue, some look purple" issues.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">⚡</div>
+      <h3>AI App Rebrand Before Demo Day</h3>
+      <p>Cursor Composer ships fast. Give your app a distinct identity just as fast. Generate a brand palette in 60 seconds, paste the Tailwind CSS variable block into Composer, and prompt it to rebuild all UI components using only those custom properties. Your weekend project stops looking like a template and starts looking like a funded startup.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">📦</div>
+      <h3>Extension &amp; npm Package Branding</h3>
+      <p>Publish a Cursor extension, MCP server, or npm utility? Your package deserves a consistent visual identity — README badges in your brand color, a marketplace icon that matches your docs site header. Generate your brand palette once and use the hex values consistently across all publication surfaces.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">🌗</div>
+      <h3>Dark Mode Without the Guesswork</h3>
+      <p>If you're building a dev tool or IDE extension, dark mode isn't optional — it's table stakes. TinyTools generates paired light/dark palettes with correctly-adjusted surface and foreground values. Drop the output into your app and tell Cursor's Composer to use the <code>[data-theme="dark"]</code> block for dark mode. Done in one prompt.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">♿</div>
+      <h3>WCAG-Compliant Accessible UIs</h3>
+      <p>Building a developer tool used by engineers with visual impairments — or just trying to pass your company's accessibility audit? Every palette TinyTools generates includes inline WCAG AA and AAA contrast ratio scores for foreground/background combinations. Ship accessible UIs without learning the WCAG formula or installing a separate checker plugin.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <h2>From Seed Color to Production-Ready Palette in 3 Steps</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Enter your seed color</h3>
+        <p>Paste any hex code — your existing brand color, a color you like from a site you admire, or just a direction (e.g. <code>#6d28d9</code> for a cool violet dev-tool vibe). Not sure? Use the built-in style picker: warm / cool / neutral / monochrome.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Review shades, surfaces, and contrast scores</h3>
+        <p>TinyTools generates a 10-shade primary scale (50–950), paired neutral grays, and semantic colors for success, warning, and error states. Every foreground/background combination shows its WCAG AA/AAA ratio inline. Tweak the base hue or saturation with sliders until it matches your aesthetic.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Export in your format and paste</h3>
+        <p>Choose from: Tailwind CSS variables, shadcn/ui <code>globals.css</code> block, plain hex values, or VS Code theme JSON snippet. Copy and paste into your codebase or Cursor Composer prompt. Your entire app or theme updates in seconds.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="prompt-block" style="margin-top: 28px;">
+    <div class="prompt-label">📋 Cursor Composer Prompt Template — Color Constraint Block</div>
+    <p>Refactor all color usage in this codebase to use ONLY these CSS custom properties. Remove any hardcoded hex values, default Tailwind color classes (e.g. indigo-600, slate-900), or arbitrary color values. Apply these variables across all components consistently:<br><br>
+    --primary: #7c3aed;<br>
+    --primary-hover: #6d28d9;<br>
+    --primary-foreground: #ffffff;<br>
+    --background: #0f0f23;<br>
+    --surface: #161628;<br>
+    --surface-2: #1e1e3a;<br>
+    --border: #2a2a4a;<br>
+    --text: #f0f0f8;<br>
+    --muted: #8888aa;<br>
+    --success: #22c55e;<br>
+    --warning: #f59e0b;<br>
+    --error: #ef4444;</p>
+  </div>
+</section>
+
+<!-- PRICING COMPARISON -->
+<section>
+  <h2>Free vs. Paid Color Tools for Cursor Developers</h2>
+  <p>Here's how TinyTools compares to the tools Cursor developers typically reach for when they need a color system for an app or VS Code theme:</p>
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Price</th>
+        <th>Tailwind export</th>
+        <th>shadcn/ui tokens</th>
+        <th>Dark mode pairs</th>
+        <th>VS Code token hints</th>
+        <th>WCAG scores</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="tool-name">TinyTools Color Palette</td>
+        <td class="price free">Free</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Theme Studio for VS Code</td>
+        <td class="price paid">$5/mo</td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓ visual only</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Coolors.co Pro</td>
+        <td class="price paid">$4/mo</td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="check">✓ basic</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Adobe Color</td>
+        <td class="price free">Free</td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Figma (manual)</td>
+        <td class="price paid">$15/mo</td>
+        <td><span class="cross">✗ manual</span></td>
+        <td><span class="cross">✗ manual</span></td>
+        <td><span class="cross">✗ manual</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="check">✓ plugin</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Radix Colors</td>
+        <td class="price free">Free</td>
+        <td><span class="check">✓ limited</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗ no custom hex</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">UI Colors (uicolors.app)</td>
+        <td class="price free">Free</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:16px; font-size:0.85rem;">For Cursor developers, TinyTools hits the intersection that no other free tool covers: Tailwind CSS output, shadcn/ui tokens, paired dark mode, and WCAG scores — in a single tool, no account required. Theme Studio is good for the visual editor experience but gives you no Tailwind or shadcn export. Radix Colors is excellent but locks you into their palette system rather than your custom brand hex. TinyTools gives you full control from any starting color.</p>
+</section>
+
+<!-- SEO LONG-FORM -->
+<section>
+  <h2>Building with Cursor: When Colors Are the Bottleneck</h2>
+  <p>Cursor has fundamentally changed the economics of software development. A solo developer with strong prompting skills can now ship a full-stack SaaS application in days rather than months. The bottleneck has moved — it's no longer "how fast can I write code" but "how fast can I make this look like a real product."</p>
+  <p>Color is often the invisible reason an AI-built app looks unpolished. It's not the functionality, not the layout, not the component library. It's that every AI-generated app pulls from the same 10 default Tailwind colors, and the human brain has pattern-matched on that combination enough times to immediately register "this was AI-generated" before consciously processing anything else.</p>
+  <p>The fix doesn't require Figma, a designer, or hours of time. It requires one good color palette — a 10-shade primary scale, matching neutral grays, and semantic colors for success/warning/error states — exported in the format your project expects. For a Tailwind project, that's CSS variables in a <code>:root</code> block. For a shadcn/ui project, it's the specific token names shadcn expects. For a VS Code theme, it's hex values you can map to the 40+ token slots in your theme's JSON config.</p>
+  <p>For developers who ship VS Code and Cursor themes as side projects, a coherent palette is what separates a 50-install theme from a 50,000-install theme. The difference between "looks like the developer picked random colors" and "this has a visual point of view" is whether your editor background, sidebar, gutter, selection highlight, and status bar are all pulled from the same color family at consistent lightness steps. That's exactly what a generated 10-shade scale gives you — every step is derived from the same hue, just at a different lightness and saturation, so everything feels cohesive even without a dedicated designer.</p>
+</section>
+
+<!-- SISTER TOOLS -->
+<section>
+  <h2>Complete Your Developer Brand Stack</h2>
+  <p>Color is the foundation. These free tools cover the rest of what Cursor developers need to look professional at launch:</p>
+  <div class="sister-tools">
+    <a href="/favicon-generator/" class="sister-card">
+      <div class="sc-icon">⭐</div>
+      <h3>Favicon Generator</h3>
+      <p>Generate a favicon using your brand color — 16×16 through 512×512, plus Apple Touch icon and PWA manifest icon. Essential for any Cursor-built web app or docs site.</p>
+    </a>
+    <a href="/og-image-generator/" class="sister-card">
+      <div class="sc-icon">🖼️</div>
+      <h3>OG Image Generator</h3>
+      <p>Create the 1200×630 social preview image for your app landing page, GitHub README, or Product Hunt launch post — using the same brand colors from your palette.</p>
+    </a>
+    <a href="/ai-disclosure-generator/" class="sister-card">
+      <div class="sc-icon">📋</div>
+      <h3>AI Disclosure Generator</h3>
+      <p>If your Cursor-built app uses AI-generated content, recommendations, or automated decisions, generate the compliance disclosure required by the EU AI Act and emerging US regulations.</p>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section>
+  <div class="final-cta">
+    <h2>Your Cursor app deserves its own colors.</h2>
+    <p>Generate a branded, accessible color palette with Tailwind CSS variables, shadcn/ui tokens, and dark mode pairs — in under 60 seconds. Free, no Figma, no design background needed.</p>
+    <a href="/color-palette/" class="cta-primary">Generate Your Color Palette →</a>
+    <p class="cta-note" style="margin-top:12px;">Used by 5,000+ developers · Free forever · No login required</p>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="/">TinyTools</a> ·
+    <a href="/color-palette/">Color Palette Generator</a> ·
+    <a href="/favicon-generator/">Favicon Generator</a> ·
+    <a href="/og-image-generator/">OG Image Generator</a> ·
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a>
+  </p>
+  <p style="margin-top:8px;">© 2026 TinyTools · Free AI tools for builders</p>
+</footer>
+
+</body>
+</html>
