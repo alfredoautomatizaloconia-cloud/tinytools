@@ -340,6 +340,12 @@ urlset>/  <url>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/vs/undetectable-ai/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -1430,6 +1436,12 @@ urlset>/  <url>
   </url>
   <url>
     <loc>https://tinytools-smoky.vercel.app/youtube-to-blog/blog/i-converted-3-years-youtube-videos-47-blog-posts-google-traffic-11-days-2026/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/vs/undetectable-ai/</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
