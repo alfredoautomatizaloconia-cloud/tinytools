@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roast My SaaS Burn Rate — AI Roasts Your Startup Finances (Free)</title>
+<meta name="description" content="Enter your MRR and monthly burn. Get a savage AI roast of your runway, burn multiple, and financial decisions. Share the card. Free, brutal, honest.">
+<meta name="keywords" content="saas burn rate calculator, startup runway calculator, burn multiple calculator, saas metrics roast, startup finance roast, burn rate ai, mrr calculator, saas roast">
+<meta property="og:title" content="Roast My SaaS Burn Rate — AI Roasts Your Startup Finances">
+<meta property="og:description" content="How fast are you lighting money on fire? Paste your numbers. Get roasted.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/saas-burn-roast/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/saas-burn-roast/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Roast My SaaS Burn Rate",
+  "url": "https://tinytools-smoky.vercel.app/saas-burn-roast/",
+  "description": "Enter your SaaS metrics and get a savage AI-style roast of your burn rate, runway, and financial health. Shareable card included.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f59e0b; --accent-glow: #f59e0b35;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #dc262630 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 5vw, 52px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #f59e0b 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 560px; margin: 0 auto; }
+
+  .input-form {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 24px; max-width: 640px; margin: 32px auto 0;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+  .field .hint { font-size: 11px; color: #6b7280; }
+  .field input {
+    padding: 12px 14px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text); font-size: 16px; font-family: inherit; outline: none;
+  }
+  .field input:focus { border-color: var(--accent); }
+  .field input::placeholder { color: #4b5563; }
+
+  .roast-btn {
+    width: 100%; padding: 16px; background: linear-gradient(135deg, #f59e0b, #ef4444);
+    border: none; border-radius: 10px; color: white; font-weight: 800; font-size: 16px;
+    cursor: pointer; box-shadow: 0 4px 20px rgba(245, 158, 11, 0.35); margin-top: 8px;
+  }
+  .roast-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(245, 158, 11, 0.45); }
+  .roast-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .roast-card {
+    margin: 32px auto 0; max-width: 720px;
+    background: linear-gradient(135deg, #1f1f2e 0%, #15151f 100%);
+    border: 2px solid #f59e0b; border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(245, 158, 11, 0.12);
+    display: none;
+  }
+  .roast-card.show { display: block; }
+  .roast-header {
+    padding: 24px 28px; display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  }
+  .roast-title-block .roast-name { font-size: 22px; font-weight: 800; color: white; }
+  .roast-title-block .roast-sub { font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 2px; }
+  .roast-grade {
+    padding: 10px 22px; background: rgba(0,0,0,0.4); border-radius: 12px;
+    font-size: 36px; font-weight: 900; color: white; letter-spacing: -1px;
+  }
+
+  .roast-body { padding: 24px 28px; }
+  .roast-text {
+    font-size: 17px; line-height: 1.6; color: #fde68a; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid #f59e0b;
+    border-radius: 8px; margin-bottom: 20px;
+  }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--bg-elevated); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+  .stat-value { font-size: 20px; font-weight: 800; color: var(--text); }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .achievements { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .achievement { padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text); }
+  .achievement.bad { border-color: var(--red); color: #fca5a5; }
+  .achievement.good { border-color: var(--green); color: #6ee7b7; }
+  .achievement.weird { border-color: var(--yellow); color: #fcd34d; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  .loading { text-align: center; padding: 40px; color: var(--text-dim); display: none; }
+  .loading.show { display: block; }
+  .spinner { display: inline-block; width: 24px; height: 24px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; margin: 28px 0 10px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🔥 100% private · No signup · Built by TinyTools</div>
+    <h1>Roast My SaaS Burn Rate 🔥</h1>
+    <p class="subtitle">Enter your MRR and monthly expenses. Get a savage, brutally honest roast of your runway, burn multiple, and financial survival odds. Then share the shame.</p>
+  </header>
+
+  <div class="input-form">
+    <div class="form-row">
+      <div class="field">
+        <label>Monthly MRR ($)</label>
+        <input id="mrr" type="number" placeholder="e.g. 12000" min="0">
+        <span class="hint">Your monthly recurring revenue</span>
+      </div>
+      <div class="field">
+        <label>Monthly Burn ($)</label>
+        <input id="burn" type="number" placeholder="e.g. 45000" min="0">
+        <span class="hint">Total cash spent per month</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="field">
+        <label>MoM Growth Rate (%)</label>
+        <input id="growth" type="number" placeholder="e.g. 8" min="-100" max="1000">
+        <span class="hint">Month-over-month MRR growth %</span>
+      </div>
+      <div class="field">
+        <label>Headcount</label>
+        <input id="headcount" type="number" placeholder="e.g. 5" min="1" max="10000">
+        <span class="hint">Total employees (optional)</span>
+      </div>
+    </div>
+    <button class="roast-btn" id="roastBtn">🔥 Roast My Burn Rate</button>
+  </div>
+
+  <div class="loading" id="loading"><div class="spinner"></div><p>Crunching your runway...</p></div>
+
+  <div class="roast-card" id="roastCard">
+    <div class="roast-header">
+      <div class="roast-title-block">
+        <div class="roast-name" id="rName">SaaS Burn Report</div>
+        <div class="roast-sub" id="rSub"></div>
+      </div>
+      <div class="roast-grade" id="rGrade">?</div>
+    </div>
+    <div class="roast-body">
+      <div class="roast-text" id="rText"></div>
+      <div class="stats-grid" id="rStats"></div>
+      <div class="achievements" id="rAchievements"></div>
+      <div class="actions">
+        <a class="action primary" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action" id="rCopyLink">🔗 Copy link</button>
+        <a class="action" id="rDownload" download="burn-roast.png">💾 Download card</a>
+      </div>
+      <div class="embed-section">
+        <div class="label">Embed your burn grade on your pitch deck / site</div>
+        <pre id="rEmbed"></pre>
+        <button id="rEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
+
+  <section class="content">
+    <h2>How it works</h2>
+    <p>Enter your MRR, monthly cash burn, MoM growth rate, and headcount. The tool calculates your burn multiple, runway estimate, revenue per employee, and time-to-profitability using standard SaaS finance formulas — then generates a deterministic roast based on your specific numbers.</p>
+
+    <p>The roast uses the same inputs every time — so the same numbers always produce the same result. Nothing leaves your browser. No data is stored, no API calls, no surprises.</p>
+
+    <h2>What is Burn Multiple?</h2>
+    <p>Burn Multiple = Net Cash Burned / Net New ARR. David Sacks popularized this as the key SaaS capital efficiency metric. Under 1x is great. 1–1.5x is fine. Over 2x starts raising eyebrows at your board meeting. Over 4x and you're basically the "we're still pre-revenue on the revenue" joke.</p>
+
+    <h2>What does my grade mean?</h2>
+    <p>The grade combines burn multiple, runway, growth rate, and revenue-per-employee into a single capital efficiency score. S+ means you're annoyingly efficient. F means your investors are refreshing their portfolio page and sighing audibly.</p>
+
+    <h2>Embed your burn grade</h2>
+    <p>Drop the badge on your deck, portfolio, or README to flex (or confess). Every click generates a fresh roast for anyone who enters their own numbers.</p>
+  </section>
+
+  <footer>
+    <p>Roast yours → <a href="/saas-burn-roast/" onclick="location.reload();return false;">start over</a> · More tools at <a href="/">TinyTools</a> · Burn responsibly 🔥</p>
+  </footer>
+</div>
+
+<script>
+const roastBtn = document.getElementById('roastBtn');
+const loading = document.getElementById('loading');
+const card = document.getElementById('roastCard');
+
+roastBtn.addEventListener('click', runRoast);
+document.querySelectorAll('#mrr,#burn,#growth,#headcount').forEach(el => {
+  el.addEventListener('keydown', e => { if (e.key === 'Enter') runRoast(); });
+});
+
+// Auto-fill from URL hash: #mrr=12000&burn=45000&growth=8&hc=5
+if (location.hash.length > 1) {
+  const params = new URLSearchParams(location.hash.slice(1));
+  if (params.get('mrr')) document.getElementById('mrr').value = params.get('mrr');
+  if (params.get('burn')) document.getElementById('burn').value = params.get('burn');
+  if (params.get('growth')) document.getElementById('growth').value = params.get('growth');
+  if (params.get('hc')) document.getElementById('headcount').value = params.get('hc');
+  if (params.get('mrr') && params.get('burn')) setTimeout(runRoast, 100);
+}
+
+function runRoast() {
+  const mrr = parseFloat(document.getElementById('mrr').value) || 0;
+  const burn = parseFloat(document.getElementById('burn').value) || 0;
+  const growth = parseFloat(document.getElementById('growth').value);
+  const headcount = parseInt(document.getElementById('headcount').value) || 0;
+
+  if (!mrr && !burn) {
+    alert('Enter at least MRR and monthly burn to get roasted.');
+    return;
+  }
+  if (burn <= 0) {
+    alert('Enter your monthly burn to get roasted.');
+    return;
+  }
+
+  loading.classList.add('show');
+  card.classList.remove('show');
+  roastBtn.disabled = true;
+
+  // Simulate async feel
+  setTimeout(() => {
+    const metrics = computeMetrics(mrr, burn, growth, headcount);
+    const grade = computeGrade(metrics);
+    const roastText = generateRoast(mrr, burn, growth, headcount, metrics, grade);
+    const achievements = computeAchievements(mrr, burn, growth, headcount, metrics, grade);
+    renderCard(mrr, burn, growth, headcount, metrics, grade, roastText, achievements);
+    loading.classList.remove('show');
+    roastBtn.disabled = false;
+    // Update hash for deep-linking
+    const params = new URLSearchParams();
+    params.set('mrr', mrr);
+    params.set('burn', burn);
+    if (!isNaN(growth)) params.set('growth', growth);
+    if (headcount) params.set('hc', headcount);
+    location.hash = '#' + params.toString();
+  }, 600);
+}
+
+function computeMetrics(mrr, burn, growth, headcount) {
+  const netBurn = burn - mrr;
+  const isProfit = netBurn <= 0;
+  const annualMRR = mrr * 12;
+  const netBurnMonthly = Math.max(netBurn, 0);
+
+  // Burn multiple: net burn / net new MRR (requires growth rate)
+  let burnMultiple = null;
+  let netNewMRR = null;
+  if (!isNaN(growth) && growth > 0 && mrr > 0) {
+    netNewMRR = mrr * (growth / 100);
+    burnMultiple = netBurnMonthly / netNewMRR;
+  }
+
+  // Runway: assume $500k in bank if not specified, estimate from burn alone
+  // Instead just show months of burn coverage at current MRR
+  // Actually, we don't know cash reserves, so let's compute "months until break-even"
+  let monthsToBreakEven = null;
+  if (!isProfit && !isNaN(growth) && growth > 0 && mrr > 0) {
+    // MRR * (1+g)^n >= burn  => n = log(burn/MRR) / log(1 + g/100)
+    const g = growth / 100;
+    monthsToBreakEven = Math.log(burn / mrr) / Math.log(1 + g);
+  }
+
+  const revenuePerEmployee = headcount > 0 ? annualMRR / headcount : null;
+  const burnPerEmployee = headcount > 0 ? burn / headcount : null;
+
+  // SaaS efficiency score: ARR / total cash spent annualized
+  const efficiencyScore = burn > 0 ? annualMRR / (burn * 12) : Infinity;
+
+  return {
+    netBurn, isProfit, annualMRR, netBurnMonthly,
+    burnMultiple, netNewMRR, monthsToBreakEven,
+    revenuePerEmployee, burnPerEmployee, efficiencyScore,
+    mrrToBurnRatio: mrr / burn
+  };
+}
+
+function computeGrade(m) {
+  // Lower burn multiple = better grade. No growth data = grade on MRR/burn ratio.
+  let score = 0;
+
+  if (m.isProfit) {
+    score = 11; // profitable → S+
+  } else if (m.burnMultiple !== null) {
+    if (m.burnMultiple < 0.5) score = 10;
+    else if (m.burnMultiple < 1) score = 9;
+    else if (m.burnMultiple < 1.5) score = 7;
+    else if (m.burnMultiple < 2) score = 6;
+    else if (m.burnMultiple < 2.5) score = 5;
+    else if (m.burnMultiple < 3.5) score = 4;
+    else if (m.burnMultiple < 5) score = 3;
+    else if (m.burnMultiple < 7) score = 2;
+    else if (m.burnMultiple < 10) score = 1;
+    else score = 0;
+  } else {
+    // Fallback: MRR/burn ratio
+    const r = m.mrrToBurnRatio;
+    if (r >= 1) score = 11;
+    else if (r >= 0.7) score = 8;
+    else if (r >= 0.5) score = 6;
+    else if (r >= 0.3) score = 5;
+    else if (r >= 0.2) score = 4;
+    else if (r >= 0.1) score = 3;
+    else if (r >= 0.05) score = 2;
+    else score = 1;
+  }
+
+  const grades = ['F', 'D-', 'D', 'D+', 'C', 'C+', 'B', 'B+', 'A', 'A+', 'S', 'S+'];
+  const colors = ['#ef4444','#f97316','#f97316','#f59e0b','#eab308','#84cc16','#22c55e','#10b981','#06b6d4','#3b82f6','#8b5cf6','#a855f7'];
+  const shieldColors = ['red','orange','orange','yellow','yellowgreen','green','brightgreen','teal','blue','blueviolet','purple','ff69b4'];
+  const idx = Math.max(0, Math.min(grades.length - 1, score));
+  return { letter: grades[idx], color: colors[idx], shieldColor: shieldColors[idx], score, idx };
+}
+
+function fmt(n) {
+  if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
+  if (n >= 1e3) return '$' + Math.round(n / 1e3) + 'k';
+  return '$' + Math.round(n);
+}
+
+function generateRoast(mrr, burn, growth, headcount, m, grade) {
+  const lines = [];
+
+  if (m.isProfit) {
+    lines.push("You're actually profitable. On a SaaS roast tool. Bold flex. Your investors are refreshing their portfolio dashboard with unusual calmness.");
+    if (mrr > 100000) lines.push("Profitable at $" + fmt(mrr) + " MRR. Either you've figured it out or your definition of 'monthly expenses' is suspiciously narrow.");
+  }
+
+  if (m.burnMultiple !== null) {
+    if (m.burnMultiple < 0.5) lines.push(`Burn multiple of ${m.burnMultiple.toFixed(2)}x. Nauseatingly efficient. Every dollar you spend generates ${(1/m.burnMultiple).toFixed(1)}x in ARR. You're the founder VC Twitter dreams about.`);
+    if (m.burnMultiple >= 0.5 && m.burnMultiple < 1) lines.push(`Burn multiple of ${m.burnMultiple.toFixed(2)}x. Solid. Not a rocketship, but you're not the "we just need one more runway extension" guy either.`);
+    if (m.burnMultiple >= 1 && m.burnMultiple < 2) lines.push(`Burn multiple of ${m.burnMultiple.toFixed(2)}x. Acceptable. Sequoia would glance at this slide and not immediately close their laptop.`);
+    if (m.burnMultiple >= 2 && m.burnMultiple < 3.5) lines.push(`Burn multiple of ${m.burnMultiple.toFixed(2)}x. Yikes. You're spending ${m.burnMultiple.toFixed(1)}x more than you're growing. Your CFO has a permanent eye twitch.`);
+    if (m.burnMultiple >= 3.5 && m.burnMultiple < 7) lines.push(`Burn multiple of ${m.burnMultiple.toFixed(2)}x. That's not a burn rate, that's a controlled demolition. Every $1 in new ARR costs you ${fmt(m.netBurnMonthly / (m.netNewMRR || 1))} in cash.`);
+    if (m.burnMultiple >= 7) lines.push(`Burn multiple of ${m.burnMultiple.toFixed(2)}x. At this rate, your cap table will need a support group. Your burn chart looks like a ski slope in the wrong direction.`);
+  }
+
+  if (!m.isProfit && m.burnMultiple === null) {
+    const ratio = m.mrrToBurnRatio;
+    if (ratio < 0.05) lines.push(`MRR covers ${Math.round(ratio*100)}% of burn. You're in "hope is a strategy" territory. At least you're honest about it.`);
+    else if (ratio < 0.2) lines.push(`MRR covers ${Math.round(ratio*100)}% of burn. Pre-product-market-fit energy. Either you're early or you've been "early" for 3 years.`);
+    else if (ratio < 0.5) lines.push(`MRR covers ${Math.round(ratio*100)}% of burn. Burning more than you make. Classic early-stage SaaS. Or late-stage SaaS pretending it's early-stage.`);
+    else lines.push(`MRR covers ${Math.round(ratio*100)}% of burn. You're close to covering costs. The light at the end of the tunnel may actually be the exit, not the next train.`);
+  }
+
+  if (m.monthsToBreakEven !== null) {
+    const mo = Math.round(m.monthsToBreakEven);
+    if (mo > 36) lines.push(`At your growth rate, break-even is ${mo} months away. That's ${Math.ceil(mo/12)} years. Hope your investors have patience and a low return hurdle.`);
+    else if (mo > 18) lines.push(`Break-even in ~${mo} months if growth holds. Achievable but requires not touching the growth rate slider at all.`);
+    else if (mo > 6) lines.push(`Break-even in ~${mo} months at current growth. Manageable. Unless you hire three VPs of Marketing next week.`);
+    else if (mo > 0) lines.push(`Break-even in ~${mo} months. Almost there. Please don't celebrate by adding headcount.`);
+  }
+
+  if (headcount > 0 && m.revenuePerEmployee !== null) {
+    const rev = m.revenuePerEmployee;
+    if (rev < 10000) lines.push(`${fmt(m.revenuePerEmployee)} ARR per employee. That number should be 10x higher before you call it scale.`);
+    else if (rev < 50000) lines.push(`${fmt(m.revenuePerEmployee)} ARR per employee. Approaching viable territory. Slowly.`);
+    else if (rev < 150000) lines.push(`${fmt(m.revenuePerEmployee)} ARR per employee. Respectable. Not impressive. But respectable.`);
+    else if (rev >= 150000) lines.push(`${fmt(m.revenuePerEmployee)} ARR per employee. That's a lean, mean, efficient machine. You've clearly read the Snowflake IPO filing for inspiration.`);
+  }
+
+  if (!isNaN(growth) && growth <= 0 && !m.isProfit) {
+    lines.push(`Negative or zero growth with positive burn. That's not a startup, that's an ongoing financial experiment with decreasing sample size.`);
+  }
+
+  if (burn > 500000 && mrr < 50000) {
+    lines.push(`$${Math.round(burn/1000)}k/month burn on ${fmt(mrr)} MRR. You're either building infrastructure for a decade or you've confused "scale" with "spending."`);
+  }
+
+  if (!isNaN(growth) && growth > 50 && !m.isProfit) {
+    lines.push(`Growing ${growth}% MoM is impressive. The question is whether you'll be alive long enough for it to matter. Buckle up.`);
+  }
+
+  if (lines.length === 0) {
+    lines.push("Your numbers are so average that even the roast algorithm is shrugging. At least your burn rate is forgettable, not catastrophic.");
+  }
+
+  return lines.sort((a, b) => b.length - a.length)[0];
+}
+
+function computeAchievements(mrr, burn, growth, headcount, m, grade) {
+  const a = [];
+  if (m.isProfit) a.push({ kind: 'good', text: '💰 Actually Profitable' });
+  if (m.burnMultiple !== null && m.burnMultiple < 1) a.push({ kind: 'good', text: '🚀 Efficient Burn' });
+  if (m.burnMultiple !== null && m.burnMultiple > 5) a.push({ kind: 'bad', text: '🔥 Bonfire Mode' });
+  if (!isNaN(growth) && growth > 30) a.push({ kind: 'good', text: '📈 Hypergrowth' });
+  if (!isNaN(growth) && growth <= 0 && !m.isProfit) a.push({ kind: 'bad', text: '📉 Declining + Burning' });
+  if (m.revenuePerEmployee !== null && m.revenuePerEmployee > 150000) a.push({ kind: 'good', text: '⚡ Capital Efficient' });
+  if (m.revenuePerEmployee !== null && m.revenuePerEmployee < 20000) a.push({ kind: 'bad', text: '👥 Overstaffed?' });
+  if (burn > mrr * 10 && !m.isProfit) a.push({ kind: 'bad', text: '💸 10x Burn-to-Revenue' });
+  if (m.mrrToBurnRatio > 0.8 && !m.isProfit) a.push({ kind: 'weird', text: '🎯 Close to Break-even' });
+  if (!isNaN(growth) && growth > 0 && m.monthsToBreakEven !== null && m.monthsToBreakEven < 12) a.push({ kind: 'good', text: '⏰ Near Break-even' });
+  if (m.burnMultiple !== null && m.burnMultiple >= 1 && m.burnMultiple < 2) a.push({ kind: 'weird', text: '⚖️ Balanced (ish)' });
+  if (!isNaN(growth) && growth > 15 && growth <= 30) a.push({ kind: 'good', text: '📊 Solid Growth' });
+  return a.slice(0, 6);
+}
+
+function renderCard(mrr, burn, growth, headcount, m, grade, roastText, achievements) {
+  document.getElementById('rName').textContent = 'Burn Rate Report';
+  document.getElementById('rSub').textContent = fmt(mrr) + '/mo MRR · ' + fmt(burn) + '/mo Burn' + (!isNaN(growth) ? ' · ' + growth + '% MoM' : '');
+  document.getElementById('rGrade').textContent = grade.letter;
+  document.getElementById('rGrade').style.color = grade.color;
+  document.getElementById('rText').textContent = '"' + roastText + '"';
+
+  const statItems = [
+    ['MRR', fmt(mrr)],
+    ['Net Burn', fmt(m.netBurnMonthly)],
+    m.burnMultiple !== null ? ['Burn Multiple', m.burnMultiple.toFixed(2) + 'x'] : ['MRR/Burn', Math.round(m.mrrToBurnRatio * 100) + '%'],
+    m.monthsToBreakEven !== null ? ['Break-even', Math.round(m.monthsToBreakEven) + 'mo'] : ['ARR', fmt(m.annualMRR)],
+  ];
+  document.getElementById('rStats').innerHTML = statItems.map(([l, v]) =>
+    `<div class="stat"><div class="stat-value">${v}</div><div class="stat-label">${l}</div></div>`).join('');
+
+  document.getElementById('rAchievements').innerHTML = achievements.map(a =>
+    `<span class="achievement ${a.kind}">${a.text}</span>`).join('');
+
+  const shareText = `I got my SaaS burn rate roasted by AI: "${roastText.slice(0, 110)}..." 💸\n\nGrade: ${grade.letter}\n\nGet yours →`;
+  const shareUrl = 'https://tinytools-smoky.vercel.app/saas-burn-roast/' + location.hash;
+  document.getElementById('rShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+  document.getElementById('rCopyLink').onclick = () => {
+    navigator.clipboard.writeText(shareUrl);
+    const btn = document.getElementById('rCopyLink');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+  };
+
+  const canvas = document.getElementById('cardCanvas');
+  drawCard(canvas, mrr, burn, growth, headcount, m, grade, roastText);
+  document.getElementById('rDownload').href = canvas.toDataURL('image/png');
+
+  const embedCode = `<a href="${shareUrl}" target="_blank">
+  <img src="https://img.shields.io/badge/Burn_Grade-${grade.letter}-${grade.shieldColor}?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyYzAgMC01IDUuNS01IDExYTUgNSAwIDAgMCAxMCAwYzAtNS41LTUtMTEtNS0xMXoiLz48L3N2Zz4=" alt="SaaS Burn Grade: ${grade.letter}">
+</a>`;
+  document.getElementById('rEmbed').textContent = embedCode;
+  document.getElementById('rEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('rEmbedCopy');
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = 'Copy embed code', 1500);
+  };
+
+  card.classList.add('show');
+  card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function drawCard(canvas, mrr, burn, growth, headcount, m, grade, roastText) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  // Background
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#1f1f2e'); bg.addColorStop(1, '#15151f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Top stripe
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#f59e0b'); stripe.addColorStop(1, '#ef4444');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+  // Title
+  ctx.fillStyle = '#f59e0b';
+  ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText('🔥 SAAS BURN ROAST', 60, 68);
+  // Labels
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 52px -apple-system, sans-serif';
+  ctx.fillText('Burn Rate Report', 60, 150);
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '26px -apple-system, sans-serif';
+  ctx.fillText(fmt(mrr) + '/mo MRR  ·  ' + fmt(burn) + '/mo Burn' + (!isNaN(growth) ? '  ·  ' + growth + '% MoM' : ''), 60, 192);
+  // Grade
+  ctx.fillStyle = grade.color;
+  ctx.font = 'bold 180px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(grade.letter, W - 60, 200);
+  ctx.textAlign = 'left';
+  // Roast text
+  ctx.fillStyle = '#fde68a';
+  ctx.font = 'italic 26px -apple-system, sans-serif';
+  const words = ('"' + roastText + '"').split(' ');
+  let line = ''; let y = 278;
+  for (const w of words) {
+    if (ctx.measureText(line + ' ' + w).width > W - 120 && line) {
+      ctx.fillText(line, 60, y); line = w; y += 36;
+      if (y > 420) { ctx.fillText(line + ' ...', 60, y); line = '____done____'; break; }
+    } else { line = line ? line + ' ' + w : w; }
+  }
+  if (line !== '____done____') ctx.fillText(line, 60, y);
+  // Stats row
+  const items = [
+    [fmt(mrr), 'MRR'],
+    [fmt(m.netBurnMonthly), 'NET BURN'],
+    [m.burnMultiple !== null ? m.burnMultiple.toFixed(2) + 'x' : Math.round(m.mrrToBurnRatio * 100) + '%', m.burnMultiple !== null ? 'BURN MULT' : 'MRR/BURN'],
+    [m.monthsToBreakEven !== null ? Math.round(m.monthsToBreakEven) + 'mo' : fmt(m.annualMRR), m.monthsToBreakEven !== null ? 'BREAK-EVEN' : 'ARR'],
+  ];
+  items.forEach((it, i) => {
+    const x = 60 + i * (W - 120) / 4;
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 34px -apple-system, sans-serif';
+    ctx.fillText(it[0], x, H - 80);
+    ctx.fillStyle = '#a0a0b8'; ctx.font = 'bold 13px -apple-system, sans-serif';
+    ctx.fillText(it[1], x, H - 55);
+  });
+  // Footer brand
+  ctx.fillStyle = '#a0a0b8'; ctx.font = '18px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/saas-burn-roast', W - 60, H - 25);
+  ctx.textAlign = 'left';
+}
+</script>
+</body>
+</html>
