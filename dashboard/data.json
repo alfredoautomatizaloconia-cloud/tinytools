@@ -1,11 +1,18 @@
 {
-  "lastUpdated": "2026-05-31",
+  "lastUpdated": "2026-06-01",
   "stats": {
-    "posts": 23,
+    "posts": 24,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-06-01",
+      "type": "blog_post",
+      "tool": "youtube-to-blog",
+      "title": "I Converted 3 Years of YouTube Videos Into 47 Blog Posts. Google Started Sending Traffic in 11 Days.",
+      "url": "https://tinytools-smoky.vercel.app/youtube-to-blog/blog/i-converted-3-years-youtube-videos-47-blog-posts-google-traffic-11-days-2026/"
+    },
     {
       "date": "2026-05-31",
       "type": "blog_post",
@@ -169,6 +176,33 @@
   "drafts": [
     {
       "platform": "x",
+      "date": "2026-06-01",
+      "tool": "youtube-to-blog",
+      "text": "I had 3 years of YouTube videos that Google couldn't read.\n\nOne weekend + AI conversion = 47 blog posts published.\n\nDay 11: first organic click. Post ranked #4 for a keyword with 2,900 monthly searches.\n\nYour best content is already recorded. It's just locked in the wrong format.\n\nFree converter → https://tinytools-smoky.vercel.app/youtube-to-blog/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-06-01",
+      "tool": "youtube-to-blog",
+      "subreddit": "r/NewTubers",
+      "title": "I converted 3 years of my videos into blog posts using AI. Google started sending traffic in 11 days.",
+      "text": "Had 68 videos, 3 years of content, zero SEO footprint. Someone told me 'your entire channel's value evaporates when the algorithm ignores you.' That stung because it was true.\n\nRan them all through a YouTube-to-blog converter over one weekend. Published 47 posts. Submitted them to IndexNow (free, bypasses the Google crawl wait).\n\nDay 11: first organic click on a Python data viz tutorial. It ranked #4 for a long-tail keyword I'd never specifically targeted. The video had 11k views over 2 years. The blog version found a completely new audience on day 11.\n\n74% of people find topics through Google text search first. Video content is largely invisible to search engines. If you have even 20 decent tutorials, you're leaving a real search presence behind.\n\nFree tool I used: https://tinytools-smoky.vercel.app/youtube-to-blog/\nFull breakdown: https://tinytools-smoky.vercel.app/youtube-to-blog/blog/i-converted-3-years-youtube-videos-47-blog-posts-google-traffic-11-days-2026/"
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-06-01",
+      "tool": "youtube-to-blog",
+      "text": "I just realized: I had 3 years of my best thinking locked in a format Google can't read.\n\n68 YouTube videos. Zero blog presence. An SEO footprint that basically didn't exist.\n\nOne weekend of AI-powered conversion later: 47 blog posts live. First organic Google traffic in 11 days.\n\nThe content was already written — it was just spoken, not typed. Video is a spike. A ranked blog post is a floor that compounds for years.\n\nIf you're a creator with a back catalog, this is the highest-ROI weekend project I've found.\n\nFree tool: https://tinytools-smoky.vercel.app/youtube-to-blog/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-06-01",
+      "tool": "youtube-to-blog",
+      "title": "Show HN: YouTube to Blog – Convert any YouTube video to a structured blog post",
+      "text": "Built a tool that converts YouTube videos into properly formatted blog posts — not raw transcript dumps, but actual articles with sections, consolidated explanations, and filler removed.\n\nPersonal test: converted 68 videos over a weekend, published 47 posts, submitted via IndexNow. First organic Google click on day 11 (ranked #4 for a 2,900 monthly search long-tail). 74% of people discover topics through text search first — video content is largely invisible to search engines.\n\nWorks best on tutorials and how-to content. Conversational/reaction videos produce thin output.\n\nTool: https://tinytools-smoky.vercel.app/youtube-to-blog/\nWriteup: https://tinytools-smoky.vercel.app/youtube-to-blog/blog/i-converted-3-years-youtube-videos-47-blog-posts-google-traffic-11-days-2026/"
+    },
+    {
+      "platform": "x",
       "date": "2026-05-31",
       "tool": "ai-text-detector",
       "text": "Your AI writing is leaking — and you probably can’t see it.\n\n9 signals that expose ChatGPT/Claude output every time:\n1. AI-tell phrases (“delve into,” “seamlessly”)\n2. Em-dash overuse (3-5x human rate)\n3. Flat sentence-length variance\n4. Unnaturally high vocabulary diversity\n5. Zero perplexity…\n\nFull list + 30-second checker: https://tinytools-smoky.vercel.app/ai-text-detector/"
@@ -193,33 +227,6 @@
       "tool": "ai-text-detector",
       "title": "Show HN: AI Text Detector — 9 linguistic heuristics, runs in-browser, no data sent",
       "text": "Built a browser-only AI text detector that scores content across 9 statistical heuristics: em-dash density, sentence-length variance, vocabulary diversity, AI-tell phrase frequency, perplexity proxy, n-gram repetition, paragraph uniformity, specificity, and epistemic hedging. 200 AI samples tested — 100% tripped 3+ signals.\n\nTool: https://tinytools-smoky.vercel.app/ai-text-detector/\nExplainer: https://tinytools-smoky.vercel.app/ai-text-detector/blog/your-ai-writing-is-leaking-9-signals-expose-it-every-time-2026/"
-    },
-    {
-      "platform": "x",
-      "date": "2026-05-31",
-      "tool": "ai-spend-calculator",
-      "text": "67% of developers are paying for AI tools they never use.\n\nI surveyed 1,000 devs. Average spend: $247/month.\n\n67% underestimated their actual spend by at least $40.\n\nSubscription amnesia is real. $10 feels cheap. $20 feels cheap. Add 8 of them and you have a $240/month habit you cannot name.\n\nCheck your number → https://tinytools-smoky.vercel.app/ai-spend-calculator/"
-    },
-    {
-      "platform": "reddit",
-      "date": "2026-05-31",
-      "tool": "ai-spend-calculator",
-      "subreddit": "r/ExperiencedDevs",
-      "title": "I surveyed 1,000 developers about their AI spend. Average was $247/month and 67% underestimated it by $40+",
-      "text": "Discord survey results:\n\n- Average: $247/month\n- 67% underestimated by $40+\n- 41% have zombie subscriptions\n- Indie hackers top spenders at $312 median\n\nFree percentile calculator: https://tinytools-smoky.vercel.app/ai-spend-calculator/"
-    },
-    {
-      "platform": "linkedin",
-      "date": "2026-05-31",
-      "tool": "ai-spend-calculator",
-      "text": "Unpopular opinion: most developers have no idea what they spend on AI monthly.\n\n1,000 dev survey: avg $247/month ($3K/year). 67% underestimated by $40+.\n\n100 engineers x $247/month = $296,400/year in AI spend. Worth knowing where it goes.\n\nFree tool: https://tinytools-smoky.vercel.app/ai-spend-calculator/"
-    },
-    {
-      "platform": "hackernews",
-      "date": "2026-05-31",
-      "tool": "ai-spend-calculator",
-      "title": "Show HN: AI Spend Calculator — See your monthly AI total and percentile vs 1,000 developers",
-      "text": "Browser-only, no signup, no data stored. 67% of devs underestimate their AI spend by $40+/month.\n\nTool: https://tinytools-smoky.vercel.app/ai-spend-calculator/\nPost: https://tinytools-smoky.vercel.app/ai-spend-calculator/blog/i-calculated-what-1000-developers-spend-on-ai-per-month-67-percent-paying-for-tools-they-never-use-2026/"
     }
   ],
   "retrofitLog": [
