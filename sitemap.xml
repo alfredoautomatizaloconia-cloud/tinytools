@@ -363,6 +363,12 @@ urlset>/  <url>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -1479,5 +1485,11 @@ urlset>/  <url>
     <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
