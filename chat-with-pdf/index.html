@@ -177,6 +177,41 @@
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
     text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
+
+  /* ── Viral mechanics ─────────────────────────────────────────── */
+  .viral-panel {
+    display: none; margin-top: 12px; padding: 16px;
+    background: var(--bg-elevated); border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  .viral-panel.show { display: block; }
+  .viral-panel .viral-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--text-dim); margin-bottom: 10px;
+  }
+  .viral-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .viral-btn {
+    padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-card);
+    color: var(--text); text-decoration: none; display: inline-flex;
+    align-items: center; gap: 6px; transition: all 0.15s;
+  }
+  .viral-btn:hover { border-color: var(--accent); }
+  .viral-btn.primary { background: #1d9bf0; border-color: #1d9bf0; color: #fff; }
+  .viral-btn.primary:hover { background: #1a8fd1; }
+  .embed-section { margin-top: 10px; }
+  .embed-section .embed-label { font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--text-dim); margin-bottom: 6px; }
+  .embed-section pre {
+    font-family: 'SF Mono', Monaco, monospace; font-size: 11px;
+    background: #000; padding: 10px; border-radius: 6px;
+    color: #86efac; overflow-x: auto; margin: 0;
+  }
+  .embed-section .copy-embed-btn {
+    margin-top: 6px; padding: 5px 12px; background: var(--accent);
+    border: none; border-radius: 6px; color: white; font-size: 12px;
+    cursor: pointer; font-weight: 600;
+  }
 </style>
 </head>
 <body>
@@ -269,7 +304,24 @@
       <a href="#" id="upsell-anthropic" target="_blank" rel="noopener">Anthropic</a> if you prefer Claude's long-context reasoning.
       <em>(Affiliate links — no extra cost to you.)</em>
     </div>
+
+    <!-- ── Viral panel (shown after first answer) ── -->
+    <div class="viral-panel" id="viralPanel">
+      <div class="viral-label">📤 Share your privacy win</div>
+      <div class="viral-actions">
+        <a class="viral-btn primary" id="vShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="viral-btn" id="vCopyLink">🔗 Copy link</button>
+        <a class="viral-btn" id="vDownload" download="chat-with-pdf-card.png">💾 Download card</a>
+      </div>
+      <div class="embed-section">
+        <div class="embed-label">Embed badge on your site or README</div>
+        <pre id="vEmbed"></pre>
+        <button class="copy-embed-btn" id="vEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
   </div>
+
+  <canvas id="shareCanvas" width="1200" height="630" style="display:none;"></canvas>
 
   <section class="content">
     <h2>Chat with PDF — without uploading your PDF anywhere</h2>
@@ -581,6 +633,8 @@ async function ask() {
     const out = await callLLM(built.sys, built.user);
     history.push({ role: 'assistant', content: out, cites: pagesUsed });
     renderChat();
+    showViralPanel();
+    location.hash = '#q=' + encodeURIComponent(q);
   } catch (e) {
     history.pop();
     setStatus(e.message, 'error');
@@ -597,6 +651,139 @@ $('question').addEventListener('keydown', function(e){
 Array.prototype.forEach.call(document.querySelectorAll('.suggestion'), function(el){
   el.addEventListener('click', function(){ $('question').value = el.getAttribute('data-q'); ask(); });
 });
+
+// ── Viral mechanics ────────────────────────────────────────────
+
+// Auto-load question from URL hash: #q=your+question
+(function() {
+  var h = location.hash;
+  if (h && h.length > 1) {
+    var m = h.slice(1).match(/^q=(.+)$/);
+    if (m) {
+      try { $('question').value = decodeURIComponent(m[1].replace(/\+/g,' ')); } catch(e) {}
+    }
+  }
+})();
+
+function drawShareCard(pdfName, pages, questions) {
+  var canvas = $('shareCanvas');
+  var ctx = canvas.getContext('2d');
+  var W = 1200, H = 630;
+
+  // Background
+  ctx.fillStyle = '#0a0a0f';
+  ctx.fillRect(0, 0, W, H);
+
+  // Accent gradient blobs
+  var g1 = ctx.createRadialGradient(250, 0, 0, 250, 0, 400);
+  g1.addColorStop(0, '#0ea5e940');
+  g1.addColorStop(1, 'transparent');
+  ctx.fillStyle = g1; ctx.fillRect(0, 0, W, H);
+
+  var g2 = ctx.createRadialGradient(950, 400, 0, 950, 400, 380);
+  g2.addColorStop(0, '#8b5cf640');
+  g2.addColorStop(1, 'transparent');
+  ctx.fillStyle = g2; ctx.fillRect(0, 0, W, H);
+
+  // Border
+  ctx.strokeStyle = '#2a2a3a';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(1, 1, W-2, H-2);
+
+  // Icon
+  ctx.font = '80px serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('📄💬', 72, 160);
+
+  // Title
+  ctx.fillStyle = '#f5f5fa';
+  ctx.font = 'bold 64px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+  ctx.fillText('Chat with PDF', 72, 250);
+
+  // PDF name
+  var pdfDisplay = pdfName && pdfName.length > 42 ? pdfName.slice(0,42)+'…' : (pdfName || 'Document');
+  ctx.fillStyle = '#0ea5e9';
+  ctx.font = '28px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+  ctx.fillText('"' + pdfDisplay + '"', 72, 310);
+
+  // Stats row
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '26px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+  ctx.fillText(pages + ' pages  ·  ' + questions + ' question' + (questions !== 1 ? 's' : '') + ' asked', 72, 370);
+
+  // Privacy badge
+  ctx.fillStyle = '#15151f';
+  ctx.beginPath();
+  ctx.roundRect(72, 400, 520, 62, 12);
+  ctx.fill();
+  ctx.strokeStyle = '#2a2a3a';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+  ctx.fillStyle = '#22c55e';
+  ctx.font = 'bold 22px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+  ctx.fillText('✓  Zero uploads · Your data stayed on your device', 96, 439);
+
+  // CTA
+  ctx.fillStyle = '#f5f5fa';
+  ctx.font = '28px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+  ctx.fillText('Try free →  tinytools-smoky.vercel.app/chat-with-pdf/', 72, 530);
+
+  // TinyTools branding
+  ctx.textAlign = 'right';
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '20px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+  ctx.fillText('TinyTools', W - 40, H - 30);
+
+  return canvas.toDataURL('image/png');
+}
+
+function showViralPanel() {
+  if (!pdfData) return;
+  var panel = $('viralPanel');
+  panel.classList.add('show');
+
+  var pages = pdfData.pages || 0;
+  var qCount = history.filter(function(m){ return m.role === 'user'; }).length;
+  var pdfName = pdfData.name || 'document';
+  var shareUrl = 'https://tinytools-smoky.vercel.app/chat-with-pdf/';
+  var shareText = 'I just chatted with a ' + pages + '-page PDF without uploading it anywhere — 100% in-browser, BYOK. Try it free →';
+
+  // Share button
+  $('vShare').href = 'https://twitter.com/intent/tweet?text=' +
+    encodeURIComponent(shareText) + '&url=' + encodeURIComponent(shareUrl);
+
+  // Copy-link button (deep-links the last user question)
+  var lastQ = '';
+  for (var i = history.length - 1; i >= 0; i--) {
+    if (history[i].role === 'user') { lastQ = history[i].content; break; }
+  }
+  var deepLink = shareUrl + '#q=' + encodeURIComponent(lastQ);
+  $('vCopyLink').onclick = function() {
+    navigator.clipboard.writeText(deepLink);
+    $('vCopyLink').textContent = '✓ Copied!';
+    setTimeout(function(){ $('vCopyLink').textContent = '🔗 Copy link'; }, 1500);
+  };
+
+  // PNG download card
+  var dataUrl = drawShareCard(pdfName, pages, qCount);
+  $('vDownload').href = dataUrl;
+
+  // Embed badge
+  var badgeLabel = encodeURIComponent('Chat with PDF');
+  var badgeMsg = encodeURIComponent('Zero_Upload');
+  var embedCode = '<a href="' + shareUrl + '" target="_blank">\n' +
+    '  <img src="https://img.shields.io/badge/' + badgeLabel + '-' + badgeMsg +
+    '-0ea5e9?style=for-the-badge&logo=adobeacrobatreader" alt="Chat with PDF — Zero Upload">\n</a>';
+  $('vEmbed').textContent = embedCode;
+
+  $('vEmbedCopy').onclick = function() {
+    navigator.clipboard.writeText(embedCode);
+    $('vEmbedCopy').textContent = '✓ Copied';
+    setTimeout(function(){ $('vEmbedCopy').textContent = 'Copy embed code'; }, 1500);
+  };
+
+  panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
 </script>
 </body>
 </html>
