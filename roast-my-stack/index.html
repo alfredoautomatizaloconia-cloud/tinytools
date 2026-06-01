@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roast My Tech Stack — AI Roasts Your Architecture Choices (Free)</title>
+<meta name="description" content="Describe your tech stack and get a savage AI roast of your framework choices, over-engineering, legacy decisions, and hipster picks. Shareable card. Free, brutal, no signup.">
+<meta name="keywords" content="roast my tech stack, tech stack roast, programming language roast, framework roast, over-engineering ai, stack grade, developer roast, architecture roast">
+<meta property="og:title" content="Roast My Tech Stack — AI Judges Your Architecture Choices">
+<meta property="og:description" content="Kubernetes for a todo app? Microservices from day one? Let AI roast your stack choices.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/roast-my-stack/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/roast-my-stack/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Roast My Tech Stack",
+  "url": "https://tinytools-smoky.vercel.app/roast-my-stack/",
+  "description": "Describe your tech stack and get a savage AI roast of your framework choices, over-engineering, and hipster picks. Shareable card included.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #06b6d4; --accent-glow: #06b6d430;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #7c3aed30 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 5vw, 52px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #06b6d4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 560px; margin: 0 auto; }
+
+  .input-form {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 24px; max-width: 680px; margin: 32px auto 0;
+  }
+  .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+  .field label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+  .field .hint { font-size: 11px; color: #6b7280; }
+  .field textarea {
+    padding: 12px 14px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text); font-size: 15px; font-family: inherit; outline: none;
+    resize: vertical; min-height: 90px;
+  }
+  .field textarea:focus { border-color: var(--accent); }
+  .field textarea::placeholder { color: #4b5563; }
+  .field input {
+    padding: 12px 14px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text); font-size: 15px; font-family: inherit; outline: none;
+  }
+  .field input:focus { border-color: var(--accent); }
+  .field input::placeholder { color: #4b5563; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+
+  .example-btns { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .example-btn {
+    padding: 4px 10px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 12px; color: var(--text-dim); cursor: pointer; transition: all 0.1s;
+  }
+  .example-btn:hover { border-color: var(--accent); color: var(--text); }
+
+  .roast-btn {
+    width: 100%; padding: 16px; background: linear-gradient(135deg, #06b6d4, #7c3aed);
+    border: none; border-radius: 10px; color: white; font-weight: 800; font-size: 16px;
+    cursor: pointer; box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3); margin-top: 8px;
+  }
+  .roast-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(6, 182, 212, 0.4); }
+  .roast-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .roast-card {
+    margin: 32px auto 0; max-width: 720px;
+    background: linear-gradient(135deg, #1f1f2e 0%, #15151f 100%);
+    border: 2px solid #06b6d4; border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(6, 182, 212, 0.12);
+    display: none;
+  }
+  .roast-card.show { display: block; }
+  .roast-header {
+    padding: 24px 28px; display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(135deg, #06b6d4 0%, #7c3aed 100%);
+  }
+  .roast-title-block .roast-name { font-size: 20px; font-weight: 800; color: white; }
+  .roast-title-block .roast-sub { font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 2px; }
+  .roast-grade {
+    padding: 10px 22px; background: rgba(0,0,0,0.4); border-radius: 12px;
+    font-size: 34px; font-weight: 900; color: white; letter-spacing: -1px;
+  }
+
+  .roast-body { padding: 24px 28px; }
+  .roast-text {
+    font-size: 17px; line-height: 1.6; color: #bfdbfe; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid #06b6d4;
+    border-radius: 8px; margin-bottom: 20px;
+  }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--bg-elevated); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+  .stat-value { font-size: 18px; font-weight: 800; color: var(--text); }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .achievements { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .achievement { padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text); }
+  .achievement.bad { border-color: var(--red); color: #fca5a5; }
+  .achievement.good { border-color: var(--green); color: #6ee7b7; }
+  .achievement.weird { border-color: var(--yellow); color: #fcd34d; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  .loading { text-align: center; padding: 40px; color: var(--text-dim); display: none; }
+  .loading.show { display: block; }
+  .spinner { display: inline-block; width: 24px; height: 24px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; margin: 28px 0 10px; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🏗️ No signup · 100% private · Built by TinyTools</div>
+    <h1>Roast My Tech Stack 🏗️</h1>
+    <p class="subtitle">Describe your stack. Get savagely judged on your framework choices, over-engineering, hipster picks, and legacy trauma. Share the verdict.</p>
+  </header>
+
+  <div class="input-form">
+    <div class="field">
+      <label>Your Stack (describe it freely or list tools)</label>
+      <textarea id="stackInput" placeholder="e.g. Next.js, TypeScript, Prisma, PostgreSQL, Redis, Kubernetes, AWS, Tailwind, tRPC, React Query...&#10;Or: Python FastAPI backend, React frontend, MongoDB, deployed on Railway"></textarea>
+      <span class="hint">List languages, frameworks, databases, infra, tools — anything in your stack</span>
+      <div class="example-btns">
+        <button class="example-btn" data-stack="React, Node.js, MongoDB, Express, deployed on Heroku">MERN Heroku</button>
+        <button class="example-btn" data-stack="Next.js, TypeScript, Prisma, PostgreSQL, Vercel, Tailwind, tRPC, Redis, Docker, Kubernetes, AWS EKS">Next.js Enterprise</button>
+        <button class="example-btn" data-stack="PHP 5.6, jQuery, MySQL, Apache, cPanel shared hosting">The Classic</button>
+        <button class="example-btn" data-stack="Rust, WebAssembly, GraphQL, Kafka, Cassandra, Kubernetes, Terraform, Istio service mesh">Over-engineer Mode</button>
+        <button class="example-btn" data-stack="Ruby on Rails, PostgreSQL, Heroku, Sidekiq">Rails Monolith</button>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="field">
+        <label>Team Size</label>
+        <input id="teamSize" type="number" placeholder="e.g. 3" min="1" max="10000">
+        <span class="hint">Developers using this stack</span>
+      </div>
+      <div class="field">
+        <label>App Type</label>
+        <input id="appType" type="text" placeholder="e.g. SaaS, internal tool, portfolio...">
+        <span class="hint">What you're building (optional)</span>
+      </div>
+    </div>
+    <button class="roast-btn" id="roastBtn">🏗️ Roast My Stack</button>
+  </div>
+
+  <div class="loading" id="loading"><div class="spinner"></div><p>Analyzing your architectural decisions...</p></div>
+
+  <div class="roast-card" id="roastCard">
+    <div class="roast-header">
+      <div class="roast-title-block">
+        <div class="roast-name" id="rName">Stack Analysis</div>
+        <div class="roast-sub" id="rSub"></div>
+      </div>
+      <div class="roast-grade" id="rGrade">?</div>
+    </div>
+    <div class="roast-body">
+      <div class="roast-text" id="rText"></div>
+      <div class="stats-grid" id="rStats"></div>
+      <div class="achievements" id="rAchievements"></div>
+      <div class="actions">
+        <a class="action primary" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action" id="rCopyLink">🔗 Copy link</button>
+        <a class="action" id="rDownload" download="stack-roast.png">💾 Download card</a>
+      </div>
+      <div class="embed-section">
+        <div class="label">Embed your stack grade on your README / portfolio</div>
+        <pre id="rEmbed"></pre>
+        <button id="rEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
+
+  <section class="content">
+    <h2>How it works</h2>
+    <p>Describe your tech stack in plain text. The tool detects your frameworks, databases, infra tools, and languages, then scores them across four dimensions: Complexity (how many pieces), Hipster Index (how new/trendy), Legacy Risk (how old/deprecated), and Over-engineering Score (ratio of complexity to team size). Same stack = same roast every time, no AI API calls, nothing leaves your browser.</p>
+
+    <h2>What the grade means</h2>
+    <p>S+ is a lean, battle-tested stack that ships fast. A/B is solid with minor quirks. C/D is either legacy debt or premature optimization. F is "microservices for a todo app" energy. The grade isn't about which tools are objectively best — it's about fit between complexity and context.</p>
+
+    <h2>The four scores</h2>
+    <p>Complexity counts distinct tools/services. Hipster Index rewards or penalizes based on how trendy vs. battle-tested the stack is. Legacy Risk flags anything that peaked before 2015. Over-engineering penalizes complexity vs. team size — running Kubernetes with a 2-person team is a choice that will be made fun of here.</p>
+
+    <h2>Embed your stack grade</h2>
+    <p>Drop the badge on your GitHub README or portfolio to show off your architectural confidence (or confess your sins). Every click generates a new roast for anyone who enters their own stack.</p>
+  </section>
+
+  <footer>
+    <p>Roast another stack → <a href="/roast-my-stack/" onclick="location.reload();return false;">start over</a> · More tools at <a href="/">TinyTools</a> · Ship faster 🚀</p>
+  </footer>
+</div>
+
+<script>
+const roastBtn = document.getElementById('roastBtn');
+const loading = document.getElementById('loading');
+const card = document.getElementById('roastCard');
+
+roastBtn.addEventListener('click', runRoast);
+document.getElementById('stackInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) runRoast();
+});
+
+document.querySelectorAll('.example-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('stackInput').value = btn.dataset.stack;
+  });
+});
+
+// Deep-linking from URL hash
+if (location.hash.length > 1) {
+  try {
+    const params = new URLSearchParams(location.hash.slice(1));
+    if (params.get('stack')) document.getElementById('stackInput').value = decodeURIComponent(params.get('stack'));
+    if (params.get('team')) document.getElementById('teamSize').value = params.get('team');
+    if (params.get('app')) document.getElementById('appType').value = decodeURIComponent(params.get('app'));
+    if (params.get('stack')) setTimeout(runRoast, 100);
+  } catch(e) {}
+}
+
+// ─── Tech taxonomy ───────────────────────────────────────────────────
+const TECH = {
+  // Frontend
+  react: { cat:'frontend', hipster:5, legacy:2, weight:1, label:'React' },
+  'next.js': { cat:'frontend', hipster:8, legacy:1, weight:1, label:'Next.js' },
+  nextjs: { cat:'frontend', hipster:8, legacy:1, weight:1, label:'Next.js' },
+  vue: { cat:'frontend', hipster:6, legacy:2, weight:1, label:'Vue' },
+  angular: { cat:'frontend', hipster:3, legacy:6, weight:1, label:'Angular' },
+  svelte: { cat:'frontend', hipster:9, legacy:0, weight:1, label:'Svelte' },
+  sveltekit: { cat:'frontend', hipster:9, legacy:0, weight:1, label:'SvelteKit' },
+  nuxt: { cat:'frontend', hipster:7, legacy:1, weight:1, label:'Nuxt' },
+  htmx: { cat:'frontend', hipster:8, legacy:0, weight:1, label:'HTMX' },
+  jquery: { cat:'frontend', hipster:0, legacy:9, weight:1, label:'jQuery' },
+  jquery2: { cat:'frontend', hipster:0, legacy:9, weight:1, label:'jQuery' },
+  'backbone.js': { cat:'frontend', hipster:0, legacy:9, weight:1, label:'Backbone.js' },
+  ember: { cat:'frontend', hipster:1, legacy:8, weight:1, label:'Ember.js' },
+  remix: { cat:'frontend', hipster:9, legacy:0, weight:1, label:'Remix' },
+  astro: { cat:'frontend', hipster:9, legacy:0, weight:1, label:'Astro' },
+  solid: { cat:'frontend', hipster:9, legacy:0, weight:1, label:'SolidJS' },
+  solidjs: { cat:'frontend', hipster:9, legacy:0, weight:1, label:'SolidJS' },
+  tailwind: { cat:'styling', hipster:8, legacy:0, weight:0.5, label:'Tailwind' },
+  'tailwind css': { cat:'styling', hipster:8, legacy:0, weight:0.5, label:'Tailwind' },
+  bootstrap: { cat:'styling', hipster:1, legacy:7, weight:0.5, label:'Bootstrap' },
+  css: { cat:'styling', hipster:3, legacy:3, weight:0.3, label:'CSS' },
+  sass: { cat:'styling', hipster:4, legacy:5, weight:0.5, label:'Sass' },
+  'styled-components': { cat:'styling', hipster:5, legacy:4, weight:0.5, label:'styled-components' },
+  // Backend
+  'node.js': { cat:'backend', hipster:5, legacy:3, weight:1, label:'Node.js' },
+  nodejs: { cat:'backend', hipster:5, legacy:3, weight:1, label:'Node.js' },
+  node: { cat:'backend', hipster:5, legacy:3, weight:1, label:'Node.js' },
+  express: { cat:'backend', hipster:3, legacy:5, weight:1, label:'Express' },
+  fastify: { cat:'backend', hipster:7, legacy:0, weight:1, label:'Fastify' },
+  hono: { cat:'backend', hipster:9, legacy:0, weight:1, label:'Hono' },
+  django: { cat:'backend', hipster:4, legacy:5, weight:1, label:'Django' },
+  flask: { cat:'backend', hipster:5, legacy:4, weight:1, label:'Flask' },
+  fastapi: { cat:'backend', hipster:8, legacy:0, weight:1, label:'FastAPI' },
+  rails: { cat:'backend', hipster:4, legacy:6, weight:1, label:'Rails' },
+  'ruby on rails': { cat:'backend', hipster:4, legacy:6, weight:1, label:'Rails' },
+  laravel: { cat:'backend', hipster:4, legacy:4, weight:1, label:'Laravel' },
+  spring: { cat:'backend', hipster:2, legacy:7, weight:1, label:'Spring Boot' },
+  'spring boot': { cat:'backend', hipster:2, legacy:7, weight:1, label:'Spring Boot' },
+  nestjs: { cat:'backend', hipster:7, legacy:0, weight:1, label:'NestJS' },
+  'nest.js': { cat:'backend', hipster:7, legacy:0, weight:1, label:'NestJS' },
+  elixir: { cat:'backend', hipster:8, legacy:0, weight:1, label:'Elixir/Phoenix' },
+  phoenix: { cat:'backend', hipster:8, legacy:0, weight:1, label:'Phoenix' },
+  go: { cat:'backend', hipster:7, legacy:0, weight:1, label:'Go' },
+  golang: { cat:'backend', hipster:7, legacy:0, weight:1, label:'Go' },
+  rust: { cat:'backend', hipster:9, legacy:0, weight:1, label:'Rust' },
+  php: { cat:'backend', hipster:1, legacy:8, weight:1, label:'PHP' },
+  'php 5': { cat:'backend', hipster:0, legacy:10, weight:1, label:'PHP 5 (!!)' },
+  java: { cat:'backend', hipster:2, legacy:7, weight:1, label:'Java' },
+  'c#': { cat:'backend', hipster:3, legacy:5, weight:1, label:'C#' },
+  dotnet: { cat:'backend', hipster:3, legacy:5, weight:1, label:'.NET' },
+  '.net': { cat:'backend', hipster:3, legacy:5, weight:1, label:'.NET' },
+  // Data
+  trpc: { cat:'api', hipster:9, legacy:0, weight:1, label:'tRPC' },
+  graphql: { cat:'api', hipster:7, legacy:2, weight:1, label:'GraphQL' },
+  'rest api': { cat:'api', hipster:3, legacy:3, weight:0.5, label:'REST' },
+  grpc: { cat:'api', hipster:7, legacy:1, weight:1, label:'gRPC' },
+  // Databases
+  postgresql: { cat:'database', hipster:7, legacy:1, weight:1, label:'PostgreSQL' },
+  postgres: { cat:'database', hipster:7, legacy:1, weight:1, label:'PostgreSQL' },
+  mysql: { cat:'database', hipster:3, legacy:6, weight:1, label:'MySQL' },
+  mongodb: { cat:'database', hipster:5, legacy:3, weight:1, label:'MongoDB' },
+  mongo: { cat:'database', hipster:5, legacy:3, weight:1, label:'MongoDB' },
+  sqlite: { cat:'database', hipster:5, legacy:2, weight:0.7, label:'SQLite' },
+  redis: { cat:'database', hipster:6, legacy:2, weight:0.7, label:'Redis' },
+  cassandra: { cat:'database', hipster:6, legacy:3, weight:1.5, label:'Cassandra' },
+  dynamodb: { cat:'database', hipster:5, legacy:2, weight:1, label:'DynamoDB' },
+  firestore: { cat:'database', hipster:6, legacy:1, weight:1, label:'Firestore' },
+  supabase: { cat:'database', hipster:9, legacy:0, weight:1, label:'Supabase' },
+  planetscale: { cat:'database', hipster:9, legacy:0, weight:1, label:'PlanetScale' },
+  turso: { cat:'database', hipster:9, legacy:0, weight:1, label:'Turso' },
+  cockroachdb: { cat:'database', hipster:8, legacy:0, weight:1, label:'CockroachDB' },
+  elasticsearch: { cat:'database', hipster:5, legacy:4, weight:1.5, label:'Elasticsearch' },
+  neo4j: { cat:'database', hipster:7, legacy:2, weight:1.5, label:'Neo4j' },
+  // ORM
+  prisma: { cat:'orm', hipster:9, legacy:0, weight:0.7, label:'Prisma' },
+  drizzle: { cat:'orm', hipster:9, legacy:0, weight:0.7, label:'Drizzle' },
+  sequelize: { cat:'orm', hipster:3, legacy:5, weight:0.7, label:'Sequelize' },
+  typeorm: { cat:'orm', hipster:5, legacy:3, weight:0.7, label:'TypeORM' },
+  // Infra
+  aws: { cat:'cloud', hipster:5, legacy:2, weight:0.7, label:'AWS' },
+  gcp: { cat:'cloud', hipster:6, legacy:1, weight:0.7, label:'GCP' },
+  'google cloud': { cat:'cloud', hipster:6, legacy:1, weight:0.7, label:'GCP' },
+  azure: { cat:'cloud', hipster:4, legacy:3, weight:0.7, label:'Azure' },
+  vercel: { cat:'cloud', hipster:9, legacy:0, weight:0.7, label:'Vercel' },
+  netlify: { cat:'cloud', hipster:7, legacy:1, weight:0.7, label:'Netlify' },
+  heroku: { cat:'cloud', hipster:3, legacy:6, weight:0.7, label:'Heroku' },
+  railway: { cat:'cloud', hipster:8, legacy:0, weight:0.7, label:'Railway' },
+  render: { cat:'cloud', hipster:8, legacy:0, weight:0.7, label:'Render' },
+  digitalocean: { cat:'cloud', hipster:5, legacy:3, weight:0.7, label:'DigitalOcean' },
+  'digital ocean': { cat:'cloud', hipster:5, legacy:3, weight:0.7, label:'DigitalOcean' },
+  cpanel: { cat:'cloud', hipster:0, legacy:10, weight:1, label:'cPanel (!!)' },
+  'shared hosting': { cat:'cloud', hipster:0, legacy:10, weight:1, label:'Shared Hosting' },
+  kubernetes: { cat:'infra', hipster:6, legacy:2, weight:2.5, label:'Kubernetes' },
+  k8s: { cat:'infra', hipster:6, legacy:2, weight:2.5, label:'Kubernetes' },
+  docker: { cat:'infra', hipster:6, legacy:2, weight:0.7, label:'Docker' },
+  terraform: { cat:'infra', hipster:7, legacy:1, weight:1.5, label:'Terraform' },
+  ansible: { cat:'infra', hipster:5, legacy:4, weight:1.5, label:'Ansible' },
+  'aws eks': { cat:'infra', hipster:6, legacy:1, weight:2.5, label:'AWS EKS' },
+  istio: { cat:'infra', hipster:7, legacy:1, weight:2.5, label:'Istio' },
+  kafka: { cat:'messaging', hipster:6, legacy:2, weight:2, label:'Kafka' },
+  rabbitmq: { cat:'messaging', hipster:4, legacy:5, weight:1.5, label:'RabbitMQ' },
+  sqs: { cat:'messaging', hipster:5, legacy:2, weight:1, label:'SQS' },
+  // Languages
+  typescript: { cat:'language', hipster:8, legacy:0, weight:0.5, label:'TypeScript' },
+  javascript: { cat:'language', hipster:5, legacy:2, weight:0.5, label:'JavaScript' },
+  python: { cat:'language', hipster:7, legacy:2, weight:0.5, label:'Python' },
+  ruby: { cat:'language', hipster:5, legacy:5, weight:0.5, label:'Ruby' },
+  // Auth & misc
+  nextauth: { cat:'auth', hipster:7, legacy:0, weight:0.5, label:'NextAuth' },
+  auth0: { cat:'auth', hipster:6, legacy:2, weight:0.5, label:'Auth0' },
+  clerk: { cat:'auth', hipster:9, legacy:0, weight:0.5, label:'Clerk' },
+  'react query': { cat:'state', hipster:8, legacy:0, weight:0.5, label:'React Query' },
+  tanstack: { cat:'state', hipster:9, legacy:0, weight:0.5, label:'TanStack' },
+  zustand: { cat:'state', hipster:8, legacy:0, weight:0.5, label:'Zustand' },
+  redux: { cat:'state', hipster:3, legacy:6, weight:0.7, label:'Redux' },
+  mobx: { cat:'state', hipster:4, legacy:5, weight:0.7, label:'MobX' },
+  // Microservices
+  microservices: { cat:'arch', hipster:6, legacy:2, weight:3, label:'Microservices' },
+  'service mesh': { cat:'arch', hipster:8, legacy:0, weight:3, label:'Service Mesh' },
+  serverless: { cat:'arch', hipster:7, legacy:0, weight:1, label:'Serverless' },
+  lambda: { cat:'arch', hipster:6, legacy:1, weight:1, label:'Lambda' },
+  websockets: { cat:'arch', hipster:5, legacy:3, weight:0.7, label:'WebSockets' },
+  'webassembly': { cat:'lang', hipster:9, legacy:0, weight:1.5, label:'WebAssembly' },
+  wasm: { cat:'lang', hipster:9, legacy:0, weight:1.5, label:'WASM' },
+};
+
+function parseTechs(text) {
+  const lower = text.toLowerCase();
+  const found = {};
+  // Sort by length desc to match longer keys first
+  Object.keys(TECH).sort((a,b) => b.length - a.length).forEach(k => {
+    if (lower.includes(k) && !found[TECH[k].label]) {
+      found[TECH[k].label] = TECH[k];
+    }
+  });
+  return Object.values(found);
+}
+
+function analyzeStack(techs, teamSize) {
+  const n = techs.length;
+  if (n === 0) return null;
+
+  const totalWeight = techs.reduce((s, t) => s + t.weight, 0);
+  const avgHipster = techs.reduce((s, t) => s + t.hipster * t.weight, 0) / totalWeight;
+  const avgLegacy = techs.reduce((s, t) => s + t.legacy * t.weight, 0) / totalWeight;
+  const complexityScore = techs.reduce((s, t) => s + t.weight, 0);
+
+  // Over-engineering: complexity per developer
+  const effectiveTeam = teamSize > 0 ? teamSize : 1;
+  const overEngineering = complexityScore / effectiveTeam;
+
+  // Check for specific red flags
+  const hasK8s = techs.some(t => t.label === 'Kubernetes' || t.label === 'AWS EKS');
+  const hasMicroservices = techs.some(t => t.label === 'Microservices');
+  const hasLegacy = techs.some(t => t.legacy >= 8);
+  const legacyItems = techs.filter(t => t.legacy >= 7).map(t => t.label);
+  const hipsterItems = techs.filter(t => t.hipster >= 8).map(t => t.label);
+  const hasKafka = techs.some(t => t.label === 'Kafka');
+  const hasRedux = techs.some(t => t.label === 'Redux');
+  const hasTailwind = techs.some(t => t.label === 'Tailwind');
+  const hasTypeScript = techs.some(t => t.label === 'TypeScript');
+  const hasRust = techs.some(t => t.label === 'Rust');
+  const hasPHP5 = techs.some(t => t.label === 'PHP 5 (!!)');
+  const hasCPanel = techs.some(t => t.label === 'cPanel (!!)');
+
+  const cats = [...new Set(techs.map(t => t.cat))];
+
+  return {
+    n, totalWeight, avgHipster, avgLegacy, complexityScore, overEngineering,
+    hasK8s, hasMicroservices, hasLegacy, legacyItems, hipsterItems,
+    hasKafka, hasRedux, hasTailwind, hasTypeScript, hasRust, hasPHP5, hasCPanel,
+    cats, techs
+  };
+}
+
+function computeGrade(a, teamSize) {
+  if (!a) return { letter: 'N/A', color: '#6b7280', shieldColor: 'gray', score: 5 };
+
+  let score = 5; // start neutral
+
+  // Legacy penalty
+  score -= Math.floor(a.avgLegacy * 0.5);
+  // Hipster bonus/penalty (moderate hipster is fine, extreme is risky)
+  if (a.avgHipster > 7) score += 1;
+  else if (a.avgHipster < 3) score -= 1;
+  // Complexity vs team
+  if (a.overEngineering > 10) score -= 3;
+  else if (a.overEngineering > 6) score -= 2;
+  else if (a.overEngineering > 4) score -= 1;
+  else if (a.overEngineering < 2) score += 1;
+  // Specific bonuses
+  if (a.hasTypeScript) score += 1;
+  if (a.hasTailwind) score += 1;
+  // Specific penalties
+  if (a.hasPHP5 || a.hasCPanel) score -= 3;
+  if (a.hasK8s && teamSize <= 3) score -= 2;
+  if (a.hasMicroservices && teamSize <= 2) score -= 2;
+  if (a.hasKafka && a.n < 5) score -= 1;
+  if (a.hasRust) score += 1; // Rust users always get a bonus for suffering
+
+  const grades = ['F', 'D-', 'D', 'D+', 'C', 'C+', 'B', 'B+', 'A', 'A+', 'S', 'S+'];
+  const colors = ['#ef4444','#f97316','#f97316','#f59e0b','#eab308','#84cc16','#22c55e','#10b981','#06b6d4','#3b82f6','#8b5cf6','#a855f7'];
+  const shieldColors = ['red','orange','orange','yellow','yellowgreen','green','brightgreen','teal','blue','blueviolet','purple','ff69b4'];
+  const idx = Math.max(0, Math.min(grades.length - 1, score));
+  return { letter: grades[idx], color: colors[idx], shieldColor: shieldColors[idx], score };
+}
+
+function generateRoast(stackText, a, teamSize, appType, grade) {
+  if (!a || a.n === 0) return "Couldn't identify any tech in your stack description. Either it's secret, or you're building it with interpretive dance.";
+
+  const lines = [];
+  const eff = teamSize > 0 ? teamSize : 1;
+
+  // Specific over-engineering roasts
+  if (a.hasK8s && eff <= 2) lines.push(`Kubernetes with a ${eff}-person team. Bold strategy. When your solo project needs 47 YAML files and a 3-week cert rotation to deploy a button change, you'll know you've made it.`);
+  if (a.hasK8s && eff <= 5 && appType && appType.toLowerCase().includes('todo')) lines.push("Kubernetes for a todo app. The todo app that ships never needs distributed orchestration, but here we are.");
+  if (a.hasMicroservices && eff <= 2) lines.push(`Microservices with ${eff} developers. Your distributed system will have more failure modes than you have engineers to debug them at 3am. Congrats.`);
+  if (a.hasKafka && a.n < 6) lines.push("Kafka in a stack this small is like buying a cargo ship to deliver groceries. The throughput is impressive. The therapy bills will also be impressive.");
+  if (a.hasPHP5) lines.push("PHP 5? That version reached end-of-life in 2018. You're not running legacy software, you're running a museum exhibit. Security patches stopped before some of your users were born.");
+  if (a.hasCPanel) lines.push("cPanel shared hosting in 2025. Respect for the commitment to the classics. Your uptime is purely vibes-based.");
+  if (a.hasRedux && a.techs.some(t => t.label === 'React') && !a.techs.some(t => t.label === 'Redux')) {
+    // only if React found
+    lines.push("Redux in a React app that probably has 3 pages. You've traded useState for 200 lines of boilerplate and a psychological need to normalize state.");
+  }
+  if (a.hasRust) lines.push(`Rust. Of course. The borrow checker is your co-founder. You didn't just pick a language, you picked a lifestyle. Your stack is probably 10x faster and 5x harder to hire for.`);
+
+  // Hipster roasts
+  if (a.hipsterItems.length >= 4) lines.push(`${a.hipsterItems.slice(0,3).join(', ')} — you've got ${a.hipsterItems.length} bleeding-edge tools. Your stack reads like a Hacker News top post. Beautiful to discuss, terrifying to onboard.`);
+  if (a.avgHipster > 7.5) lines.push(`Hipster score: ${a.avgHipster.toFixed(1)}/10. Your stack will be in 3 conference talks and deprecated in 4 years. Enjoy the ride.`);
+
+  // Legacy roasts
+  if (a.legacyItems.length >= 2) lines.push(`${a.legacyItems.join(', ')} — your legacy index is showing. Not bad, just... seasoned. Like that jQuery plugin from 2011 that's still in prod.`);
+  if (a.avgLegacy > 6) lines.push(`Average legacy score of ${a.avgLegacy.toFixed(1)}/10. This stack has seen things. Stack Overflow threads from 2013 with accepted answers. Changelog entries that say "Fixed it" with no description.`);
+
+  // Complexity
+  if (a.overEngineering > 8) lines.push(`${a.n} tools for ${eff} developer${eff>1?'s':''}. That's ${a.n/eff > 3 ? 'impressive' : 'a lot of'} stack per person. Integration testing is not a phase you'll finish — it's a way of life.`);
+
+  // Healthy stacks
+  if (grade.score >= 8 && a.hasTypeScript && !a.hasK8s) lines.push(`TypeScript, no Kubernetes, reasonable tool count for team size of ${eff}. This is a "ships features without crying" stack. Boring in the best possible way.`);
+  if (grade.score >= 9) lines.push(`This stack is clean, modern, and appropriately sized. Either you've been burned before and learned, or you read "The Pragmatic Programmer" and actually absorbed it. Respect.`);
+
+  if (lines.length === 0) {
+    if (a.n >= 8) lines.push(`${a.n} tools identified. Your stack has more moving parts than a Swiss watch. Whether that's elegant engineering or trauma response is for you and your therapist to decide.`);
+    else lines.push(`A ${a.n}-tool stack with an average hipster score of ${a.avgHipster.toFixed(1)}/10. Could be worse. Could be COBOL. It is not COBOL. Today wins.`);
+  }
+
+  return lines.sort((a,b) => b.length - a.length)[0];
+}
+
+function computeAchievements(a, teamSize, grade) {
+  if (!a) return [];
+  const badges = [];
+  if (a.hasPHP5 || a.hasCPanel) badges.push({ kind: 'bad', text: '🪦 Legacy Horror' });
+  if (a.hasK8s && (teamSize||1) <= 3) badges.push({ kind: 'bad', text: '☸️ Over-orchestrated' });
+  if (a.hasMicroservices && (teamSize||1) <= 2) badges.push({ kind: 'bad', text: '🕸️ Distributed Chaos' });
+  if (a.hasRust) badges.push({ kind: 'weird', text: '🦀 Rust Enjoyer' });
+  if (a.hasTypeScript) badges.push({ kind: 'good', text: '🔷 TypeScript Safe' });
+  if (a.hasTailwind) badges.push({ kind: 'good', text: '🎨 Tailwind Enjoyer' });
+  if (a.hipsterItems.length >= 3) badges.push({ kind: 'weird', text: '✨ Bleeding Edge' });
+  if (a.legacyItems.length >= 2) badges.push({ kind: 'bad', text: '📼 Legacy Stack' });
+  if (a.hasKafka) badges.push({ kind: 'weird', text: '📨 Enterprise Kafka' });
+  if (grade.score >= 8 && !a.hasK8s) badges.push({ kind: 'good', text: '🚀 Ships Fast' });
+  if (a.overEngineering > 8) badges.push({ kind: 'bad', text: '🏗️ Over-engineered' });
+  if (a.n >= 10) badges.push({ kind: 'weird', text: '🧩 Stack Collector' });
+  return badges.slice(0, 6);
+}
+
+function runRoast() {
+  const stackText = document.getElementById('stackInput').value.trim();
+  const teamSize = parseInt(document.getElementById('teamSize').value) || 0;
+  const appType = document.getElementById('appType').value.trim();
+
+  if (!stackText) { alert('Describe your stack first!'); return; }
+
+  loading.classList.add('show');
+  card.classList.remove('show');
+  roastBtn.disabled = true;
+
+  setTimeout(() => {
+    const techs = parseTechs(stackText);
+    const analysis = analyzeStack(techs, teamSize);
+    const grade = computeGrade(analysis, teamSize);
+    const roastText = generateRoast(stackText, analysis, teamSize, appType, grade);
+    const achievements = computeAchievements(analysis, teamSize, grade);
+    renderCard(stackText, teamSize, appType, analysis, grade, roastText, achievements);
+
+    loading.classList.remove('show');
+    roastBtn.disabled = false;
+
+    const params = new URLSearchParams();
+    params.set('stack', encodeURIComponent(stackText));
+    if (teamSize) params.set('team', teamSize);
+    if (appType) params.set('app', encodeURIComponent(appType));
+    location.hash = '#' + params.toString();
+  }, 700);
+}
+
+function renderCard(stackText, teamSize, appType, a, grade, roastText, achievements) {
+  const techList = a ? a.techs.slice(0, 6).map(t => t.label).join(', ') : stackText.slice(0, 60);
+
+  document.getElementById('rName').textContent = 'Tech Stack Analysis';
+  document.getElementById('rSub').textContent = (a ? a.n + ' tools identified' : 'Custom stack') + (teamSize ? ' · ' + teamSize + ' dev' + (teamSize>1?'s':'') : '') + (appType ? ' · ' + appType : '');
+  document.getElementById('rGrade').textContent = grade.letter;
+  document.getElementById('rGrade').style.color = grade.color;
+  document.getElementById('rText').textContent = '"' + roastText + '"';
+
+  const statItems = [
+    ['Tools', a ? a.n : '?'],
+    ['Hipster', a ? a.avgHipster.toFixed(1) + '/10' : '?'],
+    ['Legacy', a ? a.avgLegacy.toFixed(1) + '/10' : '?'],
+    ['Complexity', a ? a.complexityScore.toFixed(1) : '?'],
+  ];
+  document.getElementById('rStats').innerHTML = statItems.map(([l, v]) =>
+    `<div class="stat"><div class="stat-value">${v}</div><div class="stat-label">${l}</div></div>`).join('');
+
+  document.getElementById('rAchievements').innerHTML = achievements.map(a =>
+    `<span class="achievement ${a.kind}">${a.text}</span>`).join('');
+
+  const shareText = `My tech stack got roasted by AI: "${roastText.slice(0, 110)}..." 🏗️\n\nGrade: ${grade.letter}\n\nGet yours →`;
+  const shareUrl = 'https://tinytools-smoky.vercel.app/roast-my-stack/' + location.hash;
+  document.getElementById('rShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+  document.getElementById('rCopyLink').onclick = () => {
+    navigator.clipboard.writeText(shareUrl);
+    const btn = document.getElementById('rCopyLink');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy link', 1500);
+  };
+
+  const canvas = document.getElementById('cardCanvas');
+  drawCard(canvas, techList, teamSize, appType, a, grade, roastText);
+  document.getElementById('rDownload').href = canvas.toDataURL('image/png');
+
+  const embedCode = `<a href="${shareUrl}" target="_blank">
+  <img src="https://img.shields.io/badge/Stack_Grade-${grade.letter}-${grade.shieldColor}?style=for-the-badge&logo=stackshare" alt="Stack Grade: ${grade.letter}">
+</a>`;
+  document.getElementById('rEmbed').textContent = embedCode;
+  document.getElementById('rEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('rEmbedCopy');
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = 'Copy embed code', 1500);
+  };
+
+  card.classList.add('show');
+  card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function drawCard(canvas, techList, teamSize, appType, a, grade, roastText) {
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#1f1f2e'); bg.addColorStop(1, '#15151f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  const stripe = ctx.createLinearGradient(0, 0, W, 0);
+  stripe.addColorStop(0, '#06b6d4'); stripe.addColorStop(1, '#7c3aed');
+  ctx.fillStyle = stripe; ctx.fillRect(0, 0, W, 8);
+  ctx.fillStyle = '#06b6d4';
+  ctx.font = 'bold 26px -apple-system, sans-serif';
+  ctx.fillText('🏗️ ROAST MY TECH STACK', 60, 68);
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 50px -apple-system, sans-serif';
+  ctx.fillText('Tech Stack Analysis', 60, 148);
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '24px -apple-system, sans-serif';
+  ctx.fillText(techList + (a && a.n > 6 ? ' + more' : ''), 60, 192);
+  ctx.fillStyle = grade.color;
+  ctx.font = 'bold 170px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(grade.letter, W - 60, 200);
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#bfdbfe';
+  ctx.font = 'italic 26px -apple-system, sans-serif';
+  const words = ('"' + roastText + '"').split(' ');
+  let line = ''; let y = 275;
+  for (const w of words) {
+    if (ctx.measureText(line + ' ' + w).width > W - 120 && line) {
+      ctx.fillText(line, 60, y); line = w; y += 36;
+      if (y > 415) { ctx.fillText(line + ' ...', 60, y); line = '____done____'; break; }
+    } else { line = line ? line + ' ' + w : w; }
+  }
+  if (line !== '____done____') ctx.fillText(line, 60, y);
+  const items = [
+    [a ? a.n : '?', 'TOOLS'],
+    [a ? a.avgHipster.toFixed(1) + '/10' : '?', 'HIPSTER'],
+    [a ? a.avgLegacy.toFixed(1) + '/10' : '?', 'LEGACY'],
+    [a ? a.complexityScore.toFixed(1) : '?', 'COMPLEXITY'],
+  ];
+  items.forEach((it, i) => {
+    const x = 60 + i * (W - 120) / 4;
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 34px -apple-system, sans-serif';
+    ctx.fillText(it[0], x, H - 80);
+    ctx.fillStyle = '#a0a0b8'; ctx.font = 'bold 13px -apple-system, sans-serif';
+    ctx.fillText(it[1], x, H - 55);
+  });
+  ctx.fillStyle = '#a0a0b8'; ctx.font = '18px -apple-system, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/roast-my-stack', W - 60, H - 25);
+  ctx.textAlign = 'left';
+}
+</script>
+</body>
+</html>
