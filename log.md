@@ -1,3 +1,24 @@
+## 2026-06-01 — Viral Retrofit: background-remover
+
+### Tool Retrofitted
+- **background-remover** — 0 viral mechanics → full suite
+  - URL: https://tinytools-smoky.vercel.app/background-remover/
+  - Commit: f298f55d88ac
+
+### Viral Mechanics Added
+1. Share on X — prefills tweet "I removed the background from my image in-browser — free, no upload, no API key"
+2. Copy-link — copies `#done` deep-link URL (images are local; hash signals shared result)
+3. PNG download — 1200×630 canvas card with before/after checkerboard preview + brand footer
+4. Embed badge — shields.io badge: `Background-Removed_Free-ec4899`
+5. Hash deep-link — checks `location.hash === '#done'` on load, logs welcome message
+
+### Stats
+- Visitor count (abacus root): 1
+- Tools audited: 45 (all dirs with index.html)
+- Tools remaining without viral mechanics: 0 🎉 all tools now viral-ready
+
+---
+
 ## 2026-06-01 — Viral Retrofit: domain-generator
 
 ### Tool Retrofitted
@@ -232,4 +253,3 @@ platform-ready status) make the share tweet feel earned and data-driven.
 **Tools remaining without viral mechanics:** 2 (background-remover, best-free-color-palette-generators-2026)
 
 ---
-
