@@ -163,6 +163,35 @@
   footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border);
     text-align: center; color: var(--text-dim); font-size: 13px; }
   footer a { color: var(--accent); text-decoration: none; }
+
+  /* ---- Viral share panel ---- */
+  .share-panel {
+    margin-top: 14px; padding: 16px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px; display: none;
+  }
+  .share-panel.show { display: block; }
+  .share-panel-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.05em; font-weight: 600; margin-bottom: 10px; }
+  .share-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .share-btn {
+    flex: 1; min-width: 120px; padding: 9px 14px; border-radius: 8px; font-weight: 600;
+    font-size: 13px; cursor: pointer; border: 1px solid var(--border);
+    background: var(--bg-card); color: var(--text); text-decoration: none;
+    text-align: center; transition: all 0.15s; white-space: nowrap; font-family: inherit;
+  }
+  .share-btn:hover { border-color: var(--accent); }
+  .share-btn.twitter { background: #1d9bf0; border: none; color: white; }
+  .embed-block { }
+  .embed-block-label { font-size: 11px; color: var(--text-dim); margin-bottom: 5px;
+    text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; }
+  .embed-code { font-family: 'SF Mono', Monaco, monospace; font-size: 11px;
+    background: #000; padding: 8px 12px; border-radius: 6px; color: #86efac;
+    overflow-x: auto; white-space: pre; cursor: pointer; display: block;
+    border: 1px solid var(--border); margin-bottom: 5px; }
+  .embed-copy { padding: 4px 10px; background: var(--accent); border: none;
+    border-radius: 5px; color: white; font-size: 11px; cursor: pointer;
+    font-family: inherit; font-weight: 600; }
+
 </style>
 </head>
 <body>
@@ -250,6 +279,22 @@
       <a href="#" id="upsell-pdfgear" target="_blank" rel="noopener">PDFgear Pro</a> for editing/OCR before you convert.
       <em>(Affiliate links — no extra cost to you.)</em>
     </div>
+
+    <!-- Viral share panel (shown after conversion) -->
+    <div class="share-panel" id="sharePanel">
+      <div class="share-panel-label">🚀 Share your result</div>
+      <div class="share-actions">
+        <a class="share-btn twitter" id="shareTweet" href="#" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="share-btn" id="shareCopyLink">🔗 Copy link</button>
+        <button class="share-btn" id="sharePng">🖼 Download card</button>
+      </div>
+      <div class="embed-block">
+        <div class="embed-block-label">Embed badge</div>
+        <code class="embed-code" id="embedCode">![PDF to Markdown](https://img.shields.io/badge/PDF%E2%86%92Markdown-Free%20%26%20Private-22c55e?logo=markdown)</code>
+        <button class="embed-copy" id="embedCopyBtn">Copy badge</button>
+      </div>
+    </div>
+
   </div>
 
   <section class="content">
@@ -563,6 +608,7 @@ $('goBtn').addEventListener('click', async function(){
     $('metaHeadings').textContent = lastStats.headings;
     $('metaLinks').textContent = lastStats.links;
     $('meta').style.display = 'flex';
+    updateSharePanel();
     refreshOutput();
     setProgress(100);
     setStatus('Done. ' + lastStats.pages + ' pages → ' + lastStats.words + ' words, ' + lastStats.headings + ' headings.', 'success');
@@ -621,6 +667,179 @@ $('sampleBtn').addEventListener('click', async function(){
   refreshOutput();
   setStatus('Sample loaded — drop a real PDF to try it on your own file.', 'success');
 });
+
+// ==============================
+// VIRAL MECHANICS
+// ==============================
+const TOOL_URL = 'https://tinytools-smoky.vercel.app/pdf-to-markdown/';
+
+function updateSharePanel() {
+  if (!lastStats || !lastStats.pages) return;
+  const hashStr = lastStats.pages + 'p-' + lastStats.words + 'w-' + lastStats.headings + 'h';
+  const shareUrl = TOOL_URL + '#' + hashStr;
+
+  // Update location hash for deep-link sharing
+  try { window.location.hash = hashStr; } catch(e){}
+
+  // Build tweet text
+  const tweetText = 'Just converted a ' + lastStats.pages + '-page PDF to ' +
+    lastStats.words.toLocaleString() + ' words of clean Markdown 📄→✍️\n\nNo upload. 100% in-browser. Free.\n\nTry yours →';
+  $('shareTweet').href = 'https://twitter.com/intent/tweet?text=' +
+    encodeURIComponent(tweetText) + '&url=' + encodeURIComponent(shareUrl);
+
+  // Copy link
+  $('shareCopyLink').onclick = function() {
+    navigator.clipboard.writeText(shareUrl);
+    const b = $('shareCopyLink'); b.textContent = '✓ Copied!';
+    setTimeout(function(){ b.textContent = '🔗 Copy link'; }, 1500);
+  };
+
+  // Badge embed code
+  const badgePages = encodeURIComponent(lastStats.pages + 'pp');
+  const badgeWords = encodeURIComponent(lastStats.words + 'w');
+  const badgeCode = '[![PDF→Markdown](https://img.shields.io/badge/' + badgePages + '-' + badgeWords + '-22c55e?logo=markdown&labelColor=0a0a0f)](https://tinytools-smoky.vercel.app/pdf-to-markdown/)';
+  $('embedCode').textContent = badgeCode;
+
+  // Show the panel
+  $('sharePanel').classList.add('show');
+}
+
+$('embedCopyBtn').addEventListener('click', function(){
+  navigator.clipboard.writeText($('embedCode').textContent || '');
+  this.textContent = '✓ Copied!';
+  setTimeout(function(){ document.getElementById('embedCopyBtn').textContent = 'Copy badge'; }, 1500);
+});
+$('embedCode').addEventListener('click', function(){
+  navigator.clipboard.writeText(this.textContent || '');
+  const b = $('embedCopyBtn'); b.textContent = '✓ Copied!';
+  setTimeout(function(){ b.textContent = 'Copy badge'; }, 1500);
+});
+
+// PNG card download
+$('sharePng').addEventListener('click', function(){
+  if (!lastStats || !lastStats.pages) return;
+  const cvs = document.createElement('canvas');
+  cvs.width = 1200; cvs.height = 630;
+  const ctx = cvs.getContext('2d');
+
+  // Background
+  ctx.fillStyle = '#0a0a0f';
+  ctx.fillRect(0, 0, 1200, 630);
+
+  // Gradient overlay
+  const g1 = ctx.createLinearGradient(0, 0, 1200, 630);
+  g1.addColorStop(0, 'rgba(34,197,94,0.14)');
+  g1.addColorStop(1, 'rgba(6,182,212,0.08)');
+  ctx.fillStyle = g1;
+  ctx.fillRect(0, 0, 1200, 630);
+
+  // Card background
+  ctx.fillStyle = '#15151f';
+  _roundRect(ctx, 60, 60, 1080, 510, 28); ctx.fill();
+
+  // Card border
+  ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2.5;
+  _roundRect(ctx, 60, 60, 1080, 510, 28); ctx.stroke();
+
+  // Header icon
+  ctx.font = '54px serif'; ctx.fillStyle = '#fff';
+  ctx.fillText('📄', 100, 168);
+
+  // Title
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 48px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+  ctx.fillText('PDF → Markdown', 178, 165);
+
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '23px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+  ctx.fillText('100% in-browser · No upload · Free', 178, 200);
+
+  // Divider
+  ctx.strokeStyle = '#2a2a3a'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(100, 242); ctx.lineTo(1100, 242); ctx.stroke();
+
+  // Stats
+  const stats = [
+    { value: String(lastStats.pages), label: 'Pages' },
+    { value: lastStats.words.toLocaleString(), label: 'Words' },
+    { value: String(lastStats.headings), label: 'Headings' },
+    { value: String(lastStats.links), label: 'Links' }
+  ];
+  stats.forEach(function(s, i) {
+    const x = 110 + i * 260;
+    // Stat card bg
+    ctx.fillStyle = '#1d1d2a';
+    _roundRect(ctx, x, 268, 220, 120, 12); ctx.fill();
+    ctx.strokeStyle = '#2a2a3a'; ctx.lineWidth = 1;
+    _roundRect(ctx, x, 268, 220, 120, 12); ctx.stroke();
+
+    ctx.fillStyle = '#22c55e';
+    ctx.font = 'bold 50px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(s.value, x + 110, 338);
+
+    ctx.fillStyle = '#a0a0b8';
+    ctx.font = '19px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+    ctx.fillText(s.label, x + 110, 365);
+    ctx.textAlign = 'left';
+  });
+
+  // Footer text
+  ctx.fillStyle = '#4a4a6a';
+  ctx.font = '18px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+  ctx.fillText('tinytools-smoky.vercel.app/pdf-to-markdown/', 100, 520);
+
+  // Brand bottom-right
+  ctx.fillStyle = '#22c55e';
+  ctx.font = 'bold 18px -apple-system, BlinkMacSystemFont, Arial, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('TinyTools', 1100, 520);
+  ctx.textAlign = 'left';
+
+  // Download
+  const lnk = document.createElement('a');
+  lnk.download = 'pdf-to-markdown-' + lastStats.pages + 'p-' + lastStats.words + 'w.png';
+  lnk.href = cvs.toDataURL('image/png');
+  lnk.click();
+});
+
+function _roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+// Auto-load from URL hash (deep-link support)
+(function() {
+  var hash = window.location.hash ? window.location.hash.slice(1) : '';
+  if (!hash) return;
+  var m = decodeURIComponent(hash).match(/^(\d+)p-(\d+)w-(\d+)h$/);
+  if (!m) return;
+  var sharedPages = parseInt(m[1], 10);
+  var sharedWords = parseInt(m[2], 10);
+  var sharedHeadings = parseInt(m[3], 10);
+  // Pre-populate meta strip
+  $('metaPages').textContent = sharedPages;
+  $('metaWords').textContent = sharedWords.toLocaleString();
+  $('metaChars').textContent = '—';
+  $('metaHeadings').textContent = sharedHeadings;
+  $('metaLinks').textContent = '—';
+  $('meta').style.display = 'flex';
+  // Populate lastStats so share buttons work
+  lastStats = { pages: sharedPages, words: sharedWords, chars: 0, headings: sharedHeadings, links: 0 };
+  updateSharePanel();
+  setStatus('🔗 Someone shared a conversion: ' + sharedPages + ' pages → ' +
+    sharedWords.toLocaleString() + ' words. Drop your own PDF to try it!', 'success');
+})();
+
 </script>
 </body>
 </html>
