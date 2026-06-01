@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EU AI Act Risk Assessment for Cursor Developers | TinyTools</title>
+  <meta name="description" content="You vibe-coded an AI app in Cursor. Now find out if it's regulated under the EU AI Act — before the August 2026 enforcement deadline. Free 2-minute risk assessment, no sign-up." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-cursor-developers/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="EU AI Act Risk Assessment for Cursor Developers" />
+  <meta property="og:description" content="You shipped an AI product with Cursor. Does it fall under EU AI Act? Free 2-minute assessment — no login, instant risk report." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-cursor-developers/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EU AI Act Risk Assessment for Cursor Developers" />
+  <meta name="twitter:description" content="Vibe-coded an AI product with Cursor? Here's how to know if you're a regulated EU AI deployer before August 2026." />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "EU AI Act Risk Assessment for Cursor Developers",
+    "url": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-cursor-developers/",
+    "description": "Free EU AI Act risk tier assessment for Cursor developers building AI-powered apps and SaaS products. Determine whether the AI features you shipped — chatbots, document analyzers, hiring tools, or automation workflows — trigger deployer obligations under the EU AI Act before the August 2026 enforcement deadline.",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "TinyTools",
+      "url": "https://tinytools-smoky.vercel.app/"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "EU AI Act Risk Assessment", "item": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" },
+        { "@type": "ListItem", "position": 3, "name": "For Cursor Developers", "item": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-cursor-developers/" }
+      ]
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0f14;
+      --surface: #151820;
+      --surface2: #1e2230;
+      --border: #2a2f42;
+      --accent: #6366f1;
+      --accent2: #818cf8;
+      --green: #22d3a5;
+      --red: #f87171;
+      --yellow: #fbbf24;
+      --text: #e2e8f0;
+      --muted: #8892aa;
+      --radius: 12px;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.7; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; gap: 12px; height: 52px; }
+    .nav-brand { font-weight: 700; font-size: 15px; color: var(--text); letter-spacing: -.3px; }
+    .nav-brand span { color: var(--accent); }
+    .nav-sep { color: var(--border); }
+    .nav-crumb { font-size: 13px; color: var(--muted); }
+
+    .hero { max-width: 860px; margin: 0 auto; padding: 64px 24px 48px; text-align: center; }
+    .hero-badge { display: inline-block; background: rgba(99,102,241,.15); border: 1px solid rgba(99,102,241,.3); color: var(--accent2); font-size: 12px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-bottom: 20px; }
+    h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 800; line-height: 1.15; letter-spacing: -.5px; margin-bottom: 16px; }
+    h1 em { font-style: normal; color: var(--accent2); }
+    .hero-sub { font-size: 18px; color: var(--muted); max-width: 640px; margin: 0 auto 32px; }
+    .hero-cta-group { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .btn-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 15px; padding: 13px 28px; border-radius: 8px; transition: background .15s; }
+    .btn-primary:hover { background: #4f52d6; text-decoration: none; }
+    .btn-ghost { display: inline-block; border: 1px solid var(--border); color: var(--text); font-size: 14px; padding: 12px 22px; border-radius: 8px; }
+    .deadline-pill { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; background: rgba(251,191,36,.08); border: 1px solid rgba(251,191,36,.25); color: var(--yellow); font-size: 13px; padding: 6px 14px; border-radius: 100px; }
+
+    .section { max-width: 860px; margin: 0 auto; padding: 48px 24px; }
+    h2 { font-size: 26px; font-weight: 700; margin-bottom: 24px; letter-spacing: -.3px; }
+    h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+    p { color: #c8d0e0; margin-bottom: 14px; }
+
+    .risk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 8px; }
+    .risk-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .risk-card .risk-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+    .risk-card.high .risk-label { color: var(--red); }
+    .risk-card.limited .risk-label { color: var(--yellow); }
+    .risk-card.minimal .risk-label { color: var(--green); }
+    .risk-card h3 { font-size: 15px; }
+    .risk-card p { font-size: 13px; color: var(--muted); margin-bottom: 0; }
+
+    .use-case-list { display: flex; flex-direction: column; gap: 20px; }
+    .use-case { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 20px 22px; }
+    .use-case .tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--accent2); margin-bottom: 6px; }
+    .use-case h3 { font-size: 16px; margin-bottom: 6px; }
+    .use-case p { font-size: 14px; color: var(--muted); margin-bottom: 0; }
+
+    .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .pain-grid .col-header { background: var(--surface2); padding: 12px 20px; font-size: 12px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; }
+    .pain-grid .col-header.pain { color: var(--red); border-right: 1px solid var(--border); }
+    .pain-grid .col-header.solution { color: var(--green); }
+    .pain-row { display: contents; }
+    .pain-cell, .sol-cell { padding: 14px 20px; font-size: 14px; border-top: 1px solid var(--border); }
+    .pain-cell { color: #b0b8cc; border-right: 1px solid var(--border); }
+    .sol-cell { color: #c8d0e0; }
+
+    .pricing-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .pricing-table th { text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .pricing-table td { padding: 13px 14px; border-bottom: 1px solid var(--border); color: #c8d0e0; vertical-align: top; }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table tr.highlight td { background: rgba(99,102,241,.07); }
+    .price-chip { display: inline-block; font-weight: 700; font-size: 15px; }
+    .price-chip.free { color: var(--green); }
+    .price-chip.paid { color: var(--yellow); }
+    .check { color: var(--green); }
+    .cross { color: var(--red); }
+
+    .faq-list { display: flex; flex-direction: column; gap: 20px; }
+    .faq-item { border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item h3 { font-size: 16px; margin-bottom: 8px; color: var(--text); }
+    .faq-item p { font-size: 14px; color: var(--muted); margin-bottom: 0; }
+
+    .embed-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px; text-align: center; }
+    .embed-box h2 { margin-bottom: 12px; }
+    .embed-box p { color: var(--muted); margin-bottom: 24px; }
+
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .related-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; display: block; transition: border-color .15s; }
+    .related-card:hover { border-color: var(--accent); text-decoration: none; }
+    .related-card .r-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--accent2); margin-bottom: 6px; }
+    .related-card h3 { font-size: 15px; color: var(--text); margin-bottom: 6px; }
+    .related-card p { font-size: 13px; color: var(--muted); margin-bottom: 0; }
+
+    hr { border: none; border-top: 1px solid var(--border); }
+    footer { max-width: 860px; margin: 0 auto; padding: 32px 24px; font-size: 13px; color: var(--muted); text-align: center; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">Tiny<span>Tools</span></span>
+  <span class="nav-sep">/</span>
+  <span class="nav-crumb"><a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a></span>
+  <span class="nav-sep">/</span>
+  <span class="nav-crumb">For Cursor Developers</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">EU AI Act · August 2026 Enforcement</div>
+  <h1>EU AI Act Risk Assessment<br>for <em>Cursor Developers</em></h1>
+  <p class="hero-sub">You vibe-coded an AI-powered product in Cursor. Now find out if it's regulated under the EU AI Act — before fines start. Free 2-minute assessment, no sign-up, instant risk report.</p>
+  <div class="hero-cta-group">
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="btn-primary">Assess My AI Product →</a>
+    <a href="#use-cases" class="btn-ghost">See Cursor Use Cases ↓</a>
+  </div>
+  <div class="deadline-pill">⚠ August 2, 2026: High-risk AI system obligations begin enforcing</div>
+</section>
+
+<hr />
+
+<!-- INTRO -->
+<section class="section">
+  <h2>The Cursor Developer's EU AI Act Problem</h2>
+  <p>Cursor has changed how fast AI features get shipped. A developer can build a document analyzer, a candidate screening tool, or a credit scoring assistant in a single focused session. The speed is the point — but it also means compliance rarely enters the picture until much later.</p>
+  <p>The EU AI Act doesn't care how you built your product. It cares what your product does and who it affects. If your Cursor-built app helps make decisions about people in the EU — in employment, credit, healthcare, education, or legal contexts — it may already be a regulated AI system. The Annex III high-risk categories are specific and surprisingly easy to fall into, especially for solo developers and small teams building fast.</p>
+  <p>The good news: most Cursor-built apps will land in the minimal or limited risk tier, which means few to no mandatory compliance obligations. The bad news: you won't know which tier you're in until you actually check. The assessment below takes two minutes and tells you exactly where you stand — with a plain-language breakdown you can show to investors, clients, or EU users.</p>
+
+  <div class="risk-grid" style="margin-top: 32px;">
+    <div class="risk-card high">
+      <div class="risk-label">⚠ High Risk</div>
+      <h3>Mandatory Compliance</h3>
+      <p>Conformity assessments, human oversight requirements, documentation obligations, registration in the EU database. Applies to Annex III use cases.</p>
+    </div>
+    <div class="risk-card limited">
+      <div class="risk-label">⚡ Limited Risk</div>
+      <h3>Transparency Required</h3>
+      <p>You must tell EU users they're interacting with an AI system. Applies to chatbots, AI-generated content, and emotion recognition tools.</p>
+    </div>
+    <div class="risk-card minimal">
+      <div class="risk-label">✓ Minimal Risk</div>
+      <h3>No Mandatory Obligations</h3>
+      <p>Most AI apps fall here. Voluntary codes of conduct apply; no mandatory registration or conformity assessment required. Keep shipping.</p>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- USE CASES -->
+<section class="section" id="use-cases">
+  <h2>5 EU AI Act Scenarios Specific to Cursor Developers</h2>
+  <div class="use-case-list">
+
+    <div class="use-case">
+      <div class="tag">Use Case 1</div>
+      <h3>AI Resume Screener or Candidate Ranking Tool — Built Over a Weekend, Now Used by Clients</h3>
+      <p>Cursor makes it trivially fast to build a tool that ingests CVs, runs them through an LLM, and returns a ranked shortlist. If clients use this tool to inform actual hiring decisions — even with human review of the output — you've likely built a high-risk AI system under Annex III, Category 4 (Employment and Workers Management). The trigger isn't whether a human makes the final call; it's whether the AI output materially influences a decision about a natural person's employment. This is one of the easiest Cursor-built apps to accidentally land in the high-risk tier. Run the assessment immediately if you've shipped anything in this space.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 2</div>
+      <h3>AI SaaS Product with EU Users — Shipped Fast, Compliance Never Considered</h3>
+      <p>You built an AI-powered productivity tool, writing assistant, or business intelligence platform using Cursor. It has paying users in Germany, France, or the Netherlands. For most general-purpose productivity apps, you're in the minimal risk tier — no mandatory obligations, keep growing. But if your product's core value proposition involves analyzing data about individuals to generate recommendations (credit risk, insurance pricing, behavioral predictions), your risk tier is determined by the output's domain and purpose, not the technology stack. The assessment maps your app's function to the EU Act's category system so you know exactly where you stand before you hit scale.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 3</div>
+      <h3>AI Customer Service Bot for a Client — Deployed on Their Site, Talking to Their EU Customers</h3>
+      <p>Cursor developers frequently build AI chatbots for clients: live chat widgets, support ticket triage systems, and FAQ bots that use RAG over the client's documentation. As the developer who built and possibly deployed this system, you may carry obligations as an AI provider or deployer depending on your contractual relationship with the client. The limited risk tier's Article 50 transparency obligation almost certainly applies: EU users interacting with your bot must be told they're talking to an AI system. This is straightforward to comply with, but "straightforward" assumes you know about it. The assessment identifies your role and your specific obligations in the deployer chain.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 4</div>
+      <h3>AI Document Analyzer for Legal or Financial Use Cases — Contracts, Invoices, Credit Agreements</h3>
+      <p>AI-assisted document analysis is one of the most common Cursor-built tools: contract review assistants, invoice classifiers, legal clause extractors, and financial document summarizers. The Act's risk classification depends on how the output is used. A tool that extracts and organizes contract metadata for search is almost certainly minimal risk. A tool that produces a compliance recommendation or creditworthiness assessment that a human then acts on may be limited or high risk depending on the domain (credit decisions fall under Annex III, Category 5: Access to Essential Services). Build these tools, but understand the specific compliance posture before deploying to EU financial or legal clients.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="tag">Use Case 5</div>
+      <h3>AI Code Review or Developer Productivity Tool — Teams Using It to Make Engineering Decisions</h3>
+      <p>Many Cursor developers naturally build meta-tools: AI-powered PR reviewers, code quality dashboards, commit summarizers, and sprint planning assistants that assign tasks to developers. A code review tool that flags bugs is minimal risk. A tool that scores developer performance, ranks team members by productivity metrics, or recommends promotion or performance management actions is squarely in the employment/worker management category (Annex III, Category 4). The performance assessment use case is where developer productivity tools cross into high-risk territory. Know where your tool lands before selling it to HR or engineering leadership at EU-based companies.</p>
+    </div>
+
+  </div>
+</section>
+
+<hr />
+
+<!-- PAIN → SOLUTION -->
+<section class="section">
+  <h2>Cursor Developer Pain Points → What This Tool Solves</h2>
+  <div class="pain-grid">
+    <div class="col-header pain">The Pain</div>
+    <div class="col-header solution">The Solution</div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"I built this in Cursor in a weekend and shipped it. I never thought about EU compliance."</div>
+      <div class="sol-cell">Speed of development doesn't change your compliance posture. But for most apps, minimal risk means no mandatory obligations. The assessment tells you in 2 minutes whether you need to act before August 2026 — or whether you can keep shipping.</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"I'm using Claude via the API inside my app. Does Anthropic's compliance cover me?"</div>
+      <div class="sol-cell">No. Anthropic is the GPAI model provider; you are the deployer. These are separate regulatory roles. The Act is explicit: a model provider's compliance does not discharge the deployer's obligations. The assessment maps your specific role in the AI value chain.</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"I can't afford a compliance consultant just to figure out if I need a compliance consultant."</div>
+      <div class="sol-cell">The free assessment gives you a risk tier classification with a plain-language action checklist: what's legally required, what's best practice, and what you can skip. It's the triage layer before you decide whether to engage legal counsel.</div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-cell">"My app is used by people in the EU but I'm based in the US. Does the EU AI Act even apply to me?"</div>
+      <div class="sol-cell">Yes. The Act applies if the output of your AI system affects people located in the EU, regardless of where you're based — similar to GDPR's territorial reach. The assessment includes a jurisdiction section that clarifies your exposure as a non-EU deployer.</div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- TOOL EMBED -->
+<section class="section">
+  <div class="embed-box">
+    <h2 style="margin-bottom: 8px;">Run Your Free EU AI Act Assessment</h2>
+    <p>Takes 2 minutes. No sign-up. Get a shareable PDF-ready risk report for your Cursor-built app.</p>
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="btn-primary" style="font-size: 16px; padding: 15px 36px;">
+      Assess My AI Product →
+    </a>
+    <p style="margin-top: 16px; font-size: 12px;">Covers all 8 Annex III high-risk categories · GPAI transparency rules · Article 50 chatbot obligations · US-based deployer rules</p>
+  </div>
+</section>
+
+<hr />
+
+<!-- PRICING COMPARISON -->
+<section class="section">
+  <h2>Pricing vs. Paid EU AI Act Compliance Tools</h2>
+  <p>Enterprise compliance platforms are built for legal teams at Fortune 500 companies — not for the solo Cursor developer who just shipped an MVP. Here's the honest comparison for the core assessment use case:</p>
+  <div style="overflow-x: auto;">
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Price</th>
+          <th>Developer / Startup Context</th>
+          <th>Instant Report</th>
+          <th>No Login Required</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td><strong>TinyTools EU AI Act Assessment</strong></td>
+          <td><span class="price-chip free">Free</span></td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="check">✓</span> Yes</td>
+        </tr>
+        <tr>
+          <td>EU AI Act Compliance Consultant</td>
+          <td><span class="price-chip paid">€5k–€50k</span></td>
+          <td><span class="check">✓</span> Tailored</td>
+          <td><span class="cross">✗</span> Weeks</td>
+          <td><span class="cross">✗</span> N/A</td>
+        </tr>
+        <tr>
+          <td>Securiti AI Governance</td>
+          <td><span class="price-chip paid">~$30k/yr</span></td>
+          <td><span class="cross">✗</span> Enterprise focus</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="cross">✗</span> No</td>
+        </tr>
+        <tr>
+          <td>OneTrust AI Governance</td>
+          <td><span class="price-chip paid">~$25k+/yr</span></td>
+          <td><span class="cross">✗</span> Enterprise focus</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="cross">✗</span> No</td>
+        </tr>
+        <tr>
+          <td>Lumenova AI Compliance</td>
+          <td><span class="price-chip paid">~$10k/yr</span></td>
+          <td><span class="cross">✗</span> Enterprise focus</td>
+          <td><span class="check">✓</span> Yes</td>
+          <td><span class="cross">✗</span> No</td>
+        </tr>
+        <tr>
+          <td>DIY (reading EUR-Lex)</td>
+          <td><span class="price-chip free">Free</span></td>
+          <td><span class="cross">✗</span> Manual, weeks of reading</td>
+          <td><span class="cross">✗</span> No</td>
+          <td><span class="check">✓</span> Yes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top: 16px; font-size: 13px; color: var(--muted);">Enterprise pricing estimates based on publicly available tiers as of 2026. TinyTools is free and fully browser-side — no data about your product ever leaves your device.</p>
+</section>
+
+<hr />
+
+<!-- FAQ -->
+<section class="section">
+  <h2>FAQ: EU AI Act for Cursor Developers</h2>
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <h3>I use Cursor to write code, but the AI features in my product come from the OpenAI or Anthropic API. Am I an AI provider or a deployer?</h3>
+      <p>You're a deployer — you're using an existing AI model (the provider's product) and deploying it within your specific application context. Cursor is your development tool; the model API is the AI component; your app is the deployed AI system. As a deployer, your obligations depend on the risk tier of your specific use case, not the model's general capabilities.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>My app is in beta and only has a few EU users. Do I still need to comply?</h3>
+      <p>The Act applies to systems "placed on the market or put into service" in the EU. A public beta accessible to EU users is generally considered being put into service. Size and user count don't create exemptions — risk category does. If your beta is minimal risk, you have no mandatory obligations regardless of user count. If it's high-risk, you need to comply from the moment EU users can access it.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>I built an AI feature for a client in the EU. They're deploying it — am I still responsible?</h3>
+      <p>It depends on the contractual structure. If you built and handed off the system as a one-time development project, the client deploying it becomes the deployer. If you're maintaining, hosting, or operating the AI component as a service, you may share deployer obligations. The assessment includes a "who is the deployer" flow that covers contractor and agency relationships.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What are the fines for non-compliance, and do they actually apply to small developers?</h3>
+      <p>For violations related to prohibited AI practices: up to €35 million or 7% of global annual turnover. For high-risk system violations: up to €15 million or 3% of turnover. National market surveillance authorities can investigate any deployer, regardless of company size. However, enforcement in practice will likely target higher-profile cases first. Being proactively compliant is far cheaper than being a test case for enforcement.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Cursor itself uses AI under the hood. Does that affect my compliance status as a developer using Cursor?</h3>
+      <p>No — your use of Cursor to write code doesn't create EU AI Act obligations for you. The Act is about AI systems you deploy to end users, not AI tools you use internally in your development workflow. Your Cursor subscription is a developer productivity tool; the AI system regulated by the Act is the product you're building with it.</p>
+    </div>
+
+  </div>
+</section>
+
+<hr />
+
+<!-- RELATED TOOLS -->
+<section class="section">
+  <h2>Related Tools for Cursor Developers</h2>
+  <div class="related-grid">
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/" class="related-card">
+      <div class="r-label">Article 50 Compliance</div>
+      <h3>AI Disclosure Generator</h3>
+      <p>Generate the compliant disclosure text your AI product must show EU users when they interact with a chatbot or AI-generated content. One-click copy, all formats.</p>
+    </a>
+    <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/" class="related-card">
+      <div class="r-label">Crawl Control</div>
+      <h3>AI Robots.txt Generator</h3>
+      <p>Control which AI crawlers can scrape the content powering your RAG pipelines or knowledge bases — protect your training data and your users' data.</p>
+    </a>
+    <a href="https://tinytools-smoky.vercel.app/ai-cost-calculator/" class="related-card">
+      <div class="r-label">Budget Clarity</div>
+      <h3>AI Cost Calculator</h3>
+      <p>Calculate your monthly LLM spend across OpenAI, Anthropic, and Gemini before you scale. Know your unit economics before EU compliance becomes a bigger line item.</p>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section" style="padding-top: 0;">
+  <div class="embed-box">
+    <h2 style="font-size: 22px; margin-bottom: 8px;">Know your compliance status before August 2026.</h2>
+    <p>Free, instant, no login. Get a shareable risk report for your Cursor-built AI product in 2 minutes.</p>
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/" class="btn-primary">
+      Start Free Assessment →
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> ·
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> ·
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-mcp-server-developers/">For MCP Server Developers</a> ·
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-ai-app-builders/">For AI App Builders</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a>
+  </p>
+  <p style="margin-top: 8px;">© 2026 TinyTools · Free browser-side tools for builders · Not legal advice</p>
+</footer>
+
+</body>
+</html>
