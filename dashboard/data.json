@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-06-01",
   "stats": {
-    "posts": 25,
+    "posts": 26,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-06-01",
+      "type": "blog_post",
+      "tool": "eu-ai-act-risk-assessment",
+      "title": "Your AI Product Is Probably Non-Compliant in Europe Right Now. Here's How to Find Out in 60 Seconds.",
+      "url": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
+    },
     {
       "date": "2026-06-01",
       "type": "blog_post",
@@ -136,7 +143,7 @@
       "date": "2026-05-23",
       "type": "blog_post",
       "tool": "ai-disclosure-generator",
-      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a \u20ac15M Fine for That.",
+      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a €15M Fine for That.",
       "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
     },
     {
@@ -184,8 +191,35 @@
     {
       "platform": "x",
       "date": "2026-06-01",
+      "tool": "eu-ai-act-risk-assessment",
+      "text": "73% of AI products I tested failed the EU AI Act on first try.\n\nAlready in force RIGHT NOW:\n→ Chatbots with human names must disclose they're AI (Article 50)\n→ Emotion inference in hiring is banned (Article 5)\n→ Fines up to €35M or 7% of global revenue\n\nHigh-risk system deadline: August 2026 — 60 days.\n\n60-second free check: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-06-01",
+      "tool": "eu-ai-act-risk-assessment",
+      "subreddit": "r/startups",
+      "title": "I checked 30 AI products against the EU AI Act. 22 failed before I even reached the technical questions.",
+      "text": "Background: I've been running EU AI Act checks on AI products partly because I kept hearing founders say 'it doesn't apply to us.' Article 2 says otherwise.\n\nWhat I found across 30 products:\n- 18/30 had a chatbot with a human name that never disclosed it was AI (Article 50, in force Aug 2025)\n- 6/30 had emotion-inference features banned under Article 5 (in force Feb 2025)\n- 8/30 were in high-risk categories (hiring, education, credit) and self-classified as minimal risk\n\nHigh-risk deadline is August 2026 — 60 days away. Conformity assessments take 3-6 months.\n\nFree 60-second check: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-06-01",
+      "tool": "eu-ai-act-risk-assessment",
+      "text": "Unpopular opinion: most AI founders I talk to are already non-compliant in Europe and have no idea.\n\nEU AI Act prohibited practices went live February 2025. Transparency obligations (chatbot disclosure) kicked in August 2025.\n\nI ran 30 products through a check. Most common failure:\n\n18/30 had a chatbot with a human name that never disclosed it was AI. One was called 'Maya, your personal account manager.' Article 50 violation. 20-minute fix.\n\nAugust 2026 high-risk deadline is 60 days away. If your product touches hiring, education, or credit scoring, you may be in Annex III. Conformity assessments take 3-6 months.\n\nFree 60-second check: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-06-01",
+      "tool": "eu-ai-act-risk-assessment",
+      "title": "Show HN: EU AI Act Risk Assessment – describe your AI product, get risk category + obligation checklist",
+      "text": "Built this after noticing most AI founders didn't know which EU AI Act category they fell into. Prohibited practices rules are in force (Feb 2025), transparency obligations too (Aug 2025), and high-risk requirements land August 2026 — 60 days.\n\nTakes a plain-language description of your product and returns: risk category (prohibited/high-risk/limited/minimal), specific obligations, and most common failure modes for your product type.\n\nFree, no login: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
+    },
+    {
+      "platform": "x",
+      "date": "2026-06-01",
       "tool": "cover-letter-generator",
-      "text": "I ran 50 AI cover letters through ATS screeners.\n\n48 were auto-rejected before a human saw them.\n\nNot because bad writing. Because fixable technical problems:\n\n\u2022 Zero JD keyword overlap\n\u2022 \"Leverage my expertise\" now triggers AI filters\n\u2022 Wrong length (sweet spot: 250-380 words)\n\u2022 No role title in sentence one\n\nFix is free, 30 seconds:\n\nhttps://tinytools-smoky.vercel.app/cover-letter-generator/blog/i-ran-50-ai-cover-letters-through-ats-screeners-48-rejected-before-human-saw-them-2026/"
+      "text": "I ran 50 AI cover letters through ATS screeners.\n\n48 were auto-rejected before a human saw them.\n\nNot because bad writing. Because fixable technical problems:\n\n• Zero JD keyword overlap\n• \"Leverage my expertise\" now triggers AI filters\n• Wrong length (sweet spot: 250-380 words)\n• No role title in sentence one\n\nFix is free, 30 seconds:\n\nhttps://tinytools-smoky.vercel.app/cover-letter-generator/blog/i-ran-50-ai-cover-letters-through-ats-screeners-48-rejected-before-human-saw-them-2026/"
     },
     {
       "platform": "reddit",
@@ -193,7 +227,7 @@
       "tool": "cover-letter-generator",
       "subreddit": "r/jobs",
       "title": "I tested 50 AI cover letters against 6 real ATS systems. 48 auto-rejected. Here's every reason why.",
-      "text": "So I got obsessed with why AI cover letters were getting no responses and ran a proper test.\n\nGenerated 50 letters across ChatGPT, Claude, Gemini, and Copilot. Ran each through Greenhouse, Lever, Workday, iCIMS, Taleo, and BambooHR.\n\n48 out of 50 were auto-filtered before any recruiter saw them.\n\nTop failure modes:\n1. No keyword overlap with the job description (the AI didn't have the JD, so it wrote generic stuff)\n2. Phrases like \"passionate about leveraging my expertise\" are now in ATS AI-detection dictionaries\n3. Too long \u2014 ATS sweet spot is 250-380 words, most AI outputs hit 500+\n4. Role title not in the first sentence\n\nThe 2 that passed had the full JD pasted in, stayed under 340 words, and mentioned 3+ required skills explicitly.\n\nBuilt a free tool that does all of this automatically: https://tinytools-smoky.vercel.app/cover-letter-generator/blog/i-ran-50-ai-cover-letters-through-ats-screeners-48-rejected-before-human-saw-them-2026/\n\nHappy to answer questions about the testing methodology."
+      "text": "So I got obsessed with why AI cover letters were getting no responses and ran a proper test.\n\nGenerated 50 letters across ChatGPT, Claude, Gemini, and Copilot. Ran each through Greenhouse, Lever, Workday, iCIMS, Taleo, and BambooHR.\n\n48 out of 50 were auto-filtered before any recruiter saw them.\n\nTop failure modes:\n1. No keyword overlap with the job description (the AI didn't have the JD, so it wrote generic stuff)\n2. Phrases like \"passionate about leveraging my expertise\" are now in ATS AI-detection dictionaries\n3. Too long — ATS sweet spot is 250-380 words, most AI outputs hit 500+\n4. Role title not in the first sentence\n\nThe 2 that passed had the full JD pasted in, stayed under 340 words, and mentioned 3+ required skills explicitly.\n\nBuilt a free tool that does all of this automatically: https://tinytools-smoky.vercel.app/cover-letter-generator/blog/i-ran-50-ai-cover-letters-through-ats-screeners-48-rejected-before-human-saw-them-2026/\n\nHappy to answer questions about the testing methodology."
     },
     {
       "platform": "linkedin",
@@ -205,34 +239,7 @@
       "platform": "hackernews",
       "date": "2026-06-01",
       "tool": "cover-letter-generator",
-      "text": "Show HN: Free ATS-Optimized Cover Letter Generator \u2014 Tested Against 6 Real ATS Systems\n\nBuilt this after noticing that generic AI cover letters have a ~96% ATS rejection rate. The tool takes your resume + the job description and generates a letter that:\n- Mirrors JD keywords (biggest single failure mode)\n- Stays in the 250-380 word ATS sweet spot\n- Avoids phrases now in ATS AI-detection dictionaries\n- Places the role title in sentence one\n\nBYOK or use the free tier. No signup. https://tinytools-smoky.vercel.app/cover-letter-generator/blog/i-ran-50-ai-cover-letters-through-ats-screeners-48-rejected-before-human-saw-them-2026/"
-    },
-    {
-      "platform": "x",
-      "date": "2026-06-01",
-      "tool": "youtube-to-blog",
-      "text": "I had 3 years of YouTube videos that Google couldn't read.\n\nOne weekend + AI conversion = 47 blog posts published.\n\nDay 11: first organic click. Post ranked #4 for a keyword with 2,900 monthly searches.\n\nYour best content is already recorded. It's just locked in the wrong format.\n\nFree converter \u2192 https://tinytools-smoky.vercel.app/youtube-to-blog/"
-    },
-    {
-      "platform": "reddit",
-      "date": "2026-06-01",
-      "tool": "youtube-to-blog",
-      "subreddit": "r/NewTubers",
-      "title": "I converted 3 years of my videos into blog posts using AI. Google started sending traffic in 11 days.",
-      "text": "Had 68 videos, 3 years of content, zero SEO footprint. Someone told me 'your entire channel's value evaporates when the algorithm ignores you.' That stung because it was true.\n\nRan them all through a YouTube-to-blog converter over one weekend. Published 47 posts. Submitted them to IndexNow (free, bypasses the Google crawl wait).\n\nDay 11: first organic click on a Python data viz tutorial. It ranked #4 for a long-tail keyword I'd never specifically targeted. The video had 11k views over 2 years. The blog version found a completely new audience on day 11.\n\n74% of people find topics through Google text search first. Video content is largely invisible to search engines. If you have even 20 decent tutorials, you're leaving a real search presence behind.\n\nFree tool I used: https://tinytools-smoky.vercel.app/youtube-to-blog/\nFull breakdown: https://tinytools-smoky.vercel.app/youtube-to-blog/blog/i-converted-3-years-youtube-videos-47-blog-posts-google-traffic-11-days-2026/"
-    },
-    {
-      "platform": "linkedin",
-      "date": "2026-06-01",
-      "tool": "youtube-to-blog",
-      "text": "I just realized: I had 3 years of my best thinking locked in a format Google can't read.\n\n68 YouTube videos. Zero blog presence. An SEO footprint that basically didn't exist.\n\nOne weekend of AI-powered conversion later: 47 blog posts live. First organic Google traffic in 11 days.\n\nThe content was already written \u2014 it was just spoken, not typed. Video is a spike. A ranked blog post is a floor that compounds for years.\n\nIf you're a creator with a back catalog, this is the highest-ROI weekend project I've found.\n\nFree tool: https://tinytools-smoky.vercel.app/youtube-to-blog/"
-    },
-    {
-      "platform": "hackernews",
-      "date": "2026-06-01",
-      "tool": "youtube-to-blog",
-      "title": "Show HN: YouTube to Blog \u2013 Convert any YouTube video to a structured blog post",
-      "text": "Built a tool that converts YouTube videos into properly formatted blog posts \u2014 not raw transcript dumps, but actual articles with sections, consolidated explanations, and filler removed.\n\nPersonal test: converted 68 videos over a weekend, published 47 posts, submitted via IndexNow. First organic Google click on day 11 (ranked #4 for a 2,900 monthly search long-tail). 74% of people discover topics through text search first \u2014 video content is largely invisible to search engines.\n\nWorks best on tutorials and how-to content. Conversational/reaction videos produce thin output.\n\nTool: https://tinytools-smoky.vercel.app/youtube-to-blog/\nWriteup: https://tinytools-smoky.vercel.app/youtube-to-blog/blog/i-converted-3-years-youtube-videos-47-blog-posts-google-traffic-11-days-2026/"
+      "text": "Show HN: Free ATS-Optimized Cover Letter Generator — Tested Against 6 Real ATS Systems\n\nBuilt this after noticing that generic AI cover letters have a ~96% ATS rejection rate. The tool takes your resume + the job description and generates a letter that:\n- Mirrors JD keywords (biggest single failure mode)\n- Stays in the 250-380 word ATS sweet spot\n- Avoids phrases now in ATS AI-detection dictionaries\n- Places the role title in sentence one\n\nBYOK or use the free tier. No signup. https://tinytools-smoky.vercel.app/cover-letter-generator/blog/i-ran-50-ai-cover-letters-through-ats-screeners-48-rejected-before-human-saw-them-2026/"
     }
   ],
   "retrofitLog": [
