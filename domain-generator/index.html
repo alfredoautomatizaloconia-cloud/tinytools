@@ -10,7 +10,7 @@
 <meta property="og:description" content="Generate 100+ creative, available domain names in seconds. AI-powered, completely free.">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://YOUR-DOMAIN-HERE">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/domain-generator/">
 
 <style>
   :root {
@@ -121,6 +121,43 @@
   .buy-btn:hover { background: #7c3aed; transform: scale(1.05); }
   .buy-btn.disabled { background: var(--bg); color: var(--text-dim); cursor: not-allowed; }
 
+  /* ---- Viral mechanics styles ---- */
+  .viral-bar {
+    display: none; margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid var(--border);
+  }
+  .viral-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .action-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600;
+    cursor: pointer; text-decoration: none; border: none; transition: all 0.15s;
+  }
+  .action-btn.share { background: #000; color: #fff; border: 1px solid #333; }
+  .action-btn.share:hover { background: #111; }
+  .action-btn.copy { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+  .action-btn.copy:hover { border-color: var(--accent); color: var(--accent); }
+  .action-btn.download { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+  .action-btn.download:hover { border-color: var(--accent); color: var(--accent); }
+  .embed-section {
+    padding: 14px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: 10px;
+  }
+  .embed-section .embed-label {
+    font-size: 11px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.08em; font-weight: 600; margin-bottom: 8px;
+  }
+  .embed-section pre {
+    font-family: monospace; font-size: 11px; background: #000;
+    padding: 10px; border-radius: 6px; color: #c4b5fd;
+    overflow-x: auto; white-space: pre-wrap; word-break: break-all;
+    margin-bottom: 8px;
+  }
+  .embed-section button {
+    padding: 5px 10px; background: var(--accent); border: none;
+    border-radius: 6px; color: white; font-size: 11px; cursor: pointer;
+  }
+  /* ---- end viral styles ---- */
+
   .empty {
     text-align: center; padding: 60px 20px; color: var(--text-dim);
   }
@@ -178,11 +215,28 @@
 
     <div class="results-grid" id="results"></div>
 
+    <!-- Viral actions bar: share, copy-link, download card, embed badge -->
+    <div class="viral-bar" id="viralBar">
+      <div class="viral-actions">
+        <a class="action-btn share" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action-btn copy" id="rCopyLink">🔗 Copy link</button>
+        <a class="action-btn download" id="rDownload" download="domain-generator.png">💾 Download card</a>
+      </div>
+      <div class="embed-section">
+        <div class="embed-label">Embed this search</div>
+        <pre id="rEmbed"></pre>
+        <button id="rEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
+
     <div class="empty" id="empty">
       <div class="emoji">🌐</div>
       <p>Enter a keyword above to generate domain ideas.</p>
     </div>
   </div>
+
+  <!-- Hidden canvas for PNG card export -->
+  <canvas id="cardCanvas" width="1200" height="630" style="display:none;"></canvas>
 
   <section class="content">
     <h2>How to choose a great domain name in 2026</h2>
@@ -253,19 +307,15 @@ function generateBrandable(keyword) {
   const out = new Set();
   const k = clean(keyword);
   if (!k) return [];
-  // Drop letters from end
   for (let i = 4; i <= k.length; i++) {
     out.add(k.slice(0, i) + pickRandom(['ly', 'io', 'fy', 'sy', 'ix', 'ax', 'ox']));
   }
-  // Vowel swap
   const swapped = k.replace(/[aeiou]/g, m => pickRandom(['a', 'e', 'i', 'o', 'u']));
   out.add(swapped);
-  // CV pattern from keyword roots
   const root = k.slice(0, 4);
   for (let i = 0; i < 6; i++) {
     out.add(root + pickRandom(VOWELS) + pickRandom(CONSONANTS));
   }
-  // Pure invented (3-syllable CVCVCV)
   for (let i = 0; i < 5; i++) {
     let w = '';
     for (let j = 0; j < 3; j++) {
@@ -296,7 +346,6 @@ function generateCompound(keyword) {
 }
 
 function generateModern(keyword) {
-  // Heavy on .ai, .io, short brandables
   const out = new Set();
   const k = clean(keyword);
   if (!k) return [];
@@ -317,7 +366,7 @@ function generate(keyword, style) {
   else if (style === 'descriptive') names = generateDescriptive(keyword);
   else if (style === 'compound') names = generateCompound(keyword);
   else if (style === 'modern') names = generateModern(keyword);
-  else { // 'all'
+  else {
     names = [
       ...generateBrandable(keyword).slice(0, 6),
       ...generateDescriptive(keyword).slice(0, 8),
@@ -325,16 +374,12 @@ function generate(keyword, style) {
       ...generateModern(keyword).slice(0, 4)
     ];
   }
-  // Dedup, filter, length-cap
   names = [...new Set(names)].filter(n => n.length >= 4 && n.length <= 16);
-
-  // Cross with TLDs to produce final domain candidates
   const tlds = (style === 'modern') ? ['.ai', '.io', '.co'] : TLDS_PRIMARY;
   const out = [];
   names.forEach(n => {
     tlds.forEach(t => out.push(n + t));
   });
-  // Shuffle + cap
   for (let i = out.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [out[i], out[j]] = [out[j], out[i]];
@@ -419,7 +464,6 @@ function affiliateBuyLink(domain) {
    PIPELINE
    ============================================================ */
 async function runChecks(domains) {
-  // Limit concurrency to avoid hammering rdap.org
   const CONCURRENCY = 6;
   const queue = [...domains];
   const workers = Array.from({ length: CONCURRENCY }, async () => {
@@ -432,6 +476,159 @@ async function runChecks(domains) {
   await Promise.all(workers);
 }
 
+/* ============================================================
+   VIRAL MECHANICS
+   ============================================================ */
+const BASE_URL = 'https://tinytools-smoky.vercel.app/domain-generator/';
+
+function showViralBar(keyword, style) {
+  const availableCount = allDomains.filter(d => d.status === 'available').length;
+  const hash = encodeURIComponent(keyword) + '|' + encodeURIComponent(style);
+  const shareUrl = BASE_URL + '#' + hash;
+
+  // 1. Share on X / Twitter
+  const shareText = `I found ${availableCount} available domains for "${keyword}" 🌐 — generate yours →`;
+  document.getElementById('rShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+  // 2. Copy-link button
+  document.getElementById('rCopyLink').onclick = () => {
+    navigator.clipboard.writeText(shareUrl);
+    const btn = document.getElementById('rCopyLink');
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => { btn.textContent = '🔗 Copy link'; }, 1500);
+  };
+
+  // 3. PNG download card via canvas
+  const canvas = document.getElementById('cardCanvas');
+  drawCardImage(canvas, keyword, style, availableCount);
+  document.getElementById('rDownload').href = canvas.toDataURL('image/png');
+
+  // 4. Embed badge
+  const badgeLabel = encodeURIComponent(`${availableCount} domains`);
+  const badgeKeyword = encodeURIComponent(keyword.slice(0, 20));
+  const embedCode =
+    `<a href="${shareUrl}" target="_blank">\n` +
+    `  <img src="https://img.shields.io/badge/${badgeKeyword}-${badgeLabel}_available-8b5cf6?style=for-the-badge&logo=internetexplorer" alt="Domain Hunt: ${keyword}">\n` +
+    `</a>`;
+  document.getElementById('rEmbed').textContent = embedCode;
+  document.getElementById('rEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const btn = document.getElementById('rEmbedCopy');
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => { btn.textContent = 'Copy embed code'; }, 1500);
+  };
+
+  document.getElementById('viralBar').style.display = 'block';
+}
+
+function drawCardImage(canvas, keyword, style, availableCount) {
+  const W = 1200, H = 630;
+  const ctx = canvas.getContext('2d');
+
+  // Background
+  ctx.fillStyle = '#0a0a0f';
+  ctx.fillRect(0, 0, W, H);
+
+  // Subtle gradient blob top-left
+  const g1 = ctx.createRadialGradient(240, 0, 0, 240, 0, 420);
+  g1.addColorStop(0, 'rgba(139,92,246,0.25)');
+  g1.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = g1;
+  ctx.fillRect(0, 0, W, H);
+
+  // Subtle gradient blob right
+  const g2 = ctx.createRadialGradient(960, 315, 0, 960, 315, 380);
+  g2.addColorStop(0, 'rgba(6,182,212,0.12)');
+  g2.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = g2;
+  ctx.fillRect(0, 0, W, H);
+
+  // "Domain Name Generator" label
+  ctx.font = '600 22px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.fillStyle = '#a0a0b8';
+  ctx.fillText('DOMAIN NAME GENERATOR · tinytools-smoky.vercel.app', 80, 90);
+
+  // Divider line
+  ctx.strokeStyle = '#2a2a3a';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(80, 110);
+  ctx.lineTo(W - 80, 110);
+  ctx.stroke();
+
+  // Big keyword
+  ctx.font = `800 ${keyword.length > 20 ? 64 : 80}px -apple-system, BlinkMacSystemFont, Inter, sans-serif`;
+  const grad = ctx.createLinearGradient(80, 160, 80 + 600, 280);
+  grad.addColorStop(0, '#ffffff');
+  grad.addColorStop(1, '#a78bfa');
+  ctx.fillStyle = grad;
+  ctx.fillText(`"${keyword}"`, 80, 260);
+
+  // Available count
+  ctx.font = '700 52px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.fillStyle = '#10b981';
+  ctx.fillText(`${availableCount} domains available`, 80, 360);
+
+  // Style badge
+  ctx.font = '500 26px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.fillStyle = '#a0a0b8';
+  ctx.fillText(`Style: ${style}  ·  100% free, no sign-up`, 80, 420);
+
+  // CTA box
+  const cta = 'Find yours →';
+  ctx.font = '600 26px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  const ctaW = ctx.measureText(cta).width + 40;
+  ctx.fillStyle = '#8b5cf6';
+  roundRect(ctx, 80, 460, ctaW, 52, 12);
+  ctx.fillStyle = '#fff';
+  ctx.fillText(cta, 100, 493);
+
+  // Bottom-right brand
+  ctx.font = '500 20px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
+  ctx.fillStyle = '#3d3d56';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/domain-generator', W - 60, H - 28);
+  ctx.textAlign = 'left';
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+  ctx.fill();
+}
+
+/* ============================================================
+   AUTO-LOAD FROM URL HASH (deep-link support)
+   Format: #keyword|style  e.g. #ai%20fitness|brandable
+   ============================================================ */
+if (location.hash.length > 1) {
+  try {
+    const raw = location.hash.slice(1);
+    const [kw, st] = raw.split('|').map(decodeURIComponent);
+    if (kw) {
+      document.getElementById('keyword').value = kw;
+      if (st && document.querySelector(`#style option[value="${st}"]`)) {
+        document.getElementById('style').value = st;
+      }
+      // Auto-trigger after DOM settles
+      setTimeout(() => document.getElementById('go').click(), 100);
+    }
+  } catch (e) { /* malformed hash, ignore */ }
+}
+
+/* ============================================================
+   EVENT HANDLERS
+   ============================================================ */
 document.getElementById('go').addEventListener('click', async () => {
   const keyword = document.getElementById('keyword').value.trim();
   const style = document.getElementById('style').value;
@@ -443,10 +640,19 @@ document.getElementById('go').addEventListener('click', async () => {
   goBtn.textContent = 'Generating…';
   emptyEl.style.display = 'none';
   filtersEl.style.display = 'flex';
+  document.getElementById('viralBar').style.display = 'none';
+
+  // Set hash for shareability
+  location.hash = '#' + encodeURIComponent(keyword) + '|' + encodeURIComponent(style);
+
   const candidates = generate(keyword, style);
   allDomains = candidates.map(name => ({ name, status: 'checking' }));
   render();
   await runChecks(allDomains);
+
+  // Show viral bar once checks are done
+  showViralBar(keyword, style);
+
   goBtn.disabled = false;
   goBtn.textContent = 'Generate again';
 });
