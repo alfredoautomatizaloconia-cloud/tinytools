@@ -1,3 +1,22 @@
+## 2026-06-01 — Viral Retrofit: domain-generator
+
+### Tool Retrofitted
+- **domain-generator** — 0 viral mechanics → full suite
+  - URL: https://tinytools-smoky.vercel.app/domain-generator/
+  - Commit: 9ca68a530f863ab1ca4e6ea7f2d89de6db8591c9
+
+### Viral Mechanics Added
+1. Share on X — prefills tweet with available domain count and deep-link
+2. Copy-link — copies #keyword|style hash URL
+3. PNG download — 1200x630 canvas card (keyword, count, brand footer)
+4. Embed badge — shields.io badge with available domain count
+5. Hash deep-link — auto-loads search from URL hash on page load
+
+### Stats
+- Visitor count (abacus root): 1
+- Tools still missing viral mechanics: 3 (background-remover, chat-with-pdf, pdf-to-markdown)
+
+---
 
 ## 2026-05-31 — ai-cofounder-match, devops-disaster-score
 
