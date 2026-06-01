@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-06-01",
   "stats": {
-    "posts": 26,
+    "posts": 27,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-06-01",
+      "type": "blog_post",
+      "tool": "saas-burn-roast",
+      "title": "I Entered My SaaS Numbers Into an AI Roaster. It Called Me a \"Professional Runway Tourist.\"",
+      "url": "https://tinytools-smoky.vercel.app/saas-burn-roast/blog/i-entered-my-saas-numbers-ai-roaster-called-me-runway-tourist-2026/"
+    },
     {
       "date": "2026-06-01",
       "type": "blog_post",
@@ -143,7 +150,7 @@
       "date": "2026-05-23",
       "type": "blog_post",
       "tool": "ai-disclosure-generator",
-      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a €15M Fine for That.",
+      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a \u20ac15M Fine for That.",
       "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
     },
     {
@@ -191,8 +198,35 @@
     {
       "platform": "x",
       "date": "2026-06-01",
+      "tool": "saas-burn-roast",
+      "text": "I pasted my startup numbers into an AI roaster. First line back: \"You're spending $3 for every $1 you earn. That's not a burn rate. That's a religion.\"\n\nFree tool, 10 seconds, no login. The roast is more honest than your last board meeting:\ntinytools-smoky.vercel.app/saas-burn-roast/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-06-01",
+      "tool": "saas-burn-roast",
+      "subreddit": "r/startups",
+      "title": "Built a free tool that roasts your SaaS burn rate like a blunt CFO would \u2014 my own numbers were humbling",
+      "text": "I kept rationalizing our burn. \"We're in growth mode.\" \"The unit economics will catch up.\"\n\nBuilt a tool that just... does the math and says what it means plainly. Entered my own numbers. Got called a \"professional runway tourist.\" Accurate.\n\nNo login, no email \u2014 just MRR, monthly burn, cash in bank \u2192 a financial roast and shareable card.\n\nLink: tinytools-smoky.vercel.app/saas-burn-roast/\n\nCurious what others get \u2014 post your roast label if you try it."
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-06-01",
+      "tool": "saas-burn-roast",
+      "text": "Unpopular opinion: most founders know their burn rate is a problem. They just haven't seen it described in language that makes it real.\n\nI built a free tool that roasts your SaaS burn the way a blunt CFO friend would \u2014 not with a clean dashboard, but with the specific, uncomfortable sentence your numbers actually deserve.\n\nMine: \"You are not default alive. You are default dependent on fundraising conditions that may not exist in 6 months.\"\n\nThat sentence changed my week. Maybe your numbers are fine. But you should find out: tinytools-smoky.vercel.app/saas-burn-roast/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-06-01",
+      "tool": "saas-burn-roast",
+      "title": "Show HN: Roast My SaaS Burn Rate \u2014 enter MRR + burn, get savage AI financial feedback",
+      "text": "Built a small tool that takes MRR, monthly burn, and cash in bank, then outputs a plain-English roast of your financial position \u2014 burn multiple classification, default alive check, runway reality correction. No login, free, shareable card. My own burn multiple came back 2.4x and the tool called it \"burning with optimism and no plan B.\" Link: tinytools-smoky.vercel.app/saas-burn-roast/"
+    },
+    {
+      "platform": "x",
+      "date": "2026-06-01",
       "tool": "eu-ai-act-risk-assessment",
-      "text": "73% of AI products I tested failed the EU AI Act on first try.\n\nAlready in force RIGHT NOW:\n→ Chatbots with human names must disclose they're AI (Article 50)\n→ Emotion inference in hiring is banned (Article 5)\n→ Fines up to €35M or 7% of global revenue\n\nHigh-risk system deadline: August 2026 — 60 days.\n\n60-second free check: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
+      "text": "73% of AI products I tested failed the EU AI Act on first try.\n\nAlready in force RIGHT NOW:\n\u2192 Chatbots with human names must disclose they're AI (Article 50)\n\u2192 Emotion inference in hiring is banned (Article 5)\n\u2192 Fines up to \u20ac35M or 7% of global revenue\n\nHigh-risk system deadline: August 2026 \u2014 60 days.\n\n60-second free check: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
     },
     {
       "platform": "reddit",
@@ -200,7 +234,7 @@
       "tool": "eu-ai-act-risk-assessment",
       "subreddit": "r/startups",
       "title": "I checked 30 AI products against the EU AI Act. 22 failed before I even reached the technical questions.",
-      "text": "Background: I've been running EU AI Act checks on AI products partly because I kept hearing founders say 'it doesn't apply to us.' Article 2 says otherwise.\n\nWhat I found across 30 products:\n- 18/30 had a chatbot with a human name that never disclosed it was AI (Article 50, in force Aug 2025)\n- 6/30 had emotion-inference features banned under Article 5 (in force Feb 2025)\n- 8/30 were in high-risk categories (hiring, education, credit) and self-classified as minimal risk\n\nHigh-risk deadline is August 2026 — 60 days away. Conformity assessments take 3-6 months.\n\nFree 60-second check: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
+      "text": "Background: I've been running EU AI Act checks on AI products partly because I kept hearing founders say 'it doesn't apply to us.' Article 2 says otherwise.\n\nWhat I found across 30 products:\n- 18/30 had a chatbot with a human name that never disclosed it was AI (Article 50, in force Aug 2025)\n- 6/30 had emotion-inference features banned under Article 5 (in force Feb 2025)\n- 8/30 were in high-risk categories (hiring, education, credit) and self-classified as minimal risk\n\nHigh-risk deadline is August 2026 \u2014 60 days away. Conformity assessments take 3-6 months.\n\nFree 60-second check: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
     },
     {
       "platform": "linkedin",
@@ -212,34 +246,8 @@
       "platform": "hackernews",
       "date": "2026-06-01",
       "tool": "eu-ai-act-risk-assessment",
-      "title": "Show HN: EU AI Act Risk Assessment – describe your AI product, get risk category + obligation checklist",
-      "text": "Built this after noticing most AI founders didn't know which EU AI Act category they fell into. Prohibited practices rules are in force (Feb 2025), transparency obligations too (Aug 2025), and high-risk requirements land August 2026 — 60 days.\n\nTakes a plain-language description of your product and returns: risk category (prohibited/high-risk/limited/minimal), specific obligations, and most common failure modes for your product type.\n\nFree, no login: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
-    },
-    {
-      "platform": "x",
-      "date": "2026-06-01",
-      "tool": "cover-letter-generator",
-      "text": "I ran 50 AI cover letters through ATS screeners.\n\n48 were auto-rejected before a human saw them.\n\nNot because bad writing. Because fixable technical problems:\n\n• Zero JD keyword overlap\n• \"Leverage my expertise\" now triggers AI filters\n• Wrong length (sweet spot: 250-380 words)\n• No role title in sentence one\n\nFix is free, 30 seconds:\n\nhttps://tinytools-smoky.vercel.app/cover-letter-generator/blog/i-ran-50-ai-cover-letters-through-ats-screeners-48-rejected-before-human-saw-them-2026/"
-    },
-    {
-      "platform": "reddit",
-      "date": "2026-06-01",
-      "tool": "cover-letter-generator",
-      "subreddit": "r/jobs",
-      "title": "I tested 50 AI cover letters against 6 real ATS systems. 48 auto-rejected. Here's every reason why.",
-      "text": "So I got obsessed with why AI cover letters were getting no responses and ran a proper test.\n\nGenerated 50 letters across ChatGPT, Claude, Gemini, and Copilot. Ran each through Greenhouse, Lever, Workday, iCIMS, Taleo, and BambooHR.\n\n48 out of 50 were auto-filtered before any recruiter saw them.\n\nTop failure modes:\n1. No keyword overlap with the job description (the AI didn't have the JD, so it wrote generic stuff)\n2. Phrases like \"passionate about leveraging my expertise\" are now in ATS AI-detection dictionaries\n3. Too long — ATS sweet spot is 250-380 words, most AI outputs hit 500+\n4. Role title not in the first sentence\n\nThe 2 that passed had the full JD pasted in, stayed under 340 words, and mentioned 3+ required skills explicitly.\n\nBuilt a free tool that does all of this automatically: https://tinytools-smoky.vercel.app/cover-letter-generator/blog/i-ran-50-ai-cover-letters-through-ats-screeners-48-rejected-before-human-saw-them-2026/\n\nHappy to answer questions about the testing methodology."
-    },
-    {
-      "platform": "linkedin",
-      "date": "2026-06-01",
-      "tool": "cover-letter-generator",
-      "text": "Unpopular opinion: your AI cover letter isn't getting filtered because it's bad writing.\n\nIt's getting filtered because you're not giving the AI the job description.\n\nI ran 50 AI-generated cover letters through six ATS platforms. 48 never reached a human. The two that passed had one thing in common: the full job description was used as input.\n\nWithout the JD, the AI writes about you. With the JD, the AI mirrors the exact language the ATS is scanning for.\n\nThe fix takes 30 seconds. Free tool in comments."
-    },
-    {
-      "platform": "hackernews",
-      "date": "2026-06-01",
-      "tool": "cover-letter-generator",
-      "text": "Show HN: Free ATS-Optimized Cover Letter Generator — Tested Against 6 Real ATS Systems\n\nBuilt this after noticing that generic AI cover letters have a ~96% ATS rejection rate. The tool takes your resume + the job description and generates a letter that:\n- Mirrors JD keywords (biggest single failure mode)\n- Stays in the 250-380 word ATS sweet spot\n- Avoids phrases now in ATS AI-detection dictionaries\n- Places the role title in sentence one\n\nBYOK or use the free tier. No signup. https://tinytools-smoky.vercel.app/cover-letter-generator/blog/i-ran-50-ai-cover-letters-through-ats-screeners-48-rejected-before-human-saw-them-2026/"
+      "title": "Show HN: EU AI Act Risk Assessment \u2013 describe your AI product, get risk category + obligation checklist",
+      "text": "Built this after noticing most AI founders didn't know which EU AI Act category they fell into. Prohibited practices rules are in force (Feb 2025), transparency obligations too (Aug 2025), and high-risk requirements land August 2026 \u2014 60 days.\n\nTakes a plain-language description of your product and returns: risk category (prohibited/high-risk/limited/minimal), specific obligations, and most common failure modes for your product type.\n\nFree, no login: https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
     }
   ],
   "retrofitLog": [
