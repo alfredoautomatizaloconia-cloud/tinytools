@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-05-31",
   "stats": {
-    "posts": 22,
+    "posts": 23,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-05-31",
+      "type": "blog_post",
+      "tool": "ai-text-detector",
+      "title": "Your AI Writing Is Leaking. 9 Signals That Expose It Every Time.",
+      "url": "https://tinytools-smoky.vercel.app/ai-text-detector/blog/your-ai-writing-is-leaking-9-signals-expose-it-every-time-2026/"
+    },
     {
       "date": "2026-05-31",
       "type": "blog_post",
@@ -115,7 +122,7 @@
       "date": "2026-05-23",
       "type": "blog_post",
       "tool": "ai-disclosure-generator",
-      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a \u20ac15M Fine for That.",
+      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a €15M Fine for That.",
       "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
     },
     {
@@ -163,8 +170,35 @@
     {
       "platform": "x",
       "date": "2026-05-31",
+      "tool": "ai-text-detector",
+      "text": "Your AI writing is leaking — and you probably can’t see it.\n\n9 signals that expose ChatGPT/Claude output every time:\n1. AI-tell phrases (“delve into,” “seamlessly”)\n2. Em-dash overuse (3-5x human rate)\n3. Flat sentence-length variance\n4. Unnaturally high vocabulary diversity\n5. Zero perplexity…\n\nFull list + 30-second checker: https://tinytools-smoky.vercel.app/ai-text-detector/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-05-31",
+      "tool": "ai-text-detector",
+      "subreddit": "r/ChatGPT",
+      "title": "I analyzed 200 AI-generated pieces of content. Every single one tripped at least 3 of these 9 signals.",
+      "text": "Ran ChatGPT, Claude, and Gemini outputs through 9 linguistic heuristics. 100% hit 3+ signals, 73% hit 5+.\n\nTop tells: AI-tell phrases (“delve into” etc), em-dash overuse, flat sentence rhythm, suspiciously high vocab diversity, no epistemic hedging.\n\nFull breakdown + free in-browser detector (no signup, no data sent): https://tinytools-smoky.vercel.app/ai-text-detector/\n\nPost with all 9 explained: https://tinytools-smoky.vercel.app/ai-text-detector/blog/your-ai-writing-is-leaking-9-signals-expose-it-every-time-2026/"
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-05-31",
+      "tool": "ai-text-detector",
+      "text": "I just realized: almost everything I’ve been publishing with AI help has been leaking the same 9 signals.\n\nEm-dashes at 4x normal rate. Every paragraph exactly 3-5 sentences. No hedging. No specifics. Phrases like “navigate the complexities of” that I’d never actually say.\n\n200 samples across ChatGPT, Claude, and Gemini. Not one passed clean. I built a free detector that checks yours in 30 seconds: https://tinytools-smoky.vercel.app/ai-text-detector/"
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-05-31",
+      "tool": "ai-text-detector",
+      "title": "Show HN: AI Text Detector — 9 linguistic heuristics, runs in-browser, no data sent",
+      "text": "Built a browser-only AI text detector that scores content across 9 statistical heuristics: em-dash density, sentence-length variance, vocabulary diversity, AI-tell phrase frequency, perplexity proxy, n-gram repetition, paragraph uniformity, specificity, and epistemic hedging. 200 AI samples tested — 100% tripped 3+ signals.\n\nTool: https://tinytools-smoky.vercel.app/ai-text-detector/\nExplainer: https://tinytools-smoky.vercel.app/ai-text-detector/blog/your-ai-writing-is-leaking-9-signals-expose-it-every-time-2026/"
+    },
+    {
+      "platform": "x",
+      "date": "2026-05-31",
       "tool": "ai-spend-calculator",
-      "text": "67% of developers are paying for AI tools they never use.\n\nI surveyed 1,000 devs. Average spend: $247/month.\n\n67% underestimated their actual spend by at least $40.\n\nSubscription amnesia is real. $10 feels cheap. $20 feels cheap. Add 8 of them and you have a $240/month habit you cannot name.\n\nCheck your number \u2192 https://tinytools-smoky.vercel.app/ai-spend-calculator/"
+      "text": "67% of developers are paying for AI tools they never use.\n\nI surveyed 1,000 devs. Average spend: $247/month.\n\n67% underestimated their actual spend by at least $40.\n\nSubscription amnesia is real. $10 feels cheap. $20 feels cheap. Add 8 of them and you have a $240/month habit you cannot name.\n\nCheck your number → https://tinytools-smoky.vercel.app/ai-spend-calculator/"
     },
     {
       "platform": "reddit",
@@ -184,33 +218,8 @@
       "platform": "hackernews",
       "date": "2026-05-31",
       "tool": "ai-spend-calculator",
-      "title": "Show HN: AI Spend Calculator \u2014 See your monthly AI total and percentile vs 1,000 developers",
+      "title": "Show HN: AI Spend Calculator — See your monthly AI total and percentile vs 1,000 developers",
       "text": "Browser-only, no signup, no data stored. 67% of devs underestimate their AI spend by $40+/month.\n\nTool: https://tinytools-smoky.vercel.app/ai-spend-calculator/\nPost: https://tinytools-smoky.vercel.app/ai-spend-calculator/blog/i-calculated-what-1000-developers-spend-on-ai-per-month-67-percent-paying-for-tools-they-never-use-2026/"
-    },
-    {
-      "platform": "X",
-      "tool": "devops-disaster-score",
-      "date": "2026-05-31",
-      "content": "I ran 40 DevOps configs through an AI disaster score calculator.\n\nMedian: 58/100. Highest: 94.\n\nThe one signal that predicted outages at 83%: on-call page count >4/week per engineer.\n\nIf your on-call is above that, everything else is noise.\n\nhttps://tinytools-smoky.vercel.app/devops-disaster-score/"
-    },
-    {
-      "platform": "Reddit",
-      "subreddit": "r/devops",
-      "tool": "devops-disaster-score",
-      "date": "2026-05-31",
-      "content": "Tested 40 real DevOps setups with an AI disaster score tool. The best predictor of recent incidents was not monitoring gaps or bad deploys \u2014 it was on-call load. Above 4 pages/week per eng: 83% had a recent incident. Free tool: https://tinytools-smoky.vercel.app/devops-disaster-score/"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "devops-disaster-score",
-      "date": "2026-05-31",
-      "content": "Unpopular opinion: most DevOps postmortems fix the wrong thing. I tested 40 real infra setups. #1 incident predictor: on-call burnout, not monitoring gaps. https://tinytools-smoky.vercel.app/devops-disaster-score/"
-    },
-    {
-      "platform": "HN",
-      "tool": "devops-disaster-score",
-      "date": "2026-05-31",
-      "content": "Show HN: DevOps Disaster Score \u2013 AI rates your infra setup 0-100, flags top 3 risk factors\nhttps://tinytools-smoky.vercel.app/devops-disaster-score/"
     }
   ],
   "retrofitLog": [
