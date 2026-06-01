@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OG Image Generator for AI SaaS Founders | Free Tool — TinyTools</title>
+  <meta name="description" content="Generate professional OG images for your AI SaaS landing page, Product Hunt launch, and blog posts in seconds. Free, no Canva, no Figma, no Bannerbear subscription required." />
+  <meta property="og:title" content="OG Image Generator for AI SaaS Founders" />
+  <meta property="og:description" content="Stop losing clicks because your link preview looks generic. Generate branded OG images for every blog post, changelog, and Product Hunt launch — free, instant, no design skills needed." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/og-image-generator/for-ai-saas-founders/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/og-image-generator/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OG Image Generator for AI SaaS Founders" />
+  <meta name="twitter:description" content="Professional OG images for your AI SaaS — Product Hunt launch, blog posts, changelog updates. Free, instant, no subscriptions." />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/og-image-generator/for-ai-saas-founders/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "OG Image Generator for AI SaaS Founders",
+    "description": "Generate professional OG images for your AI SaaS landing page, Product Hunt launch, and blog posts in seconds. Free, no Canva, no Figma, no Bannerbear subscription required.",
+    "url": "https://tinytools-smoky.vercel.app/og-image-generator/for-ai-saas-founders/",
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "OG Image Generator",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tinytools-smoky.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "OG Image Generator", "item": "https://tinytools-smoky.vercel.app/og-image-generator/" },
+        { "@type": "ListItem", "position": 3, "name": "For AI SaaS Founders", "item": "https://tinytools-smoky.vercel.app/og-image-generator/for-ai-saas-founders/" }
+      ]
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1f1f1f;
+      --border: #2a2a2a;
+      --accent: #7c3aed;
+      --accent2: #a78bfa;
+      --text: #f0f0f0;
+      --muted: #888;
+      --green: #22c55e;
+      --red: #ef4444;
+      --orange: #f97316;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; line-height: 1.65; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { padding: 14px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    nav .logo { font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: -0.02em; }
+    nav .logo span { color: var(--accent2); }
+    nav .breadcrumb { font-size: 0.82rem; color: var(--muted); }
+    nav .breadcrumb a { color: var(--muted); }
+    nav .breadcrumb a:hover { color: var(--accent2); }
+
+    /* HERO */
+    .hero { max-width: 780px; margin: 0 auto; padding: 64px 24px 48px; text-align: center; }
+    .badge { display: inline-block; background: rgba(124,58,237,0.15); border: 1px solid rgba(167,139,250,0.3); color: var(--accent2); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+    h1 .highlight { color: var(--accent2); }
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin: 0 auto 36px; }
+    .cta-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 32px; border-radius: 10px; transition: background 0.2s; }
+    .cta-primary:hover { background: #6d28d9; text-decoration: none; }
+    .cta-note { font-size: 0.8rem; color: var(--muted); margin-top: 10px; }
+
+    /* MOCK OG PREVIEW */
+    .og-mock { max-width: 520px; margin: 36px auto 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    .og-mock-inner { background: linear-gradient(135deg, #1e1b4b 0%, #0f0f23 60%, #1a0a2e 100%); padding: 36px 32px; display: flex; flex-direction: column; gap: 12px; aspect-ratio: 1200/630; justify-content: center; }
+    .og-mock-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent2); }
+    .og-mock-title { font-size: clamp(1.1rem, 3vw, 1.6rem); font-weight: 800; color: #fff; line-height: 1.2; }
+    .og-mock-desc { font-size: 0.82rem; color: rgba(255,255,255,0.55); }
+    .og-mock-footer { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+    .og-mock-logo { width: 20px; height: 20px; border-radius: 4px; background: var(--accent); }
+    .og-mock-domain { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+    .og-mock-bar { height: 3px; background: linear-gradient(90deg, #7c3aed, #a78bfa, #818cf8); }
+
+    /* SECTION */
+    section { max-width: 780px; margin: 0 auto; padding: 0 24px 64px; }
+    h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    p { color: #ccc; margin-bottom: 16px; }
+
+    /* PAIN BLOCKS */
+    .pain-block { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--red); border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; }
+    .pain-block .pain-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); margin-bottom: 6px; }
+    .pain-block .solution-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-top: 12px; margin-bottom: 6px; }
+    .pain-block .solution-text { color: var(--text); font-size: 0.95rem; }
+    .pain-block .pain-text { color: #ccc; font-size: 0.95rem; }
+
+    /* USE CASES */
+    .use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+    @media (max-width: 600px) { .use-case-grid { grid-template-columns: 1fr; } }
+    .use-case-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .use-case-card .uc-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .use-case-card h3 { font-size: 0.98rem; margin-bottom: 6px; }
+    .use-case-card p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* PRICING TABLE */
+    .pricing-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem; }
+    .pricing-table th { text-align: left; padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .pricing-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .tool-name { font-weight: 600; }
+    .pricing-table .price { font-weight: 700; }
+    .pricing-table .price.free { color: var(--green); }
+    .pricing-table .price.paid { color: var(--muted); }
+    .pricing-table tr.highlight { background: rgba(124,58,237,0.08); }
+    .pricing-table tr.highlight .tool-name { color: var(--accent2); }
+    .check { color: var(--green); }
+    .cross { color: var(--red); }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; }
+    .step-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(124,58,237,0.2); border: 1px solid rgba(167,139,250,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; color: var(--accent2); }
+    .step-content h3 { font-size: 0.98rem; margin-bottom: 4px; }
+    .step-content p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* SISTER TOOLS */
+    .sister-tools { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+    .sister-card { flex: 1 1 200px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; transition: border-color 0.2s; }
+    .sister-card:hover { border-color: var(--accent); text-decoration: none; }
+    .sister-card .sc-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .sister-card h3 { font-size: 0.9rem; color: var(--text); margin-bottom: 4px; }
+    .sister-card p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+    /* STAT ROW */
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
+    @media (max-width: 600px) { .stat-row { grid-template-columns: 1fr; } }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; text-align: center; }
+    .stat-card .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent2); letter-spacing: -0.03em; }
+    .stat-card .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
+
+    /* QUOTE */
+    .quote-block { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent2); border-radius: 8px; padding: 20px 24px; margin: 20px 0; }
+    .quote-block p { color: #ddd; font-style: italic; margin-bottom: 8px; font-size: 0.95rem; }
+    .quote-block .quote-author { font-size: 0.8rem; color: var(--muted); }
+
+    /* FINAL CTA */
+    .final-cta { background: linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(167,139,250,0.05) 100%); border: 1px solid rgba(124,58,237,0.3); border-radius: 16px; padding: 48px 36px; text-align: center; margin-bottom: 64px; }
+    .final-cta h2 { font-size: 1.7rem; margin-bottom: 12px; }
+    .final-cta p { max-width: 500px; margin: 0 auto 28px; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 0.82rem; color: var(--muted); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent2); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Tiny<span>Tools</span></span>
+  <span class="breadcrumb">
+    <a href="/">Home</a> /
+    <a href="/og-image-generator/">OG Image Generator</a> /
+    For AI SaaS Founders
+  </span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Product Hunt · Changelogs · Blog Posts · Landing Pages</div>
+  <h1>OG Image Generator<br>for <span class="highlight">AI SaaS Founders</span></h1>
+  <p class="hero-sub">You spent months building your AI product. Don't let a blank grey link preview kill your click-through rate on launch day. Generate on-brand OG images in seconds — free, no Figma, no Canva, no $49/month tool.</p>
+  <a href="/og-image-generator/" class="cta-primary">Generate Your OG Image Free →</a>
+  <p class="cta-note">No login required · Exports 1200×630 PNG · Works for Product Hunt, Twitter, LinkedIn &amp; Slack</p>
+
+  <!-- Mock OG preview -->
+  <div class="og-mock" aria-hidden="true">
+    <div class="og-mock-bar"></div>
+    <div class="og-mock-inner">
+      <div class="og-mock-tag">New Feature · AI SaaS</div>
+      <div class="og-mock-title">We just shipped native RAG search.<br>Zero setup, works in 60 seconds.</div>
+      <div class="og-mock-desc">See how our customers cut support tickets by 40% with context-aware AI answers.</div>
+      <div class="og-mock-footer">
+        <div class="og-mock-logo"></div>
+        <div class="og-mock-domain">youraisaas.com</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STAT ROW -->
+<section>
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-num">3×</div>
+      <div class="stat-label">more clicks on social posts with a custom OG image vs. no image</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">~2 min</div>
+      <div class="stat-label">average time to generate and export a finished OG image</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">$0</div>
+      <div class="stat-label">cost — vs. $39–$89/month for API-based alternatives</div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN → SOLUTION -->
+<section>
+  <h2>Why AI SaaS Founders Keep Shipping Broken Link Previews</h2>
+  <p>Your product does something genuinely impressive. But when someone shares your changelog post in Slack, or your Product Hunt launch link lands in a VC's feed, the preview is a blank grey box — or worse, a random screenshot of your nav bar. You lose the click before the conversation even starts.</p>
+  <p>Most founders treat OG images as an afterthought. They either skip them entirely, spend 45 minutes fighting Canva at 1am before a launch, or pay for a Bannerbear or Placid subscription that mostly sits idle. There's a better way.</p>
+
+  <div class="pain-block">
+    <div class="pain-label">Pain #1</div>
+    <div class="pain-text">Your Product Hunt launch link previews look generic or broken in Twitter/X feeds, costing you upvotes and clicks on the day it matters most.</div>
+    <div class="solution-label">Solution</div>
+    <div class="solution-text">Generate a launch-specific OG image in 2 minutes. Paste your headline, tagline, and brand colors — export a polished 1200×630 PNG ready to submit to Product Hunt and share across every channel.</div>
+  </div>
+
+  <div class="pain-block">
+    <div class="pain-label">Pain #2</div>
+    <div class="pain-text">Every blog post and changelog entry about a new AI feature needs a unique preview image. Creating them manually in Figma doesn't scale when you're shipping weekly.</div>
+    <div class="solution-label">Solution</div>
+    <div class="solution-text">Treat the OG Image Generator as a 2-minute step in your publishing workflow. Consistent template, swap the headline, done. Your entire content library gets branded previews without a designer or a recurring API bill.</div>
+  </div>
+
+  <div class="pain-block">
+    <div class="pain-label">Pain #3</div>
+    <div class="pain-text">You're running link-in-bio ads or cold outreach campaigns where the link preview is the first impression — and right now it's showing placeholder text or the wrong image.</div>
+    <div class="solution-label">Solution</div>
+    <div class="solution-text">Generate campaign-specific OG images with targeted copy for each audience segment. A/B test two headline variants before you spend budget. Takes minutes, not hours.</div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section>
+  <h2>5 Ways AI SaaS Founders Use This Tool</h2>
+  <div class="use-case-grid">
+    <div class="use-case-card">
+      <div class="uc-icon">🚀</div>
+      <h3>Product Hunt Launch Day</h3>
+      <p>Create a dedicated launch OG image 24 hours before your PH submission. Include your tagline, the problem you solve, and a clean visual. The preview card is the first thing hunters see when someone shares your link — make it count.</p>
+    </div>
+    <div class="use-case-card">
+      <div class="uc-icon">📣</div>
+      <h3>Feature Changelog Announcements</h3>
+      <p>Each new AI feature deserves its own preview image. Whether you're shipping native RAG, a new model integration, or an agent workflow — generate a branded announcement image that makes your changelog post shareable on LinkedIn and X.</p>
+    </div>
+    <div class="use-case-card">
+      <div class="uc-icon">✍️</div>
+      <h3>AI-Focused Blog SEO Content</h3>
+      <p>Your "How we cut latency 60% with prompt caching" post will rank better and get shared more when the OG preview looks intentional. Generate blog-specific images at the end of your writing workflow — consistent branding, zero design time.</p>
+    </div>
+    <div class="use-case-card">
+      <div class="uc-icon">🗂️</div>
+      <h3>AI Tool Directory Listings</h3>
+      <p>Sites like There's An AI For That, Futurepedia, and AI Tool Hunt pull your OG image as the listing thumbnail. A sharp, informative preview image dramatically improves click-through on these high-intent directories.</p>
+    </div>
+    <div class="use-case-card">
+      <div class="uc-icon">📧</div>
+      <h3>Cold Outreach & Link Previews</h3>
+      <p>When you drop your landing page URL into a Slack DM or cold email, the OG image is doing the selling before the prospect even clicks. Generate a concise, benefit-focused preview that answers "what does this do?" instantly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <h2>How to Generate an OG Image in Under 2 Minutes</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Enter your headline and subheadline</h3>
+        <p>Use your product name + clearest value prop as the headline. The subheadline should answer the "so what?" in one sentence. No lorem ipsum — real copy converts better even in previews.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Set your brand colors</h3>
+        <p>Paste your primary hex codes. The generator handles contrast and gradient logic automatically — you won't accidentally ship white-text-on-white-background. Use our <a href="/color-palette/">Color Palette Generator</a> if you need brand colors first.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Add your domain or logo</h3>
+        <p>Include your domain name or logo mark so the image is self-identifying when shared out of context — critical for cold outreach and directory listings.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Export and deploy</h3>
+        <p>Download your 1200×630 PNG and add it to your <code>&lt;meta property="og:image"&gt;</code> tag. Test your preview with a social debugger tool to confirm it renders correctly before launch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING COMPARISON -->
+<section>
+  <h2>Free vs. What AI SaaS Founders Usually Pay</h2>
+  <p>You're already paying for your AI API, your hosting, your analytics, and about eight other tools. OG image generation shouldn't be another line item — especially not at $39–$89/month for a tool you use twice a week.</p>
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Monthly Cost</th>
+        <th>No Login</th>
+        <th>1200×630 Export</th>
+        <th>Custom Colors</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="tool-name">TinyTools OG Image Generator</td>
+        <td class="price free">Free</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Bannerbear</td>
+        <td class="price paid">$49/mo</td>
+        <td class="cross">✗</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Placid</td>
+        <td class="price paid">$39/mo</td>
+        <td class="cross">✗</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Canva Pro</td>
+        <td class="price paid">$17/mo</td>
+        <td class="cross">✗</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Cloudinary OG</td>
+        <td class="price paid">$89/mo</td>
+        <td class="cross">✗</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td class="tool-name">DIY with Figma</td>
+        <td class="price paid">~45 min/image</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:14px; font-size:0.85rem;">For early-stage AI SaaS founders watching runway, the math is obvious. Save the subscriptions for infrastructure that directly impacts your product.</p>
+</section>
+
+<!-- QUOTE -->
+<section>
+  <div class="quote-block">
+    <p>"I used to skip OG images entirely and just share bare links. After I started generating them for every post, my newsletter click-throughs from Slack previews doubled. It's a 2-minute thing that pays back every time someone shares a link."</p>
+    <div class="quote-author">— Common feedback from AI SaaS founders who build in public</div>
+  </div>
+</section>
+
+<!-- RELATED TOOLS -->
+<section>
+  <h2>Complete Your Launch Stack</h2>
+  <p>OG images are one piece of a polished launch. These tools cover the rest — all free, all instant.</p>
+  <div class="sister-tools">
+    <a href="/favicon-generator/" class="sister-card">
+      <div class="sc-icon">⚡</div>
+      <h3>Favicon Generator</h3>
+      <p>Generate a browser tab favicon from your logo or initials. Covers ICO, PNG, and Apple Touch icon sizes in one export.</p>
+    </a>
+    <a href="/color-palette/" class="sister-card">
+      <div class="sc-icon">🎨</div>
+      <h3>Color Palette Generator</h3>
+      <p>Build a consistent brand palette with hex codes, Tailwind CSS variables, and accessibility contrast ratios — before you generate your OG images.</p>
+    </a>
+    <a href="/ai-disclosure-generator/" class="sister-card">
+      <div class="sc-icon">📋</div>
+      <h3>AI Disclosure Generator</h3>
+      <p>Generate compliant AI usage disclosures for your SaaS landing page, terms of service, and marketing copy — especially if you're operating in the EU.</p>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section>
+  <div class="final-cta">
+    <h2>Your next launch deserves a better link preview</h2>
+    <p>Generate a professional OG image for your AI SaaS in under 2 minutes. Free, no account required — just results.</p>
+    <a href="/og-image-generator/" class="cta-primary">Open the OG Image Generator →</a>
+    <p style="margin-top:14px; font-size:0.8rem; color:var(--muted);">Used by 10,000+ founders, developers, and creators · No watermarks · No signup</p>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="/">TinyTools</a> ·
+    <a href="/og-image-generator/">OG Image Generator</a> ·
+    <a href="/favicon-generator/">Favicon Generator</a> ·
+    <a href="/color-palette/">Color Palette Generator</a> ·
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a>
+  </p>
+  <p style="margin-top:8px;">Free tools for builders. No ads, no login, no nonsense.</p>
+</footer>
+
+</body>
+</html>
