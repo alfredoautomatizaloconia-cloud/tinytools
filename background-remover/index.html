@@ -75,7 +75,6 @@
   }
   .preview-img-wrap {
     aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
-    /* checkerboard for transparency */
     background-image:
       linear-gradient(45deg, #2a2a3a 25%, transparent 25%),
       linear-gradient(-45deg, #2a2a3a 25%, transparent 25%),
@@ -115,6 +114,27 @@
   }
   .btn.primary:hover { box-shadow: 0 6px 24px rgba(236, 72, 153, 0.45); }
   .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  /* ── Viral mechanics section ── */
+  .viral-section {
+    margin-top: 24px; padding: 20px 22px;
+    background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+  .viral-title {
+    font-size: 12px; font-weight: 700; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px;
+  }
+  .viral-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+  .embed-box {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .embed-label { font-size: 12px; color: var(--text-dim); margin-bottom: 8px; }
+  .embed-box pre {
+    font-size: 11px; color: var(--text-dim); overflow-x: auto; white-space: pre-wrap;
+    margin-bottom: 10px; line-height: 1.6; word-break: break-all;
+  }
 
   .upsell {
     margin-top: 32px; padding: 20px; background: var(--bg-elevated); border-radius: 12px;
@@ -175,6 +195,24 @@
       <button class="btn primary" id="downloadBtn" disabled>Download PNG</button>
       <button class="btn" id="newBtn">Try another image</button>
     </div>
+
+    <!-- ── Viral mechanics ── -->
+    <div id="viralSection" class="viral-section" style="display:none;">
+      <div class="viral-title">📤 Share your result</div>
+      <div class="viral-actions">
+        <a class="btn primary" id="vShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="btn" id="vCopyLink">🔗 Copy link</button>
+        <a class="btn" id="vDownloadCard" download="bg-removed-card.png">🖼 Download card</a>
+      </div>
+      <div class="embed-box">
+        <div class="embed-label">Embed on your README or site</div>
+        <pre id="vEmbed"></pre>
+        <button class="btn" id="vEmbedCopy" style="font-size:12px;padding:8px 14px;">Copy embed code</button>
+      </div>
+    </div>
+
+    <!-- Hidden canvas for 1200×630 share card -->
+    <canvas id="shareCard" width="1200" height="630" style="display:none;"></canvas>
 
     <div class="upsell">
       <strong>Need to process 100s of images, or want better edge quality?</strong>
@@ -239,6 +277,8 @@ document.getElementById('footer-tip').href = AFFILIATE.bmacUrl;
    ============================================================ */
 import { removeBackground } from 'https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/+esm';
 
+const TOOL_URL = 'https://tinytools-smoky.vercel.app/background-remover/';
+
 const dropZone = document.getElementById('dropZone');
 const fileInput = document.getElementById('fileInput');
 const previewGrid = document.getElementById('previewGrid');
@@ -250,6 +290,7 @@ const downloadBtn = document.getElementById('downloadBtn');
 const newBtn = document.getElementById('newBtn');
 
 let resultBlobUrl = null;
+let currentFile = null;
 
 function showStatus(text, kind = 'info', spinner = false) {
   statusEl.className = `status show ${kind}`;
@@ -264,6 +305,163 @@ function showImage(wrap, src) {
   wrap.appendChild(img);
 }
 
+/* ============================================================
+   VIRAL MECHANICS — share card, tweet, copy-link, badge embed
+   ============================================================ */
+async function showViralMechanics(file, resultBlobUrl) {
+  // Set hash so deep-linked shares resolve
+  location.hash = '#done';
+
+  const shareUrl = TOOL_URL + '#done';
+  const shareText = 'I removed the background from my image in-browser — free, no upload, no API key. Try yours →';
+
+  /* ── Draw 1200×630 share card ── */
+  const canvas = document.getElementById('shareCard');
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+
+  // Dark gradient background
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#1f1f2e');
+  bg.addColorStop(1, '#0a0a0f');
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  // Pink glow top-left
+  const glow = ctx.createRadialGradient(200, 80, 0, 200, 80, 500);
+  glow.addColorStop(0, 'rgba(236,72,153,0.18)');
+  glow.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, W, H);
+
+  // Helper: load image from src
+  const loadImg = src => new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => resolve(null);
+    img.src = src;
+  });
+
+  // Read original file as dataURL
+  const origSrc = await new Promise(resolve => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.readAsDataURL(file);
+  });
+
+  const [origImg, resultImg] = await Promise.all([loadImg(origSrc), loadImg(resultBlobUrl)]);
+
+  // Layout: two image panels side by side
+  const panelW = 460, panelH = 340, panelY = 160;
+  const leftX = 60, rightX = W - 60 - panelW;
+
+  // Draw checkerboard for "after" panel (shows transparency)
+  const sq = 18;
+  for (let row = 0; row * sq < panelH; row++) {
+    for (let col = 0; col * sq < panelW; col++) {
+      ctx.fillStyle = (row + col) % 2 === 0 ? '#2a2a3a' : '#1d1d2a';
+      ctx.fillRect(
+        rightX + col * sq, panelY + row * sq,
+        Math.min(sq, panelW - col * sq),
+        Math.min(sq, panelH - row * sq)
+      );
+    }
+  }
+
+  // Fit + center image inside panel rect
+  function drawFit(img, x, y, maxW, maxH) {
+    if (!img) return;
+    const scale = Math.min(maxW / img.width, maxH / img.height);
+    const dw = img.width * scale, dh = img.height * scale;
+    const dx = x + (maxW - dw) / 2, dy = y + (maxH - dh) / 2;
+    ctx.drawImage(img, dx, dy, dw, dh);
+  }
+
+  // "Before" panel solid fill + original image
+  ctx.fillStyle = '#15151f';
+  ctx.fillRect(leftX, panelY, panelW, panelH);
+  drawFit(origImg, leftX, panelY, panelW, panelH);
+
+  // "After" panel — checkerboard already drawn, just draw result image
+  drawFit(resultImg, rightX, panelY, panelW, panelH);
+
+  // Panel labels
+  ctx.font = '700 18px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillStyle = 'rgba(160,160,184,0.85)';
+  ctx.textAlign = 'center';
+  ctx.fillText('BEFORE', leftX + panelW / 2, panelY - 16);
+  ctx.fillText('AFTER', rightX + panelW / 2, panelY - 16);
+
+  // Arrow between panels
+  ctx.font = 'bold 44px sans-serif';
+  ctx.fillStyle = '#ec4899';
+  ctx.textAlign = 'center';
+  ctx.fillText('→', W / 2, panelY + panelH / 2 + 16);
+
+  // Title
+  ctx.font = '800 46px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.textAlign = 'center';
+  ctx.fillText('AI Background Remover', W / 2, 82);
+
+  // Subtitle
+  ctx.font = '400 22px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillStyle = 'rgba(160,160,184,0.85)';
+  ctx.fillText('In-browser · Free · Nothing uploaded', W / 2, 120);
+
+  // Branding badge bottom-right
+  ctx.font = '600 17px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillStyle = '#ec4899';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app', W - 28, H - 22);
+
+  // Wire up Download card
+  const vDownloadCard = document.getElementById('vDownloadCard');
+  vDownloadCard.href = canvas.toDataURL('image/png');
+
+  // Wire up X/Twitter share
+  document.getElementById('vShare').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(TOOL_URL)}`;
+
+  // Wire up Copy link
+  const vCopyLink = document.getElementById('vCopyLink');
+  vCopyLink.onclick = () => {
+    navigator.clipboard.writeText(shareUrl);
+    vCopyLink.textContent = '✓ Copied!';
+    setTimeout(() => vCopyLink.textContent = '🔗 Copy link', 1500);
+  };
+
+  // Embeddable shields.io badge
+  const embedCode =
+`<a href="${TOOL_URL}" target="_blank">
+  <img src="https://img.shields.io/badge/Background-Removed_Free-ec4899?style=for-the-badge" alt="AI Background Remover — Free">
+</a>`;
+  document.getElementById('vEmbed').textContent = embedCode;
+
+  const vEmbedCopy = document.getElementById('vEmbedCopy');
+  vEmbedCopy.onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    vEmbedCopy.textContent = '✓ Copied';
+    setTimeout(() => vEmbedCopy.textContent = 'Copy embed code', 1500);
+  };
+
+  document.getElementById('viralSection').style.display = 'block';
+  document.getElementById('viralSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+/* ============================================================
+   AUTO-LOAD FROM URL HASH (deep-link support)
+   For this tool images are local, so #done just shows a hint
+   that someone shared this page after successfully using it.
+   ============================================================ */
+if (location.hash === '#done') {
+  // Nothing to restore (local file), but the hash is honoured for shareability
+  console.info('[background-remover] Opened via shared link — welcome!');
+}
+
+/* ============================================================
+   CORE PROCESSING
+   ============================================================ */
 async function process(file) {
   if (!file || !file.type.startsWith('image/')) {
     showStatus('That file is not an image. Try a JPG, PNG, or WebP.', 'error');
@@ -274,6 +472,8 @@ async function process(file) {
     return;
   }
 
+  currentFile = file;
+  document.getElementById('viralSection').style.display = 'none';
   previewGrid.style.display = 'grid';
   actionsEl.style.display = 'flex';
   downloadBtn.disabled = true;
@@ -301,7 +501,9 @@ async function process(file) {
     resultBlobUrl = URL.createObjectURL(blob);
     showImage(resultWrap, resultBlobUrl);
     downloadBtn.disabled = false;
-    showStatus('Done. Click Download PNG to save.', 'success');
+    showStatus('Done! Download your transparent PNG, or share your result below.', 'success');
+    // Trigger viral mechanics
+    await showViralMechanics(file, resultBlobUrl);
   } catch (err) {
     console.error(err);
     showStatus('Something went wrong: ' + err.message + '. Try a smaller or simpler image.', 'error');
@@ -334,6 +536,7 @@ downloadBtn.addEventListener('click', () => {
 
 newBtn.addEventListener('click', () => {
   fileInput.value = '';
+  document.getElementById('viralSection').style.display = 'none';
   fileInput.click();
 });
 </script>
