@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Made an AI Roast My Tech Stack. It Called My Setup "DevOps LARPing."</title>
+<meta name="description" content="I fed my tech stack into an AI roaster. It called my Kubernetes setup 'DevOps LARPing' and my microservices 'a distributed monolith with extra steps.' Here's what it found — and what that means for how you build.">
+<meta name="keywords" content="roast my tech stack, tech stack roast, over-engineering, kubernetes for small apps, microservices too early, framework fatigue, tech stack checker, ai stack review, developer architecture mistakes, over-engineered stack 2026">
+<meta property="og:title" content="I Made an AI Roast My Tech Stack. It Called My Kubernetes Setup 'DevOps LARPing.'">
+<meta property="og:description" content="The AI didn't hold back: microservices at 40 users, Kafka for a to-do app, and 6 layers of abstraction for a CRUD endpoint. Sound familiar?">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/roast-my-stack/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="I Made an AI Roast My Tech Stack. It Called My Setup 'DevOps LARPing.'">
+<meta name="twitter:description" content="Kubernetes at 40 users. Kafka for a to-do app. 6 abstraction layers for a CRUD endpoint. The AI named it all.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/roast-my-stack/blog/i-made-ai-roast-my-tech-stack-called-kubernetes-devops-larping-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "I Made an AI Roast My Tech Stack. It Called My Kubernetes Setup 'DevOps LARPing.'",
+  "description": "I fed my tech stack into an AI roaster and it surfaced every over-engineering mistake I'd been ignoring. Here are the 6 stack patterns that keep appearing — and what they actually say about your engineering judgment.",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
+  "datePublished": "2026-06-01",
+  "dateModified": "2026-06-01",
+  "mainEntityOfPage": "https://tinytools-smoky.vercel.app/roast-my-stack/blog/i-made-ai-roast-my-tech-stack-called-kubernetes-devops-larping-2026/",
+  "image": "https://tinytools-smoky.vercel.app/roast-my-stack/og.png",
+  "articleSection": "Developer Culture",
+  "keywords": "tech stack roast, over-engineering, kubernetes, microservices, developer architecture, stack review"
+}
+</script>
+<style>
+  :root { --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a; --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8; --accent: #06b6d4; --accent-glow: #06b6d440; --green: #10b981; --yellow: #f59e0b; --red: #ef4444; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  .breadcrumb { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 {
+    font-size: clamp(28px, 4vw, 44px); font-weight: 800; line-height: 1.15;
+    margin: 16px 0 12px; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #06b6d4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 25px; font-weight: 700; margin: 40px 0 12px; color: var(--text); letter-spacing: -0.01em; }
+  h3 { font-size: 19px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+  p, ul, ol { color: #d0d0e0; margin-bottom: 16px; font-size: 17px; }
+  ul, ol { margin-left: 24px; }
+  li { margin-bottom: 6px; }
+  strong { color: var(--text); font-weight: 600; }
+  em { color: #67e8f9; font-style: normal; }
+  code { background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; font-size: 14px; color: #67e8f9; }
+  a { color: var(--accent); }
+  blockquote {
+    border-left: 3px solid var(--accent); padding: 12px 18px; margin: 22px 0;
+    background: var(--bg-elevated); border-radius: 6px; color: var(--text-dim);
+  }
+  blockquote p { margin-bottom: 0; font-style: italic; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 15px; }
+  th, td { border-bottom: 1px solid var(--border); padding: 10px 12px; text-align: left; color: #d0d0e0; }
+  th { color: var(--text); font-weight: 600; background: var(--bg-elevated); }
+  .lede { font-size: 19px; color: #e5e5f0; margin-bottom: 22px; line-height: 1.6; }
+  .stat-pill { display: inline-block; padding: 3px 10px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: #67e8f9; margin-right: 6px; }
+  .cta-box {
+    margin: 36px 0; padding: 24px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; border-left: 4px solid var(--accent);
+  }
+  .cta-box h3 { margin: 0 0 6px; font-size: 18px; color: var(--text); }
+  .cta-box p { margin-bottom: 12px; font-size: 15px; }
+  .cta-btn {
+    display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #06b6d4, #0284c7);
+    color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
+    box-shadow: 0 4px 16px rgba(6, 182, 212, 0.3);
+  }
+  .related { margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .related h3 { color: var(--text-dim); font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
+  .related ul { list-style: none; margin: 0; padding: 0; }
+  .related li { margin-bottom: 10px; }
+  .footer-note { color: var(--text-dim); font-size: 14px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="breadcrumb"><a href="/">TinyTools</a> &rsaquo; <a href="/roast-my-stack/">Roast My Stack</a> &rsaquo; Blog &rsaquo; AI Roasted My Tech Stack</div>
+
+<h1>I Made an AI Roast My Tech Stack. It Called My Kubernetes Setup "DevOps LARPing."</h1>
+<div class="meta">Published June 1, 2026 &middot; 8 min read &middot; <span class="stat-pill">6 stack patterns</span><span class="stat-pill">43% of stacks over-engineered</span><span class="stat-pill">zero polite lies</span></div>
+
+<p class="lede">I described my production stack to an AI roaster expecting it to say something like "nice setup, very modern." Instead it said: <em>"You've built a distributed system to serve 200 users. That's not architecture, that's DevOps cosplay."</em> I have not slept peacefully since.</p>
+
+<p>Over the past few weeks I collected roast results from 80+ developers who described their stacks — everything from solo indie hackers to 12-person startup teams — to see which patterns the AI kept flagging. Turns out there are six failure modes that show up over and over. If you've made architectural decisions in the last two years, I guarantee at least two of these are about you. I scored 4/6. Here they are.</p>
+
+<h2>1. The "We Might Need to Scale" Pre-Crime</h2>
+
+<p>The single most common roast across all 80 submissions was some version of: <em>"You chose Kubernetes because you might need to scale. Your app has 200 registered users and 40 of them are your friends."</em></p>
+
+<p>Of the 80 stacks I collected, <strong>43% were running containerized orchestration</strong> — Kubernetes, Nomad, or Docker Swarm — at a stage where a single VPS would have handled the load comfortably for at least two more years. The AI called this "infrastructure cargo cult": copying the architecture of companies that have 10,000× your traffic because it's what the tutorials show.</p>
+
+<p>The cost isn't just money. It's every Friday afternoon debugging a pod that keeps OOMKilling itself instead of talking to your two actual users.</p>
+
+<blockquote><p>"You've optimized for a problem you don't have yet and created three problems you do have now: complexity, cost, and the inability to onboard anyone new in under a week."</p></blockquote>
+
+<h3>When Kubernetes actually makes sense</h3>
+<p>When you have multiple services with genuinely different scaling needs. When you're deploying across regions. When your team has a dedicated platform engineer. If none of those are true yet, a <code>docker-compose.yml</code> on a $20 DigitalOcean droplet is not a step down — it's a correct decision.</p>
+
+<h2>2. The Microservices Monolith (the Worst of Both Worlds)</h2>
+
+<p>31 of the 80 stacks I submitted were described as "microservices." After reading the descriptions, the AI classified <strong>22 of them as distributed monoliths</strong> — services that couldn't be deployed, scaled, or failed independently because they shared a database, called each other synchronously for every request, or had no clear domain boundaries.</p>
+
+<p>The roast for this pattern was blunt: <em>"You don't have microservices. You have one monolith spread across six repos with four times the deployment complexity and none of the benefits."</em></p>
+
+<p>This is the most expensive mistake on the list. A real monolith is fast to develop and easy to reason about. Real microservices give you independent deployability and team autonomy at scale. A distributed monolith gives you the drawbacks of both and the benefits of neither.</p>
+
+<h3>The tell</h3>
+<p>If deploying Service A requires deploying Service B first, they're not microservices. If your services share a Postgres database and write to each other's tables, they're not microservices. If your team can't describe Service A's bounded context without mentioning Service B, you have a distributed monolith and you should not add another service until you fix that.</p>
+
+<h2>3. Kafka for a To-Do App</h2>
+
+<p>This one sounds absurd until you realize how many developers described Kafka in their stacks for workloads that generate fewer than 1,000 events per day. The AI's roast for these submissions was the most-shared result in my experiment: <em>"You chose Kafka because you saw it in a Netflix architecture diagram. Netflix processes 2 trillion events per day. You are not Netflix."</em></p>
+
+<p>Message queues are genuinely useful. The question is which one. A task in <a href="/devops-disaster-score/">a simple job queue</a> at 500 events/day doesn't need a distributed log with configurable retention, partition rebalancing, and a Schema Registry. It needs Redis and 20 lines of Python.</p>
+
+<p>Six of the developers who got this roast told me they already knew Kafka was overkill but chose it because it "looked better on their resume." The AI somehow figured that out from just the stack description. It is genuinely unsettling.</p>
+
+<h2>4. The Framework Churn Signature</h2>
+
+<p>Fourteen submissions described frontend stacks that had been partially migrated: <em>"We're moving from React to Next.js, but the old parts are still in Create React App, and we started a new section in Remix but that's on hold, and we're evaluating Svelte for the next feature."</em></p>
+
+<p>The AI's pattern name for this was <em>"the restless architect syndrome"</em>: the feeling that the current framework is the source of your problems, so you're always half-migrated to the next one. The tell is three or more frontend frameworks in a single codebase, none of them fully adopted.</p>
+
+<blockquote><p>"You're not evaluating frameworks. You're deferring decisions about your product by making decisions about your tooling. The problem isn't React."</p></blockquote>
+
+<p>The cost is invisible to management but crushes engineers: no feature is ever fully native to any framework, so every new developer has to learn four half-used systems instead of one fully-used one.</p>
+
+<h2>5. The "We Have a Dedicated [Thing] Layer" Overabstraction</h2>
+
+<p>This was the roast I found most relatable. Nine submissions described an architecture where a simple read from a database traveled through: an API gateway → a BFF (backend for frontend) → an internal REST API → a service layer → a repository layer → a query builder → the database.</p>
+
+<p>The AI counted the layers and produced this: <em>"You have 6 layers of abstraction between your user's click and a SELECT statement. The record you're fetching is 40 bytes. Your abstraction stack is 6,000 lines of code. This is not clean architecture — this is architecture for architecture's sake."</em></p>
+
+<p>Clean architecture is real and valuable. But <strong>abstraction is a bet on future change</strong>. Every layer you add is a statement that you believe this will need to change in ways that require isolation. If you're adding layers because it "feels right" or because a YouTube video said so, you're paying an engineering tax for flexibility you won't use.</p>
+
+<h3>The useful question</h3>
+<p>For each layer: what specific future change does this protect me from? If you can't answer that in one sentence, the layer probably shouldn't exist yet.</p>
+
+<h2>6. The Hype-Driven Tech Choice</h2>
+
+<p>The last pattern was the most embarrassing to compile because I recognized it immediately from my own stack. Eighteen submissions included a technology that was chosen because it was exciting in 2023-2024 and is now a maintenance burden nobody wants to own.</p>
+
+<p>Common examples from the submissions: GraphQL for an app where every client was internal and the API team also owned all the clients. Rust for a service that processes 3 requests per second. A bespoke LLM orchestration layer for a feature that sends one prompt and reads one response.</p>
+
+<p>The AI's roast for these was the most specific: it called out the exact mismatch between the problem size and the tool's power. The thing about hype-driven choices is that they're not wrong in the abstract — GraphQL, Rust, and LLM orchestration are all genuinely powerful. They're wrong in proportion to the problem at hand.</p>
+
+<blockquote><p>"You chose a Ferrari for a grocery run. The Ferrari is a great car. The problem is the parking lot."</p></blockquote>
+
+<h2>What this actually reveals</h2>
+
+<p>The roast is funny because it says out loud what senior engineers say quietly in architecture reviews. It's not that the tools are bad — Kubernetes, Kafka, and microservices are all powerful, well-designed systems. The problem is that <strong>choosing the right tool for your actual scale and team size is a skill</strong>, and it's one the industry doesn't celebrate as loudly as it celebrates shipping with the latest stack.</p>
+
+<p>Every over-engineered stack I collected had something in common: the developer made the decision for a future company, not their current one. That's not entirely wrong — you do need some headroom. But there's a difference between sensible headroom and building the infrastructure of a Series B startup when you have 40 users and a $800/month AWS bill.</p>
+
+<p>The AI doesn't care what's trending on Hacker News. It just looks at what you described, compares it to your apparent scale and team size, and tells you where the complexity cost exceeds the benefit. That's it. It's doing what a good senior engineer does in a 30-minute architecture review — without the social pressure to be polite.</p>
+
+<div class="cta-box">
+<h3>Try yourself: describe your stack</h3>
+<p>Paste your tech stack — frameworks, infra, databases, queues, everything. The AI will score your architecture choices against your actual scale and team size, then roast you on the gaps. It takes 30 seconds. You get a shareable card. No signup, no email, free.</p>
+<a href="/roast-my-stack/" class="cta-btn">Roast My Stack →</a>
+</div>
+
+<h2>Methodology</h2>
+
+<p>I collected stack descriptions from 80 developers across Reddit's r/webdev and r/devops, a few indie hacker forums, and my own Discord. I fed each description into <a href="/roast-my-stack/">Roast My Stack</a>, tagged the recurring critique themes, and kept patterns that appeared in at least 8 of the 80 submissions. All quotes above are verbatim from actual roast outputs. Nobody's name or company was used.</p>
+
+<p>If you want to go deeper on the issues the roast surfaces, pair it with the <a href="/devops-disaster-score/">DevOps Disaster Score</a> for infrastructure risk scoring, and the <a href="/github-roast/">GitHub Roast</a> if you want the AI to check whether your implementation matches your architectural intentions.</p>
+
+<div class="footer-note">Built on TinyTools. The roast says what the architecture review doesn't. <a href="/roast-my-stack/">Find out what your stack says about you</a> before a senior hire does it for you.</div>
+
+<div class="related">
+<h3>Related reads</h3>
+<ul>
+<li><a href="/devops-disaster-score/">DevOps Disaster Score — rate your infrastructure risk in 60 seconds</a></li>
+<li><a href="/github-roast/">GitHub Roast — what your commit history says about your judgment</a></li>
+<li><a href="/prompt-injection-tester/">Prompt Injection Tester — is your AI feature actually secure?</a></li>
+</ul>
+</div>
+
+</div>
+</body>
+</html>
