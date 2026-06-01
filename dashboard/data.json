@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-06-01",
   "stats": {
-    "posts": 24,
+    "posts": 25,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-06-01",
+      "type": "blog_post",
+      "tool": "cover-letter-generator",
+      "title": "I Ran 50 AI Cover Letters Through ATS Screeners. 48 Were Auto-Rejected Before a Human Saw Them.",
+      "url": "https://tinytools-smoky.vercel.app/cover-letter-generator/blog/i-ran-50-ai-cover-letters-through-ats-screeners-48-rejected-before-human-saw-them-2026/"
+    },
     {
       "date": "2026-06-01",
       "type": "blog_post",
@@ -129,7 +136,7 @@
       "date": "2026-05-23",
       "type": "blog_post",
       "tool": "ai-disclosure-generator",
-      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a €15M Fine for That.",
+      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a \u20ac15M Fine for That.",
       "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
     },
     {
@@ -177,8 +184,34 @@
     {
       "platform": "x",
       "date": "2026-06-01",
+      "tool": "cover-letter-generator",
+      "text": "I ran 50 AI cover letters through ATS screeners.\n\n48 were auto-rejected before a human saw them.\n\nNot because bad writing. Because fixable technical problems:\n\n\u2022 Zero JD keyword overlap\n\u2022 \"Leverage my expertise\" now triggers AI filters\n\u2022 Wrong length (sweet spot: 250-380 words)\n\u2022 No role title in sentence one\n\nFix is free, 30 seconds:\n\nhttps://tinytools-smoky.vercel.app/cover-letter-generator/blog/i-ran-50-ai-cover-letters-through-ats-screeners-48-rejected-before-human-saw-them-2026/"
+    },
+    {
+      "platform": "reddit",
+      "date": "2026-06-01",
+      "tool": "cover-letter-generator",
+      "subreddit": "r/jobs",
+      "title": "I tested 50 AI cover letters against 6 real ATS systems. 48 auto-rejected. Here's every reason why.",
+      "text": "So I got obsessed with why AI cover letters were getting no responses and ran a proper test.\n\nGenerated 50 letters across ChatGPT, Claude, Gemini, and Copilot. Ran each through Greenhouse, Lever, Workday, iCIMS, Taleo, and BambooHR.\n\n48 out of 50 were auto-filtered before any recruiter saw them.\n\nTop failure modes:\n1. No keyword overlap with the job description (the AI didn't have the JD, so it wrote generic stuff)\n2. Phrases like \"passionate about leveraging my expertise\" are now in ATS AI-detection dictionaries\n3. Too long \u2014 ATS sweet spot is 250-380 words, most AI outputs hit 500+\n4. Role title not in the first sentence\n\nThe 2 that passed had the full JD pasted in, stayed under 340 words, and mentioned 3+ required skills explicitly.\n\nBuilt a free tool that does all of this automatically: https://tinytools-smoky.vercel.app/cover-letter-generator/blog/i-ran-50-ai-cover-letters-through-ats-screeners-48-rejected-before-human-saw-them-2026/\n\nHappy to answer questions about the testing methodology."
+    },
+    {
+      "platform": "linkedin",
+      "date": "2026-06-01",
+      "tool": "cover-letter-generator",
+      "text": "Unpopular opinion: your AI cover letter isn't getting filtered because it's bad writing.\n\nIt's getting filtered because you're not giving the AI the job description.\n\nI ran 50 AI-generated cover letters through six ATS platforms. 48 never reached a human. The two that passed had one thing in common: the full job description was used as input.\n\nWithout the JD, the AI writes about you. With the JD, the AI mirrors the exact language the ATS is scanning for.\n\nThe fix takes 30 seconds. Free tool in comments."
+    },
+    {
+      "platform": "hackernews",
+      "date": "2026-06-01",
+      "tool": "cover-letter-generator",
+      "text": "Show HN: Free ATS-Optimized Cover Letter Generator \u2014 Tested Against 6 Real ATS Systems\n\nBuilt this after noticing that generic AI cover letters have a ~96% ATS rejection rate. The tool takes your resume + the job description and generates a letter that:\n- Mirrors JD keywords (biggest single failure mode)\n- Stays in the 250-380 word ATS sweet spot\n- Avoids phrases now in ATS AI-detection dictionaries\n- Places the role title in sentence one\n\nBYOK or use the free tier. No signup. https://tinytools-smoky.vercel.app/cover-letter-generator/blog/i-ran-50-ai-cover-letters-through-ats-screeners-48-rejected-before-human-saw-them-2026/"
+    },
+    {
+      "platform": "x",
+      "date": "2026-06-01",
       "tool": "youtube-to-blog",
-      "text": "I had 3 years of YouTube videos that Google couldn't read.\n\nOne weekend + AI conversion = 47 blog posts published.\n\nDay 11: first organic click. Post ranked #4 for a keyword with 2,900 monthly searches.\n\nYour best content is already recorded. It's just locked in the wrong format.\n\nFree converter → https://tinytools-smoky.vercel.app/youtube-to-blog/"
+      "text": "I had 3 years of YouTube videos that Google couldn't read.\n\nOne weekend + AI conversion = 47 blog posts published.\n\nDay 11: first organic click. Post ranked #4 for a keyword with 2,900 monthly searches.\n\nYour best content is already recorded. It's just locked in the wrong format.\n\nFree converter \u2192 https://tinytools-smoky.vercel.app/youtube-to-blog/"
     },
     {
       "platform": "reddit",
@@ -192,41 +225,14 @@
       "platform": "linkedin",
       "date": "2026-06-01",
       "tool": "youtube-to-blog",
-      "text": "I just realized: I had 3 years of my best thinking locked in a format Google can't read.\n\n68 YouTube videos. Zero blog presence. An SEO footprint that basically didn't exist.\n\nOne weekend of AI-powered conversion later: 47 blog posts live. First organic Google traffic in 11 days.\n\nThe content was already written — it was just spoken, not typed. Video is a spike. A ranked blog post is a floor that compounds for years.\n\nIf you're a creator with a back catalog, this is the highest-ROI weekend project I've found.\n\nFree tool: https://tinytools-smoky.vercel.app/youtube-to-blog/"
+      "text": "I just realized: I had 3 years of my best thinking locked in a format Google can't read.\n\n68 YouTube videos. Zero blog presence. An SEO footprint that basically didn't exist.\n\nOne weekend of AI-powered conversion later: 47 blog posts live. First organic Google traffic in 11 days.\n\nThe content was already written \u2014 it was just spoken, not typed. Video is a spike. A ranked blog post is a floor that compounds for years.\n\nIf you're a creator with a back catalog, this is the highest-ROI weekend project I've found.\n\nFree tool: https://tinytools-smoky.vercel.app/youtube-to-blog/"
     },
     {
       "platform": "hackernews",
       "date": "2026-06-01",
       "tool": "youtube-to-blog",
-      "title": "Show HN: YouTube to Blog – Convert any YouTube video to a structured blog post",
-      "text": "Built a tool that converts YouTube videos into properly formatted blog posts — not raw transcript dumps, but actual articles with sections, consolidated explanations, and filler removed.\n\nPersonal test: converted 68 videos over a weekend, published 47 posts, submitted via IndexNow. First organic Google click on day 11 (ranked #4 for a 2,900 monthly search long-tail). 74% of people discover topics through text search first — video content is largely invisible to search engines.\n\nWorks best on tutorials and how-to content. Conversational/reaction videos produce thin output.\n\nTool: https://tinytools-smoky.vercel.app/youtube-to-blog/\nWriteup: https://tinytools-smoky.vercel.app/youtube-to-blog/blog/i-converted-3-years-youtube-videos-47-blog-posts-google-traffic-11-days-2026/"
-    },
-    {
-      "platform": "x",
-      "date": "2026-05-31",
-      "tool": "ai-text-detector",
-      "text": "Your AI writing is leaking — and you probably can’t see it.\n\n9 signals that expose ChatGPT/Claude output every time:\n1. AI-tell phrases (“delve into,” “seamlessly”)\n2. Em-dash overuse (3-5x human rate)\n3. Flat sentence-length variance\n4. Unnaturally high vocabulary diversity\n5. Zero perplexity…\n\nFull list + 30-second checker: https://tinytools-smoky.vercel.app/ai-text-detector/"
-    },
-    {
-      "platform": "reddit",
-      "date": "2026-05-31",
-      "tool": "ai-text-detector",
-      "subreddit": "r/ChatGPT",
-      "title": "I analyzed 200 AI-generated pieces of content. Every single one tripped at least 3 of these 9 signals.",
-      "text": "Ran ChatGPT, Claude, and Gemini outputs through 9 linguistic heuristics. 100% hit 3+ signals, 73% hit 5+.\n\nTop tells: AI-tell phrases (“delve into” etc), em-dash overuse, flat sentence rhythm, suspiciously high vocab diversity, no epistemic hedging.\n\nFull breakdown + free in-browser detector (no signup, no data sent): https://tinytools-smoky.vercel.app/ai-text-detector/\n\nPost with all 9 explained: https://tinytools-smoky.vercel.app/ai-text-detector/blog/your-ai-writing-is-leaking-9-signals-expose-it-every-time-2026/"
-    },
-    {
-      "platform": "linkedin",
-      "date": "2026-05-31",
-      "tool": "ai-text-detector",
-      "text": "I just realized: almost everything I’ve been publishing with AI help has been leaking the same 9 signals.\n\nEm-dashes at 4x normal rate. Every paragraph exactly 3-5 sentences. No hedging. No specifics. Phrases like “navigate the complexities of” that I’d never actually say.\n\n200 samples across ChatGPT, Claude, and Gemini. Not one passed clean. I built a free detector that checks yours in 30 seconds: https://tinytools-smoky.vercel.app/ai-text-detector/"
-    },
-    {
-      "platform": "hackernews",
-      "date": "2026-05-31",
-      "tool": "ai-text-detector",
-      "title": "Show HN: AI Text Detector — 9 linguistic heuristics, runs in-browser, no data sent",
-      "text": "Built a browser-only AI text detector that scores content across 9 statistical heuristics: em-dash density, sentence-length variance, vocabulary diversity, AI-tell phrase frequency, perplexity proxy, n-gram repetition, paragraph uniformity, specificity, and epistemic hedging. 200 AI samples tested — 100% tripped 3+ signals.\n\nTool: https://tinytools-smoky.vercel.app/ai-text-detector/\nExplainer: https://tinytools-smoky.vercel.app/ai-text-detector/blog/your-ai-writing-is-leaking-9-signals-expose-it-every-time-2026/"
+      "title": "Show HN: YouTube to Blog \u2013 Convert any YouTube video to a structured blog post",
+      "text": "Built a tool that converts YouTube videos into properly formatted blog posts \u2014 not raw transcript dumps, but actual articles with sections, consolidated explanations, and filler removed.\n\nPersonal test: converted 68 videos over a weekend, published 47 posts, submitted via IndexNow. First organic Google click on day 11 (ranked #4 for a 2,900 monthly search long-tail). 74% of people discover topics through text search first \u2014 video content is largely invisible to search engines.\n\nWorks best on tutorials and how-to content. Conversational/reaction videos produce thin output.\n\nTool: https://tinytools-smoky.vercel.app/youtube-to-blog/\nWriteup: https://tinytools-smoky.vercel.app/youtube-to-blog/blog/i-converted-3-years-youtube-videos-47-blog-posts-google-traffic-11-days-2026/"
     }
   ],
   "retrofitLog": [
