@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Robots.txt Generator for AI Art Creators — Stop Scrapers From Training On Your Work (2026)</title>
+<meta name="description" content="You create AI art. Now stop AI from stealing it back. Generate a robots.txt that blocks GPTBot, ClaudeBot, and Bytespider from training on your gallery, portfolio, and prompt collections — free, no signup.">
+<meta name="keywords" content="robots.txt for ai art, ai art scraper protection, block ai training crawlers, midjourney portfolio robots.txt, stable diffusion site protection, ai art portfolio bots, GPTBot block artists, ai art copyright protection, protect ai generated art, ai art creator tools 2026">
+<meta property="og:title" content="AI Robots.txt Generator for AI Art Creators — Stop the Scrapers">
+<meta property="og:description" content="Your Midjourney galleries, Stable Diffusion portfolios, and prompt collections are being harvested to train the next wave of competing AI models. A single robots.txt file fixes that. Generate yours free in 60 seconds.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-ai-art-creators/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-ai-art-creators/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Robots.txt Generator for AI Art Creators",
+  "url": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-ai-art-creators/",
+  "description": "Generate a robots.txt file that blocks AI training crawlers (GPTBot, ClaudeBot, Google-Extended, Bytespider, CCBot) from harvesting AI art portfolios, galleries, and prompt libraries — while keeping live-citation bots that drive organic discovery.",
+  "dateModified": "2026-06-01",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "AI Art Creators, Midjourney Artists, Stable Diffusion Users, AI Image Generators, Generative Art Portfolio Owners"
+  },
+  "mainEntity": {
+    "@type": "SoftwareApplication",
+    "name": "AI Robots.txt Generator",
+    "url": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are AI training bots actually scraping my art portfolio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. GPTBot (OpenAI), ClaudeBot (Anthropic), Google-Extended, Bytespider (ByteDance), and CCBot (Common Crawl) all crawl publicly accessible websites — including personal portfolio sites, art blogs, and galleries hosted on custom domains or platforms like Cargo, Format, and Squarespace. Without a robots.txt, they have implicit permission to harvest your image descriptions, prompt metadata, alt text, and page content to train future models. A robots.txt file disallowing these user-agents opts you out."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does robots.txt protect my actual image files from being scraped?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Robots.txt controls which pages and paths crawlers can visit, not the images themselves directly — but blocking the pages that contain your images is highly effective. Crawlers index your art through your page's HTML (alt text, captions, titles, prompt descriptions), so blocking the gallery pages prevents your work from entering training pipelines. For extra protection, also block your /gallery/, /work/, /collections/, and any page that embeds your generated images."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will blocking AI training bots hurt my SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — as long as you allow Googlebot and Bingbot. The critical distinction is training crawlers vs. search crawlers. GPTBot, Google-Extended, ClaudeBot, and Bytespider are training bots: they harvest your content for model training and return zero direct traffic. Googlebot, Bingbot, OAI-SearchBot, and PerplexityBot are discovery bots: they index your art for search results and AI-powered answers that send viewers to your site. Block the first group, allow the second, and your discoverability stays intact while your creative work is protected."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I sell Midjourney prompts. What paths should I block?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Block your /prompts/, /shop/, and any page listing your prompt packs — these are the highest-value targets for training crawlers since they contain structured, labeled creative instructions. You can still allow your homepage and public-facing landing pages so search engines and social crawlers (Twitterbot, facebookexternalhit) can index and share your brand. Use the Disallow field per user-agent to give training bots a narrow block while keeping everything else open."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0d0d0f;
+    --surface: #18181c;
+    --surface2: #222228;
+    --border: #2e2e38;
+    --accent: #7c6af7;
+    --accent-light: #a89df9;
+    --text: #f0eff6;
+    --muted: #9898a8;
+    --green: #22c55e;
+    --red: #f87171;
+  }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.7; }
+  a { color: var(--accent-light); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; border-bottom: 1px solid var(--border); }
+  .nav-logo { font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: -0.02em; }
+  .nav-logo span { color: var(--accent); }
+  .nav-link { font-size: 0.875rem; color: var(--muted); }
+
+  .hero { max-width: 780px; margin: 0 auto; padding: 4rem 1.5rem 2.5rem; text-align: center; }
+  .hero-badge { display: inline-block; background: rgba(124,106,247,0.15); border: 1px solid rgba(124,106,247,0.35); color: var(--accent-light); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 999px; margin-bottom: 1.25rem; }
+  h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.03em; margin-bottom: 1rem; }
+  h1 em { font-style: normal; color: var(--accent-light); }
+  .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 600px; margin: 0 auto 2rem; }
+
+  .cta-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 1rem; padding: 0.85rem 2rem; border-radius: 10px; transition: opacity 0.15s; }
+  .cta-primary:hover { opacity: 0.88; text-decoration: none; }
+  .cta-note { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; }
+
+  .tool-frame { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; max-width: 780px; margin: 2.5rem auto; padding: 2rem 1.5rem; text-align: center; }
+  .tool-frame p { color: var(--muted); margin-bottom: 1.25rem; }
+
+  section { max-width: 780px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+  h2 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 1.5rem; }
+  h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+
+  .use-cases { display: grid; gap: 1.25rem; }
+  .use-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem 1.5rem; }
+  .use-card .tag { display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent-light); background: rgba(124,106,247,0.12); border-radius: 4px; padding: 0.2rem 0.5rem; margin-bottom: 0.5rem; }
+  .use-card p { color: var(--muted); font-size: 0.95rem; margin-top: 0.3rem; }
+
+  .pain-grid { display: grid; gap: 1rem; }
+  .pain-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: start; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 1.25rem; }
+  .pain-arrow { color: var(--accent); font-size: 1.25rem; padding-top: 0.15rem; }
+  .pain-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; margin-bottom: 0.3rem; }
+  .pain-before .pain-label { color: var(--red); }
+  .pain-after .pain-label { color: var(--green); }
+  .pain-before p, .pain-after p { font-size: 0.9rem; color: var(--muted); }
+
+  .pricing-table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+  .pricing-table th { background: var(--surface2); padding: 0.8rem 1rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); text-align: left; }
+  .pricing-table td { padding: 0.85rem 1rem; font-size: 0.9rem; border-top: 1px solid var(--border); vertical-align: top; }
+  .pricing-table tr:last-child td { border-bottom: none; }
+  .pill-free { display: inline-block; background: rgba(34,197,94,0.15); color: var(--green); font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; }
+  .pill-paid { display: inline-block; background: rgba(248,113,113,0.12); color: var(--red); font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; }
+  .highlight-row td { background: rgba(124,106,247,0.07); font-weight: 600; }
+
+  .internal-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+  .link-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 1.25rem; transition: border-color 0.15s; }
+  .link-card:hover { border-color: var(--accent); text-decoration: none; }
+  .link-card .lc-title { font-weight: 700; font-size: 0.95rem; color: var(--text); margin-bottom: 0.3rem; }
+  .link-card .lc-desc { font-size: 0.82rem; color: var(--muted); }
+
+  .final-cta { background: linear-gradient(135deg, rgba(124,106,247,0.18) 0%, rgba(124,106,247,0.06) 100%); border: 1px solid rgba(124,106,247,0.3); border-radius: 16px; text-align: center; padding: 3rem 2rem; margin: 2rem auto; max-width: 780px; }
+  .final-cta h2 { margin-bottom: 0.75rem; }
+  .final-cta p { color: var(--muted); margin-bottom: 1.75rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+  footer { border-top: 1px solid var(--border); padding: 2rem 1.5rem; text-align: center; color: var(--muted); font-size: 0.8rem; max-width: 780px; margin: 0 auto; }
+
+  @media (max-width: 600px) {
+    .pain-row { grid-template-columns: 1fr; }
+    .pain-arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="https://tinytools-smoky.vercel.app/"><span>tiny</span>tools</a>
+  <a class="nav-link" href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/">← Back to AI Robots.txt Generator</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">AI Art Creators</div>
+  <h1>AI Robots.txt Generator<br>for <em>AI Art Creators</em></h1>
+  <p class="hero-sub">You spent hours crafting prompts, curating your gallery, and building an audience. GPTBot, ClaudeBot, and Bytespider are harvesting all of it — right now — to train the next wave of competing AI image models. One robots.txt file stops them cold.</p>
+  <a class="cta-primary" href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/">Generate My Robots.txt — Free</a>
+  <p class="cta-note">No signup. Output in 60 seconds. Works on any host.</p>
+</div>
+
+<!-- TOOL EMBED CALLOUT -->
+<div class="tool-frame">
+  <p>Select your bots to block, enter your protected paths, and get a copy-paste robots.txt tailored for AI art portfolios.</p>
+  <a class="cta-primary" href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/">Open the Generator →</a>
+</div>
+
+<!-- USE CASES -->
+<section>
+  <h2>5 Ways AI Art Creators Use This Tool</h2>
+  <div class="use-cases">
+
+    <div class="use-card">
+      <span class="tag">Portfolio Protection</span>
+      <h3>Block scrapers from your Midjourney or Stable Diffusion gallery</h3>
+      <p>Your gallery page is pure gold for AI training: labeled images, style keywords, aesthetic tags. Add <code>Disallow: /gallery/</code> for GPTBot and Google-Extended and that data stops flowing into future model training runs — while Googlebot keeps indexing your pages for search visibility.</p>
+    </div>
+
+    <div class="use-card">
+      <span class="tag">Prompt Sellers</span>
+      <h3>Protect your prompt shop from being reverse-engineered</h3>
+      <p>If you sell prompt packs on your own site (or link out to them from a landing page), the descriptions and previews are scraped to teach AI models exactly what high-quality prompts look like. Block <code>/shop/</code>, <code>/prompts/</code>, and <code>/products/</code> for all training bots while leaving payment and checkout pages untouched.</p>
+    </div>
+
+    <div class="use-card">
+      <span class="tag">Style Protection</span>
+      <h3>Stop competitors from "learning" your unique aesthetic</h3>
+      <p>You've developed a recognizable visual style through thousands of iterations. When you publish your work-in-progress shots, style breakdowns, or prompt-to-image comparisons, scrapers ingest the pattern. Block <code>/process/</code>, <code>/blog/</code>, and <code>/tutorials/</code> for Bytespider and CCBot to keep your creative methodology private.</p>
+    </div>
+
+    <div class="use-card">
+      <span class="tag">Commission Artists</span>
+      <h3>Protect client work shown in your portfolio</h3>
+      <p>Commission artists often display client-approved pieces publicly. Those images — even if AI-generated — represent real commercial relationships. Use path-specific Disallow rules to block training crawlers from your <code>/commissions/</code> folder while keeping the showcase visible to human visitors and search engines.</p>
+    </div>
+
+    <div class="use-card">
+      <span class="tag">Content Creators</span>
+      <h3>Preserve your AI art tutorial and YouTube thumbnail assets</h3>
+      <p>If you run a YouTube channel, newsletter, or Substack alongside your portfolio, you likely host thumbnails, cover art, and banner images on your own domain. These assets — often your best-performing creative work — are prime targets for image-adjacent scraping. A blanket <code>Disallow: /assets/</code> for training agents keeps them yours.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PAIN → SOLUTION -->
+<section>
+  <h2>Pain Point → Robots.txt Fix</h2>
+  <div class="pain-grid">
+
+    <div class="pain-row">
+      <div class="pain-before">
+        <div class="pain-label">Before</div>
+        <p>Spent 6 months perfecting a SDXL style. Saw almost identical outputs in a new model release 3 months later.</p>
+      </div>
+      <div class="pain-arrow">→</div>
+      <div class="pain-after">
+        <div class="pain-label">After</div>
+        <p>Training bots blocked from your process pages. Your prompt-to-image methodology stays off the training dataset.</p>
+      </div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-before">
+        <div class="pain-label">Before</div>
+        <p>Prompt pack sales dropped after buyers said they could get "similar results for free" from new model updates.</p>
+      </div>
+      <div class="pain-arrow">→</div>
+      <div class="pain-after">
+        <div class="pain-label">After</div>
+        <p>Shop and product pages blocked for GPTBot, CCBot, Bytespider. Prompt descriptions no longer feed the next model iteration.</p>
+      </div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-before">
+        <div class="pain-label">Before</div>
+        <p>No robots.txt at all. Every AI training crawler hitting your domain has full access — and you'd never know.</p>
+      </div>
+      <div class="pain-arrow">→</div>
+      <div class="pain-after">
+        <div class="pain-label">After</div>
+        <p>A targeted robots.txt blocks 8+ training bots while keeping Googlebot, OAI-SearchBot, and PerplexityBot active for discovery.</p>
+      </div>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain-before">
+        <div class="pain-label">Before</div>
+        <p>Worried that blocking all bots will crater your SEO and you'll disappear from Google Image Search.</p>
+      </div>
+      <div class="pain-arrow">→</div>
+      <div class="pain-after">
+        <div class="pain-label">After</div>
+        <p>Selective blocking: training crawlers disallowed, Googlebot and Bingbot allowed. SEO intact, training opt-out in place.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICING COMPARISON -->
+<section>
+  <h2>Free vs. Paid: What AI Art Creators Are Actually Using</h2>
+  <p style="color: var(--muted); margin-bottom: 1.25rem; font-size: 0.95rem;">Several platforms and website builders offer "bot protection" as a paid feature. Here's how they compare for AI art creators who just need a clean, portable robots.txt file.</p>
+
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Cost</th>
+        <th>AI Bot Coverage</th>
+        <th>Portable?</th>
+        <th>Best For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight-row">
+        <td><strong>TinyTools AI Robots.txt Generator</strong></td>
+        <td><span class="pill-free">Free</span></td>
+        <td>GPTBot, ClaudeBot, Google-Extended, Bytespider, CCBot, Applebot-Extended, Diffbot, PetalBot, ImagesiftBot + more</td>
+        <td>Yes — raw file, any host</td>
+        <td>Any AI art creator with a self-hosted or custom domain portfolio</td>
+      </tr>
+      <tr>
+        <td>Squarespace SEO panel</td>
+        <td><span class="pill-paid">$16–$49/mo plan</span></td>
+        <td>Limited — no granular AI bot controls as of 2026</td>
+        <td>No — locked to Squarespace</td>
+        <td>Squarespace-native sites (with limited bot control)</td>
+      </tr>
+      <tr>
+        <td>Cargo / Format portfolio</td>
+        <td><span class="pill-paid">$9–$25/mo</span></td>
+        <td>None — no robots.txt customization exposed to users</td>
+        <td>No</td>
+        <td>Visual portfolio display, not bot protection</td>
+      </tr>
+      <tr>
+        <td>Cloudflare Bot Management</td>
+        <td><span class="pill-paid">$200+/mo (Enterprise)</span></td>
+        <td>Strong — but overkill for a personal portfolio</td>
+        <td>Yes</td>
+        <td>High-traffic commercial sites needing real-time bot blocking</td>
+      </tr>
+      <tr>
+        <td>Manual robots.txt (DIY)</td>
+        <td><span class="pill-free">Free</span></td>
+        <td>Only as good as your knowledge of current bot user-agents</td>
+        <td>Yes</td>
+        <td>Developers who already know every active training crawler's exact user-agent string</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="color: var(--muted); font-size: 0.82rem; margin-top: 0.75rem;">For a solo AI art creator or small studio, a well-crafted robots.txt is the most cost-effective protection layer available. The generator keeps the bot list current so you don't have to.</p>
+</section>
+
+<!-- INTERNAL LINKS -->
+<section>
+  <h2>Other Tools for AI Art Creators</h2>
+  <div class="internal-links">
+    <a class="link-card" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">
+      <div class="lc-title">AI Disclosure Generator</div>
+      <div class="lc-desc">Generate platform-ready disclosures for AI-generated art — required by Adobe Stock, Getty, and the EU AI Act's transparency provisions.</div>
+    </a>
+    <a class="link-card" href="https://tinytools-smoky.vercel.app/og-image-generator/">
+      <div class="lc-title">OG Image Generator</div>
+      <div class="lc-desc">Create open graph preview images for your portfolio pages so your work looks stunning when shared on X, Discord, and Reddit.</div>
+    </a>
+    <a class="link-card" href="https://tinytools-smoky.vercel.app/color-palette/">
+      <div class="lc-title">Color Palette Generator</div>
+      <div class="lc-desc">Extract and export the color palettes from your AI art series — useful for brand consistency across your portfolio, Substack, and merch.</div>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>Your Art Trained the Models. Now Opt Out.</h2>
+  <p>It takes 60 seconds. No account. Paste the output into your site's root and you're protected. The list of blocked bots stays current — check back quarterly as new crawlers emerge.</p>
+  <a class="cta-primary" href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/">Generate My AI Art Robots.txt →</a>
+  <p class="cta-note" style="margin-top:0.75rem;">Free forever · Works on Webflow, Framer, Vercel, Netlify, GitHub Pages, and any custom host</p>
+</div>
+
+<footer>
+  <p>© 2026 TinyTools · <a href="https://tinytools-smoky.vercel.app/">Home</a> · <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/">AI Robots.txt Generator</a> · <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a></p>
+</footer>
+
+</body>
+</html>
