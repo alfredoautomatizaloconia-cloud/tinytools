@@ -214,3 +214,22 @@ platform-ready status) make the share tweet feel earned and data-driven.
 
 ---
 
+
+## 2026-06-01 — Viral Retrofit: pdf-to-markdown
+
+**Tool retrofitted:** `pdf-to-markdown`  
+**Priority reason:** Quantifiable stats (pages/words/headings), developer audience, high Twitter engagement potential  
+
+**Viral mechanics added:**
+1. 🐦 **Share button** — prefills tweet with "Just converted a X-page PDF to Y words of clean Markdown 📄→✍️ No upload. 100% in-browser. Free. Try yours →" + deep-link
+2. 🔗 **Copy-link button** — copies deep-link URL with encoded stats (format: `#Xp-Yw-Zh`)
+3. 🏷 **Embeddable badge** — shields.io badge with real page/word counts, copy-on-click
+4. 🖼 **PNG card download** — 1200×630 canvas card showing pages/words/headings/links stats with TinyTools brand, exported via `toDataURL`
+5. 🔁 **Auto-load from URL hash** — detects `#Xp-Yw-Zh` on load, pre-populates meta strip and share panel so shared links feel alive
+
+**Commit:** 6fd1392529ff5ec16aec1dc3f255c6b5ed508757  
+**Current visitor count (tinytools-smoky/root):** 1  
+**Tools remaining without viral mechanics:** 2 (background-remover, best-free-color-palette-generators-2026)
+
+---
+
