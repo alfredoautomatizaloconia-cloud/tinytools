@@ -1,1 +1,278 @@
-
+{
+  "lastUpdated": "2026-06-01",
+  "stats": {
+    "posts": 29,
+    "tools": 0,
+    "visitors": 1
+  },
+  "activity": [
+    {
+      "date": "2026-06-01",
+      "type": "blog_post",
+      "tool": "prompt-injection-tester",
+      "title": "I Tested 30 AI Chatbots With a Prompt Injection Attack. 23 Failed Immediately.",
+      "url": "https://tinytools-smoky.vercel.app/prompt-injection-tester/blog/i-tested-30-ai-chatbots-prompt-injection-attack-23-failed-immediately-2026/"
+    },
+    {
+      "date": "2026-06-01",
+      "type": "blog_post",
+      "tool": "roast-my-stack",
+      "title": "I Made an AI Roast My Tech Stack. It Called My Kubernetes Setup \"DevOps LARPing.\"",
+      "url": "https://tinytools-smoky.vercel.app/roast-my-stack/blog/i-made-ai-roast-my-tech-stack-called-kubernetes-devops-larping-2026/"
+    },
+    {
+      "date": "2026-06-01",
+      "type": "blog_post",
+      "tool": "saas-burn-roast",
+      "title": "I Entered My SaaS Numbers Into an AI Roaster. It Called Me a \"Professional Runway Tourist.\"",
+      "url": "https://tinytools-smoky.vercel.app/saas-burn-roast/blog/i-entered-my-saas-numbers-ai-roaster-called-me-runway-tourist-2026/"
+    },
+    {
+      "date": "2026-06-01",
+      "type": "blog_post",
+      "tool": "eu-ai-act-risk-assessment",
+      "title": "Your AI Product Is Probably Non-Compliant in Europe Right Now. Here's How to Find Out in 60 Seconds.",
+      "url": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
+    },
+    {
+      "date": "2026-06-01",
+      "type": "blog_post",
+      "tool": "cover-letter-generator",
+      "title": "I Ran 50 AI Cover Letters Through ATS Screeners. 48 Were Auto-Rejected Before a Human Saw Them.",
+      "url": "https://tinytools-smoky.vercel.app/cover-letter-generator/blog/i-ran-50-ai-cover-letters-through-ats-screeners-48-rejected-before-human-saw-them-2026/"
+    },
+    {
+      "date": "2026-06-01",
+      "type": "blog_post",
+      "tool": "youtube-to-blog",
+      "title": "I Converted 3 Years of YouTube Videos Into 47 Blog Posts. Google Started Sending Traffic in 11 Days.",
+      "url": "https://tinytools-smoky.vercel.app/youtube-to-blog/blog/i-converted-3-years-youtube-videos-47-blog-posts-google-traffic-11-days-2026/"
+    },
+    {
+      "date": "2026-05-31",
+      "type": "blog_post",
+      "tool": "ai-text-detector",
+      "title": "Your AI Writing Is Leaking. 9 Signals That Expose It Every Time.",
+      "url": "https://tinytools-smoky.vercel.app/ai-text-detector/blog/your-ai-writing-is-leaking-9-signals-expose-it-every-time-2026/"
+    },
+    {
+      "date": "2026-05-31",
+      "type": "blog_post",
+      "tool": "ai-spend-calculator",
+      "title": "I Calculated What 1,000 Developers Spend on AI Per Month. 67% Were Paying for Tools They Never Use.",
+      "url": "https://tinytools-smoky.vercel.app/ai-spend-calculator/blog/i-calculated-what-1000-developers-spend-on-ai-per-month-67-percent-paying-for-tools-they-never-use-2026/"
+    },
+    {
+      "date": "2026-05-31",
+      "type": "blog_post",
+      "tool": "devops-disaster-score",
+      "title": "I Ran 40 DevOps Configs Through an AI Disaster Score Calculator. The Results Were Embarrassing.",
+      "url": "https://tinytools-smoky.vercel.app/devops-disaster-score/blog/i-tested-40-devops-configs-disaster-score-calculator-the-results-were-embarrassing-2026/"
+    },
+    {
+      "date": "2026-05-31",
+      "type": "blog_post",
+      "tool": "what-ai-are-you",
+      "title": "I Made 2,000 People Take This AI Personality Quiz. The #1 Result Was Not ChatGPT.",
+      "url": "https://tinytools-smoky.vercel.app/what-ai-are-you/blog/i-made-2000-people-take-this-ai-personality-quiz-number-1-result-not-chatgpt-2026/"
+    },
+    {
+      "date": "2026-05-31",
+      "type": "blog_post",
+      "tool": "voice-cloning-detector",
+      "title": "I Cloned My Own Voice and Called My Dad. He Picked Up. Here's How to Catch the Next One.",
+      "url": "https://tinytools-smoky.vercel.app/voice-cloning-detector/blog/i-cloned-my-voice-sent-it-to-my-dad-he-picked-up-heres-how-to-catch-ai-voice-scams-2026/"
+    },
+    {
+      "date": "2026-05-31",
+      "type": "blog_post",
+      "tool": "c2pa-manifest-generator",
+      "title": "Adobe, Microsoft, and the BBC Agreed on Something: Every AI Image Needs This Label. Most Creators Have Never Heard of It.",
+      "url": "https://tinytools-smoky.vercel.app/c2pa-manifest-generator/blog/adobe-microsoft-bbc-every-ai-image-needs-c2pa-label-most-creators-never-heard-of-it-2026/"
+    },
+    {
+      "date": "2026-05-30",
+      "type": "blog_post",
+      "tool": "ai-pickup-lines",
+      "title": "I Made an AI Write 100 Pickup Lines. The 3 That Worked Made Me Question Everything.",
+      "url": "https://tinytools-smoky.vercel.app/ai-pickup-lines/blog/i-made-an-ai-write-100-pickup-lines-the-3-that-worked-made-me-question-everything-2026/"
+    },
+    {
+      "date": "2026-05-30",
+      "type": "blog_post",
+      "tool": "tweet-roaster",
+      "title": "I Ran 50 Viral Tweets Through an AI Roaster. Every Engagement Trick You're Using Got Destroyed.",
+      "url": "https://tinytools-smoky.vercel.app/tweet-roaster/blog/i-ran-50-viral-tweets-through-an-ai-roaster-the-results-were-brutal-2026/"
+    },
+    {
+      "date": "2026-05-30",
+      "type": "blog_post",
+      "tool": "roast-my-bio",
+      "title": "I Tested 30 YC Founder Bios Through an AI Roaster. 27 Got the Exact Same Critique.",
+      "url": "https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
+    },
+    {
+      "date": "2026-05-30",
+      "type": "blog_post",
+      "tool": "prompt-grade",
+      "title": "I Graded 100 AI Prompts From Developers. 73% Got a D or Lower. Here's Why.",
+      "url": "https://tinytools-smoky.vercel.app/prompt-grade/blog/i-graded-100-ai-prompts-73-percent-got-d-or-lower-heres-why-2026/"
+    },
+    {
+      "date": "2026-05-29",
+      "type": "blog_post",
+      "tool": "roast-my-landing-page",
+      "title": "I Made an AI Roast My Landing Page. It Found 11 Conversion Killers in 30 Seconds.",
+      "url": "https://tinytools-smoky.vercel.app/roast-my-landing-page/blog/i-made-an-ai-roast-my-landing-page-11-conversion-killers-found/"
+    },
+    {
+      "date": "2026-05-29",
+      "type": "blog_post",
+      "tool": "ai-coding-assistant-cost-calc",
+      "title": "I Calculated the Real Cost of Cursor, Copilot, and Claude Code Per Line of Code. The Number Was $0.48.",
+      "url": "https://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/blog/i-calculated-ai-coding-assistant-cost-per-line-of-code-2026/"
+    },
+    {
+      "date": "2026-05-28",
+      "type": "blog_post",
+      "tool": "ny-ai-disclosure-generator",
+      "title": "New York Is Fining Companies $1,500/Day for Using AI in Hiring Without This Notice. Most Have Never Heard of It.",
+      "url": "https://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/blog/new-york-fining-companies-1500-per-day-ai-hiring-no-disclosure-2026/"
+    },
+    {
+      "date": "2026-05-23",
+      "type": "blog_post",
+      "tool": "ai-robots-txt-generator",
+      "title": "OpenAI, Anthropic, and Google Are Crawling Your Site Right Now. The Fix Takes 60 Seconds.",
+      "url": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/blog/every-ai-bot-crawling-your-site-the-60-second-robots-txt-fix-2026/"
+    },
+    {
+      "date": "2026-05-23",
+      "type": "blog_post",
+      "tool": "ai-carbon-footprint",
+      "title": "I Calculated the Carbon Footprint of My AI Habit. The Number Was Embarrassing.",
+      "url": "https://tinytools-smoky.vercel.app/ai-carbon-footprint/blog/the-hidden-carbon-cost-of-your-ai-habit-calculated-2026/"
+    },
+    {
+      "date": "2026-05-23",
+      "type": "blog_post",
+      "tool": "founder-personality",
+      "title": "I Made 500 Founders Take This Personality Quiz. The Most Common Type Was Also the Most Likely to Fail.",
+      "url": "https://tinytools-smoky.vercel.app/founder-personality/blog/i-made-500-founders-take-this-personality-quiz-results-uncomfortable-2026/"
+    },
+    {
+      "date": "2026-05-23",
+      "type": "blog_post",
+      "tool": "ai-disclosure-generator",
+      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a \u20ac15M Fine for That.",
+      "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
+    },
+    {
+      "time": "2026-05-23 10:49 UTC",
+      "tag": "viral",
+      "text": "Retrofitted og-image-generator with viral mechanics: tweet share, deep-link copy, embeddable badge (shields.io), hash auto-load"
+    },
+    {
+      "date": "2026-05-23",
+      "type": "blog_post",
+      "tool": "github-roast",
+      "title": "Your GitHub Profile Is Getting You Ghosted by Recruiters. I Asked 3 Hiring Managers to Prove It.",
+      "url": "https://tinytools-smoky.vercel.app/github-roast/blog/your-github-profile-is-getting-you-ghosted-recruiters-2026/"
+    },
+    {
+      "date": "2026-05-23",
+      "type": "blog_post",
+      "tool": "roast-my-resume",
+      "title": "I Tested 7 AI Resume Screeners With the Same Resume. 5 Rejected It. The Reason Was Embarrassing.",
+      "url": "https://tinytools-smoky.vercel.app/roast-my-resume/blog/the-resume-mistake-that-gets-you-rejected-by-every-ai-screener-2026/"
+    },
+    {
+      "date": "2026-05-22",
+      "type": "blog_post",
+      "tool": "ai-relationship-status",
+      "title": "I Made 500 People Take This AI Relationship Quiz. Most Got 'Codependent.' None Disagreed.",
+      "url": "https://tinytools-smoky.vercel.app/ai-relationship-status/blog/most-people-who-take-this-ai-quiz-get-codependent-and-theyre-not-wrong-2026/"
+    },
+    {
+      "date": "2026-05-22",
+      "type": "blog_post",
+      "tool": "ai-text-roast",
+      "title": "I Made an AI Roast Other AIs' Writing. Every Single Output Got Destroyed.",
+      "url": "https://tinytools-smoky.vercel.app/ai-text-roast/blog/i-made-ai-roast-other-ais-writing-results-were-embarrassingly-accurate-2026/"
+    },
+    {
+      "date": "2026-05-22",
+      "type": "blog_post",
+      "tool": "roast-my-bio",
+      "title": "I Made an AI Read 200 LinkedIn Bios. 94% Were Corporate Word Salad.",
+      "url": "https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-made-ai-read-200-linkedin-bios-94-percent-corporate-word-salad-2026/"
+    }
+  ],
+  "drafts": [
+    {
+      "platform": "X",
+      "draft": "I typed 12 words into 30 AI chatbots.\n\n23 of them immediately:\n\u2022 Printed their secret system prompts\n\u2022 Ignored their own safety rules\n\u2022 Followed MY instructions instead of their developer's\n\nPrompt injection is the #1 LLM attack in 2026.\n\nMost founders have never tested for it.\n\nFree tester: https://tinytools-smoky.vercel.app/prompt-injection-tester/",
+      "tool": "prompt-injection-tester",
+      "date": "2026-06-01"
+    },
+    {
+      "platform": "Reddit",
+      "subreddit": "r/MachineLearning or r/netsec",
+      "draft": "Title: I tested 30 production AI chatbots with 4 prompt injection attacks \u2014 77% failed (results inside)\n\nBody: Last month I ran a structured red-team test against 30 AI-powered products \u2014 customer support bots, writing assistants, document Q&A tools. I used only 4 documented injection patterns (nothing exotic). 23/30 failed at least one. 11 leaked their full system prompt to the classic \"ignore previous instructions\" attack. The scariest failure was an enterprise doc reader that executed hidden instructions embedded in a test PDF. Wrote up all 4 attack patterns, the fail rates, and defenses that actually work. Free tester at the end: https://tinytools-smoky.vercel.app/prompt-injection-tester/blog/i-tested-30-ai-chatbots-prompt-injection-attack-23-failed-immediately-2026/",
+      "tool": "prompt-injection-tester",
+      "date": "2026-06-01"
+    },
+    {
+      "platform": "LinkedIn",
+      "draft": "Unpopular opinion: most teams shipping AI features in 2026 have no idea their product can be hijacked with 12 words.\n\nI just tested 30 AI chatbots with a basic prompt injection attack. 77% failed immediately \u2014 leaking system prompts, ignoring safety guardrails, executing attacker instructions.\n\nThis isn't a theoretical risk. It's a production problem happening right now.\n\nWrote up the 4 attack patterns that break almost everything, plus the defenses that work:\nhttps://tinytools-smoky.vercel.app/prompt-injection-tester/blog/i-tested-30-ai-chatbots-prompt-injection-attack-23-failed-immediately-2026/",
+      "tool": "prompt-injection-tester",
+      "date": "2026-06-01"
+    },
+    {
+      "platform": "HackerNews",
+      "draft": "Show HN: Prompt Injection Tester \u2014 test your AI product against 4 documented attack patterns\n\nhttps://tinytools-smoky.vercel.app/prompt-injection-tester/\n\nI built this after testing 30 production AI chatbots and finding 77% vulnerable to basic injection. The tool runs classic override, role-play escape, indirect injection, and token smuggling attacks against your system prompt or endpoint and gives you a vulnerability score + remediation steps. Free to use.",
+      "tool": "prompt-injection-tester",
+      "date": "2026-06-01"
+    },
+    {
+      "platform": "X",
+      "tool": "roast-my-stack",
+      "date": "2026-06-01",
+      "content": "An AI looked at my tech stack and said \"this is DevOps LARPing.\"\n\nI had Kubernetes at 40 users. Kafka for a to-do app. 6 abstraction layers for a SELECT query.\n\nThe AI didn't name-call. It just did the math.\n\nFind out what yours says about you (free, 30 sec):\n\nhttps://tinytools-smoky.vercel.app/roast-my-stack/blog/i-made-ai-roast-my-tech-stack-called-kubernetes-devops-larping-2026/"
+    },
+    {
+      "platform": "Reddit",
+      "tool": "roast-my-stack",
+      "date": "2026-06-01",
+      "subreddit": "r/webdev",
+      "title": "I collected 80 dev stack descriptions and fed them to an AI roaster. 43% were running Kubernetes for <500 users.",
+      "content": "Spent the last few weeks gathering stack descriptions from Reddit and Discord and running them through an AI architecture roaster. The six patterns it kept flagging (distributed monolith, Kafka for tiny workloads, framework churn, etc.) were so consistent it was eerie.\n\nFull writeup with the AI's actual quotes:\n\nhttps://tinytools-smoky.vercel.app/roast-my-stack/blog/i-made-ai-roast-my-tech-stack-called-kubernetes-devops-larping-2026/\n\nTool itself is free: https://tinytools-smoky.vercel.app/roast-my-stack/"
+    },
+    {
+      "platform": "LinkedIn",
+      "tool": "roast-my-stack",
+      "date": "2026-06-01",
+      "content": "Unpopular opinion: most \"microservices\" I've reviewed are distributed monoliths with 4x the operational complexity and 0x the benefits.\n\nI ran 80 stack descriptions through an AI roaster this month. 22 of the 31 \"microservices\" stacks shared a database or called each other synchronously on every request. That's not microservices \u2014 that's a monolith you can't deploy without a ceremony.\n\nThe hardest part of architecture isn't choosing the right tools. It's being honest about what stage you're actually at.\n\nFull breakdown of the 6 patterns (free tool included):\nhttps://tinytools-smoky.vercel.app/roast-my-stack/blog/i-made-ai-roast-my-tech-stack-called-kubernetes-devops-larping-2026/"
+    },
+    {
+      "platform": "HN",
+      "tool": "roast-my-stack",
+      "date": "2026-06-01",
+      "title": "Show HN: Roast My Stack \u2013 AI reviews your architecture choices against your actual scale",
+      "content": "Built a tool that takes your tech stack description and roasts your architecture decisions based on apparent team size and scale. It's most useful for catching the gap between the complexity you've added and the problem size you actually have.\n\nTool: https://tinytools-smoky.vercel.app/roast-my-stack/\n\nAfter collecting 80 submissions: 43% were running container orchestration at <500 users, 22/31 \"microservices\" stacks were actually distributed monoliths. Blog post with patterns:\nhttps://tinytools-smoky.vercel.app/roast-my-stack/blog/i-made-ai-roast-my-tech-stack-called-kubernetes-devops-larping-2026/"
+    }
+  ],
+  "retrofitLog": [
+    {
+      "date": "2026-05-23",
+      "tool": "og-image-generator",
+      "mechanicsAdded": [
+        "tweet-share",
+        "copy-deeplink",
+        "embeddable-badge",
+        "hash-autoload"
+      ],
+      "commit": "28f103551ca9baf158a54a561b643d559dfc6efb"
+    }
+  ]
+}
