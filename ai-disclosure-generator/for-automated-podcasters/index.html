@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Disclosure Generator for Automated Podcasters | Free FTC-Compliant Tool — TinyTools</title>
+  <meta name="description" content="Generate FTC-compliant AI disclosures for your automated podcast — voice cloning, AI-written scripts, AI-edited episodes. Free, jurisdiction-aware, ready for show notes, RSS feeds, and episode intros." />
+  <meta property="og:title" content="AI Disclosure Generator for Automated Podcasters" />
+  <meta property="og:description" content="Your AI-generated podcast needs proper FTC and EU AI Act disclosures. Generate the exact disclosure language for your show notes, RSS description, episode intros, and sponsor segments — free, no login." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-automated-podcasters/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/ai-disclosure-generator/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Disclosure Generator for Automated Podcasters" />
+  <meta name="twitter:description" content="FTC-compliant AI disclosures for AI-generated podcast content. Free tool covering voice cloning, AI scripts, and automated editing." />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-automated-podcasters/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "AI Disclosure Generator for Automated Podcasters",
+    "description": "Generate FTC-compliant AI disclosures for automated podcasts — voice cloning, AI-written scripts, AI-edited episodes. Free, jurisdiction-aware, covers show notes, RSS feeds, and episode intros.",
+    "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-automated-podcasters/",
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "AI Disclosure Generator",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tinytools-smoky.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "AI Disclosure Generator", "item": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/" },
+        { "@type": "ListItem", "position": 3, "name": "For Automated Podcasters", "item": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-automated-podcasters/" }
+      ]
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1f1f1f;
+      --border: #2a2a2a;
+      --accent: #7c3aed;
+      --accent2: #a78bfa;
+      --text: #f0f0f0;
+      --muted: #888;
+      --green: #22c55e;
+      --red: #ef4444;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; line-height: 1.65; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { padding: 14px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    nav .logo { font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: -0.02em; }
+    nav .logo span { color: var(--accent2); }
+    nav .breadcrumb { font-size: 0.82rem; color: var(--muted); }
+    nav .breadcrumb a { color: var(--muted); }
+    nav .breadcrumb a:hover { color: var(--accent2); }
+
+    /* HERO */
+    .hero { max-width: 780px; margin: 0 auto; padding: 64px 24px 48px; text-align: center; }
+    .badge { display: inline-block; background: rgba(124,58,237,0.15); border: 1px solid rgba(167,139,250,0.3); color: var(--accent2); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+    h1 .highlight { color: var(--accent2); }
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin: 0 auto 36px; }
+    .cta-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 32px; border-radius: 10px; transition: background 0.2s; }
+    .cta-primary:hover { background: #6d28d9; text-decoration: none; }
+    .cta-note { font-size: 0.8rem; color: var(--muted); margin-top: 10px; }
+
+    /* SECTION */
+    section { max-width: 780px; margin: 0 auto; padding: 0 24px 64px; }
+    h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    p { color: #ccc; margin-bottom: 16px; }
+
+    /* PAIN BLOCK */
+    .pain-block { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--red); border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; }
+    .pain-block .pain-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); margin-bottom: 6px; }
+    .pain-block .solution-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-top: 12px; margin-bottom: 6px; }
+    .pain-block .solution-text { color: var(--text); font-size: 0.95rem; }
+    .pain-block .pain-text { color: #ccc; font-size: 0.95rem; }
+
+    /* USE CASES */
+    .use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+    @media (max-width: 600px) { .use-case-grid { grid-template-columns: 1fr; } }
+    .use-case-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .use-case-card .uc-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .use-case-card h3 { font-size: 0.98rem; margin-bottom: 6px; }
+    .use-case-card p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* PRICING TABLE */
+    .pricing-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem; }
+    .pricing-table th { text-align: left; padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .pricing-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .tool-name { font-weight: 600; }
+    .pricing-table .price { font-weight: 700; }
+    .pricing-table .price.free { color: var(--green); }
+    .pricing-table .price.paid { color: var(--muted); }
+    .pricing-table tr.highlight { background: rgba(124,58,237,0.08); }
+    .pricing-table tr.highlight .tool-name { color: var(--accent2); }
+    .check { color: var(--green); }
+    .cross { color: var(--red); }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; }
+    .step-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(124,58,237,0.2); border: 1px solid rgba(167,139,250,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; color: var(--accent2); }
+    .step-content h3 { font-size: 0.98rem; margin-bottom: 4px; }
+    .step-content p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    /* INTERNAL LINKS */
+    .sister-tools { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+    .sister-card { flex: 1 1 200px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; transition: border-color 0.2s; }
+    .sister-card:hover { border-color: var(--accent); text-decoration: none; }
+    .sister-card .sc-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .sister-card h3 { font-size: 0.9rem; color: var(--text); margin-bottom: 4px; }
+    .sister-card p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+    /* FINAL CTA */
+    .final-cta { background: linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(167,139,250,0.05) 100%); border: 1px solid rgba(124,58,237,0.3); border-radius: 16px; padding: 48px 36px; text-align: center; margin-bottom: 64px; }
+    .final-cta h2 { font-size: 1.7rem; margin-bottom: 12px; }
+    .final-cta p { max-width: 500px; margin: 0 auto 28px; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 0.82rem; color: var(--muted); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent2); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Tiny<span>Tools</span></span>
+  <span class="breadcrumb">
+    <a href="/">Home</a> /
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> /
+    For Automated Podcasters
+  </span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Automated Podcasters</div>
+  <h1>AI Disclosure Generator<br>for <span class="highlight">Automated Podcasters</span></h1>
+  <p class="hero-sub">Your podcast is AI-voiced, AI-written, or AI-edited — and the FTC, EU AI Act, and Spotify's own content policies now require you to say so. Generate exact, jurisdiction-compliant disclosure language for every placement: show notes, RSS description, episode intro scripts, and sponsor segments. Free, no login.</p>
+  <a href="/ai-disclosure-generator/" class="cta-primary">Generate Your Podcast AI Disclosure Free →</a>
+  <p class="cta-note">No login required · Covers FTC, EU AI Act, UK ICO · Works with Buzzsprout, Transistor, RSS.com &amp; Spotify for Podcasters</p>
+</div>
+
+<!-- PAIN → SOLUTION -->
+<section>
+  <h2>AI Disclosure Isn't Optional Anymore — Especially for Automated Shows</h2>
+  <p>The FTC updated its endorsement and testimonial guidelines in 2023 to explicitly cover AI-generated content, including AI-synthesized voices. The EU AI Act's transparency requirements for AI-generated audio took effect in 2024. Spotify quietly updated its podcast content policies to require disclosure when a host's voice is AI-cloned. Apple Podcasts followed with similar language in their submission guidelines.</p>
+  <p>If your show uses ElevenLabs to clone a host voice, an LLM to write episode scripts, or any AI model to generate or substantially edit content — and you haven't disclosed it — you're out of compliance across every major distribution channel simultaneously.</p>
+  <p>But a generic "AI was used in making this episode" isn't enough. The FTC requires disclosures to be clear, prominent, and specific about what was AI-generated. The EU AI Act requires different language for synthetic voice content than for AI-written text. Spotify distinguishes between "AI-assisted production" and "AI-generated host voice." Every placement — show description, episode notes, audio intro, show website — needs its own correctly formatted disclosure.</p>
+
+  <div style="margin-top:32px;">
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #1</div>
+      <div class="pain-text">You produce 10–20 episodes per week through an automated stack. Writing a unique, legally sound disclosure for each episode — in the right format for each platform — would take more time than the automation saves.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">TinyTools AI Disclosure Generator produces ready-to-paste disclosure language in under 60 seconds. Specify your AI usage (voice cloning, scripting, editing), your jurisdiction, and your placement (show notes vs. audio intro vs. RSS description) — and get disclosure copy you can drop directly into your automation workflow as a static variable.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #2</div>
+      <div class="pain-text">You're distributing across Spotify, Apple Podcasts, Amazon Music, and YouTube Podcasts simultaneously. Each platform has subtly different disclosure requirements, and violating any one of them risks having your show removed or flagged.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">The generator is platform-aware. Toggle the platforms you distribute to and it generates unified disclosure language that satisfies all of them at once — using the strictest applicable standard so you're covered everywhere without platform-specific rewrites. Spotify's synthetic-voice rules are currently the most demanding; clearing that bar covers Apple and Amazon automatically.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #3</div>
+      <div class="pain-text">Your show has European listeners. The EU AI Act's requirements for AI-generated audio are more specific than FTC guidelines — requiring clear disclosure before the content begins, not just in the show notes. You're not sure whether a show-notes footer is enough or if you need an in-audio statement.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">Generate jurisdiction-specific disclosures for your EU audience. For AI-synthesized voice content, the EU AI Act requires a disclosure "at the beginning of the audio content" — meaning your episode intro script needs to include it. The generator produces the exact script line: short enough to not alienate listeners, specific enough to satisfy compliance requirements.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #4</div>
+      <div class="pain-text">Your sponsor contracts require you to flag "materially AI-generated content" to advertisers. You don't have a standard disclosure clause to put in sponsor agreements, and your current ad reads don't include any AI disclosure even when the ad copy was written and narrated by AI.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">Generate sponsor-segment-specific disclosure language — both the one-line in-episode statement and the contract clause you can paste into future sponsor agreements. FTC guidance specifically covers AI-generated testimonials and endorsements; your AI-narrated sponsor read almost certainly qualifies. The right in-episode disclosure protects you and your sponsors simultaneously.</div>
+    </div>
+
+    <div class="pain-block">
+      <div class="pain-label">Pain #5</div>
+      <div class="pain-text">You built your automated show around a cloned version of your own voice. You're not sure whether voice cloning of your own voice still requires disclosure, or only when you're cloning someone else's.</div>
+      <div class="solution-label">Solution</div>
+      <div class="solution-text">It still requires disclosure under FTC guidelines and EU AI Act rules — the legal test is whether a reasonable listener could be misled about whether they're hearing a live human recording versus AI-synthesized audio. Cloning your own voice doesn't change what the listener hears; it's still synthetic audio and requires a "Voices in this episode are AI-generated" disclosure. The generator handles the nuance and produces the correct, minimal-friction wording.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section>
+  <h2>5 Specific Places Automated Podcasters Need AI Disclosures</h2>
+  <div class="use-case-grid">
+
+    <div class="use-case-card">
+      <div class="uc-icon">📋</div>
+      <h3>Show Description &amp; RSS Feed</h3>
+      <p>Your RSS feed's show description is pulled by every podcast app globally. It needs a standing AI disclosure that covers your automated production process — one line, written once, that applies to every episode. Platform review teams check here first when a show is flagged.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">🎙️</div>
+      <h3>Episode Intro Script</h3>
+      <p>EU AI Act compliance for synthetic voice content requires disclosure at the start of the audio. Generate a 10–15 second intro script line your TTS model reads at the top of every episode — compliant, non-intrusive, and automatable as a static prefix in your audio pipeline.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">📝</div>
+      <h3>Per-Episode Show Notes Footer</h3>
+      <p>The FTC requires disclosures to be "unavoidable" — buried in the last sentence of a long episode description doesn't qualify. Generate properly formatted show notes footer language with correct prominence placement that satisfies the FTC's "clear and conspicuous" standard.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">💰</div>
+      <h3>Sponsor Segment Disclosures</h3>
+      <p>When your AI reads a sponsor's ad copy, the endorsement is AI-generated. The FTC's updated guidance covers AI endorsements explicitly. Generate both the in-episode disclosure line ("This sponsor message was produced with AI assistance") and the sponsor contract clause for future agreements.</p>
+    </div>
+
+    <div class="use-case-card">
+      <div class="uc-icon">📱</div>
+      <h3>Social Media &amp; Clip Posts</h3>
+      <p>When you post a clip from an AI-voiced episode to X, LinkedIn, or TikTok, that clip needs its own disclosure — the show notes disclosure doesn't carry over. Generate short, platform-appropriate disclosure language for the post caption that satisfies FTC requirements without eating your character limit.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <h2>How to Wire Disclosures Into Your Automation Pipeline</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Generate your standing show-level disclosure once</h3>
+        <p>Go to <a href="/ai-disclosure-generator/">/ai-disclosure-generator/</a> — no account needed. Select "podcast / audio content," check your AI usage types (voice synthesis, script generation, audio editing), and choose your primary jurisdiction. Copy the resulting show description disclosure line — this becomes a permanent variable in your workflow.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Add it as a static variable in your publishing workflow</h3>
+        <p>In Make.com or Zapier, store the show-level disclosure text as a constant. When your workflow publishes a new episode to Buzzsprout or Transistor via API, append it to the episode description field automatically. Set it once; it runs on every episode with zero ongoing effort.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Generate your EU-compliant intro script line separately</h3>
+        <p>For EU distribution, generate the intro-audio disclosure separately — it's a different format (spoken, at the start of the episode) than the text version. Paste it as the first line of the script your TTS model reads. It adds 8–12 seconds to the episode; it's required for legal EU distribution of synthetic-voice content.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Update your sponsor deck and agreements</h3>
+        <p>Copy the sponsor-segment disclosure clause from the generator and add it to your standard sponsor agreement template. Brief your sponsors that AI-generated ad reads will include a short disclosure — most brands now expect this, and some specifically require it for their own FTC compliance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING COMPARISON -->
+<section>
+  <h2>Free vs. Paid AI Disclosure Options for Automated Podcasters</h2>
+  <p>Here's how TinyTools stacks up against what automated podcasters typically pay for disclosure and compliance support:</p>
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Price</th>
+        <th>Podcast-specific</th>
+        <th>Voice-clone coverage</th>
+        <th>Multi-jurisdiction</th>
+        <th>Automation-ready</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="tool-name">TinyTools AI Disclosure Generator</td>
+        <td class="price free">Free</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓ FTC + EU AI Act + UK ICO</span></td>
+        <td><span class="check">✓ copy-paste ready</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Legal counsel (media attorney)</td>
+        <td class="price paid">$250–500/hr</td>
+        <td><span class="check">✓ bespoke</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗ one-off doc</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Termly (compliance platform)</td>
+        <td class="price paid">$30/mo</td>
+        <td><span class="cross">✗ website-focused</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗ not podcast-native</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Iubenda</td>
+        <td class="price paid">$27/mo</td>
+        <td><span class="cross">✗ website-focused</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗ not podcast-native</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">ChatGPT (manual prompting)</td>
+        <td class="price paid">$20/mo</td>
+        <td><span class="cross">✗ generic output</span></td>
+        <td><span class="cross">✗ not current on FTC 2023 rules</span></td>
+        <td><span class="cross">✗ requires research</span></td>
+        <td><span class="cross">✗ manual effort per use</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Doing nothing</td>
+        <td class="price paid">$0 now</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td><span class="cross">✗ FTC fines + platform removal risk</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:16px; font-size:0.85rem;">General-purpose compliance platforms like Termly and Iubenda are designed for website privacy policies — they don't know what a synthetic host voice is or that your RSS show description is a primary FTC disclosure placement. The disclosure language they generate won't map to the specific contexts automated podcasters need. TinyTools generates disclosure copy purpose-built for audio content and podcast distribution specifically.</p>
+</section>
+
+<!-- SISTER TOOLS -->
+<section>
+  <h2>Complete Your Automated Podcast's Compliance Stack</h2>
+  <p>AI disclosure is the most urgent compliance requirement, but it's not the only one for automated podcast operations. These free tools cover the related needs:</p>
+  <div class="sister-tools">
+    <a href="/eu-ai-act-risk-assessment/" class="sister-card">
+      <div class="sc-icon">⚖️</div>
+      <h3>EU AI Act Risk Assessment</h3>
+      <p>Understand exactly which EU AI Act provisions apply to your automated podcast — voice cloning, synthetic media, automated content generation. Get a risk tier classification and the specific articles you need to comply with.</p>
+    </a>
+    <a href="/og-image-generator/" class="sister-card">
+      <div class="sc-icon">🖼️</div>
+      <h3>OG Image Generator</h3>
+      <p>Generate branded episode social preview images for every episode in your pipeline. Pairs with your disclosure workflow — compliant show notes with properly-branded social previews, both fully automated.</p>
+    </a>
+    <a href="/ai-text-detector/" class="sister-card">
+      <div class="sc-icon">🔍</div>
+      <h3>AI Text Detector</h3>
+      <p>Before publishing, check whether your AI-written episode scripts read as machine-generated. Useful for detecting whether your show notes or blog post versions of episodes need editing before publication.</p>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section>
+  <div class="final-cta">
+    <h2>Your automated podcast needs disclosures as reliable as the rest of your stack.</h2>
+    <p>Generate FTC-compliant, EU AI Act–aware AI disclosure language for your show notes, episode intro scripts, RSS description, and sponsor segments — free, in under 60 seconds, ready to paste into your workflow.</p>
+    <a href="/ai-disclosure-generator/" class="cta-primary">Open AI Disclosure Generator →</a>
+    <p class="cta-note" style="margin-top:12px;">No login · Free forever · Covers FTC, EU AI Act, UK ICO, Spotify &amp; Apple Podcasts policies</p>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="/">TinyTools</a> ·
+    <a href="/ai-disclosure-generator/">AI Disclosure Generator</a> ·
+    <a href="/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a> ·
+    <a href="/og-image-generator/">OG Image Generator</a> ·
+    <a href="/ai-text-detector/">AI Text Detector</a>
+  </p>
+  <p style="margin-top:8px;">© 2026 TinyTools · Free AI tools for builders</p>
+</footer>
+
+</body>
+</html>
