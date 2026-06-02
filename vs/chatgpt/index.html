@@ -101,6 +101,73 @@
   }
   .cta.alt { background: transparent; border: 1px solid var(--border); color: var(--text) !important; }
   footer { color: var(--text-dim); font-size: 13px; border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; }
+
+  /* ── Viral quiz & mechanics ── */
+  .quiz-wrap {
+    background: linear-gradient(135deg, #1f1f2e 0%, #15151f 100%);
+    border: 2px solid var(--accent); border-radius: 20px; padding: 28px;
+    margin: 36px 0; box-shadow: 0 20px 60px rgba(139,92,246,0.12);
+  }
+  .quiz-wrap h2 { margin-top: 0; font-size: 22px; color: var(--text); }
+  .quiz-q { margin-bottom: 20px; }
+  .quiz-q label { display: block; font-size: 14px; color: var(--text-dim); text-transform: uppercase; font-weight: 600; margin-bottom: 10px; letter-spacing: 0.04em; }
+  .quiz-options { display: flex; flex-wrap: wrap; gap: 8px; }
+  .quiz-opt {
+    padding: 9px 16px; border: 1px solid var(--border); border-radius: 999px;
+    background: var(--bg-elevated); color: var(--text); font-size: 14px;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .quiz-opt:hover { border-color: var(--accent); }
+  .quiz-opt.sel { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  .quiz-btn {
+    padding: 14px 28px; background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    border: none; border-radius: 12px; color: white; font-weight: 700; font-size: 16px;
+    cursor: pointer; margin-top: 4px; box-shadow: 0 4px 16px rgba(139,92,246,0.3);
+    display: block; width: 100%;
+  }
+  .quiz-btn:hover { transform: translateY(-1px); }
+
+  /* Result card */
+  .result-card {
+    display: none; margin-top: 24px; border-radius: 16px; overflow: hidden;
+    border: 2px solid var(--accent); box-shadow: 0 12px 40px rgba(139,92,246,0.2);
+  }
+  .result-card.show { display: block; }
+  .result-header {
+    padding: 20px 24px; background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .result-winner { font-size: 28px; font-weight: 900; color: #fff; }
+  .result-label { font-size: 13px; color: rgba(255,255,255,0.75); text-transform: uppercase; font-weight: 600; }
+  .result-body { padding: 20px 24px; background: var(--bg-card); }
+  .result-reasons { list-style: none; margin: 0 0 18px; padding: 0; }
+  .result-reasons li { padding: 7px 0; border-bottom: 1px solid var(--border); color: var(--text); font-size: 15px; }
+  .result-reasons li:last-child { border: none; }
+  .result-reasons li::before { content: '✓ '; color: var(--accent); font-weight: 700; }
+
+  /* Viral action row */
+  .viral-row {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .viral-btn {
+    flex: 1; min-width: 120px; padding: 11px 16px; border-radius: 10px;
+    font-weight: 600; font-size: 13px; cursor: pointer; border: 1px solid var(--border);
+    background: var(--bg-elevated); color: var(--text); text-align: center;
+    text-decoration: none; transition: all 0.15s; display: inline-block;
+  }
+  .viral-btn:hover { border-color: var(--accent); }
+  .viral-btn.primary { background: #1d9bf0; border: none; color: white; }
+  .viral-btn.dl { background: var(--bg-elevated); }
+
+  /* Embed section */
+  .embed-box {
+    margin-top: 14px; padding: 14px; background: var(--bg-elevated); border-radius: 10px;
+  }
+  .embed-box .el { font-size: 11px; color: var(--text-dim); text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+  .embed-box pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .embed-box button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
 </style>
 </head>
 <body>
@@ -224,6 +291,223 @@
 <p>ChatGPT's lock-in is real but mild: your conversation history and Custom GPTs live in your account. You can export chats. The bigger lock-in is workflow muscle memory &mdash; if you've trained yourself to think with ChatGPT, switching to another assistant has a learning cost.</p>
 
 <p>TinyTools has zero lock-in by design. Each tool produces a downloadable file or a copy-pasteable result. There's no account to leave.</p>
+
+
+<!-- ═══════════════ VIRAL QUIZ ═══════════════ -->
+<div class="quiz-wrap" id="quizWrap">
+  <h2>🧮 Which is right for <em>your</em> use case?</h2>
+  <p style="color:var(--text-dim);font-size:14px;margin-bottom:20px">Answer 3 quick questions and get a shareable verdict card.</p>
+
+  <div class="quiz-q">
+    <label>1 — What's your main task?</label>
+    <div class="quiz-options" id="q1">
+      <button class="quiz-opt" data-val="dev">Building / coding</button>
+      <button class="quiz-opt" data-val="cost">Estimating AI costs</button>
+      <button class="quiz-opt" data-val="chat">Chatting / drafting</button>
+      <button class="quiz-opt" data-val="privacy">Privacy-sensitive work</button>
+      <button class="quiz-opt" data-val="content">Content / creative</button>
+    </div>
+  </div>
+
+  <div class="quiz-q">
+    <label>2 — Do you mind signing up?</label>
+    <div class="quiz-options" id="q2">
+      <button class="quiz-opt" data-val="nosignup">Rather not sign up</button>
+      <button class="quiz-opt" data-val="ok">Fine with an account</button>
+    </div>
+  </div>
+
+  <div class="quiz-q">
+    <label>3 — Monthly budget?</label>
+    <div class="quiz-options" id="q3">
+      <button class="quiz-opt" data-val="zero">$0 — free only</button>
+      <button class="quiz-opt" data-val="twenty">Up to $20/mo</button>
+      <button class="quiz-opt" data-val="power">$20+/mo, I want the best</button>
+    </div>
+  </div>
+
+  <button class="quiz-btn" id="quizBtn">Get my verdict →</button>
+
+  <!-- Result card (shown after quiz) -->
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <div>
+        <div class="result-label">Your verdict</div>
+        <div class="result-winner" id="resultWinner"></div>
+      </div>
+    </div>
+    <div class="result-body">
+      <ul class="result-reasons" id="resultReasons"></ul>
+      <div class="viral-row">
+        <a class="viral-btn primary" id="shareTwitter" target="_blank" rel="noopener">𝕏 Share verdict</a>
+        <button class="viral-btn" id="copyLink">🔗 Copy link</button>
+        <button class="viral-btn dl" id="downloadCard">💾 Download card</button>
+      </div>
+      <div class="embed-box">
+        <div class="el">Embed badge on your site or README</div>
+        <pre id="embedCode"></pre>
+        <button id="copyEmbed">Copy badge code</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<canvas id="resultCanvas" width="1200" height="630" style="display:none;"></canvas>
+
+<script>
+// ── Quiz logic ──────────────────────────────────────────────────────────────
+const answers = { q1: null, q2: null, q3: null };
+
+['q1','q2','q3'].forEach(qid => {
+  document.getElementById(qid).querySelectorAll('.quiz-opt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.getElementById(qid).querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('sel'));
+      btn.classList.add('sel');
+      answers[qid] = btn.dataset.val;
+    });
+  });
+});
+
+document.getElementById('quizBtn').addEventListener('click', () => {
+  if (!answers.q1 || !answers.q2 || !answers.q3) {
+    alert('Please answer all 3 questions first.');
+    return;
+  }
+  showResult();
+});
+
+// Hash auto-load
+if (location.hash.length > 2 && location.hash.startsWith('#q=')) {
+  try {
+    const [v1,v2,v3] = location.hash.slice(3).split(',');
+    ['q1','q2','q3'].forEach((qid, i) => {
+      const val = [v1,v2,v3][i];
+      const btn = document.querySelector(`#${qid} [data-val="${val}"]`);
+      if (btn) { btn.classList.add('sel'); answers[qid] = val; }
+    });
+    setTimeout(showResult, 150);
+  } catch(e) {}
+}
+
+function computeVerdict(a) {
+  // Returns { winner, reasons[], shieldLabel, shieldColor }
+  const tinyWins = [];
+  const cgWins = [];
+
+  const taskMap = {
+    dev:     { tt: ['Prompt injection tester', 'MCP config generator', 'AI cost calculator', 'LLM prompt optimizer'], cg: [] },
+    cost:    { tt: ['AI cost calculator', 'AI coding assistant cost calc', 'AI spend calculator'], cg: [] },
+    chat:    { tt: [], cg: ['Full conversational AI', 'Drafting, brainstorming, editing', 'Web browsing & file analysis'] },
+    privacy: { tt: ['Client-side processing — nothing sent to a server', 'No account, no data retention'], cg: [] },
+    content: { tt: [], cg: ['Drafting & rewriting', 'Image generation (DALL·E)', 'Custom GPTs for your workflow'] },
+  };
+
+  if (taskMap[a.q1].tt.length >= taskMap[a.q1].cg.length) {
+    taskMap[a.q1].tt.forEach(r => tinyWins.push(r));
+  } else {
+    taskMap[a.q1].cg.forEach(r => cgWins.push(r));
+  }
+
+  if (a.q2 === 'nosignup') tinyWins.push('No signup required — use instantly');
+  else cgWins.push('Account unlocks memory, custom GPTs & mobile apps');
+
+  if (a.q3 === 'zero') tinyWins.push('$0 forever — TinyTools is entirely free');
+  else if (a.q3 === 'twenty') cgWins.push('ChatGPT Plus ($20/mo) unlocks GPT-4o, voice & images');
+  else cgWins.push('ChatGPT Pro ($200/mo) is the most powerful consumer LLM available');
+
+  const winner = tinyWins.length >= cgWins.length ? 'TinyTools' : 'ChatGPT';
+  const reasons = winner === 'TinyTools' ? tinyWins : cgWins;
+  const shieldLabel = `For+me%3A+${encodeURIComponent(winner)}+wins`;
+  const shieldColor = winner === 'TinyTools' ? '8b5cf6' : '10b981';
+
+  return { winner, reasons, shieldLabel, shieldColor };
+}
+
+function showResult() {
+  const v = computeVerdict(answers);
+  location.hash = `#q=${answers.q1},${answers.q2},${answers.q3}`;
+
+  document.getElementById('resultWinner').textContent = `${v.winner} wins for you`;
+  document.getElementById('resultReasons').innerHTML = v.reasons.map(r => `<li>${r}</li>`).join('');
+
+  const pageUrl = `https://tinytools-smoky.vercel.app/vs/chatgpt/${location.hash}`;
+  const tweetText = `I compared TinyTools vs ChatGPT for my use case — ${v.winner} wins.\n\nKey reasons:\n${v.reasons.slice(0,2).map(r => '• ' + r).join('\n')}\n\nGet your verdict →`;
+
+  document.getElementById('shareTwitter').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(pageUrl)}`;
+
+  document.getElementById('copyLink').onclick = () => {
+    navigator.clipboard.writeText(pageUrl);
+    const b = document.getElementById('copyLink');
+    b.textContent = '✓ Copied!';
+    setTimeout(() => b.textContent = '🔗 Copy link', 1500);
+  };
+
+  const embedCode = `<a href="${pageUrl}" target="_blank">\n  <img src="https://img.shields.io/badge/${v.shieldLabel}-${v.shieldColor}?style=for-the-badge" alt="${v.winner} wins">\n</a>`;
+  document.getElementById('embedCode').textContent = embedCode;
+  document.getElementById('copyEmbed').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const b = document.getElementById('copyEmbed');
+    b.textContent = '✓ Copied';
+    setTimeout(() => b.textContent = 'Copy badge code', 1500);
+  };
+
+  // Draw canvas card
+  const canvas = document.getElementById('resultCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#0a0a0f';
+  ctx.fillRect(0, 0, 1200, 630);
+
+  // Gradient background
+  const grd = ctx.createRadialGradient(300, 0, 50, 300, 0, 600);
+  grd.addColorStop(0, 'rgba(139,92,246,0.25)');
+  grd.addColorStop(1, 'rgba(139,92,246,0)');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0, 0, 1200, 630);
+
+  ctx.textAlign = 'left';
+
+  // Label
+  ctx.font = '500 22px -apple-system,sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.fillText('TinyTools vs ChatGPT — Your Verdict', 80, 90);
+
+  // Winner
+  ctx.font = '900 72px -apple-system,sans-serif';
+  ctx.fillStyle = '#c4b5fd';
+  ctx.fillText(`${v.winner} wins`, 80, 190);
+
+  // Sub
+  ctx.font = '400 26px -apple-system,sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+  ctx.fillText('for your use case', 80, 238);
+
+  // Reasons
+  ctx.font = '500 22px -apple-system,sans-serif';
+  ctx.fillStyle = '#a78bfa';
+  v.reasons.slice(0,3).forEach((r, i) => {
+    ctx.fillText(`✓  ${r}`, 80, 320 + i * 52);
+  });
+
+  // Brand
+  ctx.font = '600 20px -apple-system,sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/vs/chatgpt/', 1120, 590);
+
+  document.getElementById('downloadCard').onclick = () => {
+    const a = document.createElement('a');
+    a.download = 'tinytools-vs-chatgpt.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  };
+
+  document.getElementById('resultCard').classList.add('show');
+  document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+<!-- ═══════════════ END VIRAL QUIZ ═══════════════ -->
+
 
 <h2>Verdict</h2>
 
