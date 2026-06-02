@@ -253,3 +253,43 @@ platform-ready status) make the share tweet feel earned and data-driven.
 **Tools remaining without viral mechanics:** 2 (background-remover, best-free-color-palette-generators-2026)
 
 ---
+---
+
+## 2026-06-02 — Daily Ship
+
+### Tools Shipped
+
+#### 1. startup-idea-roast (Tier 0 — Viral)
+- **URL:** https://tinytools-smoky.vercel.app/startup-idea-roast/
+- **HTTP:** 200 ✅
+- **Concept:** Paste your startup idea, get a savage A–F roast + fake investor rejection letter + viability score
+- **Viral mechanics:**
+  1. ✅ Personal result — score/grade derived deterministically from idea text
+  2. ✅ Shareable PNG card (1200×630 canvas with grade, roast snippet, score bar)
+  3. ✅ Share to X button with pre-filled tweet including grade
+  4. ✅ Deep-linkable URL (#encoded-idea reloads same result)
+  5. ✅ Embeddable shields.io badge
+  6. ✅ Reaction-bait copy ("brutal", "savage", "rejection letter")
+- **Scoring:** deterministic rule engine — buzzword penalties, positive signal bonuses, length scoring; same input = same output
+
+#### 2. ai-job-survival (Tier 0 — Viral)
+- **URL:** https://tinytools-smoky.vercel.app/ai-job-survival/
+- **HTTP:** 200 ✅
+- **Concept:** Enter job title, get AI replacement probability, automation timeline, and survival tips
+- **Viral mechanics:**
+  1. ✅ Personal result — risk score from job title keyword/override database
+  2. ✅ Shareable PNG card (1200×630 canvas with risk%, safety window, roast)
+  3. ✅ Share to X button with pre-filled tweet
+  4. ✅ Deep-linkable URL (#job-title reloads same result)
+  5. ✅ Embeddable shields.io badge
+  6. ✅ Reaction-bait copy ("The robots are coming", "your job", survival tips)
+- **Scoring:** deterministic lookup table (60+ job overrides) + keyword matching; same input = same output
+
+### Updates
+- sitemap.xml updated (50 URLs total, both new tools at priority 1.0)
+- index.html updated (tool count: 41 → 43, new cards at top of grid)
+
+### Notes
+- All TIER 0 tools from original roadmap are now shipped
+- Inventing new viral tools extending the roadmap going forward
+
