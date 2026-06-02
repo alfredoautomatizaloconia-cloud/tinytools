@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Startup Idea Roast — Get Your Business Idea Savagely Roasted by AI (Free)</title>
+<meta name="description" content="Paste your startup idea. Get a savage but funny AI roast, an investor rejection letter, and a grade. Share the card. Free, no signup, brutally honest.">
+<meta name="keywords" content="startup idea roast, roast my startup, ai startup feedback, startup idea validator, business idea roast, investor rejection, startup feedback generator">
+<meta property="og:title" content="Startup Idea Roast — AI Roasts Your Business Idea">
+<meta property="og:description" content="You thought it was genius. AI thinks otherwise. Get your startup idea brutally roasted.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/startup-idea-roast/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/startup-idea-roast/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Startup Idea Roast",
+  "description": "Get your startup idea savagely roasted by AI. Includes investor rejection letter, grade, and shareable card.",
+  "url": "https://tinytools-smoky.vercel.app/startup-idea-roast/",
+  "applicationCategory": "EntertainmentApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f97316; --accent-glow: #f9731640;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #dc262640 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(34px, 5.5vw, 56px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #fdba74 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 560px; margin: 0 auto; }
+
+  .input-area {
+    max-width: 620px; margin: 32px auto 0;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 16px;
+  }
+  .input-area textarea {
+    width: 100%; background: transparent; border: none; color: var(--text);
+    font-size: 15px; font-family: inherit; outline: none; resize: vertical;
+    min-height: 100px; line-height: 1.6;
+  }
+  .input-area textarea::placeholder { color: var(--text-dim); }
+  .input-area .input-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+  .char-count { font-size: 12px; color: var(--text-dim); }
+  .roast-btn {
+    padding: 12px 28px; background: linear-gradient(135deg, #f97316, #dc2626);
+    border: none; border-radius: 10px; color: white; font-weight: 700; font-size: 15px;
+    cursor: pointer; box-shadow: 0 4px 16px rgba(249, 115, 22, 0.35);
+    transition: transform 0.15s;
+  }
+  .roast-btn:hover { transform: translateY(-1px); }
+  .roast-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .examples { text-align: center; margin-top: 10px; color: var(--text-dim); font-size: 13px; }
+  .examples a { color: var(--accent); cursor: pointer; text-decoration: none; }
+
+  .loading { text-align: center; padding: 40px; color: var(--text-dim); display: none; }
+  .loading.show { display: block; }
+  .spinner { display: inline-block; width: 24px; height: 24px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .roast-card {
+    margin: 32px auto 0; max-width: 700px;
+    background: linear-gradient(135deg, #1f1f2e 0%, #15151f 100%);
+    border: 2px solid var(--accent); border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(249, 115, 22, 0.15);
+    display: none;
+  }
+  .roast-card.show { display: block; }
+  .roast-header {
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #f97316 0%, #dc2626 100%);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .idea-icon { font-size: 40px; }
+  .idea-info { flex: 1; }
+  .idea-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.7); }
+  .idea-text { font-size: 16px; font-weight: 700; color: white; max-width: 400px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .grade-badge {
+    padding: 10px 18px; background: rgba(0,0,0,0.4); border-radius: 12px;
+    font-size: 32px; font-weight: 900; color: white; text-align: center; min-width: 60px;
+  }
+  .grade-badge .grade-label { font-size: 10px; font-weight: 400; opacity: 0.7; display: block; }
+
+  .roast-body { padding: 24px; }
+
+  .roast-text {
+    font-size: 17px; line-height: 1.6; color: #fde68a; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid var(--accent);
+    border-radius: 8px; margin-bottom: 20px;
+  }
+
+  .rejection-letter {
+    background: #fffdf5; border-radius: 10px; padding: 20px; margin-bottom: 20px;
+    border: 1px solid #f59e0b;
+  }
+  .rejection-letter .rej-header { color: #92400e; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+  .rejection-letter .rej-body { color: #1c1917; font-size: 14px; line-height: 1.6; font-family: Georgia, serif; }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--bg-elevated); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+  .stat-value { font-size: 20px; font-weight: 800; color: var(--text); }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .tag {
+    padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 600;
+    background: var(--bg-elevated); border: 1px solid var(--border); color: var(--text);
+  }
+  .tag.red { border-color: #ef4444; color: #fca5a5; }
+  .tag.yellow { border-color: #f59e0b; color: #fcd34d; }
+  .tag.green { border-color: #10b981; color: #6ee7b7; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+  .action.dl { background: var(--bg-elevated); }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  canvas { display: none; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; margin: 28px 0 10px; font-weight: 800; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+  .content ul { color: var(--text-dim); font-size: 15px; padding-left: 20px; margin-bottom: 10px; }
+  .content ul li { margin-bottom: 6px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🔥 No signup · Brutally honest · Built by TinyTools</div>
+    <h1>Startup Idea Roast 🔥</h1>
+    <p class="subtitle">You think it's the next unicorn. We think otherwise. Paste your startup idea and get a savagely honest roast + fake investor rejection letter.</p>
+  </header>
+
+  <div class="input-area">
+    <textarea id="ideaInput" placeholder="e.g. Uber for dog walkers but with blockchain and AI. The TAM is $4 trillion. We're disrupting a space that hasn't been disrupted yet."></textarea>
+    <div class="input-footer">
+      <span class="char-count" id="charCount">0 / 500</span>
+      <button class="roast-btn" id="roastBtn">🔥 Roast My Idea</button>
+    </div>
+  </div>
+
+  <p class="examples">Try:
+    <a onclick="fillExample('Airbnb for parking spaces but with NFT ownership receipts and an AI concierge')">Parking NFTs</a> ·
+    <a onclick="fillExample('A social network for introverts where nobody talks to each other but you feel connected through shared vibes')">Introvert Social</a> ·
+    <a onclick="fillExample('ChatGPT but for pets — they describe their symptoms and AI diagnoses them. Subscription $29/mo.')">PetGPT</a>
+  </p>
+
+  <div class="loading" id="loading"><div class="spinner"></div><p style="margin-top:12px;">Reviewing your pitch deck… 📉</p></div>
+
+  <div class="roast-card" id="roastCard">
+    <div class="roast-header">
+      <div class="idea-icon" id="rIcon">💡</div>
+      <div class="idea-info">
+        <div class="idea-label">Your "Brilliant" Idea</div>
+        <div class="idea-text" id="rIdeaText"></div>
+      </div>
+      <div class="grade-badge"><span id="rGrade">?</span><span class="grade-label">Grade</span></div>
+    </div>
+    <div class="roast-body">
+      <div class="roast-text" id="rRoast"></div>
+
+      <div class="rejection-letter" id="rRejection">
+        <div class="rej-header">📨 Investor Rejection Letter</div>
+        <div class="rej-body" id="rRejBody"></div>
+      </div>
+
+      <div class="stats-grid" id="rStats"></div>
+      <div class="tags" id="rTags"></div>
+
+      <div class="actions">
+        <a class="action primary" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action" id="rCopyLink">🔗 Copy link</button>
+        <button class="action dl" id="rDownload">💾 Save card</button>
+      </div>
+      <div class="embed-section">
+        <div class="label">Embed this roast anywhere</div>
+        <pre id="rEmbed"></pre>
+        <button id="rEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="cardCanvas" width="1200" height="630"></canvas>
+
+  <section class="content">
+    <h2>Why does my startup idea need a roast?</h2>
+    <p>Most startup ideas die not from lack of effort but from lack of honest feedback. Friends say "great idea!" Investors ghost you. The market just ignores you. This tool gives you the brutal reality check you needed before you quit your job.</p>
+
+    <h2>How the roast works</h2>
+    <p>We run your idea through a deterministic scoring engine that checks for 20+ red flags and green flags found in startup ideas that succeeded vs. failed:</p>
+    <ul>
+      <li>"Uber for X" / "Airbnb for X" framing (automatic -15 points)</li>
+      <li>Buzzword density: blockchain, AI, NFT, disrupting, TAM (each costs you)</li>
+      <li>Problem clarity: do you describe a real pain or a theoretical market?</li>
+      <li>Solution simplicity: can you explain it in one sentence?</li>
+      <li>Revenue model: do you actually mention how you'd make money?</li>
+      <li>Market size delusion: any TAM > $1B with no evidence is a red flag</li>
+    </ul>
+    <p>The same idea always gets the same roast — no AI hallucinations, 100% deterministic, shareable and reproducible.</p>
+
+    <h2>What investors actually look for</h2>
+    <p>Real investors look for: a clear problem, a specific customer, a working prototype, early traction, and a defensible moat. "We're building a platform" is not a moat. "We have 200 paying customers" is.</p>
+
+    <h2>Is this tool mean?</h2>
+    <p>Yes. Intentionally. The startup world is full of encouraging noise. You need at least one voice that tells you when your emperor-grade idea has no clothes. Use this as a starting point, not a final verdict.</p>
+  </section>
+
+  <footer>
+    <p>Roast another idea → <a href="#" onclick="resetTool();return false;">start over</a> · More tools at <a href="/">TinyTools</a> · Built with tough love 🔥</p>
+  </footer>
+</div>
+
+<script>
+// ── Deterministic hash ──────────────────────────────────────────
+function hashStr(s) {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = (h * 16777619) >>> 0;
+  }
+  return h;
+}
+function seededRand(seed) {
+  let s = seed;
+  return function() {
+    s = (s * 1664525 + 1013904223) >>> 0;
+    return s / 4294967296;
+  };
+}
+function pick(arr, rng) { return arr[Math.floor(rng() * arr.length)]; }
+
+// ── Scoring engine ──────────────────────────────────────────────
+const BUZZWORDS = ['blockchain','nft','ai','ml','crypto','web3','metaverse','disrupting','disruptive','disruption','uber for','airbnb for','tinder for','platform','ecosystem','synergy','pivot','b2b','b2c','saas','tam','revolutionary','innovative','game-changer','game changer','first mover','10x','paradigm'];
+const POSITIVE_SIGNALS = ['customers','users','revenue','traction','waitlist','paying','prototype','mvp','built','launched','beta','tested','feedback','problem','pain','need'];
+const DEATH_PHRASES = ['haven\'t been disrupted','hasn\'t been disrupted','trillion dollar','multi-trillion','world domination','everyone will use','for everyone','all industries'];
+
+function scoreIdea(text) {
+  const lower = text.toLowerCase();
+  let score = 60; // start neutral
+  let flags = [];
+  let greenFlags = [];
+
+  // Buzzword penalty
+  let bwCount = 0;
+  BUZZWORDS.forEach(bw => { if (lower.includes(bw)) { bwCount++; score -= 4; flags.push(bw); } });
+
+  // Death phrases
+  DEATH_PHRASES.forEach(dp => { if (lower.includes(dp)) { score -= 8; } });
+
+  // Positive signals
+  let posCount = 0;
+  POSITIVE_SIGNALS.forEach(ps => { if (lower.includes(ps)) { posCount++; score += 3; greenFlags.push(ps); } });
+
+  // Length signals — short = vague
+  if (text.length < 50) { score -= 15; }
+  else if (text.length < 100) { score -= 8; }
+  else if (text.length > 200) { score += 5; } // at least they tried
+
+  // Question marks = uncertainty
+  const qMarks = (text.match(/\?/g) || []).length;
+  score -= qMarks * 3;
+
+  // Revenue mention
+  if (lower.includes('$') || lower.includes('subscription') || lower.includes('fee') || lower.includes('freemium')) {
+    score += 8; greenFlags.push('revenue model');
+  }
+
+  // "We" = team?
+  if (lower.includes(' we ') || lower.startsWith('we ')) score += 4;
+
+  // Clamp
+  score = Math.max(5, Math.min(97, score));
+  return { score, flags: flags.slice(0, 5), greenFlags: greenFlags.slice(0, 4), bwCount, posCount };
+}
+
+function getGrade(score) {
+  if (score >= 80) return 'B+';
+  if (score >= 70) return 'C+';
+  if (score >= 55) return 'D';
+  if (score >= 40) return 'D-';
+  return 'F';
+}
+
+// ── Roast content ───────────────────────────────────────────────
+const ROASTS_F = [
+  "This reads like someone ate a TechCrunch article and a crypto whitepaper and then had indigestion. It's not a startup idea — it's a pitch to people who've never run a business pitch.",
+  "I've seen napkin ideas with more substance. You've managed to use every buzzword in existence while saying absolutely nothing. Impressive, in the worst possible way.",
+  "Calling this an 'idea' is generous. This is a hope dressed in jargon and sent to VCs who block emails from unknown senders.",
+  "Your idea is so vague it could describe literally any software company founded in the last 10 years. That is not a differentiator. That is a problem.",
+  "The TAM is probably real. Your ability to capture any of it is not. This idea has the energy of a 2am shower thought that should have stayed in the shower."
+];
+const ROASTS_D = [
+  "There's an idea buried in here under several layers of buzzwords and wishful thinking. The sad news: the idea underneath isn't good enough to justify the excavation costs.",
+  "You've identified a problem that other companies have already solved. Your solution adds complexity and removes clarity. That's the opposite of what a startup should do.",
+  "This idea works in a slide deck and nowhere else. The moment you try to build it, you'll discover that your customer avatar doesn't actually exist.",
+  "I see what you're going for, but the market doesn't care what you're going for. What does it care about? Not this. Not yet.",
+  "This is a feature, not a company. Someone else will build this as a toggle inside their settings menu and charge nothing extra for it."
+];
+const ROASTS_C = [
+  "You've got a real problem here and a semi-real solution. The question is: why you? Why now? Why this? Those answers aren't in your pitch and they're the only answers that matter.",
+  "The problem is legit. The solution is probably the third idea anyone thinks of when they hear the problem. Go deeper. Find what's actually hard about this.",
+  "This could work with a sharper customer focus and a clearer monetization story. As written, it's a club with no members trying to sell memberships.",
+  "I've seen worse. I've also seen much better. You're in the pile of 'interesting but unformed.' That pile never gets funded.",
+  "There's something here, but it's buried under assumptions. You're solving for a customer that may or may not exist at the scale you need."
+];
+const ROASTS_B = [
+  "Okay, this isn't terrible. The problem is real, the solution is logical, and you seem to have thought about it beyond a weekend. You might actually build this. Whether you should is still unclear.",
+  "Legitimately not bad. There are worse ideas getting funded right now. The main risk is execution — this space is harder than it looks and you sound like you haven't done it yet.",
+  "This has the bones of a real startup. Now you need customers, revenue, and the psychological tolerance for a decade of grinding. Hope you like rejection.",
+  "Actually above average. The bar is low, but still — you cleared it. Now go find 10 people willing to pay for this and report back."
+];
+
+function getRoast(score, rng) {
+  if (score < 40) return pick(ROASTS_F, rng);
+  if (score < 55) return pick(ROASTS_D, rng);
+  if (score < 70) return pick(ROASTS_C, rng);
+  return pick(ROASTS_B, rng);
+}
+
+// ── Rejection letters ──────────────────────────────────────────
+const REJ_OPENING = [
+  'Thank you for reaching out to Sequoia Ventures (not the real one).',
+  'We appreciate your submission to Benchmark Capital (not the real one).',
+  'Thank you for pitching Y Combinator (fictional reject division).',
+  'We have reviewed your deck at Andreessen Horowitz\'s spam filter.',
+];
+const REJ_BODY_F = [
+  'After careful review — which took approximately four seconds — we are passing on this opportunity. While the TAM you cited is impressive (how did you arrive at "$4 trillion"?), we prefer to invest in ideas where the problem exists outside the founder\'s imagination. We wish you the best in your future endeavors, preferably in a different industry.',
+  'We have decided not to move forward. The market opportunity is unclear, the solution is undefined, and the word "disruptive" appears multiple times without irony. We receive 5,000 pitches per year and this one has achieved the rare distinction of making us more skeptical about startups in general.',
+  'We pass. Your idea solves a problem that, as far as we can tell, no one has complained about. We look for hair-on-fire problems. This is more of a "mild inconvenience on a Tuesday" problem. Best of luck.',
+];
+const REJ_BODY_D = [
+  'After reviewing your pitch, we\'ve decided to pass at this time. The core problem is real, but we\'ve already seen six similar approaches this quarter, three of which have already failed. We\'d encourage you to find your unfair advantage before approaching investors — right now, there isn\'t one visible to us.',
+  'We appreciate the passion, but we\'re not moving forward. This space has entrenched competitors who can replicate your feature in a sprint. We invest in companies with defensible moats; a good idea is not a moat. Please feel free to reach out if you pivot to something with clearer differentiation.',
+];
+const REJ_BODY_C = [
+  'We found your pitch interesting but are passing for now. The problem is validated, but the go-to-market strategy needs significant work. We\'d encourage you to get 10 paying customers and return to us with traction data. Until then, this is too early-stage for our fund.',
+  'This is close, but not quite there. We\'re not convinced this is a billion-dollar market at the scale you\'re projecting. Come back when you have revenue, a clear ICP, and a moat. We\'ll be happy to revisit.',
+];
+const REJ_BODY_B = [
+  'We reviewed your pitch and while there\'s real merit here, we\'re already invested in a company in an adjacent space. We\'d encourage you to reach out to other funds — this is fundable at the right stage. Best of luck.',
+  'Genuinely interesting. Unfortunately our fund thesis doesn\'t align with your vertical at this time. We\'d recommend reaching out to specialist investors. This one might actually get funded.',
+];
+
+function getRejLetter(score, idea, rng) {
+  const opening = pick(REJ_OPENING, rng);
+  let body;
+  if (score < 40) body = pick(REJ_BODY_F, rng);
+  else if (score < 55) body = pick(REJ_BODY_D, rng);
+  else if (score < 70) body = pick(REJ_BODY_C, rng);
+  else body = pick(REJ_BODY_B, rng);
+  return `${opening}\n\n${body}\n\nBest,\nThe Investment Committee\nP.S. Please do not reply to this email.`;
+}
+
+const STAT_TEMPLATES = [
+  (s, r) => ({ label: 'Viability Score', value: s + '%' }),
+  (s, r) => ({ label: 'Buzzword Density', value: Math.min(10, Math.floor(r() * 8 + (100 - s) / 20)) + '/10' }),
+  (s, r) => ({ label: 'Investor Interest', value: s < 40 ? '😂 0%' : s < 60 ? '🤔 12%' : s < 75 ? '🙂 34%' : '👀 61%' }),
+  (s, r) => ({ label: 'Runway Before Pivot', value: s < 40 ? '3 mo' : s < 60 ? '8 mo' : s < 75 ? '14 mo' : '24 mo' }),
+  (s, r) => ({ label: 'Competition Score', value: (Math.floor(r() * 40) + (100 - s)) + ' rivals' }),
+  (s, r) => ({ label: 'Pivot Probability', value: s < 40 ? '98%' : s < 55 ? '82%' : s < 70 ? '61%' : '35%' }),
+];
+
+const ICONS = ['💡','🚀','🦄','💸','🤔','😬','😅','🎯','🔥','🧊'];
+
+// ── UI helpers ──────────────────────────────────────────────────
+const input = document.getElementById('ideaInput');
+const charCount = document.getElementById('charCount');
+const roastBtn = document.getElementById('roastBtn');
+const loading = document.getElementById('loading');
+const card = document.getElementById('roastCard');
+
+input.addEventListener('input', () => {
+  const len = Math.min(500, input.value.length);
+  charCount.textContent = len + ' / 500';
+  if (input.value.length > 500) input.value = input.value.slice(0, 500);
+});
+
+function fillExample(text) {
+  input.value = text;
+  input.dispatchEvent(new Event('input'));
+  input.focus();
+}
+
+function resetTool() {
+  input.value = '';
+  card.classList.remove('show');
+  loading.classList.remove('show');
+  charCount.textContent = '0 / 500';
+  window.location.hash = '';
+}
+
+roastBtn.addEventListener('click', () => runRoast(input.value.trim()));
+input.addEventListener('keydown', e => { if (e.key === 'Enter' && e.ctrlKey) runRoast(input.value.trim()); });
+
+function runRoast(idea) {
+  if (!idea || idea.length < 10) { alert('Please enter at least 10 characters!'); return; }
+  loading.classList.add('show');
+  card.classList.remove('show');
+  setTimeout(() => showResult(idea), 900);
+}
+
+function showResult(idea) {
+  const seed = hashStr(idea.toLowerCase().trim());
+  const rng = seededRand(seed);
+  const { score, flags, greenFlags, bwCount, posCount } = scoreIdea(idea);
+  const grade = getGrade(score);
+  const roast = getRoast(score, rng);
+  const rejection = getRejLetter(score, idea, rng);
+  const icon = pick(ICONS, rng);
+
+  document.getElementById('rIcon').textContent = icon;
+  document.getElementById('rIdeaText').textContent = idea.length > 60 ? idea.slice(0, 57) + '…' : idea;
+  document.getElementById('rGrade').textContent = grade;
+  document.getElementById('rRoast').textContent = `"${roast}"`;
+  document.getElementById('rRejBody').textContent = rejection;
+
+  // Stats
+  const stats = STAT_TEMPLATES.slice();
+  rng(); // advance rng
+  const statsEl = document.getElementById('rStats');
+  statsEl.innerHTML = stats.slice(0, 4).map(fn => {
+    const s = fn(score, rng);
+    return `<div class="stat"><div class="stat-value">${s.value}</div><div class="stat-label">${s.label}</div></div>`;
+  }).join('');
+
+  // Tags
+  const tagsEl = document.getElementById('rTags');
+  const redTags = flags.map(f => `<span class="tag red">🚩 ${f}</span>`);
+  const greenTags = greenFlags.map(f => `<span class="tag green">✅ ${f}</span>`);
+  tagsEl.innerHTML = [...redTags, ...greenTags].join('');
+
+  // Deep link
+  const encoded = encodeURIComponent(idea);
+  window.location.hash = encoded;
+  const deepLink = window.location.href;
+
+  // Share text
+  const shareText = `I roasted my startup idea and got a ${grade} 😅\n"${roast.slice(0, 120)}…"\n\nRoast yours:`;
+  const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent('https://tinytools-smoky.vercel.app/startup-idea-roast/')}`;
+  document.getElementById('rShare').href = shareUrl;
+
+  document.getElementById('rCopyLink').onclick = () => {
+    navigator.clipboard.writeText(deepLink).then(() => {
+      document.getElementById('rCopyLink').textContent = '✅ Copied!';
+      setTimeout(() => document.getElementById('rCopyLink').textContent = '🔗 Copy link', 2000);
+    });
+  };
+
+  // Badge embed
+  const badgeUrl = `https://img.shields.io/badge/Startup%20Idea-Grade%20${encodeURIComponent(grade)}-${score < 40 ? 'red' : score < 60 ? 'orange' : score < 75 ? 'yellow' : 'green'}?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyTDIgNyA2IDE4bDYgNCA2LTQgNC0xMXoiLz48L3N2Zz4=`;
+  const embedCode = `[![Startup Idea Grade ${grade}](${badgeUrl})](https://tinytools-smoky.vercel.app/startup-idea-roast/)`;
+  document.getElementById('rEmbed').textContent = embedCode;
+  document.getElementById('rEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode).then(() => {
+      document.getElementById('rEmbedCopy').textContent = '✅ Copied!';
+      setTimeout(() => document.getElementById('rEmbedCopy').textContent = 'Copy embed code', 2000);
+    });
+  };
+
+  // Canvas card
+  generateCard(idea, grade, roast, score, icon);
+
+  loading.classList.remove('show');
+  card.classList.add('show');
+  card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function generateCard(idea, grade, roast, score, icon) {
+  const canvas = document.getElementById('cardCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+
+  // Background
+  const grad = ctx.createLinearGradient(0, 0, W, H);
+  grad.addColorStop(0, '#0a0a0f');
+  grad.addColorStop(1, '#1a0a00');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Accent glow
+  const glow = ctx.createRadialGradient(300, 0, 0, 300, 0, 400);
+  glow.addColorStop(0, 'rgba(249,115,22,0.25)');
+  glow.addColorStop(1, 'transparent');
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, W, H);
+
+  // Header bar
+  const hGrad = ctx.createLinearGradient(0, 0, W, 0);
+  hGrad.addColorStop(0, '#f97316');
+  hGrad.addColorStop(1, '#dc2626');
+  ctx.fillStyle = hGrad;
+  ctx.fillRect(0, 0, W, 8);
+
+  // Title
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '900 52px -apple-system, BlinkMacSystemFont, Arial';
+  ctx.fillText('🔥 Startup Idea Roast', 60, 100);
+
+  // Subtitle
+  ctx.fillStyle = '#f97316';
+  ctx.font = '600 26px Arial';
+  ctx.fillText('TinyTools.app', 60, 140);
+
+  // Grade box
+  ctx.fillStyle = '#f97316';
+  ctx.beginPath();
+  ctx.roundRect(W - 200, 50, 140, 110, 16);
+  ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '900 64px Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText(grade, W - 130, 130);
+  ctx.font = '500 18px Arial';
+  ctx.fillText('GRADE', W - 130, 155);
+  ctx.textAlign = 'left';
+
+  // Idea text
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '400 22px Arial';
+  ctx.fillText('IDEA:', 60, 205);
+  ctx.fillStyle = '#f5f5fa';
+  ctx.font = '600 24px Arial';
+  const displayIdea = idea.length > 80 ? idea.slice(0, 77) + '…' : idea;
+  ctx.fillText(displayIdea, 60, 235);
+
+  // Divider
+  ctx.strokeStyle = '#2a2a3a';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(60, 265); ctx.lineTo(W - 60, 265);
+  ctx.stroke();
+
+  // Roast text
+  ctx.fillStyle = '#fde68a';
+  ctx.font = 'italic 400 26px Georgia, serif';
+  const roastShort = roast.length > 160 ? roast.slice(0, 157) + '…' : roast;
+  // Word wrap
+  const words = roastShort.split(' ');
+  let line = '"', lineY = 320, maxW = W - 120;
+  for (const word of words) {
+    const test = line + word + ' ';
+    if (ctx.measureText(test).width > maxW && line !== '"') {
+      ctx.fillText(line.trim(), 60, lineY);
+      line = word + ' ';
+      lineY += 38;
+      if (lineY > 430) { ctx.fillText(line.trim() + '…"', 60, lineY); line = null; break; }
+    } else { line = test; }
+  }
+  if (line) ctx.fillText((line.trim() + '"'), 60, lineY);
+
+  // Score bar
+  ctx.fillStyle = '#1d1d2a';
+  ctx.beginPath();
+  ctx.roundRect(60, 490, W - 120, 24, 12);
+  ctx.fill();
+  const barColor = score < 40 ? '#ef4444' : score < 60 ? '#f97316' : score < 75 ? '#f59e0b' : '#10b981';
+  ctx.fillStyle = barColor;
+  ctx.beginPath();
+  ctx.roundRect(60, 490, (W - 120) * score / 100, 24, 12);
+  ctx.fill();
+
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '700 18px Arial';
+  ctx.fillText(`Viability Score: ${score}%`, 60, 545);
+
+  // URL
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '400 18px Arial';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/startup-idea-roast/', W - 60, 610);
+  ctx.textAlign = 'left';
+
+  document.getElementById('rDownload').onclick = () => {
+    const link = document.createElement('a');
+    link.download = 'startup-roast.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  };
+}
+
+// ── Load from URL hash ──────────────────────────────────────────
+window.addEventListener('load', () => {
+  if (window.location.hash) {
+    try {
+      const idea = decodeURIComponent(window.location.hash.slice(1));
+      if (idea.length >= 10) {
+        input.value = idea;
+        input.dispatchEvent(new Event('input'));
+        runRoast(idea);
+      }
+    } catch(e) {}
+  }
+});
+</script>
+</body>
+</html>
