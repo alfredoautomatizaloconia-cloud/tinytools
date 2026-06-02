@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Text Detector for AI Agency Owners — QA Every Deliverable Before It Leaves Your Desk</title>
+  <meta name="description" content="AI agency owners: use our free AI text detector to QA client deliverables, audit team output, and protect your retainers from getting flagged as robotic. No account needed." />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-text-detector/for-ai-agency-owners/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Text Detector for AI Agency Owners" />
+  <meta property="og:description" content="One client complaint about 'robotic copy' can cost you a retainer. Run every deliverable through our free AI text detector before it ships." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-text-detector/for-ai-agency-owners/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/og-image-generator/" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "AI Text Detector for AI Agency Owners",
+    "description": "Free AI text detection tool for AI agency owners who need to QA client deliverables, audit team outputs, and vet subcontractor work before delivery.",
+    "url": "https://tinytools-smoky.vercel.app/ai-text-detector/for-ai-agency-owners/",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/"},
+        {"@type": "ListItem", "position": 2, "name": "AI Text Detector", "item": "https://tinytools-smoky.vercel.app/ai-text-detector/"},
+        {"@type": "ListItem", "position": 3, "name": "For AI Agency Owners", "item": "https://tinytools-smoky.vercel.app/ai-text-detector/for-ai-agency-owners/"}
+      ]
+    },
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "AI Text Detector",
+      "applicationCategory": "UtilityApplication",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+      "url": "https://tinytools-smoky.vercel.app/ai-text-detector/"
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface2: #21262d;
+      --border: #30363d;
+      --accent: #7c3aed;
+      --accent-light: #a78bfa;
+      --accent-glow: rgba(124,58,237,0.18);
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --green: #3fb950;
+      --yellow: #d29922;
+      --red: #f85149;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: var(--accent-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+    .nav-brand { font-weight: 700; font-size: 15px; color: var(--text); }
+    .nav-brand span { color: var(--accent-light); }
+    .nav-links { margin-left: auto; display: flex; gap: 20px; font-size: 14px; }
+
+    /* HERO */
+    .hero { max-width: 760px; margin: 0 auto; padding: 72px 24px 48px; text-align: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-glow); border: 1px solid var(--accent); color: var(--accent-light); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 24px; letter-spacing: 0.04em; }
+    h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
+    h1 em { font-style: normal; color: var(--accent-light); }
+    .hero-sub { font-size: 18px; color: var(--text-muted); max-width: 580px; margin: 0 auto 36px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff; font-weight: 700; font-size: 16px; padding: 14px 32px; border-radius: 10px; transition: background 0.2s; }
+    .hero-cta:hover { background: #6d28d9; text-decoration: none; }
+    .hero-cta svg { width: 18px; height: 18px; }
+    .hero-meta { margin-top: 16px; font-size: 13px; color: var(--text-muted); }
+
+    /* MAIN CONTENT */
+    .content { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+
+    /* PROBLEM BANNER */
+    .problem-box { background: linear-gradient(135deg, rgba(248,81,73,0.08), rgba(248,81,73,0.04)); border: 1px solid rgba(248,81,73,0.3); border-radius: 12px; padding: 28px 32px; margin: 48px 0; }
+    .problem-box h2 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #ffa198; }
+    .problem-box p { color: var(--text-muted); font-size: 15px; line-height: 1.7; }
+
+    h2.section-title { font-size: 26px; font-weight: 800; margin: 56px 0 8px; }
+    .section-intro { color: var(--text-muted); margin-bottom: 32px; font-size: 15px; }
+
+    /* USE CASES */
+    .use-cases { display: flex; flex-direction: column; gap: 20px; }
+    .use-case { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; display: grid; grid-template-columns: auto 1fr; gap: 16px; }
+    .use-case-icon { width: 40px; height: 40px; background: var(--accent-glow); border: 1px solid var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .use-case h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .use-case p { font-size: 14px; color: var(--text-muted); }
+    .use-case .tag { display: inline-block; background: var(--surface2); border: 1px solid var(--border); color: var(--accent-light); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-top: 8px; }
+
+    /* PAIN → SOLUTION */
+    .pain-solution { margin: 56px 0; }
+    .pain-solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .pain-solution-grid { grid-template-columns: 1fr; } }
+    .pain-card, .solution-card { border-radius: 10px; padding: 20px 22px; }
+    .pain-card { background: rgba(248,81,73,0.07); border: 1px solid rgba(248,81,73,0.25); }
+    .solution-card { background: rgba(63,185,80,0.07); border: 1px solid rgba(63,185,80,0.25); }
+    .card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 10px; }
+    .pain-card .card-label { color: var(--red); }
+    .solution-card .card-label { color: var(--green); }
+    .pain-card ul, .solution-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .pain-card li::before { content: "✗ "; color: var(--red); font-weight: 700; }
+    .solution-card li::before { content: "✓ "; color: var(--green); font-weight: 700; }
+    .pain-card li, .solution-card li { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+    /* PRICING TABLE */
+    .pricing { margin: 56px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead tr { background: var(--surface2); }
+    thead th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr.highlight { background: var(--accent-glow); }
+    tbody td { padding: 12px 16px; }
+    .tool-name { font-weight: 600; }
+    .free-badge { color: var(--green); font-weight: 700; font-size: 12px; }
+    .paid-badge { color: var(--yellow); font-size: 12px; }
+    .limit-badge { color: var(--text-muted); font-size: 12px; }
+    .checkmark { color: var(--green); }
+    .cross { color: var(--red); }
+
+    /* BOTTOM CTA */
+    .bottom-cta { background: linear-gradient(135deg, var(--accent-glow), transparent); border: 1px solid var(--accent); border-radius: 16px; padding: 48px 40px; text-align: center; margin: 56px 0 0; }
+    .bottom-cta h2 { font-size: 26px; font-weight: 800; margin-bottom: 12px; }
+    .bottom-cta p { color: var(--text-muted); margin-bottom: 28px; font-size: 15px; }
+    .bottom-cta-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff; font-weight: 700; font-size: 15px; padding: 14px 32px; border-radius: 10px; }
+    .bottom-cta-btn:hover { background: #6d28d9; text-decoration: none; }
+
+    /* INTERNAL LINKS */
+    .related { margin: 48px 0; }
+    .related h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .related-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+    .related-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .related-card p { font-size: 12px; color: var(--text-muted); }
+    .related-card a::after { content: " →"; }
+
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 13px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand"><span>Tiny</span>Tools</div>
+  <div class="nav-links">
+    <a href="https://tinytools-smoky.vercel.app/">All Tools</a>
+    <a href="https://tinytools-smoky.vercel.app/ai-text-detector/">AI Text Detector</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">⚡ Built for AI Agency Owners</div>
+  <h1>AI Text Detector for <em>AI Agency Owners</em></h1>
+  <p class="hero-sub">One client complaint about "robotic copy" can cost you a retainer. Run every deliverable through our free AI text detector — before it leaves your desk.</p>
+  <a href="https://tinytools-smoky.vercel.app/ai-text-detector/" class="hero-cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    Detect AI Text Free
+  </a>
+  <p class="hero-meta">Free · No account required · Works on any AI-generated content</p>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="content">
+
+  <!-- PROBLEM -->
+  <div class="problem-box">
+    <h2>The Deliverable Problem Every AI Agency Faces</h2>
+    <p>
+      You've built a lean, profitable agency on top of AI. Your team ships faster than anyone. But here's the risk that keeps growing as you scale: clients, editors, and brand teams at enterprise accounts are now running their own AI detectors on your work. When a piece flags as 90% AI-generated — even if it was heavily edited — the relationship takes a hit. You need a fast, reliable QA step that catches this before the client does. That's exactly what this tool is built for.
+    </p>
+  </div>
+
+  <!-- USE CASES -->
+  <h2 class="section-title">5 Ways AI Agency Owners Use This Tool</h2>
+  <p class="section-intro">Not generic use cases. These are the exact scenarios that come up when you're running an AI-powered agency with real client accounts.</p>
+
+  <div class="use-cases">
+
+    <div class="use-case">
+      <div class="use-case-icon">📋</div>
+      <div>
+        <h3>Client Deliverable QA Before Handoff</h3>
+        <p>Before any content package — blog posts, email sequences, landing page copy — leaves your account manager's outbox, paste it into the detector. Flag anything scoring above 70% and route it back to the writer for a humanization pass. Prevents the dreaded "this feels very AI" reply from the client's CMO.</p>
+        <span class="tag">Content Agencies</span>
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">🏷️</div>
+      <div>
+        <h3>White-Label Output Vetting</h3>
+        <p>If you resell AI-generated content under a client's brand or a white-label SaaS product, their end customers will eventually run a detector. Build a detection step into your white-label pipeline now. Catching a high-score piece costs you 20 minutes of editing time. Losing the white-label contract costs you months of ARR.</p>
+        <span class="tag">White-Label Agencies</span>
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">👥</div>
+      <div>
+        <h3>Team Output Auditing at Scale</h3>
+        <p>When you have 5–20 contractors or in-house writers all using different AI prompting styles, output quality drifts. Run weekly audits on a sample of team deliverables. Identify which team members are submitting minimally-edited AI dumps versus genuinely humanized content, and use the scores as a coaching tool.</p>
+        <span class="tag">Agencies with Teams</span>
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">📝</div>
+      <div>
+        <h3>Agency Proposal &amp; Pitch Deck Copy Review</h3>
+        <p>Your proposals are selling your agency's expertise and voice. If a prospect pastes your case studies or service descriptions into an AI detector and gets a high score, it undercuts your positioning as "premium AI-assisted work." Run your own pitch materials through the detector to ensure they sound like a real team wrote them — because they should.</p>
+        <span class="tag">Biz Dev &amp; Sales</span>
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">🔍</div>
+      <div>
+        <h3>Screening Subcontractor &amp; Freelancer Submissions</h3>
+        <p>You hired a freelancer to produce 10 articles at a competitive rate. Before you pay and before you deliver, run each piece through the detector. If someone's billing for "AI-assisted writing" but submitting raw GPT-4 output with no editing, detection scores will tell you. Protects your margin and your client relationships simultaneously.</p>
+        <span class="tag">Freelancer Management</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAIN → SOLUTION -->
+  <div class="pain-solution">
+    <h2 class="section-title">Pain Points → What Changes With Detection</h2>
+    <p class="section-intro">The before/after for AI agency owners who add a detection QA step.</p>
+    <div class="pain-solution-grid">
+      <div class="pain-card">
+        <div class="card-label">WITHOUT DETECTION</div>
+        <ul>
+          <li>Client flags deliverable as "too robotic" on Slack</li>
+          <li>Enterprise client's editorial team runs their own detector and escalates internally</li>
+          <li>You don't know which team member is submitting unedited AI output</li>
+          <li>Subcontractor invoices for "original writing" that's 95% raw GPT</li>
+          <li>Lost retainer after a content audit reveals AI fingerprints throughout</li>
+        </ul>
+      </div>
+      <div class="solution-card">
+        <div class="card-label">WITH FREE AI TEXT DETECTOR</div>
+        <ul>
+          <li>Every deliverable passes a score threshold before client ever sees it</li>
+          <li>You catch high-score pieces in QA, not in the client's inbox</li>
+          <li>Team audit data shows who needs humanization coaching</li>
+          <li>Subcontractor payment tied to passing a detection threshold</li>
+          <li>Retainers protected because your work consistently passes client-side checks</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING COMPARISON -->
+  <div class="pricing">
+    <h2 class="section-title">How This Compares to Paid Alternatives</h2>
+    <p class="section-intro">AI agencies running multiple accounts can't justify $15–$50/month per tool just for detection. Here's what the market looks like.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Price</th>
+          <th>No Signup</th>
+          <th>Unlimited Checks</th>
+          <th>Agency-Friendly</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td class="tool-name">TinyTools AI Text Detector</td>
+          <td><span class="free-badge">FREE</span></td>
+          <td class="checkmark">✓</td>
+          <td class="checkmark">✓</td>
+          <td class="checkmark">✓</td>
+        </tr>
+        <tr>
+          <td class="tool-name">GPTZero</td>
+          <td><span class="paid-badge">$15–$23/mo</span></td>
+          <td class="cross">✗</td>
+          <td><span class="limit-badge">500K words/mo</span></td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td class="tool-name">Originality.ai</td>
+          <td><span class="paid-badge">$14.95/mo or credits</span></td>
+          <td class="cross">✗</td>
+          <td><span class="limit-badge">Credits deplete</span></td>
+          <td class="checkmark">✓</td>
+        </tr>
+        <tr>
+          <td class="tool-name">Winston AI</td>
+          <td><span class="paid-badge">$12–$18/mo</span></td>
+          <td class="cross">✗</td>
+          <td><span class="limit-badge">Word limits apply</span></td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td class="tool-name">Copyleaks AI Detector</td>
+          <td><span class="paid-badge">$10.99/mo+</span></td>
+          <td class="cross">✗</td>
+          <td><span class="limit-badge">Plan-based limits</span></td>
+          <td class="cross">✗</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:14px; font-size:13px; color:var(--text-muted);">For quick spot-checks and team audits, a free tool with no rate limits beats a $15/month subscription every time. Use the paid tools for formal compliance reporting — use this for day-to-day QA.</p>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="related">
+    <h2>Also Useful for AI Agencies</h2>
+    <div class="related-grid">
+      <div class="related-card">
+        <h3><a href="https://tinytools-smoky.vercel.app/ai-text-humanizer/">AI Text Humanizer</a></h3>
+        <p>Fix high-scoring pieces and rewrite them to sound human. The natural next step after detection.</p>
+      </div>
+      <div class="related-card">
+        <h3><a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-ai-agency-owners/">AI Disclosure Generator</a></h3>
+        <p>Generate compliant AI disclosure statements for client deliverables when disclosure is required.</p>
+      </div>
+      <div class="related-card">
+        <h3><a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/">EU AI Act Risk Assessment</a></h3>
+        <p>For agencies serving EU clients — assess whether your AI-assisted content workflows have regulatory exposure.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div class="bottom-cta">
+    <h2>QA Your Next Deliverable Now</h2>
+    <p>Free, instant, no login. Paste any piece of content — blog post, email, social copy, case study — and get an AI likelihood score in seconds. Run it on your next client deliverable before it ships.</p>
+    <a href="https://tinytools-smoky.vercel.app/ai-text-detector/" class="bottom-cta-btn">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      Open AI Text Detector — Free
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 TinyTools · <a href="https://tinytools-smoky.vercel.app/">All Tools</a> · <a href="https://tinytools-smoky.vercel.app/ai-text-detector/">AI Text Detector</a></p>
+</footer>
+
+</body>
+</html>
