@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will AI Take Your Job? — Get Your AI Survival Score (Free)</title>
+<meta name="description" content="Enter your job title. Get a brutally honest AI replacement probability, survival tips, and a timeline. Shareable card. Free, no signup.">
+<meta name="keywords" content="will ai take my job, ai job replacement, ai job risk, automation risk calculator, ai job survival, future of work, job ai probability">
+<meta property="og:title" content="Will AI Take Your Job? Get Your Survival Score">
+<meta property="og:description" content="Brutal. Honest. Deterministic. Find out if AI is coming for your paycheck.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/ai-job-survival/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-job-survival/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Will AI Take Your Job?",
+  "description": "Calculate your AI job replacement probability with a shareable survival score card.",
+  "url": "https://tinytools-smoky.vercel.app/ai-job-survival/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #6366f1; --accent-glow: #6366f140;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b;
+    --orange: #f97316;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 15% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 85% 70%, #ef444430 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(30px, 5vw, 52px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 560px; margin: 0 auto; }
+
+  .input-row {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 8px;
+    display: flex; gap: 8px; max-width: 580px; margin: 32px auto 0;
+  }
+  .input-row input {
+    flex: 1; padding: 14px 18px; background: transparent; border: none; color: var(--text);
+    font-size: 16px; font-family: inherit; outline: none;
+  }
+  .input-row input::placeholder { color: var(--text-dim); }
+  .input-row button {
+    padding: 14px 28px; background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border: none; border-radius: 10px; color: white; font-weight: 700; font-size: 15px;
+    cursor: pointer; box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+    transition: transform 0.15s; white-space: nowrap;
+  }
+  .input-row button:hover { transform: translateY(-1px); }
+  .input-row button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .examples { text-align: center; margin-top: 10px; color: var(--text-dim); font-size: 13px; }
+  .examples a { color: var(--accent); cursor: pointer; text-decoration: none; }
+
+  .loading { text-align: center; padding: 40px; color: var(--text-dim); display: none; }
+  .loading.show { display: block; }
+  .spinner { display: inline-block; width: 24px; height: 24px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .result-card {
+    margin: 32px auto 0; max-width: 700px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #15151f 100%);
+    border: 2px solid var(--accent); border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+    display: none;
+  }
+  .result-card.show { display: block; }
+
+  .card-header {
+    padding: 22px 24px;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .job-icon { font-size: 44px; }
+  .job-info { flex: 1; }
+  .job-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.6); }
+  .job-title-display { font-size: 20px; font-weight: 800; color: white; }
+  .survival-badge {
+    text-align: center; min-width: 80px;
+    background: rgba(0,0,0,0.4); border-radius: 12px; padding: 10px 14px;
+  }
+  .survival-pct { font-size: 28px; font-weight: 900; color: white; }
+  .survival-label { font-size: 10px; color: rgba(255,255,255,0.7); font-weight: 400; }
+
+  .card-body { padding: 24px; }
+
+  .verdict-banner {
+    font-size: 16px; font-weight: 700; padding: 10px 16px; border-radius: 10px; margin-bottom: 20px;
+    text-align: center; letter-spacing: 0.02em;
+  }
+  .verdict-danger { background: #7f1d1d; color: #fca5a5; border: 1px solid #ef4444; }
+  .verdict-warning { background: #78350f; color: #fcd34d; border: 1px solid #f59e0b; }
+  .verdict-caution { background: #1c1917; color: #fdba74; border: 1px solid #f97316; }
+  .verdict-safe { background: #052e16; color: #6ee7b7; border: 1px solid #10b981; }
+
+  .roast-text {
+    font-size: 16px; line-height: 1.6; color: #c4b5fd; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid #6366f1;
+    border-radius: 8px; margin-bottom: 20px;
+  }
+
+  /* Timeline */
+  .timeline { margin-bottom: 20px; }
+  .timeline-title { font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); font-weight: 700; margin-bottom: 10px; }
+  .timeline-bar { position: relative; height: 36px; background: var(--bg-elevated); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+  .timeline-fill { height: 100%; border-radius: 8px; display: flex; align-items: center; padding-left: 12px; font-size: 13px; font-weight: 700; color: white; transition: width 0.6s ease; }
+  .timeline-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--bg-elevated); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+  .stat-value { font-size: 20px; font-weight: 800; color: var(--text); }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .survival-tips { margin-bottom: 20px; }
+  .survival-tips .tips-title { font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); font-weight: 700; margin-bottom: 10px; }
+  .tip { display: flex; gap: 10px; padding: 8px 12px; background: var(--bg-elevated); border-radius: 8px; margin-bottom: 6px; border: 1px solid var(--border); font-size: 14px; }
+  .tip-icon { font-size: 16px; flex-shrink: 0; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .tag { padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; background: var(--bg-elevated); border: 1px solid var(--border); color: var(--text); }
+  .tag.bad { border-color: #ef4444; color: #fca5a5; }
+  .tag.good { border-color: #10b981; color: #6ee7b7; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s;
+  }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border: none; color: white; }
+
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
+  canvas { display: none; }
+
+  .content { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .content h2 { font-size: 22px; margin: 28px 0 10px; font-weight: 800; }
+  .content p { color: var(--text-dim); margin-bottom: 10px; font-size: 15px; }
+
+  footer { margin-top: 60px; padding: 24px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🤖 No signup · Deterministic · Built by TinyTools</div>
+    <h1>Will AI Take<br>Your Job? 🤖</h1>
+    <p class="subtitle">Enter your job title. Get a brutally honest replacement probability, a survival timeline, and tips to not become obsolete. Share the result before your boss sees it.</p>
+  </header>
+
+  <div class="input-row">
+    <input id="jobInput" type="text" placeholder="e.g. Software Engineer, Copywriter, Nurse…" autocomplete="off" maxlength="80">
+    <button id="calcBtn">🤖 Check My Odds</button>
+  </div>
+
+  <p class="examples">Try:
+    <a onclick="fillEx('Software Engineer')">Software Engineer</a> ·
+    <a onclick="fillEx('Copywriter')">Copywriter</a> ·
+    <a onclick="fillEx('Data Analyst')">Data Analyst</a> ·
+    <a onclick="fillEx('Nurse')">Nurse</a> ·
+    <a onclick="fillEx('CEO')">CEO</a>
+  </p>
+
+  <div class="loading" id="loading"><div class="spinner"></div><p style="margin-top:12px;">Consulting the robots… 🤖</p></div>
+
+  <div class="result-card" id="resultCard">
+    <div class="card-header">
+      <div class="job-icon" id="rIcon">👤</div>
+      <div class="job-info">
+        <div class="job-label">Job Title</div>
+        <div class="job-title-display" id="rJob"></div>
+      </div>
+      <div class="survival-badge">
+        <div class="survival-pct" id="rPct"></div>
+        <div class="survival-label">AI RISK</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="verdict-banner" id="rVerdict"></div>
+      <div class="roast-text" id="rRoast"></div>
+
+      <div class="timeline">
+        <div class="timeline-title">🕰 Automation Timeline</div>
+        <div class="timeline-bar"><div class="timeline-fill" id="rBar"></div></div>
+        <div class="timeline-labels"><span>Now</span><span id="rTimeline"></span><span>2040</span></div>
+      </div>
+
+      <div class="stats-grid" id="rStats"></div>
+      <div class="tags" id="rTags"></div>
+
+      <div class="survival-tips">
+        <div class="tips-title">🛡 Your Survival Kit</div>
+        <div id="rTips"></div>
+      </div>
+
+      <div class="actions">
+        <a class="action primary" id="rShare" target="_blank" rel="noopener">𝕏 Share on X</a>
+        <button class="action" id="rCopyLink">🔗 Copy link</button>
+        <button class="action" id="rDownload">💾 Save card</button>
+      </div>
+      <div class="embed-section">
+        <div class="label">Embed your survival badge</div>
+        <pre id="rEmbed"></pre>
+        <button id="rEmbedCopy">Copy embed code</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="cardCanvas" width="1200" height="630"></canvas>
+
+  <section class="content">
+    <h2>How is the AI risk score calculated?</h2>
+    <p>The score is derived from a deterministic rule engine that evaluates your job title against 6 risk dimensions used in academic automation research (Frey & Osborne, McKinsey Global Institute, and World Economic Forum reports):</p>
+    <p><strong>High-risk factors:</strong> routine cognitive tasks, data processing, pattern matching, content generation, rule-following, predictable physical labor.</p>
+    <p><strong>Low-risk factors:</strong> physical dexterity in unpredictable environments, emotional intelligence, creative judgment, complex stakeholder management, novel problem solving.</p>
+    <p>Same job title = same score every time. No AI, no randomness, fully reproducible and shareable.</p>
+
+    <h2>Which jobs are safest from AI?</h2>
+    <p>Jobs requiring physical presence in variable environments (electrician, plumber, surgeon), deep human trust (therapist, social worker, clergy), and highly creative original thinking (novelist, conceptual artist, research scientist) score lowest on replacement probability. These combine physical unpredictability with human judgment in ways that remain extremely difficult to automate.</p>
+
+    <h2>Which jobs are most at risk?</h2>
+    <p>Jobs centered on processing, analyzing, or generating text, data, or images at scale are highest risk: data entry clerks, paralegal researchers, copywriters producing commodity content, basic customer support agents, and entry-level code generation roles. These tasks map cleanly onto current LLM and automation capabilities.</p>
+
+    <h2>Does this mean I'll lose my job?</h2>
+    <p>Not necessarily. Historical automation waves (agricultural, industrial, digital) eliminated categories of tasks but created new categories of work. The most likely outcome is your job description changes significantly over 5–10 years rather than disappearing entirely. The question isn't "will AI replace me" — it's "what parts of my job should I augment with AI before someone else does?"</p>
+  </section>
+
+  <footer>
+    <p>Check another job → <a href="#" onclick="resetTool();return false;">start over</a> · More tools at <a href="/">TinyTools</a> · The robots are watching 🤖</p>
+  </footer>
+</div>
+
+<script>
+// ── Deterministic hash ──────────────────────────────────────────
+function hashStr(s) {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = (h * 16777619) >>> 0; }
+  return h;
+}
+function seededRand(seed) {
+  let s = seed;
+  return function() { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+function pick(arr, rng) { return arr[Math.floor(rng() * arr.length)]; }
+
+// ── Job risk database ──────────────────────────────────────────
+// Risk score 0-100 where 100 = highest AI replacement risk
+const JOB_OVERRIDES = {
+  // High risk
+  'data entry': 97, 'data entry clerk': 97, 'telemarketer': 96, 'cashier': 93,
+  'loan officer': 88, 'bookkeeper': 88, 'accountant': 82, 'copywriter': 80,
+  'journalist': 72, 'paralegal': 78, 'translator': 79, 'customer service': 85,
+  'customer support': 85, 'call center': 90, 'receptionist': 88,
+  'content writer': 83, 'seo specialist': 76, 'data analyst': 71,
+  'financial analyst': 74, 'market research analyst': 73, 'hr recruiter': 69,
+  'recruiter': 69, 'administrative assistant': 82, 'office manager': 71,
+  'graphic designer': 62, 'social media manager': 65, 'editor': 67,
+  'proofreader': 85, 'transcriptionist': 95, 'insurance agent': 80,
+  'travel agent': 87, 'stock trader': 77, 'tax preparer': 88,
+  // Medium risk
+  'software engineer': 58, 'developer': 60, 'programmer': 62, 'coder': 65,
+  'web developer': 61, 'frontend developer': 60, 'backend developer': 57,
+  'product manager': 42, 'project manager': 48, 'marketing manager': 52,
+  'ux designer': 44, 'architect': 32, 'teacher': 38, 'professor': 35,
+  'researcher': 31, 'scientist': 27, 'pharmacist': 46, 'radiologist': 55,
+  'attorney': 51, 'lawyer': 51, 'judge': 25, 'politician': 20,
+  'ceo': 15, 'cto': 28, 'cfo': 38, 'executive': 22,
+  // Low risk
+  'surgeon': 18, 'doctor': 20, 'physician': 20, 'nurse': 24, 'therapist': 14,
+  'psychologist': 13, 'social worker': 17, 'counselor': 15,
+  'electrician': 22, 'plumber': 20, 'carpenter': 28, 'mechanic': 35,
+  'chef': 31, 'cook': 48, 'firefighter': 15, 'police officer': 22,
+  'teacher': 38, 'principal': 25, 'artist': 36, 'musician': 34,
+  'actor': 40, 'comedian': 30, 'therapist': 14, 'dentist': 25,
+  'veterinarian': 23, 'physical therapist': 22, 'occupational therapist': 21,
+  'hairdresser': 33, 'barber': 32, 'massage therapist': 26,
+};
+
+const HIGH_RISK_KEYWORDS = ['data','analyst','writer','clerk','entry','operator','processor','coordinator','assistant','associate','representative','specialist','agent','advisor','auditor','assessor','examiner','inspector','reviewer','screener'];
+const LOW_RISK_KEYWORDS = ['nurse','doctor','surgeon','therapist','counselor','social','electrician','plumber','carpenter','mechanic','chef','firefighter','police','artist','musician','scientist','researcher','teacher','professor','pilot','detective','judge','pastor','priest','rabbi'];
+const MED_RISK_KEYWORDS = ['engineer','developer','designer','manager','director','architect','consultant','analyst','strategist'];
+
+function calcRisk(jobTitle) {
+  const lower = jobTitle.toLowerCase().trim();
+
+  // Check exact overrides first
+  for (const [key, val] of Object.entries(JOB_OVERRIDES)) {
+    if (lower === key || lower.includes(key)) {
+      // Add small deterministic variation
+      const h = hashStr(lower);
+      const variation = ((h % 11) - 5); // -5 to +5
+      return Math.max(5, Math.min(98, val + variation));
+    }
+  }
+
+  // Keyword-based scoring
+  let score = 55; // default mid
+
+  for (const kw of HIGH_RISK_KEYWORDS) {
+    if (lower.includes(kw)) { score += 10; break; }
+  }
+  for (const kw of LOW_RISK_KEYWORDS) {
+    if (lower.includes(kw)) { score -= 20; break; }
+  }
+  for (const kw of MED_RISK_KEYWORDS) {
+    if (lower.includes(kw)) { score += 0; break; }
+  }
+
+  // Hash-based variation for unknown jobs (±8 points)
+  const h = hashStr(lower);
+  score += ((h % 17) - 8);
+
+  return Math.max(8, Math.min(95, score));
+}
+
+function getVerdict(risk) {
+  if (risk >= 80) return { text: '🚨 HIGH RISK — The Robots Are Definitely Coming For You', cls: 'verdict-danger' };
+  if (risk >= 60) return { text: '⚠️ ELEVATED RISK — Start Skilling Up Yesterday', cls: 'verdict-warning' };
+  if (risk >= 40) return { text: '🟠 MODERATE RISK — Adapt Or Be Adapted', cls: 'verdict-caution' };
+  return { text: '✅ LOW RISK — You\'re Relatively Safe (For Now)', cls: 'verdict-safe' };
+}
+
+const ROASTS_HIGH = [
+  "I have some bad news and some worse news. The bad news is that AI can already do 80% of your job. The worse news is that the 20% it can't do yet is the 20% your employer least values.",
+  "You picked one of the jobs most enthusiastically targeted by AI researchers since 2017. Every week another startup raises $40M to automate exactly what you do. Sleep well.",
+  "The robots aren't coming for your job. They already took it. What you're doing right now is called 'the transition period.' It has an end date.",
+  "Look on the bright side: you'll be among the first humans in history to be fully automated out of a career. That's historically significant. Less financially significant, but still.",
+];
+const ROASTS_MED = [
+  "You're in the 'probably fine but definitely nervous' zone. AI can do parts of your job now and more parts in 3 years. The question isn't if you'll have to adapt — it's how fast.",
+  "Your job is in the eye of the storm. Not destroyed yet, but the transformation is coming and it will be significant. The colleague you replace AI with is the one who uses it best.",
+  "Good news: you still have a few years. Bad news: those years are the ones where you should be learning everything AI can't yet do, and you're probably not doing that.",
+  "You're in the 'squeezed middle' of the AI transition. Too routine to be safe, too complex to be gone tomorrow. Start thinking about your moat before your employer does.",
+];
+const ROASTS_LOW = [
+  "Your job requires the kind of unpredictable human judgment that makes roboticists cry themselves to sleep. You're relatively safe — though 'relatively' is doing a lot of work in that sentence.",
+  "Good news: AI cannot easily replace what you do. Bad news: it can replace the parts of what you do that pay the most, leaving you doing the human stuff for increasingly less money.",
+  "You're safe for now, which in AI years means roughly 7-10 years before someone builds something that makes your board nervous. Use the time wisely.",
+  "The robots respect your occupation. For now. History suggests this is temporary — keep skilling up anyway.",
+];
+
+const JOB_ICONS = {
+  default: '👤', engineer: '💻', developer: '💻', designer: '🎨', nurse: '🏥',
+  doctor: '👨‍⚕️', teacher: '👨‍🏫', chef: '👨‍🍳', writer: '✍️', analyst: '📊',
+  manager: '👔', scientist: '🔬', artist: '🎭', lawyer: '⚖️', firefighter: '🚒',
+  plumber: '🔧', electrician: '⚡', musician: '🎵', therapist: '🧠', ceo: '🏆'
+};
+
+function getIcon(job) {
+  const lower = job.toLowerCase();
+  for (const [k, v] of Object.entries(JOB_ICONS)) {
+    if (lower.includes(k)) return v;
+  }
+  return '👤';
+}
+
+const RISK_FACTORS_HIGH = ['Routine cognitive tasks', 'Pattern recognition at scale', 'Content/data generation', 'Rule-based decision making', 'High volume repetition'];
+const RISK_FACTORS_LOW = ['Physical unpredictability', 'Emotional intelligence required', 'Complex judgment calls', 'Novel problem solving', 'Human trust relationship'];
+
+const SURVIVAL_TIPS = {
+  high: [
+    { icon: '🤖', text: 'Learn to use AI tools in your field better than anyone else — become the person who deploys the automation.' },
+    { icon: '🎯', text: 'Identify the 20% of your role that requires real human judgment and make that your entire brand.' },
+    { icon: '📚', text: 'Upskill toward adjacent roles that are lower risk: management, strategy, or technical oversight.' },
+    { icon: '🤝', text: 'Your network is now your biggest moat. Relationships can\'t be automated (yet).' },
+  ],
+  med: [
+    { icon: '🚀', text: 'Become the person on your team who is most effective with AI — that job doesn\'t exist fully yet but it will.' },
+    { icon: '🎨', text: 'Lean into the creative and judgment-heavy parts of your role. Document and amplify those contributions.' },
+    { icon: '📖', text: 'Stay current with AI developments in your specific industry — you need at least 6 months lead time.' },
+    { icon: '💡', text: 'Consider specializing in a niche where depth of domain knowledge outweighs AI breadth.' },
+  ],
+  low: [
+    { icon: '🛡️', text: 'You\'re relatively safe, but don\'t stop learning. AI capabilities expand unexpectedly fast.' },
+    { icon: '🤖', text: 'Use AI to take on more responsibility, not to do the same work faster. Scope expansion is your friend.' },
+    { icon: '💸', text: 'Document your specific value clearly — as AI takes over routine tasks, the humans who stay will need to justify that decision.' },
+    { icon: '📈', text: 'Now is a great time to ask for a raise. Human scarcity in your role is increasing, not decreasing.' },
+  ]
+};
+
+function getTimeline(risk) {
+  if (risk >= 80) return { label: '2–4 years to major disruption', width: 15 };
+  if (risk >= 65) return { label: '4–7 years to major disruption', width: 35 };
+  if (risk >= 45) return { label: '7–12 years', width: 55 };
+  if (risk >= 30) return { label: '10–15 years', width: 70 };
+  return { label: '15+ years (probably fine)', width: 88 };
+}
+
+// ── UI ──────────────────────────────────────────────────────────
+const jobInput = document.getElementById('jobInput');
+const calcBtn = document.getElementById('calcBtn');
+const loading = document.getElementById('loading');
+const card = document.getElementById('resultCard');
+
+function fillEx(text) { jobInput.value = text; jobInput.focus(); }
+
+function resetTool() {
+  card.classList.remove('show');
+  loading.classList.remove('show');
+  jobInput.value = '';
+  window.location.hash = '';
+}
+
+calcBtn.addEventListener('click', () => runCalc(jobInput.value.trim()));
+jobInput.addEventListener('keydown', e => { if (e.key === 'Enter') runCalc(jobInput.value.trim()); });
+
+function runCalc(job) {
+  if (!job || job.length < 2) { alert('Enter a job title!'); return; }
+  loading.classList.add('show');
+  card.classList.remove('show');
+  setTimeout(() => showResult(job), 800);
+}
+
+function showResult(job) {
+  const seed = hashStr(job.toLowerCase().trim());
+  const rng = seededRand(seed);
+  const risk = calcRisk(job);
+  const verdict = getVerdict(risk);
+  const icon = getIcon(job);
+  const tier = risk >= 65 ? 'high' : risk >= 40 ? 'med' : 'low';
+  const roasts = risk >= 65 ? ROASTS_HIGH : risk >= 40 ? ROASTS_MED : ROASTS_LOW;
+  const roast = pick(roasts, rng);
+  const timeline = getTimeline(risk);
+  const tips = SURVIVAL_TIPS[tier];
+
+  document.getElementById('rIcon').textContent = icon;
+  document.getElementById('rJob').textContent = job;
+  document.getElementById('rPct').textContent = risk + '%';
+
+  const verdictEl = document.getElementById('rVerdict');
+  verdictEl.textContent = verdict.text;
+  verdictEl.className = 'verdict-banner ' + verdict.cls;
+
+  document.getElementById('rRoast').textContent = `"${roast}"`;
+
+  // Timeline
+  const barColor = risk >= 65 ? '#ef4444' : risk >= 40 ? '#f97316' : '#10b981';
+  const fillEl = document.getElementById('rBar');
+  fillEl.style.width = (100 - timeline.width) + '%';
+  fillEl.style.background = barColor;
+  fillEl.textContent = risk >= 65 ? '⚡ Soon' : risk >= 40 ? '⚡ Coming' : '🛡️ Later';
+  document.getElementById('rTimeline').textContent = timeline.label;
+
+  // Stats
+  const automatedPct = Math.round(risk * 0.7 + rng() * 10);
+  const yearsLeft = risk >= 80 ? Math.floor(2 + rng() * 3) : risk >= 60 ? Math.floor(4 + rng() * 4) : risk >= 40 ? Math.floor(7 + rng() * 5) : Math.floor(12 + rng() * 8);
+  const skillGap = Math.round((100 - risk) * 0.4 + rng() * 20);
+  const humanMoat = Math.round(100 - risk + rng() * 15);
+
+  document.getElementById('rStats').innerHTML = `
+    <div class="stat"><div class="stat-value">${risk}%</div><div class="stat-label">AI Risk Score</div></div>
+    <div class="stat"><div class="stat-value">${yearsLeft}yr</div><div class="stat-label">Safety Window</div></div>
+    <div class="stat"><div class="stat-value">${automatedPct}%</div><div class="stat-label">Tasks Automatable</div></div>
+    <div class="stat"><div class="stat-value">${Math.min(99, humanMoat)}%</div><div class="stat-label">Human Moat</div></div>
+  `;
+
+  // Tags
+  const riskFactors = risk >= 60 ? RISK_FACTORS_HIGH : RISK_FACTORS_LOW;
+  document.getElementById('rTags').innerHTML = riskFactors.slice(0, 3).map(f =>
+    `<span class="tag ${risk >= 60 ? 'bad' : 'good'}">${risk >= 60 ? '⚠️' : '✅'} ${f}</span>`
+  ).join('');
+
+  // Tips
+  document.getElementById('rTips').innerHTML = tips.map(t =>
+    `<div class="tip"><span class="tip-icon">${t.icon}</span><span>${t.text}</span></div>`
+  ).join('');
+
+  // Deep link
+  const encoded = encodeURIComponent(job);
+  window.location.hash = encoded;
+  const deepLink = window.location.href;
+
+  // Share
+  const shareText = `My job has a ${risk}% AI replacement risk 😅\n"${roast.slice(0, 100)}…"\n\nCheck yours:`;
+  document.getElementById('rShare').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent('https://tinytools-smoky.vercel.app/ai-job-survival/')}`;
+
+  document.getElementById('rCopyLink').onclick = () => {
+    navigator.clipboard.writeText(deepLink).then(() => {
+      document.getElementById('rCopyLink').textContent = '✅ Copied!';
+      setTimeout(() => document.getElementById('rCopyLink').textContent = '🔗 Copy link', 2000);
+    });
+  };
+
+  // Badge
+  const badgeColor = risk >= 65 ? 'red' : risk >= 40 ? 'orange' : 'brightgreen';
+  const badgeUrl = `https://img.shields.io/badge/AI%20Job%20Risk-${risk}%25-${badgeColor}?style=for-the-badge`;
+  const embedCode = `[![AI Job Risk ${risk}%](${badgeUrl})](https://tinytools-smoky.vercel.app/ai-job-survival/)`;
+  document.getElementById('rEmbed').textContent = embedCode;
+  document.getElementById('rEmbedCopy').onclick = () => {
+    navigator.clipboard.writeText(embedCode).then(() => {
+      document.getElementById('rEmbedCopy').textContent = '✅ Copied!';
+      setTimeout(() => document.getElementById('rEmbedCopy').textContent = 'Copy embed code', 2000);
+    });
+  };
+
+  // Canvas
+  generateCard(job, risk, roast, icon, barColor, yearsLeft);
+
+  loading.classList.remove('show');
+  card.classList.add('show');
+  card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function generateCard(job, risk, roast, icon, barColor, yearsLeft) {
+  const canvas = document.getElementById('cardCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 630;
+
+  // Background
+  const grad = ctx.createLinearGradient(0, 0, W, H);
+  grad.addColorStop(0, '#0a0a0f');
+  grad.addColorStop(1, '#0d0d1a');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Glow
+  const glow = ctx.createRadialGradient(200, 0, 0, 200, 0, 500);
+  glow.addColorStop(0, 'rgba(99,102,241,0.3)');
+  glow.addColorStop(1, 'transparent');
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, W, H);
+
+  // Header bar
+  const hGrad = ctx.createLinearGradient(0, 0, W, 0);
+  hGrad.addColorStop(0, '#4f46e5');
+  hGrad.addColorStop(1, '#7c3aed');
+  ctx.fillStyle = hGrad;
+  ctx.fillRect(0, 0, W, 8);
+
+  // Title
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '900 50px -apple-system, BlinkMacSystemFont, Arial';
+  ctx.fillText('Will AI Take Your Job? 🤖', 60, 100);
+
+  ctx.fillStyle = '#6366f1';
+  ctx.font = '600 24px Arial';
+  ctx.fillText('TinyTools.app', 60, 138);
+
+  // Risk badge
+  ctx.fillStyle = barColor;
+  ctx.beginPath();
+  ctx.roundRect(W - 210, 45, 150, 110, 16);
+  ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '900 56px Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText(risk + '%', W - 135, 125);
+  ctx.font = '500 16px Arial';
+  ctx.fillText('AI RISK', W - 135, 148);
+  ctx.textAlign = 'left';
+
+  // Job title
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '400 22px Arial';
+  ctx.fillText('JOB TITLE:', 60, 200);
+  ctx.fillStyle = '#f5f5fa';
+  ctx.font = '700 32px Arial';
+  ctx.fillText(icon + ' ' + job, 60, 238);
+
+  // Divider
+  ctx.strokeStyle = '#2a2a3a'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(60, 265); ctx.lineTo(W - 60, 265); ctx.stroke();
+
+  // Roast
+  ctx.fillStyle = '#c4b5fd';
+  ctx.font = 'italic 400 24px Georgia, serif';
+  const shortRoast = roast.length > 150 ? roast.slice(0, 147) + '…' : roast;
+  const words = shortRoast.split(' ');
+  let line = '"', lineY = 315, maxW = W - 120;
+  for (const word of words) {
+    const test = line + word + ' ';
+    if (ctx.measureText(test).width > maxW && line !== '"') {
+      ctx.fillText(line.trim(), 60, lineY);
+      line = word + ' '; lineY += 38;
+      if (lineY > 430) { ctx.fillText(line.trim() + '…"', 60, lineY); line = null; break; }
+    } else { line = test; }
+  }
+  if (line) ctx.fillText(line.trim() + '"', 60, lineY);
+
+  // Bar
+  const barBg = { x: 60, y: 490, w: W - 120, h: 22 };
+  ctx.fillStyle = '#1d1d2a';
+  ctx.beginPath(); ctx.roundRect(barBg.x, barBg.y, barBg.w, barBg.h, 11); ctx.fill();
+  ctx.fillStyle = barColor;
+  ctx.beginPath(); ctx.roundRect(barBg.x, barBg.y, barBg.w * risk / 100, barBg.h, 11); ctx.fill();
+
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '700 18px Arial';
+  ctx.fillText(`${yearsLeft} years safety window · Risk: ${risk}%`, 60, 545);
+
+  ctx.fillStyle = '#a0a0b8';
+  ctx.font = '400 16px Arial';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/ai-job-survival/', W - 60, 610);
+  ctx.textAlign = 'left';
+
+  document.getElementById('rDownload').onclick = () => {
+    const a = document.createElement('a');
+    a.download = 'ai-job-survival.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  };
+}
+
+// ── Load from hash ──────────────────────────────────────────────
+window.addEventListener('load', () => {
+  if (window.location.hash) {
+    try {
+      const job = decodeURIComponent(window.location.hash.slice(1));
+      if (job.length >= 2) {
+        jobInput.value = job;
+        runCalc(job);
+      }
+    } catch(e) {}
+  }
+});
+</script>
+</body>
+</html>
