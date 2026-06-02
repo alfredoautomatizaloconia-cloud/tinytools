@@ -318,4 +318,10 @@
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/vs/perplexity-ai/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>
