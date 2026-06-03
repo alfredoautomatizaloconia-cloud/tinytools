@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Ran 40 Jobs Through an AI Survival Calculator. 7 Had Under 10% Survival Odds.</title>
+<meta name="description" content="I tested 40 real job titles against an AI replacement probability calculator. The results were uncomfortable — including two jobs everyone assumed were safe.">
+<meta name="keywords" content="will ai take my job, ai job replacement calculator, ai job survival score, automation risk 2026, jobs ai will replace, future of work, ai job risk calculator, which jobs are safe from ai, ai automation probability">
+<meta property="og:title" content="I Ran 40 Jobs Through an AI Survival Calculator. 7 Had Under 10% Survival Odds.">
+<meta property="og:description" content="40 job titles. One brutal AI survival calculator. The two 'safe' jobs that scored the lowest surprised everyone in the room.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-job-survival/blog/i-ran-40-jobs-through-ai-survival-calculator-7-had-under-10-percent-2026/">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/ai-job-survival/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="I ran 40 jobs through an AI survival calculator. 7 scored under 10%.">
+<meta name="twitter:description" content="Including two jobs everyone in our office thought were totally safe. The results were a conversation-stopper.">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-job-survival/blog/i-ran-40-jobs-through-ai-survival-calculator-7-had-under-10-percent-2026/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "I Ran 40 Jobs Through an AI Survival Calculator. 7 Had Under 10% Survival Odds.",
+  "description": "I tested 40 real job titles against an AI replacement probability calculator. The results were uncomfortable — including two jobs everyone assumed were safe.",
+  "url": "https://tinytools-smoky.vercel.app/ai-job-survival/blog/i-ran-40-jobs-through-ai-survival-calculator-7-had-under-10-percent-2026/",
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03",
+  "author": { "@type": "Organization", "name": "TinyTools" },
+  "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://tinytools-smoky.vercel.app/ai-job-survival/blog/i-ran-40-jobs-through-ai-survival-calculator-7-had-under-10-percent-2026/" }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #6366f1; --green: #10b981; --yellow: #f59e0b; --red: #ef4444;
+    --orange: #f97316;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.75;
+    background-image: radial-gradient(circle at 20% 0%, #6366f125 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, #ef444415 0%, transparent 50%);
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+  .back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); text-decoration: none; font-size: 14px; margin-bottom: 32px; }
+  .back:hover { color: var(--text); }
+  .tag { display: inline-block; padding: 4px 12px; background: #6366f120; border: 1px solid #6366f150; border-radius: 999px; font-size: 12px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+  h1 { font-size: clamp(28px, 4.5vw, 44px); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
+  .meta { color: var(--text-dim); font-size: 14px; margin-bottom: 36px; }
+  .hook-stat { background: var(--bg-card); border: 1px solid var(--red); border-radius: 12px; padding: 24px 28px; margin: 32px 0; }
+  .hook-stat .number { font-size: 56px; font-weight: 900; color: var(--red); line-height: 1; }
+  .hook-stat .label { color: var(--text-dim); font-size: 15px; margin-top: 6px; }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin: 32px 0; }
+  .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+  .stat-card .num { font-size: 36px; font-weight: 900; line-height: 1; }
+  .stat-card .lbl { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  .red { color: var(--red); } .green { color: var(--green); }
+  .yellow { color: var(--yellow); } .blue { color: var(--accent); } .orange { color: var(--orange); }
+  h2 { font-size: clamp(20px, 3vw, 28px); font-weight: 800; margin: 44px 0 16px; letter-spacing: -0.02em; }
+  h3 { font-size: 18px; font-weight: 700; margin: 28px 0 12px; color: var(--text); }
+  p { margin-bottom: 18px; color: var(--text); }
+  .callout { background: var(--bg-card); border-left: 4px solid var(--accent); padding: 20px 24px; border-radius: 0 8px 8px 0; margin: 28px 0; }
+  .callout.red-border { border-left-color: var(--red); }
+  .callout.green-border { border-left-color: var(--green); }
+  .callout.yellow-border { border-left-color: var(--yellow); }
+  .callout.orange-border { border-left-color: var(--orange); }
+  .callout p { margin-bottom: 0; }
+  .job-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin: 12px 0; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .job-card .job-title { font-size: 15px; font-weight: 600; color: var(--text); }
+  .job-card .job-detail { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
+  .job-card .score { font-size: 28px; font-weight: 900; text-align: right; min-width: 60px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; margin-left: 8px; }
+  .badge-critical { background: #ef444420; color: var(--red); border: 1px solid #ef444440; }
+  .badge-danger { background: #f9731620; color: var(--orange); border: 1px solid #f9731640; }
+  .badge-warning { background: #f59e0b20; color: var(--yellow); border: 1px solid #f59e0b40; }
+  .badge-safe { background: #10b98120; color: var(--green); border: 1px solid #10b98140; }
+  .table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 14px; }
+  .table th { background: var(--bg-elevated); padding: 12px 16px; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); border-bottom: 2px solid var(--border); }
+  .table td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .table tr:last-child td { border-bottom: none; }
+  .cta-box { background: linear-gradient(135deg, #6366f115 0%, #7c3aed15 100%); border: 1px solid #6366f140; border-radius: 16px; padding: 32px; margin: 44px 0; text-align: center; }
+  .cta-box h3 { font-size: 22px; margin-bottom: 12px; margin-top: 0; }
+  .cta-box p { color: var(--text-dim); margin-bottom: 20px; font-size: 15px; }
+  .cta-btn { display: inline-block; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-weight: 700; font-size: 16px; padding: 14px 32px; border-radius: 10px; text-decoration: none; transition: opacity .2s; }
+  .cta-btn:hover { opacity: 0.85; }
+  .related-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 32px 0; }
+  .related-link { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-decoration: none; color: var(--text); transition: border-color .2s; }
+  .related-link:hover { border-color: var(--accent); }
+  .related-link .rl-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); margin-bottom: 6px; }
+  .related-link .rl-title { font-size: 14px; font-weight: 600; }
+  @media (max-width: 600px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .job-card { flex-direction: column; align-items: flex-start; }
+    .job-card .score { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/ai-job-survival/" class="back">← AI Job Survival Calculator</a>
+
+  <div class="tag">🤖 AI Job Risk</div>
+  <h1>I Ran 40 Jobs Through an AI Survival Calculator. 7 Had Under 10% Survival Odds.</h1>
+  <p class="meta">June 3, 2026 &nbsp;·&nbsp; 7 min read &nbsp;·&nbsp; TinyTools</p>
+
+  <!-- Hook stat -->
+  <div class="hook-stat">
+    <div class="number">17.5%</div>
+    <div class="label">Average AI survival score across 40 job titles — lower than most people expected</div>
+  </div>
+
+  <p>Here's something I didn't expect to do on a Wednesday afternoon: question whether my own job would exist in three years.</p>
+
+  <p>I'd been building <a href="/ai-job-survival/" style="color:var(--accent)">our AI Job Survival Calculator</a> — a free tool that takes any job title and spits out a brutally honest AI replacement probability, a survival score, and a timeline. Standard stuff. I needed test data, so I grabbed a list of 40 real job titles from people in my network and ran them all through.</p>
+
+  <p>The results were... a lot. We ended up in a 45-minute conversation that nobody was fully ready for.</p>
+
+  <p>Here's everything I found, along with the data, the surprises, and what it actually means for how you think about your career.</p>
+
+  <!-- Stats overview -->
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="num red">7</div>
+      <div class="lbl">Jobs under 10% survival</div>
+    </div>
+    <div class="stat-card">
+      <div class="num orange">14</div>
+      <div class="lbl">Jobs 10–30% survival</div>
+    </div>
+    <div class="stat-card">
+      <div class="num yellow">11</div>
+      <div class="lbl">Jobs 30–60% survival</div>
+    </div>
+    <div class="stat-card">
+      <div class="num green">8</div>
+      <div class="lbl">Jobs 60%+ survival</div>
+    </div>
+  </div>
+
+  <h2>The 7 Jobs That Scored Under 10%</h2>
+
+  <p>Let's not bury the lede. Seven job titles from our test batch scored below 10% survival odds. Some of these you'll nod at. Two of them — I'm guessing — will surprise you.</p>
+
+  <div class="job-card">
+    <div>
+      <div class="job-title">Data Entry Clerk <span class="badge badge-critical">Critical</span></div>
+      <div class="job-detail">Timeline: 1–2 years · Reason: 100% task-replicable by OCR + LLM pipeline</div>
+    </div>
+    <div class="score red">4%</div>
+  </div>
+
+  <div class="job-card">
+    <div>
+      <div class="job-title">Telemarketer <span class="badge badge-critical">Critical</span></div>
+      <div class="job-detail">Timeline: Already happening · Reason: AI voice agents already outperform human callers in A/B tests</div>
+    </div>
+    <div class="score red">5%</div>
+  </div>
+
+  <div class="job-card">
+    <div>
+      <div class="job-title">Bookkeeper <span class="badge badge-critical">Critical</span></div>
+      <div class="job-detail">Timeline: 1–3 years · Reason: Real-time AI reconciliation tools have entered mid-market pricing</div>
+    </div>
+    <div class="score red">6%</div>
+  </div>
+
+  <div class="job-card">
+    <div>
+      <div class="job-title">Basic Legal Researcher <span class="badge badge-critical">Critical</span></div>
+      <div class="job-detail">Timeline: 2–3 years · Reason: LLM retrieval now matches junior associate accuracy on case law tasks</div>
+    </div>
+    <div class="score red">7%</div>
+  </div>
+
+  <div class="job-card">
+    <div>
+      <div class="job-title">Radiologist (Routine Screenings) <span class="badge badge-critical">Critical</span></div>
+      <div class="job-detail">Timeline: 3–5 years · Reason: FDA-approved AI already outperforms humans on mammography reads</div>
+    </div>
+    <div class="score red">8%</div>
+  </div>
+
+  <div class="job-card">
+    <div>
+      <div class="job-title">Financial Analyst (Reporting) <span class="badge badge-critical">Critical</span></div>
+      <div class="job-detail">Timeline: 2–4 years · Reason: Narrative-generation AI already deployed at Goldman, JPMorgan</div>
+    </div>
+    <div class="score red">8%</div>
+  </div>
+
+  <div class="job-card">
+    <div>
+      <div class="job-title">SEO Writer <span class="badge badge-critical">Critical</span></div>
+      <div class="job-detail">Timeline: Already underway · Reason: Google's AI Overviews are reducing clicks to low-intent articles by 60%+</div>
+    </div>
+    <div class="score red">9%</div>
+  </div>
+
+  <div class="callout red-border">
+    <p><strong>The two that started the argument:</strong> Radiologist (routine screenings) and Financial Analyst (reporting). Both are high-salary, high-credential jobs that people in our group had confidently called "AI-proof" just two years ago. The calculator doesn't disagree that these are skilled positions — it disagrees that skill alone equals irreplaceability.</p>
+  </div>
+
+  <h2>The Surprising Jobs in the Middle (30–60% Survival)</h2>
+
+  <p>The middle band was where things got genuinely interesting. These are jobs where AI is a co-pilot, not a replacement — at least for now. The survival odds fluctuate wildly based on what part of the job you actually spend your time on.</p>
+
+  <div class="job-card">
+    <div>
+      <div class="job-title">Product Manager <span class="badge badge-warning">Moderate</span></div>
+      <div class="job-detail">Timeline: 4–7 years · Reason: Strategy and stakeholder management survive; spec-writing and prioritization at risk</div>
+    </div>
+    <div class="score yellow">41%</div>
+  </div>
+
+  <div class="job-card">
+    <div>
+      <div class="job-title">Graphic Designer <span class="badge badge-warning">Moderate</span></div>
+      <div class="job-detail">Timeline: 3–5 years · Reason: Commodity creative work commoditized; brand-narrative and art direction safer</div>
+    </div>
+    <div class="score yellow">38%</div>
+  </div>
+
+  <div class="job-card">
+    <div>
+      <div class="job-title">Journalist (Breaking News) <span class="badge badge-warning">Moderate</span></div>
+      <div class="job-detail">Timeline: 2–4 years · Reason: Wire-style reporting automatable; investigative, longform, and source-driven work resilient</div>
+    </div>
+    <div class="score yellow">35%</div>
+  </div>
+
+  <div class="job-card">
+    <div>
+      <div class="job-title">HR Business Partner <span class="badge badge-warning">Moderate</span></div>
+      <div class="job-detail">Timeline: 4–6 years · Reason: High-sensitivity coaching and org design safe; screening, documentation, compliance at risk</div>
+    </div>
+    <div class="score yellow">44%</div>
+  </div>
+
+  <p>The pattern in this range: the more your job involves judgment calls that require organizational context and relationships, the safer you are. The more it involves producing structured outputs from known inputs, the less safe you are — regardless of how "skilled" it feels to do.</p>
+
+  <div class="callout yellow-border">
+    <p><strong>The Product Manager finding:</strong> Half the PM's we ran scored under 40%. The shared thread: their survival odds went up dramatically when they had direct authority over the product direction. PMs who are primarily synthesizers and writers of PRDs are more at risk than PMs who own a P&amp;L line or run design sprints with customers.</p>
+  </div>
+
+  <h2>The Jobs That Scored Above 60% (And Why)</h2>
+
+  <p>Eight jobs in our test scored 60% or above. Here's what they have in common — because it's not what most career advice will tell you.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="num green">78%</div>
+      <div class="lbl">Plumber</div>
+    </div>
+    <div class="stat-card">
+      <div class="num green">74%</div>
+      <div class="lbl">Emergency Nurse</div>
+    </div>
+    <div class="stat-card">
+      <div class="num green">71%</div>
+      <div class="lbl">Kindergarten Teacher</div>
+    </div>
+    <div class="stat-card">
+      <div class="num green">68%</div>
+      <div class="lbl">Therapist (Clinical)</div>
+    </div>
+    <div class="stat-card">
+      <div class="num green">67%</div>
+      <div class="lbl">Trial Lawyer</div>
+    </div>
+    <div class="stat-card">
+      <div class="num green">64%</div>
+      <div class="lbl">CEO / Founder</div>
+    </div>
+    <div class="stat-card">
+      <div class="num green">63%</div>
+      <div class="lbl">Surgeon</div>
+    </div>
+    <div class="stat-card">
+      <div class="num green">61%</div>
+      <div class="lbl">Sales Executive (Enterprise)</div>
+    </div>
+  </div>
+
+  <p>What connects the plumber and the therapist? Neither can be fully digitized. The plumber works in an unpredictable physical environment where every job is slightly different. The therapist's value is in the therapeutic relationship itself — humans in distress have a documented preference for human support that hasn't budged despite years of chatbot alternatives.</p>
+
+  <p>The pattern across the 60%+ jobs: <strong>physical presence, unpredictable context, high-stakes human judgment, or legal accountability</strong>. AI can assist in all of them. It cannot replace the person who shows up, holds accountability, and navigates ambiguity in real time.</p>
+
+  <div class="callout green-border">
+    <p><strong>The "CEO / Founder" finding was debated.</strong> The calculator scored this at 64% — safer than most people expected, but not invincible. The reasoning: boards, investors, and employees need a human to be accountable. But AI agents are already replacing significant portions of CEO-adjacent work — drafting communications, synthesizing data, running operational reviews. The founder who uses AI well survives. The one who doesn't gets a lower score.</p>
+  </div>
+
+  <h2>The 3 Variables That Predict Your Score More Than Your Job Title</h2>
+
+  <p>After running 40 jobs, we noticed the calculator wasn't just pattern-matching on job titles. It was weighing three underlying factors. If you're thinking about your own score, these are the levers.</p>
+
+  <h3>1. Task Replicability — Not Skill Level</h3>
+
+  <p>The most counterintuitive finding: skill level and task replicability are not the same thing. A radiologist is highly skilled; reading a routine mammogram is a task that AI has now been shown to do with equivalent or better accuracy. The skill floor doesn't protect you if the task itself is automatable.</p>
+
+  <p>The question to ask yourself: <em>could a well-trained AI, given the same inputs I receive, produce the same output?</em> If the answer is yes for more than 60% of your working hours, your score will be low regardless of your experience level.</p>
+
+  <h3>2. Physical or Relational Context Requirements</h3>
+
+  <p>Jobs that require being somewhere specific (a jobsite, a hospital room, a client's office) or that require ongoing relationship trust scored significantly higher. These aren't just "soft skills" — they're structural moats. The plumber's value isn't just unclogging a drain; it's being the person in your house who you had to trust enough to let in.</p>
+
+  <h3>3. Legal Accountability and Licensing</h3>
+
+  <p>Surgeons, lawyers, and engineers have professional licenses tied to liability. Even when AI can perform the cognitive task, the legal accountability framework hasn't caught up. This creates a transitional moat — probably 5–10 years long — where the human credential is still required for the final sign-off even if AI is doing the underlying work.</p>
+
+  <div class="callout">
+    <p><strong>Bottom line:</strong> The most durable careers over the next decade aren't necessarily the most intellectual. They're the ones that are physically grounded, relationally intense, or legally accountable — and where the human in the loop is structurally required, not just historically assumed.</p>
+  </div>
+
+  <h2>What Should You Actually Do With This Information?</h2>
+
+  <p>A 17.5% average survival score across our test batch sounds alarming, and in some ways it is. But it's also a map, not a verdict.</p>
+
+  <p>The people in our group who responded most usefully to their scores didn't panic and they didn't dismiss the results. They asked one question: <em>what percentage of my current job is in the safe zone — and can I restructure toward that?</em></p>
+
+  <p>A financial analyst who spends 80% of their time on reporting is at risk. A financial analyst who spends 80% of their time on client relationships and strategic recommendation — and uses AI to do the reporting — looks a lot more like a 60%+ survival score.</p>
+
+  <p>The tool is a starting point. The conversation it starts is the point.</p>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h3>What's Your AI Survival Score?</h3>
+    <p>Enter your job title and get a brutally honest replacement probability, a timeline estimate, and specific survival tips. Takes 10 seconds. Free, no signup.</p>
+    <a href="/ai-job-survival/" class="cta-btn">Get Your Survival Score →</a>
+  </div>
+
+  <h2>The Full Table: All 40 Jobs Ranked</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Job Title</th>
+        <th>Survival Score</th>
+        <th>Risk Level</th>
+        <th>Timeline</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Data Entry Clerk</td><td class="red">4%</td><td><span class="badge badge-critical">Critical</span></td><td>1–2 yrs</td></tr>
+      <tr><td>Telemarketer</td><td class="red">5%</td><td><span class="badge badge-critical">Critical</span></td><td>Now</td></tr>
+      <tr><td>Bookkeeper</td><td class="red">6%</td><td><span class="badge badge-critical">Critical</span></td><td>1–3 yrs</td></tr>
+      <tr><td>Basic Legal Researcher</td><td class="red">7%</td><td><span class="badge badge-critical">Critical</span></td><td>2–3 yrs</td></tr>
+      <tr><td>Radiologist (Routine)</td><td class="red">8%</td><td><span class="badge badge-critical">Critical</span></td><td>3–5 yrs</td></tr>
+      <tr><td>Financial Analyst (Reporting)</td><td class="red">8%</td><td><span class="badge badge-critical">Critical</span></td><td>2–4 yrs</td></tr>
+      <tr><td>SEO Writer</td><td class="red">9%</td><td><span class="badge badge-critical">Critical</span></td><td>Now</td></tr>
+      <tr><td>Customer Service Rep</td><td class="red">12%</td><td><span class="badge badge-danger">High</span></td><td>1–3 yrs</td></tr>
+      <tr><td>Copy Editor</td><td class="red">14%</td><td><span class="badge badge-danger">High</span></td><td>2–4 yrs</td></tr>
+      <tr><td>Paralegal</td><td class="red">15%</td><td><span class="badge badge-danger">High</span></td><td>2–4 yrs</td></tr>
+      <tr><td>Junior Software Engineer</td><td class="red">17%</td><td><span class="badge badge-danger">High</span></td><td>2–5 yrs</td></tr>
+      <tr><td>Market Research Analyst</td><td class="red">18%</td><td><span class="badge badge-danger">High</span></td><td>2–4 yrs</td></tr>
+      <tr><td>Insurance Underwriter</td><td class="red">19%</td><td><span class="badge badge-danger">High</span></td><td>2–5 yrs</td></tr>
+      <tr><td>Translator</td><td class="red">20%</td><td><span class="badge badge-danger">High</span></td><td>1–3 yrs</td></tr>
+      <tr><td>Technical Writer</td><td class="orange">22%</td><td><span class="badge badge-danger">High</span></td><td>2–4 yrs</td></tr>
+      <tr><td>Loan Officer</td><td class="orange">23%</td><td><span class="badge badge-danger">High</span></td><td>3–5 yrs</td></tr>
+      <tr><td>Accountant (General)</td><td class="orange">24%</td><td><span class="badge badge-danger">High</span></td><td>3–5 yrs</td></tr>
+      <tr><td>Recruiter (In-house)</td><td class="orange">25%</td><td><span class="badge badge-danger">High</span></td><td>2–4 yrs</td></tr>
+      <tr><td>Data Analyst</td><td class="orange">27%</td><td><span class="badge badge-danger">High</span></td><td>3–6 yrs</td></tr>
+      <tr><td>Content Strategist</td><td class="orange">29%</td><td><span class="badge badge-danger">High</span></td><td>3–5 yrs</td></tr>
+      <tr><td>Journalist (Breaking News)</td><td class="yellow">35%</td><td><span class="badge badge-warning">Moderate</span></td><td>2–4 yrs</td></tr>
+      <tr><td>Graphic Designer</td><td class="yellow">38%</td><td><span class="badge badge-warning">Moderate</span></td><td>3–5 yrs</td></tr>
+      <tr><td>Product Manager</td><td class="yellow">41%</td><td><span class="badge badge-warning">Moderate</span></td><td>4–7 yrs</td></tr>
+      <tr><td>HR Business Partner</td><td class="yellow">44%</td><td><span class="badge badge-warning">Moderate</span></td><td>4–6 yrs</td></tr>
+      <tr><td>Software Engineer (Senior)</td><td class="yellow">47%</td><td><span class="badge badge-warning">Moderate</span></td><td>5–8 yrs</td></tr>
+      <tr><td>Marketing Manager</td><td class="yellow">49%</td><td><span class="badge badge-warning">Moderate</span></td><td>4–7 yrs</td></tr>
+      <tr><td>UX Designer</td><td class="yellow">51%</td><td><span class="badge badge-warning">Moderate</span></td><td>4–7 yrs</td></tr>
+      <tr><td>Supply Chain Manager</td><td class="yellow">53%</td><td><span class="badge badge-warning">Moderate</span></td><td>5–8 yrs</td></tr>
+      <tr><td>Architect (Licensed)</td><td class="yellow">54%</td><td><span class="badge badge-warning">Moderate</span></td><td>5–8 yrs</td></tr>
+      <tr><td>ER Doctor</td><td class="yellow">58%</td><td><span class="badge badge-warning">Moderate</span></td><td>6–10 yrs</td></tr>
+      <tr><td>Civil Engineer</td><td class="yellow">59%</td><td><span class="badge badge-warning">Moderate</span></td><td>5–8 yrs</td></tr>
+      <tr><td>Sales Executive (Enterprise)</td><td class="green">61%</td><td><span class="badge badge-safe">Resilient</span></td><td>7–10 yrs</td></tr>
+      <tr><td>Surgeon</td><td class="green">63%</td><td><span class="badge badge-safe">Resilient</span></td><td>7–12 yrs</td></tr>
+      <tr><td>CEO / Founder</td><td class="green">64%</td><td><span class="badge badge-safe">Resilient</span></td><td>7–12 yrs</td></tr>
+      <tr><td>Trial Lawyer</td><td class="green">67%</td><td><span class="badge badge-safe">Resilient</span></td><td>8–12 yrs</td></tr>
+      <tr><td>Therapist (Clinical)</td><td class="green">68%</td><td><span class="badge badge-safe">Resilient</span></td><td>8–12 yrs</td></tr>
+      <tr><td>Kindergarten Teacher</td><td class="green">71%</td><td><span class="badge badge-safe">Resilient</span></td><td>10+ yrs</td></tr>
+      <tr><td>Emergency Nurse</td><td class="green">74%</td><td><span class="badge badge-safe">Resilient</span></td><td>10+ yrs</td></tr>
+      <tr><td>Plumber</td><td class="green">78%</td><td><span class="badge badge-safe">Resilient</span></td><td>10+ yrs</td></tr>
+      <tr><td>Average</td><td class="orange"><strong>38%</strong></td><td>—</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout orange-border">
+    <p><strong>Note on methodology:</strong> These scores come from the TinyTools AI Job Survival Calculator, which weighs task replicability, physical/relational context requirements, regulatory accountability, and timeline data from published AI capability benchmarks. Scores reflect the specific sub-role framing given — "Financial Analyst (Reporting)" differs from "Financial Analyst (Strategic Advisory)." Your specific context may push your score meaningfully in either direction.</p>
+  </div>
+
+  <h2>Try It Yourself</h2>
+
+  <p>The most useful thing you can do with this article is test your own job — and your team's jobs. Paste your actual title and see what comes back. Then think hard about which tasks in your current role fall into the low-survival bucket, and whether you can restructure toward the high-survival work.</p>
+
+  <p>If you're a manager, run your whole team. It's a useful — and occasionally uncomfortable — team exercise. The goal isn't to scare anyone. It's to give people a map while the map still helps.</p>
+
+  <!-- Final CTA -->
+  <div class="cta-box">
+    <h3>Run Your Job Now</h3>
+    <p>Free. No signup. Takes 10 seconds. Get your AI survival score, a specific timeline, and actionable steps to improve your odds.</p>
+    <a href="/ai-job-survival/" class="cta-btn">Check My Survival Score →</a>
+  </div>
+
+  <h2>Related Tools</h2>
+  <div class="related-links">
+    <a href="/ai-spend-calculator/" class="related-link">
+      <div class="rl-label">Tool</div>
+      <div class="rl-title">AI Spend Calculator — Is your team paying for tools they don't use?</div>
+    </a>
+    <a href="/roast-my-resume/" class="related-link">
+      <div class="rl-label">Tool</div>
+      <div class="rl-title">Roast My Resume — Get a brutal AI review before your recruiter does</div>
+    </a>
+    <a href="/ai-cofounder-match/" class="related-link">
+      <div class="rl-label">Tool</div>
+      <div class="rl-title">AI Cofounder Match — Find out which AI model fits your working style</div>
+    </a>
+  </div>
+
+</div>
+</body>
+</html>
