@@ -2,4 +2,4 @@
 
 | Date (UTC) | Tool retrofitted | Mechanics added | Visitors | Remaining (no viral) |
 |------------|------------------|-----------------|----------|----------------------|
-| 2026-05-18 22:49 | ai-cost-calculator | share-tweet, copy-deep-link, shields.io-badge, PNG-card-download, hash-autoload | 1 | 29 || 2026-05-19 (auto) | ai-disclosure-generator | share-tweet, copy-deep-link, shields.io-badge, PNG-card-download, hash-autoload | 1 | 25 |
+| 2026-05-18 22:49 | ai-cost-calculator | share-tweet, copy-deep-link, shields.io-badge, PNG-card-download, hash-autoload | 1 | 29 || 2026-05-19 (auto) | ai-disclosure-generator | share-tweet, copy-deep-link, shields.io-badge, PNG-card-download, hash-autoload | 1 | 25 || 2026-06-03 (auto) | vs/bolt-new | share-tweet, copy-deep-link, shields.io-badge, PNG-card-download, hash-autoload | 1 | 55 |
