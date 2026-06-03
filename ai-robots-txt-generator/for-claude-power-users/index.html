@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Robots.txt Generator for Claude Power Users — Protect Your Prompts & Published Work</title>
+  <meta name="description" content="Claude power users: protect your published prompts, prompt libraries, and Claude-assisted content from AI training scrapers. Generate a robots.txt that blocks GPTBot, CCBot, and 40+ crawlers — free, instant, browser-side." />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-claude-power-users/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Robots.txt Generator for Claude Power Users" />
+  <meta property="og:description" content="Your prompt libraries and Claude-assisted publications are being scraped. Block AI training crawlers in minutes — free, no signup, no server." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-claude-power-users/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/og-image-generator/" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "AI Robots.txt Generator for Claude Power Users",
+    "description": "Free AI robots.txt generator for Claude power users who publish prompts, analyses, and Claude-assisted content online. Block GPTBot, CCBot, ClaudeBot, Gemini crawlers, and 40+ AI training bots from scraping your intellectual property.",
+    "url": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-claude-power-users/",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "TinyTools", "item": "https://tinytools-smoky.vercel.app/"},
+        {"@type": "ListItem", "position": 2, "name": "AI Robots.txt Generator", "item": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/"},
+        {"@type": "ListItem", "position": 3, "name": "For Claude Power Users", "item": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-claude-power-users/"}
+      ]
+    },
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "AI Robots.txt Generator",
+      "applicationCategory": "UtilityApplication",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+      "url": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/"
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface2: #21262d;
+      --border: #30363d;
+      --accent: #7c3aed;
+      --accent-light: #a78bfa;
+      --accent-glow: rgba(124,58,237,0.18);
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --green: #3fb950;
+      --yellow: #d29922;
+      --red: #f85149;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: var(--accent-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+    .nav-brand { font-weight: 700; font-size: 15px; color: var(--text); }
+    .nav-brand span { color: var(--accent-light); }
+    .nav-links { margin-left: auto; display: flex; gap: 20px; font-size: 14px; }
+
+    /* HERO */
+    .hero { max-width: 760px; margin: 0 auto; padding: 72px 24px 48px; text-align: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-glow); border: 1px solid var(--accent); color: var(--accent-light); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 24px; letter-spacing: 0.04em; }
+    h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
+    h1 em { font-style: normal; color: var(--accent-light); }
+    .hero-sub { font-size: 18px; color: var(--text-muted); max-width: 580px; margin: 0 auto 36px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff; font-weight: 700; font-size: 16px; padding: 14px 32px; border-radius: 10px; transition: background 0.2s; }
+    .hero-cta:hover { background: #6d28d9; text-decoration: none; }
+    .hero-cta svg { width: 18px; height: 18px; }
+    .hero-meta { margin-top: 16px; font-size: 13px; color: var(--text-muted); }
+
+    /* MAIN CONTENT */
+    .content { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+
+    /* PROBLEM BANNER */
+    .problem-box { background: linear-gradient(135deg, rgba(248,81,73,0.08), rgba(248,81,73,0.04)); border: 1px solid rgba(248,81,73,0.3); border-radius: 12px; padding: 28px 32px; margin: 48px 0; }
+    .problem-box h2 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #ffa198; }
+    .problem-box p { color: var(--text-muted); font-size: 15px; }
+
+    h2.section-title { font-size: 26px; font-weight: 800; margin: 56px 0 8px; }
+    .section-intro { color: var(--text-muted); margin-bottom: 32px; font-size: 15px; }
+
+    /* USE CASES */
+    .use-cases { display: flex; flex-direction: column; gap: 20px; }
+    .use-case { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; display: grid; grid-template-columns: auto 1fr; gap: 16px; }
+    .use-case-icon { width: 40px; height: 40px; background: var(--accent-glow); border: 1px solid var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .use-case h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .use-case p { font-size: 14px; color: var(--text-muted); }
+    .use-case .tag { display: inline-block; background: var(--surface2); border: 1px solid var(--border); color: var(--accent-light); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-top: 8px; }
+
+    /* PAIN → SOLUTION */
+    .pain-solution { margin: 56px 0; }
+    .pain-solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .pain-solution-grid { grid-template-columns: 1fr; } }
+    .pain-card, .solution-card { border-radius: 10px; padding: 20px 22px; }
+    .pain-card { background: rgba(248,81,73,0.07); border: 1px solid rgba(248,81,73,0.25); }
+    .solution-card { background: rgba(63,185,80,0.07); border: 1px solid rgba(63,185,80,0.25); }
+    .card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 10px; }
+    .pain-card .card-label { color: var(--red); }
+    .solution-card .card-label { color: var(--green); }
+    .pain-card ul, .solution-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .pain-card li::before { content: "✗ "; color: var(--red); font-weight: 700; }
+    .solution-card li::before { content: "✓ "; color: var(--green); font-weight: 700; }
+    .pain-card li, .solution-card li { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+    /* PRICING TABLE */
+    .pricing { margin: 56px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead tr { background: var(--surface2); }
+    thead th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr.highlight { background: var(--accent-glow); }
+    tbody td { padding: 12px 16px; }
+    .tool-name { font-weight: 600; }
+    .free-badge { color: var(--green); font-weight: 700; font-size: 12px; }
+    .paid-badge { color: var(--yellow); font-size: 12px; }
+    .limit-badge { color: var(--text-muted); font-size: 12px; }
+    .checkmark { color: var(--green); }
+    .cross { color: var(--red); }
+
+    /* BOTTOM CTA */
+    .bottom-cta { background: linear-gradient(135deg, var(--accent-glow), transparent); border: 1px solid var(--accent); border-radius: 16px; padding: 48px 40px; text-align: center; margin: 56px 0 0; }
+    .bottom-cta h2 { font-size: 26px; font-weight: 800; margin-bottom: 12px; }
+    .bottom-cta p { color: var(--text-muted); margin-bottom: 28px; font-size: 15px; }
+    .bottom-cta-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff; font-weight: 700; font-size: 15px; padding: 14px 32px; border-radius: 10px; }
+    .bottom-cta-btn:hover { background: #6d28d9; text-decoration: none; }
+
+    /* INTERNAL LINKS */
+    .related { margin: 48px 0; }
+    .related h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .related-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+    .related-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .related-card p { font-size: 12px; color: var(--text-muted); }
+    .related-card a::after { content: " →"; }
+
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 13px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand"><span>Tiny</span>Tools</div>
+  <div class="nav-links">
+    <a href="https://tinytools-smoky.vercel.app/">All Tools</a>
+    <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/">AI Robots.txt Generator</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm.93 9.412-1 4.705c-.07.34-.45.514-.736.293L5 12.23l-1.993 1.18a.5.5 0 0 1-.746-.51l.46-2.164-1.527-1.36a.5.5 0 0 1 .274-.862l2.18-.316 1.003-2.034a.5.5 0 0 1 .895 0l1.003 2.034 2.18.316a.5.5 0 0 1 .274.862L9.65 10.65l.28 1.762z"/></svg>
+    For Claude Power Users
+  </div>
+  <h1>AI Robots.txt Generator<br/><em>Built for Claude Power Users</em></h1>
+  <p class="hero-sub">Your published prompts, Claude-assisted analyses, and prompt libraries are being scraped by AI training bots right now. Generate a robots.txt that blocks GPTBot, CCBot, ClaudeBot, and 40+ crawlers — protect your intellectual property without touching a line of server config.</p>
+  <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/" class="hero-cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+    Generate Robots.txt Free
+  </a>
+  <p class="hero-meta">100% browser-side · No signup · No API key · Unlimited generations</p>
+</section>
+
+<!-- MAIN -->
+<main class="content">
+
+  <!-- PROBLEM BOX -->
+  <div class="problem-box">
+    <h2>The Work You Share With Claude Is Being Harvested Without Your Consent</h2>
+    <p>As a Claude power user, you've invested serious time into crafting prompts, building reusable system instructions, producing research and analysis outputs, and publishing tutorials on how to get the most from Claude. When any of that work goes online — on your website, Substack, Notion, or even exported Claude artifacts — it becomes fair game for AI training crawlers. GPTBot, CCBot, Diffbot, and dozens of others are designed to find, index, and ingest exactly the kind of high-signal, structured content that expert Claude users produce. Your carefully engineered prompt library could end up as training data for a competitor's model. Your long-form analyses could be regurgitated without attribution. A properly written robots.txt is the fastest way to draw a legal and technical line.</p>
+  </div>
+
+  <!-- USE CASES -->
+  <h2 class="section-title">5 Ways Claude Power Users Need This Tool</h2>
+  <p class="section-intro">Claude power users aren't passive consumers — they publish, they build, and they share. Each of those activities creates an exposure surface that AI training crawlers are actively targeting.</p>
+
+  <div class="use-cases">
+    <div class="use-case">
+      <div class="use-case-icon">📚</div>
+      <div>
+        <h3>Protecting a Public Prompt Library</h3>
+        <p>You've spent months developing a structured prompt library — carefully engineered system prompts, task-specific templates, chain-of-thought scaffolds — and you've published it as a resource. That library is exactly what AI training pipelines want: structured, high-quality, human-curated instructions. Once scraped, your prompts can be anonymized and baked into the next foundation model update, effectively making your competitive advantage available to everyone who uses that model. Use the AI robots.txt generator to block all training-focused crawlers from your prompt directories while keeping standard search indexing open so your library still gets discovered organically.</p>
+        <span class="tag">Prompt library protection</span>
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">✍️</div>
+      <div>
+        <h3>Safeguarding Claude-Assisted Long-Form Content</h3>
+        <p>You use Claude to accelerate your research, structure your arguments, and sharpen your writing — but the finished product is your intellectual work, reflecting your expertise, your synthesis, and your voice. When those essays, reports, or tutorials go live, AI crawlers can't tell the difference between filler content and genuinely valuable analysis. They scrape both. The irony of your Claude-powered output being used to train a competing AI system without your consent is real — and avoidable. A robots.txt targeting the major training-data crawlers means you control who benefits from the work you publish.</p>
+        <span class="tag">Long-form content</span>
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">🧪</div>
+      <div>
+        <h3>Shielding Your System Prompt Architecture</h3>
+        <p>If you've published documentation for a Claude-powered tool, a custom GPT migration guide, or a breakdown of your multi-agent system prompt architecture, you've created a high-value scraping target. System prompt design is a specialized skill, and detailed breakdowns of production prompt architectures are rare enough to be genuinely useful as training data for the next generation of "AI assistant" models. Use the generator to selectively block training crawlers from your technical documentation while keeping content visible to developers and collaborators who find it via search.</p>
+        <span class="tag">System prompt IP</span>
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">🔬</div>
+      <div>
+        <h3>Protecting Niche Research Outputs You Publish</h3>
+        <p>Claude power users regularly publish specialized research — model benchmarking comparisons, prompt injection analysis, Claude Projects use-case breakdowns, capability edge-case documentation. This kind of niche, high-signal content is disproportionately valuable in AI training datasets because it contains nuanced, domain-specific knowledge that's hard to generate at scale. Block the harvesters. Keep the research visible to the humans you wrote it for. The generator lets you target specific directories or path patterns, so you can protect /research/ and /analysis/ while leaving your about page and home freely crawlable.</p>
+        <span class="tag">Research protection</span>
+      </div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">🏗️</div>
+      <div>
+        <h3>Controlling Indexing of Published Claude Artifacts and Workflows</h3>
+        <p>Many Claude power users export Claude artifacts — interactive HTML tools, structured documents, automation workflow templates — and host them publicly. These artifacts often embed your system prompt logic, your UX decisions, and your workflow architecture in discoverable form. Without a robots.txt, any AI training crawler that lands on that URL can extract the embedded logic, the prompt patterns, and the output structure. Use the AI robots.txt generator to set clear crawler rules at the domain level, ensuring that training bots are blocked globally while your artifact URLs remain accessible to actual users and standard search engines.</p>
+        <span class="tag">Artifact & workflow IP</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAIN → SOLUTION -->
+  <div class="pain-solution">
+    <h2 class="section-title">Pain → Solution Map</h2>
+    <p class="section-intro">The friction Claude power users hit when trying to protect published content is predictable. Here's the direct fix for each blocker.</p>
+    <div class="pain-solution-grid">
+      <div class="pain-card">
+        <div class="card-label">THE PAIN</div>
+        <ul>
+          <li>Your prompt library took months to build — any training crawler can ingest it in seconds</li>
+          <li>Writing robots.txt manually means knowing which AI bots exist today, not six months ago</li>
+          <li>You want to block training crawlers without killing SEO or breaking Googlebot access</li>
+          <li>You've published Claude artifacts and workflow docs and don't know who's scraping them</li>
+          <li>No existing tool distinguishes between "SEO crawlers to allow" and "AI trainers to block"</li>
+        </ul>
+      </div>
+      <div class="solution-card">
+        <div class="card-label">THE FIX</div>
+        <ul>
+          <li>One-click block for all major AI training crawlers — current list, maintained as bots evolve</li>
+          <li>Pre-populated with 40+ training bots including GPTBot, CCBot, Diffbot, ClaudeBot, and newer entrants</li>
+          <li>Granular allow/deny controls: keep Googlebot, Bingbot, and search crawlers fully open</li>
+          <li>Path-specific rules let you protect /prompts/ and /research/ while leaving other pages open</li>
+          <li>Generates a clean, copyable robots.txt in under two minutes — no server config, no dependencies</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING TABLE -->
+  <div class="pricing">
+    <h2 class="section-title">How It Compares to What You'd Otherwise Use</h2>
+    <p class="section-intro">Most Claude power users who think about this problem end up either doing nothing, writing robots.txt by hand from a StackOverflow thread, or paying for hosting-level bot management that's massively overkill for a personal site or small tool.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Cost</th>
+          <th>AI Bot Coverage</th>
+          <th>SEO-Safe</th>
+          <th>No Server Setup</th>
+          <th>Instant</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td class="tool-name">TinyTools AI Robots.txt Generator <span style="font-size:11px;color:var(--accent-light)">(this page)</span></td>
+          <td><span class="free-badge">FREE</span></td>
+          <td class="checkmark">✓ 40+ bots</td>
+          <td class="checkmark">✓ Googlebot safe</td>
+          <td class="checkmark">✓</td>
+          <td class="checkmark">✓</td>
+        </tr>
+        <tr>
+          <td class="tool-name">Manual robots.txt (StackOverflow method)</td>
+          <td><span class="paid-badge">30–60 min research</span></td>
+          <td class="cross">✗ <span class="limit-badge">outdated list, misses new bots</span></td>
+          <td class="cross">✗ <span class="limit-badge">easy to accidentally block SEO crawlers</span></td>
+          <td class="checkmark">✓</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td class="tool-name">Cloudflare Bot Fight Mode</td>
+          <td><span class="paid-badge">$20+/mo</span></td>
+          <td class="checkmark">✓</td>
+          <td class="checkmark">✓</td>
+          <td class="cross">✗ <span class="limit-badge">requires Cloudflare DNS</span></td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td class="tool-name">Standard SEO robots.txt generators</td>
+          <td><span class="free-badge">Free</span></td>
+          <td class="cross">✗ <span class="limit-badge">built for SEO, not AI protection</span></td>
+          <td class="checkmark">✓</td>
+          <td class="checkmark">✓</td>
+          <td class="checkmark">✓</td>
+        </tr>
+        <tr>
+          <td class="tool-name">Hosting-level WAF (Vercel, Netlify Pro)</td>
+          <td><span class="paid-badge">$19–$99/mo</span></td>
+          <td class="checkmark">✓</td>
+          <td class="checkmark">✓</td>
+          <td class="cross">✗ <span class="limit-badge">requires plan upgrade + config</span></td>
+          <td class="cross">✗</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--text-muted);margin-top:12px;">Prices as of June 2026. TinyTools runs entirely in your browser — your content never touches a server.</p>
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div class="bottom-cta">
+    <h2>Protect Your Prompts and Published Work — Today</h2>
+    <p>You put real effort into your prompt engineering, your Claude-assisted research, and your published workflows. Don't let AI training crawlers treat it as free training data. Generate your robots.txt in under two minutes — no account, no subscription, no server config. Paste it into your site root and you're protected.</p>
+    <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/" class="bottom-cta-btn">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      Open AI Robots.txt Generator — Free
+    </a>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="related">
+    <h2>Other Tools Claude Power Users Rely On</h2>
+    <div class="related-grid">
+      <div class="related-card">
+        <h3><a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/for-prompt-engineers/">AI Disclosure Generator</a></h3>
+        <p>Generate FTC-compliant disclosures for Claude-assisted content you publish — newsletters, reports, tutorials.</p>
+      </div>
+      <div class="related-card">
+        <h3><a href="https://tinytools-smoky.vercel.app/ai-text-detector/for-claude-power-users/">AI Text Detector</a></h3>
+        <p>Verify whether your Claude-assisted writing reads as AI-generated before you publish — know what detectors will flag.</p>
+      </div>
+      <div class="related-card">
+        <h3><a href="https://tinytools-smoky.vercel.app/ai-cost-calculator/">AI Cost Calculator</a></h3>
+        <p>Model your Claude API usage costs as you scale from power user to production — before the bill arrives.</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> · Free micro-utilities for the AI era · <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/">AI Robots.txt Generator</a> · <a href="https://tinytools-smoky.vercel.app/ai-disclosure-generator/">AI Disclosure Generator</a></p>
+</footer>
+
+</body>
+</html>
