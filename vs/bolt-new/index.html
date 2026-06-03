@@ -96,6 +96,35 @@
   }
   .cta.alt { background: transparent; border: 1px solid var(--border); color: var(--text) !important; }
   footer { color: var(--text-dim); font-size: 13px; border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; }
+
+  /* ── Viral quiz ────────────────────────────────── */
+  .quiz-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px 26px; margin: 40px 0; }
+  .quiz-wrap h2 { margin-top: 0; }
+  .quiz-q { margin-bottom: 20px; }
+  .quiz-q label { display: block; font-size: 15px; font-weight: 600; color: var(--text-dim); margin-bottom: 10px; }
+  .quiz-options { display: flex; flex-wrap: wrap; gap: 8px; }
+  .quiz-opt { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; font-size: 14px; color: var(--text); cursor: pointer; transition: border-color .15s, background .15s; }
+  .quiz-opt:hover { border-color: var(--accent); }
+  .quiz-opt.sel { border-color: var(--accent); background: var(--accent-glow); color: #c4b5fd; }
+  .quiz-btn { background: var(--accent); color: #fff; border: none; border-radius: 10px; padding: 12px 24px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 4px; transition: filter .15s; }
+  .quiz-btn:hover { filter: brightness(1.1); }
+  .result-card { display: none; margin-top: 24px; background: var(--bg-elevated); border: 1px solid var(--accent); border-radius: 12px; padding: 20px 22px; }
+  .result-card.show { display: block; }
+  .result-label { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-dim); margin-bottom: 4px; }
+  .result-winner { font-size: 28px; font-weight: 800; color: #c4b5fd; margin-bottom: 12px; }
+  .result-reasons { list-style: none; padding: 0; margin: 0 0 18px; }
+  .result-reasons li { padding: 5px 0; color: var(--text); font-size: 14px; }
+  .result-reasons li::before { content: "✓ "; color: var(--accent); font-weight: 700; }
+  .viral-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .viral-btn { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 9px 16px; font-size: 13px; color: var(--text); cursor: pointer; text-decoration: none; transition: border-color .15s; }
+  .viral-btn:hover { border-color: var(--accent); }
+  .viral-btn.primary { background: #1d9bf0; border: none; color: white; }
+  .viral-btn.dl { background: var(--bg-elevated); }
+  .embed-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-top: 4px; }
+  .embed-box .el { font-size: 11px; color: var(--text-dim); text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+  .embed-box pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .embed-box button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: white; font-size: 11px; cursor: pointer; }
+
 </style>
 </head>
 <body>
@@ -210,6 +239,213 @@
 
 <p>For developers, Bolt's flexibility and transparency are genuine advantages. For non-technical builders, Lovable's opinionated integration and simpler mental model may feel more accessible. Testing both with the same project description is the most reliable way to decide.</p>
 
+<!-- ═══════════════ VIRAL QUIZ ═══════════════ -->
+<div class="quiz-wrap" id="quizWrap">
+  <h2>🧮 Is Bolt.new right for <em>your</em> project?</h2>
+  <p style="color:var(--text-dim);font-size:14px;margin-bottom:20px">Answer 3 quick questions and get a shareable verdict card.</p>
+
+  <div class="quiz-q">
+    <label>1 — What are you trying to build?</label>
+    <div class="quiz-options" id="q1">
+      <button class="quiz-opt" data-val="fullstack">Full-stack web app (auth, DB, routes)</button>
+      <button class="quiz-opt" data-val="landing">Landing page / marketing site</button>
+      <button class="quiz-opt" data-val="prototype">Quick prototype or MVP demo</button>
+      <button class="quiz-opt" data-val="utility">Browser utility / small tool</button>
+    </div>
+  </div>
+
+  <div class="quiz-q">
+    <label>2 — What's your technical background?</label>
+    <div class="quiz-options" id="q2">
+      <button class="quiz-opt" data-val="dev">Developer — I read and edit generated code</button>
+      <button class="quiz-opt" data-val="founder">Non-technical — I describe, Bolt builds</button>
+    </div>
+  </div>
+
+  <div class="quiz-q">
+    <label>3 — Monthly AI tool budget?</label>
+    <div class="quiz-options" id="q3">
+      <button class="quiz-opt" data-val="zero">$0 — free tools only</button>
+      <button class="quiz-opt" data-val="twenty">Up to ~$20/mo</button>
+      <button class="quiz-opt" data-val="power">$20+/mo — I want the best</button>
+    </div>
+  </div>
+
+  <button class="quiz-btn" id="quizBtn">Get my verdict →</button>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-label">Your verdict</div>
+    <div class="result-winner" id="resultWinner"></div>
+    <ul class="result-reasons" id="resultReasons"></ul>
+    <div class="viral-row">
+      <a class="viral-btn primary" id="shareTwitter" target="_blank" rel="noopener">𝕏 Share verdict</a>
+      <button class="viral-btn" id="copyLink">🔗 Copy link</button>
+      <button class="viral-btn dl" id="downloadCard">💾 Download card</button>
+    </div>
+    <div class="embed-box">
+      <div class="el">Embed badge on your site or README</div>
+      <pre id="embedCode"></pre>
+      <button id="copyEmbed">Copy badge code</button>
+    </div>
+  </div>
+</div>
+
+<canvas id="resultCanvas" width="1200" height="630" style="display:none;"></canvas>
+
+<script>
+// ── Quiz logic ───────────────────────────────────────────────────────────────
+const answers = { q1: null, q2: null, q3: null };
+
+['q1','q2','q3'].forEach(qid => {
+  document.getElementById(qid).querySelectorAll('.quiz-opt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.getElementById(qid).querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('sel'));
+      btn.classList.add('sel');
+      answers[qid] = btn.dataset.val;
+    });
+  });
+});
+
+document.getElementById('quizBtn').addEventListener('click', () => {
+  if (!answers.q1 || !answers.q2 || !answers.q3) { alert('Please answer all 3 questions first.'); return; }
+  showResult();
+});
+
+// Hash auto-load
+if (location.hash.length > 2 && location.hash.startsWith('#q=')) {
+  try {
+    const [v1,v2,v3] = location.hash.slice(3).split(',');
+    ['q1','q2','q3'].forEach((qid, i) => {
+      const val = [v1,v2,v3][i];
+      const btn = document.querySelector(`#${qid} [data-val="${val}"]`);
+      if (btn) { btn.classList.add('sel'); answers[qid] = val; }
+    });
+    setTimeout(showResult, 150);
+  } catch(e) {}
+}
+
+function computeVerdict(a) {
+  const boltWins = [];
+  const tinyWins = [];
+
+  const taskMap = {
+    fullstack: { bolt: ['Full-stack app with auth, DB, and routes', 'WebContainers — real Node.js in the browser', 'npm package installation included'], tiny: [] },
+    landing:   { bolt: [], tiny: ['A landing page needs a template, not a $20/mo AI builder', 'OG Image Generator + Landing Page Roaster covers the gaps for free', 'Bolt tokens burn fast on static marketing sites'] },
+    prototype: { bolt: ['Idea to running prototype in minutes', 'Deploy to Vercel/Netlify in one click', 'Real codebase you can hand off or extend'], tiny: [] },
+    utility:   { bolt: [], tiny: ['Browser utilities need plain HTML — no WebContainers required', 'LLM Prompt Optimizer helps you spec out small tools', 'Free, no token budget to worry about'] },
+  };
+
+  if (taskMap[a.q1].bolt.length >= taskMap[a.q1].tiny.length) {
+    taskMap[a.q1].bolt.forEach(r => boltWins.push(r));
+  } else {
+    taskMap[a.q1].tiny.forEach(r => tinyWins.push(r));
+  }
+
+  if (a.q2 === 'dev') {
+    boltWins.push('Developer access: edit files, terminal, ESLint, Prettier built-in');
+  } else {
+    tinyWins.push('Lovable may suit non-technical founders better than Bolt's file-tree UI');
+  }
+
+  if (a.q3 === 'zero') {
+    tinyWins.push('$0 forever — TinyTools requires no subscription, ever');
+  } else if (a.q3 === 'twenty') {
+    boltWins.push('Bolt Pro (~$20/mo) gives real token headroom for complex builds');
+  } else {
+    boltWins.push('At $20+/mo, Bolt Pro is competitive with the whole AI builder market');
+  }
+
+  const boltScore = boltWins.length;
+  const tinyScore = tinyWins.length;
+  const winner = boltScore >= tinyScore ? 'Bolt.new' : 'TinyTools';
+  const reasons = winner === 'Bolt.new' ? boltWins : tinyWins;
+  const shieldLabel = `For+me%3A+${encodeURIComponent(winner === 'Bolt.new' ? 'Bolt.new' : 'TinyTools')}+wins`;
+  const shieldColor = winner === 'Bolt.new' ? 'f59e0b' : '8b5cf6';
+
+  return { winner, reasons, shieldLabel, shieldColor };
+}
+
+function showResult() {
+  const v = computeVerdict(answers);
+  location.hash = `#q=${answers.q1},${answers.q2},${answers.q3}`;
+
+  document.getElementById('resultWinner').textContent = `${v.winner} wins for you`;
+  document.getElementById('resultReasons').innerHTML = v.reasons.map(r => `<li>${r}</li>`).join('');
+
+  const pageUrl = `https://tinytools-smoky.vercel.app/vs/bolt-new/${location.hash}`;
+  const tweetText = `I compared TinyTools vs Bolt.new for my use case — ${v.winner} wins.\n\nKey reasons:\n${v.reasons.slice(0,2).map(r => '• ' + r).join('\n')}\n\nGet your verdict →`;
+
+  document.getElementById('shareTwitter').href =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(pageUrl)}`;
+
+  document.getElementById('copyLink').onclick = () => {
+    navigator.clipboard.writeText(pageUrl);
+    const b = document.getElementById('copyLink');
+    b.textContent = '✓ Copied!';
+    setTimeout(() => b.textContent = '🔗 Copy link', 1500);
+  };
+
+  const embedCode = `<a href="${pageUrl}" target="_blank">\n  <img src="https://img.shields.io/badge/${v.shieldLabel}-${v.shieldColor}?style=for-the-badge" alt="${v.winner} wins">\n</a>`;
+  document.getElementById('embedCode').textContent = embedCode;
+  document.getElementById('copyEmbed').onclick = () => {
+    navigator.clipboard.writeText(embedCode);
+    const b = document.getElementById('copyEmbed');
+    b.textContent = '✓ Copied';
+    setTimeout(() => b.textContent = 'Copy badge code', 1500);
+  };
+
+  // Draw 1200×630 verdict card
+  const canvas = document.getElementById('resultCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#0a0a0f';
+  ctx.fillRect(0, 0, 1200, 630);
+
+  const grd = ctx.createRadialGradient(300, 0, 50, 300, 0, 600);
+  grd.addColorStop(0, v.winner === 'Bolt.new' ? 'rgba(245,158,11,0.25)' : 'rgba(139,92,246,0.25)');
+  grd.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0, 0, 1200, 630);
+
+  ctx.textAlign = 'left';
+
+  ctx.font = '500 22px -apple-system,sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.fillText('TinyTools vs Bolt.new — Your Verdict', 80, 90);
+
+  ctx.font = '900 72px -apple-system,sans-serif';
+  ctx.fillStyle = v.winner === 'Bolt.new' ? '#fcd34d' : '#c4b5fd';
+  ctx.fillText(`${v.winner} wins`, 80, 190);
+
+  ctx.font = '400 26px -apple-system,sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+  ctx.fillText('for your use case', 80, 238);
+
+  ctx.font = '500 22px -apple-system,sans-serif';
+  ctx.fillStyle = v.winner === 'Bolt.new' ? '#fbbf24' : '#a78bfa';
+  v.reasons.slice(0,3).forEach((r, i) => {
+    const short = r.length > 60 ? r.slice(0, 57) + '…' : r;
+    ctx.fillText(`✓  ${short}`, 80, 320 + i * 52);
+  });
+
+  ctx.font = '600 20px -apple-system,sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/vs/bolt-new/', 1120, 590);
+
+  document.getElementById('downloadCard').onclick = () => {
+    const a = document.createElement('a');
+    a.download = 'tinytools-vs-bolt-new.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  };
+
+  document.getElementById('resultCard').classList.add('show');
+  document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+<!-- ═══════════════ END VIRAL QUIZ ═══════════════ -->
+
+
 <h2>Verdict</h2>
 
 <p>Bolt.new is a serious product for developers and technical builders who want AI to handle the scaffolding so they can focus on product logic. Its WebContainers foundation means you're working with real code in a real environment from the first moment — you can inspect files, edit manually, install packages, and run tooling, all without leaving the browser. The ~$20/month Pro plan is reasonable for the token allowance it provides, and is at the lower end of the AI builder category.</p>
@@ -234,3 +470,4 @@
 </div>
 </body>
 </html>
+
