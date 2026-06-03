@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Programming Language Are You? — Find Your Coding Personality (Free Quiz)</title>
+<meta name="description" content="Take our viral personality quiz to discover which programming language matches your coding style. Python? JavaScript? Rust? Java? Get your shareable result card.">
+<meta name="keywords" content="what programming language are you, programming language personality quiz, coding personality test, which language are you, developer quiz, programmer personality type">
+<meta property="og:title" content="What Programming Language Are You?">
+<meta property="og:description" content="10 questions. Zero judgment. Find out if you're Python, Rust, JavaScript, or something worse.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/what-programming-language-are-you/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/what-programming-language-are-you/">
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #a855f7; --accent-glow: #a855f730;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #6366f125 0%, transparent 50%);
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(32px, 5.5vw, 56px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #a855f7 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 560px; margin: 0 auto 32px; }
+
+  /* Quiz */
+  .quiz-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; margin-bottom: 24px; }
+  .progress-text { font-size: 13px; color: var(--text-dim); text-align: right; margin-bottom: 8px; }
+  .progress-bar { height: 4px; background: var(--bg-elevated); border-radius: 2px; margin-bottom: 28px; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #a855f7, #6366f1); border-radius: 2px; transition: width 0.4s ease; }
+  .question { font-size: 22px; font-weight: 700; margin-bottom: 24px; line-height: 1.3; }
+  .options { display: grid; gap: 10px; }
+  .option {
+    padding: 16px 20px; background: var(--bg-elevated); border: 2px solid var(--border);
+    border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 15px; text-align: left;
+    color: var(--text); display: flex; align-items: center; gap: 14px;
+  }
+  .option:hover { border-color: var(--accent); background: #a855f715; }
+  .option.selected { border-color: var(--accent); background: #a855f720; }
+  .option-letter {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 28px; height: 28px; background: var(--border);
+    border-radius: 50%; font-size: 12px; font-weight: 700; color: var(--text-dim); flex-shrink: 0;
+  }
+  .option.selected .option-letter { background: var(--accent); color: white; }
+  .nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; }
+  .btn-next {
+    padding: 14px 32px; background: linear-gradient(135deg, #a855f7, #6366f1);
+    border: none; border-radius: 10px; color: white; font-weight: 700; font-size: 16px;
+    cursor: pointer; transition: opacity 0.2s;
+  }
+  .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-back { padding: 14px 20px; background: transparent; border: 1px solid var(--border); border-radius: 10px; color: var(--text-dim); font-size: 15px; cursor: pointer; }
+
+  /* Result */
+  .result-section { display: none; }
+  .result-card { background: var(--bg-card); border: 2px solid var(--accent); border-radius: 20px; padding: 36px; text-align: center; }
+  .result-emoji { font-size: 80px; margin-bottom: 12px; }
+  .result-label { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .result-lang { font-size: 52px; font-weight: 900; margin-bottom: 8px; }
+  .result-tagline { font-size: 16px; color: var(--text-dim); margin-bottom: 24px; font-style: italic; }
+  .result-desc { font-size: 16px; line-height: 1.75; margin-bottom: 28px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .traits { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 28px; }
+  .trait { padding: 6px 16px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 28px; }
+  .stat-box { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+  .stat-value { font-size: 22px; font-weight: 800; }
+  .stat-label { font-size: 11px; color: var(--text-dim); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .compat { font-size: 14px; color: var(--text-dim); margin-bottom: 24px; }
+  .action-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+  .btn-share { padding: 13px 24px; background: #000; border: 1px solid #333; border-radius: 10px; color: white; font-weight: 600; font-size: 14px; cursor: pointer; }
+  .btn-dl { padding: 13px 24px; background: var(--accent); border: none; border-radius: 10px; color: white; font-weight: 600; font-size: 14px; cursor: pointer; }
+  .btn-copy { padding: 13px 24px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-weight: 600; font-size: 14px; cursor: pointer; }
+  .btn-retry { padding: 13px 24px; background: transparent; border: 1px solid var(--border); border-radius: 10px; color: var(--text-dim); font-weight: 600; font-size: 14px; cursor: pointer; }
+  .badge-embed { margin: 20px 0; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: left; }
+  .badge-embed h4 { font-size: 13px; color: var(--text-dim); margin-bottom: 8px; }
+  .badge-embed code { font-family: monospace; font-size: 11px; color: #9ca3af; word-break: break-all; display: block; }
+
+  /* SEO */
+  .seo { margin-top: 56px; border-top: 1px solid var(--border); padding-top: 48px; }
+  .seo h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
+  .seo h3 { font-size: 20px; font-weight: 600; margin: 28px 0 12px; }
+  .seo p { color: var(--text-dim); margin-bottom: 16px; line-height: 1.75; font-size: 16px; }
+
+  canvas { display: none; }
+  @media (max-width: 600px) {
+    h1 { font-size: 30px; }
+    .result-lang { font-size: 38px; }
+    .quiz-section { padding: 20px; }
+    .result-card { padding: 24px; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "What Programming Language Are You?",
+  "description": "A personality quiz that discovers which programming language best matches your coding style and temperament.",
+  "url": "https://tinytools-smoky.vercel.app/what-programming-language-are-you/",
+  "applicationCategory": "EntertainmentApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">✨ Viral Developer Quiz · Free</div>
+    <h1>What Programming<br>Language Are You?</h1>
+    <p class="subtitle">10 questions. Your coding soul, revealed. Shareable card included. No signup, no BS.</p>
+  </header>
+
+  <div id="quiz-section" class="quiz-section">
+    <div class="progress-text" id="prog-text">Question 1 of 10</div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:10%"></div></div>
+    <div class="question" id="q-text"></div>
+    <div class="options" id="opts"></div>
+    <div class="nav-row">
+      <button class="btn-back" id="btn-back" onclick="goBack()" style="visibility:hidden">← Back</button>
+      <button class="btn-next" id="btn-next" onclick="goNext()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <div id="result-section" class="result-section">
+    <div class="result-card" id="result-card">
+      <div class="result-emoji" id="r-emoji"></div>
+      <div class="result-label">Your Programming Language Is</div>
+      <div class="result-lang" id="r-lang"></div>
+      <div class="result-tagline" id="r-tagline"></div>
+      <div class="result-desc" id="r-desc"></div>
+      <div class="traits" id="r-traits"></div>
+      <div class="stats-grid" id="r-stats"></div>
+      <div class="compat" id="r-compat"></div>
+      <div class="action-row">
+        <button class="btn-dl" onclick="downloadCard()">📥 Save Card</button>
+        <button class="btn-share" onclick="shareToX()">𝕏 Share Result</button>
+        <button class="btn-copy" id="copy-btn" onclick="copyLink()">🔗 Copy Link</button>
+        <button class="btn-retry" onclick="restartQuiz()">🔄 Retake Quiz</button>
+      </div>
+      <div class="badge-embed">
+        <h4>📎 Embed in your README or GitHub profile:</h4>
+        <code id="badge-code"></code>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="c" width="1200" height="630"></canvas>
+
+  <div class="seo">
+    <h2>What Programming Language Are You?</h2>
+    <p>Every developer has a soul language — the programming language that mirrors their personality, workflow, and worldview. Python people are pragmatic optimists who believe code should read like poetry. JavaScript developers are chaotic geniuses who somehow make everything work, even when it probably shouldn't. Rust enthusiasts are the safety-first perfectionists who won't rest until every memory allocation is justified by the compiler itself.</p>
+    <h3>How This Quiz Works</h3>
+    <p>Our 10-question personality quiz maps your answers across multiple dimensions — error tolerance, abstraction preference, team style, deadline philosophy, and technology evangelism — to determine which programming language best matches your developer DNA. The scoring is deterministic: the same answers always produce the same result, making your shareable card perfectly reproducible and linkable.</p>
+    <h3>The 8 Languages</h3>
+    <p>We mapped developer personalities to eight iconic languages: Python 🐍 (pragmatic, readable, batteries-included believers), JavaScript ⚡ (chaotic, everywhere, "undefined is not a function" survivors), Rust 🦀 (perfectionist, memory-safe, borrow-checker evangelists), Java ☕ (enterprise-ready, verbose, AbstractSingletonProxyFactoryBean authors), Go 🐹 (pragmatic, cloud-native, beautifully boring minimalists), TypeScript 📘 (structured, type-first, "JavaScript but with a conscience"), C++ ⚙️ (performance fanatics who are also the garbage collector), and Ruby 💎 (convention-over-configuration aesthetes who ship Rails apps before Java developers finish their Maven config).</p>
+    <h3>Why This Hits Different</h3>
+    <p>Unlike generic personality tests, this quiz speaks to how you actually think about code: how you handle bugs at 2am, your relationship with memory management, your philosophy on shipping versus perfecting. Your result captures your real coding identity — share it to see how your teammates score, or to prove to your coworker that yes, they are definitely Java.</p>
+    <h3>Share Your Result</h3>
+    <p>Once you get your result, download a 1200×630 shareable card, post to X/Twitter with a pre-filled viral hook tweet, copy a deep link that loads your exact result for anyone who clicks it, or grab a shields.io-style badge for your GitHub README. Join thousands of developers who've found their programming language personality type.</p>
+  </div>
+</div>
+
+<script>
+const QS = [
+  {
+    q: "Bug appears at 2am. You...",
+    opts: [
+      { t: "Add print statements everywhere until it confesses", s: {PY:3,JS:1,RB:2} },
+      { t: "console.log it. Then log everything. Then cry into your keyboard.", s: {JS:3,TS:1} },
+      { t: "The compiler already caught this at compile time. Nice try.", s: {RS:3,CPP:2} },
+      { t: "Open Jira, create a ticket, assign it to yourself, close as Won't Fix", s: {JV:3,GO:1} }
+    ]
+  },
+  {
+    q: "Your ideal codebase has...",
+    opts: [
+      { t: "Beautiful, self-documenting code. Comments mean you failed.", s: {PY:3,GO:2,RB:2} },
+      { t: "Types. So many types. Interfaces for the interfaces. Types all the way down.", s: {TS:3,JV:2} },
+      { t: "Zero runtime errors. The compiler guarantees it. I don't negotiate.", s: {RS:3,TS:1,CPP:1} },
+      { t: "It ships. That was the requirement.", s: {JS:3,RB:1,PY:1} }
+    ]
+  },
+  {
+    q: "Pick your programming philosophy:",
+    opts: [
+      { t: "Convention over configuration. Don't make me think about framework choices.", s: {RB:3,PY:1,GO:1} },
+      { t: "There should be one obvious way to do it. One.", s: {PY:3,GO:1} },
+      { t: "Explicit is better than implicit. Type everything. Trust nothing.", s: {TS:3,JV:2,RS:1} },
+      { t: "If it hurts, do it more often until it stops hurting. Ship it.", s: {GO:3,JS:2} }
+    ]
+  },
+  {
+    q: "Junior dev asks why you chose this tech stack. You say...",
+    opts: [
+      { t: "Battle-tested, enterprise-supported, runs everywhere, backwards compatible.", s: {JV:3,CPP:1} },
+      { t: "Benchmarks. Have you seen my benchmarks?", s: {RS:3,CPP:2,GO:1} },
+      { t: "Because everyone uses it. The npm ecosystem is unmatched.", s: {JS:3,PY:1} },
+      { t: "Because it makes me happy. Developer experience matters, okay?", s: {RB:3,PY:2} }
+    ]
+  },
+  {
+    q: "Your relationship with runtime errors is...",
+    opts: [
+      { t: "Handled gracefully with try/except. Errors are unexpected features.", s: {PY:3,RB:2} },
+      { t: "undefined is not a function. Every day. Forever. I've made peace.", s: {JS:3,TS:1} },
+      { t: "Impossible. I eliminated them at compile time like a professional.", s: {RS:3,TS:2,CPP:1} },
+      { t: "Logged to Splunk, paged to oncall, postmortemed in Confluence by Monday.", s: {JV:3,GO:2} }
+    ]
+  },
+  {
+    q: "Memory management. Your take?",
+    opts: [
+      { t: "Garbage collector handles it. I have more important problems.", s: {PY:3,JV:2,RB:2,JS:1} },
+      { t: "I own every byte. I know where it lives, where it dies.", s: {CPP:3,RS:1} },
+      { t: "The borrow checker is my therapist. Keeps me from hurting myself and others.", s: {RS:3} },
+      { t: "npm install --save memory-manager", s: {JS:3,TS:1} }
+    ]
+  },
+  {
+    q: "Your coworkers describe you as...",
+    opts: [
+      { t: "The one who ships fast and breaks things — but usually fixes them before standup", s: {JS:3,RB:2} },
+      { t: "The one who won't merge until the code is provably correct", s: {RS:3,TS:2,CPP:1} },
+      { t: "The one with strong opinions on naming conventions and import order", s: {PY:3,GO:2} },
+      { t: "The one writing 400-line design docs before the first line of code", s: {JV:3,CPP:2} }
+    ]
+  },
+  {
+    q: "Friday 5pm. Your deadline was 3pm. You...",
+    opts: [
+      { t: "Shipped at 2:45. I write tests before merging. Obviously.", s: {GO:3,PY:2,RS:1} },
+      { t: "Push to main, it's fine, CI is probably flaky anyway", s: {JS:3,RB:1} },
+      { t: "Push to main. The segfault will teach users discipline.", s: {CPP:3} },
+      { t: "File exception request. Escalate to architect. Schedule retrospective for Tuesday.", s: {JV:3} }
+    ]
+  },
+  {
+    q: "Dream side project?",
+    opts: [
+      { t: "ML pipeline that actually reaches production (unlike the last seven)", s: {PY:3,GO:1} },
+      { t: "Full-stack web app where frontend and backend speak the same language", s: {JS:3,TS:2} },
+      { t: "An OS kernel. Written from scratch. Finally done right.", s: {RS:3,CPP:2} },
+      { t: "A magical Rails app that ships in a weekend", s: {RB:3,PY:1} }
+    ]
+  },
+  {
+    q: "Hot new framework just dropped. You...",
+    opts: [
+      { t: "Already rewrote your side project in it. Blog post drops Monday.", s: {JS:3,TS:1,RB:1} },
+      { t: "Wait 5 years until it's stable. Then evaluate the community size.", s: {JV:3,GO:2} },
+      { t: "Check the memory safety guarantees first. Then maybe consider it.", s: {RS:3,CPP:1} },
+      { t: "If it's not in stdlib, you don't need it.", s: {GO:3,PY:2} }
+    ]
+  }
+];
+
+const LANGS = {
+  PY: {
+    name:"Python", emoji:"🐍", color:"#3b82f6",
+    tagline:"Pragmatic, readable, batteries included.",
+    desc:"You're the calm, practical one in the room who believes code should read like English. You value clarity over cleverness, ship things that work, and have strong opinions about indentation. You've probably said 'there should be one obvious way to do it' at least twice this week. You also might have a Jupyter notebook problem.",
+    traits:["✨ Pragmatic","📖 Readable","🤝 Collaborative","🔋 Batteries Included","😤 Tabs? Never.","🤖 ML-Curious"],
+    stats:{"Chill Level":"92%","Readability":"S-tier","Ecosystem":"Massive","Speed":"¯\\_(ツ)_/¯"},
+    compat:"Go, Ruby"
+  },
+  JS: {
+    name:"JavaScript", emoji:"⚡", color:"#f59e0b",
+    tagline:"Chaotic. Ubiquitous. Somehow always works.",
+    desc:"You ship fast, break things, and somehow always have a demo ready. Your motto is 'it works on my machine' and you have 47 dependencies for a Hello World. You've done things with JavaScript that should not be possible, and you're oddly proud of every single one. The web runs on you, whether it wants to or not.",
+    traits:["🚀 Ships Fast","🌐 Everywhere","📦 NPM Addict","⚡ Move Fast","😅 undefined survivor","🎪 Callback Hell veteran"],
+    stats:{"Ship Speed":"10x","NPM Packages":"∞","Bugs/day":"Also 10x","Fun":"Undeniable"},
+    compat:"TypeScript, Python"
+  },
+  RS: {
+    name:"Rust", emoji:"🦀", color:"#f97316",
+    tagline:"Zero-cost abstractions. Zero runtime errors. Zero chill.",
+    desc:"You're the perfectionist who won't sleep until the borrow checker is satisfied. You've said 'rewrite it in Rust' at least once this month and meant it. You believe most software bugs are memory safety issues waiting to happen, and you have a slide deck to prove it. Your code takes 3x longer to write and runs 10x faster. Completely worth it.",
+    traits:["🔒 Memory Safe","⚡ Zero-cost","🦀 Borrow Checker Fan","📐 Perfectionist","🚫 No GC needed","🧱 Fearless concurrency"],
+    stats:{"Safety":"✅ Guaranteed","Compile Time":"...long","Runtime Errors":"0","Rewrites":"All of them"},
+    compat:"C++, TypeScript"
+  },
+  JV: {
+    name:"Java", emoji:"☕", color:"#dc2626",
+    tagline:"Verbose. Enterprise-ready. It runs everywhere.",
+    desc:"You are the architect of systems that need to scale to enterprise. You have strong opinions about design patterns and have personally implemented AbstractSingletonProxyFactoryBean. You believe in proper ceremony — documentation, interfaces, and thorough code review. Banks run on your work. Healthcare systems run on your work. That's not nothing.",
+    traits:["🏢 Enterprise Ready","📋 Verbose","☕ Design Patterns","🔧 Backwards Compat","📄 XML Configs","🏗️ Architecture-first"],
+    stats:{"Enterprise":"S-tier","Verbosity":"S-tier","Stability":"Rock solid","Fun":"Debatable"},
+    compat:"Kotlin, C++"
+  },
+  GO: {
+    name:"Go", emoji:"🐹", color:"#06b6d4",
+    tagline:"Simple. Fast. Boring in the best way.",
+    desc:"You're the pragmatist who believes simplicity is a feature, not a limitation. You once spent 20 minutes defending Go's original lack of generics as intentional good design. You ship microservices that don't crash, write code any junior can read in five minutes, and get quietly smug about your binary sizes. Cloud-native runs on you.",
+    traits:["🎯 Pragmatic","🔇 Beautifully Simple","☁️ Cloud-native","⚡ Fast compile","🤏 Minimal deps","🐹 Gopher Gang"],
+    stats:{"Simplicity":"S-tier","Compile Time":"Instant","Cloud Usage":"Dominant","Drama":"Zero"},
+    compat:"Python, Rust"
+  },
+  TS: {
+    name:"TypeScript", emoji:"📘", color:"#6366f1",
+    tagline:"JavaScript, but you actually know what you're doing.",
+    desc:"You are JavaScript's responsible older sibling who insists on knowing the type of absolutely everything before touching it. You've written interfaces for the interfaces and deeply enjoy the moment TypeScript catches a bug that would have cost 3 hours in production. Your PRs have detailed type annotations and you're low-key evangelical about strict mode.",
+    traits:["📘 Type Everything","🔍 Compile Safety","🤓 Interface First","🔧 IDE Autocomplete","📋 Self-documenting","⚖️ Best of both worlds"],
+    stats:{"Type Safety":"99.9%","DX":"Excellent","Smugness":"Justified","Strictness":"--strict"},
+    compat:"JavaScript, Rust"
+  },
+  CPP: {
+    name:"C++", emoji:"⚙️", color:"#8b5cf6",
+    tagline:"I don't use a garbage collector. I am the garbage collector.",
+    desc:"You measure things in nanoseconds and have strong opinions about cache locality. You've read the ISO standard — parts of it, at least. You know undefined behavior personally. You build game engines, operating systems, and firmware for hardware that doesn't have an OS. The respect is real, even if the compiler warnings are infinite.",
+    traits:["⚡ Maximum Performance","🧠 Manual Memory","📐 Zero Overhead","🕹️ Game Dev roots","💀 UB Survivor","🔩 Close to Metal"],
+    stats:{"Speed":"Unmatched","Footgun Density":"High","Power":"Absolute","Compile Warnings":"Ignored"},
+    compat:"Rust, C"
+  },
+  RB: {
+    name:"Ruby", emoji:"💎", color:"#e11d48",
+    tagline:"Designed for developer happiness. Unironically.",
+    desc:"You believe code should be beautiful, expressive, and joyful to write. You love magic — Rails convention, metaprogramming, elegant DSLs that feel like reading a sentence. You've said 'optimized for developer happiness' and meant every word. You ship Rails apps faster than most Java teams finish their Maven pom.xml. The startup era owes you a debt.",
+    traits:["💎 Elegant","🪄 Rails Magic","🎨 Expressive","🎉 Joyful DX","🤹 Metaprogramming","🛤️ Convention lover"],
+    stats:{"Happiness":"Maximum","Magic":"✨✨✨","Startup DNA":"Deep","Performance":"We don't talk about it"},
+    compat:"Python, JavaScript"
+  }
+};
+
+let answers = [];
+let cur = 0;
+let sel = null;
+
+function initQuiz() {
+  answers = []; cur = 0; sel = null;
+  document.getElementById('quiz-section').style.display = 'block';
+  document.getElementById('result-section').style.display = 'none';
+  renderQ(0);
+}
+
+function renderQ(i) {
+  const q = QS[i];
+  document.getElementById('q-text').textContent = `${i+1}. ${q.q}`;
+  document.getElementById('prog-text').textContent = `Question ${i+1} of ${QS.length}`;
+  document.getElementById('prog-fill').style.width = `${((i+1)/QS.length)*100}%`;
+  const letters = ['A','B','C','D'];
+  document.getElementById('opts').innerHTML = q.opts.map((o,j) =>
+    `<button class="option${answers[i]===j?' selected':''}" onclick="pick(${j})">
+      <span class="option-letter">${letters[j]}</span><span>${o.t}</span>
+    </button>`
+  ).join('');
+  sel = answers[i] !== undefined ? answers[i] : null;
+  document.getElementById('btn-next').disabled = sel===null;
+  document.getElementById('btn-back').style.visibility = i>0?'visible':'hidden';
+  document.getElementById('btn-next').textContent = i===QS.length-1 ? 'See My Language →' : 'Next →';
+}
+
+function pick(j) {
+  sel = j;
+  document.querySelectorAll('.option').forEach((el,k) => {
+    el.classList.toggle('selected', k===j);
+  });
+  document.getElementById('btn-next').disabled = false;
+}
+
+function goNext() {
+  if (sel===null) return;
+  answers[cur] = sel;
+  if (cur < QS.length-1) { cur++; renderQ(cur); }
+  else showResult();
+}
+
+function goBack() {
+  if (cur>0) { cur--; sel=answers[cur]; renderQ(cur); }
+}
+
+function score(ans) {
+  const s = {PY:0,JS:0,RS:0,JV:0,GO:0,TS:0,CPP:0,RB:0};
+  ans.forEach((ai,qi) => {
+    Object.entries(QS[qi].opts[ai].s).forEach(([k,v]) => s[k]=(s[k]||0)+v);
+  });
+  return Object.entries(s).sort((a,b)=>b[1]-a[1])[0][0];
+}
+
+function showResult(fromHash) {
+  const key = score(answers);
+  const L = LANGS[key];
+  document.getElementById('quiz-section').style.display = 'none';
+  const rs = document.getElementById('result-section');
+  rs.style.display = 'block'; rs.style.opacity = '0';
+
+  document.getElementById('result-card').style.borderColor = L.color;
+  document.getElementById('r-emoji').textContent = L.emoji;
+  document.getElementById('r-lang').textContent = L.name;
+  document.getElementById('r-lang').style.color = L.color;
+  document.getElementById('r-tagline').textContent = L.tagline;
+  document.getElementById('r-desc').textContent = L.desc;
+  document.getElementById('r-traits').innerHTML = L.traits.map(t=>`<span class="trait">${t}</span>`).join('');
+  document.getElementById('r-stats').innerHTML = Object.entries(L.stats).map(([k,v])=>
+    `<div class="stat-box"><div class="stat-value" style="color:${L.color}">${v}</div><div class="stat-label">${k}</div></div>`
+  ).join('');
+  document.getElementById('r-compat').textContent = `💞 Most compatible with: ${L.compat}`;
+
+  const deepLink = `${location.origin}${location.pathname}#${answers.join('')}`;
+  const shield = `https://img.shields.io/badge/Language-${encodeURIComponent(L.name)}-${L.color.slice(1)}?style=for-the-badge`;
+  document.getElementById('badge-code').textContent = `[![My Language](${shield})](${deepLink})`;
+
+  if (!fromHash) history.replaceState(null,'','#'+answers.join(''));
+  setTimeout(()=>{ rs.style.transition='opacity 0.4s'; rs.style.opacity='1'; },50);
+  drawCanvas(L);
+}
+
+function drawCanvas(L) {
+  const cv = document.getElementById('c');
+  const ctx = cv.getContext('2d');
+  cv.width=1200; cv.height=630;
+  ctx.fillStyle='#0a0a0f'; ctx.fillRect(0,0,1200,630);
+  const g = ctx.createRadialGradient(200,0,0,200,0,700);
+  g.addColorStop(0, L.color+'28'); g.addColorStop(1,'transparent');
+  ctx.fillStyle=g; ctx.fillRect(0,0,1200,630);
+
+  ctx.font='500 18px Arial,sans-serif'; ctx.fillStyle='#4b5563';
+  ctx.fillText('tinytools-smoky.vercel.app/what-programming-language-are-you',60,50);
+
+  ctx.font='110px Arial'; ctx.fillText(L.emoji,60,230);
+
+  ctx.font='700 24px Arial,sans-serif'; ctx.fillStyle='#6b7280';
+  ctx.fillText('YOUR PROGRAMMING LANGUAGE IS',60,280);
+
+  ctx.font='900 90px Arial,sans-serif'; ctx.fillStyle=L.color;
+  ctx.fillText(L.name,60,375);
+
+  ctx.font='400 26px Arial,sans-serif'; ctx.fillStyle='#d1d5db';
+  ctx.fillText(L.tagline,60,425);
+
+  const traits = L.traits.slice(0,3);
+  let x=60;
+  ctx.font='500 17px Arial,sans-serif';
+  traits.forEach(t=>{
+    const w=ctx.measureText(t).width+32;
+    ctx.fillStyle='#1f2937'; rr(ctx,x,450,w,42,21);
+    ctx.fillStyle='#9ca3af'; ctx.fillText(t,x+16,477);
+    x+=w+10;
+  });
+
+  ctx.font='500 19px Arial,sans-serif'; ctx.fillStyle='#374151';
+  ctx.fillText('Find yours → tinytools-smoky.vercel.app',60,590);
+
+  ctx.font='160px Arial'; ctx.globalAlpha=0.05; ctx.fillText(L.emoji,930,450); ctx.globalAlpha=1;
+}
+
+function rr(ctx,x,y,w,h,r) {
+  ctx.beginPath(); ctx.moveTo(x+r,y);
+  ctx.lineTo(x+w-r,y); ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+  ctx.lineTo(x+w,y+h-r); ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  ctx.lineTo(x+r,y+h); ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+  ctx.lineTo(x,y+r); ctx.quadraticCurveTo(x,y,x+r,y);
+  ctx.closePath(); ctx.fill();
+}
+
+function downloadCard() {
+  const a=document.createElement('a');
+  a.download='my-programming-language.png';
+  a.href=document.getElementById('c').toDataURL('image/png'); a.click();
+}
+
+function shareToX() {
+  const k=score(answers); const L=LANGS[k];
+  const link=`${location.origin}${location.pathname}#${answers.join('')}`;
+  const t=`I just took "What Programming Language Are You?" and got ${L.name} ${L.emoji}\n\n"${L.tagline}"\n\nFind yours: ${link}`;
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(t)}`, '_blank');
+}
+
+function copyLink() {
+  const link=`${location.origin}${location.pathname}#${answers.join('')}`;
+  navigator.clipboard.writeText(link).then(()=>{
+    const b=document.getElementById('copy-btn');
+    b.textContent='✅ Copied!';
+    setTimeout(()=>b.textContent='🔗 Copy Link',2000);
+  });
+}
+
+function restartQuiz() {
+  history.replaceState(null,'',location.pathname); initQuiz();
+}
+
+window.addEventListener('load', ()=>{
+  const hash=location.hash.slice(1);
+  if (/^[0-3]{10}$/.test(hash)) {
+    answers=hash.split('').map(Number); showResult(true);
+  } else { initQuiz(); }
+});
+</script>
+</body>
+</html>
