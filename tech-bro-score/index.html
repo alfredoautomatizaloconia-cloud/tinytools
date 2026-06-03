@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Tech Bro Score — How Silicon Valley Are You? (Free Quiz)</title>
+<meta name="description" content="Take the honest quiz to calculate your Tech Bro Score. Are you a 'Normie', 'Disruptor', or full 'Peak Silicon Valley'? Shareable result card. Free, brutal, no signup.">
+<meta name="keywords" content="tech bro score, how tech bro am i, silicon valley quiz, tech personality test, startup culture quiz, tech bro quiz, am i a tech bro">
+<meta property="og:title" content="Your Tech Bro Score — How Silicon Valley Are You?">
+<meta property="og:description" content="I got scored. The results were humbling. Find out yours.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/tech-bro-score/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/tech-bro-score/">
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #f97316; --accent-glow: #f9731625;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #dc262620 0%, transparent 50%);
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(32px, 5.5vw, 54px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #f97316 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 560px; margin: 0 auto 32px; }
+
+  /* Quiz */
+  .quiz-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; margin-bottom: 24px; }
+  .progress-text { font-size: 13px; color: var(--text-dim); text-align: right; margin-bottom: 8px; }
+  .progress-bar { height: 4px; background: var(--bg-elevated); border-radius: 2px; margin-bottom: 28px; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #f97316, #dc2626); border-radius: 2px; transition: width 0.4s ease; }
+  .question { font-size: 22px; font-weight: 700; margin-bottom: 24px; line-height: 1.3; }
+  .options { display: grid; gap: 10px; }
+  .option {
+    padding: 16px 20px; background: var(--bg-elevated); border: 2px solid var(--border);
+    border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 15px; text-align: left;
+    color: var(--text); display: flex; align-items: flex-start; gap: 14px;
+  }
+  .option:hover { border-color: var(--accent); background: #f9731610; }
+  .option.selected { border-color: var(--accent); background: #f9731618; }
+  .option-letter {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 28px; height: 28px; background: var(--border);
+    border-radius: 50%; font-size: 12px; font-weight: 700; color: var(--text-dim); flex-shrink: 0; margin-top: 1px;
+  }
+  .option.selected .option-letter { background: var(--accent); color: white; }
+  .nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; }
+  .btn-next {
+    padding: 14px 32px; background: linear-gradient(135deg, #f97316, #dc2626);
+    border: none; border-radius: 10px; color: white; font-weight: 700; font-size: 16px;
+    cursor: pointer; transition: opacity 0.2s;
+  }
+  .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-back { padding: 14px 20px; background: transparent; border: 1px solid var(--border); border-radius: 10px; color: var(--text-dim); font-size: 15px; cursor: pointer; }
+
+  /* Result */
+  .result-section { display: none; }
+  .result-card { background: var(--bg-card); border: 2px solid; border-radius: 20px; padding: 36px; text-align: center; }
+
+  .score-ring { position: relative; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .score-ring canvas { display: block; }
+  .score-inner { position: absolute; text-align: center; }
+  .score-number { font-size: 56px; font-weight: 900; line-height: 1; }
+  .score-label { font-size: 13px; color: var(--text-dim); }
+
+  .tier-label { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .tier-name { font-size: 40px; font-weight: 900; margin-bottom: 8px; }
+  .tier-tagline { font-size: 16px; color: var(--text-dim); font-style: italic; margin-bottom: 24px; }
+  .result-desc { font-size: 16px; line-height: 1.75; margin-bottom: 28px; max-width: 640px; margin-left: auto; margin-right: auto; }
+
+  .achievements { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 28px; }
+  .achievement { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 14px; text-align: center; }
+  .ach-icon { font-size: 28px; margin-bottom: 6px; }
+  .ach-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .ach-desc { font-size: 11px; color: var(--text-dim); }
+
+  .action-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+  .btn-share { padding: 13px 24px; background: #000; border: 1px solid #333; border-radius: 10px; color: white; font-weight: 600; font-size: 14px; cursor: pointer; }
+  .btn-dl { padding: 13px 24px; background: var(--accent); border: none; border-radius: 10px; color: white; font-weight: 600; font-size: 14px; cursor: pointer; }
+  .btn-copy { padding: 13px 24px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-weight: 600; font-size: 14px; cursor: pointer; }
+  .btn-retry { padding: 13px 24px; background: transparent; border: 1px solid var(--border); border-radius: 10px; color: var(--text-dim); font-weight: 600; font-size: 14px; cursor: pointer; }
+
+  .badge-embed { margin: 20px 0; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: left; }
+  .badge-embed h4 { font-size: 13px; color: var(--text-dim); margin-bottom: 8px; }
+  .badge-embed code { font-family: monospace; font-size: 11px; color: #9ca3af; word-break: break-all; display: block; }
+
+  /* SEO */
+  .seo { margin-top: 56px; border-top: 1px solid var(--border); padding-top: 48px; }
+  .seo h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
+  .seo h3 { font-size: 20px; font-weight: 600; margin: 28px 0 12px; }
+  .seo p { color: var(--text-dim); margin-bottom: 16px; line-height: 1.75; font-size: 16px; }
+
+  canvas#c { display: none; }
+  @media (max-width: 600px) {
+    h1 { font-size: 30px; }
+    .tier-name { font-size: 28px; }
+    .quiz-section, .result-card { padding: 20px; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Your Tech Bro Score",
+  "description": "A personality quiz that calculates exactly how Silicon Valley you are, from Normie to Peak Tech Bro.",
+  "url": "https://tinytools-smoky.vercel.app/tech-bro-score/",
+  "applicationCategory": "EntertainmentApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">🤖 Viral Quiz · Free · No Signup</div>
+    <h1>Your Tech Bro Score</h1>
+    <p class="subtitle">12 brutally honest questions. One score. How Silicon Valley are you, really? Share the result — if you dare.</p>
+  </header>
+
+  <div id="quiz-section" class="quiz-section">
+    <div class="progress-text" id="prog-text">Question 1 of 12</div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:8.3%"></div></div>
+    <div class="question" id="q-text"></div>
+    <div class="options" id="opts"></div>
+    <div class="nav-row">
+      <button class="btn-back" id="btn-back" onclick="goBack()" style="visibility:hidden">← Back</button>
+      <button class="btn-next" id="btn-next" onclick="goNext()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <div id="result-section" class="result-section">
+    <div class="result-card" id="result-card">
+      <div class="score-ring">
+        <canvas id="ring" width="200" height="200"></canvas>
+        <div class="score-inner">
+          <div class="score-number" id="r-num"></div>
+          <div class="score-label">/ 100</div>
+        </div>
+      </div>
+      <div class="tier-label">Your Tech Bro Tier</div>
+      <div class="tier-name" id="r-tier"></div>
+      <div class="tier-tagline" id="r-tagline"></div>
+      <div class="result-desc" id="r-desc"></div>
+      <div class="achievements" id="r-ach"></div>
+      <div class="action-row">
+        <button class="btn-dl" onclick="downloadCard()">📥 Save Card</button>
+        <button class="btn-share" onclick="shareToX()">𝕏 Share Score</button>
+        <button class="btn-copy" id="copy-btn" onclick="copyLink()">🔗 Copy Link</button>
+        <button class="btn-retry" onclick="restartQuiz()">🔄 Retake</button>
+      </div>
+      <div class="badge-embed">
+        <h4>📎 Embed your score in your README or LinkedIn:</h4>
+        <code id="badge-code"></code>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="c" width="1200" height="630"></canvas>
+
+  <div class="seo">
+    <h2>The Tech Bro Score Quiz</h2>
+    <p>Silicon Valley has created its own distinct culture — a blend of hustle-culture evangelism, startup tribalism, founder worship, and a deeply held belief that technology alone can solve civilization's problems. But how far into this culture have you actually wandered? The Tech Bro Score quiz measures exactly that.</p>
+    <h3>What Is a Tech Bro?</h3>
+    <p>The term "tech bro" describes a specific archetype: someone who uses words like "disrupt" without irony, who wakes up at 5am for cold plunges, who considers their side project a "startup" from day one, who has strong opinions about which billionaire founder is "based," and who has read every Paul Graham essay at least twice. It's not a criticism — it's a taxonomy. Some people are proud of their score.</p>
+    <h3>The 7 Tiers</h3>
+    <p>Scores range from 0-100 across seven tiers: Normie (0-14), Tech Adjacent (15-29), Startup Curious (30-44), Disruptor Mindset (45-59), Serial Entrepreneur (60-74), Peak Silicon Valley (75-89), and the legendary YC Alum Energy tier (90-100). The questions cover LinkedIn behavior, Twitter/X follows, productivity optimization obsession, crypto opinions, founder worship, and daily routine habits.</p>
+    <h3>Why This Quiz Goes Viral</h3>
+    <p>Tech Bro Score results make incredible social content because they're simultaneously self-aware and self-incriminating. High scorers share them as badges of honor. Low scorers share them to prove their authenticity. Everyone has a coworker they immediately want to tag. The shareable card includes your exact score, tier, and a set of unlocked "achievements" that make for great caption material.</p>
+    <h3>Share Your Score</h3>
+    <p>Download your 1200×630 result card, share to X/Twitter with a prefilled viral hook, copy a deep link that reproduces your exact result for anyone who clicks, or embed a shields.io score badge in your GitHub README. The scoring is deterministic — same answers, same score, perfectly reproducible.</p>
+  </div>
+</div>
+
+<script>
+const QS = [
+  {
+    q: "You just had a mediocre idea in the shower. You...",
+    opts: [
+      { t: "Forget it by the time you're dry", bro: 0 },
+      { t: "Tell one friend and see if they're interested", bro: 2 },
+      { t: "Register a domain name and start a Notion workspace before breakfast", bro: 8 },
+      { t: "Tweet it, reply to it with 'building in public 🧵', and call it a startup", bro: 10 }
+    ]
+  },
+  {
+    q: "How do you describe your work schedule?",
+    opts: [
+      { t: "9-5 with hard stops. I have a life.", bro: 0 },
+      { t: "A bit flexible — I work evenings sometimes when needed", bro: 2 },
+      { t: "I don't count hours. I count output. I probably work 60+.", bro: 7 },
+      { t: "I'm in founder mode. Sleep is a performance variable I'm optimizing.", bro: 10 }
+    ]
+  },
+  {
+    q: "Morning routine check. Which is closest to yours?",
+    opts: [
+      { t: "Alarm, coffee, emails. Normal stuff.", bro: 0 },
+      { t: "Early gym, maybe some journaling", bro: 3 },
+      { t: "5am wake, ice bath, gratitude journal, 45-min workout, no-phone block", bro: 8 },
+      { t: "4:30am. Cold plunge. Sauna. Fasted cardio. Whoop data review. Red light therapy. Ship.", bro: 10 }
+    ]
+  },
+  {
+    q: "Your Twitter/X feed is mostly...",
+    opts: [
+      { t: "I barely use Twitter/X", bro: 0 },
+      { t: "News, memes, friends. Normal stuff.", bro: 1 },
+      { t: "Founders, VCs, startup takes, and the occasional productivity thread", bro: 6 },
+      { t: "Every major tech founder, VC fund, and at least one podcast host who says 'let's be real'", bro: 10 }
+    ]
+  },
+  {
+    q: "A friend describes their job. You immediately...",
+    opts: [
+      { t: "Listen like a normal person and ask about their day", bro: 0 },
+      { t: "Ask what tech stack they use if it comes up naturally", bro: 2 },
+      { t: "Assess the market size and tell them they should 'productize' their skills", bro: 8 },
+      { t: "Tell them their job has a 10x opportunity hidden in it and offer to connect them with your VC friend", bro: 10 }
+    ]
+  },
+  {
+    q: "You mention your project at a party. Someone asks 'what does it do?'. You say...",
+    opts: [
+      { t: "Explain it in plain English in one sentence", bro: 0 },
+      { t: "Give a clear demo in under 2 minutes", bro: 2 },
+      { t: "\"It's basically Airbnb but for [category] — massive TAM, already got 12 beta users\"", bro: 8 },
+      { t: "\"We're building the infrastructure layer for the intelligence economy at the intersection of AI and vertical SaaS\"", bro: 10 }
+    ]
+  },
+  {
+    q: "Your honest opinion on Paul Graham's essays:",
+    opts: [
+      { t: "What are those?", bro: 0 },
+      { t: "Read a few, some good points", bro: 2 },
+      { t: "Core curriculum. I've read them all at least once.", bro: 7 },
+      { t: "Annotated. Shared. Quoted in meetings. The man is a prophet.", bro: 10 }
+    ]
+  },
+  {
+    q: "You have a strong opinion about...",
+    opts: [
+      { t: "Normal things. Politics, sports, food, family.", bro: 0 },
+      { t: "Which frameworks are overrated and which are underrated", bro: 3 },
+      { t: "Elon Musk's management style (specifically, a nuanced but mostly positive take)", bro: 7 },
+      { t: "The 2023 Sam Altman firing, why SBF wasn't that bad, and whether remote work killed company culture", bro: 10 }
+    ]
+  },
+  {
+    q: "Your relationship with productivity tools:",
+    opts: [
+      { t: "Calendar and maybe one notes app", bro: 0 },
+      { t: "Notion for work, that's about it", bro: 3 },
+      { t: "Notion + Linear + Obsidian + Raycast + a custom weekly review template", bro: 7 },
+      { t: "A second-brain system I built in Notion that took longer to build than any actual project", bro: 10 }
+    ]
+  },
+  {
+    q: "What's your read on crypto?",
+    opts: [
+      { t: "Skeptical or indifferent. It's fine.", bro: 0 },
+      { t: "Some use cases are interesting but mostly speculative", bro: 2 },
+      { t: "Wrote off the speculation but believe deeply in decentralized infrastructure", bro: 6 },
+      { t: "The scams tainted the real thesis. Web3 is still the future. I will die on this hill.", bro: 10 }
+    ]
+  },
+  {
+    q: "How many side projects are you 'building right now'?",
+    opts: [
+      { t: "Zero. I have enough going on.", bro: 0 },
+      { t: "One that I actually work on regularly", bro: 2 },
+      { t: "Two or three in various stages of 'almost launched'", bro: 6 },
+      { t: "Five, plus a newsletter, plus I'm an advisor on two others", bro: 10 }
+    ]
+  },
+  {
+    q: "Last time you used the word 'moat' in casual conversation:",
+    opts: [
+      { t: "Never. That word is for castles.", bro: 0 },
+      { t: "In a work meeting once, technically appropriate", bro: 3 },
+      { t: "Describing your own startup's competitive advantage to a friend", bro: 7 },
+      { t: "Explaining to your family at Thanksgiving why your app has a strong moat", bro: 10 }
+    ]
+  }
+];
+
+const TIERS = [
+  { min:0,  max:14,  name:"The Normie",          color:"#10b981", emoji:"🙂",
+    tagline:"Technology is just a tool you use. Not an identity.",
+    desc:"Refreshingly normal. You use computers and have probably heard of ChatGPT, but you don't define yourself by the startup ecosystem. You have hobbies that don't involve building side projects. Your morning routine involves being awake. You are the most mentally stable person in any Silicon Valley adjacent room.",
+    ach:[
+      {icon:"🏖️",name:"Skill Issue: Work-Life Balance",desc:"Actually has one"},
+      {icon:"😌",name:"Moat-Free Zone",desc:"Has never said 'moat' unironically"},
+      {icon:"📱",name:"Chronically Offline",desc:"Doesn't post founder takes"},
+      {icon:"🧠",name:"Unoptimized Brain",desc:"Hasn't tried biohacking yet"}
+    ]
+  },
+  { min:15, max:29,  name:"Tech Adjacent",        color:"#3b82f6", emoji:"👨‍💻",
+    tagline:"You work in tech. You don't worship it. Yet.",
+    desc:"You're in the ecosystem but maintain a healthy distance from the culture. You use Notion for actual work, have opinions on frontend frameworks, and follow maybe three founders on Twitter. You understand the memes but don't live them. Healthy. Mostly.",
+    ach:[
+      {icon:"💻",name:"Ecosystem Aware",desc:"Knows what a11y means"},
+      {icon:"🎤",name:"Techie Talker",desc:"Can explain LLMs at dinner"},
+      {icon:"🐦",name:"Selective Follower",desc:"Follows < 5 startup people on X"},
+      {icon:"📋",name:"Notion User",desc:"But only for legitimate reasons"}
+    ]
+  },
+  { min:30, max:44,  name:"Startup Curious",      color:"#a855f7", emoji:"🚀",
+    tagline:"The startup Kool-Aid is within reach. You've sipped.",
+    desc:"You've read a few essays. You have a side project that's been '80% done' for 9 months. You use the word 'ship' as a verb in normal conversation. You're not fully in, but the algorithms know. The podcast recommendations are getting very specific. You're watching the startup world from close range.",
+    ach:[
+      {icon:"🧃",name:"Kool-Aid Sipper",desc:"Has read 2+ PG essays"},
+      {icon:"📦",name:"Serial Shipper (Theoretically)",desc:"3+ side projects, 0 launched"},
+      {icon:"🎙️",name:"Podcast Curious",desc:"Has googled Indie Hackers"},
+      {icon:"🗓️",name:"Notion Heavy",desc:"Uses it for personal tasks too"}
+    ]
+  },
+  { min:45, max:59,  name:"Disruptor Mindset",    color:"#f59e0b", emoji:"⚡",
+    tagline:"You've said 'disrupt' unironically. More than once.",
+    desc:"You are fully in the culture now. You talk about TAM at dinner, have strong opinions about which VCs are actually 'founder-friendly', and have told at least one friend they should 'productize their skills'. You use 'founder mode' as a compliment. You are mid-transformation. Your group chat is watching.",
+    ach:[
+      {icon:"💥",name:"Disrupt Everything",desc:"Uses the word regularly"},
+      {icon:"💰",name:"TAM Knower",desc:"Can estimate any market size"},
+      {icon:"🎯",name:"10x Thinker",desc:"10x as adjective, not math"},
+      {icon:"🤝",name:"Connector",desc:"Offers intros to VCs unprompted"}
+    ]
+  },
+  { min:60, max:74,  name:"Serial Entrepreneur",  color:"#f97316", emoji:"🔥",
+    tagline:"You've pivoted 3 times before coffee. Twice was intentional.",
+    desc:"Multiple side projects, a newsletter, at least one advisory role, and the kind of weekly review system that would concern a therapist. You live-tweet your builds. Your LinkedIn says 'founder' even though the company has zero revenue. You genuinely believe you're one good idea away from the outcome you deserve. The culture has you.",
+    ach:[
+      {icon:"🔄",name:"Professional Pivoter",desc:"Pivoted before it was a problem"},
+      {icon:"📣",name:"Building In Public",desc:"Tweets the journey, always"},
+      {icon:"🧪",name:"Hypothesis Machine",desc:"Everything is an experiment"},
+      {icon:"🗺️",name:"Roadmap Haver",desc:"For all 5 simultaneous projects"}
+    ]
+  },
+  { min:75, max:89,  name:"Peak Silicon Valley",  color:"#ef4444", emoji:"🌉",
+    tagline:"You are the problem they warned us about in think pieces.",
+    desc:"4:30am cold plunges. Whoop data dashboards. Second-brain Notion systems that cost more to build than they'll ever save. You have opinions on every major tech founder's management philosophy, a nuanced but mostly positive take on the Sam Altman firing, and at least one tweet about 'resting is for people without conviction'. The memes are you now.",
+    ach:[
+      {icon:"🧊",name:"Cold Plunge Certified",desc:"4:30am protocol, every day"},
+      {icon:"🧠",name:"Second Brain Owner",desc:"Built it. Never uses it."},
+      {icon:"📊",name:"Whoop Data Analyst",desc:"HRV optimization in progress"},
+      {icon:"🏆",name:"Founder Mode: Always",desc:"Sleep is a variable to optimize"}
+    ]
+  },
+  { min:90, max:100, name:"YC Alum Energy",       color:"#dc2626", emoji:"🏆",
+    tagline:"You ARE the tech bro meme. Congratulations / sorry.",
+    desc:"You scored maximum. You have argued that Thanksgiving dinner has a bad product-market fit. You have used the word 'leverage' about a personal relationship. Your cold plunge has a Notion integration. Your alarm says 'DAY 1' every morning. You are simultaneously the most impressive and most exhausting person in any room. Please take a walk in nature. No phones.",
+    ach:[
+      {icon:"🎓",name:"YC Alum Energy",desc:"Embodies the entire essay"},
+      {icon:"🧬",name:"Biohacker Supreme",desc:"Optimized every variable"},
+      {icon:"⚡",name:"Default Alive",desc:"Ramen profitable mentality"},
+      {icon:"🌍",name:"Dent-the-Universe Guy",desc:"Has a 10-year vision deck"}
+    ]
+  }
+];
+
+let answers = [];
+let cur = 0;
+let sel = null;
+
+function initQuiz() {
+  answers=[]; cur=0; sel=null;
+  document.getElementById('quiz-section').style.display='block';
+  document.getElementById('result-section').style.display='none';
+  renderQ(0);
+}
+
+function renderQ(i) {
+  const q=QS[i];
+  document.getElementById('q-text').textContent=`${i+1}. ${q.q}`;
+  document.getElementById('prog-text').textContent=`Question ${i+1} of ${QS.length}`;
+  document.getElementById('prog-fill').style.width=`${((i+1)/QS.length)*100}%`;
+  const letters=['A','B','C','D'];
+  document.getElementById('opts').innerHTML=q.opts.map((o,j)=>
+    `<button class="option${answers[i]===j?' selected':''}" onclick="pick(${j})">
+      <span class="option-letter">${letters[j]}</span><span>${o.t}</span>
+    </button>`
+  ).join('');
+  sel=answers[i]!==undefined?answers[i]:null;
+  document.getElementById('btn-next').disabled=sel===null;
+  document.getElementById('btn-back').style.visibility=i>0?'visible':'hidden';
+  document.getElementById('btn-next').textContent=i===QS.length-1?'Calculate My Score →':'Next →';
+}
+
+function pick(j) {
+  sel=j;
+  document.querySelectorAll('.option').forEach((el,k)=>el.classList.toggle('selected',k===j));
+  document.getElementById('btn-next').disabled=false;
+}
+
+function goNext() {
+  if(sel===null)return;
+  answers[cur]=sel;
+  if(cur<QS.length-1){cur++;renderQ(cur);}
+  else showResult();
+}
+
+function goBack() {
+  if(cur>0){cur--;sel=answers[cur];renderQ(cur);}
+}
+
+function calcScore(ans) {
+  const total = ans.reduce((sum,ai,qi)=>sum+QS[qi].opts[ai].bro,0);
+  const max = QS.reduce((s,q)=>s+Math.max(...q.opts.map(o=>o.bro)),0);
+  return Math.round((total/max)*100);
+}
+
+function getTier(score) {
+  return TIERS.find(t=>score>=t.min&&score<=t.max)||TIERS[0];
+}
+
+function showResult(fromHash) {
+  const score=calcScore(answers);
+  const T=getTier(score);
+  document.getElementById('quiz-section').style.display='none';
+  const rs=document.getElementById('result-section');
+  rs.style.display='block'; rs.style.opacity='0';
+
+  document.getElementById('result-card').style.borderColor=T.color;
+  document.getElementById('r-num').textContent=score;
+  document.getElementById('r-num').style.color=T.color;
+  document.getElementById('r-tier').textContent=`${T.emoji} ${T.name}`;
+  document.getElementById('r-tier').style.color=T.color;
+  document.getElementById('r-tagline').textContent=T.tagline;
+  document.getElementById('r-desc').textContent=T.desc;
+  document.getElementById('r-ach').innerHTML=T.ach.map(a=>
+    `<div class="achievement">
+      <div class="ach-icon">${a.icon}</div>
+      <div class="ach-name">${a.name}</div>
+      <div class="ach-desc">${a.desc}</div>
+    </div>`
+  ).join('');
+
+  // Score ring
+  drawRing(score, T.color);
+
+  const deepLink=`${location.origin}${location.pathname}#${answers.join('')}`;
+  const badgeColor=T.color.slice(1);
+  const shield=`https://img.shields.io/badge/Tech%20Bro%20Score-${score}%25%20${encodeURIComponent(T.name)}-${badgeColor}?style=for-the-badge`;
+  document.getElementById('badge-code').textContent=`[![Tech Bro Score](${shield})](${deepLink})`;
+
+  if(!fromHash) history.replaceState(null,'','#'+answers.join(''));
+  setTimeout(()=>{rs.style.transition='opacity 0.4s';rs.style.opacity='1';},50);
+  drawCanvas(score, T);
+}
+
+function drawRing(score, color) {
+  const cv=document.getElementById('ring');
+  const ctx=cv.getContext('2d');
+  cv.width=200; cv.height=200;
+  const cx=100,cy=100,r=80,lw=16;
+  ctx.clearRect(0,0,200,200);
+  ctx.beginPath(); ctx.arc(cx,cy,r,-Math.PI/2,1.5*Math.PI);
+  ctx.strokeStyle='#1d1d2a'; ctx.lineWidth=lw; ctx.lineCap='round'; ctx.stroke();
+  const end=-Math.PI/2 + (2*Math.PI*(score/100));
+  ctx.beginPath(); ctx.arc(cx,cy,r,-Math.PI/2,end);
+  ctx.strokeStyle=color; ctx.lineWidth=lw; ctx.lineCap='round'; ctx.stroke();
+}
+
+function drawCanvas(score, T) {
+  const cv=document.getElementById('c');
+  const ctx=cv.getContext('2d');
+  cv.width=1200; cv.height=630;
+  ctx.fillStyle='#0a0a0f'; ctx.fillRect(0,0,1200,630);
+  const g=ctx.createRadialGradient(200,0,0,200,0,700);
+  g.addColorStop(0,T.color+'22'); g.addColorStop(1,'transparent');
+  ctx.fillStyle=g; ctx.fillRect(0,0,1200,630);
+
+  ctx.font='500 18px Arial,sans-serif'; ctx.fillStyle='#4b5563';
+  ctx.fillText('tinytools-smoky.vercel.app/tech-bro-score',60,50);
+
+  ctx.font='700 24px Arial,sans-serif'; ctx.fillStyle='#6b7280';
+  ctx.fillText('MY TECH BRO SCORE',60,110);
+
+  ctx.font='900 140px Arial,sans-serif'; ctx.fillStyle=T.color;
+  ctx.fillText(score,60,260);
+
+  ctx.font='700 24px Arial,sans-serif'; ctx.fillStyle='#9ca3af';
+  ctx.fillText('/ 100',60+ctx.measureText(String(score)).width+20+60,230);
+
+  ctx.font='900 46px Arial,sans-serif'; ctx.fillStyle=T.color;
+  ctx.fillText(`${T.emoji} ${T.name}`,60,320);
+
+  ctx.font='400 26px Arial,sans-serif'; ctx.fillStyle='#d1d5db';
+  const tagWords=T.tagline; let line='', y=368, lines=[];
+  tagWords.split(' ').forEach(w=>{
+    const test=line?line+' '+w:w;
+    if(ctx.measureText(test).width>900){lines.push(line);line=w;}else line=test;
+  }); if(line)lines.push(line);
+  lines.forEach(l=>{ctx.fillText(l,60,y);y+=38;});
+
+  const achs=T.ach.slice(0,3);
+  let x=60;
+  ctx.font='500 17px Arial,sans-serif';
+  achs.forEach(a=>{
+    const label=`${a.icon} ${a.name}`;
+    const w=ctx.measureText(label).width+32;
+    ctx.fillStyle='#1f2937'; rr(ctx,x,y+20,w,42,21);
+    ctx.fillStyle='#9ca3af'; ctx.fillText(label,x+16,y+47);
+    x+=w+10;
+  });
+
+  ctx.font='500 19px Arial,sans-serif'; ctx.fillStyle='#374151';
+  ctx.fillText('Find yours → tinytools-smoky.vercel.app',60,590);
+
+  ctx.font='130px Arial'; ctx.globalAlpha=0.05; ctx.fillText(T.emoji,1000,420); ctx.globalAlpha=1;
+}
+
+function rr(ctx,x,y,w,h,r){
+  ctx.beginPath();ctx.moveTo(x+r,y);
+  ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+  ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+  ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);
+  ctx.closePath();ctx.fill();
+}
+
+function downloadCard() {
+  const a=document.createElement('a');
+  a.download='my-tech-bro-score.png';
+  a.href=document.getElementById('c').toDataURL('image/png'); a.click();
+}
+
+function shareToX() {
+  const score=calcScore(answers);
+  const T=getTier(score);
+  const link=`${location.origin}${location.pathname}#${answers.join('')}`;
+  const t=`I just took the Tech Bro Score quiz and got ${score}/100 ${T.emoji}\n\nTier: ${T.name}\n"${T.tagline}"\n\nHow Silicon Valley are you? ${link}`;
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(t)}`, '_blank');
+}
+
+function copyLink() {
+  const link=`${location.origin}${location.pathname}#${answers.join('')}`;
+  navigator.clipboard.writeText(link).then(()=>{
+    const b=document.getElementById('copy-btn');
+    b.textContent='✅ Copied!';
+    setTimeout(()=>b.textContent='🔗 Copy Link',2000);
+  });
+}
+
+function restartQuiz() {
+  history.replaceState(null,'',location.pathname); initQuiz();
+}
+
+window.addEventListener('load',()=>{
+  const hash=location.hash.slice(1);
+  // each answer is 0-3, 12 questions = 12 digits
+  if(/^[0-3]{12}$/.test(hash)){
+    answers=hash.split('').map(Number); showResult(true);
+  } else { initQuiz(); }
+});
+</script>
+</body>
+</html>
