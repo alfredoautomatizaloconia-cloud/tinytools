@@ -300,3 +300,21 @@ platform-ready status) make the share tweet feel earned and data-driven.
 - **HTTP status:** 200 ✅
 - **Total /vs/ pages:** 56
 - **Note:** All 25 original competitors from the task rotation list were already shipped. Extended with Windsurf as the next logical AI coding tool comparison (competes with Cursor, GitHub Copilot).
+---
+
+## 2026-06-03 — Viral Retrofit: vs/cursor-pricing/
+
+- **Tool retrofitted:** `vs/cursor-pricing`
+- **Commit:** 43674d9be12b09bfa008d48c6a6597ceed656fa4
+- **URL:** https://tinytools-smoky.vercel.app/vs/cursor-pricing/
+- **Viral mechanics added:**
+  1. ✅ 3-question interactive quiz ("Is Cursor Pro worth it for you?")
+  2. ✅ Twitter/X share — prefills tweet with verdict + 2 key reasons + deep-link
+  3. ✅ Copy-link button — URL hash encodes all 3 quiz answers for shareable deep-links
+  4. ✅ Embeddable shields.io badge — Cursor Pro or TinyTools wins, per user answers
+  5. ✅ Canvas PNG download — 1200×630 verdict card with TinyTools branding
+  6. ✅ Auto-load from URL hash — deep-links restore full quiz state and show result
+- **Visitor count (abacus root):** 1
+- **Audit:** 47 main tools all complete · 53/56 vs/ pages still missing viral mechanics
+- **Selection rationale:** `vs/cursor-pricing` chosen as highest-intent AI-era comparison page — "is Cursor worth it?" captures decision-stage developers who are most likely to share a personalized verdict card
+
