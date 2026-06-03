@@ -318,3 +318,11 @@ platform-ready status) make the share tweet feel earned and data-driven.
 - **Audit:** 47 main tools all complete · 53/56 vs/ pages still missing viral mechanics
 - **Selection rationale:** `vs/cursor-pricing` chosen as highest-intent AI-era comparison page — "is Cursor worth it?" captures decision-stage developers who are most likely to share a personalized verdict card
 
+
+## 2026-06-03 — vs/copy-ai/
+- **Page:** https://tinytools-smoky.vercel.app/vs/copy-ai/
+- **Competitor:** Copy.ai (AI go-to-market / copywriting platform)
+- **HTTP status:** 200 ✅
+- **Total /vs/ pages:** 57
+- **Note:** All 25 original competitors from the task rotation list were already shipped (Windsurf added yesterday as #56). Extended rotation with Copy.ai — competes directly with TinyTools' prompt enhancer, text humanizer, cover letter generator, and LLM prompt optimizer.
+---
