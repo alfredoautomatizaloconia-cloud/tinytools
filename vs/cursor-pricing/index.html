@@ -20,7 +20,7 @@
   "author": { "@type": "Organization", "name": "TinyTools" },
   "publisher": { "@type": "Organization", "name": "TinyTools", "url": "https://tinytools-smoky.vercel.app/" },
   "datePublished": "2026-05-30",
-  "dateModified": "2026-05-30",
+  "dateModified": "2026-06-03",
   "mainEntityOfPage": "https://tinytools-smoky.vercel.app/vs/cursor-pricing/"
 }
 </script>
@@ -96,6 +96,31 @@
   }
   .cta.alt { background: transparent; border: 1px solid var(--border); color: var(--text) !important; }
   footer { color: var(--text-dim); font-size: 13px; border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; }
+
+  /* ── Viral quiz ──────────────────────────────── */
+  .quiz-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin: 40px 0 16px; }
+  .quiz-wrap h3 { font-size: 18px; font-weight: 700; margin: 0 0 20px; color: var(--text); }
+  .quiz-q { margin-bottom: 20px; }
+  .quiz-q p { font-size: 13px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+  .quiz-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .quiz-opt { padding: 8px 14px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 14px; color: var(--text); transition: all .15s ease; }
+  .quiz-opt:hover { border-color: var(--accent); }
+  .quiz-opt.picked { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  #quizSubmit { display: none; width: 100%; padding: 14px; background: var(--accent); border: none; border-radius: 10px; color: #fff; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 10px; transition: filter .15s ease; }
+  #quizSubmit:hover { filter: brightness(1.1); }
+  .result-card { display: none; background: var(--bg-elevated); border: 2px solid var(--accent); border-radius: 16px; padding: 24px; margin-top: 16px; }
+  .result-card.show { display: block; }
+  .result-winner { font-size: 28px; font-weight: 800; color: var(--accent); margin-bottom: 12px; }
+  .result-reasons { list-style: none; margin: 0 0 20px; padding: 0; }
+  .result-reasons li { padding: 6px 0 6px 22px; position: relative; font-size: 14px; color: var(--text); }
+  .result-reasons li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+  .action { display: inline-block; padding: 10px 18px; border-radius: 8px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text); font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; margin: 4px 4px 4px 0; transition: border-color .15s ease; }
+  .action:hover { border-color: var(--accent); }
+  .action.primary { background: #1d9bf0; border-color: #1d9bf0; color: #fff; }
+  .embed-section { margin-top: 16px; padding: 14px; background: var(--bg-card); border-radius: 10px; }
+  .embed-section .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; letter-spacing: 0.05em; }
+  .embed-section pre { font-family: monospace; font-size: 11px; background: #000; padding: 10px; border-radius: 6px; color: #c4b5fd; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+  .embed-section button { margin-top: 6px; padding: 5px 10px; background: var(--accent); border: none; border-radius: 6px; color: #fff; font-size: 11px; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -106,7 +131,7 @@
 </div>
 
 <h1>TinyTools vs Cursor Pricing (2026)</h1>
-<div class="meta">Updated May 30, 2026 &middot; ~6 min read &middot; Honest comparison, not a takedown</div>
+<div class="meta">Updated June 3, 2026 &middot; ~6 min read &middot; Honest comparison, not a takedown</div>
 
 <div class="summary">
   <strong>The 30-second answer.</strong> Cursor is a full AI-native code editor — it replaces VS Code and puts GPT-4 and Claude right inside your IDE, with tab completion, inline chat, multi-file editing (Composer), and an agent that can read and write across your entire project. If you code seriously and daily, the $20/month Pro plan is one of the better values in developer tooling. TinyTools is a set of free, no-signup browser utilities — not an IDE. The relevant tools here are the <a href="/ai-coding-assistant-cost-calc/">AI Coding Assistant Cost Calculator</a> (compare Cursor vs Copilot vs Codeium costs before you commit), the <a href="/ai-spend-calculator/">AI Spend Calculator</a> (total up all your AI subscriptions), and the <a href="/mcp-config-generator/">MCP Config Generator</a> (build Cursor-compatible MCP configs without writing JSON by hand). If you're deciding whether to pay for Cursor Pro, TinyTools helps you make that decision — it doesn't replace Cursor itself.
@@ -213,7 +238,62 @@
 
 <p>If you're on the fence about Cursor Pro, spend five minutes with the <a href="/ai-coding-assistant-cost-calc/">AI Coding Assistant Cost Calculator</a> first. Then, if cost isn't the issue, just try the Cursor Hobby tier for a week and see whether the 50-request limit becomes a daily frustration. If it does, that's the clearest possible signal that Pro is worth it.</p>
 
-<p>
+<!-- ═══════════════ VIRAL QUIZ ═══════════════ -->
+<div class="quiz-wrap" id="quizWrap">
+  <h3>🤔 Is Cursor Pro worth it for you?</h3>
+
+  <div class="quiz-q">
+    <p>How often do you write code?</p>
+    <div class="quiz-opts" data-q="q1">
+      <button class="quiz-opt" data-v="daily">Daily — it's my job</button>
+      <button class="quiz-opt" data-v="weekly">Few times a week</button>
+      <button class="quiz-opt" data-v="occasionally">Occasionally</button>
+      <button class="quiz-opt" data-v="rarely">Rarely / just evaluating</button>
+    </div>
+  </div>
+
+  <div class="quiz-q">
+    <p>What's your budget for AI dev tools?</p>
+    <div class="quiz-opts" data-q="q2">
+      <button class="quiz-opt" data-v="zero">$0 — free only</button>
+      <button class="quiz-opt" data-v="ten">Up to $10/mo</button>
+      <button class="quiz-opt" data-v="twenty">Up to $20/mo</button>
+      <button class="quiz-opt" data-v="flexible">Flexible if it pays off</button>
+    </div>
+  </div>
+
+  <div class="quiz-q">
+    <p>What's your main coding context?</p>
+    <div class="quiz-opts" data-q="q3">
+      <button class="quiz-opt" data-v="large">Large multi-file projects</button>
+      <button class="quiz-opt" data-v="scripts">One-off scripts / small files</button>
+      <button class="quiz-opt" data-v="mixed">Both equally</button>
+    </div>
+  </div>
+
+  <button id="quizSubmit">Get my verdict &rarr;</button>
+</div>
+
+<div class="result-card" id="resultCard">
+  <div class="result-winner" id="resultWinner"></div>
+  <ul class="result-reasons" id="resultReasons"></ul>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+    <a class="action primary" id="shareTwitter" href="#" target="_blank" rel="noopener">🐦 Share verdict</a>
+    <button class="action" id="copyLink">🔗 Copy link</button>
+    <button class="action" id="downloadCard">💾 Download card</button>
+  </div>
+  <div class="embed-section">
+    <div class="label">Embed badge in your README or portfolio</div>
+    <pre id="embedCode"></pre>
+    <button id="copyEmbed">Copy badge code</button>
+  </div>
+  <p style="margin-top:16px;font-size:13px;color:var(--text-dim);">The badge updates in real-time. Drop it in your portfolio or GitHub README — every visitor who clicks it gets their own verdict and the chain continues.</p>
+</div>
+
+<canvas id="resultCanvas" width="1200" height="630" style="display:none;"></canvas>
+<!-- ═══════════════ END VIRAL QUIZ ═══════════════ -->
+
+<p style="margin-top:32px;">
   <a class="cta" href="/ai-coding-assistant-cost-calc/">Compare AI Coding Tool Costs (free)</a>
   <a class="cta" href="/mcp-config-generator/">Generate MCP Config &rarr;</a>
   <a class="cta alt" href="https://cursor.com/pricing" rel="nofollow noopener" target="_blank">See Cursor plans</a>
@@ -225,5 +305,170 @@
 </footer>
 
 </div>
+<script>
+// ══ Viral Quiz — TinyTools vs Cursor ══
+const answers = {};
+const TOTAL_Q = 3;
+
+document.querySelectorAll('.quiz-opts').forEach(function(group) {
+  group.querySelectorAll('.quiz-opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      group.querySelectorAll('.quiz-opt').forEach(function(b) { b.classList.remove('picked'); });
+      btn.classList.add('picked');
+      answers[group.dataset.q] = btn.dataset.v;
+      if (Object.keys(answers).length === TOTAL_Q) {
+        document.getElementById('quizSubmit').style.display = 'block';
+      }
+    });
+  });
+});
+
+document.getElementById('quizSubmit').addEventListener('click', showResult);
+
+// Auto-load from URL hash for deep-linkable shares
+if (location.hash.length > 3 && location.hash.startsWith('#q=')) {
+  try {
+    var parts = location.hash.slice(3).split(',');
+    var qs = ['q1','q2','q3'];
+    qs.forEach(function(q, i) {
+      if (parts[i]) {
+        answers[q] = parts[i];
+        var group = document.querySelector('.quiz-opts[data-q="' + q + '"]');
+        if (group) {
+          var btn = group.querySelector('[data-v="' + parts[i] + '"]');
+          if (btn) btn.classList.add('picked');
+        }
+      }
+    });
+    if (Object.keys(answers).length === TOTAL_Q) showResult();
+  } catch(e) {}
+}
+
+function computeVerdict(a) {
+  var cursorWins = [];
+  var tinyWins = [];
+
+  // Q1: coding frequency
+  if (a.q1 === 'daily') {
+    cursorWins.push('Daily coders see 10–30% productivity gains from AI completion that compound across the week');
+    cursorWins.push('Composer & Agent mode pay for themselves in one saved refactor session');
+  } else if (a.q1 === 'weekly') {
+    cursorWins.push('Weekly coders benefit from Cursor\'s codebase-aware chat and Composer');
+    tinyWins.push('The Cursor Hobby free tier may cover weekly usage — worth testing before paying');
+  } else {
+    tinyWins.push('Occasional coders rarely justify $20/month for an IDE subscription');
+    tinyWins.push('Free tools (Codeium free tier, Cursor Hobby) are proportionate to occasional use');
+  }
+
+  // Q2: budget
+  if (a.q2 === 'zero') {
+    tinyWins.push('$0 budget: use Cursor Hobby (free) + TinyTools to optimize prompts and MCP configs');
+    tinyWins.push('AI Coding Assistant Cost Calculator shows all genuinely free options side by side');
+  } else if (a.q2 === 'ten') {
+    tinyWins.push('At $10/mo, GitHub Copilot Individual is a better value fit than Cursor Pro at $20');
+    tinyWins.push('Use the AI Coding Assistant Cost Calculator to compare at your exact budget');
+  } else {
+    cursorWins.push('At $20/mo, Cursor Pro is competitively priced vs the whole AI IDE category');
+  }
+
+  // Q3: codebase context
+  if (a.q3 === 'large') {
+    cursorWins.push('Multi-file codebase indexing is where Cursor\'s advantage is clearest and most measurable');
+    cursorWins.push('Composer can refactor across your entire repo simultaneously — no browser tool can match that');
+  } else if (a.q3 === 'scripts') {
+    tinyWins.push('Single-file scripts don\'t need Cursor\'s codebase-indexing overhead');
+    tinyWins.push('Any AI chat (including free tiers) handles one-off scripts well at $0/month');
+  } else {
+    cursorWins.push('Mixed codebases still benefit from Cursor\'s Composer on the multi-file parts');
+  }
+
+  var cursorScore = cursorWins.length;
+  var tinyScore = tinyWins.length;
+  var winner = cursorScore >= tinyScore ? 'Cursor Pro' : 'TinyTools';
+  var reasons = winner === 'Cursor Pro' ? cursorWins : tinyWins;
+  var shieldLabel = winner === 'Cursor Pro' ? 'For_me%3A_Cursor_wins' : 'For_me%3A_TinyTools_wins';
+  var shieldColor = winner === 'Cursor Pro' ? 'f59e0b' : '8b5cf6';
+
+  return { winner: winner, reasons: reasons, shieldLabel: shieldLabel, shieldColor: shieldColor };
+}
+
+function showResult() {
+  var v = computeVerdict(answers);
+  location.hash = '#q=' + answers.q1 + ',' + answers.q2 + ',' + answers.q3;
+
+  document.getElementById('resultWinner').textContent = v.winner + ' wins for you';
+  document.getElementById('resultReasons').innerHTML = v.reasons.map(function(r) { return '<li>' + r + '</li>'; }).join('');
+
+  var pageUrl = 'https://tinytools-smoky.vercel.app/vs/cursor-pricing/' + location.hash;
+  var tweetText = 'I checked if Cursor Pro is worth it for my use case — ' + v.winner + ' wins.\n\nKey reasons:\n' + v.reasons.slice(0,2).map(function(r) { return '• ' + r; }).join('\n') + '\n\nGet your verdict →';
+
+  document.getElementById('shareTwitter').href =
+    'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweetText) + '&url=' + encodeURIComponent(pageUrl);
+
+  document.getElementById('copyLink').onclick = function() {
+    navigator.clipboard.writeText(pageUrl);
+    var b = document.getElementById('copyLink');
+    b.textContent = '✓ Copied!';
+    setTimeout(function() { b.textContent = '🔗 Copy link'; }, 1500);
+  };
+
+  var embedCode = '<a href="' + pageUrl + '" target="_blank">\n  <img src="https://img.shields.io/badge/' + v.shieldLabel + '-' + v.shieldColor + '?style=for-the-badge" alt="' + v.winner + ' wins for me">\n</a>';
+  document.getElementById('embedCode').textContent = embedCode;
+  document.getElementById('copyEmbed').onclick = function() {
+    navigator.clipboard.writeText(embedCode);
+    var b = document.getElementById('copyEmbed');
+    b.textContent = '✓ Copied';
+    setTimeout(function() { b.textContent = 'Copy badge code'; }, 1500);
+  };
+
+  // Draw 1200×630 verdict card via canvas
+  var canvas = document.getElementById('resultCanvas');
+  var ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#0a0a0f';
+  ctx.fillRect(0, 0, 1200, 630);
+
+  var grd = ctx.createRadialGradient(300, 0, 50, 300, 0, 600);
+  grd.addColorStop(0, v.winner === 'Cursor Pro' ? 'rgba(245,158,11,0.25)' : 'rgba(139,92,246,0.25)');
+  grd.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0, 0, 1200, 630);
+
+  ctx.textAlign = 'left';
+
+  ctx.font = '500 22px -apple-system,sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.fillText('TinyTools vs Cursor Pricing — Your Verdict', 80, 90);
+
+  ctx.font = '900 72px -apple-system,sans-serif';
+  ctx.fillStyle = v.winner === 'Cursor Pro' ? '#fcd34d' : '#c4b5fd';
+  ctx.fillText(v.winner + ' wins', 80, 190);
+
+  ctx.font = '400 26px -apple-system,sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+  ctx.fillText('for your use case', 80, 238);
+
+  ctx.font = '500 21px -apple-system,sans-serif';
+  ctx.fillStyle = v.winner === 'Cursor Pro' ? '#fbbf24' : '#a78bfa';
+  v.reasons.slice(0,3).forEach(function(r, i) {
+    var short = r.length > 65 ? r.slice(0, 62) + '…' : r;
+    ctx.fillText('✓  ' + short, 80, 320 + i * 52);
+  });
+
+  ctx.font = '600 20px -apple-system,sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.textAlign = 'right';
+  ctx.fillText('tinytools-smoky.vercel.app/vs/cursor-pricing/', 1120, 590);
+
+  document.getElementById('downloadCard').onclick = function() {
+    var a = document.createElement('a');
+    a.download = 'tinytools-vs-cursor.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  };
+
+  document.getElementById('resultCard').classList.add('show');
+  document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
 </body>
 </html>
