@@ -348,4 +348,10 @@
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/vs/windsurf/</loc>
+    <lastmod>2026-06-03</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>
