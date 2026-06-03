@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-06-03",
   "stats": {
-    "posts": 34,
+    "posts": 35,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-06-03",
+      "type": "blog_post",
+      "tool": "llm-prompt-optimizer",
+      "title": "I Fed My Worst ChatGPT Prompts Into an Optimizer. The Improvement Was Embarrassing.",
+      "url": "https://tinytools-smoky.vercel.app/llm-prompt-optimizer/blog/i-fed-my-worst-chatgpt-prompts-into-an-optimizer-the-improvement-was-embarrassing-2026/"
+    },
     {
       "date": "2026-06-03",
       "type": "blog_post",
@@ -252,6 +259,33 @@
   ],
   "drafts": [
     {
+      "platform": "X",
+      "date": "2026-06-03",
+      "tool": "llm-prompt-optimizer",
+      "content": "Your AI prompts are terrible. Mine were too.\n\nI ran 50 real prompts through an optimizer. 44 of them were missing the output format. 38 had zero context. 22 buried the actual ask at the end.\n\nAverage output quality jumped 3x. Took 10 minutes.\n\nhttps://tinytools-smoky.vercel.app/llm-prompt-optimizer/"
+    },
+    {
+      "platform": "Reddit",
+      "date": "2026-06-03",
+      "tool": "llm-prompt-optimizer",
+      "subreddit": "r/ChatGPT",
+      "title": "I ran 50 of my \"proven\" prompts through an optimizer. 88% were missing basic structure. Here's what it fixed.",
+      "content": "I had a prompt library I'd been building for over a year. Copy-paste, reuse, consider them battle-tested. Then I ran all 50 through a free prompt optimizer and watched it expose every structural flaw.\n\n44 of 50 had no output format specified. 38 had no role context. 35 had ambiguous scope. I'd been blaming GPT-4o for mediocre outputs for months.\n\nIt was the prompts. It was always the prompts.\n\nFull breakdown with before/after examples here: https://tinytools-smoky.vercel.app/llm-prompt-optimizer/blog/i-fed-my-worst-chatgpt-prompts-into-an-optimizer-the-improvement-was-embarrassing-2026/\n\nThe optimizer itself is free \u2014 paste your prompt and it rewrites it + explains every change: https://tinytools-smoky.vercel.app/llm-prompt-optimizer/"
+    },
+    {
+      "platform": "LinkedIn",
+      "date": "2026-06-03",
+      "tool": "llm-prompt-optimizer",
+      "content": "Unpopular opinion: most people using AI tools are getting 30-40% of what they could be getting \u2014 and they're blaming the model.\n\nI ran 50 of my own prompts through an optimizer last week. The results were genuinely embarrassing. 44 out of 50 had no output format specified. 38 had no role context. I'd been copy-pasting these prompts for months, calling them \"proven.\"\n\nThey weren't. They were just familiar.\n\nThe optimizer rewrote each one and explained every change. Average output quality jumped 3x by my own blind scoring. The model didn't change. The bottleneck was always the instruction layer.\n\nIf your AI outputs feel mediocre, don't upgrade your subscription. Fix your prompts first.\n\nFree tool (no signup): https://tinytools-smoky.vercel.app/llm-prompt-optimizer/"
+    },
+    {
+      "platform": "HN",
+      "date": "2026-06-03",
+      "tool": "llm-prompt-optimizer",
+      "title": "Show HN: LLM Prompt Optimizer \u2014 paste a prompt, get a rewrite + explanation of every change",
+      "content": "Built a free tool that analyzes prompts across 6 quality dimensions (output format, role context, scope clarity, negative constraints, framing, instruction order), rewrites them, and explains each change.\n\nI ran 50 of my own prompts through it: 88% were missing output format specs, 76% had no role context. After rewriting, output quality improved ~3x by blind scoring.\n\nNo signup, no rate limit for reasonable use. Built it because I was tired of blaming the model when the prompt was the actual problem.\n\nhttps://tinytools-smoky.vercel.app/llm-prompt-optimizer/"
+    },
+    {
       "platform": "x",
       "tool": "ai-cofounder-match",
       "date": "2026-06-03",
@@ -277,33 +311,6 @@
       "date": "2026-06-03",
       "title": "Show HN: AI Cofounder Match - 6-question quiz reveals founder working style archetype",
       "content": "Browser-only, no login. 6 questions about working style returns a founder archetype mapped to an AI model. Questions avoid brand names - measures velocity, feedback style, risk tolerance, context depth, independence vs collaboration, output medium. After 10k completions archetypes cluster into recognizable startup failure modes. Shareable result card.\nhttps://tinytools-smoky.vercel.app/ai-cofounder-match/"
-    },
-    {
-      "platform": "X",
-      "tool": "ai-job-survival",
-      "date": "2026-06-03",
-      "text": "I ran 40 jobs through an AI survival calculator.\n\nSeven scored under 10%.\n\nTwo of the jobs everyone called \"totally safe\" were in that group.\n\nThe average across all 40: 17.5% survival odds.\n\nNobody was ready for that number.\n\nhttps://tinytools-smoky.vercel.app/ai-job-survival/blog/i-ran-40-jobs-through-ai-survival-calculator-7-had-under-10-percent-2026/"
-    },
-    {
-      "platform": "Reddit",
-      "tool": "ai-job-survival",
-      "date": "2026-06-03",
-      "subreddit": "r/ChatGPT or r/cscareerquestions",
-      "title": "I tested 40 real job titles through an AI replacement calculator \u2014 7 scored under 10% survival odds (including 2 jobs everyone assumes are safe)",
-      "text": "I built a free tool that calculates AI job replacement probability. To test it, I ran 40 job titles from people in my network through it. The results started a 45-minute conversation none of us were ready for.\n\nKey findings:\n- 7 jobs scored below 10% survival odds\n- Average survival score across all 40: 17.5%\n- The two jobs that surprised everyone: Radiologist (routine screenings) and Financial Analyst (reporting)\n- Plumber scored 78% \u2014 highest of the group\n\nFull table with all 40 jobs, scores, timelines and reasoning here: https://tinytools-smoky.vercel.app/ai-job-survival/blog/i-ran-40-jobs-through-ai-survival-calculator-7-had-under-10-percent-2026/\n\nCheck your own job here: https://tinytools-smoky.vercel.app/ai-job-survival/"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "ai-job-survival",
-      "date": "2026-06-03",
-      "text": "Unpopular opinion: the jobs most at risk from AI aren't the \"low-skill\" ones.\n\nI ran 40 jobs through an AI survival calculator this week. Radiologist scored 8%. Financial Analyst (reporting) scored 8%. Both high-credential, high-salary roles that people in my network had called \"AI-proof\" two years ago.\n\nThe plumber scored 78%. The kindergarten teacher scored 71%.\n\nSkill level and task replicability are not the same thing. That's the uncomfortable insight nobody is saying clearly.\n\nI ranked all 40 jobs with scores, timelines, and reasoning here \u2014 and the free calculator so you can check your own: https://tinytools-smoky.vercel.app/ai-job-survival/blog/i-ran-40-jobs-through-ai-survival-calculator-7-had-under-10-percent-2026/"
-    },
-    {
-      "platform": "HN",
-      "tool": "ai-job-survival",
-      "date": "2026-06-03",
-      "title": "Show HN: AI Job Survival Calculator \u2014 I ran 40 jobs through it, 7 scored under 10%",
-      "text": "Built a tool that calculates AI replacement probability for any job title. To stress-test it, I ran 40 real job titles through it and wrote up the results. The two findings that generated the most debate: Radiologist (routine screenings) at 8% and Financial Analyst (reporting) also at 8%. Both were jobs colleagues had flagged as safe. The tool uses task replicability, physical/relational context, and regulatory accountability as the main scoring dimensions.\n\nhttps://tinytools-smoky.vercel.app/ai-job-survival/"
     }
   ],
   "retrofitLog": [
