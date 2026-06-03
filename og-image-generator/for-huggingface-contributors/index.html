@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OG Image Generator for HuggingFace Contributors | Free Tool — TinyTools</title>
+  <meta name="description" content="Generate custom OG images for your HuggingFace model cards, datasets, and Spaces in seconds. Make your model drops go viral on X and LinkedIn — free, no login, no Canva." />
+  <meta property="og:title" content="OG Image Generator for HuggingFace Contributors" />
+  <meta property="og:description" content="Your model card deserves more than a generic HuggingFace preview. Generate custom 1200×630 OG images for every model, dataset, and Space you publish — free, instant." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/og-image-generator/for-huggingface-contributors/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/og-image-generator/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OG Image Generator for HuggingFace Contributors" />
+  <meta name="twitter:description" content="Stop losing model-drop reach to blank social previews. Custom OG images for HF model cards, datasets, and Spaces — free, no login." />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/og-image-generator/for-huggingface-contributors/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "OG Image Generator for HuggingFace Contributors",
+    "description": "Generate custom OG images for your HuggingFace model cards, datasets, and Spaces in seconds. Make your model drops go viral on X and LinkedIn — free, no login.",
+    "url": "https://tinytools-smoky.vercel.app/og-image-generator/for-huggingface-contributors/",
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "OG Image Generator",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tinytools-smoky.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "OG Image Generator", "item": "https://tinytools-smoky.vercel.app/og-image-generator/" },
+        { "@type": "ListItem", "position": 3, "name": "For HuggingFace Contributors", "item": "https://tinytools-smoky.vercel.app/og-image-generator/for-huggingface-contributors/" }
+      ]
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1f1f1f;
+      --border: #2a2a2a;
+      --accent: #7c3aed;
+      --accent2: #a78bfa;
+      --text: #f0f0f0;
+      --muted: #888;
+      --green: #22c55e;
+      --red: #ef4444;
+      --yellow: #f59e0b;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; line-height: 1.65; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav { padding: 14px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    nav .logo { font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: -0.02em; }
+    nav .logo span { color: var(--accent2); }
+    nav .breadcrumb { font-size: 0.82rem; color: var(--muted); }
+    nav .breadcrumb a { color: var(--muted); }
+    nav .breadcrumb a:hover { color: var(--accent2); }
+
+    .hero { max-width: 780px; margin: 0 auto; padding: 64px 24px 48px; text-align: center; }
+    .badge { display: inline-block; background: rgba(124,58,237,0.15); border: 1px solid rgba(167,139,250,0.3); color: var(--accent2); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+    h1 .highlight { color: var(--accent2); }
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 600px; margin: 0 auto 36px; }
+    .cta-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 32px; border-radius: 10px; transition: background 0.2s; }
+    .cta-primary:hover { background: #6d28d9; text-decoration: none; }
+    .cta-note { font-size: 0.8rem; color: var(--muted); margin-top: 10px; }
+
+    .stat-row { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+    .stat { text-align: center; }
+    .stat .num { font-size: 1.6rem; font-weight: 800; color: var(--accent2); }
+    .stat .label { font-size: 0.8rem; color: var(--muted); }
+
+    section { max-width: 780px; margin: 0 auto; padding: 0 24px 64px; }
+    h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    p { color: #ccc; margin-bottom: 16px; }
+
+    .pain-block { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--red); border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; }
+    .pain-block .pain-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); margin-bottom: 6px; }
+    .pain-block .solution-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-top: 12px; margin-bottom: 6px; }
+    .pain-block .solution-text { color: var(--text); font-size: 0.95rem; }
+    .pain-block .pain-text { color: #ccc; font-size: 0.95rem; }
+
+    .use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+    @media (max-width: 600px) { .use-case-grid { grid-template-columns: 1fr; } }
+    .use-case-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .use-case-card .uc-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .use-case-card h3 { font-size: 0.98rem; margin-bottom: 6px; }
+    .use-case-card p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    .pricing-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem; }
+    .pricing-table th { text-align: left; padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .pricing-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .tool-name { font-weight: 600; }
+    .pricing-table .price { font-weight: 700; }
+    .pricing-table .price.free { color: var(--green); }
+    .pricing-table .price.paid { color: var(--muted); }
+    .pricing-table tr.highlight { background: rgba(124,58,237,0.08); }
+    .pricing-table tr.highlight .tool-name { color: var(--accent2); }
+    .check { color: var(--green); }
+    .cross { color: var(--red); }
+
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; }
+    .step-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(124,58,237,0.2); border: 1px solid rgba(167,139,250,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; color: var(--accent2); }
+    .step-content h3 { font-size: 0.98rem; margin-bottom: 4px; }
+    .step-content p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+    .sister-tools { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+    .sister-card { flex: 1 1 200px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; transition: border-color 0.2s; }
+    .sister-card:hover { border-color: var(--accent2); text-decoration: none; }
+    .sister-card .sc-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .sister-card h3 { font-size: 0.92rem; color: var(--text); margin-bottom: 4px; }
+    .sister-card p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+    .cta-section { background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(167,139,250,0.06)); border: 1px solid rgba(167,139,250,0.2); border-radius: 16px; padding: 48px 32px; text-align: center; }
+    .cta-section h2 { margin-bottom: 12px; }
+    .cta-section p { margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
+
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 0.82rem; color: var(--muted); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent2); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Tiny<span>Tools</span></div>
+  <div class="breadcrumb">
+    <a href="/">Home</a> / <a href="/og-image-generator/">OG Image Generator</a> / For HuggingFace Contributors
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">🤗 Built for HuggingFace Contributors</div>
+  <h1>OG Image Generator<br/>for <span class="highlight">HuggingFace Contributors</span></h1>
+  <p class="hero-sub">
+    You just pushed a new model. The weights are live, the model card is tight, the benchmarks are solid.
+    Then someone shares the link on X — and it renders as HuggingFace's generic logo. Don't let that happen.
+  </p>
+  <a href="https://tinytools-smoky.vercel.app/og-image-generator/" class="cta-primary">Generate Your OG Image Free →</a>
+  <p class="cta-note">No login. No watermark. 1200×630 px, download in seconds.</p>
+
+  <div class="stat-row">
+    <div class="stat"><div class="num">3×</div><div class="label">higher click-through on X with custom OG image</div></div>
+    <div class="stat"><div class="num">~0</div><div class="label">dollars to generate unlimited OG images</div></div>
+    <div class="stat"><div class="num">&lt;60s</div><div class="label">from blank canvas to downloadable image</div></div>
+  </div>
+</div>
+
+<!-- USE CASES -->
+<section>
+  <h2>5 Ways HuggingFace Contributors Use This Tool</h2>
+  <p>The OG Image Generator isn't a generic design tool. Here's how researchers, open-source contributors, and ML engineers on HuggingFace actually use it — each with a workflow that saves 20–40 minutes versus Canva or Figma.</p>
+
+  <div class="use-case-grid">
+    <div class="use-case-card">
+      <div class="uc-icon">🧠</div>
+      <h3>Model Card Social Previews</h3>
+      <p>Design a 1200×630 preview showing your model name, architecture (e.g., "7B MoE"), key benchmark scores, and license. Paste the image URL into your model card's YAML front matter so every share on X or LinkedIn renders your custom visual instead of a generic HuggingFace tile.</p>
+    </div>
+    <div class="use-case-card">
+      <div class="uc-icon">📦</div>
+      <h3>Dataset Card Thumbnails</h3>
+      <p>Datasets rarely get the attention they deserve — partly because they look identical when shared on social. Create a dataset-specific OG image that highlights the domain (e.g., "450K medical Q&A pairs"), the task (text classification, instruction tuning), and the data source. Differentiated datasets get forked more.</p>
+    </div>
+    <div class="use-case-card">
+      <div class="uc-icon">🚀</div>
+      <h3>Space & Demo Announcement Images</h3>
+      <p>When you launch a Gradio or Streamlit Space, your first tweet is everything. Create a polished OG image that shows the Space name, what it does in one line, and a sample input/output mockup. A branded preview turns a link into a demo invitation that developers actually click.</p>
+    </div>
+    <div class="use-case-card">
+      <div class="uc-icon">📄</div>
+      <h3>Arxiv Paper + Model Announcements</h3>
+      <p>Releasing a model that accompanies a paper? Generate two OG images — one for the arxiv link and one for the HuggingFace model page — so your paper's social card visually connects to your HF release. Consistent branding across arxiv, GitHub, and HuggingFace signals professionalism to collaborators and press.</p>
+    </div>
+    <div class="use-case-card">
+      <div class="uc-icon">🗂️</div>
+      <h3>Model Family Collection Pages</h3>
+      <p>If you're maintaining a family of models (base, instruct, GGUF quantizations), create a unified OG image for the collection page. Use a consistent color scheme and layout across all variants so users browsing your HuggingFace profile immediately recognize your "brand" in the model list.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section>
+  <h2>The Real Problems HuggingFace Contributors Face</h2>
+
+  <div class="pain-block">
+    <div class="pain-label">😤 Pain</div>
+    <div class="pain-text">Your model card link gets shared on X and renders as a tiny HuggingFace emoji + the model slug in plain text. No visual. No context. People scroll past it.</div>
+    <div class="solution-label">✅ Fix with OG Image Generator</div>
+    <div class="solution-text">Generate a 1200×630 image with your model name, task type, and benchmark score. Upload to your HF model card's media folder and reference it in the YAML front matter — all in under 2 minutes.</div>
+  </div>
+
+  <div class="pain-block">
+    <div class="pain-label">😤 Pain</div>
+    <div class="pain-text">Every contributor on HuggingFace fights for attention in the same timeline. When your Space, dataset, and model look identical in social previews, you rely entirely on text to compete — and most people don't read.</div>
+    <div class="solution-label">✅ Fix with OG Image Generator</div>
+    <div class="solution-text">Establish a consistent visual identity for all your HuggingFace releases. Use the same color palette, font style, and layout for every model in your org. Researchers will start recognizing your work at a glance — before they read the model name.</div>
+  </div>
+
+  <div class="pain-block">
+    <div class="pain-label">😤 Pain</div>
+    <div class="pain-text">You're a researcher or ML engineer, not a graphic designer. Opening Canva or Figma for every model release is a context switch you can't afford when you're mid-training-run.</div>
+    <div class="solution-label">✅ Fix with OG Image Generator</div>
+    <div class="solution-text">No design skills needed. Pick a layout, type your model name and one-line description, choose colors, download. Done in under 60 seconds with zero context switching from your terminal or Jupyter notebook.</div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <h2>How to Generate OG Images for Your HuggingFace Releases</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Open the OG Image Generator — no login required</h3>
+        <p>Go to the tool, pick a dark or light template that matches your model's vibe. Technical researchers tend to prefer minimal dark themes; demos and Spaces often do better with vibrant, product-style previews.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Enter your model's key details</h3>
+        <p>Title: your model name (e.g., "MistralMed-7B"). Subtitle: the task and key stat ("Medical QA · 89.3 MedQA"). Add your org name or HuggingFace username as the branding element.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Customize colors to match your HuggingFace org palette</h3>
+        <p>If your organization has brand colors (common in company research labs), match the accent color to your logo. Personal contributors can pick any color — just stay consistent across releases to build recognition.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Download and add to your model card</h3>
+        <p>Download the 1200×630 PNG. Upload it to your HuggingFace model repository under <code>assets/</code>. In your README.md YAML header, set <code>thumbnail: assets/og-image.png</code>. Every future share of that model link will render your custom preview.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h3>Reuse the template for every release in your model family</h3>
+        <p>Create a base template once, then swap the title, subtitle, and benchmark number for each model variant. If you're releasing base, instruct, and GGUF versions, generate three images in under 5 minutes total.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section>
+  <h2>Free vs. Paid OG Image Tools: What HuggingFace Contributors Actually Need</h2>
+  <p>Most OG image tools are built for marketing teams with brand kits and monthly budgets. Here's an honest comparison for open-source contributors and ML researchers who need speed, not subscriptions.</p>
+
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Price</th>
+        <th>No Login</th>
+        <th>1200×630</th>
+        <th>Fast (&lt;2 min)</th>
+        <th>Dev-Friendly</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="tool-name">TinyTools OG Generator</td>
+        <td class="price free">Free</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Canva (Free)</td>
+        <td class="price paid">Free / $15/mo Pro</td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Bannerbear</td>
+        <td class="price paid">$49/mo</td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span> API</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Placid</td>
+        <td class="price paid">$39/mo</td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span> API</td>
+      </tr>
+      <tr>
+        <td class="tool-name">Figma + Plugin</td>
+        <td class="price paid">Free / $15/mo</td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+      <tr>
+        <td class="tool-name">Custom satori/Puppeteer</td>
+        <td class="price paid">Dev time: $$$</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:16px;">The pattern is clear: tools with APIs (Bannerbear, Placid) are great for automated pipelines but cost $39–$49/month — overkill for a solo contributor pushing 2–3 models per month. Custom code via satori or Puppeteer is fully free but takes hours to set up. TinyTools fills the gap: zero setup, zero cost, done in under a minute.</p>
+</section>
+
+<!-- SISTER TOOLS -->
+<section>
+  <h2>Other Tools HuggingFace Contributors Use</h2>
+  <div class="sister-tools">
+    <a href="/favicon-generator/for-saas-founders/" class="sister-card">
+      <div class="sc-icon">⚡</div>
+      <h3>Favicon Generator</h3>
+      <p>Create a favicon for your HuggingFace Space or companion web demo. Consistent branding from Space to standalone app.</p>
+    </a>
+    <a href="/color-palette/for-ai-art-creators/" class="sister-card">
+      <div class="sc-icon">🎨</div>
+      <h3>Color Palette Generator</h3>
+      <p>Generate a cohesive color palette for your org's model release branding. Use the same palette across all OG images for instant recognition.</p>
+    </a>
+    <a href="/ai-disclosure-generator/for-ai-content-creators/" class="sister-card">
+      <div class="sc-icon">📋</div>
+      <h3>AI Disclosure Generator</h3>
+      <p>Auto-generate compliant disclosure language for content or documentation that uses AI-generated elements — useful for model card writing.</p>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section>
+  <div class="cta-section">
+    <h2>Your Next Model Drop Deserves a Proper Preview</h2>
+    <p>Every model you push to HuggingFace is a result of real work. Don't let a blank social preview be the first impression. Generate a custom OG image in under 60 seconds — free, no account required.</p>
+    <a href="https://tinytools-smoky.vercel.app/og-image-generator/" class="cta-primary">Open OG Image Generator →</a>
+    <p class="cta-note" style="margin-top:12px;">1200×630 px · PNG download · No watermark · No login</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 TinyTools · <a href="/">Home</a> · <a href="/og-image-generator/">OG Image Generator</a> · <a href="/sitemap.xml">Sitemap</a></p>
+</footer>
+
+</body>
+</html>
