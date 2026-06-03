@@ -1,3 +1,43 @@
+
+## 2026-06-03 — what-programming-language-are-you + tech-bro-score
+
+### New tools shipped: 2 (Tier 0 — Viral)
+
+#### 1. what-programming-language-are-you (Tier 0 — Viral)
+- **URL:** https://tinytools-smoky.vercel.app/what-programming-language-are-you/
+- **HTTP:** 200 OK
+- **Concept:** 10-question personality quiz mapping user to one of 8 programming languages (Python, JavaScript, Rust, Java, Go, TypeScript, C++, Ruby)
+- **Viral mechanics:**
+  1. Personal result — deterministic scoring maps answers to language personality type
+  2. Shareable PNG card (1200x630 canvas with language, emoji, tagline, trait badges)
+  3. Share to X button with pre-filled tweet
+  4. Deep-linkable URL (#10-digit answer string reloads exact same result)
+  5. Embeddable shields.io badge for README/portfolio
+  6. Reaction-bait copy ("your coding soul revealed", "take the quiz", "share the shame")
+- **Scoring:** deterministic weighted scoring across 8 language keys; same answers = same result
+
+#### 2. tech-bro-score (Tier 0 — Viral)
+- **URL:** https://tinytools-smoky.vercel.app/tech-bro-score/
+- **HTTP:** 200 OK
+- **Concept:** 12-question quiz that calculates a 0-100 Tech Bro Score across 7 tiers (Normie through YC Alum Energy)
+- **Viral mechanics:**
+  1. Personal result — % score + tier label + 4 unlocked achievements
+  2. Shareable PNG card (1200x630 canvas with score, tier, tier emoji, achievement pills)
+  3. Animated score ring (canvas arc proportional to score)
+  4. Share to X button with pre-filled tweet including score and tier
+  5. Deep-linkable URL (#12-digit answer string reloads exact same result)
+  6. Embeddable shields.io badge with score and tier name
+  7. Reaction-bait copy: "How Silicon Valley are you?", "Share if you dare", tiers
+- **Scoring:** deterministic weighted sum normalized to 0-100; same answers = same score
+
+### Updates
+- sitemap.xml updated (66 URLs total, both new tools at priority 1.0)
+- index.html updated (new cards added at top of grid, marked NEW VIRAL)
+
+### Notes
+- All TIER 0 tools from original roadmap were already shipped; these are new viral-mechanic extensions
+- Inventing fresh viral identity/quiz tools extending beyond the roadmap
+
 ## 2026-06-01 — Viral Retrofit: background-remover
 
 ### Tool Retrofitted
