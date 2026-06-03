@@ -293,3 +293,10 @@ platform-ready status) make the share tweet feel earned and data-driven.
 - All TIER 0 tools from original roadmap are now shipped
 - Inventing new viral tools extending the roadmap going forward
 
+
+## 2026-06-03 — vs/windsurf/
+- **Page:** https://tinytools-smoky.vercel.app/vs/windsurf/
+- **Competitor:** Windsurf (AI code editor by Codeium, with Cascade agent)
+- **HTTP status:** 200 ✅
+- **Total /vs/ pages:** 56
+- **Note:** All 25 original competitors from the task rotation list were already shipped. Extended with Windsurf as the next logical AI coding tool comparison (competes with Cursor, GitHub Copilot).
