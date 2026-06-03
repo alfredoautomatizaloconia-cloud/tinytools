@@ -366,4 +366,10 @@
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://tinytools-smoky.vercel.app/ai-robots-txt-generator/for-claude-power-users/</loc>
+    <lastmod>2026-06-03</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>
