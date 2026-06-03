@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-06-02",
   "stats": {
-    "posts": 31,
+    "posts": 32,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-06-02",
+      "type": "blog_post",
+      "tool": "tweet-roaster",
+      "title": "I Made an AI Roast 100 \"Viral\" Tweets. The #1 Mistake Appeared in 73% of Them.",
+      "url": "https://tinytools-smoky.vercel.app/tweet-roaster/blog/i-made-ai-roast-100-viral-tweets-number-one-mistake-appeared-73-percent-2026/"
+    },
     {
       "date": "2026-06-02",
       "type": "blog_post",
@@ -185,7 +192,7 @@
       "date": "2026-05-23",
       "type": "blog_post",
       "tool": "ai-disclosure-generator",
-      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a €15M Fine for That.",
+      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a \u20ac15M Fine for That.",
       "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
     },
     {
@@ -232,9 +239,36 @@
   "drafts": [
     {
       "platform": "X",
+      "date": "2026-06-02",
+      "tool": "tweet-roaster",
+      "text": "I fed 100 viral tweets (all 10k+ likes) into an AI roaster.\n\nThe same flaw appeared in 73 of them.\n\nVagueness disguised as wisdom. Insight-shaped emptiness.\n\nThe tweets that went most viral were the ones making the least falsifiable claims.\n\nHere's what the AI actually respects \u2014 and how to write it:\nhttps://tinytools-smoky.vercel.app/tweet-roaster/blog/i-made-ai-roast-100-viral-tweets-number-one-mistake-appeared-73-percent-2026/"
+    },
+    {
+      "platform": "Reddit",
+      "date": "2026-06-02",
+      "tool": "tweet-roaster",
+      "subreddit": "r/socialmedia",
+      "title": "I ran 100 viral tweets through an AI roaster \u2014 73% had the exact same flaw",
+      "text": "I've been trying to understand what actually makes tweets go viral vs. what makes them good. So I collected 100 tweets with 10k+ likes and ran each one through an AI tweet roaster.\n\nThe result surprised me: nearly three-quarters got flagged for the same core issue \u2014 statements framed as profound insight that are actually designed to generate reflexive agreement, not genuine thought.\n\nThe AI called it 'engagement bait dressed as wisdom.'\n\nI wrote up all 5 patterns it found, with real examples and what good tweets look like instead:\nhttps://tinytools-smoky.vercel.app/tweet-roaster/blog/i-made-ai-roast-100-viral-tweets-number-one-mistake-appeared-73-percent-2026/\n\nTLDR: virality measures frictionlessness, not quality. They're different things, and most Twitter growth gurus conflate them."
+    },
+    {
+      "platform": "LinkedIn",
+      "date": "2026-06-02",
+      "tool": "tweet-roaster",
+      "text": "Unpopular opinion: most viral tweets are bad writing.\n\nI ran 100 tweets with 10,000+ likes through an AI roaster. 73% had the same flaw: they make statements vague enough that anyone can project their own experience onto them.\n\nThat's not insight. That's a Rorschach test.\n\nVirality maximizes spread. Spread favors frictionlessness. Frictionlessness favors vagueness. And vagueness is the enemy of useful thinking.\n\nThe tweets the AI actually respected \u2014 specific, falsifiable, information-dense \u2014 got a fraction of the engagement.\n\nChoose what you're optimizing for. Just don't confuse the two.\n\nhttps://tinytools-smoky.vercel.app/tweet-roaster/blog/i-made-ai-roast-100-viral-tweets-number-one-mistake-appeared-73-percent-2026/"
+    },
+    {
+      "platform": "HackerNews",
+      "date": "2026-06-02",
+      "tool": "tweet-roaster",
+      "title": "Show HN: AI tweet roaster found the same flaw in 73% of viral tweets (10k+ likes)",
+      "text": "I ran 100 tweets (all 10k+ organic likes) through an AI roaster that analyzes for clarity, originality, information density, and structural honesty.\n\n73% had the same core problem: vague, unfalsifiable statements framed as insight. The AI flagged this pattern consistently regardless of the author's follower count.\n\nThe interesting part: the tweets the AI actually respected had lower engagement on average. Virality appears to be a proxy for frictionlessness, not quality.\n\nFull write-up with examples, the 5 patterns found, and what the AI recommends:\nhttps://tinytools-smoky.vercel.app/tweet-roaster/blog/i-made-ai-roast-100-viral-tweets-number-one-mistake-appeared-73-percent-2026/"
+    },
+    {
+      "platform": "X",
       "tool": "roast-my-landing-page",
       "date": "2026-06-02",
-      "draft": "I ran 20 SaaS landing pages through an AI roaster.\n\n18 had the same mistake in their hero section.\n\nThe founders — including one who just raised $4M — had no idea.\n\nThe mistake isn't what you think it is:\n\nhttps://tinytools-smoky.vercel.app/roast-my-landing-page/blog/i-made-ai-roast-20-saas-landing-pages-same-mistake-18-of-them-2026/"
+      "draft": "I ran 20 SaaS landing pages through an AI roaster.\n\n18 had the same mistake in their hero section.\n\nThe founders \u2014 including one who just raised $4M \u2014 had no idea.\n\nThe mistake isn't what you think it is:\n\nhttps://tinytools-smoky.vercel.app/roast-my-landing-page/blog/i-made-ai-roast-20-saas-landing-pages-same-mistake-18-of-them-2026/"
     },
     {
       "platform": "Reddit",
@@ -253,32 +287,7 @@
       "platform": "HN",
       "tool": "roast-my-landing-page",
       "date": "2026-06-02",
-      "draft": "Show HN: Roast My Landing Page — AI audits hero copy, CTA friction, and social proof in 30 seconds\n\nhttps://tinytools-smoky.vercel.app/roast-my-landing-page/"
-    },
-    {
-      "platform": "X",
-      "tool": "startup-idea-roast",
-      "date": "2026-06-02",
-      "draft": "I fed 50 startup ideas to an AI roaster.\n\nThe one it scored lowest — 3.2/10, called it 'a solution in search of a problem' — raised $2M from Sequoia two months later.\n\nHere's what the AI got right, what it missed, and what it means for your idea:\n\nhttps://tinytools-smoky.vercel.app/startup-idea-roast/blog/i-fed-50-startup-ideas-to-ai-roaster-one-it-hated-raised-2m-2026/"
-    },
-    {
-      "platform": "Reddit",
-      "tool": "startup-idea-roast",
-      "date": "2026-06-02",
-      "subreddit": "r/startups or r/Entrepreneur",
-      "draft": "Title: I ran 50 startup ideas through an AI roaster and tracked what actually happened to them 3 months later\n\nBody: Collected 50 ideas from founder communities, ran them through an AI roaster that scores problem clarity, customer specificity, moat, founder-market fit, and distribution. Then watched. 68% of ideas scoring below 5/10 were abandoned within 3 months. The outlier: one idea scored 3.2/10 and raised $2M. The AI was technically right about every weakness — the founder just had a relationship layer the AI couldn't see. Full breakdown of 6 failure patterns the AI caught + the outcome table: https://tinytools-smoky.vercel.app/startup-idea-roast/blog/i-fed-50-startup-ideas-to-ai-roaster-one-it-hated-raised-2m-2026/"
-    },
-    {
-      "platform": "LinkedIn",
-      "tool": "startup-idea-roast",
-      "date": "2026-06-02",
-      "draft": "Unpopular opinion: most startup ideas die not because they were bad ideas, but because the founder never stress-tested the one thing that would actually kill them.\n\nI ran 50 ideas through an AI roaster and tracked outcomes over 3 months. The pattern: founders who dismissed low scores abandoned their ideas. Founders who treated low scores as questions to answer kept going — and did better.\n\nThe AI isn't an oracle. It's a forcing function. The score doesn't matter. What you do with it does.\n\nFull findings: https://tinytools-smoky.vercel.app/startup-idea-roast/blog/i-fed-50-startup-ideas-to-ai-roaster-one-it-hated-raised-2m-2026/"
-    },
-    {
-      "platform": "HackerNews",
-      "tool": "startup-idea-roast",
-      "date": "2026-06-02",
-      "draft": "Show HN: Startup Idea Roast — AI critiques your idea across 5 dimensions, no filter\n\nhttps://tinytools-smoky.vercel.app/startup-idea-roast/\n\nBuilt this after noticing founders spend months on ideas with obvious structural weaknesses nobody tells them about. Scores problem clarity, customer specificity, competitive moat, founder-market fit, and distribution. Free. I ran 50 ideas through it and tracked outcomes — 68% of sub-5 scores were abandoned within 3 months. Write-up: https://tinytools-smoky.vercel.app/startup-idea-roast/blog/i-fed-50-startup-ideas-to-ai-roaster-one-it-hated-raised-2m-2026/"
+      "draft": "Show HN: Roast My Landing Page \u2014 AI audits hero copy, CTA friction, and social proof in 30 seconds\n\nhttps://tinytools-smoky.vercel.app/roast-my-landing-page/"
     }
   ],
   "retrofitLog": [
