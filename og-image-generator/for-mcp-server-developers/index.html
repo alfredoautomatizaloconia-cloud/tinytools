@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OG Image Generator for MCP Server Developers | Free Tool — TinyTools</title>
+  <meta name="description" content="Generate professional OG images for your MCP server's GitHub repo, documentation, and Smithery listing in seconds. Boost installs with eye-catching social previews — free, no Canva, no login." />
+  <meta property="og:title" content="OG Image Generator for MCP Server Developers" />
+  <meta property="og:description" content="Stop losing installs to blank GitHub social previews. Generate crisp 1200×630 OG images for your MCP server in seconds — free, instant." />
+  <meta property="og:url" content="https://tinytools-smoky.vercel.app/og-image-generator/for-mcp-server-developers/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tinytools-smoky.vercel.app/og-image-generator/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OG Image Generator for MCP Server Developers" />
+  <meta name="twitter:description" content="Generate crisp 1200×630 OG images for your MCP server's GitHub repo, docs, and Smithery listing in seconds. Free, no login." />
+  <link rel="canonical" href="https://tinytools-smoky.vercel.app/og-image-generator/for-mcp-server-developers/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "OG Image Generator for MCP Server Developers",
+    "description": "Generate professional OG images for your MCP server's GitHub repo, documentation site, and Smithery listing in seconds. Boost installs with eye-catching social previews — free, no Canva, no login.",
+    "url": "https://tinytools-smoky.vercel.app/og-image-generator/for-mcp-server-developers/",
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "OG Image Generator",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tinytools-smoky.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "OG Image Generator", "item": "https://tinytools-smoky.vercel.app/og-image-generator/" },
+        { "@type": "ListItem", "position": 3, "name": "For MCP Server Developers", "item": "https://tinytools-smoky.vercel.app/og-image-generator/for-mcp-server-developers/" }
+      ]
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1f1f1f;
+      --border: #2a2a2a;
+      --accent: #7c3aed;
+      --accent2: #a78bfa;
+      --text: #f0f0f0;
+      --muted: #888;
+      --green: #22c55e;
+      --red: #ef4444;
+      --teal: #2dd4bf;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; line-height: 1.65; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { padding: 14px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    nav .logo { font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: -0.02em; }
+    nav .logo span { color: var(--accent2); }
+    nav .breadcrumb { font-size: 0.82rem; color: var(--muted); }
+    nav .breadcrumb a { color: var(--muted); }
+    nav .breadcrumb a:hover { color: var(--accent2); }
+
+    /* HERO */
+    .hero { max-width: 780px; margin: 0 auto; padding: 64px 24px 48px; text-align: center; }
+    .badge { display: inline-block; background: rgba(124,58,237,0.15); border: 1px solid rgba(167,139,250,0.3); color: var(--accent2); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+    h1 .highlight { color: var(--accent2); }
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 600px; margin: 0 auto 36px; }
+    .cta-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 32px; border-radius: 10px; transition: background 0.2s; }
+    .cta-primary:hover { background: #6d28d9; text-decoration: none; }
+    .cta-note { font-size: 0.8rem; color: var(--muted); margin-top: 10px; }
+
+    /* STATS BAR */
+    .stats { display: flex; justify-content: center; gap: 40px; padding: 24px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 0 auto 64px; max-width: 780px; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 1.5rem; font-weight: 800; color: var(--accent2); }
+    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+
+    /* SECTIONS */
+    section { max-width: 780px; margin: 0 auto; padding: 0 24px 64px; }
+    h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; }
+    h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+    p { color: #ccc; margin-bottom: 12px; }
+
+    /* USE CASE CARDS */
+    .use-cases { display: grid; gap: 20px; margin-top: 8px; }
+    .use-case { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .use-case-icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .use-case h3 { color: var(--text); }
+    .use-case p { color: var(--muted); margin: 0; font-size: 0.92rem; }
+    .use-case .tag { display: inline-block; background: rgba(45,212,191,0.1); border: 1px solid rgba(45,212,191,0.25); color: var(--teal); font-size: 0.72rem; padding: 2px 8px; border-radius: 6px; margin-bottom: 10px; font-weight: 600; }
+
+    /* PAIN → SOLUTION */
+    .pain-solution { display: grid; gap: 16px; }
+    .ps-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+    .ps-row .pain { color: var(--red); font-size: 0.9rem; }
+    .ps-row .arrow { color: var(--muted); font-size: 1.2rem; flex-shrink: 0; }
+    .ps-row .solution { color: var(--green); font-size: 0.9rem; }
+    @media (max-width: 600px) {
+      .ps-row { grid-template-columns: 1fr; }
+      .ps-row .arrow { text-align: center; transform: rotate(90deg); }
+    }
+
+    /* PRICING TABLE */
+    .pricing-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.88rem; }
+    .pricing-table th { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .pricing-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .highlight-row { background: rgba(124,58,237,0.08); }
+    .pricing-table .highlight-row td:first-child { font-weight: 700; color: var(--accent2); }
+    .free-badge { background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); color: var(--green); font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+    .paid-badge { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); color: var(--red); font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+
+    /* TOOL EMBED */
+    .tool-embed { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px 24px; text-align: center; margin-bottom: 64px; max-width: 780px; margin-left: auto; margin-right: auto; }
+    .tool-embed p { color: var(--muted); margin-bottom: 24px; font-size: 0.95rem; }
+    .tool-embed .arrow-down { font-size: 2rem; display: block; margin-bottom: 16px; }
+
+    /* INTERNAL LINKS */
+    .related { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 8px; }
+    .related-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; transition: border-color 0.2s; }
+    .related-card:hover { border-color: var(--accent2); text-decoration: none; }
+    .related-card .rc-label { font-size: 0.72rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+    .related-card .rc-name { font-weight: 700; color: var(--text); font-size: 0.95rem; }
+    .related-card .rc-desc { font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
+
+    /* FINAL CTA */
+    .final-cta { text-align: center; background: linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(167,139,250,0.05) 100%); border: 1px solid rgba(167,139,250,0.2); border-radius: 20px; padding: 56px 32px; max-width: 780px; margin: 0 auto 64px; }
+    .final-cta h2 { font-size: 2rem; margin-bottom: 16px; }
+    .final-cta p { max-width: 500px; margin: 0 auto 28px; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 0.82rem; color: var(--muted); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent2); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Tiny<span>Tools</span></span>
+  <span class="breadcrumb">
+    <a href="https://tinytools-smoky.vercel.app/">Home</a> /
+    <a href="https://tinytools-smoky.vercel.app/og-image-generator/">OG Image Generator</a> /
+    For MCP Server Developers
+  </span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">🔌 MCP Server Developers</div>
+  <h1>OG Image Generator for<br><span class="highlight">MCP Server Developers</span></h1>
+  <p class="hero-sub">Your MCP server does something powerful. Don't let it look invisible on GitHub, Smithery, and X. Generate a sharp social preview image in under 60 seconds — free, no Canva, no design skills needed.</p>
+  <a href="https://tinytools-smoky.vercel.app/og-image-generator/" class="cta-primary">Generate My OG Image →</a>
+  <p class="cta-note">No sign-up · 1200×630 px · Instant download</p>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">3,000+</div><div class="stat-label">MCP servers indexed on Smithery</div></div>
+  <div class="stat"><div class="stat-num">~6×</div><div class="stat-label">more clicks with a custom social preview</div></div>
+  <div class="stat"><div class="stat-num">60 sec</div><div class="stat-label">average time to generate & export</div></div>
+  <div class="stat"><div class="stat-num">$0</div><div class="stat-label">cost — always free</div></div>
+</div>
+
+<!-- USE CASES -->
+<section>
+  <h2>5 places your MCP server needs a strong OG image</h2>
+  <div class="use-cases">
+
+    <div class="use-case">
+      <div class="use-case-icon">🐙</div>
+      <span class="tag">GitHub Social Preview</span>
+      <h3>Your GitHub repo card</h3>
+      <p>When someone shares your repo on X or LinkedIn, GitHub pulls the social preview image set in Settings → Social Preview. Most MCP repos ship with a blank grey box. A custom image — your server name, a one-line description, and a "Works with Claude" badge — can double star growth from social shares alone.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">🛠️</div>
+      <span class="tag">Smithery Listing</span>
+      <h3>Smithery & Glama marketplace cards</h3>
+      <p>Smithery.ai and Glama.ai display a thumbnail for each MCP server in their directory. Listings with a professional visual consistently rank higher in perceived quality when developers browse the catalog. Generate an image sized for their card format and stand out from the hundred others without one.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">📝</div>
+      <span class="tag">Launch Post</span>
+      <h3>X / Bluesky launch announcements</h3>
+      <p>You built the server. Now you post about it. A tweet with a card image gets dramatically more engagement than one with just a link. Drop your OG image URL into the meta tags of your launch page before you post, and every share automatically shows the right preview — no re-uploading needed.</p>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">📚</div>
+      <span class="tag">Docs & README</span>
+      <h3>Documentation site & README hero</h3>
+      <p>If you're publishing docs on Mintlify, Docusaurus, or even a plain GitHub Pages site, the OG image is what shows up when anyone links to your docs. It also works as the hero banner at the top of a polished README — a quick win that signals "this project is maintained and professional."</p>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-icon">🗞️</div>
+      <span class="tag">AI Newsletter Features</span>
+      <h3>Getting featured in AI newsletters</h3>
+      <p>Newsletters like The Batch, TLDR AI, and Latent Space regularly feature new MCP servers. Editors pick projects with strong visuals first — it looks better in their layout and signals the creator cares about presentation. A single generated image raises your chances of being picked over a bare repo link.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PAIN → SOLUTION -->
+<section>
+  <h2>The MCP developer's visual problem, solved</h2>
+  <div class="pain-solution">
+    <div class="ps-row">
+      <span class="pain">😩 GitHub auto-generates a dull grey placeholder — your server looks abandoned before anyone tries it</span>
+      <span class="arrow">→</span>
+      <span class="solution">✅ Upload a custom 1200×630 image to GitHub Social Preview; your repo card immediately looks production-ready</span>
+    </div>
+    <div class="ps-row">
+      <span class="pain">😩 Canva takes 20 minutes to find a template, match fonts, and export the right dimensions</span>
+      <span class="arrow">→</span>
+      <span class="solution">✅ OG Image Generator produces a download-ready PNG in under a minute — no sign-in, no template hunting</span>
+    </div>
+    <div class="ps-row">
+      <span class="pain">😩 Hiring a designer for a side-project MCP server isn't worth $50–$200 for one image</span>
+      <span class="arrow">→</span>
+      <span class="solution">✅ Free, unlimited generations — iterate on wording and colors until the card matches your branding</span>
+    </div>
+    <div class="ps-row">
+      <span class="pain">😩 Every tool page — Smithery, Glama, your docs — needs a slightly different crop or version</span>
+      <span class="arrow">→</span>
+      <span class="solution">✅ Generate variants in seconds by tweaking the title or accent color and re-exporting; no Photoshop needed</span>
+    </div>
+    <div class="ps-row">
+      <span class="pain">😩 No time for polish when you're already maintaining prompt logic, OAuth flows, and TypeScript types</span>
+      <span class="arrow">→</span>
+      <span class="solution">✅ One minute of visual work pays dividends every time someone shares a link to your server — set it and forget it</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOOL EMBED / LINK -->
+<div class="tool-embed">
+  <span class="arrow-down">⬇️</span>
+  <h2 style="margin-bottom:12px;">Try it right now — free</h2>
+  <p>Enter your MCP server name, a one-liner description, and pick a color scheme. Download in PNG format, ready for GitHub, Smithery, and anywhere else.</p>
+  <a href="https://tinytools-smoky.vercel.app/og-image-generator/" class="cta-primary">Open OG Image Generator →</a>
+</div>
+
+<!-- PRICING TABLE -->
+<section>
+  <h2>Free vs. paid alternatives for MCP server social images</h2>
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Cost</th>
+        <th>MCP-ready templates</th>
+        <th>Export speed</th>
+        <th>No login</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight-row">
+        <td>TinyTools OG Image Generator</td>
+        <td><span class="free-badge">Free</span></td>
+        <td>Instant custom text</td>
+        <td>~60 sec</td>
+        <td>✅ Yes</td>
+      </tr>
+      <tr>
+        <td>Canva</td>
+        <td><span class="paid-badge">$15/mo</span></td>
+        <td>Generic; no MCP presets</td>
+        <td>10–20 min</td>
+        <td>❌ No</td>
+      </tr>
+      <tr>
+        <td>Figma</td>
+        <td><span class="paid-badge">$15/mo</span></td>
+        <td>Build from scratch</td>
+        <td>30+ min</td>
+        <td>❌ No</td>
+      </tr>
+      <tr>
+        <td>Bannerbear</td>
+        <td><span class="paid-badge">$49/mo</span></td>
+        <td>API-based; overkill for one image</td>
+        <td>API setup required</td>
+        <td>❌ No</td>
+      </tr>
+      <tr>
+        <td>Freelance designer</td>
+        <td><span class="paid-badge">$50–200</span></td>
+        <td>Custom, but one-time</td>
+        <td>1–3 days</td>
+        <td>N/A</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:16px; font-size:0.85rem; color:var(--muted);">For a side-project MCP server or an indie tool you're shipping solo, spending money on design tooling before you have a single install makes no sense. Get the image done for free, ship faster.</p>
+</section>
+
+<!-- RELATED TOOLS -->
+<section>
+  <h2>Other tools MCP server developers use</h2>
+  <div class="related">
+    <a href="https://tinytools-smoky.vercel.app/favicon-generator/for-ai-app-builders/" class="related-card">
+      <div class="rc-label">Also free</div>
+      <div class="rc-name">Favicon Generator</div>
+      <div class="rc-desc">Create a matching favicon for your MCP server's docs site — keep branding consistent.</div>
+    </a>
+    <a href="https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/for-mcp-server-developers/" class="related-card">
+      <div class="rc-label">Compliance</div>
+      <div class="rc-name">EU AI Act Risk Assessment</div>
+      <div class="rc-desc">Check whether your MCP server falls under EU AI Act obligations before you ship to European users.</div>
+    </a>
+    <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/" class="related-card">
+      <div class="rc-label">SEO & Crawling</div>
+      <div class="rc-name">AI Robots.txt Generator</div>
+      <div class="rc-desc">Control which AI crawlers can index your MCP server's documentation and landing page.</div>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>Your MCP server deserves a real first impression</h2>
+  <p style="color:var(--muted);">You spent hours on the protocol logic, the tool definitions, and the README. Spend 60 seconds on the image that thousands of developers will see before they ever read a single line of your code.</p>
+  <a href="https://tinytools-smoky.vercel.app/og-image-generator/" class="cta-primary">Generate My OG Image — Free →</a>
+  <p style="margin-top:14px; font-size:0.82rem; color:var(--muted);">No account required · 1200×630 · PNG download · Unlimited use</p>
+</div>
+
+<footer>
+  <p>
+    <a href="https://tinytools-smoky.vercel.app/">TinyTools</a> ·
+    <a href="https://tinytools-smoky.vercel.app/og-image-generator/">OG Image Generator</a> ·
+    <a href="https://tinytools-smoky.vercel.app/favicon-generator/">Favicon Generator</a> ·
+    <a href="https://tinytools-smoky.vercel.app/ai-robots-txt-generator/">AI Robots.txt Generator</a>
+  </p>
+  <p style="margin-top:8px;">© 2026 TinyTools. Free tools for builders.</p>
+</footer>
+
+</body>
+</html>
