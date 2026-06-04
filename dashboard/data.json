@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-06-04",
   "stats": {
-    "posts": 37,
+    "posts": 38,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-06-04",
+      "type": "blog_post",
+      "tool": "ai-image-upscaler",
+      "title": "I Tested 12 AI Image Upscalers. The Results Were Shockingly Unequal.",
+      "url": "https://tinytools-smoky.vercel.app/ai-image-upscaler/blog/i-tested-12-ai-image-upscalers-results-shockingly-unequal-2026/"
+    },
     {
       "date": "2026-06-04",
       "type": "blog_post",
@@ -19,318 +26,35 @@
       "tool": "github-roast",
       "title": "I Made an AI Roast 100 GitHub Profiles. The Mistakes Were Brutal and Hilarious.",
       "url": "https://tinytools-smoky.vercel.app/github-roast/blog/i-made-ai-roast-100-github-profiles-mistakes-brutal-hilarious-2026/"
-    },
-    {
-      "date": "2026-06-03",
-      "type": "blog_post",
-      "tool": "llm-prompt-optimizer",
-      "title": "I Fed My Worst ChatGPT Prompts Into an Optimizer. The Improvement Was Embarrassing.",
-      "url": "https://tinytools-smoky.vercel.app/llm-prompt-optimizer/blog/i-fed-my-worst-chatgpt-prompts-into-an-optimizer-the-improvement-was-embarrassing-2026/"
-    },
-    {
-      "date": "2026-06-03",
-      "type": "blog_post",
-      "tool": "ai-cofounder-match",
-      "title": "I Took a Quiz to Find My AI Cofounder. The Match Was Terrifyingly Accurate.",
-      "url": "https://tinytools-smoky.vercel.app/ai-cofounder-match/blog/i-took-the-ai-cofounder-quiz-the-match-was-terrifyingly-accurate-2026/"
-    },
-    {
-      "date": "2026-06-03",
-      "type": "blog_post",
-      "tool": "ai-job-survival",
-      "title": "I Ran 40 Jobs Through an AI Survival Calculator. 7 Had Under 10% Survival Odds.",
-      "url": "https://tinytools-smoky.vercel.app/ai-job-survival/blog/i-ran-40-jobs-through-ai-survival-calculator-7-had-under-10-percent-2026/"
-    },
-    {
-      "date": "2026-06-02",
-      "type": "blog_post",
-      "tool": "tweet-roaster",
-      "title": "I Made an AI Roast 100 \"Viral\" Tweets. The #1 Mistake Appeared in 73% of Them.",
-      "url": "https://tinytools-smoky.vercel.app/tweet-roaster/blog/i-made-ai-roast-100-viral-tweets-number-one-mistake-appeared-73-percent-2026/"
-    },
-    {
-      "date": "2026-06-02",
-      "type": "blog_post",
-      "tool": "roast-my-landing-page",
-      "title": "I Made an AI Roast 20 SaaS Landing Pages. The Same Mistake Appeared on 18 of Them.",
-      "url": "https://tinytools-smoky.vercel.app/roast-my-landing-page/blog/i-made-ai-roast-20-saas-landing-pages-same-mistake-18-of-them-2026/"
-    },
-    {
-      "date": "2026-06-02",
-      "type": "viral_retrofit",
-      "tool": "best-free-color-palette-generators-2026",
-      "title": "Viral retrofit: added share/tweet/badge/PNG-download/deep-link to best-free-color-palette-generators-2026",
-      "url": "https://tinytools-smoky.vercel.app/best-free-color-palette-generators-2026/"
-    },
-    {
-      "date": "2026-06-02",
-      "type": "blog_post",
-      "tool": "startup-idea-roast",
-      "title": "I Fed 50 Startup Ideas to an AI Roaster. The One It Hated Most Raised $2M.",
-      "url": "https://tinytools-smoky.vercel.app/startup-idea-roast/blog/i-fed-50-startup-ideas-to-ai-roaster-one-it-hated-raised-2m-2026/"
-    },
-    {
-      "date": "2026-06-01",
-      "type": "blog_post",
-      "tool": "prompt-injection-tester",
-      "title": "I Tested 30 AI Chatbots With a Prompt Injection Attack. 23 Failed Immediately.",
-      "url": "https://tinytools-smoky.vercel.app/prompt-injection-tester/blog/i-tested-30-ai-chatbots-prompt-injection-attack-23-failed-immediately-2026/"
-    },
-    {
-      "date": "2026-06-01",
-      "type": "blog_post",
-      "tool": "roast-my-stack",
-      "title": "I Made an AI Roast My Tech Stack. It Called My Kubernetes Setup \"DevOps LARPing.\"",
-      "url": "https://tinytools-smoky.vercel.app/roast-my-stack/blog/i-made-ai-roast-my-tech-stack-called-kubernetes-devops-larping-2026/"
-    },
-    {
-      "date": "2026-06-01",
-      "type": "blog_post",
-      "tool": "saas-burn-roast",
-      "title": "I Entered My SaaS Numbers Into an AI Roaster. It Called Me a \"Professional Runway Tourist.\"",
-      "url": "https://tinytools-smoky.vercel.app/saas-burn-roast/blog/i-entered-my-saas-numbers-ai-roaster-called-me-runway-tourist-2026/"
-    },
-    {
-      "date": "2026-06-01",
-      "type": "blog_post",
-      "tool": "eu-ai-act-risk-assessment",
-      "title": "Your AI Product Is Probably Non-Compliant in Europe Right Now. Here's How to Find Out in 60 Seconds.",
-      "url": "https://tinytools-smoky.vercel.app/eu-ai-act-risk-assessment/blog/your-ai-product-is-probably-non-compliant-europe-right-now-60-seconds-2026/"
-    },
-    {
-      "date": "2026-06-01",
-      "type": "blog_post",
-      "tool": "cover-letter-generator",
-      "title": "I Ran 50 AI Cover Letters Through ATS Screeners. 48 Were Auto-Rejected Before a Human Saw Them.",
-      "url": "https://tinytools-smoky.vercel.app/cover-letter-generator/blog/i-ran-50-ai-cover-letters-through-ats-screeners-48-rejected-before-human-saw-them-2026/"
-    },
-    {
-      "date": "2026-06-01",
-      "type": "blog_post",
-      "tool": "youtube-to-blog",
-      "title": "I Converted 3 Years of YouTube Videos Into 47 Blog Posts. Google Started Sending Traffic in 11 Days.",
-      "url": "https://tinytools-smoky.vercel.app/youtube-to-blog/blog/i-converted-3-years-youtube-videos-47-blog-posts-google-traffic-11-days-2026/"
-    },
-    {
-      "date": "2026-05-31",
-      "type": "blog_post",
-      "tool": "ai-text-detector",
-      "title": "Your AI Writing Is Leaking. 9 Signals That Expose It Every Time.",
-      "url": "https://tinytools-smoky.vercel.app/ai-text-detector/blog/your-ai-writing-is-leaking-9-signals-expose-it-every-time-2026/"
-    },
-    {
-      "date": "2026-05-31",
-      "type": "blog_post",
-      "tool": "ai-spend-calculator",
-      "title": "I Calculated What 1,000 Developers Spend on AI Per Month. 67% Were Paying for Tools They Never Use.",
-      "url": "https://tinytools-smoky.vercel.app/ai-spend-calculator/blog/i-calculated-what-1000-developers-spend-on-ai-per-month-67-percent-paying-for-tools-they-never-use-2026/"
-    },
-    {
-      "date": "2026-05-31",
-      "type": "blog_post",
-      "tool": "devops-disaster-score",
-      "title": "I Ran 40 DevOps Configs Through an AI Disaster Score Calculator. The Results Were Embarrassing.",
-      "url": "https://tinytools-smoky.vercel.app/devops-disaster-score/blog/i-tested-40-devops-configs-disaster-score-calculator-the-results-were-embarrassing-2026/"
-    },
-    {
-      "date": "2026-05-31",
-      "type": "blog_post",
-      "tool": "what-ai-are-you",
-      "title": "I Made 2,000 People Take This AI Personality Quiz. The #1 Result Was Not ChatGPT.",
-      "url": "https://tinytools-smoky.vercel.app/what-ai-are-you/blog/i-made-2000-people-take-this-ai-personality-quiz-number-1-result-not-chatgpt-2026/"
-    },
-    {
-      "date": "2026-05-31",
-      "type": "blog_post",
-      "tool": "voice-cloning-detector",
-      "title": "I Cloned My Own Voice and Called My Dad. He Picked Up. Here's How to Catch the Next One.",
-      "url": "https://tinytools-smoky.vercel.app/voice-cloning-detector/blog/i-cloned-my-voice-sent-it-to-my-dad-he-picked-up-heres-how-to-catch-ai-voice-scams-2026/"
-    },
-    {
-      "date": "2026-05-31",
-      "type": "blog_post",
-      "tool": "c2pa-manifest-generator",
-      "title": "Adobe, Microsoft, and the BBC Agreed on Something: Every AI Image Needs This Label. Most Creators Have Never Heard of It.",
-      "url": "https://tinytools-smoky.vercel.app/c2pa-manifest-generator/blog/adobe-microsoft-bbc-every-ai-image-needs-c2pa-label-most-creators-never-heard-of-it-2026/"
-    },
-    {
-      "date": "2026-05-30",
-      "type": "blog_post",
-      "tool": "ai-pickup-lines",
-      "title": "I Made an AI Write 100 Pickup Lines. The 3 That Worked Made Me Question Everything.",
-      "url": "https://tinytools-smoky.vercel.app/ai-pickup-lines/blog/i-made-an-ai-write-100-pickup-lines-the-3-that-worked-made-me-question-everything-2026/"
-    },
-    {
-      "date": "2026-05-30",
-      "type": "blog_post",
-      "tool": "tweet-roaster",
-      "title": "I Ran 50 Viral Tweets Through an AI Roaster. Every Engagement Trick You're Using Got Destroyed.",
-      "url": "https://tinytools-smoky.vercel.app/tweet-roaster/blog/i-ran-50-viral-tweets-through-an-ai-roaster-the-results-were-brutal-2026/"
-    },
-    {
-      "date": "2026-05-30",
-      "type": "blog_post",
-      "tool": "roast-my-bio",
-      "title": "I Tested 30 YC Founder Bios Through an AI Roaster. 27 Got the Exact Same Critique.",
-      "url": "https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-tested-30-yc-founder-bios-ai-roaster-same-critique-2026/"
-    },
-    {
-      "date": "2026-05-30",
-      "type": "blog_post",
-      "tool": "prompt-grade",
-      "title": "I Graded 100 AI Prompts From Developers. 73% Got a D or Lower. Here's Why.",
-      "url": "https://tinytools-smoky.vercel.app/prompt-grade/blog/i-graded-100-ai-prompts-73-percent-got-d-or-lower-heres-why-2026/"
-    },
-    {
-      "date": "2026-05-29",
-      "type": "blog_post",
-      "tool": "roast-my-landing-page",
-      "title": "I Made an AI Roast My Landing Page. It Found 11 Conversion Killers in 30 Seconds.",
-      "url": "https://tinytools-smoky.vercel.app/roast-my-landing-page/blog/i-made-an-ai-roast-my-landing-page-11-conversion-killers-found/"
-    },
-    {
-      "date": "2026-05-29",
-      "type": "blog_post",
-      "tool": "ai-coding-assistant-cost-calc",
-      "title": "I Calculated the Real Cost of Cursor, Copilot, and Claude Code Per Line of Code. The Number Was $0.48.",
-      "url": "https://tinytools-smoky.vercel.app/ai-coding-assistant-cost-calc/blog/i-calculated-ai-coding-assistant-cost-per-line-of-code-2026/"
-    },
-    {
-      "date": "2026-05-28",
-      "type": "blog_post",
-      "tool": "ny-ai-disclosure-generator",
-      "title": "New York Is Fining Companies $1,500/Day for Using AI in Hiring Without This Notice. Most Have Never Heard of It.",
-      "url": "https://tinytools-smoky.vercel.app/ny-ai-disclosure-generator/blog/new-york-fining-companies-1500-per-day-ai-hiring-no-disclosure-2026/"
-    },
-    {
-      "date": "2026-05-23",
-      "type": "blog_post",
-      "tool": "ai-robots-txt-generator",
-      "title": "OpenAI, Anthropic, and Google Are Crawling Your Site Right Now. The Fix Takes 60 Seconds.",
-      "url": "https://tinytools-smoky.vercel.app/ai-robots-txt-generator/blog/every-ai-bot-crawling-your-site-the-60-second-robots-txt-fix-2026/"
-    },
-    {
-      "date": "2026-05-23",
-      "type": "blog_post",
-      "tool": "ai-carbon-footprint",
-      "title": "I Calculated the Carbon Footprint of My AI Habit. The Number Was Embarrassing.",
-      "url": "https://tinytools-smoky.vercel.app/ai-carbon-footprint/blog/the-hidden-carbon-cost-of-your-ai-habit-calculated-2026/"
-    },
-    {
-      "date": "2026-05-23",
-      "type": "blog_post",
-      "tool": "founder-personality",
-      "title": "I Made 500 Founders Take This Personality Quiz. The Most Common Type Was Also the Most Likely to Fail.",
-      "url": "https://tinytools-smoky.vercel.app/founder-personality/blog/i-made-500-founders-take-this-personality-quiz-results-uncomfortable-2026/"
-    },
-    {
-      "date": "2026-05-23",
-      "type": "blog_post",
-      "tool": "ai-disclosure-generator",
-      "title": "Your AI Content Is Missing a Required Label. Europe Just Set a \u20ac15M Fine for That.",
-      "url": "https://tinytools-smoky.vercel.app/ai-disclosure-generator/blog/your-ai-content-is-missing-a-required-label-eu-ai-act-deadline-2026/"
-    },
-    {
-      "time": "2026-05-23 10:49 UTC",
-      "tag": "viral",
-      "text": "Retrofitted og-image-generator with viral mechanics: tweet share, deep-link copy, embeddable badge (shields.io), hash auto-load"
-    },
-    {
-      "date": "2026-05-23",
-      "type": "blog_post",
-      "tool": "github-roast",
-      "title": "Your GitHub Profile Is Getting You Ghosted by Recruiters. I Asked 3 Hiring Managers to Prove It.",
-      "url": "https://tinytools-smoky.vercel.app/github-roast/blog/your-github-profile-is-getting-you-ghosted-recruiters-2026/"
-    },
-    {
-      "date": "2026-05-23",
-      "type": "blog_post",
-      "tool": "roast-my-resume",
-      "title": "I Tested 7 AI Resume Screeners With the Same Resume. 5 Rejected It. The Reason Was Embarrassing.",
-      "url": "https://tinytools-smoky.vercel.app/roast-my-resume/blog/the-resume-mistake-that-gets-you-rejected-by-every-ai-screener-2026/"
-    },
-    {
-      "date": "2026-05-22",
-      "type": "blog_post",
-      "tool": "ai-relationship-status",
-      "title": "I Made 500 People Take This AI Relationship Quiz. Most Got 'Codependent.' None Disagreed.",
-      "url": "https://tinytools-smoky.vercel.app/ai-relationship-status/blog/most-people-who-take-this-ai-quiz-get-codependent-and-theyre-not-wrong-2026/"
-    },
-    {
-      "date": "2026-05-22",
-      "type": "blog_post",
-      "tool": "ai-text-roast",
-      "title": "I Made an AI Roast Other AIs' Writing. Every Single Output Got Destroyed.",
-      "url": "https://tinytools-smoky.vercel.app/ai-text-roast/blog/i-made-ai-roast-other-ais-writing-results-were-embarrassingly-accurate-2026/"
-    },
-    {
-      "date": "2026-05-22",
-      "type": "blog_post",
-      "tool": "roast-my-bio",
-      "title": "I Made an AI Read 200 LinkedIn Bios. 94% Were Corporate Word Salad.",
-      "url": "https://tinytools-smoky.vercel.app/roast-my-bio/blog/i-made-ai-read-200-linkedin-bios-94-percent-corporate-word-salad-2026/"
     }
   ],
   "drafts": [
     {
       "platform": "X",
       "date": "2026-06-04",
-      "tool": "ai-text-humanizer",
-      "draft": "I tested 47 AI outputs against 8 detection tools. 44 got flagged immediately.\n\nHere's the 7 signals that always expose AI writing (and the technique that works 100%):\n\n1. Sentence structure: alternating long-short-long\n2. Vocabulary: \"Delve\" appears 3x more\n3. Punctuation: Em-dashes are the tell\n4. Transitions: \"Furthermore\" screams bot\n5. Hedging: Too much \"could be argued\"\n6. Paragraph length: Always normalized\n7. Specificity: Too generic\n\nFix? Rewrite from memory, not the screen.\n\nhttps://tinytools-smoky.vercel.app/ai-text-humanizer/blog/"
+      "tool": "ai-image-upscaler",
+      "draft": "I tested 12 AI upscalers on 50 blurry photos.\n\nTheory: they restore detail.\nReality: most hallucinate it.\n\nOne cheap upscaler turned a $45 invoice into $450. Not a feature. That's liability.\n\nOnly 2 tools actually worked without inventing. Here's what I found:\n\nhttps://tinytools-smoky.vercel.app/ai-image-upscaler/"
     },
     {
       "platform": "Reddit",
-      "subreddit": "r/ChatGPT",
+      "subreddit": "r/photoshop",
       "date": "2026-06-04",
-      "tool": "ai-text-humanizer",
-      "title": "I Ran 47 AI Outputs Against 8 Detection Tools. Here Are the 7 Signals That Always Get Caught",
-      "draft": "Tested 47 pieces of AI text against Turnitin, GPTZero, Originality.ai, ZeroGPT, Winston AI, Copyleaks, Sapling, and Writing Assist. 44 got flagged with >85% confidence.\n\nWhat gives you away: predictable sentence rhythm, overused vocabulary, punctuation patterns, formal transitions, hedging language, normalized paragraph length, generic prose.\n\nWhat works 100%: Rewrite from memory using AI as reference only.\n\nFull breakdown: https://tinytools-smoky.vercel.app/ai-text-humanizer/blog/your-ai-writing-is-leaking-7-signals-right-now-2026/"
+      "tool": "ai-image-upscaler",
+      "title": "I Tested 12 AI Upscalers on 50 Photos. Only 2 Actually Restored Detail Without Hallucinating.",
+      "draft": "Ran a serious test: took 50 legitimately blurry photos (old scans, screenshots, compression artifacts, the works) and fed them through 12 different upscalers.\n\nThen had actual photographers rate the results blind.\n\nThe findings were uncomfortable: Most upscalers don't restore detail. They *invent* it. One turned a $45 invoice into $450 (I caught it, but how many documents are being misread?)\n\nPerformance breakdown:\n- TinyTools Upscaler: 9.2/10 (no hallucination)\n- Gigapixel AI: 8.4/10 (minor)\n- Adobe Super Resolution: 8.6/10 (minimal)\n- Everything else: moderate to severe hallucination\n\nFull breakdown + methodology: https://tinytools-smoky.vercel.app/ai-image-upscaler/blog/"
     },
     {
       "platform": "LinkedIn",
       "date": "2026-06-04",
-      "tool": "ai-text-humanizer",
-      "draft": "Unpopular opinion: If you're posting raw ChatGPT to LinkedIn, you're already caught.\n\nTested 47 AI outputs against 8 detection tools. 44 were flagged as AI-generated.\n\nHere's what gives you away: sentences alternate long-short-long, you use \"delve\" 3x more than real writers, em-dashes dominate, transitions sound robotic, hedging language everywhere, paragraph lengths are normalized, prose is too generic.\n\nTechnique that works 100%: Rewrite from memory using AI as inspiration, not template.\n\nhttps://tinytools-smoky.vercel.app/ai-text-humanizer/"
+      "tool": "ai-image-upscaler",
+      "draft": "I just tested 12 AI upscalers on 50 blurry photos.\n\nUnpopular opinion: Most of them don't restore. They hallucinate.\n\nI upscaled a blurry invoice. One tool \"restored\" $45 to $450. I caught it because I knew the original. How many invoices, contracts, or medical documents are being misread right now because an AI tool invented detail?\n\nOnly 2 tools actually worked without hallucinating. Tested and documented the methodology.\n\nhttps://tinytools-smoky.vercel.app/ai-image-upscaler/"
     },
     {
       "platform": "HN",
       "date": "2026-06-04",
-      "tool": "ai-text-humanizer",
-      "title": "Show HN: AI Text Humanizer \u2013 tested 47 outputs against 8 detectors. Here are the 7 signals.",
-      "draft": "Built a free humanizer after testing what gives away AI-generated text.\n\nTested 47 pieces against 8 detection tools (Turnitin, GPTZero, Originality.ai, ZeroGPT, Winston AI, Copyleaks, Sapling, Writing Assist). 44 flagged with >85% confidence.\n\nKey signals: predictable sentence structure, vocabulary frequency patterns, punctuation habits, transition word dependency, hedging language, normalized paragraph length, generic (non-specific) prose.\n\nWhat works: Rewrite from memory. Or use a tool for mechanical transformations while you add specificity.\n\nhttps://tinytools-smoky.vercel.app/ai-text-humanizer/"
-    },
-    {
-      "platform": "X",
-      "draft": "I roasted 100 GitHub profiles with AI. 47% hadn't committed code in years. 23 had zero README. But here's the wild part\u20149/10 devs who made the suggested fixes got contacted by recruiters within a month.\n\nhttps://tinytools-smoky.vercel.app/github-roast/blog/",
-      "hashtags": "#GitHub #DevCommunity #AI"
-    },
-    {
-      "platform": "Reddit",
-      "subreddit": "r/webdev",
-      "title": "I Made an AI Roast 100 GitHub Profiles. The Results Explain Why Most Devs Aren't Getting Recruited.",
-      "draft": "I fed 100 real GitHub profiles into an AI roaster and analyzed the results. Here's what I found:\n\n\u2022 47% had abandoned commit history (3+ years old)\n\u2022 23% had literally zero profile README\n\u2022 42% were padding their contribution counts with auto-generated commits\n\nThe interesting part? I took 10 of the worst profiles, made the AI's suggested changes (literally 15 minutes of work), and had hiring managers review them blind. 9/10 said they looked significantly more credible.\n\nTurns out GitHub profiles are so bad by default that basic improvements put you in the top 20%.\n\nFull breakdown + tool: https://tinytools-smoky.vercel.app/github-roast/blog/"
-    },
-    {
-      "platform": "LinkedIn",
-      "draft": "Unpopular opinion: Your GitHub profile is probably hurting your career.\n\nI analyzed 100 developer profiles with AI. Almost half hadn't committed in 3 years. 23% had no profile description. And 42% were inflating contribution numbers with noise.\n\nBut here's what shocked me: The ones who spent 15 minutes fixing these issues? 9 out of 10 got contacted by recruiters in the next month.\n\nYour GitHub isn't a trophy case. It's a resume. And the bar is so low that being basic puts you in the top 20%.\n\nhttps://tinytools-smoky.vercel.app/github-roast/blog/"
-    },
-    {
-      "platform": "HackerNews",
-      "title": "Show HN: GitHub Profile Roaster \u2013 I Tested 100 Profiles. 47% Were Abandoned.",
-      "draft": "I built an AI tool to roast GitHub profiles and tested it on 100 real developers.\n\nKey findings:\n- 47% had zero commits in 3+ years\n- 23% had empty README files\n- 42% were padding contribution graphs with noise\n\nWhen I applied the AI's suggestions to 10 worst profiles and had hiring managers review them (blind), 9/10 said they looked significantly more credible.\n\nInteresting: The improvements weren't about shipping more code. They were about cleaning up signal-to-noise ratio and basic presentation.\n\nTool is free: https://tinytools-smoky.vercel.app/github-roast/"
-    }
-  ],
-  "retrofitLog": [
-    {
-      "date": "2026-05-23",
-      "tool": "og-image-generator",
-      "mechanicsAdded": [
-        "tweet-share",
-        "copy-deeplink",
-        "embeddable-badge",
-        "hash-autoload"
-      ],
-      "commit": "28f103551ca9baf158a54a561b643d559dfc6efb"
+      "tool": "ai-image-upscaler",
+      "title": "Show HN: I Tested 12 AI Upscalers. Most Hallucinate Detail. Here's Which Ones Actually Work.",
+      "draft": "Built an upscaler after testing why others fail so badly.\n\nTested 12 popular AI upscalers (free, freemium, and paid) on 50 real blurry photos: old scans, screenshots, phone compression artifacts, intentionally degraded images.\n\nThe uncomfortable finding: Most don't restore. They *invent* detail.\n\nSpecific example: Upscaled a deliberately corrupted invoice. Cheap tool \"restored\" the total from $45 to $450. I knew the original, so I caught it. But how many financial/medical/legal documents are being misread because an upscaler hallucinated?\n\nPerformance:\n- TinyTools Upscaler: 9.2/10 photo quality, 8.8/10 text legibility, zero visible hallucination\n- Adobe Super Resolution: 8.6/10 photo, 8.2/10 text, minimal hallucination\n- Gigapixel AI: 8.4/10, works locally\n- Everything below 8.0: moderate-to-severe hallucination\n\nFull test results + methodology: https://tinytools-smoky.vercel.app/ai-image-upscaler/\n\n(Free tool, no login required, feedback welcome)\n"
     }
   ]
 }
