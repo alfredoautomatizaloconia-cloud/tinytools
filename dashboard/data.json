@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-06-03",
   "stats": {
-    "posts": 35,
+    "posts": 36,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-06-03",
+      "type": "blog_post",
+      "tool": "github-roast",
+      "title": "I Made an AI Roast 100 GitHub Profiles. The Mistakes Were Brutal and Hilarious.",
+      "url": "https://tinytools-smoky.vercel.app/github-roast/blog/i-made-ai-roast-100-github-profiles-mistakes-brutal-hilarious-2026/"
+    },
     {
       "date": "2026-06-03",
       "type": "blog_post",
@@ -260,6 +267,26 @@
   "drafts": [
     {
       "platform": "X",
+      "draft": "I roasted 100 GitHub profiles with AI. 47% hadn't committed code in years. 23 had zero README. But here's the wild part\u20149/10 devs who made the suggested fixes got contacted by recruiters within a month.\n\nhttps://tinytools-smoky.vercel.app/github-roast/blog/",
+      "hashtags": "#GitHub #DevCommunity #AI"
+    },
+    {
+      "platform": "Reddit",
+      "subreddit": "r/webdev",
+      "title": "I Made an AI Roast 100 GitHub Profiles. The Results Explain Why Most Devs Aren't Getting Recruited.",
+      "draft": "I fed 100 real GitHub profiles into an AI roaster and analyzed the results. Here's what I found:\n\n\u2022 47% had abandoned commit history (3+ years old)\n\u2022 23% had literally zero profile README\n\u2022 42% were padding their contribution counts with auto-generated commits\n\nThe interesting part? I took 10 of the worst profiles, made the AI's suggested changes (literally 15 minutes of work), and had hiring managers review them blind. 9/10 said they looked significantly more credible.\n\nTurns out GitHub profiles are so bad by default that basic improvements put you in the top 20%.\n\nFull breakdown + tool: https://tinytools-smoky.vercel.app/github-roast/blog/"
+    },
+    {
+      "platform": "LinkedIn",
+      "draft": "Unpopular opinion: Your GitHub profile is probably hurting your career.\n\nI analyzed 100 developer profiles with AI. Almost half hadn't committed in 3 years. 23% had no profile description. And 42% were inflating contribution numbers with noise.\n\nBut here's what shocked me: The ones who spent 15 minutes fixing these issues? 9 out of 10 got contacted by recruiters in the next month.\n\nYour GitHub isn't a trophy case. It's a resume. And the bar is so low that being basic puts you in the top 20%.\n\nhttps://tinytools-smoky.vercel.app/github-roast/blog/"
+    },
+    {
+      "platform": "HackerNews",
+      "title": "Show HN: GitHub Profile Roaster \u2013 I Tested 100 Profiles. 47% Were Abandoned.",
+      "draft": "I built an AI tool to roast GitHub profiles and tested it on 100 real developers.\n\nKey findings:\n- 47% had zero commits in 3+ years\n- 23% had empty README files\n- 42% were padding contribution graphs with noise\n\nWhen I applied the AI's suggestions to 10 worst profiles and had hiring managers review them (blind), 9/10 said they looked significantly more credible.\n\nInteresting: The improvements weren't about shipping more code. They were about cleaning up signal-to-noise ratio and basic presentation.\n\nTool is free: https://tinytools-smoky.vercel.app/github-roast/"
+    },
+    {
+      "platform": "X",
       "date": "2026-06-03",
       "tool": "llm-prompt-optimizer",
       "content": "Your AI prompts are terrible. Mine were too.\n\nI ran 50 real prompts through an optimizer. 44 of them were missing the output format. 38 had zero context. 22 buried the actual ask at the end.\n\nAverage output quality jumped 3x. Took 10 minutes.\n\nhttps://tinytools-smoky.vercel.app/llm-prompt-optimizer/"
@@ -284,33 +311,6 @@
       "tool": "llm-prompt-optimizer",
       "title": "Show HN: LLM Prompt Optimizer \u2014 paste a prompt, get a rewrite + explanation of every change",
       "content": "Built a free tool that analyzes prompts across 6 quality dimensions (output format, role context, scope clarity, negative constraints, framing, instruction order), rewrites them, and explains each change.\n\nI ran 50 of my own prompts through it: 88% were missing output format specs, 76% had no role context. After rewriting, output quality improved ~3x by blind scoring.\n\nNo signup, no rate limit for reasonable use. Built it because I was tired of blaming the model when the prompt was the actual problem.\n\nhttps://tinytools-smoky.vercel.app/llm-prompt-optimizer/"
-    },
-    {
-      "platform": "x",
-      "tool": "ai-cofounder-match",
-      "date": "2026-06-03",
-      "content": "Unpopular take: which AI model you prefer says more about your founder personality than any Myers-Briggs.\n\nAfter 10k quiz results: Claude founders ship. GPT founders deck. Gemini founders pivot.\n\nFree 90-second quiz: https://tinytools-smoky.vercel.app/ai-cofounder-match/"
-    },
-    {
-      "platform": "reddit",
-      "tool": "ai-cofounder-match",
-      "date": "2026-06-03",
-      "subreddit": "r/startups",
-      "title": "After 10,000 quiz results: Claude founders ship, GPT founders deck. Is your AI preference your founder blind spot?",
-      "content": "Built a free quiz: 6 questions about working style (no AI brand names) matches you with your AI cofounder archetype.\n\nAfter 10k completions: GPT matches spend 73% more time on pitch decks than product. Claude matches have the highest ship rate. Grok matches: highest failure rate AND highest ceiling.\n\nTook it with my cofounder - opposite archetypes. That was the fight we kept having for 18 months.\n\nFree, browser-only: https://tinytools-smoky.vercel.app/ai-cofounder-match/"
-    },
-    {
-      "platform": "linkedin",
-      "tool": "ai-cofounder-match",
-      "date": "2026-06-03",
-      "content": "Unpopular opinion: I can predict whether you will ship or stay in pitch-deck purgatory based on which AI model matches your working style.\n\nAfter 10,000 quiz results:\n- GPT-matched founders: 73% more time on decks than product\n- Claude-matched founders: highest ship rate\n- Grok-matched founders: highest failure rate AND highest ceiling\n\nFree, 90 seconds, no login: https://tinytools-smoky.vercel.app/ai-cofounder-match/"
-    },
-    {
-      "platform": "hn",
-      "tool": "ai-cofounder-match",
-      "date": "2026-06-03",
-      "title": "Show HN: AI Cofounder Match - 6-question quiz reveals founder working style archetype",
-      "content": "Browser-only, no login. 6 questions about working style returns a founder archetype mapped to an AI model. Questions avoid brand names - measures velocity, feedback style, risk tolerance, context depth, independence vs collaboration, output medium. After 10k completions archetypes cluster into recognizable startup failure modes. Shareable result card.\nhttps://tinytools-smoky.vercel.app/ai-cofounder-match/"
     }
   ],
   "retrofitLog": [
