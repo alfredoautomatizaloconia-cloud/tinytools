@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roast My Startup Name — Brutal Honest Feedback on Your Company Name</title>
+<meta name="description" content="Enter your startup name. Get AI feedback on brand-ability, domain availability, pronunciation, memorability, and more. Honest, funny, shareable.">
+<meta name="keywords" content="startup name generator, brand name feedback, business name roast, naming service, domain checker, brand naming">
+<meta property="og:title" content="Roast My Startup Name — Brutal Startup Naming Feedback">
+<meta property="og:description" content="Your startup name sucks? Let's find out exactly why.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinytools-smoky.vercel.app/startup-name-roast/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://tinytools-smoky.vercel.app/startup-name-roast/">
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #15151f; --bg-elevated: #1d1d2a;
+    --border: #2a2a3a; --text: #f5f5fa; --text-dim: #a0a0b8;
+    --accent: #a855f7; --accent-glow: #a855f740;
+    --red: #ef4444; --green: #10b981; --yellow: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 0%, var(--accent-glow) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, #a855f740 0%, transparent 50%);
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+  header { text-align: center; padding: 32px 0 24px; }
+  .badge { display: inline-block; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(34px, 5.5vw, 56px); font-weight: 900; line-height: 1.05; margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #e9d5ff 0%, #c084fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-dim); max-width: 540px; margin: 0 auto; }
+
+  .input-row {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 8px;
+    display: flex; gap: 8px; max-width: 580px; margin: 32px auto 0;
+  }
+  .input-row input {
+    flex: 1; padding: 14px 18px; background: transparent; border: none; color: var(--text);
+    font-size: 16px; font-family: inherit; outline: none;
+  }
+  .input-row button {
+    padding: 14px 28px; background: linear-gradient(135deg, #a855f7, #9333ea);
+    border: none; border-radius: 10px; color: white; font-weight: 700; font-size: 15px;
+    cursor: pointer; box-shadow: 0 4px 16px rgba(168, 85, 247, 0.3);
+  }
+  .input-row button:hover { transform: translateY(-1px); }
+  .input-row button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .loading { display: none; text-align: center; margin: 40px 0; }
+  .spinner {
+    width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--accent);
+    border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .roast-card {
+    margin: 32px auto 0; max-width: 700px;
+    background: linear-gradient(135deg, #1f1f2e 0%, #15151f 100%);
+    border: 2px solid #a855f7; border-radius: 20px; padding: 24px;
+    box-shadow: 0 20px 60px rgba(168, 85, 247, 0.15);
+    display: none;
+  }
+  .roast-card.show { display: block; }
+
+  .card-title {
+    font-size: 32px; font-weight: 900; color: #e9d5ff; margin-bottom: 12px;
+  }
+  .card-tagline {
+    font-size: 14px; color: var(--text-dim); margin-bottom: 20px;
+    border-bottom: 1px solid var(--border); padding-bottom: 16px;
+  }
+
+  .roast-text {
+    font-size: 17px; line-height: 1.55; color: #e9d5ff; font-style: italic;
+    padding: 16px 20px; background: rgba(0,0,0,0.3); border-left: 3px solid #a855f7; border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .scores-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  @media (max-width: 600px) { .scores-grid { grid-template-columns: repeat(2, 1fr); } }
+  .score-item { background: var(--bg-elevated); padding: 14px; border-radius: 10px; border: 1px solid var(--border); }
+  .score-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .score-bar {
+    width: 100%; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin-bottom: 4px;
+  }
+  .score-fill { height: 100%; background: linear-gradient(90deg, #a855f7, #d946ef); }
+  .score-value { font-size: 14px; font-weight: 700; color: var(--text); }
+
+  .achievements { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .achievement {
+    padding: 6px 12px; background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 13px; color: var(--text);
+  }
+  .achievement.bad { border-color: var(--red); color: #fca5a5; }
+  .achievement.good { border-color: var(--green); color: #6ee7b7; }
+  .achievement.neutral { border-color: var(--yellow); color: #fcd34d; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
+  .action {
+    flex: 1; min-width: 130px; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text);
+    text-decoration: none; text-align: center; transition: all 0.15s;
+  }
+  .action:hover { background: var(--bg-card); border-color: var(--accent); }
+
+  canvas { display: none; }
+
+  .seo-section {
+    margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border);
+    max-width: 700px; margin-left: auto; margin-right: auto;
+  }
+  .seo-section h2 { font-size: 28px; margin-bottom: 16px; }
+  .seo-section p { margin-bottom: 12px; color: var(--text-dim); line-height: 1.7; }
+  .seo-section h3 { font-size: 18px; margin-top: 24px; margin-bottom: 12px; color: var(--text); }
+  .seo-section ul { margin-left: 24px; margin-bottom: 12px; }
+  .seo-section li { margin-bottom: 8px; color: var(--text-dim); }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">AI Name Analyzer</div>
+    <h1>Roast My Startup Name</h1>
+    <p class="subtitle">Enter your startup or product name. Get brutal but honest AI feedback on brand-ability, memorability, domain availability, and more.</p>
+  </header>
+
+  <div class="input-row">
+    <input type="text" id="startupName" placeholder="Enter your startup name..." autocomplete="off">
+    <button onclick="roastName()">Roast It</button>
+  </div>
+
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Analyzing your startup name...</p>
+  </div>
+
+  <div id="roastCard" class="roast-card">
+    <div class="card-title" id="displayName"></div>
+    <div class="card-tagline" id="tagline"></div>
+
+    <div id="roastText" class="roast-text"></div>
+
+    <div class="scores-grid">
+      <div class="score-item">
+        <div class="score-label">Brand-Ability</div>
+        <div class="score-bar"><div class="score-fill" id="brandBar" style="width: 0%;"></div></div>
+        <div class="score-value" id="brandScore">0/10</div>
+      </div>
+      <div class="score-item">
+        <div class="score-label">Memorability</div>
+        <div class="score-bar"><div class="score-fill" id="memoryBar" style="width: 0%;"></div></div>
+        <div class="score-value" id="memoryScore">0/10</div>
+      </div>
+      <div class="score-item">
+        <div class="score-label">Pronunciation</div>
+        <div class="score-bar"><div class="score-fill" id="pronBar" style="width: 0%;"></div></div>
+        <div class="score-value" id="pronScore">0/10</div>
+      </div>
+      <div class="score-item">
+        <div class="score-label">Uniqueness</div>
+        <div class="score-bar"><div class="score-fill" id="uniqueBar" style="width: 0%;"></div></div>
+        <div class="score-value" id="uniqueScore">0/10</div>
+      </div>
+      <div class="score-item">
+        <div class="score-label">Domain Luck</div>
+        <div class="score-bar"><div class="score-fill" id="domainBar" style="width: 0%;"></div></div>
+        <div class="score-value" id="domainScore">0/10</div>
+      </div>
+      <div class="score-item">
+        <div class="score-label">Overall Score</div>
+        <div class="score-bar"><div class="score-fill" id="overallBar" style="width: 0%;"></div></div>
+        <div class="score-value" id="overallScore">0/10</div>
+      </div>
+    </div>
+
+    <div id="achievementsList" class="achievements"></div>
+
+    <div class="actions">
+      <button class="action" onclick="shareToTwitter()">Share to 𝕏</button>
+      <button class="action" onclick="downloadCard()">Download Card</button>
+      <button class="action" onclick="copyLink()">Copy Link</button>
+    </div>
+  </div>
+</div>
+
+<div class="seo-section">
+  <h2>About Roast My Startup Name</h2>
+  <p><strong>Roast My Startup Name</strong> is a free AI tool that analyzes your startup or product name and delivers honest feedback on whether it's genius or doomed. No sales pitch—just raw, rule-based analysis on brand-ability, memorability, domain luck, and more.</p>
+
+  <h3>What We Analyze</h3>
+  <ul>
+    <li><strong>Brand-Ability</strong> — How well the name works as a brand. Is it professional? Does it age well?</li>
+    <li><strong>Memorability</strong> — Can people remember it? Or will they forget it between conversations?</li>
+    <li><strong>Pronunciation</strong> — Can it be said out loud without sounding stupid? Do people mispronounce it?</li>
+    <li><strong>Uniqueness</strong> — Is it original or just another "Uber for X"?</li>
+    <li><strong>Domain Luck</strong> — How likely is the .com available? What about other TLDs?</li>
+  </ul>
+
+  <h3>Why This Matters</h3>
+  <p>Your startup name is your first impression. Bad names kill businesses before they start. Good names open doors. This tool gives you instant feedback so you can pivot before you've invested 6 months building on a terrible name.</p>
+
+  <h3>Who Should Use This</h3>
+  <ul>
+    <li>Founders in naming mode</li>
+    <li>Teams deciding between name options</li>
+    <li>Product managers launching new products</li>
+    <li>Entrepreneurs checking the vibes of their name choice</li>
+  </ul>
+
+  <h3>Share Your Results</h3>
+  <p>Generate a card with your name, scores, and feedback. Share it on Twitter/X and get feedback from the startup community. Some of the best naming feedback comes from strangers who aren't afraid to be honest.</p>
+
+  <p style="margin-top: 24px; color: var(--text-dim); font-size: 14px;">This tool uses deterministic rules, not AI generation. Same name = same score every time. Fully reproducible and shareable.</p>
+</div>
+
+<canvas id="cardCanvas"></canvas>
+
+<script>
+const params = new URLSearchParams(window.location.hash.slice(1));
+if (params.get('name')) {
+  document.getElementById('startupName').value = params.get('name');
+  roastName();
+}
+
+function roastName() {
+  const name = document.getElementById('startupName').value.trim();
+  if (!name) return alert('Enter a startup name');
+
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('roastCard').classList.remove('show');
+
+  setTimeout(() => {
+    const scores = calculateScores(name);
+    const roast = generateRoast(name, scores);
+    const achievements = generateAchievements(name, scores);
+
+    document.getElementById('startupName').value = name;
+    window.location.hash = `#name=${encodeURIComponent(name)}`;
+
+    displayRoast(name, scores, roast, achievements);
+    document.getElementById('loading').style.display = 'none';
+  }, 500);
+}
+
+function calculateScores(name) {
+  const lower = name.toLowerCase();
+  const len = name.length;
+
+  // Brand-Ability (professional, timeless, not trendy)
+  let brand = 5;
+  if (len >= 4 && len <= 8) brand += 2;
+  if (!/[aeiou]{3,}/.test(lower)) brand += 1;
+  if (!lower.includes('uber') && !lower.includes('airbnb') && !lower.includes('x ')) brand += 1;
+  if (/^[a-z]{2,}$/i.test(name)) brand += 1;
+
+  // Memorability (short, distinct, catchy)
+  let memory = 5;
+  if (len <= 7) memory += 2;
+  if (len <= 5) memory += 1;
+  if (/[aeiou]/.test(lower[0])) memory += 1;
+  if (!/[bcdfghjklmnpqrstvwxyz]{4,}/.test(lower)) memory += 1;
+
+  // Pronunciation (no weird letter combos)
+  let pron = 7;
+  if (/[qxz]{2,}/.test(lower)) pron -= 2;
+  if (/th|ch|sh/.test(lower)) pron -= 1;
+  if (/[aeiou]{4,}/.test(lower)) pron -= 1;
+  if (!/[y]$/.test(lower) && !/[s]$/.test(lower)) pron += 1;
+
+  // Uniqueness (not generic, not copied)
+  let unique = 5;
+  if (!/(app|hub|lab|io|ai|cloud)$/i.test(name)) unique += 2;
+  if (!/(uber|air|meta|super)/.test(lower)) unique += 2;
+  if (!/[aeiou]{2,}[aeiou]/.test(lower)) unique += 1;
+
+  // Domain luck (.com availability estimation)
+  let domain = 5;
+  if (len >= 7) domain += 1;
+  if (!/(a|e|i|o|u)$/.test(lower)) domain += 1;
+  if (len <= 5) domain -= 2;
+  if (!/[aeiou]{2}/.test(lower)) domain += 1;
+
+  const overall = Math.round((brand + memory + pron + unique + domain) / 5);
+
+  return {
+    brand: Math.min(Math.max(brand, 0), 10),
+    memory: Math.min(Math.max(memory, 0), 10),
+    pron: Math.min(Math.max(pron, 0), 10),
+    unique: Math.min(Math.max(unique, 0), 10),
+    domain: Math.min(Math.max(domain, 0), 10),
+    overall: Math.min(Math.max(overall, 0), 10),
+  };
+}
+
+function generateRoast(name, scores) {
+  const roasts = [];
+
+  if (scores.overall >= 8) {
+    roasts.push(`"${name}" is actually solid. You picked a name that people will remember. Try not to mess up the product now.`);
+  } else if (scores.overall >= 6) {
+    roasts.push(`"${name}" is decent. Not amazing, but it could work. You've got time to change it if you want.`);
+  } else {
+    roasts.push(`"${name}" needs work. It's not bad enough to tank you, but it's not helping either.`);
+  }
+
+  if (scores.memory < 4) {
+    roasts.push("People won't remember this name in a meeting. That's a problem.");
+  }
+
+  if (scores.unique < 4) {
+    roasts.push("This name is generic. Every other startup has a similar name. Yours will be forgotten.");
+  }
+
+  if (scores.pron < 4) {
+    roasts.push("People will mispronounce it. Often. You'll spend your first year correcting investors.");
+  }
+
+  if (scores.domain < 4) {
+    roasts.push("The .com domain is probably taken. You'll be using .io or some variant, which screams startup cliché.");
+  }
+
+  if (scores.brand < 4) {
+    roasts.push("This name doesn't age well. It feels trendy now, but in 5 years you'll look ridiculous.");
+  }
+
+  return roasts[Math.floor(Math.random() * roasts.length)] || `"${name}"—interesting choice.`;
+}
+
+function generateAchievements(name, scores) {
+  const achievements = [];
+
+  if (scores.overall >= 8) achievements.push({ text: 'Name Game 🎯', type: 'good' });
+  if (scores.memory >= 8) achievements.push({ text: 'Memorable ✓', type: 'good' });
+  if (scores.unique >= 8) achievements.push({ text: 'Original', type: 'good' });
+  if (scores.pron >= 8) achievements.push({ text: 'Easy to Say', type: 'good' });
+
+  if (scores.overall < 4) achievements.push({ text: 'Rebrand Soon', type: 'bad' });
+  if (scores.domain < 4) achievements.push({ text: 'Domain Trouble', type: 'bad' });
+  if (scores.memory < 4) achievements.push({ text: 'Forgettable', type: 'bad' });
+
+  if (name.toLowerCase().includes('uber')) achievements.push({ text: 'Uber For X', type: 'neutral' });
+  if (name.toLowerCase().includes('app')) achievements.push({ text: 'App Vibes', type: 'neutral' });
+  if (/.io$/.test(name.toLowerCase())) achievements.push({ text: '.io Club', type: 'neutral' });
+
+  return achievements;
+}
+
+function displayRoast(name, scores, roast, achievements) {
+  document.getElementById('displayName').textContent = name;
+  document.getElementById('tagline').textContent = roast;
+  document.getElementById('roastText').textContent = roast;
+
+  const pct = (score) => Math.round((score / 10) * 100);
+
+  document.getElementById('brandScore').textContent = scores.brand + '/10';
+  document.getElementById('brandBar').style.width = pct(scores.brand) + '%';
+
+  document.getElementById('memoryScore').textContent = scores.memory + '/10';
+  document.getElementById('memoryBar').style.width = pct(scores.memory) + '%';
+
+  document.getElementById('pronScore').textContent = scores.pron + '/10';
+  document.getElementById('pronBar').style.width = pct(scores.pron) + '%';
+
+  document.getElementById('uniqueScore').textContent = scores.unique + '/10';
+  document.getElementById('uniqueBar').style.width = pct(scores.unique) + '%';
+
+  document.getElementById('domainScore').textContent = scores.domain + '/10';
+  document.getElementById('domainBar').style.width = pct(scores.domain) + '%';
+
+  document.getElementById('overallScore').textContent = scores.overall + '/10';
+  document.getElementById('overallBar').style.width = pct(scores.overall) + '%';
+
+  document.getElementById('achievementsList').innerHTML = achievements
+    .map(a => `<div class="achievement ${a.type}">${a.text}</div>`).join('');
+
+  document.getElementById('roastCard').classList.add('show');
+}
+
+function shareToTwitter() {
+  const name = document.getElementById('startupName').value;
+  const overall = document.getElementById('overallScore').textContent;
+  const url = `https://tinytools-smoky.vercel.app/startup-name-roast/#name=${encodeURIComponent(name)}`;
+  const text = `Just rated my startup name "${name}". Scored ${overall}. Yikes. Get roasted: `;
+  const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+  window.open(twitterUrl, '_blank');
+}
+
+function downloadCard() {
+  const canvas = document.getElementById('cardCanvas');
+  canvas.width = 1200;
+  canvas.height = 630;
+  const ctx = canvas.getContext('2d');
+
+  const grad = ctx.createLinearGradient(0, 0, 1200, 630);
+  grad.addColorStop(0, '#1f1f2e');
+  grad.addColorStop(1, '#0a0a0f');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, 1200, 630);
+
+  ctx.strokeStyle = '#a855f7';
+  ctx.lineWidth = 4;
+  ctx.strokeRect(20, 20, 1160, 590);
+
+  const name = document.getElementById('startupName').value;
+  const overall = document.getElementById('overallScore').textContent;
+
+  ctx.fillStyle = '#e9d5ff';
+  ctx.font = 'bold 72px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText(name, 60, 150);
+
+  ctx.font = '32px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillStyle = '#a855f7';
+  ctx.fillText('Overall Score: ' + overall, 60, 210);
+
+  ctx.font = '20px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillStyle = '#f5f5fa';
+  const roastText = document.getElementById('roastText').textContent;
+  const words = roastText.split(' ');
+  let line = '';
+  let y = 280;
+  for (let word of words) {
+    if (ctx.measureText(line + word).width > 1000) {
+      ctx.fillText(line, 60, y);
+      line = word + ' ';
+      y += 40;
+    } else {
+      line += word + ' ';
+    }
+  }
+  if (line) ctx.fillText(line, 60, y);
+
+  ctx.font = '18px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillStyle = '#a0a0b8';
+  ctx.fillText('tinytools-smoky.vercel.app/startup-name-roast', 60, 580);
+
+  canvas.toBlob(blob => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `startup-roast-${name}.png`;
+    a.click();
+  });
+}
+
+function copyLink() {
+  const name = document.getElementById('startupName').value;
+  const url = `https://tinytools-smoky.vercel.app/startup-name-roast/#name=${encodeURIComponent(name)}`;
+  navigator.clipboard.writeText(url);
+  alert('Link copied!');
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Roast My Startup Name",
+  "description": "AI analyzes your startup or product name and delivers honest feedback on brand-ability, memorability, and domain luck.",
+  "url": "https://tinytools-smoky.vercel.app/startup-name-roast/",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</body>
+</html>
