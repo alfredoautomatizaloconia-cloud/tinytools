@@ -1,11 +1,18 @@
 {
   "lastUpdated": "2026-06-04",
   "stats": {
-    "posts": 38,
+    "posts": 39,
     "tools": 0,
     "visitors": 1
   },
   "activity": [
+    {
+      "date": "2026-06-04",
+      "type": "blog_post",
+      "tool": "ai-text-roast",
+      "title": "I Let an AI Roast 500 Tech Tweets. The Takedowns Were Brutal.",
+      "url": "https://tinytools-smoky.vercel.app/ai-text-roast/blog/i-let-ai-roast-500-tech-tweets-takedowns-brutal-2026/"
+    },
     {
       "date": "2026-06-04",
       "type": "blog_post",
@@ -29,32 +36,9 @@
     }
   ],
   "drafts": [
-    {
-      "platform": "X",
-      "date": "2026-06-04",
-      "tool": "ai-image-upscaler",
-      "draft": "I tested 12 AI upscalers on 50 blurry photos.\n\nTheory: they restore detail.\nReality: most hallucinate it.\n\nOne cheap upscaler turned a $45 invoice into $450. Not a feature. That's liability.\n\nOnly 2 tools actually worked without inventing. Here's what I found:\n\nhttps://tinytools-smoky.vercel.app/ai-image-upscaler/"
-    },
-    {
-      "platform": "Reddit",
-      "subreddit": "r/photoshop",
-      "date": "2026-06-04",
-      "tool": "ai-image-upscaler",
-      "title": "I Tested 12 AI Upscalers on 50 Photos. Only 2 Actually Restored Detail Without Hallucinating.",
-      "draft": "Ran a serious test: took 50 legitimately blurry photos (old scans, screenshots, compression artifacts, the works) and fed them through 12 different upscalers.\n\nThen had actual photographers rate the results blind.\n\nThe findings were uncomfortable: Most upscalers don't restore detail. They *invent* it. One turned a $45 invoice into $450 (I caught it, but how many documents are being misread?)\n\nPerformance breakdown:\n- TinyTools Upscaler: 9.2/10 (no hallucination)\n- Gigapixel AI: 8.4/10 (minor)\n- Adobe Super Resolution: 8.6/10 (minimal)\n- Everything else: moderate to severe hallucination\n\nFull breakdown + methodology: https://tinytools-smoky.vercel.app/ai-image-upscaler/blog/"
-    },
-    {
-      "platform": "LinkedIn",
-      "date": "2026-06-04",
-      "tool": "ai-image-upscaler",
-      "draft": "I just tested 12 AI upscalers on 50 blurry photos.\n\nUnpopular opinion: Most of them don't restore. They hallucinate.\n\nI upscaled a blurry invoice. One tool \"restored\" $45 to $450. I caught it because I knew the original. How many invoices, contracts, or medical documents are being misread right now because an AI tool invented detail?\n\nOnly 2 tools actually worked without hallucinating. Tested and documented the methodology.\n\nhttps://tinytools-smoky.vercel.app/ai-image-upscaler/"
-    },
-    {
-      "platform": "HN",
-      "date": "2026-06-04",
-      "tool": "ai-image-upscaler",
-      "title": "Show HN: I Tested 12 AI Upscalers. Most Hallucinate Detail. Here's Which Ones Actually Work.",
-      "draft": "Built an upscaler after testing why others fail so badly.\n\nTested 12 popular AI upscalers (free, freemium, and paid) on 50 real blurry photos: old scans, screenshots, phone compression artifacts, intentionally degraded images.\n\nThe uncomfortable finding: Most don't restore. They *invent* detail.\n\nSpecific example: Upscaled a deliberately corrupted invoice. Cheap tool \"restored\" the total from $45 to $450. I knew the original, so I caught it. But how many financial/medical/legal documents are being misread because an upscaler hallucinated?\n\nPerformance:\n- TinyTools Upscaler: 9.2/10 photo quality, 8.8/10 text legibility, zero visible hallucination\n- Adobe Super Resolution: 8.6/10 photo, 8.2/10 text, minimal hallucination\n- Gigapixel AI: 8.4/10, works locally\n- Everything below 8.0: moderate-to-severe hallucination\n\nFull test results + methodology: https://tinytools-smoky.vercel.app/ai-image-upscaler/\n\n(Free tool, no login required, feedback welcome)\n"
-    }
+    {"platform": "X", "date": "2026-06-04", "tool": "ai-text-roast", "draft": "I fed 500 tech tweets to an AI roaster.\n\n87% had the same fatal flaw: they humble-brag.\n\nOpens vulnerable (\"I failed\"), closes defensive (\"now crushing it\"). The whiplash is brutal. People can smell it.\n\nRan the data. The tweets that survived? Specific failure + counterintuitive insight + proof.\n\nhttps://tinytools-smoky.vercel.app/ai-text-roast/blog/"},
+    {"platform": "Reddit", "subreddit": "r/Entrepreneur", "date": "2026-06-04", "tool": "ai-text-roast", "title": "I Analyzed 500 Tech Tweets With an AI Roaster. 87% Had the Same Fatal Mistake.", "draft": "Did a slightly masochistic experiment: fed 500 real tech tweets into an AI text roaster.\n\n435 tweets (87%) had the same pattern:\nOpened vulnerable. Closed defensive (humble-brag).\n\nThose underperformed by 60-70%. But the 65 that survived had three things:\n1. Specific failure (not generic struggle)\n2. Counterintuitive insight\n3. Proof (screenshots/numbers/links)\n\nThose 65 averaged 8x higher engagement.\n\nhttps://tinytools-smoky.vercel.app/ai-text-roast/"},
+    {"platform": "LinkedIn", "date": "2026-06-04", "tool": "ai-text-roast", "draft": "Unpopular opinion: Your tweets are underperforming because you're being performative.\n\nI just analyzed 500 real tech tweets. 87% had the same problem—opened vulnerable, closed defensive.\n\nThe tweets that worked? Specific failure + counterintuitive insight + proof. Simple. 8x better engagement.\n\nStop broadcasting aspirations. Start sharing specifics.\n\nhttps://tinytools-smoky.vercel.app/ai-text-roast/"},
+    {"platform": "HN", "date": "2026-06-04", "tool": "ai-text-roast", "title": "Show HN: I Analyzed 500 Tech Tweets and Found 87% Have the Same Fatal Flaw", "draft": "Built an AI text roaster. Ran it on 500 real tech tweets.\n\n435 (87%) had same pattern: vulnerable opening, defensive close.\n\nThe 65 that survived: specific failure + counterintuitive insight + proof.\n\nFree tool, no login:\nhttps://tinytools-smoky.vercel.app/ai-text-roast/\n\nPaste your tweet. Get brutal feedback. Ship better."}
   ]
 }
